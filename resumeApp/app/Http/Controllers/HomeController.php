@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\UserData;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('welcomePage');
     }
 
     /**
@@ -23,6 +25,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('admin.form');
+    }
+
+    public function welcomePage($username){
+        $user =  User::where('username',$username)->first();
+        if($user !== null){
+            $user = $user->userData;
+        }else{
+            return redirect('/');
+        }
+        return view('welcome', compact('user'));
     }
 }

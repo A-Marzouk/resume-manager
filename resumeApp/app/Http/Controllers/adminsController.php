@@ -13,7 +13,6 @@ class adminsController extends Controller
     }
 
     public function form(){
-        $currUser = auth()->user();
-        return view('admin.form',compact('currUser'));
+        return view('admin.form');
     }
 }

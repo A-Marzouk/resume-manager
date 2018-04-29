@@ -20,6 +20,4 @@ Route::post('/admin','UserDataController@store');
 
 Auth::routes();
 
-Route::get('/admin/home', 'HomeController@index')->name('home');
-
 Route::get('/{username}','HomeController@welcomePage');

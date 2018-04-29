@@ -117,7 +117,7 @@
                     <ul>
                         <li><strong>Name:</strong> {{$user->name}} </li>
                         <li><strong>Date of birth:</strong> {{$user->birth_date}}</li>
-                        <li><strong>Address:</strong> Lapu-Lapu</li>
+                        <li><strong>Address:</strong> {{$user->city}}</li>
                         <li><strong>Nationality:</strong> Filipino</li>
                         <li><strong>Languages:</strong> English,Tagalog and Cebuano</li>
                         <li><strong>Email:</strong> {{$user->email}}</li>

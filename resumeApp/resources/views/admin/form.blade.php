@@ -1,5 +1,6 @@
 @extends('layouts.app')
 <?
+    $currUser = auth()->user();
     $name = $currUser->userData->name ?? '' ;
     $birth_date = $currUser->userData->birth_date ?? '' ;
     $email = $currUser->userData->email ?? '' ;

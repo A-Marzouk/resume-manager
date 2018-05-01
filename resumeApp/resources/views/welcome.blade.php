@@ -118,8 +118,8 @@
                         <li><strong>Name:</strong> {{$user->name}} </li>
                         <li><strong>Date of birth:</strong> {{$user->birth_date}}</li>
                         <li><strong>Address:</strong> {{$user->city}}</li>
-                        <li><strong>Nationality:</strong> Filipino</li>
-                        <li><strong>Languages:</strong> English,Tagalog and Cebuano</li>
+                        <li><strong>Nationality:</strong> {{$user->nationality}}</li>
+                        <li><strong>Languages:</strong> {{$user->languages}}</li>
                         <li><strong>Email:</strong> {{$user->email}}</li>
                     </ul>
                 </div>
@@ -128,25 +128,23 @@
             <div class="col-md-8 col-md-pull-4">
                 <div class="short-info wow fadeInUp">
                     <h3>Objective</h3>
-                    <p> To think creatively and use innovative ideas to come up with new concepts and designs.</p>
+                    <p> {{$user->careerObjective}}</p>
                 </div>
 
                 <div class="short-info wow fadeInUp">
                     <h3>What I Do ?</h3>
-                    <p>I have been working as a Junior Illustrator & Graphic Designer since i graduated in 2017.  I have a love of clean, elegant styling in my design. I like to create characters and cartoons which i believe to be my strongest skill.  I love creating awesome designs as per my clients’ needs. </p>
-
+                    <p>{{$user->design_styles}}</p>
                     <ul class="list-check">
-                        <li>Illustration</li>
-                        <li>Website Design</li>
-                        <li>Character Design</li>
-                        <li>Branding Design</li>
-                        <li>Digital Painting</li>
-                        <li>Print Design</li>
+                        <? $design_skills_checkBoxes = explode(',',$user->design_skills_checkbox)?>
+                        @foreach($design_skills_checkBoxes as $skill)
+                            <li>{{$skill}}</li>
+                        @endforeach
                     </ul>
                 </div>
 
                 <div class="my-signature">
                     <img src="resumeApp/resources/views/customTheme/images/sign.png" alt="">
+                    <!-- do we need to ad field for signature -->
                 </div>
 
                 <div class="download-button">
@@ -452,8 +450,6 @@
                         </div><!-- /.portfolio -->
                     </div><!-- /.portfolio-bg -->
                 </div><!-- /.portfolio-item -->
-
-
                 <div class="portfolio-item col-xs-12 col-sm-4 col-md-3" data-groups='["all", "identety", "web"]'>
                     <div class="portfolio-bg">
                         <div class="portfolio">
@@ -600,150 +596,6 @@
 </section> <!-- End Facts Section -->
 
 
-<!-- Blog Section -->
-<section id="blog" class="latest-blog-section section-padding">
-    <div class="container">
-        <h2 class="section-title wow fadeInUp">Latest Post</h2>
-
-        <div class="row">
-            <div class="col-sm-4">
-                <article class="blog-post-wrapper">
-                    <div class="figure">
-                        <div class="post-thumbnail">
-                            <a href="#"><img src="resumeApp/resources/views/customTheme/images/blog/01.jpg" class="img-responsive " alt=""></a>
-                        </div>
-                        <i class="fa fa-file-photo-o"></i>
-                    </div><!-- /.figure -->
-                    <header class="entry-header">
-                        <div class="post-meta">
-                  <span class="the-category">
-                    <a href="#">Print Design,</a> <a href="#">Photoshop</a>
-                  </span>
-                        </div>
-                        <h2 class="entry-title"><a href="blog-single.html" rel="">Common fonts used for newspaper template design</a></h2>
-                        <hr>
-                        <div class="entry-meta">
-                            <ul class="list-inline">
-                                <li>
-                      <span class="the-author">
-                        <a href="#">Admin</a>
-                      </span>
-                                </li>
-                                <li>
-                      <span class="the-time">
-                        <a href="#">06 Jan 2015</a>
-                      </span>
-                                </li>
-                                <li>
-                      <span class="the-share">
-                        <a href="#" title="share">30</a>
-                      </span>
-                                </li>
-                                <li>
-                      <span class="the-comments">
-                        <a href="#" title="">05</a>
-                      </span>
-                                </li>
-                            </ul>
-                        </div><!-- .entry-meta -->
-                    </header><!-- .entry-header -->
-                </article>
-            </div><!-- /.col-sm-4 -->
-            <div class="col-sm-4">
-                <article class="blog-post-wrapper">
-                    <div class="figure">
-                        <div class="post-thumbnail">
-                            <a href="#"><img src="resumeApp/resources/views/customTheme/images/blog/02.jpg" class="img-responsive " alt=""></a>
-                        </div>
-                        <i class="fa fa-file-video-o"></i>
-                    </div><!-- /.figure -->
-                    <header class="entry-header">
-                        <div class="post-meta">
-                  <span class="the-category">
-                    <a href="#">Print Design,</a> <a href="#">Photoshop</a>
-                  </span>
-                        </div>
-                        <h2 class="entry-title"><a href="blog-single.html" rel="">What is the style of font called that is typically</a></h2>
-                        <hr>
-                        <div class="entry-meta">
-                            <ul class="list-inline">
-                                <li>
-                      <span class="the-author">
-                        <a href="#">Admin</a>
-                      </span>
-                                </li>
-                                <li>
-                      <span class="the-time">
-                        <a href="#">06 Jan 2015</a>
-                      </span>
-                                </li>
-                                <li>
-                      <span class="the-share">
-                        <a href="#" title="share">30</a>
-                      </span>
-                                </li>
-                                <li>
-                      <span class="the-comments">
-                        <a href="#" title="">05</a>
-                      </span>
-                                </li>
-                            </ul>
-                        </div><!-- .entry-meta -->
-                    </header><!-- .entry-header -->
-                </article>
-            </div><!-- /.col-sm-4 -->
-            <div class="col-sm-4">
-                <article class="blog-post-wrapper">
-                    <div class="figure">
-                        <div class="post-thumbnail">
-                            <a href="#"><img src="resumeApp/resources/views/customTheme/images/blog/03.jpg" class="img-responsive " alt=""></a>
-                        </div>
-                        <i class="fa fa-quote-left"></i>
-                    </div><!-- /.figure -->
-                    <header class="entry-header">
-                        <div class="post-meta">
-                  <span class="the-category">
-                    <a href="#">Print Design,</a> <a href="#">Photoshop</a>
-                  </span>
-                        </div>
-                        <h2 class="entry-title"><a href="blog-single.html" rel="">How to create a print ready brochure using photoshop</a></h2>
-                        <hr>
-                        <div class="entry-meta">
-                            <ul class="list-inline">
-                                <li>
-                      <span class="the-author">
-                        <a href="#">Admin</a>
-                      </span>
-                                </li>
-                                <li>
-                      <span class="the-time">
-                        <a href="#">06 Jan 2015</a>
-                      </span>
-                                </li>
-                                <li>
-                      <span class="the-share">
-                        <a href="#" title="share">30</a>
-                      </span>
-                                </li>
-                                <li>
-                      <span class="the-comments">
-                        <a href="#" title="">05</a>
-                      </span>
-                                </li>
-                            </ul>
-                        </div><!-- .entry-meta -->
-                    </header><!-- .entry-header -->
-                </article>
-            </div><!-- /.col-md-4 -->
-        </div><!-- /.row -->
-        <div class="blog-more text-center">
-            <a href="#" class="btn btn-primary">View More</a>
-        </div>
-
-    </div><!-- /.container -->
-</section><!-- End Blog Section -->
-
-
 <!-- Hire Section -->
 <section class="hire-section text-center" data-stellar-vertical-offset="50" data-stellar-background-ratio="0.2">
     <div class="hire-section-bg">
@@ -798,8 +650,7 @@
                         <i class="fa fa-map-marker"></i>
                         <address>
                             <strong>Address/Street</strong>
-                            239/2 Awesome Street,<br>
-                            Boston, USA<br>
+                            {{$user->city}}
                         </address>
                     </div>
 

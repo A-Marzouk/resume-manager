@@ -21,6 +21,7 @@ class CreateUserDatasTable extends Migration
             $table->date('birth_date');
             $table->string('city');
             $table->string('nationality');
+            $table->string('design_skills_checkbox');
             $table->text('languages');
             $table->text('design_styles');
             $table->string('photo');

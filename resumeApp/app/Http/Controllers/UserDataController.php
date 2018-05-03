@@ -60,7 +60,12 @@ class UserDataController extends Controller
             // send Message to Telegram :
 //                $this->sendTelegram();
 
-            Mail::to(auth()->user())->send(new welcome);
+//            Mail::to('Ahmed')->send(new welcome);
+
+            Mail::send('emails.welcome', ['key' => 'value'], function($message)
+            {
+                $message->to('AhmedMarzouk266@gmail.com', 'Ahmed Ragab')->subject('Welcome!');
+            });
 
             return redirect('/admin')->with('successMessage', 'Your changes have been successfully saved.');
         }else{

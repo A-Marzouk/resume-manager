@@ -48,9 +48,6 @@
 
 <!-- Home Section -->
 <section id="home" class="tt-fullHeight" data-stellar-vertical-offset="50" data-stellar-background-ratio="0.2">
-    <div style="position: absolute;">
-        <iframe src="{{$user->googleCalendar}}" style="border: 0" width="289" height="200" frameborder="0" scrolling="no"></iframe>
-    </div>
     <div class="intro">
         <div class="intro-sub">I am {{$user->name}} </div>
         <h1><span> {{$user->jobTitle}} </span></h1>
@@ -500,9 +497,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2>I'm available for freelance project</h2>
-                    <div>
-                        {{--<iframe src="https://calendar.google.com/calendar/embed?src=gd1nhjvups52h5poa17oejfqo0%40group.calendar.google.com&ctz=Europe%2FKiev" style="border-radius: 5px; border: 5px solid lightgray;" width="70%" height="250" frameborder="0" scrolling="no"></iframe>--}}
-                    </div>
+                    <? if(!empty($user->googleCalendar)):?>
+                        <div>
+                            <iframe src="{{$user->googleCalendar}}" style="border-radius: 5px; border: 5px solid lightgray;" width="70%" height="250" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                    <? endif;?>
                     <a href="#" class="btn btn-default">Get Hired</a>
                 </div><!-- /.col-md-12 -->
             </div><!-- /.row -->
@@ -563,6 +562,19 @@
                         </div>
                     </div>
                 </div>
+                 <!-- google map git langitude and attitude -->
+                <?
+                    if(!empty($user->city)){
+                        $address = $user->city; // Google HQ
+                        $prepAddr = str_replace(' ','+',$address);
+                        $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
+                        $output = json_decode($geocode);
+                        $latitude = $output->results[0]->geometry->location->lat;
+                        $longitude = $output->results[0]->geometry->location->lng;
+                    }
+                ?>
+                <span id="latitude">{{$latitude}}</span>
+                <span id="longitude">{{$longitude}}</span>
 
                 <div class="row">
                     <div class="col-sm-12">
@@ -613,5 +625,6 @@
 <script src="resumeApp/resources/views/customTheme/js/jquery.fitvids.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
 <script src="resumeApp/resources/views/customTheme/js/scripts.js"></script>
+
 </body>
 </html>

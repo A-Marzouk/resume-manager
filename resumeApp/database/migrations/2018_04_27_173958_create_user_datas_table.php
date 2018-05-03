@@ -27,6 +27,11 @@ class CreateUserDatasTable extends Migration
             $table->string('photo');
             $table->text('trainings');
             $table->text('works');
+            $table->string('jobTitle');
+            $table->text('intro');
+            $table->string('githubLink');
+            $table->string('stackoverflowLink');
+            $table->text('googleCalendar');
             $table->string('design_skills');
             $table->string('professional_attributes');
             $table->string('personal_interests');

@@ -277,7 +277,9 @@ jQuery(function ($) {
     // -------------------------------------------------------------
 
     (function () {
-        var myLatlng = new google.maps.LatLng(41.372641, -74.687387);
+        var latitude  = $('#latitude').html();
+        var longitude = $('#longitude').html();
+        var myLatlng = new google.maps.LatLng(latitude,longitude);
 
             var styles = [
                 {
@@ -317,7 +319,7 @@ jQuery(function ($) {
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 disableDefaultUI: true,
                 styles: styles
-            }
+            };
             var map = new google.maps.Map(document.getElementById('mapCanvas'), mapOptions);
 
             var marker = new google.maps.Marker({

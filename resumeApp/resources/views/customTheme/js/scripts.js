@@ -279,6 +279,7 @@ jQuery(function ($) {
     (function () {
         var latitude  = $('#latitude').html();
         var longitude = $('#longitude').html();
+        var city      = $('#userCity').html();
         var myLatlng = new google.maps.LatLng(latitude,longitude);
 
             var styles = [
@@ -326,7 +327,7 @@ jQuery(function ($) {
                 position: myLatlng,
                 map: map,
                 animation: google.maps.Animation.DROP,
-                title: 'Hello World!'
+                title: city
             });
 
             var contentString = '' +

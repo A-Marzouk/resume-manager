@@ -567,7 +567,7 @@
                     if(!empty($user->city)){
                         $address = $user->city; // Google HQ
                         $prepAddr = str_replace(' ','+',$address);
-                        $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
+                        $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false&key=AIzaSyDZWJcFQabrMDUPmXaiU7wlZ74dzm_virI');
                         $output = json_decode($geocode);
                         if(isset($output->results[0])){
                             $latitude = $output->results[0]->geometry->location->lat;
@@ -578,6 +578,7 @@
                 <? if(isset($output->results[0]) && !empty($user->city)):?>
                     <span id="latitude">{{$latitude}}</span>
                     <span id="longitude">{{$longitude}}</span>
+                    <span id="userCity">{{$user->city}}</span>
                 <? endif;?>
                 <div class="row">
                     <div class="col-sm-12">
@@ -626,7 +627,7 @@
 <script src="resumeApp/resources/views/customTheme/js/jquery.magnific-popup.min.js"></script>
 <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
 <script src="resumeApp/resources/views/customTheme/js/jquery.fitvids.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&key=AIzaSyDZWJcFQabrMDUPmXaiU7wlZ74dzm_virI"></script>
 <script src="resumeApp/resources/views/customTheme/js/scripts.js"></script>
 
 </body>

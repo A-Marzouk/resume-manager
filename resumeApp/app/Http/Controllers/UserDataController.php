@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\welcome;
 use App\UserData;
 use Illuminate\Http\Request;
 use App\classes\Telegram;
 use Illuminate\Support\Facades\Mail;
+use PharIo\Manifest\Email;
 
 class UserDataController extends Controller
 {
@@ -56,13 +58,9 @@ class UserDataController extends Controller
             }
             $userData->save();
             // send Message to Telegram :
-            $msg = auth()->user()->username ;
-            $msg .= ' has updated his resume .. please view updated resume here..  ';
-            $msg .= str_replace_last('admin',auth()->user()->username, url()->current());
-            $telegram = new Telegram('-279372621');
-            $telegram->sendMessage($msg);
-            // send mail :
-//            $this->sendMail($msg);
+//                $this->sendTelegram();
+
+            Mail::to(auth()->user())->send(new welcome);
 
             return redirect('/admin')->with('successMessage', 'Your changes have been successfully saved.');
         }else{
@@ -103,5 +101,13 @@ class UserDataController extends Controller
 
     public function sendMail($msg){
 
+    }
+
+    public function sendTelegram(){
+        $msg = auth()->user()->username ;
+        $msg .= ' has updated his resume .. please view updated resume here..  ';
+        $msg .= str_replace_last('admin',auth()->user()->username, url()->current());
+        $telegram = new Telegram('-279372621');
+        $telegram->sendMessage($msg);
     }
 }

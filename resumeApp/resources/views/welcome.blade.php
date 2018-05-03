@@ -93,7 +93,6 @@
                     <li><a href="#resume">Resume</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#works">Works</a></li>
-                    <li><a href="#blog">Blog</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -495,11 +494,11 @@
     <div class="hire-section-bg">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 col-sm-12 col-xs-12">
                     <h2>I'm available for freelance project</h2>
                     <? if(!empty($user->googleCalendar)):?>
                         <div>
-                            <iframe src="{{$user->googleCalendar}}" style="border-radius: 5px; border: 5px solid lightgray;" width="70%" height="250" frameborder="0" scrolling="no"></iframe>
+                            <iframe src="{{$user->googleCalendar}}" style="border-radius: 5px; border: 5px solid lightgray;" width="100%" height="250" frameborder="0" scrolling="no"></iframe>
                         </div>
                     <? endif;?>
                     <a href="#" class="btn btn-default">Get Hired</a>

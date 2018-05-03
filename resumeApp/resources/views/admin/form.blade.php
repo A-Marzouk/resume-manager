@@ -33,11 +33,12 @@
     $availableHoursCheckBox  = explode(',',$currUser->userData->availableHours) ?? '' ;
     $works  = explode(',',$currUser->userData->works) ?? '' ;
     $username = auth()->user()->username;
+    $profession = auth()->user()->profession;
 ?>
 @section('content')
 <div class="container">
         <h3>Here you can edit your information : </h3>
-        Username : {{$username}} <br><a target="_blank" href="/{{$username}}">Link to resume </a>
+        Username : <b>{{$username}}</b> <br>Profession : <b>{{$profession}}</b><br> <a target="_blank" href="/{{$username}}">Link to resume </a>
         <hr>
     @if(session()->has('successMessage'))
         <div class="alert alert-success">

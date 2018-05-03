@@ -569,13 +569,16 @@
                         $prepAddr = str_replace(' ','+',$address);
                         $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
                         $output = json_decode($geocode);
-                        $latitude = $output->results[0]->geometry->location->lat;
-                        $longitude = $output->results[0]->geometry->location->lng;
+                        if(isset($output->results[0])){
+                            $latitude = $output->results[0]->geometry->location->lat;
+                            $longitude = $output->results[0]->geometry->location->lng;
+                        }
                     }
                 ?>
-                <span id="latitude">{{$latitude}}</span>
-                <span id="longitude">{{$longitude}}</span>
-
+                <? if(isset($output->results[0]) && !empty($user->city)):?>
+                    <span id="latitude">{{$latitude}}</span>
+                    <span id="longitude">{{$longitude}}</span>
+                <? endif;?>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="location-map">

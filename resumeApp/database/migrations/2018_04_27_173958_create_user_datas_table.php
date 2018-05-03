@@ -21,6 +21,7 @@ class CreateUserDatasTable extends Migration
             $table->date('birth_date');
             $table->string('city');
             $table->string('nationality');
+            $table->string('design_skills_checkbox');
             $table->text('languages');
             $table->text('design_styles');
             $table->string('photo');
@@ -30,6 +31,17 @@ class CreateUserDatasTable extends Migration
             $table->string('professional_attributes');
             $table->string('personal_interests');
             $table->string('audio');
+            $table->longText('careerObjective');
+            $table->string('workForceAgent');
+            $table->string('availableHours');
+            $table->string('preferredTime');
+            $table->string('surname');
+            $table->string('salary');
+            $table->string('currency');
+            $table->text('education');
+            $table->text('workExperience');
+            $table->text('primarySkills');
+            $table->text('charSkills');
             $table->timestamps();
         });
     }

@@ -48,18 +48,21 @@
 
 <!-- Home Section -->
 <section id="home" class="tt-fullHeight" data-stellar-vertical-offset="50" data-stellar-background-ratio="0.2">
+    <div style="position: absolute;">
+        <iframe src="{{$user->googleCalendar}}" style="border: 0" width="289" height="200" frameborder="0" scrolling="no"></iframe>
+    </div>
     <div class="intro">
         <div class="intro-sub">I am {{$user->name}} </div>
-        <h1>Creative<span> ILLUSTRATOR </span></h1>
-        <p>I am a University Graduate of Design . I specialise in character illustration, cartoons & digital portraits</p>
+        <h1><span> {{$user->jobTitle}} </span></h1>
+        <p>{{$user->intro}}</p>
 
         <div class="social-icons">
             <ul class="list-inline">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                <li><a href="{{$user->githubLink}}"><i class="fa fa-github"></i></a></li>
+                {{--<li><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
+                <li><a href="{{$user->stackoverflowLink}}"><i class="fa fa-stack-overflow"></i></a></li>
+                {{--<li><a href="#"><i class="fa fa-dribbble"></i></a></li>--}}
+                {{--<li><a href="#"><i class="fa fa-pinterest"></i></a></li>--}}
             </ul>
         </div> <!-- /.social-icons -->
     </div>
@@ -112,7 +115,7 @@
             <div class="col-md-4 col-md-push-8">
                 <div class="biography">
                     <div class="myphoto">
-                        <img src="resumeApp/resources/views/customTheme/images/myphoto.jpeg" alt="">
+                        <img src="{{$user->photo}}" alt="">
                     </div>
                     <ul>
                         <li><strong>Name:</strong> {{$user->name}} </li>
@@ -136,9 +139,16 @@
                     <p>{{$user->design_styles}}</p>
                     <ul class="list-check">
                         <? $design_skills_checkBoxes = explode(',',$user->design_skills_checkbox)?>
-                        @foreach($design_skills_checkBoxes as $skill)
-                            <li>{{$skill}}</li>
-                        @endforeach
+                        <? $counter = count($design_skills_checkBoxes);
+                        if($counter > 6 ){
+                            $counter = 6 ;
+                        }
+                        ?>
+                        <? if($counter > 0):?>
+                            @for($i=0; $i<$counter; $i++)
+                                <li>{{$design_skills_checkBoxes[$i]}}</li>
+                            @endfor
+                        <? endif;?>
                     </ul>
                 </div>
 
@@ -179,7 +189,7 @@
                             </div>
                             <div class="modal-body">
                                 <div class="video-container">
-                                    <iframe src="http://player.vimeo.com/video/118119037" name="vimeoplayer" id="nofocusvideo" width="500" height="281"></iframe>
+                                    <iframe src="http://player.vimeo.com/video/118119037?title=My%20Working%20times" name="vimeoplayer" id="nofocusvideo" width="500" height="281"></iframe>
                                 </div><!--/.video-container-->
                             </div>
                             <!--/.modal-body-->
@@ -210,16 +220,17 @@
                 </div>
                 <div class="resume">
                     <ul class="timeline">
-                        <li>
+                        <? if(!empty($education['title'][0])):?>
+                            <li>
                             <div class="posted-date">
-                                <span class="month">2013-2017</span>
+                                <span class="month">{{$education['year'][0]}}</span>
                             </div><!-- /posted-date -->
 
                             <div class="timeline-panel wow fadeInUp">
                                 <div class="timeline-content">
                                     <div class="timeline-heading">
-                                        <h3>Bachelor degree certificate</h3>
-                                        <span>Cebu Technological University-Main Campus <br/>M.J. Cuenco Ave. R. Palma St., Cebu City</span>
+                                        <h3>{{$education['title'][0]}}</h3>
+                                        <span>{{$education['description'][0]}}</span>
                                     </div><!-- /timeline-heading -->
 
                                     <div class="timeline-body">
@@ -228,17 +239,18 @@
                                 </div> <!-- /timeline-content -->
                             </div><!-- /timeline-panel -->
                         </li>
-
-                        <li class="timeline-inverted">
+                        <? endif;?>
+                            <? if(!empty($education['title'][1])):?>
+                            <li class="timeline-inverted">
                             <div class="posted-date">
-                                <span class="month">2011-2012</span>
+                                <span class="month">{{$education['year'][1]}}</span>
                             </div><!-- /posted-date -->
 
                             <div class="timeline-panel wow fadeInUp">
                                 <div class="timeline-content">
                                     <div class="timeline-heading">
-                                        <h3>Secondary school certificate</h3>
-                                        <span>Pusok National High School Pusok Lapu-Lapu  City</span>
+                                        <h3>{{$education['title'][0]}}</h3>
+                                        <span>{{$education['description'][0]}}</span>
                                     </div><!-- /timeline-heading -->
 
                                     <div class="timeline-body">
@@ -247,17 +259,18 @@
                                 </div> <!-- /timeline-content -->
                             </div> <!-- /timeline-panel -->
                         </li>
-
-                        <li>
+                        <? endif;?>
+                            <? if(!empty($education['title'][2])):?>
+                            <li>
                             <div class="posted-date">
-                                <span class="month">2007-2008</span>
+                                <span class="month">{{$education['year'][2]}}</span>
                             </div><!-- /posted-date -->
 
                             <div class="timeline-panel wow fadeInUp">
                                 <div class="timeline-content">
                                     <div class="timeline-heading">
-                                        <h3>Prmary school certificate</h3>
-                                        <span>Lapu-Lapu City,  Central Elementary School<br/>P. Rodriguez St. Lapu-Lapu City	</span>
+                                        <h3>{{$education['title'][2]}}</h3>
+                                        <span>{{$education['description'][1]}}</span>
                                     </div><!-- /timeline-heading -->
 
                                     <div class="timeline-body">
@@ -266,6 +279,27 @@
                                 </div> <!-- /timeline-content -->
                             </div><!-- /timeline-panel -->
                         </li>
+                        <? endif;?>
+                            <? if(!empty($education['title'][3])):?>
+                            <li class="timeline-inverted">
+                                <div class="posted-date">
+                                    <span class="month">{{$education['year'][3]}}</span>
+                                </div><!-- /posted-date -->
+
+                                <div class="timeline-panel wow fadeInUp">
+                                    <div class="timeline-content">
+                                        <div class="timeline-heading">
+                                            <h3>{{$education['title'][3]}}</h3>
+                                            <span>{{$education['description'][3]}}</span>
+                                        </div><!-- /timeline-heading -->
+
+                                        <div class="timeline-body">
+                                            <p></p>
+                                        </div><!-- /timeline-body -->
+                                    </div> <!-- /timeline-content -->
+                                </div> <!-- /timeline-panel -->
+                            </li>
+                        <? endif;?>
                     </ul>
                 </div>
             </div>
@@ -278,16 +312,17 @@
                 </div>
                 <div class="resume">
                     <ul class="timeline">
-                        <li class="timeline-inverted">
+                        <? if(!empty($trainings['title'][0])):?>
+                            <li class="timeline-inverted">
                             <div class="posted-date">
-                                <span class="month">2017</span>
+                                <span class="month">{{$trainings['year'][0]}}</span>
                             </div><!-- /posted-date -->
 
                             <div class="timeline-panel wow fadeInUp">
                                 <div class="timeline-content">
                                     <div class="timeline-heading">
-                                        <h3>Women Techmakers Cebu</h3>
-                                        <span>Cap Theater Cebu City<br/>April 1, 2017</span>
+                                        <h3>{{$trainings['title'][0]}}</h3>
+                                        <span>{{$trainings['description'][0]}}</span>
                                     </div><!-- /timeline-heading -->
 
                                     <div class="timeline-body">
@@ -296,6 +331,67 @@
                                 </div> <!-- /timeline-content -->
                             </div> <!-- /timeline-panel -->
                         </li>
+                        <? endif;?>
+                        <? if(!empty($trainings['title'][1])):?>
+                            <li>
+                            <div class="posted-date">
+                                <span class="month">{{$trainings['year'][1]}}</span>
+                            </div><!-- /posted-date -->
+
+                            <div class="timeline-panel wow fadeInUp">
+                                <div class="timeline-content">
+                                    <div class="timeline-heading">
+                                        <h3>{{$trainings['title'][1]}}</h3>
+                                        <span>{{$trainings['description'][1]}}</span>
+                                    </div><!-- /timeline-heading -->
+
+                                    <div class="timeline-body">
+                                        <p></p>
+                                    </div><!-- /timeline-body -->
+                                </div> <!-- /timeline-content -->
+                            </div> <!-- /timeline-panel -->
+                        </li>
+                        <? endif;?>
+                        <? if(!empty($trainings['title'][2])):?>
+                            <li class="timeline-inverted">
+                            <div class="posted-date">
+                                <span class="month">{{$trainings['year'][2]}}</span>
+                            </div><!-- /posted-date -->
+
+                            <div class="timeline-panel wow fadeInUp">
+                                <div class="timeline-content">
+                                    <div class="timeline-heading">
+                                        <h3>{{$trainings['title'][2]}}</h3>
+                                        <span>{{$trainings['description'][2]}}</span>
+                                    </div><!-- /timeline-heading -->
+
+                                    <div class="timeline-body">
+                                        <p></p>
+                                    </div><!-- /timeline-body -->
+                                </div> <!-- /timeline-content -->
+                            </div> <!-- /timeline-panel -->
+                        </li>
+                        <? endif;?>
+                        <? if(!empty($trainings['title'][3])):?>
+                            <li>
+                            <div class="posted-date">
+                                <span class="month">{{$trainings['year'][3]}}</span>
+                            </div><!-- /posted-date -->
+
+                            <div class="timeline-panel wow fadeInUp">
+                                <div class="timeline-content">
+                                    <div class="timeline-heading">
+                                        <h3>{{$trainings['title'][3]}}</h3>
+                                        <span>{{$trainings['description'][3]}}</span>
+                                    </div><!-- /timeline-heading -->
+
+                                    <div class="timeline-body">
+                                        <p></p>
+                                    </div><!-- /timeline-body -->
+                                </div> <!-- /timeline-content -->
+                            </div> <!-- /timeline-panel -->
+                        </li>
+                        <? endif;?>
                     </ul>
                 </div>
             </div>
@@ -310,55 +406,24 @@
         <h2 class="section-title wow fadeInUp">Skills</h2>
 
         <div class="row">
-            <div class="col-md-6">
-                <div class="skill-progress">
-                    <div class="skill-title"><h3>Adobe Photoshop</h3></div>
-                    <div class="progress">
-                        <div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ><span>100%</span>
-                        </div>
-                    </div><!-- /.progress -->
-                </div><!-- /.skill-progress -->
-
-                <div class="skill-progress">
-                    <div class="skill-title"><h3>Adobe Illustrator</h3></div>
-                    <div class="progress">
-                        <div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ><span>100%</span>
-                        </div>
-                    </div><!-- /.progress -->
-                </div><!-- /.skill-progress -->
-                <div class="skill-progress">
-                    <div class="skill-title"><h3>Coreldraw</h3></div>
-                    <div class="progress">
-                        <div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ><span>100%</span>
-                        </div>
-                    </div><!-- /.progress -->
-                </div><!-- /.skill-progress -->
-            </div><!-- /.col-md-6 -->
-
-            <div class="col-md-6">
-                <div class="skill-progress">
-                    <div class="skill-title"><h3>Adobe inDesign</h3></div>
-                    <div class="progress">
-                        <div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" ><span>90%</span>
-                        </div>
-                    </div><!-- /.progress -->
-                </div><!-- /.skill-progress -->
-                <div class="skill-progress">
-                    <div class="skill-title"><h3>After Effects</h3></div>
-                    <div class="progress">
-                        <div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" ><span>90%</span>
-                        </div>
-                    </div><!-- /.progress -->
-                </div><!-- /.skill-progress -->
-                <div class="skill-progress">
-                    <div class="skill-title"><h3>Adobe  Muse</h3></div>
-                    <div class="progress">
-                        <div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" ><span>90%</span>
-                        </div>
-                    </div><!-- /.progress -->
-                </div><!-- /.skill-progress -->
-
-            </div><!-- /.col-md-6 -->
+            <div class="col-md-12">
+                <? $counter = count($primarySkills);
+                    if($counter > 6 ){
+                        $counter = 6 ;
+                    }
+                ?>
+                <? if($counter > 1):?>
+                    <? for($i=0; $i<$counter;$i++): ?>
+                        <div class="skill-progress col-md-6">
+                        <div class="skill-title"><h3>{{$primarySkills[$i]}}</h3></div>
+                        <div class="progress">
+                            <div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ><span>100%</span>
+                            </div>
+                        </div><!-- /.progress -->
+                    </div><!-- /.skill-progress -->
+                    <? endfor;?>
+                <? endif;?>
+            </div><!-- /.col-md-12 -->
         </div><!-- /.row -->
 
         <div class="skill-chart text-center">
@@ -366,54 +431,24 @@
         </div>
 
         <div class="row more-skill text-center">
-            <div class="col-xs-12 col-sm-4 col-md-2">
-                <div class="chart" data-percent="100" data-color="e74c3c">
-                    <span class="percent"></span>
-                    <div class="chart-text">
-                        <span>Detail orientated</span>
+            <?
+                $counter = count($charSkills);
+                if($counter > 6 ){
+                    $counter = 6 ;
+                }
+            ?>
+            <? if($counter > 1):?>
+                <? for($i=0; $i<6;$i++): ?>
+                    <div class="col-xs-12 col-sm-4 col-md-2">
+                    <div class="chart" data-percent="100" data-color="e74c3c">
+                        <span class="percent"></span>
+                        <div class="chart-text">
+                            <span>{{substr($charSkills[$i], 0, strpos($charSkills[$i], ":"))}}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-2">
-                <div class="chart" data-percent="100" data-color="2ecc71">
-                    <span class="percent"></span>
-                    <div class="chart-text">
-                        <span>Team player</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-2">
-                <div class="chart" data-percent="80" data-color="3498db">
-                    <span class="percent"></span>
-                    <div class="chart-text">
-                        <span>Adobe Flash</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-2">
-                <div class="chart" data-percent="80" data-color="3498db">
-                    <span class="percent"></span>
-                    <div class="chart-text">
-                        <span>Sketch up</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-2">
-                <div class="chart" data-percent="50" data-color="3498db">
-                    <span class="percent"></span>
-                    <div class="chart-text">
-                        <span>AutoCad</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-2">
-                <div class="chart" data-percent="50" data-color="3498db">
-                    <span class="percent"></span>
-                    <div class="chart-text">
-                        <span>Solidworks</span>
-                    </div>
-                </div>
-            </div>
+                <?endfor;?>
+            <? endif;?>
         </div>
 
     </div><!-- /.container -->
@@ -434,167 +469,29 @@
         </ul>
 
         <div class="row">
+            <? $works = explode(',',$user->works);?>
             <div id="grid">
-                <div class="portfolio-item col-xs-12 col-sm-4 col-md-3" data-groups='["all", "identety", "interface"]'>
+                @foreach($works as $workSrc):
+                    <div class="portfolio-item col-xs-12 col-sm-4 col-md-3" data-groups='["all", "identety", "interface"]'>
                     <div class="portfolio-bg">
                         <div class="portfolio">
                             <div class="tt-overlay"></div>
                             <div class="links">
-                                <a class="image-link" href="resumeApp/resources/views/customTheme/images/works/portfolio-1.jpg"><i class="fa fa-search-plus"></i></a>
+                                <a class="image-link" href="{{$workSrc}}"><i class="fa fa-search-plus"></i></a>
                                 <a href="#"><i class="fa fa-link"></i></a>
                             </div><!-- /.links -->
-                            <img src="resumeApp/resources/views/customTheme/images/works/portfolio-1.jpg" alt="image">
+                            <img src="{{$workSrc}}" alt="image" width="170" height="170">
                             <div class="portfolio-info">
                                 <h3>Portfolio Title</h3>
                             </div><!-- /.portfolio-info -->
                         </div><!-- /.portfolio -->
                     </div><!-- /.portfolio-bg -->
                 </div><!-- /.portfolio-item -->
-                <div class="portfolio-item col-xs-12 col-sm-4 col-md-3" data-groups='["all", "identety", "web"]'>
-                    <div class="portfolio-bg">
-                        <div class="portfolio">
-                            <div class="tt-overlay"></div>
-                            <div class="links">
-                                <a class="image-link" href="resumeApp/resources/views/customTheme/images/works/portfolio-2.jpg"><i class="fa fa-search-plus"></i></a>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div><!-- /.links -->
-                            <img src="resumeApp/resources/views/customTheme/images/works/portfolio-2.jpg" alt="image">
-                            <div class="portfolio-info">
-                                <h3>Portfolio Title</h3>
-                            </div><!-- /.portfolio-info -->
-                        </div><!-- /.portfolio -->
-                    </div><!-- /.portfolio-bg -->
-                </div><!-- /.portfolio-item -->
-                <div class="portfolio-item col-xs-12 col-sm-4 col-md-3" data-groups='["all", "interface"]'>
-                    <div class="portfolio-bg">
-                        <div class="portfolio">
-                            <div class="tt-overlay"></div>
-                            <div class="links">
-                                <a class="image-link" href="resumeApp/resources/views/customTheme/images/works/portfolio-3.jpg"><i class="fa fa-search-plus"></i></a>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div><!-- /.links -->
-                            <img src="resumeApp/resources/views/customTheme/images/works/portfolio-3.jpg" alt="image">
-                            <div class="portfolio-info">
-                                <h3>Portfolio Title</h3>
-                            </div><!-- /.portfolio-info -->
-                        </div><!-- /.portfolio -->
-                    </div><!-- /.portfolio-bg -->
-                </div><!-- /.portfolio-item -->
-                <div class="portfolio-item col-xs-12 col-sm-4 col-md-3" data-groups='["all", "identety", "design"]'>
-                    <div class="portfolio-bg">
-                        <div class="portfolio">
-                            <div class="tt-overlay"></div>
-                            <div class="links">
-                                <a class="image-link" href="resumeApp/resources/views/customTheme/images/works/portfolio-4.jpg"><i class="fa fa-search-plus"></i></a>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div><!-- /.links -->
-                            <img src="resumeApp/resources/views/customTheme/images/works/portfolio-4.jpg" alt="image">
-                            <div class="portfolio-info">
-                                <h3>Portfolio Title</h3>
-                            </div><!-- /.portfolio-info -->
-                        </div><!-- /.portfolio -->
-                    </div><!-- /.portfolio-bg -->
-                </div><!-- /.portfolio-item -->
-                <div class="portfolio-item col-xs-12 col-sm-4 col-md-3" data-groups='["all", "identety", "design"]'>
-                    <div class="portfolio-bg">
-                        <div class="portfolio">
-                            <div class="tt-overlay"></div>
-                            <div class="links">
-                                <a class="image-link" href="resumeApp/resources/views/customTheme/images/works/portfolio-5.jpg"><i class="fa fa-search-plus"></i></a>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div><!-- /.links -->
-                            <img src="resumeApp/resources/views/customTheme/images/works/portfolio-5.jpg" alt="image">
-                            <div class="portfolio-info">
-                                <h3>Portfolio Title</h3>
-                            </div><!-- /.portfolio-info -->
-                        </div><!-- /.portfolio -->
-                    </div><!-- /.portfolio-bg -->
-                </div><!-- /.portfolio-item -->
-                <div class="portfolio-item col-xs-12 col-sm-4 col-md-3" data-groups='["all", "identety", "design"]'>
-                    <div class="portfolio-bg">
-                        <div class="portfolio">
-                            <div class="tt-overlay"></div>
-                            <div class="links">
-                                <a class="image-link" href="resumeApp/resources/views/customTheme/images/works/portfolio-6.jpg"><i class="fa fa-search-plus"></i></a>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div><!-- /.links -->
-                            <img src="resumeApp/resources/views/customTheme/images/works/portfolio-6.jpg" alt="image">
-                            <div class="portfolio-info">
-                                <h3>Portfolio Title</h3>
-                            </div><!-- /.portfolio-info -->
-                        </div><!-- /.portfolio -->
-                    </div><!-- /.portfolio-bg -->
-                </div><!-- /.portfolio-item -->
-                <div class="portfolio-item col-xs-12 col-sm-4 col-md-3" data-groups='["all", "identety", "web"]'>
-                    <div class="portfolio-bg">
-                        <div class="portfolio">
-                            <div class="tt-overlay"></div>
-                            <div class="links">
-                                <a class="image-link" href="resumeApp/resources/views/customTheme/images/works/portfolio-7.jpg"><i class="fa fa-search-plus"></i></a>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div><!-- /.links -->
-                            <img src="resumeApp/resources/views/customTheme/images/works/portfolio-7.jpg" alt="image">
-                            <div class="portfolio-info">
-                                <h3>Portfolio Title</h3>
-                            </div><!-- /.portfolio-info -->
-                        </div><!-- /.portfolio -->
-                    </div><!-- /.portfolio-bg -->
-                </div><!-- /.portfolio-item -->
-                <div class="portfolio-item col-xs-12 col-sm-4 col-md-3" data-groups='["all", "design"]'>
-                    <div class="portfolio-bg">
-                        <div class="portfolio">
-                            <div class="tt-overlay"></div>
-                            <div class="links">
-                                <a class="image-link" href="resumeApp/resources/views/customTheme/images/works/portfolio-8.jpg"><i class="fa fa-search-plus"></i></a>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div><!-- /.links -->
-                            <img src="resumeApp/resources/views/customTheme/images/works/portfolio-8.jpg" alt="image">
-                            <div class="portfolio-info">
-                                <h3>Portfolio Title</h3>
-                            </div><!-- /.portfolio-info -->
-                        </div><!-- /.portfolio -->
-                    </div><!-- /.portfolio-bg -->
-                </div><!-- /.portfolio-item -->
+                @endforeach
             </div><!-- /#grid -->
         </div><!-- /.row -->
     </div><!-- /.container -->
 </section><!-- End Works Section -->
-
-
-<!-- Facts Section -->
-<section id="facts" class="facts-section text-center" data-stellar-vertical-offset="50" data-stellar-background-ratio="0.2">
-    <div class="tt-overlay-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="count-wrap">
-                        <div class="col-sm-3 col-xs-6">
-                            <i class="fa fa-flask"></i>
-                            <h3 class="timer">7</h3>
-                            <p>Years of Experience</p>
-                        </div>
-                        <div class="col-sm-3 col-xs-6">
-                            <i class="fa fa-thumbs-up"></i>
-                            <h3 class="timer">651</h3>
-                            <p>Projects Done</p>
-                        </div>
-                        <div class="col-sm-3 col-xs-6">
-                            <i class="fa fa-users"></i>
-                            <h3 class="timer">251</h3>
-                            <p>Happy Clients</p>
-                        </div>
-                        <div class="col-sm-3 col-xs-6">
-                            <i class="fa fa-trophy"></i>
-                            <h3 class="timer">5</h3>
-                            <p>Awards Won</p>
-                        </div>
-                    </div><!-- /count-wrap -->
-                </div><!-- /.col-md-12 -->
-            </div><!-- /.row -->
-        </div><!-- /.container -->
-    </div>
-</section> <!-- End Facts Section -->
-
 
 <!-- Hire Section -->
 <section class="hire-section text-center" data-stellar-vertical-offset="50" data-stellar-background-ratio="0.2">
@@ -603,6 +500,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2>I'm available for freelance project</h2>
+                    <div>
+                        {{--<iframe src="https://calendar.google.com/calendar/embed?src=gd1nhjvups52h5poa17oejfqo0%40group.calendar.google.com&ctz=Europe%2FKiev" style="border-radius: 5px; border: 5px solid lightgray;" width="70%" height="250" frameborder="0" scrolling="no"></iframe>--}}
+                    </div>
                     <a href="#" class="btn btn-default">Get Hired</a>
                 </div><!-- /.col-md-12 -->
             </div><!-- /.row -->

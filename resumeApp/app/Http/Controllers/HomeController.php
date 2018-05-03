@@ -35,6 +35,25 @@ class HomeController extends Controller
         }else{
             return redirect('/');
         }
-        return view('welcome', compact('user'));
+        $education = $this->parseData($user,'education');
+        $trainings = $this->parseData($user,'trainings');
+        $primarySkills = explode(',',$user->primarySkills);
+        $charSkills = explode(',',$user->charSkills);
+        return view('welcome', compact('user','education','trainings','primarySkills','charSkills'));
+    }
+
+    protected function parseData($user,$data){
+        $education = $user->{$data};
+        if(empty($education)){
+            return;
+        }
+        $mainLevels = explode(',',$education);
+        foreach($mainLevels as $level){
+            $outputs              = explode(':',$level);
+            $edu['title'][]       = trim(explode('description',$outputs[1])[0]) ?? '';
+            $edu['description'][] = trim(explode('year',$outputs[2])[0]) ?? '';
+            $edu['year'][]        = trim($outputs[3]) ?? '';
+        }
+        return $edu;
     }
 }

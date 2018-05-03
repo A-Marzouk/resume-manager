@@ -62,7 +62,7 @@ class UserDataController extends Controller
             $telegram = new Telegram('-279372621');
             $telegram->sendMessage($msg);
             // send mail :
-            $this->sendMail($msg);
+//            $this->sendMail($msg);
 
             return redirect('/admin')->with('successMessage', 'Your changes have been successfully saved.');
         }else{

@@ -5,6 +5,7 @@
     $birth_date = $currUser->userData->birth_date ?? '' ;
     $email = $currUser->userData->email ?? '' ;
     $salary = $currUser->userData->salary ?? '' ;
+    $googleCalendar = $currUser->userData->googleCalendar ?? '' ;
     $currency = $currUser->userData->currency ?? '' ;
     $preferredTime = $currUser->userData->preferredTime ?? '' ;
     $surname = $currUser->userData->surname ?? '' ;
@@ -21,6 +22,10 @@
     $photoPath = $currUser->userData->photo ?? '' ;
     $design_skills = $currUser->userData->design_skills ?? '' ;
     $education = $currUser->userData->education ?? '' ;
+    $github = $currUser->userData->githubLink ?? '' ;
+    $intro = $currUser->userData->intro ?? '' ;
+    $jobTitle = $currUser->userData->jobTitle ?? '' ;
+    $stackoverflow = $currUser->userData->stackoverflowLink ?? '' ;
     $careerObjective = $currUser->userData->careerObjective ?? '' ; // add to database
     $skillsCheckBox  = explode(',',$currUser->userData->design_skills_checkbox) ?? '' ;
     $charSkillsCheckBox  = explode(',',$currUser->userData->charSkills) ?? '' ;
@@ -52,6 +57,15 @@
             <small class="form-text text-muted"></small>
         </div>
         <div class="form-group col-md-8">
+            <label for="birth_date">Job title</label>
+            <input type="text" class="form-control" name="jobTitle" value="{{$jobTitle}}">
+        </div>
+        <div class="form-group col-md-8">
+            <label for="intro">Intro</label>
+            <textarea class="form-control" name="intro">{{$intro}}</textarea>
+            <small>30-50 Words</small>
+        </div>
+        <div class="form-group col-md-8">
             <label for="birth_date">Date of birth</label> <!-- TODO: edit date format to April 22, 1994 on tempelate -->
             <input type="date" class="form-control" name="birth_date" value="{{$birth_date}}">
         </div>
@@ -59,6 +73,14 @@
             <label for="birth_date">Personal email</label>
             <input type="email" class="form-control" name="email" value="{{$email}}">
             <small>Gmail is preferred</small>
+        </div>
+        <div class="form-group col-md-8">
+            <label for="birth_date">Github link</label>
+            <input type="text" class="form-control" name="githubLink" value="{{$github}}">
+        </div>
+        <div class="form-group col-md-8">
+            <label for="birth_date">Stack overflow Link</label>
+            <input type="text" class="form-control" name="stackoverflowLink" value="{{$stackoverflow}}">
         </div>
         <div class="form-group col-md-8">
             <div class="">
@@ -109,18 +131,36 @@
             <small>50-200 Words</small>
         </div>
         <div class="form-group col-md-8">
+            <label for="googleCalendar">Google calendar src</label>
+            <textarea class="form-control" rows="4" id="googleCalendar" name="googleCalendar">{{$googleCalendar}}</textarea>
+        </div>
+        <div class="form-group col-md-8">
             <label for="education">Education</label>
-            <textarea class="form-control" rows="4" id="education" name="education">{{$education}}</textarea>
+            <textarea class="form-control" rows="4" id="education" name="education">{{$education}}<? if(!empty($education)):?> ,
+<?endif;?>
+title:
+description:
+year:
+            </textarea>
             <small>Please include all relevant design schools and/or design courses you have taken. Include the COURSE NAME & UNIVERSITY NAME</small>
         </div>
         <div class="form-group col-md-8">
-            <label for="professional_attributes">Professional attributes</label>
-            <textarea class="form-control" rows="3" id="professional_attributes" name="professional_attributes">{{$professional_attributes}}</textarea>
-            <small>Kindly describe yourself in the workplace. Are you a team player, detail oriented, organized, etc.?</small>
+            <label for="">Work Experience</label>
+            <textarea class="form-control" rows="3" id="work_experience" name="workExperience">{{$workExperience}}<? if(!empty($workExperience)):?> ,
+<?endif;?>
+employer:
+title:
+date:
+     </textarea>
         </div>
         <div class="form-group col-md-8">
             <label for="education">Trainings attend</label>
-            <textarea class="form-control" rows="4" id="trainings" name="trainings">{{$trainings}}</textarea>
+            <textarea class="form-control" rows="4" id="trainings" name="trainings">{{$trainings}}<? if(!empty($trainings)):?> ,
+<?endif;?>
+title:
+description:
+year:
+            </textarea>
             <small>Please include all relevant design trainings attended in the past 3 years. Include the TRAINING NAME/TITLE, & the LOCATION where the training was held</small>
         </div>
         <div class="form-group col-md-8">
@@ -130,8 +170,9 @@
         </div>
 
         <div class="form-group col-md-8">
-            <label for="">Work Experience</label>
-            <textarea class="form-control" rows="3" id="work_experience" name="workExperience">{{$workExperience}}</textarea>
+            <label for="professional_attributes">Professional attributes</label>
+            <textarea class="form-control" rows="3" id="professional_attributes" name="professional_attributes">{{$professional_attributes}}</textarea>
+            <small>Kindly describe yourself in the workplace. Are you a team player, detail oriented, organized, etc.?</small>
         </div>
 
         <div class="form-group row">

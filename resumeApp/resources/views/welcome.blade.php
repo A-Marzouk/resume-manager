@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Responsive Personal Portfolio vCard Template">
     <meta name="author" content="Ahmed Marzouk">
-
     <title>{{$user->name}} Resume</title>
 
     <!-- Web Fonts -->
@@ -49,6 +48,11 @@
 <!-- Home Section -->
 <section id="home" class="tt-fullHeight" data-stellar-vertical-offset="50" data-stellar-background-ratio="0.2">
     <div class="intro">
+        <?
+            $name      = $user->name;
+            $arrName   = explode(' ',trim($name));
+            $firstName = $arrName[0];
+        ?>
         <div class="intro-sub">I am {{$user->name}} </div>
         <h1><span> {{$user->jobTitle}} </span></h1>
         <p>{{$user->intro}}</p>
@@ -83,7 +87,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="001-michelle.html"><p style="padding-top:6px;font-size:x-large; word-spacing: 3px;"><span style="color: black;">I AM </span> {{$user->name}}</p></a>
+                <a class="navbar-brand" href="#about">
+                    <p style="padding-top:6px;font-size:x-large; word-spacing: 3px;">
+                        <span style="color: black;">I AM </span> {{$firstName}}
+                    </p>
+                </a>
             </div>
 
             <div class="collapse navbar-collapse" id="custom-collapse">
@@ -171,30 +179,13 @@
         <div class="container">
             <div class="control">
                 <div class="video-intro text-center">
-                    <button type="button" class="play-trigger" data-toggle="modal" data-target="#tour-video"><i class="fa fa-play"></i></button>
-                    <h2>Video Introducing</h2>
+                    <button type="button" class="play-trigger" id="audioPlay"><i class="fa fa-play"></i></button>
+                    <h2>Audio Introducing</h2>
                 </div>
-
-                <!-- Video Modal -->
-                <div class="modal modal-video" id="tour-video">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title">Video Tour</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="video-container">
-                                    <iframe src="http://player.vimeo.com/video/118119037?title=My%20Working%20times" name="vimeoplayer" id="nofocusvideo" width="500" height="281"></iframe>
-                                </div><!--/.video-container-->
-                            </div>
-                            <!--/.modal-body-->
-                        </div>
-                        <!--/.modal-content-->
-                    </div>
-                    <!--/.modal-dialog-->
-                </div>
-                <!--/.modal-->
+                <audio id="audioIntro">
+                    <source src="https://drive.google.com/uc?export=download&id={{$user->audio}}&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M" type="audio/ogg">
+                    Your browser does not support the audio element.
+                </audio><!--/.video-container-->
             </div>
             <!--/.control-->
         </div>
@@ -593,7 +584,6 @@
     </div><!-- /.container -->
 </section><!-- End Contact Section -->
 
-
 <!-- Footer Section -->
 <footer class="footer-wrapper">
     <div class="container">
@@ -629,6 +619,21 @@
 <script src="resumeApp/resources/views/customTheme/js/jquery.fitvids.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&key=AIzaSyDZWJcFQabrMDUPmXaiU7wlZ74dzm_virI"></script>
 <script src="resumeApp/resources/views/customTheme/js/scripts.js"></script>
-
+<script>
+    $(document).ready(function () {
+        var audioplayer = document.getElementById("audioIntro");
+        $("#audioPlay").on('click',function(){
+            if (audioplayer.paused) {
+                audioplayer.play();
+                $('#audioPlay').html('<i class="fa fa-pause"></i>');
+            }
+            else {
+                audioplayer.pause();
+                audioplayer.currentTime = 0;
+                $('#audioPlay').html('<i class="fa fa-play"></i>');
+            }
+        })
+    });
+</script>
 </body>
 </html>

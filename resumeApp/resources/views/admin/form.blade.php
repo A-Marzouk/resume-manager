@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 <?
     $currUser = auth()->user();
     // All needed Variables !
@@ -37,10 +38,6 @@
     $profession = auth()->user()->profession;
 ?>
 @section('content')
-    <audio controls>
-        <source src="https://drive.google.com/uc?export=download&id={{$audio}}&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M" type="audio/ogg">
-        Your browser does not support the audio element.
-    </audio>
 <div class="container">
         <h3>Here you can edit your information : </h3>
         Username : <b>{{$username}}</b> <br>Profession : <b>{{$profession}}</b><br> <a target="_blank" href="/{{$username}}">Link to resume </a>

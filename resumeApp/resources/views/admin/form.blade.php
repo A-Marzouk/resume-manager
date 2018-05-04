@@ -36,6 +36,11 @@
     $profession = auth()->user()->profession;
 ?>
 @section('content')
+    <audio controls>
+        <source src="https://drive.google.com/uc?export=download&id=10XLo_deAZjVVJh7-uDZU2N2NDTTaHWJN&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M" type="audio/ogg">
+
+        Your browser does not support the audio element.
+    </audio>
 <div class="container">
         <h3>Here you can edit your information : </h3>
         Username : <b>{{$username}}</b> <br>Profession : <b>{{$profession}}</b><br> <a target="_blank" href="/{{$username}}">Link to resume </a>
@@ -193,7 +198,7 @@ year:
                             }
                         ?>
                         <div>
-                            <img src="{{$src}}" id="portfolioImg{{$i}}" width="100%" height="auto" style="padding: 10px;">
+                            <img src="{{$src}}" id="portfolioImg{{$i}}"  width="100%" height="auto" style="padding: 10px;">
                         </div>
 
                 </div>

@@ -49,6 +49,15 @@ class UserDataController extends Controller
                     }else{
                         $works .= ','.$pathToPhoto;
                     }
+                }elseif($key == 'audio'){
+                    // get Id and save it to the data base :
+                    $data = $value;
+                    $explodedData= explode("/", $data);
+                    foreach ($explodedData as $id){
+                        if(strlen($id) == 33){
+                            $userData->{$key} = $id;
+                        }
+                    }
                 }
                 else{
                     $userData->{$key} = $value ;
@@ -62,10 +71,10 @@ class UserDataController extends Controller
 
 //            Mail::to('Ahmed')->send(new welcome);
             // send notification :
-            Mail::send('emails.welcome', ['key' => 'value'], function($message)
-            {
-                $message->to('AhmedMarzouk266@gmail.com', 'Conor Majoram')->subject('User has updated resume !');
-            });
+//            Mail::send('emails.welcome', ['key' => 'value'], function($message)
+//            {
+//                $message->to('conor@123workforce.com', 'Conor Majoram')->subject('User has updated resume !');
+//            });
 
 
 

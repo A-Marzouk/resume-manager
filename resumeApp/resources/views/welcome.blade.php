@@ -83,7 +83,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="001-michelle.html"><img src="resumeApp/resources/views/customTheme/images/logo.png" alt=""></a>
+                <a class="navbar-brand" href="001-michelle.html"><p style="padding-top:6px;font-size:x-large; word-spacing: 3px;"><span style="color: black;">I AM </span> {{$user->name}}</p></a>
             </div>
 
             <div class="collapse navbar-collapse" id="custom-collapse">
@@ -561,7 +561,7 @@
                         </div>
                     </div>
                 </div>
-                 <!-- google map git langitude and attitude -->
+                 <!-- google map git langitude and attitude for JS-->
                 <?
                     if(!empty($user->city)){
                         $address = $user->city; // Google HQ
@@ -575,10 +575,11 @@
                     }
                 ?>
                 <? if(isset($output->results[0]) && !empty($user->city)):?>
-                    <span id="latitude">{{$latitude}}</span>
-                    <span id="longitude">{{$longitude}}</span>
-                    <span id="userCity">{{$user->city}}</span>
+                    <span id="latitude" style="display: none">{{$latitude}}</span>
+                    <span id="longitude" style="display: none">{{$longitude}}</span>
+                    <span id="userCity" style="display: none">{{$user->city}}</span>
                 <? endif;?>
+
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="location-map">
@@ -599,7 +600,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="copyright text-center">
-                    <p>&copy; TrendyTheme 2018. All rights reserved.</p>
+                    <p>&copy; 2018 <b>123Workforce</b>. All rights reserved.</p>
                 </div>
             </div>
         </div>

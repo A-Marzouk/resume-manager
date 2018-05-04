@@ -49,9 +49,9 @@
                             <label for="profession" class="col-md-4 col-form-label text-md-right">Profession</label>
                             <div class="col-md-6">
                                 <select class="custom-select" id="profession" name="profession">
-                                    <option value="developer" selected disabled>Select profession</option>
-                                    <option value="developer">Developer</option>
-                                    <option value="designer">Designer</option>
+                                    <option value="" selected disabled>Select profession</option>
+                                    <option value="Developer">Developer</option>
+                                    <option value="Designer">Designer</option>
                                 </select>
                             </div>
                         </div>

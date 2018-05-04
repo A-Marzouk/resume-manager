@@ -1,6 +1,7 @@
 @extends('layouts.app')
 <?
     $currUser = auth()->user();
+    // All needed Variables !
     $name = $currUser->userData->name ?? '' ;
     $birth_date = $currUser->userData->birth_date ?? '' ;
     $email = $currUser->userData->email ?? '' ;
@@ -37,14 +38,14 @@
 ?>
 @section('content')
     <audio controls>
-        <source src="https://drive.google.com/uc?export=download&id=10XLo_deAZjVVJh7-uDZU2N2NDTTaHWJN&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M" type="audio/ogg">
-
+        <source src="https://drive.google.com/uc?export=download&id={{$audio}}&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M" type="audio/ogg">
         Your browser does not support the audio element.
     </audio>
 <div class="container">
         <h3>Here you can edit your information : </h3>
         Username : <b>{{$username}}</b> <br>Profession : <b>{{$profession}}</b><br> <a target="_blank" href="/{{$username}}">Link to resume </a>
         <hr>
+    <!-- Success Messages  -->
     @if(session()->has('successMessage'))
         <div class="alert alert-success">
             {{ session()->get('successMessage') }}
@@ -56,38 +57,38 @@
             <label for="userName">Full name</label>
             <input type="text" class="form-control" name="name" placeholder="Enter your name.." value="{{$name}}">
             <small class="form-text text-muted"></small>
-        </div>
+        </div> <!-- Full name -->
         <div class="form-group col-md-8">
             <label for="userName">Surname</label>
             <input type="text" class="form-control" name="surname" placeholder="Enter your surname.." value="{{$surname}}">
             <small class="form-text text-muted"></small>
-        </div>
+        </div> <!-- surname -->
         <div class="form-group col-md-8">
             <label for="birth_date">Job title</label>
             <input type="text" class="form-control" name="jobTitle" value="{{$jobTitle}}">
-        </div>
+        </div> <!-- job title -->
         <div class="form-group col-md-8">
             <label for="intro">Intro</label>
             <textarea class="form-control" name="intro">{{$intro}}</textarea>
             <small>30-50 Words</small>
-        </div>
+        </div> <!-- intro -->
         <div class="form-group col-md-8">
             <label for="birth_date">Date of birth</label> <!-- TODO: edit date format to April 22, 1994 on tempelate -->
             <input type="date" class="form-control" name="birth_date" value="{{$birth_date}}">
-        </div>
+        </div> <!-- birth date -->
         <div class="form-group col-md-8">
             <label for="birth_date">Personal email</label>
             <input type="email" class="form-control" name="email" value="{{$email}}">
             <small>Gmail is preferred</small>
-        </div>
+        </div> <!-- email -->
         <div class="form-group col-md-8">
             <label for="birth_date">Github link</label>
             <input type="text" class="form-control" name="githubLink" value="{{$github}}">
-        </div>
+        </div> <!-- git link -->
         <div class="form-group col-md-8">
             <label for="birth_date">Stack overflow Link</label>
             <input type="text" class="form-control" name="stackoverflowLink" value="{{$stackoverflow}}">
-        </div>
+        </div> <!-- stack link -->
         <div class="form-group col-md-8">
             <div class="">
                 <label style="border-bottom:1px lightgray solid ; padding: 2px;">Photo of yourself</label>
@@ -104,15 +105,15 @@
                 ?>
                 <img id="photoPreview" src="{{$src}}" width="250" height="auto">
             </div>
-        </div>
+        </div> <!-- profile photo -->
         <div class="form-group col-md-8">
             <label for="birth_date">City</label>
             <input type="text" class="form-control" name="city" value="{{$city}}">
-        </div>
+        </div> <!-- city -->
         <div class="form-group col-md-8">
             <label for="">Nationality</label>
             <input type="text" class="form-control" name="nationality" value="{{$nationality}}">
-        </div>
+        </div> <!-- nationality -->
         <div class="form-group col-md-8">
             <label for="workForceAgent">123 WORKFORCE AGENTS EMAIL</label>
             <select class="custom-select" id="workForceAgent" name="workForceAgent">
@@ -120,26 +121,26 @@
                 <option value="riz@123workforce.com" <?if($workForceAgent == 'riz@123workforce.com'):?> selected<?endif;?> >riz@123workforce.com</option>
                 <option value="conor@123workforce.com" <?if($workForceAgent == 'conor@123workforce.com'):?>selected <?endif;?>>conor@123workforce.com</option>
             </select>
-        </div>
+        </div> <!-- agents mail -->
         <div class="form-group col-md-8">
             <label for="birth_date">Languages you fluently speak</label>
             <input type="text" class="form-control" id="languages" name="languages" value="{{$languages}}">
             <small>Separated by commas</small>
-        </div>
+        </div> <!-- Languages -->
         <div class="form-group col-md-8">
             <label for="careerObjective">Career objective</label>
             <textarea class="form-control" rows="4" id="careerObjective" name="careerObjective">{{$careerObjective}}</textarea>
             <small>20-50 Words</small>
-        </div>
+        </div> <!-- c.objective -->
         <div class="form-group col-md-8">
             <label for="design_styles">Professional Skills and Design style</label>
             <textarea class="form-control" rows="5" id="design_skills" name="design_styles">{{$design_styles}}</textarea>
             <small>50-200 Words</small>
-        </div>
+        </div> <!-- design style -->
         <div class="form-group col-md-8">
             <label for="googleCalendar">Google calendar src</label>
             <textarea class="form-control" rows="4" id="googleCalendar" name="googleCalendar">{{$googleCalendar}}</textarea>
-        </div>
+        </div> <!-- google calendar src -->
         <div class="form-group col-md-8">
             <label for="education">Education</label>
             <textarea class="form-control" rows="4" id="education" name="education">{{$education}}<? if(!empty($education)):?> ,
@@ -149,7 +150,7 @@ description:
 year:
             </textarea>
             <small>Please include all relevant design schools and/or design courses you have taken. Include the COURSE NAME & UNIVERSITY NAME</small>
-        </div>
+        </div> <!-- Edu -->
         <div class="form-group col-md-8">
             <label for="">Work Experience</label>
             <textarea class="form-control" rows="3" id="work_experience" name="workExperience">{{$workExperience}}<? if(!empty($workExperience)):?> ,
@@ -158,7 +159,7 @@ employer:
 title:
 date:
      </textarea>
-        </div>
+        </div> <!-- work exp -->
         <div class="form-group col-md-8">
             <label for="education">Trainings attend</label>
             <textarea class="form-control" rows="4" id="trainings" name="trainings">{{$trainings}}<? if(!empty($trainings)):?> ,
@@ -168,19 +169,17 @@ description:
 year:
             </textarea>
             <small>Please include all relevant design trainings attended in the past 3 years. Include the TRAINING NAME/TITLE, & the LOCATION where the training was held</small>
-        </div>
+        </div> <!-- trainings -->
         <div class="form-group col-md-8">
             <label for="personal_interests">Professional interests</label>
             <textarea class="form-control" rows="3" id="personal_interests" name="personal_interests">{{$personal_interests}}</textarea>
             <small>Kindly enumerate your hobbies and/or things you’d personally like to do in the future.</small>
-        </div>
-
+        </div> <!-- interests -->
         <div class="form-group col-md-8">
             <label for="professional_attributes">Professional attributes</label>
             <textarea class="form-control" rows="3" id="professional_attributes" name="professional_attributes">{{$professional_attributes}}</textarea>
             <small>Kindly describe yourself in the workplace. Are you a team player, detail oriented, organized, etc.?</small>
-        </div>
-
+        </div> <!-- attributes -->
         <div class="form-group row">
             <label class="col-md-12" style="border-bottom:1px lightgray solid ; padding: 5px;">Please Upload 8 examples of your design work (800 wide x 600 high)</label>
             @for($i=0;$i<8;$i++)
@@ -203,12 +202,11 @@ year:
 
                 </div>
             @endfor
-        </div>
-
+        </div>      <!-- works -->
         <div class="form-group col-md-8">
             <label for="spec_design_skills">Specific design skills</label>
             <textarea class="form-control" rows="3" id="spec_design_skills" name="design_skills">{{$design_skills}}</textarea>
-        </div>
+        </div> <!-- design skills -->
         <div class="form-group col-md-8">
             <label style="border-bottom:1px lightgray solid ; padding: 2px;">Top 6 design skills that you are good at</label>
             <? $skills = [
@@ -225,7 +223,7 @@ year:
                     </label>
                 @endforeach
             </div>
-        </div>
+        </div> <!-- design skills checkbox -->
         <div class="form-group col-md-8">
             <label style="border-bottom:1px lightgray solid ; padding: 2px;">Please choose 6 primary skills</label>
             <?
@@ -243,8 +241,7 @@ year:
                     </label>
                 @endforeach
             </div>
-        </div>
-
+        </div> <!-- primary skills -->
         <div class="form-group col-md-12">
             <label style="border-bottom:1px lightgray solid ; padding: 2px;">Please choose 6 character skills</label>
             <?
@@ -300,13 +297,13 @@ year:
                     </label>
                 @endforeach
             </div>
-        </div>
+        </div> <!-- char skills -->
         <div class="form-group col-md-8">
             <label for="audio_intro">Audio introduction</label>
-            <input type="text" class="form-control" id="audio_intro" name="audio" value="{{$audio}}">
+            <input type="text" class="form-control" id="audio_intro" name="audio"
+                   value="https://drive.google.com/file/d/{{$audio}}/view">
             <small>Please paste above a link to your audio introduction of self. 2min to 3min is the ideal recording length. Kindly introduce yourself and answer these questions: Why did you become a designer?, Were you able to acquire a formal design education? What do you love most about your work?, What tools do you use for design?, What inspires you to do your work?</small>
-        </div>
-
+        </div>  <!-- Audio -->
         <div class="form-group col-md-8">
             <? $workingHours = ['Hourly','20 Hours per Week','40 Hours per week'] ;?>
             <label style="border-bottom:1px lightgray solid ; padding: 2px;">Hours you are available for work</label>
@@ -319,8 +316,7 @@ year:
                     </label>
                 </div>
             @endforeach
-        </div>
-
+        </div>  <!-- Hours availabel -->
         <div class="form-group col-md-8">
             <label for="audio_intro">Your expected Salary / payment</label> <small>(please indicate pay in your local currency)</small><br/>
             <div>
@@ -342,17 +338,18 @@ year:
                     </label>
                 </div>
             @endforeach
-        </div>
+        </div>  <!-- Slary  -->
         <hr>
         <div class="form-group col-md-8">
             <button type="submit" class="btn btn-primary">Save Changes</button>
-        </div>
+        </div>  <!-- Save -->
     </form>
-    <? foreach($errors->all() as $error):?>
-    <div class="form-group col-md-8">
-        <div class="alert alert-danger">{{$error}}</div>
-    </div>
-    <? endforeach;?>
+    <!-- Display Errors  -->
+        <? foreach($errors->all() as $error):?>
+        <div class="form-group col-md-8">
+            <div class="alert alert-danger">{{$error}}</div>
+        </div>
+        <? endforeach;?>
 </div>
 
 @endsection

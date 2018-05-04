@@ -16,9 +16,6 @@ class UserDataController extends Controller
         $userData = UserData::where('user_id',auth()->user()->id)->first();
         if ($userData){
             // update
-            $this->validate($request,[
-                ''=> '',
-            ]);
             $data = $request->all();
             $works = $userData->works ;
             foreach ($data as $key => $value){
@@ -50,7 +47,7 @@ class UserDataController extends Controller
                         $works .= ','.$pathToPhoto;
                     }
                 }elseif($key == 'audio'){
-                    // get Id and save it to the data base :
+                    // get Id :
                     $data = $value;
                     $explodedData= explode("/", $data);
                     foreach ($explodedData as $id){
@@ -62,25 +59,14 @@ class UserDataController extends Controller
                 else{
                     $userData->{$key} = $value ;
                 }
-                // save works :
                 $userData->works = $works ;
             }
             $userData->save();
-            // send Message to Telegram :
+
 //                $this->sendTelegram();
-
-//            Mail::to('Ahmed')->send(new welcome);
-            // send notification :
-//            Mail::send('emails.welcome', ['key' => 'value'], function($message)
-//            {
-//                $message->to('conor@123workforce.com', 'Conor Majoram')->subject('User has updated resume !');
-//            });
-
-
-
+//                $this->sendNotification();
             return redirect('/admin')->with('successMessage', 'Your changes have been successfully saved.');
         }else{
-            // create
             return redirect('/admin/home');
         }
     }
@@ -125,6 +111,13 @@ class UserDataController extends Controller
         $msg .= str_replace_last('admin',auth()->user()->username, url()->current());
         $telegram = new Telegram('-279372621');
         $telegram->sendMessage($msg);
+    }
+
+    public function sendNotification(){
+        Mail::send('emails.welcome', ['key' => 'value'], function($message)
+            {
+                $message->to('conor@123workforce.com', 'Conor Majoram')->subject('User has updated resume !');
+            });
     }
 
 }

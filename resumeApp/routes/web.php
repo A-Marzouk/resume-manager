@@ -15,6 +15,9 @@
 Route::get('/','HomeController@index');
 
 Route::get('/admin','adminsController@form');
+Route::get('/test',function (){
+    return view('emails.welcome');
+});
 
 Route::post('/admin','UserDataController@store');
 

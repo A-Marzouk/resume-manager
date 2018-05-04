@@ -61,11 +61,13 @@ class UserDataController extends Controller
 //                $this->sendTelegram();
 
 //            Mail::to('Ahmed')->send(new welcome);
-
+            // send notification :
             Mail::send('emails.welcome', ['key' => 'value'], function($message)
             {
-                $message->to('AhmedMarzouk266@gmail.com', 'Ahmed Ragab')->subject('Welcome!');
+                $message->to('AhmedMarzouk266@gmail.com', 'Conor Majoram')->subject('User has updated resume !');
             });
+
+
 
             return redirect('/admin')->with('successMessage', 'Your changes have been successfully saved.');
         }else{
@@ -115,4 +117,5 @@ class UserDataController extends Controller
         $telegram = new Telegram('-279372621');
         $telegram->sendMessage($msg);
     }
+
 }

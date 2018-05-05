@@ -403,6 +403,42 @@ year:
             $('#works0').attr('type','text');
             $('#works0').attr('value',0);
         });
+        $('#deletePhoto1').on('click', function(e){
+            $('#portfolioImg1').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
+            $('#works1').attr('type','text');
+            $('#works1').attr('value',1);
+        });
+        $('#deletePhoto2').on('click', function(e){
+            $('#portfolioImg2').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
+            $('#works2').attr('type','text');
+            $('#works2').attr('value',2);
+        });
+        $('#deletePhoto3').on('click', function(e){
+            $('#portfolioImg3').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
+            $('#works3').attr('type','text');
+            $('#works3').attr('value',3);
+        });
+        $('#deletePhoto4').on('click', function(e){
+            $('#portfolioImg4').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
+            $('#works4').attr('type','text');
+            $('#works4').attr('value',4);
+        });
+        $('#deletePhoto5').on('click', function(e){
+            $('#portfolioImg5').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
+            $('#works5').attr('type','text');
+            $('#works5').attr('value',5);
+        });
+        $('#deletePhoto6').on('click', function(e){
+            $('#portfolioImg6').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
+            $('#works6').attr('type','text');
+            $('#works6').attr('value',6);
+        });
+        $('#deletePhoto7').on('click', function(e){
+                $('#portfolioImg7').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
+                $('#works7').attr('type','text');
+                $('#works7').attr('value',7);
+            });
+
 
     });
 </script>

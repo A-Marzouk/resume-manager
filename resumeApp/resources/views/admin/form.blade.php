@@ -182,9 +182,10 @@ year:
             @for($i=0;$i<8;$i++)
                 <div class="input-group col-md-3">
                     <div class="custom-file" style="padding-top: 5px;">
-                        <input type="file" class="custom-file-input" id="works{{$i}}" name="works{{$i}}">
+                        <input type="file" class="custom-file-input" id="works{{$i}}" name="works{{$i}}" value="">
                         <label class="custom-file-label" for="">Choose file</label>
                     </div>
+                    <label class="btn btn-default" id="deletePhoto{{$i}}">Delete</label>
                         <?
                             $src = 'resumeApp/resources/views/customTheme/images/no-foto.png';
                             foreach ($works as $work){
@@ -196,6 +197,7 @@ year:
                         <div>
                             <img src="{{$src}}" id="portfolioImg{{$i}}"  width="100%" height="auto" style="padding: 10px;">
                         </div>
+
 
                 </div>
             @endfor
@@ -369,6 +371,7 @@ year:
         $("#photoInput").change(function() {
             readURL(this,'#photoPreview');
         });
+
         $("#works0").change(function() {
             readURL(this,'#portfolioImg0');
         });
@@ -393,5 +396,49 @@ year:
         $("#works7").change(function() {
             readURL(this,'#portfolioImg7');
         });
+        
+        // deleting photo :
+        $('#deletePhoto0').on('click', function(e){
+            $('#portfolioImg0').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
+            $('#works0').attr('type','text');
+            $('#works0').attr('value',0);
+        });
+        $('#deletePhoto1').on('click', function(e){
+            $('#portfolioImg1').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
+            $('#works1').attr('type','text');
+            $('#works1').attr('value',1);
+        });
+        $('#deletePhoto2').on('click', function(e){
+            $('#portfolioImg2').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
+            $('#works2').attr('type','text');
+            $('#works2').attr('value',2);
+        });
+        $('#deletePhoto3').on('click', function(e){
+            $('#portfolioImg3').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
+            $('#works3').attr('type','text');
+            $('#works3').attr('value',3);
+        });
+        $('#deletePhoto4').on('click', function(e){
+            $('#portfolioImg4').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
+            $('#works4').attr('type','text');
+            $('#works4').attr('value',4);
+        });
+        $('#deletePhoto5').on('click', function(e){
+            $('#portfolioImg5').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
+            $('#works5').attr('type','text');
+            $('#works5').attr('value',5);
+        });
+        $('#deletePhoto6').on('click', function(e){
+            $('#portfolioImg6').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
+            $('#works6').attr('type','text');
+            $('#works6').attr('value',6);
+        });
+        $('#deletePhoto7').on('click', function(e){
+                $('#portfolioImg7').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
+                $('#works7').attr('type','text');
+                $('#works7').attr('value',7);
+            });
+
+
     });
 </script>

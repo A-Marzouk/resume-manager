@@ -458,7 +458,7 @@
         <div class="row">
             <? $works = explode(',',$user->works);?>
             <div id="grid">
-                @foreach($works as $workSrc):
+                @foreach($works as $workSrc)
                 <? if(!empty($workSrc)):?>
                     <div class="portfolio-item col-xs-12 col-sm-4 col-md-3" data-groups='["all", "identety", "interface"]'>
                         <div class="portfolio-bg">

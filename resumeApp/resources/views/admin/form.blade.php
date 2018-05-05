@@ -185,15 +185,19 @@ year:
                         <input type="file" class="custom-file-input" id="works{{$i}}" name="works{{$i}}" value="">
                         <label class="custom-file-label" for="">Choose file</label>
                     </div>
-                    <label class="btn btn-default" id="deletePhoto{{$i}}">Delete</label>
                         <?
-                            $src = 'resumeApp/resources/views/customTheme/images/no-foto.png';
-                            foreach ($works as $work){
-                                if(strpos($work , 'works'.$i) !== false ){
-                                    $src = $work;
-                                }
+                        $deleteBtn = false;
+                        $src = 'resumeApp/resources/views/customTheme/images/no-foto.png';
+                        foreach ($works as $work){
+                            if(strpos($work , 'works'.$i) !== false ){
+                                $src = $work;
+                                $deleteBtn = true;
                             }
+                        }
                         ?>
+                        @if($deleteBtn)
+                            <p class="btn btn-danger btn-sm" style="margin-left: 5px;" id="deletePhoto{{$i}}">X</p>
+                        @endif
                         <div>
                             <img src="{{$src}}" id="portfolioImg{{$i}}"  width="100%" height="auto" style="padding: 10px;">
                         </div>

@@ -43,7 +43,11 @@ class UserDataController extends Controller
                     if(is_numeric($value)){ // delete photo number x
                         if(!empty($works)){
                             $worksArr = explode(',',$works);
-                            unset($worksArr[intval($value)]);
+                            foreach ($worksArr as &$work){
+                                if(strpos($work, 'works'.$value) !== false){
+                                    $work ='';
+                                }
+                            }
                             $works = implode(',',$worksArr);
                         }
                     }else{

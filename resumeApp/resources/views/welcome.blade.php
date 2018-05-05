@@ -459,21 +459,23 @@
             <? $works = explode(',',$user->works);?>
             <div id="grid">
                 @foreach($works as $workSrc):
+                <? if(!empty($workSrc)):?>
                     <div class="portfolio-item col-xs-12 col-sm-4 col-md-3" data-groups='["all", "identety", "interface"]'>
-                    <div class="portfolio-bg">
-                        <div class="portfolio">
-                            <div class="tt-overlay"></div>
-                            <div class="links">
-                                <a class="image-link" href="{{$workSrc}}"><i class="fa fa-search-plus"></i></a>
-                                <a href="#"><i class="fa fa-link"></i></a>
-                            </div><!-- /.links -->
-                            <img src="{{$workSrc}}" alt="image" width="170" height="170">
-                            <div class="portfolio-info">
-                                <h3>Portfolio Title</h3>
-                            </div><!-- /.portfolio-info -->
-                        </div><!-- /.portfolio -->
-                    </div><!-- /.portfolio-bg -->
-                </div><!-- /.portfolio-item -->
+                        <div class="portfolio-bg">
+                            <div class="portfolio">
+                                <div class="tt-overlay"></div>
+                                <div class="links">
+                                    <a class="image-link" href="{{$workSrc}}"><i class="fa fa-search-plus"></i></a>
+                                    <a href="#"><i class="fa fa-link"></i></a>
+                                </div><!-- /.links -->
+                                    <img src="{{$workSrc}}" alt="image" width="170" height="170">
+                                <div class="portfolio-info">
+                                    <h3>Portfolio Title</h3>
+                                </div><!-- /.portfolio-info -->
+                            </div><!-- /.portfolio -->
+                        </div><!-- /.portfolio-bg -->
+                    </div><!-- /.portfolio-item -->
+                <? endif;?>
                 @endforeach
             </div><!-- /#grid -->
         </div><!-- /.row -->

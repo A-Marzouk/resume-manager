@@ -180,23 +180,26 @@ year:
         <div class="form-group row">
             <label class="col-md-12" style="border-bottom:1px lightgray solid ; padding: 5px;">Please Upload 8 examples of your design work (800 wide x 600 high)</label>
             @for($i=0;$i<8;$i++)
+                <?
+                $deleteBtn = false;
+                $src = 'resumeApp/resources/views/customTheme/images/no-foto.png';
+                $uploadBtn = 'Choose file';
+                foreach ($works as $work){
+                    if(strpos($work , 'works'.$i) !== false ){
+                        $src = $work;
+                        $deleteBtn = true;
+                        $uploadBtn = 'Change file';
+                    }
+                }
+
+                ?>
                 <div class="input-group col-md-3">
-                    <div class="custom-file" style="padding-top: 5px;">
+                    <div class="custom-file" id="customFile{{$i}}" style="padding-top: 5px;">
                         <input type="file" class="custom-file-input" id="works{{$i}}" name="works{{$i}}" value="">
-                        <label class="custom-file-label" for="">Choose file</label>
+                        <label class="custom-file-label" for="">{{$uploadBtn}}</label>
                     </div>
-                        <?
-                        $deleteBtn = false;
-                        $src = 'resumeApp/resources/views/customTheme/images/no-foto.png';
-                        foreach ($works as $work){
-                            if(strpos($work , 'works'.$i) !== false ){
-                                $src = $work;
-                                $deleteBtn = true;
-                            }
-                        }
-                        ?>
                         @if($deleteBtn)
-                            <p class="btn btn-danger btn-sm" style="margin-left: 5px;" id="deletePhoto{{$i}}">X</p>
+                            <p class="btn btn-danger btn-sm" style="width:33px;height:25px;margin-left: 5px;" id="deletePhoto{{$i}}">X</p>
                         @endif
                         <div>
                             <img src="{{$src}}" id="portfolioImg{{$i}}"  width="100%" height="auto" style="padding: 10px;">
@@ -441,8 +444,12 @@ year:
                 $('#portfolioImg7').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
                 $('#works7').attr('type','text');
                 $('#works7').attr('value',7);
-            });
 
+        });
+
+        $('#customFile0').on('click',function () {
+            $('#works0').attr('type','file');
+        })
 
     });
 </script>

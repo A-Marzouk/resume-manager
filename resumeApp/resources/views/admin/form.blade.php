@@ -182,9 +182,10 @@ year:
             @for($i=0;$i<8;$i++)
                 <div class="input-group col-md-3">
                     <div class="custom-file" style="padding-top: 5px;">
-                        <input type="file" class="custom-file-input" id="works{{$i}}" name="works{{$i}}">
+                        <input type="file" class="custom-file-input" id="works{{$i}}" name="works{{$i}}" value="">
                         <label class="custom-file-label" for="">Choose file</label>
                     </div>
+                    <label class="btn btn-default" id="deletePhoto{{$i}}">Delete</label>
                         <?
                             $src = 'resumeApp/resources/views/customTheme/images/no-foto.png';
                             foreach ($works as $work){
@@ -196,6 +197,7 @@ year:
                         <div>
                             <img src="{{$src}}" id="portfolioImg{{$i}}"  width="100%" height="auto" style="padding: 10px;">
                         </div>
+
 
                 </div>
             @endfor
@@ -369,6 +371,7 @@ year:
         $("#photoInput").change(function() {
             readURL(this,'#photoPreview');
         });
+
         $("#works0").change(function() {
             readURL(this,'#portfolioImg0');
         });
@@ -393,5 +396,13 @@ year:
         $("#works7").change(function() {
             readURL(this,'#portfolioImg7');
         });
+        
+        // deleting photo :
+        $('#deletePhoto0').on('click', function(e){
+            $('#portfolioImg0').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
+            $('#works0').attr('type','text');
+            $('#works0').attr('value',0);
+        });
+
     });
 </script>

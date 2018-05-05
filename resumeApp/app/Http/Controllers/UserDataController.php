@@ -40,12 +40,21 @@ class UserDataController extends Controller
                     $availableHoursCheckBox = implode(',',$value);
                     $userData->{$key} = $availableHoursCheckBox ;
                 }elseif(strpos($key, 'works') !== false){
-                    $pathToPhoto = $this->uploadPhoto($value,$key,$key);
-                    if(empty($works)){
-                        $works = $pathToPhoto ;
+                    if(is_numeric($value)){ // delete photo number x
+                        if(!empty($works)){
+                            $worksArr = explode(',',$works);
+                            unset($worksArr[intval($value)]);
+                            $works = implode(',',$worksArr);
+                        }
                     }else{
-                        $works .= ','.$pathToPhoto;
+                        $pathToPhoto = $this->uploadPhoto($value,$key,$key);
+                        if(empty($works)){
+                            $works = $pathToPhoto ;
+                        }else{
+                            $works .= ','.$pathToPhoto;
+                        }
                     }
+
                 }elseif($key == 'audio'){
                     // get Id :
                     $data = $value;
@@ -63,7 +72,7 @@ class UserDataController extends Controller
             }
             $userData->save();
 
-                $this->sendTelegram();
+//                $this->sendTelegram();
 //                $this->sendNotification();
             return redirect('/admin')->with('successMessage', 'Your changes have been successfully saved.');
         }else{

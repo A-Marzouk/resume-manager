@@ -179,13 +179,13 @@
         <div class="container">
             <div class="control">
                 <div class="video-intro text-center">
-                    <button type="button" class="play-trigger" id="audioPlay"><i class="fa fa-play"></i></button>
                     <h2>Audio Introducing</h2>
+                    <audio id="audioIntro" controls>
+                        <source src="https://drive.google.com/uc?export=download&id={{$user->audio}}&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M" type="audio/ogg">
+                        Your browser does not support the audio element.
+                    </audio><!--/.video-container-->
                 </div>
-                <audio id="audioIntro">
-                    <source src="https://drive.google.com/uc?export=download&id={{$user->audio}}&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M" type="audio/ogg">
-                    Your browser does not support the audio element.
-                </audio><!--/.video-container-->
+
             </div>
             <!--/.control-->
         </div>

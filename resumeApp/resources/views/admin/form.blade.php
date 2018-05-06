@@ -34,9 +34,9 @@
     $PrimarySkillsCheckBox  = explode(',',$currUser->userData->primarySkills) ?? '' ;
     $availableHoursCheckBox  = explode(',',$currUser->userData->availableHours) ?? '' ;
     $works  = explode(',',$currUser->userData->works) ?? '' ;
+    $terms  = $currUser->userData->terms ?? '' ;
     $username = auth()->user()->username;
     $profession = auth()->user()->profession;
-    $terms = $currUser->userData->terms ?? '' ;
 ?>
 @section('content')
 <div class="container">
@@ -353,13 +353,12 @@ year:
             @endforeach
         </div>  <!-- Slary  -->
         <hr>
-        <div class="form-check form-check-inline">
-            <label class="form-check-label" for="inlineCheckbox1">
-                <input class="form-check-input" type="checkbox" name="terms" value="agree"
-                <? if($terms == 'agree'):?>checked disabled <?endif;?> >
-                Agree with the terms and conditions</label>
-        </div>
-        <hr/>
+        <label class="form-check-label col-md-3">
+            <input class="form-check-input" type="checkbox" name="terms" value="agree"
+                   <? if($terms == 'agree'): ?> checked disabled<?endif;?> >
+                  Agree with terms and conditions
+        </label>
+        <hr>
         <div class="form-group col-md-8">
             <button type="submit" class="btn btn-primary">Save Changes</button>
         </div>  <!-- Save -->

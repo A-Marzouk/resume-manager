@@ -36,6 +36,7 @@
     $works  = explode(',',$currUser->userData->works) ?? '' ;
     $username = auth()->user()->username;
     $profession = auth()->user()->profession;
+    $terms = $currUser->userData->terms ?? '' ;
 ?>
 @section('content')
 <div class="container">
@@ -48,6 +49,12 @@
             {{ session()->get('successMessage') }}
         </div>
     @endif
+<!-- Display Errors  -->
+    <? foreach($errors->all() as $error):?>
+    <div class="form-group col-md-8">
+        <div class="alert alert-danger">{{$error}}</div>
+    </div>
+    <? endforeach;?>
     <form method="post" action="/admin" enctype="multipart/form-data" class="container">
         {{csrf_field()}}
         <div class="form-group col-md-8">
@@ -346,16 +353,17 @@ year:
             @endforeach
         </div>  <!-- Slary  -->
         <hr>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label" for="inlineCheckbox1">
+                <input class="form-check-input" type="checkbox" name="terms" value="agree"
+                <? if($terms == 'agree'):?>checked disabled <?endif;?> >
+                Agree with the terms and conditions</label>
+        </div>
+        <hr/>
         <div class="form-group col-md-8">
             <button type="submit" class="btn btn-primary">Save Changes</button>
         </div>  <!-- Save -->
     </form>
-    <!-- Display Errors  -->
-        <? foreach($errors->all() as $error):?>
-        <div class="form-group col-md-8">
-            <div class="alert alert-danger">{{$error}}</div>
-        </div>
-        <? endforeach;?>
 </div>
 
 @endsection
@@ -449,7 +457,28 @@ year:
 
         $('#customFile0').on('click',function () {
             $('#works0').attr('type','file');
-        })
+        });
+        $('#customFile1').on('click',function () {
+            $('#works1').attr('type','file');
+        });
+        $('#customFile2').on('click',function () {
+            $('#works2').attr('type','file');
+        });
+        $('#customFile3').on('click',function () {
+            $('#works3').attr('type','file');
+        });
+        $('#customFile4').on('click',function () {
+            $('#works4').attr('type','file');
+        });
+        $('#customFile5').on('click',function () {
+            $('#works5').attr('type','file');
+        });
+        $('#customFile6').on('click',function () {
+            $('#works6').attr('type','file');
+        });
+        $('#customFile7').on('click',function () {
+            $('#works7').attr('type','file');
+        });
 
     });
 </script>

@@ -11,6 +11,7 @@ class UserData extends Model
         'design_skills','design_skills_checkbox','professional_attributes','personal_interests','audio','works','workForceAgent',
         'careerObjective','education','workExperience','primarySkills','charSkills','availableHours','salary',
         'currency','preferredTime','surname','jobTitle','intro','githubLink','stackoverflowLink','googleCalendar'
+        ,'terms'
     ];
 
 }

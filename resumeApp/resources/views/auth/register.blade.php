@@ -42,13 +42,18 @@
                         <div class="form-group row">
                             <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
                             <div class="col-md-6">
-                                <input class="form-control" type="text" name="username" id="username" placeholder="">
+                                <input class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" type="text" name="username" id="username" value="{{ old('username') }}" required>
+                                @if ($errors->has('username'))
+                                    <span class="invalid-feedback">
+                                            <strong>{{ $errors->first('username') }}</strong>
+                                        </span>
+                                @endif
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="profession" class="col-md-4 col-form-label text-md-right">Profession</label>
                             <div class="col-md-6">
-                                <select class="custom-select" id="profession" name="profession">
+                                <select class="custom-select" id="profession" name="profession" required>
                                     <option value="" selected disabled>Select profession</option>
                                     <option value="Developer">Developer</option>
                                     <option value="Designer">Designer</option>

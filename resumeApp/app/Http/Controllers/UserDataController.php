@@ -80,7 +80,7 @@ class UserDataController extends Controller
             }
             $userData->save();
 
-//                $this->sendTelegram();
+                $this->sendTelegram();
 //                $this->sendNotification();
             return redirect('/admin')->with('successMessage', 'Your changes have been successfully saved.');
         }else{

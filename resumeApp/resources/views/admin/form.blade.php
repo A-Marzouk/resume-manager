@@ -64,7 +64,7 @@
         </div> <!-- Full name -->
         <div class="form-group col-md-8">
             <label for="userName">Surname</label>
-            <input type="text" class="form-control" name="surname" placeholder="Enter your surname.." value="{{$surname}}">
+            <input type="text" class="form-control" name="surname" placeholder="Enter your surname.." value="<? if(!empty(old('surname')))echo old('surname'); else echo $surname; ?>">
             <small class="form-text text-muted"></small>
         </div> <!-- surname -->
         <div class="form-group col-md-8">

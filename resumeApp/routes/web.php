@@ -14,13 +14,16 @@
 
 Route::get('/','HomeController@index');
 
-Route::get('/admin','adminsController@form');
-Route::get('/test',function (){
-    return view('emails.welcome');
+Route::prefix('client')->group(function (){
+    Route::get('/login','Auth\ClientLoginController@showLoginForm')->name('client.login');
+    Route::post('/login/submit','Auth\ClientLoginController@login')->name('client.login.submit');
+    Route::get('/','ClientsController@index')->name('client.dashboard');
 });
 
-Route::post('/admin','UserDataController@store');
+Route::prefix('admin')->group(function (){
+    Route::get('/','adminsController@form');
+    Route::post('/','UserDataController@store');
+});
 
 Auth::routes();
-
 Route::get('/{username}','HomeController@welcomePage');

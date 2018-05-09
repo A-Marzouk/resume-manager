@@ -21,6 +21,7 @@ class UserDataController extends Controller
                 'terms.required' => 'You should agree with the terms and conditions'
             ];
             $this->validate($request,['terms'=>'required'], $messages);
+
             $works = $userData->works ;
             foreach ($data as $key => $value){
                 if($key == '_token'){
@@ -80,7 +81,7 @@ class UserDataController extends Controller
             }
             $userData->save();
 
-                $this->sendTelegram();
+//                $this->sendTelegram();
 //                $this->sendNotification();
             return redirect('/admin')->with('successMessage', 'Your changes have been successfully saved.');
         }else{

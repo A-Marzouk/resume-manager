@@ -355,7 +355,7 @@ year:
         <hr>
         <label class="form-check-label col-md-3">
             <input class="form-check-input" type="checkbox" name="terms" value="agree"
-                   <? if($terms == 'agree'): ?> checked disabled<?endif;?> >
+                   <? if($terms == 'agree'): ?> checked onclick="return false;"<?endif;?> >
                   Agree with terms and conditions
         </label>
         <hr>

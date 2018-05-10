@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('welcomePage');
+        $this->middleware('auth')->except('welcomePage','ResumePage');
     }
 
     /**
@@ -28,7 +28,7 @@ class HomeController extends Controller
         return view('admin.form');
     }
 
-    public function welcomePage($username){
+    public function ResumePage($username){
         $user =  User::where('username',$username)->first();
         if($user !== null){
             $user = $user->userData;
@@ -39,7 +39,7 @@ class HomeController extends Controller
         $trainings = $this->parseData($user,'trainings');
         $primarySkills = explode(',',$user->primarySkills);
         $charSkills = explode(',',$user->charSkills);
-        return view('welcome', compact('user','education','trainings','primarySkills','charSkills'));
+        return view('resume', compact('user','education','trainings','primarySkills','charSkills'));
     }
 
     protected function parseData($user,$data){
@@ -55,5 +55,9 @@ class HomeController extends Controller
             $edu['year'][]        = trim($outputs[3]) ?? '';
         }
         return $edu;
+    }
+
+    public function welcomePage(){
+        return view('welcome');
     }
 }

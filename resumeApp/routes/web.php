@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/','HomeController@index');
+Route::get('/','HomeController@welcomePage')->name('welcome');
 
 Route::prefix('client')->group(function (){
     Route::get('/login','Auth\ClientLoginController@showLoginForm')->name('client.login');
@@ -24,9 +24,9 @@ Route::prefix('client')->group(function (){
 });
 
 Route::prefix('admin')->group(function (){
-    Route::get('/','adminsController@form');
+    Route::get('/','adminsController@form')->name('admin');
     Route::post('/','UserDataController@store');
 });
 
 Auth::routes();
-Route::get('/{username}','HomeController@welcomePage');
+Route::get('/{username}','HomeController@ResumePage');

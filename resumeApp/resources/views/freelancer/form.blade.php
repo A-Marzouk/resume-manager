@@ -1,6 +1,9 @@
 @extends('layouts.app')
 {{-- variables : $data . freelancer userdata --}}
-<? extract($data);?>
+<?
+    extract($data);
+    $currFreelancer = auth()->user();
+?>
 @section('content')
 <div class="container">
         <h3>Here you can edit your information : </h3>
@@ -110,30 +113,18 @@
         </div> <!-- google calendar src -->
         <div class="form-group col-md-8">
             <label for="education">Education</label>
-            <textarea class="form-control" rows="4" id="education" name="education">{{$education}}<? if(!empty($education)):?> ,
-<?endif;?>
-title:
-description:
-year:
+            <textarea class="form-control" rows="4" id="education" name="education">{{$education}}
             </textarea>
             <small>Please include all relevant design schools and/or design courses you have taken. Include the COURSE NAME & UNIVERSITY NAME</small>
         </div> <!-- Edu -->
         <div class="form-group col-md-8">
             <label for="">Work Experience</label>
-            <textarea class="form-control" rows="3" id="work_experience" name="workExperience">{{$workExperience}}<? if(!empty($workExperience)):?> ,
-<?endif;?>
-employer:
-title:
-date:
+            <textarea class="form-control" rows="3" id="work_experience" name="workExperience">{{$workExperience}}
      </textarea>
         </div> <!-- work exp -->
         <div class="form-group col-md-8">
             <label for="education">Trainings attend</label>
-            <textarea class="form-control" rows="4" id="trainings" name="trainings">{{$trainings}}<? if(!empty($trainings)):?> ,
-<?endif;?>
-title:
-description:
-year:
+            <textarea class="form-control" rows="4" id="trainings" name="trainings">{{$trainings}}
             </textarea>
             <small>Please include all relevant design trainings attended in the past 3 years. Include the TRAINING NAME/TITLE, & the LOCATION where the training was held</small>
         </div> <!-- trainings -->
@@ -294,36 +285,54 @@ year:
         </div>  <!-- Hours availabel -->
         <?$days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];?>
         <div class="form-group col-md-8" >
-            <label style="border-bottom:1px lightgray solid ; padding: 2px;">Hours you are available for work per week</label>
+            <label style="border-bottom:1px lightgray solid ; padding: 2px;">Hours you are available everyday : </label>
+            <div class="row">
+                <div class="col-md-2">
+
+                </div> <div class="col-md-2 text-center">
+                    <b>From</b>
+                </div> <div class="col-md-2 text-center">
+                    <b>To</b>
+                </div>
+            </div>
+            <? $totalHours = 0 ;?>
             <? foreach ($days as $day):?>
+                <?
+                $DBColumn = $day.'Hours';
+                $hours = $currFreelancer = auth()->user()->userData->{$DBColumn};
+                $hoursArr = explode(',',$hours);
+                $from = $hoursArr[0] ?? '';
+                $to   = $hoursArr[1] ?? '';
+                $totalHours += $to-$from;
+                ?>
                 <div class="row">
                 <div class="col-md-2" style="padding-top: 6px;">
                     <b>{{$day}}</b>
                 </div>
                 <div class="input-group col-md-2" style="margin: 2px;">
                     <select class="custom-select" name="{{$day}}From">
-                        <option value="" selected disabled="">From</option>
+                        <option  selected disabled="">From</option>
                         <? for($i=0;$i<24;$i++):?>
-                            <option value="{{$i}}"><?if($i<10):?>0<?endif;?>{{$i}}</option>
+                            <option value="{{$i}}" <? if($i == $from):?>selected<?endif;?> ><?if($i<10):?>0<?endif;?>{{$i}}:00</option>
                         <? endfor;?>
                     </select>
                 </div>
                 <div class="input-group col-md-2" style="margin: 2px;">
-                    <select class="custom-select" name="{{$day}}To">
-                        <option value="" selected disabled="">To</option>
+                    <select class="custom-select" class="To" name="{{$day}}To">
+                        <option selected disabled="">To</option>
                         <? for($i=0;$i<24;$i++):?>
-                        <option value="{{$i}}"><?if($i<10):?>0<?endif;?>{{$i}}</option>
+                        <option value="{{$i}}" <? if($i == $to):?>selected<?endif;?>><?if($i<10):?>0<?endif;?>{{$i}}:00</option>
                         <? endfor;?>
                     </select>
                 </div>
             </div>
             <? endforeach;?>
-            <div style="padding-top: 10px;">
-                <b>Total hours of the week : </b>
+            <div style="padding-top: 10px;" class="col-md-6" id="totalHours">
+                <b style="border-radius: 5px; border: gray 2px solid; padding: 8px;">Total working hours of a week : <span style="font-size: large;">{{$totalHours}} Hours </span></b>
             </div>
         </div> <!-- Hours per week Dropdowns -->
 
-
+<hr>
         <div class="form-group col-md-8">
             <label for="audio_intro">Your expected Salary / payment</label> <small>(please indicate pay in your local currency)</small><br/>
             <div>

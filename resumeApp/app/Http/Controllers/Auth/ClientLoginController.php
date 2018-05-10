@@ -33,4 +33,9 @@ class ClientLoginController extends Controller
         // if un successful redirect them back :
             return redirect()->back()->withInput($request->only('email','remember'));
     }
+
+    public function logout(){
+        Auth::guard('client')->logout();
+        return redirect(route('client.login'));
+    }
 }

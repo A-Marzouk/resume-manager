@@ -7,6 +7,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class ClientRegisterController extends Controller
@@ -27,14 +28,14 @@ class ClientRegisterController extends Controller
         // register a client
         $client = $this->create($request->all());
         // log the client in :
-        Auth::guard('client')->login($client);
+        Auth::guard('client')->login(['email'=>$request->email,'password'=>$request->password]);
     }
 
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:clients',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }

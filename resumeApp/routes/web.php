@@ -16,10 +16,11 @@ Route::get('/','HomeController@index');
 
 Route::prefix('client')->group(function (){
     Route::get('/login','Auth\ClientLoginController@showLoginForm')->name('client.login');
+    Route::get('/logout','Auth\ClientLoginController@logout')->name('client.logout');
     Route::post('/login/submit','Auth\ClientLoginController@login')->name('client.login.submit');
     Route::get('/','ClientsController@index')->name('client.dashboard');
-    Route::get('/login','Auth\ClientRegisterController@showLoginForm')->name('client.register');
-    Route::post('/register/submit','Auth\ClientRegisterController@showRegistrationForm')->name('client.register.submit');
+    Route::get('/register','Auth\ClientRegisterController@showRegistrationForm')->name('client.register');
+    Route::post('/register/submit','Auth\ClientRegisterController@register')->name('client.register.submit');
 });
 
 Route::prefix('admin')->group(function (){

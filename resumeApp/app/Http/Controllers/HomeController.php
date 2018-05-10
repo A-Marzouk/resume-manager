@@ -23,10 +23,6 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('freelancer.form');
-    }
 
     public function ResumePage($username){
         $user =  User::where('username',$username)->first();

@@ -1,43 +1,6 @@
 @extends('layouts.app')
-
-<?
-    $currUser = auth()->user();
-    // All needed Variables !
-    $name = $currUser->userData->name ?? '' ;
-    $birth_date = $currUser->userData->birth_date ?? '' ;
-    $email = $currUser->userData->email ?? '' ;
-    $salary = $currUser->userData->salary ?? '' ;
-    $googleCalendar = $currUser->userData->googleCalendar ?? '' ;
-    $currency = $currUser->userData->currency ?? '' ;
-    $preferredTime = $currUser->userData->preferredTime ?? '' ;
-    $surname = $currUser->userData->surname ?? '' ;
-    $audio = $currUser->userData->audio ?? '' ;
-    $city = $currUser->userData->city ?? '' ;
-    $professional_attributes = $currUser->userData->professional_attributes ?? '' ;
-    $personal_interests = $currUser->userData->personal_interests ?? '' ;
-    $design_styles = $currUser->userData->design_styles ?? '' ;
-    $workExperience = $currUser->userData->workExperience ?? '' ;
-    $trainings = $currUser->userData->trainings ?? '' ;
-    $nationality = $currUser->userData->nationality ?? '' ;
-    $workForceAgent = $currUser->userData->workForceAgent ?? '' ; // add to database
-    $languages = $currUser->userData->languages ?? '' ;
-    $photoPath = $currUser->userData->photo ?? '' ;
-    $design_skills = $currUser->userData->design_skills ?? '' ;
-    $education = $currUser->userData->education ?? '' ;
-    $github = $currUser->userData->githubLink ?? '' ;
-    $intro = $currUser->userData->intro ?? '' ;
-    $jobTitle = $currUser->userData->jobTitle ?? '' ;
-    $stackoverflow = $currUser->userData->stackoverflowLink ?? '' ;
-    $careerObjective = $currUser->userData->careerObjective ?? '' ; // add to database
-    $skillsCheckBox  = explode(',',$currUser->userData->design_skills_checkbox) ?? '' ;
-    $charSkillsCheckBox  = explode(',',$currUser->userData->charSkills) ?? '' ;
-    $PrimarySkillsCheckBox  = explode(',',$currUser->userData->primarySkills) ?? '' ;
-    $availableHoursCheckBox  = explode(',',$currUser->userData->availableHours) ?? '' ;
-    $works  = explode(',',$currUser->userData->works) ?? '' ;
-    $terms  = $currUser->userData->terms ?? '' ;
-    $username = auth()->user()->username;
-    $profession = auth()->user()->profession;
-?>
+{{-- variables : $data . freelancer userdata --}}
+<? extract($data);?>
 @section('content')
 <div class="container">
         <h3>Here you can edit your information : </h3>
@@ -338,7 +301,7 @@ year:
                     <b>{{$day}}</b>
                 </div>
                 <div class="input-group col-md-2" style="margin: 2px;">
-                    <select class="custom-select" id="{{$day}}From">
+                    <select class="custom-select" name="{{$day}}From">
                         <option value="" selected disabled="">From</option>
                         <? for($i=0;$i<24;$i++):?>
                             <option value="{{$i}}"><?if($i<10):?>0<?endif;?>{{$i}}</option>
@@ -346,7 +309,7 @@ year:
                     </select>
                 </div>
                 <div class="input-group col-md-2" style="margin: 2px;">
-                    <select class="custom-select" id="{{$day}}To">
+                    <select class="custom-select" name="{{$day}}To">
                         <option value="" selected disabled="">To</option>
                         <? for($i=0;$i<24;$i++):?>
                         <option value="{{$i}}"><?if($i<10):?>0<?endif;?>{{$i}}</option>

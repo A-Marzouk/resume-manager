@@ -310,7 +310,7 @@
                     <b>{{$day}}</b>
                 </div>
                 <div class="input-group col-md-2" style="margin: 2px;">
-                    <select class="custom-select" name="{{$day}}From">
+                    <select class="custom-select" id="{{$day}}From" name="{{$day}}From">
                         <option  selected disabled="">From</option>
                         <? for($i=0;$i<24;$i++):?>
                             <option value="{{$i}}" <? if($i == $from):?>selected<?endif;?> ><?if($i<10):?>0<?endif;?>{{$i}}:00</option>
@@ -318,8 +318,8 @@
                     </select>
                 </div>
                 <div class="input-group col-md-2" style="margin: 2px;">
-                    <select class="custom-select" class="To" name="{{$day}}To">
-                        <option selected disabled="">To</option>
+                    <select class="custom-select" id="{{$day}}To" name="{{$day}}To">
+                        <option selected disabled>To</option>
                         <? for($i=0;$i<24;$i++):?>
                         <option value="{{$i}}" <? if($i == $to):?>selected<?endif;?>><?if($i<10):?>0<?endif;?>{{$i}}:00</option>
                         <? endfor;?>
@@ -327,8 +327,8 @@
                 </div>
             </div>
             <? endforeach;?>
-            <div style="padding-top: 10px;" class="col-md-6" id="totalHours">
-                <b style="border-radius: 5px; border: gray 2px solid; padding: 8px;">Total working hours of a week : <span style="font-size: large;">{{$totalHours}} Hours </span></b>
+            <div style="padding-top: 10px;" class="col-md-6">
+                <b style="border-radius: 5px; border: gray 2px solid; padding: 8px;">Total working hours of a week : <span id="totalHours" style="font-size: large;">{{$totalHours}}</span> Hours</b>
             </div>
         </div> <!-- Hours per week Dropdowns -->
 
@@ -481,6 +481,5 @@
         $('#customFile7').on('click',function () {
             $('#works7').attr('type','file');
         });
-
     });
 </script>

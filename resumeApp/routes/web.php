@@ -18,7 +18,7 @@ Auth::routes();
 
 Route::prefix('client')->group(function (){
     Route::get('/login','Auth\ClientLoginController@showLoginForm')->name('client.login');
-    Route::get('/logout','Auth\ClientLoginController@logout')->name('client.logout');
+    Route::post('/logout','Auth\ClientLoginController@logout')->name('client.logout');
     Route::post('/login/submit','Auth\ClientLoginController@login')->name('client.login.submit');
     Route::get('/','ClientsController@index')->name('client.dashboard');
     Route::get('/register','Auth\ClientRegisterController@showRegistrationForm')->name('client.register');

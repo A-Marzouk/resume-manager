@@ -8,16 +8,18 @@ use Illuminate\Support\Facades\Auth;
 
 class ClientLoginController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('guest:client')->except('logout');
-    }
 
     public function showLoginForm(){
+        if(Auth::guard('client')->check()){
+            return redirect(route('client.dashboard'));
+        }
         return view('auth.client-login');
     }
 
     public function login(Request $request){
+        if(Auth::guard('client')->check()){
+            return redirect(route('client.dashboard'));
+        }
         // validation
         $this->validate($request,[
            'email' => 'required|email',

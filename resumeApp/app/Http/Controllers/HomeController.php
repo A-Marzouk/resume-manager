@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.form');
+        return view('freelancer.form');
     }
 
     public function ResumePage($username){

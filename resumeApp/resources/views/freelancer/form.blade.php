@@ -55,7 +55,7 @@
         <div class="alert alert-danger">{{$error}}</div>
     </div>
     <? endforeach;?>
-    <form method="post" action="/admin" enctype="multipart/form-data" class="container">
+    <form method="post" action="{{route('freelancer.data.store')}}" enctype="multipart/form-data" class="container">
         {{csrf_field()}}
         <div class="form-group col-md-8">
             <label for="userName">Full name</label>

@@ -83,9 +83,9 @@ class UserDataController extends Controller
 
 //                $this->sendTelegram();
 //                $this->sendNotification();
-            return redirect('/admin')->with('successMessage', 'Your changes have been successfully saved.');
+            return redirect('/freelancer')->with('successMessage', 'Your changes have been successfully saved.');
         }else{
-            return redirect('/admin/home');
+            return redirect('/freelancer/home');
         }
     }
 
@@ -126,7 +126,7 @@ class UserDataController extends Controller
     public function sendTelegram(){
         $msg = auth()->user()->username ;
         $msg .= ' has updated his resume .. please view updated resume here..  ';
-        $msg .= str_replace_last('admin',auth()->user()->username, url()->current());
+        $msg .= str_replace_last('freelancer',auth()->user()->username, url()->current());
         $telegram = new Telegram('-279372621');
         $telegram->sendMessage($msg);
     }

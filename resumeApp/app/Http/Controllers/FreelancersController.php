@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\UserData;
 use Illuminate\Http\Request;
 
-class adminsController extends Controller
+class FreelancersController extends Controller
 {
     public function __construct()
     {
@@ -13,6 +13,6 @@ class adminsController extends Controller
     }
 
     public function form(){
-        return view('admin.form');
+        return view('freelancer.form');
     }
 }

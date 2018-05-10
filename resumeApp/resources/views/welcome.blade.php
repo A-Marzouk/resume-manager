@@ -9,10 +9,21 @@
 
     <title>Welcome !</title>
 </head>
-<body>
-    <div class="container">
-        <a href="{{route('admin')}}" class="btn btn-info">Users</a>
-        <a href="{{route('client.login')}}" class="btn btn-primary">Clients</a>
+<body style="padding-top: 10px;">
+<div class="container-fluid">
+    <div class="jumbotron">
+        <h1 class="display-3">Welcome to Resume manager!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="{{route('admin')}}" role="button">Edit and Publish your Resume</a>
+        </p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="{{route('client.login')}}" role="button">Search Freelancers</a>
+        </p>
     </div>
+</div>
+
 </body>
 </html>

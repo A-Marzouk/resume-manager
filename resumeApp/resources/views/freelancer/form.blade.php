@@ -184,6 +184,7 @@ year:
             <textarea class="form-control" rows="3" id="professional_attributes" name="professional_attributes">{{$professional_attributes}}</textarea>
             <small>Kindly describe yourself in the workplace. Are you a team player, detail oriented, organized, etc.?</small>
         </div> <!-- attributes -->
+
         <div class="form-group row">
             <label class="col-md-12" style="border-bottom:1px lightgray solid ; padding: 5px;">Please Upload 8 examples of your design work (800 wide x 600 high)</label>
             @for($i=0;$i<8;$i++)
@@ -211,8 +212,6 @@ year:
                         <div>
                             <img src="{{$src}}" id="portfolioImg{{$i}}"  width="100%" height="auto" style="padding: 10px;">
                         </div>
-
-
                 </div>
             @endfor
         </div>      <!-- works -->
@@ -330,6 +329,38 @@ year:
                 </div>
             @endforeach
         </div>  <!-- Hours availabel -->
+        <?$days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];?>
+        <div class="form-group col-md-8" >
+            <label style="border-bottom:1px lightgray solid ; padding: 2px;">Hours you are available for work per week</label>
+            <? foreach ($days as $day):?>
+                <div class="row">
+                <div class="col-md-2" style="padding-top: 6px;">
+                    <b>{{$day}}</b>
+                </div>
+                <div class="input-group col-md-2" style="margin: 2px;">
+                    <select class="custom-select" id="{{$day}}From">
+                        <option value="" selected disabled="">From</option>
+                        <? for($i=0;$i<24;$i++):?>
+                            <option value="{{$i}}"><?if($i<10):?>0<?endif;?>{{$i}}</option>
+                        <? endfor;?>
+                    </select>
+                </div>
+                <div class="input-group col-md-2" style="margin: 2px;">
+                    <select class="custom-select" id="{{$day}}To">
+                        <option value="" selected disabled="">To</option>
+                        <? for($i=0;$i<24;$i++):?>
+                        <option value="{{$i}}"><?if($i<10):?>0<?endif;?>{{$i}}</option>
+                        <? endfor;?>
+                    </select>
+                </div>
+            </div>
+            <? endforeach;?>
+            <div style="padding-top: 10px;">
+                <b>Total hours of the week : </b>
+            </div>
+        </div> <!-- Hours per week Dropdowns -->
+
+
         <div class="form-group col-md-8">
             <label for="audio_intro">Your expected Salary / payment</label> <small>(please indicate pay in your local currency)</small><br/>
             <div>

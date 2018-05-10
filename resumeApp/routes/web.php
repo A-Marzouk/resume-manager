@@ -28,7 +28,7 @@ Route::prefix('client')->group(function (){
 Route::prefix('freelancer')->group(function (){
     Route::get('/login','Auth\LoginController@showLoginForm')->name('freelancer.login');
     Route::get('/logout','Auth\LoginController@logout')->name('freelancer.logout');
-    Route::get('/','freelancersController@form')->name('freelancer.dashboard');
+    Route::get('/','FreelancersController@form')->name('freelancer.dashboard');
     Route::post('/','UserDataController@store')->name('freelancer.data.store');
     Route::post('/login/submit','Auth\LoginController@login')->name('freelancer.login.submit');
     Route::get('/register','Auth\RegisterController@showRegistrationForm')->name('freelancer.register');

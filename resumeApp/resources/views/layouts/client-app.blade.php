@@ -39,10 +39,10 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
-                    @guest
+                    <?php if(auth()->guard('client')->guest()): ?>
                         <li><a class="nav-link" href="{{ route('client.login') }}">{{ __('Client login') }}</a></li>
                         <li><a class="nav-link" href="{{ route('client.register') }}">{{ __('Client register') }}</a></li>
-                    @else
+                    <? else: ?>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::guard('client')->user()->name }} <span class="caret"></span>
@@ -60,7 +60,7 @@
                                 </form>
                             </div>
                         </li>
-                    @endguest
+                    <? endif;?>
                 </ul>
             </div>
         </div>

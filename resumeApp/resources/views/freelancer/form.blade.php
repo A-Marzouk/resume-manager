@@ -303,7 +303,9 @@
                 $hoursArr = explode(',',$hours);
                 $from = $hoursArr[0] ?? '';
                 $to   = $hoursArr[1] ?? '';
-                $totalHours += $to-$from;
+                if(!empty($from) && !empty($to)){
+                    $totalHours += $to-$from ;
+                }
                 ?>
                 <div class="row">
                 <div class="col-md-2" style="padding-top: 6px;">

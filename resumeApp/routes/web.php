@@ -29,4 +29,14 @@ Route::prefix('admin')->group(function (){
 });
 
 Auth::routes();
+
+Route::prefix('freelancer')->group(function (){
+    Route::get('/login','Auth\LoginController@showLoginForm')->name('freelancer.login');
+    Route::get('/logout','Auth\LoginController@logout')->name('freelancer.logout');
+    Route::post('/login/submit','Auth\LoginController@login')->name('freelancer.login.submit');
+    Route::get('/','ClientsController@index')->name('freelancer.dashboard');
+    Route::get('/register','Auth\RegisterController@showRegistrationForm')->name('freelancer.register');
+    Route::post('/register/submit','Auth\RegisterController@register')->name('freelancer.register.submit');
+});
+
 Route::get('/{username}','HomeController@ResumePage');

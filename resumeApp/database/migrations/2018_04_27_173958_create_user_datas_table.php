@@ -48,6 +48,13 @@ class CreateUserDatasTable extends Migration
             $table->text('primarySkills')->nullable();
             $table->text('charSkills')->nullable();
             $table->string('terms')->nullable();
+            $table->string('MondayHours')->nullable();
+            $table->string('TuesdayHours')->nullable();
+            $table->string('WednesdayHours')->nullable();
+            $table->string('ThursdayHours')->nullable();
+            $table->string('FridayHours')->nullable();
+            $table->string('SaturdayHours')->nullable();
+            $table->string('SundayHours')->nullable();
             $table->timestamps();
         });
     }

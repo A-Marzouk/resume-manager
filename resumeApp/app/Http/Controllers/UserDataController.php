@@ -73,6 +73,17 @@ class UserDataController extends Controller
                             $userData->{$key} = $id;
                         }
                     }
+                }elseif(strpos($key, 'day') !== false){
+                    // save in the database values of days and from to also !
+                    $days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+                    foreach ($days as $day){
+                        $DBColumn = $day.'Hours';
+                        if($key == $day.'From'){
+                            $userData->{$DBColumn} = $value;
+                        }elseif ($key == $day.'To'){
+                            $userData->{$DBColumn} .= ','.$value;
+                        }
+                    }
                 }
                 else{
                     $userData->{$key} = $value ;

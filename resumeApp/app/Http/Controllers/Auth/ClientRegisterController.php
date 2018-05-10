@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Validator;
 
 class ClientRegisterController extends Controller
 {
+    protected $redirectTo = '/client';
+
     public function __construct()
     {
         $this->middleware('guest:client');

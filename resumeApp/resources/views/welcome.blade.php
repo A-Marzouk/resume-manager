@@ -20,7 +20,7 @@
             <a class="btn btn-primary btn-lg" href="{{route('freelancer.dashboard')}}" role="button">Freelancers Login/Register</a>
         </p>
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="{{route('client.dashboard')}}" role="button">Clients Login/Register</a>
+            <a class="btn btn-primary btn-lg" href="{{route('client.login')}}" role="button">Clients Login/Register</a>
         </p>
     </div>
 </div>

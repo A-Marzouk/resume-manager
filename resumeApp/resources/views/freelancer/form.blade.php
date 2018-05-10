@@ -481,5 +481,28 @@
         $('#customFile7').on('click',function () {
             $('#works7').attr('type','file');
         });
+
+        var toValuePrev;
+        $("[id*=To]").on('focus',function(){
+            toValuePrev   = parseInt(this.value);
+        }).on('change',function () {
+            var toValue   = parseInt(this.value);
+            var changeInTo   = toValue - toValuePrev ;
+            var totalHours     = parseInt($('#totalHours').html()) + changeInTo;
+            $('#totalHours').html(totalHours);
+        });
+
+        var fromValuePrev;
+        $("[id*=From]").on('focus',function(){
+            fromValuePrev   = parseInt(this.value);
+        }).on('change',function () {
+            var fromValue    = parseInt(this.value);
+            var changeInFrom = fromValue - fromValuePrev ;
+            var totalHours     = parseInt($('#totalHours').html()) - changeInFrom;
+            $('#totalHours').html(totalHours);
+        });
+
+
+
     });
 </script>

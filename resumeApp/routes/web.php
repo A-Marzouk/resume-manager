@@ -12,6 +12,10 @@
 */
 
 
+use Illuminate\Support\Facades\Auth;
+
+Auth::routes();
+
 Route::prefix('client')->group(function (){
     Route::get('/login','Auth\ClientLoginController@showLoginForm')->name('client.login');
     Route::get('/logout','Auth\ClientLoginController@logout')->name('client.logout');
@@ -32,6 +36,5 @@ Route::prefix('freelancer')->group(function (){
 });
 
 // public routes :
-
 Route::get('/','HomeController@welcomePage')->name('welcome');
 Route::get('/{username}','HomeController@ResumePage');

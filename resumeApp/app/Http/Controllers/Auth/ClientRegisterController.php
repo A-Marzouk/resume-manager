@@ -28,7 +28,9 @@ class ClientRegisterController extends Controller
         // register a client
         $client = $this->create($request->all());
         // log the client in :
-        Auth::guard('client')->login(['email'=>$request->email,'password'=>$request->password]);
+        Auth::guard('client')->login($client);
+
+        return redirect(route('client.dashboard'));
     }
 
     protected function validator(array $data)
@@ -42,7 +44,7 @@ class ClientRegisterController extends Controller
 
     protected function create(array $data)
     {
-        Client::create([
+        return Client::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

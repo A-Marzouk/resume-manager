@@ -41,7 +41,7 @@ class ClientRegisterController extends Controller
             'name' => 'required|string|max:255',
             'agency' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:clients',
-            'emailDept' => 'required|string|email|max:255|unique',
+            'emailDept' => 'required|string|email|max:255|unique:clients',
             'phone' => 'required|min:11|numeric',
             'timeZone' => 'required',
             'password' => 'required|string|min:6|confirmed',

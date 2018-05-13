@@ -70,5 +70,6 @@
             @yield('content')
         </main>
     </div>
+    <script src="resumeApp/resources/views/customTheme/js/main.js"></script>
 </body>
 </html>

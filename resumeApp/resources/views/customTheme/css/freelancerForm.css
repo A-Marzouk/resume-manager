@@ -1,0 +1,10 @@
+[id*="tickMark"]{
+    color: white;
+    background: green;
+    font-size: small;
+    font-weight: bolder;
+    border-radius: 5px;
+    padding: 2px 4px 1px 4px;
+    margin-left: 10px;
+    text-align: center;
+}

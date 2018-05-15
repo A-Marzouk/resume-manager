@@ -86,9 +86,15 @@
                                         'Graphic Designer',' Web Designer','Game Designer','Digital Artist'];
                                 ?>
                                 <select class="custom-select" id="profession" name="profession" required>
-                                    <option value="" selected disabled>Select profession</option>
-                                    <option value="Developer">Developer</option>
-                                    <option value="Designer">Designer</option>
+                                    <option value="Developer" selected disabled>-- Developer --</option>
+                                    <? foreach($developer as $jobTitle):?>
+                                     <option value="{{$jobTitle}}">{{$jobTitle}}</option>
+                                    <? endforeach;?>
+                                    <option value="" disabled></option>
+                                    <option value="Designer" disabled>-- Designer --</option>
+                                    <? foreach($designer as $jobTitle):?>
+                                    <option value="{{$jobTitle}}">{{$jobTitle}}</option>
+                                    <? endforeach;?>
                                 </select>
                             </div>
                         </div>

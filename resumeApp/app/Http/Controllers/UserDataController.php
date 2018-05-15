@@ -17,10 +17,6 @@ class UserDataController extends Controller
         if ($userData){
             // update
             $data = $request->all();
-            $messages = [
-                'terms.required' => 'You should agree with the terms and conditions'
-            ];
-            $this->validate($request,['terms'=>'required'], $messages);
 
             $works = $userData->works ;
             foreach ($data as $key => $value){

@@ -5,9 +5,25 @@
     $currFreelancer = auth()->user();
 ?>
 @section('content')
+    <div class="row m-auto infoBar">
+        <div class="col-md-2">
+            Username : <b>{{$username}}</b>
+        </div>
+        <div class="col-md-2">
+            Profession : <b>{{$profession}}</b>
+        </div>
+        <div class="col-md-2  offset-md-6">
+            <a target="_blank" href="/{{$username}}">Link to resume </a>
+        </div>
+
+    </div>
 <div class="container">
-        <h3>Here you can edit your information : </h3>
-        Username : <b>{{$username}}</b> <br>Profession : <b>{{$profession}}</b><br> <a target="_blank" href="/{{$username}}">Link to resume </a>
+    <div class="text-center">
+        <h3>On this page you can edit/update your CV/Resume.</h3>
+        <h5 class="container text-left paddingBottomTop">
+            It is important to keep your available hours that you can work updated.<br/> Once your page here is completed & approved, our team will start to promote your Resume to companies seeking to hire.<br/> Once selected, you will then be asked for Skype interviews.
+        </h5>
+    </div>
         <hr>
     <!-- Success Messages  -->
     @if(session()->has('successMessage'))
@@ -28,15 +44,31 @@
             <label for="userName">Full name<span id="tickMarkname" class="d-none">&#10003</span></label>
             <input type="text" class="form-control" id="fullName" name="name" placeholder="Enter your name.." value="{{$name}}">
         </div> <!-- Full name -->
-
-        <div class="form-group col-md-8">
-            <label for="userName">Surname <span id="tickMarksurname" class="d-none"> &#10003</span></label>
-            <input type="text" class="form-control" name="surname" placeholder="Enter your surname.." value="<? if(!empty(old('surname')))echo old('surname'); else echo $surname; ?>">
-            <small class="form-text text-muted"></small>
-        </div> <!-- surname -->
         <div class="form-group col-md-8">
             <label for="birth_date">Job title <span id="tickMarkjobTitle" class="d-none">&#10003</span></label>
-            <input type="text" class="form-control" name="jobTitle" value="{{$jobTitle}}">
+            <?
+            $developer = [
+                'Full-Stack Developer', 'Front-End Developer', 'PHP Developer',
+                'Javascript Developer', '.NET Developer',
+                'iOS Developer', 'Android Developer', 'Swift Developer',
+                'Java Developer','Data Scientist','C C++ Developer' , 'Team Leader' ,
+                'Unity Developer' , 'Ruby Developer','Python Developer' , 'SQL Developer' ,'Wordpress Developer'
+            ];
+            $designer =['UI/UX Designer','UI Designer',' UX Designer',
+                'Illustrator','Motion Graphics','Art Director','Branding',
+                'Graphic Designer',' Web Designer','Game Designer','Digital Artist'];
+            ?>
+            <select class="custom-select" id="jobTitle" name="jobTitle" required>
+                <option value="" selected disabled>-- Developer --</option>
+                <? foreach($developer as $job):?>
+                <option value="{{$job}}" <?if($jobTitle == $job):?>selected<?endif;?> >{{$job}}</option>
+                <? endforeach;?>
+                <option value="" disabled></option>
+                <option value="" disabled>-- Designer --</option>
+                <? foreach($designer as $job):?>
+                <option value="{{$job}}"<?if($jobTitle == $job):?>selected<?endif;?>>{{$job}}</option>
+                <? endforeach;?>
+            </select>
         </div> <!-- job title -->
         <div class="form-group col-md-8">
             <label for="intro">Intro <span id="tickMarkintro" class="d-none">&#10003</span></label>
@@ -44,14 +76,105 @@
             <small>30-50 Words</small>
         </div> <!-- intro -->
         <div class="form-group col-md-8">
-            <label for="birth_date">Date of birth <span id="tickMarkbirth_date" class="d-none">&#10003</span></label> <!-- TODO: edit date format to April 22, 1994 on tempelate -->
-            <input type="date" class="form-control" name="birth_date" value="{{$birth_date}}">
-        </div> <!-- birth date -->
+            <? $workingHours = ['10 Hours per Week','20 Hours per Week','30 Hours per Week','40 Hours per week'] ;?>
+            <label style="border-bottom:1px lightgray solid ; padding: 2px;">Current available hours <span id="tickMarkavailableHours" class="d-none">&#10003</span></label>
+                @foreach($workingHours as $option)
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="availableHours[]" value="{{$option}}"
+                               <? if(in_array($option,$availableHoursCheckBox)): ?> checked <?endif;?> >
+                        {{$option}}
+                    </label>
+                </div>
+                @endforeach
+        </div>  <!-- Hours availabel -->
         <div class="form-group col-md-8">
-            <label for="birth_date">Personal email <span id="tickMarkemail" class="d-none">&#10003</span></label>
+            <label for="audio_intro">Expected Salary in (US Dollars ) USD per hour <span id="tickMarksalary" class="d-none">&#10003</span></label><br/>
+            <div>
+                <input type="text" style="padding: 4px 2px 8px 2px;" class="form-control d-inline-block col-md-2" id="salary" name="salary" value="{{$salary}}">
+                <select class="custom-select col-md-3" id="currency" name="currency">
+                    <option value="">Currency</option>
+                    <option value="CPeso" <?if($currency == 'CPeso'):?>selected<?endif;?>>Colombian Peso</option>
+                    <option value="UAH" <?if($currency == 'UAH'):?>selected<?endif;?>>Ukrainian Grivna</option>
+                    <option value="PPeso" <?if($currency == 'PPeso'):?>selected<?endif;?>>Philippine Peso</option>
+                    <option value="Lek" <?if($currency == 'Lek'):?>selected<?endif;?>>Albanian Lek</option>
+                    <option value="Euro" <?if($currency == 'Euro'):?>selected<?endif;?>>Euro</option>
+                </select>
+            </div>
+            @foreach($workingHours as $option)
+                <div class="form-check form-check-inline" style="padding-top:5px;">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="preferredTime" value="{{$option}}" <? if($option == $preferredTime):?>checked<?endif;?>>
+                        {{$option}}
+                    </label>
+                </div>
+            @endforeach
+        </div>  <!-- Salary  -->
+        <?$days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];?>
+        <div class="form-group col-md-8" >
+            <label style="border-bottom:1px lightgray solid ; padding: 2px;">Hours you are available everyday : </label>
+            <div class="row">
+                <div class="col-md-2">
+
+                </div> <div class="col-md-2 text-center">
+                    <b>From</b>
+                </div> <div class="col-md-2 text-center">
+                    <b>To</b>
+                </div>
+            </div>
+            <? $totalHours = 0 ;?>
+            <? foreach ($days as $day):?>
+            <?
+            $DBColumn = $day.'Hours';
+            $hours = $currFreelancer = auth()->user()->userData->{$DBColumn};
+            $hoursArr = explode(',',$hours);
+            $from = $hoursArr[0] ?? '';
+            $to   = $hoursArr[1] ?? '';
+            if(!empty($from) && !empty($to)){
+                $totalHours += $to-$from ;
+            }
+            ?>
+            <div class="row">
+                <div class="col-md-2" style="padding-top: 6px;">
+                    <b>{{$day}}</b>
+                </div>
+                <div class="input-group col-md-2" style="margin: 2px;">
+                    <select class="custom-select" id="{{$day}}From" name="{{$day}}From">
+                        <option  selected disabled="">From</option>
+                        <? for($i=0;$i<24;$i++):?>
+                        <option value="{{$i}}" <? if($i == $from):?>selected<?endif;?> ><?if($i<10):?>0<?endif;?>{{$i}}:00</option>
+                        <? endfor;?>
+                    </select>
+                </div>
+                <div class="input-group col-md-2" style="margin: 2px;">
+                    <select class="custom-select" id="{{$day}}To" name="{{$day}}To">
+                        <option selected disabled>To</option>
+                        <? for($i=0;$i<24;$i++):?>
+                        <option value="{{$i}}" <? if($i == $to):?>selected<?endif;?>><?if($i<10):?>0<?endif;?>{{$i}}:00</option>
+                        <? endfor;?>
+                    </select>
+                </div>
+            </div>
+            <? endforeach;?>
+            <div style="padding-top: 10px;" class="col-md-6">
+                <b style="border-radius: 5px; border: gray 2px solid; padding: 8px;">Total working hours of a week : <span id="totalHours" style="font-size: large;">{{$totalHours}}</span> Hours</b>
+            </div>
+        </div> <!-- Hours per week Dropdowns --><br/>
+
+        <div class="form-group col-md-8">
+            <div class="">
+                If you are currently employed / have ongoing projects and will be available for work in the future please select a date in the future that you will be free , if you are currently available please select todays date.
+            </div>
+            <label for="birth_date"><span id="tickMarkbirth_date" class="d-none">&#10003</span></label>
+            <input type="date" class="form-control" name="birth_date" value="{{$birth_date}}">
+        </div>
+
+        <div class="form-group col-md-8">
+            <label for="birth_date">Primary contact Email<span id="tickMarkemail" class="d-none">&#10003</span></label>
             <input type="email" class="form-control" name="email" value="{{$email}}">
             <small>Gmail is preferred</small>
         </div> <!-- email -->
+        {{-- Developer --}}
         <div class="form-group col-md-8">
             <label for="birth_date">Github link <span id="tickMarkgithubLink" class="d-none">&#10003</span></label>
             <input type="text" class="form-control" name="githubLink" value="{{$github}}">
@@ -60,6 +183,29 @@
             <label for="birth_date">Stack overflow Link <span id="tickMarkstackoverflowLink" class="d-none">&#10003</span></label>
             <input type="text" class="form-control" name="stackoverflowLink" value="{{$stackoverflow}}">
         </div> <!-- stack link -->
+        <div class="form-group col-md-8">
+            <label for="birth_date"> Personal Website Link <span id="tickMarkpersonalSite" class="d-none">&#10003</span></label>
+            <input type="text" class="form-control" name="personalSite" value="{{$personalSite}}">
+        </div> <!-- site link -->
+
+        {{-- Designer --}}
+        <div class="form-group col-md-8">
+            <label for="birth_date"> Behance Link <span id="tickMarkbehanceLink" class="d-none">&#10003</span></label>
+            <input type="text" class="form-control" name="behanceLink" value="{{$behanceLink}}">
+        </div> <!-- Behance Link -->
+        <div class="form-group col-md-8">
+            <label for="birth_date"> Instagram Link <span id="tickMarkinstagramLink" class="d-none">&#10003</span></label>
+            <input type="text" class="form-control" name="instagramLink" value="{{$instagramLink}}">
+        </div> <!-- Instagram Link -->
+        <div class="form-group col-md-8">
+            <label for="birth_date"> Dribble Link <span id="tickMarkdribbleLink" class="d-none">&#10003</span></label>
+            <input type="text" class="form-control" name="dribbleLink" value="{{$dribbleLink}}">
+        </div> <!-- Dribble link -->
+        <div class="form-group col-md-8">
+            <label for="birth_date">City where you live & work<span id="tickMarkcity" class="d-none">&#10003</span></label>
+            <input type="text" class="form-control" name="city" value="{{$city}}">
+        </div> <!-- city -->
+
         <div class="form-group col-md-8">
             <div class="">
                 <label style="border-bottom:1px lightgray solid ; padding: 2px;">Photo of yourself <span id="tickMarkphoto" class="d-none">&#10003</span></label>
@@ -77,24 +223,10 @@
                 <img id="photoPreview" src="{{$src}}" width="250" height="auto">
             </div>
         </div> <!-- profile photo -->
+
+
         <div class="form-group col-md-8">
-            <label for="birth_date">City <span id="tickMarkcity" class="d-none">&#10003</span></label>
-            <input type="text" class="form-control" name="city" value="{{$city}}">
-        </div> <!-- city -->
-        <div class="form-group col-md-8">
-            <label for="">Nationality <span id="tickMarknationality" class="d-none">&#10003</span></label>
-            <input type="text" class="form-control" name="nationality" value="{{$nationality}}">
-        </div> <!-- nationality -->
-        <div class="form-group col-md-8">
-            <label for="workForceAgent">123 WORKFORCE AGENTS EMAIL <span id="tickMarkworkForceAgent" class="d-none">&#10003</span></label>
-            <select class="custom-select" id="workForceAgent" name="workForceAgent">
-                <option selected value="">Not selected</option>
-                <option value="riz@123workforce.com" <?if($workForceAgent == 'riz@123workforce.com'):?> selected<?endif;?> >riz@123workforce.com</option>
-                <option value="conor@123workforce.com" <?if($workForceAgent == 'conor@123workforce.com'):?>selected <?endif;?>>conor@123workforce.com</option>
-            </select>
-        </div> <!-- agents mail -->
-        <div class="form-group col-md-8">
-            <label for="birth_date">Languages you fluently speak <span id="tickMarklanguages" class="d-none">&#10003</span></label>
+            <label for="birth_date">Languages you speak at a high level<span id="tickMarklanguages" class="d-none">&#10003</span></label>
             <input type="text" class="form-control" id="languages" name="languages" value="{{$languages}}">
             <small>Separated by commas</small>
         </div> <!-- Languages -->
@@ -104,36 +236,37 @@
             <small>20-50 Words</small>
         </div> <!-- c.objective -->
         <div class="form-group col-md-8">
-            <label for="design_styles">Professional Skills and Design style <span id="tickMarkdesign_styles" class="d-none">&#10003</span></label>
-            <textarea class="form-control" rows="5" id="design_skills" name="design_styles">{{$design_styles}}</textarea>
-            <small>50-200 Words</small>
-        </div> <!-- design style -->
-        <div class="form-group col-md-8">
-            <label for="googleCalendar">Google calendar src <span id="tickMarkgoogleCalendar" class="d-none">&#10003</span></label>
-            <textarea class="form-control" rows="4" id="googleCalendar" name="googleCalendar">{{$googleCalendar}}</textarea>
-        </div> <!-- google calendar src -->
-        <div class="form-group col-md-8">
             <label for="education">Education <span id="tickMarkeducation" class="d-none">&#10003</span></label>
             <textarea class="form-control" rows="4" id="education" name="education">{{$education}}
             </textarea>
             <small>Please include all relevant design schools and/or design courses you have taken. Include the COURSE NAME & UNIVERSITY NAME</small>
         </div> <!-- Edu -->
+
+        <div class="form-group col-md-8">
+            <label for="design_styles">Professional Skills and Design style <span id="tickMarkdesign_styles" class="d-none">&#10003</span></label>
+            <textarea class="form-control" rows="5" id="design_skills" name="design_styles">{{$design_styles}}</textarea>
+            <small>50-200 Words</small>
+        </div> <!-- design style -->
+
         <div class="form-group col-md-8">
             <label for="">Work Experience <span id="tickMarkworkExperience" class="d-none">&#10003</span></label>
             <textarea class="form-control" rows="3" id="work_experience" name="workExperience">{{$workExperience}}
      </textarea>
         </div> <!-- work exp -->
+
         <div class="form-group col-md-8">
             <label for="education">Trainings attend <span id="tickMarktrainings" class="d-none">&#10003</span></label>
             <textarea class="form-control" rows="4" id="trainings" name="trainings">{{$trainings}}
             </textarea>
             <small>Please include all relevant design trainings attended in the past 3 years. Include the TRAINING NAME/TITLE, & the LOCATION where the training was held</small>
         </div> <!-- trainings -->
+
         <div class="form-group col-md-8">
             <label for="personal_interests">Professional interests <span id="tickMarkpersonal_interests" class="d-none">&#10003</span></label>
             <textarea class="form-control" rows="3" id="personal_interests" name="personal_interests">{{$personal_interests}}</textarea>
-            <small>Kindly enumerate your hobbies and/or things you’d personally like to do in the future.</small>
+            <small>Your hobbies and/or things you’d personally like to do in the future / How do you spend your free time. </small>
         </div> <!-- interests -->
+
         <div class="form-group col-md-8">
             <label for="professional_attributes">Professional attributes <span id="tickMarkprofessional_attributes" class="d-none">&#10003</span></label>
             <textarea class="form-control" rows="3" id="professional_attributes" name="professional_attributes">{{$professional_attributes}}</textarea>
@@ -170,10 +303,12 @@
                 </div>
             @endfor
         </div>      <!-- works -->
+
         <div class="form-group col-md-8">
             <label for="spec_design_skills">Specific design skills <span id="tickMarkdesign_skills" class="d-none">&#10003</span></label>
             <textarea class="form-control" rows="3" id="spec_design_skills" name="design_skills">{{$design_skills}}</textarea>
         </div> <!-- design skills -->
+
         <div class="form-group col-md-8">
             <label style="border-bottom:1px lightgray solid ; padding: 2px;">Top 6 design skills that you are good at  <span id="tickMarkdesign_skills_checkbox" class="d-none">&#10003</span></label>
             <? $skills = [
@@ -191,6 +326,7 @@
                 @endforeach
             </div>
         </div> <!-- design skills checkbox -->
+
         <div class="form-group col-md-8">
             <label style="border-bottom:1px lightgray solid ; padding: 2px;">Please choose 6 primary skills</label>
             <?
@@ -209,6 +345,7 @@
                 @endforeach
             </div>
         </div> <!-- primary skills -->
+
         <div class="form-group col-md-12">
             <label style="border-bottom:1px lightgray solid ; padding: 2px;">Please choose 6 character skills</label>
             <?
@@ -265,106 +402,18 @@
                 @endforeach
             </div>
         </div> <!-- char skills -->
+
         <div class="form-group col-md-8">
             <label for="audio_intro">Audio introduction  <span id="tickMarkaudio" class="d-none">&#10003</span></label>
             <input type="text" class="form-control" id="audio_intro" name="audio"
                    value="https://drive.google.com/file/d/{{$audio}}/view">
             <small>Please paste above a link to your audio introduction of self. 2min to 3min is the ideal recording length. Kindly introduce yourself and answer these questions: Why did you become a designer?, Were you able to acquire a formal design education? What do you love most about your work?, What tools do you use for design?, What inspires you to do your work?</small>
         </div>  <!-- Audio -->
-        <div class="form-group col-md-8">
-            <? $workingHours = ['Hourly','20 Hours per Week','40 Hours per week'] ;?>
-            <label style="border-bottom:1px lightgray solid ; padding: 2px;">Hours you are available for work  <span id="tickMarkavailableHours" class="d-none">&#10003</span></label>
-            @foreach($workingHours as $option)
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="availableHours[]" value="{{$option}}"
-                               <? if(in_array($option,$availableHoursCheckBox)): ?> checked <?endif;?> >
-                        {{$option}}
-                    </label>
-                </div>
-            @endforeach
-        </div>  <!-- Hours availabel -->
-        <?$days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];?>
-        <div class="form-group col-md-8" >
-            <label style="border-bottom:1px lightgray solid ; padding: 2px;">Hours you are available everyday : </label>
-            <div class="row">
-                <div class="col-md-2">
 
-                </div> <div class="col-md-2 text-center">
-                    <b>From</b>
-                </div> <div class="col-md-2 text-center">
-                    <b>To</b>
-                </div>
-            </div>
-            <? $totalHours = 0 ;?>
-            <? foreach ($days as $day):?>
-                <?
-                $DBColumn = $day.'Hours';
-                $hours = $currFreelancer = auth()->user()->userData->{$DBColumn};
-                $hoursArr = explode(',',$hours);
-                $from = $hoursArr[0] ?? '';
-                $to   = $hoursArr[1] ?? '';
-                if(!empty($from) && !empty($to)){
-                    $totalHours += $to-$from ;
-                }
-                ?>
-                <div class="row">
-                <div class="col-md-2" style="padding-top: 6px;">
-                    <b>{{$day}}</b>
-                </div>
-                <div class="input-group col-md-2" style="margin: 2px;">
-                    <select class="custom-select" id="{{$day}}From" name="{{$day}}From">
-                        <option  selected disabled="">From</option>
-                        <? for($i=0;$i<24;$i++):?>
-                            <option value="{{$i}}" <? if($i == $from):?>selected<?endif;?> ><?if($i<10):?>0<?endif;?>{{$i}}:00</option>
-                        <? endfor;?>
-                    </select>
-                </div>
-                <div class="input-group col-md-2" style="margin: 2px;">
-                    <select class="custom-select" id="{{$day}}To" name="{{$day}}To">
-                        <option selected disabled>To</option>
-                        <? for($i=0;$i<24;$i++):?>
-                        <option value="{{$i}}" <? if($i == $to):?>selected<?endif;?>><?if($i<10):?>0<?endif;?>{{$i}}:00</option>
-                        <? endfor;?>
-                    </select>
-                </div>
-            </div>
-            <? endforeach;?>
-            <div style="padding-top: 10px;" class="col-md-6">
-                <b style="border-radius: 5px; border: gray 2px solid; padding: 8px;">Total working hours of a week : <span id="totalHours" style="font-size: large;">{{$totalHours}}</span> Hours</b>
-            </div>
-        </div> <!-- Hours per week Dropdowns -->
+
 
 <hr>
-        <div class="form-group col-md-8">
-            <label for="audio_intro">Your expected Salary / payment <span id="tickMarksalary" class="d-none">&#10003</span></label> <small>(please indicate pay in your local currency)</small><br/>
-            <div>
-                <input type="text" style="padding: 4px 2px 8px 2px;" class="form-control d-inline-block col-md-2" id="salary" name="salary" value="{{$salary}}">
-                <select class="custom-select col-md-3" id="currency" name="currency">
-                    <option value="">Currency</option>
-                    <option value="CPeso" <?if($currency == 'CPeso'):?>selected<?endif;?>>Colombian Peso</option>
-                    <option value="UAH" <?if($currency == 'UAH'):?>selected<?endif;?>>Ukrainian Grivna</option>
-                    <option value="PPeso" <?if($currency == 'PPeso'):?>selected<?endif;?>>Philippine Peso</option>
-                    <option value="Lek" <?if($currency == 'Lek'):?>selected<?endif;?>>Albanian Lek</option>
-                    <option value="Euro" <?if($currency == 'Euro'):?>selected<?endif;?>>Euro</option>
-                </select>
-            </div>
-            @foreach($workingHours as $option)
-                <div class="form-check form-check-inline" style="padding-top:5px;">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="preferredTime" value="{{$option}}" <? if($option == $preferredTime):?>checked<?endif;?>>
-                        {{$option}}
-                    </label>
-                </div>
-            @endforeach
-        </div>  <!-- Salary  -->
-        <hr>
-        <label class="form-check-label col-md-3">
-            <input class="form-check-input" type="checkbox" name="terms" value="agree"
-                   <? if($terms == 'agree'): ?> checked onclick="return false;"<?endif;?> >
-                  Agree with terms and conditions
-        </label>
-        <hr>
+
         <div class="form-group col-md-8">
             <button type="submit" class="btn btn-primary">Save Changes</button>
         </div>  <!-- Save -->

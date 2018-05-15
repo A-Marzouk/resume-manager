@@ -8,3 +8,32 @@
     margin-left: 10px;
     text-align: center;
 }
+.registerBody{
+    margin-top: 30px;
+}
+.registerHeading{
+    color: gray;
+    font-weight: bolder;
+    text-align: center;
+    margin-top:30% ;
+    padding-bottom: 10px;
+}
+
+.registerMainText{
+    color: black;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.applyBtn{
+    width: 100%;
+}
+
+.infoBar{
+    padding-bottom: 20px;
+}
+
+.paddingBottomTop{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}

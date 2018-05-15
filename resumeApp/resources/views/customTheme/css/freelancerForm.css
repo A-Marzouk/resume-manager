@@ -28,3 +28,12 @@
 .applyBtn{
     width: 100%;
 }
+
+.infoBar{
+    padding-bottom: 20px;
+}
+
+.paddingBottomTop{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}

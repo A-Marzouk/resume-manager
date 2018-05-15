@@ -21,6 +21,7 @@
         <div class="alert alert-danger">{{$error}}</div>
     </div>
     <? endforeach;?>
+
     <form method="post" action="{{route('freelancer.data.store')}}" enctype="multipart/form-data" class="container freelancerForm">
         {{csrf_field()}}
         <div class="form-group col-md-8">
@@ -356,7 +357,7 @@
                     </label>
                 </div>
             @endforeach
-        </div>  <!-- Slary  -->
+        </div>  <!-- Salary  -->
         <hr>
         <label class="form-check-label col-md-3">
             <input class="form-check-input" type="checkbox" name="terms" value="agree"

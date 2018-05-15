@@ -6,7 +6,10 @@
 ?>
 @section('content')
 <div class="container">
-        <h3>Here you can edit your information : </h3>
+        <h3>On this page you can edit/update your CV/Resume.</h3>
+        <h5 class="container">
+         It is important to keep your available hours that you can work updated.<br/> Once your page here is completed & approved, our team will start to promote your Resume to companies seeking to hire.<br/> Once selected, you will then be asked for Skype interviews.  </h5>
+
         Username : <b>{{$username}}</b> <br>Profession : <b>{{$profession}}</b><br> <a target="_blank" href="/{{$username}}">Link to resume </a>
         <hr>
     <!-- Success Messages  -->
@@ -28,12 +31,6 @@
             <label for="userName">Full name<span id="tickMarkname" class="d-none">&#10003</span></label>
             <input type="text" class="form-control" id="fullName" name="name" placeholder="Enter your name.." value="{{$name}}">
         </div> <!-- Full name -->
-
-        <div class="form-group col-md-8">
-            <label for="userName">Surname <span id="tickMarksurname" class="d-none"> &#10003</span></label>
-            <input type="text" class="form-control" name="surname" placeholder="Enter your surname.." value="<? if(!empty(old('surname')))echo old('surname'); else echo $surname; ?>">
-            <small class="form-text text-muted"></small>
-        </div> <!-- surname -->
         <div class="form-group col-md-8">
             <label for="birth_date">Job title <span id="tickMarkjobTitle" class="d-none">&#10003</span></label>
             <input type="text" class="form-control" name="jobTitle" value="{{$jobTitle}}">
@@ -44,9 +41,91 @@
             <small>30-50 Words</small>
         </div> <!-- intro -->
         <div class="form-group col-md-8">
-            <label for="birth_date">Date of birth <span id="tickMarkbirth_date" class="d-none">&#10003</span></label> <!-- TODO: edit date format to April 22, 1994 on tempelate -->
-            <input type="date" class="form-control" name="birth_date" value="{{$birth_date}}">
-        </div> <!-- birth date -->
+            <? $workingHours = ['10 Hours per Week','20 Hours per Week','30 Hours per Week','40 Hours per week'] ;?>
+            <label style="border-bottom:1px lightgray solid ; padding: 2px;">Current available hours <span id="tickMarkavailableHours" class="d-none">&#10003</span></label>
+                @foreach($workingHours as $option)
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="availableHours[]" value="{{$option}}"
+                               <? if(in_array($option,$availableHoursCheckBox)): ?> checked <?endif;?> >
+                        {{$option}}
+                    </label>
+                </div>
+                @endforeach
+        </div>  <!-- Hours availabel -->
+        <div class="form-group col-md-8">
+            <label for="audio_intro">Expected Salary in (US Dollars ) USD per hour <span id="tickMarksalary" class="d-none">&#10003</span></label><br/>
+            <div>
+                <input type="text" style="padding: 4px 2px 8px 2px;" class="form-control d-inline-block col-md-2" id="salary" name="salary" value="{{$salary}}">
+                <select class="custom-select col-md-3" id="currency" name="currency">
+                    <option value="">Currency</option>
+                    <option value="CPeso" <?if($currency == 'CPeso'):?>selected<?endif;?>>Colombian Peso</option>
+                    <option value="UAH" <?if($currency == 'UAH'):?>selected<?endif;?>>Ukrainian Grivna</option>
+                    <option value="PPeso" <?if($currency == 'PPeso'):?>selected<?endif;?>>Philippine Peso</option>
+                    <option value="Lek" <?if($currency == 'Lek'):?>selected<?endif;?>>Albanian Lek</option>
+                    <option value="Euro" <?if($currency == 'Euro'):?>selected<?endif;?>>Euro</option>
+                </select>
+            </div>
+            @foreach($workingHours as $option)
+                <div class="form-check form-check-inline" style="padding-top:5px;">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="preferredTime" value="{{$option}}" <? if($option == $preferredTime):?>checked<?endif;?>>
+                        {{$option}}
+                    </label>
+                </div>
+            @endforeach
+        </div>  <!-- Salary  -->
+        <?$days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];?>
+        <div class="form-group col-md-8" >
+            <label style="border-bottom:1px lightgray solid ; padding: 2px;">Hours you are available everyday : </label>
+            <div class="row">
+                <div class="col-md-2">
+
+                </div> <div class="col-md-2 text-center">
+                    <b>From</b>
+                </div> <div class="col-md-2 text-center">
+                    <b>To</b>
+                </div>
+            </div>
+            <? $totalHours = 0 ;?>
+            <? foreach ($days as $day):?>
+            <?
+            $DBColumn = $day.'Hours';
+            $hours = $currFreelancer = auth()->user()->userData->{$DBColumn};
+            $hoursArr = explode(',',$hours);
+            $from = $hoursArr[0] ?? '';
+            $to   = $hoursArr[1] ?? '';
+            if(!empty($from) && !empty($to)){
+                $totalHours += $to-$from ;
+            }
+            ?>
+            <div class="row">
+                <div class="col-md-2" style="padding-top: 6px;">
+                    <b>{{$day}}</b>
+                </div>
+                <div class="input-group col-md-2" style="margin: 2px;">
+                    <select class="custom-select" id="{{$day}}From" name="{{$day}}From">
+                        <option  selected disabled="">From</option>
+                        <? for($i=0;$i<24;$i++):?>
+                        <option value="{{$i}}" <? if($i == $from):?>selected<?endif;?> ><?if($i<10):?>0<?endif;?>{{$i}}:00</option>
+                        <? endfor;?>
+                    </select>
+                </div>
+                <div class="input-group col-md-2" style="margin: 2px;">
+                    <select class="custom-select" id="{{$day}}To" name="{{$day}}To">
+                        <option selected disabled>To</option>
+                        <? for($i=0;$i<24;$i++):?>
+                        <option value="{{$i}}" <? if($i == $to):?>selected<?endif;?>><?if($i<10):?>0<?endif;?>{{$i}}:00</option>
+                        <? endfor;?>
+                    </select>
+                </div>
+            </div>
+            <? endforeach;?>
+            <div style="padding-top: 10px;" class="col-md-6">
+                <b style="border-radius: 5px; border: gray 2px solid; padding: 8px;">Total working hours of a week : <span id="totalHours" style="font-size: large;">{{$totalHours}}</span> Hours</b>
+            </div>
+        </div> <!-- Hours per week Dropdowns -->
+
         <div class="form-group col-md-8">
             <label for="birth_date">Personal email <span id="tickMarkemail" class="d-none">&#10003</span></label>
             <input type="email" class="form-control" name="email" value="{{$email}}">
@@ -271,93 +350,11 @@
                    value="https://drive.google.com/file/d/{{$audio}}/view">
             <small>Please paste above a link to your audio introduction of self. 2min to 3min is the ideal recording length. Kindly introduce yourself and answer these questions: Why did you become a designer?, Were you able to acquire a formal design education? What do you love most about your work?, What tools do you use for design?, What inspires you to do your work?</small>
         </div>  <!-- Audio -->
-        <div class="form-group col-md-8">
-            <? $workingHours = ['Hourly','20 Hours per Week','40 Hours per week'] ;?>
-            <label style="border-bottom:1px lightgray solid ; padding: 2px;">Hours you are available for work  <span id="tickMarkavailableHours" class="d-none">&#10003</span></label>
-            @foreach($workingHours as $option)
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="availableHours[]" value="{{$option}}"
-                               <? if(in_array($option,$availableHoursCheckBox)): ?> checked <?endif;?> >
-                        {{$option}}
-                    </label>
-                </div>
-            @endforeach
-        </div>  <!-- Hours availabel -->
-        <?$days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];?>
-        <div class="form-group col-md-8" >
-            <label style="border-bottom:1px lightgray solid ; padding: 2px;">Hours you are available everyday : </label>
-            <div class="row">
-                <div class="col-md-2">
 
-                </div> <div class="col-md-2 text-center">
-                    <b>From</b>
-                </div> <div class="col-md-2 text-center">
-                    <b>To</b>
-                </div>
-            </div>
-            <? $totalHours = 0 ;?>
-            <? foreach ($days as $day):?>
-                <?
-                $DBColumn = $day.'Hours';
-                $hours = $currFreelancer = auth()->user()->userData->{$DBColumn};
-                $hoursArr = explode(',',$hours);
-                $from = $hoursArr[0] ?? '';
-                $to   = $hoursArr[1] ?? '';
-                if(!empty($from) && !empty($to)){
-                    $totalHours += $to-$from ;
-                }
-                ?>
-                <div class="row">
-                <div class="col-md-2" style="padding-top: 6px;">
-                    <b>{{$day}}</b>
-                </div>
-                <div class="input-group col-md-2" style="margin: 2px;">
-                    <select class="custom-select" id="{{$day}}From" name="{{$day}}From">
-                        <option  selected disabled="">From</option>
-                        <? for($i=0;$i<24;$i++):?>
-                            <option value="{{$i}}" <? if($i == $from):?>selected<?endif;?> ><?if($i<10):?>0<?endif;?>{{$i}}:00</option>
-                        <? endfor;?>
-                    </select>
-                </div>
-                <div class="input-group col-md-2" style="margin: 2px;">
-                    <select class="custom-select" id="{{$day}}To" name="{{$day}}To">
-                        <option selected disabled>To</option>
-                        <? for($i=0;$i<24;$i++):?>
-                        <option value="{{$i}}" <? if($i == $to):?>selected<?endif;?>><?if($i<10):?>0<?endif;?>{{$i}}:00</option>
-                        <? endfor;?>
-                    </select>
-                </div>
-            </div>
-            <? endforeach;?>
-            <div style="padding-top: 10px;" class="col-md-6">
-                <b style="border-radius: 5px; border: gray 2px solid; padding: 8px;">Total working hours of a week : <span id="totalHours" style="font-size: large;">{{$totalHours}}</span> Hours</b>
-            </div>
-        </div> <!-- Hours per week Dropdowns -->
+
 
 <hr>
-        <div class="form-group col-md-8">
-            <label for="audio_intro">Your expected Salary / payment <span id="tickMarksalary" class="d-none">&#10003</span></label> <small>(please indicate pay in your local currency)</small><br/>
-            <div>
-                <input type="text" style="padding: 4px 2px 8px 2px;" class="form-control d-inline-block col-md-2" id="salary" name="salary" value="{{$salary}}">
-                <select class="custom-select col-md-3" id="currency" name="currency">
-                    <option value="">Currency</option>
-                    <option value="CPeso" <?if($currency == 'CPeso'):?>selected<?endif;?>>Colombian Peso</option>
-                    <option value="UAH" <?if($currency == 'UAH'):?>selected<?endif;?>>Ukrainian Grivna</option>
-                    <option value="PPeso" <?if($currency == 'PPeso'):?>selected<?endif;?>>Philippine Peso</option>
-                    <option value="Lek" <?if($currency == 'Lek'):?>selected<?endif;?>>Albanian Lek</option>
-                    <option value="Euro" <?if($currency == 'Euro'):?>selected<?endif;?>>Euro</option>
-                </select>
-            </div>
-            @foreach($workingHours as $option)
-                <div class="form-check form-check-inline" style="padding-top:5px;">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="preferredTime" value="{{$option}}" <? if($option == $preferredTime):?>checked<?endif;?>>
-                        {{$option}}
-                    </label>
-                </div>
-            @endforeach
-        </div>  <!-- Salary  -->
+
         <hr>
         <label class="form-check-label col-md-3">
             <input class="form-check-input" type="checkbox" name="terms" value="agree"

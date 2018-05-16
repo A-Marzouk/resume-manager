@@ -17,7 +17,6 @@ class UserDataController extends Controller
         if ($userData){
             // update
             $data = $request->all();
-
             $works = $userData->works ;
             foreach ($data as $key => $value){
                 if($key == '_token'){

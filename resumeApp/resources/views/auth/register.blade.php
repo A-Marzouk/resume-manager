@@ -90,7 +90,7 @@
 
                                     <option value="" >-- Select --</option>
                                     <option value="Developer" >Developer</option>
-                                    <option value="Designer" disabled>Designer</option>
+                                    <option value="Designer">Designer</option>
 
                                 </select>
                             </div>

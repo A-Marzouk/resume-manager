@@ -61,6 +61,7 @@ class FreelancersController extends Controller
             'behanceLink'=> $currFreelancer->userData->behanceLink ?? '' ,
             'instagramLink'=> $currFreelancer->userData->instagramLink ?? '' ,
             'dribbleLink'=> $currFreelancer->userData->dribbleLink ?? '' ,
+            'freeDate'=> $currFreelancer->userData->freeDate ?? '' ,
         ];
 
         return $data;

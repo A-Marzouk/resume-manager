@@ -34,6 +34,7 @@ class CreateUserDatasTable extends Migration
             $table->string('instagramLink')->nullable();
             $table->string('dribbleLink')->nullable();
             $table->string('stackoverflowLink')->nullable();
+            $table->string('freeDate')->nullable();
             $table->string('personalSite')->nullable();
             $table->text('googleCalendar')->nullable();
             $table->string('design_skills')->nullable();

@@ -58,7 +58,7 @@
                 'Illustrator','Motion Graphics','Art Director','Branding',
                 'Graphic Designer',' Web Designer','Game Designer','Digital Artist'];
             ?>
-            <select class="custom-select" id="jobTitle" name="jobTitle" required>
+            <select class="custom-select" id="jobTitle" name="jobTitle">
                 <? if($profession == 'Developer'):?>
                     <option value="" selected disabled>-- Developer --</option>
                     <? foreach($developer as $job):?>
@@ -80,14 +80,16 @@
         <div class="form-group col-md-8">
             <? $workingHours = ['10 Hours per Week','20 Hours per Week','30 Hours per Week','40 Hours per week'] ;?>
             <label style="border-bottom:1px lightgray solid ; padding: 2px;">Current available hours <span id="tickMarkavailableHours" class="d-none">&#10003</span></label>
+                {{$k=1}}
                 @foreach($workingHours as $option)
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" name="availableHours[]" value="{{$option}}"
+                        <input class="form-check-input" id="hours{{$k}}" type="checkbox" name="availableHours[]" value="{{$option}}"
                                <? if(in_array($option,$availableHoursCheckBox)): ?> checked <?endif;?> >
                         {{$option}}
                     </label>
                 </div>
+                    {{$k++}}
                 @endforeach
         </div>  <!-- Hours availabel -->
         <div class="form-group col-md-8">
@@ -96,14 +98,13 @@
                 <input type="text" style="padding: 4px 2px 8px 2px;" class="form-control d-inline-block col-md-2" id="salary" name="salary" value="{{$salary}}">
                 <input class="custom-select col-md-3" id="currency" name="currency" value="USD">
             </div>
-            @foreach($workingHours as $option)
-                <div class="form-check form-check-inline" style="padding-top:5px;">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="preferredTime" value="{{$option}}" <? if($option == $preferredTime):?>checked<?endif;?>>
-                        {{$option}}
-                    </label>
-                </div>
-            @endforeach
+            <? foreach($availableHoursCheckBox as $check):?>
+                <? $hours  = (int)filter_var($check, FILTER_SANITIZE_NUMBER_INT) ?? 1 ;
+                   $salary = (int) $salary ;  ?>
+                <? if($salary > 0):?>
+                    <p>At {{$check}} you will be paid {{$salary * $hours}} usd </p>
+                <? endif;?>
+            <? endforeach;?>
         </div>  <!-- Salary  -->
         <?$days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];?>
         <div class="form-group col-md-8" >
@@ -151,9 +152,11 @@
                 </div>
             </div>
             <? endforeach;?>
-            <div style="padding-top: 10px;" class="col-md-6">
-                <b style="border-radius: 5px; border: gray 2px solid; padding: 8px;">Total working hours of a week : <span id="totalHours" style="font-size: large;">{{$totalHours}}</span> Hours</b>
-            </div>
+            <? if($totalHours > 0):?>
+                <div style="padding-top: 10px;" class="col-md-6 col-sm-12 col-xs-12 input-group">
+                    <b style="border-radius: 5px; border: gray 2px solid; padding: 8px;">Total working hours of a week : <span id="totalHours" style="font-size: large;">{{$totalHours}}</span> Hours</b>
+                </div>
+            <? endif;?>
         </div> <!-- Hours per week Dropdowns --><br/>
 
         <div class="form-group col-md-8">
@@ -183,7 +186,7 @@
         <?else:?>
         {{-- Designer --}}
             <div class="form-group col-md-8">
-                <label for="birth_date"> Behance Link <span id="tickMarkbehanceLink" class="d-none">&#10003</span></label>
+                <label for="behanceLink"> Behance Link <span id="tickMarkbehanceLink" class="d-none">&#10003</span></label>
                 <input type="text" class="form-control" name="behanceLink" value="{{$behanceLink}}">
             </div> <!-- Behance Link -->
             <div class="form-group col-md-8">
@@ -236,11 +239,11 @@
             <label for="education">Education <span id="tickMarkeducation" class="d-none">&#10003</span></label>
             <textarea class="form-control" rows="4" id="education" name="education">{{$education}}
             </textarea>
-            <small>Please include all relevant design schools and/or design courses you have taken. Include the COURSE NAME & UNIVERSITY NAME</small>
+            <small>Please include all relevant   <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> schools and/or  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> courses you have taken. Include the COURSE NAME & UNIVERSITY NAME</small>
         </div> <!-- Edu -->
 
         <div class="form-group col-md-8">
-            <label for="design_styles">Professional Skills and Design style <span id="tickMarkdesign_styles" class="d-none">&#10003</span></label>
+            <label for="design_styles">Professional Skills and <? if($profession == 'Developer'):?>Development<?else:?>Design<?endif;?> style <span id="tickMarkdesign_styles" class="d-none">&#10003</span></label>
             <textarea class="form-control" rows="5" id="design_skills" name="design_styles">{{$design_styles}}</textarea>
             <small>50-200 Words</small>
         </div> <!-- design style -->
@@ -255,7 +258,7 @@
             <label for="education">Trainings attend <span id="tickMarktrainings" class="d-none">&#10003</span></label>
             <textarea class="form-control" rows="4" id="trainings" name="trainings">{{$trainings}}
             </textarea>
-            <small>Please include all relevant design trainings attended in the past 3 years. Include the TRAINING NAME/TITLE, & the LOCATION where the training was held</small>
+            <small>Please include all relevant  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> trainings attended in the past 3 years. Include the TRAINING NAME/TITLE, & the LOCATION where the training was held</small>
         </div> <!-- trainings -->
 
         <div class="form-group col-md-8">
@@ -265,13 +268,13 @@
         </div> <!-- interests -->
 
         <div class="form-group col-md-8">
-            <label for="professional_attributes">Professional attributes <span id="tickMarkprofessional_attributes" class="d-none">&#10003</span></label>
+            <label for="professional_attributes">Personal attributes <span id="tickMarkprofessional_attributes" class="d-none">&#10003</span></label>
             <textarea class="form-control" rows="3" id="professional_attributes" name="professional_attributes">{{$professional_attributes}}</textarea>
             <small>Kindly describe yourself in the workplace. Are you a team player, detail oriented, organized, etc.?</small>
         </div> <!-- attributes -->
 
         <div class="form-group row">
-            <label class="col-md-12" style="border-bottom:1px lightgray solid ; padding: 5px;">Please Upload 8 examples of your design work (800 wide x 600 high)</label>
+            <label class="col-md-12" style="border-bottom:1px lightgray solid ; padding: 5px;">Please Upload 8 examples of your  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> work (800 wide x 600 high)</label>
             @for($i=0;$i<8;$i++)
                 <?
                 $deleteBtn = false;
@@ -369,13 +372,23 @@
             ];
             ?>
             <div class="form-check">
-                @foreach($designSkills as $skill)
-                    <label class="form-check-label col-md-4">
-                        <input class="form-check-input" type="checkbox" name="primarySkills[]" value="{{$skill}}"
-                               <? if(in_array($skill,$PrimarySkillsCheckBox)): ?> checked <?endif;?>>
-                        {{$skill}}
-                    </label>
-                @endforeach
+                <? if($profession == 'Designer'):?>
+                    @foreach($designSkills as $skill)
+                        <label class="form-check-label col-md-4">
+                            <input class="form-check-input" type="checkbox" name="primarySkills[]" value="{{$skill}}"
+                                   <? if(in_array($skill,$PrimarySkillsCheckBox)): ?> checked <?endif;?>>
+                            {{$skill}}
+                        </label>
+                    @endforeach
+                <? else: ?>
+                    @foreach($developSkills as $skill)
+                        <label class="form-check-label col-md-4">
+                            <input class="form-check-input" type="checkbox" name="primarySkills[]" value="{{$skill}}"
+                                   <? if(in_array($skill,$PrimarySkillsCheckBox)): ?> checked <?endif;?>>
+                            {{$skill}}
+                        </label>
+                    @endforeach
+                <? endif;?>
             </div>
         </div> <!-- primary skills -->
 
@@ -440,7 +453,7 @@
             <label for="audio_intro">Audio introduction  <span id="tickMarkaudio" class="d-none">&#10003</span></label>
             <input type="text" class="form-control" id="audio_intro" name="audio"
                    value="https://drive.google.com/file/d/{{$audio}}/view">
-            <small>Please paste above a link to your audio introduction of self. 2min to 3min is the ideal recording length. Kindly introduce yourself and answer these questions: Why did you become a designer?, Were you able to acquire a formal design education? What do you love most about your work?, What tools do you use for design?, What inspires you to do your work?</small>
+            <small>Please paste above a link to your audio introduction of self. 2min to 3min is the ideal recording length. Kindly introduce yourself and answer these questions: Why did you become a  <? if($profession == 'Developer'):?>developer<?else:?>designer<?endif;?>?, Were you able to acquire a formal  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> education? What do you love most about your work?, What tools do you use for  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?>?, What inspires you to do your work?</small>
         </div>  <!-- Audio -->
 
 

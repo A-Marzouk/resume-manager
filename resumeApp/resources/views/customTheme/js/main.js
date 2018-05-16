@@ -130,14 +130,19 @@ $(document).ready(function () {
 
 
     $(':input').blur(function () {
-        if( $(this).val() ) {
-            $('#tickMark'+this.name).removeClass('d-none');
-        }else{
-            $('#tickMark'+this.name).addClass('d-none');
+        if(this.type != 'checkbox'){
+            if( $(this).val() ) {
+                $('#tickMark'+this.name).removeClass('d-none');
+            }else{
+                $('#tickMark'+this.name).addClass('d-none');
+            }
         }
     });
 
     $(':input').blur();
 
+
+
+    $('#hours1').on('change')
 
 });

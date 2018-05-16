@@ -89,7 +89,7 @@
                         {{$option}}
                     </label>
                 </div>
-                    {{$k++}}
+                <? $k++; ?>
                 @endforeach
         </div>  <!-- Hours availabel -->
         <div class="form-group col-md-8">
@@ -98,12 +98,12 @@
                 <input type="text" style="padding: 4px 2px 8px 2px;" class="form-control d-inline-block col-md-2" id="salary" name="salary" value="{{$salary}}">
                 <input class="custom-select col-md-3" id="currency" name="currency" value="USD">
             </div>
+            <? $i=1 ; ?>
             <? foreach($availableHoursCheckBox as $check):?>
                 <? $hours  = (int)filter_var($check, FILTER_SANITIZE_NUMBER_INT) ?? 1 ;
                    $salary = (int) $salary ;  ?>
-                <? if($salary > 0):?>
-                    <p>At {{$check}} you will be paid {{$salary * $hours}} usd </p>
-                <? endif;?>
+                   <p id="paidSalary{{$i}}" class="d-none">At {{$check}} you will be paid {{$salary * $hours}} usd </p>
+                <? $i++; ?>
             <? endforeach;?>
         </div>  <!-- Salary  -->
         <?$days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];?>

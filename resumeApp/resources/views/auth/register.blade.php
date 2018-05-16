@@ -86,28 +86,12 @@
                         <div class="form-group row">
                             <label for="profession" class="col-md-3 col-form-label text-md-right">Profession</label>
                             <div class="col-md-8">
-                                <?
-                                $developer = [
-                                    'Full-Stack Developer', 'Front-End Developer', 'PHP Developer',
-                                    'Javascript Developer', '.NET Developer',
-                                    'iOS Developer', 'Android Developer', 'Swift Developer',
-                                    'Java Developer','Data Scientist','C C++ Developer' , 'Team Leader' ,
-                                    'Unity Developer' , 'Ruby Developer','Python Developer' , 'SQL Developer' ,'Wordpress Developer'
-                                ];
-                                $designer =['UI/UX Designer','UI Designer',' UX Designer',
-                                    'Illustrator','Motion Graphics','Art Director','Branding',
-                                    'Graphic Designer',' Web Designer','Game Designer','Digital Artist'];
-                                ?>
                                 <select class="custom-select" id="profession" name="profession" required>
-                                    <option value="Developer" selected disabled>-- Developer --</option>
-                                    <? foreach($developer as $jobTitle):?>
-                                    <option value="{{$jobTitle}}">{{$jobTitle}}</option>
-                                    <? endforeach;?>
-                                    <option value="" disabled></option>
-                                    <option value="Designer" disabled>-- Designer --</option>
-                                    <? foreach($designer as $jobTitle):?>
-                                    <option value="{{$jobTitle}}">{{$jobTitle}}</option>
-                                    <? endforeach;?>
+
+                                    <option value="" >-- Select --</option>
+                                    <option value="Developer" >Developer</option>
+                                    <option value="Designer" disabled>Designer</option>
+
                                 </select>
                             </div>
                         </div>

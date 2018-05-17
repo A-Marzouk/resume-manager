@@ -35,6 +35,10 @@ Route::prefix('freelancer')->group(function (){
     Route::post('/register/submit','Auth\RegisterController@register')->name('freelancer.register.submit');
 });
 
+// admin area :
+Route::get('/admin','AdminsController@welcomePage')->name('admin.dashboard');
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');
 Route::get('/{username}','HomeController@ResumePage');
+
+

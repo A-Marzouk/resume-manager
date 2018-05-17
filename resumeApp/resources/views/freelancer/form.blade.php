@@ -95,16 +95,16 @@
         <div class="form-group col-md-8">
             <label for="audio_intro">Expected Salary in (US Dollars ) USD per hour <span id="tickMarksalary" class="d-none">&#10003</span></label><br/>
             <div>
-                <input type="text" style="padding: 4px 2px 8px 2px;" class="form-control d-inline-block col-md-2" id="salary" name="salary" value="{{$salary}}">
+                <input type="text" style="padding: 4px 2px 8px 2px;" class="form-control d-inline-block col-md-2" id="salary" name="salary" value="<? if(!empty($salary)){echo $salary;}else{echo 0;}?>">
                 <input class="custom-select col-md-3" id="currency" name="currency" value="USD">
             </div>
-            <? $i=1 ; ?>
             <? foreach($availableHoursCheckBox as $check):?>
                 <? $hours  = (int)filter_var($check, FILTER_SANITIZE_NUMBER_INT) ?? 1 ;
                    $salary = (int) $salary ;  ?>
-                   <p id="paidSalary{{$i}}" class="d-none">At {{$check}} you will be paid {{$salary * $hours}} usd </p>
-                <? $i++; ?>
             <? endforeach;?>
+            <? for($i=1;$i<=4;$i++ ):?>
+                <p id="paidSalary{{$i}}" class="d-none">At <span id="paidDays{{$i}}"></span> you will be paid <span id="totalPaid{{$i}}">{{$salary * $hours}}</span> usd </p>
+            <? endfor;?>
         </div>  <!-- Salary  -->
         <?$days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];?>
         <div class="form-group col-md-8" >

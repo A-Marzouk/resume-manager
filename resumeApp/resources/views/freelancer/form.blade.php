@@ -5,6 +5,11 @@
     $currFreelancer = auth()->user();
 ?>
 @section('content')
+    <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
+       <div class="container alert alert-success">
+           You are viewing as Admin
+       </div>
+    <? endif;?>
     <div class="row m-auto infoBar">
         <div class="col-md-2">
             Username : <b>{{$username}}</b>

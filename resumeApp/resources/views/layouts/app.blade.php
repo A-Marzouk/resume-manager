@@ -13,6 +13,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
@@ -33,8 +34,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
+                    <ul class="navbar-nav">
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -55,6 +55,9 @@
                                         document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
+                                    <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
+                                        <a href="/admin" class="dropdown-item">Admin area</a>
+                                    <? endif;?>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf

@@ -12,7 +12,9 @@ class UserData extends Model
         'careerObjective','education','workExperience','primarySkills','charSkills','availableHours','salary',
         'currency','preferredTime','surname','jobTitle','intro','githubLink','stackoverflowLink','googleCalendar','personalSite'
         ,'terms','MondayHours','TuesdayHours','WednesdayHours','ThursdayHours','FridayHours','SaturdayHours','SundayHours','behanceLink',
-        'instagramLink','dribbleLink','freeDate'
+        'instagramLink','dribbleLink','freeDate','workDesc1','workDesc2','workDesc3',
+        'workDesc4','workDesc5','workDesc6',
+        'workDesc7','workDesc0'
     ];
 
 }

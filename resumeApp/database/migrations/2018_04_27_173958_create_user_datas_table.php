@@ -60,6 +60,14 @@ class CreateUserDatasTable extends Migration
             $table->string('FridayHours')->nullable();
             $table->string('SaturdayHours')->nullable();
             $table->string('SundayHours')->nullable();
+            $table->text('workDesc1')->nullable();
+            $table->text('workDesc2')->nullable();
+            $table->text('workDesc3')->nullable();
+            $table->text('workDesc4')->nullable();
+            $table->text('workDesc5')->nullable();
+            $table->text('workDesc6')->nullable();
+            $table->text('workDesc7')->nullable();
+            $table->text('workDesc0')->nullable();
             $table->timestamps();
         });
     }

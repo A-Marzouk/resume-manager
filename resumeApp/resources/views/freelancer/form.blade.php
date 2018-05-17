@@ -308,6 +308,10 @@
                             <img src="{{$src}}" id="portfolioImg{{$i}}"  width="100%" height="auto" style="padding: 10px;">
                         </div>
                 </div>
+                <div class="form-group col-md-12">
+                    <label for="workDesc"> Personal Website Link <span id="tickMarkpersonalSite" class="d-none">&#10003</span></label>
+                    <input type="text" class="form-control" name="workDesc{{$i}}" value="{{$workDesc[$i]}}">
+                </div>
             @endfor
         </div>      <!-- works -->
 

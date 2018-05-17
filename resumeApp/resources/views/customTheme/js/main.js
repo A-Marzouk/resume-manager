@@ -201,10 +201,14 @@ $(document).ready(function () {
     $(function () {
         $('.freelancerForm :input').on('change', function (e) {
             e.preventDefault();
+            var form = document.getElementsByClassName('freelancerForm')[0];
             $.ajax({
                 type: 'post',
                 url: '/freelancer/store',
-                data: $('.freelancerForm').serialize(),
+                data: new FormData(form),
+                contentType: false,
+                cache: false,
+                processData:false,
                 success: function () {
                 }
             });

@@ -89,8 +89,12 @@
                                 <select class="custom-select" id="profession" name="profession" required>
 
                                     <option value="" >-- Select --</option>
-                                    <option value="Developer" >Developer</option>
-                                    <option value="Designer">Designer</option>
+                                    <option value="Developer" >Developer
+                                        (Front-end / Back-end / Full-Stack / Javascript / Wordpress / PHP )
+                                    </option>
+                                    <option value="Designer">Designer (UX / UI / Illustrator / Art Director )
+
+                                    </option>
 
                                 </select>
                             </div>

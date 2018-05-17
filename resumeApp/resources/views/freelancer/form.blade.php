@@ -17,9 +17,11 @@
         <div class="col-md-2">
             Profession : <b>{{$profession}}</b>
         </div>
-        <div class="col-md-2  offset-md-6">
-            <a target="_blank" href="/{{$username}}">Link to resume </a>
-        </div>
+        <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
+            <div class="col-md-2  offset-md-6">
+                <a target="_blank" href="/{{$username}}">Link to resume </a>
+            </div>
+        <? endif; ?>
 
     </div>
 <div class="container">
@@ -466,7 +468,7 @@
 <hr>
 
         <div class="form-group col-md-8">
-            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <button type="submit" class="btn btn-primary">Apply Now</button>
         </div>  <!-- Save -->
     </form>
 </div>

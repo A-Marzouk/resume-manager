@@ -197,4 +197,18 @@ $(document).ready(function () {
 
     salaryPerH.change();
 
+    // save to data base when change !
+    $(function () {
+        $('.freelancerForm :input').on('change', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'post',
+                url: '/freelancer/store',
+                data: $('.freelancerForm').serialize(),
+                success: function () {
+                }
+            });
+        });
+    });
+
 });

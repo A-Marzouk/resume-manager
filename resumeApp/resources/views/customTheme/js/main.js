@@ -143,6 +143,25 @@ $(document).ready(function () {
 
 
 
-    $('#hours1').on('change')
+    $('#hours1').on('change',function(){
+        var timeString = $(this).val();
+        var times = timeString.match(/\d+/)[0];
+        alert(parseInt(times));
+    });
+    $('#hours2').on('change',function(){
+        var timeString = $(this).val();
+        var times = timeString.match(/\d+/)[0];
+        alert(parseInt(times));
+    });
+    $('#hours3').on('change',function(){
+        var timeString = $(this).val();
+        var times = timeString.match(/\d+/)[0];
+        alert(parseInt(times));
+    });
+    $('#hours4').on('change',function(){
+        var timeString = $(this).val();
+        var times = timeString.match(/\d+/)[0];
+        alert(parseInt(times));
+    });
 
 });

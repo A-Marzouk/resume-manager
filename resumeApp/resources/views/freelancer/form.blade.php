@@ -108,7 +108,7 @@
         </div>  <!-- Salary  -->
         <?$days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];?>
         <div class="form-group col-md-8" >
-            <label style="border-bottom:1px lightgray solid ; padding: 2px;">Hours you are available everyday : </label>
+            <label style="border-bottom:1px lightgray solid ; padding: 2px;">hours you are available everydayPlease show the specific times for each day that you are available to work (in your local timezone) : </label>
             <div class="row">
                 <div class="col-md-2">
 

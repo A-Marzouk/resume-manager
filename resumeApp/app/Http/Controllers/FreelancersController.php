@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FreelancersController extends Controller
 {
@@ -15,6 +17,11 @@ class FreelancersController extends Controller
     }
 
     public function form(){
+        if(Auth::user()->admin == 1){
+            Auth::user()->token = str_random(16);
+            Auth::user()->save();
+            return redirect(route('admin.dashboard'));
+        }
         $data = $this->getFreelacerData();
         return view('freelancer.form',compact('data'));
     }

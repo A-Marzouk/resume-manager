@@ -18,8 +18,9 @@ class IsAdmin
     {
         if (Auth::user() &&  Auth::user()->admin == 1) {
             return $next($request);
+        }elseif(session()->get('admin') && session()->get('admin') == 'AdminWasHere'){
+            return $next($request);
         }
-
-        return redirect('/');
+        return redirect(route('freelancer.login'));
     }
 }

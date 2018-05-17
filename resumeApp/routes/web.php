@@ -37,6 +37,7 @@ Route::prefix('freelancer')->group(function (){
 
 // admin area :
 Route::get('/admin','AdminsController@welcomePage')->name('admin.dashboard');
+Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');
 Route::get('/{username}','HomeController@ResumePage');

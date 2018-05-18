@@ -31,6 +31,9 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/logout','Auth\LoginController@logout')->name('freelancer.logout');
     Route::get('/','FreelancersController@form')->name('freelancer.dashboard');
     Route::post('/store','UserDataController@store')->name('freelancer.data.store');
+    Route::get('/store',function(){
+        return redirect()->back();
+    });
     Route::post('/login/submit','Auth\LoginController@login')->name('freelancer.login.submit');
     Route::get('/register','Auth\RegisterController@showRegistrationForm')->name('freelancer.register');
     Route::post('/register/submit','Auth\RegisterController@register')->name('freelancer.register.submit');

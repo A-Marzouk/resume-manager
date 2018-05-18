@@ -204,7 +204,7 @@ $(document).ready(function () {
             var form = document.getElementsByClassName('freelancerForm')[0];
             $.ajax({
                 type: 'post',
-                url: '/freelancer/store',
+                url: 'freelancer/store',
                 data: new FormData(form),
                 contentType: false,
                 cache: false,

@@ -43,7 +43,7 @@ class HomeController extends Controller
         if(empty($education)){
             return;
         }
-        $edu = "Education";
+        $edu = [];
         $mainLevels = explode(',',$education);
         foreach($mainLevels as $level){
             $outputs              = explode(':',$level);

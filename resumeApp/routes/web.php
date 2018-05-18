@@ -12,6 +12,7 @@
 */
 
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
@@ -36,7 +37,7 @@ Route::prefix('freelancer')->group(function (){
 });
 
 Route::get('/clear-cache', function() {
-    $exitCode = Artisan::call('cache:clear');
+    Artisan::call('cache:clear');
     return redirect()->back();
 });
 

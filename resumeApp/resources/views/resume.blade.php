@@ -210,14 +210,14 @@
                         <? if(!empty($education['title'][0])):?>
                             <li>
                             <div class="posted-date">
-                                <span class="month">{{$education['year'][0]}}</span>
+                                <span class="month">{{$education['year'][0] ?? ''}}</span>
                             </div><!-- /posted-date -->
 
                             <div class="timeline-panel wow fadeInUp">
                                 <div class="timeline-content">
                                     <div class="timeline-heading">
                                         <h3>{{$education['title'][0]}}</h3>
-                                        <span>{{$education['description'][0]}}</span>
+                                        <span>{{$education['description'][0] ?? ''}}</span>
                                     </div><!-- /timeline-heading -->
 
                                     <div class="timeline-body">
@@ -230,14 +230,14 @@
                             <? if(!empty($education['title'][1])):?>
                             <li class="timeline-inverted">
                             <div class="posted-date">
-                                <span class="month">{{$education['year'][1]}}</span>
+                                <span class="month">{{$education['year'][1] ?? ''}}</span>
                             </div><!-- /posted-date -->
 
                             <div class="timeline-panel wow fadeInUp">
                                 <div class="timeline-content">
                                     <div class="timeline-heading">
                                         <h3>{{$education['title'][0]}}</h3>
-                                        <span>{{$education['description'][0]}}</span>
+                                        <span>{{$education['description'][0] ?? ''}}</span>
                                     </div><!-- /timeline-heading -->
 
                                     <div class="timeline-body">
@@ -250,14 +250,14 @@
                             <? if(!empty($education['title'][2])):?>
                             <li>
                             <div class="posted-date">
-                                <span class="month">{{$education['year'][2]}}</span>
+                                <span class="month">{{$education['year'][2] ?? ''}}</span>
                             </div><!-- /posted-date -->
 
                             <div class="timeline-panel wow fadeInUp">
                                 <div class="timeline-content">
                                     <div class="timeline-heading">
                                         <h3>{{$education['title'][2]}}</h3>
-                                        <span>{{$education['description'][1]}}</span>
+                                        <span>{{$education['description'][1] ?? ''}}</span>
                                     </div><!-- /timeline-heading -->
 
                                     <div class="timeline-body">
@@ -270,7 +270,7 @@
                             <? if(!empty($education['title'][3])):?>
                             <li class="timeline-inverted">
                                 <div class="posted-date">
-                                    <span class="month">{{$education['year'][3]}}</span>
+                                    <span class="month">{{$education['year'][3] ?? ''}}</span>
                                 </div><!-- /posted-date -->
 
                                 <div class="timeline-panel wow fadeInUp">
@@ -425,7 +425,7 @@
                 }
             ?>
             <? if($counter > 1):?>
-                <? for($i=0; $i<6;$i++): ?>
+                <? for($i=0; $i<$counter;$i++): ?>
                     <div class="col-xs-12 col-sm-4 col-md-2">
                     <div class="chart" data-percent="100" data-color="e74c3c">
                         <span class="percent"></span>

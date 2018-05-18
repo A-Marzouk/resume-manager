@@ -309,16 +309,17 @@ year:
                         <input type="file" class="custom-file-input" id="works{{$i}}" name="works{{$i}}" value="">
                         <label class="custom-file-label" for="">{{$uploadBtn}}</label>
                     </div>
-                        @if($deleteBtn)
-                            <p class="btn btn-danger btn-sm" style="width:33px;height:25px;margin-left: 5px;" id="deletePhoto{{$i}}">X</p>
-                        @endif
-                        <div>
-                            <img src="{{$src}}" id="portfolioImg{{$i}}"  width="100%" height="auto" style="padding: 10px;">
-                        </div>
-                </div>
-                <div class="form-group col-md-12">
-                    <label for="workDesc"> Personal Website Link <span id="tickMarkpersonalSite" class="d-none">&#10003</span></label>
-                    <input type="text" class="form-control" name="workDesc{{$i}}" value="{{$workDesc[$i]}}">
+                    @if($deleteBtn)
+                        <p class="btn btn-danger btn-sm" style="width:33px;height:25px;margin-left: 5px;" id="deletePhoto{{$i}}">X</p>
+                    @endif
+                    <div>
+                        <img src="{{$src}}" id="portfolioImg{{$i}}"  width="100%" height="auto" style="padding: 10px;">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <textarea class="form-control" rows="2" name="workDesc{{$i}}" placeholder="Descripe your work">
+                            {{$workDesc[$i]}}
+                        </textarea>
+                    </div>
                 </div>
             @endfor
         </div>      <!-- works -->

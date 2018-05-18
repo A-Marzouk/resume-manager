@@ -28,7 +28,6 @@ class FreelancersController extends Controller
 
     public function getFreelacerData () {
         $currFreelancer = auth()->user();
-        
         $data = [
             'name'=> $currFreelancer->userData->name ?? '',
             'birth_date'=>$currFreelancer->userData->birth_date ?? '',
@@ -69,6 +68,16 @@ class FreelancersController extends Controller
             'instagramLink'=> $currFreelancer->userData->instagramLink ?? '' ,
             'dribbleLink'=> $currFreelancer->userData->dribbleLink ?? '' ,
             'freeDate'=> $currFreelancer->userData->freeDate ?? '' ,
+            'workDesc'=> [
+                $currFreelancer->userData->workDesc0 ?? '',
+                $currFreelancer->userData->workDesc1 ?? '',
+                $currFreelancer->userData->workDesc2 ?? '',
+                $currFreelancer->userData->workDesc3 ?? '',
+                $currFreelancer->userData->workDesc4 ?? '',
+                $currFreelancer->userData->workDesc5 ?? '',
+                $currFreelancer->userData->workDesc6 ?? '',
+                $currFreelancer->userData->workDesc7 ?? '',
+            ]
         ];
 
         return $data;

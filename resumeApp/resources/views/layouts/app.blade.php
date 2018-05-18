@@ -56,7 +56,7 @@
                                         Logout
                                     </a>
                                     <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
-                                        <a href="/admin" class="dropdown-item">Admin area</a>
+                                        <a href="{{route('admin.dashboard')}}" class="dropdown-item">Admin area</a>
                                     <? endif;?>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

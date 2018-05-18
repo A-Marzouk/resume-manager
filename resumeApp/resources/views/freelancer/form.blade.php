@@ -316,9 +316,7 @@ year:
                         <img src="{{$src}}" id="portfolioImg{{$i}}"  width="100%" height="auto" style="padding: 10px;">
                     </div>
                     <div class="form-group col-md-12">
-                        <textarea class="form-control" rows="2" name="workDesc{{$i}}" placeholder="Descripe your work">
-                            {{$workDesc[$i]}}
-                        </textarea>
+                        <textarea class="form-control" rows="2" name="workDesc{{$i}}" placeholder="Descripe your work">{{$workDesc[$i]}}</textarea>
                     </div>
                 </div>
             @endfor

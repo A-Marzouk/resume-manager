@@ -19,7 +19,7 @@
         </div>
         <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
             <div class="col-md-2  offset-md-6">
-                <a target="_blank" href="/{{$username}}">Link to resume </a>
+                <a target="_blank" href="{{$username}}">Link to resume </a>
             </div>
         <? endif; ?>
 
@@ -244,7 +244,11 @@
         </div> <!-- c.objective -->
         <div class="form-group col-md-8">
             <label for="education">Education <span id="tickMarkeducation" class="d-none">&#10003</span></label>
-            <textarea class="form-control" rows="4" id="education" name="education">{{$education}}
+            <textarea class="form-control" rows="4" id="education" name="education">{{$education}},
+title:
+description:
+year:
+,
             </textarea>
             <small>Please include all relevant   <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> schools and/or  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> courses you have taken. Include the COURSE NAME & UNIVERSITY NAME</small>
         </div> <!-- Edu -->
@@ -263,7 +267,11 @@
 
         <div class="form-group col-md-8">
             <label for="education">Trainings attend <span id="tickMarktrainings" class="d-none">&#10003</span></label>
-            <textarea class="form-control" rows="4" id="trainings" name="trainings">{{$trainings}}
+            <textarea class="form-control" rows="4" id="trainings" name="trainings">{{$trainings}},
+title:
+description:
+year:
+,
             </textarea>
             <small>Please include all relevant  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> trainings attended in the past 3 years. Include the TRAINING NAME/TITLE, & the LOCATION where the training was held</small>
         </div> <!-- trainings -->

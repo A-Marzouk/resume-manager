@@ -12,6 +12,7 @@
 */
 
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
@@ -35,7 +36,10 @@ Route::prefix('freelancer')->group(function (){
     Route::post('/register/submit','Auth\RegisterController@register')->name('freelancer.register.submit');
 });
 
-
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return redirect()->back();
+});
 
 // admin area :
 Route::get('/admin','AdminsController@welcomePage')->name('admin.dashboard');

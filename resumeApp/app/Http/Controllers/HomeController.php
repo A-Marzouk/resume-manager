@@ -46,6 +46,7 @@ class HomeController extends Controller
         $mainLevels = explode(',',$education);
         foreach($mainLevels as $level){
             $outputs              = explode(':',$level);
+            if(count($outputs)< 3){continue;}
             $edu['title'][]       = trim(explode('description',$outputs[1])[0]) ?? '';
             $edu['description'][] = trim(explode('year',$outputs[2])[0]) ?? '';
             $edu['year'][]        = trim($outputs[3]) ?? '';

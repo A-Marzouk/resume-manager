@@ -44,18 +44,12 @@ class HomeController extends Controller
             return;
         }
         $mainLevels = explode(',',$education);
-        $edu = '';
         foreach($mainLevels as $level){
             $outputs              = explode(':',$level);
-            if(isset($outputs[1])){
-                $edu['title'][]       = trim(explode('description',$outputs[1])[0]) ?? '';
-            }
-            if(isset($outputs[2])) {
-                $edu['description'][] = trim(explode('year', $outputs[2])[0]) ?? '';
-            }
-            if(isset($outputs[3])) {
-                $edu['year'][] = trim($outputs[3]) ?? '';
-            }
+            if(count($outputs)< 3){continue;}
+            $edu['title'][]       = trim(explode('description',$outputs[1])[0]) ?? '';
+            $edu['description'][] = trim(explode('year',$outputs[2])[0]) ?? '';
+            $edu['year'][]        = trim($outputs[3]) ?? '';
         }
         return $edu;
     }

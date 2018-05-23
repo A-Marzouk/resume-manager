@@ -18,13 +18,15 @@ class UserDataController extends Controller
             $sendTelegram = false;
 
             if(!$request->ajax()){
-                $request->$this->validate([
+                $request->validate([
                    'name'=>'required',
                    'jobTitle'=>'required',
                    'salary'=>'required',
                    'availableHours'=>'required',
                    'city'=>'required',
                    'email'=>'required',
+                   'primarySkills'=>'required',
+                   'design_skills_checkbox'=>'required',
                 ]);
 
                 $sendTelegram = true;

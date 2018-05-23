@@ -151,7 +151,7 @@ class UserDataController extends Controller
     public function sendTelegram(){
         $msg = auth()->user()->username ;
         $msg .= ' has updated his resume .. please view updated resume here..  ';
-        $msg .= 'www.123workforce.com/form'.auth()->user()->username;
+        $msg .= 'www.123workforce.com/form/'.auth()->user()->username;
         $telegram = new Telegram('-279372621');
         $telegram->sendMessage($msg);
     }

@@ -153,7 +153,7 @@ class UserDataController extends Controller
         $msg .= ' has updated his resume .. please view updated resume here..  ';
         $msg .= str_replace_last('freelancer',auth()->user()->username, url()->current());
         $telegram = new Telegram('-279372621');
-//        $telegram->sendMessage($msg);
+        $telegram->sendMessage($msg);
     }
 
     public function sendNotification(){

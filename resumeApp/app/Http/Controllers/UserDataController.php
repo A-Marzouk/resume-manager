@@ -15,7 +15,20 @@ class UserDataController extends Controller
     public function store(Request $request){
         $userData = UserData::where('user_id',auth()->user()->id)->first();
         if ($userData){
-            // update
+            $sendTelegram = false;
+
+            if(!$request->ajax()){
+                $request->$this->validate([
+                   'name'=>'required',
+                   'jobTitle'=>'required',
+                   'salary'=>'required',
+                   'availableHours'=>'required',
+                   'city'=>'required',
+                   'email'=>'required',
+                ]);
+
+                $sendTelegram = true;
+            }
             $data = $request->all();
             $works = $userData->works ;
             foreach ($data as $key => $value){
@@ -66,6 +79,9 @@ class UserDataController extends Controller
                     foreach ($explodedData as $id){
                         if(strlen($id) == 33){
                             $userData->{$key} = $id;
+                            break;
+                        }else{
+                            $userData->{$key} = "NOT VALID";
                         }
                     }
                 }elseif(strpos($key, 'day') !== false){
@@ -86,8 +102,9 @@ class UserDataController extends Controller
                 $userData->works = $works ;
             }
             $userData->save();
-
+            if($sendTelegram){
                 $this->sendTelegram();
+            }
 //                $this->sendNotification();
             return redirect('/freelancer')->with('successMessage', 'Your changes have been successfully saved.');
         }else{
@@ -134,7 +151,7 @@ class UserDataController extends Controller
         $msg .= ' has updated his resume .. please view updated resume here..  ';
         $msg .= str_replace_last('freelancer',auth()->user()->username, url()->current());
         $telegram = new Telegram('-279372621');
-        $telegram->sendMessage($msg);
+//        $telegram->sendMessage($msg);
     }
 
     public function sendNotification(){

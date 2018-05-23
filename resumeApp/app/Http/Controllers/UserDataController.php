@@ -83,7 +83,7 @@ class UserDataController extends Controller
                             $userData->{$key} = $id;
                             break;
                         }else{
-                            $userData->{$key} = "NOT VALID";
+                            $userData->{$key} = "NOT-VALID-LINK";
                         }
                     }
                 }elseif(strpos($key, 'day') !== false){

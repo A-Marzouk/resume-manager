@@ -159,11 +159,9 @@
                 </div>
             </div>
             <? endforeach;?>
-            <? if($totalHours > 0):?>
                 <div style="padding-top: 10px;" class="col-md-6 col-sm-12 col-xs-12 input-group">
                     <b style="border-radius: 5px; border: gray 2px solid; padding: 8px;">Total working hours of a week : <span id="totalHours" style="font-size: large;">{{$totalHours}}</span> Hours</b>
                 </div>
-            <? endif;?>
         </div> <!-- Hours per week Dropdowns --><br/>
 
         <div class="form-group col-md-8">

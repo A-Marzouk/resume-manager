@@ -1,0 +1,224 @@
+body{
+  background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.customContainer{
+  padding : 0 0 0 8.50%;
+  @media only screen and (max-width: 600px){
+    padding:0;
+  }
+
+}
+
+// navbar
+.customNav{
+  -webkit-box-shadow: 0 8px 6px -6px #999;
+  -moz-box-shadow: 0 8px 6px -6px #999;
+  box-shadow: 0 8px 6px -6px #999;
+  background-color: white;
+}
+
+.customNavLink{
+  opacity: 0.75;
+  color: #637280;
+  font-family: Roboto;
+  font-size: 15px;
+  letter-spacing: 0.2px;
+  line-height: 16px;
+  text-align: center;
+  &.active{
+    color: #18A6DF;
+    border-bottom: #AC81FC 2px solid;
+    opacity: 1;
+    font-weight: 300;
+    padding-bottom: 10px;
+  }
+}
+
+.navbar-brand{
+  img{
+    width: 75%;
+  }
+}
+
+.navbar-collapse.collapse.in {
+  display: block!important;
+}
+.loginBtnHolder{
+  margin-left: auto;
+}
+.loginBtn{
+  padding: 6px 25px 7px 25px;
+  border: 1px solid rgba(24, 166, 223, 0.3);
+  border-radius: 25px;
+  margin-right: 35px;
+  font-weight: bold;
+  margin-left: 300px;
+  @media only screen and (max-width: 600px){
+    margin-left: 0px;
+  }
+  text-decoration: none !important;
+  :hover{
+    text-decoration: none !important;
+  }
+}
+
+// first section freelancer info :
+
+.freelancerItem{
+  margin-top: 2.5%;
+  padding-bottom: 10px;
+}
+
+.freelancerImg{
+  border-radius: 50%;
+  width: 20.2%;
+  padding: 3px;
+  border: 2px solid rgba(24, 166, 223, 0.3);
+}
+
+.freelancerName{
+  color: #30323D;
+  font-family: Roboto;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 35px;
+  text-align: center;
+  padding: 5px 0 5px 0 ;
+}
+
+.freelancerJob{
+  color: #697786;	font-family: Roboto;
+  font-size: 16px;	line-height: 19px;	text-align: center;
+}
+
+.line{
+  background-color: #F8F8F8;
+  transform: scaleY(-1);
+  padding : 2px 0 0 0;
+  margin-top: 5px;
+}
+
+.socialIcons{
+  text-align: center;
+  padding: 10px;
+  img{
+    width: 20px;
+  }
+
+  .imgText{
+    color: #697786;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 14px;
+    padding-left: 5px;
+  }
+}
+
+.buttonMain{
+  padding : 5% 0 0 0;
+  margin-top: 20px;
+  @media only screen and (max-width: 600px){
+    text-align: center;
+    padding-top: 13%;
+  }
+  text-decoration: none;
+  a:hover{
+    text-decoration: none;
+  }
+  .hireBtn{
+    border: 1px solid #44E5EF;
+    border-radius: 24px;
+    background: linear-gradient(270deg, #45E6EF 0%, #088FD9 100%);
+    padding: 13px 0 13px 0;
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    line-height: 19px;
+    text-align: center;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  }
+  .hireBtn.hire{
+    background: white;
+    color:#088FD9;
+  }
+}
+
+// quote :
+#quote{
+  background: linear-gradient(90deg, #F8F8F8 0%, #FCFCFC 100%);
+  margin-top: 25px;
+  padding: 20px;
+  img{
+    height: 50px;	width: 50px;	opacity: 0.5;
+  }
+  .quoteText{
+    color: #697786;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 24px;
+  }
+}
+
+// second navbar :
+
+.secondNavLink{
+  opacity: 0.75;
+  color: #637280;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  line-height: 16px;
+  padding-top: 5px;
+  &.active{
+    color: #18A6DF;
+    border-bottom: #AC81FC 2px solid;
+    opacity: 1;
+    font-weight: 300;
+    padding-bottom: 10px;
+  }
+}
+
+.downCV{
+  opacity: 0.75;
+  color: #18A6DF;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  line-height: 16px;
+  padding-top: 5px;
+  margin-left: 400px;
+  @media only screen and (max-width: 600px){
+    margin-left: 0px;
+  }
+  text-decoration: none !important;
+  :hover{
+    text-decoration: none !important;
+  }
+}
+
+#about{
+  margin-top: 35px;
+}
+.aboutText{
+  color: #6A6F72;
+  font-family: Roboto;
+  font-size: 25px;
+  line-height: 29px;
+}
+
+.aboutSubText{
+  color: #697786;	font-family: Roboto;
+  font-size: 20px;	font-weight: 300;	line-height: 24px;
+  padding-top: 15px;
+  span{
+    padding-top: 5px;
+  }
+}
+

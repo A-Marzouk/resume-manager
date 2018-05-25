@@ -213,7 +213,7 @@
     </div>
 
     {{-- Education and Trainings section --}}
-    <div id="about">
+    <div id="about" class="education">
         <div class="row">
             <div class="col-md-5 offset-md-1">
                 <div class="row">
@@ -224,19 +224,17 @@
                         <div class="aboutText">
                             Education<br>
                             <div class="row">
-                                <div class="col-md-5 aboutSubText">
-                                    <p class="year">2014 - 2017</p>
-                                    <p>Adress:</p>
-                                    <p>Nationality:</p>
-                                    <p>Languages:</p>
-                                    <p>Email:</p>
+                                <div class="col-md-12 aboutSubText">
+                                    <div class="year"><span class="circle"></span> 2014 - 2017</div>
+                                    <div class="title">Universidad Autónoma del Caribe</div>
+                                    <div class="desc">Computer Science</div>
                                 </div>
-                                <div class="col-md-7 aboutSubText">
-                                    <p>01/01/2000</p>
-                                    <p>Ukrain, Kiev</p>
-                                    <p>Ukrainian</p>
-                                    <p>English Russian</p>
-                                    <p>test@test.com</p>
+                            </div><br/>
+                            <div class="row">
+                                <div class="col-md-10 aboutSubText">
+                                    <div class="year"><span class="circle"></span> 2014 - 2017</div>
+                                    <div class="title">Universidad Autónoma del Caribe</div>
+                                    <div class="desc">Computer Science</div>
                                 </div>
                             </div>
                         </div>
@@ -252,17 +250,17 @@
                         <div class="aboutText">
                             TRAININGS<br>
                             <div class="row">
-                                <div class="col-md-6 aboutSubText">
-                                    <p><span class="circle"></span> UI design</p>
-                                    <p><span class="circle"></span> UX design</p>
-                                    <p><span class="circle"></span> Brochure Design</p>
-                                    <p><span class="circle"></span> Logo design</p>
-                                    <p><span class="circle"></span> Branding</p>
+                                <div class="col-md-12 aboutSubText">
+                                    <div class="year"><span class="circle"></span> 2016 - 2017</div>
+                                    <div class="title">Lynda.com</div>
+                                    <div class="desc">Computer Science</div>
                                 </div>
-                                <div class="col-md-6 aboutSubText">
-                                    <p><span class="circle"></span> Brochure Design</p>
-                                    <p><span class="circle"></span> UX design</p>
-                                    <p><span class="circle"></span> Ukrainian</p>
+                            </div><br/>
+                            <div class="row">
+                                <div class="col-md-10 aboutSubText">
+                                    <div class="year"><span class="circle"></span> 2017 - 2018</div>
+                                    <div class="title">Coursera.com</div>
+                                    <div class="desc">Computer Science</div>
                                 </div>
                             </div>
                         </div>
@@ -271,6 +269,90 @@
             </div>
         </div>
     </div>
+    <hr>
+    {{-- Skills section --}}
+    <div id="about" class="education">
+        <div class="row">
+            <div class="col-md-5 offset-md-1">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="resumeApp/resources/views/customTheme/images/newResume/skills.png" alt="aboutImg" width="30px;">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="aboutText">
+                            SKILLS<br>
+                            <div class="row">
+                                <div class="col-md-12 aboutSubText">
+                                    <p class="skill">Adobe XD<div class="bar"></div></p>
+
+                                    <p class="skill">After Effects<div class="bar"></div></p>
+                                    <p class="skill">Sketch<div class="bar"></div></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="aboutText">
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12 aboutSubText">
+                                    <p class="skill">Adobe Illustrator<div class="bar"></div></p>
+                                    <p class="skill">Invision Studio<div class="bar"></div></p>
+                                    <p class="skill">Adobe Photoshop<div class="bar"></div></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<hr>
+    {{-- more skills section --}}
+    <div id="about" class="moreSkills">
+        <div class="row">
+            <div class="col-md-5 offset-md-1">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="resumeApp/resources/views/customTheme/images/newResume/more_skills.png" alt="aboutImg" width="30px;">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="aboutText">
+                            MORE SKILLS<br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 offset-md-1 moreSkills">
+                <div class="row">
+                    <div class="skillBox">Confident</div>
+                    <div class="skillBox">Creative</div>
+                    <div class="skillBox">Easygoing</div>
+                    <div class="skillBox">Goal-Driven</div>
+                    <div class="skillBox">Confident</div>
+                    <div class="skillBox">Creative</div>
+                    <div class="skillBox">Easygoing</div>
+                    <div class="skillBox">Goal-Driven</div>
+                    <div class="skillBox">Easygoing</div>
+                    <div class="skillBox">Goal-Driven</div>
+                    <div class="skillBox">Confident</div>
+                    <div class="skillBox">Creative</div>
+                    <div class="skillBox">Easygoing</div>
+                    <div class="skillBox">Goal-Driven</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </head>
 <body>
 

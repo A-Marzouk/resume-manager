@@ -205,7 +205,7 @@ body{
 }
 
 #about{
-  margin-top:7%;
+  margin-top:5%;
 }
 .aboutText{
   color: #6A6F72;
@@ -248,4 +248,72 @@ body{
     line-height: 24px;
     margin-top: 1.5%;
   }
+}
+
+
+// education and trainings
+
+.aboutSubText{
+  .year{
+    color: #697786;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 24px;
+  }
+  .title{
+    color: #697786;
+    font-family: Roboto;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 25px;
+    padding-left: 20px;
+  }
+  .desc{
+    color: #C5A7FD;
+    font-family: Roboto;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 25px;
+    padding-left: 20px;
+  }
+}
+
+.education{
+  padding-bottom: 4% !important;
+}
+
+// skills part :
+.aboutSubText{
+  .skill{
+    color: #697786;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 24px;
+    padding-bottom: 0px;
+    padding-top: 5px;
+  }
+  .bar{
+    padding-top:7px ;
+    width: 100%;
+    background-color: #CAAFFE;
+  }
+}
+
+
+// more skills section :
+
+.skillBox{
+  border: 1.5px solid #44E5EF;
+  opacity: 0.5;
+  padding:6px 20px 6px 20px ;
+  border-radius: 21.5px;
+  text-align: center;
+  width: auto;
+  margin: 10px;
+}
+.moreSkills{
+  margin-right: 20px;
+  padding-top: 25px;
 }

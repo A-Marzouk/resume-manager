@@ -135,12 +135,12 @@
     {{-- About me Section --}}
     <div id="about">
         <div class="row">
-            <div class="col-md-5 offset-md-2">
+            <div class="col-md-5 offset-md-1">
                 <div class="row">
                     <div class="col-md-1">
                         <img src="resumeApp/resources/views/customTheme/images/newResume/about_me.png" alt="aboutImg" width="30px;">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-10">
                         <div class="aboutText">
                             ABOUT ME<br>
                             <div class="row">
@@ -168,21 +168,101 @@
                     <div class="col-md-1">
                         <img src="resumeApp/resources/views/customTheme/images/newResume/what_i_do.png" alt="aboutImg" width="30px;">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-10">
                         <div class="aboutText">
                             WHAT I DO?<br>
                             <div class="row">
                                 <div class="col-md-6 aboutSubText">
-                                    <p>UI design</p>
-                                    <p>UX design</p>
-                                    <p>Brochure Design</p>
-                                    <p>Logo design</p>
-                                    <p>Branding</p>
+                                    <p><span class="circle"></span> UI design</p>
+                                    <p><span class="circle"></span> UX design</p>
+                                    <p><span class="circle"></span> Brochure Design</p>
+                                    <p><span class="circle"></span> Logo design</p>
+                                    <p><span class="circle"></span> Branding</p>
                                 </div>
                                 <div class="col-md-6 aboutSubText">
-                                    <p>Brochure Design</p>
-                                    <p>UX design</p>
+                                    <p><span class="circle"></span> Brochure Design</p>
+                                    <p><span class="circle"></span> UX design</p>
+                                    <p><span class="circle"></span> Ukrainian</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- audio introduction section --}}
+    <div id="audio">
+        <div class="row">
+            <div class="col-md-1 offset-md-1">
+                <img src="resumeApp/resources/views/customTheme/images/newResume/audio.png" alt="audio">
+            </div>
+            <div class="col-md-6">
+                <div class="quoteText">
+                    Audio Introduction
+                </div>
+            </div>
+            <div class="col-md-3">
+                <audio id="audioIntro" controls>
+                    <source src="https://drive.google.com/uc?export=download&id={{$user->audio}}&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M" type="audio/ogg">
+                    Your browser does not support the audio element.
+                </audio><!--/.video-container-->
+            </div>
+        </div>
+    </div>
+
+    {{-- Education and Trainings section --}}
+    <div id="about">
+        <div class="row">
+            <div class="col-md-5 offset-md-1">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="resumeApp/resources/views/customTheme/images/newResume/education.png" alt="aboutImg" width="30px;">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="aboutText">
+                            Education<br>
+                            <div class="row">
+                                <div class="col-md-5 aboutSubText">
+                                    <p class="year">2014 - 2017</p>
+                                    <p>Adress:</p>
+                                    <p>Nationality:</p>
+                                    <p>Languages:</p>
+                                    <p>Email:</p>
+                                </div>
+                                <div class="col-md-7 aboutSubText">
+                                    <p>01/01/2000</p>
+                                    <p>Ukrain, Kiev</p>
                                     <p>Ukrainian</p>
+                                    <p>English Russian</p>
+                                    <p>test@test.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="resumeApp/resources/views/customTheme/images/newResume/trainings.png" alt="aboutImg" width="30px;">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="aboutText">
+                            TRAININGS<br>
+                            <div class="row">
+                                <div class="col-md-6 aboutSubText">
+                                    <p><span class="circle"></span> UI design</p>
+                                    <p><span class="circle"></span> UX design</p>
+                                    <p><span class="circle"></span> Brochure Design</p>
+                                    <p><span class="circle"></span> Logo design</p>
+                                    <p><span class="circle"></span> Branding</p>
+                                </div>
+                                <div class="col-md-6 aboutSubText">
+                                    <p><span class="circle"></span> Brochure Design</p>
+                                    <p><span class="circle"></span> UX design</p>
+                                    <p><span class="circle"></span> Ukrainian</p>
                                 </div>
                             </div>
                         </div>

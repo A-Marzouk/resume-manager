@@ -152,7 +152,8 @@ body{
 // quote :
 #quote{
   background: linear-gradient(90deg, #F8F8F8 0%, #FCFCFC 100%);
-  margin-top: 25px;
+  margin-top: 5%;
+  margin-bottom: 1%;
   padding: 20px;
   img{
     height: 50px;	width: 50px;	opacity: 0.5;
@@ -204,7 +205,7 @@ body{
 }
 
 #about{
-  margin-top: 35px;
+  margin-top:7%;
 }
 .aboutText{
   color: #6A6F72;
@@ -217,8 +218,34 @@ body{
   color: #697786;	font-family: Roboto;
   font-size: 20px;	font-weight: 300;	line-height: 24px;
   padding-top: 15px;
-  span{
-    padding-top: 5px;
-  }
 }
 
+.circle:before {
+  content: ' \25CF';
+  font-size: 11px;
+  color: #FCFCFC;
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  padding: 0 3px 0 3px;
+  margin: 3px;
+}
+
+// audio introduction section
+
+#audio{
+  background: linear-gradient(90deg, #F8F8F8 0%, #FCFCFC 100%);
+  margin-top: 5%;
+  margin-bottom: 3%;
+  padding: 20px;
+  img{
+    height: 50px;	width: 50px;	opacity: 0.9;
+  }
+  .quoteText{
+    color: #697786;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 24px;
+    margin-top: 1.5%;
+  }
+}

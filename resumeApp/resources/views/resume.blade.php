@@ -353,6 +353,137 @@
         </div>
     </div>
 
+    {{-- Works section --}}
+    <div id="about" class="worksSection">
+        <div class="row firstPart">
+            <div class="col-md-5 offset-md-1">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="resumeApp/resources/views/customTheme/images/newResume/works.png" alt="aboutImg" width="30px;">
+                    </div>
+                    <div class="col-md-11">
+                        <div class="aboutText">
+                            <span class="worksText">WORKS</span><br>
+                            <div class="row">
+                                <div class="col-md-12 aboutSubText">
+                                    <div class="workCard">
+                                        <div class="workImg">
+                                            <img src="resumeApp/resources/views/customTheme/images/newResume/site.jpg" alt="work img">
+                                        </div>
+                                        <div class="workTitle">
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    Home Managment - JavaScript
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <img src="resumeApp/resources/views/customTheme/images/newResume/link.png" alt="view work">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-11">
+                        <div class="aboutText">
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12 aboutSubText">
+                                    <div class="workCard">
+                                        <div class="workImg">
+                                            <img src="resumeApp/resources/views/customTheme/images/newResume/site.jpg" alt="work img">
+                                        </div>
+                                        <div class="workTitle">
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    Home Managment - JavaScript
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <img src="resumeApp/resources/views/customTheme/images/newResume/link.png" alt="view work">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 offset-md-1">
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-11">
+                        <div class="aboutText">
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12 aboutSubText">
+                                    <div class="workCard">
+                                        <div class="workImg">
+                                            <img src="resumeApp/resources/views/customTheme/images/newResume/site.jpg" alt="work img">
+                                        </div>
+                                        <div class="workTitle">
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    Home Managment - JavaScript
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <img src="resumeApp/resources/views/customTheme/images/newResume/link.png" alt="view work">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-11">
+                        <div class="aboutText">
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12 aboutSubText">
+                                    <div class="workCard">
+                                        <div class="workImg">
+                                            <img src="resumeApp/resources/views/customTheme/images/newResume/site.jpg" alt="work img">
+                                        </div>
+                                        <div class="workTitle">
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    Home Managment - JavaScript
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <img src="resumeApp/resources/views/customTheme/images/newResume/link.png" alt="view work">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Get in touch Section --}}
+
 </head>
 <body>
 

@@ -69,19 +69,11 @@ class UserDataController extends Controller
                         }
                     }else{
                         // check if photo is not repeated :
-                        $upload = true;
                         $pathToPhoto = $this->uploadPhoto($value,$key,$key);
                         if(empty($works)){
                             $works = $pathToPhoto ;
                         }else{
-                            foreach ($worksArr as $work){
-                                if($work == $pathToPhoto){
-                                    $upload= false;
-                                }
-                            }
-                            if($upload){
                             $works .= ','.$pathToPhoto;
-                            }
                         }
 
                     }
@@ -142,6 +134,15 @@ class UserDataController extends Controller
 // Check file size
         if ($_FILES[$name]["size"] > 500000) {
             $uploadOk = 0;
+        }
+// check if image exists in the folder :
+        $userData = UserData::where('user_id',auth()->user()->id)->first();
+        // get the works photos
+        $works = explode(',',$userData->works);
+        foreach ($works as $work){
+            if (strpos($work, basename($_FILES[$name]["name"])) !== false) {
+                $uploadOk = 0;
+            }
         }
 // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {

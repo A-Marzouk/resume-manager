@@ -27,13 +27,14 @@ class HomeController extends Controller
     public function ResumePage($username){
         $user =  User::where('username',$username)->first();
         if($user !== null){
+            $profession = $user->profession;
             $user = $user->userData;
         }else{
             return redirect('/');
         }
         $primarySkills = explode(',',$user->primarySkills);
         $charSkills = explode(',',$user->charSkills);
-        return view('resume', compact('user','primarySkills','charSkills'));
+        return view('resume', compact('user','profession','primarySkills','charSkills'));
     }
 
 

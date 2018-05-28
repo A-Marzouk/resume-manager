@@ -361,3 +361,89 @@ body{
     }
   }
 }
+
+// get in touch section ( styles from our clients section )
+#ourClients{
+  background: linear-gradient(0deg, #FCFCFC 0%, #FCFCFC 100%);
+}
+.heading{
+  h2{
+    color: #6A6F72;
+    font-family: Roboto;
+    font-size: 25px;
+    line-height: 29px;
+    padding-top: 2%;
+    img{
+      width: 30px;
+    }
+    @media only screen and (max-width: 600px){
+      text-align: center;
+      padding-right: 14px;
+    }
+  }
+}
+
+.clientsBox{
+  height: 308px;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  box-shadow: 0 11px 16px -7px #E5ECED;
+  .leftSide{
+    padding: 4%;
+  }
+  margin: 2% 5% 0 5%;
+  @media only screen and (max-width: 600px){
+    height: auto;
+  }
+}
+
+.formLabel{
+  opacity: .7;
+  color:#18A6DF;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 14px;
+}
+
+.form{
+  padding: 5%;
+}
+
+.no-border{
+  border-top:0 ;
+  border-right:0 ;
+  border-left:0 ;
+}
+
+
+// footer section :
+
+
+.footerText{
+  opacity: 0.4;
+  color: #000000;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.customFooter{
+  height: 180px;
+  padding-top: 6%;
+  background: linear-gradient(0deg, #FCFCFC 0%, #FCFCFC 100%);
+  @media only screen and (max-width: 600px) {
+    height: auto;
+  }
+
+  .footerImg{
+    img{
+      width: 60px;
+      opacity: .5;
+    }
+  }
+}
+
+
+

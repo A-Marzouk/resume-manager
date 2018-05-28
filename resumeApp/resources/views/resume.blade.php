@@ -16,7 +16,7 @@
 
     <link href="resumeApp/resources/views/customTheme/css/main.css" rel="stylesheet" media="screen">
 
-    <title>Resume New</title>
+    <title>{{$user->name}} Resume</title>
 
     <div id="navBar">
         <nav class="navbar navbar-expand-lg customNav">
@@ -46,10 +46,10 @@
                     <img src="resumeApp/resources/views/customTheme/images/newResume/Arnold.jpg" alt="freelancer" class="freelancerImg">
                     <div class="freelancerData">
                         <div class="freelancerName">
-                            Dmitri
+                            {{$user->name}}
                         </div>
                         <div class="freelancerJob">
-                            Full-Stack Developer
+                            {{$user->jobTitle}}
                         </div>
                     </div>
                 </div>
@@ -483,6 +483,87 @@
     </div>
 
     {{-- Get in touch Section --}}
+    <div id="ourClients">
+        <div class="row">
+            <div class="col-md-11 offset-md-1">
+                <div class="heading">
+                    <h2>
+                        <img src="resumeApp/resources/views/customTheme/images/email.png"> GET IN TOUCH
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row clientsBox">
+            <div class="col-md-6 leftSide">
+
+            </div>
+            <div class="col-md-6 rightSide">
+                <form id="contact-form" method="POST" class="form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="username" class="formLabel">Name</label>
+                                <input type="text" id="username" name="name" placeholder="Name Surname" class="form-control no-border">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="name" class="formLabel">Email</label>
+                            <input type="email" placeholder="your@email.com" id="email" name="email" required="required" class="form-control no-border">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="telephone" class="formLabel">Subject</label>
+                            <input type="tel" placeholder="Message subject" name="subject" class="form-control no-border">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="message" class="formLabel">Message</label>
+                            <input type="tel" placeholder="write your message.." name="message" class="form-control no-border">
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="buttonMain col-md-6 offset-md-3">
+                            <input type="submit" value="Send" class="hireBtn btn-block">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- custom footer --}}
+    <div class="customFooter">
+        <div class="row">
+             <div class="col-md-4 offset-md-1">
+                 <div class="footerText">
+                     © Copyright 2018 123Workforce.<br/>
+                     All Rights Reserved.
+                 </div>
+             </div>
+            <div class="col-md-2 text-center">
+                <div class="footerImg">
+                    <img src="resumeApp/resources/views/customTheme/images/newResume/logo.png" alt="logo">
+                </div>
+             </div>
+            <div class="col-md-4">
+                <div class="footerText text-right">
+                    info@123workforce.com<br>
+                    (+44) 2037000685<br/>
+                    <a href="https://www.facebook.com/123workforce">
+                        <img src="resumeApp/resources/views/customTheme/images/newResume/fb.png" alt="fb" width="25px">
+                    </a>
+                    <a href="https://www.instagram.com/123workforce/">
+                        <img src="resumeApp/resources/views/customTheme/images/newResume/instagram.png" alt="insta" width="25px">
+                    </a>
+                </div>
+             </div>
+        </div>
+    </div>
 
 </head>
 <body>
@@ -499,6 +580,8 @@
         src="https://code.jquery.com/jquery-migrate-3.0.1.min.js"
         integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4="
         crossorigin="anonymous"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&key=AIzaSyDZWJcFQabrMDUPmXaiU7wlZ74dzm_virI"></script>
+<script src="resumeApp/resources/views/customTheme/js/scripts.js"></script>
 
 </body>
 </html>

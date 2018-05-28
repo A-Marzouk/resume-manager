@@ -55,9 +55,11 @@ class UserDataController extends Controller
                     $availableHoursCheckBox = implode(',',$value);
                     $userData->{$key} = $availableHoursCheckBox ;
                 }elseif(strpos($key, 'works') !== false){
+                    // clear array
+                    $worksArr = array_filter(explode(',',$works));
+
                     if(is_numeric($value)){ // delete photo number x
                         if(!empty($works)){
-                            $worksArr = explode(',',$works);
                             foreach ($worksArr as &$work){
                                 if(strpos($work, 'works'.$value) !== false){
                                     $work ='';
@@ -66,12 +68,22 @@ class UserDataController extends Controller
                             $works = implode(',',$worksArr);
                         }
                     }else{
+                        // check if photo is not repeated :
+                        $upload = true;
                         $pathToPhoto = $this->uploadPhoto($value,$key,$key);
                         if(empty($works)){
                             $works = $pathToPhoto ;
                         }else{
+                            foreach ($worksArr as $work){
+                                if($work == $pathToPhoto){
+                                    $upload= false;
+                                }
+                            }
+                            if($upload){
                             $works .= ','.$pathToPhoto;
+                            }
                         }
+
                     }
 
                 }elseif($key == 'audio'){

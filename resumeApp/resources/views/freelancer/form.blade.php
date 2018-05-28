@@ -240,16 +240,53 @@
             <textarea class="form-control" rows="4" id="careerObjective" name="careerObjective">{{$careerObjective}}</textarea>
             <small>20-50 Words</small>
         </div> <!-- c.objective -->
-        <div class="form-group col-md-8">
-            <label for="education">Education <span id="tickMarkeducation" class="d-none">&#10003</span></label>
-            <textarea class="form-control" rows="4" id="education" name="education">{{$education}},
-title:
-description:
-year:
-,
+        <hr>
+            <div class="form-group col-md-8">
+            <label style="border-bottom:1px lightgray solid ; padding: 5px;">Education</label>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="education">Title<span id="tickMarkeduTitle1" class="d-none">&#10003</span></label>
+                    <input type="text" class="form-control" name="eduTitle1" value="{{$eduTitle1}}">
+                </div>
+                <div class="col-md-6">
+                    <label for="education">Year<span id="tickMarkeduYear1" class="d-none">&#10003</span></label>
+                    <input type="text" name="eduYear1" value="{{$eduYear1}}" class="form-control">
+                </div>
+            </div>
+            <label for="education">Description <span id="tickMarkeduDesc1" class="d-none">&#10003</span></label>
+            <textarea class="form-control" rows="4" id="education" name="eduDesc1">{{$eduDesc1}}
+            </textarea><br/>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="education">Title<span id="tickMarkeduTitle2" class="d-none">&#10003</span></label>
+                    <input type="text" class="form-control" name="eduTitle2" value="{{$eduTitle2}}">
+                </div>
+                <div class="col-md-6">
+                    <label for="education">Year<span id="tickMarkeduYear2" class="d-none">&#10003</span></label>
+                    <input type="text" name="eduYear2" value="{{$eduYear2}}" class="form-control">
+                </div>
+            </div>
+            <label for="education">Description <span id="tickMarkeduDesc2" class="d-none">&#10003</span></label>
+            <textarea class="form-control" rows="4" id="education" name="eduDesc2">{{$eduDesc2}}
+            </textarea><br/>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="education">Title<span id="tickMarkeduTitle3" class="d-none">&#10003</span></label>
+                    <input type="text" class="form-control" name="eduTitle3" value="{{$eduTitle3}}">
+                </div>
+                <div class="col-md-6">
+                    <label for="education">Year<span id="tickMarkeduYear3" class="d-none">&#10003</span></label>
+                    <input type="text" name="eduYear3" value="{{$eduYear3}}" class="form-control">
+                </div>
+            </div>
+            <label for="education">Description <span id="tickMarkeduDesc3" class="d-none">&#10003</span></label>
+            <textarea class="form-control" rows="4" id="education" name="eduDesc3">{{$eduDesc3}}
             </textarea>
             <small>Please include all relevant   <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> schools and/or  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> courses you have taken. Include the COURSE NAME & UNIVERSITY NAME</small>
         </div> <!-- Edu -->
+        <hr>
 
         <div class="form-group col-md-8">
             <label for="design_styles">Professional Skills and <? if($profession == 'Developer'):?>Development<?else:?>Design<?endif;?> style <span id="tickMarkdesign_styles" class="d-none">&#10003</span></label>
@@ -262,17 +299,54 @@ year:
             <textarea class="form-control" rows="3" id="work_experience" name="workExperience">{{$workExperience}}
      </textarea>
         </div> <!-- work exp -->
-
+        <hr>
         <div class="form-group col-md-8">
-            <label for="education">Trainings attend <span id="tickMarktrainings" class="d-none">&#10003</span></label>
-            <textarea class="form-control" rows="4" id="trainings" name="trainings">{{$trainings}},
-title:
-description:
-year:
-,
+            <label style="border-bottom:1px lightgray solid ; padding: 5px;">Trainings</label>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="education">Title<span id="tickMarktrnTitle1" class="d-none">&#10003</span></label>
+                    <input type="text" class="form-control" name="trnTitle1" value="{{$trnTitle1}}">
+                </div>
+                <div class="col-md-6">
+                    <label for="education">Year<span id="tickMarktrnYear1" class="d-none">&#10003</span></label>
+                    <input type="text" name="trnYear1" value="{{$trnYear1}}" class="form-control">
+                </div>
+            </div>
+            <label for="education">Description <span id="tickMarktrnDesc1" class="d-none">&#10003</span></label>
+            <textarea class="form-control" rows="4" id="education" name="trnDesc1">{{$trnDesc1}}
+            </textarea><br/>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="education">Title<span id="tickMarktrnTitle2" class="d-none">&#10003</span></label>
+                    <input type="text" class="form-control" name="trnTitle2" value="{{$trnTitle2}}">
+                </div>
+                <div class="col-md-6">
+                    <label for="education">Year<span id="tickMarktrnYear2" class="d-none">&#10003</span></label>
+                    <input type="text" name="trnYear2" value="{{$trnYear2}}" class="form-control">
+                </div>
+            </div>
+            <label for="education">Description <span id="tickMarktrnDesc2" class="d-none">&#10003</span></label>
+            <textarea class="form-control" rows="4" id="education" name="trnDesc2">{{$trnDesc2}}
+            </textarea><br/>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="education">Title<span id="tickMarktrnTitle3" class="d-none">&#10003</span></label>
+                    <input type="text" class="form-control" name="trnTitle3" value="{{$trnTitle3}}">
+                </div>
+                <div class="col-md-6">
+                    <label for="education">Year<span id="tickMarktrnYear3" class="d-none">&#10003</span></label>
+                    <input type="text" name="trnYear3" value="{{$trnYear3}}" class="form-control">
+                </div>
+            </div>
+            <label for="education">Description <span id="tickMarktrnDesc3" class="d-none">&#10003</span></label>
+            <textarea class="form-control" rows="4" id="education" name="trnDesc3">{{$trnDesc3}}
             </textarea>
             <small>Please include all relevant  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> trainings attended in the past 3 years. Include the TRAINING NAME/TITLE, & the LOCATION where the training was held</small>
-        </div> <!-- trainings -->
+        </div>
+         <!-- trainings -->
+        <hr/>
 
         <div class="form-group col-md-8">
             <label for="personal_interests">Professional interests <span id="tickMarkpersonal_interests" class="d-none">&#10003</span></label>

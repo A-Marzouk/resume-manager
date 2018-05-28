@@ -31,29 +31,11 @@ class HomeController extends Controller
         }else{
             return redirect('/');
         }
-        $education = $this->parseData($user,'education');
-        $trainings = $this->parseData($user,'trainings');
         $primarySkills = explode(',',$user->primarySkills);
         $charSkills = explode(',',$user->charSkills);
-        return view('resume', compact('user','education','trainings','primarySkills','charSkills'));
+        return view('resume', compact('user','primarySkills','charSkills'));
     }
 
-    protected function parseData($user,$data){
-        $education = $user->{$data};
-        if(empty($education)){
-            return;
-        }
-        $edu = [];
-        $mainLevels = explode(',',$education);
-        foreach($mainLevels as $level){
-            $outputs              = explode(':',$level);
-            if(count($outputs)< 3){continue;}
-            $edu['title'][]       = trim(explode('description',$outputs[1])[0]) ?? '';
-            $edu['description'][] = trim(explode('year',$outputs[2])[0]) ?? '';
-            $edu['year'][]        = trim($outputs[3]) ?? '';
-        }
-        return $edu;
-    }
 
     public function welcomePage(){
         return view('welcome');

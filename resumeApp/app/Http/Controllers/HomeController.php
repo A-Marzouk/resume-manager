@@ -28,12 +28,13 @@ class HomeController extends Controller
         $user =  User::where('username',$username)->first();
         if($user !== null){
             $user = $user->userData;
+            $profession = $user->profession;
         }else{
             return redirect('/');
         }
         $primarySkills = explode(',',$user->primarySkills);
         $charSkills = explode(',',$user->charSkills);
-        return view('resume', compact('user','primarySkills','charSkills'));
+        return view('resume', compact('user','profession','primarySkills','charSkills'));
     }
 
 

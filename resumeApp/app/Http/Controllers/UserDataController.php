@@ -143,6 +143,15 @@ class UserDataController extends Controller
         if ($_FILES[$name]["size"] > 500000) {
             $uploadOk = 0;
         }
+// check if image exists in the folder :
+        $userData = UserData::where('user_id',auth()->user()->id)->first();
+        // get the works photos
+        $works = explode(',',$userData->works);
+        foreach ($works as $work){
+            if (strpos($work, basename($_FILES[$name]["name"])) !== false) {
+                $uploadOk = 0;
+            }
+        }
 // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
             return false;
@@ -165,7 +174,7 @@ class UserDataController extends Controller
         $msg .= ' has updated his resume .. please view updated resume here..  ';
         $msg .= 'www.123workforce.com/form/'.auth()->user()->username;
         $telegram = new Telegram('-279372621');
-        $telegram->sendMessage($msg);
+//        $telegram->sendMessage($msg);
     }
 
     public function sendNotification(){

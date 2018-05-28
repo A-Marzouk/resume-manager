@@ -10,7 +10,7 @@
     <!-- Web Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
     <!-- Bootstrap core CSS -->
-    <link href="resumeApp/resources/views/customTheme/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Font Awesome CSS -->
     <link href="resumeApp/resources/views/customTheme/css/font-awesome.min.css" rel="stylesheet" media="screen">
     <!-- Animate css -->
@@ -35,568 +35,569 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resumeApp/resources/views/customTheme/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="resumeApp/resources/views/customTheme/images/ico/apple-touch-icon-57-precomposed.png">
 
-</head>
+    <link href="resumeApp/resources/views/customTheme/css/main.css" rel="stylesheet" media="screen">
 
-<body>
-<!-- Preloader -->
-<div id="tt-preloader">
-    <div id="pre-status">
-        <div class="preload-placeholder"></div>
-    </div>
-</div>
+    <title>{{$user->name}} Resume</title>
 
-<!-- Home Section -->
-<section id="home" class="tt-fullHeight" data-stellar-vertical-offset="50" data-stellar-background-ratio="0.2">
-    <div class="intro">
-        <?
-            $name      = $user->name;
-            $arrName   = explode(' ',trim($name));
-            $firstName = $arrName[0];
-        ?>
-        <div class="intro-sub">I am {{$user->name}} </div>
-        <h1><span> {{$user->jobTitle}} </span></h1>
-        <p>{{$user->intro}}</p>
-
-        <div class="social-icons">
-            <ul class="list-inline">
-                <li><a href="{{$user->githubLink}}"><i class="fa fa-github"></i></a></li>
-                {{--<li><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
-                <li><a href="{{$user->stackoverflowLink}}"><i class="fa fa-stack-overflow"></i></a></li>
-                {{--<li><a href="#"><i class="fa fa-dribbble"></i></a></li>--}}
-                {{--<li><a href="#"><i class="fa fa-pinterest"></i></a></li>--}}
-            </ul>
-        </div> <!-- /.social-icons -->
-    </div>
-
-    <div class="mouse-icon">
-        <div class="wheel"></div>
-    </div>
-</section><!-- End Home Section -->
-
-
-
-
-<!-- Navigation -->
-<header class="header">
-    <nav class="navbar navbar-custom" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#about">
-                    <p style="padding-top:6px;font-size:x-large; word-spacing: 3px;">
-                        <span style="color: black;">I AM </span> {{$firstName}}
-                    </p>
-                </a>
+    <div id="navBar">
+        <nav class="navbar navbar-expand-lg customNav">
+            <a class="navbar-brand" href="/">
+                <img src="resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+                <img src="resumeApp/resources/views/customTheme/images/newResume/menu.png" alt="menu" width="46px">
+            </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link customNavLink active" href="#">Homepage</a>
+                    <a class="nav-item nav-link customNavLink" href="/form/client/register/">Become a client</a>
+                    <a class="nav-item nav-link customNavLink" href="#">Talk to sales</a>
+                    <a href="/form/client/login/" class="loginBtn">Login</a>
+                </div>
             </div>
+        </nav>
+    </div>
 
-            <div class="collapse navbar-collapse" id="custom-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#resume">Resume</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#works">Works</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div><!-- .container -->
-    </nav>
-</header><!-- End Navigation -->
-
-
-<!-- About Section -->
-<section id="about" class="about-section section-padding">
-    <div class="container">
-        <h2 class="section-title wow fadeInUp">About Me</h2>
-
-        <div class="row">
-
-            <div class="col-md-4 col-md-push-8">
-                <div class="biography">
-                    <div class="myphoto">
-                        <img src="{{$user->photo}}">
+    <div id="freelancersInfo">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <div class="freelancerItem">
+                    <img src="resumeApp/resources/views/customTheme/images/newResume/Arnold.jpg" alt="freelancer" class="freelancerImg">
+                    <div class="freelancerData">
+                        <div class="freelancerName">
+                            {{$user->name}}
+                        </div>
+                        <div class="freelancerJob">
+                            {{$user->jobTitle}}
+                        </div>
                     </div>
-                    <ul>
-                        <li><strong>Name:</strong> {{$user->name}} </li>
-                        <li><strong>Date of birth:</strong> {{$user->birth_date}}</li>
-                        <li><strong>Address:</strong> {{$user->city}}</li>
-                        <li><strong>Nationality:</strong> {{$user->nationality}}</li>
-                        <li><strong>Languages:</strong> {{$user->languages}}</li>
-                        <li><strong>Email:</strong> {{$user->email}}</li>
-                    </ul>
-                </div>
-            </div> <!-- col-md-4 -->
-
-            <div class="col-md-8 col-md-pull-4">
-                <div class="short-info wow fadeInUp">
-                    <h3>Objective</h3>
-                    <p> {{$user->careerObjective}}</p>
-                </div>
-
-                <div class="short-info wow fadeInUp">
-                    <h3>What I Do ?</h3>
-                    <p>{{$user->design_styles}}</p>
-                    <ul class="list-check">
-                        <? $design_skills_checkBoxes = explode(',',$user->design_skills_checkbox)?>
-                        <? $counter = count($design_skills_checkBoxes);
-                        if($counter > 6 ){
-                            $counter = 6 ;
-                        }
-                        ?>
-                        <? if($counter > 0):?>
-                            @for($i=0; $i<$counter; $i++)
-                                <li>{{$design_skills_checkBoxes[$i]}}</li>
-                            @endfor
-                        <? endif;?>
-                    </ul>
-                </div>
-
-                <div class="my-signature">
-                    <img src="resumeApp/resources/views/customTheme/images/sign.png" alt="">
-                    <!-- do we need to ad field for signature -->
-                </div>
-
-                <div class="download-button">
-                    <a class="btn btn-info btn-lg" href="#contact"><i class="fa fa-paper-plane"></i>Send me message</a>
-                    <a class="btn btn-primary btn-lg" href="#"><i class="fa fa-download"></i>download my cv</a>
                 </div>
             </div>
-
-
-        </div> <!-- /.row -->
-    </div> <!-- /.container -->
-</section><!-- End About Section -->
-
-
-<!-- Video Section -->
-<section id="video" class="video-section">
-    <div class="tf-bg-overlay">
-        <div class="container">
-            <div class="control">
-                <div class="video-intro text-center">
-                    <h2>Audio Introducing</h2>
-                    <audio id="audioIntro" controls>
-                        <source src="https://drive.google.com/uc?export=download&id={{$user->audio}}&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M" type="audio/ogg">
-                        Your browser does not support the audio element.
-                    </audio><!--/.video-container-->
-                </div>
-
-            </div>
-            <!--/.control-->
         </div>
-        <!--/.container-->
-    </div>
-    <!--/.overlay-->
-</section>
-<!-- /.Video Section -->
-
-
-<!-- Resume Section -->
-<section id="resume" class="resume-section section-padding">
-    <div class="container">
-        <h2 class="section-title wow fadeInUp">Resume</h2>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="resume-title">
-                    <h3>Education</h3>
-                </div>
-                <div class="resume">
-                    <ul class="timeline">
-                        <? if(!empty($user->eduTitle1)):?>
-                            <li>
-                        <div class="posted-date">
-                            <span class="month">{{$user->eduYear1}}</span>
-                        </div><!-- /posted-date -->
-
-                        <div class="timeline-panel wow fadeInUp">
-                            <div class="timeline-content">
-                                <div class="timeline-heading">
-                                    <h3>{{$user->eduTitle1}}</h3>
-                                    <span>{{$user->eduDesc1}}</span>
-                                </div><!-- /timeline-heading -->
-
-                                <div class="timeline-body">
-                                    <p></p>
-                                </div><!-- /timeline-body -->
-                            </div> <!-- /timeline-content -->
-                        </div><!-- /timeline-panel -->
-                    </li>
-                        <? endif;?>
-                        <? if(!empty($user->eduTitle2)):?>
-                            <li class="timeline-inverted">
-                        <div class="posted-date">
-                            <span class="month">{{$user->eduYear2}}</span>
-                        </div><!-- /posted-date -->
-
-                        <div class="timeline-panel wow fadeInUp">
-                            <div class="timeline-content">
-                                <div class="timeline-heading">
-                                    <h3>{{$user->eduTitle2}}</h3>
-                                    <span>{{$user->eduDesc2}}</span>
-                                </div><!-- /timeline-heading -->
-
-                                <div class="timeline-body">
-                                    <p></p>
-                                </div><!-- /timeline-body -->
-                            </div> <!-- /timeline-content -->
-                        </div> <!-- /timeline-panel -->
-                    </li>
-                        <? endif;?>
-                        <? if(!empty($user->eduTitle3)):?>
-                            <li>
-                            <div class="posted-date">
-                                <span class="month">{{$user->eduYear3}}</span>
-                            </div><!-- /posted-date -->
-
-                            <div class="timeline-panel wow fadeInUp">
-                                <div class="timeline-content">
-                                    <div class="timeline-heading">
-                                        <h3>{{$user->eduTitle3}}</h3>
-                                        <span>{{$user->eduDesc3}}</span>
-                                    </div><!-- /timeline-heading -->
-
-                                    <div class="timeline-body">
-                                        <p></p>
-                                    </div><!-- /timeline-body -->
-                                </div> <!-- /timeline-content -->
-                            </div><!-- /timeline-panel -->
-                        </li>
-                        <? endif;?>
-
-                    </ul>
-                </div>
-            </div>
-        </div><!-- /row -->
 
         <div class="row">
-            <div class="col-md-12">
-                <div class="resume-title">
-                    <h3>SEMINAR’S ATTENDED</h3>
-                </div>
-                <div class="resume">
-                    <ul class="timeline">
-                        <? if(!empty($user->trnTitle1)):?>
-                            <li class="timeline-inverted">
-                        <div class="posted-date">
-                            <span class="month">{{$user->trnYear1}}</span>
-                        </div><!-- /posted-date -->
-
-                        <div class="timeline-panel wow fadeInUp">
-                            <div class="timeline-content">
-                                <div class="timeline-heading">
-                                    <h3>{{$user->trnTitle1}}</h3>
-                                    <span>{{$user->trnDesc1}}</span>
-                                </div><!-- /timeline-heading -->
-
-                                <div class="timeline-body">
-                                    <p></p>
-                                </div><!-- /timeline-body -->
-                            </div> <!-- /timeline-content -->
-                        </div> <!-- /timeline-panel -->
-                    </li>
-                        <? endif; ?>
-                        <? if(!empty($user->trnTitle2)):?>
-                            <li>
-                        <div class="posted-date">
-                            <span class="month">{{$user->trnYear2}}</span>
-                        </div><!-- /posted-date -->
-
-                        <div class="timeline-panel wow fadeInUp">
-                            <div class="timeline-content">
-                                <div class="timeline-heading">
-                                    <h3>{{$user->trnTitle2}}</h3>
-                                    <span>{{$user->trnDesc2}}</span>
-                                </div><!-- /timeline-heading -->
-
-                                <div class="timeline-body">
-                                    <p></p>
-                                </div><!-- /timeline-body -->
-                            </div> <!-- /timeline-content -->
-                        </div> <!-- /timeline-panel -->
-                    </li>
-                        <? endif; ?>
-                        <? if(!empty($user->trnTitle3)):?>
-                            <li class="timeline-inverted">
-                        <div class="posted-date">
-                            <span class="month">{{$user->trnYear3}}</span>
-                        </div><!-- /posted-date -->
-
-                        <div class="timeline-panel wow fadeInUp">
-                            <div class="timeline-content">
-                                <div class="timeline-heading">
-                                    <h3>{{$user->trnTitle3}}</h3>
-                                    <span>{{$user->trnDesc3}}</span>
-                                </div><!-- /timeline-heading -->
-
-                                <div class="timeline-body">
-                                    <p></p>
-                                </div><!-- /timeline-body -->
-                            </div> <!-- /timeline-content -->
-                        </div> <!-- /timeline-panel -->
-                    </li>
-                        <? endif; ?>
-                    </ul>
-                </div>
-            </div>
-        </div><!-- /row -->
-    </div><!-- /.container -->
-</section><!-- End Resume Section -->
-
-
-<!-- Skills Section -->
-<section id="skills" class="skills-section section-padding">
-    <div class="container">
-        <h2 class="section-title wow fadeInUp">Skills</h2>
-
-        <div class="row">
-            <div class="col-md-12">
-                <? $counter = count($primarySkills);
-                    if($counter > 6 ){
-                        $counter = 6 ;
-                    }
-                ?>
-                <? if($counter > 1):?>
-                    <? for($i=0; $i<$counter;$i++): ?>
-                        <div class="skill-progress col-md-6">
-                        <div class="skill-title"><h3>{{$primarySkills[$i]}}</h3></div>
-                        <div class="progress">
-                            <div class="progress-bar six-sec-ease-in-out" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" ><span>100%</span>
+            <div class="col-md-8 offset-md-2">
+                <div class="line"></div>
+                    <div class="socialIcons">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="resumeApp/resources/views/customTheme/images/newResume/behance.png" alt="socialicon">
+                                <span class="imgText">behance.com/juannorris</span>
                             </div>
-                        </div><!-- /.progress -->
-                    </div><!-- /.skill-progress -->
-                    <? endfor;?>
-                <? endif;?>
-            </div><!-- /.col-md-12 -->
-        </div><!-- /.row -->
-
-        <div class="skill-chart text-center">
-            <h3>More skills</h3>
-        </div>
-
-        <div class="row more-skill text-center">
-            <?
-                $counter = count($charSkills);
-                if($counter > 6 ){
-                    $counter = 6 ;
-                }
-            ?>
-            <? if($counter > 1):?>
-                <? for($i=0; $i<$counter;$i++): ?>
-                    <div class="col-xs-12 col-sm-4 col-md-2">
-                    <div class="chart" data-percent="100" data-color="e74c3c">
-                        <span class="percent"></span>
-                        <div class="chart-text">
-                            <span>{{substr($charSkills[$i], 0, strpos($charSkills[$i], ":"))}}</span>
+                            <div class="col-md-4">
+                                <img src="resumeApp/resources/views/customTheme/images/newResume/dribbble.png" alt="socialicon">
+                                <span class="imgText">dribbble.com/j.norris</span>
+                            </div>
+                            <div class="col-md-4">
+                                <img src="resumeApp/resources/views/customTheme/images/newResume/personalweb.png" alt="socialicon">
+                                <span class="imgText">jnorris.com</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <?endfor;?>
-            <? endif;?>
-        </div>
-
-    </div><!-- /.container -->
-</section><!-- End Skills Section -->
-
-
-<!-- Works Section -->
-<section id="works" class="works-section section-padding">
-    <div class="container">
-        <h2 class="section-title wow fadeInUp">Works</h2>
-
-        <ul class="list-inline" id="filter">
-            <li><a class="active" data-group="all">All</a></li>
-            <li><a data-group="design">Design</a></li>
-            <li><a data-group="web">Web</a></li>
-            <li><a data-group="interface">Interface</a></li>
-            <li><a data-group="identety">Identity</a></li>
-        </ul>
-
-        <div class="row">
-            <? $works = explode(',',$user->works);?>
-            <div id="grid">
-                @foreach($works as $workSrc)
-                <? if(!empty($workSrc)):?>
-                    <div class="portfolio-item col-xs-12 col-sm-4 col-md-3" data-groups='["all", "identety", "interface"]'>
-                        <div class="portfolio-bg">
-                            <div class="portfolio">
-                                <div class="tt-overlay"></div>
-                                <div class="links">
-                                    <a class="image-link" href="{{$workSrc}}"><i class="fa fa-search-plus"></i></a>
-                                    <a href="#"><i class="fa fa-link"></i></a>
-                                </div><!-- /.links -->
-                                    <img src="{{$workSrc}}" alt="image" width="170" height="170">
-                                <div class="portfolio-info">
-                                    <h3>Portfolio Title</h3>
-                                </div><!-- /.portfolio-info -->
-                            </div><!-- /.portfolio -->
-                        </div><!-- /.portfolio-bg -->
-                    </div><!-- /.portfolio-item -->
-                <? endif;?>
-                @endforeach
-            </div><!-- /#grid -->
-        </div><!-- /.row -->
-    </div><!-- /.container -->
-</section><!-- End Works Section -->
-
-<!-- Hire Section -->
-<section class="hire-section text-center" data-stellar-vertical-offset="50" data-stellar-background-ratio="0.2">
-    <div class="hire-section-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <h2>I'm available for freelance project</h2>
-                    <? if(!empty($user->googleCalendar)):?>
-                        <div>
-                            <iframe src="{{$user->googleCalendar}}" style="border-radius: 5px; border: 5px solid lightgray;" width="100%" height="250" frameborder="0" scrolling="no"></iframe>
-                        </div>
-                    <? endif;?>
-                    <a href="#" class="btn btn-default">Get Hired</a>
-                </div><!-- /.col-md-12 -->
-            </div><!-- /.row -->
-        </div><!-- /.container -->
-    </div><!-- /.hire-section-bg -->
-</section><!-- End Hire Section -->
-
-
-
-<!-- Contact Section -->
-<section id="contact" class="contact-section section-padding">
-    <div class="container">
-        <h2 class="section-title wow fadeInUp">Get in touch</h2>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="contact-form">
-                    <strong>Send me a message</strong>
-                    <form name="contact-form" method="post" action="resumeApp/resources/views/customTheme/php/sendemail.php">
-                        <div class="form-group">
-                            <label for="InputName1">Name</label>
-                            <input type="text" name="name" class="form-control" id="InputName1" required="">
-                        </div>
-                        <div class="form-group">
-                            <label for="InputEmail1">Email</label>
-                            <input type="email" name="email" class="form-control" id="InputEmail1" required="">
-                        </div>
-                        <div class="form-group">
-                            <label for="InputSubject">Subject</label>
-                            <input type="text" name="subject" class="form-control" id="InputSubject">
-                        </div>
-                        <div class="form-group">
-                            <label for="InputTextarea">Message</label>
-                            <textarea name="message" class="form-control" id="InputTextarea" rows="5" required=""></textarea>
-                        </div>
-
-                        <button type="submit" name="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
-            </div><!-- /.col-md-6 -->
-
-            <div class="col-md-6">
-                <div class="row center-xs">
-                    <div class="col-sm-6">
-                        <i class="fa fa-map-marker"></i>
-                        <address>
-                            <strong>Address/Street</strong>
-                            {{$user->city}}
-                        </address>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <i class="fa fa-mobile"></i>
-                        <div class="contact-number">
-                            <strong>Phone Number</strong>
-                            (001) 0123 111222<br>
-                            (001) 0123 333444
-                        </div>
-                    </div>
-                </div>
-                 <!-- google map git langitude and attitude for JS-->
-                <?
-                    if(!empty($user->city)){
-                        $address = $user->city; // Google HQ
-                        $prepAddr = str_replace(' ','+',$address);
-                        $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false&key=AIzaSyDZWJcFQabrMDUPmXaiU7wlZ74dzm_virI');
-                        $output = json_decode($geocode);
-                        if(isset($output->results[0])){
-                            $latitude = $output->results[0]->geometry->location->lat;
-                            $longitude = $output->results[0]->geometry->location->lng;
-                        }
-                    }
-                ?>
-                <? if(isset($output->results[0]) && !empty($user->city)):?>
-                    <span id="latitude" style="display: none">{{$latitude}}</span>
-                    <span id="longitude" style="display: none">{{$longitude}}</span>
-                    <span id="userCity" style="display: none">{{$user->city}}</span>
-                <? endif;?>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="location-map">
-                            <div id="mapCanvas" class="map-canvas"></div>
-                        </div>
-                    </div>
-                </div>
-
+                <div class="line"></div>
             </div>
-        </div><!-- /.row -->
-    </div><!-- /.container -->
-</section><!-- End Contact Section -->
-
-<!-- Footer Section -->
-<footer class="footer-wrapper">
-    <div class="container">
+        </div>
         <div class="row">
-            <div class="col-md-12">
-                <div class="copyright text-center">
-                    <p>&copy; 2018 <b>123Workforce</b>. All rights reserved.</p>
+            <div class="col-md-2 offset-md-4">
+                <div class="buttonMain">
+                    <a class="hireBtn btn-block hire" href="#">Hire Me</a>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="buttonMain">
+                    <a class="hireBtn btn-block" href="#">Send me message </a>
                 </div>
             </div>
         </div>
     </div>
-</footer><!-- End Footer Section -->
+
+    <div id="quote">
+        <div class="row">
+            <div class="col-md-1 offset-md-1">
+                <img src="resumeApp/resources/views/customTheme/images/newResume/quote.png" alt="quote">
+            </div>
+           <div class="col-md-10">
+               <div class="quoteText">
+                   A highly motivated Graphic Designer with experience in Web Designing/Development and project Management.<br/>Ambitious and detail oriented producing quality materials for any design needs.
+               </div>
+           </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div id="navBar">
+                <nav class="navbar navbar-expand-lg customNav">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+                <img src="resumeApp/resources/views/customTheme/images/newResume/menu.png" alt="menu" width="46px">
+            </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link secondNavLink active" href="#about">About</a>
+                            <a class="nav-item nav-link secondNavLink " href="#resume">Resume</a>
+                            <a class="nav-item nav-link secondNavLink " href="#skills">Skills</a>
+                            <a class="nav-item nav-link secondNavLink " href="#work">Work</a>
+                            <a class="nav-item nav-link secondNavLink " href="#contact">Contact</a>
+                            <a href="#" class="downCV">
+                                <img src="resumeApp/resources/views/customTheme/images/newResume/download_cv.png" style="width: 20px;">
+                                <img src="resumeApp/resources/views/customTheme/images/newResume/Download CV.png" style="width: 100px;padding-top: 6px;padding-left: 5px;">
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    {{-- About me Section --}}
+    <div id="about">
+        <div class="row">
+            <div class="col-md-5 offset-md-1">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="resumeApp/resources/views/customTheme/images/newResume/about_me.png" alt="aboutImg" width="30px;">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="aboutText">
+                            ABOUT ME<br>
+                            <div class="row">
+                                <div class="col-md-5 aboutSubText">
+                                    <p>Birthday:</p>
+                                    <p>Adress:</p>
+                                    <p>Nationality:</p>
+                                    <p>Languages:</p>
+                                    <p>Email:</p>
+                                </div>
+                                <div class="col-md-7 aboutSubText">
+                                    <p>01/01/2000</p>
+                                    <p>Ukrain, Kiev</p>
+                                    <p>Ukrainian</p>
+                                    <p>English Russian</p>
+                                    <p>test@test.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="resumeApp/resources/views/customTheme/images/newResume/what_i_do.png" alt="aboutImg" width="30px;">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="aboutText">
+                            WHAT I DO?<br>
+                            <div class="row">
+                                <div class="col-md-6 aboutSubText">
+                                    <p><span class="circle"></span> UI design</p>
+                                    <p><span class="circle"></span> UX design</p>
+                                    <p><span class="circle"></span> Brochure Design</p>
+                                    <p><span class="circle"></span> Logo design</p>
+                                    <p><span class="circle"></span> Branding</p>
+                                </div>
+                                <div class="col-md-6 aboutSubText">
+                                    <p><span class="circle"></span> Brochure Design</p>
+                                    <p><span class="circle"></span> UX design</p>
+                                    <p><span class="circle"></span> Ukrainian</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- audio introduction section --}}
+    <div id="audio">
+        <div class="row">
+            <div class="col-md-1 offset-md-1">
+                <img src="resumeApp/resources/views/customTheme/images/newResume/audio.png" alt="audio">
+            </div>
+            <div class="col-md-6">
+                <div class="quoteText">
+                    Audio Introduction
+                </div>
+            </div>
+            <div class="col-md-3">
+                <audio id="audioIntro" controls>
+                    <source src="https://drive.google.com/uc?export=download&id={{$user->audio}}&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M" type="audio/ogg">
+                    Your browser does not support the audio element.
+                </audio><!--/.video-container-->
+            </div>
+        </div>
+    </div>
+
+    {{-- Education and Trainings section --}}
+    <div id="about" class="education">
+        <div class="row">
+            <div class="col-md-5 offset-md-1">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="resumeApp/resources/views/customTheme/images/newResume/education.png" alt="aboutImg" width="30px;">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="aboutText">
+                            Education<br>
+                            <div class="row">
+                                <div class="col-md-12 aboutSubText">
+                                    <div class="year"><span class="circle"></span> 2014 - 2017</div>
+                                    <div class="title">Universidad Autónoma del Caribe</div>
+                                    <div class="desc">Computer Science</div>
+                                </div>
+                            </div><br/>
+                            <div class="row">
+                                <div class="col-md-10 aboutSubText">
+                                    <div class="year"><span class="circle"></span> 2014 - 2017</div>
+                                    <div class="title">Universidad Autónoma del Caribe</div>
+                                    <div class="desc">Computer Science</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="resumeApp/resources/views/customTheme/images/newResume/trainings.png" alt="aboutImg" width="30px;">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="aboutText">
+                            TRAININGS<br>
+                            <div class="row">
+                                <div class="col-md-12 aboutSubText">
+                                    <div class="year"><span class="circle"></span> 2016 - 2017</div>
+                                    <div class="title">Lynda.com</div>
+                                    <div class="desc">Computer Science</div>
+                                </div>
+                            </div><br/>
+                            <div class="row">
+                                <div class="col-md-10 aboutSubText">
+                                    <div class="year"><span class="circle"></span> 2017 - 2018</div>
+                                    <div class="title">Coursera.com</div>
+                                    <div class="desc">Computer Science</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    {{-- Skills section --}}
+    <div id="about" class="education">
+        <div class="row">
+            <div class="col-md-5 offset-md-1">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="resumeApp/resources/views/customTheme/images/newResume/skills.png" alt="aboutImg" width="30px;">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="aboutText">
+                            SKILLS<br>
+                            <div class="row">
+                                <div class="col-md-12 aboutSubText">
+                                    <p class="skill">Adobe XD<div class="bar"></div></p>
+
+                                    <p class="skill">After Effects<div class="bar"></div></p>
+                                    <p class="skill">Sketch<div class="bar"></div></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="aboutText">
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12 aboutSubText">
+                                    <p class="skill">Adobe Illustrator<div class="bar"></div></p>
+                                    <p class="skill">Invision Studio<div class="bar"></div></p>
+                                    <p class="skill">Adobe Photoshop<div class="bar"></div></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<hr>
+    {{-- more skills section --}}
+    <div id="about" class="moreSkills">
+        <div class="row">
+            <div class="col-md-5 offset-md-1">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="resumeApp/resources/views/customTheme/images/newResume/more_skills.png" alt="aboutImg" width="30px;">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="aboutText">
+                            MORE SKILLS<br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 offset-md-1 moreSkills">
+                <div class="row">
+                    <div class="skillBox">Confident</div>
+                    <div class="skillBox">Creative</div>
+                    <div class="skillBox">Easygoing</div>
+                    <div class="skillBox">Goal-Driven</div>
+                    <div class="skillBox">Confident</div>
+                    <div class="skillBox">Creative</div>
+                    <div class="skillBox">Easygoing</div>
+                    <div class="skillBox">Goal-Driven</div>
+                    <div class="skillBox">Easygoing</div>
+                    <div class="skillBox">Goal-Driven</div>
+                    <div class="skillBox">Confident</div>
+                    <div class="skillBox">Creative</div>
+                    <div class="skillBox">Easygoing</div>
+                    <div class="skillBox">Goal-Driven</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {{-- Works section --}}
+    <div id="about" class="worksSection">
+        <div class="row firstPart">
+            <div class="col-md-5 offset-md-1">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="resumeApp/resources/views/customTheme/images/newResume/works.png" alt="aboutImg" width="30px;">
+                    </div>
+                    <div class="col-md-11">
+                        <div class="aboutText">
+                            <span class="worksText">WORKS</span><br>
+                            <div class="row">
+                                <div class="col-md-12 aboutSubText">
+                                    <div class="workCard">
+                                        <div class="workImg">
+                                            <img src="resumeApp/resources/views/customTheme/images/newResume/site.jpg" alt="work img">
+                                        </div>
+                                        <div class="workTitle">
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    Home Managment - JavaScript
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <img src="resumeApp/resources/views/customTheme/images/newResume/link.png" alt="view work">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-11">
+                        <div class="aboutText">
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12 aboutSubText">
+                                    <div class="workCard">
+                                        <div class="workImg">
+                                            <img src="resumeApp/resources/views/customTheme/images/newResume/site.jpg" alt="work img">
+                                        </div>
+                                        <div class="workTitle">
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    Home Managment - JavaScript
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <img src="resumeApp/resources/views/customTheme/images/newResume/link.png" alt="view work">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 offset-md-1">
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-11">
+                        <div class="aboutText">
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12 aboutSubText">
+                                    <div class="workCard">
+                                        <div class="workImg">
+                                            <img src="resumeApp/resources/views/customTheme/images/newResume/site.jpg" alt="work img">
+                                        </div>
+                                        <div class="workTitle">
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    Home Managment - JavaScript
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <img src="resumeApp/resources/views/customTheme/images/newResume/link.png" alt="view work">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-11">
+                        <div class="aboutText">
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12 aboutSubText">
+                                    <div class="workCard">
+                                        <div class="workImg">
+                                            <img src="resumeApp/resources/views/customTheme/images/newResume/site.jpg" alt="work img">
+                                        </div>
+                                        <div class="workTitle">
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    Home Managment - JavaScript
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <img src="resumeApp/resources/views/customTheme/images/newResume/link.png" alt="view work">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Get in touch Section --}}
+    <div id="ourClients">
+        <div class="row">
+            <div class="col-md-11 offset-md-1">
+                <div class="heading">
+                    <h2>
+                        <img src="resumeApp/resources/views/customTheme/images/email.png"> GET IN TOUCH
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row clientsBox">
+            <div class="col-md-6 leftSide">
+
+            </div>
+            <div class="col-md-6 rightSide">
+                <form id="contact-form" method="POST" class="form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="username" class="formLabel">Name</label>
+                                <input type="text" id="username" name="name" placeholder="Name Surname" class="form-control no-border">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="name" class="formLabel">Email</label>
+                            <input type="email" placeholder="your@email.com" id="email" name="email" required="required" class="form-control no-border">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="telephone" class="formLabel">Subject</label>
+                            <input type="tel" placeholder="Message subject" name="subject" class="form-control no-border">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="message" class="formLabel">Message</label>
+                            <input type="tel" placeholder="write your message.." name="message" class="form-control no-border">
+                        </div>
+                    </div>
 
 
-<!-- Scroll-up -->
-<div class="scroll-up">
-    <a href="#home"><i class="fa fa-angle-up"></i></a>
-</div>
+                    <div class="row">
 
-<!-- Javascript files -->
-<script src="resumeApp/resources/views/customTheme/js/jquery.js"></script>
-<script src="resumeApp/resources/views/customTheme/bootstrap/js/bootstrap.min.js"></script>
-<script src="resumeApp/resources/views/customTheme/js/jquery.stellar.min.js"></script>
-<script src="resumeApp/resources/views/customTheme/js/jquery.sticky.js"></script>
-<script src="resumeApp/resources/views/customTheme/js/smoothscroll.js"></script>
-<script src="resumeApp/resources/views/customTheme/js/wow.min.js"></script>
-<script src="resumeApp/resources/views/customTheme/js/jquery.countTo.js"></script>
-<script src="resumeApp/resources/views/customTheme/js/jquery.inview.min.js"></script>
-<script src="resumeApp/resources/views/customTheme/js/jquery.easypiechart.js"></script>
-<script src="resumeApp/resources/views/customTheme/js/jquery.shuffle.min.js"></script>
-<script src="resumeApp/resources/views/customTheme/js/jquery.magnific-popup.min.js"></script>
-<script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
-<script src="resumeApp/resources/views/customTheme/js/jquery.fitvids.js"></script>
+                        <div class="buttonMain col-md-6 offset-md-3">
+                            <input type="submit" value="Send" class="hireBtn btn-block">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- custom footer --}}
+    <div class="customFooter">
+        <div class="row">
+             <div class="col-md-4 offset-md-1">
+                 <div class="footerText">
+                     © Copyright 2018 123Workforce.<br/>
+                     All Rights Reserved.
+                 </div>
+             </div>
+            <div class="col-md-2 text-center">
+                <div class="footerImg">
+                    <img src="resumeApp/resources/views/customTheme/images/newResume/logo.png" alt="logo">
+                </div>
+             </div>
+            <div class="col-md-4">
+                <div class="footerText text-right">
+                    info@123workforce.com<br>
+                    (+44) 2037000685<br/>
+                    <a href="https://www.facebook.com/123workforce">
+                        <img src="resumeApp/resources/views/customTheme/images/newResume/fb.png" alt="fb" width="25px">
+                    </a>
+                    <a href="https://www.instagram.com/123workforce/">
+                        <img src="resumeApp/resources/views/customTheme/images/newResume/instagram.png" alt="insta" width="25px">
+                    </a>
+                </div>
+             </div>
+        </div>
+    </div>
+
+
+
+
+
+
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script
+        src="https://code.jquery.com/jquery-migrate-3.0.1.min.js"
+        integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4="
+        crossorigin="anonymous"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&key=AIzaSyDZWJcFQabrMDUPmXaiU7wlZ74dzm_virI"></script>
 <script src="resumeApp/resources/views/customTheme/js/scripts.js"></script>
-<script>
-    $(document).ready(function () {
-        var audioplayer = document.getElementById("audioIntro");
-        $("#audioPlay").on('click',function(){
-            if (audioplayer.paused) {
-                audioplayer.play();
-                $('#audioPlay').html('<i class="fa fa-pause"></i>');
-            }
-            else {
-                audioplayer.pause();
-                audioplayer.currentTime = 0;
-                $('#audioPlay').html('<i class="fa fa-play"></i>');
-            }
-        })
-    });
-</script>
-</body>
-</html>

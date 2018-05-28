@@ -25,7 +25,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <link rel="shortcut icon" href="resumeApp/resources/views/customTheme/images/ico/favicon.png">
+        <link rel="shortcut icon" href="resumeApp/resources/views/customTheme/images/logo123.png">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="resumeApp/resources/views/customTheme/images/ico/apple-touch-icon-144-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resumeApp/resources/views/customTheme/images/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resumeApp/resources/views/customTheme/images/ico/apple-touch-icon-72-precomposed.png">
@@ -164,11 +164,11 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
-                                <a class="nav-item nav-link secondNavLink active" href="#about">About</a>
-                                <a class="nav-item nav-link secondNavLink " href="#resume">Resume</a>
+                                <a class="nav-item nav-link secondNavLink active " href="#about">About</a>
+                                <a class="nav-item nav-link secondNavLink " href="#audio">Resume</a>
                                 <a class="nav-item nav-link secondNavLink " href="#skills">Skills</a>
                                 <a class="nav-item nav-link secondNavLink " href="#work">Work</a>
-                                <a class="nav-item nav-link secondNavLink " href="#contact">Contact</a>
+                                <a class="nav-item nav-link secondNavLink " href="#ourClients">Contact</a>
                                 <a href="#" class="downCV">
                                     <img src="resumeApp/resources/views/customTheme/images/newResume/download_cv.png" style="width: 20px;">
                                     <img src="resumeApp/resources/views/customTheme/images/newResume/Download CV.png" style="width: 100px;padding-top: 6px;padding-left: 5px;">
@@ -346,7 +346,7 @@
         </div>
         <hr>
         {{-- Skills section --}}
-        <div id="about" class="skills">
+        <div id="skills" class="skills">
             <div class="row">
                 <div class="col-md-5 offset-md-1">
                     <div class="row">
@@ -450,7 +450,7 @@
               }
             }
         ?>
-        <div id="about" class="worksSection">
+        <div id="work" class="worksSection">
             <div class="row firstPart">
                 <div class="col-md-5 offset-md-1">
                     <div class="row">
@@ -698,6 +698,7 @@
                  </div>
             </div>
         </div>
+
         <script src="resumeApp/resources/views/customTheme/js/jquery.js"></script>
         <script src="resumeApp/resources/views/customTheme/bootstrap/js/bootstrap.min.js"></script>
         <script>
@@ -712,6 +713,27 @@
                 var city      = $('#userCity').html();
                 var map = new google.maps.Map(document.getElementById("map"), mapOptions);
             }
+
+            $(document).on('click', 'a[href^="#"]', function(e) {
+                // target element id
+                var id = $(this).attr('href');
+
+                // target element
+                var $id = $(id);
+                if ($id.length === 0) {
+                    return;
+                }
+
+                // prevent standard hash navigation (avoid blinking in IE)
+                e.preventDefault();
+
+                // top position relative to the document
+                var pos = $id.offset().top;
+
+                // animated top scrolling
+                $('body, html').animate({scrollTop: pos},1500);
+            });
+
         </script>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZWJcFQabrMDUPmXaiU7wlZ74dzm_virI&callback=myMap"></script>

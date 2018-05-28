@@ -69,19 +69,11 @@ class UserDataController extends Controller
                         }
                     }else{
                         // check if photo is not repeated :
-                        $upload = true;
                         $pathToPhoto = $this->uploadPhoto($value,$key,$key);
                         if(empty($works)){
                             $works = $pathToPhoto ;
                         }else{
-                            foreach ($worksArr as $work){
-                                if($work == $pathToPhoto){
-                                    $upload= false;
-                                }
-                            }
-                            if($upload){
                             $works .= ','.$pathToPhoto;
-                            }
                         }
 
                     }
@@ -174,7 +166,7 @@ class UserDataController extends Controller
         $msg .= ' has updated his resume .. please view updated resume here..  ';
         $msg .= 'www.123workforce.com/form/'.auth()->user()->username;
         $telegram = new Telegram('-279372621');
-//        $telegram->sendMessage($msg);
+        $telegram->sendMessage($msg);
     }
 
     public function sendNotification(){

@@ -361,4 +361,20 @@ body {
     width: 60px;
     opacity: .5; }
 
+.info {
+  color: #697786;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 24px; }
+
+/*MAP*/
+.location-map {
+  border-radius: 5px;
+  box-shadow: 0 11px 16px -7px #E5ECED;
+  margin-top: 10px; }
+
+.map-canvas {
+  height: 150px; }
+
 /*# sourceMappingURL=main.css.map */

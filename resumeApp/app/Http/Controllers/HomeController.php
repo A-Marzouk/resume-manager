@@ -27,8 +27,8 @@ class HomeController extends Controller
     public function ResumePage($username){
         $user =  User::where('username',$username)->first();
         if($user !== null){
-            $user = $user->userData;
             $profession = $user->profession;
+            $user = $user->userData;
         }else{
             return redirect('/');
         }

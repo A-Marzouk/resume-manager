@@ -90,16 +90,30 @@
                         <div class="socialIcons">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <a href="{{$user->behanceLink}}">
-                                        <img src="resumeApp/resources/views/customTheme/images/newResume/behance.png" alt="socialicon">
-                                        <span class="imgText">behance.com</span>
-                                    </a>
+                                    <? if($designer):?>
+                                        <a href="{{$user->behanceLink}}">
+                                            <img src="resumeApp/resources/views/customTheme/images/newResume/behance.png" alt="socialicon">
+                                            <span class="imgText">{{$user->behanceLink}}</span>
+                                        </a>
+                                    <? else: ?>
+                                        <a href="{{$user->githubLink}}">
+                                            <img src="resumeApp/resources/views/customTheme/images/newResume/github-512.png" alt="socialicon">
+                                            <span class="imgText">{{$user->githubLink}}</span>
+                                        </a>
+                                    <? endif;?>
                                 </div>
                                 <div class="col-md-4">
-                                    <a href="{{$user->dribbleLink}}">
-                                        <img src="resumeApp/resources/views/customTheme/images/newResume/dribbble.png" alt="socialicon">
-                                        <span class="imgText">dribbble.com</span>
-                                    </a>
+                                    <? if($designer):?>
+                                        <a href="{{$user->dribbleLink}}">
+                                            <img src="resumeApp/resources/views/customTheme/images/newResume/dribbble.png" alt="socialicon">
+                                            <span class="imgText">{{$user->dribbleLink}}</span>
+                                        </a>
+                                    <? else: ?>
+                                        <a href="{{$user->stackoverflowLink}}">
+                                            <img src="resumeApp/resources/views/customTheme/images/newResume/img_336389.png" alt="socialicon" width="37px" >
+                                            <span class="imgText">{{$user->stackoverflowLink}}</span>
+                                        </a>
+                                    <? endif;?>
                                 </div>
                                 <div class="col-md-4">
                                     <a href="{{$user->personalSite}}">
@@ -430,6 +444,11 @@
         {{-- Works section --}}
         <?
             $works = explode(',',$user->works);
+            foreach ($works as $work){
+              if(!empty($work)){
+                  $clearWorks[] = $work;
+              }
+            }
         ?>
         <div id="about" class="worksSection">
             <div class="row firstPart">
@@ -445,7 +464,7 @@
                                     <div class="col-md-12 aboutSubText">
                                         <div class="workCard">
                                             <div class="workImg">
-                                                <img src="{{$works[0]}}" alt="work img" width="260" height="300">
+                                                <img src="{{$clearWorks[0]}}" alt="work img" width="260" height="300">
                                             </div>
                                             <div class="workTitle">
                                                 <div class="row">
@@ -475,7 +494,7 @@
                                     <div class="col-md-12 aboutSubText">
                                         <div class="workCard">
                                             <div class="workImg">
-                                                <img src="{{$works[1]}}" alt="work img" width="260" height="300">
+                                                <img src="{{$clearWorks[1]}}" alt="work img" width="260" height="300">
                                             </div>
                                             <div class="workTitle">
                                                 <div class="row">
@@ -507,7 +526,7 @@
                                     <div class="col-md-12 aboutSubText">
                                         <div class="workCard">
                                             <div class="workImg">
-                                                <img src="{{$works[2]}}" alt="work img" width="260" height="300">
+                                                <img src="{{$clearWorks[2]}}" alt="work img" width="260" height="300">
                                             </div>
                                             <div class="workTitle">
                                                 <div class="row">
@@ -537,7 +556,7 @@
                                     <div class="col-md-12 aboutSubText">
                                         <div class="workCard">
                                             <div class="workImg">
-                                                <img src="{{$works[3]}}" alt="work img" width="260" height="300">
+                                                <img src="{{$clearWorks[3]}}" alt="work img" width="260" height="300">
                                             </div>
                                             <div class="workTitle">
                                                 <div class="row">
@@ -572,7 +591,45 @@
             </div>
             <div class="row clientsBox">
                 <div class="col-md-6 leftSide">
-
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                            <div class="info">
+                                <p>Address :</p>
+                                <p>Email :</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="info">
+                                <p>{{$user->city}}</p>
+                                <p>{{$user->email}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <!-- google map git langitude and attitude for JS-->
+                                <?
+                                    if(!empty($user->city)){
+                                        $address = $user->city; // Google HQ
+                                        $prepAddr = str_replace(' ','+',$address);
+                                        $geocode =file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&key=AIzaSyDZWJcFQabrMDUPmXaiU7wlZ74dzm_virI');
+                                        $output = json_decode($geocode);
+                                        if(isset($output->results[0])){
+                                            $latitude = $output->results[0]->geometry->location->lat;
+                                            $longitude = $output->results[0]->geometry->location->lng;
+                                        }
+                                    }
+                                ?>
+                                <?if(isset($output->results[0]) && !empty($user->city)):?>
+                                    <span id="latitude" style="display: none">{{$latitude}}</span>
+                                    <span id="longitude" style="display: none">{{$longitude}}</span>
+                                    <span id="userCity" style="display: none">{{$user->city}}</span>
+                                <? endif;?>
+                        <div class="col-sm-12">
+                            <div class="location-map">
+                                <div id="map" class="map-canvas"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6 rightSide">
                     <form id="contact-form" method="POST" class="form">
@@ -641,20 +698,22 @@
                  </div>
             </div>
         </div>
+        <script src="resumeApp/resources/views/customTheme/js/jquery.js"></script>
+        <script src="resumeApp/resources/views/customTheme/bootstrap/js/bootstrap.min.js"></script>
+        <script>
+            function myMap() {
+                var latitude  = $('#latitude').html();
+                var longitude = $('#longitude').html();
+                var mapOptions = {
+                    center: new google.maps.LatLng(latitude,longitude),
+                    zoom: 10,
+                    mapTypeId: google.maps.MapTypeId.roadmap
+                };
+                var city      = $('#userCity').html();
+                var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            }
+        </script>
 
-
-
-
-    <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-    <script
-            src="https://code.jquery.com/jquery-migrate-3.0.1.min.js"
-            integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4="
-            crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&key=AIzaSyDZWJcFQabrMDUPmXaiU7wlZ74dzm_virI"></script>
-    <script src="resumeApp/resources/views/customTheme/js/scripts.js"></script>
-
-    </body>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZWJcFQabrMDUPmXaiU7wlZ74dzm_virI&callback=myMap"></script>
+</body>
 </html>

@@ -117,12 +117,16 @@ body{
   }
 }
 
+.row{
+  margin-right: 0!important;
+  margin-left: 0!important;
+}
+
 .buttonMain{
   padding : 5% 0 0 0;
   margin-top: 20px;
   @media only screen and (max-width: 600px){
     text-align: center;
-    padding-top: 13%;
   }
   text-decoration: none;
   a:hover{
@@ -141,6 +145,10 @@ body{
     line-height: 19px;
     text-align: center;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    @media only screen and (max-width: 600px){
+
+    }
+
   }
   .hireBtn.hire{
     background: white;
@@ -211,6 +219,7 @@ body{
   font-family: Roboto;
   font-size: 25px;
   line-height: 29px;
+  padding-left: 5px;
 }
 
 .aboutSubText{
@@ -227,6 +236,13 @@ body{
   border-radius: 50%;
   padding: 0 3px 0 3px;
   margin: 3px;
+}
+
+.mobileCenter{
+  @media only screen and (max-width: 600px){
+    text-align: center;
+    margin-right: auto;
+  }
 }
 
 // audio introduction section
@@ -426,6 +442,11 @@ body{
   font-size: 14px;
   font-weight: 500;
   line-height: 16px;
+  @media only screen and (max-width: 600px) {
+    text-align: center !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
 .customFooter{
@@ -434,6 +455,7 @@ body{
   background: linear-gradient(0deg, #FCFCFC 0%, #FCFCFC 100%);
   @media only screen and (max-width: 600px) {
     height: auto;
+    text-align: center;
   }
 
   .footerImg{

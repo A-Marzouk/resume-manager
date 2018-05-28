@@ -185,19 +185,19 @@
             <div class="row">
                 <div class="col-md-5 offset-md-1">
                     <div class="row">
-                        <div class="col-md-1">
+                        <div class="col-md-1 col-1">
                             <img src="resumeApp/resources/views/customTheme/images/newResume/about_me.png" alt="aboutImg" width="30px;">
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-10 col-10">
                             <div class="aboutText">
                                 ABOUT ME<br>
                                 <div class="row">
-                                    <div class="col-md-5 aboutSubText">
+                                    <div class="col-md-5 col-5 aboutSubText">
                                         <p>Adress:</p>
                                         <p>Languages:</p>
                                         <p>Email:</p>
                                     </div>
-                                    <div class="col-md-7 aboutSubText">
+                                    <div class="col-md-7 col-7 aboutSubText">
                                         <p>{{$user->city}}</p>
                                         <p>{{$user->languages}}</p>
                                         <p>{{$user->email}}</p>
@@ -209,14 +209,14 @@
                 </div>
                 <div class="col-md-5">
                     <div class="row">
-                        <div class="col-md-1">
+                        <div class="col-md-1 col-1">
                             <img src="resumeApp/resources/views/customTheme/images/newResume/what_i_do.png" alt="aboutImg" width="30px;">
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-10 col-10">
                             <div class="aboutText">
                                 WHAT I DO?<br> {{-- 6 primary skills --}}
                                 <div class="row">
-                                    <div class="col-md-6 aboutSubText">
+                                    <div class="col-md-6 col-6 aboutSubText">
                                         <? $counter = count($primarySkills);
                                         if($counter > 6 ){
                                             $counter = 6 ;
@@ -227,7 +227,7 @@
                                                 <p><span class="circle"></span>{{$primarySkills[$i]}}</p>
                                             <? endfor;?>
                                     </div>
-                                    <div class="col-md-6 aboutSubText">
+                                    <div class="col-md-6 col-6 aboutSubText">
                                         <? for($i= $counter-1; $i > ($counter/2) -1 ;$i--): ?>
                                             <p><span class="circle"></span>{{$primarySkills[$i]}}</p>
                                         <? endfor;?>
@@ -266,10 +266,10 @@
             <div class="row">
                 <div class="col-md-5 offset-md-1">
                     <div class="row">
-                        <div class="col-md-1">
+                        <div class="col-md-1 col-1">
                             <img src="resumeApp/resources/views/customTheme/images/newResume/education.png" alt="aboutImg" width="30px;">
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-10 col-10">
                             <div class="aboutText">
                                 Education<br>
                                 <? if(!empty($user->eduTitle1)):?>
@@ -305,10 +305,10 @@
                 </div>
                 <div class="col-md-5">
                     <div class="row">
-                        <div class="col-md-1">
+                        <div class="col-md-1 col-1">
                             <img src="resumeApp/resources/views/customTheme/images/newResume/trainings.png" alt="aboutImg" width="30px;">
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-10 col-10">
                             <div class="aboutText">
                                 TRAININGS<br>
                                 <? if(!empty($user->trnTitle1)):?>
@@ -350,10 +350,10 @@
             <div class="row">
                 <div class="col-md-5 offset-md-1">
                     <div class="row">
-                        <div class="col-md-1">
+                        <div class="col-md-1 col-1">
                             <img src="resumeApp/resources/views/customTheme/images/newResume/skills.png" alt="aboutImg" width="30px;">
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-10 col-10">
                             <div class="aboutText">
                                 SKILLS<br>
                                 <div class="row">
@@ -375,7 +375,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-5 col-10 offset-1">
                     <div class="row">
                         <div class="col-md-1">
                         </div>
@@ -403,10 +403,10 @@
             <div class="row">
                 <div class="col-md-5 offset-md-1">
                     <div class="row">
-                        <div class="col-md-1">
+                        <div class="col-md-1 col-1">
                             <img src="resumeApp/resources/views/customTheme/images/newResume/more_skills.png" alt="aboutImg" width="30px;">
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-10 col-10">
                             <div class="aboutText">
                                 MORE SKILLS<br>
                             </div>
@@ -415,7 +415,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-10 offset-md-1 moreSkills">
+                <div class="col-md-10 offset-md-1 offset-1 moreSkills">
                     <div class="row">
                         <?
                         $counter = count($charSkills);
@@ -600,13 +600,13 @@
             <div class="row clientsBox">
                 <div class="col-md-6 leftSide">
                     <div class="row">
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-4 col-sm-6 col-6">
                             <div class="info">
                                 <p>Address :</p>
                                 <p>Email :</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6">
+                        <div class="col-md-6 col-sm-6 col-6">
                             <div class="info">
                                 <p>{{$user->city}}</p>
                                 <p>{{$user->email}}</p>

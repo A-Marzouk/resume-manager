@@ -57,7 +57,10 @@ body{
   font-weight: bold;
   margin-left: 300px;
   @media only screen and (max-width: 600px){
-    margin-left: 0px;
+    margin-right: 0px;
+    margin-left: 25%;
+    text-align: center;
+    width: 50%;
   }
   text-decoration: none !important;
   :hover{
@@ -184,6 +187,7 @@ body{
   letter-spacing: 0.1px;
   line-height: 16px;
   padding-top: 5px;
+  padding-right: 10px;
   &.active{
     color: #18A6DF;
     border-bottom: #AC81FC 2px solid;
@@ -300,6 +304,7 @@ body{
 
 // skills part :
 .aboutSubText{
+  word-wrap: break-word;
   .skill{
     color: #697786;
     font-family: Roboto;

@@ -49,7 +49,10 @@ body {
   text-decoration: none !important; }
   @media only screen and (max-width: 600px) {
     .loginBtn {
-      margin-left: 0px; } }
+      margin-right: 0px;
+      margin-left: 25%;
+      text-align: center;
+      width: 50%; } }
   .loginBtn :hover {
     text-decoration: none !important; }
 
@@ -150,7 +153,8 @@ body {
   font-size: 14px;
   letter-spacing: 0.1px;
   line-height: 16px;
-  padding-top: 5px; }
+  padding-top: 5px;
+  padding-right: 10px; }
   .secondNavLink.active {
     color: #18A6DF;
     border-bottom: #AC81FC 2px solid;
@@ -247,18 +251,20 @@ body {
 .education {
   padding-bottom: 4% !important; }
 
-.aboutSubText .skill {
-  color: #697786;
-  font-family: Roboto;
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 24px;
-  padding-bottom: 0px;
-  padding-top: 5px; }
-.aboutSubText .bar {
-  padding-top: 7px;
-  width: 100%;
-  background-color: #CAAFFE; }
+.aboutSubText {
+  word-wrap: break-word; }
+  .aboutSubText .skill {
+    color: #697786;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 24px;
+    padding-bottom: 0px;
+    padding-top: 5px; }
+  .aboutSubText .bar {
+    padding-top: 7px;
+    width: 100%;
+    background-color: #CAAFFE; }
 
 .skillBox {
   border: 1.5px solid #44E5EF;

@@ -157,12 +157,12 @@
             <div class="col-md-10 offset-md-1">
                 <div id="navBar">
                     <nav class="navbar navbar-expand-lg customNav">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon">
-                    <img src="resumeApp/resources/views/customTheme/images/newResume/menu.png" alt="menu" width="46px">
-                </span>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar2" aria-controls="navbar2" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon">
+                                <img src="resumeApp/resources/views/customTheme/images/newResume/menu.png" alt="menu" width="46px">
+                            </span>
                         </button>
-                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="collapse navbar-collapse" id="#navbar2">
                             <div class="navbar-nav">
                                 <a class="nav-item nav-link secondNavLink active " href="#about">About</a>
                                 <a class="nav-item nav-link secondNavLink " href="#audio">Resume</a>
@@ -194,7 +194,7 @@
                                 <div class="row">
                                     <div class="col-md-5 col-5 aboutSubText">
                                         <p>Adress:</p>
-                                        <p>Languages:</p>
+                                        <p>Lang:</p>
                                         <p>Email:</p>
                                     </div>
                                     <div class="col-md-7 col-7 aboutSubText">
@@ -247,12 +247,12 @@
                 <div class="col-md-1 offset-md-1">
                     <img src="resumeApp/resources/views/customTheme/images/newResume/audio.png" alt="audio">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="quoteText">
                         Audio Introduction
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-5">
                     <audio id="audioIntro" controls>
                         <source src="https://drive.google.com/uc?export=download&id={{$user->audio}}&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M" type="audio/ogg">
                         Your browser does not support the audio element.
@@ -425,13 +425,8 @@
                         ?>
                         <? if($counter > 1):?>
                         <? for($i=0; $i<$counter;$i++): ?>
-                        <div class="col-xs-12 col-sm-4 col-md-2">
-                            <div class="chart" data-percent="100" data-color="e74c3c">
-                                <span class="percent"></span>
-                                <div class="chart-text">
-                                    <div class="skillBox">{{substr($charSkills[$i], 0, strpos($charSkills[$i], ":"))}}</div>
-                                </div>
-                            </div>
+                        <div class="">
+                            <div class="skillBox">{{substr($charSkills[$i], 0, strpos($charSkills[$i], ":"))}}</div>
                         </div>
                         <?endfor;?>
                         <? endif;?>

@@ -48,10 +48,10 @@
 
         <div id="navBar">
             <nav class="navbar navbar-expand-lg customNav">
-                <a class="navbar-brand" href="/">
+                <a class="navbar-brand col-9" href="/">
                     <img src="resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler col-2" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
                     <img src="resumeApp/resources/views/customTheme/images/newResume/menu.png" alt="menu" width="46px">
                 </span>

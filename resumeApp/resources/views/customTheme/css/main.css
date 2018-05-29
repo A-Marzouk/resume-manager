@@ -17,14 +17,14 @@ body {
 
 .customNavLink {
   opacity: 0.75;
-  color: #637280;
-  font-family: Roboto;
+  color: #637280 !important;
+  font-family: Roboto !important;
   font-size: 15px;
   letter-spacing: 0.2px;
   line-height: 16px;
   text-align: center; }
   .customNavLink.active {
-    color: #18A6DF;
+    color: #18A6DF !important;
     border-bottom: #AC81FC 2px solid;
     opacity: 1;
     font-weight: 300;
@@ -55,6 +55,11 @@ body {
       width: 50%; } }
   .loginBtn :hover {
     text-decoration: none !important; }
+
+.nav-link.loginBtn {
+  margin-left: 0px;
+  width: 100%;
+  text-align: center; }
 
 .freelancerItem {
   margin-top: 2.5%;
@@ -403,5 +408,41 @@ body {
 
 #work {
   padding-top: 4%; }
+
+.customFormHeader {
+  color: #697786;
+  font-family: Roboto;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 35px;
+  text-align: center;
+  background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%); }
+
+.clientRegisterForm {
+  padding-top: 3%; }
+  .clientRegisterForm .formLabel {
+    color: #A6A9BE;
+    font-family: Roboto;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+    line-height: 16px; }
+  .clientRegisterForm .buttonMain {
+    padding-top: 0; }
+  .clientRegisterForm .smallText {
+    padding-top: 16px;
+    color: #A6A9BE;
+    font-family: Roboto;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+    line-height: 16px;
+    text-align: center; }
+    .clientRegisterForm .smallText span {
+      color: #4A90E2;
+      font-family: Roboto;
+      font-size: 14px;
+      letter-spacing: 0.1px;
+      line-height: 16px; }
+      .clientRegisterForm .smallText span a:hover {
+        text-decoration: none; }
 
 /*# sourceMappingURL=main.css.map */

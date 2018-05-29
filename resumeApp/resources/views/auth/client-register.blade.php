@@ -7,7 +7,7 @@
             <div>
                 <div class="customFormHeader">{{ __('Client Register') }}</div>
 
-                    <form method="POST" class="clientRegisterForm" action="{{ route('client.register.submit') }}">
+                    <form method="POST" class="clientForm" action="{{ route('client.register.submit') }}">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">

@@ -418,17 +418,26 @@ body {
   text-align: center;
   background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%); }
 
-.clientRegisterForm {
+.clientForm {
   padding-top: 3%; }
-  .clientRegisterForm .formLabel {
+  .clientForm .formLabel {
     color: #A6A9BE;
     font-family: Roboto;
     font-size: 14px;
     letter-spacing: 0.1px;
     line-height: 16px; }
-  .clientRegisterForm .buttonMain {
+    .clientForm .formLabel a:hover {
+      text-decoration: none; }
+  .clientForm .buttonMain {
     padding-top: 0; }
-  .clientRegisterForm .smallText {
+  .clientForm .rememberText {
+    color: #697786;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.1px;
+    line-height: 16px; }
+  .clientForm .smallText {
     padding-top: 16px;
     color: #A6A9BE;
     font-family: Roboto;
@@ -436,13 +445,13 @@ body {
     letter-spacing: 0.1px;
     line-height: 16px;
     text-align: center; }
-    .clientRegisterForm .smallText span {
+    .clientForm .smallText span {
       color: #4A90E2;
       font-family: Roboto;
       font-size: 14px;
       letter-spacing: 0.1px;
       line-height: 16px; }
-      .clientRegisterForm .smallText span a:hover {
+      .clientForm .smallText span a:hover {
         text-decoration: none; }
 
 /*# sourceMappingURL=main.css.map */

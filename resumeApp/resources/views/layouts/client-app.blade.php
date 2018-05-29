@@ -12,6 +12,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- faveicon --}}
+    <link rel="shortcut icon" href="/resumeApp/resources/views/customTheme/images/logo123.png">
 
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>

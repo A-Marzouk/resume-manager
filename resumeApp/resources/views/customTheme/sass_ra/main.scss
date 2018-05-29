@@ -517,7 +517,7 @@ body{
   background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);
 }
 
-.clientRegisterForm{
+.clientForm{
   padding-top: 3%;
   .formLabel{
     color: #A6A9BE;
@@ -525,10 +525,22 @@ body{
     font-size: 14px;
     letter-spacing: 0.1px;
     line-height: 16px;
+    a:hover{
+      text-decoration: none;
+    }
   }
 
   .buttonMain{
     padding-top: 0;
+  }
+
+  .rememberText{
+    color: #697786;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.1px;
+    line-height: 16px;
   }
 
   .smallText{
@@ -549,5 +561,8 @@ body{
       }
     }
   }
+
+  // checkbox :
+
 }
 

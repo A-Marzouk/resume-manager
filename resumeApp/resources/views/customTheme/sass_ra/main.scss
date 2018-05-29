@@ -22,14 +22,14 @@ body{
 
 .customNavLink{
   opacity: 0.75;
-  color: #637280;
-  font-family: Roboto;
+  color: #637280 !important;
+  font-family: Roboto !important;
   font-size: 15px;
   letter-spacing: 0.2px;
   line-height: 16px;
   text-align: center;
   &.active{
-    color: #18A6DF;
+    color: #18A6DF !important;
     border-bottom: #AC81FC 2px solid;
     opacity: 1;
     font-weight: 300;
@@ -66,6 +66,12 @@ body{
   :hover{
     text-decoration: none !important;
   }
+}
+
+.nav-link.loginBtn{
+  margin-left: 0px;
+  width: 100%;
+  text-align: center;
 }
 
 // first section freelancer info :
@@ -498,4 +504,65 @@ body{
   padding-top:4%;
 }
 
+
+// client register page :
+
+.customFormHeader{
+  color: #697786;
+  font-family: Roboto;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 35px;
+  text-align: center;
+  background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);
+}
+
+.clientForm{
+  padding-top: 3%;
+  .formLabel{
+    color: #A6A9BE;
+    font-family: Roboto;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+    line-height: 16px;
+    a:hover{
+      text-decoration: none;
+    }
+  }
+
+  .buttonMain{
+    padding-top: 0;
+  }
+
+  .rememberText{
+    color: #697786;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.1px;
+    line-height: 16px;
+  }
+
+  .smallText{
+    padding-top: 16px;
+    color: #A6A9BE;
+    font-family: Roboto;
+    font-size: 14px;
+    letter-spacing: 0.1px;
+    line-height: 16px;	text-align: center;
+    span{
+      color: #4A90E2;
+      font-family: Roboto;
+      font-size: 14px;
+      letter-spacing: 0.1px;
+      line-height: 16px;
+      a:hover{
+        text-decoration: none;
+      }
+    }
+  }
+
+  // checkbox :
+
+}
 

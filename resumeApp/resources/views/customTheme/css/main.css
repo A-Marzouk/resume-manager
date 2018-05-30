@@ -290,7 +290,7 @@ body {
   .worksSection .firstPart {
     padding-top: 4%;
     padding-bottom: -1%;
-    background: url("/background.svg"); }
+    background: url("background.svg"); }
   .worksSection .worksText {
     color: #FFFFFF;
     font-family: Roboto;
@@ -626,7 +626,7 @@ body {
         text-align: center; } }
   #content #devDesBoxes {
     margin-top: 10px;
-    background: url("/background.svg"); }
+    background: url("background.svg"); }
   #content .designerBox {
     border-radius: 5px;
     background-color: #FFFFFF;
@@ -783,5 +783,15 @@ body {
     border-top: 0;
     border-right: 0;
     border-left: 0; }
+
+.modal-body .clientForm .formLabelModal {
+  color: #A6A9BE;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  line-height: 16px; }
+
+.customModal {
+  background: red; }
 
 /*# sourceMappingURL=main.css.map */

@@ -26,6 +26,14 @@
     <link href="/resumeapp/resources/views/customTheme/css/main.css" rel="stylesheet" media="screen">
 </head>
 <body>
+<?
+    $curPage = url()->current();
+    if(strpos($curPage, 'client') !== false){
+        $curPage = 'client';
+    }else{
+        $curPage = 'home';
+    }
+?>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
@@ -39,8 +47,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link customNavLink " href="/">Home</a>
-                    <a class="nav-item nav-link customNavLink active" href="/form/client/register/" data-toggle="modal" data-target="#exampleModalCenter">Become a client</a>
+                    <a class="nav-item nav-link customNavLink <?if($curPage == 'home'):?>active<?endif;?>" href="/">Home</a>
+                    <a class="nav-item nav-link customNavLink <?if($curPage == 'client'):?>active<?endif;?>" href="/client/register/" data-toggle="modal" data-target="#exampleModalCenter">Become a client</a>
                     <a class="nav-item nav-link customNavLink" href="#">Talk to sales</a>
                 </ul>
 
@@ -50,8 +58,8 @@
                     <?php if(auth()->guard('client')->guest()): ?>
                         <li></li>
                         <li class="nav-link loginBtn">
-                            <a href="{{ route('client.login') }}">{{ __('Log in') }}</a> <span style="color: #18A6DF;">/</span>
-                            <a href="{{ route('client.register') }}">{{ __('Join') }}</a>
+                            <a href="{{ route('client.login') }}" data-toggle="modal" data-target="#loginModal">{{ __('Log in') }}</a> <span style="color: #18A6DF;">/</span>
+                            <a href="{{ route('client.register') }}" data-toggle="modal" data-target="#exampleModalCenter">{{ __('Join') }}</a>
                         </li>
                     <? else: ?>
                         <li class="nav-item dropdown">

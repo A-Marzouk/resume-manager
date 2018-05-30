@@ -1009,3 +1009,20 @@ body{
   }
 }
 
+// modal form  :
+
+.modal-body{
+  .clientForm{
+    .formLabelModal{
+      color: #A6A9BE;
+      font-family: Roboto;
+      font-size: 14px;
+      letter-spacing: 0.1px;
+      line-height: 16px;
+    }
+  }
+}
+
+.customModal{
+  background: red;
+}

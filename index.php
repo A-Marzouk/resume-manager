@@ -352,28 +352,32 @@
 
         <div class="customFooter">
             <div class="row">
-                <div class="col-md-2 col-xs-6 col-sm-6">
-                    <div class="footerImg">
-                        <img src="images/new_theme/fb.png" alt="facebook icon">
-                        <img src="images/new_theme/instagram.png" alt="instagram icon">
+                <div class="col-md-4 offset-md-1">
+                    <div class="footerText">
+                        © Copyright 2018 123Workforce.<br/>
+                        All Rights Reserved.
                     </div>
                 </div>
-                <div class="col-md-5 text-right logoImg .d-none .d-md-block">
-
+                <div class="col-md-2 text-center">
+                    <div class="footerImg">
+                        <img src="form/resumeApp/resources/views/customTheme/images/newResume/logo.png" alt="logo">
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="footerText">
-                        info@123workforce.com<br/>
+                    <div class="footerText text-right">
+                        info@123workforce.com<br>
                         (+44) 2037000685<br/>
-                    </div>
-                    <div class="footerText">
-                       <h2>
-                           © Copyright 2018 123Workforce. All Rights Reserved.
-                       </h2>
+                        <a href="https://www.facebook.com/123workforce">
+                            <img src="form/resumeApp/resources/views/customTheme/images/newResume/fb.png" alt="fb" width="25px">
+                        </a>
+                        <a href="https://www.instagram.com/123workforce/">
+                            <img src="form/resumeApp/resources/views/customTheme/images/newResume/instagram.png" alt="insta" width="25px">
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 <? require_once('includes/footer.php');?>
 

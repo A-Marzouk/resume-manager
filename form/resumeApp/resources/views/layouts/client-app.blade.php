@@ -13,7 +13,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     {{-- faveicon --}}
-    <link rel="shortcut icon" href="/resumeApp/resources/views/customTheme/images/logo123.png">
+    <link rel="shortcut icon" href="/form/resumeApp/resources/views/customTheme/images/logo123.png">
 
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
@@ -21,14 +21,14 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="/resumeApp/resources/views/customTheme/css/main.css" rel="stylesheet" media="screen">
+    <link href="/form/resumeApp/resources/views/customTheme/css/main.css" rel="stylesheet" media="screen">
 </head>
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
             <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
-                <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
+                <img src="/form/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -91,7 +91,7 @@
         </div>
         <div class="col-md-2 text-center">
             <div class="footerImg">
-                <img src="/resumeApp/resources/views/customTheme/images/newResume/logo.png" alt="logo">
+                <img src="/form/resumeApp/resources/views/customTheme/images/newResume/logo.png" alt="logo">
             </div>
         </div>
         <div class="col-md-4">
@@ -99,10 +99,10 @@
                 info@123workforce.com<br>
                 (+44) 2037000685<br/>
                 <a href="https://www.facebook.com/123workforce">
-                    <img src="/resumeApp/resources/views/customTheme/images/newResume/fb.png" alt="fb" width="25px">
+                    <img src="/form/resumeApp/resources/views/customTheme/images/newResume/fb.png" alt="fb" width="25px">
                 </a>
                 <a href="https://www.instagram.com/123workforce/">
-                    <img src="/resumeApp/resources/views/customTheme/images/newResume/instagram.png" alt="insta" width="25px">
+                    <img src="/form/resumeApp/resources/views/customTheme/images/newResume/instagram.png" alt="insta" width="25px">
                 </a>
             </div>
         </div>

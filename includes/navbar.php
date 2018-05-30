@@ -10,10 +10,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link customNavLink active" href="#">Homepage</a>
-                <a class="nav-item nav-link customNavLink" href="/form/client/register/">Become a client</a>
+                <a class="nav-item nav-link customNavLink active" href="#">Home</a>
+                <a class="nav-item nav-link customNavLink" href="/form/client/register/" data-toggle="modal" data-target="#exampleModalCenter">Become a client</a>
                 <a class="nav-item nav-link customNavLink" href="#">Talk to sales</a>
-                <a href="/form/client/login/" class="loginBtn">Login</a>
+                <span class="loginBtn">
+                    <a href="/form/client/login/">Log in</a>
+                    <span style="color:#18A6DF;">/</span>
+                    <a href="/form/client/register/">Join</a>
+                </span>
+
             </div>
         </div>
     </nav>

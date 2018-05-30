@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link customNavLink " href="/">Homepage</a>
+                    <a class="nav-item nav-link customNavLink " href="/">Home</a>
                     <a class="nav-item nav-link customNavLink active" href="/form/client/register/">Become a client</a>
                     <a class="nav-item nav-link customNavLink" href="#">Talk to sales</a>
                 </ul>

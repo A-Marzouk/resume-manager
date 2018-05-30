@@ -7,8 +7,8 @@
     src="https://code.jquery.com/jquery-migrate-3.0.1.min.js"
     integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4="
     crossorigin="anonymous"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../slick-master/slick/slick.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 <script type="text/javascript" src="/js/custom.js"></script>
 <script type="text/javascript" src="/js/main.js"></script>
 <script>
@@ -37,6 +37,8 @@
                 }
             ]
         });
+
+
     });
 
     function handler1() {

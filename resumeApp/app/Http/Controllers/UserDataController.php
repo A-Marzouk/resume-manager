@@ -110,8 +110,8 @@ class UserDataController extends Controller
             $userData->save();
             if($sendTelegram){
                 $this->sendTelegram();
+                $this->sendNotification();
             }
-//                $this->sendNotification();
             return redirect('/freelancer')->with('successMessage', 'Your changes have been successfully saved.');
         }else{
             return redirect('/freelancer/home');
@@ -172,7 +172,7 @@ class UserDataController extends Controller
     public function sendNotification(){
         Mail::send('emails.welcome', ['key' => 'value'], function($message)
             {
-                $message->to('conor@123workforce.com', 'Conor Majoram')->subject('User has updated resume !');
+                $message->to('AhmedMarzouk266@gmail.com', 'Ahmed Ragab')->subject('User has updated resume !');
             });
     }
 

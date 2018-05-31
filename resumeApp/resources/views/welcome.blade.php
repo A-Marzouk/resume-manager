@@ -421,7 +421,7 @@
                                                         <label for="password" class="formLabelModal">{{ __('Password') }}</label>
 
                                                         <div class="">
-                                                            <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                                            <input id="passwordModal" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                                             @if ($errors->has('password'))
                                                                 <span class="invalid-feedback">
@@ -439,7 +439,7 @@
                                                     <div class="form-group">
                                                         <label for="name" class="formLabelModal">{{ __('Contact person') }}</label>
                                                         <div class="">
-                                                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                                            <input id="nameModal" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                                                             @if ($errors->has('name'))
                                                                 <span class="invalid-feedback">
@@ -587,7 +587,7 @@
                                                             <label for="email" class="formLabelModal">{{ __('E-Mail Address') }}</label>
 
                                                             <div class="">
-                                                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                                                <input id="emailModal" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
                                                                 @if ($errors->has('email'))
                                                                     <span class="invalid-feedback">

@@ -12,10 +12,10 @@
     <? endif;?>
     <div class="row m-auto infoBar">
         <div class="col-md-2">
-            Username : <b>{{$username}}</b>
+
         </div>
         <div class="col-md-2">
-            Profession : <b>{{$profession}}</b>
+
         </div>
         <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
             <div class="col-md-2  offset-md-6">
@@ -26,12 +26,95 @@
     </div>
 <div class="container">
     <div class="text-center">
-        <h3>On this page you can edit/update your CV/Resume.</h3>
-        <h5 class="container text-left paddingBottomTop">
-            It is important to keep your available hours that you can work updated.<br/> Once your page here is completed & approved, our team will start to promote your Resume to companies seeking to hire.<br/> Once selected, you will then be asked for Skype interviews.
-        </h5>
+        <div class="pageHeading">1.Overview and personal info</div>
+        <div class="pageSubHeading">
+            It is important to keep your available hours that you can work updated.
+        </div>
+        <div class="pageSubHeading2 col-md-8 offset-md-2">
+            Once your page here is completed & approved, our team will start to promote your Resume to companies seeking to hire.
+            Once selected, you will then be asked for Skype interviews.
+        </div>
     </div>
-        <hr>
+            {{-- tabs section --}}
+    <div class="row tabsArea">
+        <div class="col-md-12 text-center">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active text-center tabText" href="#overview" role="tab" data-toggle="tab">
+                        <div class="col-md-6 offset-md-4 tabCircle">1</div>
+                        Overview and<br/>
+                        personal info
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center tabText" href="#pay" role="tab" data-toggle="tab">
+                        <div class="col-md-6 offset-md-4 tabCircle">2</div>
+                        Availablity and<br>
+                        pay
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center tabText" href="#multimedia" role="tab" data-toggle="tab">
+                        <div class="col-md-6 offset-md-4 tabCircle">3</div>
+                        Multimedia <br/>
+                        ( Voice recording / Video )
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center tabText" href="#career" role="tab" data-toggle="tab">
+                        <div class="col-md-6 offset-md-4 tabCircle">4</div>
+                        Career overview and <br/>
+                        ( Education / Training )
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center tabText" href="#portfolio" role="tab" data-toggle="tab">
+                        <div class="col-md-6 offset-md-4 tabCircle">5</div>
+                        Portfolio <br/>
+                        Previous work
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center tabText" href="#skills" role="tab" data-toggle="tab">
+                        <div class="col-md-6 offset-md-4 tabCircle">6</div>
+                        Professional skills
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center tabText" href="#attributes" role="tab" data-toggle="tab">
+                        <div class="col-md-6 offset-md-4 tabCircle">7</div>
+                        personal attributes
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="overview">
+            Tab one
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="pay">
+            Tab two
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="multimedia">
+            Tab three
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="career">
+            Tab Four
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="portfolio">
+            Tab five
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="skills">
+            Tab six
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="attributes">
+            Tab seven
+        </div>
+    </div>
+    <hr>
     <!-- Success Messages  -->
     @if(session()->has('successMessage'))
         <div class="alert alert-success">

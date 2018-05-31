@@ -37,7 +37,7 @@
                             <div class="col-md-12 freelancerBox">
                                 <a href="#" class="itemLink">
                                     <div class="freelancerItem">
-                                        <img src="/resumeapp/resources/views/customTheme/images/freelancers/Dmitri.jpg" alt="freelancer" class="slickFreelancerImg">
+                                        <img src="/resumeApp/resources/views/customTheme/images/freelancers/Dmitri.jpg" alt="freelancer" class="slickFreelancerImg">
                                         <div class="freelancerData">
                                             <div class="freelancerName nohover">
                                                 Dmitri
@@ -52,7 +52,7 @@
                             <div class="col-md-12 freelancerBox">
                                 <a href="#" class="itemLink">
                                     <div class="freelancerItem">
-                                        <img src="/resumeapp/resources/views/customTheme/images/freelancers/Anton.jpg" alt="freelancer"  class="slickFreelancerImg">
+                                        <img src="/resumeApp/resources/views/customTheme/images/freelancers/Anton.jpg" alt="freelancer"  class="slickFreelancerImg">
                                         <div class="freelancerData">
                                             <div class="freelancerName">
                                                 Anton
@@ -67,7 +67,7 @@
                             <div class="col-md-12 freelancerBox">
                                 <a href="#" class="itemLink">
                                     <div class="freelancerItem">
-                                        <img src="/resumeapp/resources/views/customTheme/images/freelancers/Arnold.jpg" alt="freelancer"  class="slickFreelancerImg">
+                                        <img src="/resumeApp/resources/views/customTheme/images/freelancers/Arnold.jpg" alt="freelancer"  class="slickFreelancerImg">
                                         <div class="freelancerData">
                                             <div class="freelancerName">
                                                 Arnold
@@ -82,7 +82,7 @@
                             <div class="col-md-12 freelancerBox">
                                 <a href="#" class="itemLink">
                                     <div class="freelancerItem">
-                                        <img src="/resumeapp/resources/views/customTheme/images/freelancers/Costa.jpg" alt="freelancer"  class="slickFreelancerImg">
+                                        <img src="/resumeApp/resources/views/customTheme/images/freelancers/Costa.jpg" alt="freelancer"  class="slickFreelancerImg">
                                         <div class="freelancerData">
                                             <div class="freelancerName">
                                                 Costa
@@ -97,7 +97,7 @@
                             <div class="col-md-12 freelancerBox">
                                 <a href="#" class="itemLink">
                                     <div class="freelancerItem">
-                                        <img src="/resumeapp/resources/views/customTheme/images/freelancers/Evgeny.jpg" alt="freelancer"  class="slickFreelancerImg">
+                                        <img src="/resumeApp/resources/views/customTheme/images/freelancers/Evgeny.jpg" alt="freelancer"  class="slickFreelancerImg">
                                         <div class="freelancerData">
                                             <div class="freelancerName">
                                                 Evgeny
@@ -112,7 +112,7 @@
                             <div class="col-md-12 freelancerBox">
                                 <a href="#" class="itemLink">
                                     <div class="freelancerItem">
-                                        <img src="/resumeapp/resources/views/customTheme/images/freelancers/Jon.png" alt="freelancer"  class="slickFreelancerImg">
+                                        <img src="/resumeApp/resources/views/customTheme/images/freelancers/Jon.png" alt="freelancer"  class="slickFreelancerImg">
                                         <div class="freelancerData">
                                             <div class="freelancerName">
                                                 Jon
@@ -127,7 +127,7 @@
                             <div class="col-md-12 freelancerBox">
                                 <a href="#" class="itemLink">
                                     <div class="freelancerItem">
-                                        <img src="/resumeapp/resources/views/customTheme/images/freelancers/Lars.jpg" alt="freelancer"  class="slickFreelancerImg">
+                                        <img src="/resumeApp/resources/views/customTheme/images/freelancers/Lars.jpg" alt="freelancer"  class="slickFreelancerImg">
                                         <div class="freelancerData">
                                             <div class="freelancerName">
                                                 Lars
@@ -142,7 +142,7 @@
                             <div class="col-md-12 freelancerBox">
                                 <a href="#" class="itemLink">
                                     <div class="freelancerItem">
-                                        <img src="/resumeapp/resources/views/customTheme/images/freelancers/Michelle.jpg" alt="freelancer"  class="slickFreelancerImg">
+                                        <img src="/resumeApp/resources/views/customTheme/images/freelancers/Michelle.jpg" alt="freelancer"  class="slickFreelancerImg">
                                         <div class="freelancerData">
                                             <div class="freelancerName">
                                                 Michelle
@@ -157,7 +157,7 @@
                             <div class="col-md-12 freelancerBox">
                                 <a href="#" class="itemLink">
                                     <div class="freelancerItem">
-                                        <img src="/resumeapp/resources/views/customTheme/images/freelancers/Shen.jpg" alt="freelancer"  class="slickFreelancerImg">
+                                        <img src="/resumeApp/resources/views/customTheme/images/freelancers/Shen.jpg" alt="freelancer"  class="slickFreelancerImg">
                                         <div class="freelancerData">
                                             <div class="freelancerName">
                                                 Shen
@@ -172,7 +172,7 @@
                             <div class="col-md-12 freelancerBox">
                                 <a href="#" class="itemLink">
                                     <div class="freelancerItem">
-                                        <img src="/resumeapp/resources/views/customTheme/images/freelancers/Vitaly.jpg" alt="freelancer"  class="slickFreelancerImg">
+                                        <img src="/resumeApp/resources/views/customTheme/images/freelancers/Vitaly.jpg" alt="freelancer"  class="slickFreelancerImg">
                                         <div class="freelancerData">
                                             <div class="freelancerName">
                                                 Vitaly
@@ -204,7 +204,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <img src="/resumeapp/resources/views/customTheme/images/new_theme/map_freelancer.png" alt="freelancers map" width="100%">
+                    <img src="/resumeApp/resources/views/customTheme/images/new_theme/map_freelancer.png" alt="freelancers map" width="100%">
                 </div>
             </div>
         </div>
@@ -217,7 +217,7 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-12 borderRight">
                                     <div class="designerLeftSide">
-                                        <img src="/resumeapp/resources/views/customTheme/images/new_theme/design_icon.png" alt="design image">
+                                        <img src="/resumeApp/resources/views/customTheme/images/new_theme/design_icon.png" alt="design image">
                                         <h2>
                                             Access to a network of insightful, emotionally intelligent & professional designers specializing in UI & UX Design , with artistic creative vision , inspiration and understanding  of user engagement.
                                         </h2>
@@ -226,14 +226,14 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="designerRightSide">
                                         <h2>
-                                            <img src="/resumeapp/resources/views/customTheme/images/new_theme/rec_developers@2x.png" alt="rec"> Designers
+                                            <img src="/resumeApp/resources/views/customTheme/images/new_theme/rec_developers@2x.png" alt="rec"> Designers
                                         </h2>
-                                        <a href="#"><img src="/resumeapp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Website/ App Design</a><br/>
-                                        <a href="#"><img src="/resumeapp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> UX/ UI Design</a><br>
-                                        <a href="#"><img src="/resumeapp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Branding & Marketing</a><br/>
+                                        <a href="#"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Website/ App Design</a><br/>
+                                        <a href="#"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> UX/ UI Design</a><br>
+                                        <a href="#"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Branding & Marketing</a><br/>
 
                                         <button class="getStartBtn">
-                                            Get Started <img src="/resumeapp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow">
+                                            Get Started <img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow">
                                         </button>
                                     </div>
                                 </div>
@@ -248,7 +248,7 @@
                             <div class="row">
                                 <div class="col-md-6 borderRight">
                                     <div class="designerLeftSide">
-                                        <img src="/resumeapp/resources/views/customTheme/images/new_theme/code_icon.png" alt="design image">
+                                        <img src="/resumeApp/resources/views/customTheme/images/new_theme/code_icon.png" alt="design image">
                                         <h2>
                                             Access Highly Skilled Developers proficient in programming languages such as Javascript, node.js, PHP, HTML/CSS, Python, Java, .NET                                    </h2>
                                     </div>
@@ -256,14 +256,14 @@
                                 <div class="col-md-6">
                                     <div class="designerRightSide">
                                         <h2>
-                                            <img src="/resumeapp/resources/views/customTheme/images/new_theme/reg_developers@2x.png" alt="rec"> Developers
+                                            <img src="/resumeApp/resources/views/customTheme/images/new_theme/reg_developers@2x.png" alt="rec"> Developers
                                         </h2>
-                                        <a href="#"><img src="/resumeapp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Full-Stack Developers</a><br/>
-                                        <a href="#"><img src="/resumeapp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Front-end Developers</a><br>
-                                        <a href="#"><img src="/resumeapp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Back-end Developers</a><br/>
+                                        <a href="#"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Full-Stack Developers</a><br/>
+                                        <a href="#"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Front-end Developers</a><br>
+                                        <a href="#"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Back-end Developers</a><br/>
 
                                         <button class="getStartBtn">
-                                            Get Started <img src="/resumeapp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow">
+                                            Get Started <img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow">
                                         </button>
                                     </div>
                                 </div>
@@ -353,7 +353,7 @@
         <div class="modal fade" style="background-color:rgba(0, 0, 0, 0.5);" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="row">
                 <div class="col-md-12 text-center" style="padding-top: 20px;">
-                    <img src="/resumeapp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
+                    <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
                 </div>
             </div>
                 <div class="modal-dialog" role="document">
@@ -566,7 +566,7 @@
         <div class="modal fade" style="background-color:rgba(0, 0, 0, 0.5);" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="row">
                 <div class="col-md-12 text-center" style="padding-top: 20px;">
-                    <img src="/resumeapp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
+                    <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
                 </div>
             </div>
             <div class="modal-dialog" role="document">

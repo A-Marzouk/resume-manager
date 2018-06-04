@@ -38,7 +38,7 @@
             {{-- tabs section --}}
     <div class="row tabsArea">
         <div class="col-md-12 text-center">
-            <ul class="nav nav-tabs" role="tablist">
+            <ul class="nav nav-tabs" id="mytabs" role="tablist">
                 <li class="nav-item" id="tap1">
                     <a class="nav-link active text-center tabText" href="#overview" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">1</div>
@@ -105,7 +105,7 @@
     <form method="post" action="{{route('freelancer.data.store')}}" enctype="multipart/form-data" class="container freelancerForm">
         {{csrf_field()}}
         <!-- Tab panes -->
-            <div class="tab-content">
+            <div class="tab-content" id="tabsContent">
                 <div role="tabpanel" class="panel tab-pane active" id="overview">
                     <div class="panelHeading">
                         <ul>
@@ -185,6 +185,11 @@
                                 <img id="photoPreview" src="{{$src}}" width="250" height="auto">
                             </div>
                         </div> <!-- profile photo -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 offset-md-9">
+                            <a class="btn btn-block btn-primary nextBtn"  href="#pay">Next</a>
+                        </div>
                     </div>
                 </div>
                 <div role="tabpanel" class="panel tab-pane fade in" id="pay">
@@ -284,6 +289,11 @@
                             <input type="date" class="form-control panelFormInput" name="freeDate" value="{{$freeDate}}">
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-3 offset-md-9">
+                            <a class="btn btn-block btn-primary nextBtn"  href="#multimedia">Next</a>
+                        </div>
+                    </div>
                 </div>
                 <div role="tabpanel" class="panel tab-pane fade" id="multimedia">
                     <div class="panelHeading">
@@ -342,6 +352,11 @@
                         </audio><!--/.video-container-->
                     </div>
                     <small style="padding-top: 20px;">Please paste above a link to your audio introduction of self. 2min to 3min is the ideal recording length. Kindly introduce yourself and answer these questions: Why did you become a  <? if($profession == 'Developer'):?>developer<?else:?>designer<?endif;?>?, Were you able to acquire a formal  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> education? What do you love most about your work?, What tools do you use for  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?>?, What inspires you to do your work?</small>
+                    <div class="row">
+                        <div class="col-md-3 offset-md-9">
+                            <a class="btn btn-block btn-primary nextBtn"  href="#career">Next</a>
+                        </div>
+                    </div>
                 </div>
                 <div role="tabpanel" class="panel tab-pane fade" id="career">
                     <div class="panelHeading">
@@ -490,7 +505,12 @@
                         <textarea class="form-control" rows="3" id="work_experience" name="workExperience">{{$workExperience}}
      </textarea>
                     </div> <!-- work exp -->
-                    <hr/>
+
+                    <div class="row">
+                        <div class="col-md-3 offset-md-9">
+                            <a class="btn btn-block btn-primary nextBtn"  href="#portfolio">Next</a>
+                        </div>
+                    </div>
                 </div>
                 <div role="tabpanel" class="panel tab-pane fade" id="portfolio">
                     <div class="panelHeading">
@@ -566,8 +586,13 @@
                             </div>
                         @endfor
                     </div>      <!-- works -->
-                </div>
 
+                    <div class="row">
+                        <div class="col-md-3 offset-md-9">
+                            <a class="btn btn-block btn-primary nextBtn"  href="#skills">Next</a>
+                        </div>
+                    </div>
+                </div>
                 <div role="tabpanel" class="panel tab-pane fade" id="skills">
                     <div class="panelHeading">
                         <ul>
@@ -720,6 +745,12 @@
                             @endforeach
                         </div>
                     </div> <!-- char skills -->
+
+                    <div class="row">
+                        <div class="col-md-3 offset-md-9">
+                            <a class="btn btn-block btn-primary nextBtn"  href="#attributes">Next</a>
+                        </div>
+                    </div>
                 </div>
                 <div role="tabpanel" class="panel tab-pane fade" id="attributes">
                     <div class="panelHeading">
@@ -744,12 +775,12 @@
                         <textarea class="form-control panelFormInput" rows="5" id="design_skills" name="design_styles">{{$design_styles}}</textarea>
                         <small>50-200 Words</small>
                     </div> <!-- design style -->
+                    <div class="form-group col-md-8">
+                        <button type="submit" class="btn btn-primary">Apply Now</button>
+                    </div>  <!-- Save -->
                 </div>
             </div>
         <br/>
-        <div class="form-group col-md-8">
-            <button type="submit" class="btn btn-primary">Apply Now</button>
-        </div>  <!-- Save -->
     </form>
 </div>
 

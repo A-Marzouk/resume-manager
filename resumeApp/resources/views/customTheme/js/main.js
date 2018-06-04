@@ -302,4 +302,14 @@ $(document).ready(function () {
         });
     });
 
+    // change taps on click :
+    $('.nextBtn').click(function(e){
+        var href = $(this).attr("href");
+        e.preventDefault();
+        $('#mytabs a[href="'+href+'"]').tab('show');
+        window.location.hash = href;
+        checkHash();
+        $('html, body').animate({scrollTop:$('#tabMainHeading').position().top}, 'slow');
+    })
+
 });

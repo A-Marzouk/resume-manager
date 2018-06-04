@@ -917,4 +917,8 @@ body {
   font-weight: bold;
   padding-top: 5px; }
 
+.nextBtn {
+  margin-top: 50px;
+  border-radius: 10px; }
+
 /*# sourceMappingURL=main.css.map */

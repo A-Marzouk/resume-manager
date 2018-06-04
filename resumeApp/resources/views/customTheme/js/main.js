@@ -45,43 +45,51 @@ $(document).ready(function () {
         $('#portfolioImg0').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
         $('#works0').attr('type','text');
         $('#works0').attr('value',0);
+        $('#works0').change();
     });
     $('#deletePhoto1').on('click', function(e){
         $('#portfolioImg1').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
         $('#works1').attr('type','text');
         $('#works1').attr('value',1);
+        $('#works1').change();
     });
     $('#deletePhoto2').on('click', function(e){
         $('#portfolioImg2').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
         $('#works2').attr('type','text');
         $('#works2').attr('value',2);
+        $('#works2').change();
     });
     $('#deletePhoto3').on('click', function(e){
         $('#portfolioImg3').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
         $('#works3').attr('type','text');
         $('#works3').attr('value',3);
+        $('#works3').change();
     });
     $('#deletePhoto4').on('click', function(e){
         $('#portfolioImg4').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
         $('#works4').attr('type','text');
         $('#works4').attr('value',4);
+        $('#works4').change();
     });
     $('#deletePhoto5').on('click', function(e){
         $('#portfolioImg5').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
         $('#works5').attr('type','text');
         $('#works5').attr('value',5);
+        $('#works5').change();
     });
     $('#deletePhoto6').on('click', function(e){
         $('#portfolioImg6').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
         $('#works6').attr('type','text');
         $('#works6').attr('value',6);
+        $('#works6').change();
     });
     $('#deletePhoto7').on('click', function(e){
         $('#portfolioImg7').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
         $('#works7').attr('type','text');
         $('#works7').attr('value',7);
-
+        $('#works7').change();
     });
+
 
     $('#customFile0').on('click',function () {
         $('#works0').attr('type','file');
@@ -228,4 +236,70 @@ $(document).ready(function () {
             $('html,body').scrollTop(scrollmem);
         });
     });
+
+    var heading =  $('#tabMainHeading');
+
+    // clicking on different taps change the main heading !
+    $('#tap1').on('click',function () {
+        heading.html('1.Overview and personal info');
+    });
+    $('#tap2').on('click',function () {
+       heading.html('2.Availability and payment');
+    });
+    $('#tap3').on('click',function () {
+       heading.html('3.Multimedia (Audio / Video)');
+    });
+    $('#tap4').on('click',function () {
+       heading.html('4.Career overview (Education / Training)');
+    });
+    $('#tap5').on('click',function () {
+       heading.html('5.Portfolio');
+    });
+    $('#tap6').on('click',function () {
+       heading.html('6.Professional skills');
+    });
+    $('#tap7').on('click',function () {
+       heading.html('7.Personal attributes');
+    });
+
+    // keep the heading when page is loaded :
+    checkHash();
+
+    function checkHash() {
+        var hash    = window.location.hash;
+        switch(hash) {
+            case '#overview':
+                heading.html('1.Overview and personal info');
+                break;
+            case '#pay':
+                heading.html('2.Availability and payment');
+                break;
+            case '#multimedia':
+                heading.html('3.Multimedia (Audio / Video)');
+                break;
+            case '#career':
+                heading.html('4.Career overview (Education / Training)');
+                break;
+            case '#portfolio':
+                heading.html('5.Portfolio');
+                break;
+            case '#skills':
+                heading.html('6.Professional skills');
+                break;
+            case '#attributes':
+                heading.html('7.Personal attributes');
+                break;
+            default:
+                heading.html('1.Overview and personal info');
+        }
+    }
+
+    // show audio file name :
+    $(document).ready(function(){
+        $('#audioFile').change(function(e){
+            var fileName = e.target.files[0].name;
+            $('#audioLabel').html(fileName);
+        });
+    });
+
 });

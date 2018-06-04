@@ -16,7 +16,7 @@ class UserData extends Model
         'workDesc4','workDesc5','workDesc6',
         'workDesc7','workDesc0','eduTitle1','eduTitle2','eduTitle3','eduYear1','eduYear2','eduYear3',
         'eduDesc1','eduDesc2','eduDesc3','trnTitle1','trnTitle2','trnTitle3','trnYear1','trnYear2','trnYear3',
-        'trnDesc1','trnDesc2','trnDesc3'
+        'trnDesc1','trnDesc2','trnDesc3','audioFile'
     ];
 
 }

@@ -78,6 +78,33 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <div class="customFooter">
+            <div class="row">
+                <div class="col-md-4 offset-md-1">
+                    <div class="footerText">
+                        © Copyright 2018 123Workforce.<br/>
+                        All Rights Reserved.
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="footerImg">
+                        <img src="/resumeApp/resources/views/customTheme/images/newResume/logo.png" alt="logo">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footerText text-right">
+                        info@123workforce.com<br>
+                        (+44) 2037000685<br/>
+                        <a href="https://www.facebook.com/123workforce">
+                            <img src="/resumeApp/resources/views/customTheme/images/newResume/fb.png" alt="fb" width="25px">
+                        </a>
+                        <a href="https://www.instagram.com/123workforce/">
+                            <img src="/resumeApp/resources/views/customTheme/images/newResume/instagram.png" alt="insta" width="25px">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="resumeApp/resources/views/customTheme/js/main.js"></script>
 </body>

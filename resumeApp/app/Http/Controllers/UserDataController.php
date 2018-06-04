@@ -40,6 +40,11 @@ class UserDataController extends Controller
                 elseif ($key == 'photo'){
                     $pathToPhoto = $this->uploadPhoto($value,'photo','');
                     $userData->{$key} = $pathToPhoto ;
+                }elseif($key == 'audioFile'){
+                    $pathToPhoto = $this->uploadAudio($value,'audioFile','');
+                    if($pathToPhoto){
+                        $userData->{$key} = $pathToPhoto ;
+                    }
                 }elseif ($key == 'design_skills_checkbox'){
                     // convert to string and save on database
                     $skillsCheckBox = implode(',',$value);
@@ -109,14 +114,45 @@ class UserDataController extends Controller
             }
             $userData->save();
             if($sendTelegram){
-                $this->sendTelegram();
-                $this->sendNotification();
+//                $this->sendTelegram();
+//                $this->sendNotification();
             }
             return redirect('/freelancer')->with('successMessage', 'Your changes have been successfully saved.');
         }else{
             return redirect('/freelancer/home');
         }
     }
+
+    public function uploadAudio($src,$name,$newName){
+        $target_dir = "resumeApp/uploads/";
+        $uploadOk = 1;
+        if ($_FILES[$name]["size"] > 25000000) { // 25 megabyte
+            $uploadOk = 0;
+        }
+        // allowed formats :
+        $formats = ['audio/mpeg', 'audio/x-mpeg', 'audio/mpeg3', 'audio/x-mpeg-3', 'audio/aiff',
+            'audio/mid', 'audio/x-aiff', 'audio/x-mpequrl','audio/midi', 'audio/x-mid',
+            'audio/x-midi','audio/wav','audio/x-wav','audio/xm','audio/x-aac','audio/basic',
+            'audio/flac','audio/mp4','audio/x-matroska','audio/ogg','audio/s3m','audio/x-ms-wax',
+            'audio/xm','audio/x-m4a'];
+
+        // check file type :
+        if(!in_array($_FILES[$name]['type'],$formats)){
+            $uploadOk = 0 ;
+        }
+
+        if ($uploadOk == 0) {
+            return false;
+        } else {
+            $target_file = $target_dir . $newName . basename($_FILES[$name]["name"]);
+            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
+                return $target_file;
+            } else {
+                return false;
+            }
+        }
+    }
+
 
     public function uploadPhoto($src,$name,$newName){
         $target_dir = "resumeApp/uploads/";

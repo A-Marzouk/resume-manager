@@ -26,7 +26,7 @@
     </div>
 <div class="container">
     <div class="text-center">
-        <div class="pageHeading">1.Overview and personal info</div>
+        <div class="pageHeading" id="tabMainHeading">1.Overview and personal info</div>
         <div class="pageSubHeading">
             It is important to keep your available hours that you can work updated.
         </div>
@@ -39,47 +39,47 @@
     <div class="row tabsArea">
         <div class="col-md-12 text-center">
             <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item">
+                <li class="nav-item" id="tap1">
                     <a class="nav-link active text-center tabText" href="#overview" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">1</div>
                         Overview and<br/>
                         personal info
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" id="tap2">
                     <a class="nav-link text-center tabText" href="#pay" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">2</div>
                         Availablity and<br>
                         pay
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" id="tap3">
                     <a class="nav-link text-center tabText" href="#multimedia" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">3</div>
                         Multimedia <br/>
                         ( Voice recording / Video )
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" id="tap4">
                     <a class="nav-link text-center tabText" href="#career" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">4</div>
                         Career overview and <br/>
                         ( Education / Training )
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" id="tap5">
                     <a class="nav-link text-center tabText" href="#portfolio" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">5</div>
                         Portfolio<br/>Previous work
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" id="tap6">
                     <a class="nav-link text-center tabText" href="#skills" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">6</div>
                         Professional skills
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" id="tap7">
                     <a class="nav-link text-center tabText" href="#attributes" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">7</div>
                         personal attributes
@@ -117,7 +117,7 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="userName" class="panelFormLabel">Full name<span id="tickMarkname" class="d-none">&#10003</span></label>
-                            <input type="text" class="form-control panelFormInput" id="fullName" name="name" placeholder="Enter your name.." value="{{$name}}">
+                            <input type="text" class="form-control panelFormInput" id="fullName" name="name" placeholder="Enter your name.." value="<?if(empty($name)):?>{{$currFreelancer->firstName}} {{$currFreelancer->lastName}}<?else:?>{{$name}}<? endif;?>">
                         </div> <!-- Full name -->
                         <div class="form-group col-md-4">
                             <label for="birth_date" class="panelFormLabel">Job title <span id="tickMarkjobTitle" class="d-none">&#10003</span></label>
@@ -211,6 +211,7 @@
                                 <? $k++; ?>
                             @endforeach
                         </div>  <!-- Hours availabel -->
+
                         <div class="form-group col-md-6">
                             <label for="audio_intro" class="panelFormLabel">Expected Salary in (US Dollars ) USD per hour <span id="tickMarksalary" class="d-none">&#10003</span></label><br/>
                             <div>
@@ -285,6 +286,13 @@
                     </div>
                 </div>
                 <div role="tabpanel" class="panel tab-pane fade" id="multimedia">
+                    <div class="panelHeading">
+                        <ul>
+                            <li>
+                                Multimedia (Audio / Video)
+                            </li>
+                        </ul>
+                    </div>
                     <div class="form-group col-md-12">
                         <label for="audio_intro" class="panelFormLabel">Audio introduction
                           <?
@@ -294,156 +302,239 @@
                                 $valid = false;
                             }
                          ?>
-                            <? if($valid):?>
+<!--                            --><? if($valid):?>
                                 <span id="tickMarkaudio" class="d-none">&#10003</span>
-                            <? else:?>
-                                <span id="tickMarkaudio" style="background: red;" class="d-none">X</span>
-                            <? endif;?>
+<!--                            --><?// else:?>
+                                {{--<span id="tickMarkaudio" style="background: red;" class="d-none">X</span>--}}
+<!--                            --><? endif;?>
                         </label>
+
+                        <br/><label class="panelFormLabel">Link from Google drive :</label>
                         <input type="text" class="form-control panelFormInput" id="audio_intro" name="audio"
-                               value="https://drive.google.com/file/d/{{$audio}}/view">
-                        <small>Please paste above a link to your audio introduction of self. 2min to 3min is the ideal recording length. Kindly introduce yourself and answer these questions: Why did you become a  <? if($profession == 'Developer'):?>developer<?else:?>designer<?endif;?>?, Were you able to acquire a formal  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> education? What do you love most about your work?, What tools do you use for  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?>?, What inspires you to do your work?</small>
+                               value="https://drive.google.com/file/d/{{$audio}}/view"><br/>
+
+                        <label class="panelFormLabel">Or Upload an audio file :</label>
+                        <div class="custom-file" style="padding-top: 5px;">
+                            <input type="file" id="audioFile" class="custom-file-input panelFormInput" name="audioFile" value="">
+                            <label class="custom-file-label" id="audioLabel" for="">
+                                <?
+                                $audioSrc = "";
+                                ?>
+                                <? if(!empty($audioFile)):?>
+                                    <?
+                                        $audioSrc = $audioFile;
+                                        $audioFile = str_replace('resumeApp/uploads/',"",$audioFile);
+                                    ?>
+                                    {{$audioFile}}
+                                    <?else:?>
+                                    Upload Audio
+                                    <?
+                                        $audioSrc = "https://drive.google.com/uc?export=download&id={{$audio}}&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
+                                    ?>
+                                    <? endif;?>
+                            </label>
+                        </div>
                     </div>  <!-- Audio -->
+                    <div class="col-md-5">
+                        <audio id="audioIntro" controls style="padding-top: 30px; padding-bottom: 10px;">
+                            <source src="{{$audioSrc}}" type="audio/ogg">
+                            Your browser does not support the audio element.
+                        </audio><!--/.video-container-->
+                    </div>
+                    <small style="padding-top: 20px;">Please paste above a link to your audio introduction of self. 2min to 3min is the ideal recording length. Kindly introduce yourself and answer these questions: Why did you become a  <? if($profession == 'Developer'):?>developer<?else:?>designer<?endif;?>?, Were you able to acquire a formal  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> education? What do you love most about your work?, What tools do you use for  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?>?, What inspires you to do your work?</small>
                 </div>
                 <div role="tabpanel" class="panel tab-pane fade" id="career">
-                    <div class="form-group col-md-8">
-                        <label for="careerObjective">Career objective <span id="tickMarkcareerObjective" class="d-none">&#10003</span></label>
-                        <textarea class="form-control" rows="4" id="careerObjective" name="careerObjective">{{$careerObjective}}</textarea>
+                    <div class="panelHeading">
+                        <ul>
+                            <li>
+                               Career overview (Education / Training)
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label for="careerObjective" class="panelFormLabel">Career objective <span id="tickMarkcareerObjective" class="d-none">&#10003</span></label>
+                        <textarea class="form-control panelFormInput" rows="3" id="careerObjective" name="careerObjective">{{$careerObjective}}</textarea>
                         <small>20-50 Words</small>
                     </div> <!-- c.objective -->
                     <hr>
-                    <div class="form-group col-md-8">
-                        <label style="border-bottom:1px lightgray solid ; padding: 5px;">Education</label>
+                    <div class="form-group col-md-12">
+                        <label style="border-bottom:1px lightgray solid ; padding: 5px;" class="panelFormLabel">Education</label>
                         <div class="row">
-                            <div class="col-md-6">
-                                <label for="education">Title<span id="tickMarkeduTitle1" class="d-none">&#10003</span></label>
-                                <input type="text" class="form-control" name="eduTitle1" value="{{$eduTitle1}}">
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Title<span id="tickMarkeduTitle1" class="d-none">&#10003</span></label>
+                                        <input type="text" class="form-control" name="eduTitle1" value="{{$eduTitle1}}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Year<span id="tickMarkeduYear1" class="d-none">&#10003</span></label>
+                                        <input type="text" name="eduYear1" value="{{$eduYear1}}" class="form-control">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="education" class="panelFormLabel">Description <span id="tickMarkeduDesc1" class="d-none">&#10003</span></label>
+                                        <textarea class="form-control" rows="4" id="education" name="eduDesc1">{{$eduDesc1}}
+                            </textarea><br/>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="education">Year<span id="tickMarkeduYear1" class="d-none">&#10003</span></label>
-                                <input type="text" name="eduYear1" value="{{$eduYear1}}" class="form-control">
-                            </div>
-                        </div>
-                        <label for="education">Description <span id="tickMarkeduDesc1" class="d-none">&#10003</span></label>
-                        <textarea class="form-control" rows="4" id="education" name="eduDesc1">{{$eduDesc1}}
-            </textarea><br/>
+                            <div class="col-md-4">
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="education">Title<span id="tickMarkeduTitle2" class="d-none">&#10003</span></label>
-                                <input type="text" class="form-control" name="eduTitle2" value="{{$eduTitle2}}">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Title<span id="tickMarkeduTitle2" class="d-none">&#10003</span></label>
+                                        <input type="text" class="form-control" name="eduTitle2" value="{{$eduTitle2}}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Year<span id="tickMarkeduYear2" class="d-none">&#10003</span></label>
+                                        <input type="text" name="eduYear2" value="{{$eduYear2}}" class="form-control">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="education" class="panelFormLabel">Description <span id="tickMarkeduDesc2" class="d-none">&#10003</span></label>
+                                        <textarea class="form-control" rows="4" id="education" name="eduDesc2">{{$eduDesc2}}
+                                 </textarea><br/>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="education">Year<span id="tickMarkeduYear2" class="d-none">&#10003</span></label>
-                                <input type="text" name="eduYear2" value="{{$eduYear2}}" class="form-control">
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Title<span id="tickMarkeduTitle3" class="d-none">&#10003</span></label>
+                                        <input type="text" class="form-control" name="eduTitle3" value="{{$eduTitle3}}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Year<span id="tickMarkeduYear3" class="d-none">&#10003</span></label>
+                                        <input type="text" name="eduYear3" value="{{$eduYear3}}" class="form-control">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="education" class="panelFormLabel">Description <span id="tickMarkeduDesc3" class="d-none">&#10003</span></label>
+                                        <textarea class="form-control" rows="4" id="education" name="eduDesc3">{{$eduDesc3}}
+                                </textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <label for="education">Description <span id="tickMarkeduDesc2" class="d-none">&#10003</span></label>
-                        <textarea class="form-control" rows="4" id="education" name="eduDesc2">{{$eduDesc2}}
-            </textarea><br/>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="education">Title<span id="tickMarkeduTitle3" class="d-none">&#10003</span></label>
-                                <input type="text" class="form-control" name="eduTitle3" value="{{$eduTitle3}}">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="education">Year<span id="tickMarkeduYear3" class="d-none">&#10003</span></label>
-                                <input type="text" name="eduYear3" value="{{$eduYear3}}" class="form-control">
-                            </div>
-                        </div>
-                        <label for="education">Description <span id="tickMarkeduDesc3" class="d-none">&#10003</span></label>
-                        <textarea class="form-control" rows="4" id="education" name="eduDesc3">{{$eduDesc3}}
-            </textarea>
                         <small>Please include all relevant   <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> schools and/or  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> courses you have taken. Include the COURSE NAME & UNIVERSITY NAME</small>
+
                     </div> <!-- Edu -->
+
+
                     <hr>
-                    <div class="form-group col-md-8">
-                        <label style="border-bottom:1px lightgray solid ; padding: 5px;">Trainings</label>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="education">Title<span id="tickMarktrnTitle1" class="d-none">&#10003</span></label>
-                                <input type="text" class="form-control" name="trnTitle1" value="{{$trnTitle1}}">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="education">Year<span id="tickMarktrnYear1" class="d-none">&#10003</span></label>
-                                <input type="text" name="trnYear1" value="{{$trnYear1}}" class="form-control">
-                            </div>
-                        </div>
-                        <label for="education">Description <span id="tickMarktrnDesc1" class="d-none">&#10003</span></label>
-                        <textarea class="form-control" rows="4" id="education" name="trnDesc1">{{$trnDesc1}}
-            </textarea><br/>
 
+                    <div class="form-group col-md-12">
+                        <label style="border-bottom:1px lightgray solid ; padding: 5px;" class="panelFormLabel">Trainings</label>
                         <div class="row">
-                            <div class="col-md-6">
-                                <label for="education">Title<span id="tickMarktrnTitle2" class="d-none">&#10003</span></label>
-                                <input type="text" class="form-control" name="trnTitle2" value="{{$trnTitle2}}">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="education">Year<span id="tickMarktrnYear2" class="d-none">&#10003</span></label>
-                                <input type="text" name="trnYear2" value="{{$trnYear2}}" class="form-control">
-                            </div>
-                        </div>
-                        <label for="education">Description <span id="tickMarktrnDesc2" class="d-none">&#10003</span></label>
-                        <textarea class="form-control" rows="4" id="education" name="trnDesc2">{{$trnDesc2}}
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Title<span id="tickMarktrnTitle1" class="d-none">&#10003</span></label>
+                                        <input type="text" class="form-control" name="trnTitle1" value="{{$trnTitle1}}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Year<span id="tickMarktrnYear1" class="d-none">&#10003</span></label>
+                                        <input type="text" name="trnYear1" value="{{$trnYear1}}" class="form-control">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="education" class="panelFormLabel">Description <span id="tickMarktrnDesc1" class="d-none">&#10003</span></label>
+                                        <textarea class="form-control" rows="4" id="education" name="trnDesc1">{{$trnDesc1}}
             </textarea><br/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Title<span id="tickMarktrnTitle2" class="d-none">&#10003</span></label>
+                                        <input type="text" class="form-control" name="trnTitle2" value="{{$trnTitle2}}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Year<span id="tickMarktrnYear2" class="d-none">&#10003</span></label>
+                                        <input type="text" name="trnYear2" value="{{$trnYear2}}" class="form-control">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="education" class="panelFormLabel">Description <span id="tickMarktrnDesc2" class="d-none">&#10003</span></label>
+                                        <textarea class="form-control" rows="4" id="education" name="trnDesc2">{{$trnDesc2}}
+            </textarea><br/>
+                                    </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="education">Title<span id="tickMarktrnTitle3" class="d-none">&#10003</span></label>
-                                <input type="text" class="form-control" name="trnTitle3" value="{{$trnTitle3}}">
+                                </div>
+
                             </div>
-                            <div class="col-md-6">
-                                <label for="education">Year<span id="tickMarktrnYear3" class="d-none">&#10003</span></label>
-                                <input type="text" name="trnYear3" value="{{$trnYear3}}" class="form-control">
-                            </div>
-                        </div>
-                        <label for="education">Description <span id="tickMarktrnDesc3" class="d-none">&#10003</span></label>
-                        <textarea class="form-control" rows="4" id="education" name="trnDesc3">{{$trnDesc3}}
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Title<span id="tickMarktrnTitle3" class="d-none">&#10003</span></label>
+                                        <input type="text" class="form-control" name="trnTitle3" value="{{$trnTitle3}}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Year<span id="tickMarktrnYear3" class="d-none">&#10003</span></label>
+                                        <input type="text" name="trnYear3" value="{{$trnYear3}}" class="form-control">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="education" class="panelFormLabel">Description <span id="tickMarktrnDesc3" class="d-none">&#10003</span></label>
+                                        <textarea class="form-control" rows="4" id="education" name="trnDesc3">{{$trnDesc3}}
             </textarea>
-                        <small>Please include all relevant  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> trainings attended in the past 3 years. Include the TRAINING NAME/TITLE, & the LOCATION where the training was held</small>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <small>Please include all relevant  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> trainings attended in the past 3 years. Include the TRAINING NAME/TITLE, & the LOCATION where the training was held</small>
+                        </div>
                     </div>
                     <!-- trainings -->
-                    <div class="form-group col-md-8">
-                        <label for="">Work Experience <span id="tickMarkworkExperience" class="d-none">&#10003</span></label>
+
+                    <hr>
+
+                    <div class="form-group col-md-12">
+                        <label for="" class="panelFormLabel">Work Experience <span id="tickMarkworkExperience" class="d-none">&#10003</span></label>
                         <textarea class="form-control" rows="3" id="work_experience" name="workExperience">{{$workExperience}}
      </textarea>
                     </div> <!-- work exp -->
                     <hr/>
                 </div>
                 <div role="tabpanel" class="panel tab-pane fade" id="portfolio">
-                    <div class="form-group row">
-                        {{-- Developer --}}
+                    <div class="panelHeading">
+                        <ul>
+                            <li>
+                                Portfolio
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row">
                         <? if($profession == 'Developer'):?>
-                        <div class="form-group col-md-8">
-                            <label for="birth_date">Github link <span id="tickMarkgithubLink" class="d-none">&#10003</span></label>
-                            <input type="text" class="form-control" name="githubLink" value="{{$github}}">
+                        <div class="form-group col-md-6">
+                            <label for="birth_date" class="panelFormLabel">Github link <span id="tickMarkgithubLink" class="d-none">&#10003</span></label>
+                            <input type="text" class="form-control panelFormInput" name="githubLink" value="{{$github}}">
                         </div> <!-- git link -->
-                        <div class="form-group col-md-8">
-                            <label for="birth_date">Stack overflow Link <span id="tickMarkstackoverflowLink" class="d-none">&#10003</span></label>
-                            <input type="text" class="form-control" name="stackoverflowLink" value="{{$stackoverflow}}">
+                        <div class="form-group col-md-6">
+                            <label for="birth_date" class="panelFormLabel">Stack overflow Link <span id="tickMarkstackoverflowLink" class="d-none">&#10003</span></label>
+                            <input type="text" class="form-control panelFormInput" name="stackoverflowLink" value="{{$stackoverflow}}">
                         </div> <!-- stack link -->
                         <?else:?>
                         {{-- Designer --}}
-                        <div class="form-group col-md-8">
-                            <label for="behanceLink"> Behance Link <span id="tickMarkbehanceLink" class="d-none">&#10003</span></label>
-                            <input type="text" class="form-control" name="behanceLink" value="{{$behanceLink}}">
+                        <div class="form-group col-md-6">
+                            <label for="behanceLink" class="panelFormLabel"> Behance Link <span id="tickMarkbehanceLink" class="d-none">&#10003</span></label>
+                            <input type="text" class="form-control panelFormInput" name="behanceLink" value="{{$behanceLink}}">
                         </div> <!-- Behance Link -->
-                        <div class="form-group col-md-8">
-                            <label for="birth_date"> Instagram Link <span id="tickMarkinstagramLink" class="d-none">&#10003</span></label>
-                            <input type="text" class="form-control" name="instagramLink" value="{{$instagramLink}}">
+                        <div class="form-group col-md-6">
+                            <label for="birth_date" class="panelFormLabel"> Instagram Link <span id="tickMarkinstagramLink" class="d-none">&#10003</span></label>
+                            <input type="text" class="form-control panelFormInput" name="instagramLink" value="{{$instagramLink}}">
                         </div> <!-- Instagram Link -->
-                        <div class="form-group col-md-8">
-                            <label for="birth_date"> Dribble Link <span id="tickMarkdribbleLink" class="d-none">&#10003</span></label>
-                            <input type="text" class="form-control" name="dribbleLink" value="{{$dribbleLink}}">
+                        <div class="form-group col-md-6">
+                            <label for="birth_date"class="panelFormLabel"> Dribble Link <span id="tickMarkdribbleLink" class="d-none">&#10003</span></label>
+                            <input type="text" class="form-control panelFormInput" name="dribbleLink" value="{{$dribbleLink}}">
                         </div> <!-- Dribble link -->
                         <? endif;?>
-                        <div class="form-group col-md-8">
-                            <label for="birth_date"> Personal Website Link <span id="tickMarkpersonalSite" class="d-none">&#10003</span></label>
-                            <input type="text" class="form-control" name="personalSite" value="{{$personalSite}}">
+                        <div class="form-group col-md-6">
+                            <label for="birth_date" class="panelFormLabel"> Personal Website Link <span id="tickMarkpersonalSite" class="d-none">&#10003</span></label>
+                            <input type="text" class="form-control panelFormInput" name="personalSite" value="{{$personalSite}}">
                         </div> <!-- site link -->
+                    </div> <hr>
 
+                    <div class="form-group row">
+                        {{-- Developer --}}
                         <label class="col-md-12" style="border-bottom:1px lightgray solid ; padding: 5px;">Please Upload 8 examples of your  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> work (800 wide x 600 high)</label>
+
                         @for($i=0;$i<8;$i++)
                             <?
                             $deleteBtn = false;
@@ -467,7 +558,7 @@
                                     <p class="btn btn-danger btn-sm" style="width:33px;height:25px;margin-left: 5px;" id="deletePhoto{{$i}}">X</p>
                                 @endif
                                 <div>
-                                    <img src="{{$src}}" id="portfolioImg{{$i}}"  width="100%" height="auto" style="padding: 10px;">
+                                   <img src="{{$src}}" id="portfolioImg{{$i}}"  width="220" height="200" style="padding: 10px;">
                                 </div>
                                 <div class="form-group col-md-12">
                                     <textarea class="form-control" rows="2" name="workDesc{{$i}}" placeholder="Describe your work">{{$workDesc[$i]}}</textarea>
@@ -478,9 +569,16 @@
                 </div>
 
                 <div role="tabpanel" class="panel tab-pane fade" id="skills">
-                    <div class="form-group col-md-8">
-                        <label for="spec_design_skills">Specific design skills <span id="tickMarkdesign_skills" class="d-none">&#10003</span></label>
-                        <textarea class="form-control" rows="3" id="spec_design_skills" name="design_skills">{{$design_skills}}</textarea>
+                    <div class="panelHeading">
+                        <ul>
+                            <li>
+                               Professional skills
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="spec_design_skills" class="panelFormLabel">Specific design skills <span id="tickMarkdesign_skills" class="d-none">&#10003</span></label>
+                        <textarea class="form-control panelFormInput" rows="3" id="spec_design_skills" name="design_skills">{{$design_skills}}</textarea>
                     </div> <!-- design skills -->
 
                     <div class="form-group col-md-8">
@@ -624,24 +722,31 @@
                     </div> <!-- char skills -->
                 </div>
                 <div role="tabpanel" class="panel tab-pane fade" id="attributes">
-                    <div class="form-group col-md-8">
-                        <label for="personal_interests">Professional interests <span id="tickMarkpersonal_interests" class="d-none">&#10003</span></label>
-                        <textarea class="form-control" rows="3" id="personal_interests" name="personal_interests">{{$personal_interests}}</textarea>
+                    <div class="panelHeading">
+                        <ul>
+                            <li>
+                              Personal attributes
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="personal_interests" class="panelFormLabel">Professional interests <span id="tickMarkpersonal_interests" class="d-none">&#10003</span></label>
+                        <textarea class="form-control panelFormInput" rows="3" id="personal_interests" name="personal_interests">{{$personal_interests}}</textarea>
                         <small>Your hobbies and/or things you’d personally like to do in the future / How do you spend your free time. </small>
                     </div> <!-- interests -->
-                    <div class="form-group col-md-8">
-                        <label for="professional_attributes">Personal attributes <span id="tickMarkprofessional_attributes" class="d-none">&#10003</span></label>
-                        <textarea class="form-control" rows="3" id="professional_attributes" name="professional_attributes">{{$professional_attributes}}</textarea>
+                    <div class="form-group col-md-12">
+                        <label for="professional_attributes" class="panelFormLabel">Personal attributes <span id="tickMarkprofessional_attributes" class="d-none">&#10003</span></label>
+                        <textarea class="form-control panelFormInput" rows="3" id="professional_attributes" name="professional_attributes">{{$professional_attributes}}</textarea>
                         <small>Kindly describe yourself in the workplace. Are you a team player, detail oriented, organized, etc.?</small>
                     </div> <!-- attributes -->
-                    <div class="form-group col-md-8">
-                        <label for="design_styles">Professional Skills and <? if($profession == 'Developer'):?>Development<?else:?>Design<?endif;?> style <span id="tickMarkdesign_styles" class="d-none">&#10003</span></label>
-                        <textarea class="form-control" rows="5" id="design_skills" name="design_styles">{{$design_styles}}</textarea>
+                    <div class="form-group col-md-12">
+                        <label for="design_styles" class="panelFormLabel">Professional Skills and <? if($profession == 'Developer'):?>Development<?else:?>Design<?endif;?> style <span id="tickMarkdesign_styles" class="d-none">&#10003</span></label>
+                        <textarea class="form-control panelFormInput" rows="5" id="design_skills" name="design_styles">{{$design_styles}}</textarea>
                         <small>50-200 Words</small>
                     </div> <!-- design style -->
                 </div>
             </div>
-        <hr>
+        <br/>
         <div class="form-group col-md-8">
             <button type="submit" class="btn btn-primary">Apply Now</button>
         </div>  <!-- Save -->

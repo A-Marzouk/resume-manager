@@ -36,6 +36,85 @@
         </div>
     </div>
             {{-- tabs section --}}
+
+    <div class=".d-none d-xs-block d-sm-block d-md-none carouselTabs">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="">
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active text-center">
+                    <a class="tabsArea nextBtn" href="#overview">
+                        <div class="tabText">
+                            <span class="tabCircle" style="padding:2px 5px 2px 5px;">1</span><br/>
+                            Overview and<br/>
+                            personal info
+                        </div>
+                    </a>
+                </div>
+                <div class="carousel-item text-center">
+                   <a class="tabsArea nextBtn" href="#pay">
+                        <div class="tabText">
+                            <span class="tabCircle" style="padding:2px 5px 2px 5px;">2</span><br/>
+                            Availablity and<br>
+                            pay
+                        </div>
+                   </a>
+                </div>
+                <div class="carousel-item text-center">
+                    <a class="tabsArea nextBtn" href="#multimedia">
+                        <div class="tabText">
+                            <span class="tabCircle" style="padding:2px 5px 2px 5px;">3</span><br/>
+                            Multimedia <br/>
+                            ( Voice recording / Video )
+                        </div>
+                    </a>
+                </div>
+                <div class="carousel-item text-center">
+                    <a class="tabsArea nextBtn" href="#career">
+                        <div class="tabText">
+                            <span class="tabCircle" style="padding:2px 5px 2px 5px;">4</span><br/>
+                            Career overview and <br/>
+                            ( Education / Training )
+                        </div>
+                    </a>
+                </div>
+                <div class="carousel-item text-center">
+                    <a class="tabsArea nextBtn" href="#portfolio">
+                        <div class="tabText">
+                            <span class="tabCircle" style="padding:2px 5px 2px 5px;">5</span><br/>
+                            Portfolio<br/>Previous work
+                        </div>
+                    </a>
+                </div>
+                <div class="carousel-item text-center">
+                    <a class="tabsArea nextBtn" href="#skills">
+                        <div class="tabText">
+                            <span class="tabCircle" style="padding:2px 5px 2px 5px;">6</span><br/>
+                            Professional skills<br/>
+                            personal info
+                        </div>
+                    </a>
+                </div>
+                <div class="carousel-item text-center">
+                    <a class="tabsArea nextBtn" href="#overview">
+                        <div class="tabText">
+                            <span class="tabCircle" style="padding:2px 5px 2px 5px;">7</span><br/>
+                            Personal<br/>
+                            attributes
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon carouselArrows" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon carouselArrows" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
     <div class="row tabsArea d-none d-md-block">
         <div class="col-md-12 text-center">
             <ul class="nav nav-tabs" id="mytabs" role="tablist">
@@ -188,7 +267,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3 offset-md-9">
-                            <a class="btn btn-block btn-primary nextBtn"  href="#pay">Next</a>
+                            <a class="btn btn-block btn-primary nextBtn nextBtnStyle"  href="#pay">Next</a>
                         </div>
                     </div>
                 </div>
@@ -291,7 +370,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3 offset-md-9">
-                            <a class="btn btn-block btn-primary nextBtn"  href="#multimedia">Next</a>
+                            <a class="btn btn-block btn-primary nextBtn nextBtnStyle"  href="#multimedia">Next</a>
                         </div>
                     </div>
                 </div>
@@ -354,7 +433,7 @@
                     <small style="padding-top: 20px;">Please paste above a link to your audio introduction of self. 2min to 3min is the ideal recording length. Kindly introduce yourself and answer these questions: Why did you become a  <? if($profession == 'Developer'):?>developer<?else:?>designer<?endif;?>?, Were you able to acquire a formal  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> education? What do you love most about your work?, What tools do you use for  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?>?, What inspires you to do your work?</small>
                     <div class="row">
                         <div class="col-md-3 offset-md-9">
-                            <a class="btn btn-block btn-primary nextBtn"  href="#career">Next</a>
+                            <a class="btn btn-block btn-primary nextBtn nextBtnStyle"  href="#career">Next</a>
                         </div>
                     </div>
                 </div>
@@ -508,7 +587,7 @@
 
                     <div class="row">
                         <div class="col-md-3 offset-md-9">
-                            <a class="btn btn-block btn-primary nextBtn"  href="#portfolio">Next</a>
+                            <a class="btn btn-block btn-primary nextBtn nextBtnStyle"  href="#portfolio">Next</a>
                         </div>
                     </div>
                 </div>
@@ -589,7 +668,7 @@
 
                     <div class="row">
                         <div class="col-md-3 offset-md-9">
-                            <a class="btn btn-block btn-primary nextBtn"  href="#skills">Next</a>
+                            <a class="btn btn-block btn-primary nextBtn nextBtnStyle"  href="#skills">Next</a>
                         </div>
                     </div>
                 </div>
@@ -748,7 +827,7 @@
 
                     <div class="row">
                         <div class="col-md-3 offset-md-9">
-                            <a class="btn btn-block btn-primary nextBtn"  href="#attributes">Next</a>
+                            <a class="btn btn-block btn-primary nextBtn nextBtnStyle"  href="#attributes">Next</a>
                         </div>
                     </div>
                 </div>

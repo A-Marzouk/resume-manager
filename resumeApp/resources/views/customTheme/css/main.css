@@ -917,7 +917,7 @@ body {
   font-weight: bold;
   padding-top: 5px; }
 
-.nextBtn {
+.nextBtnStyle {
   margin-top: 50px;
   margin-bottom: 30px;
   border-radius: 10px; }
@@ -926,5 +926,13 @@ body {
   margin-top: 50px;
   margin-bottom: 30px;
   border-radius: 10px; }
+
+.carouselArrows {
+  background-color: #544e4e !important;
+  border-radius: 30%;
+  width: 20px; }
+
+.carouselTabs {
+  padding: 10px; }
 
 /*# sourceMappingURL=main.css.map */

@@ -36,7 +36,7 @@
         </div>
     </div>
             {{-- tabs section --}}
-    <div class="row tabsArea">
+    <div class="row tabsArea d-none d-md-block">
         <div class="col-md-12 text-center">
             <ul class="nav nav-tabs" id="mytabs" role="tablist">
                 <li class="nav-item" id="tap1">
@@ -182,7 +182,7 @@
                                     $src = $photoPath;
                                 }
                                 ?>
-                                <img id="photoPreview" src="{{$src}}" width="250" height="auto">
+                                <img id="photoPreview" src="{{$src}}" width="200" height="auto">
                             </div>
                         </div> <!-- profile photo -->
                     </div>
@@ -376,7 +376,7 @@
                     <div class="form-group col-md-12">
                         <label style="border-bottom:1px lightgray solid ; padding: 5px;" class="panelFormLabel">Education</label>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="padding: 0!important;">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="education" class="panelFormLabel">Title<span id="tickMarkeduTitle1" class="d-none">&#10003</span></label>
@@ -393,7 +393,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="padding: 0!important;">
 
                                 <div class="row">
                                     <div class="col-md-6">
@@ -411,7 +411,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="padding: 0!important;">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="education" class="panelFormLabel">Title<span id="tickMarkeduTitle3" class="d-none">&#10003</span></label>
@@ -439,7 +439,7 @@
                     <div class="form-group col-md-12">
                         <label style="border-bottom:1px lightgray solid ; padding: 5px;" class="panelFormLabel">Trainings</label>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="padding: 0!important;">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="education" class="panelFormLabel">Title<span id="tickMarktrnTitle1" class="d-none">&#10003</span></label>
@@ -456,7 +456,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="padding: 0!important;">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="education" class="panelFormLabel">Title<span id="tickMarktrnTitle2" class="d-none">&#10003</span></label>
@@ -475,7 +475,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="padding: 0!important;">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="education" class="panelFormLabel">Title<span id="tickMarktrnTitle3" class="d-none">&#10003</span></label>

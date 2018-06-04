@@ -1056,10 +1056,6 @@ body{
   padding-bottom: 10px;
 }
 
-.applyBtn{
-  width: 100%;
-}
-
 .infoBar{
   padding-bottom: 20px;
 }
@@ -1167,6 +1163,11 @@ body{
 ///////////////////////////////
 
 .nextBtn{
+  margin-top: 50px;
+  border-radius: 10px;
+}
+
+.applyBtn{
   margin-top: 50px;
   border-radius: 10px;
 }

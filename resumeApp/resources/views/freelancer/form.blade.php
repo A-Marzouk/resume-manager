@@ -775,9 +775,11 @@
                         <textarea class="form-control panelFormInput" rows="5" id="design_skills" name="design_styles">{{$design_styles}}</textarea>
                         <small>50-200 Words</small>
                     </div> <!-- design style -->
-                    <div class="form-group col-md-8">
-                        <button type="submit" class="btn btn-primary">Apply Now</button>
-                    </div>  <!-- Save -->
+                    <div class="row">
+                        <div class="col-md-4 offset-md-4">
+                            <button type="submit" class="btn btn-block btn-primary applyBtn">Apply Now</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         <br/>

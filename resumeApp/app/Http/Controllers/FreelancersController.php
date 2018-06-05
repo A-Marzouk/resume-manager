@@ -86,6 +86,7 @@ class FreelancersController extends Controller
             'trnTitle3'=> $currFreelancer->userData->trnTitle3 ?? '' ,
             'trnYear3'=> $currFreelancer->userData->trnYear3?? '' ,
             'trnDesc3'=> $currFreelancer->userData->trnDesc3?? '' ,
+            'audioFile'=> $currFreelancer->userData->audioFile?? '' ,
             'workDesc'=> [
                 $currFreelancer->userData->workDesc0 ?? '',
                 $currFreelancer->userData->workDesc1 ?? '',

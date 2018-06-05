@@ -16,15 +16,28 @@ class UserDataController extends Controller
         $userData = UserData::where('user_id',auth()->user()->id)->first();
         if ($userData){
             $sendTelegram = false;
-
             if(!$request->ajax()){
                 $request->validate([
-                   'name'=>'required',
+                   'trnTitle1'=>'max:225',
+                   'trnTitle2'=>'max:225',
+                   'trnTitle3'=>'max:225',
+                   'eduTitle1'=>'max:225',
+                   'eduTitle2'=>'max:225',
+                   'eduTitle3'=>'max:225',
+                   'nationality'=>'max:225',
+                   'currency'=>'max:225',
+                   'personalSite'=>'max:225',
+                   'behanceLink'=>'max:225',
+                   'instagramLink'=>'max:225',
+                   'dribbleLink'=>'max:225',
+                   'stackoverflowLink'=>'max:225',
+                   'personal_interests'=>'max:225',
+                   'name'=>'required|max:225',
                    'jobTitle'=>'required',
-                   'salary'=>'required',
+                   'salary'=>'required|max:225',
                    'availableHours'=>'required',
-                   'city'=>'required',
-                   'email'=>'required',
+                   'city'=>'required|max:225',
+                   'email'=>'required|max:225',
                    'primarySkills'=>'required',
                    'design_skills_checkbox'=>'required',
                 ]);
@@ -40,6 +53,15 @@ class UserDataController extends Controller
                 elseif ($key == 'photo'){
                     $pathToPhoto = $this->uploadPhoto($value,'photo','');
                     $userData->{$key} = $pathToPhoto ;
+                }elseif($key == 'audioFile'){
+                    if(is_numeric($value)){
+                        $userData->{$key} = " ";
+                    }else{
+                        $pathToAudio = $this->uploadAudio($value,'audioFile','');
+                        if($pathToAudio){
+                            $userData->{$key} = $pathToAudio ;
+                        }
+                    }
                 }elseif ($key == 'design_skills_checkbox'){
                     // convert to string and save on database
                     $skillsCheckBox = implode(',',$value);
@@ -109,14 +131,45 @@ class UserDataController extends Controller
             }
             $userData->save();
             if($sendTelegram){
-                $this->sendTelegram();
-                $this->sendNotification();
+//                $this->sendTelegram();
+//                $this->sendNotification();
             }
             return redirect('/freelancer')->with('successMessage', 'Your changes have been successfully saved.');
         }else{
             return redirect('/freelancer/home');
         }
     }
+
+    public function uploadAudio($src,$name,$newName){
+        $target_dir = "resumeApp/uploads/";
+        $uploadOk = 1;
+        if ($_FILES[$name]["size"] > 25000000) { // 25 megabyte
+            $uploadOk = 0;
+        }
+        // allowed formats :
+        $formats = ['audio/mpeg', 'audio/x-mpeg', 'audio/mpeg3', 'audio/x-mpeg-3', 'audio/aiff',
+            'audio/mid', 'audio/x-aiff', 'audio/x-mpequrl','audio/midi', 'audio/x-mid',
+            'audio/x-midi','audio/wav','audio/x-wav','audio/xm','audio/x-aac','audio/basic',
+            'audio/flac','audio/mp4','audio/x-matroska','audio/ogg','audio/s3m','audio/x-ms-wax',
+            'audio/xm','audio/x-m4a'];
+
+        // check file type :
+        if(!in_array($_FILES[$name]['type'],$formats)){
+            $uploadOk = 0 ;
+        }
+
+        if ($uploadOk == 0) {
+            return false;
+        } else {
+            $target_file = $target_dir . $newName . basename($_FILES[$name]["name"]);
+            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
+                return $target_file;
+            } else {
+                return false;
+            }
+        }
+    }
+
 
     public function uploadPhoto($src,$name,$newName){
         $target_dir = "resumeApp/uploads/";
@@ -132,7 +185,7 @@ class UserDataController extends Controller
             }
         }
 // Check file size
-        if ($_FILES[$name]["size"] > 500000) {
+        if ($_FILES[$name]["size"] > 25000000) {
             $uploadOk = 0;
         }
 // check if image exists in the folder :

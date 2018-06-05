@@ -252,11 +252,19 @@
                         Audio Introduction
                     </div>
                 </div>
+                <?
+                    $audioSrc = "";
+                    if(!empty(trim($user->audioFile))){
+                        $audioSrc = $user->audioFile;
+                    }else{
+                        $audioSrc = "https://drive.google.com/uc?export=download&id=".$user->audio."&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
+                    }
+                ?>
                 <div class="col-md-5">
                     <audio id="audioIntro" controls>
-                        <source src="https://drive.google.com/uc?export=download&id={{$user->audio}}&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M" type="audio/ogg">
+                        <source src="{{$audioSrc}}" type="audio/ogg">
                         Your browser does not support the audio element.
-                    </audio><!--/.video-container-->
+                    </audio>
                 </div>
             </div>
         </div>

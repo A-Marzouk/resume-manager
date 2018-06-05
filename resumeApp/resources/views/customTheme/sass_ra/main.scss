@@ -1026,3 +1026,162 @@ body{
 .customModal{
   background: red;
 }
+
+/////////////////////////////////////////////////// freelancer form :
+
+[id*="tickMark"]{
+  color: white;
+  background: green;
+  font-size: small;
+  font-weight: bolder;
+  border-radius: 5px;
+  padding: 2px 4px 1px 4px;
+  margin-left: 10px;
+  text-align: center;
+}
+.registerBody{
+  margin-top: 30px;
+}
+.registerHeading{
+  color: gray;
+  font-weight: bolder;
+  text-align: center;
+  margin-top:30% ;
+  padding-bottom: 10px;
+}
+
+.registerMainText{
+  color: black;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.infoBar{
+  padding-bottom: 20px;
+}
+
+.paddingBottomTop{
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.pageHeading{
+  color: #697786;
+  font-family: Roboto;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 35px;
+  text-align: center;
+}
+
+.pageSubHeading{
+  color: #697786;	font-family: Roboto;
+  font-size: 16px;	font-weight: bold;
+  line-height: 19px;
+  text-align: center;
+  padding-top: 25px;
+}
+.pageSubHeading2{
+  color: #697786;	font-family: Roboto;
+  font-size: 14px;	font-weight: 300;	line-height: 16px;	text-align: center;
+  padding-top: 12px;
+}
+
+.tabsArea{
+  padding-top: 30px;
+  .tabText{
+    opacity: 0.75;	color: #1C4D75;
+    font-family: Roboto;
+    font-weight: bold;
+    padding-top: 5px;
+  }
+  .tabCircle{
+    background-color: whitesmoke;
+    margin-bottom: 8%;
+    max-width: 45px;
+    padding: 12px 0px 8px 0px;
+    border-radius: 50%;
+  }
+  .active{
+    .tabCircle{
+      background-color: #919CA5;
+    }
+  }
+
+  .nav-item{
+    .active{
+    }
+  }
+}
+
+.panel{
+  padding: 35px;
+  border: 2px whitesmoke solid;
+  border-radius: 10px;
+  margin-top: 30px;
+  @media only screen and (max-width: 600px) {
+    padding: 2px;
+  }
+}
+.nav-tabs {
+  border-bottom: 0 !important;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: #495057;
+  background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%) !important;
+  border: 0 !important;
+}
+
+.panelHeading{
+  color: #697786;	font-family: Roboto;
+  font-size: 6vh;
+  font-weight: 300;	line-height: 35px;
+  padding-bottom: 12px;
+}
+
+
+
+.panelFormLabel{
+  color: #A6A9BE;	font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  line-height: 16px;
+  margin-top: 5px;
+
+}
+.panelFormInput{
+  border: 1px solid #D5D8DE;	border-radius: 4px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.salaryText{
+  color: green;	font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  line-height: 16px;
+  font-weight: bold;
+  padding-top: 5px;
+}
+///////////////////////////////
+
+.nextBtnStyle{
+  margin-top: 50px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+.applyBtn{
+  margin-top: 50px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+.carouselArrows{
+  background-color: #544e4e !important;
+  border-radius: 30%;
+  width: 20px;
+}
+.carouselTabs{
+  padding: 10px;
+}

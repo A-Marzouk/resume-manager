@@ -94,7 +94,7 @@
                     </a>
                 </div>
                 <div class="carousel-item text-center">
-                    <a class="tabsArea nextBtn" href="#overview">
+                    <a class="tabsArea nextBtn" href="#attributes">
                         <div class="tabText">
                             <span class="tabCircle" style="padding:2px 5px 2px 5px;">7</span><br/>
                             Personal<br/>
@@ -392,7 +392,7 @@
                                 $valid = false;
                             }
                             ?>
-                            <!--                            --><? if($valid):?>
+                                <? if($valid):?>
                                 <span id="tickMarkaudio" class="d-none">&#10003</span>
                                 <!--                            --><?// else:?>
                                 {{--<span id="tickMarkaudio" style="background: red;" class="d-none">X</span>--}}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\NotificationsController;
 use App\User;
 use App\Http\Controllers\Controller;
 use App\UserData;
@@ -82,6 +83,10 @@ class RegisterController extends Controller
         $userData->user_id = $user->id;
         $userData->name = $user->name;
         $userData->save();
+        // send admins email when freelancer registers.
+        $notification = new NotificationsController();
+        $notification->freelancerRegisteredEmail($data);
+
         return $user;
     }
 

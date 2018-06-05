@@ -37,6 +37,7 @@ Route::prefix('freelancer')->group(function (){
     Route::post('/login/submit','Auth\LoginController@login')->name('freelancer.login.submit');
     Route::get('/register','Auth\RegisterController@showRegistrationForm')->name('freelancer.register');
     Route::post('/register/submit','Auth\RegisterController@register')->name('freelancer.register.submit');
+    Route::get('/delete/{id}','FreelancersController@deleteFreelancer')->name('freelancer.delete');
 });
 
 Route::get('/clear-cache', function() {

@@ -105,7 +105,7 @@ class UserDataController extends Controller
                     $data = $value;
                     $explodedData= explode("/", $data);
                     foreach ($explodedData as $id){
-                        if(strlen($id) == 33){
+                        if(strlen($id) > 20 ){
                             $userData->{$key} = $id;
                             break;
                         }else{

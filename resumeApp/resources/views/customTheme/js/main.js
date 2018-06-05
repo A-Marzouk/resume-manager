@@ -52,6 +52,15 @@ $(document).ready(function () {
         $('#audioIntro')[0].load();
     });
 
+    // when a link to google drive is added :
+    $('#audio_intro').on('change',function () {
+        $('#audioIntroForm').attr('src',$(this).val());
+        $('#audioIntro')[0].load();
+        setTimeout(function(){
+            location.reload();
+          },2000);
+    });
+
     // deleting photo :
     $('#deletePhoto0').on('click', function(e){
         $('#portfolioImg0').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
@@ -314,6 +323,9 @@ $(document).ready(function () {
             // change the src of the Audio
             $('#audioIntroForm').attr('src','resumeApp/uploads/'+fileName);
             $('#audioIntro')[0].load();
+            setTimeout(function(){
+                location.reload();
+            }, 2000);
         });
     });
 

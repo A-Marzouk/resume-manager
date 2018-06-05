@@ -652,25 +652,31 @@
                             <?
                             $deleteBtn = false;
                             $src = 'resumeApp/resources/views/customTheme/images/no-foto.png';
-                            $uploadBtn = 'Choose file';
+                            $uploadBtn = 'Choose';
                             foreach ($works as $work){
                                 if(strpos($work , 'works'.$i) !== false ){
                                     $src = $work;
                                     $deleteBtn = true;
-                                    $uploadBtn = 'Change file';
+                                    $uploadBtn = 'Change';
                                 }
                             }
 
                             ?>
                             <div class="input-group col-md-3">
-                                <div class="custom-file" id="customFile{{$i}}" style="padding-top: 5px;">
-                                    <input type="file" class="custom-file-input" id="works{{$i}}" name="works{{$i}}" value="">
-                                    <label class="custom-file-label" for="">{{$uploadBtn}}</label>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <div class="custom-file" id="customFile{{$i}}" style=" display: block; padding-top: 5px;">
+                                            <input type="file" class="custom-file-input" id="works{{$i}}" name="works{{$i}}" value="">
+                                            <label class="custom-file-label" for="">{{$uploadBtn}}</label>
+                                        </div>
+                                    </div>
+                                    @if($deleteBtn)
+                                        <div class="col-md-1">
+                                            <p class="btn btn-block btn-danger btn-sm" style="width:33px;height:25px;margin-left: 1px;" id="deletePhoto{{$i}}">X</p>
+                                        </div>
+                                    @endif
                                 </div>
-                                @if($deleteBtn)
-                                    <p class="btn btn-danger btn-sm" style="width:33px;height:25px;margin-left: 5px;" id="deletePhoto{{$i}}">X</p>
-                                @endif
-                                <div>
+                                <div style="display:block;">
                                    <img src="{{$src}}" id="portfolioImg{{$i}}"  width="220" height="200" style="padding: 10px;">
                                 </div>
                                 <div class="form-group col-md-12">

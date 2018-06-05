@@ -131,8 +131,9 @@ class UserDataController extends Controller
             }
             $userData->save();
             if($sendTelegram){
-                $this->sendTelegram();
-                $this->sendNotification();
+                $notification = new NotificationsController();
+                $notification->resumeEditedTelegram();
+//                $notification->resumeEditedEmail();
             }
             return redirect('/freelancer')->with('successMessage', 'Your changes have been successfully saved.');
         }else{
@@ -208,32 +209,6 @@ class UserDataController extends Controller
                 return false;
             }
         }
-    }
-
-    public function sendMail($msg){
-
-    }
-
-    public function sendTelegram(){
-        $msg = auth()->user()->username ;
-        $msg .= ' has updated his resume .. please view updated resume here..  ';
-        $msg .= 'https://123workforce.com/'.auth()->user()->username;
-        $telegram = new Telegram('-279372621');
-        $telegram->sendMessage($msg);
-    }
-
-    public function sendNotification(){
-        $emails = [
-            'shey@123workforce.com',
-            'AhmedMarzouk266@gmail.com',
-            'riz@123workforce.com',
-            'conor@123workforce.com '
-        ];
-
-        Mail::send('emails.freelancer_edited', ['key' => 'value'], function($message) use ($emails)
-        {
-            $message->to($emails)->subject('User has updated resume !');
-        });
     }
 
 }

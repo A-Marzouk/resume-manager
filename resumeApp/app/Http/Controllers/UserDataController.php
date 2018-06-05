@@ -223,14 +223,17 @@ class UserDataController extends Controller
     }
 
     public function sendNotification(){
-        Mail::send('emails.freelancer_edited', ['key' => 'value'], function($message)
-            {
-                $message->to('AhmedMarzouk266@gmail.com', 'Ahmed Ragab')->subject('User has updated resume !');
-            });
-        Mail::send('emails.freelancer_edited', ['key' => 'value'], function($message)
-            {
-                $message->to('riz@123workforce.com', 'Riz Pasion')->subject('User has updated resume !');
-            });
+        $emails = [
+            'shey@123workforce.com',
+            'AhmedMarzouk266@gmail.com',
+            'riz@123workforce.com',
+            'conor@123workforce.com '
+        ];
+
+        Mail::send('emails.freelancer_edited', ['key' => 'value'], function($message) use ($emails)
+        {
+            $message->to($emails)->subject('User has updated resume !');
+        });
     }
 
 }

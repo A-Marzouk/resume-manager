@@ -131,8 +131,8 @@ class UserDataController extends Controller
             }
             $userData->save();
             if($sendTelegram){
-//                $this->sendTelegram();
-//                $this->sendNotification();
+                $this->sendTelegram();
+                $this->sendNotification();
             }
             return redirect('/freelancer')->with('successMessage', 'Your changes have been successfully saved.');
         }else{
@@ -217,7 +217,7 @@ class UserDataController extends Controller
     public function sendTelegram(){
         $msg = auth()->user()->username ;
         $msg .= ' has updated his resume .. please view updated resume here..  ';
-        $msg .= 'www.123workforce.com/form/'.auth()->user()->username;
+        $msg .= 'https://123workforce.com/'.auth()->user()->username;
         $telegram = new Telegram('-279372621');
         $telegram->sendMessage($msg);
     }

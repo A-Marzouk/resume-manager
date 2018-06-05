@@ -16,15 +16,28 @@ class UserDataController extends Controller
         $userData = UserData::where('user_id',auth()->user()->id)->first();
         if ($userData){
             $sendTelegram = false;
-
             if(!$request->ajax()){
                 $request->validate([
-                   'name'=>'required',
+                   'trnTitle1'=>'max:225',
+                   'trnTitle2'=>'max:225',
+                   'trnTitle3'=>'max:225',
+                   'eduTitle1'=>'max:225',
+                   'eduTitle2'=>'max:225',
+                   'eduTitle3'=>'max:225',
+                   'nationality'=>'max:225',
+                   'currency'=>'max:225',
+                   'personalSite'=>'max:225',
+                   'behanceLink'=>'max:225',
+                   'instagramLink'=>'max:225',
+                   'dribbleLink'=>'max:225',
+                   'stackoverflowLink'=>'max:225',
+                   'personal_interests'=>'max:225',
+                   'name'=>'required|max:225',
                    'jobTitle'=>'required',
-                   'salary'=>'required',
+                   'salary'=>'required|max:225',
                    'availableHours'=>'required',
-                   'city'=>'required',
-                   'email'=>'required',
+                   'city'=>'required|max:225',
+                   'email'=>'required|max:225',
                    'primarySkills'=>'required',
                    'design_skills_checkbox'=>'required',
                 ]);

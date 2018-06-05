@@ -133,7 +133,7 @@ class UserDataController extends Controller
             if($sendTelegram){
                 $notification = new NotificationsController();
                 $notification->resumeEditedTelegram();
-//                $notification->resumeEditedEmail();
+                $notification->resumeEditedEmail();
             }
             return redirect('/freelancer')->with('successMessage', 'Your changes have been successfully saved.');
         }else{

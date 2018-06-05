@@ -382,53 +382,67 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="form-group col-md-12">
-                        <label for="audio_intro" class="panelFormLabel">Audio introduction
-                          <?
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label for="audio_intro" class="panelFormLabel">Audio introduction
+                            <?
                             $valid = true;
                             $notValidText = 'NOT-VALID-LINK';
                             if ($audio == $notValidText) {
                                 $valid = false;
                             }
-                         ?>
-<!--                            --><? if($valid):?>
+                            ?>
+                            <!--                            --><? if($valid):?>
                                 <span id="tickMarkaudio" class="d-none">&#10003</span>
-<!--                            --><?// else:?>
+                                <!--                            --><?// else:?>
                                 {{--<span id="tickMarkaudio" style="background: red;" class="d-none">X</span>--}}
-<!--                            --><? endif;?>
-                        </label>
+                            <!--                            --><? endif;?>
+                            </label>
 
-                        <br/><label class="panelFormLabel">Link from Google drive :</label>
-                        <input type="text" class="form-control panelFormInput" id="audio_intro" name="audio"
-                               value="https://drive.google.com/file/d/{{$audio}}/view"><br/>
-
-                        <label class="panelFormLabel">Or Upload an audio file :</label>
-                        <div class="custom-file" style="padding-top: 5px;">
-                            <input type="file" id="audioFile" class="custom-file-input panelFormInput" name="audioFile" value="">
-                            <label class="custom-file-label" id="audioLabel" for="">
-                                <?
-                                $audioSrc = "";
-                                ?>
-                                <? if(!empty($audioFile)):?>
+                            <br/><label class="panelFormLabel">Link from Google drive :</label>
+                            <input type="text" class="form-control panelFormInput" id="audio_intro" name="audio"
+                                   value="https://drive.google.com/file/d/{{$audio}}/view"><br/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="panelFormLabel">Or Upload an audio file :</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="custom-file" style="padding-top: 5px;">
+                                <input type="file" id="audioFile" class="custom-file-input panelFormInput" name="audioFile">
+                                <label class="custom-file-label" id="audioLabel" for="">
+                                    <?
+                                    $audioSrc = "";
+                                    ?>
+                                    <? if(!empty(trim($audioFile))):?>
                                     <?
                                         $audioSrc = $audioFile;
                                         $audioFile = str_replace('resumeApp/uploads/',"",$audioFile);
                                     ?>
                                     {{$audioFile}}
                                     <?else:?>
-                                    Upload Audio
+                                        Upload Audio
                                     <?
-                                        $audioSrc = "https://drive.google.com/uc?export=download&id={{$audio}}&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
+                                       $audioSrc = "https://drive.google.com/uc?export=download&id=".$audio."&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
                                     ?>
                                     <? endif;?>
-                            </label>
+                                </label>
+                            </div>
                         </div>
-                    </div>  <!-- Audio -->
-                    <div class="col-md-5">
-                        <audio id="audioIntro" controls style="padding-top: 30px; padding-bottom: 10px;">
-                            <source src="{{$audioSrc}}" type="audio/ogg">
-                            Your browser does not support the audio element.
-                        </audio><!--/.video-container-->
+                        <div class="col-md-2">
+                            <a class="btn btn-danger btn-block" href="javascript:void(0)" id="deleteAudio">Delete</a>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 30px;">
+                        <div class="col-md-4 offset-md-4">
+                            <audio id="audioIntro" controls style="padding-top: 30px; padding-bottom: 10px;">
+                                <source src="{{$audioSrc}}" type="audio/ogg" id="audioIntroForm">
+                                Your browser does not support the audio element.
+                            </audio><!--/.video-container-->
+                        </div>
                     </div>
                     <small style="padding-top: 20px;">Please paste above a link to your audio introduction of self. 2min to 3min is the ideal recording length. Kindly introduce yourself and answer these questions: Why did you become a  <? if($profession == 'Developer'):?>developer<?else:?>designer<?endif;?>?, Were you able to acquire a formal  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> education? What do you love most about your work?, What tools do you use for  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?>?, What inspires you to do your work?</small>
                     <div class="row">

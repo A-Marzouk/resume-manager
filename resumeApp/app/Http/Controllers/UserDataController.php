@@ -54,9 +54,13 @@ class UserDataController extends Controller
                     $pathToPhoto = $this->uploadPhoto($value,'photo','');
                     $userData->{$key} = $pathToPhoto ;
                 }elseif($key == 'audioFile'){
-                    $pathToPhoto = $this->uploadAudio($value,'audioFile','');
-                    if($pathToPhoto){
-                        $userData->{$key} = $pathToPhoto ;
+                    if(is_numeric($value)){
+                        $userData->{$key} = " ";
+                    }else{
+                        $pathToAudio = $this->uploadAudio($value,'audioFile','');
+                        if($pathToAudio){
+                            $userData->{$key} = $pathToAudio ;
+                        }
                     }
                 }elseif ($key == 'design_skills_checkbox'){
                     // convert to string and save on database
@@ -181,7 +185,7 @@ class UserDataController extends Controller
             }
         }
 // Check file size
-        if ($_FILES[$name]["size"] > 500000) {
+        if ($_FILES[$name]["size"] > 25000000) {
             $uploadOk = 0;
         }
 // check if image exists in the folder :

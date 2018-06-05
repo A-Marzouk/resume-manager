@@ -40,6 +40,18 @@ $(document).ready(function () {
         readURL(this,'#portfolioImg7');
     });
 
+    // delete Audio :
+    $('#deleteAudio').on('click', function(e){
+        $('#audioFile').attr('type','text');
+        $('#audioFile').attr('value',0);
+        $('#works0').change();
+        $('#audioFile').attr('type','file');
+        $('#audioLabel').html('Upload audio');
+        // change the src of the Audio
+        $('#audioIntroForm').attr('src','');
+        $('#audioIntro')[0].load();
+    });
+
     // deleting photo :
     $('#deletePhoto0').on('click', function(e){
         $('#portfolioImg0').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
@@ -299,6 +311,9 @@ $(document).ready(function () {
         $('#audioFile').change(function(e){
             var fileName = e.target.files[0].name;
             $('#audioLabel').html(fileName);
+            // change the src of the Audio
+            $('#audioIntroForm').attr('src','resumeApp/uploads/'+fileName);
+            $('#audioIntro')[0].load();
         });
     });
 

@@ -26,6 +26,14 @@ class FreelancersController extends Controller
         return view('freelancer.form',compact('data'));
     }
 
+    public function deleteFreelancer($id){
+        if(Auth::user()->admin == 1) {
+            User::where('id', $id)->delete();
+            return redirect(route('admin.dashboard'))->with('successMessage', 'Freelancer has been deleted !');;
+        }
+        return view('freelancer.form',compact('data'));
+    }
+
     public function getFreelacerData () {
         $currFreelancer = auth()->user();
         $data = [

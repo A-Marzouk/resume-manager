@@ -73,6 +73,9 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
+                                <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
+                                <a href="{{route('admin.dashboard')}}" class="dropdown-item">Admin area</a>
+                                <? endif;?>
 
                                 <form id="logout-form" action="{{ route('client.logout') }}" method="POST" style="display: none;">
                                     @csrf

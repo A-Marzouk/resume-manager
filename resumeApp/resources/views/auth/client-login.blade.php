@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class=>
+                <div>
                     <div class="customFormHeader">{{ __('Client Log in') }}</div>
 
                     <div>
@@ -61,7 +61,7 @@
                                             <button type="submit" class="col-md-12 hireBtn">
                                                 {{ __('Login') }}
                                             </button>
-                                            <div class="smallText"><span> <a href="/client/login"> Register now!</a></span></div>
+                                            <div class="smallText"><span> <a href="/client/register"> Register now!</a></span></div>
                                         </div>
                                     </div>
                                 </div>

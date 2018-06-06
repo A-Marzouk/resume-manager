@@ -8,9 +8,9 @@
                 <td class="content-cell" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; padding: 35px;">
                     <h1 style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #2F3133; font-size: 19px; font-weight: bold; margin-top: 0; text-align: left;">Hello! </h1>
                     <p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #74787E; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">
-                        Thank you,  {{$firstName}} {{$lastName}} for completing your online registration with 123 Workforce.<br/>
+                        Thank you, <b>{{$firstName}} {{$lastName}}</b> for completing your online registration with 123 Workforce.<br/>
 
-                        We don't require any further interviews or documents from you at this time.
+                        We don't require any further interviews or documents from you at this time.<br/>
 
                         We are now actively promoting your cv to our list of clients currently hiring. <br/><br/>We are currently seeking a suitable company for you to work at for your preferred hourly rate and availability, will be in touch with you as soon as we have a good job offer for you.
 
@@ -19,7 +19,7 @@
                     </p>
                     <p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #74787E; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">
                         Wishing you ongoing success with your current projects !<br/>
-                        Kindest Regards, 123 Workforce</p>
+                        Kindest Regards,<b>123 Workforce</b></p>
                 </td>
             </tr>
         </table>

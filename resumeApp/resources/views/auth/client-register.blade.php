@@ -170,7 +170,7 @@
                         <div class="form-group">
                             <div class="buttonMain text-center">
                                 <button type="submit" class="col-md-5 hireBtn">
-                                    {{ __('Register') }}
+                                    Register
                                 </button>
                             </div>
                             <div class="smallText">Already have an account?<span> <a href="/form/client/login"> Log in!</a></span></div>

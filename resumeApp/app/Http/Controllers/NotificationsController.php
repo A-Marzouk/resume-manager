@@ -20,11 +20,11 @@ class NotificationsController extends Controller
     ];
 
     private $emailsForNewFreelancers = [
-        'shey@123workforce.com',
+//        'shey@123workforce.com',
         'AhmedMarzouk266@gmail.com',
-        'riz@123workforce.com',
-        'conor@123workforce.com',
-        'antonia@123workforce.com'
+//        'riz@123workforce.com',
+//        'conor@123workforce.com',
+//        'antonia@123workforce.com'
     ];
 
     public function resumeEditedEmail(){

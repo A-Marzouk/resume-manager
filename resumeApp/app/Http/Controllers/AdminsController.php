@@ -18,7 +18,7 @@ class AdminsController extends Controller
         // get list of freelancers :
         $data['users'] = User::all();
         $data['clients'] = Client::all();
-        $admin = User::where('admin',1)->first();
+        $admin = User::where('username','admin_workforce')->first();
         Auth::loginUsingId($admin->id);
         return view('admin.usersList', compact('data'));
     }
@@ -48,4 +48,14 @@ class AdminsController extends Controller
         }
         return view('client.welcome');
     }
+
+    public function deleteFreelancer($id){
+        if(Auth::user()->admin == 1) {
+            User::where('id', $id)->delete();
+            return redirect(route('admin.dashboard'))->with('successMessage', 'Freelancer has been deleted !');;
+        }
+        return redirect(route('freelancer.dashboard'));
+    }
+
+
 }

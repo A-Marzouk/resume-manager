@@ -173,7 +173,7 @@
                                     Register
                                 </button>
                             </div>
-                            <div class="smallText">Already have an account?<span> <a href="/form/client/login"> Log in!</a></span></div>
+                            <div class="smallText">Already have an account?<span> <a href="/client/login"> Log in!</a></span></div>
                         </div>
                     </form>
                 </div>

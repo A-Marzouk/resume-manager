@@ -16,15 +16,16 @@ class NotificationsController extends Controller
         'shey@123workforce.com',
         'AhmedMarzouk266@gmail.com',
         'riz@123workforce.com',
-        'conor@123workforce.com'
+        'conor@123workforce.com',
+        'antonia@123workforce.com'
     ];
 
     private $emailsForNewFreelancers = [
-//        'shey@123workforce.com',
+        'shey@123workforce.com',
         'AhmedMarzouk266@gmail.com',
-//        'riz@123workforce.com',
-//        'conor@123workforce.com',
-//        'antonia@123workforce.com'
+        'riz@123workforce.com',
+        'conor@123workforce.com',
+        'antonia@123workforce.com'
     ];
 
     public function resumeEditedEmail(){
@@ -48,6 +49,14 @@ class NotificationsController extends Controller
         Mail::send('emails.freelancer_registered',$data, function($message) use ($emails)
         {
             $message->to($emails)->subject('New freelancer on board!');
+        });
+    }
+
+    public function freelancerWelcomeEmail($data){
+        $emails = $this->emailsForNewFreelancers;
+        Mail::send('emails.freelancer_welcome',$data, function($message) use ($emails,$data)
+        {
+            $message->to($data['email'])->subject('Welcome to 123 Workforce');
         });
     }
 

@@ -86,6 +86,7 @@ class RegisterController extends Controller
         // send admins email when freelancer registers.
         $notification = new NotificationsController();
         $notification->freelancerRegisteredEmail($data);
+        $notification->freelancerWelcomeEmail($data);
 
         return $user;
     }

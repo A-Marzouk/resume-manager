@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Resume Manager'),
+    'name' => env('APP_NAME', '123 Workforce'),
 
     /*
     |--------------------------------------------------------------------------

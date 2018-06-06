@@ -21,9 +21,15 @@ Route::prefix('client')->group(function (){
     Route::get('/login','Auth\ClientLoginController@showLoginForm')->name('client.login');
     Route::post('/logout','Auth\ClientLoginController@logout')->name('client.logout');
     Route::post('/login/submit','Auth\ClientLoginController@login')->name('client.login.submit');
+    Route::get('/login/submit',function(){
+        return redirect()->back();
+    });
     Route::get('/','ClientsController@index')->name('client.dashboard');
     Route::get('/register','Auth\ClientRegisterController@showRegistrationForm')->name('client.register');
     Route::post('/register/submit','Auth\ClientRegisterController@register')->name('client.register.submit');
+    Route::get('/register/submit',function(){
+        return redirect()->back();
+    });
     Route::get('/delete/{id}','AdminsController@deleteClient')->name('client.delete');
 });
 
@@ -36,8 +42,15 @@ Route::prefix('freelancer')->group(function (){
         return redirect()->back();
     });
     Route::post('/login/submit','Auth\LoginController@login')->name('freelancer.login.submit');
+    Route::get('/login/submit',function(){
+        return redirect()->back();
+    });
+
     Route::get('/register','Auth\RegisterController@showRegistrationForm')->name('freelancer.register');
     Route::post('/register/submit','Auth\RegisterController@register')->name('freelancer.register.submit');
+    Route::get('/register/submit',function(){
+        return redirect()->back();
+    });
     Route::get('/delete/{id}','AdminsController@deleteFreelancer')->name('freelancer.delete');
 });
 

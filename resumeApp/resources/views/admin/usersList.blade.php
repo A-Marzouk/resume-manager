@@ -72,8 +72,8 @@
                     <tr>
                         <th scope="row">{{$i}}</th>
                         <td>{{$client->name}}</td>
-                        <td><a href="#" target="_blank">Later!</a></td>
-                        <td><a class="btn btn-primary btn-sm" href="{{route('logInAsClient',$client->id)}}">Edit</a> - <a class="btn btn-sm btn-danger" href="{{route('client.delete',$client->id)}}"  onclick="return confirm('Are you sure you want to delete {{$client->name}}?');">Delete</a></td>
+                        <td><a href="{{route('logInAsClient',$client->id)}}" target="_blank">Link to profile</a></td>
+                        <td><a class="btn btn-sm btn-danger" href="{{route('client.delete',$client->id)}}"  onclick="return confirm('Are you sure you want to delete {{$client->name}}?');">Delete</a></td>
                     </tr>
 
                     <? $i++;?>

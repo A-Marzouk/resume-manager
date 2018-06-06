@@ -22,19 +22,11 @@ class FreelancersController extends Controller
             Auth::user()->save();
             return redirect(route('admin.dashboard'));
         }
-        $data = $this->getFreelacerData();
+        $data = $this->getFreelancerData();
         return view('freelancer.form',compact('data'));
     }
 
-    public function deleteFreelancer($id){
-        if(Auth::user()->admin == 1) {
-            User::where('id', $id)->delete();
-            return redirect(route('admin.dashboard'))->with('successMessage', 'Freelancer has been deleted !');;
-        }
-        return view('freelancer.form',compact('data'));
-    }
-
-    public function getFreelacerData () {
+    public function getFreelancerData () {
         $currFreelancer = auth()->user();
         $data = [
             'name'=> $currFreelancer->userData->name ?? '',

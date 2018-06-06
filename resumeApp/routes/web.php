@@ -24,6 +24,7 @@ Route::prefix('client')->group(function (){
     Route::get('/','ClientsController@index')->name('client.dashboard');
     Route::get('/register','Auth\ClientRegisterController@showRegistrationForm')->name('client.register');
     Route::post('/register/submit','Auth\ClientRegisterController@register')->name('client.register.submit');
+    Route::get('/delete/{id}','AdminsController@deleteClient')->name('client.delete');
 });
 
 Route::prefix('freelancer')->group(function (){
@@ -47,6 +48,7 @@ Route::get('/clear-cache', function() {
 
 // admin area :
 Route::get('/admin','AdminsController@welcomePage')->name('admin.dashboard');
+Route::get('/admin/client/{client_id}','AdminsController@logInAsClient')->name('logInAsClient');
 Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');

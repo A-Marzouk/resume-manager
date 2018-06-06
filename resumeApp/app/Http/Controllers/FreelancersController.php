@@ -31,6 +31,7 @@ class FreelancersController extends Controller
             User::where('id', $id)->delete();
             return redirect(route('admin.dashboard'))->with('successMessage', 'Freelancer has been deleted !');;
         }
+        $data = $this->getFreelacerData();
         return view('freelancer.form',compact('data'));
     }
 

@@ -33,7 +33,8 @@ class ClientLoginController extends Controller
             return redirect((route('client.dashboard')));
         }
         // if un successful redirect them back :
-            return redirect()->back()->withInput($request->only('email','remember'));
+         $errors['email'] = 'Your e-mail or password is not correct';
+        return redirect('/client/login')->withErrors($errors)->withInput($request->only('email','remember'));
     }
 
     public function logout(){

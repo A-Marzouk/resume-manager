@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Client;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +25,11 @@ class ClientRegisterController extends Controller
 
     public function register(Request $request){
         // validate data
-        $this->validator($request->all())->validate();
+        $validator = $this->validator($request->all());
+        if ($validator->fails())
+        {
+            return redirect('/client/register')->withErrors($validator)->withInput();
+        }
         // register a client
         $client = $this->create($request->all());
         // log the client in :

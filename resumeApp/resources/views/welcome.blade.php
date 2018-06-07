@@ -19,8 +19,6 @@
 
         </div>
 
-        <div class="line"></div>
-
         <div id="freelancers">
             <div class="row customContainer">
                 <div class="col-md-8">

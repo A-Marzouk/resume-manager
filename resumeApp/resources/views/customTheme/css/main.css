@@ -470,9 +470,10 @@ body {
     background: url("/resumeApp/resources/views/customTheme/images/new_theme/rectangle_big.png");
     background-position-x: right;
     background-position-y: 2%;
-    background-size: 15%;
+    background-size: 14% 100%;
     background-repeat: no-repeat;
-    height: 420px; }
+    border-bottom: 2px solid #F8F8F8;
+    padding-bottom: 50px; }
     @media only screen and (max-width: 600px) {
       #content #mainSection {
         background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%); } }
@@ -658,7 +659,7 @@ body {
         #content .designerLeftSide h2 {
           padding: 5px 0 0 0; } }
     #content .designerLeftSide img {
-      width: 37%; }
+      width: 20%; }
       @media only screen and (max-width: 600px) {
         #content .designerLeftSide img {
           width: 20%; } }

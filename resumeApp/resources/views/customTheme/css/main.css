@@ -531,7 +531,7 @@ body {
       letter-spacing: 0.5px;
       line-height: 19px;
       text-align: center;
-      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); }
+      box-shadow: 0px 8px 15px rgba(0, 0, 255, 0.3); }
   #content .secondSectionHeading {
     padding: 4% 0 2% 0;
     color: #30323D;

@@ -84,48 +84,8 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    <div class="line"></div>
-                        <div class="socialIcons">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <? if($designer):?>
-                                        <a href="{{$user->behanceLink}}">
-                                            <img src="resumeApp/resources/views/customTheme/images/newResume/behance.png" alt="socialicon">
-                                            <span class="imgText">{{$user->behanceLink}}</span>
-                                        </a>
-                                    <? else: ?>
-                                        <a href="{{$user->githubLink}}">
-                                            <img src="resumeApp/resources/views/customTheme/images/newResume/github-512.png" alt="socialicon">
-                                            <span class="imgText">{{$user->githubLink}}</span>
-                                        </a>
-                                    <? endif;?>
-                                </div>
-                                <div class="col-md-4">
-                                    <? if($designer):?>
-                                        <a href="{{$user->dribbleLink}}">
-                                            <img src="resumeApp/resources/views/customTheme/images/newResume/dribbble.png" alt="socialicon">
-                                            <span class="imgText">{{$user->dribbleLink}}</span>
-                                        </a>
-                                    <? else: ?>
-                                        <a href="{{$user->stackoverflowLink}}">
-                                            <img src="resumeApp/resources/views/customTheme/images/newResume/img_336389.png" alt="socialicon" width="37px" >
-                                            <span class="imgText">{{$user->stackoverflowLink}}</span>
-                                        </a>
-                                    <? endif;?>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="{{$user->personalSite}}">
-                                        <img src="resumeApp/resources/views/customTheme/images/newResume/personalweb.png" alt="socialicon">
-                                        <span class="imgText">{{$user->personalSite}}</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    <div class="line"></div>
-                </div>
-            </div>
+
+
             <div class="row">
                 <div class="col-md-2 offset-md-4">
                     <div class="buttonMain">
@@ -192,15 +152,11 @@
                             <div class="aboutText">
                                 ABOUT ME<br>
                                 <div class="row">
-                                    <div class="col-md-5 col-5 aboutSubText">
-                                        <p>Adress:</p>
-                                        <p>Lang:</p>
-                                        <p>Email:</p>
+                                    <div class="col-12 aboutSubText">
+                                        <p>Lang: {{$user->languages}}</p>
                                     </div>
-                                    <div class="col-md-7 col-7 aboutSubText">
-                                        <p>{{$user->city}}</p>
-                                        <p>{{$user->languages}}</p>
-                                        <p>{{$user->email}}</p>
+                                    <div class="col-12 aboutSubText">
+                                        <p>Email: riz@123workforce.com</p>
                                     </div>
                                 </div>
                             </div>
@@ -605,14 +561,12 @@
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-6">
                             <div class="info">
-                                <p>Address :</p>
                                 <p>Email :</p>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-6">
                             <div class="info">
-                                <p>{{$user->city}}</p>
-                                <p>{{$user->email}}</p>
+                                <p>riz@123workforce.com</p>
                             </div>
                         </div>
                     </div>

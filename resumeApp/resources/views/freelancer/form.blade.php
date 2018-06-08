@@ -10,19 +10,12 @@
            You are viewing as Admin
        </div>
     <? endif;?>
-    <div class="row m-auto infoBar">
-        <div class="col-md-2">
-
-        </div>
-        <div class="col-md-2">
-
-        </div>
+    <div class="container m-auto infoBar container">
         <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
-            <div class="col-md-2  offset-md-6">
+            <div class="col-md-2 offset-md-10">
                 <a target="_blank" href="{{$username}}">Link to resume </a>
             </div>
         <? endif; ?>
-
     </div>
 <div class="container">
     <div class="text-center">

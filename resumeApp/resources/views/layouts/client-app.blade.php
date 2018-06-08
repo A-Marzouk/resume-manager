@@ -48,7 +48,10 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <a class="nav-item nav-link customNavLink <?if($curPage == 'home'):?>active<?endif;?>" href="/">Home</a>
-                    <a class="nav-item nav-link customNavLink <?if($curPage == 'client'):?>active<?endif;?>" href="/client/register/" data-toggle="modal" data-target="#exampleModalCenter">Become a client</a>
+                    {{-- if guest : --}}
+                    <? if(auth()->guard('client')->guest()):?>
+                        <a class="nav-item nav-link customNavLink <?if($curPage == 'client'):?>active<?endif;?>" href="/client/register/" data-toggle="modal" data-target="#exampleModalCenter">Become a client</a>
+                    <? endif; ?>
                     <a class="nav-item nav-link customNavLink" href="#">Talk to sales</a>
                 </ul>
 

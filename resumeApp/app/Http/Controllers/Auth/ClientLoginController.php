@@ -17,13 +17,14 @@ class ClientLoginController extends Controller
     }
 
     public function login(Request $request){
+        // check if is already logged in
         if(Auth::guard('client')->check()){
             return redirect(route('client.dashboard'));
         }
         // validation
         $this->validate($request,[
-           'email' => 'required|email',
-           'password' =>'required|min:6'
+           'email' => 'required|email|max:255',
+           'password' =>'required|min:6|max:255'
         ]);
 
         // attempt to log in

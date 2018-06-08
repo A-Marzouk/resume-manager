@@ -17,6 +17,7 @@ class ClientLoginController extends Controller
     }
 
     public function login(Request $request){
+        // check if is already logged in
         if(Auth::guard('client')->check()){
             return redirect(route('client.dashboard'));
         }

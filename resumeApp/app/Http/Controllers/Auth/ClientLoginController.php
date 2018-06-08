@@ -23,8 +23,8 @@ class ClientLoginController extends Controller
         }
         // validation
         $this->validate($request,[
-           'email' => 'required|email',
-           'password' =>'required|min:6'
+           'email' => 'required|email|max:255',
+           'password' =>'required|min:6|max:255'
         ]);
 
         // attempt to log in

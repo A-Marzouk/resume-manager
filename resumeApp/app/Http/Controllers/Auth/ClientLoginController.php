@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ClientLoginController extends Controller
 {
-
     public function showLoginForm(){
         if(Auth::guard('client')->check()){
             return redirect(route('client.dashboard'));

@@ -28,7 +28,7 @@
 
                                     <div class="form-group">
                                         <label for="password" class="formLabel">{{ __('Password ') }}
-                                            <a href="{{ route('password.request') }}">
+                                            <a href="{{ route('client.password.reset') }}">
                                                 {{ __(' Forgot?') }}
                                             </a>
                                         </label>

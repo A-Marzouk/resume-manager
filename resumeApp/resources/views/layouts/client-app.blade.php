@@ -162,7 +162,7 @@
                                     <div class="form-group">
                                         <label for="email" class="formLabelModal">{{ __('E-Mail Address') }}</label>
                                         <div class="">
-                                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                                            <input id="email2" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
                                             @if ($errors->has('email'))
                                                 <span class="invalid-feedback">

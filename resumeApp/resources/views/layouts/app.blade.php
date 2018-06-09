@@ -21,7 +21,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="/resumeApp/resources/views/customTheme/css/main.css" rel="stylesheet" media="screen">
-    <link href="resumeApp/resources/views/customTheme/css/freelancerForm.css" rel="stylesheet">
+    <link href="/resumeApp/resources/views/customTheme/css/freelancerForm.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -107,6 +107,6 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="resumeApp/resources/views/customTheme/js/main.js"></script>
+    <script src="/resumeApp/resources/views/customTheme/js/main.js"></script>
 </body>
 </html>

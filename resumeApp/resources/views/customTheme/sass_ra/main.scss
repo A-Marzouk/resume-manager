@@ -899,12 +899,12 @@ body{
 
   // our clients section
   #ourClients{
-    background: whitesmoke;
+    padding: 5% 8.5% 0 8.5%;
   }
   .heading{
     h2{
-      color: #18A6DF;	font-family: Roboto;	font-size: 30px;	font-weight: bold;	line-height: 35px;
-      padding: 5% 0 0 8.5%;
+      color: #18A6DF;	font-family: Roboto;
+      font-size: 30px;	font-weight: bold;	line-height: 35px;
       @media only screen and (max-width: 600px){
         text-align: center;
         padding-right: 14px;
@@ -913,7 +913,7 @@ body{
   }
 
   .clientsBox{
-    height: 340px;
+    height: auto;
     border-radius: 5px;
     background-color: #FFFFFF;
     box-shadow: 0 11px 16px -7px #E5ECED;
@@ -967,29 +967,14 @@ body{
     }
   }
 
-  .formLabel{
-    opacity: .7;
-    color:#18A6DF;
-    font-family: Roboto;
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 14px;
-  }
-
   .designerBtn{
-    text-align: center;
     margin-top:3%;
     :hover{
       text-decoration: none;
-      border: 1.5px solid #18A6DF;
     }
     a{
-      text-align: center;
-      border: 1.5px solid lightgray;
       border-radius: 4px;
-      background-color: #FFFFFF;
       padding: 5% 0 5% 0;
-      box-shadow: 0 6px 12px 0 rgba(0,0,0,0.05), 0 1px 2px 0 rgba(0,0,0,0.05);
       opacity: 0.5;
       color: #000000;
       font-family: Roboto;

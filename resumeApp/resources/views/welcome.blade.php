@@ -290,46 +290,52 @@
                     </div>
                 </div>
                 <div class="col-md-6 rightSide">
-                    <form id="contact-form" method="POST" class="form">
+                    <form id="contact-form" method="POST" class="clientForm">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="bussinessName" class="formLabelModal">Business Name</label>
-                                    <input type="text" id="bussinessName" name="Business Name" placeholder="Business Name" class="form-control no-border">
+                                    <div><label for="bussinessName" class="formLabel">Business Name</label></div>
+                                    <input type="text" id="bussinessName" name="Business Name" placeholder="" class="form-control panelFormInput">
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="name" class="formLabelModal">Name *</label>
-                                <input type="text" placeholder="Name" id="name" name="Name" required="required" class="form-control no-border">
+                                <div>
+                                    <label for="name" class="formLabel">Name *</label>
+                                </div>
+                                <input type="text" placeholder="" id="name" name="Name" required="required" class="form-control panelFormInput">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="telephone" class="formLabelModal">Telephone *</label>
-                                <input type="tel" placeholder="Telephone" name="Telephone" class="form-control no-border">
+                                <div>
+                                    <label for="telephone" class="formLabel">Telephone *</label>
+                                </div>
+                                <input type="tel" placeholder="" name="" class="panelFormInput form-control">
                             </div>
                             <div class="col-md-6">
-                                <label for="telephone" class="formLabelModal">Email *</label>
-                                <input type="text" placeholder="Email" name="Email" required="required" class="form-control no-border">
+                                <div>
+                                    <label for="telephone" class="formLabel">Email *</label>
+                                </div>
+                                <input type="text" placeholder="" name="Email" required="required" class="form-control panelFormInput">
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-md-6 designerBtn">
                                 <!--                                <input type="checkbox" id="bookkeper" name="bookkeper" class="check-input">-->
-                                <a href="javascript:void(0)" class="btn-block">
-                                    I Need a Designer
+                                <a href="javascript:void(0)">
+                                    <img src="resumeApp/resources/views/customTheme/images/Circle-PNG-HD.png" width="30" height="30"> I need a Designer
                                 </a>
                             </div>
                             <div class="col-md-6 designerBtn">
                                 <!--                            <input type="checkbox" id="accountant" name="accountant" class="check-input">-->
-                                <a href="javascript:void(0)" class="btn-block">
-                                    I Need a Developer
+                                <a href="javascript:void(0)">
+                                    <img src="resumeApp/resources/views/customTheme/images/img_143278 (2).png" width="30" height="30"> I need a Developer
                                 </a>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <select name="Select-time" class="form-control no-border">
+                                <select name="Select-time" class="form-control">
                                     <option value="partTime">Part time</option>
                                     <option value="fullTime">Full time</option>
                                 </select>
@@ -338,7 +344,7 @@
 
                         <div class="row">
 
-                            <div class="buttonMain col-md-6 offset-md-3">
+                            <div class="buttonMain col-md-6 offset-md-3" style="padding-bottom: 30px;">
                                 <input type="submit" value="Send" class="hireBtn btn-block">
                             </div>
                         </div>

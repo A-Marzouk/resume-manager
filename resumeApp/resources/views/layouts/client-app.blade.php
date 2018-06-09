@@ -466,13 +466,14 @@
     });
 
     function handler1() {
-        $(this).css('border','1.5px solid #18A6DF');
+        $('img', this).attr('src','resumeApp/resources/views/customTheme/images/Circle-PNG-HD.png');
         $(this).one("click", handler2);
     }
     function handler2() {
-        $(this).css('border','1.5px solid #FFFFFF');
+        $('img', this).attr('src','resumeApp/resources/views/customTheme/images/img_143278 (2).png');
         $(this).one("click", handler1);
     }
+
     $(".designerBtn a").one("click", handler1);
 
 </script>

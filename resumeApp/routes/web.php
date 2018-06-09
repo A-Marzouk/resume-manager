@@ -32,10 +32,10 @@ Route::prefix('client')->group(function (){
     });
 
 //Password reset routes for client
-    Route::get('/password/reset', 'Auth\ClientForgotPasswordController@showLinkRequestForm')->name('client.password.request');
-    Route::post('/password/email', 'Auth\ClientForgotPasswordController@sendResetLinkEmail')->name('client.password.email');
-    Route::get('/password/reset/{token}', 'Auth\ClientForgotPasswordController@showResetForm')->name('client.password.reset');
-    Route::post('/password/reset', 'Auth\ClientForgotPasswordController@reset')->name('client.password.reset');
+    Route::get('/password/reset', 'Auth\ClientForgotPasswordController@showLinkRequestForm')->name('client.password.reset');
+    Route::post('/password/email', 'Auth\ClientForgotPasswordController@sendResetLinkEmail');
+    Route::get('/password/reset/{token}', 'Auth\ClientResetPasswordController@showResetForm');
+    Route::post('/password/reset', 'Auth\ClientResetPasswordController@reset');
 // delete a client
     Route::get('/delete/{id}','AdminsController@deleteClient')->name('client.delete');
 });

@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 
 class ClientForgotPasswordController extends Controller
@@ -28,16 +29,10 @@ class ClientForgotPasswordController extends Controller
         return view('client.passwords.email');
     }
 
-    public function showResetForm(Request $request, $token = null)
-    {
-        return view('client.passwords.reset')->with(
-            ['token' => $token, 'email' => $request->email]
-        );
-    }
-
     //Password Broker for Seller Model
     public function broker()
     {
         return Password::broker('clients');
     }
+
 }

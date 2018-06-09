@@ -7,7 +7,7 @@
                 <div>
                     <div class="customFormHeader">{{ __('Reset password') }}</div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('client.password.request') }}" class="clientForm">
+                        <form method="POST" action="{{ url('/client/password/reset') }}" class="clientForm">
                             @csrf
 
                             <input type="hidden" name="token" value="{{ $token }}">

@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
-use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Http\Request;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Support\Facades\Password;
 

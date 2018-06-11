@@ -60,6 +60,14 @@ class NotificationsController extends Controller
         });
     }
 
+    public function clientResetPassEmail($mail,$token){
+        $data['token'] = $token;
+        Mail::send('emails.client_reset_password',$data, function($message) use ($mail)
+        {
+            $message->to($mail)->subject('Reset password link');
+        });
+    }
+
 
 
 }

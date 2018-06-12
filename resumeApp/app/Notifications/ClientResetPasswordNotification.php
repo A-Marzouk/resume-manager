@@ -41,10 +41,9 @@ class ClientResetPasswordNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-            ->line('You receiving this email because we received a password reset request for your account.')
-            ->action('Client reset Password','123workforce.magictimeapps.com/client/password/reset/'.$this->token)
-            ->line('If you did not request a password reset, no further action is required.');
+        return (new MailMessage)->view(
+            'emails.client_reset'
+            ,['token'=>$this->token]);
     }
 
     /**

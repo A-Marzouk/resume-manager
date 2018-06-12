@@ -112,6 +112,7 @@
         </div>
         <div class="col-md-4">
             <div class="footerText text-right">
+                <a href="/freelancer/register">Join our team of freelancers</a>
                 info@123workforce.com<br>
                 (+44) 2037000685<br/>
                 <a href="https://www.facebook.com/123workforce">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Client;
+use App\Http\Controllers\NotificationsController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -53,7 +54,7 @@ class ClientRegisterController extends Controller
 
     protected function create(array $data)
     {
-        return Client::create([
+        Client::create([
             'name' => $data['name'],
             'agency' => $data['agency'],
             'email' => $data['email'],
@@ -62,6 +63,14 @@ class ClientRegisterController extends Controller
             'timeZone' => $data['timeZone'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $client = Client::where('email',$data['email'])->first();
+        // send notification of registered client :
+
+        $notification = new NotificationsController();
+        $data['id'] = $client->id ;
+        $notification->clientRegisteredEmail($data);
+        return $client;
 
     }
 }

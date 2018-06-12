@@ -60,5 +60,15 @@ class NotificationsController extends Controller
         });
     }
 
+    // clients :
+
+    public function clientRegisteredEmail($data){
+        $emails = $this->emailsForNewFreelancers;
+        Mail::send('emails.client_registered',$data, function($message) use ($emails)
+        {
+            $message->to($emails)->subject('New client on board!');
+        });
+    }
+
 
 }

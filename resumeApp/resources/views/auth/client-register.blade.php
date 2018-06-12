@@ -43,7 +43,7 @@
                                     <label for="timeZone" class="formLabel">{{ __('Time zone') }}</label>
 
                                     <div class="">
-                                        <select class="form-control" id="timeZone" name="timeZone">
+                                        <select class="form-control" id="timeZone" name="timeZone" required>
                                             <option value="" selected="selected">Select your timezone</option>
                                             <option value="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima">(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima</option>
                                             <option value="(GMT -6:00) Central Time (US & Canada), Mexico City">(GMT -6:00) Central Time (US & Canada), Mexico City</option>

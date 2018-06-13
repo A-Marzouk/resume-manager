@@ -221,7 +221,7 @@
                         </div> <!-- job title -->
                         <div class="form-group col-md-4">
                             <label for="birth_date" class="panelFormLabel">Primary contact Email<span id="tickMarkemail" class="d-none">&#10003</span></label>
-                            <input type="email" class="form-control panelFormInput" name="email" value="{{$email}}">
+                            <input type="email" class="form-control panelFormInput" name="email" value="<?if(empty($email)):?>{{$currFreelancer->email}}<?else:?>{{$email}}<? endif;?>">
                             <small>Gmail is preferred</small>
                         </div> <!-- email -->
                         <div class="form-group col-md-4">
@@ -352,7 +352,7 @@
                             </div>
                             <? endforeach;?>
                             <div style="padding-top: 10px;" class="col-md-6 col-sm-12 col-xs-12 input-group">
-                                <b style="border-radius: 5px; border: gray 2px solid; padding: 8px;">Total working hours of a week : <span id="totalHours" style="font-size: large;">{{$totalHours}}</span> Hours</b>
+                                <b style="border-radius: 5px; border: gray 2px solid; padding: 8px;">Total working hours of a week : <span id="totalHours">{{$totalHours}} Hours</span></b>
                             </div>
                         </div> <!-- Hours per week Dropdowns --><br/>
                         <div class="form-group col-md-12">
@@ -421,7 +421,11 @@
                                     <?else:?>
                                         Upload Audio
                                     <?
-                                       $audioSrc = "https://drive.google.com/uc?export=download&id=".$audio."&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
+                                            if($valid){
+                                                $audioSrc = "https://drive.google.com/uc?export=download&id=".$audio."&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
+                                            }else{
+                                                $audioSrc = "" ;
+                                            }
                                     ?>
                                     <? endif;?>
                                 </label>

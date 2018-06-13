@@ -139,12 +139,20 @@ $(document).ready(function () {
 
     $("[id*=To]").on('change',function () {
         var totalHours = calculateTotalHours();
-        $('#totalHours').html(totalHours);
+        if(totalHours <= 0){
+            $('#totalHours').html('Please choose correct hours');
+        }else{
+            $('#totalHours').html(totalHours + ' Hours');
+        }
     });
 
     $("[id*=From]").on('change',function () {
         var totalHours = calculateTotalHours();
-        $('#totalHours').html(totalHours);
+        if(totalHours <= 0){
+            $('#totalHours').html('Please choose correct hours');
+        }else{
+            $('#totalHours').html(totalHours + ' Hours');
+        }
     });
 
     function calculateTotalHours() {

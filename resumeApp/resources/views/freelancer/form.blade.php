@@ -433,7 +433,7 @@
                     </div>
                     <div class="row" style="padding-top: 30px;">
                         <div class="col-md-4 offset-md-4">
-                            <audio id="audioIntro" controls style="padding-top: 30px; padding-bottom: 10px;">
+                            <audio id="audioIntro" controls style="padding-bottom: 10px;">
                                 <source src="{{$audioSrc}}" type="audio/ogg" id="audioIntroForm">
                                 Your browser does not support the audio element.
                             </audio><!--/.video-container-->

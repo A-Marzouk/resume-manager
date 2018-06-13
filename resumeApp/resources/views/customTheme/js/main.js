@@ -137,25 +137,37 @@ $(document).ready(function () {
         $('#works7').attr('type','file');
     });
 
-    var toValuePrev;
-    $("[id*=To]").on('focus',function(){
-        toValuePrev   = parseInt(this.value);
-    }).on('change',function () {
-        var toValue   = parseInt(this.value);
-        var changeInTo   = toValue - toValuePrev ;
-        var totalHours     = parseInt($('#totalHours').html()) + changeInTo;
+    $("[id*=To]").on('change',function () {
+        var totalHours = calculateTotalHours();
         $('#totalHours').html(totalHours);
     });
 
-    var fromValuePrev;
-    $("[id*=From]").on('focus',function(){
-        fromValuePrev   = parseInt(this.value);
-    }).on('change',function () {
-        var fromValue    = parseInt(this.value);
-        var changeInFrom = fromValue - fromValuePrev ;
-        var totalHours     = parseInt($('#totalHours').html()) - changeInFrom;
+    $("[id*=From]").on('change',function () {
+        var totalHours = calculateTotalHours();
         $('#totalHours').html(totalHours);
     });
+
+    function calculateTotalHours() {
+        var fromValues = (parseInt($('#MondayFrom').val()) || 0) +
+            (parseInt($('#TuesdayFrom').val())||0) +
+            (parseInt($('#WednesdayFrom').val())||0) +
+            (parseInt($('#ThursdayFrom').val()) || 0 ) +
+            (parseInt($('#FridayFrom').val()) ||0) +
+            (parseInt($('#SaturdayFrom').val())||0) +
+            (parseInt($('#SundayFrom').val())||0) ;
+
+        var toValues  =  (parseInt($('#MondayTo').val()) || 0) +
+            (parseInt($('#TuesdayTo').val())||0) +
+            (parseInt($('#WednesdayTo').val())||0) +
+            (parseInt($('#ThursdayTo').val()) || 0 ) +
+            (parseInt($('#FridayTo').val()) ||0) +
+            (parseInt($('#SaturdayTo').val())||0) +
+            (parseInt($('#SundayTo').val())||0) ;
+
+        return  toValues - fromValues ;
+
+    }
+
 
 
     $(':input').blur(function () {

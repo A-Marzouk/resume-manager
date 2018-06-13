@@ -324,7 +324,9 @@
                             $from = $hoursArr[0] ?? '';
                             $to   = $hoursArr[1] ?? '';
                             if(!empty($from) || !empty($to)){
-                                $totalHours += $to-$from ;
+                                if(is_numeric($from) && is_numeric($to)){
+                                    $totalHours += $to-$from ;
+                                }
                             }
                             ?>
                             <div class="row">
@@ -333,16 +335,16 @@
                                 </div>
                                 <div class="input-group col-md-2" style="margin: 2px;">
                                     <select class="custom-select panelFormLabel" id="{{$day}}From" name="{{$day}}From">
-                                        <option  selected disabled="">From</option>
-                                        <? for($i=0;$i<24;$i++):?>
+                                        <option  selected disabled="" value="">From</option>
+                                        <? for($i=1;$i<=24;$i++):?>
                                         <option value="{{$i}}" <? if($i == $from):?>selected<?endif;?> ><?if($i<10):?>0<?endif;?>{{$i}}:00</option>
                                         <? endfor;?>
                                     </select>
                                 </div>
                                 <div class="input-group col-md-2" style="margin: 2px;">
                                     <select class="custom-select panelFormLabel" id="{{$day}}To" name="{{$day}}To">
-                                        <option selected disabled>To</option>
-                                        <? for($i=0;$i<24;$i++):?>
+                                        <option selected disabled value="">To</option>
+                                        <? for($i=1;$i<=24;$i++):?>
                                         <option value="{{$i}}" <? if($i == $to):?>selected<?endif;?>><?if($i<10):?>0<?endif;?>{{$i}}:00</option>
                                         <? endfor;?>
                                     </select>
@@ -431,7 +433,7 @@
                     </div>
                     <div class="row" style="padding-top: 30px;">
                         <div class="col-md-4 offset-md-4">
-                            <audio id="audioIntro" controls style="padding-top: 30px; padding-bottom: 10px;">
+                            <audio id="audioIntro" controls style="padding-bottom: 10px;">
                                 <source src="{{$audioSrc}}" type="audio/ogg" id="audioIntroForm">
                                 Your browser does not support the audio element.
                             </audio><!--/.video-container-->

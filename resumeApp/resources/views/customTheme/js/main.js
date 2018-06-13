@@ -168,16 +168,6 @@ $(document).ready(function () {
 
     }
 
-    function getFromValue(id){
-        var fromId = id.replace('To','From');
-        var fromValue = $('#'+fromId).val();
-        return fromValue;
-    }
-    function getToValue(id){
-        var toId = id.replace('From','To');
-        var toValue = $('#'+toId).val();
-        return toValue;
-    }
 
 
     $(':input').blur(function () {

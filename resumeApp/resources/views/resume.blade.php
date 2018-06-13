@@ -209,11 +209,20 @@
                     </div>
                 </div>
                 <?
+                    $valid = true;
+                    $notValidText = 'NOT-VALID-LINK';
+                    if ($user->audio == $notValidText) {
+                        $valid = false;
+                    }
                     $audioSrc = "";
                     if(!empty(trim($user->audioFile))){
                         $audioSrc = $user->audioFile;
                     }else{
-                        $audioSrc = "https://drive.google.com/uc?export=download&id=".$user->audio."&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
+                        if($valid){
+                            $audioSrc = "https://drive.google.com/uc?export=download&id=".$user->audio."&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
+                        }else{
+                            $audioSrc = "" ;
+                        }
                     }
                 ?>
                 <div class="col-md-5">

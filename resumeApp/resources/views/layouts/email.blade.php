@@ -4,62 +4,42 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="http://123workforce.magictimeapps.com/resumeApp/resources/views/customTheme/css/main.css" rel="stylesheet" media="screen">
 </head>
-<body style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; background-color: #f5f8fa; color: #74787E; height: 100%; hyphens: auto; line-height: 1.4; margin: 0; -moz-hyphens: auto; -ms-word-break: break-all; width: 100% !important; -webkit-hyphens: auto; -webkit-text-size-adjust: none; word-break: break-word;">
-<style>
-    @media only screen and (max-width: 600px) {
-        .inner-body {
-            width: 100% !important;
-        }
+    <div class="mailHeader text-center">
+        <img src="http://123workforce.magictimeapps.com/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" width="15%">
+    </div>
+    <div class="container mailBody">
+        @yield('content')
+    </div>
 
-        .footer {
-            width: 100% !important;
-        }
-    }
+    <div class="customFooter">
+    <div class="row">
+        <div class="col-md-4 offset-4">
+            <div class="footerText text-center">
+                <div class="footerImg">
+                    <img src="http://123workforce.magictimeapps.com/resumeApp/resources/views/customTheme/images/newResume/logo.png" alt="logo">
+                </div><br/>
+                Please do not reply to this message.  |  Need help? Visit our <a href="http://123workforce.magictimeapps.com">FAQ</a><br/>
+                © 2018 123Workforce | All Rights Reserved<br/><br/>
+               <div style="padding-bottom: 20px;">
+                   <a href="https://www.facebook.com/123workforce">
+                       <img src="http://123workforce.magictimeapps.com/resumeApp/resources/views/customTheme/images/newResume/fb.png" alt="fb" width="25px">
+                   </a>
+                   <a href="https://www.instagram.com/123workforce/">
+                       <img src="http://123workforce.magictimeapps.com/resumeApp/resources/views/customTheme/images/newResume/instagram.png" alt="insta" width="25px">
+                   </a>
+               </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="footerText text-right">
 
-    @media only screen and (max-width: 500px) {
-        .button {
-            width: 100% !important;
-        }
-    }
-</style>
-
-<table class="wrapper" width="100%" cellpadding="0" cellspacing="0"
-       style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; background-color: #f5f8fa; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
-    <tr>
-        <td align="center" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
-            <table class="content" width="100%" cellpadding="0" cellspacing="0"
-                   style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
-                <tr>
-                    <td class="header"
-                        style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; padding: 25px 0; text-align: center;">
-                        <a href="http://localhost"
-                           style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #bbbfc3; font-size: 19px; font-weight: bold; text-decoration: none; text-shadow: 0 1px 0 white;">
-                            123 workforce
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    @yield('content')
-                </tr>
-
-                <tr>
-                    <td style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
-                        <table class="footer" align="center" width="570" cellpadding="0" cellspacing="0"
-                               style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; margin: 0 auto; padding: 0; text-align: center; width: 570px; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 570px;">
-                            <tr>
-                                <td class="content-cell" align="center"
-                                    style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; padding: 35px;">
-                                    <p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; line-height: 1.5em; margin-top: 0; color: #AEAEAE; font-size: 12px; text-align: center;">
-                                        © 2018 - 123 workforce. All rights reserved.</p>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

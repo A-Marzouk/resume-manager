@@ -71,7 +71,9 @@ Route::get('/admin','AdminsController@welcomePage')->name('admin.dashboard');
 Route::get('/admin/client/{client_id}','AdminsController@logInAsClient')->name('logInAsClient');
 Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 // public routes :
-Route::get('/','HomeController@welcomePage')->name('welcome');
+Route::get('/',function (){
+    return view('emails.freelancer_registered');
+});
 Route::get('/{username}','HomeController@ResumePage');
 
 

@@ -2,6 +2,12 @@
 
 @section('content')
     <div id="content">
+        <!-- Success Messages  -->
+        @if(session()->has('successMessage'))
+            <div class="alert alert-success col-md-4 offset-md-1 successMessage">
+                {{ session()->get('successMessage') }}
+            </div>
+        @endif
         <div id="mainSection">
             <div class="row customContainer">
                 <div class="col-md-8">
@@ -226,13 +232,15 @@
                                         <h2>
                                             <img src="/resumeApp/resources/views/customTheme/images/new_theme/rec_developers@2x.png" alt="rec"> Designers
                                         </h2>
-                                        <a href="#"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Website/ App Design</a><br/>
-                                        <a href="#"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> UX/ UI Design</a><br>
-                                        <a href="#"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Branding & Marketing</a><br/>
+                                        <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Website/ App Design</a><br/>
+                                        <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> UX/ UI Design</a><br>
+                                        <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Branding & Marketing</a><br/>
 
-                                        <button class="getStartBtn">
-                                            Get Started <img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow">
-                                        </button>
+                                        <div class="getStartBtn col-md-8">
+                                            <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
+                                                Get Started <img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow">
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -256,13 +264,14 @@
                                         <h2>
                                             <img src="/resumeApp/resources/views/customTheme/images/new_theme/reg_developers@2x.png" alt="rec"> Developers
                                         </h2>
-                                        <a href="#"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Full-Stack Developers</a><br/>
-                                        <a href="#"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Front-end Developers</a><br>
-                                        <a href="#"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Back-end Developers</a><br/>
-
-                                        <button class="getStartBtn">
-                                            Get Started <img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow">
-                                        </button>
+                                        <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Full-Stack Developers</a><br/>
+                                        <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Front-end Developers</a><br>
+                                        <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow"> Back-end Developers</a><br/>
+                                        <div class="getStartBtn col-md-8">
+                                            <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
+                                                Get Started <img src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png" alt="arrow">
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -343,7 +352,6 @@
                         </div>
 
                         <div class="row">
-
                             <div class="buttonMain col-md-6 offset-md-3" style="padding-bottom: 30px;">
                                 <input type="submit" value="Send" class="hireBtn btn-block">
                             </div>

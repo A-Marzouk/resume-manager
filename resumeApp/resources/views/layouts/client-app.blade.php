@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Become a client</title>
+    <title>123 Workforce</title>
 
     <!-- Scripts -->
     {{-- faveicon --}}
@@ -35,7 +35,7 @@
     }
 ?>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+    <nav class="navbar navbar-expand-md navbar-light navbar-laravel fixed-top">
         <div class="container">
             <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
                 <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
@@ -47,12 +47,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link customNavLink <?if($curPage == 'home'):?>active<?endif;?>" href="/">Home</a>
                     {{-- if guest : --}}
                     <? if(auth()->guard('client')->guest()):?>
                         <a class="nav-item nav-link customNavLink <?if($curPage == 'client'):?>active<?endif;?>" href="/client/register/" data-toggle="modal" data-target="#exampleModalCenter">Become a client</a>
                     <? endif; ?>
-                    <a class="nav-item nav-link customNavLink" href="#">Talk to sales</a>
+                    <a class="nav-item nav-link customNavLink" href="#" data-toggle="modal" data-target="#talkToSales">Talk to sales</a>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -125,7 +124,7 @@
         </div>
     </div>
 </div>
-<!-- Modal -->
+<!-- Modals -->
 <div class="modal fade" style="background-color:rgba(0, 0, 0, 0.5);" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="row">
         <div class="col-md-12 text-center" style="padding-top: 20px;">
@@ -363,7 +362,7 @@
                                             <label for="email" class="formLabelModal">{{ __('E-Mail Address') }}</label>
 
                                             <div class="">
-                                                <input id="emailModal" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                                <input id="emailModal2" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
                                                 @if ($errors->has('email'))
                                                     <span class="invalid-feedback">
@@ -424,6 +423,90 @@
 
 
 </div>
+{{-- Talk to sells modal --}}
+<div class="modal fade" style="background-color:rgba(0, 0, 0, 0.5);" id="talkToSales" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="row">
+        <div class="col-md-12 text-center" style="padding-top: 20px;">
+            <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
+        </div>
+    </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class=>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="customFormHeader text-left" style="background: white;">{{ __('Talk to sales') }}</div>
+                        <hr>
+                        <div>
+                            <form method="POST" class="clientForm" action="{{ route('message.to.sales') }}">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <div class="form-group">
+                                            <label for="email" class="formLabelModal">{{ __('Your e-mail Address') }}</label>
+
+                                            <div class="">
+                                                <input id="emailModal" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+
+                                                @if ($errors->has('email'))
+                                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="subject" class="formLabelModal">{{ __('Subject') }}</label>
+
+
+                                            <div>
+                                                <input id="subject" type="text" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="subject" required>
+
+                                                @if ($errors->has('subject'))
+                                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('subject') }}</strong>
+                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="message" class="panelFormLabel">Message</label>
+                                            <textarea class="form-control panelFormInput" rows="3" id="message" name="message" required>
+
+                                            </textarea>
+                                            @if ($errors->has('message'))
+                                                <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('message') }}</strong>
+                                    </span>
+                                            @endif
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="buttonMain text-cente">
+                                                <button type="submit" class="col-md-12 hireBtn">
+                                                    {{ __('Send') }}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
 
 <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"

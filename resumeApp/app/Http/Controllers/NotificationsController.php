@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 use App\classes\Telegram;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class NotificationsController extends Controller
@@ -70,5 +71,23 @@ class NotificationsController extends Controller
         });
     }
 
+
+    // message to sales :
+
+    public function messageToSales(Request $request){
+        $emails = [$request->email,'AhmedMarzouk266@gmail.com','conor@123workforce.com'];
+        $data = [
+            'subject' => $request->subject,
+            'messageBody' => trim($request->message),
+            'email' => $request->email
+        ];
+
+        Mail::send('emails.message_to_sales',$data, function($message) use ($emails)
+        {
+            $message->to($emails)->subject('Message to sales');
+        });
+
+        return redirect('/')->with('successMessage', 'Thank you, your message has been sent.');;;
+    }
 
 }

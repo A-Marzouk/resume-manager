@@ -10,7 +10,7 @@
         });
         $('#contact-form').submit(function () {
             function completeAll() {
-                $('#contact-form').html('<h2 class="top-text">Thank you for contacting us</h2>');
+                $('#contact-form').html('<h2 class="secondSectionHeading">Thank you for contacting us</h2>');
             }
             var formData = new FormData($(this)[0]);
             $.ajax({

@@ -2,6 +2,7 @@ body{
   background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);
   overflow-x: hidden;
   width: 100%;
+  margin-top: 40px;
 }
 
 .customContainer{
@@ -10,6 +11,11 @@ body{
     padding:0;
   }
 
+}
+
+.successMessage{
+  margin-top: 30px;
+  opacity: .7;
 }
 
 // navbar
@@ -21,8 +27,12 @@ body{
 }
 
 .customNavLink{
+  :hover{
+    color: #18A6DF !important;
+  }
+  outline: none;
   opacity: 0.75;
-  color: #637280 !important;
+  color: #637280;
   font-family: Roboto !important;
   font-size: 15px;
   letter-spacing: 0.2px;
@@ -50,6 +60,7 @@ body{
   margin-left: auto;
 }
 .loginBtn{
+  a{outline: none;}
   padding: 6px 25px 7px 25px;
   border: 1px solid rgba(24, 166, 223, 0.3);
   border-radius: 25px;
@@ -72,6 +83,7 @@ body{
   margin-left: 0px;
   width: 100%;
   text-align: center;
+  a{outline: none;}
 }
 
 // first section freelancer info :
@@ -134,6 +146,12 @@ body{
 .buttonMain{
   padding : 5% 0 0 0;
   margin-top: 20px;
+  outline: none;
+  :hover{
+    background: #44E5EF !important;
+    cursor: pointer;
+    outline:none;
+  }
   @media only screen and (max-width: 600px){
     text-align: center;
   }
@@ -142,6 +160,7 @@ body{
     text-decoration: none;
   }
   .hireBtn{
+    outline: none;
     border: 1px solid #44E5EF;
     border-radius: 24px;
     background: linear-gradient(270deg, #45E6EF 0%, #088FD9 100%);
@@ -631,6 +650,11 @@ body{
   }
 
   .buttonMain{
+    :hover{
+      background: #44E5EF !important;
+      cursor: pointer;
+      outline:none;
+    }
     padding : 5% 0 0 0;
     @media only screen and (max-width: 600px){
       text-align: center;
@@ -689,6 +713,7 @@ body{
 
   .freelancerBox{
     transition-duration: 300ms;
+    a{outline: none;}
   }
   .freelancerBox:hover{
     -ms-transform: translateY(-2px); /* IE 9 */
@@ -880,8 +905,12 @@ body{
 
     .getStartBtn{
       img{
-        width: 7%;
+        width: 6%;
       }
+      :hover{
+        cursor: pointer;
+      }
+      a{outline: none;}
       border: 1px solid #D9F9FF;
       border-radius: 5px;
       background-color: #FFFFFF;

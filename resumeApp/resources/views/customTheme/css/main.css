@@ -1,13 +1,18 @@
 body {
   background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);
   overflow-x: hidden;
-  width: 100%; }
+  width: 100%;
+  margin-top: 40px; }
 
 .customContainer {
   padding: 0 0 0 8.50%; }
   @media only screen and (max-width: 600px) {
     .customContainer {
       padding: 0; } }
+
+.successMessage {
+  margin-top: 30px;
+  opacity: .7; }
 
 .customNav {
   -webkit-box-shadow: 0 8px 6px -6px #999;
@@ -16,13 +21,16 @@ body {
   background-color: white; }
 
 .customNavLink {
+  outline: none;
   opacity: 0.75;
-  color: #637280 !important;
+  color: #637280;
   font-family: Roboto !important;
   font-size: 15px;
   letter-spacing: 0.2px;
   line-height: 16px;
   text-align: center; }
+  .customNavLink :hover {
+    color: #18A6DF !important; }
   .customNavLink.active {
     color: #18A6DF !important;
     border-bottom: #AC81FC 2px solid;
@@ -47,6 +55,8 @@ body {
   font-weight: bold;
   margin-left: 300px;
   text-decoration: none !important; }
+  .loginBtn a {
+    outline: none; }
   @media only screen and (max-width: 600px) {
     .loginBtn {
       margin-right: 0px;
@@ -60,6 +70,8 @@ body {
   margin-left: 0px;
   width: 100%;
   text-align: center; }
+  .nav-link.loginBtn a {
+    outline: none; }
 
 .freelancerItem {
   margin-top: 2.5%;
@@ -112,13 +124,19 @@ body {
 .buttonMain {
   padding: 5% 0 0 0;
   margin-top: 20px;
+  outline: none;
   text-decoration: none; }
+  .buttonMain :hover {
+    background: #44E5EF !important;
+    cursor: pointer;
+    outline: none; }
   @media only screen and (max-width: 600px) {
     .buttonMain {
       text-align: center; } }
   .buttonMain a:hover {
     text-decoration: none; }
   .buttonMain .hireBtn {
+    outline: none;
     border: 1px solid #44E5EF;
     border-radius: 24px;
     background: linear-gradient(270deg, #45E6EF 0%, #088FD9 100%);
@@ -513,6 +531,10 @@ body {
   #content .buttonMain {
     padding: 5% 0 0 0;
     text-decoration: none; }
+    #content .buttonMain :hover {
+      background: #44E5EF !important;
+      cursor: pointer;
+      outline: none; }
     @media only screen and (max-width: 600px) {
       #content .buttonMain {
         text-align: center;
@@ -552,6 +574,8 @@ body {
     padding: 15px; }
   #content .freelancerBox {
     transition-duration: 300ms; }
+    #content .freelancerBox a {
+      outline: none; }
   #content .freelancerBox:hover {
     -ms-transform: translateY(-2px);
     /* IE 9 */
@@ -697,7 +721,11 @@ body {
       padding: 10px;
       margin-top: 13px; }
       #content .designerRightSide .getStartBtn img {
-        width: 7%; }
+        width: 6%; }
+      #content .designerRightSide .getStartBtn :hover {
+        cursor: pointer; }
+      #content .designerRightSide .getStartBtn a {
+        outline: none; }
   #content #ourClients {
     padding: 5% 8.5% 0 8.5%; }
   #content .heading h2 {

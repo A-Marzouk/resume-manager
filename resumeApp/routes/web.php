@@ -70,6 +70,9 @@ Route::get('/clear-cache', function() {
 Route::get('/admin','AdminsController@welcomePage')->name('admin.dashboard');
 Route::get('/admin/client/{client_id}','AdminsController@logInAsClient')->name('logInAsClient');
 Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
+
+// notification :
+Route::post('/','NotificationsController@messageToSales')->name('message.to.sales');
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');
 Route::get('/{username}','HomeController@ResumePage');

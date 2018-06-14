@@ -44,7 +44,7 @@ class AdminsController extends Controller
     public function deleteClient($id){
         if(Auth::user()->admin == 1) {
             Client::where('id', $id)->delete();
-            return redirect('/admin#clients')->with('successMessage', 'Client has been deleted !');;
+            return redirect('/admin#clients')->with('successMessage', 'Client has been deleted !');
         }
         return view('client.welcome');
     }

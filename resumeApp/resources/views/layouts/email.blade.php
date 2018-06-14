@@ -17,8 +17,8 @@
             text-align: left; }
 
         .mailHeader {
-            padding-top: 100px;
-            padding-bottom: 50px;
+            padding-top: 20px;
+            padding-bottom: 20px;
         }
 
         .mailBody {
@@ -52,6 +52,7 @@
             letter-spacing: 0.5px;
             line-height: 19px;
             text-align: center;
+            text-decoration: none;
             box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); }
         .customFooter {
             height: auto;

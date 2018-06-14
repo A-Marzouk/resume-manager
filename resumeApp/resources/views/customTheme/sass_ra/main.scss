@@ -1171,3 +1171,29 @@ body{
 .carouselTabs{
   padding: 10px;
 }
+
+
+// emails styles :
+
+.greeting{
+  color: #0290D8;
+  font-family: Roboto;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 29px;
+  text-align: left;
+}
+
+.mailHeader{
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+.mailBody{
+  background: white !important;
+  padding: 50px;
+}
+
+.mailText{
+  color: #697786;	font-family: Roboto;	font-size: 16px;	line-height: 19px;
+}

@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="http://123workforce.magictimeapps.com/resumeApp/resources/views/customTheme/css/main.css" rel="stylesheet" media="screen">
+    <link href="https://dl.dropbox.com/s/o52aefbv7xdhtwl/main.css" rel="stylesheet" media="screen">
 </head>
     <div class="mailHeader text-center">
         <img src="http://123workforce.magictimeapps.com/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" width="15%">

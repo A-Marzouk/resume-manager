@@ -72,11 +72,6 @@ Route::get('/admin/client/{client_id}','AdminsController@logInAsClient')->name('
 Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');
-
-Route::get('/testmail',function(){
-    return view('emails.freelancer_edited');
-});
-
 Route::get('/{username}','HomeController@ResumePage');
 
 

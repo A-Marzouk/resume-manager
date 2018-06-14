@@ -44,7 +44,7 @@
             border: 1px solid #44E5EF;
             border-radius: 24px;
             background: linear-gradient(270deg, #45E6EF 0%, #088FD9 100%);
-            padding: 13px 0 13px 0;
+            padding: 13px 20px 13px 20px;
             color: #FFFFFF;
             font-family: Roboto;
             font-size: 16px;
@@ -54,8 +54,9 @@
             text-align: center;
             box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); }
         .customFooter {
-            height: 180px;
+            height: auto;
             padding-top: 6%;
+            text-align: center;
             background: linear-gradient(0deg, #FCFCFC 0%, #FCFCFC 100%); }
         @media only screen and (max-width: 600px) {
             .customFooter {
@@ -70,6 +71,7 @@
             font-family: Roboto;
             font-size: 14px;
             font-weight: 500;
+            text-align: center;
             line-height: 16px; }
         @media only screen and (max-width: 600px) {
             .footerText {
@@ -79,7 +81,7 @@
 
     </style>
 </head>
-    <div class="mailHeader text-center">
+    <div class="mailHeader" style="text-align: center;">
         <img src="http://123workforce.magictimeapps.com/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" width="170px">
     </div>
     <div class="container mailBody">
@@ -88,7 +90,7 @@
 <div class="customFooter">
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            <div class="footerText text-center">
+            <div class="footerText" style="text-align: center;">
                 <div class="footerImg">
                     <img src="http://123workforce.magictimeapps.com/resumeApp/resources/views/customTheme/images/newResume/logo.png" alt="logo">
                 </div><br/>

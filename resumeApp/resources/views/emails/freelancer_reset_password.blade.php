@@ -7,7 +7,7 @@
     <div class="mailText">
         Please ignore this message if you have not requested password reset link
     </div>
-    <div class="buttonMain col-md-4 offset-4">
+    <div class="buttonMain col-md-4 offset-md-4" style="text-align: center;">
         <a href="123workforce.magictimeapps.com/password/reset/{{$token}}" class="hireBtn btn-block" target="_blank">
             Freelancer reset Password
         </a>

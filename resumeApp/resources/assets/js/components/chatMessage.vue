@@ -1,12 +1,18 @@
 <template lang="html">
     <div>
-        <div v-if="message.user.firstName === 'Admin' ">
-            <div class="messageText">{{ message.message }}</div>
-            <div class="name">{{ message.user.firstName }} {{message.user.lastName}} - {{message.created_at}}</div>
+        <div v-if="message.user === null">
+            <div class="messageTextAdmin">{{ message.message }}</div>
+            <div class="name">{{ message.visitor.firstName }} - {{message.created_at}}</div>
         </div>
         <div v-else>
-            <div class="messageTextAdmin">{{ message.message }}</div>
-            <div class="name">{{ message.user.firstName }} {{message.user.lastName}} - {{message.created_at}}</div>
+            <div v-if="message.user.firstName === 'Admin' ">
+                <div class="messageText">{{ message.message }}</div>
+                <div class="name">{{ message.user.firstName }} - {{message.created_at}}</div>
+            </div>
+            <div v-else>
+                <div class="messageTextAdmin">{{ message.message }}</div>
+                <div class="name">{{ message.user.firstName }} - {{message.created_at}}</div>
+            </div>
         </div>
     </div>
 </template>

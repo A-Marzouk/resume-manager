@@ -17,7 +17,7 @@ class ChatController extends Controller
     }
 
     public function getMessages(){
-        return Message::with('user')->get();
+        return Message::with('user','visitor')->get();
     }
 
     public function showChatRoom(){
@@ -35,7 +35,7 @@ class ChatController extends Controller
             $message->user_id = $user->id;
         }else{
             $user = Visitor::find(1);
-            $message->user_id = $user->id;
+            $message->visitor_id = $user->id;
         }
 
         $message->save();

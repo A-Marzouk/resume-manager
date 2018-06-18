@@ -14339,6 +14339,7 @@ var app = new Vue({
         var _this = this;
 
         axios.get('/messages').then(function (response) {
+            console.log(response);
             _this.messages = response.data;
         });
 
@@ -14354,6 +14355,7 @@ var app = new Vue({
         // })
         .listen('MessagePosted', function (e) {
             // handle event here
+            console.log(e.user.firstName);
             _this.messages.push({
                 message: e.message.message,
                 created_at: e.message.created_at,
@@ -53005,6 +53007,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['message']
@@ -53019,36 +53027,48 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.message.user.firstName === "Admin"
+    _vm.message.user === null
       ? _c("div", [
-          _c("div", { staticClass: "messageText" }, [
-            _vm._v(_vm._s(_vm.message.message))
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "name" }, [
-            _vm._v(
-              _vm._s(_vm.message.user.firstName) +
-                " " +
-                _vm._s(_vm.message.user.lastName) +
-                " - " +
-                _vm._s(_vm.message.created_at)
-            )
-          ])
-        ])
-      : _c("div", [
           _c("div", { staticClass: "messageTextAdmin" }, [
             _vm._v(_vm._s(_vm.message.message))
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "name" }, [
             _vm._v(
-              _vm._s(_vm.message.user.firstName) +
-                " " +
-                _vm._s(_vm.message.user.lastName) +
+              _vm._s(_vm.message.visitor.firstName) +
                 " - " +
                 _vm._s(_vm.message.created_at)
             )
           ])
+        ])
+      : _c("div", [
+          _vm.message.user.firstName === "Admin"
+            ? _c("div", [
+                _c("div", { staticClass: "messageText" }, [
+                  _vm._v(_vm._s(_vm.message.message))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "name" }, [
+                  _vm._v(
+                    _vm._s(_vm.message.user.firstName) +
+                      " - " +
+                      _vm._s(_vm.message.created_at)
+                  )
+                ])
+              ])
+            : _c("div", [
+                _c("div", { staticClass: "messageTextAdmin" }, [
+                  _vm._v(_vm._s(_vm.message.message))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "name" }, [
+                  _vm._v(
+                    _vm._s(_vm.message.user.firstName) +
+                      " - " +
+                      _vm._s(_vm.message.created_at)
+                  )
+                ])
+              ])
         ])
   ])
 }

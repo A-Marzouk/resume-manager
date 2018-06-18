@@ -29,7 +29,8 @@ Vue.component('chat-composer', require('./components/chatComposer.vue'));
 const app = new Vue({
     el: '#app',
     data:{
-        messages:[]
+        messages:[],
+        usersInRoom:[]
     },
     methods:{
         addMessage(message){
@@ -45,6 +46,15 @@ const app = new Vue({
         });
 
         Echo.join('chatroom')
+            .here((users) => {
+                this.usersInRoom = users;
+            })
+            .leaving((user)=>{
+                this.usersInRoom = this.usersInRoom.filter(u => u !== user);
+            })
+            .joining((user)=> {
+                this.usersInRoom.push(user);
+            })
             .listen('MessagePosted',(e) =>{
                 // handle event here
                 this.messages.push({

@@ -14342,7 +14342,7 @@ var app = new Vue({
             _this.messages = response.data;
         });
 
-        Echo.private('talkToSales')
+        Echo.channel('talkToSales')
         // .here((users) => {
         //     this.usersInRoom = users;
         // })
@@ -53339,7 +53339,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         sendMessage: function sendMessage() {
-            console.log(this.messageText);
             // emit an event : ( event name, data )
             this.$emit('messagesent', {
                 message: this.messageText,

@@ -40,7 +40,7 @@
                     <tbody>
                     <? $i=1; ?>
                     <? foreach ($users as $user):?>
-                    <? if($user->admin == 1){ continue;}?>
+                    <? if($user->admin == 1 || $user->firstName === 'Visitor'){ continue;}?>
 
                     <tr>
                         <th scope="row">{{$i}}</th>

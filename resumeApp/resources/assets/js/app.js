@@ -33,9 +33,8 @@ const app = new Vue({
     },
     methods:{
         addMessage(message){
-            console.log('message added');
             // add to the existing messages
-            this.messages.push(message);
+            // this.messages.push(message);
             // save to DB and so on.
             axios.post('/messages',message);
         }
@@ -43,6 +42,16 @@ const app = new Vue({
     created(){
         axios.get('/messages').then(response =>{
             this.messages = response.data;
-        })
+        });
+
+        Echo.join('chatroom')
+            .listen('MessagePosted',(e) =>{
+                // handle event here
+                this.messages.push({
+                    message:e.message.message,
+                    user: e.user
+                })
+            })
+
     }
 });

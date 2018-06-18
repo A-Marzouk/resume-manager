@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessagePosted;
 use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,7 @@ class ChatController extends Controller
     }
 
     public function storeMessages(Request $request){
-        $user = Auth::user();
+        $user = auth()->user();
         if($user){
             $message_user_id = $user->id;
         }else{
@@ -32,6 +33,10 @@ class ChatController extends Controller
         $message->message = $request->message;
         $message->user_id = $message_user_id;
         $message->save();
+
+        // trigger an event to announce that a message has been posted !
+
+        event(new MessagePosted($message,$user));
 
         return [
             'status' => 'ok'

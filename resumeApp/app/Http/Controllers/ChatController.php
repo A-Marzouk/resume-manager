@@ -11,10 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
-    public function __construct()
-    {
-//        $this->middleware('auth');
-    }
+    protected $user ;
 
     public function getMessages(){
         return Message::with('user','visitor')->get();
@@ -34,8 +31,25 @@ class ChatController extends Controller
             }
             $message->user_id = $user->id;
         }else{
-            $user = Visitor::find(1);
-            $message->visitor_id = $user->id;
+            // if I have the session set so no need to new user, else make a new one !
+            $token = session()->get('visitToken');
+            if(!empty($token)){
+                $visitor = Visitor::where('token',$token)->first() ;
+                $message->visitor_id = $visitor->id;
+                $user = $visitor;
+            }else{
+                $visitor = new Visitor;
+                $visitor->firstName = 'Visitor';
+                $visitor->token = str_random(16);
+                $visitor->save();
+                $visitor->firstName = 'Visitor.'.$visitor->id;
+                $visitor->save();
+                // save token in session
+                session()->put('visitToken',$visitor->token);
+                $message->visitor_id = $visitor->id;
+                $user = $visitor;
+            }
+
         }
 
         $message->save();

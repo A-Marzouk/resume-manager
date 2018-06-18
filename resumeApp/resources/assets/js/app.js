@@ -35,6 +35,8 @@ const app = new Vue({
     methods:{
         addMessage(message){
             // add to the existing messages
+            // console.log(message);
+            // message.created_at = new Date();
             // this.messages.push(message);
             // save to DB and so on.
             axios.post('/messages',message);
@@ -42,23 +44,12 @@ const app = new Vue({
     },
     created(){
         axios.get('/messages').then(response =>{
-            console.log(response);
             this.messages = response.data;
         });
 
         Echo.channel('talkToSales')
-            // .here((users) => {
-            //     this.usersInRoom = users;
-            // })
-            // .leaving((user)=>{
-            //     this.usersInRoom = this.usersInRoom.filter(u => u !== user);
-            // })
-            // .joining((user)=> {
-            //     this.usersInRoom.push(user);
-            // })
             .listen('MessagePosted',(e) =>{
                 // handle event here
-                console.log(e.user.firstName);
                 this.messages.push({
                     message:e.message.message,
                     created_at:e.message.created_at,

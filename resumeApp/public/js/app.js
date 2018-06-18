@@ -14330,6 +14330,8 @@ var app = new Vue({
     methods: {
         addMessage: function addMessage(message) {
             // add to the existing messages
+            // console.log(message);
+            // message.created_at = new Date();
             // this.messages.push(message);
             // save to DB and so on.
             axios.post('/messages', message);
@@ -14339,23 +14341,11 @@ var app = new Vue({
         var _this = this;
 
         axios.get('/messages').then(function (response) {
-            console.log(response);
             _this.messages = response.data;
         });
 
-        Echo.channel('talkToSales')
-        // .here((users) => {
-        //     this.usersInRoom = users;
-        // })
-        // .leaving((user)=>{
-        //     this.usersInRoom = this.usersInRoom.filter(u => u !== user);
-        // })
-        // .joining((user)=> {
-        //     this.usersInRoom.push(user);
-        // })
-        .listen('MessagePosted', function (e) {
+        Echo.channel('talkToSales').listen('MessagePosted', function (e) {
             // handle event here
-            console.log(e.user.firstName);
             _this.messages.push({
                 message: e.message.message,
                 created_at: e.message.created_at,
@@ -53390,7 +53380,12 @@ var render = function() {
           expression: "messageText"
         }
       ],
-      attrs: { type: "text", placeholder: "Type your message.." },
+      attrs: {
+        type: "text",
+        placeholder: "Type your message..",
+        autofocus: "",
+        id: "sendMessage"
+      },
       domProps: { value: _vm.messageText },
       on: {
         keydown: function($event) {

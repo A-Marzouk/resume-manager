@@ -45,7 +45,7 @@ const app = new Vue({
             this.messages = response.data;
         });
 
-        Echo.private('talkToSales')
+        Echo.channel('talkToSales')
             // .here((users) => {
             //     this.usersInRoom = users;
             // })

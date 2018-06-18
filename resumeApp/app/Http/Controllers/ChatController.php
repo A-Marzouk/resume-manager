@@ -26,18 +26,18 @@ class ChatController extends Controller
 
     public function storeMessages(Request $request){
         $user = auth()->user();
+        $message = new Message;
+        $message->message = $request->message;
         if($user){
             if($user->admin == 1){
                 $user = User::where('username','admin_workforce')->first();
             }
-            $message_user_id = $user->id;
+            $message->user_id = $user->id;
         }else{
-            $user = User::find(100);
-            $message_user_id = $user->id;
+            $user = Visitor::find(1);
+            $message->user_id = $user->id;
         }
-        $message = new Message;
-        $message->message = $request->message;
-        $message->user_id = $message_user_id;
+
         $message->save();
 
         // trigger an event to announce that a message has been posted !

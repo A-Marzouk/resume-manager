@@ -15,7 +15,6 @@
         },
         methods:{
             sendMessage(){
-                console.log(this.messageText);
                 // emit an event : ( event name, data )
                 this.$emit('messagesent',{
                     message: this.messageText,

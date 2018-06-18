@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\MessagePosted;
 use App\Message;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,6 +25,9 @@ class ChatController extends Controller
 
     public function storeMessages(Request $request){
         $user = auth()->user();
+        if($user->admin == 1){
+            $user = User::where('username','admin_workforce')->first();
+        }
         if($user){
             $message_user_id = $user->id;
         }else{

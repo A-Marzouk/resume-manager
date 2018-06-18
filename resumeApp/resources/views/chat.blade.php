@@ -4,7 +4,6 @@
     <div id="app" class="container">
         <h1>chat-room
         </h1>
-        <span class="btn-success">Number of users: @{{ usersInRoom.length }}</span>
         <div class="container">
            <chat-log :messages="messages"></chat-log>
        </div><br/>

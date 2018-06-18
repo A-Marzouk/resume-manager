@@ -14342,18 +14342,21 @@ var app = new Vue({
             _this.messages = response.data;
         });
 
-        Echo.join('chatroom').here(function (users) {
-            _this.usersInRoom = users;
-        }).leaving(function (user) {
-            _this.usersInRoom = _this.usersInRoom.filter(function (u) {
-                return u !== user;
-            });
-        }).joining(function (user) {
-            _this.usersInRoom.push(user);
-        }).listen('MessagePosted', function (e) {
+        Echo.private('talkToSales')
+        // .here((users) => {
+        //     this.usersInRoom = users;
+        // })
+        // .leaving((user)=>{
+        //     this.usersInRoom = this.usersInRoom.filter(u => u !== user);
+        // })
+        // .joining((user)=> {
+        //     this.usersInRoom.push(user);
+        // })
+        .listen('MessagePosted', function (e) {
             // handle event here
             _this.messages.push({
                 message: e.message.message,
+                created_at: e.message.created_at,
                 user: e.user
             });
         });
@@ -52945,7 +52948,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.name{\n    opacity: 0.6;\tcolor: #697786;\n    font-family: Roboto;\n    font-size: 12px;\n    letter-spacing: 0.08px;\n    line-height: 14px;\n    padding-bottom:15px;\n    padding-top:4px;\n}\n.messageTextAdmin{\n    border-radius: 5px 0 5px 5px;\n    background-color: #0D96DB;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color:white;\n}\n.messageText{\n    border-radius: 5px 5px 5px 0px;\n    background-color: white;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color:black;\n}\n", ""]);
 
 // exports
 
@@ -52996,6 +52999,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['message']
@@ -53010,16 +53019,37 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._v("\n    " + _vm._s(_vm.message.message)),
-    _c("br"),
-    _vm._v(" "),
-    _c("small", [
-      _vm._v(
-        _vm._s(_vm.message.user.firstName) +
-          " " +
-          _vm._s(_vm.message.user.lastName)
-      )
-    ])
+    _vm.message.user.firstName === "Admin"
+      ? _c("div", [
+          _c("div", { staticClass: "messageText" }, [
+            _vm._v(_vm._s(_vm.message.message))
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "name" }, [
+            _vm._v(
+              _vm._s(_vm.message.user.firstName) +
+                " " +
+                _vm._s(_vm.message.user.lastName) +
+                " - " +
+                _vm._s(_vm.message.created_at)
+            )
+          ])
+        ])
+      : _c("div", [
+          _c("div", { staticClass: "messageTextAdmin" }, [
+            _vm._v(_vm._s(_vm.message.message))
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "name" }, [
+            _vm._v(
+              _vm._s(_vm.message.user.firstName) +
+                " " +
+                _vm._s(_vm.message.user.lastName) +
+                " - " +
+                _vm._s(_vm.message.created_at)
+            )
+          ])
+        ])
   ])
 }
 var staticRenderFns = []

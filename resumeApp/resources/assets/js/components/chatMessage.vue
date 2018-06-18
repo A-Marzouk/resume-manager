@@ -1,7 +1,13 @@
 <template lang="html">
     <div>
-        {{ message.message }}<br>
-        <small>{{ message.user.firstName }} {{message.user.lastName}}</small>
+        <div v-if="message.user.firstName === 'Admin' ">
+            <div class="messageText">{{ message.message }}</div>
+            <div class="name">{{ message.user.firstName }} {{message.user.lastName}} - {{message.created_at}}</div>
+        </div>
+        <div v-else>
+            <div class="messageTextAdmin">{{ message.message }}</div>
+            <div class="name">{{ message.user.firstName }} {{message.user.lastName}} - {{message.created_at}}</div>
+        </div>
     </div>
 </template>
 
@@ -11,4 +17,29 @@
     }
 </script>
 
-<style lang="css"></style>
+<style lang="css">
+    .name{
+        opacity: 0.6;	color: #697786;
+        font-family: Roboto;
+        font-size: 12px;
+        letter-spacing: 0.08px;
+        line-height: 14px;
+        padding-bottom:15px;
+        padding-top:4px;
+    }
+
+    .messageTextAdmin{
+        border-radius: 5px 0 5px 5px;
+        background-color: #0D96DB;
+        box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);
+        padding:10px;
+        color:white;
+    }
+    .messageText{
+        border-radius: 5px 5px 5px 0px;
+        background-color: white;
+        box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);
+        padding:10px;
+        color:black;
+    }
+</style>

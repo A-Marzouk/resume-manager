@@ -45,20 +45,21 @@ const app = new Vue({
             this.messages = response.data;
         });
 
-        Echo.join('chatroom')
-            .here((users) => {
-                this.usersInRoom = users;
-            })
-            .leaving((user)=>{
-                this.usersInRoom = this.usersInRoom.filter(u => u !== user);
-            })
-            .joining((user)=> {
-                this.usersInRoom.push(user);
-            })
+        Echo.private('talkToSales')
+            // .here((users) => {
+            //     this.usersInRoom = users;
+            // })
+            // .leaving((user)=>{
+            //     this.usersInRoom = this.usersInRoom.filter(u => u !== user);
+            // })
+            // .joining((user)=> {
+            //     this.usersInRoom.push(user);
+            // })
             .listen('MessagePosted',(e) =>{
                 // handle event here
                 this.messages.push({
                     message:e.message.message,
+                    created_at:e.message.created_at,
                     user: e.user
                 })
             })

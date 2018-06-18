@@ -39,6 +39,6 @@ class MessagePosted implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new presencechannel('chatroom');
+        return new PrivateChannel('talkToSales');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Conversation;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,7 @@ class AdminsController extends Controller
         // get list of freelancers :
         $data['users'] = User::all();
         $data['clients'] = Client::all();
+        $data['conversations'] = Conversation::all();
         $admin = User::where('username','admin_workforce')->first();
         Auth::loginUsingId($admin->id);
         return view('admin.usersList', compact('data'));

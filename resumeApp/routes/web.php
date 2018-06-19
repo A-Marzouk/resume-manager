@@ -78,6 +78,8 @@ Route::post('/messages/','chatController@storeMessages');
 Route::get('/messages/','chatController@getMessages');
 Route::get('/chat/{id}','chatController@showAdminChatRoom')->middleware('admin');
 
+Route::get('/conversation/delete/{id}','ConversationsController@deleteConversation')->name('conversation.delete');
+
 // notification :
 Route::post('/','NotificationsController@messageToSales')->name('message.to.sales');
 // public routes :

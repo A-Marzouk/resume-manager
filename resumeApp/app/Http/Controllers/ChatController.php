@@ -13,11 +13,18 @@ class ChatController extends Controller
     protected $user ;
     protected $var_id;
     protected $conversation;
-    protected $conversation_id;
 
     public function getMessages(){
         $this->setCurrentUser();
-        $messages = Message::with('user','visitor')->get();
+        if(!empty(session()->get('conversation_id'))){
+            $messages = Message::where('conversation_id',session()->get('conversation_id'))->get();
+        }else{
+            $messages = Message::where('conversation_id',$this->conversation->id)->get();
+        }
+        foreach ($messages as &$message){
+            $message['user']   = User::where('id',$message->user_id)->first();
+            $message['visitor']= Visitor::where('id',$message->visitor_id)->first();
+        }
         return $messages;
     }
 
@@ -26,9 +33,10 @@ class ChatController extends Controller
     }
 
     public function showAdminChatRoom($id){
-        $this->conversation_id = $id;
+        session()->put('conversation_id',$id);
         return view('chat');
     }
+
 
     public function storeMessages(Request $request){
         $this->setCurrentUser();
@@ -36,6 +44,8 @@ class ChatController extends Controller
         $message->message         = $request->message;
         if(isset($this->conversation->id)){
             $message->conversation_id = $this->conversation->id; // visitor
+        }else{
+            $message->conversation_id =  session()->get('conversation_id'); // admin
         }
         $message->{$this->var_id} = $this->user->id;
 
@@ -59,14 +69,14 @@ class ChatController extends Controller
             $this->user   = $user;
             $this->var_id = 'user_id';
         }else{ // a visitor
-            $token = session()->get('visitToken10');
+            $token = session()->get('visitToken13');
             if(!empty($token)){
                 $visitor = Visitor::where('token',$token)->first();
                 $this->conversation = Conversation::where('visitor_id',$visitor->id)->first();
             }else{
                $visitor = $this->createNewVisitor();
                 // save token in session
-                session()->put('visitToken10',$visitor->token);
+                session()->put('visitToken13',$visitor->token);
             }
             $this->user    = $visitor;
             $this->var_id  = 'visitor_id';

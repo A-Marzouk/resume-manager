@@ -30,7 +30,7 @@ const app = new Vue({
     el: '#app',
     data:{
         messages:[],
-        usersInRoom:[]
+        usersInRoom:[],
     },
     methods:{
         addMessage(message){
@@ -43,7 +43,7 @@ const app = new Vue({
         }
     },
     created(){
-        axios.get('/messages').then(response =>{
+        axios.get('/messages/').then(response =>{
             this.messages = response.data;
         });
 

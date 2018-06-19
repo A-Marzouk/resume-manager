@@ -14340,7 +14340,7 @@ var app = new Vue({
     created: function created() {
         var _this = this;
 
-        axios.get('/messages').then(function (response) {
+        axios.get('/messages/').then(function (response) {
             _this.messages = response.data;
         });
 

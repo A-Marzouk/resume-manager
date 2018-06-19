@@ -14346,10 +14346,13 @@ var app = new Vue({
 
         Echo.channel('talkToSales').listen('MessagePosted', function (e) {
             // handle event here
-            _this.messages.push({
-                message: e.message.message,
-                created_at: e.message.created_at,
-                user: e.user
+            // this.messages.push({
+            //     message:e.message.message,
+            //     created_at:e.message.created_at,
+            //     user: e.user
+            // });
+            axios.get('/messages/').then(function (response) {
+                _this.messages = response.data;
             });
         });
     }

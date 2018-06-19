@@ -50,11 +50,14 @@ const app = new Vue({
         Echo.channel('talkToSales')
             .listen('MessagePosted',(e) =>{
                 // handle event here
-                this.messages.push({
-                    message:e.message.message,
-                    created_at:e.message.created_at,
-                    user: e.user
-                })
+                // this.messages.push({
+                //     message:e.message.message,
+                //     created_at:e.message.created_at,
+                //     user: e.user
+                // });
+                axios.get('/messages/').then(response =>{
+                    this.messages = response.data;
+                });
             })
 
     }

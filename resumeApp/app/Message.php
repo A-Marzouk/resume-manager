@@ -13,4 +13,8 @@ class Message extends Model
     public function visitor(){
         return $this->belongsTo(Visitor::class);
     }
+
+    public function conversation(){
+        return $this->belongsTo(Conversation::class);
+    }
 }

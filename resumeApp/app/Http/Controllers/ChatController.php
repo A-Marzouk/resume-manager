@@ -2,31 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Conversation;
 use App\Events\MessagePosted;
 use App\Message;
 use App\User;
 use App\Visitor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-
 class ChatController extends Controller
 {
     protected $user ;
     protected $var_id;
+    protected $conversation;
+    protected $conversation_id;
 
     public function getMessages(){
-        return Message::with('user','visitor')->get();
+        $this->setCurrentUser();
+        $messages = Message::with('user','visitor')->get();
+        return $messages;
     }
 
     public function showChatRoom(){
         return view('chat');
     }
 
+    public function showAdminChatRoom($id){
+        $this->conversation_id = $id;
+        return view('chat');
+    }
+
     public function storeMessages(Request $request){
         $this->setCurrentUser();
-
         $message                  = new Message;
         $message->message         = $request->message;
+        if(isset($this->conversation->id)){
+            $message->conversation_id = $this->conversation->id; // visitor
+        }
         $message->{$this->var_id} = $this->user->id;
 
         $message->save();
@@ -49,16 +59,17 @@ class ChatController extends Controller
             $this->user   = $user;
             $this->var_id = 'user_id';
         }else{ // a visitor
-            $token = session()->get('visitToken2');
+            $token = session()->get('visitToken10');
             if(!empty($token)){
-                $visitor = Visitor::where('token',$token)->first() ;
+                $visitor = Visitor::where('token',$token)->first();
+                $this->conversation = Conversation::where('visitor_id',$visitor->id)->first();
             }else{
                $visitor = $this->createNewVisitor();
                 // save token in session
-                session()->put('visitToken2',$visitor->token);
+                session()->put('visitToken10',$visitor->token);
             }
-            $this->user   = $visitor;
-            $this->var_id = 'visitor_id';
+            $this->user    = $visitor;
+            $this->var_id  = 'visitor_id';
         }
     }
 
@@ -69,6 +80,11 @@ class ChatController extends Controller
         $visitor->save();
         $visitor->firstName = 'Visitor.'.$visitor->id;
         $visitor->save();
+
+        $conversation = new Conversation;
+        $conversation->visitor_id = $visitor->id;
+        $conversation->save();
+        $this->conversation = $conversation;
 
         return $visitor;
     }

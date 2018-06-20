@@ -1,18 +1,22 @@
 <template lang="html">
     <div>
-        <div v-if="message.user === null">
-            <div class="messageTextAdmin">{{ message.message }}</div>
+        <div v-if="message.visitor !== null">
+            <div class="messageText">{{ message.message }}</div>
             <div class="name">{{ message.visitor.firstName }} - {{message.created_at}}</div>
         </div>
-        <div v-else>
+        <div v-else-if="message.user !== null">
             <div v-if="message.user.firstName === 'Admin' ">
-                <div class="messageText">{{ message.message }}</div>
-                <div class="name">{{ message.user.firstName }} - {{message.created_at}}</div>
-            </div>
-            <div v-else>
                 <div class="messageTextAdmin">{{ message.message }}</div>
                 <div class="name">{{ message.user.firstName }} - {{message.created_at}}</div>
             </div>
+            <div v-else>
+                <div class="messageText">{{ message.message }}</div>
+                <div class="name">{{ message.user.firstName }} - {{message.created_at}}</div>
+            </div>
+        </div>
+        <div v-else-if="message.client !== null">
+            <div class="messageText">{{ message.message }}</div>
+            <div class="name">{{ message.client.firstName }} - {{message.created_at}}</div>
         </div>
     </div>
 </template>
@@ -34,16 +38,16 @@
         padding-top:4px;
     }
 
-    .messageTextAdmin{
+    .messageText{
         border-radius: 5px 0 5px 5px;
         background-color: #0D96DB;
         box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);
         padding:10px;
         color:white;
     }
-    .messageText{
+    .messageTextAdmin{
         border-radius: 5px 5px 5px 0px;
-        background-color: white;
+        background-color: whitesmoke;
         box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);
         padding:10px;
         color:black;

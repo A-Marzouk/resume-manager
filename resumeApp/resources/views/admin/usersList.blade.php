@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<? use App\User;use App\Visitor;extract($data); ?>
+<? use App\Client;use App\User;use App\Visitor;extract($data); ?>
 
 @section('content')
     <div class="container">
@@ -94,7 +94,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Chatting rooms</th>
                         <th scope="col">Chat IDs</th>
-                        <th scope="col">Visitor/User</th>
+                        <th scope="col">Visitor/User/Client</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
@@ -110,11 +110,15 @@
                             <?
                                 if(isset($conversation->visitor_id)){
                                     $user = Visitor::where('id',$conversation->visitor_id)->first();
-                                }else{
+                                    echo $user->firstName;
+                                }elseif(isset($conversation->user_id)){
                                     $user = User::where('id',$conversation->user_id)->first();
+                                    echo $user->firstName.' - Freelancer';
+                                }elseif(isset($conversation->client_id)){
+                                    $user = Client::where('id',$conversation->client_id)->first();
+                                    echo $user->firstName.' - Client';
                                 }
                             ?>
-                            {{$user->firstName}}
                         </th>
                         <td><a class="btn btn-sm btn-danger" href="{{route('conversation.delete',$conversation->id)}}"  onclick="return confirm('Are you sure you want to delete conversation ?');">Delete</a></td>
 

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use App\Conversation;
 use App\Events\MessagePosted;
 use App\Message;
 use App\User;
 use App\Visitor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 class ChatController extends Controller
 {
     protected $user ;
@@ -22,13 +25,17 @@ class ChatController extends Controller
             $messages = Message::where('conversation_id',$this->conversation->id)->get();
         }
         foreach ($messages as &$message){
-            $message['user']   = User::where('id',$message->user_id)->first();
-            $message['visitor']= Visitor::where('id',$message->visitor_id)->first();
+            $message['user']    = User::where('id',$message->user_id)->first();
+            $message['visitor'] = Visitor::where('id',$message->visitor_id)->first();
+            $message['client']  = Client::where('id',$message->client_id)->first();
         }
         return $messages;
     }
 
     public function showChatRoom(){
+        if(session()->get('admin') == 'AdminWasHere'){
+            return redirect('/admin');
+        }
         return view('chat');
     }
 
@@ -43,7 +50,7 @@ class ChatController extends Controller
         $message                  = new Message;
         $message->message         = $request->message;
         if(isset($this->conversation->id)){
-            $message->conversation_id = $this->conversation->id; // visitor
+            $message->conversation_id = $this->conversation->id; // visitor or client
         }else{
             $message->conversation_id =  session()->get('conversation_id'); // admin
         }
@@ -62,24 +69,31 @@ class ChatController extends Controller
 
     public function setCurrentUser(){
         $user = auth()->user();
-        if($user){
-            if($user->admin == 1){
-                $user = User::where('username','admin_workforce')->first();
-            }else{
-                // our user !
-                if(!empty(session()->get('userConversationId'))){
-                    $this->conversation = Conversation::where('id',session()->get('userConversationId'))->first();
-                }else{
-                    $userConversation = new Conversation;
-                    $userConversation->user_id = $user->id;
-                    $userConversation->save();
-                    session()->put('userConversationId',$userConversation->id);
-                    $this->conversation = $userConversation;
-                }
-            }
+        $client = Auth::guard('client')->user();
 
-            $this->user   = $user;
-            $this->var_id = 'user_id';
+        if($user){
+            if($user->admin==1 || session()->get('admin') == 'AdminWasHere'){
+                $user = User::where('username','admin_workforce')->first();
+                $this->user   = $user;
+                $this->var_id = 'user_id';
+                // conversation ID is already set by session
+            }
+        }elseif($client){
+            if(!empty(session()->get('clientConversationId'))){
+                $this->conversation = Conversation::where('id',session()->get('clientConversationId'))->first();
+            }else{
+                // check if the client has a conversation before :
+                $clientConversation = Conversation::where('client_id',$client->id)->first();
+                if($clientConversation == null){
+                    $clientConversation = new Conversation;
+                    $clientConversation->client_id = $client->id;
+                    $clientConversation->save();
+                    session()->put('clientConversationId',$clientConversation->id);
+                }
+                $this->conversation = $clientConversation;
+            }
+            $this->user   = $client;
+            $this->var_id = 'client_id';
 
         }else{ // a visitor
             $token = session()->get('visitToken');

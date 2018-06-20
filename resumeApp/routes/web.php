@@ -73,10 +73,10 @@ Route::get('/admin/client/{client_id}','AdminsController@logInAsClient')->name('
 Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 
 // chatting routes :
-Route::get('/chat','chatController@showChatRoom');
-Route::post('/messages/','chatController@storeMessages');
-Route::get('/messages/','chatController@getMessages');
-Route::get('/chat/{id}','chatController@showAdminChatRoom')->middleware('admin');
+Route::get('/chat','ChatController@showChatRoom');
+Route::post('/messages/','ChatController@storeMessages');
+Route::get('/messages/','ChatController@getMessages');
+Route::get('/chat/{id}','ChatController@showAdminChatRoom')->middleware('admin');
 
 Route::get('/conversation/delete/{id}','ConversationsController@deleteConversation')->name('conversation.delete');
 

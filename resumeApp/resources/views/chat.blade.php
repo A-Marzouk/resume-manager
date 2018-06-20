@@ -2,8 +2,7 @@
 
 @section('content')
     <div id="app" class="container">
-        <h1>chat-room
-        </h1>
+        <h1 style="color: gainsboro; padding: 10px;">Talk to sales</h1>
         <div class="container">
            <chat-log :messages="messages"></chat-log>
        </div><br/>

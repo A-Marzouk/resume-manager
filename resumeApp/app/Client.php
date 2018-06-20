@@ -20,7 +20,7 @@ class Client extends Authenticatable
 
     protected $fillable = [
         'name', 'phone','email','password','username','agency','contact','emailDept','stripe_id','card_brand',
-        'card_last_four','timeZone'
+        'card_last_four','timeZone','firstName'
     ];
 
     /**

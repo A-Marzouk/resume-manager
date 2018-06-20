@@ -55,6 +55,7 @@ class ClientRegisterController extends Controller
     protected function create(array $data)
     {
         Client::create([
+            'firstName'=>$data['name'],
             'name' => $data['name'],
             'agency' => $data['agency'],
             'email' => $data['email'],

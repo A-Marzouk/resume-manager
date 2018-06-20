@@ -9,6 +9,12 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -16,7 +22,43 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('chat-message', require('./components/chatMessage.vue'));
+Vue.component('chat-log', require('./components/chatLog.vue'));
+Vue.component('chat-composer', require('./components/chatComposer.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data:{
+        messages:[],
+        usersInRoom:[],
+    },
+    methods:{
+        addMessage(message){
+            // add to the existing messages
+            // console.log(message);
+            // message.created_at = new Date();
+            // this.messages.push(message);
+            // save to DB and so on.
+            axios.post('/messages',message);
+        }
+    },
+    created(){
+        axios.get('/messages/').then(response =>{
+            this.messages = response.data;
+        });
+
+        Echo.channel('talkToSales')
+            .listen('MessagePosted',(e) =>{
+                // handle event here
+                // this.messages.push({
+                //     message:e.message.message,
+                //     created_at:e.message.created_at,
+                //     user: e.user
+                // });
+                axios.get('/messages/').then(response =>{
+                    this.messages = response.data;
+                });
+            })
+
+    }
 });

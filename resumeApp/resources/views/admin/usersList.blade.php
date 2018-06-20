@@ -1,18 +1,23 @@
 @extends('layouts.app')
-<? extract($data); ?>
+<? use App\Client;use App\User;use App\Visitor;extract($data); ?>
 
 @section('content')
     <div class="container">
         <h1 >Welcome Admin !</h1>
         <ul class="nav nav-tabs" role="tablist">
-            <li class="col-md-6">
+            <li class="col-md-4">
                 <a class="btn btn-block btn-primary active" href="#freelancers" role="tab" data-toggle="tab">
                     Freelancers
                 </a>
             </li>
-            <li class="col-md-6">
+            <li class="col-md-4">
                 <a class="btn btn-block btn-dark text-center" href="#clients" role="tab" data-toggle="tab">
                     Clients
+                </a>
+            </li>
+            <li class="col-md-4">
+                <a class="btn btn-block btn-dark text-center" href="#chats" role="tab" data-toggle="tab">
+                    Chatting rooms
                 </a>
             </li>
         </ul>
@@ -40,7 +45,7 @@
                     <tbody>
                     <? $i=1; ?>
                     <? foreach ($users as $user):?>
-                    <? if($user->admin == 1){ continue;}?>
+                    <? if($user->admin == 1 || $user->firstName === 'Visitor'){ continue;}?>
 
                     <tr>
                         <th scope="row">{{$i}}</th>
@@ -81,6 +86,50 @@
                     </tbody>
                 </table>
             </div>
+            <div role="tabpanel" class="tab-pane" id="chats">
+                <br/>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Chatting rooms</th>
+                        <th scope="col">Chat IDs</th>
+                        <th scope="col">Visitor/User/Client</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <? $i=1; ?>
+                    <? foreach ($conversations as $conversation):?>
+                    <? if(count($conversation->messages) < 1){continue;}?>
+                    <tr>
+                        <th scope="row">{{$i}}</th>
+                        <td><a href="/chat/{{$conversation->id}}" target="_blank">Open chat</a></td>
+                        <th scope="row">{{$conversation->id}}</th>
+                        <th scope="row">
+                            <?
+                                if(isset($conversation->visitor_id)){
+                                    $user = Visitor::where('id',$conversation->visitor_id)->first();
+                                    echo $user->firstName;
+                                }elseif(isset($conversation->user_id)){
+                                    $user = User::where('id',$conversation->user_id)->first();
+                                    echo $user->firstName.' - Freelancer';
+                                }elseif(isset($conversation->client_id)){
+                                    $user = Client::where('id',$conversation->client_id)->first();
+                                    echo $user->firstName.' - Client';
+                                }
+                            ?>
+                        </th>
+                        <td><a class="btn btn-sm btn-danger" href="{{route('conversation.delete',$conversation->id)}}"  onclick="return confirm('Are you sure you want to delete conversation ?');">Delete</a></td>
+
+                    </tr>
+
+                    <? $i++;?>
+                    <? endforeach;?>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
 
 

@@ -1,6 +1,6 @@
 @extends('layouts.email')
 @section('content')
-    <div class="greeting" >Hello Mr.Admin !</div>
+    <div class="greeting" >Hello Admin !</div>
     <hr>
     <div class="mailText">
         We have a new client on board :<br/>

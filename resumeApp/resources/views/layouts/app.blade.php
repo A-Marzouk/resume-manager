@@ -25,7 +25,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel fixed-top">
             <div class="container">
                 <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
                     <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">

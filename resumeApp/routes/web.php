@@ -12,6 +12,7 @@
 */
 
 
+use App\Message;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
@@ -70,6 +71,14 @@ Route::get('/clear-cache', function() {
 Route::get('/admin','AdminsController@welcomePage')->name('admin.dashboard');
 Route::get('/admin/client/{client_id}','AdminsController@logInAsClient')->name('logInAsClient');
 Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
+
+// chatting routes :
+Route::get('/chat','chatController@showChatRoom');
+Route::post('/messages/','chatController@storeMessages');
+Route::get('/messages/','chatController@getMessages');
+Route::get('/chat/{id}','chatController@showAdminChatRoom')->middleware('admin');
+
+Route::get('/conversation/delete/{id}','ConversationsController@deleteConversation')->name('conversation.delete');
 
 // notification :
 Route::post('/','NotificationsController@messageToSales')->name('message.to.sales');

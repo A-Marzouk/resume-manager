@@ -557,6 +557,11 @@
             ]
         });
 
+        if ($("#sendMessage").length ){
+            setTimeout(function(){
+                $('html,body').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
+            }, 1000);
+        }
 
     });
 

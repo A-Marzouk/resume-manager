@@ -53431,7 +53431,11 @@ var render = function() {
     _vm._v(" "),
     _c(
       "button",
-      { staticClass: "btn btn-primary", on: { click: _vm.sendMessage } },
+      {
+        staticClass: "btn btn-primary",
+        staticStyle: { "border-radius": "1px" },
+        on: { click: _vm.sendMessage }
+      },
       [_vm._v("Send")]
     )
   ])

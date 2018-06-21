@@ -14330,9 +14330,20 @@ var app = new Vue({
     methods: {
         addMessage: function addMessage(message) {
             // add to the existing messages
-            // console.log(message);
             // message.created_at = new Date();
-            // this.messages.push(message);
+            this.messages.push({
+                message: message.message,
+                created_at: 'just now',
+                user: {
+                    firstName: ''
+                },
+                client: {
+                    firstName: ''
+                },
+                visitor: {
+                    firstName: ''
+                }
+            });
             // save to DB and so on.
             axios.post('/messages', message);
         }
@@ -14346,6 +14357,7 @@ var app = new Vue({
 
         Echo.channel('talkToSales').listen('MessagePosted', function (e) {
             // handle event here
+            // console.log(e.message);
             // this.messages.push({
             //     message:e.message.message,
             //     created_at:e.message.created_at,
@@ -52943,7 +52955,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.name{\n    opacity: 0.6;\tcolor: #697786;\n    font-family: Roboto;\n    font-size: 12px;\n    letter-spacing: 0.08px;\n    line-height: 14px;\n    padding-bottom:15px;\n    padding-top:4px;\n}\n.messageText{\n    border-radius: 5px 0 5px 5px;\n    background-color: #0D96DB;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color:white;\n}\n.messageTextAdmin{\n    border-radius: 5px 5px 5px 0px;\n    background-color: whitesmoke;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color:black;\n}\n", ""]);
+exports.push([module.i, "\n.name{\n    opacity: 0.6;\tcolor: #697786;\n    font-family: Roboto;\n    font-size: 12px;\n    letter-spacing: 0.08px;\n    line-height: 14px;\n    padding-bottom:15px;\n    padding-top:4px;\n}\n.messageText{\n    border-radius: 5px 0 5px 5px;\n    background-color: #0D96DB;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color:white;\n}\n.messageTextAdmin{\n    border-radius: 5px 5px 5px 0px;\n    background-color: whitesmoke;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color:black;\n}\n.messageTextVisitor{\n    border-radius: 5px 5px 5px 0px;\n    background-color: #b3d7ff;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color:black;\n}\n", ""]);
 
 // exports
 
@@ -53024,49 +53036,49 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.message.visitor !== null
+    _vm.message.user !== null
       ? _c("div", [
-          _c("div", { staticClass: "messageText" }, [
-            _vm._v(_vm._s(_vm.message.message))
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "name" }, [
-            _vm._v(
-              _vm._s(_vm.message.visitor.firstName) +
-                " - " +
-                _vm._s(_vm.message.created_at)
-            )
-          ])
+          _vm.message.user.firstName === "Admin"
+            ? _c("div", [
+                _c("div", { staticClass: "messageTextAdmin" }, [
+                  _vm._v(_vm._s(_vm.message.message))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "name" }, [
+                  _vm._v(
+                    _vm._s(_vm.message.user.firstName) +
+                      " - " +
+                      _vm._s(_vm.message.created_at)
+                  )
+                ])
+              ])
+            : _c("div", [
+                _c("div", { staticClass: "messageTextVisitor" }, [
+                  _vm._v(_vm._s(_vm.message.message))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "name" }, [
+                  _vm._v(
+                    _vm._s(_vm.message.user.firstName) +
+                      "  " +
+                      _vm._s(_vm.message.created_at)
+                  )
+                ])
+              ])
         ])
-      : _vm.message.user !== null
+      : _vm.message.visitor !== null
         ? _c("div", [
-            _vm.message.user.firstName === "Admin"
-              ? _c("div", [
-                  _c("div", { staticClass: "messageTextAdmin" }, [
-                    _vm._v(_vm._s(_vm.message.message))
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "name" }, [
-                    _vm._v(
-                      _vm._s(_vm.message.user.firstName) +
-                        " - " +
-                        _vm._s(_vm.message.created_at)
-                    )
-                  ])
-                ])
-              : _c("div", [
-                  _c("div", { staticClass: "messageText" }, [
-                    _vm._v(_vm._s(_vm.message.message))
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "name" }, [
-                    _vm._v(
-                      _vm._s(_vm.message.user.firstName) +
-                        " - " +
-                        _vm._s(_vm.message.created_at)
-                    )
-                  ])
-                ])
+            _c("div", { staticClass: "messageText" }, [
+              _vm._v(_vm._s(_vm.message.message))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "name" }, [
+              _vm._v(
+                _vm._s(_vm.message.visitor.firstName) +
+                  " - " +
+                  _vm._s(_vm.message.created_at)
+              )
+            ])
           ])
         : _vm.message.client !== null
           ? _c("div", [

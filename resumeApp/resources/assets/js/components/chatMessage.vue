@@ -1,18 +1,18 @@
 <template lang="html">
     <div>
-        <div v-if="message.visitor !== null">
-            <div class="messageText">{{ message.message }}</div>
-            <div class="name">{{ message.visitor.firstName }} - {{message.created_at}}</div>
-        </div>
-        <div v-else-if="message.user !== null">
+        <div v-if="message.user !== null">
             <div v-if="message.user.firstName === 'Admin' ">
                 <div class="messageTextAdmin">{{ message.message }}</div>
                 <div class="name">{{ message.user.firstName }} - {{message.created_at}}</div>
             </div>
             <div v-else>
-                <div class="messageText">{{ message.message }}</div>
-                <div class="name">{{ message.user.firstName }} - {{message.created_at}}</div>
+                <div class="messageTextVisitor">{{ message.message }}</div>
+                <div class="name">{{ message.user.firstName }}  {{message.created_at}}</div>
             </div>
+        </div>
+        <div v-else-if="message.visitor !== null">
+            <div class="messageText">{{ message.message }}</div>
+            <div class="name">{{ message.visitor.firstName }} - {{message.created_at}}</div>
         </div>
         <div v-else-if="message.client !== null">
             <div class="messageText">{{ message.message }}</div>
@@ -48,6 +48,14 @@
     .messageTextAdmin{
         border-radius: 5px 5px 5px 0px;
         background-color: whitesmoke;
+        box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);
+        padding:10px;
+        color:black;
+    }
+
+    .messageTextVisitor{
+        border-radius: 5px 5px 5px 0px;
+        background-color: #b3d7ff;
         box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);
         padding:10px;
         color:black;

@@ -1,7 +1,7 @@
 @extends('layouts.client-app')
 
 @section('content')
-    <div id="app" class="container">
+    <div id="app" class="container col-6">
         <h1 style="color: gainsboro; padding: 10px;">Talk to sales</h1>
         <div class="container">
            <chat-log :messages="messages"></chat-log>

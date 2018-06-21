@@ -2,7 +2,7 @@
     <div class="chat-composer">
         <input type="text" placeholder="Type your message.." v-model="messageText"
         v-on:keydown.enter="sendMessage" autofocus id="sendMessage">
-        <button class="btn btn-primary" @click="sendMessage">Send</button>
+        <button class="btn btn-primary" style="border-radius:1px;" @click="sendMessage">Send</button>
     </div>
 </template>
 

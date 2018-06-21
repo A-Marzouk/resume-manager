@@ -49,6 +49,8 @@ const app = new Vue({
                     firstName:''
                 }
             });
+            //scroll down :
+            $('#chatBox').animate({scrollTop: $('#chatBox')[0].scrollHeight}, 'slow');
             // save to DB and so on.
             axios.post('/messages',message);
         }

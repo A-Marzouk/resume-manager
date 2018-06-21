@@ -14344,6 +14344,8 @@ var app = new Vue({
                     firstName: ''
                 }
             });
+            //scroll down :
+            $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 'slow');
             // save to DB and so on.
             axios.post('/messages', message);
         }
@@ -53355,7 +53357,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.chat-composer{\n    display:-webkit-box;\n    display:-ms-flexbox;\n    display:flex;\n}\n.chat-composer input{\n    -webkit-box-flex: 1;\n        -ms-flex: 1 auto;\n            flex: 1 auto;\n}\n\n", ""]);
+exports.push([module.i, "\n.chat-composer{\n    display:-webkit-box;\n    display:-ms-flexbox;\n    display:flex;\n}\n.chat-composer input{\n    -webkit-box-flex: 1;\n        -ms-flex: 1 auto;\n            flex: 1 auto;\n}\n.typing{\n    opacity: 0.6;\tcolor: #697786;\n    font-family: Roboto;\n    font-size: 12px;\n    letter-spacing: 0.08px;\n    line-height: 14px;\n    padding-bottom:15px;\n    padding-top:4px;\n}\n\n", ""]);
 
 // exports
 
@@ -53366,6 +53368,11 @@ exports.push([module.i, "\n.chat-composer{\n    display:-webkit-box;\n    displa
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -53405,51 +53412,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "chat-composer" }, [
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.messageText,
-          expression: "messageText"
-        }
-      ],
-      attrs: {
-        type: "text",
-        placeholder: "Type your message..",
-        autofocus: "",
-        id: "sendMessage"
-      },
-      domProps: { value: _vm.messageText },
-      on: {
-        keydown: function($event) {
-          if (
-            !("button" in $event) &&
-            _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-          ) {
-            return null
+  return _c("div", [
+    _c("div", { staticClass: "chat-composer" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.messageText,
+            expression: "messageText"
           }
-          return _vm.sendMessage($event)
+        ],
+        staticClass: "panelFormInput",
+        attrs: {
+          type: "text",
+          placeholder: " Type your message..",
+          autofocus: "",
+          id: "sendMessage"
         },
-        input: function($event) {
-          if ($event.target.composing) {
-            return
+        domProps: { value: _vm.messageText },
+        on: {
+          keydown: function($event) {
+            if (
+              !("button" in $event) &&
+              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+            ) {
+              return null
+            }
+            return _vm.sendMessage($event)
+          },
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.messageText = $event.target.value
           }
-          _vm.messageText = $event.target.value
         }
-      }
-    }),
+      })
+    ]),
     _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-primary",
-        staticStyle: { "border-radius": "1px" },
-        on: { click: _vm.sendMessage }
-      },
-      [_vm._v("Send")]
-    )
+    _c("div")
   ])
 }
 var staticRenderFns = []

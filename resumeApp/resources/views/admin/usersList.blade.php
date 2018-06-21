@@ -16,7 +16,7 @@
                 </a>
             </li>
             <li class="col-md-4">
-                <a class="btn btn-block btn-dark text-center" href="#chats" role="tab" data-toggle="tab">
+                <a class="btn btn-block btn-success text-center" href="#chats" role="tab" data-toggle="tab">
                     Chatting rooms
                 </a>
             </li>

@@ -2,6 +2,41 @@
 
 @section('content')
     <div id="content">
+        <div>
+            <div id="chatBox" class="col-md-3 col-12 col-lg-3">
+                <div class="chatHeading btn-block">
+                    <div class="text btn-block">
+                        <span style="padding-right: 5px;">
+                            <img src="resumeApp/resources/views/customTheme/images/textsms_24px copy.png" width="20px">
+                        </span>
+                        Chat with us
+                        <a href="#" id="closeChat"> <img src="resumeApp/resources/views/customTheme/images/Rectangle.png"
+                                                   width="15px"> </a>
+                    </div>
+                    <div class="secondText btn-block">
+                        <div class="row">
+                            <div style="padding-top: 8px;">
+                                <img src="resumeApp/resources/views/customTheme/images/logo123.png" width="36px">
+                            </div>
+                            <div class="">
+                                <span style="color: #637280;font-family: Roboto;font-size: 12px;">We're Here to Help!</span><br/>
+                                <span style="color: #00CE6B;font-family: Roboto;font-size: 12px;">online</span>
+                            </div><hr>
+                        </div>
+                    </div>
+                </div>
+                <div id="app">
+                    <div class="container">
+                        <chat-log :messages="messages"></chat-log>
+                    </div><br/>
+                    <div class="container">
+                        {{-- v-on:messageSent means when the event is emited --}}
+                        {{-- addMessage method should be defiened on the root scope not components--}}
+                        <chat-composer v-on:messagesent="addMessage"></chat-composer>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Success Messages  -->
         @if(session()->has('successMessage'))
             <div class="alert alert-success col-md-4 offset-md-1 successMessage">

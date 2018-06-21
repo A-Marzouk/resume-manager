@@ -972,4 +972,42 @@ body {
   font-size: 16px;
   line-height: 19px; }
 
+#chatBox {
+  height: 454px;
+  width: 285px;
+  border: 1px solid #F5F2F2;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.18), 0 7px 16px -7px #8A96A0;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  color: black;
+  z-index: 10;
+  margin: 10px;
+  overflow-y: auto;
+  padding: 0 0 15px 0; }
+
+.chatHeading {
+  position: fixed; }
+  .chatHeading .text {
+    border-radius: 5px 5px 0 0;
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    line-height: 19px;
+    padding: 13px;
+    background: linear-gradient(270deg, #45e6ef, #088fd9); }
+  .chatHeading .secondText {
+    margin-top: 0 !important;
+    padding: 10px;
+    background-color: white; }
+    .chatHeading .secondText span {
+      padding-left: 20px; }
+
+#closeChat {
+  padding-left: 7%; }
+
 /*# sourceMappingURL=main.css.map */

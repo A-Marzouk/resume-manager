@@ -24,6 +24,19 @@
     <link rel="stylesheet" type="text/css" href="/resumeApp/resources/views/customTheme/js/slick-master/slick/slick-theme.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="/resumeApp/resources/views/customTheme/css/main.css" rel="stylesheet" media="screen">
+    <style>
+        {{-- styles for slick slider only --}}
+        .slickSlide{
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease;
+            -webkit-transition: opacity 1s ease;
+        }
+        .slickSlide.slick-initialized {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
 <?

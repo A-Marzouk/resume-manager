@@ -1229,6 +1229,7 @@ body{
 
 // cha styles
 #chatBox{
+  opacity: 0;
   height: 454px;
   width: 285px;
   border: 1px solid #F5F2F2;
@@ -1236,15 +1237,18 @@ body{
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.18), 0 7px 16px -7px #8A96A0;
   position: fixed;
   bottom: 0px;
-  right: 0px;
   color: black;
   z-index: 10;
   margin: 10px;
   overflow-y: auto;
-  padding: 0 0 15px 0;
+  padding: 0 0 20px 0;
+  @media only screen and (max-width: 600px) {
+    padding-top: 14px !important;
+  }
 }
 
 .chatHeading{
+  z-index: 15 !important;
   position: fixed;
   .text{
     border-radius: 5px 5px 0 0;
@@ -1270,4 +1274,8 @@ body{
 
 #closeChat{
   padding-left: 7%;
+}
+
+.text-chat{
+  padding: 10px;
 }

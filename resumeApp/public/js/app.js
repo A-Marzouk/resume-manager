@@ -52968,7 +52968,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.name{\n    opacity: 0.6;\tcolor: #697786;\n    font-family: Roboto;\n    font-size: 12px;\n    letter-spacing: 0.08px;\n    line-height: 14px;\n    padding-bottom:15px;\n    padding-top:4px;\n}\n.messageText{\n    border-radius: 5px 0 5px 5px;\n    background-color: #0D96DB;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color:white;\n}\n.messageTextAdmin{\n    border-radius: 5px 5px 5px 0px;\n    background-color: whitesmoke;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color:black;\n}\n.messageTextVisitor{\n    border-radius: 5px 5px 5px 0px;\n    background-color: #b3d7ff;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color:black;\n}\n", ""]);
+exports.push([module.i, "\n.name{\n    opacity: 0.6;\tcolor: #697786;\n    font-family: Roboto;\n    font-size: 12px;\n    letter-spacing: 0.08px;\n    line-height: 14px;\n    padding-bottom:15px;\n    padding-top:4px;\n}\n.messageText{\n   \tborder-radius: 0px 10px 10px 10px;\n    background-color: #0D96DB;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color: #FFFFFF;\n    font-family: Roboto;\n    font-size: 14px;\n    letter-spacing: 0.1px;\n    line-height: 16px;\n}\n.messageTextAdmin{\n    border: 1px solid #D5D8DE;\n    border-radius: 10px 0 10px 10px;\n    background-color: #FFFFFF;\n    padding:10px;\n    color: #697786;\tfont-family: Roboto;\n    font-size: 14px;\n    letter-spacing: 0.1px;\n    line-height: 16px;\n}\n.messageTextVisitor{\n    border-radius: 10px 10px 10px 10px;\n    background-color: #b3d7ff;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color: #FFFFFF;\n    font-family: Roboto;\n    font-size: 14px;\n    letter-spacing: 0.1px;\n    line-height: 16px;\n}\n", ""]);
 
 // exports
 
@@ -53264,9 +53264,14 @@ var render = function() {
               expression: "messages.length === 0"
             }
           ],
-          staticClass: "empty"
+          staticClass: "empty",
+          staticStyle: { "padding-top": "330px" }
         },
-        [_vm._v("\n        Nothing here yet!\n    ")]
+        [
+          _c("div", { staticClass: "text-info text" }, [
+            _vm._v("Hi, how can I hep you ?")
+          ])
+        ]
       )
     ],
     2

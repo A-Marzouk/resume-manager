@@ -144,7 +144,12 @@
                                 Register
                             </button>
                         </div>
-                        <div class="smallText">Already have an account?<span> <a href="/freelancer/login"> Log in!</a></span></div>
+                        <div class="smallText">
+                            Already have an account?
+                            <span>
+                                <a href="/freelancer/login"> Log in!</a>
+                            </span>
+                        </div>
                     </div>
                     </form>
 

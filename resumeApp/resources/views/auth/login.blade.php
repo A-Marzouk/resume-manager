@@ -44,11 +44,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="buttonMain text-cente">
+                                <div class="buttonMain text-center">
                                     <button type="submit" class="col-md-12 hireBtn">
                                         {{ __('Login') }}
                                     </button>
-                                    <div class="smallText"><span> <a href="/freelancer/register"> Register now!</a></span></div>
+                                    <div class="smallText" style="background: none !important;">
+                                        <a href="/freelancer/register" style="background: none !important;"> Register now!</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

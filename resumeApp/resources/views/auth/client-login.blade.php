@@ -61,7 +61,11 @@
                                             <button type="submit" class="col-md-12 hireBtn">
                                                 {{ __('Login') }}
                                             </button>
-                                            <div class="smallText"><span> <a href="/client/register"> Register now!</a></span></div>
+                                            <div class="smallText" style="background: none !important;">
+                                                    <span style="background: none !important;">
+                                                        <a href="/client/register" style="background: none !important;"> Register now!</a>
+                                                    </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

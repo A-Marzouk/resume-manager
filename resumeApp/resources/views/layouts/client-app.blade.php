@@ -49,6 +49,16 @@
         $curPage = 'home';
     }
 ?>
+
+<?
+$admin = false;
+$user = auth()->user();
+if($user){
+    if($user->admin == 1){
+        $admin = true;
+    }
+}
+?>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel fixed-top">
         <div class="container">
@@ -139,6 +149,56 @@
             </div>
         </div>
     </div>
+</div>
+{{-- Chat box --}}
+<div>
+    <? if(!$admin):?>
+    <div id="chatBox" class="col-md-3 col-12 col-lg-3">
+        <div class="chatHeading">
+            <div class="text btn-block">
+                        <span style="padding-right: 5px;">
+                            <img src="/resumeApp/resources/views/customTheme/images/textsms_24px copy.png" width="20px">
+                        </span>
+                Chat with us
+                <a href="#" id="closeChat"> <img src="/resumeApp/resources/views/customTheme/images/Rectangle.png"
+                                                 width="15px"> </a>
+            </div>
+            <div class="secondText btn-block">
+                <div class="row">
+                    <div style="padding-top: 8px;">
+                        <img src="/resumeApp/resources/views/customTheme/images/logo123.png" width="36px">
+                    </div>
+                    <div class="">
+                        <span style="color: #637280;font-family: Roboto;font-size: 12px;">We're Here to Help!</span><br/>
+                        <span style="color: #00CE6B;font-family: Roboto;font-size: 12px;">online</span>
+                    </div><hr>
+                </div>
+            </div>
+        </div>
+        <div id="VueChat">
+            <div class="container">
+                <div class="empty" v-show="messages.length === 1" style="padding-top:330px;">
+                    <div class="text-info text text-chat">Hi, how can I hep you ?</div>
+                </div>
+                <div class="empty" v-show="messages.length === 2" style="padding-top:330px;">
+                    <div class="text-info text text-chat">Hi, how can I hep you ?</div>
+                </div>
+                <div class="empty" v-show="messages.length === 3" style="padding-top:330px;">
+                    <div class="text-info text text-chat">Hi, how can I hep you ?</div>
+                </div>
+                <div class="empty" v-show="messages.length === 4" style="padding-top:330px;">
+                    <div class="text-info text text-chat">Hi, how can I hep you ?</div>
+                </div>
+                <chat-log :messages="messages" style="padding-top:150px;"></chat-log>
+            </div><br/>
+            <div class="container">
+                {{-- v-on:messageSent means when the event is emited --}}
+                {{-- addMessage method should be defiened on the root scope not components--}}
+                <chat-composer v-on:messagesent="addMessage"></chat-composer>
+            </div>
+        </div>
+    </div>
+    <? endif;?>
 </div>
 <!-- Modals -->
 <div class="modal fade" style="background-color:rgba(0, 0, 0, 0.5);" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -423,7 +483,11 @@
                                                 <button type="submit" class="col-md-12 hireBtn">
                                                     {{ __('Login') }}
                                                 </button>
-                                                <div class="smallText"><span> <a href="/client/login"> Register now!</a></span></div>
+                                                <div class="smallText" style="background: none !important;">
+                                                    <span style="background: none !important;">
+                                                        <a href="/client/register" style="background: none !important;"> Register now!</a>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

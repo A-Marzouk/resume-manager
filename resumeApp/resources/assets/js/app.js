@@ -58,7 +58,10 @@ const app = new Vue({
         }
     },
     created(){
-        axios.get('/messages/').then(response =>{
+        var pageUrl = window.location.pathname;
+        var partsOfUrl = pageUrl.split('/');
+        var conversationID = partsOfUrl[partsOfUrl.length-1];
+        axios.get('/messages/'+conversationID).then(response =>{
             this.messages = response.data;
         });
 
@@ -71,7 +74,11 @@ const app = new Vue({
                 //     created_at:e.message.created_at,
                 //     user: e.user
                 // });
-                axios.get('/messages/').then(response =>{
+
+                var pageUrl = window.location.pathname;
+                var partsOfUrl = pageUrl.split('/');
+                var conversationID = partsOfUrl[partsOfUrl.length-1];
+                axios.get('/messages/'+conversationID).then(response =>{
                     this.messages = response.data;
                 });
                 //scroll down :

@@ -4,7 +4,7 @@
     <div id="content">
         <div>
             <div id="chatBox" class="col-md-3 col-12 col-lg-3">
-                <div class="chatHeading btn-block">
+                <div class="chatHeading">
                     <div class="text btn-block">
                         <span style="padding-right: 5px;">
                             <img src="resumeApp/resources/views/customTheme/images/textsms_24px copy.png" width="20px">

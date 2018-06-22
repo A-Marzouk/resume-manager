@@ -76,6 +76,7 @@ Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser
 Route::get('/chat','ChatController@showChatRoom');
 Route::post('/messages/','ChatController@storeMessages');
 Route::get('/messages/','ChatController@getMessages');
+Route::get('/messages/{conv_id}','ChatController@getMessages');
 Route::get('/chat/{id}','ChatController@showAdminChatRoom')->middleware('admin');
 
 Route::get('/conversation/delete/{id}','ConversationsController@deleteConversation')->name('conversation.delete');

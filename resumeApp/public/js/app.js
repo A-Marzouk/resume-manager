@@ -14355,7 +14355,10 @@ var app = new Vue({
     created: function created() {
         var _this = this;
 
-        axios.get('/messages/').then(function (response) {
+        var pageUrl = window.location.pathname;
+        var partsOfUrl = pageUrl.split('/');
+        var conversationID = partsOfUrl[partsOfUrl.length - 1];
+        axios.get('/messages/' + conversationID).then(function (response) {
             _this.messages = response.data;
         });
 
@@ -14367,7 +14370,11 @@ var app = new Vue({
             //     created_at:e.message.created_at,
             //     user: e.user
             // });
-            axios.get('/messages/').then(function (response) {
+
+            var pageUrl = window.location.pathname;
+            var partsOfUrl = pageUrl.split('/');
+            var conversationID = partsOfUrl[partsOfUrl.length - 1];
+            axios.get('/messages/' + conversationID).then(function (response) {
                 _this.messages = response.data;
             });
             //scroll down :
@@ -53413,7 +53420,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 user: {
                     firstName: 'Current',
                     lastName: 'User'
-                }
+                },
+                pageUrl: window.location.pathname
             });
             this.messageText = '';
         }

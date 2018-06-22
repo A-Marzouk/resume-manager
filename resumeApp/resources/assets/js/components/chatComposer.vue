@@ -26,7 +26,8 @@
                     user : {
                         firstName : 'Current',
                         lastName  : 'User'
-                    }
+                    },
+                    pageUrl       : window.location.pathname
                 });
                 this.messageText = '';
             }

@@ -993,7 +993,8 @@ body {
 
 .chatHeading {
   z-index: 15 !important;
-  position: fixed; }
+  position: fixed;
+  width: 100%; }
   .chatHeading .text {
     border-radius: 5px 5px 0 0;
     color: #FFFFFF;

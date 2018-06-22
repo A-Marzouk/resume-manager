@@ -36,6 +36,8 @@
             visibility: visible;
             opacity: 1;
         }
+
+        /* styles only for IE*/
     </style>
 </head>
 <body>

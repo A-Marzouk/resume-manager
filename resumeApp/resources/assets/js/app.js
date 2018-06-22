@@ -49,12 +49,19 @@ const app = new Vue({
                     firstName:''
                 }
             });
+            //scroll down :
+            if ($("#chatBox").length ){
+                $('#chatBox').animate({scrollTop: $('#chatBox')[0].scrollHeight}, 'slow');
+            }
             // save to DB and so on.
             axios.post('/messages',message);
         }
     },
     created(){
-        axios.get('/messages/').then(response =>{
+        var pageUrl = window.location.pathname;
+        var partsOfUrl = pageUrl.split('/');
+        var conversationID = partsOfUrl[partsOfUrl.length-1];
+        axios.get('/messages/'+conversationID).then(response =>{
             this.messages = response.data;
         });
 
@@ -67,9 +74,22 @@ const app = new Vue({
                 //     created_at:e.message.created_at,
                 //     user: e.user
                 // });
-                axios.get('/messages/').then(response =>{
+
+                var pageUrl = window.location.pathname;
+                var partsOfUrl = pageUrl.split('/');
+                var conversationID = partsOfUrl[partsOfUrl.length-1];
+                axios.get('/messages/'+conversationID).then(response =>{
                     this.messages = response.data;
                 });
+                //scroll down :
+                if ($("#chatBox").length ){
+                    $('#chatBox').animate({scrollTop: $('#chatBox')[0].scrollHeight}, 'slow');
+                }
+                if ($("#chatLogs").length ){
+                    setTimeout(function(){
+                        $('html,body').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
+                    }, 1000);
+                }
             })
 
     }

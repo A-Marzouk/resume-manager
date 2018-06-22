@@ -39,25 +39,36 @@
     }
 
     .messageText{
-        border-radius: 5px 0 5px 5px;
+       	border-radius: 0px 10px 10px 10px;
         background-color: #0D96DB;
         box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);
         padding:10px;
-        color:white;
+        color: #FFFFFF;
+        font-family: Roboto;
+        font-size: 14px;
+        letter-spacing: 0.1px;
+        line-height: 16px;
     }
     .messageTextAdmin{
-        border-radius: 5px 5px 5px 0px;
-        background-color: whitesmoke;
-        box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);
+        border: 1px solid #D5D8DE;
+        border-radius: 10px 0 10px 10px;
+        background-color: #FFFFFF;
         padding:10px;
-        color:black;
+        color: #697786;	font-family: Roboto;
+        font-size: 14px;
+        letter-spacing: 0.1px;
+        line-height: 16px;
     }
 
     .messageTextVisitor{
-        border-radius: 5px 5px 5px 0px;
+        border-radius: 10px 10px 10px 10px;
         background-color: #b3d7ff;
         box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);
         padding:10px;
-        color:black;
+        color: #FFFFFF;
+        font-family: Roboto;
+        font-size: 14px;
+        letter-spacing: 0.1px;
+        line-height: 16px;
     }
 </style>

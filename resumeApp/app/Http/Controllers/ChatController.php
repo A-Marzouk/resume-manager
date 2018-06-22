@@ -17,10 +17,10 @@ class ChatController extends Controller
     protected $var_id;
     protected $conversation;
 
-    public function getMessages(){
+    public function getMessages($conv_id = ''){
         $this->setCurrentUser();
-        if(!empty(session()->get('conversation_id'))){
-            $messages = Message::where('conversation_id',session()->get('conversation_id'))->get();
+        if($conv_id !== ''){
+            $messages = Message::where('conversation_id',$conv_id)->get();
         }else{
             $messages = Message::where('conversation_id',$this->conversation->id)->get();
         }
@@ -52,7 +52,15 @@ class ChatController extends Controller
         if(isset($this->conversation->id)){
             $message->conversation_id = $this->conversation->id; // visitor or client
         }else{
-            $message->conversation_id =  session()->get('conversation_id'); // admin
+            $pageUrl = $request->pageUrl;
+            $urlArray = explode('/',$pageUrl);
+            $conversationId = '';
+            foreach ($urlArray as $page){
+                if(is_numeric($page)){
+                    $conversationId = $page;
+                }
+            }
+            $message->conversation_id =  $conversationId ; // admin
         }
         $message->{$this->var_id} = $this->user->id;
 

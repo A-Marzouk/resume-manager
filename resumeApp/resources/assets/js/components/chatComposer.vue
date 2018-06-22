@@ -1,9 +1,14 @@
 <template lang="html">
-    <div class="chat-composer">
-        <input type="text" placeholder="Type your message.." v-model="messageText"
-        v-on:keydown.enter="sendMessage" autofocus id="sendMessage">
-        <button class="btn btn-primary" style="border-radius:1px;" @click="sendMessage">Send</button>
+    <div>
+        <div class="chat-composer">
+            <input type="text" class="panelFormInput" placeholder=" Type your message.." v-model="messageText"
+                   v-on:keydown.enter="sendMessage" autofocus id="sendMessage">
+        </div>
+        <div>
+            <!--<small class="typing">Typing...</small>-->
+        </div>
     </div>
+
 </template>
 
 <script>
@@ -21,7 +26,8 @@
                     user : {
                         firstName : 'Current',
                         lastName  : 'User'
-                    }
+                    },
+                    pageUrl       : window.location.pathname
                 });
                 this.messageText = '';
             }
@@ -35,6 +41,16 @@
     }
     .chat-composer input{
         flex: 1 auto;
+    }
+
+    .typing{
+        opacity: 0.6;	color: #697786;
+        font-family: Roboto;
+        font-size: 12px;
+        letter-spacing: 0.08px;
+        line-height: 14px;
+        padding-bottom:15px;
+        padding-top:4px;
     }
 
 </style>

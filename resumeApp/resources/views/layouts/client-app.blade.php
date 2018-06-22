@@ -36,6 +36,8 @@
             visibility: visible;
             opacity: 1;
         }
+
+        /* styles only for IE*/
     </style>
 </head>
 <body>
@@ -53,7 +55,7 @@
             <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
                 <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -65,6 +67,7 @@
                         <a class="nav-item nav-link customNavLink <?if($curPage == 'client'):?>active<?endif;?>" href="/client/register/" data-toggle="modal" data-target="#exampleModalCenter">Become a client</a>
                     <? endif; ?>
                     <a class="nav-item nav-link customNavLink" href="#" data-toggle="modal" data-target="#talkToSales">Talk to sales</a>
+                    <a class="nav-item nav-link customNavLink" href="javascript:void(0)" id="liveChat" style="color:#0290D8;">Live-chat</a>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -559,8 +562,25 @@
 
         if ($("#sendMessage").length ){
             setTimeout(function(){
+                $('#chatBox').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
+            }, 1000);
+        }
+        if ($("#chatLogs").length ){
+            setTimeout(function(){
                 $('html,body').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
             }, 1000);
+        }
+
+        if($('#chatBox').length){
+            $("#liveChat").click(function(){
+                $("#chatBox").animate({right: '10px',bottom:'10px',opacity:'1'});
+                // close the navbar
+                $('#navBarToggle').click();
+            });
+
+            $("#closeChat").click(function(){
+                $("#chatBox").animate({bottom: '-550px',opacity:'1'});
+            });
         }
 
     });

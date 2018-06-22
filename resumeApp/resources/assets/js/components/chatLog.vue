@@ -4,8 +4,8 @@
                       v-bind:key="message.text">
         </chat-message>
 
-        <div class="empty" v-show="messages.length === 0">
-            Nothing here yet!
+        <div class="empty" v-show="messages.length === 0" style="padding-top:330px;">
+            <div class="text-info text">Hi, how can I hep you ?</div>
         </div>
     </div>
 </template>

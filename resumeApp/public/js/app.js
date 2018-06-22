@@ -14344,6 +14344,10 @@ var app = new Vue({
                     firstName: ''
                 }
             });
+            //scroll down :
+            if ($("#chatBox").length) {
+                $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 'slow');
+            }
             // save to DB and so on.
             axios.post('/messages', message);
         }
@@ -14351,7 +14355,10 @@ var app = new Vue({
     created: function created() {
         var _this = this;
 
-        axios.get('/messages/').then(function (response) {
+        var pageUrl = window.location.pathname;
+        var partsOfUrl = pageUrl.split('/');
+        var conversationID = partsOfUrl[partsOfUrl.length - 1];
+        axios.get('/messages/' + conversationID).then(function (response) {
             _this.messages = response.data;
         });
 
@@ -14363,9 +14370,22 @@ var app = new Vue({
             //     created_at:e.message.created_at,
             //     user: e.user
             // });
-            axios.get('/messages/').then(function (response) {
+
+            var pageUrl = window.location.pathname;
+            var partsOfUrl = pageUrl.split('/');
+            var conversationID = partsOfUrl[partsOfUrl.length - 1];
+            axios.get('/messages/' + conversationID).then(function (response) {
                 _this.messages = response.data;
             });
+            //scroll down :
+            if ($("#chatBox").length) {
+                $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 'slow');
+            }
+            if ($("#chatLogs").length) {
+                setTimeout(function () {
+                    $('html,body').animate({ scrollTop: $("#sendMessage").offset().top }, 'slow');
+                }, 1000);
+            }
         });
     }
 });
@@ -52955,7 +52975,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.name{\n    opacity: 0.6;\tcolor: #697786;\n    font-family: Roboto;\n    font-size: 12px;\n    letter-spacing: 0.08px;\n    line-height: 14px;\n    padding-bottom:15px;\n    padding-top:4px;\n}\n.messageText{\n    border-radius: 5px 0 5px 5px;\n    background-color: #0D96DB;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color:white;\n}\n.messageTextAdmin{\n    border-radius: 5px 5px 5px 0px;\n    background-color: whitesmoke;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color:black;\n}\n.messageTextVisitor{\n    border-radius: 5px 5px 5px 0px;\n    background-color: #b3d7ff;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color:black;\n}\n", ""]);
+exports.push([module.i, "\n.name{\n    opacity: 0.6;\tcolor: #697786;\n    font-family: Roboto;\n    font-size: 12px;\n    letter-spacing: 0.08px;\n    line-height: 14px;\n    padding-bottom:15px;\n    padding-top:4px;\n}\n.messageText{\n   \tborder-radius: 0px 10px 10px 10px;\n    background-color: #0D96DB;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color: #FFFFFF;\n    font-family: Roboto;\n    font-size: 14px;\n    letter-spacing: 0.1px;\n    line-height: 16px;\n}\n.messageTextAdmin{\n    border: 1px solid #D5D8DE;\n    border-radius: 10px 0 10px 10px;\n    background-color: #FFFFFF;\n    padding:10px;\n    color: #697786;\tfont-family: Roboto;\n    font-size: 14px;\n    letter-spacing: 0.1px;\n    line-height: 16px;\n}\n.messageTextVisitor{\n    border-radius: 10px 10px 10px 10px;\n    background-color: #b3d7ff;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color: #FFFFFF;\n    font-family: Roboto;\n    font-size: 14px;\n    letter-spacing: 0.1px;\n    line-height: 16px;\n}\n", ""]);
 
 // exports
 
@@ -53251,9 +53271,14 @@ var render = function() {
               expression: "messages.length === 0"
             }
           ],
-          staticClass: "empty"
+          staticClass: "empty",
+          staticStyle: { "padding-top": "330px" }
         },
-        [_vm._v("\n        Nothing here yet!\n    ")]
+        [
+          _c("div", { staticClass: "text-info text" }, [
+            _vm._v("Hi, how can I hep you ?")
+          ])
+        ]
       )
     ],
     2
@@ -53355,7 +53380,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.chat-composer{\n    display:-webkit-box;\n    display:-ms-flexbox;\n    display:flex;\n}\n.chat-composer input{\n    -webkit-box-flex: 1;\n        -ms-flex: 1 auto;\n            flex: 1 auto;\n}\n\n", ""]);
+exports.push([module.i, "\n.chat-composer{\n    display:-webkit-box;\n    display:-ms-flexbox;\n    display:flex;\n}\n.chat-composer input{\n    -webkit-box-flex: 1;\n        -ms-flex: 1 auto;\n            flex: 1 auto;\n}\n.typing{\n    opacity: 0.6;\tcolor: #697786;\n    font-family: Roboto;\n    font-size: 12px;\n    letter-spacing: 0.08px;\n    line-height: 14px;\n    padding-bottom:15px;\n    padding-top:4px;\n}\n\n", ""]);
 
 // exports
 
@@ -53366,6 +53391,11 @@ exports.push([module.i, "\n.chat-composer{\n    display:-webkit-box;\n    displa
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -53390,7 +53420,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 user: {
                     firstName: 'Current',
                     lastName: 'User'
-                }
+                },
+                pageUrl: window.location.pathname
             });
             this.messageText = '';
         }
@@ -53405,51 +53436,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "chat-composer" }, [
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.messageText,
-          expression: "messageText"
-        }
-      ],
-      attrs: {
-        type: "text",
-        placeholder: "Type your message..",
-        autofocus: "",
-        id: "sendMessage"
-      },
-      domProps: { value: _vm.messageText },
-      on: {
-        keydown: function($event) {
-          if (
-            !("button" in $event) &&
-            _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-          ) {
-            return null
+  return _c("div", [
+    _c("div", { staticClass: "chat-composer" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.messageText,
+            expression: "messageText"
           }
-          return _vm.sendMessage($event)
+        ],
+        staticClass: "panelFormInput",
+        attrs: {
+          type: "text",
+          placeholder: " Type your message..",
+          autofocus: "",
+          id: "sendMessage"
         },
-        input: function($event) {
-          if ($event.target.composing) {
-            return
+        domProps: { value: _vm.messageText },
+        on: {
+          keydown: function($event) {
+            if (
+              !("button" in $event) &&
+              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+            ) {
+              return null
+            }
+            return _vm.sendMessage($event)
+          },
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.messageText = $event.target.value
           }
-          _vm.messageText = $event.target.value
         }
-      }
-    }),
+      })
+    ]),
     _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-primary",
-        staticStyle: { "border-radius": "1px" },
-        on: { click: _vm.sendMessage }
-      },
-      [_vm._v("Send")]
-    )
+    _c("div")
   ])
 }
 var staticRenderFns = []

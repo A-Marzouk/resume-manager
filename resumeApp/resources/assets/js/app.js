@@ -89,7 +89,9 @@ const app = new Vue({
                 });
                 //scroll down :
                 if ($("#chatBox").length ){
-                    $('#chatBox').animate({scrollTop: $('#chatBox')[0].scrollHeight}, 'slow');
+                    setTimeout(function(){
+                        $('#chatBox').animate({scrollTop: $('#chatBox')[0].scrollHeight}, 'slow');
+                    }, 500);
                 }
                 if ($("#chatLogs").length ){
                     setTimeout(function(){

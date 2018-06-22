@@ -27,7 +27,7 @@ Vue.component('chat-log', require('./components/chatLog.vue'));
 Vue.component('chat-composer', require('./components/chatComposer.vue'));
 
 const app = new Vue({
-    el: '#app',
+    el: '#VueChat',
     data:{
         messages:[],
         usersInRoom:[],
@@ -61,6 +61,9 @@ const app = new Vue({
         var pageUrl = window.location.pathname;
         var partsOfUrl = pageUrl.split('/');
         var conversationID = partsOfUrl[partsOfUrl.length-1];
+        if(conversationID == 'client'){
+            conversationID = '';
+        }
         axios.get('/messages/'+conversationID).then(response =>{
             this.messages = response.data;
         });
@@ -78,6 +81,9 @@ const app = new Vue({
                 var pageUrl = window.location.pathname;
                 var partsOfUrl = pageUrl.split('/');
                 var conversationID = partsOfUrl[partsOfUrl.length-1];
+                if(conversationID == 'client'){
+                    conversationID = '';
+                }
                 axios.get('/messages/'+conversationID).then(response =>{
                     this.messages = response.data;
                 });

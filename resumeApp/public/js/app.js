@@ -14322,7 +14322,7 @@ Vue.component('chat-log', __webpack_require__(53));
 Vue.component('chat-composer', __webpack_require__(58));
 
 var app = new Vue({
-    el: '#app',
+    el: '#VueChat',
     data: {
         messages: [],
         usersInRoom: []
@@ -14358,6 +14358,9 @@ var app = new Vue({
         var pageUrl = window.location.pathname;
         var partsOfUrl = pageUrl.split('/');
         var conversationID = partsOfUrl[partsOfUrl.length - 1];
+        if (conversationID == 'client') {
+            conversationID = '';
+        }
         axios.get('/messages/' + conversationID).then(function (response) {
             _this.messages = response.data;
         });
@@ -14374,6 +14377,9 @@ var app = new Vue({
             var pageUrl = window.location.pathname;
             var partsOfUrl = pageUrl.split('/');
             var conversationID = partsOfUrl[partsOfUrl.length - 1];
+            if (conversationID == 'client') {
+                conversationID = '';
+            }
             axios.get('/messages/' + conversationID).then(function (response) {
                 _this.messages = response.data;
             });

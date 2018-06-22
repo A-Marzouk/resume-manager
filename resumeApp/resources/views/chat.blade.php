@@ -4,7 +4,7 @@
     <div id="app" class="container col-6">
         <h1 style="color: gainsboro; padding: 10px;">Talk to sales</h1>
         <div class="container">
-           <chat-log :messages="messages"></chat-log>
+           <chat-log :messages="messages" id="chatLogs"></chat-log>
        </div><br/>
         <div class="container">
             {{-- v-on:messageSent means when the event is emited --}}

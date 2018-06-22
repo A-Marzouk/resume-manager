@@ -562,6 +562,11 @@
                 $('#chatBox').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
             }, 1000);
         }
+        if ($("#chatLogs").length ){
+            setTimeout(function(){
+                $('html,body').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
+            }, 1000);
+        }
 
     });
 

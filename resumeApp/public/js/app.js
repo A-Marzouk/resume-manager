@@ -14345,7 +14345,9 @@ var app = new Vue({
                 }
             });
             //scroll down :
-            $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 'slow');
+            if ($("#chatBox").length) {
+                $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 'slow');
+            }
             // save to DB and so on.
             axios.post('/messages', message);
         }
@@ -14368,6 +14370,15 @@ var app = new Vue({
             axios.get('/messages/').then(function (response) {
                 _this.messages = response.data;
             });
+            //scroll down :
+            if ($("#chatBox").length) {
+                $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 'slow');
+            }
+            if ($("#chatLogs").length) {
+                setTimeout(function () {
+                    $('html,body').animate({ scrollTop: $("#sendMessage").offset().top }, 'slow');
+                }, 1000);
+            }
         });
     }
 });

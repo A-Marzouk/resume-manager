@@ -177,19 +177,19 @@ if($user){
         </div>
         <div id="VueChat">
             <div class="container">
-                <div class="empty" v-show="messages.length === 1" style="padding-top:330px;">
+                <div class="empty" v-if="messages.length === 1" style="padding-top:330px;">
                     <div class="text-info text text-chat">Hi, how can I hep you ?</div>
                 </div>
-                <div class="empty" v-show="messages.length === 2" style="padding-top:330px;">
+                <div class="empty" v-else-if="messages.length === 2" style="padding-top:330px;">
                     <div class="text-info text text-chat">Hi, how can I hep you ?</div>
                 </div>
-                <div class="empty" v-show="messages.length === 3" style="padding-top:330px;">
+                <div class="empty" v-else-if="messages.length === 3" style="padding-top:330px;">
                     <div class="text-info text text-chat">Hi, how can I hep you ?</div>
                 </div>
-                <div class="empty" v-show="messages.length === 4" style="padding-top:330px;">
+                <div class="empty" v-else="messages.length === 4" style="padding-top:330px;">
                     <div class="text-info text text-chat">Hi, how can I hep you ?</div>
                 </div>
-                <chat-log :messages="messages" style="padding-top:150px;"></chat-log>
+                <chat-log :messages="messages" style="padding-top:50px;"></chat-log>
             </div><br/>
             <div class="container">
                 {{-- v-on:messageSent means when the event is emited --}}

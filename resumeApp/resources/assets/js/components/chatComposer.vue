@@ -1,8 +1,9 @@
 <template lang="html">
     <div>
         <div class="chat-composer">
-            <input type="text" class="panelFormInput" placeholder=" Type your message.." v-model="messageText"
+            <input type="text" class="" placeholder=" Type your message.." v-model="messageText"
                    v-on:keydown.enter="sendMessage" autofocus id="sendMessage">
+            <button class="btn btn-primary" @click="sendMessage">Send</button>
         </div>
         <div>
             <!--<small class="typing">Typing...</small>-->

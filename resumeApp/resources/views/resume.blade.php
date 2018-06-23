@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Responsive Personal Portfolio vCard Template">
+        <meta name="description" content="Responsive Personal Portfolio 123-workforce">
         <meta name="author" content="Ahmed Marzouk">
         <title>{{$user->name}} Resume</title>
 

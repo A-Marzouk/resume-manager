@@ -51,6 +51,13 @@ class ChatController extends Controller
         $message->message         = $request->message;
         if(isset($this->conversation->id)){
             $message->conversation_id = $this->conversation->id; // visitor or client
+
+            // send a message to telegram if it is the first message in conversation :
+            $messages = $this->conversation->messages;
+            if(count($messages) == 0){
+                $notify = new NotificationsController;
+                $notify->liveChatTelegram($this->conversation->id,$request->message);
+            }
         }else{
             $pageUrl = $request->pageUrl;
             $urlArray = explode('/',$pageUrl);

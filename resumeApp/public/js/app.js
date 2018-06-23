@@ -14387,7 +14387,7 @@ var app = new Vue({
             if ($("#chatBox").length) {
                 setTimeout(function () {
                     $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 'slow');
-                }, 500);
+                }, 1500);
             }
             if ($("#chatLogs").length) {
                 setTimeout(function () {

@@ -45,6 +45,16 @@ class NotificationsController extends Controller
         $telegram->sendMessage($msg);
     }
 
+    public function liveChatTelegram($conversationID,$msg){
+        $message  = 'Hi, a new message to live-chat : ';
+        $message .=  ' " '.$msg.' "' ;
+        $message .=  ' To open conversation and reply now please click on this link :' ;
+        $message .=  ' ( https://123workforce.com/admin/chat/'.$conversationID ;
+        $message .= ') Thank you..' ;
+        $telegram = new Telegram('-228260999');
+        $telegram->sendMessage($message);
+    }
+
     public function freelancerRegisteredEmail($data){
         $emails = $this->emailsForNewFreelancers;
         Mail::send('emails.freelancer_registered',$data, function($message) use ($emails)

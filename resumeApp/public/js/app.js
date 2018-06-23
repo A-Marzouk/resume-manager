@@ -53412,6 +53412,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -53455,7 +53456,6 @@ var render = function() {
             expression: "messageText"
           }
         ],
-        staticClass: "panelFormInput",
         attrs: {
           type: "text",
           placeholder: " Type your message..",
@@ -53480,7 +53480,13 @@ var render = function() {
             _vm.messageText = $event.target.value
           }
         }
-      })
+      }),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", on: { click: _vm.sendMessage } },
+        [_vm._v("Send")]
+      )
     ]),
     _vm._v(" "),
     _c("div")

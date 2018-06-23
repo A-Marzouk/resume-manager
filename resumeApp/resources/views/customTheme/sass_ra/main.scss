@@ -1243,7 +1243,8 @@ body{
   overflow-y: auto;
   padding: 0 0 20px 0;
   @media only screen and (max-width: 600px) {
-    padding-top: 14px !important;
+    top: 50px !important;
+    right: 10px !important;
   }
 }
 

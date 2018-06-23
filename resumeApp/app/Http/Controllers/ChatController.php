@@ -58,6 +58,7 @@ class ChatController extends Controller
                 $notify = new NotificationsController;
                 $notify->liveChatTelegram($this->conversation->id,$request->message);
             }
+
         }else{
             $pageUrl = $request->pageUrl;
             $urlArray = explode('/',$pageUrl);

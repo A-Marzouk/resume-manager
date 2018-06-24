@@ -153,7 +153,7 @@ if($user){
 {{-- Chat box --}}
 <div>
     <? if(!$admin):?>
-    <div id="chatBox" class="col-md-3 col-12 col-lg-3">
+    <div id="chatBox" class="col-md-3 col-12 col-lg-3 d-none">
         <div class="chatHeading">
             <div class="text btn-block">
                         <span style="padding-right: 5px;">
@@ -177,16 +177,16 @@ if($user){
         </div>
         <div id="VueChat">
             <div class="container">
-                <div class="empty" v-if="messages.length === 1" style="padding-top:330px;">
+                <div class="empty" v-if="messages.length === 1" style="padding-top:250px;">
                     <div class="text-info text text-chat">Hi, how can I hep you ?</div>
                 </div>
-                <div class="empty" v-else-if="messages.length === 2" style="padding-top:330px;">
+                <div class="empty" v-else-if="messages.length === 2" style="padding-top:250px;">
                     <div class="text-info text text-chat">Hi, how can I hep you ?</div>
                 </div>
-                <div class="empty" v-else-if="messages.length === 3" style="padding-top:330px;">
+                <div class="empty" v-else-if="messages.length === 3" style="padding-top:250px;">
                     <div class="text-info text text-chat">Hi, how can I hep you ?</div>
                 </div>
-                <div class="empty" v-else="messages.length === 4" style="padding-top:330px;">
+                <div class="empty" v-else-if="messages.length === 4" style="padding-top:250px;">
                     <div class="text-info text text-chat">Hi, how can I hep you ?</div>
                 </div>
                 <chat-log :messages="messages" style="padding-top:50px;"></chat-log>
@@ -638,12 +638,14 @@ if($user){
         if($('#chatBox').length){
             $("#liveChat").click(function(){
                 $("#chatBox").animate({right: '10px',bottom:'10px',opacity:'1'});
+                $("#chatBox").removeClass('d-none');
                 // close the navbar
                 $('#navBarToggle').click();
             });
 
             $("#closeChat").click(function(){
                 $("#chatBox").animate({bottom: '-550px',opacity:'1'});
+                $("#chatBox").addClass('d-none');
             });
         }
 

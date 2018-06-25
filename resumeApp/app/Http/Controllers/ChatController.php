@@ -44,6 +44,20 @@ class ChatController extends Controller
         return view('chat');
     }
 
+    public function storeMessageFromMail(Request $request){
+        $message                  = new Message;
+        $message->message         = $request->message;
+        $message->conversation_id = $request->conversationID;
+        $message->user_id         = 2; // admin
+        $message->save();
+
+        // trigger an event to announce that a message has been posted !
+        event(new MessagePosted($message,$this->user));
+
+        return redirect('/');
+
+    }
+
 
     public function storeMessages(Request $request){
         $this->setCurrentUser();
@@ -77,6 +91,10 @@ class ChatController extends Controller
         // trigger an event to announce that a message has been posted !
 
         event(new MessagePosted($message,$this->user));
+
+        // send notification to admin to reply :
+        $notifyMail = new NotificationsController;
+        $notifyMail->messageToAdminMail($message);
 
         return [
             'status' => 'ok'

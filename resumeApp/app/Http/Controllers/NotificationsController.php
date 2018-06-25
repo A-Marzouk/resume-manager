@@ -37,6 +37,18 @@ class NotificationsController extends Controller
         });
     }
 
+    public function messageToAdminMail($userMessage){
+        $email = 'AhmedMarzouk266@gmail.com';
+        $data  = [
+            'userMessage' => $userMessage->message,
+            'conversation_id' => $userMessage->conversation_id,
+        ];
+        Mail::send('emails.newMessage',$data, function($message) use ($email)
+        {
+            $message->to($email)->subject('User has updated resume !');
+        });
+    }
+
     public function resumeEditedTelegram(){
         $msg = auth()->user()->username ;
         $msg .= ' has updated his resume .. please view updated resume here..  ';

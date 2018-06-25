@@ -10,6 +10,7 @@ use App\User;
 use App\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class ChatController extends Controller
 {
@@ -44,17 +45,17 @@ class ChatController extends Controller
         return view('chat');
     }
 
-    public function storeMessageFromMail(Request $request){
+    public function storeMessageFromMail(){
         $message                  = new Message;
-        $message->message         = $request->message;
-        $message->conversation_id = $request->conversationID;
+        $message->message         = Input::get('message');
+        $message->conversation_id = Input::get('conversationID');
         $message->user_id         = 2; // admin
         $message->save();
 
         // trigger an event to announce that a message has been posted !
         event(new MessagePosted($message,$this->user));
 
-        return redirect('/');
+        return view('messageSent');
 
     }
 

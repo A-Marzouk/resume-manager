@@ -45,7 +45,7 @@ class NotificationsController extends Controller
         ];
         Mail::send('emails.newMessage',$data, function($message) use ($email)
         {
-            $message->to($email)->subject('User has updated resume !');
+            $message->to($email)->subject('New Message to live-chat !');
         });
     }
 

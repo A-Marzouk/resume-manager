@@ -46,17 +46,16 @@ class ChatController extends Controller
     }
 
     public function storeMessageFromMail(){
-        $message                  = new Message;
-        $message->message         = Input::get('message');
-        $message->conversation_id = Input::get('conversationID');
-        $message->user_id         = 2; // admin
-        $message->save();
-
-        // trigger an event to announce that a message has been posted !
-        event(new MessagePosted($message,$this->user));
-
-        return view('messageSent');
-
+        if( Input::get('token') == 'AdminReply164362df624de053FromEmail'){
+            $message                  = new Message;
+            $message->message         = Input::get('message');
+            $message->conversation_id = Input::get('conversationID');
+            $message->user_id         = 2; // admin
+            $message->save();
+            // trigger an event to announce that a message has been posted !
+            event(new MessagePosted($message,$this->user));
+            return redirect('/messagesent');
+        }
     }
 
 

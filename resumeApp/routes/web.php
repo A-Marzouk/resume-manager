@@ -77,6 +77,9 @@ Route::get('/chat','ChatController@showChatRoom');
 Route::post('/messages/','ChatController@storeMessages');
 Route::get('/chat/store/message','ChatController@storeMessageFromMail');
 Route::get('/messages/','ChatController@getMessages');
+Route::get('/messagesent',function (){
+  return view('messageSent');
+});
 Route::get('/messages/{conv_id}','ChatController@getMessages');
 Route::get('/chat/{id}','ChatController@showAdminChatRoom')->middleware('admin');
 

@@ -75,7 +75,7 @@ Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser
 // chatting routes :
 Route::get('/chat','ChatController@showChatRoom');
 Route::post('/messages/','ChatController@storeMessages');
-Route::post('/messages/store','ChatController@storeMessageFromMail');
+Route::post('/chat/store/message','ChatController@storeMessageFromMail');
 Route::get('/messages/','ChatController@getMessages');
 Route::get('/messages/{conv_id}','ChatController@getMessages');
 Route::get('/chat/{id}','ChatController@showAdminChatRoom')->middleware('admin');

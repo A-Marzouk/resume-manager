@@ -6,8 +6,7 @@
       You have a new message :<br/>
       Message text : <b>{{$userMessage}}</b><br/>
     </div>
-        <form method="post" action="123workforce.magictimeapps.com/messages/store" style="padding-top: 30px;">
-            {{csrf_field()}}
+        <form method="post" action="123workforce.magictimeapps.com/chat/store/message" style="padding-top: 30px;">
             <div class="form-group">
                 <span class="mailText">Reply :</span> <br/>
                 <textarea type="text" rows='4' class="form-control" name="message"></textarea><br/>

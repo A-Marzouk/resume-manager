@@ -77,7 +77,11 @@ if($user){
                         <a class="nav-item nav-link customNavLink <?if($curPage == 'client'):?>active<?endif;?>" href="/client/register/" data-toggle="modal" data-target="#exampleModalCenter">Become a client</a>
                     <? endif; ?>
                     <a class="nav-item nav-link customNavLink" href="#" data-toggle="modal" data-target="#talkToSales">Talk to sales</a>
+                    <? if($admin):?>
+                    <a class="nav-item nav-link customNavLink" href="/admin" style="color:#0290D8;">Admin-area</a>
+                <?else :?>
                     <a class="nav-item nav-link customNavLink" href="javascript:void(0)" id="liveChat" style="color:#0290D8;">Live-chat</a>
+                <? endif;?>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

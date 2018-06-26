@@ -53050,6 +53050,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['message']
@@ -53080,19 +53084,35 @@ var render = function() {
                   )
                 ])
               ])
-            : _c("div", [
-                _c("div", { staticClass: "messageTextVisitor" }, [
-                  _vm._v(_vm._s(_vm.message.message))
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "name" }, [
-                  _vm._v(
-                    _vm._s(_vm.message.user.firstName) +
-                      "  " +
-                      _vm._s(_vm.message.created_at)
-                  )
+            : _vm.message.user.lastName == null
+              ? _c("div", [
+                  _c("div", { staticClass: "messageTextVisitor" }, [
+                    _vm._v(_vm._s(_vm.message.message))
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "name" }, [
+                    _vm._v(
+                      _vm._s(_vm.message.user.firstName) +
+                        "  " +
+                        _vm._s(_vm.message.created_at)
+                    )
+                  ])
                 ])
-              ])
+              : _vm.message.user.lastName !== null
+                ? _c("div", [
+                    _c("div", { staticClass: "messageText" }, [
+                      _vm._v(_vm._s(_vm.message.message))
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "name" }, [
+                      _vm._v(
+                        _vm._s(_vm.message.user.firstName) +
+                          "  " +
+                          _vm._s(_vm.message.created_at)
+                      )
+                    ])
+                  ])
+                : _vm._e()
         ])
       : _vm.message.visitor !== null
         ? _c("div", [

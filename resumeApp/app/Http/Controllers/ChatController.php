@@ -111,6 +111,23 @@ class ChatController extends Controller
                 $this->user   = $user;
                 $this->var_id = 'user_id';
                 // conversation ID is already set by session
+            }else{
+                // freelancer
+                if(!empty(session()->get('freelancerConversationId'))){
+                    $this->conversation = Conversation::where('id',session()->get('freelancerConversationId'))->first();
+                }else{
+                    // check if the client has a conversation before :
+                    $freelancerConversation = Conversation::where('user_id',$user->id)->first();
+                    if($freelancerConversation == null){
+                        $freelancerConversation = new Conversation;
+                        $freelancerConversation->user_id = $user->id;
+                        $freelancerConversation->save();
+                        session()->put('freelancerConversationId',$freelancerConversation->id);
+                    }
+                    $this->conversation = $freelancerConversation;
+                }
+                $this->user   = $user;
+                $this->var_id = 'user_id';
             }
         }elseif($client){
             if(!empty(session()->get('clientConversationId'))){

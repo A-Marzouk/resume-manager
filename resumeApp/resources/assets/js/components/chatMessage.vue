@@ -5,8 +5,12 @@
                 <div class="messageTextAdmin">{{ message.message }}</div>
                 <div class="name">{{ message.user.firstName }} - {{message.created_at}}</div>
             </div>
-            <div v-else>
+            <div v-else-if="message.user.lastName == null">
                 <div class="messageTextVisitor">{{ message.message }}</div>
+                <div class="name">{{ message.user.firstName }}  {{message.created_at}}</div>
+            </div>
+            <div v-else-if="message.user.lastName !== null">
+                <div class="messageText">{{ message.message }}</div>
                 <div class="name">{{ message.user.firstName }}  {{message.created_at}}</div>
             </div>
         </div>

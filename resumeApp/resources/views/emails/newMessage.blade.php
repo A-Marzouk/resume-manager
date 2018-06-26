@@ -12,9 +12,13 @@
             <textarea type="text" rows='4' class="form-control" name="message"></textarea><br/>
             <input type="hidden" value="AdminReply164362df624de053FromEmail" name="token">
             <input type="hidden" value="{{$conversation_id}}" name="conversationID">
-            <input type="submit" class="hireBtn" value="send">
+            <input type="submit" class="btn btn-primary" value="send">
         </div>
-      </form>
+     </form>
+    <div class="mailText">
+        To view conversation please click here :
+        <a href="123workforce.magictimeapps.com/chat/{{$conversation_id}}" class="btn btn-primary">Chat room</a>
+    </div>
     <br/>
     <div class="mailText">
         Kindest Regards,<br/><b>123 Workforce</b>

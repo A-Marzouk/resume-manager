@@ -38,14 +38,14 @@ class NotificationsController extends Controller
     }
 
     public function messageToAdminMail($userMessage){
-        $email = 'AhmedMarzouk266@gmail.com';
+        $emails = ['AhmedMarzouk266@gmail.com','conor@123workforce.com'];
         $data  = [
             'userMessage' => $userMessage->message,
             'conversation_id' => $userMessage->conversation_id,
         ];
-        Mail::send('emails.newMessage',$data, function($message) use ($email)
+        Mail::send('emails.newMessage',$data, function($message) use ($emails)
         {
-            $message->to($email)->subject('New Message to live-chat !');
+            $message->to($emails)->subject('New Message to live-chat !');
         });
     }
 

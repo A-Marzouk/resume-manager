@@ -73,7 +73,94 @@
       <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
       <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/composer" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/erusev/parsedown" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/laravel/cashier" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/fideloper/proxy" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/stripe/stripe-php" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/jakub-onderka/php-console-color" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/dnoegel/php-xdg-base-dir" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/jakub-onderka/php-console-highlighter" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/pusher/pusher-php-server" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/symfony/polyfill-ctype" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings load_method="CUSTOM_LOADER" custom_loader_path="$PROJECT_DIR$/resumeApp/vendor/autoload.php" />
+    </phpunit_settings>
+  </component>
 </project>

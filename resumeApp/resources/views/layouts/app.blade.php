@@ -190,6 +190,7 @@ if($user){
                 $("#liveChat").click(function(){
                     $("#chatBox").animate({right: '10px',bottom:'10px',opacity:'1'});
                     $("#chatBox").removeClass('d-none');
+                    $('#chatBox').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
                     // close the navbar
                     $('#navBarToggle').click();
                 });

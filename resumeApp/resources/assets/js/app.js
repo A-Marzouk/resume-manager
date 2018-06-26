@@ -61,7 +61,7 @@ const app = new Vue({
         var pageUrl = window.location.pathname;
         var partsOfUrl = pageUrl.split('/');
         var conversationID = partsOfUrl[partsOfUrl.length-1];
-        if(conversationID == 'client'|| conversationID == 'freelancer'){
+        if(isNaN(conversationID)){
             conversationID = '';
         }
         axios.get('/messages/'+conversationID).then(response =>{
@@ -81,7 +81,7 @@ const app = new Vue({
                 var pageUrl = window.location.pathname;
                 var partsOfUrl = pageUrl.split('/');
                 var conversationID = partsOfUrl[partsOfUrl.length-1];
-                if(conversationID == 'client' || conversationID == 'freelancer' ){
+                if(isNaN(conversationID)){
                     conversationID = '';
                 }
                 axios.get('/messages/'+conversationID).then(response =>{

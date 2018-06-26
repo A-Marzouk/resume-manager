@@ -10,9 +10,6 @@
 
     <title>123 Workforce</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <link rel="shortcut icon" href="/resumeApp/resources/views/customTheme/images/logo123.png">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -24,13 +21,23 @@
     <link href="/resumeApp/resources/views/customTheme/css/freelancerForm.css" rel="stylesheet">
 </head>
 <body>
+
+<?
+$admin = false;
+$user = auth()->user();
+if($user){
+    if($user->admin == 1){
+        $admin = true;
+    }
+}
+?>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel fixed-top">
             <div class="container">
                 <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
                     <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -38,6 +45,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav">
                         <a class="nav-item nav-link customNavLink active" href="/freelancer">Freelancers</a>
+                        <? if(!$admin):?>
+                            <a class="nav-item nav-link customNavLink" href="javascript:void(0)" id="liveChat" style="color:#0290D8;">Live-chat</a>
+                        <? endif;?>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -106,7 +116,90 @@
             </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="/resumeApp/resources/views/customTheme/js/main.js"></script>
+
+    {{-- Chat box --}}
+    <div>
+        <? if(!$admin):?>
+        <div id="chatBox" class="col-md-3 col-12 col-lg-3 d-none">
+            <div class="chatHeading">
+                <div class="text btn-block">
+                        <span style="padding-right: 5px;">
+                            <img src="/resumeApp/resources/views/customTheme/images/textsms_24px copy.png" width="20px">
+                        </span>
+                    Chat with us
+                    <a href="javascript:void(0)" id="closeChat"> <img src="/resumeApp/resources/views/customTheme/images/Rectangle.png"
+                                                                      width="15px"> </a>
+                </div>
+                <div class="secondText btn-block">
+                    <div class="row">
+                        <div style="padding-top: 8px;">
+                            <img src="/resumeApp/resources/views/customTheme/images/logo123.png" width="36px">
+                        </div>
+                        <div class="">
+                            <span style="color: #637280;font-family: Roboto;font-size: 12px;">We're Here to Help!</span><br/>
+                            <span style="color: #00CE6B;font-family: Roboto;font-size: 12px;">online</span>
+                        </div><hr>
+                    </div>
+                </div>
+            </div>
+            <div id="VueChat">
+                <div class="container">
+                    <div class="empty" v-if="messages.length === 1" style="padding-top:250px;">
+                        <div class="text-info text text-chat">Hi, how can I hep you ?</div>
+                    </div>
+                    <div class="empty" v-else-if="messages.length === 2" style="padding-top:250px;">
+                        <div class="text-info text text-chat">Hi, how can I hep you ?</div>
+                    </div>
+                    <div class="empty" v-else-if="messages.length === 3" style="padding-top:250px;">
+                        <div class="text-info text text-chat">Hi, how can I hep you ?</div>
+                    </div>
+                    <div class="empty" v-else-if="messages.length === 4" style="padding-top:250px;">
+                        <div class="text-info text text-chat">Hi, how can I hep you ?</div>
+                    </div>
+                    <chat-log :messages="messages" style="padding-top:50px;"></chat-log>
+                </div><br/>
+                <div class="container">
+                    {{-- v-on:messageSent means when the event is emited --}}
+                    {{-- addMessage method should be defiened on the root scope not components--}}
+                    <chat-composer v-on:messagesent="addMessage"></chat-composer>
+                </div>
+            </div>
+        </div>
+        <? endif;?>
+    </div>
+<script type="text/javascript" src="/resumeApp/public/js/app.js"></script>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="/resumeApp/resources/views/customTheme/js/main.js"></script>
+    <script>
+        $(document).ready(function(){
+            if ($("#sendMessage").length ){
+                setTimeout(function(){
+                    $('#chatBox').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
+                    }, 1000);
+            }
+            if ($("#chatLogs").length ){
+                setTimeout(function(){
+                    $('html,body').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
+                }, 1000);
+            }
+
+            if($('#chatBox').length){
+                $("#liveChat").click(function(){
+                    $("#chatBox").animate({right: '10px',bottom:'10px',opacity:'1'});
+                    $("#chatBox").removeClass('d-none');
+                    // close the navbar
+                    $('#navBarToggle').click();
+                });
+
+                $("#closeChat").click(function(){
+                    $("#chatBox").animate({bottom: '-550px',opacity:'1'});
+                    $("#chatBox").addClass('d-none');
+                });
+            }
+        });
+    </script>
 </body>
 </html>

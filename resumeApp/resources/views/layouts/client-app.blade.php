@@ -160,7 +160,7 @@ if($user){
                             <img src="/resumeApp/resources/views/customTheme/images/textsms_24px copy.png" width="20px">
                         </span>
                 Chat with us
-                <a href="#" id="closeChat"> <img src="/resumeApp/resources/views/customTheme/images/Rectangle.png"
+                <a href="javascript:void(0)" id="closeChat"> <img src="/resumeApp/resources/views/customTheme/images/Rectangle.png"
                                                  width="15px"> </a>
             </div>
             <div class="secondText btn-block">

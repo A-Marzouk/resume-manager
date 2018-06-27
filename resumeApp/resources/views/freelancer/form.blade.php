@@ -434,6 +434,10 @@
                         <div class="col-md-2">
                             <a class="btn btn-danger btn-block" href="javascript:void(0)" id="deleteAudio">Delete</a>
                         </div>
+
+                        <div id="loadingText" class="d-none" style="color:lightseagreen; padding: 10px;">
+                            Processing audio...
+                        </div>
                     </div>
                     <div class="row" style="padding-top: 30px;">
                         <div class="col-md-4 offset-md-4">

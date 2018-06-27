@@ -1,5 +1,9 @@
 @extends('layouts.app')
-<? use App\Client;use App\User;use App\Visitor;extract($data); ?>
+<?
+    use App\Client;use App\User;use App\Visitor;
+    extract($data);
+
+?>
 
 @section('content')
     <div class="container">
@@ -40,6 +44,7 @@
                         <th scope="col">Link to Resume</th>
                         <th scope="col">Profession</th>
                         <th scope="col"></th>
+                        <th scope="col">Empty Fields</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -53,7 +58,36 @@
                         <td><a href="/{{$user->username}}" target="_blank">Resume</a></td>
                         <td>{{$user->profession}}</td>
                         <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Edit</a> - <a class="btn btn-sm btn-danger" href="{{route('freelancer.delete',$user->id)}}"  onclick="return confirm('Are you sure you want to delete {{$user->firstName}} {{$user->lastName}}?');">Delete</a></td>
+                        <? if($user->isComplete()):?>
+                        <td>
+                            <span style="color: green;">Profile Complete</span>
+                        </td>
+                        <? else:?>
+                        <td>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li>
+                                    <a href="#fields{{$user->id}}"  class="btn btn-outline-info" role="tab" data-toggle="tab">
+                                        Show
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#hide{{$user->id}}" class="btn btn-outline-primary btn-small" role="tab" data-toggle="tab">Hide</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane" id="fields{{$user->id}}">
+                                    <br/>
+                                    <? foreach ($user->emptyFields as $data):?>
+                                        <li>{{$data}}</li>
+                                    <? endforeach;?>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="hide{{$user->id}}">
+                                </div>
+                            </div>
+                        </td>
+                        <? endif;?>
                     </tr>
+
 
                     <? $i++;?>
                     <? endforeach;?>
@@ -131,7 +165,6 @@
             </div>
 
         </div>
-
-
     </div>
+
 @endsection

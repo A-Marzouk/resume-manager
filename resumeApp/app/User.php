@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    public $emptyFields ;
 
     use Notifiable;
 
@@ -36,5 +37,35 @@ class User extends Authenticatable
 
     public function messages(){
         return $this->hasMany(Message::class);
+    }
+
+    public function isComplete(){
+        $userData = $this->userData->attributes;
+        $except    = ['birth_date','nationality','terms','googleCalendar','workForceAgent','preferredTime','surname'];
+        if($this->profession == 'Developer'){
+            array_push($except,'dribbleLink','instagramLink');
+        }elseif($this->profession == 'Designer'){
+            array_push($except,'githubLink','stackoverflowLink');
+        }
+        $emptyFields = [];
+        foreach ($userData as $key => $data){
+            if($data == null || empty($data) ){
+                if($key == 'audio' || $key == 'audioFile'){
+                    continue;
+                }
+                if(in_array($key,$except)){
+                    continue;
+                }
+                $emptyFields[] = $key;
+            }
+        }
+
+        $this->emptyFields =  $emptyFields;
+
+        if(count($emptyFields) > 0){
+            return false;
+        }
+        return true;
+
     }
 }

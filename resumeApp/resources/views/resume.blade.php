@@ -47,7 +47,7 @@
         ?>
 
         <div id="navBar">
-            <nav class="navbar navbar-expand-lg customNav">
+            <nav class="navbar navbar-expand-lg customNav fixed-top">
                 <a class="navbar-brand col-9 col-md-3" href="/">
                     <img src="resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
                 </a>

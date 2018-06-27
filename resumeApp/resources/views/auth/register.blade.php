@@ -120,7 +120,7 @@
                                         <input class="form-check-input" type="checkbox" value="true" id="englishLevel"
                                                name="englishLevel" required>
                                         <label class="form-check-label rememberText" for="defaultCheck1">
-                                            I confirm that I have a high enough level of English speaking and writing, to be
+                                            I confirm that I have high enough level of English speaking and writing, to be
                                             able to effectively communicate with clients.
                                         </label>
                                         @if ($errors->has('englishLevel'))

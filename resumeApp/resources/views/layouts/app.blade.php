@@ -200,6 +200,7 @@ if($user){
                     $("#chatBox").addClass('d-none');
                 });
             }
+
         });
     </script>
 </body>

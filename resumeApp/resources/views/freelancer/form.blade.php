@@ -293,7 +293,7 @@
                             <label for="audio_intro" class="panelFormLabel">Expected Salary in (US Dollars ) USD per hour <span id="tickMarksalary" class="d-none">&#10003</span></label><br/>
                             <div>
                                 <input type="text" style="padding: 4px 2px 8px 2px;" class="form-control panelFormInput d-inline-block col-md-2" id="salary" name="salary" value="<? if(!empty($salary)){echo $salary;}else{echo 0;}?>">
-                                <input class="custom-select col-md-3 panelFormInput" id="currency" name="currency" value="USD">
+                                <input style="padding: 4px 2px 8px 2px;" class="form-control panelFormInput d-inline-block col-md-2" id="currency" name="currency" value="USD">
                             </div>
                             <? foreach($availableHoursCheckBox as $check):?>
                 <? $hours  = (int)filter_var($check, FILTER_SANITIZE_NUMBER_INT) ?? 1 ;
@@ -433,6 +433,10 @@
                         </div>
                         <div class="col-md-2">
                             <a class="btn btn-danger btn-block" href="javascript:void(0)" id="deleteAudio">Delete</a>
+                        </div>
+
+                        <div id="loadingText" class="d-none" style="color:lightseagreen; padding: 10px;">
+                            Processing audio...
                         </div>
                     </div>
                     <div class="row" style="padding-top: 30px;">

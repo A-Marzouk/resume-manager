@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>123 Workforce</title>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <link rel="shortcut icon" href="/resumeApp/resources/views/customTheme/images/logo123.png">
     <!-- Fonts -->
@@ -19,6 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="/resumeApp/resources/views/customTheme/css/main.css" rel="stylesheet" media="screen">
     <link href="/resumeApp/resources/views/customTheme/css/freelancerForm.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -60,7 +62,7 @@ if($user){
                             </li>
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link customNavLink dropdown-toggle" style="color:#0290D8;" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{auth()->user()->username}} <span class="caret"></span>
                                 </a>
 
@@ -168,10 +170,8 @@ if($user){
         <? endif;?>
     </div>
 <script type="text/javascript" src="/resumeApp/public/js/app.js"></script>
-<script
-        src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <script src="/resumeApp/resources/views/customTheme/js/main.js"></script>
     <script>
         $(document).ready(function(){
@@ -200,6 +200,15 @@ if($user){
                     $("#chatBox").addClass('d-none');
                 });
             }
+
+
+            $('#navBarToggle').on('click',function () {
+                if($('.collapse.navbar-collapse').hasClass('show')){
+                    setTimeout(function(){
+                        $('.collapse.navbar-collapse').removeClass('show');
+                        }, 615);
+                }
+            });
 
         });
     </script>

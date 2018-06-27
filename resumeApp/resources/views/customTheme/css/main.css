@@ -41,9 +41,6 @@ body {
 .navbar-brand img {
   width: 75%; }
 
-.navbar-collapse.collapse.in {
-  display: block !important; }
-
 .loginBtnHolder {
   margin-left: auto; }
 

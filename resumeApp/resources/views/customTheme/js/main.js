@@ -56,9 +56,10 @@ $(document).ready(function () {
     $('#audio_intro').on('change',function () {
         $('#audioIntroForm').attr('src',$(this).val());
         $('#audioIntro')[0].load();
+        $('#loadingText').removeClass('d-none');
         setTimeout(function(){
             location.reload();
-          },2000);
+          },6000);
     });
 
     // deleting photo :
@@ -343,9 +344,10 @@ $(document).ready(function () {
             // change the src of the Audio
             $('#audioIntroForm').attr('src','resumeApp/uploads/'+fileName);
             $('#audioIntro')[0].load();
+            $('#loadingText').removeClass('d-none');
             setTimeout(function(){
                 location.reload();
-            }, 2000);
+            }, 6000);
         });
     });
 

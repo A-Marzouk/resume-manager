@@ -93,9 +93,10 @@ class ChatController extends Controller
         event(new MessagePosted($message,$this->user));
 
         // send notification to admin to reply :
-        $notifyMail = new NotificationsController;
-        $notifyMail->messageToAdminMail($message);
-
+        if($message->user_id != 2){
+            $notifyMail = new NotificationsController;
+            $notifyMail->messageToAdminMail($message);
+        }
         return [
             'status' => 'ok'
         ];

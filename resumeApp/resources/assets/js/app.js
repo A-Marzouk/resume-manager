@@ -87,6 +87,12 @@ const app = new Vue({
                 axios.get('/messages/'+conversationID).then(response =>{
                     this.messages = response.data;
                 });
+
+                axios.get('/chat/get-conv-id/').then(
+                    response => {
+                        console.log(response.data);
+                    }
+                );
                 //scroll down :
                 if ($("#chatBox").length ){
                     setTimeout(function(){

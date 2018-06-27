@@ -77,6 +77,7 @@ Route::get('/chat','ChatController@showChatRoom');
 Route::post('/messages/','ChatController@storeMessages');
 Route::get('/chat/store/message','ChatController@storeMessageFromMail');
 Route::get('/messages/','ChatController@getMessages');
+Route::get('/chat/get-conv-id/','ChatController@getConversationId');
 Route::get('/messagesent',function (){
   return view('messageSent');
 });

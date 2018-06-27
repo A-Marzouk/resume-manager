@@ -61,26 +61,28 @@ if($user){
                                 <a href="{{ route('freelancer.register') }}">{{ __('Join') }}</a>
                             </li>
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link customNavLink dropdown-toggle" style="color:#0290D8;" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{auth()->user()->username}} <span class="caret"></span>
+                            <li class="nav-link">
+                                <a class="customNavLink" style="color:#0290D8;" href="/freelancer">
+                                    {{auth()->user()->username}}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" class="customNavLink" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                    Logout
                                 </a>
 
-                                <div class="dropdown-menu" style="min-width: 0px;" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
-                                    <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
-                                        <a href="{{route('admin.dashboard')}}" class="dropdown-item">Admin area</a>
-                                    <? endif;?>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </li>
+                            <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
+
+                                <li class="nav-link">
+                                    <a href="{{route('admin.dashboard')}}" class="customNavLink">Admin-area</a>
+                                </li>
+                            <? endif;?>
                         @endguest
                     </ul>
                 </div>

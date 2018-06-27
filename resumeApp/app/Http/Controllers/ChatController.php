@@ -33,6 +33,16 @@ class ChatController extends Controller
         return $messages;
     }
 
+    public function getConversationId(){
+        $this->setCurrentUser();
+        if(isset($this->conversation->id)){
+            $conversationId = $this->conversation->id;
+        }else{
+            $conversationId = session()->get('conversation_id');
+        }
+        return $conversationId ;
+    }
+
     public function showChatRoom(){
         if(session()->get('admin') == 'AdminWasHere'){
             return redirect('/admin');

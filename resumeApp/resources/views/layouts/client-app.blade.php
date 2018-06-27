@@ -80,7 +80,7 @@ if($user){
                     <? if($admin || (session()->get('admin') && session()->get('admin') == 'AdminWasHere')):?>
                     <a class="nav-item nav-link customNavLink" href="/admin" style="color:#0290D8;">Admin-area</a>
                 <?else :?>
-                    <a class="nav-item nav-link customNavLink" href="javascript:void(0)" id="liveChat" style="color:#0290D8;">Live-chat</a>
+                    <a class="nav-item nav-link customNavLink" href="#chatOn" id="liveChat" style="color:#0290D8;">Live-chat</a>
                 <? endif;?>
                 </ul>
 

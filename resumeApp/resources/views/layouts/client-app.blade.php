@@ -77,7 +77,7 @@ if($user){
                         <a class="nav-item nav-link customNavLink <?if($curPage == 'client'):?>active<?endif;?>" href="/client/register/" data-toggle="modal" data-target="#exampleModalCenter">Become a client</a>
                     <? endif; ?>
                     <a class="nav-item nav-link customNavLink" href="#" data-toggle="modal" data-target="#talkToSales">Talk to sales</a>
-                    <? if($admin):?>
+                    <? if($admin || (session()->get('admin') && session()->get('admin') == 'AdminWasHere')):?>
                     <a class="nav-item nav-link customNavLink" href="/admin" style="color:#0290D8;">Admin-area</a>
                 <?else :?>
                     <a class="nav-item nav-link customNavLink" href="javascript:void(0)" id="liveChat" style="color:#0290D8;">Live-chat</a>
@@ -94,26 +94,18 @@ if($user){
                             <a href="{{ route('client.register') }}" data-toggle="modal" data-target="#exampleModalCenter">{{ __('Join') }}</a>
                         </li>
                     <? else: ?>
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::guard('client')->user()->name }} <span class="caret"></span>
-                            </a>
+                        <a class="nav-item nav-link customNavLink" href="/client">
+                            {{ Auth::guard('client')->user()->name }}
+                        </a>
+                        <a class="nav-item nav-link customNavLink" href="{{ route('client.logout') }}"
+                           onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
 
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('client.logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-                                <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
-                                <a href="{{route('admin.dashboard')}}" class="dropdown-item">Admin area</a>
-                                <? endif;?>
-
-                                <form id="logout-form" action="{{ route('client.logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
+                        <form id="logout-form" action="{{ route('client.logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     <? endif;?>
                 </ul>
             </div>

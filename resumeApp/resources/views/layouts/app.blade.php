@@ -20,6 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="/resumeApp/resources/views/customTheme/css/main.css" rel="stylesheet" media="screen">
     <link href="/resumeApp/resources/views/customTheme/css/freelancerForm.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -61,7 +62,7 @@ if($user){
                             </li>
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle active" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link customNavLink dropdown-toggle" style="color:#0290D8;" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{auth()->user()->username}} <span class="caret"></span>
                                 </a>
 
@@ -199,6 +200,15 @@ if($user){
                     $("#chatBox").addClass('d-none');
                 });
             }
+
+
+            $('#navBarToggle').on('click',function () {
+                if($('.collapse.navbar-collapse').hasClass('show')){
+                    setTimeout(function(){
+                        $('.collapse.navbar-collapse').removeClass('show');
+                        }, 615);
+                }
+            });
 
         });
     </script>

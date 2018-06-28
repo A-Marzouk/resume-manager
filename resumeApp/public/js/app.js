@@ -14325,7 +14325,9 @@ var app = new Vue({
     el: '#VueChat',
     data: {
         messages: [],
-        usersInRoom: []
+        usersInRoom: [],
+        currentConvId: '',
+        currentUser: ''
     },
     methods: {
         addMessage: function addMessage(message) {
@@ -14347,6 +14349,11 @@ var app = new Vue({
             //scroll down :
             if ($("#chatBox").length) {
                 $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 'slow');
+            }
+            if ($("#chatLogs").length && this.currentUser.admin == 1) {
+                setTimeout(function () {
+                    $('html,body').animate({ scrollTop: $("#sendMessage").offset().top }, 'slow');
+                }, 2000);
             }
             // save to DB and so on.
             axios.post('/messages', message);
@@ -14385,18 +14392,44 @@ var app = new Vue({
             });
 
             axios.get('/chat/get-conv-id/').then(function (response) {
-                console.log(response.data);
+                _this.currentConvId = response.data.conversationId;
+                _this.currentUser = response.data.user;
             });
-            //scroll down :
-            if ($("#chatBox").length) {
-                setTimeout(function () {
-                    $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 'slow');
-                }, 1500);
+
+            // scroll down : only if message is to this conversation.
+            if (_this.currentConvId === e.message.conversation_id) {
+                if ($("#chatBox").length) {
+                    setTimeout(function () {
+                        $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 'slow');
+                    }, 2000);
+                }
+                if ($("#chatLogs").length) {
+                    setTimeout(function () {
+                        $('html,body').animate({ scrollTop: $("#sendMessage").offset().top }, 'slow');
+                    }, 2000);
+                }
             }
-            if ($("#chatLogs").length) {
+
+            // play sound :
+            var chatAudio = document.getElementById("chatAudio");
+
+            // if user is not admin and message is from admin
+            if (_this.currentUser.admin != 1 && e.message.user_id == 2) {
+                chatAudio.play();
+                // open the chat if it is closed.
+                $('#liveChat').click();
+                // write the head is new message
+                $('#chatText').html('New message !');
+
+                //2 seconds and return it back
                 setTimeout(function () {
-                    $('html,body').animate({ scrollTop: $("#sendMessage").offset().top }, 'slow');
-                }, 1000);
+                    $('#chatText').html('Chat with us');
+                }, 4000);
+            }
+
+            // if message is to admin !
+            if (_this.currentUser.admin == 1 && e.message.user_id != 2) {
+                chatAudio.play();
             }
         });
     }

@@ -40,7 +40,11 @@ class ChatController extends Controller
         }else{
             $conversationId = session()->get('conversation_id');
         }
-        return $conversationId ;
+        $data = [
+            'conversationId' => $conversationId,
+            'user' => $this->user,
+        ];
+        return $data ;
     }
 
     public function showChatRoom(){

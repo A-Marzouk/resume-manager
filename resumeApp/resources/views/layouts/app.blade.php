@@ -88,10 +88,13 @@ if($user){
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>
+        <audio id="chatAudio" class="d-none">
+            <source src="/resumeApp/resources/views/customTheme/sounds/slow-spring-board.mp3" type="audio/ogg">
+            Your browser does not support the audio element.
+        </audio>
         <div class="customFooter">
             <div class="row">
                 <div class="col-md-4 offset-md-1">
@@ -130,7 +133,7 @@ if($user){
                         <span style="padding-right: 5px;">
                             <img src="/resumeApp/resources/views/customTheme/images/textsms_24px copy.png" width="20px">
                         </span>
-                    Chat with us
+                    <span id="chatText">Chat with us</span>
                     <a href="javascript:void(0)" id="closeChat"> <img src="/resumeApp/resources/views/customTheme/images/Rectangle.png"
                                                                       width="15px"> </a>
                 </div>

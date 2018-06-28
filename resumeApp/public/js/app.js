@@ -14397,39 +14397,37 @@ var app = new Vue({
             });
 
             // scroll down : only if message is to this conversation.
-            if (_this.currentConvId === e.message.conversation_id) {
-                if ($("#chatBox").length) {
-                    setTimeout(function () {
-                        $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 'slow');
-                    }, 2000);
-                }
+            if (_this.currentConvId == e.message.conversation_id) {
                 if ($("#chatLogs").length) {
                     setTimeout(function () {
                         $('html,body').animate({ scrollTop: $("#sendMessage").offset().top }, 'slow');
                     }, 2000);
                 }
-            }
+                // play sound :
+                var chatAudio = document.getElementById("chatAudio");
 
-            // play sound :
-            var chatAudio = document.getElementById("chatAudio");
+                // if user is not admin and message is from admin
+                if (_this.currentUser.admin != 1 && e.message.user_id == 2) {
+                    chatAudio.play();
+                    // open the chat if it is closed.
+                    if ($('#chatBox').css('opacity') == 0) {
+                        $('#liveChat').click();
+                    }
+                    // write the head is new message
+                    $('#chatText').html('New message !');
+                    setTimeout(function () {
+                        $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 'slow');
+                    }, 1000);
+                    //2 seconds and return it back
+                    setTimeout(function () {
+                        $('#chatText').html('Chat with us');
+                    }, 4000);
+                }
 
-            // if user is not admin and message is from admin
-            if (_this.currentUser.admin != 1 && e.message.user_id == 2) {
-                chatAudio.play();
-                // open the chat if it is closed.
-                $('#liveChat').click();
-                // write the head is new message
-                $('#chatText').html('New message !');
-
-                //2 seconds and return it back
-                setTimeout(function () {
-                    $('#chatText').html('Chat with us');
-                }, 4000);
-            }
-
-            // if message is to admin !
-            if (_this.currentUser.admin == 1 && e.message.user_id != 2) {
-                chatAudio.play();
+                // if message is to admin !
+                if (_this.currentUser.admin == 1 && e.message.user_id != 2) {
+                    chatAudio.play();
+                }
             }
         });
     }

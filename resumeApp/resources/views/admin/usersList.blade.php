@@ -144,13 +144,25 @@
                             <?
                                 if(isset($conversation->visitor_id)){
                                     $user = Visitor::where('id',$conversation->visitor_id)->first();
-                                    echo $user->firstName;
+                                    if($user){
+                                        echo $user->firstName;
+                                    }else{
+                                        echo 'Unknown visitor';
+                                    }
                                 }elseif(isset($conversation->user_id)){
                                     $user = User::where('id',$conversation->user_id)->first();
-                                    echo $user->firstName.' - Freelancer';
+                                   if($user){
+                                       echo $user->firstName.' - Freelancer';
+                                   }else{
+                                       echo 'Unknown freelancer';
+                                   }
                                 }elseif(isset($conversation->client_id)){
                                     $user = Client::where('id',$conversation->client_id)->first();
-                                    echo $user->firstName.' - Client';
+                                    if($user){
+                                        echo $user->firstName.' - Client';
+                                    }else{
+                                        echo 'Unknown client';
+                                    }
                                 }
                             ?>
                         </th>

@@ -88,6 +88,14 @@ Route::get('/conversation/delete/{id}','ConversationsController@deleteConversati
 
 // notification :
 Route::post('/','NotificationsController@messageToSales')->name('message.to.sales');
+
+// stripe integration test
+Route::get('/stripe/payments','HomeController@stripeTest');
+Route::post('/stripe/payments/pay','HomeController@stripePayment');
+Route::get('/stripe/payments/pay',function(){
+    return redirect()->back();
+});
+
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');
 Route::get('/{username}','HomeController@ResumePage');

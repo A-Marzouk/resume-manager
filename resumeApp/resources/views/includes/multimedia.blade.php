@@ -119,7 +119,7 @@
                     ?>
                     {{$video_file}}
                 <?else:?>
-                    Upload Audio
+                    Upload Video
                 <? endif;?>
                 </label>
             </div>

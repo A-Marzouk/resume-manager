@@ -62,6 +62,40 @@ $(document).ready(function () {
           },6000);
     });
 
+    // link to video :
+    $('#video').on('change',function () {
+        var videoID = getSecondPart( $(this).val());
+        var videoSrc = 'https://www.youtube.com/embed/'+videoID;
+        $('#videoFrame').attr('src',videoSrc);
+        console.log('video src changed')
+    });
+
+    // show video name whn upload :
+    $('#video_file').change(function(e){
+        var fileName = e.target.files[0].name;
+        $('#videoLabel').html(fileName);
+        // change the src of the video
+        $('#videoFileFrame').attr('src','resumeApp/uploads/videos/'+fileName);
+    });
+
+    // delete video :
+    $('#deleteVideo').on('click', function(e){
+        $('#video_file').attr('type','text');
+        $('#video_file').attr('value',0);
+        $('#works0').change();
+        $('#video_file').attr('type','file');
+        $('#videoLabel').html('Upload audio');
+        // change the src of the video
+        $('#videoFileFrame').attr('src','');
+    });
+
+
+    function getSecondPart(str) {
+        if(str.includes('=')){
+            return str.split('=')[1];
+        }
+    }
+
     // deleting photo :
     $('#deletePhoto0').on('click', function(e){
         $('#portfolioImg0').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');
@@ -350,6 +384,7 @@ $(document).ready(function () {
             }, 6000);
         });
     });
+
 
     // change taps on click :
     $('.nextBtn').click(function(e){

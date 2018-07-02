@@ -27,6 +27,8 @@ class UserDataController extends Controller
                    'nationality'=>'max:190',
                    'audioFile'=>'max:190',
                    'audio'=>'max:190',
+                   'video'=>'max:190',
+                   'video_file'=>'max:190',
                    'intro'=>'max:1000',
                    'professional_attributes'=>'max:190',
                    'careerObjective'=>'max:1500',
@@ -67,6 +69,15 @@ class UserDataController extends Controller
                         $pathToAudio = $this->uploadAudio($value,'audioFile','');
                         if($pathToAudio){
                             $userData->{$key} = $pathToAudio ;
+                        }
+                    }
+                }elseif ($key == 'video_file'){
+                    if(is_numeric($value)){
+                        $userData->{$key} = " ";
+                    }else{
+                        $pathToVideo = $this->uploadVideo($value,'video_file','');
+                        if($pathToVideo){
+                            $userData->{$key} = $pathToVideo ;
                         }
                     }
                 }elseif ($key == 'design_skills_checkbox'){
@@ -160,6 +171,32 @@ class UserDataController extends Controller
             'audio/x-midi','audio/wav','audio/x-wav','audio/xm','audio/x-aac','audio/basic',
             'audio/flac','audio/mp4','audio/x-matroska','audio/ogg','audio/s3m','audio/x-ms-wax',
             'audio/xm','audio/x-m4a'];
+
+        // check file type :
+        if(!in_array($_FILES[$name]['type'],$formats)){
+            $uploadOk = 0 ;
+        }
+
+        if ($uploadOk == 0) {
+            return false;
+        } else {
+            $target_file = $target_dir . $newName . basename($_FILES[$name]["name"]);
+            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
+                return $target_file;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    public function uploadVideo($src,$name,$newName){
+        $target_dir = "resumeApp/uploads/videos/";
+        $uploadOk = 1;
+        if ($_FILES[$name]["size"] > 100000000) { // 100 megabyte
+            $uploadOk = 0;
+        }
+        // allowed formats :
+        $formats = ['video/mp4','video/webm','video/ogg'];
 
         // check file type :
         if(!in_array($_FILES[$name]['type'],$formats)){

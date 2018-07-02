@@ -84,7 +84,7 @@ $(document).ready(function () {
         $('#video_file').attr('value',0);
         $('#works0').change();
         $('#video_file').attr('type','file');
-        $('#videoLabel').html('Upload audio');
+        $('#videoLabel').html('Upload video');
         // change the src of the video
         $('#videoFileFrame').attr('src','');
     });

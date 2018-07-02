@@ -35,57 +35,55 @@ if($user){
 ?>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel fixed-top">
-            <div class="container">
-                <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
-                    <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
-                </a>
-                <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
+                <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
+            </a>
+            <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav">
-                        <a class="nav-item nav-link customNavLink active" href="/freelancer">Freelancers</a>
-                        <? if(!$admin):?>
-                            <a class="nav-item nav-link customNavLink" href="javascript:void(0)" id="liveChat" style="color:#0290D8;">Live-chat</a>
-                        <? endif;?>
-                    </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav">
+                    <a class="nav-item nav-link customNavLink active" href="/freelancer">Freelancers</a>
+                    <? if(!$admin):?>
+                        <a class="nav-item nav-link customNavLink" href="javascript:void(0)" id="liveChat" style="color:#0290D8;">Live-chat</a>
+                    <? endif;?>
+                </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-link loginBtn">
-                                <a href="{{ route('freelancer.login') }}">{{ __('Log in') }}</a> <span style="color: #18A6DF;">/</span>
-                                <a href="{{ route('freelancer.register') }}">{{ __('Join') }}</a>
-                            </li>
-                        @else
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                        <li class="nav-link loginBtn">
+                            <a href="{{ route('freelancer.login') }}">{{ __('Log in') }}</a> <span style="color: #18A6DF;">/</span>
+                            <a href="{{ route('freelancer.register') }}">{{ __('Join') }}</a>
+                        </li>
+                    @else
+                        <li class="nav-link">
+                            <a class="customNavLink" style="color:#0290D8;" href="/freelancer">
+                                {{auth()->user()->username}}
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" class="customNavLink" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                        <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
+
                             <li class="nav-link">
-                                <a class="customNavLink" style="color:#0290D8;" href="/freelancer">
-                                    {{auth()->user()->username}}
-                                </a>
+                                <a href="{{route('admin.dashboard')}}" class="customNavLink">Admin-area</a>
                             </li>
-                            <li>
-                                <a class="nav-link" class="customNavLink" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </li>
-                            <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
-
-                                <li class="nav-link">
-                                    <a href="{{route('admin.dashboard')}}" class="customNavLink">Admin-area</a>
-                                </li>
-                            <? endif;?>
-                        @endguest
-                    </ul>
-                </div>
+                        <? endif;?>
+                    @endguest
+                </ul>
             </div>
         </nav>
         <main class="py-4">

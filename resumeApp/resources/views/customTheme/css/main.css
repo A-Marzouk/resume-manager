@@ -14,6 +14,9 @@ body {
   margin-top: 30px;
   opacity: .7; }
 
+.fixed-top {
+  height: 58px !important; }
+
 .customNav {
   -webkit-box-shadow: 0 8px 6px -6px #999;
   -moz-box-shadow: 0 8px 6px -6px #999;
@@ -28,7 +31,9 @@ body {
   font-size: 15px;
   letter-spacing: 0.2px;
   line-height: 16px;
-  text-align: center; }
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 20px; }
   .customNavLink :hover {
     color: #18A6DF !important; }
   .customNavLink.active {
@@ -36,10 +41,13 @@ body {
     border-bottom: #AC81FC 2px solid;
     opacity: 1;
     font-weight: 300;
-    padding-bottom: 10px; }
+    padding-bottom: 20px;
+    padding-top: 20px; }
 
-.navbar-brand img {
-  width: 75%; }
+.navbar-brand {
+  margin-right: 0px !important; }
+  .navbar-brand img {
+    width: 75%; }
 
 .loginBtnHolder {
   margin-left: auto; }
@@ -53,7 +61,9 @@ body {
   margin-left: 300px;
   text-decoration: none !important; }
   .loginBtn a {
-    outline: none; }
+    outline: none;
+    padding-left: 30px;
+    padding-right: 30px; }
   @media only screen and (max-width: 600px) {
     .loginBtn {
       margin-right: 0px;

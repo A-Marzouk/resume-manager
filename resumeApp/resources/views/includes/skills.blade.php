@@ -7,7 +7,7 @@
         </ul>
     </div>
     <div class="form-group col-md-12">
-        <label for="spec_design_skills" class="panelFormLabel">Specific design skills <span id="tickMarkdesign_skills" class="d-none">&#10003</span></label>
+        <label for="spec_design_skills" class="panelFormLabel">Specific design skills <span id="tickMarkdesign_skills" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
         <textarea class="form-control panelFormInput" rows="3" id="spec_design_skills" name="design_skills">{{$design_skills}}</textarea>
     </div> <!-- design skills -->
 
@@ -19,7 +19,7 @@
             Top 6 Development Skills
             <? endif;?>
 
-            <span id="tickMarkdesign_skills_checkbox" class="d-none">&#10003</span>
+            <span id="tickMarkdesign_skills_checkbox" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span>
 
         </label>
         <? $skillsDesigner = [
@@ -152,8 +152,8 @@
     </div> <!-- char skills -->
 
     <div class="row">
-        <div class="col-md-3 offset-md-9">
-            <a class="btn btn-block btn-primary nextBtn nextBtnStyle"  href="#attributes">Next</a>
+        <div class="buttonMain col-md-3 offset-md-9">
+            <a class="btn-block hireBtn nextBtn"  href="#attributes">Next</a>
         </div>
     </div>
 </div>

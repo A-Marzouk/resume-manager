@@ -61,58 +61,54 @@ if($user){
 ?>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel fixed-top">
-        <div class="container">
-            <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
-                <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
-            </a>
-            <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
+            <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
+        </a>
+        <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-                    {{-- if guest : --}}
-                    <? if(auth()->guard('client')->guest()):?>
-                        <a class="nav-item nav-link customNavLink <?if($curPage == 'client'):?>active<?endif;?>" href="/client/register/" data-toggle="modal" data-target="#exampleModalCenter">Become a client</a>
-                    <? endif; ?>
-                    <a class="nav-item nav-link customNavLink" href="#" data-toggle="modal" data-target="#talkToSales">Talk to sales</a>
-                    <? if($admin || (session()->get('admin') && session()->get('admin') == 'AdminWasHere')):?>
-                    <a class="nav-item nav-link customNavLink" href="/admin" style="color:#0290D8;">Admin-area</a>
-                <?else :?>
-                    <a class="nav-item nav-link customNavLink" href="#chatOn" id="liveChat" style="color:#0290D8;">Live-chat</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left Side Of Navbar -->
+            <ul class="navbar-nav mr-auto">
+                {{-- if guest : --}}
+                <? if(auth()->guard('client')->guest()):?>
+                    <a class="nav-item nav-link customNavLink <?if($curPage == 'client'):?>active<?endif;?>" href="/client/register/" data-toggle="modal" data-target="#exampleModalCenter">Become a client</a>
+                <? endif; ?>
+                <a class="nav-item nav-link customNavLink" href="#" data-toggle="modal" data-target="#talkToSales">Talk to sales</a>
+                <? if($admin || (session()->get('admin') && session()->get('admin') == 'AdminWasHere')):?>
+                <a class="nav-item nav-link customNavLink" href="/admin" style="color:#0290D8;">Admin-area</a>
+            <?else :?>
+                <a class="nav-item nav-link customNavLink" href="#chatOn" id="liveChat" style="color:#0290D8;">Live-chat</a>
+            <? endif;?>
+            </ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Authentication Links -->
+                <?php if(auth()->guard('client')->guest()): ?>
+                    <li></li>
+                    <li class="nav-link loginBtn">
+                        <a href="{{ route('client.login') }}" data-toggle="modal" data-target="#loginModal">{{ __('Sign in') }}</a></li>
+                <? else: ?>
+                    <a class="nav-item nav-link customNavLink" href="/client">
+                        {{ Auth::guard('client')->user()->name }}
+                    </a>
+                    <a class="nav-item nav-link customNavLink" href="{{ route('client.logout') }}"
+                       onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('client.logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 <? endif;?>
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    <?php if(auth()->guard('client')->guest()): ?>
-                        <li></li>
-                        <li class="nav-link loginBtn">
-                            <a href="{{ route('client.login') }}" data-toggle="modal" data-target="#loginModal">{{ __('Log in') }}</a> <span style="color: #18A6DF;">/</span>
-                            <a href="{{ route('client.register') }}" data-toggle="modal" data-target="#exampleModalCenter">{{ __('Join') }}</a>
-                        </li>
-                    <? else: ?>
-                        <a class="nav-item nav-link customNavLink" href="/client">
-                            {{ Auth::guard('client')->user()->name }}
-                        </a>
-                        <a class="nav-item nav-link customNavLink" href="{{ route('client.logout') }}"
-                           onclick="event.preventDefault();
-                           document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('client.logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    <? endif;?>
-                </ul>
-            </div>
+            </ul>
         </div>
     </nav>
 
-    <main class="py-4">
+    <main class="py-4" style="padding-bottom:0 !important;">
         @yield('content')
     </main>
 </div>

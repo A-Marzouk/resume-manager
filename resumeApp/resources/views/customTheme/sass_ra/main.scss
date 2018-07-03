@@ -13,12 +13,20 @@ body{
 
 }
 
+// slick :
 .successMessage{
   margin-top: 30px;
   opacity: .7;
 }
 
 // navbar
+
+.fixed-top{
+  height:58px !important;
+  @media only screen and (max-width: 600px){
+    height: auto !important;
+  }
+}
 .customNav{
   -webkit-box-shadow: 0 8px 6px -6px #999;
   -moz-box-shadow: 0 8px 6px -6px #999;
@@ -38,16 +46,20 @@ body{
   letter-spacing: 0.2px;
   line-height: 16px;
   text-align: center;
+  padding-bottom: 20px;
+  padding-top: 20px;
   &.active{
     color: #18A6DF !important;
     border-bottom: #AC81FC 2px solid;
     opacity: 1;
     font-weight: 300;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
+    padding-top: 20px;
   }
 }
 
 .navbar-brand{
+  margin-right: 0px !important;
   img{
     width: 75%;
   }
@@ -57,7 +69,11 @@ body{
   margin-left: auto;
 }
 .loginBtn{
-  a{outline: none;}
+  a{
+    outline: none;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
   padding: 6px 25px 7px 25px;
   border: 1px solid rgba(24, 166, 223, 0.3);
   border-radius: 25px;
@@ -158,7 +174,6 @@ body{
   }
   .hireBtn{
     outline: none;
-    border: 1px solid #44E5EF;
     border-radius: 24px;
     background: linear-gradient(270deg, #45E6EF 0%, #088FD9 100%);
     padding: 13px 0 13px 0;
@@ -444,7 +459,6 @@ body{
   color:#18A6DF;
   font-family: Roboto;
   font-size: 12px;
-  font-weight: bold;
   line-height: 14px;
 }
 
@@ -477,8 +491,8 @@ body{
 }
 
 .customFooter{
-  height: 180px;
   padding-top: 6%;
+  padding-bottom: 100px;
   background: linear-gradient(0deg, #FCFCFC 0%, #FCFCFC 100%);
   @media only screen and (max-width: 600px) {
     height: auto;
@@ -597,9 +611,8 @@ body{
 
   // main section ( one )
   // heading :
-
   #mainSection{
-    background: url("/resumeApp/resources/views/customTheme/images/new_theme/rectangle_big.png");
+    background: url('/resumeApp/resources/views/customTheme/images/new_theme/rectangle_big.png');
     background-position-x:right ;
     background-position-y: 2% ;
     background-size:14% 100% ;
@@ -662,7 +675,6 @@ body{
       text-decoration: none;
     }
     .hireBtn{
-      border: 1px solid #44E5EF;
       border-radius: 24px;
       background: linear-gradient(270deg, #45E6EF 0%, #088FD9 100%);
       padding: 3.5% 20% 3.5% 20%;
@@ -704,7 +716,6 @@ body{
     width: 100%;
     padding: 15px;
     @media only screen and (max-width: 600px) {
-
     }
   }
 
@@ -718,7 +729,7 @@ body{
     transform: translateY(-2px);
     border-radius: 5px;
     background-color: #FFFFFF;
-    box-shadow: 0 11px 16px -7px ;
+    box-shadow: 0 11px 16px -7px #E5ECED;
     transition-duration: 300ms;
   }
 
@@ -815,6 +826,12 @@ body{
     }
   }
 
+  .mapImg{
+    @media only screen and (max-width: 600px){
+      padding-top: 20px !important;
+    }
+  }
+
 
   // dev designer boxes :
 
@@ -851,7 +868,7 @@ body{
   }
 
   .designerLeftSide{
-    padding: 18px;
+    padding-top: 18px;
     h2{
       opacity: 0.9;
       color: #464646;
@@ -859,16 +876,15 @@ body{
       font-size: 14px;
       line-height: 16px;
       padding: 10px;
+      padding-left: 0;
+      padding-right: 0;
       margin-right: 10px;
       @media only screen and (max-width: 600px){
-        padding: 5px 0 0 0;
+        padding: 5px 0 0 0 !important;
       }
     }
     img{
-      width: 20%;
-      @media only screen and (max-width: 600px){
-        width: 20%;
-      }
+      width: 50px;
     }
   }
 
@@ -878,11 +894,19 @@ body{
       opacity: 0.9;
       color: #273D52;
       font-family: Roboto;
-      font-size: 25px;
+      font-size: 1.6rem;
       font-weight: bold;
       line-height: 37px;
       img{
-        width: 7%;
+        width: 20px;
+      }
+      @media only screen and (max-width: 600px){
+        font-size: 1.3rem;
+        border-bottom: 1px solid #F1F1F1;
+        border-top: 1px solid #F1F1F1;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        text-align: left;
       }
     }
 
@@ -902,7 +926,7 @@ body{
 
     .getStartBtn{
       img{
-        width: 6%;
+        width: 8px;
       }
       :hover{
         cursor: pointer;
@@ -932,8 +956,11 @@ body{
       color: #18A6DF;	font-family: Roboto;
       font-size: 30px;	font-weight: bold;	line-height: 35px;
       @media only screen and (max-width: 600px){
-        text-align: center;
+        text-align: left;
         padding-right: 14px;
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 25px;
       }
     }
   }
@@ -954,8 +981,8 @@ body{
 
   // footer :
   .customFooter{
-    height: 180px;
     padding-top: 6%;
+    padding-bottom: 100px;
     background: whitesmoke;
     @media only screen and (max-width: 600px) {
       height: auto;

@@ -14,6 +14,12 @@ body {
   margin-top: 30px;
   opacity: .7; }
 
+.fixed-top {
+  height: 58px !important; }
+  @media only screen and (max-width: 600px) {
+    .fixed-top {
+      height: auto !important; } }
+
 .customNav {
   -webkit-box-shadow: 0 8px 6px -6px #999;
   -moz-box-shadow: 0 8px 6px -6px #999;
@@ -28,7 +34,9 @@ body {
   font-size: 15px;
   letter-spacing: 0.2px;
   line-height: 16px;
-  text-align: center; }
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 20px; }
   .customNavLink :hover {
     color: #18A6DF !important; }
   .customNavLink.active {
@@ -36,10 +44,13 @@ body {
     border-bottom: #AC81FC 2px solid;
     opacity: 1;
     font-weight: 300;
-    padding-bottom: 10px; }
+    padding-bottom: 20px;
+    padding-top: 20px; }
 
-.navbar-brand img {
-  width: 75%; }
+.navbar-brand {
+  margin-right: 0px !important; }
+  .navbar-brand img {
+    width: 75%; }
 
 .loginBtnHolder {
   margin-left: auto; }
@@ -53,7 +64,9 @@ body {
   margin-left: 300px;
   text-decoration: none !important; }
   .loginBtn a {
-    outline: none; }
+    outline: none;
+    padding-left: 30px;
+    padding-right: 30px; }
   @media only screen and (max-width: 600px) {
     .loginBtn {
       margin-right: 0px;
@@ -134,7 +147,6 @@ body {
     text-decoration: none; }
   .buttonMain .hireBtn {
     outline: none;
-    border: 1px solid #44E5EF;
     border-radius: 24px;
     background: linear-gradient(270deg, #45E6EF 0%, #088FD9 100%);
     padding: 13px 0 13px 0;
@@ -366,7 +378,6 @@ body {
   color: #18A6DF;
   font-family: Roboto;
   font-size: 12px;
-  font-weight: bold;
   line-height: 14px; }
 
 .form {
@@ -391,8 +402,8 @@ body {
       padding-bottom: 10px; } }
 
 .customFooter {
-  height: 180px;
   padding-top: 6%;
+  padding-bottom: 100px;
   background: linear-gradient(0deg, #FCFCFC 0%, #FCFCFC 100%); }
   @media only screen and (max-width: 600px) {
     .customFooter {
@@ -539,7 +550,6 @@ body {
     #content .buttonMain a:hover {
       text-decoration: none; }
     #content .buttonMain .hireBtn {
-      border: 1px solid #44E5EF;
       border-radius: 24px;
       background: linear-gradient(270deg, #45E6EF 0%, #088FD9 100%);
       padding: 3.5% 20% 3.5% 20%;
@@ -581,7 +591,7 @@ body {
     transform: translateY(-2px);
     border-radius: 5px;
     background-color: #FFFFFF;
-    box-shadow: 0 11px 16px -7px;
+    box-shadow: 0 11px 16px -7px #E5ECED;
     transition-duration: 300ms; }
   #content .textImg {
     display: none;
@@ -646,6 +656,9 @@ body {
     @media only screen and (max-width: 600px) {
       #content .talentText {
         text-align: center; } }
+  @media only screen and (max-width: 600px) {
+    #content .mapImg {
+      padding-top: 20px !important; } }
   #content #devDesBoxes {
     margin-top: 10px;
     background: url("/background.svg"); }
@@ -667,7 +680,7 @@ body {
       #content .borderRight {
         border: 0; } }
   #content .designerLeftSide {
-    padding: 18px; }
+    padding-top: 18px; }
     #content .designerLeftSide h2 {
       opacity: 0.9;
       color: #464646;
@@ -675,26 +688,33 @@ body {
       font-size: 14px;
       line-height: 16px;
       padding: 10px;
+      padding-left: 0;
+      padding-right: 0;
       margin-right: 10px; }
       @media only screen and (max-width: 600px) {
         #content .designerLeftSide h2 {
-          padding: 5px 0 0 0; } }
+          padding: 5px 0 0 0 !important; } }
     #content .designerLeftSide img {
-      width: 20%; }
-      @media only screen and (max-width: 600px) {
-        #content .designerLeftSide img {
-          width: 20%; } }
+      width: 50px; }
   #content .designerRightSide {
     padding: 20px; }
     #content .designerRightSide h2 {
       opacity: 0.9;
       color: #273D52;
       font-family: Roboto;
-      font-size: 25px;
+      font-size: 1.6rem;
       font-weight: bold;
       line-height: 37px; }
       #content .designerRightSide h2 img {
-        width: 7%; }
+        width: 20px; }
+      @media only screen and (max-width: 600px) {
+        #content .designerRightSide h2 {
+          font-size: 1.3rem;
+          border-bottom: 1px solid #F1F1F1;
+          border-top: 1px solid #F1F1F1;
+          padding-top: 4px;
+          padding-bottom: 4px;
+          text-align: left; } }
     #content .designerRightSide a {
       opacity: 0.9;
       color: #18A6DF;
@@ -718,7 +738,7 @@ body {
       padding: 10px;
       margin-top: 13px; }
       #content .designerRightSide .getStartBtn img {
-        width: 6%; }
+        width: 8px; }
       #content .designerRightSide .getStartBtn :hover {
         cursor: pointer; }
       #content .designerRightSide .getStartBtn a {
@@ -733,8 +753,11 @@ body {
     line-height: 35px; }
     @media only screen and (max-width: 600px) {
       #content .heading h2 {
-        text-align: center;
-        padding-right: 14px; } }
+        text-align: left;
+        padding-right: 14px;
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 25px; } }
   #content .clientsBox {
     height: auto;
     border-radius: 5px;
@@ -747,8 +770,8 @@ body {
       #content .clientsBox {
         height: auto; } }
   #content .customFooter {
-    height: 180px;
     padding-top: 6%;
+    padding-bottom: 100px;
     background: whitesmoke; }
     @media only screen and (max-width: 600px) {
       #content .customFooter {

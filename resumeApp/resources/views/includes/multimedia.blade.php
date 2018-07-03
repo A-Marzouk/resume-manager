@@ -17,7 +17,7 @@
                 }
                 ?>
                 <? if($valid):?>
-                <span id="tickMarkaudio" class="d-none">&#10003</span>
+                <span id="tickMarkaudio" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span>
                 <!--                            --><?// else:?>
                 {{--<span id="tickMarkaudio" style="background: red;" class="d-none">X</span>--}}
             <!--                            --><? endif;?>
@@ -91,7 +91,7 @@
     ?>
     <div class="row">
         <div class="col-md-12">
-            <label class="panelFormLabel">Link from Youtube :</label><span id="tickMarkvideo" class="d-none">&#10003</span>
+            <label class="panelFormLabel">Link from Youtube :</label><span id="tickMarkvideo" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span>
             <input type="text" class="form-control panelFormInput" id="video" name="video"
                    value="{{$video}}"><br/>
             <div class="text-center">
@@ -139,8 +139,8 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3 offset-md-9">
-            <a class="btn btn-block btn-primary nextBtn nextBtnStyle"  href="#career">Next</a>
+        <div class="buttonMain col-md-3 offset-md-9">
+            <a class="btn-block hireBtn nextBtn"  href="#career">Next</a>
         </div>
     </div>
 </div>

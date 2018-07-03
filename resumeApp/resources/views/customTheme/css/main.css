@@ -830,13 +830,11 @@ body {
   background: red; }
 
 [id*="tickMark"] {
-  color: white;
-  background: green;
+  background: none;
   font-size: small;
   font-weight: bolder;
   border-radius: 5px;
-  padding: 2px 4px 1px 4px;
-  margin-left: 10px;
+  margin-left: 8px;
   text-align: center; }
 
 .registerBody {
@@ -894,15 +892,19 @@ body {
     color: #1C4D75;
     font-family: Roboto;
     font-weight: bold;
-    padding-top: 5px; }
+    padding-top: 5px;
+    width: 150px; }
   .tabsArea .tabCircle {
     background-color: whitesmoke;
     margin-bottom: 8%;
     max-width: 45px;
     padding: 12px 0px 8px 0px;
-    border-radius: 50%; }
+    border-radius: 50%;
+    color: #919CA5; }
   .tabsArea .active .tabCircle {
-    background-color: #919CA5; }
+    background-color: #919CA5;
+    color: white;
+    font-weight: bold; }
 
 .panel {
   padding: 35px;
@@ -922,12 +924,16 @@ body {
   border: 0 !important; }
 
 .panelHeading {
+  padding-top: 40px;
   color: #697786;
   font-family: Roboto;
-  font-size: 3vh;
+  font-size: 35px;
   font-weight: 300;
   line-height: 35px;
   padding-bottom: 12px; }
+  @media only screen and (max-width: 600px) {
+    .panelHeading {
+      font-size: 28px; } }
 
 .panelFormLabel {
   color: #A6A9BE;

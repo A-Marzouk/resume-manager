@@ -28,14 +28,14 @@
             Once selected, you will then be asked for Skype interviews.
         </div>
     </div>
-            {{-- tabs section --}}
+            {{-- tabs section first on phone --}}
 
     <div class=".d-none d-xs-block d-sm-block d-md-none carouselTabs">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="">
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active text-center">
                     <a class="tabsArea nextBtn" href="#overview">
-                        <div class="tabText">
+                        <div class="tabText text-center">
                             <span class="tabCircle" style="padding:2px 5px 2px 5px;">1</span><br/>
                             Overview and<br/>
                             personal info
@@ -44,7 +44,7 @@
                 </div>
                 <div class="carousel-item text-center">
                    <a class="tabsArea nextBtn" href="#pay">
-                        <div class="tabText">
+                        <div class="tabText text-center">
                             <span class="tabCircle" style="padding:2px 5px 2px 5px;">2</span><br/>
                             Availablity and<br>
                             pay
@@ -53,7 +53,7 @@
                 </div>
                 <div class="carousel-item text-center">
                     <a class="tabsArea nextBtn" href="#multimedia">
-                        <div class="tabText">
+                        <div class="tabText text-center">
                             <span class="tabCircle" style="padding:2px 5px 2px 5px;">3</span><br/>
                             Multimedia <br/>
                             ( Voice recording / Video )
@@ -62,7 +62,7 @@
                 </div>
                 <div class="carousel-item text-center">
                     <a class="tabsArea nextBtn" href="#career">
-                        <div class="tabText">
+                        <div class="tabText text-center">
                             <span class="tabCircle" style="padding:2px 5px 2px 5px;">4</span><br/>
                             Career overview and <br/>
                             ( Education / Training )
@@ -71,7 +71,7 @@
                 </div>
                 <div class="carousel-item text-center">
                     <a class="tabsArea nextBtn" href="#portfolio">
-                        <div class="tabText">
+                        <div class="tabText text-center">
                             <span class="tabCircle" style="padding:2px 5px 2px 5px;">5</span><br/>
                             Portfolio<br/>Previous work
                         </div>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="carousel-item text-center">
                     <a class="tabsArea nextBtn" href="#skills">
-                        <div class="tabText">
+                        <div class="tabText text-center">
                             <span class="tabCircle" style="padding:2px 5px 2px 5px;">6</span><br/>
                             Professional skills<br/>
                             personal info
@@ -88,7 +88,7 @@
                 </div>
                 <div class="carousel-item text-center">
                     <a class="tabsArea nextBtn" href="#attributes">
-                        <div class="tabText">
+                        <div class="tabText text-center">
                             <span class="tabCircle" style="padding:2px 5px 2px 5px;">7</span><br/>
                             Personal<br/>
                             attributes
@@ -114,14 +114,14 @@
                 <li class="nav-item" id="tap1">
                     <a class="nav-link active text-center tabText" href="#overview" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">1</div>
-                        Overview and<br/>
+                        Overview and
                         personal info
                     </a>
                 </li>
                 <li class="nav-item" id="tap2">
                     <a class="nav-link text-center tabText" href="#pay" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">2</div>
-                        Availablity and<br>
+                        Availability and<br>
                         pay
                     </a>
                 </li>

@@ -9,7 +9,7 @@
     <div class="row">
         <div class="form-group col-md-6">
             <? $workingHours = ['10 Hours per Week','20 Hours per Week','30 Hours per Week','40 Hours per week'] ;?>
-            <label style="border-bottom:1px lightgray solid ; padding: 2px;" class="panelFormLabel">Current available hours <span id="tickMarkavailableHours" class="d-none">&#10003</span></label>
+            <label style="border-bottom:1px lightgray solid ; padding: 2px;" class="panelFormLabel">Current available hours <span id="tickMarkavailableHours" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <? $k=1 ?>
             @foreach($workingHours as $option)
                 <div class="form-check">
@@ -24,7 +24,7 @@
         </div>  <!-- Hours availabel -->
 
         <div class="form-group col-md-6">
-            <label for="audio_intro" class="panelFormLabel">Expected Salary in (US Dollars ) USD per hour <span id="tickMarksalary" class="d-none">&#10003</span></label><br/>
+            <label for="audio_intro" class="panelFormLabel">Expected Salary in (US Dollars ) USD per hour <span id="tickMarksalary" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label><br/>
             <div>
                 <input type="text" style="padding: 4px 2px 8px 2px;" class="form-control panelFormInput d-inline-block col-md-2" id="salary" name="salary" value="<? if(!empty($salary)){echo $salary;}else{echo 0;}?>">
                 <input style="padding: 4px 2px 8px 2px;" class="form-control panelFormInput d-inline-block col-md-2" id="currency" name="currency" value="USD">
@@ -92,14 +92,14 @@
         <div class="form-group col-md-12">
             <div class="">
                 If you are currently employed / have ongoing projects and will be available for work in the future please select a date in the future that you will be free , if you are currently available please select todays date.
-                <label for="freeDate" class="panelFormLabel"><span id="tickMarkfreeDate" class="d-none">&#10003</span></label>
+                <label for="freeDate" class="panelFormLabel"><span id="tickMarkfreeDate" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             </div>
             <input type="date" class="form-control panelFormInput" name="freeDate" value="{{$freeDate}}">
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3 offset-md-9">
-            <a class="btn btn-block btn-primary nextBtn nextBtnStyle"  href="#multimedia">Next</a>
+        <div class="buttonMain col-md-3 offset-md-9">
+            <a class="btn-block hireBtn nextBtn"  href="#multimedia">Next</a>
         </div>
     </div>
 </div>

@@ -96,6 +96,11 @@ $(document).ready(function () {
         }
     }
 
+    // click on browse photo :
+    $('#photoPreview').on('click',function () {
+        $('#photoInput').click();
+    });
+
     // deleting photo :
     $('#deletePhoto0').on('click', function(e){
         $('#portfolioImg0').attr('src','resumeApp/resources/views/customTheme/images/no-foto.png');

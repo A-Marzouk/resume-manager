@@ -144,7 +144,6 @@ body {
     text-decoration: none; }
   .buttonMain .hireBtn {
     outline: none;
-    border: 1px solid #44E5EF;
     border-radius: 24px;
     background: linear-gradient(270deg, #45E6EF 0%, #088FD9 100%);
     padding: 13px 0 13px 0;
@@ -549,7 +548,6 @@ body {
     #content .buttonMain a:hover {
       text-decoration: none; }
     #content .buttonMain .hireBtn {
-      border: 1px solid #44E5EF;
       border-radius: 24px;
       background: linear-gradient(270deg, #45E6EF 0%, #088FD9 100%);
       padding: 3.5% 20% 3.5% 20%;
@@ -591,7 +589,7 @@ body {
     transform: translateY(-2px);
     border-radius: 5px;
     background-color: #FFFFFF;
-    box-shadow: 0 11px 16px -7px;
+    box-shadow: 0 11px 16px -7px #E5ECED;
     transition-duration: 300ms; }
   #content .textImg {
     display: none;

@@ -226,7 +226,7 @@
                         available for hire - on demand.
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mapImg">
                     <img src="/resumeApp/resources/views/customTheme/images/new_theme/map_freelancer.png"
                          alt="freelancers map" width="100%">
                 </div>

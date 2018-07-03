@@ -23,6 +23,9 @@ body{
 
 .fixed-top{
   height:58px !important;
+  @media only screen and (max-width: 600px){
+    height: auto !important;
+  }
 }
 .customNav{
   -webkit-box-shadow: 0 8px 6px -6px #999;
@@ -456,7 +459,6 @@ body{
   color:#18A6DF;
   font-family: Roboto;
   font-size: 12px;
-  font-weight: bold;
   line-height: 14px;
 }
 
@@ -489,8 +491,8 @@ body{
 }
 
 .customFooter{
-  height: 180px;
   padding-top: 6%;
+  padding-bottom: 100px;
   background: linear-gradient(0deg, #FCFCFC 0%, #FCFCFC 100%);
   @media only screen and (max-width: 600px) {
     height: auto;
@@ -714,7 +716,6 @@ body{
     width: 100%;
     padding: 15px;
     @media only screen and (max-width: 600px) {
-
     }
   }
 
@@ -825,6 +826,12 @@ body{
     }
   }
 
+  .mapImg{
+    @media only screen and (max-width: 600px){
+      padding-top: 20px !important;
+    }
+  }
+
 
   // dev designer boxes :
 
@@ -861,7 +868,7 @@ body{
   }
 
   .designerLeftSide{
-    padding: 18px;
+    padding-top: 18px;
     h2{
       opacity: 0.9;
       color: #464646;
@@ -873,7 +880,7 @@ body{
       padding-right: 0;
       margin-right: 10px;
       @media only screen and (max-width: 600px){
-        padding: 5px 0 0 0;
+        padding: 5px 0 0 0 !important;
       }
     }
     img{
@@ -887,11 +894,19 @@ body{
       opacity: 0.9;
       color: #273D52;
       font-family: Roboto;
-      font-size: 25px;
+      font-size: 1.6rem;
       font-weight: bold;
       line-height: 37px;
       img{
         width: 20px;
+      }
+      @media only screen and (max-width: 600px){
+        font-size: 1.3rem;
+        border-bottom: 1px solid #F1F1F1;
+        border-top: 1px solid #F1F1F1;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        text-align: left;
       }
     }
 
@@ -911,7 +926,7 @@ body{
 
     .getStartBtn{
       img{
-        width: 6%;
+        width: 8px;
       }
       :hover{
         cursor: pointer;
@@ -941,8 +956,11 @@ body{
       color: #18A6DF;	font-family: Roboto;
       font-size: 30px;	font-weight: bold;	line-height: 35px;
       @media only screen and (max-width: 600px){
-        text-align: center;
+        text-align: left;
         padding-right: 14px;
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 25px;
       }
     }
   }
@@ -963,8 +981,8 @@ body{
 
   // footer :
   .customFooter{
-    height: 180px;
     padding-top: 6%;
+    padding-bottom: 100px;
     background: whitesmoke;
     @media only screen and (max-width: 600px) {
       height: auto;

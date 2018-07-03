@@ -108,7 +108,7 @@ if($user){
         </div>
     </nav>
 
-    <main class="py-4">
+    <main class="py-4" style="padding-bottom:0 !important;">
         @yield('content')
     </main>
 </div>

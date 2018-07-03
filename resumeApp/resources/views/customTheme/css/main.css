@@ -683,15 +683,14 @@ body {
       font-size: 14px;
       line-height: 16px;
       padding: 10px;
+      padding-left: 0;
+      padding-right: 0;
       margin-right: 10px; }
       @media only screen and (max-width: 600px) {
         #content .designerLeftSide h2 {
           padding: 5px 0 0 0; } }
     #content .designerLeftSide img {
-      width: 20%; }
-      @media only screen and (max-width: 600px) {
-        #content .designerLeftSide img {
-          width: 20%; } }
+      width: 50px; }
   #content .designerRightSide {
     padding: 20px; }
     #content .designerRightSide h2 {

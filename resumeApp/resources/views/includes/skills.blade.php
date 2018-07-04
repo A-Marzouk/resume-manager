@@ -7,11 +7,13 @@
         </ul>
     </div>
     <div class="form-group col-md-12">
+        <hr>
         <label for="spec_design_skills" class="panelFormLabel">Specific design skills <span id="tickMarkdesign_skills" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
         <textarea class="form-control panelFormInput" rows="3" id="spec_design_skills" name="design_skills">{{$design_skills}}</textarea>
     </div> <!-- design skills -->
 
     <div class="form-group col-md-8">
+        <hr>
         <label style="border-bottom:1px lightgray solid ; padding: 2px;">
             <? if($profession == 'Designer'):?>
             Top 6 Design skills
@@ -35,7 +37,7 @@
         <div class="form-check">
             <? if($profession == 'Designer'):?>
             @foreach($skillsDesigner as $skill)
-                <label class="form-check-label col-md-3">
+                <label class="form-check-label col-md-3 checkBoxText">
                     <input class="form-check-input" type="checkbox" name="design_skills_checkbox[]" value="{{$skill}}"
                            <? if(in_array($skill,$skillsCheckBox)): ?> checked <?endif;?> >
                     {{$skill}}
@@ -43,7 +45,7 @@
             @endforeach
             <? else:?>
             @foreach($skillsDeveloper as $skill)
-                <label class="form-check-label col-md-3">
+                <label class="form-check-label col-md-3 checkBoxText">
                     <input class="form-check-input" type="checkbox" name="design_skills_checkbox[]" value="{{$skill}}"
                            <? if(in_array($skill,$skillsCheckBox)): ?> checked <?endif;?> >
                     {{$skill}}
@@ -54,6 +56,7 @@
     </div> <!-- design skills checkbox -->
 
     <div class="form-group col-md-8">
+        <hr>
         <label  style="border-bottom:1px lightgray solid ; padding: 2px;">
             <? if($profession == 'Designer'):?>
             6 Primary Skills
@@ -76,7 +79,7 @@
         <div class="form-check">
             <? if($profession == 'Designer'):?>
             @foreach($designSkills as $skill)
-                <label class="form-check-label col-md-4">
+                <label class="form-check-label col-md-4 checkBoxText">
                     <input class="form-check-input" type="checkbox" name="primarySkills[]" value="{{$skill}}"
                            <? if(in_array($skill,$PrimarySkillsCheckBox)): ?> checked <?endif;?>>
                     {{$skill}}
@@ -84,7 +87,7 @@
             @endforeach
             <? else: ?>
             @foreach($developSkills as $skill)
-                <label class="form-check-label col-md-4">
+                <label class="form-check-label col-md-4 checkBoxText">
                     <input class="form-check-input" type="checkbox" name="primarySkills[]" value="{{$skill}}"
                            <? if(in_array($skill,$PrimarySkillsCheckBox)): ?> checked <?endif;?>>
                     {{$skill}}
@@ -95,6 +98,8 @@
     </div> <!-- primary skills -->
 
     <div class="form-group col-md-12">
+        <hr>
+
         <label style="border-bottom:1px lightgray solid ; padding: 2px;">Please choose 6 character skills</label>
         <?
         $charSkills = ['Adventurous:  I take risks.', 'Ambitious:  I am driven to succeed.', 'Approachable:  I work well with others.',
@@ -142,7 +147,7 @@
         ?>
         <div class="form-check">
             @foreach($charSkills as $skill)
-                <label class="form-check-label col-md-5">
+                <label class="form-check-label col-md-5 checkBoxText">
                     <input class="form-check-input" type="checkbox" name="charSkills[]" value="{{$skill}}"
                            <? if(in_array($skill,$charSkillsCheckBox)): ?> checked <?endif;?> >
                     {{$skill}}

@@ -37,6 +37,7 @@ class FreelancersController extends Controller
             'currency'=> $currFreelancer->userData->currency ?? '' ,
             'preferredTime'=> $currFreelancer->userData->preferredTime ?? '' ,
             'surname'=> $currFreelancer->userData->surname ?? '' ,
+            'timeZone'=> $currFreelancer->userData->timeZone ?? '' ,
             'audio'=> $currFreelancer->userData->audio ?? '' ,
             'city'=> $currFreelancer->userData->city ?? '' ,
             'professional_attributes'=> $currFreelancer->userData->professional_attributes ?? '' ,

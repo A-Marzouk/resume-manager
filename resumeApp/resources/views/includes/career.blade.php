@@ -9,7 +9,7 @@
 
     <div class="form-group col-md-12">
         <label for="careerObjective" class="panelFormLabel">Career objective <span id="tickMarkcareerObjective" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-        <textarea class="form-control panelFormInput" rows="3" id="careerObjective" name="careerObjective">{{$careerObjective}}</textarea>
+        <textarea class="form-control" rows="3" id="careerObjective" name="careerObjective">{{$careerObjective}}</textarea>
         <small>20-50 Words</small>
     </div> <!-- c.objective -->
     <hr>

@@ -9,7 +9,7 @@
     <div class="form-group col-md-12">
         <hr>
         <label for="spec_design_skills" class="panelFormLabel">Specific design skills <span id="tickMarkdesign_skills" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-        <textarea class="form-control panelFormInput" rows="3" id="spec_design_skills" name="design_skills">{{$design_skills}}</textarea>
+        <textarea class="form-control" rows="3" id="spec_design_skills" name="design_skills">{{$design_skills}}</textarea>
     </div> <!-- design skills -->
 
     <div class="form-group col-md-8">

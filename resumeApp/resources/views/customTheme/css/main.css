@@ -885,6 +885,9 @@ body {
   text-align: center;
   padding-top: 12px; }
 
+.carousel-item.active .tabsArea .tabText {
+  border-bottom: 2px solid  #AC81FC; }
+
 .tabsArea {
   padding-top: 30px; }
   .tabsArea .tabText {
@@ -893,7 +896,10 @@ body {
     font-family: Roboto;
     font-weight: bold;
     padding-top: 5px;
-    width: 150px; }
+    margin-left: 6px;
+    width: 147px;
+    height: 155px;
+    border-bottom: 2px solid lightgray; }
   .tabsArea .tabCircle {
     background-color: whitesmoke;
     margin-bottom: 8%;
@@ -921,7 +927,10 @@ body {
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
   color: #495057;
   background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%) !important;
-  border: 0 !important; }
+  border-top: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 2px solid #AC81FC; }
 
 .panelHeading {
   padding-top: 40px;

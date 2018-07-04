@@ -13,10 +13,10 @@
             <? $k=1 ?>
                 <div class="form-check">
                     @foreach($workingHours as $option)
-                    <label class="form-check-label col-md-3 checkBoxText" style="padding: 7px;">
+                    <label class="form-check-label col-md-3 checkBoxContainer checkBoxText">{{$option}}
                         <input class="form-check-input" id="hours{{$k}}" type="checkbox" name="availableHours[]" value="{{$option}}"
                                <? if(in_array($option,$availableHoursCheckBox)): ?> checked <?endif;?> >
-                        {{$option}}
+                        <span class="checkmark"></span>
                     </label>
                         <? $k++; ?>
                     @endforeach

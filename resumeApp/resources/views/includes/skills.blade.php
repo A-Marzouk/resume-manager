@@ -37,18 +37,20 @@
         <div class="form-check">
             <? if($profession == 'Designer'):?>
             @foreach($skillsDesigner as $skill)
-                <label class="form-check-label col-md-3 checkBoxText">
+                <label class="form-check-label col-md-3 checkBoxText checkBoxContainer">
                     <input class="form-check-input" type="checkbox" name="design_skills_checkbox[]" value="{{$skill}}"
                            <? if(in_array($skill,$skillsCheckBox)): ?> checked <?endif;?> >
                     {{$skill}}
+                    <span class="checkmark"></span>
                 </label>
             @endforeach
             <? else:?>
             @foreach($skillsDeveloper as $skill)
-                <label class="form-check-label col-md-3 checkBoxText">
+                <label class="form-check-label col-md-3 checkBoxText checkBoxContainer">
                     <input class="form-check-input" type="checkbox" name="design_skills_checkbox[]" value="{{$skill}}"
                            <? if(in_array($skill,$skillsCheckBox)): ?> checked <?endif;?> >
                     {{$skill}}
+                    <span class="checkmark"></span>
                 </label>
             @endforeach
             <? endif;?>
@@ -79,18 +81,20 @@
         <div class="form-check">
             <? if($profession == 'Designer'):?>
             @foreach($designSkills as $skill)
-                <label class="form-check-label col-md-4 checkBoxText">
+                <label class="form-check-label col-md-4 checkBoxText checkBoxContainer">
                     <input class="form-check-input" type="checkbox" name="primarySkills[]" value="{{$skill}}"
                            <? if(in_array($skill,$PrimarySkillsCheckBox)): ?> checked <?endif;?>>
                     {{$skill}}
+                    <span class="checkmark"></span>
                 </label>
             @endforeach
             <? else: ?>
             @foreach($developSkills as $skill)
-                <label class="form-check-label col-md-4 checkBoxText">
+                <label class="form-check-label col-md-4 checkBoxText checkBoxContainer">
                     <input class="form-check-input" type="checkbox" name="primarySkills[]" value="{{$skill}}"
                            <? if(in_array($skill,$PrimarySkillsCheckBox)): ?> checked <?endif;?>>
                     {{$skill}}
+                    <span class="checkmark"></span>
                 </label>
             @endforeach
             <? endif;?>
@@ -147,10 +151,11 @@
         ?>
         <div class="form-check">
             @foreach($charSkills as $skill)
-                <label class="form-check-label col-md-5 checkBoxText">
+                <label class="form-check-label col-md-5 checkBoxText checkBoxContainer">
                     <input class="form-check-input" type="checkbox" name="charSkills[]" value="{{$skill}}"
                            <? if(in_array($skill,$charSkillsCheckBox)): ?> checked <?endif;?> >
                     {{$skill}}
+                    <span class="checkmark"></span>
                 </label>
             @endforeach
         </div>

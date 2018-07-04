@@ -900,6 +900,9 @@ body {
     width: 147px;
     height: 155px;
     border-bottom: 2px solid lightgray; }
+    @media only screen and (max-width: 600px) {
+      .tabsArea .tabText {
+        width: auto; } }
   .tabsArea .tabCircle {
     background-color: whitesmoke;
     margin-bottom: 8%;

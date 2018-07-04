@@ -99,8 +99,8 @@
             <label class="panelFormLabel">Link from Youtube :</label><span id="tickMarkvideo" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span>
             <input type="text" class="form-control panelFormInput" id="video" name="video"
                    value="{{$video}}"><br/>
-            <div class="text-center">
-                <iframe src="{{$youtubeSrc}}" frameborder="0" allow="encrypted-media" allowfullscreen id="videoFrame" width="500" height="300"></iframe>
+            <div class="text-center col-md-6">
+                <iframe src="{{$youtubeSrc}}" frameborder="0" allow="encrypted-media" allowfullscreen id="videoFrame" width="100%" height="220px"></iframe>
             </div>
         </div>
     </div><br/>
@@ -134,9 +134,9 @@
         </div>
     </div><br/>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="text-center">
-                <video width="500" id="videoFileFrame" height="300" controls>
+                <video width="100%" id="videoFileFrame" height="auto" controls>
                     <source src="{{$videoSrc}}">
                 </video>
             </div>

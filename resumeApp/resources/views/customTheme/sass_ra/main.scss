@@ -1145,6 +1145,10 @@ body{
     width: 147px;
     height: 155px;
     border-bottom: 2px solid lightgray;
+    @media only screen and (max-width: 600px) {
+      width: auto;
+    }
+
   }
   .tabCircle{
     background-color: whitesmoke;

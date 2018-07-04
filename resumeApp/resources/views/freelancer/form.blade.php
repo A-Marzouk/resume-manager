@@ -121,28 +121,28 @@
                 <li class="nav-item" id="tap2">
                     <a class="nav-link text-center tabText" href="#pay" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">2</div>
-                        Availability and<br>
+                        Availability and
                         pay
                     </a>
                 </li>
                 <li class="nav-item" id="tap3">
                     <a class="nav-link text-center tabText" href="#multimedia" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">3</div>
-                        Multimedia <br/>
+                        Multimedia
                         ( Voice recording / Video )
                     </a>
                 </li>
                 <li class="nav-item" id="tap4">
                     <a class="nav-link text-center tabText" href="#career" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">4</div>
-                        Career overview and <br/>
-                        ( Education / Training )
+                        Career overview and
+                        (Education / Training)
                     </a>
                 </li>
                 <li class="nav-item" id="tap5">
                     <a class="nav-link text-center tabText" href="#portfolio" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">5</div>
-                        Portfolio<br/>Previous work
+                        Portfolio Previous work
                     </a>
                 </li>
                 <li class="nav-item" id="tap6">

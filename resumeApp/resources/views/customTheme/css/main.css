@@ -948,6 +948,13 @@ body {
   border-radius: 4px;
   height: 50px; }
 
+.checkBoxText {
+  color: #697786;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.1px; }
+
 .salaryText {
   color: green;
   font-family: Roboto;

@@ -81,7 +81,7 @@
                 $src = $photoPath;
             }
             ?>
-            <img id="photoPreview" src="{{$src}}" width="200" height="auto" style="border: 1px solid #D5D8DE;	border-radius: 4px;">
+            <img id="photoPreview" src="{{$src}}" width="257" height="auto" style="border: 1px solid #D5D8DE;	border-radius: 4px;">
         </div>
     </div> <!-- profile photo -->
     <div class="row">

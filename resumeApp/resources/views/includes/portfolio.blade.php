@@ -39,12 +39,12 @@
 
     <div class="form-group row">
         {{-- Developer --}}
-        <label class="col-md-12" style="border-bottom:1px lightgray solid ; padding: 5px;">Please Upload 8 examples of your  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> work (800 wide x 600 high)</label>
+        <label class="col-md-12 panelFormLabel">Please Upload 8 examples of your  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> work (800 wide x 600 high)</label>
 
         @for($i=0;$i<8;$i++)
             <?
             $deleteBtn = false;
-            $src = 'resumeApp/resources/views/customTheme/images/no-foto.png';
+            $src = 'resumeApp/resources/views/customTheme/images/add_profile_photo.png';
             $uploadBtn = 'Choose';
             foreach ($works as $work){
                 if(strpos($work , 'works'.$i) !== false ){
@@ -57,23 +57,23 @@
             ?>
             <div class="input-group col-md-3">
                 <div class="row">
-                    <div class="col-md-10">
+                    @if($deleteBtn)
+                        <div class="col-md-6">
+                            <p class="btn btn-outline-danger btn-sm" id="deletePhoto{{$i}}"  onclick="return confirm('Are you sure you want to delete project ?')">Delete</p>
+                        </div>
+                    @endif
+                    <div class="col-md-3" style="opacity: 0;">
                         <div class="custom-file" id="customFile{{$i}}" style=" display: block; padding-top: 5px;">
                             <input type="file" class="custom-file-input" id="works{{$i}}" name="works{{$i}}" value="">
                             <label class="custom-file-label" for="">{{$uploadBtn}}</label>
                         </div>
                     </div>
-                    @if($deleteBtn)
-                        <div class="col-md-1">
-                            <p class="btn btn-block btn-danger btn-sm" style="width:33px;height:25px;margin-left: 1px;" id="deletePhoto{{$i}}">X</p>
-                        </div>
-                    @endif
                 </div>
-                <div style="display:block;">
-                    <img src="{{$src}}" id="portfolioImg{{$i}}"  width="220" height="200" style="padding: 10px;">
+                <div style="display:block; padding-bottom: 15px;">
+                    <img src="{{$src}}" id="portfolioImg{{$i}}" width="100%" height="220;" style="padding: 10px; border: 1px solid #D5D8DE;	border-radius: 4px;">
                 </div>
-                <div class="form-group col-md-12">
-                    <textarea class="form-control" rows="2" name="workDesc{{$i}}" placeholder="Describe your work">{{$workDesc[$i]}}</textarea>
+                <div class="form-group btn-block">
+                    <input type="text" class="form-control panelFormInput" name="workDesc{{$i}}" placeholder="Describe your work">{{$workDesc[$i]}}
                 </div>
             </div>
         @endfor

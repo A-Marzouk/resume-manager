@@ -62,7 +62,7 @@
     <div class="row container">
         <div class="form-group col-md-12">
             <label for="intro"  class="panelFormLabel">Intro <span id="tickMarkintro" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-            <textarea class="form-control panelFormInput" rows="3" name="intro">{{$intro}}</textarea>
+            <textarea class="form-control" rows="3" name="intro">{{$intro}}</textarea>
             <small>30-50 Words</small>
         </div> <!-- intro -->
     </div>
@@ -71,7 +71,7 @@
         <div class="form-group col-md-12">
             <label style="border-bottom:1px lightgray solid ; padding: 2px;"  class="panelFormLabel">Profile photo<span id="tickMarkphoto" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <div class="input-group" style="padding-bottom: 10px;">
-                <div class="custom-file panelFormInput">
+                <div class="custom-file">
                     <input type="file" class="custom-file-input" name="photo" id="photoInput">
                     <label class="custom-file-label" for="">Choose photo</label>
                 </div>

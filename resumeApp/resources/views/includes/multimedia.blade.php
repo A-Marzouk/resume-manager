@@ -2,7 +2,7 @@
     <div class="panelHeading">
         <ul>
             <li>
-                Multimedia (Audio / Video)
+                Multimedia (Audio)
             </li>
         </ul>
     </div>
@@ -61,7 +61,7 @@
             </div>
         </div>
         <div class="col-md-2">
-            <a class="btn btn-danger btn-block" href="javascript:void(0)" id="deleteAudio">Delete</a>
+            <a class="btn btn-outline-danger btn-block" href="javascript:void(0)" id="deleteAudio">Delete</a>
         </div>
 
         <div id="loadingText" class="d-none" style="color:lightseagreen; padding: 10px;">
@@ -78,10 +78,15 @@
     </div>
     <small style="padding-top: 20px;">Please paste above a link to your audio introduction of self. 2min to 3min is the ideal recording length. Kindly introduce yourself and answer these questions: Why did you become a  <? if($profession == 'Developer'):?>developer<?else:?>designer<?endif;?>?, Were you able to acquire a formal  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> education? What do you love most about your work?, What tools do you use for  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?>?, What inspires you to do your work?</small>
     <hr>
+
     {{-- video --}}
     <div class="row">
-        <div class="col-md-12">
-            <label class="panelFormLabel">Upload video :</label>
+        <div class="panelHeading">
+            <ul>
+                <li>
+                    Multimedia (Video)
+                </li>
+            </ul>
         </div>
     </div>
     <?php
@@ -125,7 +130,7 @@
             </div>
         </div>
         <div class="col-md-2">
-            <a class="btn btn-danger btn-block" href="javascript:void(0)" id="deleteVideo">Delete</a>
+            <a class="btn btn-outline-danger btn-block" href="javascript:void(0)" id="deleteVideo">Delete</a>
         </div>
     </div><br/>
     <div class="row">

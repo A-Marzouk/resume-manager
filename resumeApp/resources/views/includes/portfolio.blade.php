@@ -57,11 +57,9 @@
             ?>
             <div class="input-group col-md-3">
                 <div class="row">
-                    @if($deleteBtn)
-                        <div class="col-md-6">
-                            <p class="btn btn-outline-danger btn-sm" id="deletePhoto{{$i}}"  onclick="return confirm('Are you sure you want to delete project ?')">Delete</p>
-                        </div>
-                    @endif
+                    <div class="col-md-6" style="opacity: 0;">
+                        <p class="btn btn-outline-danger btn-sm" id="deletePhoto{{$i}}"  onclick="return confirm('Are you sure you want to delete project ?')">Delete</p>
+                    </div>
                     <div class="col-md-3" style="opacity: 0;">
                         <div class="custom-file" id="customFile{{$i}}" style=" display: block; padding-top: 5px;">
                             <input type="file" class="custom-file-input" id="works{{$i}}" name="works{{$i}}" value="">
@@ -70,7 +68,11 @@
                     </div>
                 </div>
                 <div style="display:block; padding-bottom: 15px;">
-                    <img src="{{$src}}" id="portfolioImg{{$i}}" width="100%" height="220;" style="padding: 10px; border: 1px solid #D5D8DE;	border-radius: 4px;">
+                    <div style="border: 1px solid #D5D8DE;	border-radius: 4px;
+                    background: url('/resumeApp/resources/views/customTheme/images/delete.png');  background-repeat: no-repeat;
+                    background-position: center; ">
+                        <img src="{{$src}}" id="portfolioImg{{$i}}" width="100%" height="220;" style="padding: 10px;">
+                    </div>
                 </div>
                 <div class="form-group btn-block">
                     <input type="text" class="form-control panelFormInput" name="workDesc{{$i}}" placeholder="Describe your work">{{$workDesc[$i]}}

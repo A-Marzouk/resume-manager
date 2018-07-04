@@ -13,10 +13,10 @@
             <? $k=1 ?>
                 <div class="form-check">
                     @foreach($workingHours as $option)
-                    <label class="form-check-label col-md-3 checkBoxText" style="padding: 7px;">
+                    <label class="form-check-label col-md-3 checkBoxContainer checkBoxText">{{$option}}
                         <input class="form-check-input" id="hours{{$k}}" type="checkbox" name="availableHours[]" value="{{$option}}"
                                <? if(in_array($option,$availableHoursCheckBox)): ?> checked <?endif;?> >
-                        {{$option}}
+                        <span class="checkmark"></span>
                     </label>
                         <? $k++; ?>
                     @endforeach
@@ -47,7 +47,7 @@
     <div class="row">
         <div class="form-group col-md-12">
             <hr>
-            <label for="timeZone" class="panelFormLabel">Time zone</label>
+            <label for="timeZone" class="panelFormLabel">Time zone</label><span id="tickMarktimeZone" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span>
             <div class="">
                 <select class="form-control col-md-4" style="height: 50px;" id="timeZone" name="timeZone">
                     <option value="" selected="selected">Select your timezone</option>

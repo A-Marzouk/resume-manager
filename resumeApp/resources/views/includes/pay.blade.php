@@ -47,7 +47,7 @@
     <div class="row">
         <div class="form-group col-md-12">
             <hr>
-            <label for="timeZone" class="panelFormLabel">Time zone</label>
+            <label for="timeZone" class="panelFormLabel">Time zone</label><span id="tickMarktimeZone" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span>
             <div class="">
                 <select class="form-control col-md-4" style="height: 50px;" id="timeZone" name="timeZone">
                     <option value="" selected="selected">Select your timezone</option>

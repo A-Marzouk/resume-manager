@@ -174,10 +174,20 @@ if($user){
     </div>
 <script type="text/javascript" src="/resumeApp/public/js/app.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+{{-- jquery mobile for carousel --}}
+<script src="resumeApp/resources/views/customTheme/js/jquery.mobile.custom.min.js"></script>
 
 <script src="/resumeApp/resources/views/customTheme/js/main.js"></script>
     <script>
         $(document).ready(function(){
+            //carousel :
+            $("#carouselExampleIndicators").swiperight(function() {
+                $(this).carousel('prev');
+            });
+            $("#carouselExampleIndicators").swipeleft(function() {
+                $(this).carousel('next');
+            });
+
             if ($("#sendMessage").length ){
                 setTimeout(function(){
                     $('#chatBox').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');

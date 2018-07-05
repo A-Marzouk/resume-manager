@@ -18,7 +18,7 @@
         <? endif; ?>
     </div>
 <div class="container">
-    <div class=".d-none d-xs-block d-sm-block d-md-none carouselTabs">
+    <div class="d-xs-block d-sm-block d-md-none carouselTabs">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="">
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active text-center">
@@ -83,7 +83,6 @@
                         </div>
                     </a>
                 </div>
-
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon carouselArrows" aria-hidden="true"></span>

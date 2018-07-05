@@ -39,7 +39,7 @@
 
     <div class="form-group row">
         {{-- Developer --}}
-        <label class="col-md-12 panelFormLabel">Please Upload 8 examples of your  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> work (800 wide x 600 high)</label>
+        <label class="col-md-12 panelFormLabel">Please Upload 8 examples of your  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> work (800 wide x 600 height)</label>
 
         @for($i=0;$i<8;$i++)
             <?

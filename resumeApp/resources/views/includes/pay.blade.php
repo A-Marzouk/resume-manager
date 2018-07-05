@@ -9,12 +9,12 @@
     <div class="row">
         <div class="form-group col-md-12">
             <? $workingHours = ['10 Hours per Week','20 Hours per Week','30 Hours per Week','40 Hours per week'] ;?>
-            <label style="border-bottom:1px lightgray solid ; padding: 2px;" class="panelFormLabel">Current available hours <span id="tickMarkavailableHours" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label style="border-bottom:1px lightgray solid ; padding: 2px;" class="panelFormLabel">Current available hours <span style="font-size:small;">* required field</span> <span id="tickMarkavailableHours" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <? $k=1 ?>
                 <div class="form-check">
                     @foreach($workingHours as $option)
                     <label class="form-check-label col-md-3 checkBoxContainer checkBoxText">{{$option}}
-                        <input class="form-check-input" id="hours{{$k}}" type="checkbox" name="availableHours[]" value="{{$option}}"
+                        <input  style="@if($errors->has('availableHours')) border:1px solid red; @endif" class="form-check-input" id="hours{{$k}}" type="checkbox" name="availableHours[]" value="{{$option}}"
                                <? if(in_array($option,$availableHoursCheckBox)): ?> checked <?endif;?> >
                         <span class="checkmark"></span>
                     </label>
@@ -29,9 +29,9 @@
     <div class="row">
         <div class="form-group col-md-12">
             <hr>
-            <label for="audio_intro" class="panelFormLabel">Expected Salary in (US Dollars ) USD per hour <span id="tickMarksalary" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label><br/>
+            <label for="audio_intro" class="panelFormLabel">Expected Salary in (US Dollars ) USD per hour <span style="font-size:small;">* required field</span> <span id="tickMarksalary" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label><br/>
             <div>
-                <input type="text" class="form-control panelFormInput d-inline-block col-md-4" id="salary" name="salary" value="<? if(!empty($salary)){echo $salary;}else{echo 0;}?>">
+                <input type="text"  style="@if($errors->has('salary')) border:1px solid red; @endif" class="form-control panelFormInput d-inline-block col-md-4" id="salary" name="salary" value="<? if(!empty($salary)){echo $salary;}else{echo 0;}?>">
                 <input class="form-control panelFormInput d-inline-block col-md-4" id="currency" name="currency" value="USD">
             </div>
             <? foreach($availableHoursCheckBox as $check):?>

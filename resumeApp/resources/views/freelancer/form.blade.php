@@ -162,17 +162,44 @@
     </div>
 
     <!-- Success Messages  -->
-    @if(session()->has('successMessage'))
-        <div class="alert alert-success">
-            {{ session()->get('successMessage') }}
-        </div>
-    @endif
-<!-- Display Errors  -->
-    <? foreach($errors->all() as $error):?>
-    <div class="form-group col-md-8">
-        <div class="alert alert-danger">{{$error}}</div>
+    <div style="padding-top: 20px;">
+        @if(session()->has('successMessage'))
+            <div class="alert alert-success">
+                {{ session()->get('successMessage') }}
+            </div>
+        @endif
     </div>
-    <? endforeach;?>
+<!-- Display Errors  -->
+    <?
+        $requiredFields = [
+            '1. Overview and personal info'=>[
+                'link'=>'overview',
+                'name', 'city','jobTitle','email'
+            ],
+            '2. Availability and pay' => [
+                'link'=>'pay',
+                'salary','availableHours'
+            ],
+            '6. Professional skills'=>['link'=>'skills','primarySkills','design_skills_checkbox']
+        ];
+    ?>
+    <div style="padding-top: 20px;">
+        <? foreach($errors->getMessages() as $key => $error):?>
+            <div class="form-group col-md-8">
+                <div class="alert alert-danger" style="font-size: small;">
+                    <?
+                        foreach ($requiredFields as $tab => $errorFields){
+                            if(in_array($key,$errorFields)){
+                                $errorTab = $tab;
+                            }
+                        }
+
+                    ?>
+                    {{$error[0]}} <a class="nextBtn" href="#{{$requiredFields[$errorTab]['link']}}">({{$errorTab}})</a>
+                </div>
+            </div>
+        <? endforeach;?>
+    </div>
 
     <form method="post" action="{{route('freelancer.data.store')}}" enctype="multipart/form-data" class="container freelancerForm">
         {{csrf_field()}}

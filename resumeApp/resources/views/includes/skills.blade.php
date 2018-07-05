@@ -38,7 +38,7 @@
             <? if($profession == 'Designer'):?>
             @foreach($skillsDesigner as $skill)
                 <label class="form-check-label col-md-3 checkBoxText checkBoxContainer">
-                    <input class="form-check-input" type="checkbox" name="design_skills_checkbox[]" value="{{$skill}}"
+                    <input class="form-check-input" style="@if($errors->has('design_skills_checkbox')) border:1px solid red; @endif" type="checkbox" name="design_skills_checkbox[]" value="{{$skill}}"
                            <? if(in_array($skill,$skillsCheckBox)): ?> checked <?endif;?> >
                     {{$skill}}
                     <span class="checkmark"></span>
@@ -47,7 +47,7 @@
             <? else:?>
             @foreach($skillsDeveloper as $skill)
                 <label class="form-check-label col-md-3 checkBoxText checkBoxContainer">
-                    <input class="form-check-input" type="checkbox" name="design_skills_checkbox[]" value="{{$skill}}"
+                    <input class="form-check-input" type="checkbox" style="@if($errors->has('design_skills_checkbox')) border:1px solid red; @endif" name="design_skills_checkbox[]" value="{{$skill}}"
                            <? if(in_array($skill,$skillsCheckBox)): ?> checked <?endif;?> >
                     {{$skill}}
                     <span class="checkmark"></span>
@@ -61,9 +61,9 @@
         <hr>
         <label  style="border-bottom:1px lightgray solid ; padding: 2px;">
             <? if($profession == 'Designer'):?>
-            6 Primary Skills
+            6 Primary Skills * required field
             <? else: ?>
-            6 Frameworks/ Libraries / Databases you can use most proficiently
+            6 Frameworks/ Libraries / Databases you can use most proficiently <span style="font-size:small;">* required field</span>
             <? endif;?>
         </label>
 
@@ -82,7 +82,7 @@
             <? if($profession == 'Designer'):?>
             @foreach($designSkills as $skill)
                 <label class="form-check-label col-md-4 checkBoxText checkBoxContainer">
-                    <input class="form-check-input" type="checkbox" name="primarySkills[]" value="{{$skill}}"
+                    <input class="form-check-input" style="@if($errors->has('primarySkills')) border:1px solid red; @endif" type="checkbox" name="primarySkills[]" value="{{$skill}}"
                            <? if(in_array($skill,$PrimarySkillsCheckBox)): ?> checked <?endif;?>>
                     {{$skill}}
                     <span class="checkmark"></span>

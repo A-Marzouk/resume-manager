@@ -1110,6 +1110,9 @@ body{
   font-weight: 300;
   line-height: 35px;
   text-align: center;
+  @media only screen and (max-width: 600px) {
+    font-size: 25px;
+  }
 }
 
 .pageSubHeading{
@@ -1147,6 +1150,8 @@ body{
     border-bottom: 2px solid lightgray;
     @media only screen and (max-width: 600px) {
       width: auto;
+      padding-top: 0;
+      height: 95px;
     }
 
   }
@@ -1174,9 +1179,6 @@ body{
 
 .panel{
   padding: 35px;
-  border: 2px whitesmoke solid;
-  border-radius: 10px;
-  margin-top: 30px;
   @media only screen and (max-width: 600px) {
     padding: 2px;
   }

@@ -18,18 +18,6 @@
         <? endif; ?>
     </div>
 <div class="container">
-    <div class="text-center">
-        <div class="pageHeading" id="tabMainHeading">1.Overview and personal info</div>
-        <div class="pageSubHeading">
-            It is important to keep your available hours that you can work updated.
-        </div>
-        <div class="pageSubHeading2 col-md-8 offset-md-2">
-            Once your page here is completed & approved, our team will start to promote your Resume to companies seeking to hire.
-            Once selected, you will then be asked for Skype interviews.
-        </div>
-    </div>
-            {{-- tabs section first on phone --}}
-
     <div class=".d-none d-xs-block d-sm-block d-md-none carouselTabs">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="">
             <div class="carousel-inner" role="listbox">
@@ -43,13 +31,13 @@
                     </a>
                 </div>
                 <div class="carousel-item text-center">
-                   <a class="tabsArea nextBtn" href="#pay">
+                    <a class="tabsArea nextBtn" href="#pay">
                         <div class="tabText text-center">
                             <span class="tabCircle" style="padding:2px 5px 2px 5px;">2</span><br/>
                             Availablity and<br>
                             pay
                         </div>
-                   </a>
+                    </a>
                 </div>
                 <div class="carousel-item text-center">
                     <a class="tabsArea nextBtn" href="#multimedia">
@@ -107,6 +95,19 @@
             </a>
         </div>
     </div>
+
+    <div class="text-center">
+        <div class="pageHeading" id="tabMainHeading">1.Overview and personal info</div>
+        <div class="pageSubHeading">
+            It is important to keep your available hours that you can work updated.
+        </div>
+        <div class="pageSubHeading2 col-md-8 offset-md-2">
+            Once your page here is completed & approved, our team will start to promote your Resume to companies seeking to hire.
+            Once selected, you will then be asked for Skype interviews.
+        </div>
+    </div>
+            {{-- tabs section first on phone --}}
+
 
     <div class="row tabsArea d-none d-md-block">
         <div class="col-md-12 text-center">

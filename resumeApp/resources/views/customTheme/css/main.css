@@ -866,6 +866,9 @@ body {
   font-weight: 300;
   line-height: 35px;
   text-align: center; }
+  @media only screen and (max-width: 600px) {
+    .pageHeading {
+      font-size: 25px; } }
 
 .pageSubHeading {
   color: #697786;
@@ -902,7 +905,9 @@ body {
     border-bottom: 2px solid lightgray; }
     @media only screen and (max-width: 600px) {
       .tabsArea .tabText {
-        width: auto; } }
+        width: auto;
+        padding-top: 0;
+        height: 95px; } }
   .tabsArea .tabCircle {
     background-color: whitesmoke;
     margin-bottom: 8%;
@@ -916,10 +921,7 @@ body {
     font-weight: bold; }
 
 .panel {
-  padding: 35px;
-  border: 2px whitesmoke solid;
-  border-radius: 10px;
-  margin-top: 30px; }
+  padding: 35px; }
   @media only screen and (max-width: 600px) {
     .panel {
       padding: 2px; } }

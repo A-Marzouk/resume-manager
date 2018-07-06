@@ -5,6 +5,12 @@ body{
   margin-top: 40px;
 }
 
+.py-4{
+  @media only screen and (max-width: 600px){
+    padding-top:0 !important;
+  }
+}
+
 .customContainer{
   padding : 0 0 0 8.50%;
   @media only screen and (max-width: 600px){
@@ -46,15 +52,15 @@ body{
   letter-spacing: 0.2px;
   line-height: 16px;
   text-align: center;
-  padding-bottom: 20px;
-  padding-top: 20px;
+  padding-bottom: 14px;
+  padding-top: 26px;
   &.active{
     color: #18A6DF !important;
     border-bottom: #AC81FC 2px solid;
     opacity: 1;
     font-weight: 300;
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding-bottom: 14px;
+    padding-top: 26px;
   }
 }
 
@@ -1112,6 +1118,7 @@ body{
   text-align: center;
   @media only screen and (max-width: 600px) {
     font-size: 25px;
+    margin-top: 95px;
   }
 }
 
@@ -1151,7 +1158,7 @@ body{
     @media only screen and (max-width: 600px) {
       width: auto;
       padding-top: 0;
-      height: 95px;
+      height: 90px;
     }
 
   }
@@ -1296,11 +1303,12 @@ body{
   position: fixed;
   bottom: 0px;
   color: black;
-  z-index: 10;
+  z-index: 9999;
   margin: 10px;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0 0 20px 0;
+  margin-bottom: 20px;
   @media only screen and (max-width: 600px) {
 
   }

@@ -4,6 +4,10 @@ body {
   width: 100%;
   margin-top: 40px; }
 
+@media only screen and (max-width: 600px) {
+  .py-4 {
+    padding-top: 0 !important; } }
+
 .customContainer {
   padding: 0 0 0 8.50%; }
   @media only screen and (max-width: 600px) {
@@ -35,8 +39,8 @@ body {
   letter-spacing: 0.2px;
   line-height: 16px;
   text-align: center;
-  padding-bottom: 20px;
-  padding-top: 20px; }
+  padding-bottom: 14px;
+  padding-top: 26px; }
   .customNavLink :hover {
     color: #18A6DF !important; }
   .customNavLink.active {
@@ -44,8 +48,8 @@ body {
     border-bottom: #AC81FC 2px solid;
     opacity: 1;
     font-weight: 300;
-    padding-bottom: 20px;
-    padding-top: 20px; }
+    padding-bottom: 14px;
+    padding-top: 26px; }
 
 .navbar-brand {
   margin-right: 0px !important; }
@@ -868,7 +872,8 @@ body {
   text-align: center; }
   @media only screen and (max-width: 600px) {
     .pageHeading {
-      font-size: 25px; } }
+      font-size: 25px;
+      margin-top: 95px; } }
 
 .pageSubHeading {
   color: #697786;
@@ -907,7 +912,7 @@ body {
       .tabsArea .tabText {
         width: auto;
         padding-top: 0;
-        height: 95px; } }
+        height: 90px; } }
   .tabsArea .tabCircle {
     background-color: whitesmoke;
     margin-bottom: 8%;
@@ -1030,11 +1035,12 @@ body {
   position: fixed;
   bottom: 0px;
   color: black;
-  z-index: 10;
+  z-index: 9999;
   margin: 10px;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0 0 20px 0; }
+  padding: 0 0 20px 0;
+  margin-bottom: 20px; }
 
 .chatHeading {
   z-index: 15 !important;

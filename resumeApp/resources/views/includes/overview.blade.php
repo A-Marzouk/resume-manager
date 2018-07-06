@@ -1,14 +1,17 @@
 <div role="tabpanel" class="panel tab-pane active" id="overview">
-    <div class="panelHeading">
+    <div class="d-none d-md-block panelHeading">
         <ul>
             <li>
                 Basic Information
             </li>
         </ul>
     </div>
-    <div class="row container">
+    <div class="d-xs-block d-sm-block d-md-none panelHeading">
+            Basic Information
+    </div>
+    <div class="row">
         <div class="form-group col-md-4">
-            <label for="userName" class="panelFormLabel">Full name <span style="font-size:small;">* required field</span>
+            <label for="userName" class="panelFormLabel">Full name <span style="font-size:small;">*</span>
                 <span id="tickMarkname" class="d-none">
                     <img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;">
                 </span>
@@ -16,7 +19,7 @@
             <input type="text" style="@if($errors->has('name')) border:1px solid red; @endif" class="form-control panelFormInput" id="fullName" name="name" placeholder="Enter your name.." value="<?if(empty($name)):?>{{$currFreelancer->firstName}} {{$currFreelancer->lastName}}<?else:?>{{$name}}<? endif;?>">
         </div> <!-- Full name -->
         <div class="form-group col-md-4">
-            <label for="birth_date" class="panelFormLabel">Job title <span style="font-size:small;">* required field</span> <span id="tickMarkjobTitle" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label for="birth_date" class="panelFormLabel">Job title <span style="font-size:small;">*</span> <span id="tickMarkjobTitle" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <?
             $developer = [
                 'Full-Stack Developer', 'Front-End Developer', 'PHP Developer',
@@ -44,12 +47,12 @@
             </select>
         </div> <!-- job title -->
         <div class="form-group col-md-4">
-            <label for="birth_date" class="panelFormLabel">Primary contact Email <span style="font-size:small;">* required field</span><span id="tickMarkemail" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label for="birth_date" class="panelFormLabel">Primary contact Email <span style="font-size:small;">*</span><span id="tickMarkemail" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="email" style="@if($errors->has('email')) border:1px solid red; @endif" class="form-control panelFormInput" name="email" value="<?if(empty($email)):?>{{$currFreelancer->email}}<?else:?>{{$email}}<? endif;?>">
             <small>Gmail is preferred</small>
         </div> <!-- email -->
         <div class="form-group col-md-4">
-            <label for="birth_date"  class="panelFormLabel">City where you live & work <span style="font-size:small;">* required field</span><span id="tickMarkcity" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label for="birth_date"  class="panelFormLabel">City where you live & work <span style="font-size:small;">*</span><span id="tickMarkcity" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="text" style="@if($errors->has('city')) border:1px solid red; @endif" class="form-control panelFormInput" name="city" value="{{$city}}">
         </div> <!-- city -->
         <div class="form-group col-md-4">
@@ -59,7 +62,7 @@
         </div> <!-- Languages -->
     </div>
     <hr>
-    <div class="row container">
+    <div class="row">
         <div class="form-group col-md-12">
             <label for="intro"  class="panelFormLabel">Intro <span id="tickMarkintro" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <textarea class="form-control" rows="3" name="intro">{{$intro}}</textarea>
@@ -67,7 +70,7 @@
         </div> <!-- intro -->
     </div>
     <hr>
-    <div class="row container">
+    <div class="row">
         <div class="form-group col-md-12">
             <label style="border-bottom:1px lightgray solid ; padding: 2px;"  class="panelFormLabel">Profile photo (1024 wide x 1024 height)<span id="tickMarkphoto" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <div class="input-group" style="padding-bottom: 10px;">

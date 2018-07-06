@@ -3,6 +3,7 @@ body{
   overflow-x: hidden;
   width: 100%;
   margin-top: 70px;
+  font-family: Roboto !important;
 }
 
 .py-4{
@@ -28,7 +29,7 @@ body{
 // navbar
 
 .fixed-top{
-  height:58px !important;
+  height:50px !important;
   @media only screen and (max-width: 600px){
     height: auto !important;
   }
@@ -46,20 +47,22 @@ body{
   }
   outline: none;
   opacity: 0.75;
-  color: #637280;
+  color: #637280 !important;
   font-family: Roboto !important;
   font-size: 15px;
   letter-spacing: 0.2px;
   line-height: 16px;
+  font-weight: 300;
   text-align: center;
-  padding-bottom: 14px;
-  padding-top: 26px;
+  padding-bottom: 13px;
+  padding-top: 18px;
   &.active{
     color: #18A6DF !important;
     border-bottom: #AC81FC 2px solid;
     opacity: 1;
-    font-weight: 300;
-    padding-bottom: 14px;
+    font-weight: bold;
+  }
+  @media only screen and (max-width: 600px){
     padding-top: 26px;
   }
 }
@@ -67,7 +70,10 @@ body{
 .navbar-brand{
   margin-right: 0px !important;
   img{
-    width: 75%;
+    width: 120px;
+    @media only screen and (max-width: 600px){
+      width:120px;
+    }
   }
 }
 
@@ -190,7 +196,7 @@ body{
     letter-spacing: 0.5px;
     line-height: 19px;
     text-align: center;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 8px 15px lightblue;
     @media only screen and (max-width: 600px){
 
     }
@@ -499,7 +505,6 @@ body{
 .customFooter{
   padding-top: 6%;
   padding-bottom: 100px;
-  background: linear-gradient(0deg, #FCFCFC 0%, #FCFCFC 100%);
   @media only screen and (max-width: 600px) {
     height: auto;
     text-align: center;
@@ -989,7 +994,6 @@ body{
   .customFooter{
     padding-top: 6%;
     padding-bottom: 100px;
-    background: whitesmoke;
     @media only screen and (max-width: 600px) {
       height: auto;
       text-align: center;
@@ -1118,7 +1122,7 @@ body{
   text-align: center;
   @media only screen and (max-width: 600px) {
     font-size: 25px;
-    margin-top: 95px;
+    margin-top: 80px;
   }
 }
 
@@ -1158,7 +1162,7 @@ body{
     @media only screen and (max-width: 600px) {
       width: auto;
       padding-top: 0;
-      height: 90px;
+      height: 80px;
     }
 
   }
@@ -1168,7 +1172,11 @@ body{
     max-width: 45px;
     padding: 12px 0px 8px 0px;
     border-radius: 50%;
+    border: 1px solid;
     color: #919CA5;
+    @media only screen and (max-width: 600px) {
+      display: none;
+    }
   }
   .active{
     .tabCircle{
@@ -1185,10 +1193,7 @@ body{
 }
 
 .panel{
-  padding: 35px;
-  @media only screen and (max-width: 600px) {
-    padding: 2px;
-  }
+  padding: 0px;
 }
 .nav-tabs {
   border-bottom: 0 !important;
@@ -1203,13 +1208,14 @@ body{
 }
 
 .panelHeading{
-  padding-top: 40px;
+  padding-top: 35px;
   color: #697786;	font-family: Roboto;
   font-size: 35px;
   font-weight: 300;	line-height: 35px;
   padding-bottom: 12px;
   @media only screen and (max-width: 600px) {
     font-size: 28px;
+    padding-top: 0px;
   }
 }
 
@@ -1308,7 +1314,7 @@ body{
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0 0 20px 0;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   @media only screen and (max-width: 600px) {
 
   }

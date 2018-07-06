@@ -60,13 +60,13 @@ if($user){
                             <a href="{{ route('freelancer.register') }}">{{ __('Join') }}</a>
                         </li>
                     @else
-                        <li class="nav-link">
-                            <a class="customNavLink" style="color:#0290D8;" href="/freelancer">
+                        <li class="nav-link nav-item customNavLink">
+                            <a style="color:#0290D8;" href="/freelancer">
                                 {{auth()->user()->username}}
                             </a>
                         </li>
                         <li>
-                            <a class="nav-link" class="customNavLink" href="{{ route('logout') }}"
+                            <a class="nav-link nav-item nav-link customNavLink" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                 Logout
@@ -78,7 +78,7 @@ if($user){
                         </li>
                         <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
 
-                            <li class="nav-link">
+                            <li class="nav-link nav-item nav-link customNavLink">
                                 <a href="{{route('admin.dashboard')}}" class="customNavLink">Admin-area</a>
                             </li>
                         <? endif;?>
@@ -174,20 +174,10 @@ if($user){
     </div>
 <script type="text/javascript" src="/resumeApp/public/js/app.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-{{-- jquery mobile for carousel --}}
-<script src="resumeApp/resources/views/customTheme/js/jquery.mobile.custom.min.js"></script>
 
 <script src="/resumeApp/resources/views/customTheme/js/main.js"></script>
     <script>
         $(document).ready(function(){
-            //carousel :
-            $("#carouselExampleIndicators").swiperight(function() {
-                $(this).carousel('prev');
-            });
-            $("#carouselExampleIndicators").swipeleft(function() {
-                $(this).carousel('next');
-            });
-
             if ($("#sendMessage").length ){
                 setTimeout(function(){
                     $('#chatBox').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
@@ -219,11 +209,28 @@ if($user){
                 if($('.collapse.navbar-collapse').hasClass('show')){
                     setTimeout(function(){
                         $('.collapse.navbar-collapse').removeClass('show');
+                        $('#carouselExampleIndicators').show();
                         }, 615);
                 }
+                $('#carouselExampleIndicators').hide();
             });
 
         });
     </script>
+
+{{-- jquery mobile for carousel --}}
+<script src="resumeApp/resources/views/customTheme/js/jquery.mobile.custom.min.js"></script>
+<script>
+    $(document).on('pageinit', function(event){
+        $("#carouselExampleIndicators").swiperight(function() {
+            alert('prev');
+            $(this).carousel('prev');
+        });
+        $("#carouselExampleIndicators").swipeleft(function() {
+            alert('next');
+            $(this).carousel('next');
+        });
+    });
+</script>
 </body>
 </html>

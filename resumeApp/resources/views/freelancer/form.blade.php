@@ -18,7 +18,7 @@
         <? endif; ?>
     </div>
 <div class="container">
-    <div class="d-xs-block d-sm-block d-md-none carouselTabs">
+    <div class="d-xs-block d-sm-block d-md-none carouselTabs fixed-top" style="margin-top: 50px; background:linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="">
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active text-center">
@@ -216,5 +216,7 @@
         <br/>
     </form>
 </div>
+<script>
 
+</script>
 @endsection

@@ -61,9 +61,9 @@
         <hr>
         <label  style="border-bottom:1px lightgray solid ; padding: 2px;">
             <? if($profession == 'Designer'):?>
-            6 Primary Skills * required field
+            6 Primary Skills *
             <? else: ?>
-            6 Frameworks/ Libraries / Databases you can use most proficiently <span style="font-size:small;">* required field</span>
+            6 Frameworks/ Libraries / Databases you can use most proficiently <span style="font-size:small;">*</span>
             <? endif;?>
         </label>
 

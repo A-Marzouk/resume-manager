@@ -61,7 +61,7 @@ if($user){
                         </li>
                     @else
                         <li class="nav-link nav-item customNavLink">
-                            <a style="color:#0290D8;" href="/freelancer">
+                            <a style="color:#637280;" href="/freelancer">
                                 {{auth()->user()->username}}
                             </a>
                         </li>
@@ -209,10 +209,10 @@ if($user){
                 if($('.collapse.navbar-collapse').hasClass('show')){
                     setTimeout(function(){
                         $('.collapse.navbar-collapse').removeClass('show');
-                        $('#carouselExampleIndicators').show();
+                        $('#carouselExampleIndicators').show('slow');
                         }, 615);
                 }
-                $('#carouselExampleIndicators').hide();
+                $('#carouselExampleIndicators').hide('slow');
             });
 
         });

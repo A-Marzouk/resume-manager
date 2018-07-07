@@ -89,6 +89,7 @@ $(document).ready(function () {
     });
     $('#photoPreview').hover(function () {
         $('#photoPreview').fadeTo(500, .1);
+        $('#photoPreview').css('cursor', 'pointer');
         $('#profileImgBox').css('background', 'url("/resumeApp/resources/views/customTheme/images/add_profile_photo.png")');
         $('#profileImgBox').css('background-repeat','no-repeat');
         $('#profileImgBox').css('background-position','center');

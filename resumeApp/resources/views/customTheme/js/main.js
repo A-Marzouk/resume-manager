@@ -76,6 +76,17 @@ $(document).ready(function () {
     $('#photoPreview').on('click',function () {
         $('#photoInput').click();
     });
+    $('#photoPreview').hover(function () {
+        $('#photoPreview').fadeTo(500, .1);
+        $('#profileImgBox').css('background', 'url("/resumeApp/resources/views/customTheme/images/add_profile_photo.png")');
+        $('#profileImgBox').css('background-repeat','no-repeat');
+        $('#profileImgBox').css('background-position','center');
+    },function () {
+        $('#profileImgBox').css('background', '');
+        $('#photoPreview').fadeTo(500,1);
+    });
+
+
 
 
     ////////////////////////////////////////// portfolio scripts  //////////////////////////////

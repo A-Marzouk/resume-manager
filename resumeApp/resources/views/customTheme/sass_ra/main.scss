@@ -20,6 +20,26 @@ body{
 
 }
 
+
+#photoPreview{
+  border: 1px solid #D5D8DE;	border-radius: 4px;
+  width: 257px;
+  height: 257px;
+  @media only screen and (max-width: 600px){
+    height: auto ;
+    width: 100%;
+  }
+}
+
+#profileImgBox{
+  width: 257px;
+  height: 257px;
+  @media only screen and (max-width: 600px){
+    height: auto ;
+    width: 100%;
+  }
+}
+
 // slick :
 .successMessage{
   margin-top: 30px;

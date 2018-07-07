@@ -72,8 +72,18 @@
     <hr>
     <div class="row">
         <div class="form-group col-md-12">
-            <label style="border-bottom:1px lightgray solid ; padding: 2px;"  class="panelFormLabel">Profile photo (1024 wide x 1024 height)<span id="tickMarkphoto" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-            <div class="input-group" style="padding-bottom: 10px;">
+            <div class="d-none d-md-block panelHeading">
+                <ul>
+                    <li>
+                        Profile photo
+                    </li>
+                </ul>
+            </div>
+            <div class="d-xs-block d-sm-block d-md-none panelHeading">
+                Profile photo
+            </div><span id="tickMarkphoto" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <span class="panelFormLabel col-md-4">Choose photo (1024 wide x 1024 height)</span>
+            <div class="input-group" style="opacity: 0; height: 3px;">
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" name="photo" id="photoInput">
                     <label class="custom-file-label" for="">Choose photo</label>
@@ -85,7 +95,9 @@
             }
             ?>
             <div class="col-md-4">
-                <img id="photoPreview" src="{{$src}}" width="100%" height="auto" style="border: 1px solid #D5D8DE;	border-radius: 4px;">
+                <div  id="profileImgBox">
+                    <img id="photoPreview" src="{{$src}}" style="">
+                </div>
             </div>
         </div>
     </div> <!-- profile photo -->

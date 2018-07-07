@@ -57,7 +57,7 @@
             ?>
             <div class="input-group col-md-3">
                 <div class="row">
-                    <div class="col-md-6" style="opacity: 0;">
+                    <div class="col-md-6" style="opacity: 0; height: 3px;">
                         <p class="btn btn-outline-danger btn-sm" id="deletePhoto{{$i}}">Delete</p>
                     </div>
                     <div class="col-md-3" style="opacity: 0;">

@@ -70,18 +70,19 @@
         </div> <!-- intro -->
     </div>
     <hr>
+    <div class="d-none d-md-block panelHeading">
+        <ul>
+            <li>
+                Profile photo
+            </li>
+        </ul>
+    </div>
+    <div class="d-xs-block d-sm-block d-md-none panelHeading">
+        Profile photo
+    </div>
     <div class="row">
         <div class="form-group col-md-12">
-            <div class="d-none d-md-block panelHeading">
-                <ul>
-                    <li>
-                        Profile photo
-                    </li>
-                </ul>
-            </div>
-            <div class="d-xs-block d-sm-block d-md-none panelHeading">
-                Profile photo
-            </div><span id="tickMarkphoto" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <span id="tickMarkphoto" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <span class="panelFormLabel col-md-4">Choose photo (1024 wide x 1024 height)</span>
             <div class="input-group" style="opacity: 0; height: 3px;">
                 <div class="custom-file">

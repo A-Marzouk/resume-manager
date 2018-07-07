@@ -1172,6 +1172,7 @@ body{
   padding-top: 30px;
   .tabText{
     opacity: 0.75;	color: #1C4D75;
+    border: 0;
     font-family: Roboto;
     font-weight: bold;
     padding-top: 5px;
@@ -1442,4 +1443,46 @@ body{
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+
+/// delete and browse btns :
+
+.deleteBtn{
+  border: 1px solid rgba(223,24,24,0.3);
+  background: none;
+  border-radius: 4px;
+  height: 50px;
+  padding-top: 18px;
+  // text
+  color: #FF5E71;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 16px;
+  text-align: center;
+
+  @media only screen and (max-width: 600px) {
+    margin-top: 10px;
+  }
+}
+
+.browseBtn{
+  border: 1px solid rgba(24,166,223,0.3);
+  border-radius: 4px;
+  background: none;
+  height: 50px;
+  padding-top: 18px;
+  // text
+  color: #18A6DF;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 16px;
+  text-align: center;
+
+  @media only screen and (max-width: 600px) {
+    margin-top: 10px;
+  }
+
 }

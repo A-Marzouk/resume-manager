@@ -18,11 +18,14 @@ $(document).ready(function () {
 
     // delete Audio :
     $('#deleteAudio').on('click', function(e){
+        if(!confirm('are you sure you want to delete this Audio file ?')){
+            return;
+        }
         $('#audioFile').attr('type','text');
         $('#audioFile').attr('value',0);
         $('#works0').change();
         $('#audioFile').attr('type','file');
-        $('#audioLabel').html('Upload audio');
+        $('#audioText').val('Upload audio');
         // change the src of the Audio
         $('#audioIntroForm').attr('src','');
         $('#audioIntro')[0].load();
@@ -606,7 +609,7 @@ $(document).ready(function () {
     $(document).ready(function(){
         $('#audioFile').change(function(e){
             var fileName = e.target.files[0].name;
-            $('#audioLabel').html(fileName);
+            $('#audioText').val(fileName);
             // change the src of the Audio
             $('#audioIntroForm').attr('src','resumeApp/uploads/'+fileName);
             $('#audioIntro')[0].load();
@@ -626,6 +629,12 @@ $(document).ready(function () {
         window.location.hash = href;
         checkHash();
         $('html, body').animate({scrollTop:$('#tabMainHeading').position().top}, 'slow');
-    })
+    });
+
+    // click on browse btn:
+    $('#browseBtn').on('click',function () {
+        $('#audioFile').click();
+    });
+
 
 });

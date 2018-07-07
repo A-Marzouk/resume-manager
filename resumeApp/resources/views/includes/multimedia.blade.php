@@ -33,7 +33,7 @@
             <label class="panelFormLabel">Or Upload an audio file :</label>
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="opacity: 0; height: 3px; padding: 0;">
         <div class="col-md-10">
             <div class="custom-file" style="padding-top: 5px;">
                 <input type="file" id="audioFile" class="custom-file-input panelFormInput" name="audioFile">
@@ -42,13 +42,14 @@
                     $audioSrc = "";
                     ?>
                     <? if(!empty(trim($audioFile))):?>
-                    <?
-                    $audioSrc = $audioFile;
-                    $audioFile = str_replace('resumeApp/uploads/',"",$audioFile);
+                        <?
+                        $audioSrc = $audioFile;
+                        $audioFile = str_replace('resumeApp/uploads/',"",$audioFile);
+                        ?>
+                    <?else:
+                      $audioFile = 'Upload Audio';
                     ?>
-                    {{$audioFile}}
-                    <?else:?>
-                    Upload Audio
+
                     <?
                     if($valid){
                         $audioSrc = "https://drive.google.com/uc?export=download&id=".$audio."&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
@@ -60,8 +61,16 @@
                 </label>
             </div>
         </div>
-        <div class="col-md-2">
-            <a class="btn btn-outline-danger btn-block" href="javascript:void(0)" id="deleteAudio">Delete</a>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <input type="text" class="form-control panelFormInput" id="audioText" value="{{$audioFile}}" disabled style="background: white;">
+        </div>
+        <div class="col-md-2 col-6">
+            <a href="javascript:void(0)" id="browseBtn" class="btn btn-block btn-outline-primary browseBtn">Browse</a>
+        </div>
+        <div class="col-md-2 col-6">
+            <a href="javascript:void(0)" id="deleteAudio" class="btn btn-block btn-outline-danger deleteBtn">Delete</a>
         </div>
 
         <div id="loadingText" class="d-none" style="color:lightseagreen; padding: 10px;">
@@ -109,7 +118,7 @@
             <label class="panelFormLabel">Or Upload a video file :</label>
         </div>
     </div>
-    <div class="row">
+    <div style="opacity: 0; height: 1px;" class="row">
         <div class="col-md-10">
             <div class="custom-file" style="padding-top: 5px;">
                 <input type="file" id="video_file" class="custom-file-input panelFormInput" name="video_file">
@@ -124,15 +133,26 @@
                     ?>
                     {{$video_file}}
                 <?else:?>
-                    Upload Video
+                        <? $video_file = 'Upload Video'; ?>
                 <? endif;?>
                 </label>
             </div>
         </div>
-        <div class="col-md-2">
-            <a class="btn btn-outline-danger btn-block" href="javascript:void(0)" id="deleteVideo">Delete</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <input type="text" class="form-control panelFormInput" id="videoText" value="{{$video_file}}" disabled style="background: white;">
+        </div>
+        <div class="col-md-2 col-6">
+            <a href="javascript:void(0)" id="browseBtnVideo" class="btn btn-block btn-outline-primary browseBtn">Browse</a>
+        </div>
+        <div class="col-md-2 col-6">
+            <a href="javascript:void(0)" id="deleteVideo" class="btn btn-block btn-outline-danger deleteBtn">Delete</a>
         </div>
     </div><br/>
+
+
     <div class="row">
         <div class="col-md-6">
             <div class="text-center">

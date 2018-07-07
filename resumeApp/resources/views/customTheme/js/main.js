@@ -18,11 +18,14 @@ $(document).ready(function () {
 
     // delete Audio :
     $('#deleteAudio').on('click', function(e){
+        if(!confirm('are you sure you want to delete this Audio file ?')){
+            return;
+        }
         $('#audioFile').attr('type','text');
         $('#audioFile').attr('value',0);
         $('#works0').change();
         $('#audioFile').attr('type','file');
-        $('#audioLabel').html('Upload audio');
+        $('#audioText').val('Upload audio');
         // change the src of the Audio
         $('#audioIntroForm').attr('src','');
         $('#audioIntro')[0].load();
@@ -49,18 +52,26 @@ $(document).ready(function () {
     // show video name whn upload :
     $('#video_file').change(function(e){
         var fileName = e.target.files[0].name;
-        $('#videoLabel').html(fileName);
+        $('#videoText').val(fileName);
         // change the src of the video
         $('#videoFileFrame').attr('src','resumeApp/uploads/videos/'+fileName);
     });
 
+    // brose for video :
+    $('#browseBtnVideo').on('click',function () {
+        $('#video_file').click();
+    });
+
     // delete video :
     $('#deleteVideo').on('click', function(e){
+        if(!confirm('Are you sure you want to delete this video ?')){
+            return;
+        }
         $('#video_file').attr('type','text');
         $('#video_file').attr('value',0);
         $('#works0').change();
         $('#video_file').attr('type','file');
-        $('#videoLabel').html('Upload video');
+        $('#videoText').val('Upload video');
         // change the src of the video
         $('#videoFileFrame').attr('src','');
     });
@@ -76,6 +87,18 @@ $(document).ready(function () {
     $('#photoPreview').on('click',function () {
         $('#photoInput').click();
     });
+    $('#photoPreview').hover(function () {
+        $('#photoPreview').fadeTo(500, .1);
+        $('#photoPreview').css('cursor', 'pointer');
+        $('#profileImgBox').css('background', 'url("/resumeApp/resources/views/customTheme/images/add_profile_photo.png")');
+        $('#profileImgBox').css('background-repeat','no-repeat');
+        $('#profileImgBox').css('background-position','center');
+    },function () {
+        $('#profileImgBox').css('background', '');
+        $('#photoPreview').fadeTo(500,1);
+    });
+
+
 
 
     ////////////////////////////////////////// portfolio scripts  //////////////////////////////
@@ -595,7 +618,7 @@ $(document).ready(function () {
     $(document).ready(function(){
         $('#audioFile').change(function(e){
             var fileName = e.target.files[0].name;
-            $('#audioLabel').html(fileName);
+            $('#audioText').val(fileName);
             // change the src of the Audio
             $('#audioIntroForm').attr('src','resumeApp/uploads/'+fileName);
             $('#audioIntro')[0].load();
@@ -615,6 +638,12 @@ $(document).ready(function () {
         window.location.hash = href;
         checkHash();
         $('html, body').animate({scrollTop:$('#tabMainHeading').position().top}, 'slow');
-    })
+    });
+
+    // click on browse btn:
+    $('#browseBtn').on('click',function () {
+        $('#audioFile').click();
+    });
+
 
 });

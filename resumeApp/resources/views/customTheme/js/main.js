@@ -52,18 +52,26 @@ $(document).ready(function () {
     // show video name whn upload :
     $('#video_file').change(function(e){
         var fileName = e.target.files[0].name;
-        $('#videoLabel').html(fileName);
+        $('#videoText').val(fileName);
         // change the src of the video
         $('#videoFileFrame').attr('src','resumeApp/uploads/videos/'+fileName);
     });
 
+    // brose for video :
+    $('#browseBtnVideo').on('click',function () {
+        $('#video_file').click();
+    });
+
     // delete video :
     $('#deleteVideo').on('click', function(e){
+        if(!confirm('Are you sure you want to delete this video ?')){
+            return;
+        }
         $('#video_file').attr('type','text');
         $('#video_file').attr('value',0);
         $('#works0').change();
         $('#video_file').attr('type','file');
-        $('#videoLabel').html('Upload video');
+        $('#videoText').val('Upload video');
         // change the src of the video
         $('#videoFileFrame').attr('src','');
     });

@@ -1173,10 +1173,10 @@ body{
 .tabsArea{
   padding-top: 30px;
   .tabText{
-    opacity: 0.75;	color: #1C4D75;
+    opacity: 0.75;
+    color: #919CA5;
     border: 0;
     font-family: Roboto;
-    font-weight: bold;
     padding-top: 5px;
     margin-left: 6px;
     width: 147px;
@@ -1190,12 +1190,12 @@ body{
 
   }
   .tabCircle{
-    background-color: whitesmoke;
+    background-color: #FCFCFC;
     margin-bottom: 8%;
     max-width: 45px;
     padding: 12px 0px 8px 0px;
     border-radius: 50%;
-    border: 1px solid;
+    border: 1px solid #F4F4F4;
     color: #919CA5;
     @media only screen and (max-width: 600px) {
       display: none;
@@ -1207,6 +1207,7 @@ body{
       color: white;
       font-weight: bold;
     }
+    font-weight: bold;
   }
 
   .nav-item{

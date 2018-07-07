@@ -18,83 +18,58 @@
         <? endif; ?>
     </div>
 <div class="container">
-    <div class="d-xs-block d-sm-block d-md-none carouselTabs fixed-top" style="margin-top: 50px; background:linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="">
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active text-center">
-                    <a class="tabsArea nextBtn" href="#overview">
-                        <div class="tabText text-center">
-                            <span class="tabCircle" style="padding:2px 5px 2px 5px;">1</span><br/>
-                            Overview and<br/>
-                            personal info
-                        </div>
+    <div class="row tabsArea fixed-top d-sm-block d-xs-block d-md-none" style="margin-top: 50px;   background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);">
+        <div class="col-md-12 text-center">
+            <ul class="nav nav-tabs" id="mytabs" role="tablist">
+                <li class="nav-item" id="tap1">
+                    <a class="nav-link active text-center tabText" href="#overview" role="tab" data-toggle="tab">
+                        <div class="col-md-6 offset-md-4 tabCircle">1</div>
+                        Overview and
+                        personal info
                     </a>
-                </div>
-                <div class="carousel-item text-center">
-                    <a class="tabsArea nextBtn" href="#pay">
-                        <div class="tabText text-center">
-                            <span class="tabCircle" style="padding:2px 5px 2px 5px;">2</span><br/>
-                            Availablity and<br>
-                            pay
-                        </div>
+                </li>
+                <li class="nav-item" id="tap2">
+                    <a class="nav-link text-center tabText" href="#pay" role="tab" data-toggle="tab">
+                        <div class="col-md-6 offset-md-4 tabCircle">2</div>
+                        Availability and
+                        pay
                     </a>
-                </div>
-                <div class="carousel-item text-center">
-                    <a class="tabsArea nextBtn" href="#multimedia">
-                        <div class="tabText text-center">
-                            <span class="tabCircle" style="padding:2px 5px 2px 5px;">3</span><br/>
-                            Multimedia <br/>
-                            ( Voice recording / Video )
-                        </div>
+                </li>
+                <li class="nav-item" id="tap3">
+                    <a class="nav-link text-center tabText" href="#multimedia" role="tab" data-toggle="tab">
+                        <div class="col-md-6 offset-md-4 tabCircle">3</div>
+                        Multimedia
+                        (Audio/Video)
                     </a>
-                </div>
-                <div class="carousel-item text-center">
-                    <a class="tabsArea nextBtn" href="#career">
-                        <div class="tabText text-center">
-                            <span class="tabCircle" style="padding:2px 5px 2px 5px;">4</span><br/>
-                            Career overview and <br/>
-                            ( Education / Training )
-                        </div>
+                </li>
+                <li class="nav-item" id="tap4">
+                    <a class="nav-link text-center tabText" href="#career" role="tab" data-toggle="tab">
+                        <div class="col-md-6 offset-md-4 tabCircle">4</div>
+                        Career overview
+                        (Edu/Training)
                     </a>
-                </div>
-                <div class="carousel-item text-center">
-                    <a class="tabsArea nextBtn" href="#portfolio">
-                        <div class="tabText text-center">
-                            <span class="tabCircle" style="padding:2px 5px 2px 5px;">5</span><br/>
-                            Portfolio<br/>Previous work
-                        </div>
+                </li>
+                <li class="nav-item" id="tap5">
+                    <a class="nav-link text-center tabText" href="#portfolio" role="tab" data-toggle="tab">
+                        <div class="col-md-6 offset-md-4 tabCircle">5</div>
+                        Portfolio Previous work
                     </a>
-                </div>
-                <div class="carousel-item text-center">
-                    <a class="tabsArea nextBtn" href="#skills">
-                        <div class="tabText text-center">
-                            <span class="tabCircle" style="padding:2px 5px 2px 5px;">6</span><br/>
-                            Professional skills<br/>
-                            personal info
-                        </div>
+                </li>
+                <li class="nav-item" id="tap6">
+                    <a class="nav-link text-center tabText" href="#skills" role="tab" data-toggle="tab">
+                        <div class="col-md-6 offset-md-4 tabCircle">6</div>
+                        Professional skills
                     </a>
-                </div>
-                <div class="carousel-item text-center">
-                    <a class="tabsArea nextBtn" href="#attributes">
-                        <div class="tabText text-center">
-                            <span class="tabCircle" style="padding:2px 5px 2px 5px;">7</span><br/>
-                            Personal<br/>
-                            attributes
-                        </div>
+                </li>
+                <li class="nav-item" id="tap7">
+                    <a class="nav-link text-center tabText" href="#attributes" role="tab" data-toggle="tab">
+                        <div class="col-md-6 offset-md-4 tabCircle">7</div>
+                        personal attributes
                     </a>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon carouselArrows" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon carouselArrows" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+                </li>
+            </ul>
         </div>
     </div>
-
     <div class="text-center">
         <div class="pageHeading" id="tabMainHeading">1.Overview and personal info</div>
         <div class="pageSubHeading">
@@ -106,8 +81,6 @@
         </div>
     </div>
             {{-- tabs section first on phone --}}
-
-
     <div class="row tabsArea d-none d-md-block">
         <div class="col-md-12 text-center">
             <ul class="nav nav-tabs" id="mytabs" role="tablist">
@@ -129,14 +102,14 @@
                     <a class="nav-link text-center tabText" href="#multimedia" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">3</div>
                         Multimedia
-                        ( Voice recording / Video )
+                        (Audio/Video)
                     </a>
                 </li>
                 <li class="nav-item" id="tap4">
                     <a class="nav-link text-center tabText" href="#career" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">4</div>
-                        Career overview and
-                        (Education / Training)
+                        Career overview
+                        (Edu/Training)
                     </a>
                 </li>
                 <li class="nav-item" id="tap5">

@@ -37,10 +37,10 @@ body {
   margin-top: 30px;
   opacity: .7; }
 
-.fixed-top {
+.navbar.fixed-top {
   height: 50px !important; }
   @media only screen and (max-width: 600px) {
-    .fixed-top {
+    .navbar.fixed-top {
       height: auto !important; } }
 
 .customNav {
@@ -894,7 +894,7 @@ body {
   font-weight: 300;
   line-height: 35px;
   text-align: center; }
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 991px) {
     .pageHeading {
       font-size: 25px;
       margin-top: 80px; } }
@@ -933,7 +933,7 @@ body {
     width: 147px;
     height: 155px;
     border-bottom: 2px solid lightgray; }
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 991px) {
       .tabsArea .tabText {
         width: auto;
         padding-top: 0;
@@ -946,7 +946,7 @@ body {
     border-radius: 50%;
     border: 1px solid #F4F4F4;
     color: #919CA5; }
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 991px) {
       .tabsArea .tabCircle {
         display: none; } }
   .tabsArea .active {
@@ -1201,7 +1201,7 @@ body {
     overflow-y: hidden; }
     #mytabs ::-webkit-scrollbar {
       width: 3px; } }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 991px) {
   #mytabs {
     height: 90px; } }
 

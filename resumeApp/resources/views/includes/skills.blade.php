@@ -12,9 +12,9 @@
         <textarea class="form-control" rows="3" id="spec_design_skills" name="design_skills">{{$design_skills}}</textarea>
     </div> <!-- design skills -->
 
-    <div class="form-group col-md-8">
+    <div class="form-group col-lg-8 col-md-12">
         <hr>
-        <label style="border-bottom:1px lightgray solid ; padding: 2px;">
+        <label style="padding: 2px;" class="panelFormLabel">
             <? if($profession == 'Designer'):?>
             Top 6 Design skills
             <? else: ?>
@@ -57,9 +57,9 @@
         </div>
     </div> <!-- design skills checkbox -->
 
-    <div class="form-group col-md-8">
+    <div class="form-group col-lg-8 col-md-12">
         <hr>
-        <label  style="border-bottom:1px lightgray solid ; padding: 2px;">
+        <label  style=" padding: 2px;" class="panelFormLabel">
             <? if($profession == 'Designer'):?>
             6 Primary Skills *
             <? else: ?>
@@ -104,7 +104,7 @@
     <div class="form-group col-md-12">
         <hr>
 
-        <label style="border-bottom:1px lightgray solid ; padding: 2px;">Please choose 6 character skills</label>
+        <label style=" padding: 2px;" class="panelFormLabel">Please choose 6 character skills</label>
         <?
         $charSkills = ['Adventurous:  I take risks.', 'Ambitious:  I am driven to succeed.', 'Approachable:  I work well with others.',
             'Articulate:  I can express myself well in front of groups.','Autonomous:  I use initiative.', 'Calm:  I stay level headed in a crisis.', 'Charismatic:  I can be a leader when need be.',

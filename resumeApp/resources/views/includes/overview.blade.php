@@ -10,7 +10,7 @@
             Basic Information
     </div>
     <div class="row">
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6 col-lg-4">
             <label for="userName" class="panelFormLabel">Full name <span style="font-size:small;">*</span>
                 <span id="tickMarkname" class="d-none">
                     <img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;">
@@ -18,7 +18,7 @@
             </label>
             <input type="text" style="@if($errors->has('name')) border:1px solid red; @endif" class="form-control panelFormInput" id="fullName" name="name" placeholder="Enter your name.." value="<?if(empty($name)):?>{{$currFreelancer->firstName}} {{$currFreelancer->lastName}}<?else:?>{{$name}}<? endif;?>">
         </div> <!-- Full name -->
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6 col-lg-4">
             <label for="birth_date" class="panelFormLabel">Job title <span style="font-size:small;">*</span> <span id="tickMarkjobTitle" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <?
             $developer = [
@@ -46,16 +46,16 @@
                 <? endif;?>
             </select>
         </div> <!-- job title -->
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6 col-lg-4">
             <label for="birth_date" class="panelFormLabel">Primary contact Email <span style="font-size:small;">*</span><span id="tickMarkemail" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="email" style="@if($errors->has('email')) border:1px solid red; @endif" class="form-control panelFormInput" name="email" value="<?if(empty($email)):?>{{$currFreelancer->email}}<?else:?>{{$email}}<? endif;?>">
             <small>Gmail is preferred</small>
         </div> <!-- email -->
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6 col-lg-4">
             <label for="birth_date"  class="panelFormLabel">City where you live & work <span style="font-size:small;">*</span><span id="tickMarkcity" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="text" style="@if($errors->has('city')) border:1px solid red; @endif" class="form-control panelFormInput" name="city" value="{{$city}}">
         </div> <!-- city -->
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-6 col-lg-4">
             <label for="languages"  class="panelFormLabel">Languages you speak at a high level<span id="tickMarklanguages" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="text" class="form-control panelFormInput" id="languages" name="languages" value="{{$languages}}">
             <small>Separated by commas</small>

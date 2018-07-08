@@ -10,13 +10,13 @@
     <div class="form-group col-md-12">
         <label for="careerObjective" class="panelFormLabel">Career objective <span id="tickMarkcareerObjective" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
         <textarea class="form-control" rows="3" id="careerObjective" name="careerObjective">{{$careerObjective}}</textarea>
-        <small>20-50 Words</small>
+        <small class="panelFormLabel">20-50 Words</small>
     </div> <!-- c.objective -->
     <hr>
     <div class="form-group col-md-12">
         <label style="border-bottom:1px lightgray solid ; padding: 5px;" class="panelFormLabel">Education</label>
         <div class="row">
-            <div class="col-md-4" style="padding: 0!important;">
+            <div class="col-md-6 col-lg-4" style="padding: 0!important;">
                 <div class="row">
                     <div class="col-md-6">
                         <label for="education" class="panelFormLabel">Title<span id="tickMarkeduTitle1" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4" style="padding: 0!important;">
+            <div class="col-md-6 col-lg-4" style="padding: 0!important;">
 
                 <div class="row">
                     <div class="col-md-6">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4" style="padding: 0!important;">
+            <div class="col-md-6 col-lg-4" style="padding: 0!important;">
                 <div class="row">
                     <div class="col-md-6">
                         <label for="education" class="panelFormLabel">Title<span id="tickMarkeduTitle3" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
@@ -69,8 +69,7 @@
                 </div>
             </div>
         </div>
-        <small>Please include all relevant   <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> schools and/or  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> courses you have taken. Include the COURSE NAME & UNIVERSITY NAME</small>
-
+        <small class="panelFormLabel">Please include all relevant   <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> schools and/or  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> courses you have taken. Include the COURSE NAME & UNIVERSITY NAME</small>
     </div> <!-- Edu -->
 
 
@@ -79,7 +78,7 @@
     <div class="form-group col-md-12">
         <label style="border-bottom:1px lightgray solid ; padding: 5px;" class="panelFormLabel">Trainings</label>
         <div class="row">
-            <div class="col-md-4" style="padding: 0!important;">
+            <div class="col-md-6 col-lg-4" style="padding: 0!important;">
                 <div class="row">
                     <div class="col-md-6">
                         <label for="education" class="panelFormLabel">Title<span id="tickMarktrnTitle1" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
@@ -96,7 +95,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4" style="padding: 0!important;">
+            <div class="col-md-6 col-lg-4" style="padding: 0!important;">
                 <div class="row">
                     <div class="col-md-6">
                         <label for="education" class="panelFormLabel">Title<span id="tickMarktrnTitle2" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
@@ -115,7 +114,7 @@
                 </div>
 
             </div>
-            <div class="col-md-4" style="padding: 0!important;">
+            <div class="col-md-6 col-lg-4" style="padding: 0!important;">
                 <div class="row">
                     <div class="col-md-6">
                         <label for="education" class="panelFormLabel">Title<span id="tickMarktrnTitle3" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
@@ -133,7 +132,7 @@
 
                 </div>
             </div>
-            <small>Please include all relevant  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> trainings attended in the past 3 years. Include the TRAINING NAME/TITLE, & the LOCATION where the training was held</small>
+            <small class="panelFormLabel">Please include all relevant  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> trainings attended in the past 3 years. Include the TRAINING NAME/TITLE, & the LOCATION where the training was held</small>
         </div>
     </div>
     <!-- trainings -->

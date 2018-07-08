@@ -13,7 +13,7 @@
                         <div class="col-md-6 offset-md-3">
                             <div class="form-group">
                                 <label for="email" class="formLabel">{{ __('E-Mail Address') }}</label>
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="email" type="email" class="panelFormInput form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">
@@ -27,7 +27,7 @@
                                         {{ __(' Forgot?') }}
                                     </a>
                                 </label>
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                <input id="password" type="password" class="panelFormInput form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">
@@ -37,9 +37,10 @@
                             </div>
                             <div class="form-group">
                                 <div class="checkbox">
-                                    <label>
+                                    <label class="checkBoxText checkBoxContainer">
                                         <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
                                         <span class="rememberText">Remember Me</span>
+                                        <span class="checkmark"></span>
                                     </label>
                                 </div>
                             </div>

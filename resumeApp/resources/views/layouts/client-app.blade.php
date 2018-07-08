@@ -89,7 +89,7 @@ if($user){
                 <?php if(auth()->guard('client')->guest()): ?>
                     <li></li>
                     <li class="nav-link loginBtn">
-                        <a href="{{ route('client.login') }}" data-toggle="modal" data-target="#loginModal">{{ __('Sign in') }}</a></li>
+                        <a href="{{ route('client.login') }}" data-toggle="modal" data-target="#loginModal" style="padding-left: 30px; padding-right: 30px;">{{ __('Sign in') }}</a></li>
                 <? else: ?>
                     <a class="nav-item nav-link customNavLink" href="/client">
                         {{ Auth::guard('client')->user()->name }}

@@ -92,9 +92,7 @@ body {
   margin-left: 300px;
   text-decoration: none !important; }
   .loginBtn a {
-    outline: none;
-    padding-left: 30px;
-    padding-right: 30px; }
+    outline: none; }
   @media only screen and (max-width: 600px) {
     .loginBtn {
       margin-right: 0px;
@@ -470,7 +468,7 @@ body {
   font-weight: 300;
   line-height: 35px;
   text-align: center;
-  background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%); }
+  padding-top: 40px; }
 
 .clientForm {
   padding-top: 3%; }

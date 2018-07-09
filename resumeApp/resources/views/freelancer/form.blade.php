@@ -25,14 +25,14 @@
                     <a class="nav-link active text-center tabText" href="#overview" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">1</div>
                         Overview and
-                        personal info
+                        Personal info
                     </a>
                 </li>
                 <li class="nav-item" id="tap2">
                     <a class="nav-link text-center tabText" href="#pay" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">2</div>
                         Availability and
-                        pay
+                        Pay
                     </a>
                 </li>
                 <li class="nav-item" id="tap3">
@@ -52,7 +52,7 @@
                 <li class="nav-item" id="tap5">
                     <a class="nav-link text-center tabText" href="#portfolio" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">5</div>
-                        Portfolio Previous work
+                        Portfolio / Previous work
                     </a>
                 </li>
                 <li class="nav-item" id="tap6">
@@ -64,7 +64,7 @@
                 <li class="nav-item" id="tap7">
                     <a class="nav-link text-center tabText" href="#attributes" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">7</div>
-                        personal attributes
+                        Personal attributes
                     </a>
                 </li>
             </ul>
@@ -88,14 +88,14 @@
                     <a class="nav-link active text-center tabText" href="#overview" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">1</div>
                         Overview and
-                        personal info
+                        Personal info
                     </a>
                 </li>
                 <li class="nav-item" id="tap2">
                     <a class="nav-link text-center tabText" href="#pay" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">2</div>
                         Availability and
-                        pay
+                        Pay
                     </a>
                 </li>
                 <li class="nav-item" id="tap3">
@@ -115,7 +115,7 @@
                 <li class="nav-item" id="tap5">
                     <a class="nav-link text-center tabText" href="#portfolio" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">5</div>
-                        Portfolio Previous work
+                        Portfolio / Previous work
                     </a>
                 </li>
                 <li class="nav-item" id="tap6">
@@ -127,7 +127,7 @@
                 <li class="nav-item" id="tap7">
                     <a class="nav-link text-center tabText" href="#attributes" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">7</div>
-                        personal attributes
+                        Personal attributes
                     </a>
                 </li>
             </ul>

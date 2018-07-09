@@ -92,7 +92,9 @@
     <?php
     $src         = $video;
     $youtubeSrc  = 'https://www.youtube.com/embed/';
-    $youtubeSrc .= substr($src, strpos($src, "=") + 1);
+    $videoID     = substr($src, strpos($src, "=") + 1);
+    $youtubeSrc .= substr($videoID, 0, 11);
+
     ?>
     <div class="row">
         <div class="col-md-12">

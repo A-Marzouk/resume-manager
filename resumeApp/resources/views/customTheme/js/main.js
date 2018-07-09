@@ -46,7 +46,6 @@ $(document).ready(function () {
         var videoID = getSecondPart( $(this).val());
         var videoSrc = 'https://www.youtube.com/embed/'+videoID;
         $('#videoFrame').attr('src',videoSrc);
-        console.log('video src changed')
     });
 
     // show video name whn upload :
@@ -79,7 +78,8 @@ $(document).ready(function () {
 
     function getSecondPart(str) {
         if(str.includes('=')){
-            return str.split('=')[1];
+            var videoId = str.split('=')[1].substring(0,11);
+            return videoId;
         }
     }
 

@@ -38,7 +38,7 @@ if($user){
             <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
                 <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
             </a>
-            <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="" data-target="#" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -207,12 +207,12 @@ if($user){
 
             $('#navBarToggle').on('click',function () {
                 if($('.collapse.navbar-collapse').hasClass('show')){
-                    setTimeout(function(){
                         $('.collapse.navbar-collapse').removeClass('show');
-                        $('#carouselExampleIndicators').show('slow');
-                        }, 615);
+                        $('#tabsMobile').show('slow');
+                }else{
+                    $('.collapse.navbar-collapse').addClass('show');
+                    $('#tabsMobile').hide('slow');
                 }
-                $('#carouselExampleIndicators').hide('slow');
             });
 
         });

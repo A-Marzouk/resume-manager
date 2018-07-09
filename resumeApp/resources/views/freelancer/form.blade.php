@@ -18,7 +18,7 @@
         <? endif; ?>
     </div>
 <div class="container">
-    <div class="row tabsArea fixed-top d-sm-block d-xs-block d-md-block d-lg-none" style="margin-top: 50px;   background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);">
+    <div class="row tabsArea fixed-top d-sm-block d-xs-block d-md-block d-lg-none" id="tabsMobile" style="margin-top: 50px;   background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);">
         <div class="col-md-12 text-center">
             <ul class="nav nav-tabs" id="mytabs" role="tablist">
                 <li class="nav-item" id="tap1">

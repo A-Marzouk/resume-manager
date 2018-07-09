@@ -69,7 +69,7 @@
                 </div>
                 <div style="display:block; padding-bottom: 15px;">
                     <div id="imgBox{{$i}}" style="border: 1px solid #D5D8DE;	border-radius: 4px;">
-                        <img src="{{$src}}" id="portfolioImg{{$i}}" width="100%" height="193px;">
+                        <img src="{{$src}}" id="portfolioImg{{$i}}" width="100%" height="193px;" style="min-width: 220px">
                     </div>
                 </div>
                 <div class="form-group btn-block">

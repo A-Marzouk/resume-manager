@@ -162,14 +162,14 @@ class UserDataController extends Controller
     public function uploadAudio($src,$name,$newName){
         $target_dir = "resumeApp/uploads/";
         $uploadOk = 1;
-        if ($_FILES[$name]["size"] > 25000000) { // 25 megabyte
+        if ($_FILES[$name]["size"] > 75000000) { // 75 megabyte
             $uploadOk = 0;
         }
         // allowed formats :
-        $formats = ['audio/mpeg', 'audio/x-mpeg', 'audio/mpeg3', 'audio/x-mpeg-3', 'audio/aiff',
+        $formats = ['audio/mpeg', 'audio/x-mpeg','audio/mpeg3', 'audio/x-mpeg-3', 'audio/aiff',
             'audio/mid', 'audio/x-aiff', 'audio/x-mpequrl','audio/midi', 'audio/x-mid',
             'audio/x-midi','audio/wav','audio/x-wav','audio/xm','audio/x-aac','audio/basic',
-            'audio/flac','audio/mp4','audio/x-matroska','audio/ogg','audio/s3m','audio/x-ms-wax',
+            'audio/flac','audio/mp4','audio/mp3','audio/x-matroska','audio/ogg','audio/s3m','audio/x-ms-wax',
             'audio/xm','audio/x-m4a'];
 
         // check file type :

@@ -17,10 +17,8 @@
                 }
                 ?>
                 <? if($valid):?>
-                <span id="tickMarkaudio" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span>
-                <!--                            --><?// else:?>
-                {{--<span id="tickMarkaudio" style="background: red;" class="d-none">X</span>--}}
-            <!--                            --><? endif;?>
+                    <span id="tickMarkaudio" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span>
+                <? endif;?>
             </label>
 
             <br/><label class="panelFormLabel">Link from Google drive :</label>
@@ -39,25 +37,18 @@
                 <input type="file" id="audioFile" class="custom-file-input panelFormInput" name="audioFile">
                 <label class="custom-file-label" id="audioLabel" for="">
                     <?
-                    $audioSrc = "";
+                        $audioSrc = "";
+                        if(!empty(trim($audioFile))){
+                            $audioSrc = $audioFile;
+                            $audioFile = str_replace('resumeApp/uploads/',"",$audioFile);
+                        }
+                        else{
+                          $audioFile = 'Upload Audio';
+                        }
+                        if($valid){
+                            $audioSrc = "https://drive.google.com/uc?export=download&id=".$audio."&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
+                        }
                     ?>
-                    <? if(!empty(trim($audioFile))):?>
-                        <?
-                        $audioSrc = $audioFile;
-                        $audioFile = str_replace('resumeApp/uploads/',"",$audioFile);
-                        ?>
-                    <?else:
-                      $audioFile = 'Upload Audio';
-                    ?>
-
-                    <?
-                    if($valid){
-                        $audioSrc = "https://drive.google.com/uc?export=download&id=".$audio."&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
-                    }else{
-                        $audioSrc = "" ;
-                    }
-                    ?>
-                    <? endif;?>
                 </label>
             </div>
         </div>

@@ -34,11 +34,10 @@ $(document).ready(function () {
     // when a link to google drive is added :
     $('#audio_intro').on('change',function () {
         $('#audioIntroForm').attr('src',$(this).val());
-        $('#audioIntro')[0].load();
         $('#loadingText').removeClass('d-none');
         setTimeout(function(){
             location.reload();
-          },6000);
+        },3000);
     });
 
     // link to video :
@@ -559,6 +558,17 @@ $(document).ready(function () {
         $('.freelancerForm :input').on('change', function (e) {
             e.preventDefault();
             var form = document.getElementsByClassName('freelancerForm')[0];
+
+            // disable all empty files
+
+            var files = document.querySelectorAll(".freelancerForm input[type=file]");
+            files.forEach(function (file) {
+                let fileInput =  $('#'+file.id);
+                if(fileInput.get(0).files.length === 0){
+                    fileInput.attr('disabled',true);
+                }
+            });
+
             $.ajax({
                 type: 'post',
                 url: 'freelancer/store',
@@ -569,6 +579,14 @@ $(document).ready(function () {
                 success: function () {
                 }
             });
+
+            // after the request enable them again !
+            var disabledFiles = document.querySelectorAll(".freelancerForm input[type=file]");
+            disabledFiles.forEach(function (file) {
+                let fileInput =  $('#'+file.id);
+                fileInput.attr('disabled',false);
+            });
+
         });
     });
 
@@ -650,13 +668,34 @@ $(document).ready(function () {
             $('#audioText').val(fileName);
             // change the src of the Audio
             $('#audioIntroForm').attr('src','resumeApp/uploads/'+fileName);
-            $('#audioIntro')[0].load();
-            $('#loadingText').removeClass('d-none');
-            setTimeout(function(){
-                location.reload();
-            }, 6000);
+            checkAudioFile();
         });
     });
+
+    function checkAudioFile() {
+        $.ajax({
+            url: $('#audioFile').attr('src'),
+            type:'HEAD',
+            error: function()
+            {
+                // show the loading text :
+                $('#loadingText').removeClass('d-none');
+                //file not exists : check again after 1 second
+                setTimeout(checkAudioFile(),1000);
+            },
+            success: function()
+            {
+                // hide the loading text
+                $('#loadingText').removeClass('d-none');
+                $('#loadingText').html('Audio has been successfully uploaded.');
+                setTimeout(function () {
+                    $('#loadingText').addClass('d-none');
+                },2500);
+                // load the video
+                $('#audioIntro')[0].load();
+            }
+        });
+    }
 
 
     // change taps on click :

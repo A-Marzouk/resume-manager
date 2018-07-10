@@ -559,6 +559,17 @@ $(document).ready(function () {
         $('.freelancerForm :input').on('change', function (e) {
             e.preventDefault();
             var form = document.getElementsByClassName('freelancerForm')[0];
+
+            // disable all empty files
+
+            var files = document.querySelectorAll(".freelancerForm input[type=file]");
+            files.forEach(function (file) {
+                let fileInput =  $('#'+file.id);
+                if(fileInput.get(0).files.length === 0){
+                    fileInput.attr('disabled',true);
+                }
+            });
+
             $.ajax({
                 type: 'post',
                 url: 'freelancer/store',
@@ -569,6 +580,15 @@ $(document).ready(function () {
                 success: function () {
                 }
             });
+
+            // after the request enable them again !
+            var disabledFiles = document.querySelectorAll(".freelancerForm input[type=file]");
+            disabledFiles.forEach(function (file) {
+                let fileInput =  $('#'+file.id);
+                console.log('enabled');
+                fileInput.attr('disabled',false);
+            });
+
         });
     });
 

@@ -153,8 +153,12 @@
                     <source src="{{$videoSrc}}">
                 </video>
             </div>
+            <div id="loadingTextVideo" class="d-none" style="color:lightseagreen; padding: 10px;">
+                Processing video...
+            </div>
         </div>
     </div>
+
 
     <div class="row">
         <div class="buttonMain col-md-3 offset-md-9">

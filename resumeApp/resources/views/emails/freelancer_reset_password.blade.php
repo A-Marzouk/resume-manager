@@ -12,7 +12,12 @@
             Freelancer reset Password
         </a>
     </div>
-<br/>
+    <br/>
+    <div class="mailText">
+        If you have problems with the above link please use this one : <br/>
+        <a href="123workforce.magictimeapps.com/password/reset/{{$token}}">123workforce.magictimeapps.com/password/reset/{{$token}}</a>
+    </div>
+    <br/>
     <div class="mailText">
         Kindest Regards,<br/><b>123 Workforce</b>
     </div>

@@ -48,15 +48,44 @@ $(document).ready(function () {
         $('#videoFrame').attr('src',videoSrc);
     });
 
-    // show video name whn upload :
+    // check if file exists or not :
+
+    // show video name when upload :
     $('#video_file').change(function(e){
         var fileName = e.target.files[0].name;
         $('#videoText').val(fileName);
         // change the src of the video
         $('#videoFileFrame').attr('src','resumeApp/uploads/videos/'+fileName);
+
+        checkFile();
+
     });
 
-    // brose for video :
+    function checkFile() {
+        $.ajax({
+            url: $('#videoFileFrame').attr('src'),
+            type:'HEAD',
+            error: function()
+            {
+                // show the loading text :
+                $('#loadingTextVideo').removeClass('d-none');
+                //file not exists : check again after 1 second
+                setTimeout(checkFile(),1000);
+            },
+            success: function()
+            {
+                // hide the loading text
+                $('#loadingTextVideo').html('Video has been successfully uploaded.');
+                setTimeout(function () {
+                    $('#loadingTextVideo').addClass('d-none');
+                },2500);
+                // load the video
+                $('#videoFileFrame')[0].load();
+            }
+        });
+    }
+
+    // browse for video :
     $('#browseBtnVideo').on('click',function () {
         $('#video_file').click();
     });

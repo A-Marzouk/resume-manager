@@ -14,6 +14,11 @@
     </div>
     <br/>
     <div class="mailText">
+        If you have problems with the above link please use this one : <br/>
+        <a href="123workforce.magictimeapps.com/client/password/reset/{{$token}}">123workforce.magictimeapps.com/client/password/reset/{{$token}}</a>
+    </div>
+    <br/>
+    <div class="mailText">
         Kindest Regards,<br/><b>123 Workforce</b>
     </div>
 

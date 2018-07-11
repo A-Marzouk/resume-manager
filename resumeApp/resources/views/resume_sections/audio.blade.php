@@ -1,13 +1,11 @@
 {{-- audio introduction section --}}
 <div id="audio">
     <div class="row">
-        <div class="col-md-1 offset-md-1">
+        <div class="col-md-5 offset-md-1">
             <img src="resumeApp/resources/views/customTheme/images/newResume/audio.png" alt="audio">
-        </div>
-        <div class="col-md-4">
-            <div class="quoteText">
+            <span class="quoteText">
                 Audio Introduction
-            </div>
+            </span>
         </div>
         <?
         $valid = true;
@@ -26,7 +24,7 @@
             }
         }
         ?>
-        <div class="col-md-5">
+        <div class="col-md-5 text-center">
             <audio id="audioIntro" controls>
                 <source src="{{$audioSrc}}" type="audio/ogg">
                 Your browser does not support the audio element.

@@ -199,7 +199,8 @@ body {
   background: linear-gradient(90deg, #F8F8F8 0%, #FCFCFC 100%);
   margin-top: 5%;
   margin-bottom: 1%;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   border-top: 1px solid #F8F8F8;
   border-bottom: 1px solid #F8F8F8; }
   #quote img {
@@ -288,7 +289,10 @@ body {
   background: linear-gradient(90deg, #F8F8F8 0%, #FCFCFC 100%);
   margin-top: 5%;
   margin-bottom: 3%;
-  padding: 20px; }
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid #F8F8F8;
+  border-bottom: 1px solid #F8F8F8; }
   #audio img {
     height: 50px;
     width: 50px;
@@ -299,7 +303,8 @@ body {
     font-size: 20px;
     font-weight: 300;
     line-height: 24px;
-    margin-top: 1.5%; }
+    margin-top: 1.5%;
+    padding-left: 30px; }
 
 .aboutSubText .year {
   color: #697786;

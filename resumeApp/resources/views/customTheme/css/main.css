@@ -157,6 +157,9 @@ body {
   margin-right: 0 !important;
   margin-left: 0 !important; }
 
+.buttonMain.whiteBg :hover {
+  background: aliceblue !important; }
+
 .buttonMain {
   padding: 5% 0 0 0;
   margin-top: 20px;
@@ -187,13 +190,19 @@ body {
     border: 0; }
   .buttonMain .hireBtn.hire {
     background: white;
+    box-shadow: none;
+    padding: 11px 0 11px 0;
+    border: 2px solid #088FD9;
     color: #088FD9; }
 
 #quote {
   background: linear-gradient(90deg, #F8F8F8 0%, #FCFCFC 100%);
   margin-top: 5%;
   margin-bottom: 1%;
-  padding: 20px; }
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid #F8F8F8;
+  border-bottom: 1px solid #F8F8F8; }
   #quote img {
     height: 50px;
     width: 50px;
@@ -204,6 +213,12 @@ body {
     font-size: 20px;
     font-weight: 300;
     line-height: 24px; }
+
+#cv_bar {
+  background: none;
+  height: 40px;
+  border-bottom: 1px solid #F8F8F8;
+  box-shadow: none; }
 
 .secondNavLink {
   opacity: 0.75;
@@ -245,7 +260,7 @@ body {
   font-family: Roboto;
   font-size: 25px;
   line-height: 29px;
-  padding-left: 5px; }
+  padding-left: 20px; }
 
 .aboutSubText {
   color: #697786;
@@ -253,16 +268,18 @@ body {
   font-size: 20px;
   font-weight: 300;
   line-height: 24px;
-  padding-top: 15px; }
+  padding-top: 15px;
+  padding-left: 20px; }
 
 .circle:before {
   content: ' \25CF';
-  font-size: 11px;
-  color: #FCFCFC;
-  border: 1px solid lightgray;
+  font-size: 8px;
+  color: #DAD9DA;
+  border: 1px solid #DAD9DA;
+  background: #DAD9DA;
   border-radius: 50%;
-  padding: 0 3px 0 3px;
-  margin: 3px; }
+  padding: 0 1px 0 1px;
+  margin: 9px; }
 
 @media only screen and (max-width: 600px) {
   .mobileCenter {
@@ -273,7 +290,10 @@ body {
   background: linear-gradient(90deg, #F8F8F8 0%, #FCFCFC 100%);
   margin-top: 5%;
   margin-bottom: 3%;
-  padding: 20px; }
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid #F8F8F8;
+  border-bottom: 1px solid #F8F8F8; }
   #audio img {
     height: 50px;
     width: 50px;
@@ -284,7 +304,8 @@ body {
     font-size: 20px;
     font-weight: 300;
     line-height: 24px;
-    margin-top: 1.5%; }
+    margin-top: 1.5%;
+    padding-left: 30px; }
 
 .aboutSubText .year {
   color: #697786;
@@ -292,20 +313,25 @@ body {
   font-size: 20px;
   font-weight: 300;
   line-height: 24px; }
+  .aboutSubText .year .circle:before {
+    background: white;
+    color: white;
+    padding: 0 3px 0 3px;
+    font-size: 11px; }
 .aboutSubText .title {
   color: #697786;
   font-family: Roboto;
   font-size: 22px;
   font-weight: 500;
   line-height: 25px;
-  padding-left: 20px; }
+  padding-left: 30px; }
 .aboutSubText .desc {
   color: #C5A7FD;
   font-family: Roboto;
   font-size: 22px;
   font-weight: 300;
   line-height: 25px;
-  padding-left: 20px; }
+  padding-left: 30px; }
 
 .education {
   padding-bottom: 4% !important; }

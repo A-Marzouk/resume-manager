@@ -241,6 +241,8 @@ body{
   margin-top: 5%;
   margin-bottom: 1%;
   padding: 20px;
+  border-top:1px solid #F8F8F8;
+  border-bottom:1px solid #F8F8F8;
   img{
     height: 50px;	width: 50px;	opacity: 0.5;
   }
@@ -317,12 +319,13 @@ body{
 
 .circle:before {
   content: ' \25CF';
-  font-size: 11px;
-  color: #FCFCFC;
-  border: 1px solid lightgray;
+  font-size: 8px;
+  color: #DAD9DA;
+  border: 1px solid #DAD9DA;
+  background: #DAD9DA;
   border-radius: 50%;
-  padding: 0 3px 0 3px;
-  margin: 3px;
+  padding: 0 1px 0 1px;
+  margin: 9px;
 }
 
 .mobileCenter{

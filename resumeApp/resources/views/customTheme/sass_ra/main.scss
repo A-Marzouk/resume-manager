@@ -309,13 +309,14 @@ body{
   font-family: Roboto;
   font-size: 25px;
   line-height: 29px;
-  padding-left: 5px;
+  padding-left: 20px;
 }
 
 .aboutSubText{
   color: #697786;	font-family: Roboto;
   font-size: 20px;	font-weight: 300;	line-height: 24px;
   padding-top: 15px;
+  padding-left: 20px;
 }
 
 .circle:before {
@@ -370,6 +371,12 @@ body{
     font-size: 20px;
     font-weight: 300;
     line-height: 24px;
+    .circle:before{
+      background: white;
+      color: white;
+      padding: 0 3px 0 3px;
+      font-size: 11px;
+    }
   }
   .title{
     color: #697786;
@@ -377,7 +384,7 @@ body{
     font-size: 22px;
     font-weight: 500;
     line-height: 25px;
-    padding-left: 20px;
+    padding-left: 30px;
   }
   .desc{
     color: #C5A7FD;
@@ -385,7 +392,7 @@ body{
     font-size: 22px;
     font-weight: 300;
     line-height: 25px;
-    padding-left: 20px;
+    padding-left: 30px;
   }
 }
 

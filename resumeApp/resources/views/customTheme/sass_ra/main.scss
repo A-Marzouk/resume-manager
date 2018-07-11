@@ -396,6 +396,7 @@ body{
     font-weight: 500;
     line-height: 25px;
     padding-left: 37px;
+    word-spacing: .15rem;
   }
   .desc{
     color: #C5A7FD;
@@ -404,6 +405,7 @@ body{
     font-weight: 300;
     line-height: 25px;
     padding-left: 37px;
+    word-spacing: .15rem;
   }
 }
 
@@ -457,6 +459,8 @@ body{
     padding-top: 4%;
     padding-bottom: -1%;
     background: url("/background.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 30%;
   }
   .worksText{
     color: #FFFFFF;
@@ -468,8 +472,9 @@ body{
 
 .workCard{
   background: white;
-  margin-top: 2%;
+  margin-top: 6%;
   padding: 2%;
+  margin-left: 39px;
   border: 1px solid #F7F7F7;
   border-radius: 5px;
   background-color: #FFFFFF;

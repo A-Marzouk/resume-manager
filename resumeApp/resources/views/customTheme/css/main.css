@@ -254,6 +254,8 @@ body {
 
 #about {
   margin-top: 5%; }
+  #about img {
+    padding-bottom: 7px; }
 
 .aboutText {
   color: #6A6F72;
@@ -502,6 +504,8 @@ body {
 #skills {
   padding-top: 5%;
   padding-bottom: 2%; }
+  #skills img {
+    padding-bottom: 7px; }
 
 #work {
   padding-top: 4%; }

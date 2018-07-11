@@ -5,7 +5,7 @@
             <img src="resumeApp/resources/views/customTheme/images/newResume/about_me.png" style="padding-bottom: 10px;" alt="aboutImg" width="30px;">
             <span class="aboutText">ABOUT ME</span>
             <div class="aboutText">
-                <div class="aboutSubText">
+                <div class="aboutSubText info">
                     <div class="row">
                         <div class="col-md-3">Language:</div>
                         <div class="col-md-6">  {{$user->languages}}</div>
@@ -22,7 +22,7 @@
             <span class="aboutText">WHAT I DO?</span>
             <div class="aboutText">
                 <div class="row">
-                    <div class="col-md-6 col-6 aboutSubText">
+                    <div class="col-md-6 col-6 aboutSubText skillBullets">
                         <? $counter = count($primarySkills);
                         if($counter > 6 ){
                             $counter = 6 ;

@@ -3,7 +3,7 @@
     <div class="row text-center">
         <div class="col-md-12">
             <div class="freelancerItem">
-                <img src="{{$user->photo}}" alt="freelancer" class="freelancerImg" width="127" height="127">
+                <img src="{{$user->photo}}" alt="freelancer" class="freelancerImg" width="150" height="150">
                 <div class="freelancerData">
                     <div class="freelancerName">
                         {{$user->name}}

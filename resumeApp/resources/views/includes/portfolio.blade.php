@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="form-group btn-block">
-                    <input type="text" class="form-control panelFormInput" name="workDesc{{$i}}" placeholder="Describe your work">{{$workDesc[$i]}}
+                    <input type="text" class="form-control panelFormInput"  value="{{$workDesc[$i]}}" name="workDesc{{$i}}" placeholder="Describe your work">
                 </div>
             </div>
         @endfor

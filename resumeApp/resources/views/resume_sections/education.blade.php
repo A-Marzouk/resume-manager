@@ -69,4 +69,4 @@
         </div>
     </div>
 </div>
-<hr>
+<hr style="width: 1200px;">

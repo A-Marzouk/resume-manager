@@ -186,6 +186,11 @@ body{
   margin-left: 0!important;
 }
 
+.buttonMain.whiteBg{
+  :hover{
+    background: aliceblue !important;
+  }
+}
 .buttonMain{
   padding : 5% 0 0 0;
   margin-top: 20px;
@@ -223,6 +228,9 @@ body{
   }
   .hireBtn.hire{
     background: white;
+    box-shadow : none;
+    padding: 11px 0 11px 0;
+    border: 2px solid #088FD9 ;
     color:#088FD9;
   }
 }
@@ -246,6 +254,13 @@ body{
 }
 
 // second navbar :
+
+#cv_bar{
+  background: none;
+  height: 40px;
+  border-bottom: 1px solid #F8F8F8;
+  box-shadow: none;
+}
 
 .secondNavLink{
   opacity: 0.75;

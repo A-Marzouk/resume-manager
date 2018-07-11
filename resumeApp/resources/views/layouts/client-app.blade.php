@@ -659,5 +659,42 @@ if($user){
     $(".designerBtn a").one("click", handler1);
 
 </script>
+<script>
+    function myMap() {
+        var latitude  = $('#latitude').html();
+        var longitude = $('#longitude').html();
+        var mapOptions = {
+            center: new google.maps.LatLng(latitude,longitude),
+            zoom: 10,
+            mapTypeId: google.maps.MapTypeId.roadmap
+        };
+        var city      = $('#userCity').html();
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    }
+
+    $(document).on('click', 'a[href^="#"]', function(e) {
+        // target element id
+        var id = $(this).attr('href');
+
+        // target element
+        var $id = $(id);
+        if ($id.length === 0) {
+            return;
+        }
+
+        // prevent standard hash navigation (avoid blinking in IE)
+        e.preventDefault();
+
+        // top position relative to the document
+        var pos = $id.offset().top;
+
+        // animated top scrolling
+        $('body, html').animate({scrollTop: pos},1500);
+    });
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZWJcFQabrMDUPmXaiU7wlZ74dzm_virI&callback=myMap"></script>
+
 </body>
 </html>

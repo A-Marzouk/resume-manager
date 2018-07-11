@@ -234,7 +234,7 @@ body {
     border-bottom: #AC81FC 2px solid;
     opacity: 1;
     font-weight: 300;
-    padding-bottom: 10px; }
+    padding-bottom: 16px; }
 
 .downCV {
   opacity: 0.75;
@@ -270,6 +270,9 @@ body {
   line-height: 24px;
   padding-top: 15px;
   padding-left: 20px; }
+
+.aboutSubText.skillBullets {
+  padding-left: 28px; }
 
 .circle:before {
   content: ' \25CF';
@@ -324,14 +327,14 @@ body {
   font-size: 22px;
   font-weight: 500;
   line-height: 25px;
-  padding-left: 30px; }
+  padding-left: 37px; }
 .aboutSubText .desc {
   color: #C5A7FD;
   font-family: Roboto;
   font-size: 22px;
   font-weight: 300;
   line-height: 25px;
-  padding-left: 30px; }
+  padding-left: 37px; }
 
 .education {
   padding-bottom: 4% !important; }

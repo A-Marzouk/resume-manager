@@ -2,10 +2,9 @@
 <div id="ourClients">
     <div class="row">
         <div class="col-md-11 offset-md-1">
-            <div class="heading">
-                <h2>
-                    <img src="resumeApp/resources/views/customTheme/images/email.png"> GET IN TOUCH
-                </h2>
+            <div>
+                <img src="resumeApp/resources/views/customTheme/images/email.png" width="30px;">
+                <span class="aboutText">GET IN TOUCH</span>
             </div>
         </div>
     </div>
@@ -14,14 +13,24 @@
             <div class="row clientsBox">
                 <div class="col-md-6 leftSide">
                     <div class="row">
-                        <div class="col-md-4 col-sm-6 col-6">
+                        <div class="col-md-4">
                             <div class="info">
                                 <p>Email :</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-6">
+                        <div class="col-md-6">
                             <div class="info">
                                 <p>riz@123workforce.com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="info">
+                                <p>Address :</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info">
+                                <p>{{$user->city}}</p>
                             </div>
                         </div>
                     </div>
@@ -56,25 +65,31 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="username" class="formLabel">Name</label>
-                                    <input type="text" id="username" name="name" placeholder="Name Surname" class="form-control no-border">
+                                    <label for="username" class="panelFormLabel">Name</label>
+                                    <input type="text" id="username" name="name" class="form-control panelFormInput">
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="name" class="formLabel">Email</label>
-                                <input type="email" placeholder="your@email.com" id="email" name="email" required="required" class="form-control no-border">
+                                <div class="form-group">
+                                    <label for="name" class="panelFormLabel">Email</label>
+                                    <input type="email" id="email" name="email" required="required" class="form-control panelFormInput">
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <label for="telephone" class="formLabel">Subject</label>
-                                <input type="tel" placeholder="Message subject" name="subject" class="form-control no-border">
+                                <div class="form-group">
+                                    <label for="telephone" class="panelFormLabel">Subject</label>
+                                    <input type="tel" name="subject" class="form-control panelFormInput">
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <label for="message" class="formLabel">Message</label>
-                                <input type="tel" placeholder="write your message.." name="message" class="form-control no-border">
+                                <div class="form-group">
+                                    <label for="message" class="panelFormLabel">Message</label>
+                                    <input type="tel" name="message" class="form-control panelFormInput">
+                                </div>
                             </div>
                         </div>
 

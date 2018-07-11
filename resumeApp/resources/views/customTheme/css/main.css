@@ -419,23 +419,13 @@ body {
       width: 20px; }
 
 #ourClients {
-  background: none; }
-
-.heading h2 {
-  color: #6A6F72;
-  font-family: Roboto;
-  font-size: 25px;
-  line-height: 29px;
+  background: none;
   padding-top: 2%; }
-  .heading h2 img {
-    width: 30px; }
-  @media only screen and (max-width: 600px) {
-    .heading h2 {
-      text-align: center;
-      padding-right: 14px; } }
+  #ourClients img {
+    padding-bottom: 7px; }
 
 .clientsBox {
-  height: 308px;
+  height: auto;
   border-radius: 5px;
   background-color: #FFFFFF;
   box-shadow: 0 11px 16px -7px #E5ECED;
@@ -500,7 +490,7 @@ body {
   margin-top: 10px; }
 
 .map-canvas {
-  height: 150px; }
+  height: 170px; }
 
 #skills {
   padding-top: 5%;

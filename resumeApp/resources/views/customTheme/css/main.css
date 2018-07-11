@@ -419,7 +419,7 @@ body {
       width: 20px; }
 
 #ourClients {
-  background: linear-gradient(0deg, #FCFCFC 0%, #FCFCFC 100%); }
+  background: none; }
 
 .heading h2 {
   color: #6A6F72;
@@ -441,8 +441,9 @@ body {
   box-shadow: 0 11px 16px -7px #E5ECED;
   margin: 2% 5% 0 5%; }
   .clientsBox .leftSide {
-    padding: 4%; }
-  @media only screen and (max-width: 600px) {
+    padding: 2%;
+    padding-top: 4%; }
+  @media only screen and (max-width: 991px) {
     .clientsBox {
       height: auto; } }
 

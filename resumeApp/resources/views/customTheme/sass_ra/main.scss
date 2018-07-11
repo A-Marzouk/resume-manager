@@ -503,7 +503,7 @@ body{
 
 // get in touch section ( styles from our clients section )
 #ourClients{
-  background: linear-gradient(0deg, #FCFCFC 0%, #FCFCFC 100%);
+  background:none;
 }
 .heading{
   h2{
@@ -528,10 +528,11 @@ body{
   background-color: #FFFFFF;
   box-shadow: 0 11px 16px -7px #E5ECED;
   .leftSide{
-    padding: 4%;
+    padding: 2%;
+    padding-top: 4%;
   }
   margin: 2% 5% 0 5%;
-  @media only screen and (max-width: 600px){
+  @media only screen and (max-width: 991px){
     height: auto;
   }
 }

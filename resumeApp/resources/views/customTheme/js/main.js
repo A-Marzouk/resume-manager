@@ -562,12 +562,15 @@ $(document).ready(function () {
             // disable all empty files
 
             var files = document.querySelectorAll(".freelancerForm input[type=file]");
-            files.forEach(function (file) {
-                let fileInput =  $('#'+file.id);
-                if(fileInput.get(0).files.length === 0){
-                    fileInput.attr('disabled',true);
-                }
-            });
+            let ios = iOS();
+            if(ios){
+                files.forEach(function (file) {
+                    let fileInput =  $('#'+file.id);
+                    if(fileInput.get(0).files.length === 0){
+                        fileInput.attr('disabled',true);
+                    }
+                });
+            }
 
             $.ajax({
                 type: 'post',
@@ -580,12 +583,14 @@ $(document).ready(function () {
                 }
             });
 
-            // after the request enable them again !
-            var disabledFiles = document.querySelectorAll(".freelancerForm input[type=file]");
-            disabledFiles.forEach(function (file) {
-                let fileInput =  $('#'+file.id);
-                fileInput.attr('disabled',false);
-            });
+           if(ios){
+               // after the request enable them again !
+               var disabledFiles = document.querySelectorAll(".freelancerForm input[type=file]");
+               disabledFiles.forEach(function (file) {
+                   let fileInput =  $('#'+file.id);
+                   fileInput.attr('disabled',false);
+               });
+           }
 
         });
     });
@@ -673,26 +678,26 @@ $(document).ready(function () {
     });
 
     function checkAudioFile() {
+        $('#loadingText').removeClass('d-none');
         $.ajax({
-            url: $('#audioFile').attr('src'),
+            url: $('#audioIntro').attr('src'),
             type:'HEAD',
             error: function()
             {
                 // show the loading text :
                 $('#loadingText').removeClass('d-none');
                 //file not exists : check again after 1 second
-                setTimeout(checkAudioFile(),1000);
+                setTimeout(checkAudioFile(),2000);
             },
             success: function()
             {
                 // hide the loading text
                 $('#loadingText').removeClass('d-none');
-                $('#loadingText').html('Audio has been successfully uploaded.');
+                $('#loadingText').html('Uploading...');
                 setTimeout(function () {
                     $('#loadingText').addClass('d-none');
-                },2500);
-                // load the video
-                $('#audioIntro')[0].load();
+                    $('#audioIntro')[0].load();
+                },6000);
             }
         });
     }
@@ -713,5 +718,27 @@ $(document).ready(function () {
         $('#audioFile').click();
     });
 
+
+    // check if device is ios :
+
+    function iOS() {
+
+        var iDevices = [
+            'iPad Simulator',
+            'iPhone Simulator',
+            'iPod Simulator',
+            'iPad',
+            'iPhone',
+            'iPod'
+        ];
+
+        if (!!navigator.platform) {
+            while (iDevices.length) {
+                if (navigator.platform === iDevices.pop()){ return true; }
+            }
+        }
+
+        return false;
+    }
 
 });

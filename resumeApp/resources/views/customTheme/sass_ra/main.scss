@@ -312,6 +312,10 @@ body{
   padding-left: 20px;
 }
 
+.newLine{
+  height: 2px;	width: 994px;	transform: scaleY(-1);	background-color: #F8F8F8;
+}
+
 .aboutSubText{
   color: #697786;	font-family: Roboto;
   font-size: 20px;	font-weight: 300;	line-height: 24px;
@@ -321,6 +325,9 @@ body{
 
 .aboutSubText.skillBullets{
   padding-left: 28px;
+}
+.aboutSubText.skillBars{
+  padding-left: 37px;
 }
 
 .circle:before {
@@ -439,6 +446,7 @@ body{
 .moreSkills{
   margin-right: 20px;
   padding-top: 25px;
+  padding-left: 55px;
 }
 
 // works area
@@ -593,6 +601,7 @@ body{
 
 #skills{
   padding-top:5%;
+  padding-bottom: 2%;
 }
 
 #work{

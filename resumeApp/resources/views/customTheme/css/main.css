@@ -262,6 +262,12 @@ body {
   line-height: 29px;
   padding-left: 20px; }
 
+.newLine {
+  height: 2px;
+  width: 994px;
+  transform: scaleY(-1);
+  background-color: #F8F8F8; }
+
 .aboutSubText {
   color: #697786;
   font-family: Roboto;
@@ -273,6 +279,9 @@ body {
 
 .aboutSubText.skillBullets {
   padding-left: 28px; }
+
+.aboutSubText.skillBars {
+  padding-left: 37px; }
 
 .circle:before {
   content: ' \25CF';
@@ -365,7 +374,8 @@ body {
 
 .moreSkills {
   margin-right: 20px;
-  padding-top: 25px; }
+  padding-top: 25px;
+  padding-left: 55px; }
 
 .worksSection {
   margin-top: 5%;
@@ -485,7 +495,8 @@ body {
   height: 150px; }
 
 #skills {
-  padding-top: 5%; }
+  padding-top: 5%;
+  padding-bottom: 2%; }
 
 #work {
   padding-top: 4%; }

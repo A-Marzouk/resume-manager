@@ -235,6 +235,7 @@ body{
   }
 }
 
+
 // quote :
 #quote{
   background: linear-gradient(90deg, #F8F8F8 0%, #FCFCFC 100%);
@@ -246,7 +247,14 @@ body{
   border-bottom:1px solid #F8F8F8;
   img{
     height: 50px;	width: 50px;	opacity: 0.5;
+    @media only screen and (max-width: 600px){
+      display: none;
+    }
   }
+  @media only screen and (max-width: 600px){
+    margin-top: 10%;
+  }
+
   .quoteText{
     color: #697786;
     font-family: Roboto;
@@ -263,6 +271,15 @@ body{
   height: 40px;
   border-bottom: 1px solid #F8F8F8;
   box-shadow: none;
+}
+
+.mobileNav{
+  a{
+    display: inline !important;
+    padding:3px;
+  }
+  margin-bottom:30px ;
+  text-align: center;
 }
 
 .secondNavLink{

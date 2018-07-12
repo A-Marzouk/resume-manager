@@ -97,4 +97,4 @@ foreach ($works as $work){
         </div>
     </div>
 </div>
-<hr style="width: 1200px;">
+<hr style="width: 85%">

@@ -400,6 +400,12 @@ body{
   padding-bottom: 20px;
   border-top:1px solid #F8F8F8;
   border-bottom:1px solid #F8F8F8;
+  .audioHeading{
+    @media only screen and (max-width: 600px){
+      padding-bottom: 20px;
+      padding-left : 25px;
+    }
+  }
   img{
     height: 50px;	width: 50px;	opacity: 0.9;
   }
@@ -410,7 +416,7 @@ body{
     font-weight: 300;
     line-height: 24px;
     margin-top: 1.5%;
-    padding-left: 30px;
+    padding-left: 10px;
   }
 }
 

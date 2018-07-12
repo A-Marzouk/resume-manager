@@ -339,6 +339,10 @@ body {
   padding-bottom: 20px;
   border-top: 1px solid #F8F8F8;
   border-bottom: 1px solid #F8F8F8; }
+  @media only screen and (max-width: 600px) {
+    #audio .audioHeading {
+      padding-bottom: 20px;
+      padding-left: 25px; } }
   #audio img {
     height: 50px;
     width: 50px;
@@ -350,7 +354,7 @@ body {
     font-weight: 300;
     line-height: 24px;
     margin-top: 1.5%;
-    padding-left: 30px; }
+    padding-left: 10px; }
 
 .aboutSubText .year {
   color: #697786;

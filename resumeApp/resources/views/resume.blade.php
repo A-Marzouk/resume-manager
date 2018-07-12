@@ -1,7 +1,6 @@
 @extends('layouts.client-app')
 
 @section('content')
-    <div id="content" style="margin:auto;">
         <? // check developer or designer :
         $developer = $designer = false;
         if($profession == 'Developer'){
@@ -18,5 +17,4 @@
         @include('resume_sections.skills')
         @include('resume_sections.works')
         @include('resume_sections.our_clients')
-    </div>
 @endsection

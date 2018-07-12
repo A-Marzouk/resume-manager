@@ -219,6 +219,9 @@ body {
     font-size: 20px;
     font-weight: 300;
     line-height: 24px; }
+    @media only screen and (max-width: 600px) {
+      #quote .quoteText {
+        padding: 10px; } }
 
 #cv_bar {
   background: none;
@@ -231,7 +234,7 @@ body {
   text-align: center; }
   .mobileNav a {
     display: inline !important;
-    padding: 3px; }
+    padding: .45rem; }
 
 .secondNavLink {
   opacity: 0.75;
@@ -267,8 +270,14 @@ body {
 
 #about {
   margin-top: 5%; }
+  @media only screen and (max-width: 600px) {
+    #about .aboutLeftSideContainer {
+      padding-bottom: 50px; } }
   #about img {
     padding-bottom: 7px; }
+    @media only screen and (max-width: 991px) {
+      #about img {
+        margin-left: 12px; } }
 
 .aboutText {
   color: #6A6F72;
@@ -276,6 +285,9 @@ body {
   font-size: 25px;
   line-height: 29px;
   padding-left: 20px; }
+
+.aboutText.mobile {
+  padding-left: 0; }
 
 .newLine {
   height: 2px;
@@ -291,9 +303,15 @@ body {
   line-height: 24px;
   padding-top: 15px;
   padding-left: 20px; }
+  @media only screen and (max-width: 600px) {
+    .aboutSubText {
+      padding-left: 0; } }
 
 .aboutSubText.skillBullets {
   padding-left: 28px; }
+  @media only screen and (max-width: 600px) {
+    .aboutSubText.skillBullets {
+      padding-left: 6px; } }
 
 .aboutSubText.skillBars {
   padding-left: 37px; }
@@ -436,6 +454,9 @@ body {
   padding-top: 2%; }
   #ourClients img {
     padding-bottom: 7px; }
+    @media only screen and (max-width: 991px) {
+      #ourClients img {
+        margin-left: 12px; } }
 
 .clientsBox {
   height: auto;
@@ -510,6 +531,9 @@ body {
   padding-bottom: 2%; }
   #skills img {
     padding-bottom: 7px; }
+    @media only screen and (max-width: 991px) {
+      #skills img {
+        margin-left: 12px; } }
 
 #work {
   padding-top: 4%;

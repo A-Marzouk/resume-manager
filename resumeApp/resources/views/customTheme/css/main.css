@@ -499,7 +499,8 @@ body {
     padding-bottom: 7px; }
 
 #work {
-  padding-top: 4%; }
+  padding-top: 4%;
+  background: none; }
 
 .customFormHeader {
   color: #697786;

@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-10 offset-md-1 moreSkills">
+        <div class="col-md-10 offset-md-1 col-12 moreSkills">
             <div class="row">
                 <?
                 $counter = count($charSkills);

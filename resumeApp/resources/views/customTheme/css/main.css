@@ -315,6 +315,9 @@ body {
 
 .aboutSubText.skillBars {
   padding-left: 37px; }
+  @media only screen and (max-width: 600px) {
+    .aboutSubText.skillBars {
+      padding-left: 0px; } }
 
 .circle:before {
   content: ' \25CF';
@@ -432,6 +435,9 @@ body {
   margin-right: 20px;
   padding-top: 25px;
   padding-left: 55px; }
+  @media only screen and (max-width: 600px) {
+    .moreSkills {
+      padding-left: 20px; } }
 
 .worksSection {
   margin-top: 5%;
@@ -442,6 +448,8 @@ body {
     background: url("/background.svg");
     background-repeat: no-repeat;
     background-size: 100% 35%; }
+    .worksSection .firstPart #workTextImg {
+      margin-left: 16px; }
   .worksSection .worksText {
     color: #FFFFFF;
     font-family: Roboto;
@@ -457,6 +465,9 @@ body {
   border-radius: 5px;
   background-color: #FFFFFF;
   box-shadow: 0 11px 16px -7px #E5ECED; }
+  @media only screen and (max-width: 600px) {
+    .workCard {
+      margin-left: 0px; } }
   .workCard .workImg img {
     width: 100%;
     padding: 1%; }

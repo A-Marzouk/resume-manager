@@ -234,7 +234,7 @@ body {
   text-align: center; }
   .mobileNav a {
     display: inline !important;
-    padding: .45rem; }
+    padding: .25rem; }
 
 .secondNavLink {
   opacity: 0.75;
@@ -383,9 +383,26 @@ body {
   line-height: 25px;
   padding-left: 37px;
   word-spacing: .15rem; }
+  @media only screen and (max-width: 991px) {
+    .aboutSubText .desc {
+      width: 160px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden; } }
+
+.continueBtn {
+  font-size: small;
+  color: lightgray;
+  font-family: Roboto;
+  text-decoration: none; }
+  .continueBtn a:hover {
+    text-decoration: none; }
 
 .education {
   padding-bottom: 4% !important; }
+  @media only screen and (max-width: 991px) {
+    .education .educationSection {
+      padding-bottom: 50px; } }
 
 .aboutSubText {
   word-wrap: break-word; }

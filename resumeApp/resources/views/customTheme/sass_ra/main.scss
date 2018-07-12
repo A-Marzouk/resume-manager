@@ -279,7 +279,7 @@ body{
 .mobileNav{
   a{
     display: inline !important;
-    padding: .45rem;
+    padding: .25rem;
   }
   margin-bottom:30px ;
   text-align: center;
@@ -454,11 +454,33 @@ body{
     line-height: 25px;
     padding-left: 37px;
     word-spacing: .15rem;
+    @media only screen and (max-width: 991px){
+      width: 160px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+}
+
+
+.continueBtn{
+  font-size: small;
+  color: lightgray;
+  font-family: Roboto;
+  text-decoration: none;
+  a:hover{
+    text-decoration: none;
   }
 }
 
 .education{
   padding-bottom: 4% !important;
+  .educationSection{
+    @media only screen and (max-width: 991px){
+      padding-bottom: 50px;
+    }
+  }
 }
 
 // skills part :

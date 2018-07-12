@@ -235,6 +235,7 @@ body{
   }
 }
 
+
 // quote :
 #quote{
   background: linear-gradient(90deg, #F8F8F8 0%, #FCFCFC 100%);
@@ -246,13 +247,23 @@ body{
   border-bottom:1px solid #F8F8F8;
   img{
     height: 50px;	width: 50px;	opacity: 0.5;
+    @media only screen and (max-width: 600px){
+      display: none;
+    }
   }
+  @media only screen and (max-width: 600px){
+    margin-top: 10%;
+  }
+
   .quoteText{
     color: #697786;
     font-family: Roboto;
     font-size: 20px;
     font-weight: 300;
     line-height: 24px;
+    @media only screen and (max-width: 600px) {
+      padding: 10px;
+    }
   }
 }
 
@@ -263,6 +274,15 @@ body{
   height: 40px;
   border-bottom: 1px solid #F8F8F8;
   box-shadow: none;
+}
+
+.mobileNav{
+  a{
+    display: inline !important;
+    padding: .25rem;
+  }
+  margin-bottom:30px ;
+  text-align: center;
 }
 
 .secondNavLink{
@@ -303,8 +323,16 @@ body{
 
 #about{
   margin-top:5%;
+  .aboutLeftSideContainer{
+    @media only screen and (max-width: 600px){
+      padding-bottom: 50px;
+    }
+  }
   img{
     padding-bottom: 7px;
+    @media only screen and (max-width: 991px){
+      margin-left: 12px;
+    }
   }
 }
 .aboutText{
@@ -313,6 +341,10 @@ body{
   font-size: 25px;
   line-height: 29px;
   padding-left: 20px;
+}
+
+.aboutText.mobile{
+  padding-left: 0;
 }
 
 .newLine{
@@ -324,13 +356,23 @@ body{
   font-size: 20px;	font-weight: 300;	line-height: 24px;
   padding-top: 15px;
   padding-left: 20px;
+  @media only screen and (max-width: 600px) {
+    padding-left: 0;
+  }
 }
 
 .aboutSubText.skillBullets{
   padding-left: 28px;
+  @media only screen and (max-width: 600px) {
+    padding-left: 6px;
+  }
+
 }
 .aboutSubText.skillBars{
   padding-left: 37px;
+  @media only screen and (max-width: 600px) {
+    padding-left: 0px;
+  }
 }
 
 .circle:before {
@@ -361,6 +403,12 @@ body{
   padding-bottom: 20px;
   border-top:1px solid #F8F8F8;
   border-bottom:1px solid #F8F8F8;
+  .audioHeading{
+    @media only screen and (max-width: 600px){
+      padding-bottom: 20px;
+      padding-left : 25px;
+    }
+  }
   img{
     height: 50px;	width: 50px;	opacity: 0.9;
   }
@@ -371,7 +419,7 @@ body{
     font-weight: 300;
     line-height: 24px;
     margin-top: 1.5%;
-    padding-left: 30px;
+    padding-left: 10px;
   }
 }
 
@@ -409,11 +457,33 @@ body{
     line-height: 25px;
     padding-left: 37px;
     word-spacing: .15rem;
+    @media only screen and (max-width: 991px){
+      width: 160px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+}
+
+
+.continueBtn{
+  font-size: small;
+  color: lightgray;
+  font-family: Roboto;
+  text-decoration: none;
+  a:hover{
+    text-decoration: none;
   }
 }
 
 .education{
   padding-bottom: 4% !important;
+  .educationSection{
+    @media only screen and (max-width: 991px){
+      padding-bottom: 50px;
+    }
+  }
 }
 
 // skills part :
@@ -452,6 +522,9 @@ body{
   margin-right: 20px;
   padding-top: 25px;
   padding-left: 55px;
+  @media only screen and (max-width: 600px) {
+    padding-left: 20px;
+  }
 }
 
 // works area
@@ -464,6 +537,9 @@ body{
     background: url("/background.svg");
     background-repeat: no-repeat;
     background-size: 100% 35%;
+    #workTextImg{
+      margin-left: 16px;
+    }
   }
   .worksText{
     color: #FFFFFF;
@@ -482,6 +558,9 @@ body{
   border-radius: 5px;
   background-color: #FFFFFF;
   box-shadow: 0 11px 16px -7px #E5ECED;
+  @media only screen and (max-width: 600px) {
+    margin-left: 0px;
+  }
   .workImg{
    img{
      width: 100%;
@@ -507,6 +586,9 @@ body{
   padding-top: 2%;
   img{
     padding-bottom: 7px;
+    @media only screen and (max-width: 991px){
+      margin-left: 12px;
+    }
   }
 }
 .clientsBox{
@@ -600,11 +682,15 @@ body{
   padding-bottom: 2%;
   img{
     padding-bottom: 7px;
+    @media only screen and (max-width: 991px){
+      margin-left: 12px;
+    }
   }
 }
 
 #work{
   padding-top:4%;
+  background: none;
 }
 
 

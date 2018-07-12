@@ -13,22 +13,22 @@
             <div class="row clientsBox">
                 <div class="col-md-6 leftSide">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-4">
                             <div class="info">
                                 <p>Email :</p>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-6">
                             <div class="info">
                                 <p>riz@123workforce.com</p>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-4">
                             <div class="info">
                                 <p>Address :</p>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-6">
                             <div class="info">
                                 <p>{{$user->city}}</p>
                             </div>

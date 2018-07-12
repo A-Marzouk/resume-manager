@@ -1,13 +1,8 @@
-<div class="row">
+<div class="row d-none d-md-block">
     <div class="col-md-10 offset-md-1">
         <div id="navBar">
             <nav class="navbar navbar-expand-lg customNav" id="cv_bar">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar2" aria-controls="navbar2" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon">
-                                <img src="resumeApp/resources/views/customTheme/images/newResume/menu.png" alt="menu" width="46px">
-                            </span>
-                </button>
-                <div class="collapse navbar-collapse" id="#navbar2">
+                <div id="#navbar2">
                     <div class="navbar-nav" id="navbar2Links">
                         <a class="nav-item nav-link secondNavLink active " href="#about">About</a>
                         <a class="nav-item nav-link secondNavLink " href="#audio">Resume</a>
@@ -25,6 +20,19 @@
     </div>
 </div>
 
+<div class="row d-md-none">
+    <div class="col-12 mobileNav" id="navbar2LinksMobile">
+        <a class="nav-item nav-link secondNavLink navMobileLink active " href="#about">About</a>
+        <a class="nav-item nav-link secondNavLink navMobileLink" href="#audio">Resume</a>
+        <a class="nav-item nav-link secondNavLink navMobileLink" href="#skills">Skills</a>
+        <a class="nav-item nav-link secondNavLink navMobileLink" href="#work">Work</a>
+        <a class="nav-item nav-link secondNavLink navMobileLink" href="#ourClients">Contact</a>
+        <a href="#" class="downCV">
+            <img src="resumeApp/resources/views/customTheme/images/newResume/download_cv.png" style="width: 20px">
+        </a>
+    </div>
+</div>
+
 <script>
     // Add active class to the current button (highlight it)
     var header = document.getElementById("navbar2Links");
@@ -33,6 +41,17 @@
         btns[i].addEventListener("click", function() {
             var current = document.getElementsByClassName("active");
             current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+
+    // Add active class to the current button (highlight it)
+    var headerMobile = document.getElementById("navbar2LinksMobile");
+    var btnsMobile = headerMobile.getElementsByClassName("navMobileLink");
+    for (var i = 0; i < btnsMobile.length; i++) {
+        btnsMobile[i].addEventListener("click", function() {
+            var current = document.querySelectorAll(".active");
+            current[1].className = current[1].className.replace(" active", "");
             this.className += " active";
         });
     }

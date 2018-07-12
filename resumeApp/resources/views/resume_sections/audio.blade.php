@@ -1,7 +1,7 @@
 {{-- audio introduction section --}}
 <div id="audio">
     <div class="row">
-        <div class="col-md-5 offset-md-1">
+        <div class="col-md-5 offset-md-1 audioHeading">
             <img src="resumeApp/resources/views/customTheme/images/newResume/audio.png" alt="audio">
             <span class="quoteText">
                 Audio Introduction

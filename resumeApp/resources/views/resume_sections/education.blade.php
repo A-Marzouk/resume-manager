@@ -1,7 +1,7 @@
 {{-- Education and Trainings section --}}
 <div id="about" class="education">
     <div class="row">
-        <div class="col-md-5 offset-md-1">
+        <div class="col-md-5 offset-md-1 educationSection">
             <img src="resumeApp/resources/views/customTheme/images/newResume/education.png" alt="aboutImg" width="30px;">
             <span class="aboutText">EDUCATION</span>
             <div class="aboutText">
@@ -69,4 +69,4 @@
         </div>
     </div>
 </div>
-<hr style="width: 1200px;">
+<hr style="width: 80%">

@@ -15,6 +15,13 @@ $(document).ready(function () {
         readURL(this,'#photoPreview');
     });
 
+    $('.desc').on('click',function () {
+        $(this).css('width','auto');
+        $(this).css('text-overflow','unset');
+        $(this).css('overflow','normal');
+        $(this).css('white-space','normal');
+    });
+
 
     // delete Audio :
     $('#deleteAudio').on('click', function(e){

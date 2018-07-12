@@ -10,7 +10,7 @@ foreach ($works as $work){
 <div id="work" class="worksSection">
     <div class="row firstPart">
         <div class="col-md-5 offset-md-1">
-            <img src="resumeApp/resources/views/customTheme/images/newResume/works.png" alt="aboutImg" width="30px;">
+            <img id="workTextImg" src="resumeApp/resources/views/customTheme/images/newResume/works.png" alt="aboutImg" width="30px;">
             <span class="aboutText" style="color: white;">WORKS</span>
         </div>
         <div class="row">
@@ -97,4 +97,4 @@ foreach ($works as $work){
         </div>
     </div>
 </div>
-<hr style="width: 1200px;">
+<hr style="width: 85%">

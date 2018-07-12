@@ -207,18 +207,34 @@ body {
     height: 50px;
     width: 50px;
     opacity: 0.5; }
+    @media only screen and (max-width: 600px) {
+      #quote img {
+        display: none; } }
+  @media only screen and (max-width: 600px) {
+    #quote {
+      margin-top: 10%; } }
   #quote .quoteText {
     color: #697786;
     font-family: Roboto;
     font-size: 20px;
     font-weight: 300;
     line-height: 24px; }
+    @media only screen and (max-width: 600px) {
+      #quote .quoteText {
+        padding: 10px; } }
 
 #cv_bar {
   background: none;
   height: 40px;
   border-bottom: 1px solid #F8F8F8;
   box-shadow: none; }
+
+.mobileNav {
+  margin-bottom: 30px;
+  text-align: center; }
+  .mobileNav a {
+    display: inline !important;
+    padding: .25rem; }
 
 .secondNavLink {
   opacity: 0.75;
@@ -254,8 +270,14 @@ body {
 
 #about {
   margin-top: 5%; }
+  @media only screen and (max-width: 600px) {
+    #about .aboutLeftSideContainer {
+      padding-bottom: 50px; } }
   #about img {
     padding-bottom: 7px; }
+    @media only screen and (max-width: 991px) {
+      #about img {
+        margin-left: 12px; } }
 
 .aboutText {
   color: #6A6F72;
@@ -263,6 +285,9 @@ body {
   font-size: 25px;
   line-height: 29px;
   padding-left: 20px; }
+
+.aboutText.mobile {
+  padding-left: 0; }
 
 .newLine {
   height: 2px;
@@ -278,12 +303,21 @@ body {
   line-height: 24px;
   padding-top: 15px;
   padding-left: 20px; }
+  @media only screen and (max-width: 600px) {
+    .aboutSubText {
+      padding-left: 0; } }
 
 .aboutSubText.skillBullets {
   padding-left: 28px; }
+  @media only screen and (max-width: 600px) {
+    .aboutSubText.skillBullets {
+      padding-left: 6px; } }
 
 .aboutSubText.skillBars {
   padding-left: 37px; }
+  @media only screen and (max-width: 600px) {
+    .aboutSubText.skillBars {
+      padding-left: 0px; } }
 
 .circle:before {
   content: ' \25CF';
@@ -308,6 +342,10 @@ body {
   padding-bottom: 20px;
   border-top: 1px solid #F8F8F8;
   border-bottom: 1px solid #F8F8F8; }
+  @media only screen and (max-width: 600px) {
+    #audio .audioHeading {
+      padding-bottom: 20px;
+      padding-left: 25px; } }
   #audio img {
     height: 50px;
     width: 50px;
@@ -319,7 +357,7 @@ body {
     font-weight: 300;
     line-height: 24px;
     margin-top: 1.5%;
-    padding-left: 30px; }
+    padding-left: 10px; }
 
 .aboutSubText .year {
   color: #697786;
@@ -348,9 +386,26 @@ body {
   line-height: 25px;
   padding-left: 37px;
   word-spacing: .15rem; }
+  @media only screen and (max-width: 991px) {
+    .aboutSubText .desc {
+      width: 160px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden; } }
+
+.continueBtn {
+  font-size: small;
+  color: lightgray;
+  font-family: Roboto;
+  text-decoration: none; }
+  .continueBtn a:hover {
+    text-decoration: none; }
 
 .education {
   padding-bottom: 4% !important; }
+  @media only screen and (max-width: 991px) {
+    .education .educationSection {
+      padding-bottom: 50px; } }
 
 .aboutSubText {
   word-wrap: break-word; }
@@ -380,6 +435,9 @@ body {
   margin-right: 20px;
   padding-top: 25px;
   padding-left: 55px; }
+  @media only screen and (max-width: 600px) {
+    .moreSkills {
+      padding-left: 20px; } }
 
 .worksSection {
   margin-top: 5%;
@@ -390,6 +448,8 @@ body {
     background: url("/background.svg");
     background-repeat: no-repeat;
     background-size: 100% 35%; }
+    .worksSection .firstPart #workTextImg {
+      margin-left: 16px; }
   .worksSection .worksText {
     color: #FFFFFF;
     font-family: Roboto;
@@ -405,6 +465,9 @@ body {
   border-radius: 5px;
   background-color: #FFFFFF;
   box-shadow: 0 11px 16px -7px #E5ECED; }
+  @media only screen and (max-width: 600px) {
+    .workCard {
+      margin-left: 0px; } }
   .workCard .workImg img {
     width: 100%;
     padding: 1%; }
@@ -423,6 +486,9 @@ body {
   padding-top: 2%; }
   #ourClients img {
     padding-bottom: 7px; }
+    @media only screen and (max-width: 991px) {
+      #ourClients img {
+        margin-left: 12px; } }
 
 .clientsBox {
   height: auto;
@@ -497,9 +563,13 @@ body {
   padding-bottom: 2%; }
   #skills img {
     padding-bottom: 7px; }
+    @media only screen and (max-width: 991px) {
+      #skills img {
+        margin-left: 12px; } }
 
 #work {
-  padding-top: 4%; }
+  padding-top: 4%;
+  background: none; }
 
 .customFormHeader {
   color: #697786;

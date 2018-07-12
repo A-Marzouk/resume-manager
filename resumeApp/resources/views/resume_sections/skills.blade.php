@@ -26,8 +26,7 @@
         <? endif;?>
     </div>
 </div>
-<hr style="width: 1200px;">
-
+<hr style="width: 80%">
 {{-- more skills section --}}
 <div id="about">
     <div class="row">
@@ -37,7 +36,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-10 offset-md-1 moreSkills">
+        <div class="col-md-10 offset-md-1 col-12 moreSkills">
             <div class="row">
                 <?
                 $counter = count($charSkills);

@@ -1,23 +1,23 @@
 {{-- About me Section --}}
 <div id="about">
     <div class="row">
-        <div class="offset-md-1 col-md-5 aboutLeftSideContainer">
+        <div class="offset-lg-1 col-lg-5 col-md-6 aboutLeftSideContainer">
             <img src="resumeApp/resources/views/customTheme/images/newResume/about_me.png" style="padding-bottom: 10px;" alt="aboutImg" width="30px;">
             <span class="aboutText">ABOUT ME</span>
             <div class="aboutText mobile">
                 <div class="aboutSubText info">
                     <div class="row">
-                        <div class="col-md-3 col-4">Lang:</div>
-                        <div class="col-md-6 col-8">  {{$user->languages}}</div>
+                        <div class="col-lg-3 col-4">Lang:</div>
+                        <div class="col-lg-6 col-8">  {{$user->languages}}</div>
                     </div><br/>
                     <div class="row">
-                        <div class="col-md-3 col-4">Email:</div>
-                        <div class="col-md-6 col-8">riz@123workforce.com</div>
+                        <div class="col-lg-3 col-4">Email:</div>
+                        <div class="col-lg-6 col-8">riz@123workforce.com</div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6 col-lg-5">
             <img src="resumeApp/resources/views/customTheme/images/newResume/what_i_do.png" style="padding-bottom: 10px;" alt="aboutImg" width="30px;">
             <span class="aboutText">WHAT I DO?</span>
             <div class="aboutText mobile">

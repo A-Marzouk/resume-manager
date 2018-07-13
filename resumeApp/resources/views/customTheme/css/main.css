@@ -208,21 +208,22 @@ body {
     height: 50px;
     width: 50px;
     opacity: 0.5; }
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 768px) {
       #quote img {
         display: none; } }
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     #quote {
-      margin-top: 10%; } }
+      margin-top: 50px; } }
   #quote .quoteText {
     color: #697786;
     font-family: Roboto;
     font-size: 20px;
     font-weight: 300;
     line-height: 24px; }
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 768px) {
       #quote .quoteText {
-        padding: 10px; } }
+        padding: 10px;
+        text-align: left; } }
 
 #cv_bar {
   background: none;

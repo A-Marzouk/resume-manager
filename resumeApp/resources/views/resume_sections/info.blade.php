@@ -19,12 +19,12 @@
 
 
     <div class="row">
-        <div class="col-md-2 offset-md-4">
+        <div class="col-lg-2 offset-lg-4 col-md-4 offset-md-2">
             <div class="buttonMain whiteBg">
                 <a class="hireBtn btn-block hire" href="#">Hire Me</a>
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-lg-2 col-md-4">
             <div class="buttonMain">
                 <a class="hireBtn btn-block" href="#">Send me message </a>
             </div>

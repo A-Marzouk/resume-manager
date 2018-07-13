@@ -200,8 +200,9 @@ body{
     cursor: pointer;
     outline:none;
   }
-  @media only screen and (max-width: 600px){
+  @media only screen and (max-width: 768px){
     text-align: center;
+    padding : 1% 0 0 0;
   }
   text-decoration: none;
   a:hover{
@@ -825,7 +826,7 @@ body{
       outline:none;
     }
     padding : 5% 0 0 0;
-    @media only screen and (max-width: 600px){
+    @media only screen and (max-width: 768px){
       text-align: center;
       padding-top: 13%;
     }

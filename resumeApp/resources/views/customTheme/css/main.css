@@ -169,9 +169,10 @@ body {
     background: #44E5EF !important;
     cursor: pointer;
     outline: none; }
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     .buttonMain {
-      text-align: center; } }
+      text-align: center;
+      padding: 1% 0 0 0; } }
   .buttonMain a:hover {
     text-decoration: none; }
   .buttonMain .hireBtn {
@@ -679,7 +680,7 @@ body {
       background: #44E5EF !important;
       cursor: pointer;
       outline: none; }
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 768px) {
       #content .buttonMain {
         text-align: center;
         padding-top: 13%; } }

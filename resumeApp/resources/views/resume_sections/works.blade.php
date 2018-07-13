@@ -9,12 +9,12 @@ foreach ($works as $work){
 ?>
 <div id="work" class="worksSection">
     <div class="row firstPart">
-        <div class="col-md-5 offset-md-1">
+        <div class="offset-lg-1 col-lg-5 col-md-6">
             <img id="workTextImg" src="resumeApp/resources/views/customTheme/images/newResume/works.png" alt="aboutImg" width="30px;">
             <span class="aboutText" style="color: white;">WORKS</span>
         </div>
         <div class="row">
-            <div class="col-md-10 offset-md-1">
+            <div class="col-lg-10 offset-lg-1 col-12">
                 <div class="row">
                     <div class="col-md-6">
                         <? if(isset($clearWorks[0]) && !empty($clearWorks[0]) ):?>

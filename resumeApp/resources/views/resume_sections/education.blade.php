@@ -1,7 +1,7 @@
 {{-- Education and Trainings section --}}
 <div id="about" class="education">
     <div class="row">
-        <div class="col-md-5 offset-md-1 educationSection">
+        <div class="offset-lg-1 col-lg-5 col-md-6 educationSection">
             <img src="resumeApp/resources/views/customTheme/images/newResume/education.png" alt="aboutImg" width="30px;">
             <span class="aboutText">EDUCATION</span>
             <div class="aboutText">
@@ -34,7 +34,7 @@
                 <? endif; ?>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6 col-lg-5">
             <img src="resumeApp/resources/views/customTheme/images/newResume/trainings.png" alt="aboutImg" width="30px;">
             <span class="aboutText">TRAININGS</span>
             <div class="aboutText">

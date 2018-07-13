@@ -200,8 +200,9 @@ body{
     cursor: pointer;
     outline:none;
   }
-  @media only screen and (max-width: 600px){
+  @media only screen and (max-width: 768px){
     text-align: center;
+    padding : 1% 0 0 0;
   }
   text-decoration: none;
   a:hover{
@@ -247,12 +248,12 @@ body{
   border-bottom:1px solid #F8F8F8;
   img{
     height: 50px;	width: 50px;	opacity: 0.5;
-    @media only screen and (max-width: 600px){
+    @media only screen and (max-width: 768px){
       display: none;
     }
   }
-  @media only screen and (max-width: 600px){
-    margin-top: 10%;
+  @media only screen and (max-width: 768px){
+    margin-top: 50px;
   }
 
   .quoteText{
@@ -261,8 +262,9 @@ body{
     font-size: 20px;
     font-weight: 300;
     line-height: 24px;
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 768px) {
       padding: 10px;
+      text-align: left;
     }
   }
 }
@@ -825,7 +827,7 @@ body{
       outline:none;
     }
     padding : 5% 0 0 0;
-    @media only screen and (max-width: 600px){
+    @media only screen and (max-width: 768px){
       text-align: center;
       padding-top: 13%;
     }

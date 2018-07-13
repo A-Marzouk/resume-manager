@@ -1,4 +1,4 @@
-<div class="row d-none d-md-block">
+<div class="row d-none d-lg-block">
     <div class="col-md-10 offset-md-1">
         <div id="navBar">
             <nav class="navbar navbar-expand-lg customNav" id="cv_bar">
@@ -20,7 +20,7 @@
     </div>
 </div>
 
-<div class="row d-md-none">
+<div class="row d-lg-none">
     <div class="col-12 mobileNav" id="navbar2LinksMobile">
         <a class="nav-item nav-link secondNavLink navMobileLink active " href="#about">About</a>
         <a class="nav-item nav-link secondNavLink navMobileLink" href="#audio">Resume</a>

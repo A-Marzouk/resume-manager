@@ -19,12 +19,12 @@
 
 
     <div class="row">
-        <div class="col-md-2 offset-md-4">
+        <div class="col-lg-2 offset-lg-4 col-md-4 offset-md-2">
             <div class="buttonMain whiteBg">
                 <a class="hireBtn btn-block hire" href="#">Hire Me</a>
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-lg-2 col-md-4">
             <div class="buttonMain">
                 <a class="hireBtn btn-block" href="#">Send me message </a>
             </div>
@@ -34,10 +34,10 @@
 
 <div id="quote">
     <div class="row">
-        <div class="col-md-1 offset-md-1">
+        <div class="col-lg-1 offset-lg-1">
             <img src="resumeApp/resources/views/customTheme/images/newResume/quote.png" alt="quote">
         </div>
-        <div class="col-md-10">
+        <div class="col-lg-10 col-md-12">
             <div class="quoteText">
                 {{$user->intro}}
             </div>

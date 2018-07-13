@@ -1,7 +1,7 @@
 {{-- Get in touch Section --}}
 <div id="ourClients">
     <div class="row">
-        <div class="col-md-11 offset-md-1">
+        <div class="col-lg-10 offset-lg-1 col-12">
             <div>
                 <img src="resumeApp/resources/views/customTheme/images/email.png" width="30px;">
                 <span class="aboutText">GET IN TOUCH</span>
@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-10 offset-md-1">
+        <div class="col-lg-10 offset-lg-1 col-12">
             <div class="row clientsBox">
                 <div class="col-md-6 leftSide">
                     <div class="row">

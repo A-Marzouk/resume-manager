@@ -49,8 +49,8 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="buttonMain text-cente">
-                                    <button type="submit" class="col-md-12 hireBtn">
+                                <div class="buttonMain text-center">
+                                    <button type="submit" class="col-md-4 hireBtn">
                                         {{ __('Reset password') }}
                                     </button>
                                 </div>

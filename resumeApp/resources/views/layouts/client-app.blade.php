@@ -196,31 +196,31 @@ if($user){
     <? endif;?>
 </div>
 <!-- Modals -->
-<div class="modal fade" style="background-color:rgba(0, 0, 0, 0.5);" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" style="background-color:rgba(255, 255, 255, 0.95);" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="row">
         <div class="col-md-12 text-center" style="padding-top: 20px;">
-            <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
+            <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo" width="250">
         </div>
     </div>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="col-md-12">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                     <div>
-                        <div class="customFormHeader text-left" style="background: white;">{{ __('Client Register') }}</div>
+                        <div class="customFormHeader col-md-12 text-left" style="background: white;">{{ __('Client Register') }}
+                            <button type="button" class="close text-right" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" style="color: blue;font-size: 35px;font-weight: 300;">&times;</span>
+                            </button>
+                        </div>
 
                         <form method="POST" class="clientForm" action="{{ route('client.register.submit') }}">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
-
                                     <div class="form-group">
                                         <label for="agency" class="formLabelModal">{{ __('Agency/Business name') }}</label>
                                         <div>
-                                            <input id="agency" type="text" class="form-control{{ $errors->has('ageny') ? ' is-invalid' : '' }}" name="agency" value="{{ old('agency') }}" required autofocus>
+                                            <input id="agency" type="text" class="panelFormInput form-control{{ $errors->has('ageny') ? ' is-invalid' : '' }}" name="agency" value="{{ old('agency') }}" required autofocus>
                                             @if ($errors->has('agency'))
                                                 <span class="invalid-feedback">
                                             <strong>{{ $errors->first('agency') }}</strong>
@@ -229,11 +229,27 @@ if($user){
                                         </div>
                                     </div>
                                     {{-- Agency / Name --}}
-
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group">
+                                        <label for="name" class="formLabelModal">{{ __('Contact person') }}</label>
+                                        <div class="">
+                                            <input id="nameModal" type="text" class="panelFormInput form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+
+                                            @if ($errors->has('name'))
+                                                <span class="invalid-feedback">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    {{-- contact person --}}
+                                </div>
+
+                                <div class="col-md-6"> <div class="form-group">
                                         <label for="email" class="formLabelModal">{{ __('E-Mail Address') }}</label>
                                         <div class="">
-                                            <input id="email2" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                                            <input id="email2" type="email" class="panelFormInput form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
                                             @if ($errors->has('email'))
                                                 <span class="invalid-feedback">
@@ -243,65 +259,13 @@ if($user){
                                         </div>
                                     </div>
 
-                                    {{-- email --}}
-
-
-
-                                    <div class="form-group">
-                                        <label for="phone" class="formLabelModal">{{ __('Phone') }}</label>
-
-                                        <div class="">
-                                            <input id="phone" type="tel" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required>
-
-                                            @if ($errors->has('phone'))
-                                                <span class="invalid-feedback">
-                                            <strong>{{ $errors->first('phone') }}</strong>
-                                        </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    {{--phone--}}
-
-
-                                    <div class="form-group">
-                                        <label for="password" class="formLabelModal">{{ __('Password') }}</label>
-
-                                        <div class="">
-                                            <input id="passwordModal" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                            @if ($errors->has('password'))
-                                                <span class="invalid-feedback">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    {{--pass--}}
-
-                                </div>
+                                    {{-- email --}}</div>
                                 <div class="col-md-6">
-
-
-                                    <div class="form-group">
-                                        <label for="name" class="formLabelModal">{{ __('Contact person') }}</label>
-                                        <div class="">
-                                            <input id="nameModal" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                                            @if ($errors->has('name'))
-                                                <span class="invalid-feedback">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
-                                            @endif
-                                        </div>
-                                    </div>
-
-                                    {{-- contact person --}}
-
                                     <div class="form-group">
                                         <label for="email" class="formLabelModal" style="font-size: 12px;">{{ __('E-Mail Address accounts dept') }}</label>
 
                                         <div>
-                                            <input id="emailDept" type="email" class="form-control{{ $errors->has('emailDept') ? ' is-invalid' : '' }}" name="emailDept" value="{{ old('emailDept') }}" required>
+                                            <input id="emailDept" type="email" class="panelFormInput form-control{{ $errors->has('emailDept') ? ' is-invalid' : '' }}" name="emailDept" value="{{ old('emailDept') }}" required>
 
                                             @if ($errors->has('emailDept'))
                                                 <span class="invalid-feedback">
@@ -311,12 +275,31 @@ if($user){
                                         </div>
                                     </div>
                                     {{-- email dept--}}
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone" class="formLabelModal">{{ __('Phone') }}</label>
+
+                                        <div class="">
+                                            <input id="phone" type="tel" class="panelFormInput form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required>
+
+                                            @if ($errors->has('phone'))
+                                                <span class="invalid-feedback">
+                                            <strong>{{ $errors->first('phone') }}</strong>
+                                        </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    {{--phone--}}
+                                </div>
+                                <div class="col-md-6">
 
                                     <div class="form-group">
                                         <label for="timeZone" class="formLabelModal">{{ __('Time zone') }}</label>
 
                                         <div class="">
-                                            <select class="form-control" id="timeZone" name="timeZone">
+                                            <select class="form-control" id="timeZone" name="timeZone" style="height: 50px;">
                                                 <option value="" selected="selected">Select your timezone</option>
                                                 <option value="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima">(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima</option>
                                                 <option value="(GMT -6:00) Central Time (US & Canada), Mexico City">(GMT -6:00) Central Time (US & Canada), Mexico City</option>
@@ -373,23 +356,40 @@ if($user){
                                         </div>
                                     </div>
                                     {{--time zone--}}
-
-
-                                    <div class="form-group ">
-                                        <label for="password-confirm" class="formLabelModal">{{ __('Confirm Password') }}</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="password" class="formLabelModal">{{ __('Password') }}</label>
 
                                         <div class="">
-                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                            <input id="passwordModal" type="password" class="panelFormInput form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                                            @if ($errors->has('password'))
+                                                <span class="invalid-feedback">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    {{--pass--}}
+                                </div>
+
+
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="password-confirm" class="formLabelModal">{{ __('Confirm Password') }}</label>
+                                            <input id="password-confirm" type="password" class="panelFormInput form-control" name="password_confirmation" required>
                                             @if ($errors->has('password_confirmation'))
                                                 <span class="invalid-feedback">
                                             <strong>{{ $errors->first('password_confirmation') }}</strong>
                                         </span>
                                             @endif
-                                        </div>
                                     </div>
 
                                     {{-- pass confirm --}}
                                 </div>
+
                             </div>
                             <div class="form-group">
                                 <div class="buttonMain text-center" style="padding-top: 0;">
@@ -409,31 +409,33 @@ if($user){
 
 </div>
 {{-- login modal --}}
-<div class="modal fade" style="background-color:rgba(0, 0, 0, 0.5);" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" style="background-color:rgba(255, 255, 255, 0.95);" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="row">
         <div class="col-md-12 text-center" style="padding-top: 20px;">
-            <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
+            <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo" width="250">
         </div>
     </div>
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" style="max-width: 400px;">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="col-md-12">
-                    <div class=>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <div class="customFormHeader text-left" style="background: white;">{{ __('Client Log in') }}</div>
+                    <div>
+                        <div class="customFormHeader col-md-12 text-left" style="background: white;">
+                            Client Log in
+                            <button type="button" class="close text-right" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" style="color: blue;font-size: 35px;font-weight: 300;">&times;</span>
+                            </button>
+                        </div>
                         <div>
                             <form method="POST" class="clientForm" action="{{ route('client.login.submit') }}">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-md-8 offset-md-2">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="email" class="formLabelModal">{{ __('E-Mail Address') }}</label>
 
                                             <div class="">
-                                                <input id="emailModal2" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                                <input id="emailModal2" type="email" class="panelFormInput form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
                                                 @if ($errors->has('email'))
                                                     <span class="invalid-feedback">
@@ -444,15 +446,15 @@ if($user){
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="password" class="formLabelModal">{{ __('Password ') }}
-                                                <a href="{{ route('password.request') }}">
+                                            <label for="password" class="formLabelModal forgotText">{{ __('Password ') }}
+                                                <a href="{{ route('client.password.reset') }}">
                                                     {{ __(' Forgot?') }}
                                                 </a>
                                             </label>
 
 
                                             <div>
-                                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                                <input id="password" type="password" class="panelFormInput form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                                 @if ($errors->has('password'))
                                                     <span class="invalid-feedback">
@@ -499,32 +501,32 @@ if($user){
 
 </div>
 {{-- Talk to sells modal --}}
-<div class="modal fade" style="background-color:rgba(0, 0, 0, 0.5);" id="talkToSales" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" style="background-color:rgba(255, 255, 255, 0.95);" id="talkToSales" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="row">
         <div class="col-md-12 text-center" style="padding-top: 20px;">
-            <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
+            <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo" width="250">
         </div>
     </div>
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" style="max-width: 400px;">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="col-md-12">
-                    <div class=>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <div class="customFormHeader text-left" style="background: white;">{{ __('Talk to sales') }}</div>
-                        <hr>
+                    <div>
+                        <div class="customFormHeader col-md-12 text-left" style="background: white;">{{ __('Talk to sales') }}
+                            <button type="button" class="close text-right" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" style="color: blue;font-size: 35px;font-weight: 300;">&times;</span>
+                            </button>
+                        </div>
                         <div>
                             <form method="POST" class="clientForm" action="{{ route('message.to.sales') }}">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-md-8 offset-md-2">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="email" class="formLabelModal">{{ __('Your e-mail Address') }}</label>
 
                                             <div class="">
-                                                <input id="emailModal" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                                <input id="emailModal" type="email" class="panelFormInput form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
                                                 @if ($errors->has('email'))
                                                     <span class="invalid-feedback">
@@ -539,7 +541,7 @@ if($user){
 
 
                                             <div>
-                                                <input id="subject" type="text" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="subject" required>
+                                                <input id="subject" type="text" class="panelFormInput form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="subject" required>
 
                                                 @if ($errors->has('subject'))
                                                     <span class="invalid-feedback">
@@ -551,7 +553,7 @@ if($user){
 
                                         <div class="form-group">
                                             <label for="message" class="panelFormLabel">Message</label>
-                                            <textarea class="form-control panelFormInput" rows="3" id="message" name="message" required>
+                                            <textarea class="form-control" rows="3" id="message" name="message" required>
 
                                             </textarea>
                                             @if ($errors->has('message'))
@@ -562,8 +564,8 @@ if($user){
                                         </div>
 
                                         <div class="form-group">
-                                            <div class="buttonMain text-cente">
-                                                <button type="submit" class="col-md-12 hireBtn">
+                                            <div class="buttonMain text-center">
+                                                <button type="submit" class="col-md-8 hireBtn">
                                                     {{ __('Send') }}
                                                 </button>
                                             </div>

@@ -698,6 +698,16 @@ body{
 
 // client register page :
 
+.forgotText{
+  a{
+    font-size: small;
+    border-bottom: 1px solid;
+  }
+  a:hover{
+    text-decoration: none;
+  }
+}
+
 .customFormHeader{
   color: #697786;
   font-family: Roboto;
@@ -706,6 +716,7 @@ body{
   line-height: 35px;
   text-align: center;
   padding-top: 40px;
+  padding-bottom: 20px;
 }
 
 .clientForm{

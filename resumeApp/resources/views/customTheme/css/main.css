@@ -573,6 +573,12 @@ body {
   padding-top: 4%;
   background: none; }
 
+.forgotText a {
+  font-size: small;
+  border-bottom: 1px solid; }
+.forgotText a:hover {
+  text-decoration: none; }
+
 .customFormHeader {
   color: #697786;
   font-family: Roboto;
@@ -580,7 +586,8 @@ body {
   font-weight: 300;
   line-height: 35px;
   text-align: center;
-  padding-top: 40px; }
+  padding-top: 40px;
+  padding-bottom: 20px; }
 
 .clientForm {
   padding-top: 3%; }

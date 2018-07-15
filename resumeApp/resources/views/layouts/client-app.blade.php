@@ -600,21 +600,28 @@ if($user){
             dots: true,
             arrows:false,
             slidesToShow: 6,
-            slidesToScroll: 1,
+            slidesToScroll: 3,
             autoplay:true,
             responsive: [
                 {
                     breakpoint: 478,
                     settings: {
                         slidesToShow: 2,
-                        slidesToScroll: 1,
+                        slidesToScroll: 2,
                     }
                 },
                 {
                     breakpoint: 680,
                     settings: {
-                        slidesToShow: 2,
+                        slidesToShow: 3,
                         slidesToScroll: 2,
+                    }
+                },
+                {
+                    breakpoint: 911,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
                     }
                 }
             ]

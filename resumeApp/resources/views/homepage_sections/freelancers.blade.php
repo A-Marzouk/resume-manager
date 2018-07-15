@@ -1,6 +1,6 @@
 <div id="freelancers">
     <div class="row customContainer">
-        <div class="col-md-8">
+        <div class="col-md-8 offset-md-1 offset-lg-0">
             <div class="secondSectionHeading">
                 Hire Top<br/><span>Freelancers.</span>
                 <div class="lineDivider"></div>

@@ -880,12 +880,18 @@ body{
   /* Freelancers' boxes*/
   .freelancerItem{
     text-decoration: none;
+    text-align: center;
+    img{
+      margin: auto;
+    }
   }
 
   .slickFreelancerImg{
     border-radius: 50%;
-    width: 100%;
-    padding: 15px;
+    width: 110px;
+    opacity: 0.9;
+    background: linear-gradient(135deg, #32FBFC 0%, #3214F2 100%);
+    box-shadow: 0 2px 4px 0 rgba(8,38,168,0.15);
     @media only screen and (max-width: 600px) {
     }
   }
@@ -933,7 +939,7 @@ body{
     font-weight: 500;
     line-height: 19px;
     text-align: center;
-    padding-bottom:10px;
+    padding-bottom:2px;
     white-space: nowrap;
     overflow: hidden;
     :hover{

@@ -669,7 +669,7 @@ body {
     font-size: 20px;
     font-weight: 300;
     line-height: 24px;
-    padding: 4% 0 2% 0; }
+    padding: 0; }
     @media only screen and (max-width: 991px) {
       #content .mainSectionSubHeading {
         font-size: 16px;
@@ -680,7 +680,7 @@ body {
         padding-left: 20px;
         padding-top: 20px; } }
   #content .buttonMain {
-    padding: 40px 0 0 0;
+    padding: 20px 0 60px 0;
     text-decoration: none; }
     #content .buttonMain :hover {
       background: #44E5EF !important;
@@ -688,8 +688,7 @@ body {
       outline: none; }
     @media only screen and (max-width: 991px) {
       #content .buttonMain {
-        text-align: center;
-        padding-top: 40px; } }
+        text-align: center; } }
     #content .buttonMain a:hover {
       text-decoration: none; }
     #content .buttonMain .hireBtn {

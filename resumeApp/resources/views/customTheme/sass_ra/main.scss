@@ -767,7 +767,6 @@ body{
 }
 
 #content{
-
   .lineDivider{
     transform: scaleY(-1);
     padding : 3px 0 0 0;
@@ -817,7 +816,7 @@ body{
     font-family: Roboto;
     font-size: 20px;	font-weight: 300;
     line-height: 24px;
-    padding : 4% 0 2% 0;
+    padding :0;
     @media only screen and (max-width: 991px){
       font-size: 16px;
       font-weight: 300;
@@ -835,10 +834,9 @@ body{
       cursor: pointer;
       outline:none;
     }
-    padding : 40px 0 0 0;
+    padding: 20px 0 60px 0;
     @media only screen and (max-width: 991px){
       text-align: center;
-      padding-top: 40px;
     }
     text-decoration: none;
     a:hover{

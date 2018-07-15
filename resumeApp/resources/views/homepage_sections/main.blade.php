@@ -8,13 +8,13 @@
                 Access our global talent network of professional Freelancers, they are<br/>reliable, qualified
                 and ready to join your team.
             </div>
-            <div class="buttonMain col-lg-6 col-md-6 offset-md-3 offset-lg-0">
+            <div class="buttonMain col-lg-4 col-md-6 offset-md-3 offset-lg-0">
                 <? if(auth()->guard('client')->guest()):?>
-                <a class="hireBtn" href="#" data-toggle="modal" data-target="#exampleModalCenter">Hire
+                <a class="hireBtn btn-block" href="#" data-toggle="modal" data-target="#exampleModalCenter">Hire
                     Talent</a>
                 <? else:?>
                 {{-- client --}}
-                <a class="hireBtn" href="/client">Hire Talent</a>
+                <a class="hireBtn btn-block" href="/client">Hire Talent</a>
                 <? endif;?>
 
             </div>

@@ -869,7 +869,7 @@ body {
       color: #273D52;
       font-family: Roboto;
       font-size: 1.6rem;
-      font-weight: bold;
+      font-weight: 400;
       line-height: 37px; }
       #content .designerRightSide h2 img {
         width: 20px; }
@@ -931,7 +931,8 @@ body {
     box-shadow: 0 11px 16px -7px #E5ECED;
     margin: 5% 5% 0 5%; }
     #content .clientsBox .leftSide {
-      padding: 4%; }
+      padding: 4%;
+      padding-top: 0px; }
     @media only screen and (max-width: 600px) {
       #content .clientsBox {
         height: auto; } }

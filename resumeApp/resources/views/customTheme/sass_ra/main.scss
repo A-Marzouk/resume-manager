@@ -995,7 +995,9 @@ body{
     line-height: 24px;
     padding-top: 10px;
     @media only screen and (max-width: 600px){
-      text-align: center;
+      text-align: left;
+      font-size: 16px;	font-weight: 300;
+      padding-left: 17px;
     }
   }
 

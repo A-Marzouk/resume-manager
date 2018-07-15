@@ -38,8 +38,9 @@ if($user){
             <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
                 <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
             </a>
-            <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="" data-target="#" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+
+            <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="" style="border: none;" data-target="#" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="background-image: url('/resumeApp/resources/views/customTheme/images/newResume/menu.png');"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">

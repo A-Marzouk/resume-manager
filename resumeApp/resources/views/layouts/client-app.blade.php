@@ -64,8 +64,8 @@ if($user){
         <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
             <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
         </a>
-        <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" style="border: none;" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="background-image: url('/resumeApp/resources/views/customTheme/images/newResume/menu.png');"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -465,14 +465,11 @@ if($user){
                                         </div>
 
                                         <div class="form-group">
-                                            <div>
-                                                <div>
-                                                    <label>
-                                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                        <span class="rememberText">{{ __('Remember Me') }}</span>
-                                                    </label>
-                                                </div>
-                                            </div>
+                                            <label class="checkBoxText form-check-label checkBoxContainer">
+                                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                                                Remember Me
+                                                <span class="checkmark"></span>
+                                            </label>
                                         </div>
 
                                         <div class="form-group">

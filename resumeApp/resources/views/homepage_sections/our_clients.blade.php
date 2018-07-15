@@ -47,25 +47,30 @@
                                class="form-control panelFormInput">
                     </div>
                 </div>
-                <div class="row form-group">
-                    <div class="col-md-6 designerBtn">
-                        <!--                                <input type="checkbox" id="bookkeper" name="bookkeper" class="check-input">-->
-                        <a href="javascript:void(0)">
-                            <img src="resumeApp/resources/views/customTheme/images/Circle-PNG-HD.png" width="30"
-                                 height="30"> I need a Designer
-                        </a>
+                <div class="row" style="padding-top:25px;">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="checkBoxText form-check-label checkBoxContainer">
+                                <input type="checkbox" id="bookkeper" name="bookkeper" {{ old('remember') ? 'checked' : '' }} checked>
+                                I need a Designer
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
                     </div>
-                    <div class="col-md-6 designerBtn">
-                        <!--                            <input type="checkbox" id="accountant" name="accountant" class="check-input">-->
-                        <a href="javascript:void(0)">
-                            <img src="resumeApp/resources/views/customTheme/images/img_143278 (2).png"
-                                 width="30" height="30"> I need a Developer
-                        </a>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="checkBoxText form-check-label checkBoxContainer">
+                                <input type="checkbox" id="accountant" name="accountant"{{ old('remember') ? 'checked' : '' }}>
+                                I need a Developer
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <select name="Select-time" class="form-control">
+                        <label for="telephone" class="formLabel">Form of employment</label>
+                        <select name="Select-time" class="form-control" style="height: 50px;">
                             <option value="partTime">Part time</option>
                             <option value="fullTime">Full time</option>
                         </select>

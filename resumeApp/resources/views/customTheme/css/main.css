@@ -819,7 +819,16 @@ body {
       padding-top: 20px !important; } }
   #content #devDesBoxes {
     margin-top: 10px;
-    background: url("/background.svg"); }
+    background: url("/background.svg");
+    background-size: 100% 100%; }
+    @media only screen and (max-width: 991px) {
+      #content #devDesBoxes {
+        background-size: 100% 300px;
+        background-repeat: no-repeat; } }
+    @media only screen and (max-width: 600px) {
+      #content #devDesBoxes {
+        background-size: 100% 100%;
+        background-repeat: no-repeat; } }
   #content .designerBox {
     border-radius: 5px;
     background-color: #FFFFFF;

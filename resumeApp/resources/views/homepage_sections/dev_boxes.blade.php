@@ -1,10 +1,10 @@
 <div id="devDesBoxes">
     <div class="row">
-        <div class="col-md-5 addMargin offset-md-1">
+        <div class="col-lg-5 addMargin offset-lg-1 col-md-6">
             <div id="designerBox">
                 <div class="designerBox">
                     <div class="row">
-                        <div class="col-md-6 col-sm-12 borderRight">
+                        <div class="col-lg-6 col-sm-12 borderRight">
                             <div class="designerLeftSide text-left">
                                 <img src="/resumeApp/resources/views/customTheme/images/new_theme/design_icon.png"
                                      alt="design image">
@@ -15,7 +15,7 @@
                                 </h2>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-lg-6 col-sm-12">
                             <div class="designerRightSide">
                                 <h2>
                                     <img src="/resumeApp/resources/views/customTheme/images/new_theme/rec_developers@2x.png"
@@ -45,11 +45,11 @@
             </div>
 
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6 col-lg-5">
             <div id="developerBox">
                 <div class="designerBox">
                     <div class="row">
-                        <div class="col-md-6 borderRight">
+                        <div class="col-lg-6 borderRight">
                             <div class="designerLeftSide text-left">
                                 <img src="/resumeApp/resources/views/customTheme/images/new_theme/code_icon.png"
                                      alt="design image">
@@ -58,7 +58,7 @@
                                 </h2>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <div class="designerRightSide">
                                 <h2>
                                     <img src="/resumeApp/resources/views/customTheme/images/new_theme/reg_developers@2x.png"

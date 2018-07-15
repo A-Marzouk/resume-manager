@@ -1021,6 +1021,17 @@ body{
   #devDesBoxes{
     margin-top: 10px;
     background: url('/background.svg');
+    background-size:100% 100% ;
+    //tablet
+    @media only screen and (max-width: 991px){
+      background-size:100% 300px ;
+      background-repeat: no-repeat;
+    }
+    // mobile
+    @media only screen and (max-width: 600px){
+      background-size:100% 100% ;
+      background-repeat: no-repeat;
+    }
   }
 
   .designerBox{

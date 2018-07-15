@@ -5,7 +5,7 @@
         </h2>
     </div>
     <div class="row clientsBox">
-        <div class="col-md-6 leftSide">
+        <div class="col-lg-6 leftSide">
             <div class="secondSectionHeading">
                 We love<br/><span>Our clients.</span>
                 <div class="lineDivider"></div>
@@ -14,7 +14,7 @@
                 Register your company today & we will connect you with the talent you need.
             </div>
         </div>
-        <div class="col-md-6 rightSide">
+        <div class="col-lg-6 rightSide">
             <form id="contact-form" method="POST" class="clientForm">
                 <div class="row">
                     <div class="col-md-6">

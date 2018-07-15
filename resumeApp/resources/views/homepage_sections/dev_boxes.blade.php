@@ -31,7 +31,7 @@
                                             src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png"
                                             alt="arrow"> Branding & Marketing</a><br/>
 
-                                <div class="getStartBtn col-md-8 col-6">
+                                <div class="getStartBtn col-md-8 col-7">
                                     <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
                                         Get Started &nbsp&nbsp&nbsp<img
                                                 src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png"
@@ -73,7 +73,7 @@
                                 <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><img
                                             src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png"
                                             alt="arrow"> Back-end Developers</a><br/>
-                                <div class="getStartBtn col-md-8 col-6">
+                                <div class="getStartBtn col-md-8 col-7">
                                     <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
                                         Get Started &nbsp&nbsp&nbsp <img
                                                 src="/resumeApp/resources/views/customTheme/images/new_theme/arrow@2x.png"

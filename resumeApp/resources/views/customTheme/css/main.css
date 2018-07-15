@@ -75,10 +75,10 @@ body {
 .navbar-brand {
   margin-right: 0px !important; }
   .navbar-brand img {
-    width: 120px; }
+    width: 140px; }
     @media only screen and (max-width: 600px) {
       .navbar-brand img {
-        width: 120px; } }
+        width: 140px; } }
 
 .loginBtnHolder {
   margin-left: auto; }
@@ -1189,6 +1189,12 @@ body {
   font-family: Roboto;
   font-size: 16px;
   line-height: 19px; }
+
+.chatWithUsText {
+  margin-left: 570px; }
+  @media only screen and (max-width: 991px) {
+    .chatWithUsText {
+      margin: auto; } }
 
 #chatBox {
   opacity: 0;

@@ -61,7 +61,7 @@ if($user){
 ?>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel fixed-top">
-        <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
+        <a class="navbar-brand col-md-2 col-9" href="{{ url('/') }}">
             <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
         </a>
         <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" style="border: none;" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,26 +70,33 @@ if($user){
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
                 {{-- if guest : --}}
                 <? if(auth()->guard('client')->guest()):?>
                     <a class="nav-item nav-link customNavLink <?if($curPage == 'client'):?>active<?endif;?>" href="/client/register/" data-toggle="modal" data-target="#exampleModalCenter">Become a client</a>
                 <? endif; ?>
                 <a class="nav-item nav-link customNavLink" href="#" data-toggle="modal" data-target="#talkToSales">Talk to sales</a>
-                <? if($admin || (session()->get('admin') && session()->get('admin') == 'AdminWasHere')):?>
-                <a class="nav-item nav-link customNavLink" href="/admin" style="color:#0290D8;">Admin-area</a>
-            <?else :?>
-                <a class="nav-item nav-link customNavLink" href="#chatOn" id="liveChat" style="color:#0290D8;">Live-chat</a>
-            <? endif;?>
             </ul>
 
             <!-- Right Side Of Navbar -->
+            <li class="navbar-nav chatWithUsText">
+                <? if($admin || (session()->get('admin') && session()->get('admin') == 'AdminWasHere')):?>
+                <a class="nav-item nav-link customNavLink" href="/admin" style="color:#0290D8;">Admin-area</a>
+                <?else :?>
+                <a class="nav-item nav-link customNavLink" href="#chatOn" id="liveChat" style="color:#0290D8;">
+                    <img src="resumeApp/resources/views/customTheme/images/textsms_24px.png" alt="chat img" width="16px">
+                    &nbsp; Chat with us!
+
+                </a>
+                <? endif;?>
+            </li>
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
-                <?php if(auth()->guard('client')->guest()): ?>
-                    <li></li>
+                <li></li>
+            <?php if(auth()->guard('client')->guest()): ?>
                     <li class="nav-link loginBtn">
-                        <a href="{{ route('client.login') }}" data-toggle="modal" data-target="#loginModal" style="padding-left: 30px; padding-right: 30px;">{{ __('Sign in') }}</a></li>
+                        <a href="{{ route('client.login') }}" data-toggle="modal" data-target="#loginModal" style="padding-left: 30px; padding-right: 30px;">{{ __('Log in') }}</a>
+                    </li>
                 <? else: ?>
                     <a class="nav-item nav-link customNavLink" href="/client">
                         {{ Auth::guard('client')->user()->name }}

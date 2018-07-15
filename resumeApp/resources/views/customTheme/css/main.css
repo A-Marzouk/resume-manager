@@ -728,6 +728,9 @@ body {
     opacity: 0.9;
     background: linear-gradient(135deg, #32FBFC 0%, #3214F2 100%);
     box-shadow: 0 2px 4px 0 rgba(8, 38, 168, 0.15); }
+    @media only screen and (max-width: 600px) {
+      #content .slickFreelancerImg {
+        width: 90px; } }
   #content .freelancerBox {
     transition-duration: 300ms; }
     #content .freelancerBox a {
@@ -795,6 +798,9 @@ body {
     color: black; }
   #content #freelanceTalent {
     padding: 20px 0 10px 0; }
+    @media only screen and (max-width: 991px) {
+      #content #freelanceTalent {
+        padding-bottom: 45px; } }
   #content .talentText {
     color: #697786;
     font-family: Roboto;

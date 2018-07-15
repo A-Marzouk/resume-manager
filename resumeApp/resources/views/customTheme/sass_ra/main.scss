@@ -893,6 +893,7 @@ body{
     background: linear-gradient(135deg, #32FBFC 0%, #3214F2 100%);
     box-shadow: 0 2px 4px 0 rgba(8,38,168,0.15);
     @media only screen and (max-width: 600px) {
+      width: 90px;
     }
   }
 
@@ -990,6 +991,9 @@ body{
   //  freelancer talent :
   #freelanceTalent{
     padding: 20px 0 10px 0 ;
+    @media only screen and (max-width: 991px){
+      padding-bottom: 45px;
+    }
   }
   .talentText{
     color: #697786;

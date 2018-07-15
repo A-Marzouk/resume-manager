@@ -75,10 +75,10 @@ body {
 .navbar-brand {
   margin-right: 0px !important; }
   .navbar-brand img {
-    width: 120px; }
+    width: 140px; }
     @media only screen and (max-width: 600px) {
       .navbar-brand img {
-        width: 120px; } }
+        width: 140px; } }
 
 .loginBtnHolder {
   margin-left: auto; }
@@ -669,7 +669,7 @@ body {
     font-size: 20px;
     font-weight: 300;
     line-height: 24px;
-    padding: 4% 0 2% 0; }
+    padding: 0; }
     @media only screen and (max-width: 991px) {
       #content .mainSectionSubHeading {
         font-size: 16px;
@@ -680,7 +680,7 @@ body {
         padding-left: 20px;
         padding-top: 20px; } }
   #content .buttonMain {
-    padding: 40px 0 0 0;
+    padding: 20px 0 60px 0;
     text-decoration: none; }
     #content .buttonMain :hover {
       background: #44E5EF !important;
@@ -688,8 +688,7 @@ body {
       outline: none; }
     @media only screen and (max-width: 991px) {
       #content .buttonMain {
-        text-align: center;
-        padding-top: 40px; } }
+        text-align: center; } }
     #content .buttonMain a:hover {
       text-decoration: none; }
     #content .buttonMain .hireBtn {
@@ -869,7 +868,7 @@ body {
       color: #273D52;
       font-family: Roboto;
       font-size: 1.6rem;
-      font-weight: bold;
+      font-weight: 400;
       line-height: 37px; }
       #content .designerRightSide h2 img {
         width: 20px; }
@@ -931,7 +930,8 @@ body {
     box-shadow: 0 11px 16px -7px #E5ECED;
     margin: 5% 5% 0 5%; }
     #content .clientsBox .leftSide {
-      padding: 4%; }
+      padding: 4%;
+      padding-top: 0px; }
     @media only screen and (max-width: 600px) {
       #content .clientsBox {
         height: auto; } }
@@ -1108,7 +1108,7 @@ body {
   border-bottom: 2px solid #AC81FC; }
 
 .panelHeading {
-  padding-top: 35px;
+  padding-top: 15px;
   color: #697786;
   font-family: Roboto;
   font-size: 35px;
@@ -1189,6 +1189,12 @@ body {
   font-family: Roboto;
   font-size: 16px;
   line-height: 19px; }
+
+.chatWithUsText {
+  margin-left: 570px; }
+  @media only screen and (max-width: 991px) {
+    .chatWithUsText {
+      margin: auto; } }
 
 #chatBox {
   opacity: 0;

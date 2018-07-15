@@ -90,9 +90,9 @@ body{
 .navbar-brand{
   margin-right: 0px !important;
   img{
-    width: 120px;
+    width: 140px;
     @media only screen and (max-width: 600px){
-      width:120px;
+      width:140px;
     }
   }
 }
@@ -767,7 +767,6 @@ body{
 }
 
 #content{
-
   .lineDivider{
     transform: scaleY(-1);
     padding : 3px 0 0 0;
@@ -817,7 +816,7 @@ body{
     font-family: Roboto;
     font-size: 20px;	font-weight: 300;
     line-height: 24px;
-    padding : 4% 0 2% 0;
+    padding :0;
     @media only screen and (max-width: 991px){
       font-size: 16px;
       font-weight: 300;
@@ -835,10 +834,9 @@ body{
       cursor: pointer;
       outline:none;
     }
-    padding : 40px 0 0 0;
+    padding: 20px 0 60px 0;
     @media only screen and (max-width: 991px){
       text-align: center;
-      padding-top: 40px;
     }
     text-decoration: none;
     a:hover{
@@ -1088,7 +1086,7 @@ body{
       color: #273D52;
       font-family: Roboto;
       font-size: 1.6rem;
-      font-weight: bold;
+      font-weight: 400;
       line-height: 37px;
       img{
         width: 20px;
@@ -1394,7 +1392,7 @@ body{
 }
 
 .panelHeading{
-  padding-top: 35px;
+  padding-top: 15px;
   color: #697786;	font-family: Roboto;
   font-size: 35px;
   font-weight: 300;	line-height: 35px;
@@ -1485,6 +1483,13 @@ body{
 }
 
 // cha styles
+.chatWithUsText{
+    margin-left: 570px;
+  @media only screen and (max-width: 991px) {
+    margin:auto;
+  }
+}
+
 #chatBox{
   opacity: 0;
   height: 420px;

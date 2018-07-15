@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(66);
+module.exports = __webpack_require__(63);
 
 
 /***/ }),
@@ -53338,7 +53338,7 @@ var render = function() {
           staticStyle: { "padding-top": "330px" }
         },
         [
-          _c("div", { staticClass: "text-info text" }, [
+          _c("div", { staticClass: "messageTextAdmin" }, [
             _vm._v("Hi, how can I hep you ?")
           ])
         ]
@@ -53558,10 +53558,7 @@ if (false) {
 }
 
 /***/ }),
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */
+/* 63 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

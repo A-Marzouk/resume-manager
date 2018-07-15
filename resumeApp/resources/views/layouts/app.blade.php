@@ -38,8 +38,9 @@ if($user){
             <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
                 <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
             </a>
-            <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="" data-target="#" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+
+            <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="" style="border: none;" data-target="#" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="background-image: url('/resumeApp/resources/views/customTheme/images/newResume/menu.png');"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -141,10 +142,11 @@ if($user){
                             <img src="/resumeApp/resources/views/customTheme/images/logo123.png" width="36px">
                         </div>
                         <div class="">
-                            <span style="color: #637280;font-family: Roboto;font-size: 12px;">We're Here to Help!</span><br/>
-                            <span style="color: #00CE6B;font-family: Roboto;font-size: 12px;">online</span>
-                        </div><hr>
+                            <span style="font-weight:bold;color: #637280;font-family: Roboto;font-size: 12px;">We're Here to Help!</span><br/>
+                            <span style="color: #00CE6B;font-family: Roboto;font-size: 14px;">online</span>
+                        </div>
                     </div>
+                    <hr>
                 </div>
             </div>
             <div id="VueChat">
@@ -161,7 +163,7 @@ if($user){
                     <div class="empty" v-else-if="messages.length === 4" style="padding-top:250px;">
                         <div class="text-info text text-chat">Hi, how can I hep you ?</div>
                     </div>
-                    <chat-log :messages="messages" style="padding-top:50px;"></chat-log>
+                    <chat-log :messages="messages" style="padding-top:25px;"></chat-log>
                 </div><br/>
                 <div class="container">
                     {{-- v-on:messageSent means when the event is emited --}}

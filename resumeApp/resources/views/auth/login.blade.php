@@ -22,7 +22,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="password" class="formLabel">{{ __('Password') }}
+                                <label for="password" class="formLabel forgotText">{{ __('Password') }}
                                     <a href="{{ route('password.request') }}">
                                         {{ __(' Forgot?') }}
                                     </a>

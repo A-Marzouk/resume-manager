@@ -11,7 +11,7 @@ body {
 
 .customContainer {
   padding: 0 0 0 8.50%; }
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 991px) {
     .customContainer {
       padding: 0; } }
 
@@ -573,6 +573,12 @@ body {
   padding-top: 4%;
   background: none; }
 
+.forgotText a {
+  font-size: small;
+  border-bottom: 1px solid; }
+.forgotText a:hover {
+  text-decoration: none; }
+
 .customFormHeader {
   color: #697786;
   font-family: Roboto;
@@ -580,7 +586,8 @@ body {
   font-weight: 300;
   line-height: 35px;
   text-align: center;
-  padding-top: 40px; }
+  padding-top: 40px;
+  padding-bottom: 20px; }
 
 .clientForm {
   padding-top: 3%; }
@@ -638,11 +645,11 @@ body {
     background-repeat: no-repeat;
     border-bottom: 2px solid #F8F8F8;
     padding-bottom: 50px; }
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 768px) {
       #content #mainSection {
         background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%); } }
   #content .mainSectionHeading {
-    padding: 12% 0 2% 0;
+    padding: 30px 0 30px 0;
     color: #30323D;
     font-family: Roboto;
     font-size: 38px;
@@ -650,14 +657,12 @@ body {
     line-height: 44px; }
     #content .mainSectionHeading span {
       color: #18A6DF; }
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 991px) {
       #content .mainSectionHeading {
-        font-size: 26px;
+        font-size: 28px;
         font-weight: bold;
         line-height: 30px;
-        text-align: center;
-        padding-right: 3%;
-        padding-left: 3%; } }
+        text-align: center; } }
   #content .mainSectionSubHeading {
     color: #697786;
     font-family: Roboto;
@@ -665,32 +670,31 @@ body {
     font-weight: 300;
     line-height: 24px;
     padding: 4% 0 2% 0; }
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 991px) {
       #content .mainSectionSubHeading {
         font-size: 16px;
         font-weight: 300;
         line-height: 19px;
         text-align: center;
-        padding-right: 3%;
-        padding-left: 3%;
-        padding-top: 12%; } }
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 20px; } }
   #content .buttonMain {
-    padding: 5% 0 0 0;
+    padding: 40px 0 0 0;
     text-decoration: none; }
     #content .buttonMain :hover {
       background: #44E5EF !important;
       cursor: pointer;
       outline: none; }
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 991px) {
       #content .buttonMain {
         text-align: center;
-        padding-top: 13%; } }
+        padding-top: 40px; } }
     #content .buttonMain a:hover {
       text-decoration: none; }
     #content .buttonMain .hireBtn {
       border-radius: 24px;
       background: linear-gradient(270deg, #45E6EF 0%, #088FD9 100%);
-      padding: 3.5% 20% 3.5% 20%;
       color: #FFFFFF;
       font-family: Roboto;
       font-size: 16px;
@@ -713,11 +717,19 @@ body {
       #content .secondSectionHeading {
         padding-left: 5%; } }
   #content .freelancerItem {
-    text-decoration: none; }
+    text-decoration: none;
+    text-align: center; }
+    #content .freelancerItem img {
+      margin: auto; }
   #content .slickFreelancerImg {
     border-radius: 50%;
-    width: 100%;
-    padding: 15px; }
+    width: 110px;
+    opacity: 0.9;
+    background: linear-gradient(135deg, #32FBFC 0%, #3214F2 100%);
+    box-shadow: 0 2px 4px 0 rgba(8, 38, 168, 0.15); }
+    @media only screen and (max-width: 600px) {
+      #content .slickFreelancerImg {
+        width: 90px; } }
   #content .freelancerBox {
     transition-duration: 300ms; }
     #content .freelancerBox a {
@@ -752,7 +764,7 @@ body {
     font-weight: 500;
     line-height: 19px;
     text-align: center;
-    padding-bottom: 10px;
+    padding-bottom: 2px;
     white-space: nowrap;
     overflow: hidden; }
     #content .freelancerName :hover {
@@ -785,6 +797,9 @@ body {
     color: black; }
   #content #freelanceTalent {
     padding: 20px 0 10px 0; }
+    @media only screen and (max-width: 991px) {
+      #content #freelanceTalent {
+        padding-bottom: 45px; } }
   #content .talentText {
     color: #697786;
     font-family: Roboto;
@@ -794,13 +809,25 @@ body {
     padding-top: 10px; }
     @media only screen and (max-width: 600px) {
       #content .talentText {
-        text-align: center; } }
+        text-align: left;
+        font-size: 16px;
+        font-weight: 300;
+        padding-left: 17px; } }
   @media only screen and (max-width: 600px) {
     #content .mapImg {
       padding-top: 20px !important; } }
   #content #devDesBoxes {
     margin-top: 10px;
-    background: url("/background.svg"); }
+    background: url("/background.svg");
+    background-size: 100% 100%; }
+    @media only screen and (max-width: 991px) {
+      #content #devDesBoxes {
+        background-size: 100% 300px;
+        background-repeat: no-repeat; } }
+    @media only screen and (max-width: 600px) {
+      #content #devDesBoxes {
+        background-size: 100% 100%;
+        background-repeat: no-repeat; } }
   #content .designerBox {
     border-radius: 5px;
     background-color: #FFFFFF;
@@ -1190,7 +1217,7 @@ body {
     color: #FFFFFF;
     font-family: Roboto;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 500;
     letter-spacing: 0.5px;
     line-height: 19px;
     padding: 13px;
@@ -1207,6 +1234,49 @@ body {
 
 .text-chat {
   padding: 10px; }
+
+.name {
+  opacity: 0.6;
+  color: #697786;
+  font-family: Roboto;
+  font-size: 12px;
+  letter-spacing: 0.08px;
+  line-height: 14px;
+  padding-bottom: 15px;
+  padding-top: 4px; }
+
+.messageText {
+  border-radius: 0px 10px 10px 10px;
+  background-color: #0D96DB;
+  box-shadow: 0 2px 4px 0 rgba(167, 169, 197, 0.55);
+  padding: 10px;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  line-height: 16px; }
+
+.messageTextAdmin {
+  border: 1px solid #D5D8DE;
+  border-radius: 10px 0 10px 10px;
+  background-color: #FFFFFF;
+  padding: 10px;
+  color: #697786;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  line-height: 16px; }
+
+.messageTextVisitor {
+  border-radius: 10px 10px 10px 10px;
+  background-color: #b3d7ff;
+  box-shadow: 0 2px 4px 0 rgba(167, 169, 197, 0.55);
+  padding: 10px;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  line-height: 16px; }
 
 /* The container */
 .checkBoxContainer {

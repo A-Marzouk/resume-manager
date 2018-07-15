@@ -27,7 +27,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="password" class="formLabel">{{ __('Password ') }}
+                                        <label for="password" class="formLabel forgotText">{{ __('Password ') }}
                                             <a href="{{ route('client.password.reset') }}">
                                                 {{ __(' Forgot?') }}
                                             </a>
@@ -46,14 +46,11 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <div>
-                                            <div>
-                                                <label>
-                                                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                    <span class="rememberText">{{ __('Remember Me') }}</span>
-                                                </label>
-                                            </div>
-                                        </div>
+                                        <label class="checkBoxText form-check-label checkBoxContainer">
+                                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                                             Remember Me
+                                            <span class="checkmark"></span>
+                                        </label>
                                     </div>
 
                                     <div class="form-group">

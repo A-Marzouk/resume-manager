@@ -14,7 +14,7 @@ body{
 
 .customContainer{
   padding : 0 0 0 8.50%;
-  @media only screen and (max-width: 600px){
+  @media only screen and (max-width: 991px){
     padding:0;
   }
 
@@ -698,6 +698,16 @@ body{
 
 // client register page :
 
+.forgotText{
+  a{
+    font-size: small;
+    border-bottom: 1px solid;
+  }
+  a:hover{
+    text-decoration: none;
+  }
+}
+
 .customFormHeader{
   color: #697786;
   font-family: Roboto;
@@ -706,6 +716,7 @@ body{
   line-height: 35px;
   text-align: center;
   padding-top: 40px;
+  padding-bottom: 20px;
 }
 
 .clientForm{
@@ -780,12 +791,12 @@ body{
     background-repeat:no-repeat;
     border-bottom: 2px solid #F8F8F8;
     padding-bottom: 50px;
-    @media only screen and (max-width: 600px){
+    @media only screen and (max-width: 768px){
       background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);
     }
   }
   .mainSectionHeading{
-    padding : 12% 0 2% 0;
+    padding : 30px 0 30px 0;
     color: #30323D;
     font-family: Roboto;
     font-size: 38px;
@@ -794,13 +805,11 @@ body{
     span{
       color: #18A6DF;
     }
-    @media only screen and (max-width: 600px){
-      font-size: 26px;
+    @media only screen and (max-width: 991px){
+      font-size: 28px;
       font-weight: bold;
       line-height: 30px;
       text-align: center;
-      padding-right: 3%;
-      padding-left: 3%;
     }
   }
   .mainSectionSubHeading{
@@ -809,14 +818,14 @@ body{
     font-size: 20px;	font-weight: 300;
     line-height: 24px;
     padding : 4% 0 2% 0;
-    @media only screen and (max-width: 600px){
+    @media only screen and (max-width: 991px){
       font-size: 16px;
       font-weight: 300;
       line-height: 19px;
       text-align: center;
-      padding-right: 3%;
-      padding-left: 3%;
-      padding-top: 12%;
+      padding-right: 20px;
+      padding-left: 20px;
+      padding-top: 20px;
     }
   }
 
@@ -826,10 +835,10 @@ body{
       cursor: pointer;
       outline:none;
     }
-    padding : 5% 0 0 0;
-    @media only screen and (max-width: 768px){
+    padding : 40px 0 0 0;
+    @media only screen and (max-width: 991px){
       text-align: center;
-      padding-top: 13%;
+      padding-top: 40px;
     }
     text-decoration: none;
     a:hover{
@@ -838,7 +847,6 @@ body{
     .hireBtn{
       border-radius: 24px;
       background: linear-gradient(270deg, #45E6EF 0%, #088FD9 100%);
-      padding: 3.5% 20% 3.5% 20%;
       color: #FFFFFF;
       font-family: Roboto;
       font-size: 16px;
@@ -871,13 +879,20 @@ body{
   /* Freelancers' boxes*/
   .freelancerItem{
     text-decoration: none;
+    text-align: center;
+    img{
+      margin: auto;
+    }
   }
 
   .slickFreelancerImg{
     border-radius: 50%;
-    width: 100%;
-    padding: 15px;
+    width: 110px;
+    opacity: 0.9;
+    background: linear-gradient(135deg, #32FBFC 0%, #3214F2 100%);
+    box-shadow: 0 2px 4px 0 rgba(8,38,168,0.15);
     @media only screen and (max-width: 600px) {
+      width: 90px;
     }
   }
 
@@ -924,7 +939,7 @@ body{
     font-weight: 500;
     line-height: 19px;
     text-align: center;
-    padding-bottom:10px;
+    padding-bottom:2px;
     white-space: nowrap;
     overflow: hidden;
     :hover{
@@ -975,6 +990,9 @@ body{
   //  freelancer talent :
   #freelanceTalent{
     padding: 20px 0 10px 0 ;
+    @media only screen and (max-width: 991px){
+      padding-bottom: 45px;
+    }
   }
   .talentText{
     color: #697786;
@@ -984,7 +1002,9 @@ body{
     line-height: 24px;
     padding-top: 10px;
     @media only screen and (max-width: 600px){
-      text-align: center;
+      text-align: left;
+      font-size: 16px;	font-weight: 300;
+      padding-left: 17px;
     }
   }
 
@@ -1000,6 +1020,17 @@ body{
   #devDesBoxes{
     margin-top: 10px;
     background: url('/background.svg');
+    background-size:100% 100% ;
+    //tablet
+    @media only screen and (max-width: 991px){
+      background-size:100% 300px ;
+      background-repeat: no-repeat;
+    }
+    // mobile
+    @media only screen and (max-width: 600px){
+      background-size:100% 100% ;
+      background-repeat: no-repeat;
+    }
   }
 
   .designerBox{
@@ -1134,6 +1165,7 @@ body{
     box-shadow: 0 11px 16px -7px #E5ECED;
     .leftSide{
       padding: 4%;
+      padding-top: 0px;
     }
     margin: 5% 5% 0 5%;
     @media only screen and (max-width: 600px){
@@ -1483,7 +1515,7 @@ body{
     color: #FFFFFF;
     font-family: Roboto;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 500;
     letter-spacing: 0.5px;
     line-height: 19px;
     padding: 13px;
@@ -1506,6 +1538,50 @@ body{
 
 .text-chat{
   padding: 10px;
+}
+
+.name{
+  opacity: 0.6;	color: #697786;
+  font-family: Roboto;
+  font-size: 12px;
+  letter-spacing: 0.08px;
+  line-height: 14px;
+  padding-bottom:15px;
+  padding-top:4px;
+}
+
+.messageText{
+  border-radius: 0px 10px 10px 10px;
+  background-color: #0D96DB;
+  box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);
+  padding:10px;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  line-height: 16px;
+}
+.messageTextAdmin{
+  border: 1px solid #D5D8DE;
+  border-radius: 10px 0 10px 10px;
+  background-color: #FFFFFF;
+  padding:10px;
+  color: #697786;	font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  line-height: 16px;
+}
+
+.messageTextVisitor{
+  border-radius: 10px 10px 10px 10px;
+  background-color: #b3d7ff;
+  box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);
+  padding:10px;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  line-height: 16px;
 }
 
 //////////////////////////////// check boxes styling /////////////////////////////

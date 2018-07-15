@@ -11,7 +11,7 @@ body {
 
 .customContainer {
   padding: 0 0 0 8.50%; }
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 991px) {
     .customContainer {
       padding: 0; } }
 
@@ -645,11 +645,11 @@ body {
     background-repeat: no-repeat;
     border-bottom: 2px solid #F8F8F8;
     padding-bottom: 50px; }
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 768px) {
       #content #mainSection {
         background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%); } }
   #content .mainSectionHeading {
-    padding: 12% 0 2% 0;
+    padding: 30px 0 30px 0;
     color: #30323D;
     font-family: Roboto;
     font-size: 38px;
@@ -657,14 +657,12 @@ body {
     line-height: 44px; }
     #content .mainSectionHeading span {
       color: #18A6DF; }
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 991px) {
       #content .mainSectionHeading {
-        font-size: 26px;
+        font-size: 28px;
         font-weight: bold;
         line-height: 30px;
-        text-align: center;
-        padding-right: 3%;
-        padding-left: 3%; } }
+        text-align: center; } }
   #content .mainSectionSubHeading {
     color: #697786;
     font-family: Roboto;
@@ -672,26 +670,26 @@ body {
     font-weight: 300;
     line-height: 24px;
     padding: 4% 0 2% 0; }
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 991px) {
       #content .mainSectionSubHeading {
         font-size: 16px;
         font-weight: 300;
         line-height: 19px;
         text-align: center;
-        padding-right: 3%;
-        padding-left: 3%;
-        padding-top: 12%; } }
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 20px; } }
   #content .buttonMain {
-    padding: 5% 0 0 0;
+    padding: 40px 0 0 0;
     text-decoration: none; }
     #content .buttonMain :hover {
       background: #44E5EF !important;
       cursor: pointer;
       outline: none; }
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 991px) {
       #content .buttonMain {
         text-align: center;
-        padding-top: 13%; } }
+        padding-top: 40px; } }
     #content .buttonMain a:hover {
       text-decoration: none; }
     #content .buttonMain .hireBtn {

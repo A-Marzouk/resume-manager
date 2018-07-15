@@ -142,10 +142,11 @@ if($user){
                             <img src="/resumeApp/resources/views/customTheme/images/logo123.png" width="36px">
                         </div>
                         <div class="">
-                            <span style="color: #637280;font-family: Roboto;font-size: 12px;">We're Here to Help!</span><br/>
-                            <span style="color: #00CE6B;font-family: Roboto;font-size: 12px;">online</span>
-                        </div><hr>
+                            <span style="font-weight:bold;color: #637280;font-family: Roboto;font-size: 12px;">We're Here to Help!</span><br/>
+                            <span style="color: #00CE6B;font-family: Roboto;font-size: 14px;">online</span>
+                        </div>
                     </div>
+                    <hr>
                 </div>
             </div>
             <div id="VueChat">
@@ -162,7 +163,7 @@ if($user){
                     <div class="empty" v-else-if="messages.length === 4" style="padding-top:250px;">
                         <div class="text-info text text-chat">Hi, how can I hep you ?</div>
                     </div>
-                    <chat-log :messages="messages" style="padding-top:50px;"></chat-log>
+                    <chat-log :messages="messages" style="padding-top:25px;"></chat-log>
                 </div><br/>
                 <div class="container">
                     {{-- v-on:messageSent means when the event is emited --}}

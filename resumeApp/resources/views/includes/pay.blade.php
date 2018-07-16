@@ -135,16 +135,16 @@
                 </div>
                 <div class="input-group col-md-4" style="margin: 2px;">
                     <select class="custom-select panelFormLabel" id="{{$day}}From" name="{{$day}}From" style="height: 50px;">
-                        <option  selected disabled="" value="">From</option>
-                        <? for($i=1;$i<=24;$i++):?>
+                        <option  selected ="" value="">From</option>
+                        <? for($i=0;$i<=24;$i++):?>
                         <option value="{{$i}}" <? if($i == $from):?>selected<?endif;?> ><?if($i<10):?>0<?endif;?>{{$i}}:00</option>
                         <? endfor;?>
                     </select>
                 </div>
                 <div class="input-group col-md-4" style="margin: 2px;">
                     <select class="custom-select panelFormLabel" id="{{$day}}To" name="{{$day}}To" style="height: 50px;">
-                        <option selected disabled value="">To</option>
-                        <? for($i=1;$i<=24;$i++):?>
+                        <option selected value="">To</option>
+                        <? for($i=0;$i<=24;$i++):?>
                         <option value="{{$i}}" <? if($i == $to):?>selected<?endif;?>><?if($i<10):?>0<?endif;?>{{$i}}:00</option>
                         <? endfor;?>
                     </select>

@@ -470,24 +470,34 @@ $(document).ready(function () {
     });
 
     function calculateTotalHours() {
-        var fromValues = (parseInt($('#MondayFrom').val()) || 0) +
-            (parseInt($('#TuesdayFrom').val())||0) +
-            (parseInt($('#WednesdayFrom').val())||0) +
-            (parseInt($('#ThursdayFrom').val()) || 0 ) +
-            (parseInt($('#FridayFrom').val()) ||0) +
-            (parseInt($('#SaturdayFrom').val())||0) +
-            (parseInt($('#SundayFrom').val())||0) ;
+        calculateDayHours();
+        let days = [
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday',
+            'Sunday'
+        ];
 
-        var toValues  =  (parseInt($('#MondayTo').val()) || 0) +
-            (parseInt($('#TuesdayTo').val())||0) +
-            (parseInt($('#WednesdayTo').val())||0) +
-            (parseInt($('#ThursdayTo').val()) || 0 ) +
-            (parseInt($('#FridayTo').val()) ||0) +
-            (parseInt($('#SaturdayTo').val())||0) +
-            (parseInt($('#SundayTo').val())||0) ;
+        let totalHours = 0;
 
-        return  toValues - fromValues ;
+        days.forEach(function (day) {
+           totalHours+= calculateDayHours(day);
+        });
 
+        return  totalHours ;
+
+    }
+
+    function calculateDayHours(day) {
+        let totalHoursDay = (parseInt($('#'+day+'To').val())||0) -  (parseInt($('#'+day+'From').val())||0) ;
+        if(totalHoursDay < 0){
+            totalHoursDay = 24 + totalHoursDay;
+            // works from 9 AM to 1 AM so he works 1-9 = -8 hours which means 24 - 8 = 16 hours.
+        }
+        return totalHoursDay;
     }
 
 

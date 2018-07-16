@@ -166,7 +166,7 @@
                 If you are currently employed / have ongoing projects and will be available for work in the future please select a date in the future that you will be free , if you are currently available please select todays date.
                 <label for="freeDate" class="panelFormLabel"><span id="tickMarkfreeDate" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             </div>
-            <input type="date" class="form-control panelFormInput" name="freeDate" value="{{$freeDate}}">
+            <input type="date" class="form-control panelFormInput" name="freeDate" value="<? if(!empty($freeDate)){ echo $freeDate;} else {echo date('Y-m-d');} ?>">
         </div>
     </div>
 

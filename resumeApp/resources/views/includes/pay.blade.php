@@ -31,7 +31,7 @@
             <hr>
             <label for="audio_intro" class="panelFormLabel">Expected Salary in (US Dollars ) USD per hour <span style="font-size:small;">*</span> <span id="tickMarksalary" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label><br/>
             <div>
-                <input type="text"  style="@if($errors->has('salary')) border:1px solid red; @endif" class="form-control panelFormInput d-inline-block col-md-4" id="salary" name="salary" value="<? if(!empty($salary)){echo $salary;}else{echo 0;}?>">
+                <input type="text"  style="@if($errors->has('salary')) border:1px solid red; @endif" class="form-control panelFormInput d-inline-block col-md-4" id="salary" name="salary" value="<? if(!empty($salary)){echo $salary;}else{echo '';}?>">
                 <input class="form-control panelFormInput d-inline-block col-md-4" id="currency" name="currency" value="USD">
             </div>
             <? foreach($availableHoursCheckBox as $check):?>

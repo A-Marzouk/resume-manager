@@ -125,7 +125,10 @@
             $to   = $hoursArr[1] ?? '';
             if(!empty($from) || !empty($to)){
                 if(is_numeric($from) && is_numeric($to)){
-                    $totalHours += $to-$from ;
+                    if($to < $from){
+                        $hoursDay = 24 + ( $to-$from);
+                    }
+                    $totalHours += $hoursDay ;
                 }
             }
             ?>

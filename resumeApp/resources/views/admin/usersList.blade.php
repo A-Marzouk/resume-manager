@@ -114,7 +114,7 @@
                         <td>{{$client->name}}</td>
                         <td><a href="{{route('logInAsClient',$client->id)}}" target="_blank">Link to profile</a></td>
                         <td>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#clientDetails{{$client->id}}">
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#clientDetails{{$client->id}}">
                                 Details
                             </button>
 

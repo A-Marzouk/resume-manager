@@ -1223,21 +1223,19 @@ body {
       height: 100%;
       width: 100%;
       margin: 0;
-      margin-bottom: 30px;
-      padding: 0;
       bottom: 0px !important;
       right: 0px !important; } }
 
 #messagesBox {
   overflow-y: auto;
   overflow-x: hidden;
-  height: 400px;
+  height: 265px;
   width: 280px;
   padding-left: 15px; }
   @media only screen and (max-width: 600px) {
     #messagesBox {
       width: 100%;
-      height: 380px;
+      height: 290px;
       padding-left: 25px;
       padding-right: 25px; } }
 

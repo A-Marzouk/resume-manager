@@ -4,7 +4,7 @@
                       v-bind:key="message.text">
         </chat-message>
 
-        <div class="empty" v-show="messages.length === 0" style="margin-top:112px;">
+        <div class="empty" v-show="messages.length === 0">
             <div class="messageTextAdmin">Hi, how can I hep you ?</div>
         </div>
     </div>

@@ -53319,8 +53319,7 @@ var render = function() {
               expression: "messages.length === 0"
             }
           ],
-          staticClass: "empty",
-          staticStyle: { "margin-top": "112px" }
+          staticClass: "empty"
         },
         [
           _c("div", { staticClass: "messageTextAdmin" }, [

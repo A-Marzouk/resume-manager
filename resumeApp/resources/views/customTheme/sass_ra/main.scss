@@ -1490,11 +1490,17 @@ body{
   }
 }
 
+#chatBoxMin{
+  position: fixed;
+  margin: 10px;
+  z-index: 9999;
+  height: 100px;
+  width: 100px;
+}
 #chatBox{
   opacity: 0;
-  height: 420px;
+  height: 454px;
   width: 285px;
-  border: 1px solid #F5F2F2;
   border-radius: 5px;	background-color: #FFFFFF;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.18), 0 7px 16px -7px #8A96A0;
   position: fixed;
@@ -1507,7 +1513,7 @@ body{
   padding: 0 0 20px 0;
   margin-bottom: 30px;
   @media only screen and (max-width: 600px) {
-
+    height: 420px;
   }
 }
 
@@ -1538,7 +1544,7 @@ body{
 
 
 #closeChat{
-  padding-left: 5%;
+  padding-left: 85px;
 }
 
 .text-chat{
@@ -1587,6 +1593,10 @@ body{
   font-size: 14px;
   letter-spacing: 0.1px;
   line-height: 16px;
+}
+
+.chatMessageInput{
+  border-radius: 5px;
 }
 
 //////////////////////////////// check boxes styling /////////////////////////////

@@ -138,7 +138,7 @@ if($user){
                     <a href="javascript:void(0)" id="closeChat"> <img src="/resumeApp/resources/views/customTheme/images/Rectangle.png"
                                                                       width="15px"> </a>
                 </div>
-                <div class="secondText btn-block">
+                <div class="secondText btn-block" style="border-bottom: 0.7px solid #EBEDF8;">
                     <div class="row">
                         <div style="padding-top: 8px;">
                             <img src="/resumeApp/resources/views/customTheme/images/logo123.png" width="36px">
@@ -148,22 +148,21 @@ if($user){
                             <span style="color: #00CE6B;font-family: Roboto;font-size: 14px;">online</span>
                         </div>
                     </div>
-                    <hr>
                 </div>
             </div>
             <div id="VueChat">
                 <div class="container">
                     <div class="empty" v-if="messages.length === 1" style="padding-top:250px;">
-                        <div class="text-info text text-chat">Hi, how can I hep you ?</div>
+                        <div class="messageTextAdmin">Hi, how can I hep you ?</div>
                     </div>
                     <div class="empty" v-else-if="messages.length === 2" style="padding-top:250px;">
-                        <div class="text-info text text-chat">Hi, how can I hep you ?</div>
+                        <div class="messageTextAdmin">Hi, how can I hep you ?</div>
                     </div>
                     <div class="empty" v-else-if="messages.length === 3" style="padding-top:250px;">
-                        <div class="text-info text text-chat">Hi, how can I hep you ?</div>
+                        <div class="messageTextAdmin">Hi, how can I hep you ?</div>
                     </div>
                     <div class="empty" v-else-if="messages.length === 4" style="padding-top:250px;">
-                        <div class="text-info text text-chat">Hi, how can I hep you ?</div>
+                        <div class="messageTextAdmin">Hi, how can I hep you ?</div>
                     </div>
                     <chat-log :messages="messages" style="padding-top:25px;"></chat-log>
                 </div><br/>

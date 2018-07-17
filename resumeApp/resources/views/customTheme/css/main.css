@@ -1196,11 +1196,17 @@ body {
     .chatWithUsText {
       margin: auto; } }
 
+#chatBoxMin {
+  position: fixed;
+  margin: 10px;
+  z-index: 9999;
+  height: 100px;
+  width: 100px; }
+
 #chatBox {
   opacity: 0;
-  height: 420px;
+  height: 454px;
   width: 285px;
-  border: 1px solid #F5F2F2;
   border-radius: 5px;
   background-color: #FFFFFF;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.18), 0 7px 16px -7px #8A96A0;
@@ -1213,6 +1219,9 @@ body {
   overflow-x: hidden;
   padding: 0 0 20px 0;
   margin-bottom: 30px; }
+  @media only screen and (max-width: 600px) {
+    #chatBox {
+      height: 420px; } }
 
 .chatHeading {
   z-index: 15 !important;
@@ -1236,7 +1245,7 @@ body {
       padding-left: 20px; }
 
 #closeChat {
-  padding-left: 5%; }
+  padding-left: 85px; }
 
 .text-chat {
   padding: 10px; }
@@ -1283,6 +1292,9 @@ body {
   font-size: 14px;
   letter-spacing: 0.1px;
   line-height: 16px; }
+
+.chatMessageInput {
+  border-radius: 5px; }
 
 /* The container */
 .checkBoxContainer {

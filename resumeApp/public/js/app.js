@@ -53501,48 +53501,59 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "chat-composer" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.messageText,
-            expression: "messageText"
-          }
-        ],
-        attrs: {
-          type: "text",
-          placeholder: " Type your message..",
-          autofocus: "",
-          id: "sendMessage"
-        },
-        domProps: { value: _vm.messageText },
-        on: {
-          keydown: function($event) {
-            if (
-              !("button" in $event) &&
-              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-            ) {
-              return null
-            }
-            return _vm.sendMessage($event)
-          },
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.messageText = $event.target.value
-          }
+    _c(
+      "div",
+      {
+        staticClass: "chat-composer",
+        staticStyle: {
+          "border-top": "0.7px solid #EBEDF8",
+          "padding-top": "10px"
         }
-      }),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", on: { click: _vm.sendMessage } },
-        [_vm._v("Send")]
-      )
-    ]),
+      },
+      [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.messageText,
+              expression: "messageText"
+            }
+          ],
+          staticClass: "chatMessageInput form-control",
+          attrs: {
+            type: "text",
+            placeholder: "Type your message..",
+            autofocus: "",
+            id: "sendMessage"
+          },
+          domProps: { value: _vm.messageText },
+          on: {
+            keydown: function($event) {
+              if (
+                !("button" in $event) &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.sendMessage($event)
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.messageText = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", on: { click: _vm.sendMessage } },
+          [_vm._v("Send")]
+        )
+      ]
+    ),
     _vm._v(" "),
     _c("div")
   ])

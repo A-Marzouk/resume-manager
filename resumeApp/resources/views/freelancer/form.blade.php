@@ -21,7 +21,7 @@
     <div class="row tabsArea fixed-top d-sm-block d-xs-block d-md-block d-lg-none" id="tabsMobile" style="margin-top: 50px;   background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);">
         <div class="col-md-12 text-center">
             <ul class="nav nav-tabs" id="mytabs" role="tablist">
-                <li class="nav-item" id="tap1">
+                <li class="nav-item" id="tap1phone">
                     <a class="nav-link active text-center tabText" href="#overview" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">1</div>
                         Overview and
@@ -42,7 +42,7 @@
                         (Audio/Video)
                     </a>
                 </li>
-                <li class="nav-item" id="tap4">
+                <li class="nav-item" id="tap4phone">
                     <a class="nav-link text-center tabText" href="#career" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">4</div>
                         Career overview
@@ -61,7 +61,7 @@
                         Professional skills
                     </a>
                 </li>
-                <li class="nav-item" id="tap7">
+                <li class="nav-item" id="tap7phone">
                     <a class="nav-link text-center tabText" href="#attributes" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">7</div>
                         Personal attributes
@@ -91,14 +91,14 @@
                         Personal info
                     </a>
                 </li>
-                <li class="nav-item" id="tap2">
+                <li class="nav-item" id="tap2phone">
                     <a class="nav-link text-center tabText" href="#pay" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">2</div>
                         Availability and
                         Pay
                     </a>
                 </li>
-                <li class="nav-item" id="tap3">
+                <li class="nav-item" id="tap3phone">
                     <a class="nav-link text-center tabText" href="#multimedia" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">3</div>
                         Multimedia
@@ -112,13 +112,13 @@
                         (Edu/Training)
                     </a>
                 </li>
-                <li class="nav-item" id="tap5">
+                <li class="nav-item" id="tap5phone">
                     <a class="nav-link text-center tabText" href="#portfolio" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">5</div>
                         Portfolio / Previous work
                     </a>
                 </li>
-                <li class="nav-item" id="tap6">
+                <li class="nav-item" id="tap6phone">
                     <a class="nav-link text-center tabText" href="#skills" role="tab" data-toggle="tab">
                         <div class="col-md-6 offset-md-4 tabCircle">6</div>
                         Professional skills

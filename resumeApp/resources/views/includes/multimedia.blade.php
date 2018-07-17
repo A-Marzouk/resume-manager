@@ -156,7 +156,6 @@
             <div id="loadingTextVideo" class="d-none" style="color:lightseagreen; padding: 10px;">
                 Processing video... <span id="progress"></span>
             </div>
-
         </div>
     </div>
 

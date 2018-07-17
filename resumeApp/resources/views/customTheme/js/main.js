@@ -58,6 +58,7 @@ $(document).ready(function () {
     // show video name when upload :
     $('#video_file').change(function(e){
         var fileName = e.target.files[0].name;
+        console.log(e.target.files[0]);
         $('#videoText').val(fileName);
         // change the src of the video
         $('#videoFileFrame').attr('src','resumeApp/uploads/videos/'+fileName);
@@ -650,25 +651,25 @@ $(document).ready(function () {
     var heading =  $('#tabMainHeading');
 
     // clicking on different taps change the main heading !
-    $('#tap1').on('click',function () {
+    $('#tap1,#tap1phone').on('click',function () {
         heading.html('1.Overview and personal info');
     });
-    $('#tap2').on('click',function () {
+    $('#tap2,#tap2phone').on('click',function () {
        heading.html('2.Availability and payment');
     });
-    $('#tap3').on('click',function () {
+    $('#tap3,#tap3phone').on('click',function () {
        heading.html('3.Multimedia (Audio / Video)');
     });
-    $('#tap4').on('click',function () {
+    $('#tap4,#tap4phone').on('click',function () {
        heading.html('4.Career overview (Education / Training)');
     });
-    $('#tap5').on('click',function () {
+    $('#tap5,#tap5phone').on('click',function () {
        heading.html('5.Portfolio');
     });
-    $('#tap6').on('click',function () {
+    $('#tap6,#tap6phone').on('click',function () {
        heading.html('6.Professional skills');
     });
-    $('#tap7').on('click',function () {
+    $('#tap7,#tap7phone').on('click',function () {
        heading.html('7.Personal attributes');
     });
 

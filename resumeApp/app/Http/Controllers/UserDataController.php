@@ -196,7 +196,7 @@ class UserDataController extends Controller
             $uploadOk = 0;
         }
         // allowed formats :
-        $formats = ['video/mp4','video/webm','video/ogg'];
+        $formats = ['video/mp4','video/webm','video/ogg','video/mov','video/avi','video/flv','video/wmv','video/quicktime'];
 
         // check file type :
         if(!in_array($_FILES[$name]['type'],$formats)){

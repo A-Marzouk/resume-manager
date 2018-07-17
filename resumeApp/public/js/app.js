@@ -14348,7 +14348,7 @@ var app = new Vue({
             });
             //scroll down :
             if ($("#chatBox").length) {
-                $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 'slow');
+                $('#messagesBox').animate({ scrollTop: $('#messagesBox')[0].scrollHeight }, 'slow');
             }
             if ($("#chatLogs").length && this.currentUser.admin == 1) {
                 setTimeout(function () {
@@ -14416,7 +14416,7 @@ var app = new Vue({
                     // write the head is new message
                     $('#chatText').html('New message !');
                     setTimeout(function () {
-                        $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 'slow');
+                        $('#messagesBox').animate({ scrollTop: $('#messagesBox')[0].scrollHeight }, 'slow');
                     }, 1000);
                     //2 seconds and return it back
                     setTimeout(function () {
@@ -53018,7 +53018,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.name{\n    opacity: 0.6;\tcolor: #697786;\n    font-family: Roboto;\n    font-size: 12px;\n    letter-spacing: 0.08px;\n    line-height: 14px;\n    padding-bottom:15px;\n    padding-top:4px;\n}\n.messageText{\n   \tborder-radius: 0px 10px 10px 10px;\n    background-color: #0D96DB;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color: #FFFFFF;\n    font-family: Roboto;\n    font-size: 14px;\n    letter-spacing: 0.1px;\n    line-height: 16px;\n}\n.messageTextAdmin{\n    border: 1px solid #D5D8DE;\n    border-radius: 10px 0 10px 10px;\n    background-color: #FFFFFF;\n    padding:10px;\n    color: #697786;\tfont-family: Roboto;\n    font-size: 14px;\n    letter-spacing: 0.1px;\n    line-height: 16px;\n}\n.messageTextVisitor{\n    border-radius: 10px 10px 10px 10px;\n    background-color: #b3d7ff;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color: #FFFFFF;\n    font-family: Roboto;\n    font-size: 14px;\n    letter-spacing: 0.1px;\n    line-height: 16px;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -53112,11 +53112,8 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "name" }, [
-                  _vm._v(
-                    _vm._s(_vm.message.user.firstName) +
-                      " - " +
-                      _vm._s(_vm.message.created_at)
-                  )
+                  _c("b", [_vm._v(_vm._s(_vm.message.user.firstName))]),
+                  _vm._v(" - " + _vm._s(_vm.message.created_at))
                 ])
               ])
             : _vm.message.user.lastName == null
@@ -53126,11 +53123,8 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "name" }, [
-                    _vm._v(
-                      _vm._s(_vm.message.user.firstName) +
-                        "  " +
-                        _vm._s(_vm.message.created_at)
-                    )
+                    _c("b", [_vm._v(_vm._s(_vm.message.user.firstName) + " ")]),
+                    _vm._v(" - " + _vm._s(_vm.message.created_at))
                   ])
                 ])
               : _vm.message.user.lastName !== null
@@ -53140,11 +53134,8 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "name" }, [
-                      _vm._v(
-                        _vm._s(_vm.message.user.firstName) +
-                          "  " +
-                          _vm._s(_vm.message.created_at)
-                      )
+                      _c("b", [_vm._v(_vm._s(_vm.message.user.firstName))]),
+                      _vm._v(" - " + _vm._s(_vm.message.created_at))
                     ])
                   ])
                 : _vm._e()
@@ -53156,11 +53147,8 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "name" }, [
-              _vm._v(
-                _vm._s(_vm.message.visitor.firstName) +
-                  " - " +
-                  _vm._s(_vm.message.created_at)
-              )
+              _c("b", [_vm._v(_vm._s(_vm.message.visitor.firstName))]),
+              _vm._v(" - " + _vm._s(_vm.message.created_at))
             ])
           ])
         : _vm.message.client !== null
@@ -53170,11 +53158,8 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "name" }, [
-                _vm._v(
-                  _vm._s(_vm.message.client.firstName) +
-                    " - " +
-                    _vm._s(_vm.message.created_at)
-                )
+                _c("b", [_vm._v(_vm._s(_vm.message.client.firstName))]),
+                _vm._v(" - " + _vm._s(_vm.message.created_at))
               ])
             ])
           : _vm._e()
@@ -53314,7 +53299,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "chat-log" },
+    { staticClass: "chat-log", attrs: { id: "messagesBox" } },
     [
       _vm._l(_vm.messages, function(message) {
         return _c("chat-message", {
@@ -53501,48 +53486,59 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "chat-composer" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.messageText,
-            expression: "messageText"
-          }
-        ],
-        attrs: {
-          type: "text",
-          placeholder: " Type your message..",
-          autofocus: "",
-          id: "sendMessage"
-        },
-        domProps: { value: _vm.messageText },
-        on: {
-          keydown: function($event) {
-            if (
-              !("button" in $event) &&
-              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-            ) {
-              return null
-            }
-            return _vm.sendMessage($event)
-          },
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.messageText = $event.target.value
-          }
+    _c(
+      "div",
+      {
+        staticClass: "chat-composer",
+        staticStyle: {
+          "border-top": "0.7px solid #EBEDF8",
+          "padding-top": "10px"
         }
-      }),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", on: { click: _vm.sendMessage } },
-        [_vm._v("Send")]
-      )
-    ]),
+      },
+      [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.messageText,
+              expression: "messageText"
+            }
+          ],
+          staticClass: "chatMessageInput form-control",
+          attrs: {
+            type: "text",
+            placeholder: "Type your message..",
+            autofocus: "",
+            id: "sendMessage"
+          },
+          domProps: { value: _vm.messageText },
+          on: {
+            keydown: function($event) {
+              if (
+                !("button" in $event) &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.sendMessage($event)
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.messageText = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", on: { click: _vm.sendMessage } },
+          [_vm._v("Send")]
+        )
+      ]
+    ),
     _vm._v(" "),
     _c("div")
   ])

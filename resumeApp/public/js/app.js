@@ -53320,7 +53320,7 @@ var render = function() {
             }
           ],
           staticClass: "empty",
-          staticStyle: { "padding-top": "330px" }
+          staticStyle: { "margin-top": "112px" }
         },
         [
           _c("div", { staticClass: "messageTextAdmin" }, [

@@ -25,20 +25,8 @@
     </div>
     <div id="VueChat">
         <div>
-            <div class="empty" v-if="messages.length === 1" style="padding-top:250px;">
-                <div class="messageTextAdmin">Hi, how can I hep you ?</div>
-            </div>
-            <div class="empty" v-else-if="messages.length === 2" style="padding-top:250px;">
-                <div class="messageTextAdmin">Hi, how can I hep you ?</div>
-            </div>
-            <div class="empty" v-else-if="messages.length === 3" style="padding-top:250px;">
-                <div class="messageTextAdmin">Hi, how can I hep you ?</div>
-            </div>
-            <div class="empty" v-else-if="messages.length === 4" style="padding-top:250px;">
-                <div class="messageTextAdmin">Hi, how can I hep you ?</div>
-            </div>
-            <chat-log :messages="messages" style="padding-top:25px;"></chat-log>
-        </div><br/>
+            <chat-log :messages="messages" style="margin-top:112px;"></chat-log>
+        </div>
         <div class="container">
             {{-- v-on:messageSent means when the event is emited --}}
             {{-- addMessage method should be defiened on the root scope not components--}}

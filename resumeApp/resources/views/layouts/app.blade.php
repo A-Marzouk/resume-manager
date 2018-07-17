@@ -47,12 +47,20 @@ if($user){
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav">
                     <a class="nav-item nav-link customNavLink active" href="/freelancer">Freelancers</a>
-                    <? if(!$admin):?>
-                        <a class="nav-item nav-link customNavLink" href="javascript:void(0)" id="liveChat" style="color:#0290D8;">Live-chat</a>
-                    <? endif;?>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
+                <li class="navbar-nav chatWithUsText">
+                    <? if($admin || (session()->get('admin') && session()->get('admin') == 'AdminWasHere')):?>
+                    <a class="nav-item nav-link customNavLink" href="/admin" style="color:#0290D8;">Admin-area</a>
+                    <?else :?>
+                    <a class="nav-item nav-link customNavLink" href="#chatOn" id="liveChat" style="color:#0290D8;">
+                        <img src="/resumeApp/resources/views/customTheme/images/textsms_24px.png" alt="chat img" width="16px">
+                        &nbsp; Chat with us!
+
+                    </a>
+                    <? endif;?>
+                </li>
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
@@ -77,12 +85,6 @@ if($user){
                                 @csrf
                             </form>
                         </li>
-                        <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
-
-                            <li class="nav-link nav-item nav-link customNavLink">
-                                <a href="{{route('admin.dashboard')}}" class="customNavLink">Admin-area</a>
-                            </li>
-                        <? endif;?>
                     @endguest
                 </ul>
             </div>

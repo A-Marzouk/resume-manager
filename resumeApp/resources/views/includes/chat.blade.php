@@ -1,12 +1,15 @@
-<div id="chatBox" class="col-md-3 col-12 col-lg-3 d-none">
+<div id="chatBox" class="col-12 d-none">
     <div class="chatHeading">
-        <div class="text btn-block">
-                        <span style="padding-right: 5px;">
-                            <img src="/resumeApp/resources/views/customTheme/images/textsms_24px copy.png" width="20px">
-                        </span>
-            <span id="chatText">Chat with us</span>
-            <a href="javascript:void(0)" id="closeChat"> <img src="/resumeApp/resources/views/customTheme/images/Rectangle.png"
-                                                              width="15px"> </a>
+        <div class="row">
+            <div class="col-2 col-md-1 col-lg-2 chatImage">
+                <span>
+                    <img src="/resumeApp/resources/views/customTheme/images/textsms_24px copy.png" width="16px">
+                </span>
+            </div>
+            <div class="col-10 text">
+                <span id="chatText">Chat with us</span>
+                <a href="javascript:void(0)" id="closeChat"> <img src="/resumeApp/resources/views/customTheme/images/Rectangle.png" width="13px"> </a>
+            </div>
         </div>
         <div class="secondText btn-block" style="border-bottom: 0.7px solid #EBEDF8;">
             <div class="row">

@@ -74,6 +74,12 @@ body {
 
 .navbar-brand {
   margin-right: 0px !important; }
+  @media only screen and (max-width: 991px) {
+    .navbar-brand {
+      margin-right: 35px !important; } }
+  @media only screen and (max-width: 600px) {
+    .navbar-brand {
+      margin-right: 0 !important; } }
   .navbar-brand img {
     width: 140px; }
     @media only screen and (max-width: 600px) {
@@ -1211,10 +1217,15 @@ body {
   overflow-y: hidden;
   overflow-x: hidden;
   padding: 0 0 20px 0;
-  margin-bottom: 30px; }
+  margin-bottom: -8px; }
   @media only screen and (max-width: 600px) {
     #chatBox {
-      height: 420px; } }
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      bottom: 0px !important;
+      right: 0px !important; } }
 
 #messagesBox {
   overflow-y: auto;
@@ -1222,30 +1233,45 @@ body {
   height: 400px;
   width: 280px;
   padding-left: 15px; }
+  @media only screen and (max-width: 600px) {
+    #messagesBox {
+      width: 100%;
+      height: 80vh;
+      padding-left: 25px;
+      padding-right: 25px; } }
 
 .chatHeading {
   z-index: 15 !important;
   position: fixed;
   width: 285px; }
+  .chatHeading .chatImage {
+    background-color: #088FCB;
+    padding: 12px 11px 8px 17px;
+    border-right: 3px solid #088FCB; }
   .chatHeading .text {
-    border-radius: 5px 5px 0 0;
     color: #FFFFFF;
     font-family: Roboto;
     font-size: 16px;
     font-weight: 500;
     letter-spacing: 0.5px;
     line-height: 19px;
-    padding: 13px;
+    padding: 13px 13px 9px 10px;
     background: linear-gradient(270deg, #45e6ef, #088fd9); }
   .chatHeading .secondText {
     margin-top: 0 !important;
-    padding: 10px;
+    padding: 3px 10px 5px 10px;
     background-color: white; }
     .chatHeading .secondText span {
       padding-left: 20px; }
+  @media only screen and (max-width: 991px) {
+    .chatHeading {
+      width: 100%; } }
 
 #closeChat {
-  padding-left: 85px; }
+  padding-left: 75px; }
+  @media only screen and (max-width: 600px) {
+    #closeChat {
+      padding-left: 45%; } }
 
 .text-chat {
   padding: 10px; }
@@ -1255,17 +1281,15 @@ body {
   color: #697786;
   font-family: Roboto;
   font-size: 12px;
-  font-weight: bold;
   letter-spacing: 0.08px;
   line-height: 14px;
-  padding-bottom: 15px;
+  padding-bottom: 20px;
   padding-top: 4px; }
 
 .messageText {
   border-radius: 0px 10px 10px 10px;
   background-color: #0D96DB;
-  box-shadow: 0 2px 4px 0 rgba(167, 169, 197, 0.55);
-  padding: 10px;
+  padding: 11px;
   color: #FFFFFF;
   font-family: Roboto;
   font-size: 14px;
@@ -1276,7 +1300,7 @@ body {
   border: 1px solid #D5D8DE;
   border-radius: 10px 0 10px 10px;
   background-color: #FFFFFF;
-  padding: 10px;
+  padding: 11px;
   color: #697786;
   font-family: Roboto;
   font-size: 14px;
@@ -1286,8 +1310,7 @@ body {
 .messageTextVisitor {
   border-radius: 10px 10px 10px 10px;
   background-color: #b3d7ff;
-  box-shadow: 0 2px 4px 0 rgba(167, 169, 197, 0.55);
-  padding: 10px;
+  padding: 11px;
   color: #FFFFFF;
   font-family: Roboto;
   font-size: 14px;

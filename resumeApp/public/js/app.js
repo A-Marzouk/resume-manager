@@ -53018,7 +53018,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.name{\n    opacity: 0.6;\tcolor: #697786;\n    font-family: Roboto;\n    font-size: 12px;\n    letter-spacing: 0.08px;\n    line-height: 14px;\n    padding-bottom:15px;\n    padding-top:4px;\n}\n.messageText{\n   \tborder-radius: 0px 10px 10px 10px;\n    background-color: #0D96DB;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color: #FFFFFF;\n    font-family: Roboto;\n    font-size: 14px;\n    letter-spacing: 0.1px;\n    line-height: 16px;\n}\n.messageTextAdmin{\n    border: 1px solid #D5D8DE;\n    border-radius: 10px 0 10px 10px;\n    background-color: #FFFFFF;\n    padding:10px;\n    color: #697786;\tfont-family: Roboto;\n    font-size: 14px;\n    letter-spacing: 0.1px;\n    line-height: 16px;\n}\n.messageTextVisitor{\n    border-radius: 10px 10px 10px 10px;\n    background-color: #b3d7ff;\n    -webkit-box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n            box-shadow: 0 2px 4px 0 rgba(167,169,197,0.55);\n    padding:10px;\n    color: #FFFFFF;\n    font-family: Roboto;\n    font-size: 14px;\n    letter-spacing: 0.1px;\n    line-height: 16px;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -53112,11 +53112,8 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "name" }, [
-                  _vm._v(
-                    _vm._s(_vm.message.user.firstName) +
-                      " - " +
-                      _vm._s(_vm.message.created_at)
-                  )
+                  _c("b", [_vm._v(_vm._s(_vm.message.user.firstName))]),
+                  _vm._v(" - " + _vm._s(_vm.message.created_at))
                 ])
               ])
             : _vm.message.user.lastName == null
@@ -53126,11 +53123,8 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "name" }, [
-                    _vm._v(
-                      _vm._s(_vm.message.user.firstName) +
-                        "  " +
-                        _vm._s(_vm.message.created_at)
-                    )
+                    _c("b", [_vm._v(_vm._s(_vm.message.user.firstName) + " ")]),
+                    _vm._v(" - " + _vm._s(_vm.message.created_at))
                   ])
                 ])
               : _vm.message.user.lastName !== null
@@ -53140,11 +53134,8 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "name" }, [
-                      _vm._v(
-                        _vm._s(_vm.message.user.firstName) +
-                          "  " +
-                          _vm._s(_vm.message.created_at)
-                      )
+                      _c("b", [_vm._v(_vm._s(_vm.message.user.firstName))]),
+                      _vm._v(" - " + _vm._s(_vm.message.created_at))
                     ])
                   ])
                 : _vm._e()
@@ -53156,11 +53147,8 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "name" }, [
-              _vm._v(
-                _vm._s(_vm.message.visitor.firstName) +
-                  " - " +
-                  _vm._s(_vm.message.created_at)
-              )
+              _c("b", [_vm._v(_vm._s(_vm.message.visitor.firstName))]),
+              _vm._v(" - " + _vm._s(_vm.message.created_at))
             ])
           ])
         : _vm.message.client !== null
@@ -53170,11 +53158,8 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "name" }, [
-                _vm._v(
-                  _vm._s(_vm.message.client.firstName) +
-                    " - " +
-                    _vm._s(_vm.message.created_at)
-                )
+                _c("b", [_vm._v(_vm._s(_vm.message.client.firstName))]),
+                _vm._v(" - " + _vm._s(_vm.message.created_at))
               ])
             ])
           : _vm._e()

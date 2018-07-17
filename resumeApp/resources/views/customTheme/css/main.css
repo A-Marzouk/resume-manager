@@ -1196,13 +1196,6 @@ body {
     .chatWithUsText {
       margin: auto; } }
 
-#chatBoxMin {
-  position: fixed;
-  margin: 10px;
-  z-index: 9999;
-  height: 100px;
-  width: 100px; }
-
 #chatBox {
   opacity: 0;
   height: 454px;
@@ -1215,7 +1208,7 @@ body {
   color: black;
   z-index: 9999;
   margin: 10px;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
   padding: 0 0 20px 0;
   margin-bottom: 30px; }
@@ -1223,10 +1216,17 @@ body {
     #chatBox {
       height: 420px; } }
 
+#messagesBox {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 400px;
+  width: 280px;
+  padding-left: 15px; }
+
 .chatHeading {
   z-index: 15 !important;
   position: fixed;
-  width: 100%; }
+  width: 285px; }
   .chatHeading .text {
     border-radius: 5px 5px 0 0;
     color: #FFFFFF;
@@ -1255,6 +1255,7 @@ body {
   color: #697786;
   font-family: Roboto;
   font-size: 12px;
+  font-weight: bold;
   letter-spacing: 0.08px;
   line-height: 14px;
   padding-bottom: 15px;

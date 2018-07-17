@@ -155,52 +155,7 @@ if($user){
 {{-- Chat box --}}
 <div>
     <? if(!$admin):?>
-    <div id="chatBox" class="col-md-3 col-12 col-lg-3 d-none">
-        <div class="chatHeading">
-            <div class="text btn-block">
-                        <span style="padding-right: 5px;">
-                            <img src="/resumeApp/resources/views/customTheme/images/textsms_24px copy.png" width="20px">
-                        </span>
-                <span id="chatText">Chat with us</span>
-                <a href="javascript:void(0)" id="closeChat"> <img src="/resumeApp/resources/views/customTheme/images/Rectangle.png"
-                                                 width="15px"> </a>
-            </div>
-            <div class="secondText btn-block">
-                <div class="row">
-                    <div style="padding-top: 8px;">
-                        <img src="/resumeApp/resources/views/customTheme/images/logo123.png" width="36px">
-                    </div>
-                    <div>
-                        <span style="font-weight:bold;color: #637280;font-family: Roboto;font-size: 12px;">We're Here to Help!</span><br/>
-                        <span style="color: #00CE6B;font-family: Roboto;font-size: 14px;">online</span>
-                    </div>
-                </div>
-                <hr>
-            </div>
-        </div>
-        <div id="VueChat">
-            <div class="container">
-                <div class="empty" v-if="messages.length === 1" style="padding-top:250px;">
-                    <div class="messageTextAdmin">Hi, how can I hep you ?</div>
-                </div>
-                <div class="empty" v-else-if="messages.length === 2" style="padding-top:250px;">
-                    <div class="messageTextAdmin">Hi, how can I hep you ?</div>
-                </div>
-                <div class="empty" v-else-if="messages.length === 3" style="padding-top:250px;">
-                    <div class="messageTextAdmin">Hi, how can I hep you ?</div>
-                </div>
-                <div class="empty" v-else-if="messages.length === 4" style="padding-top:250px;">
-                    <div class="messageTextAdmin">Hi, how can I hep you ?</div>
-                </div>
-                <chat-log :messages="messages" style="padding-top:25px;"></chat-log>
-            </div><br/>
-            <div class="container">
-                {{-- v-on:messageSent means when the event is emited --}}
-                {{-- addMessage method should be defiened on the root scope not components--}}
-                <chat-composer v-on:messagesent="addMessage"></chat-composer>
-            </div>
-        </div>
-    </div>
+        @include('includes.chat')
     <? endif;?>
 </div>
 <!-- Modals -->
@@ -636,7 +591,7 @@ if($user){
 
         if ($("#sendMessage").length ){
             setTimeout(function(){
-                $('#chatBox').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
+                $('#messagesBox').animate({scrollTop: $("#messagesBox").offset().top}, 'slow');
             }, 1000);
         }
         if ($("#chatLogs").length ){
@@ -651,6 +606,7 @@ if($user){
                 $("#chatBox").removeClass('d-none');
                 // close the navbar
                 $('#chatBox').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
+                $('#messagesBox').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
                 $('#navBarToggle').click();
             });
 

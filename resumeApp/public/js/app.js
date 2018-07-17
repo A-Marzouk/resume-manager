@@ -14348,7 +14348,7 @@ var app = new Vue({
             });
             //scroll down :
             if ($("#chatBox").length) {
-                $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 'slow');
+                $('#messagesBox').animate({ scrollTop: $('#messagesBox')[0].scrollHeight }, 'slow');
             }
             if ($("#chatLogs").length && this.currentUser.admin == 1) {
                 setTimeout(function () {
@@ -14416,7 +14416,7 @@ var app = new Vue({
                     // write the head is new message
                     $('#chatText').html('New message !');
                     setTimeout(function () {
-                        $('#chatBox').animate({ scrollTop: $('#chatBox')[0].scrollHeight }, 'slow');
+                        $('#messagesBox').animate({ scrollTop: $('#messagesBox')[0].scrollHeight }, 'slow');
                     }, 1000);
                     //2 seconds and return it back
                     setTimeout(function () {
@@ -53314,7 +53314,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "chat-log" },
+    { staticClass: "chat-log", attrs: { id: "messagesBox" } },
     [
       _vm._l(_vm.messages, function(message) {
         return _c("chat-message", {

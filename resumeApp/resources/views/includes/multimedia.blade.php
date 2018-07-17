@@ -65,7 +65,7 @@
         </div>
 
         <div id="loadingText" class="d-none" style="color:lightseagreen; padding: 10px;">
-            Processing audio...
+            Processing audio... <span id="progressAudio"></span>
         </div>
     </div>
     <div class="row" style="padding-top: 30px;">
@@ -154,8 +154,9 @@
                 </video>
             </div>
             <div id="loadingTextVideo" class="d-none" style="color:lightseagreen; padding: 10px;">
-                Processing video...
+                Processing video... <span id="progress"></span>
             </div>
+
         </div>
     </div>
 

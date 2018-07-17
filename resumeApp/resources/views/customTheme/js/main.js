@@ -54,7 +54,6 @@ $(document).ready(function () {
         $('#videoFrame').attr('src',videoSrc);
     });
 
-    // check if file exists or not :
 
     // show video name when upload :
     $('#video_file').change(function(e){
@@ -63,33 +62,8 @@ $(document).ready(function () {
         // change the src of the video
         $('#videoFileFrame').attr('src','resumeApp/uploads/videos/'+fileName);
 
-        checkFile();
 
     });
-
-    function checkFile() {
-        $.ajax({
-            url: $('#videoFileFrame').attr('src'),
-            type:'HEAD',
-            error: function()
-            {
-                // show the loading text :
-                $('#loadingTextVideo').removeClass('d-none');
-                //file not exists : check again after 1 second
-                setTimeout(checkFile(),1000);
-            },
-            success: function()
-            {
-                // hide the loading text
-                $('#loadingTextVideo').html('Video has been successfully uploaded.');
-                setTimeout(function () {
-                    $('#loadingTextVideo').addClass('d-none');
-                },2500);
-                // load the video
-                $('#videoFileFrame')[0].load();
-            }
-        });
-    }
 
     // browse for video :
     $('#browseBtnVideo').on('click',function () {
@@ -596,7 +570,54 @@ $(document).ready(function () {
                 contentType: false,
                 cache: false,
                 processData:false,
-                success: function () {
+                beforeSend:function(){
+                },
+                xhr: function() {
+                    var xhr = new window.XMLHttpRequest();
+                    xhr.upload.addEventListener("progress", function(evt) {
+                        if (evt.lengthComputable) {
+                            var percentComplete = evt.loaded / evt.total;
+                            //Do something with upload progress here
+                            if($('#audioFile').val()){
+                                $('#loadingText').removeClass('d-none');
+                                $('#progressAudio').html(parseInt(percentComplete*100)+' %')
+                                if(percentComplete == 1){
+                                    // success
+                                    $('#loadingText').html('Success.');
+                                    setTimeout(function () {
+                                        $('#loadingText').addClass('d-none');
+                                        location.reload();
+                                    },2500);
+                                }
+                            }
+                            if($('#video_file').val()){
+                                $('#loadingTextVideo').removeClass('d-none');
+                                $('#progress').html(parseInt(percentComplete*100)+' %')
+                                if(percentComplete == 1){
+                                    // success
+                                    $('#loadingTextVideo').html('Success.');
+                                    setTimeout(function () {
+                                        $('#loadingTextVideo').addClass('d-none');
+                                    },2500);
+                                }
+                            }
+                        }
+                    }, false);
+
+                    xhr.addEventListener("progress", function(evt) {
+                        if (evt.lengthComputable) {
+                            var percentComplete = evt.loaded / evt.total;
+                            //Do something with download progress
+                        }
+                    }, false);
+
+                    return xhr;
+                },
+                success:function (){
+                    if($('#video_file').val()) {
+                        // load the video
+                        $('#videoFileFrame')[0].load();
+                    }
                 }
             });
 
@@ -690,34 +711,8 @@ $(document).ready(function () {
             $('#audioText').val(fileName);
             // change the src of the Audio
             $('#audioIntroForm').attr('src','resumeApp/uploads/'+fileName);
-            checkAudioFile();
         });
     });
-
-    function checkAudioFile() {
-        $('#loadingText').removeClass('d-none');
-        $.ajax({
-            url: $('#audioIntro').attr('src'),
-            type:'HEAD',
-            error: function()
-            {
-                // show the loading text :
-                $('#loadingText').removeClass('d-none');
-                //file not exists : check again after 1 second
-                setTimeout(checkAudioFile(),2000);
-            },
-            success: function()
-            {
-                // hide the loading text
-                $('#loadingText').removeClass('d-none');
-                $('#loadingText').html('Uploading...');
-                setTimeout(function () {
-                    $('#loadingText').addClass('d-none');
-                    $('#audioIntro')[0].load();
-                },6000);
-            }
-        });
-    }
 
 
     // change taps on click :

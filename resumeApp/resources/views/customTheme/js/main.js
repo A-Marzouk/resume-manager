@@ -93,19 +93,35 @@ $(document).ready(function () {
         }
     }
 
-    // click on browse photo :
-    $('#photoPreview').on('click',function () {
-        $('#photoInput').click();
-    });
+    var srcPreview = '' ;
     $('#photoPreview').hover(function () {
-        $('#photoPreview').fadeTo(500, .1);
-        $('#photoPreview').css('cursor', 'pointer');
-        $('#profileImgBox').css('background', 'url("/resumeApp/resources/views/customTheme/images/add_profile_photo.png")');
-        $('#profileImgBox').css('background-repeat','no-repeat');
-        $('#profileImgBox').css('background-position','center');
+        $(this).css('cursor','pointer');
+        srcPreview = $('#photoPreview').attr('src');
+        if(srcPreview !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
+            $('#photoPreview').fadeTo(500, .1);
+            $('#profileImgBox').css('background', 'url("/resumeApp/resources/views/customTheme/images/deleteimg.png")');
+            $('#profileImgBox').css('background-repeat','no-repeat');
+            $('#profileImgBox').css('background-position','center');
+        }
     },function () {
+        $('#photoPreview').fadeTo(500, 1);
         $('#profileImgBox').css('background', '');
-        $('#photoPreview').fadeTo(500,1);
+    });
+
+    $('#photoPreview').on('click',function () {
+        if(srcPreview !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
+            // delete photo profile photo
+            if(!confirm('Are you sure you want to delete profile photo ?')){
+                return;
+            }
+            $('#photoPreview').attr('src','resumeApp/resources/views/customTheme/images/add_profile_photo.png');
+            $('#photoInput').attr('type','text');
+            $('#photoInput').attr('value',10);
+            $('#works0').change();
+            $('#photoInput').attr('type','file');
+        }else{
+            $('#photoInput').click();
+        }
     });
 
 

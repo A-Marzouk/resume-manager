@@ -60,8 +60,12 @@ class UserDataController extends Controller
                     continue;
                 }
                 elseif ($key == 'photo'){
-                    $pathToPhoto = $this->uploadPhoto($value,'photo','');
-                    $userData->{$key} = $pathToPhoto ;
+                    if(is_numeric($value)){
+                        $userData->{$key} = "";
+                    }else{
+                        $pathToPhoto = $this->uploadPhoto($value,'photo','');
+                        $userData->{$key} = $pathToPhoto ;
+                    }
                 }elseif($key == 'audioFile'){
                     if(is_numeric($value)){
                         $userData->{$key} = " ";

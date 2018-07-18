@@ -90,7 +90,7 @@ if($user){
                 </a>
                 <? endif;?>
             </li>
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav">
                 <!-- Authentication Links -->
                 <li></li>
             <?php if(auth()->guard('client')->guest()): ?>

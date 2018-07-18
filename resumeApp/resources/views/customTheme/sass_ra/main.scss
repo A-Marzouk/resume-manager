@@ -1490,10 +1490,7 @@ body{
 
 // cha styles
 .chatWithUsText{
-    margin-left: 400px;
-  @media only screen and (max-width: 991px) {
-    margin:auto;
-  }
+    margin-left: auto;
 }
 
 .chatMinimized{

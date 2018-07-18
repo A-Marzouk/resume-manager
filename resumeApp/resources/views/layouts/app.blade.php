@@ -61,7 +61,7 @@ if($user){
                     </a>
                     <? endif;?>
                 </li>
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav">
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-link loginBtn">

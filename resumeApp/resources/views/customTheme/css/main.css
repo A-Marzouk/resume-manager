@@ -1197,10 +1197,7 @@ body {
   line-height: 19px; }
 
 .chatWithUsText {
-  margin-left: 400px; }
-  @media only screen and (max-width: 991px) {
-    .chatWithUsText {
-      margin: auto; } }
+  margin-left: auto; }
 
 .chatMinimized {
   border-radius: 5px 5px 0 0 !important;

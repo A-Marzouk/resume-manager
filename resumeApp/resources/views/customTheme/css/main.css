@@ -1197,10 +1197,39 @@ body {
   line-height: 19px; }
 
 .chatWithUsText {
-  margin-left: 570px; }
+  margin-left: 400px; }
   @media only screen and (max-width: 991px) {
     .chatWithUsText {
       margin: auto; } }
+
+.chatMinimized {
+  border-radius: 5px 5px 0 0 !important;
+  position: fixed;
+  height: 38px;
+  bottom: 0;
+  right: 32px;
+  width: 173px; }
+  @media only screen and (max-width: 600px) {
+    .chatMinimized {
+      margin-left: -85px;
+      left: 50%; } }
+  .chatMinimized a:hover {
+    text-decoration: none; }
+  .chatMinimized .chatImage {
+    background-color: #088FCB;
+    padding: 10px 13px 10px 12px;
+    border-right: 3px solid #088FCB;
+    border-radius: 5px 0 0 0 !important; }
+  .chatMinimized .text {
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    line-height: 19px;
+    border-radius: 0 5px 0 0 !important;
+    padding: 10px 13px 10px 12px;
+    background: linear-gradient(270deg, #45e6ef, #088fd9); }
 
 #chatBox {
   opacity: 0;

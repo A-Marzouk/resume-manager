@@ -1,128 +1,359 @@
 $(document).ready(function () {
-    function readURL(input,imgID) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
 
-            reader.onload = function(e) {
-                $(imgID).attr('src', e.target.result);
-            };
+    /////////////////////////   Freelancer form scripts ////////////////////////
+        // overall scripts ( used in all sections )
 
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+            // add tick mark when data is filled :
+            $(':input').blur(function () {
+                if(this.type != 'checkbox'){
+                    if( $(this).val() ) {
+                        $('#tickMark'+this.name).removeClass('d-none');
+                    }else{
+                        $('#tickMark'+this.name).addClass('d-none');
+                    }
+                }
+            });
 
-    $("#photoInput").change(function() {
-        readURL(this,'#photoPreview');
-    });
+            $(':input').blur();
 
-    $('.desc').on('click',function () {
-        $(this).css('width','auto');
-        $(this).css('text-overflow','unset');
-        $(this).css('overflow','normal');
-        $(this).css('white-space','normal');
-    });
+            // handeling hashes all over the Freelancer form page :
+                $(function(){
+                    var hash = window.location.hash;
+                    hash && $('ul.nav a[href="' + hash + '"]').tab('show');
 
+                    $('.nav-tabs a').click(function (e) {
+                        $(this).tab('show');
+                        var scrollmem = $('body').scrollTop() || $('html').scrollTop();
+                        window.location.hash = this.hash;
+                        $('html,body').scrollTop(scrollmem);
+                    });
+                });
 
-    // delete Audio :
-    $('#deleteAudio').on('click', function(e){
-        if(!confirm('are you sure you want to delete this Audio file ?')){
-            return;
-        }
-        $('#audioFile').attr('type','text');
-        $('#audioFile').attr('value',0);
-        $('#works0').change();
-        $('#audioFile').attr('type','file');
-        $('#audioText').val('Upload audio');
-        // change the src of the Audio
-        $('#audioIntroForm').attr('src','');
-        $('#audioIntro')[0].load();
-    });
+                var heading =  $('#tabMainHeading');
 
-    // when a link to google drive is added :
-    $('#audio_intro').on('change',function () {
-        $('#audioIntroForm').attr('src',$(this).val());
-        $('#loadingText').removeClass('d-none');
-        setTimeout(function(){
-            location.reload();
-        },3000);
-    });
+                // clicking on different taps change the main heading !
+                $('#tap1,#tap1phone').on('click',function () {
+                    heading.html('1.Overview and personal info');
+                });
+                $('#tap2,#tap2phone').on('click',function () {
+                    heading.html('2.Availability and payment');
+                });
+                $('#tap3,#tap3phone').on('click',function () {
+                    heading.html('3.Multimedia (Audio / Video)');
+                });
+                $('#tap4,#tap4phone').on('click',function () {
+                    heading.html('4.Career overview (Education / Training)');
+                });
+                $('#tap5,#tap5phone').on('click',function () {
+                    heading.html('5.Portfolio');
+                });
+                $('#tap6,#tap6phone').on('click',function () {
+                    heading.html('6.Professional skills');
+                });
+                $('#tap7,#tap7phone').on('click',function () {
+                    heading.html('7.Personal attributes');
+                });
 
-    // link to video :
-    $('#video').on('change',function () {
-        var videoID = getSecondPart( $(this).val());
-        var videoSrc = 'https://www.youtube.com/embed/'+videoID;
-        $('#videoFrame').attr('src',videoSrc);
-    });
+                // keep the heading when page is loaded :
+                checkHash();
 
-
-    // show video name when upload :
-    $('#video_file').change(function(e){
-        var fileName = e.target.files[0].name;
-        console.log(e.target.files[0]);
-        $('#videoText').val(fileName);
-        // change the src of the video
-        $('#videoFileFrame').attr('src','resumeApp/uploads/videos/'+fileName);
-
-
-    });
-
-    // browse for video :
-    $('#browseBtnVideo').on('click',function () {
-        $('#video_file').click();
-    });
-
-    // delete video :
-    $('#deleteVideo').on('click', function(e){
-        if(!confirm('Are you sure you want to delete this video ?')){
-            return;
-        }
-        $('#video_file').attr('type','text');
-        $('#video_file').attr('value',0);
-        $('#works0').change();
-        $('#video_file').attr('type','file');
-        $('#videoText').val('Upload video');
-        // change the src of the video
-        $('#videoFileFrame').attr('src','');
-    });
+            // change taps on click :
+            $('.nextBtn').click(function(e){
+                var href = $(this).attr("href");
+                e.preventDefault();
+                $('#mytabs a[href="'+href+'"]').tab('show');
+                window.location.hash = href;
+                checkHash();
+                $('html, body').animate({scrollTop:$('#tabMainHeading').position().top}, 'slow');
+            });
 
 
-    function getSecondPart(str) {
-        if(str.includes('=')){
-            var videoId = str.split('=')[1].substring(0,11);
-            return videoId;
-        }
-    }
+            // save to data base when any data changes !
+            $(function () {
+                $('.freelancerForm :input').on('change', function (e) {
+                    e.preventDefault();
+                    var form = document.getElementsByClassName('freelancerForm')[0];
 
-    var srcPreview = '' ;
-    $('#photoPreview').hover(function () {
-        $(this).css('cursor','pointer');
-        srcPreview = $('#photoPreview').attr('src');
-        if(srcPreview !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#photoPreview').fadeTo(500, .1);
-            $('#profileImgBox').css('background', 'url("/resumeApp/resources/views/customTheme/images/deleteimg.png")');
-            $('#profileImgBox').css('background-repeat','no-repeat');
-            $('#profileImgBox').css('background-position','center');
-        }
-    },function () {
-        $('#photoPreview').fadeTo(500, 1);
-        $('#profileImgBox').css('background', '');
-    });
+                    // disable all empty files
 
-    $('#photoPreview').on('click',function () {
-        if(srcPreview !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            // delete photo profile photo
-            if(!confirm('Are you sure you want to delete profile photo ?')){
-                return;
-            }
-            $('#photoPreview').attr('src','resumeApp/resources/views/customTheme/images/add_profile_photo.png');
-            $('#photoInput').attr('type','text');
-            $('#photoInput').attr('value',10);
-            $('#works0').change();
-            $('#photoInput').attr('type','file');
-        }else{
-            $('#photoInput').click();
-        }
-    });
+                    var files = document.querySelectorAll(".freelancerForm input[type=file]");
+                    let ios = iOS();
+                    if(ios){
+                        files.forEach(function (file) {
+                            let fileInput =  $('#'+file.id);
+                            if(fileInput.get(0).files.length === 0){
+                                fileInput.attr('disabled',true);
+                            }
+                        });
+                    }
+
+                    $.ajax({
+                        type: 'post',
+                        url: 'freelancer/store',
+                        data: new FormData(form),
+                        contentType: false,
+                        cache: false,
+                        processData:false,
+                        beforeSend:function(){
+                        },
+                        xhr: function() {
+                            var xhr = new window.XMLHttpRequest();
+                            xhr.upload.addEventListener("progress", function(evt) {
+                                if (evt.lengthComputable) {
+                                    var percentComplete = evt.loaded / evt.total;
+                                    //Do something with upload progress here
+                                    if($('#audioFile').val()){
+                                        $('#loadingText').removeClass('d-none');
+                                        $('#progressAudio').html(parseInt(percentComplete*100)+' %')
+                                        if(percentComplete == 1){
+                                            // success
+                                            $('#loadingText').html('Success.');
+                                            setTimeout(function () {
+                                                $('#loadingText').addClass('d-none');
+                                                location.reload();
+                                            },2500);
+                                        }
+                                    }
+                                    if($('#video_file').val()){
+                                        $('#loadingTextVideo').removeClass('d-none');
+                                        $('#progress').html(parseInt(percentComplete*100)+' %')
+                                        if(percentComplete == 1){
+                                            // success
+                                            $('#loadingTextVideo').html('Success.');
+                                            setTimeout(function () {
+                                                $('#loadingTextVideo').addClass('d-none');
+                                            },2500);
+                                        }
+                                    }
+                                }
+                            }, false);
+
+                            xhr.addEventListener("progress", function(evt) {
+                                if (evt.lengthComputable) {
+                                    var percentComplete = evt.loaded / evt.total;
+                                    //Do something with download progress
+                                }
+                            }, false);
+
+                            return xhr;
+                        },
+                        success:function (){
+                            if($('#video_file').val()) {
+                                // load the video
+                                $('#videoFileFrame')[0].load();
+                            }
+                        }
+                    });
+
+                    if(ios){
+                        // after the request enable them again !
+                        var disabledFiles = document.querySelectorAll(".freelancerForm input[type=file]");
+                        disabledFiles.forEach(function (file) {
+                            let fileInput =  $('#'+file.id);
+                            fileInput.attr('disabled',false);
+                        });
+                    }
+
+                });
+            });
+
+
+    // 1- overview ( section one )
+        // profile photo scripts
+
+            $("#photoInput").change(function() {
+                readURL(this,'#photoPreview');
+            });
+
+            var srcPreview = '' ;
+            $('#photoPreview').hover(function () {
+                $(this).css('cursor','pointer');
+                srcPreview = $('#photoPreview').attr('src');
+                if(srcPreview !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
+                    $('#photoPreview').fadeTo(500, .1);
+                    $('#profileImgBox').css('background', 'url("/resumeApp/resources/views/customTheme/images/deleteimg.png")');
+                    $('#profileImgBox').css('background-repeat','no-repeat');
+                    $('#profileImgBox').css('background-position','center');
+                }
+            },function () {
+                $('#photoPreview').fadeTo(500, 1);
+                $('#profileImgBox').css('background', '');
+            });
+
+            $('#photoPreview').on('click',function () {
+                if(srcPreview !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
+                    // delete photo profile photo
+                    if(!confirm('Are you sure you want to delete profile photo ?')){
+                        return;
+                    }
+                    $('#photoPreview').attr('src','resumeApp/resources/views/customTheme/images/add_profile_photo.png');
+                    $('#photoInput').attr('type','text');
+                    $('#photoInput').attr('value',10);
+                    $('#works0').change();
+                    $('#photoInput').attr('type','file');
+                }else{
+                    $('#photoInput').click();
+                }
+            });
+
+        // profile photo end
+
+    // 2- payment (section two)
+        // calculator :
+            $("[id*=To]").on('change',function () {
+                var totalHours = calculateTotalHours();
+                if(totalHours <= 0){
+                    $('#totalHours').html('Please choose correct hours');
+                }else{
+                    $('#totalHours').html(totalHours + ' Hours');
+                }
+            });
+
+            $("[id*=From]").on('change',function () {
+                var totalHours = calculateTotalHours();
+                if(totalHours <= 0){
+                    $('#totalHours').html('Please choose correct hours');
+                }else{
+                    $('#totalHours').html(totalHours + ' Hours');
+                }
+            });
+        // end calculator
+
+        // Salary and payment :
+            var salaryPerH = $('#salary');
+            salaryPerH.change(function () {
+                $('#hours1').change();
+                $('#hours2').change();
+                $('#hours3').change();
+                $('#hours4').change();
+            });
+
+            $('#hours1').on('change',function(){
+                var timeString = $(this).val();
+                var times = timeString.match(/\d+/)[0];
+                if( $('#hours1').is(':checked')){
+                    $('#paidSalary1').removeClass('d-none');
+                    $('#totalPaid1').html(parseInt(times) * parseInt(salaryPerH.val()));
+                    $('#paidDays1').html(timeString);
+                }else{
+                    $('#paidSalary1').addClass('d-none');
+                }
+            });
+            $('#hours2').on('change',function(){
+                var timeString = $(this).val();
+                var times = timeString.match(/\d+/)[0];
+                if( $('#hours2').is(':checked')){
+                    $('#paidSalary2').removeClass('d-none');
+                    $('#totalPaid2').html(parseInt(times) * parseInt(salaryPerH.val()));
+                    $('#paidDays2').html(timeString);
+                }else{
+                    $('#paidSalary2').addClass('d-none');
+                }
+            });
+            $('#hours3').on('change',function(){
+                var timeString = $(this).val();
+                var times = timeString.match(/\d+/)[0];
+                if( $('#hours3').is(':checked')){
+                    $('#paidSalary3').removeClass('d-none');
+                    $('#totalPaid3').html(parseInt(times) * parseInt(salaryPerH.val()));
+                    $('#paidDays3').html(timeString);
+                }else{
+                    $('#paidSalary3').addClass('d-none');
+                }
+            });
+            $('#hours4').on('change',function(){
+                var timeString = $(this).val();
+                var times = timeString.match(/\d+/)[0];
+                if( $('#hours4').is(':checked')){
+                    $('#paidSalary4').removeClass('d-none');
+                    $('#totalPaid4').html(parseInt(times) * parseInt(salaryPerH.val()));
+                    $('#paidDays4').html(timeString);
+                }else{
+                    $('#paidSalary4').addClass('d-none');
+                }
+            });
+
+            salaryPerH.change();
+        // end salary and payment
+
+
+    // 3- Multimedia :
+        // audio files :
+            // delete Audio :
+            $('#deleteAudio').on('click', function(e){
+                if(!confirm('are you sure you want to delete this Audio file ?')){
+                    return;
+                }
+                $('#audioFile').attr('type','text');
+                $('#audioFile').attr('value',0);
+                $('#works0').change();
+                $('#audioFile').attr('type','file');
+                $('#audioText').val('Upload audio');
+                // change the src of the Audio
+                $('#audioIntroForm').attr('src','');
+                $('#audioIntro')[0].load();
+            });
+            // when a link to google drive is added :
+            $('#audio_intro').on('change',function () {
+                $('#audioIntroForm').attr('src',$(this).val());
+                $('#loadingText').removeClass('d-none');
+                setTimeout(function(){
+                    location.reload();
+                },3000);
+            });
+
+            // show audio file name :
+            $('#audioFile').change(function(e){
+                var fileName = e.target.files[0].name;
+                $('#audioText').val(fileName);
+                // change the src of the Audio
+                $('#audioIntroForm').attr('src','resumeApp/uploads/'+fileName);
+            });
+
+            // click on browse btn:
+            $('#browseBtn').on('click',function () {
+                $('#audioFile').click();
+            });
+
+        // video files :
+            // link to video :
+            $('#video').on('change',function () {
+                var videoID = getSecondPart( $(this).val());
+                var videoSrc = 'https://www.youtube.com/embed/'+videoID;
+                $('#videoFrame').attr('src',videoSrc);
+            });
+
+
+            // show video name when upload :
+            $('#video_file').change(function(e){
+                var fileName = e.target.files[0].name;
+                console.log(e.target.files[0]);
+                $('#videoText').val(fileName);
+                // change the src of the video
+                $('#videoFileFrame').attr('src','resumeApp/uploads/videos/'+fileName);
+
+
+            });
+
+            // browse for video :
+            $('#browseBtnVideo').on('click',function () {
+                $('#video_file').click();
+            });
+
+            // delete video :
+            $('#deleteVideo').on('click', function(e){
+                if(!confirm('Are you sure you want to delete this video ?')){
+                    return;
+                }
+                $('#video_file').attr('type','text');
+                $('#video_file').attr('value',0);
+                $('#works0').change();
+                $('#video_file').attr('type','file');
+                $('#videoText').val('Upload video');
+                // change the src of the video
+                $('#videoFileFrame').attr('src','');
+            });
+
 
 
 
@@ -338,7 +569,7 @@ $(document).ready(function () {
 
 
 
-    // deleting photo :
+    // deleting portfolio project photo :
     $('#deletePhoto0').on('click', function(){
         if(!confirm('Are you sure you want to delete this project?')){
            return;
@@ -442,332 +673,118 @@ $(document).ready(function () {
         $('#works7').attr('type','file');
     });
 
-    $("[id*=To]").on('change',function () {
-        var totalHours = calculateTotalHours();
-        if(totalHours <= 0){
-            $('#totalHours').html('Please choose correct hours');
-        }else{
-            $('#totalHours').html(totalHours + ' Hours');
-        }
-    });
+    /////////////////////////   end of portfolio scripts ////////////////////////////////
 
-    $("[id*=From]").on('change',function () {
-        var totalHours = calculateTotalHours();
-        if(totalHours <= 0){
-            $('#totalHours').html('Please choose correct hours');
-        }else{
-            $('#totalHours').html(totalHours + ' Hours');
-        }
-    });
-
-    function calculateTotalHours() {
-        calculateDayHours();
-        let days = [
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday',
-            'Saturday',
-            'Sunday'
-        ];
-
-        let totalHours = 0;
-
-        days.forEach(function (day) {
-           totalHours+= calculateDayHours(day);
-        });
-
-        return  totalHours ;
-
-    }
-
-    function calculateDayHours(day) {
-        let totalHoursDay = (parseInt($('#'+day+'To').val())||0) -  (parseInt($('#'+day+'From').val())||0) ;
-        if(totalHoursDay < 0){
-            totalHoursDay = 24 + totalHoursDay;
-            // works from 9 AM to 1 AM so he works 1-9 = -8 hours which means 24 - 8 = 16 hours.
-        }
-        return totalHoursDay;
-    }
-
-
-
-    $(':input').blur(function () {
-        if(this.type != 'checkbox'){
-            if( $(this).val() ) {
-                $('#tickMark'+this.name).removeClass('d-none');
-            }else{
-                $('#tickMark'+this.name).addClass('d-none');
-            }
-        }
-    });
-
-    $(':input').blur();
-
-
-    var salaryPerH = $('#salary');
-    salaryPerH.change(function () {
-        $('#hours1').change();
-        $('#hours2').change();
-        $('#hours3').change();
-        $('#hours4').change();
-    });
-
-    $('#hours1').on('change',function(){
-        var timeString = $(this).val();
-        var times = timeString.match(/\d+/)[0];
-        if( $('#hours1').is(':checked')){
-            $('#paidSalary1').removeClass('d-none');
-            $('#totalPaid1').html(parseInt(times) * parseInt(salaryPerH.val()));
-            $('#paidDays1').html(timeString);
-        }else{
-            $('#paidSalary1').addClass('d-none');
-        }
-    });
-    $('#hours2').on('change',function(){
-        var timeString = $(this).val();
-        var times = timeString.match(/\d+/)[0];
-        if( $('#hours2').is(':checked')){
-            $('#paidSalary2').removeClass('d-none');
-            $('#totalPaid2').html(parseInt(times) * parseInt(salaryPerH.val()));
-            $('#paidDays2').html(timeString);
-        }else{
-            $('#paidSalary2').addClass('d-none');
-        }
-    });
-    $('#hours3').on('change',function(){
-        var timeString = $(this).val();
-        var times = timeString.match(/\d+/)[0];
-        if( $('#hours3').is(':checked')){
-            $('#paidSalary3').removeClass('d-none');
-            $('#totalPaid3').html(parseInt(times) * parseInt(salaryPerH.val()));
-            $('#paidDays3').html(timeString);
-        }else{
-            $('#paidSalary3').addClass('d-none');
-        }
-    });
-    $('#hours4').on('change',function(){
-        var timeString = $(this).val();
-        var times = timeString.match(/\d+/)[0];
-        if( $('#hours4').is(':checked')){
-            $('#paidSalary4').removeClass('d-none');
-            $('#totalPaid4').html(parseInt(times) * parseInt(salaryPerH.val()));
-            $('#paidDays4').html(timeString);
-        }else{
-            $('#paidSalary4').addClass('d-none');
-        }
-    });
-
-    salaryPerH.change();
-
-    // save to data base when change !
-    $(function () {
-        $('.freelancerForm :input').on('change', function (e) {
-            e.preventDefault();
-            var form = document.getElementsByClassName('freelancerForm')[0];
-
-            // disable all empty files
-
-            var files = document.querySelectorAll(".freelancerForm input[type=file]");
-            let ios = iOS();
-            if(ios){
-                files.forEach(function (file) {
-                    let fileInput =  $('#'+file.id);
-                    if(fileInput.get(0).files.length === 0){
-                        fileInput.attr('disabled',true);
-                    }
+    ////////////////////////////    Freelancer Resume page scripts ////////////////////////////////
+        // education and training description section
+            // show the full desc
+                $('.desc').on('click',function () {
+                    $(this).css('width','auto');
+                    $(this).css('text-overflow','unset');
+                    $(this).css('overflow','normal');
+                    $(this).css('white-space','normal');
                 });
-            }
-
-            $.ajax({
-                type: 'post',
-                url: 'freelancer/store',
-                data: new FormData(form),
-                contentType: false,
-                cache: false,
-                processData:false,
-                beforeSend:function(){
-                },
-                xhr: function() {
-                    var xhr = new window.XMLHttpRequest();
-                    xhr.upload.addEventListener("progress", function(evt) {
-                        if (evt.lengthComputable) {
-                            var percentComplete = evt.loaded / evt.total;
-                            //Do something with upload progress here
-                            if($('#audioFile').val()){
-                                $('#loadingText').removeClass('d-none');
-                                $('#progressAudio').html(parseInt(percentComplete*100)+' %')
-                                if(percentComplete == 1){
-                                    // success
-                                    $('#loadingText').html('Success.');
-                                    setTimeout(function () {
-                                        $('#loadingText').addClass('d-none');
-                                        location.reload();
-                                    },2500);
-                                }
-                            }
-                            if($('#video_file').val()){
-                                $('#loadingTextVideo').removeClass('d-none');
-                                $('#progress').html(parseInt(percentComplete*100)+' %')
-                                if(percentComplete == 1){
-                                    // success
-                                    $('#loadingTextVideo').html('Success.');
-                                    setTimeout(function () {
-                                        $('#loadingTextVideo').addClass('d-none');
-                                    },2500);
-                                }
-                            }
-                        }
-                    }, false);
-
-                    xhr.addEventListener("progress", function(evt) {
-                        if (evt.lengthComputable) {
-                            var percentComplete = evt.loaded / evt.total;
-                            //Do something with download progress
-                        }
-                    }, false);
-
-                    return xhr;
-                },
-                success:function (){
-                    if($('#video_file').val()) {
-                        // load the video
-                        $('#videoFileFrame')[0].load();
-                    }
-                }
-            });
-
-           if(ios){
-               // after the request enable them again !
-               var disabledFiles = document.querySelectorAll(".freelancerForm input[type=file]");
-               disabledFiles.forEach(function (file) {
-                   let fileInput =  $('#'+file.id);
-                   fileInput.attr('disabled',false);
-               });
-           }
-
-        });
-    });
-
-
-    // when item is active :
-    $(function(){
-        var hash = window.location.hash;
-        hash && $('ul.nav a[href="' + hash + '"]').tab('show');
-
-        $('.nav-tabs a').click(function (e) {
-            $(this).tab('show');
-            var scrollmem = $('body').scrollTop() || $('html').scrollTop();
-            window.location.hash = this.hash;
-            $('html,body').scrollTop(scrollmem);
-        });
-    });
-
-    var heading =  $('#tabMainHeading');
-
-    // clicking on different taps change the main heading !
-    $('#tap1,#tap1phone').on('click',function () {
-        heading.html('1.Overview and personal info');
-    });
-    $('#tap2,#tap2phone').on('click',function () {
-       heading.html('2.Availability and payment');
-    });
-    $('#tap3,#tap3phone').on('click',function () {
-       heading.html('3.Multimedia (Audio / Video)');
-    });
-    $('#tap4,#tap4phone').on('click',function () {
-       heading.html('4.Career overview (Education / Training)');
-    });
-    $('#tap5,#tap5phone').on('click',function () {
-       heading.html('5.Portfolio');
-    });
-    $('#tap6,#tap6phone').on('click',function () {
-       heading.html('6.Professional skills');
-    });
-    $('#tap7,#tap7phone').on('click',function () {
-       heading.html('7.Personal attributes');
-    });
-
-    // keep the heading when page is loaded :
-    checkHash();
-
-    function checkHash() {
-        var hash    = window.location.hash;
-        switch(hash) {
-            case '#overview':
-                heading.html('1.Overview and personal info');
-                break;
-            case '#pay':
-                heading.html('2.Availability and payment');
-                break;
-            case '#multimedia':
-                heading.html('3.Multimedia (Audio / Video)');
-                break;
-            case '#career':
-                heading.html('4.Career overview (Education / Training)');
-                break;
-            case '#portfolio':
-                heading.html('5.Portfolio');
-                break;
-            case '#skills':
-                heading.html('6.Professional skills');
-                break;
-            case '#attributes':
-                heading.html('7.Personal attributes');
-                break;
-            default:
-                heading.html('1.Overview and personal info');
-        }
-    }
-
-    // show audio file name :
-    $(document).ready(function(){
-        $('#audioFile').change(function(e){
-            var fileName = e.target.files[0].name;
-            $('#audioText').val(fileName);
-            // change the src of the Audio
-            $('#audioIntroForm').attr('src','resumeApp/uploads/'+fileName);
-        });
-    });
-
-
-    // change taps on click :
-    $('.nextBtn').click(function(e){
-        var href = $(this).attr("href");
-        e.preventDefault();
-        $('#mytabs a[href="'+href+'"]').tab('show');
-        window.location.hash = href;
-        checkHash();
-        $('html, body').animate({scrollTop:$('#tabMainHeading').position().top}, 'slow');
-    });
-
-    // click on browse btn:
-    $('#browseBtn').on('click',function () {
-        $('#audioFile').click();
-    });
-
-
-    // check if device is ios :
-
-    function iOS() {
-
-        var iDevices = [
-            'iPad Simulator',
-            'iPhone Simulator',
-            'iPod Simulator',
-            'iPad',
-            'iPhone',
-            'iPod'
-        ];
-
-        if (!!navigator.platform) {
-            while (iDevices.length) {
-                if (navigator.platform === iDevices.pop()){ return true; }
-            }
-        }
-
-        return false;
-    }
 
 });
+
+
+/////////// functions ///////////////
+function readURL(input,imgID) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $(imgID).attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function iOS() {
+
+    var iDevices = [
+        'iPad Simulator',
+        'iPhone Simulator',
+        'iPod Simulator',
+        'iPad',
+        'iPhone',
+        'iPod'
+    ];
+
+    if (!!navigator.platform) {
+        while (iDevices.length) {
+            if (navigator.platform === iDevices.pop()){ return true; }
+        }
+    }
+
+    return false;
+}
+
+function checkHash() {
+    var heading =  $('#tabMainHeading');
+    var hash    = window.location.hash;
+    switch(hash) {
+        case '#overview':
+            heading.html('1.Overview and personal info');
+            break;
+        case '#pay':
+            heading.html('2.Availability and payment');
+            break;
+        case '#multimedia':
+            heading.html('3.Multimedia (Audio / Video)');
+            break;
+        case '#career':
+            heading.html('4.Career overview (Education / Training)');
+            break;
+        case '#portfolio':
+            heading.html('5.Portfolio');
+            break;
+        case '#skills':
+            heading.html('6.Professional skills');
+            break;
+        case '#attributes':
+            heading.html('7.Personal attributes');
+            break;
+        default:
+            heading.html('1.Overview and personal info');
+    }
+}
+
+function calculateTotalHours() {
+    calculateDayHours();
+    let days = [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday'
+    ];
+
+    let totalHours = 0;
+
+    days.forEach(function (day) {
+        totalHours+= calculateDayHours(day);
+    });
+
+    return  totalHours ;
+
+}
+
+function calculateDayHours(day) {
+    let totalHoursDay = (parseInt($('#'+day+'To').val())||0) -  (parseInt($('#'+day+'From').val())||0) ;
+    if(totalHoursDay < 0){
+        totalHoursDay = 24 + totalHoursDay;
+        // works from 9 AM to 1 AM so he works 1-9 = -8 hours which means 24 - 8 = 16 hours.
+    }
+    return totalHoursDay;
+}
+
+function getSecondPart(str) {
+    if(str.includes('=')){
+        var videoId = str.split('=')[1].substring(0,11);
+        return videoId;
+    }
+}

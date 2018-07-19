@@ -14,6 +14,33 @@ $(document).ready(function () {
                 },2000);
             }
 
+            // chat on typing change send button :
+                $('#sendMessage').on('keyup',function () {
+                    let chatIcon =   $('#chatIcon');
+                    if($('#sendMessage').val()){
+                        chatIcon.css({
+                            'background-position-x':'-39px',
+                            'pointer-events':'auto',
+                            'cursor':'pointer',
+                        });
+                    }else{
+                        chatIcon.css({
+                            'background-position-x':'7px',
+                            'pointer-events':'none',
+                            'cursor':'default',
+                        });
+                    }
+                });
+
+                let chatIcon =   $('#chatIcon');
+                chatIcon.on('click',function () {
+                    $(this).css({
+                        'background-position-x':'7px',
+                        'pointer-events':'none',
+                        'cursor':'default',
+                    });
+                });
+
             // add tick mark when data is filled :
             $(':input').blur(function () {
                 if(this.type != 'checkbox'){

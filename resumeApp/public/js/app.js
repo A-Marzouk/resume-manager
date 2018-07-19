@@ -53531,11 +53531,7 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", on: { click: _vm.sendMessage } },
-          [_vm._v("Send")]
-        )
+        _c("a", { attrs: { id: "chatIcon" }, on: { click: _vm.sendMessage } })
       ]
     ),
     _vm._v(" "),

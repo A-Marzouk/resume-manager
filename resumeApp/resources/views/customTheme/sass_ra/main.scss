@@ -1502,9 +1502,28 @@ body{
   }
 }
 
-// cha styles
+// chat styles
 .chatWithUsText{
     margin-left: auto;
+}
+
+.chat-composer{
+  input{
+    box-shadow: none !important;
+  }
+  #chatIcon{
+    width: 60px;
+    height: 45px;
+    background: url(/resumeApp/resources/views/customTheme/images/send-icon.png);
+    background-size: 86px;
+    background-position-x: 7px;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    cursor: default;
+  }
+  a:hover{
+    cursor: pointer;
+  }
 }
 
 .chatMinimized{

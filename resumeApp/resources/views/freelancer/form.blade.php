@@ -155,6 +155,9 @@
             ],
             '6. Professional skills'=>['link'=>'skills','primarySkills','design_skills_checkbox']
         ];
+
+
+        $errorTab = '';
     ?>
     <div style="padding-top: 20px;">
         <? foreach($errors->getMessages() as $key => $error):?>
@@ -168,7 +171,9 @@
                         }
 
                     ?>
-                    {{$error[0]}} <a class="nextBtn" href="#{{$requiredFields[$errorTab]['link']}}">({{$errorTab}})</a>
+                    <? if(isset($error[0]) && isset($errorTab) && isset($requiredFields[$errorTab]['link'])):?>
+                        {{$error[0]}} <a class="nextBtn" href="#{{$requiredFields[$errorTab]['link']}}">({{$errorTab}})</a>
+                    <? endif;?>
                 </div>
             </div>
         <? endforeach;?>

@@ -1,6 +1,13 @@
 @extends('layouts.client-app')
 
 @section('content')
+
+    <?
+    $isClient = true;
+    if(auth()->guard('client')->guest()){
+        $isClient = false;
+    }
+    ?>
     <div id="content" style="margin:auto;">
         <!-- Success Messages  -->
         @if(session()->has('successMessage'))

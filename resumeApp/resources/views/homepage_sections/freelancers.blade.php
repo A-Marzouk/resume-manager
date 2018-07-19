@@ -12,7 +12,7 @@
             <section class="freelancers">
                 <div class="slickSlide">
                     <div class="col-md-12 freelancerBox">
-                        <a href="#" class="itemLink">
+                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">
                             <div class="freelancerItem">
                                 <img src="/resumeApp/resources/views/customTheme/images/freelancers/Dmitri.jpg"
                                      alt="freelancer" class="slickFreelancerImg">
@@ -28,8 +28,7 @@
                         </a>
                     </div>
                     <div class="col-md-12 freelancerBox">
-                        <a href="#" class="itemLink">
-                            <div class="freelancerItem">
+                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">                            <div class="freelancerItem">
                                 <img src="/resumeApp/resources/views/customTheme/images/freelancers/Anton.jpg"
                                      alt="freelancer" class="slickFreelancerImg">
                                 <div class="freelancerData">
@@ -44,8 +43,7 @@
                         </a>
                     </div>
                     <div class="col-md-12 freelancerBox">
-                        <a href="#" class="itemLink">
-                            <div class="freelancerItem">
+                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">                            <div class="freelancerItem">
                                 <img src="/resumeApp/resources/views/customTheme/images/freelancers/Arnold.jpg"
                                      alt="freelancer" class="slickFreelancerImg">
                                 <div class="freelancerData">
@@ -60,8 +58,7 @@
                         </a>
                     </div>
                     <div class="col-md-12 freelancerBox">
-                        <a href="#" class="itemLink">
-                            <div class="freelancerItem">
+                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink"><div class="freelancerItem">
                                 <img src="/resumeApp/resources/views/customTheme/images/freelancers/Costa.jpg"
                                      alt="freelancer" class="slickFreelancerImg">
                                 <div class="freelancerData">
@@ -76,7 +73,7 @@
                         </a>
                     </div>
                     <div class="col-md-12 freelancerBox">
-                        <a href="#" class="itemLink">
+                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">
                             <div class="freelancerItem">
                                 <img src="/resumeApp/resources/views/customTheme/images/freelancers/Evgeny.jpg"
                                      alt="freelancer" class="slickFreelancerImg">
@@ -92,7 +89,7 @@
                         </a>
                     </div>
                     <div class="col-md-12 freelancerBox">
-                        <a href="#" class="itemLink">
+                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">
                             <div class="freelancerItem">
                                 <img src="/resumeApp/resources/views/customTheme/images/freelancers/Jon.png"
                                      alt="freelancer" class="slickFreelancerImg">
@@ -108,7 +105,7 @@
                         </a>
                     </div>
                     <div class="col-md-12 freelancerBox">
-                        <a href="#" class="itemLink">
+                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">
                             <div class="freelancerItem">
                                 <img src="/resumeApp/resources/views/customTheme/images/freelancers/Lars.jpg"
                                      alt="freelancer" class="slickFreelancerImg">
@@ -124,7 +121,7 @@
                         </a>
                     </div>
                     <div class="col-md-12 freelancerBox">
-                        <a href="#" class="itemLink">
+                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">
                             <div class="freelancerItem">
                                 <img src="/resumeApp/resources/views/customTheme/images/freelancers/Michelle.jpg"
                                      alt="freelancer" class="slickFreelancerImg">
@@ -140,8 +137,7 @@
                         </a>
                     </div>
                     <div class="col-md-12 freelancerBox">
-                        <a href="#" class="itemLink">
-                            <div class="freelancerItem">
+                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">                            <div class="freelancerItem">
                                 <img src="/resumeApp/resources/views/customTheme/images/freelancers/Shen.jpg"
                                      alt="freelancer" class="slickFreelancerImg">
                                 <div class="freelancerData">
@@ -156,7 +152,7 @@
                         </a>
                     </div>
                     <div class="col-md-12 freelancerBox">
-                        <a href="#" class="itemLink">
+                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">
                             <div class="freelancerItem">
                                 <img src="/resumeApp/resources/views/customTheme/images/freelancers/Vitaly.jpg"
                                      alt="freelancer" class="slickFreelancerImg">

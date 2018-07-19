@@ -59,6 +59,14 @@ if($user){
     }
 }
 ?>
+<?
+    // check if he is a client or guet :
+        $isClient = true;
+       if(auth()->guard('client')->guest()){
+           $isClient = false;
+       }
+
+?>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel fixed-top">
         <a class="navbar-brand col-md-2 col-9" href="{{ url('/') }}">
@@ -72,7 +80,7 @@ if($user){
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav">
                 {{-- if guest : --}}
-                <? if(auth()->guard('client')->guest()):?>
+                <? if(!$isClient):?>
                     <a class="nav-item nav-link customNavLink <?if($curPage == 'client'):?>active<?endif;?>" href="/client/register/" data-toggle="modal" data-target="#exampleModalCenter">Become a client</a>
                 <? endif; ?>
                 <a class="nav-item nav-link customNavLink" href="#" data-toggle="modal" data-target="#talkToSales">Talk to sales</a>
@@ -84,7 +92,7 @@ if($user){
                 <a class="nav-item nav-link customNavLink" href="/admin" style="color:#0290D8;">Admin-area</a>
                 <?else :?>
                 <a class="nav-item nav-link customNavLink" href="#chatOn" id="liveChat" style="color:#0290D8;">
-                    <img src="resumeApp/resources/views/customTheme/images/textsms_24px.png" alt="chat img" width="16px">
+                    <img src="/resumeApp/resources/views/customTheme/images/textsms_24px.png" alt="chat img" width="16px">
                     &nbsp; Chat with us!
 
                 </a>
@@ -93,7 +101,7 @@ if($user){
             <ul class="navbar-nav">
                 <!-- Authentication Links -->
                 <li></li>
-            <?php if(auth()->guard('client')->guest()): ?>
+            <?php if(!$isClient): ?>
                     <li class="nav-link loginBtn">
                         <a href="{{ route('client.login') }}" data-toggle="modal" data-target="#loginModal" style="padding-left: 30px; padding-right: 30px;">{{ __('Log in') }}</a>
                     </li>

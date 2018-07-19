@@ -23,7 +23,7 @@ class CreateUserDatasTable extends Migration
             $table->string('nationality')->nullable();
             $table->string('design_skills_checkbox')->nullable();
             $table->text('languages')->nullable();
-            $table->text('design_styles')->nullable();
+            $table->longText('design_styles')->nullable();
             $table->string('photo')->nullable();
             $table->text('trainings')->nullable();
             $table->text('works')->nullable();

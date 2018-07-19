@@ -32,7 +32,7 @@ class UserDataController extends Controller
                    'intro'=>'max:1000',
                    'professional_attributes'=>'max:190',
                    'careerObjective'=>'max:1500',
-                   'design_styles'=>'max:190',
+                   'design_styles'=>'max:1500',
                    'personal_interests'=>'max:190',
                    'currency'=>'max:190',
                    'personalSite'=>'max:190',

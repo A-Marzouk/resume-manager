@@ -1805,9 +1805,20 @@ body{
 
 @media screen and (max-width: 531px) {
   .container1 { display: flex; flex-flow: column; }
-  .five { order: 1; }
-  .four { order: 2;  }
-  .three { order: 3; }
-  .two { order: 4; }
-  .one { order: 5 }
+  .five { order: 5; }
+  .four { order: 4;
+    text-align: right;
+    @media screen and (max-width: 531px) {
+      text-align: center !important;
+    }
+  }
+  .three { order: 3;
+  }
+  .two { order: 2; }
+  .one { order: 1;
+    text-align: right;
+    @media screen and (max-width: 531px) {
+      text-align: center !important;
+    }
+  }
 }

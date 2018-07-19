@@ -1470,18 +1470,27 @@ body {
     flex-flow: column; }
 
   .five {
-    order: 1; }
+    order: 5; }
 
   .four {
-    order: 2; }
+    order: 4;
+    text-align: right; } }
+  @media screen and (max-width: 531px) and (max-width: 531px) {
+    .four {
+      text-align: center !important; } }
 
+@media screen and (max-width: 531px) {
   .three {
     order: 3; }
 
   .two {
-    order: 4; }
+    order: 2; }
 
   .one {
-    order: 5; } }
+    order: 1;
+    text-align: right; } }
+  @media screen and (max-width: 531px) and (max-width: 531px) {
+    .one {
+      text-align: center !important; } }
 
 /*# sourceMappingURL=main.css.map */

@@ -160,23 +160,28 @@
         $errorTab = '';
     ?>
     <div style="padding-top: 20px;">
-        <? foreach($errors->getMessages() as $key => $error):?>
-            <div class="form-group col-md-8">
-                <div class="alert alert-danger" style="font-size: small;">
-                    <?
-                        foreach ($requiredFields as $tab => $errorFields){
-                            if(in_array($key,$errorFields)){
-                                $errorTab = $tab;
+        <? if(count($errors->getMessages()) > 0):?>
+            <? foreach($errors->getMessages() as $key => $error):?>
+                <div class="form-group col-md-8">
+                    <div class="alert alert-danger" style="font-size: small;">
+                        <?
+                            foreach ($requiredFields as $tab => $errorFields){
+                                if(in_array($key,$errorFields)){
+                                    $errorTab = $tab;
+                                }
                             }
-                        }
 
-                    ?>
-                    <? if(isset($error[0]) && isset($errorTab) && isset($requiredFields[$errorTab]['link'])):?>
-                        {{$error[0]}} <a class="nextBtn" href="#{{$requiredFields[$errorTab]['link']}}">({{$errorTab}})</a>
-                    <? endif;?>
+                        ?>
+                        <? if(isset($error[0]) && isset($errorTab) && isset($requiredFields[$errorTab]['link'])):?>
+                            {{$error[0]}} <a class="nextBtn" href="#{{$requiredFields[$errorTab]['link']}}">({{$errorTab}})</a>
+
+                        <? else:?>
+                            Something went wrong.
+                        <? endif;?>
+                    </div>
                 </div>
-            </div>
-        <? endforeach;?>
+            <? endforeach;?>
+        <? endif; ?>
     </div>
 
     <form method="post" action="{{route('freelancer.data.store')}}" enctype="multipart/form-data" class="container freelancerForm">

@@ -1488,6 +1488,20 @@ body{
   color: #697786;	font-family: Roboto;	font-size: 16px;	line-height: 19px;
 }
 
+// changes saved :
+.changesSavedText{
+  border-radius: 5px 5px 0 0 !important;
+  position: fixed;
+  height: 38px;
+  bottom: 38px;
+  right: 32px;
+  width: 173px;
+  @media only screen and (max-width: 600px) {
+    margin-left: -85px;
+    left: 50%;
+  }
+}
+
 // cha styles
 .chatWithUsText{
     margin-left: auto;

@@ -3,6 +3,10 @@ $(document).ready(function () {
     /////////////////////////   Freelancer form scripts ////////////////////////
         // overall scripts ( used in all sections )
 
+            // hiding changes saved :
+            $('#changesSaved').removeClass('d-none');
+            $('#changesSaved').hide();
+
             // add tick mark when data is filled :
             $(':input').blur(function () {
                 if(this.type != 'checkbox'){
@@ -142,6 +146,12 @@ $(document).ready(function () {
                                 // load the video
                                 $('#videoFileFrame')[0].load();
                             }
+
+                            // changes are saved on - off
+                            $('#changesSaved').fadeIn('slow');
+                            setTimeout(function () {
+                                $('#changesSaved').fadeOut();
+                            },2000);
                         }
                     });
 

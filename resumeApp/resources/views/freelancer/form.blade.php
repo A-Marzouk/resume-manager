@@ -147,13 +147,36 @@
         $requiredFields = [
             '1. Overview and personal info'=>[
                 'link'=>'overview',
-                'name', 'city','jobTitle','email'
+                'name', 'city','jobTitle','email','languages','intro','photo'
             ],
             '2. Availability and pay' => [
                 'link'=>'pay',
-                'salary','availableHours'
+                'salary','availableHours','freeDate','availableHours','currency','timeZone',
             ],
-            '6. Professional skills'=>['link'=>'skills','primarySkills','design_skills_checkbox']
+            '3. Multimedia' => [
+                'link'=>'multimedia',
+                'audio','audioFile','video','video_file'
+            ],
+            '4. Career overview' => [
+                'link'=>'career',
+                'careerObjective','eduTitle1','eduTitle2','eduTitle3','eduYear1','eduYear2','eduYear3',
+                'eduDesc1','eduDesc2','eduDesc3','trnTitle1','trnTitle2','trnTitle3','','','','','',
+                'trnYear1','trnYear2','trnYear3','trnDesc1','trnDesc2','trnDesc3','workExperience'
+            ],
+            '5. Portfolio' => [
+                'link'=>'portfolio',
+                'works0','works1','works2','works3','works4','works5','works6','works7',
+                'workDesc0','workDesc1','workDesc2','workDesc3','workDesc4','workDesc5','workDesc6','workDesc7',
+                'githubLink','stackoverflowLink','behanceLink','instagramLink','dribbleLink',
+                'personalSite'
+            ],
+            '6. Professional skills'=>['link'=>'skills','primarySkills',
+                'design_skills_checkbox','primarySkills','charSkills'
+            ],
+            '7. Personal attributes' => [
+                'link'=>'attributes',
+                'personal_interests','professional_attributes','design_styles'
+            ]
         ];
 
 

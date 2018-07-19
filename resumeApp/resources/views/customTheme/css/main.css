@@ -1196,6 +1196,18 @@ body {
   font-size: 16px;
   line-height: 19px; }
 
+.changesSavedText {
+  border-radius: 5px 5px 0 0 !important;
+  position: fixed;
+  height: 38px;
+  bottom: 38px;
+  right: 32px;
+  width: 173px; }
+  @media only screen and (max-width: 600px) {
+    .changesSavedText {
+      margin-left: -85px;
+      left: 50%; } }
+
 .chatWithUsText {
   margin-left: auto; }
 

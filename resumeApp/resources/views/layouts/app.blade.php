@@ -97,7 +97,31 @@ if($user){
             Your browser does not support the audio element.
         </audio>
 
-        @include('layouts.footer')
+
+
+    </div>
+
+    @include('layouts.footer')
+
+{{-- chat minimized --}}
+<div class="chatMinimized d-none" id="chatMinBox">
+    <a href="javascript:void(0)" class="row" id="chatMin">
+        <div class="col-2 col-md-1 col-lg-2 chatImage">
+            <span>
+                <img src="/resumeApp/resources/views/customTheme/images/textsms_24px copy.png" width="16px">
+            </span>
+        </div>
+        <div class="col-10 text">
+            <span id="chatText">Chat with us!</span>
+        </div>
+    </a>
+</div>
+
+    {{-- Changes saved --}}
+    <div class="changesSavedText d-none" id="changesSaved">
+        <span class="alert alert-success">
+            Changes saved
+        </span>
     </div>
 
     {{-- Chat box --}}
@@ -133,10 +157,19 @@ if($user){
                     $('#navBarToggle').click();
                 });
 
+                $('#chatMin').on('click',function(){
+                    $("#liveChat").click();
+                    $('#chatMinBox').addClass('d-none');
+                });
+
                 $("#closeChat").click(function(){
                     $("#chatBox").animate({bottom: '-550px',opacity:'1'});
                     $("#chatBox").addClass('d-none');
+
+                    // show the minimized version
+                    $('#chatMinBox').removeClass('d-none');
                 });
+
             }
 
 

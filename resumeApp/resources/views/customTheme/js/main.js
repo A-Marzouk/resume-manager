@@ -7,6 +7,13 @@ $(document).ready(function () {
             $('#changesSaved').removeClass('d-none');
             $('#changesSaved').hide();
 
+            // hide success message
+            if($('#successMessage').length !== 0){
+                setTimeout(function () {
+                    $('#successMessage').fadeOut('slow');
+                },2000);
+            }
+
             // add tick mark when data is filled :
             $(':input').blur(function () {
                 if(this.type != 'checkbox'){

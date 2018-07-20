@@ -1133,6 +1133,8 @@ body {
   letter-spacing: 0.1px;
   line-height: 16px;
   margin-top: 5px; }
+  .panelFormLabel span img {
+    padding: 0 !important; }
 
 .panelFormInput {
   border: 1px solid #D5D8DE;

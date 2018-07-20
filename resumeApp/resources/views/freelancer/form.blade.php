@@ -171,11 +171,11 @@
                 'personalSite'
             ],
             '6. Professional skills'=>['link'=>'skills','primarySkills',
-                'design_skills_checkbox','primarySkills','charSkills'
+                'design_skills_checkbox','primarySkills','design_styles'
             ],
             '7. Personal attributes' => [
                 'link'=>'attributes',
-                'personal_interests','professional_attributes','design_styles'
+                'personal_interests','professional_attributes','charSkills'
             ]
         ];
 

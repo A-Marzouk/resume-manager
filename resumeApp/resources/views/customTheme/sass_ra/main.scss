@@ -1417,7 +1417,11 @@ body{
   letter-spacing: 0.1px;
   line-height: 16px;
   margin-top: 5px;
-
+  span{
+    img{
+      padding: 0 !important;
+    }
+  }
 }
 .panelFormInput{
   border: 1px solid #D5D8DE;	border-radius: 4px;

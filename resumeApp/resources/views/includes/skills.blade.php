@@ -100,66 +100,12 @@
             <? endif;?>
         </div>
     </div> <!-- primary skills -->
-
+    <hr>
     <div class="form-group col-md-12">
-        <hr>
-
-        <label style=" padding: 2px;" class="panelFormLabel">Please choose 6 character skills</label>
-        <?
-        $charSkills = ['Adventurous:  I take risks.', 'Ambitious:  I am driven to succeed.', 'Approachable:  I work well with others.',
-            'Articulate:  I can express myself well in front of groups.','Autonomous:  I use initiative.', 'Calm:  I stay level headed in a crisis.', 'Charismatic:  I can be a leader when need be.',
-            'Cheerful:  I develop a positive work environment.', 'Clever:  I can juggle multiple tasks.', 'Competitive:   I thrive under pressure.',
-            'Confident:  I am not afraid to ask questions.', 'Cooperative:  I get along well in a team setting.', 'Courteous:  I care about workplace atmosphere.',
-            'Creative:  I think outside the box.',
-            'Curiosity:  I am eager to learn.',
-            'Determined:   I am self-motivated.',
-            'Devoted:  I am committed to the company’s success.',
-            'Diligent:   I always work my hardest.',
-            'Easygoing:  I easily adapt to new situations.',
-            'Educated:  I possess formal training.',
-            'Efficient:  I have very quick turnover time.',
-            'Eloquent:  I have strong communication skills.',
-            'Energetic: I am able to work long and hard hours.',
-            'Enthusiastic:  I put my all into every project.',
-            'Flexible:  I am able to adapt my priorities.',
-            'Focused:  I am goal-oriented.',
-            'Friendly:   I am easy to work with.',
-            'Honest:  I value integrity.',
-            'Imaginative:  I am inventive in my work process.',
-            'Independent:  I need little direction.',
-            'Inexperienced:  I am a blank pallet.',
-            'Inquisitive:  I am excellent at gathering information.',
-            'Insightful:  I can read between the lines.',
-            'Intuitive:  I can sense when there is a problem.',
-            'Meticulous:  I pay attention to the small details.',
-            'Neurotic:  I am a perfectionist.',
-            'Open-minded:  I take constructive criticism well.',
-            ' Opinionated:  I am comfortable voicing opinions.',
-            'Organized:  I am a meticulous planner.',
-            'Patient:  I am not easily ruffled.',
-            'Perceptive:  I can read people effortlessly.',
-            'Persuasive:  I am a natural salesperson.',
-            'Procedural:  I work best with structure.',
-            'Punctual:  I have great time management skills.',
-            'Quiet:  I am a great listener.',
-            'Relaxed:  I do not stress easily.',
-            'Resourceful:  I use every tool at hand.',
-            'Responsible:  I always finish a task on time.',
-            'Talkative:  I am comfortable initiating a dialogue.',
-            'Technological:  I am industrially savvy.',
-        ] ;
-        ?>
-        <div class="form-check">
-            @foreach($charSkills as $skill)
-                <label class="form-check-label col-md-5 checkBoxText checkBoxContainer">
-                    <input class="form-check-input" type="checkbox" name="charSkills[]" value="{{$skill}}"
-                           <? if(in_array($skill,$charSkillsCheckBox)): ?> checked <?endif;?> >
-                    {{$skill}}
-                    <span class="checkmark"></span>
-                </label>
-            @endforeach
-        </div>
-    </div> <!-- char skills -->
+        <label for="design_styles" class="panelFormLabel">Professional Skills and <? if($profession == 'Developer'):?>Development<?else:?>Design<?endif;?> style <span id="tickMarkdesign_styles" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+        <textarea class="form-control" rows="5" id="design_skills" name="design_styles">{{$design_styles}}</textarea>
+        <small class="panelFormLabel">50-200 Words</small>
+    </div> <!-- design style -->
 
     <div class="row">
         <div class="buttonMain col-md-3 offset-md-9">

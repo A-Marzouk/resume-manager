@@ -434,6 +434,7 @@ $(document).ready(function () {
         readURL(this,'#portfolioImg7');
     });
 
+    // giving the ability to upload by drop for portfolio images :
     for(let i=0; i<=7 ; i++){
         uploadByDrop('#portfolioImg'+i,'works'+i);
     }

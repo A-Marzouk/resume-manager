@@ -240,6 +240,9 @@ $(document).ready(function () {
                 }
             });
 
+            uploadByDrop('#photoPreview','photo');
+
+
         // profile photo end
 
     // 2- payment (section two)
@@ -430,6 +433,11 @@ $(document).ready(function () {
     $("#works7").change(function() {
         readURL(this,'#portfolioImg7');
     });
+
+    // giving the ability to upload by drop for portfolio images :
+    for(let i=0; i<=7 ; i++){
+        uploadByDrop('#portfolioImg'+i,'works'+i);
+    }
 
     // image as browse and delete button :
     var src0 = '' ;
@@ -831,4 +839,40 @@ function getSecondPart(str) {
         var videoId = str.split('=')[1].substring(0,11);
         return videoId;
     }
+}
+
+function uploadByDrop(elementID,elementName) {
+    $(elementID).on({
+        'dragover dragenter': function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        },
+        'drop': function(e) {
+            //our code will go here
+            e.preventDefault();
+            e.stopPropagation();
+            readURL(e.originalEvent.dataTransfer,elementID);
+            // save to the data base :
+            var form = document.getElementsByClassName('freelancerForm')[0];
+            var formData = new FormData(form);
+            // Attach file
+            formData.append(elementName, e.originalEvent.dataTransfer.files[0]);
+
+            $.ajax({
+                type: 'POST',
+                url: 'freelancer/store',
+                data: formData,
+                contentType: false,
+                cache: false,
+                processData:false,
+                success: function () {
+                    // changes are saved on - off
+                    $('#changesSaved').fadeIn('slow');
+                    setTimeout(function () {
+                        $('#changesSaved').fadeOut();
+                    },2000);
+                }
+            });
+        }
+    });
 }

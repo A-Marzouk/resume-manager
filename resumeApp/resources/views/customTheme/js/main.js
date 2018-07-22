@@ -21,6 +21,15 @@ $(document).ready(function () {
             };
 
             // we need to get if any section is completed.
+            let completedSections = getArrCompletedSecs(sections);
+            let completedSectionsArr = Object.entries(completedSections); // example : ['pay','true']
+
+            // add styles to completed sections :
+            for(let i=0; i<completedSectionsArr.length; i++){
+                if(completedSectionsArr[i][1]){
+                    $("a[href='#"+completedSectionsArr[i][0]+"']").addClass('completed');
+                }
+            }
 
             // hiding changes saved :
             $('#changesSaved').removeClass('d-none');
@@ -894,4 +903,36 @@ function uploadByDrop(elementID,elementName) {
             });
         }
     });
+}
+
+function getArrCompletedSecs(sections){
+    let emptyInputs = $('.freelancerForm :input').filter(function() { return $(this).val() == ""; });
+    let completedSections = {
+        overview: true,
+        pay: true,
+        multimedia: true,
+        portfolio: true,
+        skills: true,
+        career: true,
+        attributes: true
+    };
+    let emptyInputsName = [];
+    for(let i =0; i < emptyInputs.length ; i++){
+        emptyInputsName.push(emptyInputs[i].name);
+    }
+
+    // check if overview is completed :
+    emptyInputsName.forEach(function (emptyInput) {
+
+      let sectionsNames = Object.keys(sections);
+      sectionsNames.forEach(function (sectionName) {
+          if(sections[sectionName].includes(emptyInput)){
+              completedSections[sectionName] = false;
+          }
+      })
+
+
+    });
+
+    return completedSections ;
 }

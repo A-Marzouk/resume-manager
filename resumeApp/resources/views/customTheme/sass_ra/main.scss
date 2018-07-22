@@ -82,6 +82,12 @@ body{
     opacity: 1;
     font-weight: bold;
   }
+  &.completed{
+    color: green !important;
+    border-bottom: lightgreen 3px solid !important;
+    opacity: 1;
+    font-weight: bold;
+  }
   @media only screen and (max-width: 600px){
     padding-top: 26px;
   }

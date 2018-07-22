@@ -943,6 +943,11 @@ function highlightCompletedSecs(){
            $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").html('&#x2714;');
            $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").css('color','lawngreen');
            $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").css('background','none');
+        }else{
+            $("a[href='#"+completedSectionsArr[i][0]+"']").css('border-bottom-color','lightgray');
+            // if they have class active : remove circle effects
+            $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").css('color','gray');
+            $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").css('background','none');
         }
     }
 }

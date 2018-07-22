@@ -2,6 +2,25 @@ $(document).ready(function () {
 
     /////////////////////////   Freelancer form scripts ////////////////////////
         // overall scripts ( used in all sections )
+    
+            // indicators for each section : 
+            // array for sections : 
+            let sections = {
+                overview:[ 'name', 'city','jobTitle','email','languages','intro','photo'],
+                pay:['salary','availableHours','freeDate','availableHours','currency','timeZone'],
+                multimedia:['audio','audioFile','video','video_file'],
+                career:['careerObjective','eduTitle1','eduTitle2','eduTitle3','eduYear1','eduYear2','eduYear3',
+                    'eduDesc1','eduDesc2','eduDesc3','trnTitle1','trnTitle2','trnTitle3',
+                    'trnYear1','trnYear2','trnYear3','trnDesc1','trnDesc2','trnDesc3','workExperience'],
+                portfolio:[ 'works0','works1','works2','works3','works4','works5','works6','works7',
+                    'workDesc0','workDesc1','workDesc2','workDesc3','workDesc4','workDesc5','workDesc6','workDesc7',
+                    'githubLink','stackoverflowLink','behanceLink','instagramLink','dribbleLink',
+                    'personalSite'],
+                skills:['primarySkills','design_skills_checkbox','primarySkills','design_styles'],
+                attributes:[ 'personal_interests','professional_attributes','charSkills']
+            };
+
+            // we need to get if any section is completed.
 
             // hiding changes saved :
             $('#changesSaved').removeClass('d-none');

@@ -68,11 +68,6 @@ body {
     border-bottom: #AC81FC 2px solid;
     opacity: 1;
     font-weight: bold; }
-  .customNavLink.completed {
-    color: green !important;
-    border-bottom: lightgreen 3px solid !important;
-    opacity: 1;
-    font-weight: bold; }
   @media only screen and (max-width: 600px) {
     .customNavLink {
       padding-top: 26px; } }

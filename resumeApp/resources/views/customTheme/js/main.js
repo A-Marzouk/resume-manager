@@ -904,7 +904,7 @@ function highlightCompletedSecs(){
     };
 
     let emptyInputs = $('.freelancerForm :input').filter(function() {
-        return ($(this).val() == "");
+            return ($(this).val() == "");
     });
 
     let completedSections = {
@@ -916,10 +916,27 @@ function highlightCompletedSecs(){
         career: true,
         attributes: true
     };
+
     let emptyInputsName = [];
+
     for(let i =0; i < emptyInputs.length ; i++){
         emptyInputsName.push(emptyInputs[i].name);
     }
+
+
+   // remove uploaded files from the empty fileds file :
+    let uploadedFilesNames = getUploadedFilesNames()[0];
+    uploadedFilesNames.forEach(function (fileName) {
+        var index = emptyInputsName.indexOf(fileName);
+        if (index > -1) {
+            emptyInputsName.splice(index, 1);
+        }
+    });
+
+    let emptyFilesNames =  getUploadedFilesNames()[1];
+    emptyFilesNames.forEach(function (fileName) {
+        emptyInputsName.push(fileName);
+    });
 
     // check if overview is completed :
     emptyInputsName.forEach(function (emptyInput) {
@@ -950,4 +967,47 @@ function highlightCompletedSecs(){
             $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").css('background','none');
         }
     }
+}
+
+function getUploadedFilesNames() {
+    let filesNames = [];
+
+    let emptyFiles = [];
+
+    // works files :
+
+    for(let i=0; i<=7;i++){
+        if($('#portfolioImg'+i).attr('src') !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
+            filesNames.push('works'+i);
+        }else{
+            emptyFiles.push('works'+i);
+        }
+    }
+
+    // profile photo files :
+    if($('#photoPreview').attr('src') !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png') { //empty
+        filesNames.push('photo');
+    }else{
+        emptyFiles.push('photo');
+    }
+
+    // audiofile :
+    if($('#audioIntroForm').attr('src') !=='') { //empty
+        filesNames.push('audioFile');
+    }else{
+        emptyFiles.push('audioFile');
+    }
+
+    // video file :
+    if($('#videoFileFrame').attr('src') !=='') { //empty
+        filesNames.push('video_file');
+    }else{
+        emptyFiles.push('video_file');
+    }
+
+
+    let files =[filesNames,emptyFiles];
+
+    return files;
+
 }

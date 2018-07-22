@@ -957,14 +957,14 @@ function highlightCompletedSecs(){
         if(completedSectionsArr[i][1]){
            $("a[href='#"+completedSectionsArr[i][0]+"']").css('border-bottom-color','lawngreen');
             // if they have class active : remove circle effects
-           $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").html('&#x2714;');
            $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").css('color','lawngreen');
            $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").css('background','none');
         }else{
             $("a[href='#"+completedSectionsArr[i][0]+"']").css('border-bottom-color','lightgray');
-            // if they have class active : remove circle effects
-            $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").css('color','white');
-            $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").css('background','#919CA5');
+            $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").css('color','gray');
+            if(!$("a[href='#"+completedSectionsArr[i][0]+"']").hasClass('active')){
+                $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").css('background','none');
+            }
         }
     }
 }

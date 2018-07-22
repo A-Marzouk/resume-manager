@@ -1095,8 +1095,8 @@ body {
   .tabsArea .active {
     font-weight: bold; }
     .tabsArea .active .tabCircle {
-      background-color: #919CA5;
-      color: white;
+      background-color: #919CA5 !important;
+      color: white !important;
       font-weight: bold; }
 
 .panel {

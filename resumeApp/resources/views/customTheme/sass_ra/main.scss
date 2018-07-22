@@ -1369,8 +1369,8 @@ body{
   }
   .active{
     .tabCircle{
-      background-color: #919CA5;
-      color: white;
+      background-color: #919CA5 !important;
+      color: white !important;
       font-weight: bold;
     }
     font-weight: bold;

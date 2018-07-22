@@ -2,6 +2,12 @@ $(document).ready(function () {
 
     /////////////////////////   Freelancer form scripts ////////////////////////
         // overall scripts ( used in all sections )
+    
+            // indicators for each section :
+
+            // we need to get if any section is completed.
+            highlightCompletedSecs();
+
 
             // hiding changes saved :
             $('#changesSaved').removeClass('d-none');
@@ -186,6 +192,8 @@ $(document).ready(function () {
                             setTimeout(function () {
                                 $('#changesSaved').fadeOut();
                             },2000);
+
+                            highlightCompletedSecs();
                         }
                     });
 
@@ -374,7 +382,6 @@ $(document).ready(function () {
             // show video name when upload :
             $('#video_file').change(function(e){
                 var fileName = e.target.files[0].name;
-                console.log(e.target.files[0]);
                 $('#videoText').val(fileName);
                 // change the src of the video
                 $('#videoFileFrame').attr('src','resumeApp/uploads/videos/'+fileName);
@@ -871,8 +878,136 @@ function uploadByDrop(elementID,elementName) {
                     setTimeout(function () {
                         $('#changesSaved').fadeOut();
                     },2000);
+
+                    highlightCompletedSecs();
                 }
             });
         }
     });
+}
+
+function highlightCompletedSecs(){
+    // array for sections :
+    let sections = {
+        overview:[ 'name', 'city','jobTitle','email','languages','intro','photo'],
+        pay:['salary','availableHours','freeDate','availableHours','currency','timeZone'],
+        multimedia:['audio','audioFile','video','video_file'],
+        career:['careerObjective','eduTitle1','eduTitle2','eduTitle3','eduYear1','eduYear2','eduYear3',
+            'eduDesc1','eduDesc2','eduDesc3','trnTitle1','trnTitle2','trnTitle3',
+            'trnYear1','trnYear2','trnYear3','trnDesc1','trnDesc2','trnDesc3','workExperience'],
+        portfolio:[ 'works0','works1','works2','works3','works4','works5','works6','works7',
+            'workDesc0','workDesc1','workDesc2','workDesc3','workDesc4','workDesc5','workDesc6','workDesc7',
+            'githubLink','stackoverflowLink','behanceLink','instagramLink','dribbleLink',
+            'personalSite'],
+        skills:['primarySkills','design_skills_checkbox','primarySkills','design_styles'],
+        attributes:[ 'personal_interests','professional_attributes','charSkills']
+    };
+
+    let emptyInputs = $('.freelancerForm :input').filter(function() {
+            return ($(this).val() == "");
+    });
+
+    let completedSections = {
+        overview: true,
+        pay: true,
+        multimedia: true,
+        portfolio: true,
+        skills: true,
+        career: true,
+        attributes: true
+    };
+
+    let emptyInputsName = [];
+
+    for(let i =0; i < emptyInputs.length ; i++){
+        emptyInputsName.push(emptyInputs[i].name);
+    }
+
+
+   // remove uploaded files from the empty fileds file :
+    let uploadedFilesNames = getUploadedFilesNames()[0];
+    uploadedFilesNames.forEach(function (fileName) {
+        var index = emptyInputsName.indexOf(fileName);
+        if (index > -1) {
+            emptyInputsName.splice(index, 1);
+        }
+    });
+
+    let emptyFilesNames =  getUploadedFilesNames()[1];
+    emptyFilesNames.forEach(function (fileName) {
+        emptyInputsName.push(fileName);
+    });
+
+    // check if overview is completed :
+    emptyInputsName.forEach(function (emptyInput) {
+      let sectionsNames = Object.keys(sections);
+      sectionsNames.forEach(function (sectionName) {
+          if(sections[sectionName].includes(emptyInput)){
+              completedSections[sectionName] = false;
+          }
+      })
+
+
+    });
+
+    let completedSectionsArr = Object.entries(completedSections); // example : ['pay','true']
+
+    // add styles to completed sections :
+    for(let i=0; i<completedSectionsArr.length; i++){
+        if(completedSectionsArr[i][1]){
+           $("a[href='#"+completedSectionsArr[i][0]+"']").css('border-bottom-color','lawngreen');
+            // if they have class active : remove circle effects
+           $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").html('&#x2714;');
+           $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").css('color','lawngreen');
+           $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").css('background','none');
+        }else{
+            $("a[href='#"+completedSectionsArr[i][0]+"']").css('border-bottom-color','lightgray');
+            // if they have class active : remove circle effects
+            $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").css('color','gray');
+            $("a[href='#"+completedSectionsArr[i][0]+"'] .tabCircle").css('background','none');
+        }
+    }
+}
+
+function getUploadedFilesNames() {
+    let filesNames = [];
+
+    let emptyFiles = [];
+
+    // works files :
+
+    for(let i=0; i<=7;i++){
+        if($('#portfolioImg'+i).attr('src') !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
+            filesNames.push('works'+i);
+        }else{
+            emptyFiles.push('works'+i);
+        }
+    }
+
+    // profile photo files :
+    if($('#photoPreview').attr('src') !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png') { //empty
+        filesNames.push('photo');
+    }else{
+        emptyFiles.push('photo');
+    }
+
+    // audiofile :
+    if($('#audioIntroForm').attr('src') !=='') { //empty
+        filesNames.push('audioFile');
+    }else{
+        emptyFiles.push('audioFile');
+    }
+
+    // video file :
+    if($('#videoFileFrame').attr('src') !=='') { //empty
+        filesNames.push('video_file');
+    }else{
+        emptyFiles.push('video_file');
+    }
+
+
+    let files =[filesNames,emptyFiles];
+
+    return files;
+
 }

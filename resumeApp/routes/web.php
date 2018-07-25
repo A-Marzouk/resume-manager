@@ -88,6 +88,7 @@ Route::get('/conversation/delete/{id}','ConversationsController@deleteConversati
 
 // notification :
 Route::post('/','NotificationsController@messageToSales')->name('message.to.sales');
+Route::post('/message/freelancer','NotificationsController@messageToFreelancer')->name('message.to.freelancer');
 
 // stripe integration test
 Route::get('/stripe/payments','HomeController@stripeTest');

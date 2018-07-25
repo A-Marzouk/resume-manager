@@ -61,7 +61,8 @@
                     </div>
                 </div>
                 <div class="col-md-6 rightSide">
-                    <form id="contact-form" method="POST" class="form">
+                    <form method="POST" class="form" action="{{route('message.to.freelancer')}}">
+                        {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -80,7 +81,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="telephone" class="panelFormLabel">Subject</label>
-                                    <input type="tel" name="subject" class="form-control panelFormInput">
+                                    <input type="text" name="subject" class="form-control panelFormInput">
                                 </div>
                             </div>
                         </div>
@@ -88,10 +89,12 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="message" class="panelFormLabel">Message</label>
-                                    <input type="tel" name="message" class="form-control panelFormInput">
+                                    <input type="text" name="message" class="form-control panelFormInput">
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" name="freelancerResumeLink" value="{{$user->username}}">
+                        <input type="hidden" name="freelancerEmail" value="{{$user->email}}">
 
 
                         <div class="row">

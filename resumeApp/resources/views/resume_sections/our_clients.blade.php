@@ -1,5 +1,17 @@
 {{-- Get in touch Section --}}
 <div id="ourClients">
+    <?
+        // get current client :
+    use Illuminate\Support\Facades\Auth;
+    if(auth()->guard('client')->guest()){
+            $clientName = "";
+            $clientEmail = "";
+        }else{
+            $clientName  = auth()->guard('client')->user()->name;
+            $clientEmail = auth()->guard('client')->user()->email;
+        }
+
+    ?>
     <div class="row">
         <div class="col-lg-10 offset-lg-1 col-12">
             <div>
@@ -66,14 +78,18 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="username" class="panelFormLabel">Name</label>
-                                    <input type="text" id="username" name="name" class="form-control panelFormInput">
+                                    <label class="panelFormLabel">Name</label>
+                                    <input type="text" id="username" name="name" class="form-control panelFormInput"
+                                           value="{{$clientName}}"
+                                    >
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name" class="panelFormLabel">Email</label>
-                                    <input type="email" id="email" name="email" required="required" class="form-control panelFormInput">
+                                    <input type="email" id="email" name="email" required="required" class="form-control panelFormInput"
+                                        value="{{$clientEmail}}"
+                                    >
                                 </div>
                             </div>
                         </div>

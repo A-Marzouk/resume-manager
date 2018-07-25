@@ -106,6 +106,13 @@ class NotificationsController extends Controller
 
     // message to freelancer ( from resume page ) :
     public function messageToFreelancer(Request $request){
+        $request->validate([
+            'subject'=>'max:190',
+            'email'=>'max:190',
+            'name'=>'max:190',
+            'message'=>'max:1500',
+        ]);
+
         $emails          = $this->mailingList;
         $freelancerEmail = $request->freelancerEmail;
 
@@ -125,7 +132,7 @@ class NotificationsController extends Controller
 
         Mail::send('emails.message_to_freelancer',$data, function($message) use ($emails)
         {
-            $message->to($emails)->subject('Message from 123 workforce clint.');
+            $message->to($emails)->subject('Message from 123 workforce client.');
         });
 
         return redirect()->back()->with('successMessage', 'Thank you, your message has been sent.');

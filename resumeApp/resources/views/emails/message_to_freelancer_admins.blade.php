@@ -5,7 +5,7 @@
     <div class="mailText">
         Subject : <b>{{$subject}}</b><br/><br/>
         Message : <b>{{$messageBody}}</b><br/><br>
-        From (Client): <b>{{$name}}</b> {{ $email }}<br/>
+        From (Client): <b>{{$name}}</b>( {{ $email }} )<br/>
         To (Freelancer): <b>{{$freelancerEmail}}</b><br/>
         Freelancer resume : <b><a href="123workforce.magictimeapps.com/{{$freelancerResumeLink}}">Open Resume</a></b><br/>
     </div>

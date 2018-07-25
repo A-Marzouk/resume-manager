@@ -22,6 +22,8 @@
         @include('resume_sections.cv_bar')
         @include('resume_sections.about')
         @include('resume_sections.audio')
+        @include('resume_sections.video')
+        @include('resume_sections.career_objective')
         @include('resume_sections.education')
         @include('resume_sections.skills')
         @include('resume_sections.works')

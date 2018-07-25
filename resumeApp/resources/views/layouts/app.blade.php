@@ -71,7 +71,7 @@ if($user){
                     @else
                         <li class="nav-link nav-item customNavLink">
                             <a style="color:#637280;" href="/freelancer">
-                                {{auth()->user()->username}}
+                                {{auth()->user()->firstName}}
                             </a>
                         </li>
                         <li>

@@ -24,6 +24,8 @@ class UserDataController extends Controller
                    'eduTitle1'=>'max:190',
                    'eduTitle2'=>'max:190',
                    'eduTitle3'=>'max:190',
+                   'languages'=>'max:190|required',
+                   'photo'=>'required',
                    'nationality'=>'max:190',
                    'audioFile'=>'max:190',
                    'audio'=>'max:190',

@@ -55,8 +55,8 @@
             <input type="text" style="@if($errors->has('city')) border:1px solid red; @endif" class="form-control panelFormInput" name="city" value="{{$city}}">
         </div> <!-- city -->
         <div class="form-group col-md-6 col-lg-4">
-            <label for="languages"  class="panelFormLabel">Languages you speak at a high level<span id="tickMarklanguages" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-            <input type="text" class="form-control panelFormInput" id="languages" name="languages" value="{{$languages}}">
+            <label for="languages"  class="panelFormLabel">Languages you speak <span style="font-size:small;">*</span> <span id="tickMarklanguages" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <input type="text" class="form-control panelFormInput" id="languages" name="languages" value="{{$languages}}" required>
             <small>Separated by commas</small>
         </div> <!-- Languages -->
     </div>
@@ -81,8 +81,9 @@
     </div>
     <div class="row">
         <div class="form-group col-md-12">
-            <span id="tickMarkphoto" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-            <span class="panelFormLabel col-md-4">Choose photo (1024 wide x 1024 height)</span>
+            <span class="panelFormLabel col-md-4">Choose photo (1024 wide x 1024 height) <span style="font-size:small;">*</span></span>
+            <span id="tickMarkphoto" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;">
+            </span>
             <div class="input-group" style="opacity: 0; height: 3px;">
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" name="photo" id="photoInput">

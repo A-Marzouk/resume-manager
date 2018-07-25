@@ -137,14 +137,6 @@
     </div>
     <!-- trainings -->
 
-    <hr>
-
-    <div class="form-group col-md-12">
-        <label for="" class="panelFormLabel">Work Experience <span id="tickMarkworkExperience" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-        <textarea class="form-control" rows="3" id="work_experience" name="workExperience">{{$workExperience}}
-     </textarea>
-    </div> <!-- work exp -->
-
     <div class="row">
         <div class="buttonMain col-md-3 offset-md-9">
             <a class="btn-block hireBtn nextBtn"  href="#portfolio">Next</a>

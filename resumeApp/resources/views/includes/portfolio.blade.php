@@ -36,11 +36,16 @@
             <input type="text" class="form-control panelFormInput" name="personalSite" value="{{$personalSite}}">
         </div> <!-- site link -->
     </div> <hr>
+    <div class="form-group col-md-12">
+        <label for="" class="panelFormLabel">Work overview<span id="tickMarkworkExperience" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+        <textarea class="form-control" rows="3" id="work_experience" name="workExperience">{{$workExperience}}
+     </textarea>
+    </div> <!-- work exp -->
+    <hr>
 
     <div class="form-group row">
         {{-- Developer --}}
-        <label class="col-md-12 panelFormLabel">Please Upload 8 examples of your  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> work (800 wide x 600 height)</label>
-
+        <label class="col-md-12 panelFormLabel" style="padding-bottom: 20px;">Please Upload 8 examples of your  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> work (800 wide x 600 height) </label>
         @for($i=0;$i<8;$i++)
             <?
             $deleteBtn = false;
@@ -60,7 +65,7 @@
                     <div class="col-md-6" style="opacity: 0; height: 3px;">
                         <p class="btn btn-outline-danger btn-sm" id="deletePhoto{{$i}}">Delete</p>
                     </div>
-                    <div class="col-md-3" style="opacity: 0;">
+                    <div class="col-md-3" style="opacity: 0; height:.5px; width: .5px;">
                         <div class="custom-file" id="customFile{{$i}}" style=" display: block; padding-top: 5px;">
                             <input type="file" class="custom-file-input" id="works{{$i}}" name="works{{$i}}" value="">
                             <label class="custom-file-label" for="">{{$uploadBtn}}</label>

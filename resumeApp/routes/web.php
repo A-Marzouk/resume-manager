@@ -97,6 +97,11 @@ Route::get('/stripe/payments/pay',function(){
     return redirect()->back();
 });
 
+// work history page
+Route::get('/freelancer/work','WorksHistoryController@showHistory')->name('show.work');
+Route::get('/freelancer/workshistory','WorksHistoryController@getWorks')->name('get.work');
+
+
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');
 Route::get('/{username}','HomeController@ResumePage');

@@ -21,10 +21,19 @@ $.ajaxSetup({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.config.devtools = true;
+
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('chat-message', require('./components/chatMessage.vue'));
 Vue.component('chat-log', require('./components/chatLog.vue'));
 Vue.component('chat-composer', require('./components/chatComposer.vue'));
+
+Vue.component('works-list', require('./components/worksListComponent.vue'));
+Vue.component('work-history', require('./components/workHistoryComponent.vue'));
+
+new Vue({
+    el:'#work_overview'
+});
 
 const app = new Vue({
     el: '#VueChat',
@@ -138,3 +147,6 @@ const app = new Vue({
 
     }
 });
+
+
+

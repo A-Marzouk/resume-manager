@@ -185,20 +185,5 @@ if($user){
 
         });
     </script>
-
-{{-- jquery mobile for carousel --}}
-<script src="resumeApp/resources/views/customTheme/js/jquery.mobile.custom.min.js"></script>
-<script>
-    $(document).on('pageinit', function(event){
-        $("#carouselExampleIndicators").swiperight(function() {
-            alert('prev');
-            $(this).carousel('prev');
-        });
-        $("#carouselExampleIndicators").swipeleft(function() {
-            alert('next');
-            $(this).carousel('next');
-        });
-    });
-</script>
 </body>
 </html>

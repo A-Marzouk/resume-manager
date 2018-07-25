@@ -400,7 +400,32 @@ body{
     margin-right: auto;
   }
 }
+// vidoe introduction section :
 
+#video{
+  .videoHeading{
+    @media only screen and (max-width: 600px){
+      padding-bottom: 20px;
+      padding-left : 25px;
+    }
+  }
+  img{
+    height: 50px;	width: 50px;	opacity: 0.9;
+  }
+  .quoteText{
+    color: #697786;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 24px;
+    margin-top: 1.5%;
+    padding-left: 10px;
+  }
+
+  #videoResume{
+    padding-top: 20px;
+  }
+}
 // audio introduction section
 
 #audio{

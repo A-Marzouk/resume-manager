@@ -1,6 +1,10 @@
 <template>
     <div>
-       <work-history></work-history>
+       <work-history v-for="work in works"  v-bind:key="work.text">
+           <b>{{work.job_title}}</b><br/>
+               {{work.company}}<br/>
+               {{work.job_description}}
+       </work-history>
     </div>
 </template>
 

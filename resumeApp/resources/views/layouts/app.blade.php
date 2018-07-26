@@ -9,7 +9,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>123 Workforce</title>
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <link rel="shortcut icon" href="/resumeApp/resources/views/customTheme/images/logo123.png">
     <!-- Fonts -->
@@ -131,8 +130,6 @@ if($user){
         <? endif;?>
     </div>
 <script type="text/javascript" src="/resumeApp/public/js/app.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
 <script src="/resumeApp/resources/views/customTheme/js/main.js"></script>
     <script>
         $(document).ready(function(){

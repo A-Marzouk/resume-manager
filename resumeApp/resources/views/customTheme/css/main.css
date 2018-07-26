@@ -1542,4 +1542,30 @@ body {
     .one {
       text-align: center !important; } }
 
+.workExperience {
+  color: #697786;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 300;
+  margin: 20px;
+  line-height: 24px;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  padding: 10px; }
+  .workExperience span {
+    padding-left: 5px; }
+
+#addWorkText {
+  outline: none; }
+  #addWorkText span {
+    color: #697786;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    outline: none; }
+
+.noHoverEffect a:hover {
+  text-decoration: none; }
+
 /*# sourceMappingURL=main.css.map */

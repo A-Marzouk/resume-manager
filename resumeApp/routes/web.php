@@ -101,6 +101,8 @@ Route::get('/stripe/payments/pay',function(){
 Route::get('/freelancer/work','WorksHistoryController@showHistory')->name('show.work'); // this we will delete later
 Route::get('/freelancer/workshistory','WorksHistoryController@getWorks')->name('get.work');
 Route::post('/freelancer/addwork/','WorksHistoryController@addWork')->name('add.work');
+Route::post('/freelancer/deletework/','WorksHistoryController@deleteWork')->name('delete.work');
+Route::post('/freelancer/editwork/','WorksHistoryController@editWork')->name('edit.work');
 
 
 // public routes :

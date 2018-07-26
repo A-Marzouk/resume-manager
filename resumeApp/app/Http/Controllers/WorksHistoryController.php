@@ -34,8 +34,41 @@ class WorksHistoryController extends Controller
             'date_to' => 'max:190',
         ]);
 
-        $workH = new WorkHistory;
-        $workH->user_id = $currentUser->id;
+        if(isset($request->id)){
+            // edit
+            $workH = WorkHistory::where('id',$request->id)->first();
+        }else{
+            // add
+            $workH = new WorkHistory;
+            $workH->user_id = $currentUser->id;
+        }
+
+        $workH->job_title = $request->job_title;
+        $workH->company = $request->company;
+        $workH->job_description = $request->job_description;
+        $workH->date_from = $request->date_from;
+        if($request->currently_working !== true){
+            $workH->date_to = $request->date_to;
+            $workH->currently_working = $request->currently_working;
+        }
+
+        $workH->save();
+
+
+        return ['id'=>$workH->id];
+
+    }
+
+    public function deleteWork(Request $request){
+        // delete work history
+        $workHistory = WorkHistory::where('id',$request->workHistoryID);
+        $workHistory->delete();
+        return 'Work deleted';
+    }
+
+    public function editWork(Request $request){
+        $workH = WorkHistory::where('id',$request->id);
+
         $workH->job_title = $request->job_title;
         $workH->company = $request->company;
         $workH->job_description = $request->job_description;
@@ -45,9 +78,5 @@ class WorksHistoryController extends Controller
             $workH->currently_working = $request->currently_working;
         }
         $workH->save();
-
-
-        return ['status' => 'ok'];
-
     }
 }

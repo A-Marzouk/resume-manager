@@ -14327,10 +14327,9 @@ Vue.component('works-list', __webpack_require__(63));
 Vue.component('work-history', __webpack_require__(68));
 Vue.component('add-work-modal', __webpack_require__(71));
 
-new Vue({
+var work_overview = new Vue({
     el: '#work_overview'
 });
-
 var app = new Vue({
     el: '#VueChat',
     data: {
@@ -53912,24 +53911,10 @@ var render = function() {
             }
           ],
           staticClass:
-            "text-center align-middle col-lg-3 col-md-5 noHoverEffect"
+            "text-center align-middle col-lg-3 col-md-5 noHoverEffect",
+          on: { click: _vm.clearData }
         },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-default btn-workExp",
-              attrs: {
-                "data-toggle": "modal",
-                "data-target": "#addWorkModal",
-                href: "javascript:void(0)",
-                id: "addWorkText"
-              },
-              on: { click: _vm.clearData }
-            },
-            [_vm._m(0)]
-          )
-        ]
+        [_vm._m(0)]
       ),
       _vm._v(" "),
       _c("br"),
@@ -53947,16 +53932,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("span", [
-      _c("img", {
+    return _c(
+      "a",
+      {
+        staticClass: "btn btn-default btn-workExp",
         attrs: {
-          src: "/resumeApp/resources/views/customTheme/images/add_work_img.png",
-          alt: "add work",
-          width: "30px"
+          "data-toggle": "modal",
+          "data-target": "#addWorkModal",
+          id: "addWorkText"
         }
-      }),
-      _vm._v("\n                Add work experience\n            ")
-    ])
+      },
+      [
+        _c("span", [
+          _c("img", {
+            attrs: {
+              src:
+                "/resumeApp/resources/views/customTheme/images/add_work_img.png",
+              alt: "add work",
+              width: "30px"
+            }
+          }),
+          _vm._v("\n                Add work experience\n            ")
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

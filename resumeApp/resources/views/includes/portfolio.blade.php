@@ -36,10 +36,11 @@
             <input type="text" class="form-control panelFormInput" name="personalSite" value="{{$personalSite}}">
         </div> <!-- site link -->
     </div> <hr>
-    <div class="form-group col-md-12">
-        <label for="" class="panelFormLabel">Work overview<span id="tickMarkworkExperience" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-        <textarea class="form-control" rows="3" id="work_experience" name="workExperience">{{$workExperience}}
-     </textarea>
+    <div class="col-md-12">
+        <label for="work_overview" class="panelFormLabel">Work overview</label>
+        <div class="container" id="work_overview">
+            <works-list></works-list>
+        </div>
     </div> <!-- work exp -->
     <hr>
 

@@ -18,13 +18,13 @@
                 {{work.job_description}}
             </work-history>
         </transition-group>
-        <div class="text-center align-middle col-lg-3 col-md-5 noHoverEffect" v-show="this.canAdd">
-            <button class="btn btn-default btn-workExp" @click="clearData" data-toggle="modal" data-target="#addWorkModal" href="javascript:void(0)" id="addWorkText">
+        <div class="text-center align-middle col-lg-3 col-md-5 noHoverEffect" v-show="this.canAdd" @click="clearData">
+            <a class="btn btn-default btn-workExp" data-toggle="modal" data-target="#addWorkModal" id="addWorkText">
                 <span>
                     <img src="/resumeApp/resources/views/customTheme/images/add_work_img.png" alt="add work" width="30px">
                     Add work experience
                 </span>
-            </button>
+            </a>
         </div>
         <br/>
         <add-work-modal @workAdded="addWorkHistory" :toBeEditedWork="toBeEditedWork"></add-work-modal>
@@ -106,6 +106,7 @@
                     this.canAdd = true;
                 }
             },
+
             clearData(){
                 this.toBeEditedWork={
                     'id':'',

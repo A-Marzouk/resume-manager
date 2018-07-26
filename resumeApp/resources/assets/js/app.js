@@ -30,6 +30,7 @@ Vue.component('chat-composer', require('./components/chatComposer.vue'));
 
 Vue.component('works-list', require('./components/worksListComponent.vue'));
 Vue.component('work-history', require('./components/workHistoryComponent.vue'));
+Vue.component('add-work-modal', require('./components/addWorkComponent.vue'));
 
 new Vue({
     el:'#work_overview'

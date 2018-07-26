@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(69);
+module.exports = __webpack_require__(72);
 
 
 /***/ }),
@@ -14325,6 +14325,7 @@ Vue.component('chat-composer', __webpack_require__(58));
 
 Vue.component('works-list', __webpack_require__(63));
 Vue.component('work-history', __webpack_require__(66));
+Vue.component('add-work-modal', __webpack_require__(69));
 
 new Vue({
     el: '#work_overview'
@@ -53620,6 +53621,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -53635,8 +53642,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/freelancer/workshistory').then(function (response) {
                 _this.works = response.data;
-                console.log(_this.works);
             });
+        },
+        addWorkHistory: function addWorkHistory(newWork) {
+            this.works.push(newWork);
         }
     },
 
@@ -53655,15 +53664,51 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.works, function(work) {
-      return _c("work-history", { key: work.text }, [
-        _c("b", [_vm._v(_vm._s(work.job_title))]),
-        _c("br"),
-        _vm._v("\n           " + _vm._s(work.company)),
-        _c("br"),
-        _vm._v("\n           " + _vm._s(work.job_description) + "\n   ")
-      ])
-    })
+    [
+      _vm._l(_vm.works, function(work) {
+        return _c("work-history", { key: work.text }, [
+          _c("b", [_vm._v(_vm._s(work.job_title))]),
+          _c("br"),
+          _vm._v("\n           " + _vm._s(work.company)),
+          _c("br"),
+          _vm._v("\n           " + _vm._s(work.job_description)),
+          _c("br"),
+          _vm._v("\n           " + _vm._s(work.date_from) + " "),
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: work.date_to,
+                  expression: "work.date_to"
+                }
+              ]
+            },
+            [_vm._v(" - " + _vm._s(work.date_to))]
+          )
+        ])
+      }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-default",
+          attrs: {
+            type: "button",
+            "data-toggle": "modal",
+            "data-target": "#addWorkModal"
+          }
+        },
+        [_vm._v("\n        Add work experience\n    ")]
+      ),
+      _vm._v(" "),
+      _c("add-work-modal", { on: { workAdded: _vm.addWorkHistory } })
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -53764,6 +53809,505 @@ if (false) {
 
 /***/ }),
 /* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(70)
+/* template */
+var __vue_template__ = __webpack_require__(71)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\addWorkComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-21f123a2", Component.options)
+  } else {
+    hotAPI.reload("data-v-21f123a2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 70 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            formData: {
+                'job_title': '',
+                'job_description': '',
+                'company': '',
+                'date_from': '',
+                'date_to': '',
+                'currently_working': ''
+            }
+        };
+    },
+
+    methods: {
+        submitForm: function submitForm() {
+            // post data :
+            axios.post('/freelancer/addwork', this.formData).then(function (response) {
+                console.log(response.data);
+            });
+            $('#closeModal').click();
+            this.$emit('workAdded', this.formData);
+        }
+    }
+});
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addWorkModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addWorkModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  {
+                    attrs: { action: "/freelancer/addwork/", method: "post" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.submitForm($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "job_title" } }, [
+                        _vm._v("Job title :")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.formData.job_title,
+                            expression: "formData.job_title"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "job_title",
+                          name: "job_title",
+                          required: ""
+                        },
+                        domProps: { value: _vm.formData.job_title },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.formData,
+                              "job_title",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "company" } }, [
+                        _vm._v("Company:")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.formData.company,
+                            expression: "formData.company"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "company",
+                          name: "company",
+                          required: ""
+                        },
+                        domProps: { value: _vm.formData.company },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.formData,
+                              "company",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "job_description" } }, [
+                        _vm._v("Job description :")
+                      ]),
+                      _vm._v(" "),
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.formData.job_description,
+                            expression: "formData.job_description"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          rows: "3",
+                          id: "job_description",
+                          name: "job_description",
+                          required: ""
+                        },
+                        domProps: { value: _vm.formData.job_description },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.formData,
+                              "job_description",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { attrs: { for: "date_from" } }, [
+                        _vm._v("From :")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.formData.date_from,
+                            expression: "formData.date_from"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "date",
+                          id: "date_from",
+                          name: "date_from",
+                          required: ""
+                        },
+                        domProps: { value: _vm.formData.date_from },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.formData,
+                              "date_from",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.formData.currently_working,
+                            expression: "!formData.currently_working"
+                          }
+                        ],
+                        staticClass: "form-group"
+                      },
+                      [
+                        _c("label", { attrs: { for: "date_from" } }, [
+                          _vm._v("To :")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formData.date_to,
+                              expression: "formData.date_to"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "date",
+                            id: "date_to",
+                            name: "date_to"
+                          },
+                          domProps: { value: _vm.formData.date_to },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.formData,
+                                "date_to",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass:
+                          "form-check-label col-md-3 checkBoxText checkBoxContainer"
+                      },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formData.currently_working,
+                              expression: "formData.currently_working"
+                            }
+                          ],
+                          staticClass: "form-check-input",
+                          staticStyle: {
+                            "@if($errors->has('design_skills_checkbox')) border":
+                              "1px solid red"
+                          },
+                          attrs: {
+                            type: "checkbox",
+                            name: "currently_working",
+                            checked: ""
+                          },
+                          domProps: {
+                            checked: Array.isArray(
+                              _vm.formData.currently_working
+                            )
+                              ? _vm._i(_vm.formData.currently_working, null) >
+                                -1
+                              : _vm.formData.currently_working
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$a = _vm.formData.currently_working,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = null,
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    _vm.$set(
+                                      _vm.formData,
+                                      "currently_working",
+                                      $$a.concat([$$v])
+                                    )
+                                } else {
+                                  $$i > -1 &&
+                                    _vm.$set(
+                                      _vm.formData,
+                                      "currently_working",
+                                      $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1))
+                                    )
+                                }
+                              } else {
+                                _vm.$set(_vm.formData, "currently_working", $$c)
+                              }
+                            }
+                          }
+                        }),
+                        _vm._v(
+                          "\n                            Present\n                            "
+                        ),
+                        _c("span", { staticClass: "checkmark" })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "text-right", staticStyle: { "padding-right": "12px" } },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "modal",
+              "aria-label": "Close",
+              id: "closeModal"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Add")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-21f123a2", module.exports)
+  }
+}
+
+/***/ }),
+/* 72 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

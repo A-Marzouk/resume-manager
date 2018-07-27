@@ -164,7 +164,7 @@
             ],
             '5. Portfolio' => [
                 'link'=>'portfolio',
-                'workExperience', 'works0','works1','works2','works3','works4','works5','works6','works7',
+                'works0','works1','works2','works3','works4','works5','works6','works7',
                 'workDesc0','workDesc1','workDesc2','workDesc3','workDesc4','workDesc5','workDesc6','workDesc7',
                 'githubLink','stackoverflowLink','behanceLink','instagramLink','dribbleLink',
                 'personalSite'

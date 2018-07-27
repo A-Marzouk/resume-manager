@@ -37,7 +37,7 @@ class HomeController extends Controller
         }
         $primarySkills = explode(',',$user->primarySkills);
         $charSkills = explode(',',$user->charSkills);
-        return view('resume', compact('user','profession','primarySkills','charSkills'));
+        return view('resume', compact('user','profession','primarySkills','charSkills','user1'));
     }
 
 

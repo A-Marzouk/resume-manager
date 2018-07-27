@@ -399,6 +399,8 @@ body {
     color: white;
     padding: 0 3px 0 3px;
     font-size: 11px; }
+  .aboutSubText .year .work {
+    padding-left: 37px; }
 .aboutSubText .title {
   color: #697786;
   font-family: Roboto;
@@ -407,6 +409,8 @@ body {
   line-height: 25px;
   padding-left: 37px;
   word-spacing: .15rem; }
+  .aboutSubText .title .work {
+    padding-left: 0px; }
 .aboutSubText .desc {
   color: #C5A7FD;
   font-family: Roboto;

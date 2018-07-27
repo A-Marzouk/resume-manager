@@ -14,10 +14,6 @@ use Illuminate\Http\Request;
 
 class WorksHistoryController extends Controller
 {
-    public function showHistory(){ // function for testing to open the page of works history
-        return view('includes.work_overview');
-    }
-
     public function getWorks(){
        // get current authenticated freelancer :
         $currentUser = auth()->user();
@@ -49,8 +45,8 @@ class WorksHistoryController extends Controller
         $workH->date_from = $request->date_from;
         if($request->currently_working !== true){
             $workH->date_to = $request->date_to;
-            $workH->currently_working = $request->currently_working;
         }
+        $workH->currently_working = $request->currently_working;
 
         $workH->save();
 

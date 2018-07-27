@@ -49,7 +49,7 @@
                     <div class="row">
                         <!-- google map git langitude and attitude for JS-->
                         <?
-                        if(empty($user->city)){ // TODO : if !empty needed here
+                        if(!empty($user->city)){
                             $address = $user->city; // Google HQ
                             $prepAddr = str_replace(' ','+',$address);
                             $geocode =file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&key=AIzaSyDZWJcFQabrMDUPmXaiU7wlZ74dzm_virI');

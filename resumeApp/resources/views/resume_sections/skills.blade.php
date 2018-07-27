@@ -39,6 +39,15 @@
         <div class="col-lg-10 offset-lg-1 col-12 moreSkills">
             <div class="row">
                 <?
+                $moreSkills = explode(',',$user->design_skills);
+                ?>
+                <? if( count($moreSkills > 0)):?>
+                <? foreach ($moreSkills as $skill):?>
+                <div class="skillBox" style="border-color:#f100ff; ">{{$skill}}</div>
+                <? endforeach;?>
+                <? endif;?>
+
+                <?
                 $counter = count($charSkills);
                 if($counter > 10 ){
                     $counter = 10 ;

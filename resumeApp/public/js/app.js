@@ -53687,6 +53687,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -53700,7 +53701,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'company': '',
                 'date_from': '',
                 'date_to': '',
-                'currently_working': true
+                'currently_working': ''
             }
         };
     },
@@ -53711,7 +53712,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             axios.get('/freelancer/workshistory').then(function (response) {
-                _this.works = response.data;
+                var currWorks = response.data;
+                $.each(currWorks, function (i) {
+                    if (currWorks[i].currently_working == "0") {
+                        currWorks[i].currently_working = false;
+                    } else {
+                        currWorks[i].currently_working = true;
+                    }
+                });
+                _this.works = currWorks;
             });
         },
         addWorkHistory: function addWorkHistory(newWork) {
@@ -53768,7 +53777,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'company': '',
                 'date_from': '',
                 'date_to': '',
-                'currently_working': true
+                'currently_working': ''
             };
         }
     },
@@ -53859,7 +53868,11 @@ var render = function() {
               _c("br"),
               _vm._v("\n            " + _vm._s(work.company)),
               _c("br"),
-              _vm._v("\n            Start :" + _vm._s(work.date_from) + " "),
+              _vm._v(
+                "\n            Start :" +
+                  _vm._s(work.date_from) +
+                  "\n            "
+              ),
               _c(
                 "span",
                 {
@@ -53867,8 +53880,9 @@ var render = function() {
                     {
                       name: "show",
                       rawName: "v-show",
-                      value: work.date_to,
-                      expression: "work.date_to"
+                      value: work.date_to && work.currently_working !== true,
+                      expression:
+                        "work.date_to && work.currently_working !== true"
                     }
                   ]
                 },
@@ -53882,8 +53896,8 @@ var render = function() {
                     {
                       name: "show",
                       rawName: "v-show",
-                      value: !work.date_to,
-                      expression: "!work.date_to"
+                      value: work.currently_working !== false,
+                      expression: "work.currently_working !== false"
                     }
                   ]
                 },
@@ -54483,6 +54497,7 @@ var render = function() {
                                   "1px solid red"
                               },
                               attrs: {
+                                id: "currently_working",
                                 type: "checkbox",
                                 name: "currently_working"
                               },

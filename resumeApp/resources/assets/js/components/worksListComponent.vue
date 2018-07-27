@@ -12,8 +12,9 @@
                 </button>
                 <b style="font-size:16px; font-weight:bolder; ">{{work.job_title}}</b><br/>
                 {{work.company}}<br/>
-                Start :{{work.date_from}} <span v-show="work.date_to"> End : {{work.date_to}}</span>
-                <span v-show="!work.date_to"> - Present</span><br/><br/>
+                Start :{{work.date_from}}
+                <span v-show="work.date_to && work.currently_working !== true"> End : {{work.date_to}}</span>
+                <span v-show="work.currently_working !== false"> - Present</span><br/><br/>
 
                 {{work.job_description}}
             </work-history>
@@ -44,7 +45,7 @@
                     'company' :'',
                     'date_from' :'',
                     'date_to' :'',
-                    'currently_working':true
+                    'currently_working':''
                 }
             }
         },
@@ -53,7 +54,15 @@
             getCurrentWorks() {
                 axios.get('/freelancer/workshistory').then(
                     (response) => {
-                        this.works = response.data;
+                        let currWorks =  response.data;
+                        $.each(currWorks, function(i){
+                            if(currWorks[i].currently_working == "0") {
+                                currWorks[i].currently_working = false;
+                            }else{
+                                currWorks[i].currently_working = true;
+                            }
+                        });
+                        this.works = currWorks;
                     }
                 );
             },
@@ -115,7 +124,7 @@
                     'company' :'',
                     'date_from' :'',
                     'date_to' :'',
-                    'currently_working':true
+                    'currently_working':''
                 };
             }
         },

@@ -11,13 +11,6 @@
                     Sign up today to be connected with the world’s leading Digital Agencies & Companies that are currently hiring.
                 </div>
 
-                <!-- Display Errors  -->
-                <? foreach($errors->all() as $error):?>
-                <div class="form-group col-md-8">
-                    <div class="alert alert-danger">{{$error}}</div>
-                </div>
-                <? endforeach;?>
-
                 <form method="POST" action="{{ route('freelancer.register.submit') }}" class="clientForm">
                         @csrf
                     <div class="row">
@@ -63,34 +56,20 @@
                                     </div> <!-- email -->
                                 </div>
                                 <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="profession" class="formLabel">Profession</label>
+                                            <select class="custom-select" style="height: 50px;" id="profession" name="profession" required>
 
-                                    <div class="form-group">
-                                        <label for="username" class="formLabel">Username</label>
-                                        <input class="panelFormInput form-control  {{ $errors->has('username') ? ' is-invalid' : '' }}" type="text" name="username" id="username" value="{{ old('username') }}" required>
-                                        @if ($errors->has('username'))
-                                            <span class="invalid-feedback">
-                                            <strong>{{ $errors->first('username') }}</strong>
-                                        </span>
-                                        @endif
-                                    </div> <!-- username -->
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="profession" class="formLabel">Profession</label>
-                                        <select class="custom-select" style="height: 50px;" id="profession" name="profession" required>
+                                                <option value="" >-- Select --</option>
+                                                <option value="Developer" >Developer
+                                                    (Front-end / Back-end / Full-Stack / Javascript / Wordpress / PHP )
+                                                </option>
+                                                <option value="Designer">Designer (UX / UI / Illustrator / Art Director )
 
-                                            <option value="" >-- Select --</option>
-                                            <option value="Developer" >Developer
-                                                (Front-end / Back-end / Full-Stack / Javascript / Wordpress / PHP )
-                                            </option>
-                                            <option value="Designer">Designer (UX / UI / Illustrator / Art Director )
+                                                </option>
 
-                                            </option>
-
-                                        </select>
-                                    </div>
+                                            </select>
+                                        </div>
                                 </div>
                             </div>
                             <div class="row">

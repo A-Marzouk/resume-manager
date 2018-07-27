@@ -9,10 +9,6 @@
                         <a class="nav-item nav-link secondNavLink " href="#skills">Skills</a>
                         <a class="nav-item nav-link secondNavLink " href="#work">Work</a>
                         <a class="nav-item nav-link secondNavLink " href="#ourClients">Contact</a>
-                        <a href="#" class="downCV">
-                            <img src="resumeApp/resources/views/customTheme/images/newResume/download_cv.png" style="width: 20px">
-                            <img src="resumeApp/resources/views/customTheme/images/newResume/Download CV.png" style="width: 100px;padding-top: 6px;padding-left: 5px;">
-                        </a>
                     </div>
                 </div>
             </nav>
@@ -27,9 +23,6 @@
         <a class="nav-item nav-link secondNavLink navMobileLink" href="#skills">Skills</a>
         <a class="nav-item nav-link secondNavLink navMobileLink" href="#work">Work</a>
         <a class="nav-item nav-link secondNavLink navMobileLink" href="#ourClients">Contact</a>
-        <a href="#" class="downCV">
-            <img src="resumeApp/resources/views/customTheme/images/newResume/download_cv.png" style="width: 20px">
-        </a>
     </div>
 </div>
 

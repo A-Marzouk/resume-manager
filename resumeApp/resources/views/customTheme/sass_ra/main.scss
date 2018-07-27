@@ -400,7 +400,33 @@ body{
     margin-right: auto;
   }
 }
+// vidoe introduction section :
 
+#video{
+  padding-bottom: 20px;
+  .videoHeading{
+    @media only screen and (max-width: 600px){
+      padding-bottom: 20px;
+      padding-left : 25px;
+    }
+  }
+  img{
+    height: 50px;	width: 50px;	opacity: 0.9;
+  }
+  .quoteText{
+    color: #697786;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 24px;
+    margin-top: 1.5%;
+    padding-left: 10px;
+  }
+
+  #videoResume{
+    padding-top: 20px;
+  }
+}
 // audio introduction section
 
 #audio{
@@ -447,6 +473,9 @@ body{
       padding: 0 3px 0 3px;
       font-size: 11px;
     }
+    .work{
+      padding-left: 37px;
+    }
   }
   .title{
     color: #697786;
@@ -456,6 +485,9 @@ body{
     line-height: 25px;
     padding-left: 37px;
     word-spacing: .15rem;
+    .work{
+      padding-left: 0px;
+    }
   }
   .desc{
     color: #C5A7FD;
@@ -1857,5 +1889,38 @@ body{
     @media screen and (max-width: 531px) {
       text-align: center !important;
     }
+  }
+}
+
+.workExperience{
+  color: #697786;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 300;
+  margin:20px;
+  line-height: 24px;
+  border:1px solid lightgray;
+  border-radius: 15px;
+  padding: 10px;
+  span{
+    padding-left: 5px;
+  }
+}
+
+#addWorkText{
+  outline: none;
+  span{
+    color: #697786;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    outline: none;
+  }
+}
+
+.noHoverEffect{
+  a:hover{
+    text-decoration: none;
   }
 }

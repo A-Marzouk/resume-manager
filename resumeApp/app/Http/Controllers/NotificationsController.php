@@ -13,24 +13,15 @@ use Illuminate\Support\Facades\Mail;
 
 class NotificationsController extends Controller
 {
-    private $emailsForResumeUpdate = [
+    private $mailingList = [
         'shey@123workforce.com',
         'AhmedMarzouk266@gmail.com',
         'riz@123workforce.com',
         'conor@123workforce.com',
-        'antonia@123workforce.com'
-    ];
-
-    private $emailsForNewFreelancers = [
-        'shey@123workforce.com',
-        'AhmedMarzouk266@gmail.com',
-        'riz@123workforce.com',
-        'conor@123workforce.com',
-        'antonia@123workforce.com'
     ];
 
     public function resumeEditedEmail(){
-        $emails = $this->emailsForResumeUpdate;
+        $emails = $this->mailingList;
         Mail::send('emails.freelancer_edited', ['key' => 'value'], function($message) use ($emails)
         {
             $message->to($emails)->subject('User has updated resume !');
@@ -68,7 +59,7 @@ class NotificationsController extends Controller
     }
 
     public function freelancerRegisteredEmail($data){
-        $emails = $this->emailsForNewFreelancers;
+        $emails = $this->mailingList;
         Mail::send('emails.freelancer_registered',$data, function($message) use ($emails)
         {
             $message->to($emails)->subject('New freelancer on board!');
@@ -76,7 +67,7 @@ class NotificationsController extends Controller
     }
 
     public function freelancerWelcomeEmail($data){
-        $emails = $this->emailsForNewFreelancers;
+        $emails = $this->mailingList;
         Mail::send('emails.freelancer_welcome',$data, function($message) use ($emails,$data)
         {
             $message->to($data['email'])->subject('Welcome to 123 Workforce');
@@ -86,7 +77,7 @@ class NotificationsController extends Controller
     // clients :
 
     public function clientRegisteredEmail($data){
-        $emails = $this->emailsForNewFreelancers;
+        $emails = $this->mailingList;
         Mail::send('emails.client_registered',$data, function($message) use ($emails)
         {
             $message->to($emails)->subject('New client on board!');
@@ -109,7 +100,43 @@ class NotificationsController extends Controller
             $message->to($emails)->subject('Message to sales');
         });
 
-        return redirect('/')->with('successMessage', 'Thank you, your message has been sent.');;;
+        return redirect('/')->with('successMessage', 'Thank you, your message has been sent.');
+    }
+
+
+    // message to freelancer ( from resume page ) :
+    public function messageToFreelancer(Request $request){
+        $request->validate([
+            'subject'=>'max:190',
+            'email'=>'max:190',
+            'name'=>'max:190',
+            'message'=>'max:1500',
+        ]);
+
+        $emails          = $this->mailingList;
+        $freelancerEmail = $request->freelancerEmail;
+
+        $data = [
+            'subject' => $request->subject,
+            'messageBody' => trim($request->message),
+            'email' => $request->email,
+            'name' => $request->name,
+            'freelancerResumeLink'=>$request->freelancerResumeLink,
+            'freelancerEmail'=>$freelancerEmail
+        ];
+
+        Mail::send('emails.message_to_freelancer_admins',$data, function($message) use ($freelancerEmail)
+        {
+            $message->to($freelancerEmail)->subject('Client sent message to freelancer.');
+        });
+
+        Mail::send('emails.message_to_freelancer',$data, function($message) use ($emails)
+        {
+            $message->to($emails)->subject('Message from 123 workforce client.');
+        });
+
+        return redirect()->back()->with('successMessage', 'Thank you, your message has been sent.');
+
     }
 
 }

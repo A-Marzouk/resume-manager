@@ -88,6 +88,7 @@ Route::get('/conversation/delete/{id}','ConversationsController@deleteConversati
 
 // notification :
 Route::post('/','NotificationsController@messageToSales')->name('message.to.sales');
+Route::post('/message/freelancer','NotificationsController@messageToFreelancer')->name('message.to.freelancer');
 
 // stripe integration test
 Route::get('/stripe/payments','HomeController@stripeTest');
@@ -95,6 +96,13 @@ Route::post('/stripe/payments/pay','HomeController@stripePayment');
 Route::get('/stripe/payments/pay',function(){
     return redirect()->back();
 });
+
+// work history
+Route::get('/freelancer/workshistory','WorksHistoryController@getWorks')->name('get.work');
+Route::post('/freelancer/addwork/','WorksHistoryController@addWork')->name('add.work');
+Route::post('/freelancer/deletework/','WorksHistoryController@deleteWork')->name('delete.work');
+Route::post('/freelancer/editwork/','WorksHistoryController@editWork')->name('edit.work');
+
 
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');

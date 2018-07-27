@@ -19,7 +19,7 @@
         </div>
         <div class="col-md-6 col-lg-5">
             <img src="resumeApp/resources/views/customTheme/images/newResume/what_i_do.png" style="padding-bottom: 10px;" alt="aboutImg" width="30px;">
-            <span class="aboutText">WHAT I DO?</span>
+            <span class="aboutText">Technologies I use</span>
             <div class="aboutText mobile">
                 <div class="row">
                     <div class="col-md-6 col-6 aboutSubText skillBullets">

@@ -1,5 +1,17 @@
 {{-- Get in touch Section --}}
 <div id="ourClients">
+    <?
+        // get current client :
+    use Illuminate\Support\Facades\Auth;
+    if(auth()->guard('client')->guest()){
+            $clientName = "";
+            $clientEmail = "";
+        }else{
+            $clientName  = auth()->guard('client')->user()->name;
+            $clientEmail = auth()->guard('client')->user()->email;
+        }
+
+    ?>
     <div class="row">
         <div class="col-lg-10 offset-lg-1 col-12">
             <div>
@@ -61,18 +73,23 @@
                     </div>
                 </div>
                 <div class="col-md-6 rightSide">
-                    <form id="contact-form" method="POST" class="form">
+                    <form method="POST" class="form" action="{{route('message.to.freelancer')}}">
+                        {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="username" class="panelFormLabel">Name</label>
-                                    <input type="text" id="username" name="name" class="form-control panelFormInput">
+                                    <label class="panelFormLabel">Name</label>
+                                    <input type="text" id="username" name="name" class="form-control panelFormInput"
+                                           value="{{$clientName}}"
+                                    >
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="name" class="panelFormLabel">Email</label>
-                                    <input type="email" id="email" name="email" required="required" class="form-control panelFormInput">
+                                    <input type="email" id="email" name="email" required="required" class="form-control panelFormInput"
+                                        value="{{$clientEmail}}"
+                                    >
                                 </div>
                             </div>
                         </div>
@@ -80,7 +97,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="telephone" class="panelFormLabel">Subject</label>
-                                    <input type="tel" name="subject" class="form-control panelFormInput">
+                                    <input type="text" name="subject" class="form-control panelFormInput">
                                 </div>
                             </div>
                         </div>
@@ -88,10 +105,12 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="message" class="panelFormLabel">Message</label>
-                                    <input type="tel" name="message" class="form-control panelFormInput">
+                                    <input type="text" name="message" class="form-control panelFormInput">
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" name="freelancerResumeLink" value="{{$user->username}}">
+                        <input type="hidden" name="freelancerEmail" value="{{$user->email}}">
 
 
                         <div class="row">

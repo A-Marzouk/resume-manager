@@ -55,7 +55,6 @@ class RegisterController extends Controller
             'lastName' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'username' => 'required|alpha_dash|string|min:6|unique:users',
             'profession' => 'required',
             'englishLevel' => 'accepted'
         ]);
@@ -69,16 +68,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // generate user name from the id and the firstName
         User::create([
             'firstName' => $data['firstName'],
             'lastName' => $data['lastName'],
             'email' => $data['email'],
-            'username'=>$data['username'],
+            'username'=>'holder value',
             'profession'=>$data['profession'],
             'password' => Hash::make($data['password']),
         ]);
 
-        $user = User::where('username',$data['username'])->first();
+        $user = User::where('email',$data['email'])->first();
+        $user->username = 'freelancer_resume_'.$user->id;
+        $data['username'] = $user->username;
+        $user->save();
+
         $userData = new UserData;
         $userData->user_id = $user->id;
         $userData->name = $user->name;

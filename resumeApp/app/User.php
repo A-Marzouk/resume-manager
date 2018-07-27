@@ -35,6 +35,12 @@ class User extends Authenticatable
         return $this->hasOne(UserData::class);
     }
 
+    public function worksHistory()
+    {
+        return $this->hasMany(WorkHistory::class);
+    }
+
+
     public function messages(){
         return $this->hasMany(Message::class);
     }

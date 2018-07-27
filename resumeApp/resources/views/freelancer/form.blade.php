@@ -158,10 +158,9 @@
                 'audio','audioFile','video','video_file'
             ],
             '4. Career overview' => [
-                'link'=>'career',
-                'careerObjective','eduTitle1','eduTitle2','eduTitle3','eduYear1','eduYear2','eduYear3',
-                'eduDesc1','eduDesc2','eduDesc3','trnTitle1','trnTitle2','trnTitle3',
-                'trnYear1','trnYear2','trnYear3','trnDesc1','trnDesc2','trnDesc3','workExperience'
+                'link'=>'career','eduTitle1','eduTitle2','eduTitle3','eduYear1','eduYear2','eduYear3',
+                'eduDesc1','eduDesc2','eduDesc3','trnTitle1','trnTitle2','trnTitle3','careerObjective',
+                'trnYear1','trnYear2','trnYear3','trnDesc1','trnDesc2','trnDesc3'
             ],
             '5. Portfolio' => [
                 'link'=>'portfolio',

@@ -107,7 +107,18 @@
         <textarea class="form-control" rows="5" id="design_skills" name="design_styles">{{$design_styles}}</textarea>
         <small class="panelFormLabel">50-200 Words</small>
     </div> <!-- design style -->
-
+    <hr>
+    <div class="form-group col-md-12">
+        <label for="design_styles" class="panelFormLabel">
+            <? if($profession == 'Developer'):?>
+               Please tell us what languages frameworks most interest you at the moment for future learning and career development.
+            <?else:?>
+               Please tell us what design styles and tools you are interested in for future learning and career development.
+            <?endif;?>
+            <span id="tickMarkfuture_plan" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span>
+            </label>
+            <textarea class="form-control" rows="3" id="future_plan" name="future_plan">{{$future_plan}}</textarea>
+    </div> <!-- Future plan -->
     <div class="row">
         <div class="buttonMain col-md-3 offset-md-9">
             <a class="btn-block hireBtn nextBtn"  href="#attributes">Next</a>

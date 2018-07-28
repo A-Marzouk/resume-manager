@@ -116,6 +116,11 @@ $(document).ready(function () {
             $(function () {
                 $('.freelancerForm :input').on('change', function (e) {
                     e.preventDefault();
+                    // if inputs from Job form ( do not submit here )
+                    let jobFormFieldsIDs = ['job_title','job_description','company','date_from','date_to','currently_working'];
+                    if(jobFormFieldsIDs.includes(this.id)){
+                        return;
+                    }
                     var form = document.getElementsByClassName('freelancerForm')[0];
 
                     // disable all empty files

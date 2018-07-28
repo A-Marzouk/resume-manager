@@ -35,7 +35,7 @@
 
                               <div class="form-group col-md-12">
                                   <label class="form-check-label checkBoxText checkBoxContainer">
-                                      <input class="form-check-input" style="@if($errors->has('design_skills_checkbox')) border:1px solid red; @endif" type="checkbox" name="currently_working" :checked="toBeEditedWork.currently_working" v-model="toBeEditedWork.currently_working">
+                                      <input id="currently_working" class="form-check-input" style="@if($errors->has('design_skills_checkbox')) border:1px solid red; @endif" type="checkbox" name="currently_working" :checked="toBeEditedWork.currently_working" v-model="toBeEditedWork.currently_working">
                                       Present
                                       <span class="checkmark"></span>
                                   </label>
@@ -62,7 +62,7 @@
         },
         methods:{
             submitForm(){
-                // post data :
+               // post data :
                 axios.post('/freelancer/addwork',this.toBeEditedWork).then( (response) => {
                     //
                     if(this.toBeEditedWork.id === ""){

@@ -28,3 +28,4 @@
         </div>
     </div>
 </div>
+<hr style="width: 80%;">

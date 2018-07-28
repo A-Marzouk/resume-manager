@@ -49,6 +49,7 @@ class FreelancersController extends Controller
             'workForceAgent'=> $currFreelancer->userData->workForceAgent ?? '' , // add to database
             'languages'=> $currFreelancer->userData->languages ?? '' ,
             'photoPath'=> $currFreelancer->userData->photo ?? '' ,
+            'future_plan'=> $currFreelancer->userData->future_plan ?? '' ,
             'design_skills'=> $currFreelancer->userData->design_skills ?? '' ,
             'education'=> $currFreelancer->userData->education ?? '' ,
             'github'=> $currFreelancer->userData->githubLink ?? '' ,

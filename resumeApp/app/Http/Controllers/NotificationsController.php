@@ -125,14 +125,14 @@ class NotificationsController extends Controller
             'freelancerEmail'=>$freelancerEmail
         ];
 
-        Mail::send('emails.message_to_freelancer_admins',$data, function($message) use ($freelancerEmail)
+        Mail::send('emails.message_to_freelancer_admins',$data, function($message) use ($emails)
         {
-            $message->to($freelancerEmail)->subject('Client sent message to freelancer.');
+            $message->to($emails)->subject('Client sent message to freelancer.');
         });
 
-        Mail::send('emails.message_to_freelancer',$data, function($message) use ($emails)
+        Mail::send('emails.message_to_freelancer',$data, function($message) use ($freelancerEmail)
         {
-            $message->to($emails)->subject('Message from 123 workforce client.');
+            $message->to($freelancerEmail)->subject('Message from 123 workforce client.');
         });
 
         return redirect()->back()->with('successMessage', 'Thank you, your message has been sent.');

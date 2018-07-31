@@ -1,3 +1,6 @@
+<div class="ImportDataBtn">
+    <a class="btn btn-outline-dark" href="javascript:void(0)" id="importBehanceData">Import data from Behance</a>
+</div>
 <div role="tabpanel" class="panel tab-pane active" id="overview">
     <div class="d-none d-md-block panelHeading">
         <ul>
@@ -52,7 +55,7 @@
         </div> <!-- email -->
         <div class="form-group col-md-6 col-lg-4">
             <label for="birth_date"  class="panelFormLabel">City where you live & work <span style="font-size:small;">*</span><span id="tickMarkcity" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-            <input type="text" style="@if($errors->has('city')) border:1px solid red; @endif" class="form-control panelFormInput" name="city" value="{{$city}}">
+            <input type="text" style="@if($errors->has('city')) border:1px solid red; @endif" class="form-control panelFormInput" name="city" value="{{$city}}" id="city">
         </div> <!-- city -->
         <div class="form-group col-md-6 col-lg-4">
             <label for="languages"  class="panelFormLabel">Languages you speak <span style="font-size:small;">*</span> <span id="tickMarklanguages" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
@@ -64,7 +67,7 @@
     <div class="row">
         <div class="form-group col-md-12">
             <label for="intro"  class="panelFormLabel">Intro <span id="tickMarkintro" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-            <textarea class="form-control" rows="3" name="intro">{{$intro}}</textarea>
+            <textarea class="form-control" rows="3" name="intro" id="intro">{{$intro}}</textarea>
             <small>30-50 Words</small>
         </div> <!-- intro -->
     </div>

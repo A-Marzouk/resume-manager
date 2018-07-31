@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Mail\welcome;
 use App\UserData;
+use Behance\Client;
 use Illuminate\Http\Request;
 use App\classes\Telegram;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Response;
 use PharIo\Manifest\Email;
 
 class UserDataController extends Controller
@@ -260,6 +262,30 @@ class UserDataController extends Controller
                 return false;
             }
         }
+    }
+
+
+    public function dataFromBehance($behanceUsername){
+
+        $apiKey = "JqLizSfJOtrq1fNwBPnJ56oTerbqVh2P";
+
+        $client = new Client($apiKey);
+
+        if(!empty($behanceUsername)){
+            $data = $client->getUser($behanceUsername);
+        }else{
+            $data = [];
+        }
+
+        return Response::json($data);
+    }
+
+
+    public function saveImgLink(Request $request){
+        $userData = UserData::where('user_id',auth()->user()->id)->first();
+        $userData->photo = $request->img;
+        $userData->save();
+        return ['status' => 'ok'];
     }
 
 }

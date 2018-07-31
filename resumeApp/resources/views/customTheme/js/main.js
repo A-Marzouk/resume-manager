@@ -215,6 +215,14 @@ $(document).ready(function () {
             });
 
 
+            // importing data from behance :
+
+            $('#importBehanceData').on('click',function(){
+                getBehanceData();
+            });
+
+
+
     // 1- overview ( section one )
         // profile photo scripts
 
@@ -1015,4 +1023,26 @@ function getUploadedFilesNames() {
 
     return files;
 
+}
+
+
+function getBehanceData(){
+    axios.get('/freelancer/behance/rajeshkarm7dc0').then( (response)=> {
+        let behanceData =  response.data;
+
+        $('#fullName').val(behanceData.display_name);
+        $('#city').val(behanceData.city);
+        $('#intro').val(behanceData.sections['About Me']);
+        saveProfileImg(behanceData.images);
+
+
+        // save to database :
+        $('#works0').change();
+    });
+}
+
+function saveProfileImg(images){
+    let behanceImg = images[Object.keys(images)[Object.keys(images).length - 1]] ;
+    $('#photoPreview').attr('src',behanceImg);
+    axios.post('/freelancer/behance/save_img',{img : behanceImg});
 }

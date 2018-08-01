@@ -1,5 +1,7 @@
 <div class="ImportDataBtn">
-    <a class="btn btn-outline-dark" href="javascript:void(0)" id="importBehanceData">Import data from Behance</a>
+    <a class="btn btn-outline-dark" href="javascript:void(0)" id="importBehanceData" data-toggle="modal" data-target="#behanceDataModal">
+        Import data from Behance
+    </a>
 </div>
 <div role="tabpanel" class="panel tab-pane active" id="overview">
     <div class="d-none d-md-block panelHeading">

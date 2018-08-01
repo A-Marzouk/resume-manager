@@ -216,9 +216,11 @@ $(document).ready(function () {
 
 
             // importing data from behance :
-
-            $('#importBehanceData').on('click',function(){
-                getBehanceData();
+            $('#behanceDataForm').on('submit',function (e) {
+                e.preventDefault();
+                let behanceLink = $('#behanceLink').val();
+                let behanceUsername = getBehanceUsername(behanceLink);
+                getBehanceData(behanceUsername);
             });
 
 
@@ -1026,23 +1028,40 @@ function getUploadedFilesNames() {
 }
 
 
-function getBehanceData(){
-    axios.get('/freelancer/behance/rajeshkarm7dc0').then( (response)=> {
+function getBehanceData(behanceUsername){
+    axios.get('/freelancer/behance/'+behanceUsername).then( (response)=> {
         let behanceData =  response.data;
-
         $('#fullName').val(behanceData.display_name);
         $('#city').val(behanceData.city);
         $('#intro').val(behanceData.sections['About Me']);
         saveProfileImg(behanceData.images);
 
+        // change the modal html :
+        $('#modalBody').html(' <div class="label" style="padding: 20px;"><p class="label-success panelFormLabel">Thank you, your data has been successfully imported</p></div>');
+        // close modal :
+       setTimeout(function () {
+           $('#closeBehanceModal').click();
+       },2000);
 
         // save to database :
         $('#works0').change();
+    })
+    .catch((error) => {
+        // Error
+        $('#behanceLinkError').removeClass('d-none');
     });
+
+
+
 }
 
 function saveProfileImg(images){
     let behanceImg = images[Object.keys(images)[Object.keys(images).length - 1]] ;
     $('#photoPreview').attr('src',behanceImg);
     axios.post('/freelancer/behance/save_img',{img : behanceImg});
+}
+
+function getBehanceUsername(behanceLink) {
+    let linkArr = behanceLink.split('/');
+    return linkArr[linkArr.length-1] ;
 }

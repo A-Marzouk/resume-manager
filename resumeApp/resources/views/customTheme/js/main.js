@@ -1032,6 +1032,7 @@ function getBehanceData(behanceUsername){
     axios.get('/freelancer/behance/'+behanceUsername).then( (response)=> {
         let behanceData =  response.data;
         if(behanceData !== false){
+            console.log(behanceData);
             $('#fullName').val(behanceData.display_name);
             $('#city').val(behanceData.city);
             $('#intro').val(behanceData.sections['About Me']);

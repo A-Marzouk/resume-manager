@@ -273,6 +273,9 @@ class UserDataController extends Controller
 
         if(!empty($behanceUsername)){
             $data = $client->getUser($behanceUsername);
+            $projects = array_slice($client->getUserProjects($behanceUsername), 0, 8, true);
+            $data->projects = $projects;
+            $this->saveBehanceProjects($projects);
         }else{
             $data = [];
         }
@@ -288,6 +291,22 @@ class UserDataController extends Controller
         $userData->save();
 
         return ['status' => 'ok'];
+    }
+
+    public function saveBehanceProjects($projects){
+        $userData = UserData::where('user_id',auth()->user()->id)->first();
+        $projectsImgs = [];
+        $i=0;
+       foreach ($projects as $project){
+           $dest = "resumeApp/uploads/works".$i."Behance".auth()->user()->id.".png";
+           copy($project->covers->original, $dest);
+           $projectsImgs[] = $dest;
+           $workDesc = 'workDesc'.$i ;
+           $userData->{$workDesc} = $project->name;
+           $i++;
+       }
+       $userData->works = implode(',',$projectsImgs);
+       $userData->save();
     }
 
 }

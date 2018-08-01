@@ -4,8 +4,64 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f11f8f96b888fb73d625574faaf8e05",
+    "content-hash": "e4538719732a6ad47ce9d7f744a09c51",
     "packages": [
+        {
+            "name": "behance/api-network",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/behance/network_api_php.git",
+                "reference": "721653c23a4de05d6e912f2ca856ddff7c405ef9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/behance/network_api_php/zipball/721653c23a4de05d6e912f2ca856ddff7c405ef9",
+                "reference": "721653c23a4de05d6e912f2ca856ddff7c405ef9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Behance\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bryan Latten",
+                    "email": "latten@adobe.com",
+                    "homepage": "http://twitter.com/bryanlatten"
+                },
+                {
+                    "name": "Michael Klein",
+                    "email": "klein@adobe.com",
+                    "homepage": "https://twitter.com/mikeklein13"
+                },
+                {
+                    "name": "Mark Dunphy",
+                    "email": "dunphy@adobe.com",
+                    "homepage": "https://twitter.com/dunphtastic"
+                }
+            ],
+            "description": "Simply connect to the Behance Network using PHP and cURL",
+            "homepage": "http://github.com/behance/network_api_php",
+            "keywords": [
+                "api",
+                "behance"
+            ],
+            "time": "2014-10-10T15:48:45+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",

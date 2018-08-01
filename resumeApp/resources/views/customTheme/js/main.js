@@ -8,7 +8,6 @@ $(document).ready(function () {
             // we need to get if any section is completed.
             highlightCompletedSecs();
 
-
             // hiding changes saved :
             $('#changesSaved').removeClass('d-none');
             $('#changesSaved').hide();
@@ -213,6 +212,16 @@ $(document).ready(function () {
 
                 });
             });
+
+
+            // importing data from behance :
+            $('#behanceDataForm').on('submit',function (e) {
+                e.preventDefault();
+                let behanceLink = $('#behanceLink').val();
+                let behanceUsername = getBehanceUsername(behanceLink);
+                getBehanceData(behanceUsername);
+            });
+
 
 
     // 1- overview ( section one )
@@ -1015,4 +1024,65 @@ function getUploadedFilesNames() {
 
     return files;
 
+}
+
+
+function getBehanceData(behanceUsername){
+    $('#behanceLinkWait').removeClass('d-none');
+    $('#behanceLinkError').addClass('d-none');
+
+    axios.get('/freelancer/behance/'+behanceUsername).then( (response)=> {
+        let behanceData =  response.data;
+        if(behanceData !== false){
+            $('#fullName').val(behanceData.display_name);
+            $('#city').val(behanceData.city);
+            $('#intro').val(behanceData.sections['About Me']);
+            saveBehanceData(behanceData.images,behanceData.fields);
+            $('#spec_design_skills').val(behanceData.fields.join(', '));
+            // change the modal html :
+            $('#modalBody').html(' <div class="label" style="padding: 20px;"><p class="label-success panelFormLabel">Thank you, your data has been successfully imported</p></div>');
+            // close modal :
+            setTimeout(function () {
+                $('#closeBehanceModal').click();
+            },2000);
+
+            loadProjects(behanceData.projects);
+
+            // save to database :
+            $('#works0').change();
+
+        }else{
+            // error
+            $('#behanceLinkError').addClass('d-none');
+            $('#behanceLinkWait').removeClass('d-none');
+        }
+    }).catch((error)=> {
+        $('#behanceLinkError').removeClass('d-none');
+        $('#behanceLinkWait').addClass('d-none');
+        });
+
+
+
+}
+
+function saveBehanceData(images,fields){
+    let behanceImg = images[Object.keys(images)[Object.keys(images).length - 1]] ;
+    $('#photoPreview').attr('src',behanceImg);
+    axios.post('/freelancer/behance/save_img',{
+        img : behanceImg,
+        design_skills:fields
+    });
+}
+
+function getBehanceUsername(behanceLink) {
+    let linkArr = behanceLink.split('/');
+    return linkArr[linkArr.length-1] ;
+}
+
+function loadProjects(projects){
+    let i=0;
+    projects.forEach(function(project){
+       $('#portfolioImg'+i).attr('src',project.covers.original);
+       i++;
+    });
 }

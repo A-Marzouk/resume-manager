@@ -221,7 +221,37 @@
         <br/>
     </form>
 </div>
-<script>
+{{-- modals : modal of import behance --}}
 
-</script>
+    <!-- Modal -->
+    <div class="modal fade" id="behanceDataModal" tabindex="-1" role="dialog" aria-labelledby="behanceDataModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border: none;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeBehanceModal" style="outline: none;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <form method="post" action="" id="behanceDataForm">
+                        {{csrf_field()}}
+                        <div class="form-group">
+                            <label for="userName" class="panelFormLabel">Your Behance profile link :</label>
+                            <input type="text" class="form-control panelFormInput" id="behanceLink" name="behanceLink"  value="" required>
+                            <p id="behanceLinkError" class="d-none" style="color: red;">Link is not correct.</p>
+                            <p id="behanceLinkWait" class="d-none" style="color: gray;">
+                                Please wait, importing your data from Behance..
+                            </p>
+                        </div>
+
+                        <div class="modal-footer" style="border: none;">
+                            <div class="buttonMain col-md-3 offset-md-9" style="margin-top: 0;">
+                                <button type="submit" class="btn-block hireBtn" id="importBtn">Import</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

@@ -103,6 +103,9 @@ Route::post('/freelancer/addwork/','WorksHistoryController@addWork')->name('add.
 Route::post('/freelancer/deletework/','WorksHistoryController@deleteWork')->name('delete.work');
 Route::post('/freelancer/editwork/','WorksHistoryController@editWork')->name('edit.work');
 
+// behance api :
+Route::get('/freelancer/behance/{behanceUsername}','UserDataController@dataFromBehance');
+Route::post('/freelancer/behance/save_img','UserDataController@saveImgLink');
 
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');

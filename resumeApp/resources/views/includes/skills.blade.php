@@ -1,4 +1,4 @@
-<div role="tabpanel" class="panel tab-pane fade" id="skills">
+<div role="tabpanel" class="panel tab-pane fade" id="skills" style="padding-top: 0;">
     <div class="panelHeading">
         <ul>
             <li>

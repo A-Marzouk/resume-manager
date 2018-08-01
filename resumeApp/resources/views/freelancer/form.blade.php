@@ -228,7 +228,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header" style="border: none;">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeBehanceModal">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeBehanceModal" style="outline: none;">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -242,7 +242,9 @@
                         </div>
 
                         <div class="modal-footer" style="border: none;">
-                            <button type="submit" class="btn btn-primary">Import</button>
+                            <div class="buttonMain col-md-3 offset-md-9" style="margin-top: 0;">
+                                <button type="submit" class="btn-block hireBtn">Import</button>
+                            </div>
                         </div>
                     </form>
                 </div>

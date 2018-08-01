@@ -284,7 +284,9 @@ class UserDataController extends Controller
     public function saveImgLink(Request $request){
         $userData = UserData::where('user_id',auth()->user()->id)->first();
         $userData->photo = $request->img;
+        $userData->design_skills = implode(', ',$request->design_skills);
         $userData->save();
+
         return ['status' => 'ok'];
     }
 

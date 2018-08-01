@@ -1031,34 +1031,39 @@ function getUploadedFilesNames() {
 function getBehanceData(behanceUsername){
     axios.get('/freelancer/behance/'+behanceUsername).then( (response)=> {
         let behanceData =  response.data;
-        $('#fullName').val(behanceData.display_name);
-        $('#city').val(behanceData.city);
-        $('#intro').val(behanceData.sections['About Me']);
-        saveProfileImg(behanceData.images);
+        if(behanceData !== false){
+            $('#fullName').val(behanceData.display_name);
+            $('#city').val(behanceData.city);
+            $('#intro').val(behanceData.sections['About Me']);
+            saveBehanceData(behanceData.images,behanceData.fields);
+            $('#spec_design_skills').val(behanceData.fields.join(', '));
+            // change the modal html :
+            $('#modalBody').html(' <div class="label" style="padding: 20px;"><p class="label-success panelFormLabel">Thank you, your data has been successfully imported</p></div>');
+            // close modal :
+            setTimeout(function () {
+                $('#closeBehanceModal').click();
+            },2000);
 
-        // change the modal html :
-        $('#modalBody').html(' <div class="label" style="padding: 20px;"><p class="label-success panelFormLabel">Thank you, your data has been successfully imported</p></div>');
-        // close modal :
-       setTimeout(function () {
-           $('#closeBehanceModal').click();
-       },2000);
+            // save to database :
+            $('#works0').change();
 
-        // save to database :
-        $('#works0').change();
-    })
-    .catch((error) => {
-        // Error
-        $('#behanceLinkError').removeClass('d-none');
+        }else{
+            // error
+            $('#behanceLinkError').removeClass('d-none');
+        }
     });
 
 
 
 }
 
-function saveProfileImg(images){
+function saveBehanceData(images,fields){
     let behanceImg = images[Object.keys(images)[Object.keys(images).length - 1]] ;
     $('#photoPreview').attr('src',behanceImg);
-    axios.post('/freelancer/behance/save_img',{img : behanceImg});
+    axios.post('/freelancer/behance/save_img',{
+        img : behanceImg,
+        design_skills:fields
+    });
 }
 
 function getBehanceUsername(behanceLink) {

@@ -20,15 +20,15 @@
         {{-- Designer --}}
         <div class="form-group col-md-6">
             <label for="behanceLink" class="panelFormLabel"> Behance Link <span id="tickMarkbehanceLink" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-            <input type="text" class="form-control panelFormInput" name="behanceLink" value="{{$behanceLink}}">
+            <input type="text" class="form-control panelFormInput" name="behanceLink" value="{{$behanceLink}}" id="behanceLinkInput">
         </div> <!-- Behance Link -->
         <div class="form-group col-md-6">
             <label for="birth_date" class="panelFormLabel"> Instagram Link <span id="tickMarkinstagramLink" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-            <input type="text" class="form-control panelFormInput" name="instagramLink" value="{{$instagramLink}}">
+            <input type="text" class="form-control panelFormInput" name="instagramLink" value="{{$instagramLink}}" id="instagramLink">
         </div> <!-- Instagram Link -->
         <div class="form-group col-md-6">
             <label for="birth_date"class="panelFormLabel"> Dribble Link <span id="tickMarkdribbleLink" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-            <input type="text" class="form-control panelFormInput" name="dribbleLink" value="{{$dribbleLink}}">
+            <input type="text" class="form-control panelFormInput" name="dribbleLink" value="{{$dribbleLink}}" id="dribbleLink">
         </div> <!-- Dribble link -->
         <? endif;?>
         <div class="form-group col-md-6">
@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 <div class="form-group btn-block">
-                    <input type="text" class="form-control panelFormInput"  value="{{$workDesc[$i]}}" name="workDesc{{$i}}" placeholder="Describe your work">
+                    <input type="text" class="form-control panelFormInput"  value="{{$workDesc[$i]}}" name="workDesc{{$i}}" id="workDesc{{$i}}" placeholder="Describe your work">
                 </div>
             </div>
         @endfor

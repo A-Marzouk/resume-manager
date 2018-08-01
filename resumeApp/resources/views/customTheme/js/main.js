@@ -1028,6 +1028,9 @@ function getUploadedFilesNames() {
 
 
 function getBehanceData(behanceUsername){
+    // set behance link :
+    $('#behanceLinkInput').val("https://www.behance.net/"+behanceUsername);
+
     $('#behanceLinkWait').removeClass('d-none');
     $('#behanceLinkError').addClass('d-none');
 
@@ -1047,6 +1050,10 @@ function getBehanceData(behanceUsername){
             },2000);
 
             loadProjects(behanceData.projects);
+
+            if(behanceData.has_social_links){
+                loadSocialLinks(behanceData.social_links);
+            }
 
             // save to database :
             $('#works0').change();
@@ -1083,6 +1090,18 @@ function loadProjects(projects){
     let i=0;
     projects.forEach(function(project){
        $('#portfolioImg'+i).attr('src',project.covers.original);
+       $('#workDesc'+i).val(project.name);
        i++;
+    });
+}
+
+function loadSocialLinks(socialLinks){
+    socialLinks.forEach(function (link) {
+        if(link.isInstagram){
+            $('#instagramLink').val(link.url);
+        }
+        else if(link.isDribbble){
+            $('#dribbleLink').val(link.url);
+        }
     });
 }

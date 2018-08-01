@@ -8,7 +8,6 @@ $(document).ready(function () {
             // we need to get if any section is completed.
             highlightCompletedSecs();
 
-
             // hiding changes saved :
             $('#changesSaved').removeClass('d-none');
             $('#changesSaved').hide();
@@ -1029,10 +1028,10 @@ function getUploadedFilesNames() {
 
 
 function getBehanceData(behanceUsername){
+
     axios.get('/freelancer/behance/'+behanceUsername).then( (response)=> {
         let behanceData =  response.data;
         if(behanceData !== false){
-            console.log(behanceData);
             $('#fullName').val(behanceData.display_name);
             $('#city').val(behanceData.city);
             $('#intro').val(behanceData.sections['About Me']);
@@ -1052,7 +1051,9 @@ function getBehanceData(behanceUsername){
             // error
             $('#behanceLinkError').removeClass('d-none');
         }
-    });
+    }).catch((error)=> {
+        $('#behanceLinkError').removeClass('d-none');
+        });
 
 
 

@@ -1080,7 +1080,9 @@ function getBehanceUsername(behanceLink) {
 }
 
 function loadProjects(projects){
+    let i=0;
     projects.forEach(function(project){
-       console.log(project.covers.original);
+       $('#portfolioImg'+i).attr('src',project.covers.original);
+       i++;
     });
 }

@@ -1028,6 +1028,8 @@ function getUploadedFilesNames() {
 
 
 function getBehanceData(behanceUsername){
+    $('#behanceLinkWait').removeClass('d-none');
+    $('#behanceLinkError').addClass('d-none');
 
     axios.get('/freelancer/behance/'+behanceUsername).then( (response)=> {
         let behanceData =  response.data;
@@ -1044,15 +1046,19 @@ function getBehanceData(behanceUsername){
                 $('#closeBehanceModal').click();
             },2000);
 
+            loadProjects(behanceData.projects);
+
             // save to database :
             $('#works0').change();
 
         }else{
             // error
-            $('#behanceLinkError').removeClass('d-none');
+            $('#behanceLinkError').addClass('d-none');
+            $('#behanceLinkWait').removeClass('d-none');
         }
     }).catch((error)=> {
         $('#behanceLinkError').removeClass('d-none');
+        $('#behanceLinkWait').addClass('d-none');
         });
 
 
@@ -1071,4 +1077,10 @@ function saveBehanceData(images,fields){
 function getBehanceUsername(behanceLink) {
     let linkArr = behanceLink.split('/');
     return linkArr[linkArr.length-1] ;
+}
+
+function loadProjects(projects){
+    projects.forEach(function(project){
+       console.log(project.covers.original);
+    });
 }

@@ -239,11 +239,14 @@
                             <label for="userName" class="panelFormLabel">Your Behance profile link :</label>
                             <input type="text" class="form-control panelFormInput" id="behanceLink" name="behanceLink"  value="" required>
                             <p id="behanceLinkError" class="d-none" style="color: red;">Link is not correct.</p>
+                            <p id="behanceLinkWait" class="d-none" style="color: gray;">
+                                Please wait, importing your data from Behance..
+                            </p>
                         </div>
 
                         <div class="modal-footer" style="border: none;">
                             <div class="buttonMain col-md-3 offset-md-9" style="margin-top: 0;">
-                                <button type="submit" class="btn-block hireBtn">Import</button>
+                                <button type="submit" class="btn-block hireBtn" id="importBtn">Import</button>
                             </div>
                         </div>
                     </form>

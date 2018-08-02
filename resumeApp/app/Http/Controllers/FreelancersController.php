@@ -6,6 +6,7 @@ use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class FreelancersController extends Controller
 {
@@ -104,5 +105,39 @@ class FreelancersController extends Controller
         ];
 
         return $data;
+    }
+
+    public function registerDesignerFromBehance(Request $request){
+        $userData = new UserDataController;
+        $behanceLink = $request->behanceDesignerLink;
+        $behanceLinkArr = explode('/',$behanceLink);
+        $behanceUsername = end($behanceLinkArr);
+        $dataFromBehance =  $userData->ArrDataFromBehance($behanceUsername);
+
+        try{
+            User::create([
+                'firstName' => $dataFromBehance->first_name,
+                'lastName' => $dataFromBehance->last_name,
+                'email' => $behanceUsername.'@example.com',
+                'username'=> $behanceUsername.'BeUser',
+                'profession'=>'Designer',
+                'password' => Hash::make($behanceUsername.'123456'),
+            ]);
+         }catch (\Exception $e){
+            return redirect('/admin')->with('errorMessage','Fail. Link might be not correct or designer already exists');
+        }
+
+        $user = User::where('username',$behanceUsername.'BeUser')->first();
+
+        $userData = new UserData;
+        $userData->user_id = $user->id;
+        $userData->name =$dataFromBehance->display_name;
+        $userData->city =$dataFromBehance->location;
+        $userData->jobTitle =$dataFromBehance->occupation;
+        $userData->behanceLink =$behanceLink;
+        $userData->save();
+
+        return redirect('/admin')->with('successMessage', 'Behance Designer has been successfully added.');
+
     }
 }

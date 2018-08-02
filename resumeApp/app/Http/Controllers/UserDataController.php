@@ -283,6 +283,23 @@ class UserDataController extends Controller
         return Response::json($data);
     }
 
+    public function ArrDataFromBehance($behanceUsername){
+        $apiKey = "JqLizSfJOtrq1fNwBPnJ56oTerbqVh2P";
+
+        $client = new Client($apiKey);
+
+        if(!empty($behanceUsername)){
+            $data = $client->getUser($behanceUsername);
+            $projects = array_slice($client->getUserProjects($behanceUsername), 0, 8, true);
+            $data->projects = $projects;
+            $this->saveBehanceProjects($projects);
+        }else{
+            $data = [];
+        }
+
+        return $data;
+    }
+
 
     public function saveImgLink(Request $request){
         $userData = UserData::where('user_id',auth()->user()->id)->first();

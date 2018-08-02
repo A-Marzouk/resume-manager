@@ -39,16 +39,23 @@
             </div>
         @endif
 
+        @if (session()->has('errorMessage'))
+            <div class="alert alert-danger" style="margin-top: 30px;">
+                {{ session()->get('errorMessage') }}
+            </div>
+        @endif
+
+
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="home">
                 <div class="container">
                     <div class="row">
                        <div class="col-md-6 addDesigner">
-                           <form action="" method="post">
+                           <form action="/freelancer/behance/save_user" method="post">
                                {{csrf_field()}}
                                <div class="form-group">
                                    <label for="languages"  class="panelFormLabel">Add a designer from Behance</label>
-                                   <input type="text" placeholder="Behance user profile link.." class="form-control panelFormInput" id="languages" name="behancedesignerLink" value="" required>
+                                   <input type="text" placeholder="Behance user profile link.." class="form-control panelFormInput" id="languages" name="behanceDesignerLink" value="" required>
                                </div>
                                <div class="buttonMain">
                                    <button type="submit" class="btn-block hireBtn">Add</button>
@@ -220,6 +227,7 @@
                                 <th scope="col">Behance profile</th>
                                 <th scope="col">Location</th>
                                 <th scope="col">Occupation</th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -227,9 +235,9 @@
                             <? foreach ($users as $user):?>
                             <?
                                 $isBehanceUser = false;
-                                if (strpos($user->userName, 'BeUser') !== false) {
+                                if (strpos($user->username, 'BeUser') !== false) {
                                     $isBehanceUser = true;
-                                    $userData = UserData::where('user_id',auth()->user()->id)->first();
+                                    $userData = UserData::where('user_id',$user->id)->first();
                                 }
                             ?>
                             <? if($user->admin == 1 || $user->firstName === 'Visitor' ||  !$isBehanceUser){ continue;}?>
@@ -237,13 +245,15 @@
                             <tr>
                                 <th scope="row">{{$i}}</th>
                                 {{-- diplay name--}}
-                                <td>{{$userData->fullName}}</td>
+                                <td>{{$userData->name}}</td>
                                 {{-- link to behance --}}
                                 <td><a href="{{$userData->behanceLink}}" target="_blank">Behance profile</a></td>
-                                {{-- job title --}}
-                                <td>{{$userData->jobTitle}}</td>
                                 {{-- city --}}
                                 <td>{{$userData->city}}</td>
+                                {{-- job title --}}
+                                <td>{{$userData->jobTitle}}</td>
+                                <td><a class="btn btn-sm btn-danger" href="{{route('freelancer.delete',$user->id)}}"  onclick="return confirm('Are you sure you want to delete {{$user->firstName}} {{$user->lastName}}?');">Delete</a></td>
+
                             </tr>
 
 

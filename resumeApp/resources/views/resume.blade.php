@@ -26,8 +26,8 @@
         @include('resume_sections.career_objective')
         @include('resume_sections.education')
         @include('resume_sections.work_experience')
-        @include('resume_sections.skills')
         @include('resume_sections.design_style')
+        @include('resume_sections.skills')
         @include('resume_sections.works')
         @include('resume_sections.our_clients')
 @endsection

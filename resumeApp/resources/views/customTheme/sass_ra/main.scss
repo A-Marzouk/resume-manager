@@ -474,7 +474,8 @@ body{
       font-size: 11px;
     }
     .work{
-      padding-left: 37px;
+      padding-left: 39px;
+      font-size: 16px;
     }
   }
   .title{
@@ -483,9 +484,15 @@ body{
     font-size: 22px;
     font-weight: 500;
     line-height: 25px;
-    padding-left: 37px;
+    padding-left: 39px;
     word-spacing: .15rem;
-    .work{
+    .circle:before{
+      background: white;
+      color: white;
+      padding: 0 3px 0 3px;
+      font-size: 11px;
+    }
+    &.work{
       padding-left: 0px;
     }
   }
@@ -495,7 +502,7 @@ body{
     font-size: 22px;
     font-weight: 300;
     line-height: 25px;
-    padding-left: 37px;
+    padding-left: 39px;
     word-spacing: .15rem;
     @media only screen and (max-width: 991px){
       width: 160px;
@@ -503,6 +510,15 @@ body{
       white-space: nowrap;
       overflow: hidden;
     }
+  }
+
+  .company{
+    color: #697786;
+    font-family: Roboto;	font-size: 20px;
+    font-weight: 300;	line-height: 24px;
+    padding-left: 37px;
+    padding-top:3px;
+    padding-bottom: 3px;
   }
 }
 

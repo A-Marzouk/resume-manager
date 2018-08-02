@@ -400,16 +400,22 @@ body {
     padding: 0 3px 0 3px;
     font-size: 11px; }
   .aboutSubText .year .work {
-    padding-left: 37px; }
+    padding-left: 39px;
+    font-size: 16px; }
 .aboutSubText .title {
   color: #697786;
   font-family: Roboto;
   font-size: 22px;
   font-weight: 500;
   line-height: 25px;
-  padding-left: 37px;
+  padding-left: 39px;
   word-spacing: .15rem; }
-  .aboutSubText .title .work {
+  .aboutSubText .title .circle:before {
+    background: white;
+    color: white;
+    padding: 0 3px 0 3px;
+    font-size: 11px; }
+  .aboutSubText .title.work {
     padding-left: 0px; }
 .aboutSubText .desc {
   color: #C5A7FD;
@@ -417,7 +423,7 @@ body {
   font-size: 22px;
   font-weight: 300;
   line-height: 25px;
-  padding-left: 37px;
+  padding-left: 39px;
   word-spacing: .15rem; }
   @media only screen and (max-width: 991px) {
     .aboutSubText .desc {
@@ -425,6 +431,15 @@ body {
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden; } }
+.aboutSubText .company {
+  color: #697786;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 24px;
+  padding-left: 37px;
+  padding-top: 3px;
+  padding-bottom: 3px; }
 
 .continueBtn {
   font-size: small;

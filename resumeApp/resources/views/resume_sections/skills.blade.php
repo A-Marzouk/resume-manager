@@ -26,7 +26,7 @@
         <? endif;?>
     </div>
 </div>
-<hr style="width: 80%">
+<hr style="width: 85%">
 {{-- more skills section --}}
 <div id="about">
     <div class="row">

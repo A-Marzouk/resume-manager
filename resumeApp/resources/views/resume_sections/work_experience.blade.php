@@ -10,13 +10,17 @@
                 <? foreach ($works as $work):?>
                 <div class="row">
                     <div class="col-md-12 aboutSubText">
-                        <div class="title">{{$work->job_title}}</div>
+                        <div class="title work">
+                            <span class="circle"></span>
+                            {{$work->job_title}}
+                        </div>
+                        <div class="company">{{$work->company}}</div>
                         <div class="year"><span class="work">
-                                {{$work->date_from}}
+                                {{date('F Y', strtotime($work->date_from))}}
                                 <? if($work->currently_working):?>
                                 - Present
                                 <? else: ?>
-                                -  {{$work->date_to}}
+                                - {{date('F Y', strtotime($work->date_to))}}
                                 <? endif;?>
                             </span>
                         </div>
@@ -28,4 +32,4 @@
         </div>
     </div>
 </div>
-<hr style="width: 80%;">
+<hr style="width: 85% ;">

@@ -1,26 +1,32 @@
 @extends('layouts.app')
 <?
-    use App\Client;use App\User;use App\Visitor;
+    use App\Client;use App\User;use App\UserData;use App\Visitor;
     extract($data);
 
 ?>
 
 @section('content')
     <div class="container">
-        <h1 >Welcome Admin !</h1>
+        <h3>Dashboard</h3>
+        <hr>
         <ul class="nav nav-tabs" role="tablist">
-            <li class="col-md-4">
-                <a class="btn btn-block btn-primary active" href="#freelancers" role="tab" data-toggle="tab">
+            <li class="col-md-2">
+                <a class="btn btn-block btn-outline-dark active" href="#home" role="tab" data-toggle="tab">
+                    Home
+                </a>
+            </li>
+            <li class="col-md-3">
+                <a class="btn btn-block btn-outline-dark" href="#freelancers" role="tab" data-toggle="tab">
                     Freelancers
                 </a>
             </li>
             <li class="col-md-4">
-                <a class="btn btn-block btn-dark text-center" href="#clients" role="tab" data-toggle="tab">
+                <a class="btn btn-block btn-outline-dark" href="#clients" role="tab" data-toggle="tab">
                     Clients
                 </a>
             </li>
-            <li class="col-md-4">
-                <a class="btn btn-block btn-success text-center" href="#chats" role="tab" data-toggle="tab">
+            <li class="col-md-3">
+                <a class="btn btn-block btn-outline-dark" href="#chats" role="tab" data-toggle="tab">
                     Chatting rooms
                 </a>
             </li>
@@ -33,66 +39,230 @@
             </div>
         @endif
 
+        @if (session()->has('errorMessage'))
+            <div class="alert alert-danger" style="margin-top: 30px;">
+                {{ session()->get('errorMessage') }}
+            </div>
+        @endif
+
+
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="freelancers">
+            <div role="tabpanel" class="tab-pane active" id="home">
+                <div class="container">
+                    <div class="row">
+                       <div class="col-md-6 addDesigner">
+                           <form action="/freelancer/behance/save_user" method="post">
+                               {{csrf_field()}}
+                               <div class="form-group">
+                                   <label for="languages"  class="panelFormLabel">Add a designer from Behance</label>
+                                   <input type="text" placeholder="Behance user profile link.." class="form-control panelFormInput" id="languages" name="behanceDesignerLink" value="" required>
+                               </div>
+                               <div class="buttonMain">
+                                   <button type="submit" class="btn-block hireBtn">Add</button>
+                               </div>
+                           </form>
+                       </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="freelancers">
+
                 <br/>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Link to Resume</th>
-                        <th scope="col">Profession</th>
-                        <th scope="col"></th>
-                        <th scope="col">Empty Fields</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <? $i=1; ?>
-                    <? foreach ($users as $user):?>
-                    <? if($user->admin == 1 || $user->firstName === 'Visitor'){ continue;}?>
 
-                    <tr>
-                        <th scope="row">{{$i}}</th>
-                        <td>{{$user->firstName}} {{$user->lastName}}</td>
-                        <td><a href="/{{$user->username}}" target="_blank">Resume</a></td>
-                        <td>{{$user->profession}}</td>
-                        <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Edit</a> - <a class="btn btn-sm btn-danger" href="{{route('freelancer.delete',$user->id)}}"  onclick="return confirm('Are you sure you want to delete {{$user->firstName}} {{$user->lastName}}?');">Delete</a></td>
-                        <? if($user->isComplete()):?>
-                        <td>
-                            <span style="color: green;">Profile Complete</span>
-                        </td>
-                        <? else:?>
-                        <td>
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li>
-                                    <a href="#fields{{$user->id}}"  class="btn btn-outline-info" role="tab" data-toggle="tab">
-                                        Show
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#hide{{$user->id}}" class="btn btn-outline-primary btn-small" role="tab" data-toggle="tab">Hide</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane" id="fields{{$user->id}}">
-                                    <br/>
-                                    <? foreach ($user->emptyFields as $data):?>
-                                        <li>{{$data}}</li>
-                                    <? endforeach;?>
-                                </div>
-                                <div role="tabpanel" class="tab-pane" id="hide{{$user->id}}">
-                                </div>
-                            </div>
-                        </td>
-                        <? endif;?>
-                    </tr>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="col-md-2">
+                        <a class="btn btn-block btn-outline-primary active" href="#designers" role="tab" data-toggle="tab">
+                            Designers
+                        </a>
+                    </li>
+                    <li class="col-md-2">
+                        <a class="btn btn-block btn-outline-primary" href="#developers" role="tab" data-toggle="tab">
+                            Developers
+                        </a>
+                    </li>
+                    <li class="col-md-2">
+                        <a class="btn btn-block btn-outline-primary" href="#behanceDesigners" role="tab" data-toggle="tab">
+                            Behance designers
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="designers">
+                        <br/>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">Link to Resume</th>
+                                <th scope="col">Profession</th>
+                                <th scope="col"></th>
+                                <th scope="col">Empty Fields</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <? $i=1; ?>
+                            <? foreach ($users as $user):?>
+                            <? if($user->admin == 1 || $user->firstName === 'Visitor' || $user->profession != 'Designer'){ continue;}?>
+
+                            <tr>
+                                <th scope="row">{{$i}}</th>
+                                <td>{{$user->firstName}} {{$user->lastName}}</td>
+                                <td><a href="/{{$user->username}}" target="_blank">Resume</a></td>
+                                <td>{{$user->profession}}</td>
+                                <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Edit</a> - <a class="btn btn-sm btn-danger" href="{{route('freelancer.delete',$user->id)}}"  onclick="return confirm('Are you sure you want to delete {{$user->firstName}} {{$user->lastName}}?');">Delete</a></td>
+                                <? if($user->isComplete()):?>
+                                <td>
+                                    <span style="color: green;">Profile Complete</span>
+                                </td>
+                                <? else:?>
+                                <td>
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li>
+                                            <a href="#fields{{$user->id}}"  class="btn btn-outline-info" role="tab" data-toggle="tab">
+                                                Show
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#hide{{$user->id}}" class="btn btn-outline-primary btn-small" role="tab" data-toggle="tab">Hide</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane" id="fields{{$user->id}}">
+                                            <br/>
+                                            <? foreach ($user->emptyFields as $data):?>
+                                            <li>{{$data}}</li>
+                                            <? endforeach;?>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="hide{{$user->id}}">
+                                        </div>
+                                    </div>
+                                </td>
+                                <? endif;?>
+                            </tr>
 
 
-                    <? $i++;?>
-                    <? endforeach;?>
-                    </tbody>
-                </table>
+                            <? $i++;?>
+                            <? endforeach;?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="developers">
+                        <br/>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">Link to Resume</th>
+                                <th scope="col">Profession</th>
+                                <th scope="col"></th>
+                                <th scope="col">Empty Fields</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <? $i=1; ?>
+                            <? foreach ($users as $user):?>
+                            <? if($user->admin == 1 || $user->firstName === 'Visitor' || $user->profession != 'Developer'){ continue;}?>
+
+                            <tr>
+                                <th scope="row">{{$i}}</th>
+                                <td>{{$user->firstName}} {{$user->lastName}}</td>
+                                <td><a href="/{{$user->username}}" target="_blank">Resume</a></td>
+                                <td>{{$user->profession}}</td>
+                                <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Edit</a> - <a class="btn btn-sm btn-danger" href="{{route('freelancer.delete',$user->id)}}"  onclick="return confirm('Are you sure you want to delete {{$user->firstName}} {{$user->lastName}}?');">Delete</a></td>
+                                <? if($user->isComplete()):?>
+                                <td>
+                                    <span style="color: green;">Profile Complete</span>
+                                </td>
+                                <? else:?>
+                                <td>
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li>
+                                            <a href="#fields{{$user->id}}"  class="btn btn-outline-info" role="tab" data-toggle="tab">
+                                                Show
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#hide{{$user->id}}" class="btn btn-outline-primary btn-small" role="tab" data-toggle="tab">Hide</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane" id="fields{{$user->id}}">
+                                            <br/>
+                                            <? foreach ($user->emptyFields as $data):?>
+                                            <li>{{$data}}</li>
+                                            <? endforeach;?>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="hide{{$user->id}}">
+                                        </div>
+                                    </div>
+                                </td>
+                                <? endif;?>
+                            </tr>
+
+
+                            <? $i++;?>
+                            <? endforeach;?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="behanceDesigners">
+                        <br/>
+                        <table class="table">
+                            <thead>
+                            {{--
+                            we will save for user all username and password. firt name and last name and leave email
+                            we will show :
+
+                                display name
+                                behance link
+                                location
+                                occupation (job title)
+                            --}}
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">Behance profile</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Occupation</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <? $i=1; ?>
+                            <? foreach ($users as $user):?>
+                            <?
+                                $isBehanceUser = false;
+                                if (strpos($user->username, 'BeUser') !== false) {
+                                    $isBehanceUser = true;
+                                    $userData = UserData::where('user_id',$user->id)->first();
+                                }
+                            ?>
+                            <? if($user->admin == 1 || $user->firstName === 'Visitor' ||  !$isBehanceUser){ continue;}?>
+
+                            <tr>
+                                <th scope="row">{{$i}}</th>
+                                {{-- diplay name--}}
+                                <td>{{$userData->name}}</td>
+                                {{-- link to behance --}}
+                                <td><a href="{{$userData->behanceLink}}" target="_blank">Behance profile</a></td>
+                                {{-- city --}}
+                                <td>{{$userData->city}}</td>
+                                {{-- job title --}}
+                                <td>{{$userData->jobTitle}}</td>
+                                <td><a class="btn btn-sm btn-danger" href="{{route('freelancer.delete',$user->id)}}"  onclick="return confirm('Are you sure you want to delete {{$user->firstName}} {{$user->lastName}}?');">Delete</a></td>
+
+                            </tr>
+
+
+                            <? $i++;?>
+                            <? endforeach;?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="clients">
                 <br/>

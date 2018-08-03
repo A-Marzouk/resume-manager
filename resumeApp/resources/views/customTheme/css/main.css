@@ -1587,6 +1587,17 @@ body {
 .noHoverEffect a:hover {
   text-decoration: none; }
 
+.modal-lg {
+  max-width: 80% !important; }
+
+.workDescModal {
+  padding-top: 20px;
+  color: #697786;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 24px; }
+
 .addDesigner {
   border: 1px solid lightgray;
   border-radius: 5px;

@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(74);
+module.exports = __webpack_require__(85);
 
 
 /***/ }),
@@ -14327,9 +14327,19 @@ Vue.component('works-list', __webpack_require__(63));
 Vue.component('work-history', __webpack_require__(68));
 Vue.component('add-work-modal', __webpack_require__(71));
 
+// projects
+Vue.component('projects-list', __webpack_require__(74));
+Vue.component('project-detail', __webpack_require__(79));
+Vue.component('add-project-modal', __webpack_require__(82));
+
 var work_overview = new Vue({
     el: '#work_overview'
 });
+
+var freelancer_works = new Vue({
+    el: '#freelancer_works'
+});
+
 var app = new Vue({
     el: '#VueChat',
     data: {
@@ -54617,6 +54627,975 @@ if (false) {
 
 /***/ }),
 /* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(75)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(77)
+/* template */
+var __vue_template__ = __webpack_require__(78)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\projects\\projectsListComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3e7b0d5a", Component.options)
+  } else {
+    hotAPI.reload("data-v-3e7b0d5a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(76);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("930799b6", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3e7b0d5a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./projectsListComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3e7b0d5a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./projectsListComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 77 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            projects: [],
+            canAdd: true,
+            toBeEditedProject: {
+                'id': '',
+                'projectName': '',
+                'isActive': '',
+                'link': '',
+                'projectDesc': '',
+                'images': '',
+                'mainImage': ''
+            }
+        };
+    },
+
+
+    methods: {
+        getCurrentProjects: function getCurrentProjects() {
+            var _this = this;
+
+            axios.get('/freelancer/projects').then(function (response) {
+                var currProjects = response.data;
+                _this.projects = currProjects;
+            });
+        },
+        addProject: function addProject(newProject) {
+            this.projects.push(newProject);
+            this.checkMaxProjects();
+        },
+        deleteProject: function deleteProject(project) {
+            var _this2 = this;
+
+            if (!confirm('Are you sure you want to delete this Project ?')) {
+                return;
+            }
+            axios.post('/freelancer/deleteproject', { projectID: project.id }).then(function (response) {
+                var projects = _this2.projects;
+                $.each(projects, function (i) {
+                    if (projects[i].id === project.id) {
+                        projects.splice(i, 1);
+                        return false;
+                    }
+                });
+
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+
+                _this2.checkMaxProjects();
+            });
+        },
+        editProject: function editProject(projectID) {
+            var projects = this.projects;
+            var editedProject = {};
+
+            $.each(projects, function (i) {
+                if (projects[i].id === projectID) {
+                    editedProject = projects[i];
+                }
+            });
+            this.toBeEditedProject = editedProject;
+        },
+        checkMaxProjects: function checkMaxProjects() {
+            if (this.projects.length > 4) {
+                this.canAdd = false;
+            } else {
+                this.canAdd = true;
+            }
+        },
+        clearData: function clearData() {
+            this.toBeEditedProject = {
+                'id': '',
+                'projectName': '',
+                'isActive': '',
+                'link': '',
+                'projectDesc': '',
+                'images': '',
+                'mainImage': ''
+            };
+        }
+    },
+
+    created: function created() {
+        this.getCurrentProjects();
+    }
+});
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "transition-group",
+        { staticClass: "row", attrs: { name: "list" } },
+        _vm._l(_vm.projects, function(project, index) {
+          return _c(
+            "project-detail",
+            {
+              key: index,
+              staticClass: "list-item workExperience col-lg-3 col-md-5"
+            },
+            [
+              _c("div", [
+                _c("img", {
+                  attrs: {
+                    src: _vm.toBeEditedProject.mainImage,
+                    alt: "",
+                    width: "100%",
+                    height: "200px",
+                    id: "projectImg"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  staticStyle: { padding: "5px", outline: "none" },
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.deleteProject(project)
+                    }
+                  }
+                },
+                [
+                  _c("span", { attrs: { "aria-hidden": "true" } }, [
+                    _vm._v("×")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  staticStyle: { padding: "3px 2px 5px 0px", outline: "none" },
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#addProjectModal"
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.editProject(project.id)
+                    }
+                  }
+                },
+                [
+                  _c("span", { attrs: { "aria-hidden": "true" } }, [
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/resources/views/customTheme/images/edit.png",
+                        alt: "edit",
+                        width: "17px"
+                      }
+                    })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "b",
+                {
+                  staticStyle: { "font-size": "16px", "font-weight": "bolder" }
+                },
+                [_vm._v(_vm._s(project.projectName))]
+              ),
+              _c("br")
+            ]
+          )
+        })
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: this.canAdd,
+              expression: "this.canAdd"
+            }
+          ],
+          staticClass:
+            "text-center align-middle col-lg-3 col-md-5 noHoverEffect",
+          on: { click: _vm.clearData }
+        },
+        [_vm._m(0)]
+      ),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("add-project-modal", {
+        attrs: { toBeEditedProject: _vm.toBeEditedProject },
+        on: { projectAdded: _vm.addProject }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "btn btn-default btn-workExp",
+        attrs: {
+          "data-toggle": "modal",
+          "data-target": "#addProjectModal",
+          id: "addProjectText"
+        }
+      },
+      [
+        _c("span", [
+          _c("img", {
+            attrs: {
+              src:
+                "/resumeApp/resources/views/customTheme/images/add_work_img.png",
+              alt: "add project",
+              width: "30px"
+            }
+          }),
+          _vm._v("\n                Add Project\n            ")
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3e7b0d5a", module.exports)
+  }
+}
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(80)
+/* template */
+var __vue_template__ = __webpack_require__(81)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\projects\\projectDetailComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e9e4fb24", Component.options)
+  } else {
+    hotAPI.reload("data-v-e9e4fb24", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 80 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {};
+    }
+});
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e9e4fb24", module.exports)
+  }
+}
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(83)
+/* template */
+var __vue_template__ = __webpack_require__(84)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\projects\\addProjectComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2f087d9a", Component.options)
+  } else {
+    hotAPI.reload("data-v-2f087d9a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 83 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['toBeEditedProject'],
+    data: function data() {
+        return {};
+    },
+
+    methods: {
+        submitProjectForm: function submitProjectForm() {
+            var _this = this;
+
+            // post data :
+            axios.post('/freelancer/addproject', this.toBeEditedProject).then(function (response) {
+                //
+                if (_this.toBeEditedProject.id === "") {
+                    _this.$emit('projectAdded', _this.toBeEditedProject);
+                }
+                // save the project id :
+                _this.toBeEditedProject.id = response.data.id;
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+            });
+            $('#closeModal').click();
+        }
+    },
+    mounted: function mounted() {}
+});
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addProjectModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addProjectModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-8" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4" }, [
+                    _c(
+                      "form",
+                      {
+                        attrs: {
+                          action: "/freelancer/addproject/",
+                          method: "post"
+                        },
+                        on: {
+                          submit: function($event) {
+                            $event.preventDefault()
+                            return _vm.submitProjectForm($event)
+                          }
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "form-group col-md-6" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "panelFormLabel",
+                                attrs: { for: "projectName" }
+                              },
+                              [_vm._v("Project name :")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.toBeEditedProject.projectName,
+                                  expression: "toBeEditedProject.projectName"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                id: "projectName",
+                                name: "projectName",
+                                required: ""
+                              },
+                              domProps: {
+                                value: _vm.toBeEditedProject.projectName
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.toBeEditedProject,
+                                    "projectName",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-6" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "panelFormLabel",
+                                attrs: { for: "link" }
+                              },
+                              [_vm._v("link:")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.toBeEditedProject.link,
+                                  expression: "toBeEditedProject.link"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                id: "link",
+                                name: "link",
+                                required: ""
+                              },
+                              domProps: { value: _vm.toBeEditedProject.link },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.toBeEditedProject,
+                                    "link",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-12" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "panelFormLabel",
+                                attrs: { for: "projectDesc" }
+                              },
+                              [_vm._v("Project description :")]
+                            ),
+                            _vm._v(" "),
+                            _c("textarea", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.toBeEditedProject.projectDesc,
+                                  expression: "toBeEditedProject.projectDesc"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                rows: "3",
+                                id: "projectDesc",
+                                name: "projectDesc",
+                                required: ""
+                              },
+                              domProps: {
+                                value: _vm.toBeEditedProject.projectDesc
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.toBeEditedProject,
+                                    "projectDesc",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(1),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group col-md-12" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "form-check-label checkBoxText checkBoxContainer"
+                              },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.toBeEditedProject.isActive,
+                                      expression: "toBeEditedProject.isActive"
+                                    }
+                                  ],
+                                  staticClass: "form-check-input",
+                                  staticStyle: {
+                                    "@if($errors->has('design_skills_checkbox')) border":
+                                      "1px solid red"
+                                  },
+                                  attrs: {
+                                    id: "isActive",
+                                    type: "checkbox",
+                                    name: "isActive"
+                                  },
+                                  domProps: {
+                                    checked: _vm.toBeEditedProject.isActive,
+                                    checked: Array.isArray(
+                                      _vm.toBeEditedProject.isActive
+                                    )
+                                      ? _vm._i(
+                                          _vm.toBeEditedProject.isActive,
+                                          null
+                                        ) > -1
+                                      : _vm.toBeEditedProject.isActive
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$a = _vm.toBeEditedProject.isActive,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = null,
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            _vm.$set(
+                                              _vm.toBeEditedProject,
+                                              "isActive",
+                                              $$a.concat([$$v])
+                                            )
+                                        } else {
+                                          $$i > -1 &&
+                                            _vm.$set(
+                                              _vm.toBeEditedProject,
+                                              "isActive",
+                                              $$a
+                                                .slice(0, $$i)
+                                                .concat($$a.slice($$i + 1))
+                                            )
+                                        }
+                                      } else {
+                                        _vm.$set(
+                                          _vm.toBeEditedProject,
+                                          "isActive",
+                                          $$c
+                                        )
+                                      }
+                                    }
+                                  }
+                                }),
+                                _vm._v(
+                                  "\n                                            Active\n                                            "
+                                ),
+                                _c("span", { staticClass: "checkmark" })
+                              ]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(2)
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "text-right", staticStyle: { padding: "15px 10px 0 0" } },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "modal",
+              "aria-label": "Close",
+              id: "closeModal"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group col-md-12" }, [
+      _c(
+        "div",
+        { staticClass: "custom-file", staticStyle: { "padding-top": "5px" } },
+        [
+          _c("input", {
+            staticClass: "custom-file-input panelFormInput",
+            attrs: { type: "file", id: "mainImage", name: "mainImage" }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            { staticClass: "custom-file-label", attrs: { id: "audioLabel" } },
+            [
+              _vm._v(
+                "\n                                                Main image\n                                            "
+              )
+            ]
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Save")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2f087d9a", module.exports)
+  }
+}
+
+/***/ }),
+/* 85 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -32,9 +32,19 @@ Vue.component('works-list', require('./components/worksListComponent.vue'));
 Vue.component('work-history', require('./components/workHistoryComponent.vue'));
 Vue.component('add-work-modal', require('./components/addWorkComponent.vue'));
 
+// projects
+Vue.component('projects-list', require('./components/projects/projectsListComponent.vue'));
+Vue.component('project-detail', require('./components/projects/projectDetailComponent.vue'));
+Vue.component('add-project-modal', require('./components/projects/addProjectComponent.vue'));
+
 let work_overview = new Vue({
     el:'#work_overview'
 });
+
+let freelancer_works = new Vue({
+    el:'#freelancer_works'
+});
+
 const app = new Vue({
     el: '#VueChat',
     data:{

@@ -101,7 +101,14 @@ Route::get('/stripe/payments/pay',function(){
 Route::get('/freelancer/workshistory','WorksHistoryController@getWorks')->name('get.work');
 Route::post('/freelancer/addwork/','WorksHistoryController@addWork')->name('add.work');
 Route::post('/freelancer/deletework/','WorksHistoryController@deleteWork')->name('delete.work');
-Route::post('/freelancer/editwork/','WorksHistoryController@editWork')->name('edit.work');
+
+// projects overview
+// for test page route :
+Route::get('/freelancer/Vprojects','ProjectsController@viewProjects')->name('view.projects');
+
+Route::get('/freelancer/projects','ProjectsController@getProjects')->name('get.project');
+Route::post('/freelancer/addproject/','ProjectsController@addProject')->name('add.project');
+Route::post('/freelancer/deleteproject/','ProjectsController@deleteProject')->name('delete.project');
 
 // behance api :
 Route::get('/freelancer/behance/{behanceUsername}','UserDataController@dataFromBehance');

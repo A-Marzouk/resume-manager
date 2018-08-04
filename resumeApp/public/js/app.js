@@ -54871,7 +54871,7 @@ var render = function() {
               _c("div", [
                 _c("img", {
                   attrs: {
-                    src: _vm.toBeEditedProject.mainImage,
+                    src: project.mainImage,
                     alt: "",
                     width: "100%",
                     height: "200px",

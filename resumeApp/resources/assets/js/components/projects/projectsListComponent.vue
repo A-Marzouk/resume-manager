@@ -3,7 +3,7 @@
         <transition-group name="list" class="row">
             <project-detail v-for="(project,index) in projects" v-bind:key="index" class="list-item workExperience col-lg-3 col-md-5">
                 <div>
-                    <img :src="toBeEditedProject.mainImage" alt="" width="100%" height="200px" id="projectImg">
+                    <img :src="project.mainImage" alt="" width="100%" height="200px" id="projectImg">
                 </div>
                 <hr>
                 <button type="button" class="close" style="padding: 5px; outline: none;" @click="deleteProject(project)">

@@ -10,19 +10,22 @@
                     </div>
                     <div class="modal-body" style="padding: 0 36px 36px 36px;">
                         <div class="row">
-                            <div class="col-md-8" style="border: 1px solid lightgray; border-radius:10px; padding: 0; ">
+                            <div class="col-md-8"  style="border-radius:10px; border: 1px solid lightgray;" v-show="!toBeEditedProject.mainImage">
+
+                            </div>
+                            <div class="col-md-8" v-show="toBeEditedProject.mainImage">
                                 <div>
-                                    <img :src="toBeEditedProject.mainImage" alt="" width="100%" height="auto" style="border-radius:10px;">
+                                    <img :src="toBeEditedProject.mainImage" alt="" width="100%" height="auto" style="border-radius:10px; border: 1px solid lightgray;">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <form action="/freelancer/addproject/" method="post" @submit.prevent="submitProjectForm">
                                     <div class="row">
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-12">
                                             <label for="projectName" class="panelFormLabel">Project name :</label>
                                             <input type="text" class="form-control" id="projectName" name="projectName" v-model="toBeEditedProject.projectName" required>
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-12">
                                             <label for="link" class="panelFormLabel">link:</label>
                                             <input type="text" class="form-control" id="link" name="link" v-model="toBeEditedProject.link">
                                         </div>

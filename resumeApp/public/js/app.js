@@ -54868,17 +54868,33 @@ var render = function() {
               staticClass: "list-item workExperience col-lg-3 col-md-5"
             },
             [
-              _c("div", [
-                _c("img", {
+              _c(
+                "a",
+                {
                   attrs: {
-                    src: project.mainImage,
-                    alt: "",
-                    width: "100%",
-                    height: "200px",
-                    id: "projectImg"
+                    href: "javascript:void(0)",
+                    "data-toggle": "modal",
+                    "data-target": "#addProjectModal"
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.editProject(project.id)
+                    }
                   }
-                })
-              ]),
+                },
+                [
+                  _c("img", {
+                    staticStyle: { "border-radius": "5px" },
+                    attrs: {
+                      src: project.mainImage,
+                      alt: "",
+                      width: "100%",
+                      height: "200px",
+                      id: "projectImg"
+                    }
+                  })
+                ]
+              ),
               _vm._v(" "),
               _c("hr"),
               _vm._v(" "),
@@ -55214,6 +55230,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedProject'],
@@ -55305,20 +55324,42 @@ var render = function() {
                 },
                 [
                   _c("div", { staticClass: "row" }, [
+                    _c("div", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !_vm.toBeEditedProject.mainImage,
+                          expression: "!toBeEditedProject.mainImage"
+                        }
+                      ],
+                      staticClass: "col-md-8",
+                      staticStyle: {
+                        "border-radius": "10px",
+                        border: "1px solid lightgray"
+                      }
+                    }),
+                    _vm._v(" "),
                     _c(
                       "div",
                       {
-                        staticClass: "col-md-8",
-                        staticStyle: {
-                          border: "1px solid lightgray",
-                          "border-radius": "10px",
-                          padding: "0"
-                        }
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.toBeEditedProject.mainImage,
+                            expression: "toBeEditedProject.mainImage"
+                          }
+                        ],
+                        staticClass: "col-md-8"
                       },
                       [
                         _c("div", [
                           _c("img", {
-                            staticStyle: { "border-radius": "10px" },
+                            staticStyle: {
+                              "border-radius": "10px",
+                              border: "1px solid lightgray"
+                            },
                             attrs: {
                               src: _vm.toBeEditedProject.mainImage,
                               alt: "",
@@ -55347,7 +55388,7 @@ var render = function() {
                         },
                         [
                           _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "form-group col-md-6" }, [
+                            _c("div", { staticClass: "form-group col-md-12" }, [
                               _c(
                                 "label",
                                 {
@@ -55391,7 +55432,7 @@ var render = function() {
                               })
                             ]),
                             _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-6" }, [
+                            _c("div", { staticClass: "form-group col-md-12" }, [
                               _c(
                                 "label",
                                 {

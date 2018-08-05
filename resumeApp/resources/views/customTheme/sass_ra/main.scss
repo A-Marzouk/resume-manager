@@ -592,7 +592,7 @@ body{
     padding-bottom: -1%;
     background: url("/background.svg");
     background-repeat: no-repeat;
-    background-size: 100% 35%;
+    background-size: 100% 90%;
     #workTextImg{
       margin-left: 16px;
     }
@@ -626,10 +626,10 @@ body{
   .workTitle{
     color: #697786;
     font-family: Roboto;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 300;
     line-height: 24px;
-    padding: 3%;
+    padding: 20px 0px 20px 0;
     img{
       width: 20px;
     }

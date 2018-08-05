@@ -46,12 +46,16 @@ class ProjectsController extends Controller
         $project->projectDesc = $request->projectDesc;
         $project->link = $request->link;
         $project->isActive = $request->isActive;
-        $project->mainImage = $request->mainImage;
+        if(!empty($request->mainImage)){
+            $handler = new UserDataController;
+            $path  = $handler->uploadPhoto('','mainImage','');
+            $project->mainImage = '/'. $path ;
+        }
 
         $project->save();
 
         // edited/added project Id
-        return ['id'=>$project->id];
+        return ['id'=>$project->id , 'mainImagePath' => $project->mainImage];
 
     }
 

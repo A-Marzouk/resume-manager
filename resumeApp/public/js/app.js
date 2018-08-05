@@ -55212,11 +55212,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedProject'],
     data: function data() {
-        return {};
+        return {
+            form_data: {},
+            canAddImage: false
+        };
     },
 
     methods: {
@@ -55224,13 +55229,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             // post data :
-            axios.post('/freelancer/addproject', this.toBeEditedProject).then(function (response) {
-                //
+            this.form_data = new FormData();
+            this.form_data.append('id', this.toBeEditedProject.id);
+            this.form_data.append('projectName', this.toBeEditedProject.projectName || '');
+            this.form_data.append('link', this.toBeEditedProject.link || '');
+            this.form_data.append('projectDesc', this.toBeEditedProject.projectDesc || '');
+            this.form_data.append('isActive', this.toBeEditedProject.isActive || '');
+
+            if (this.canAddImage) {
+                var mainImage = this.$refs.file.files[0];
+                this.form_data.append('mainImage', mainImage);
+            }
+
+            axios.post('/freelancer/addproject', this.form_data).then(function (response) {
+                console.log(response.data);
+
                 if (_this.toBeEditedProject.id === "") {
                     _this.$emit('projectAdded', _this.toBeEditedProject);
                 }
                 // save the project id :
                 _this.toBeEditedProject.id = response.data.id;
+                _this.toBeEditedProject.mainImage = response.data.mainImagePath;
                 // changes saved :
                 $('#changesSaved').fadeIn('slow');
                 setTimeout(function () {
@@ -55238,6 +55257,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }, 2000);
             });
             $('#closeModal').click();
+        },
+        handleFile: function handleFile() {
+            this.canAddImage = true;
+            var file = this.$refs.file.files[0];
+            this.toBeEditedProject.mainImage = URL.createObjectURL(file);
+            // show the picture immediately
         }
     },
     mounted: function mounted() {}
@@ -55272,247 +55297,310 @@ var render = function() {
             _c("div", { staticClass: "modal-content" }, [
               _vm._m(0),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-md-8" }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "modal-body",
+                  staticStyle: { padding: "0 36px 36px 36px" }
+                },
+                [
+                  _c("div", { staticClass: "row" }, [
                     _c(
-                      "form",
+                      "div",
                       {
-                        attrs: {
-                          action: "/freelancer/addproject/",
-                          method: "post"
-                        },
-                        on: {
-                          submit: function($event) {
-                            $event.preventDefault()
-                            return _vm.submitProjectForm($event)
-                          }
+                        staticClass: "col-md-8",
+                        staticStyle: {
+                          border: "1px solid lightgray",
+                          "border-radius": "10px",
+                          padding: "0"
                         }
                       },
                       [
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "form-group col-md-6" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: "panelFormLabel",
-                                attrs: { for: "projectName" }
-                              },
-                              [_vm._v("Project name :")]
-                            ),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
+                        _c("div", [
+                          _c("img", {
+                            staticStyle: { "border-radius": "10px" },
+                            attrs: {
+                              src: _vm.toBeEditedProject.mainImage,
+                              alt: "",
+                              width: "100%",
+                              height: "auto"
+                            }
+                          })
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c(
+                        "form",
+                        {
+                          attrs: {
+                            action: "/freelancer/addproject/",
+                            method: "post"
+                          },
+                          on: {
+                            submit: function($event) {
+                              $event.preventDefault()
+                              return _vm.submitProjectForm($event)
+                            }
+                          }
+                        },
+                        [
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "form-group col-md-6" }, [
+                              _c(
+                                "label",
                                 {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.toBeEditedProject.projectName,
-                                  expression: "toBeEditedProject.projectName"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                id: "projectName",
-                                name: "projectName",
-                                required: ""
-                              },
-                              domProps: {
-                                value: _vm.toBeEditedProject.projectName
-                              },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
+                                  staticClass: "panelFormLabel",
+                                  attrs: { for: "projectName" }
+                                },
+                                [_vm._v("Project name :")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.toBeEditedProject.projectName,
+                                    expression: "toBeEditedProject.projectName"
                                   }
-                                  _vm.$set(
-                                    _vm.toBeEditedProject,
-                                    "projectName",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group col-md-6" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: "panelFormLabel",
-                                attrs: { for: "link" }
-                              },
-                              [_vm._v("link:")]
-                            ),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.toBeEditedProject.link,
-                                  expression: "toBeEditedProject.link"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                id: "link",
-                                name: "link",
-                                required: ""
-                              },
-                              domProps: { value: _vm.toBeEditedProject.link },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.toBeEditedProject,
-                                    "link",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group col-md-12" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: "panelFormLabel",
-                                attrs: { for: "projectDesc" }
-                              },
-                              [_vm._v("Project description :")]
-                            ),
-                            _vm._v(" "),
-                            _c("textarea", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.toBeEditedProject.projectDesc,
-                                  expression: "toBeEditedProject.projectDesc"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                rows: "3",
-                                id: "projectDesc",
-                                name: "projectDesc",
-                                required: ""
-                              },
-                              domProps: {
-                                value: _vm.toBeEditedProject.projectDesc
-                              },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.toBeEditedProject,
-                                    "projectDesc",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(1),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-group col-md-12" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass:
-                                  "form-check-label checkBoxText checkBoxContainer"
-                              },
-                              [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.toBeEditedProject.isActive,
-                                      expression: "toBeEditedProject.isActive"
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "text",
+                                  id: "projectName",
+                                  name: "projectName",
+                                  required: ""
+                                },
+                                domProps: {
+                                  value: _vm.toBeEditedProject.projectName
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
                                     }
-                                  ],
-                                  staticClass: "form-check-input",
-                                  staticStyle: {
-                                    "@if($errors->has('design_skills_checkbox')) border":
-                                      "1px solid red"
-                                  },
-                                  attrs: {
-                                    id: "isActive",
-                                    type: "checkbox",
-                                    name: "isActive"
-                                  },
-                                  domProps: {
-                                    checked: _vm.toBeEditedProject.isActive,
-                                    checked: Array.isArray(
-                                      _vm.toBeEditedProject.isActive
+                                    _vm.$set(
+                                      _vm.toBeEditedProject,
+                                      "projectName",
+                                      $event.target.value
                                     )
-                                      ? _vm._i(
-                                          _vm.toBeEditedProject.isActive,
-                                          null
-                                        ) > -1
-                                      : _vm.toBeEditedProject.isActive
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      var $$a = _vm.toBeEditedProject.isActive,
-                                        $$el = $event.target,
-                                        $$c = $$el.checked ? true : false
-                                      if (Array.isArray($$a)) {
-                                        var $$v = null,
-                                          $$i = _vm._i($$a, $$v)
-                                        if ($$el.checked) {
-                                          $$i < 0 &&
-                                            _vm.$set(
-                                              _vm.toBeEditedProject,
-                                              "isActive",
-                                              $$a.concat([$$v])
-                                            )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "form-group col-md-6" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "panelFormLabel",
+                                  attrs: { for: "link" }
+                                },
+                                [_vm._v("link:")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.toBeEditedProject.link,
+                                    expression: "toBeEditedProject.link"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "text",
+                                  id: "link",
+                                  name: "link"
+                                },
+                                domProps: { value: _vm.toBeEditedProject.link },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.toBeEditedProject,
+                                      "link",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "form-group col-md-12" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "panelFormLabel",
+                                  attrs: { for: "projectDesc" }
+                                },
+                                [_vm._v("Project description :")]
+                              ),
+                              _vm._v(" "),
+                              _c("textarea", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.toBeEditedProject.projectDesc,
+                                    expression: "toBeEditedProject.projectDesc"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  rows: "3",
+                                  id: "projectDesc",
+                                  name: "projectDesc"
+                                },
+                                domProps: {
+                                  value: _vm.toBeEditedProject.projectDesc
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.toBeEditedProject,
+                                      "projectDesc",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "form-group col-md-12" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "custom-file",
+                                  staticStyle: { "padding-top": "5px" }
+                                },
+                                [
+                                  _c("input", {
+                                    ref: "file",
+                                    staticClass:
+                                      "custom-file-input panelFormInput",
+                                    attrs: {
+                                      type: "file",
+                                      id: "mainImage",
+                                      name: "mainImage"
+                                    },
+                                    on: { change: _vm.handleFile }
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "custom-file-label",
+                                      attrs: { id: "audioLabel" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                                Main image\n                                            "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "form-group col-md-12" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass:
+                                    "form-check-label checkBoxText checkBoxContainer"
+                                },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.toBeEditedProject.isActive,
+                                        expression: "toBeEditedProject.isActive"
+                                      }
+                                    ],
+                                    staticClass: "form-check-input",
+                                    staticStyle: {
+                                      "@if($errors->has('design_skills_checkbox')) border":
+                                        "1px solid red"
+                                    },
+                                    attrs: {
+                                      id: "isActive",
+                                      type: "checkbox",
+                                      name: "isActive"
+                                    },
+                                    domProps: {
+                                      checked: _vm.toBeEditedProject.isActive,
+                                      checked: Array.isArray(
+                                        _vm.toBeEditedProject.isActive
+                                      )
+                                        ? _vm._i(
+                                            _vm.toBeEditedProject.isActive,
+                                            null
+                                          ) > -1
+                                        : _vm.toBeEditedProject.isActive
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        var $$a =
+                                            _vm.toBeEditedProject.isActive,
+                                          $$el = $event.target,
+                                          $$c = $$el.checked ? true : false
+                                        if (Array.isArray($$a)) {
+                                          var $$v = null,
+                                            $$i = _vm._i($$a, $$v)
+                                          if ($$el.checked) {
+                                            $$i < 0 &&
+                                              _vm.$set(
+                                                _vm.toBeEditedProject,
+                                                "isActive",
+                                                $$a.concat([$$v])
+                                              )
+                                          } else {
+                                            $$i > -1 &&
+                                              _vm.$set(
+                                                _vm.toBeEditedProject,
+                                                "isActive",
+                                                $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1))
+                                              )
+                                          }
                                         } else {
-                                          $$i > -1 &&
-                                            _vm.$set(
-                                              _vm.toBeEditedProject,
-                                              "isActive",
-                                              $$a
-                                                .slice(0, $$i)
-                                                .concat($$a.slice($$i + 1))
-                                            )
+                                          _vm.$set(
+                                            _vm.toBeEditedProject,
+                                            "isActive",
+                                            $$c
+                                          )
                                         }
-                                      } else {
-                                        _vm.$set(
-                                          _vm.toBeEditedProject,
-                                          "isActive",
-                                          $$c
-                                        )
                                       }
                                     }
-                                  }
-                                }),
-                                _vm._v(
-                                  "\n                                            Active\n                                            "
-                                ),
-                                _c("span", { staticClass: "checkmark" })
-                              ]
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(2)
-                      ]
-                    )
+                                  }),
+                                  _vm._v(
+                                    "\n                                            Active\n                                            "
+                                  ),
+                                  _c("span", { staticClass: "checkmark" })
+                                ]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(1)
+                        ]
+                      )
+                    ])
                   ])
-                ])
-              ])
+                ]
+              )
             ])
           ]
         )
@@ -55544,33 +55632,6 @@ var staticRenderFns = [
         )
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-12" }, [
-      _c(
-        "div",
-        { staticClass: "custom-file", staticStyle: { "padding-top": "5px" } },
-        [
-          _c("input", {
-            staticClass: "custom-file-input panelFormInput",
-            attrs: { type: "file", id: "mainImage", name: "mainImage" }
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            { staticClass: "custom-file-label", attrs: { id: "audioLabel" } },
-            [
-              _vm._v(
-                "\n                                                Main image\n                                            "
-              )
-            ]
-          )
-        ]
-      )
-    ])
   },
   function() {
     var _vm = this

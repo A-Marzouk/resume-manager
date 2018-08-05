@@ -54754,6 +54754,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -54870,30 +54872,36 @@ var render = function() {
             },
             [
               _c(
-                "a",
-                {
-                  attrs: {
-                    href: "javascript:void(0)",
-                    "data-toggle": "modal",
-                    "data-target": "#addProjectModal"
-                  },
-                  on: {
-                    click: function($event) {
-                      _vm.editProject(project.id)
-                    }
-                  }
-                },
+                "div",
+                { staticStyle: { height: "200px", overflow: "hidden" } },
                 [
-                  _c("img", {
-                    staticStyle: { "border-radius": "5px" },
-                    attrs: {
-                      src: project.mainImage,
-                      alt: "",
-                      width: "100%",
-                      height: "200px",
-                      id: "projectImg"
-                    }
-                  })
+                  _c(
+                    "a",
+                    {
+                      staticStyle: { outline: "none" },
+                      attrs: {
+                        href: "javascript:void(0)",
+                        "data-toggle": "modal",
+                        "data-target": "#addProjectModal"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.editProject(project.id)
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        staticStyle: { "border-radius": "5px" },
+                        attrs: {
+                          src: project.mainImage,
+                          alt: "",
+                          width: "100%",
+                          id: "projectImg"
+                        }
+                      })
+                    ]
+                  )
                 ]
               ),
               _vm._v(" "),

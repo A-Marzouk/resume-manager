@@ -2,9 +2,11 @@
     <div>
         <transition-group name="list" class="row">
             <project-detail v-for="(project,index) in projects" v-bind:key="index" class="list-item workExperience col-lg-3 col-md-5">
-                <a href="javascript:void(0)" @click="editProject(project.id)"  data-toggle="modal" data-target="#addProjectModal">
-                    <img :src="project.mainImage" alt="" width="100%" height="200px" id="projectImg" style="border-radius:5px;">
-                </a>
+                <div style="height: 200px; overflow: hidden;">
+                    <a href="javascript:void(0)" @click="editProject(project.id)"  data-toggle="modal" data-target="#addProjectModal" style="outline: none;">
+                        <img :src="project.mainImage" alt="" width="100%" id="projectImg" style="border-radius:5px;">
+                    </a>
+                </div>
                 <hr>
                 <button type="button" class="close" style="padding: 5px; outline: none;" @click="deleteProject(project)">
                     <span aria-hidden="true">&times;</span>

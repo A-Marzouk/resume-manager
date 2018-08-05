@@ -38,7 +38,7 @@
     </div> <hr>
     <div class="col-md-12">
         <label for="work_overview" class="panelFormLabel">Work overview</label>
-        <div class="container" id="work_overview">
+        <div  id="work_overview">
             <works-list></works-list>
         </div>
     </div> <!-- work exp -->
@@ -49,9 +49,8 @@
             <projects-list></projects-list>
         </div>
     </div> <!-- freelancer_works -->
-    <hr>
 
-    <div class="form-group row">
+    <div class="form-group row d-none">
         {{-- Developer --}}
         <label class="col-md-12 panelFormLabel" style="padding-bottom: 20px;">Please Upload 8 examples of your  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> work (800 wide x 600 height) </label>
         @for($i=0;$i<8;$i++)
@@ -90,7 +89,8 @@
                 </div>
             </div>
         @endfor
-    </div>      <!-- works -->
+    </div>
+    <!-- works -->
 
     <div class="row">
         <div class="buttonMain col-md-3 offset-md-9">

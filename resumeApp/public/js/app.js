@@ -53976,7 +53976,7 @@ var staticRenderFns = [
               width: "30px"
             }
           }),
-          _vm._v("\n                Add work experience\n            ")
+          _vm._v("\n                Add new work experience\n            ")
         ])
       ]
     )
@@ -55021,7 +55021,7 @@ var staticRenderFns = [
               width: "30px"
             }
           }),
-          _vm._v("\n                Add new work\n            ")
+          _vm._v("\n                Add new work example\n            ")
         ])
       ]
     )

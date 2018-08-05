@@ -23,7 +23,7 @@
             <a class="btn btn-default btn-workExp" data-toggle="modal" data-target="#addWorkModal" id="addWorkText">
                 <span>
                     <img src="/resumeApp/resources/views/customTheme/images/add_work_img.png" alt="add work" width="30px">
-                    Add work experience
+                    Add new work experience
                 </span>
             </a>
         </div>

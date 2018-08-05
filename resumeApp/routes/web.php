@@ -103,9 +103,6 @@ Route::post('/freelancer/addwork/','WorksHistoryController@addWork')->name('add.
 Route::post('/freelancer/deletework/','WorksHistoryController@deleteWork')->name('delete.work');
 
 // projects overview
-// for test page route :
-Route::get('/freelancer/Vprojects','ProjectsController@viewProjects')->name('view.projects');
-
 Route::get('/freelancer/projects','ProjectsController@getProjects')->name('get.project');
 Route::post('/freelancer/addproject/','ProjectsController@addProject')->name('add.project');
 Route::post('/freelancer/deleteproject/','ProjectsController@deleteProject')->name('delete.project');

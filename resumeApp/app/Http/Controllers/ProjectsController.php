@@ -14,9 +14,6 @@ use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
 {
-    public function viewProjects(){
-        return view('viewProjects');
-    }
     public function getProjects(){
        // get current authenticated freelancer :
         $currentUser = auth()->user();
@@ -26,7 +23,7 @@ class ProjectsController extends Controller
     public function addProject(Request $request){
         $currentUser = auth()->user();
         $request->validate([
-            'projectName' => 'max:190|required',
+            'projectName' => 'max:190',
             'projectDesc' => 'max:1500',
             'link' => 'max:190',
             'isActive' => 'max:190',

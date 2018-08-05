@@ -17,11 +17,11 @@
                 <b style="font-size:16px; font-weight:bolder; ">{{project.projectName}}</b><br/>
             </project-detail>
         </transition-group>
-        <div class="text-center align-middle col-lg-3 col-md-5 noHoverEffect" v-show="this.canAdd" @click="clearData">
+        <div class="text-left align-middle col-lg-3 col-md-5 noHoverEffect" v-show="this.canAddProject" @click="clearData">
             <a class="btn btn-default btn-workExp" data-toggle="modal" data-target="#addProjectModal" id="addProjectText">
                 <span>
                     <img src="/resumeApp/resources/views/customTheme/images/add_work_img.png" alt="add project" width="30px">
-                    Add Project
+                    Add new work
                 </span>
             </a>
         </div>
@@ -35,7 +35,7 @@
         data() {
             return {
                 projects: [],
-                canAdd:true,
+                canAddProject:true,
                 toBeEditedProject:{
                     'id':'',
                     'projectName' :'',
@@ -54,6 +54,7 @@
                     (response) => {
                         let currProjects =  response.data;
                         this.projects = currProjects;
+                        this.checkMaxProjects();
                     }
                 );
             },
@@ -100,10 +101,10 @@
             },
 
             checkMaxProjects(){
-                if(this.projects.length > 4){
-                    this.canAdd =  false;
+                if(this.projects.length > 16){
+                    this.canAddProject =  false;
                 }else{
-                    this.canAdd = true;
+                    this.canAddProject = true;
                 }
             },
 

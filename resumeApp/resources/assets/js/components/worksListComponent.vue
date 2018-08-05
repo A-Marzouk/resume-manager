@@ -19,7 +19,7 @@
                 {{work.job_description}}
             </work-history>
         </transition-group>
-        <div class="text-center align-middle col-lg-3 col-md-5 noHoverEffect" v-show="this.canAdd" @click="clearData">
+        <div class="text-left align-middle col-lg-3 col-md-5 noHoverEffect" v-show="this.canAdd" @click="clearData">
             <a class="btn btn-default btn-workExp" data-toggle="modal" data-target="#addWorkModal" id="addWorkText">
                 <span>
                     <img src="/resumeApp/resources/views/customTheme/images/add_work_img.png" alt="add work" width="30px">
@@ -63,6 +63,7 @@
                             }
                         });
                         this.works = currWorks;
+                        this.checkMaxWorks();
                     }
                 );
             },

@@ -4,7 +4,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="text-right" style="padding: 15px 10px 0 0;">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeProjectModal">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -22,15 +22,15 @@
                                 <form action="/freelancer/addproject/" method="post" @submit.prevent="submitProjectForm">
                                     <div class="row">
                                         <div class="form-group col-md-12">
-                                            <label for="projectName" class="panelFormLabel">Project name :</label>
+                                            <label for="projectName" class="panelFormLabel">Name :</label>
                                             <input type="text" class="form-control" id="projectName" name="projectName" v-model="toBeEditedProject.projectName" required>
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label for="link" class="panelFormLabel">link:</label>
+                                            <label for="link" class="panelFormLabel">Link:</label>
                                             <input type="text" class="form-control" id="link" name="link" v-model="toBeEditedProject.link">
                                         </div>
                                         <div class="form-group col-md-12">
-                                            <label for="projectDesc" class="panelFormLabel">Project description :</label>
+                                            <label for="projectDesc" class="panelFormLabel">Description :</label>
                                             <textarea class="form-control" rows="3" id="projectDesc" name="projectDesc" v-model="toBeEditedProject.projectDesc">
                                     </textarea>
                                         </div>
@@ -104,7 +104,7 @@
                         $('#changesSaved').fadeOut();
                     },2000);
                 });
-                $('#closeModal').click();
+                $('#closeProjectModal').click();
             },
             handleFile(){
                 this.canAddImage = true;

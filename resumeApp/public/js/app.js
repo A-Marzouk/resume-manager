@@ -53731,6 +53731,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 });
                 _this.works = currWorks;
+                _this.checkMaxWorks();
             });
         },
         addWorkHistory: function addWorkHistory(newWork) {
@@ -53934,8 +53935,7 @@ var render = function() {
               expression: "this.canAdd"
             }
           ],
-          staticClass:
-            "text-center align-middle col-lg-3 col-md-5 noHoverEffect",
+          staticClass: "text-left align-middle col-lg-3 col-md-5 noHoverEffect",
           on: { click: _vm.clearData }
         },
         [_vm._m(0)]
@@ -54759,7 +54759,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             projects: [],
-            canAdd: true,
+            canAddProject: true,
             toBeEditedProject: {
                 'id': '',
                 'projectName': '',
@@ -54780,6 +54780,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/freelancer/projects').then(function (response) {
                 var currProjects = response.data;
                 _this.projects = currProjects;
+                _this.checkMaxProjects();
             });
         },
         addProject: function addProject(newProject) {
@@ -54822,10 +54823,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.toBeEditedProject = editedProject;
         },
         checkMaxProjects: function checkMaxProjects() {
-            if (this.projects.length > 4) {
-                this.canAdd = false;
+            if (this.projects.length > 16) {
+                this.canAddProject = false;
             } else {
-                this.canAdd = true;
+                this.canAddProject = true;
             }
         },
         clearData: function clearData() {
@@ -54967,12 +54968,11 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: this.canAdd,
-              expression: "this.canAdd"
+              value: this.canAddProject,
+              expression: "this.canAddProject"
             }
           ],
-          staticClass:
-            "text-center align-middle col-lg-3 col-md-5 noHoverEffect",
+          staticClass: "text-left align-middle col-lg-3 col-md-5 noHoverEffect",
           on: { click: _vm.clearData }
         },
         [_vm._m(0)]
@@ -55013,7 +55013,7 @@ var staticRenderFns = [
               width: "30px"
             }
           }),
-          _vm._v("\n                Add Project\n            ")
+          _vm._v("\n                Add new work\n            ")
         ])
       ]
     )
@@ -55275,7 +55275,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     $('#changesSaved').fadeOut();
                 }, 2000);
             });
-            $('#closeModal').click();
+            $('#closeProjectModal').click();
         },
         handleFile: function handleFile() {
             this.canAddImage = true;
@@ -55395,7 +55395,7 @@ var render = function() {
                                   staticClass: "panelFormLabel",
                                   attrs: { for: "projectName" }
                                 },
-                                [_vm._v("Project name :")]
+                                [_vm._v("Name :")]
                               ),
                               _vm._v(" "),
                               _c("input", {
@@ -55439,7 +55439,7 @@ var render = function() {
                                   staticClass: "panelFormLabel",
                                   attrs: { for: "link" }
                                 },
-                                [_vm._v("link:")]
+                                [_vm._v("Link:")]
                               ),
                               _vm._v(" "),
                               _c("input", {
@@ -55480,7 +55480,7 @@ var render = function() {
                                   staticClass: "panelFormLabel",
                                   attrs: { for: "projectDesc" }
                                 },
-                                [_vm._v("Project description :")]
+                                [_vm._v("Description :")]
                               ),
                               _vm._v(" "),
                               _c("textarea", {
@@ -55666,7 +55666,7 @@ var staticRenderFns = [
               type: "button",
               "data-dismiss": "modal",
               "aria-label": "Close",
-              id: "closeModal"
+              id: "closeProjectModal"
             }
           },
           [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]

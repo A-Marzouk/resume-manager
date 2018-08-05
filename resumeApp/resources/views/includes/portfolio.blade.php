@@ -43,6 +43,13 @@
         </div>
     </div> <!-- work exp -->
     <hr>
+    <div class="col-md-12">
+        <label for="freelancer_works" class="panelFormLabel">Examples of your  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> work </label>
+        <div id="freelancer_works">
+            <projects-list></projects-list>
+        </div>
+    </div> <!-- freelancer_works -->
+    <hr>
 
     <div class="form-group row">
         {{-- Developer --}}

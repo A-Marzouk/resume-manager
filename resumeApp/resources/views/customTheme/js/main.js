@@ -1048,6 +1048,7 @@ function getBehanceData(behanceUsername){
             // close modal :
             setTimeout(function () {
                 $('#closeBehanceModal').click();
+                location.reload();
             },2000);
 
             loadProjects(behanceData.projects);

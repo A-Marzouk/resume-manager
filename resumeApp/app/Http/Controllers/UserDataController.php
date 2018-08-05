@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Mail\welcome;
+use App\Project;
+use App\User;
 use App\UserData;
 use Behance\Client;
 use Illuminate\Http\Request;
@@ -301,7 +303,7 @@ class UserDataController extends Controller
 
         if(!empty($behanceUsername)){
             $data = $client->getUser($behanceUsername);
-            $projects = array_slice($client->getUserProjects($behanceUsername), 0, 8, true);
+            $projects = $client->getUserProjects($behanceUsername) ;
             $data->projects = $projects;
             $this->saveBehanceProjects($projects);
         }else{
@@ -318,7 +320,7 @@ class UserDataController extends Controller
 
         if(!empty($behanceUsername)){
             $data = $client->getUser($behanceUsername);
-            $projects = array_slice($client->getUserProjects($behanceUsername), 0, 8, true);
+            $projects = $client->getUserProjects($behanceUsername);
             $data->projects = $projects;
             $this->saveBehanceProjects($projects);
         }else{
@@ -339,19 +341,30 @@ class UserDataController extends Controller
     }
 
     public function saveBehanceProjects($projects){
-        $userData = UserData::where('user_id',auth()->user()->id)->first();
-        $projectsImgs = [];
-        $i=0;
+        $user = User::where('id',auth()->user()->id)->first();
+        $userExistingProjects  = $user->projects ;
+        $existingProjectsNames = [];
+        foreach ($userExistingProjects as $project){
+            $existingProjectsNames[] = $project->projectName;
+        }
        foreach ($projects as $project){
-           $dest = "resumeApp/uploads/works".$i."Behance".auth()->user()->id.".png";
-           copy($project->covers->original, $dest);
-           $projectsImgs[] = $dest;
-           $workDesc = 'workDesc'.$i ;
-           $userData->{$workDesc} = $project->name;
-           $i++;
+            if(in_array($project->name,$existingProjectsNames)){
+                continue;
+            }
+           $dist = "resumeApp/uploads/project".$project->id."Behance".$user->id.".png";
+           if (!file_exists($dist)){
+               copy($project->covers->original, $dist);
+           }else{
+               continue;
+           }
+           // create new project :
+           $localProject = new Project();
+           $localProject->user_id = $user->id;
+           $localProject->projectName = $project->name;
+           $localProject->mainImage = $dist;
+           $localProject->save();
        }
-       $userData->works = implode(',',$projectsImgs);
-       $userData->save();
+
     }
 
 }

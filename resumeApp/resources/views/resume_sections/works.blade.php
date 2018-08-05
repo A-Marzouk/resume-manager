@@ -1,17 +1,22 @@
 {{-- Works section --}}
 <div id="work" class="worksSection">
-    <div class="row firstPart">
+    <div class="firstPart">
         <div class="offset-lg-1 col-lg-5 col-md-6">
             <img id="workTextImg" src="resumeApp/resources/views/customTheme/images/newResume/works.png" alt="aboutImg" width="30px;">
             <span class="aboutText" style="color: white;">WORKS</span>
         </div>
         <?
             $workExamples = $user1->projects ;
+            $i = 0 ;
+            $maxNumberOfWorks = 8 ;
         ?>
         <div class="row">
             <div class="col-lg-10 offset-lg-1 col-12">
                 <div class="row">
                     <? foreach ($workExamples as $workExample):?>
+                       <? if($i >= 8 ){break;}
+                          if(!$workExample->isActive){continue;};
+                       ?>
                         <div class="col-md-3">
                             <div class="workCard">
                             <div class="workImg" style="height: 150px; overflow: hidden; border-bottom:1px solid lightgray;">
@@ -56,6 +61,7 @@
                             </div>
                         </div>
                     </div>
+                       <? $i++ ;?>
                     <? endforeach;?>
                 </div>
             </div>

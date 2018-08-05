@@ -57,8 +57,15 @@ class ProjectsController extends Controller
     }
 
     public function deleteProject(Request $request){
-        // delete work history
-        $project = Project::where('id',$request->projectID);
+        $project = Project::where('id',$request->projectID)->first();
+        // delete project image :
+
+        $dist = $project->mainImage;
+        if (file_exists($dist)) {
+            unlink($dist);
+        }
+
+        // delete from database :
         $project->delete();
         return 'Project deleted';
     }

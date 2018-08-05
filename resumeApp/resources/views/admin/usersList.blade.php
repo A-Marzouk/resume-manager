@@ -252,7 +252,10 @@
                                 <td>{{$userData->city}}</td>
                                 {{-- job title --}}
                                 <td>{{$userData->jobTitle}}</td>
-                                <td><a class="btn btn-sm btn-danger" href="{{route('freelancer.delete',$user->id)}}"  onclick="return confirm('Are you sure you want to delete {{$user->firstName}} {{$user->lastName}}?');">Delete</a></td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Edit</a> -
+                                    <a class="btn btn-sm btn-danger" href="{{route('freelancer.delete',$user->id)}}"  onclick="return confirm('Are you sure you want to delete {{$user->firstName}} {{$user->lastName}}?');">Delete</a>
+                                </td>
 
                             </tr>
 

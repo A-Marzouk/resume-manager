@@ -264,6 +264,34 @@ class UserDataController extends Controller
         }
     }
 
+    public function uploadProjectPhoto($src,$name,$newName){
+        $target_dir = "resumeApp/uploads/";
+        $target_file = $target_dir . $newName. basename($_FILES[$name]["name"]);
+        $uploadOk = 1;
+// Check if image file is a actual image or fake image
+            $check = getimagesize($_FILES[$name]["tmp_name"]);
+            if($check !== false) {
+                $uploadOk = 1;
+            } else {
+                $uploadOk = 0;
+            }
+// Check file size
+        if ($_FILES[$name]["size"] > 250000000) {
+            $uploadOk = 0;
+        }
+// Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            return false;
+// if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
+                return $target_file;
+            } else {
+                return false;
+            }
+        }
+    }
+
 
     public function dataFromBehance($behanceUsername){
 

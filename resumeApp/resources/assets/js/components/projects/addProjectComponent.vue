@@ -36,7 +36,7 @@
                                         </div>
                                         <div class="form-group col-md-12">
                                             <div class="custom-file" style="padding-top: 5px;">
-                                                <input type="file" id="mainImage" ref="file" class="custom-file-input panelFormInput" name="mainImage" @change="handleFile">
+                                                <input type="file" id="mainImage" ref="file" class="custom-file-input panelFormInput" name="mainImage" @change="handleFile" accept="image/*">
                                                 <label class="custom-file-label" id="audioLabel">
                                                     Main image
                                                 </label>

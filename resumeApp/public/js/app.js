@@ -55531,7 +55531,8 @@ var render = function() {
                                     attrs: {
                                       type: "file",
                                       id: "mainImage",
-                                      name: "mainImage"
+                                      name: "mainImage",
+                                      accept: "image/*"
                                     },
                                     on: { change: _vm.handleFile }
                                   }),

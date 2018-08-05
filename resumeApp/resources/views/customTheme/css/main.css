@@ -495,7 +495,7 @@ body {
     padding-bottom: -1%;
     background: url("/background.svg");
     background-repeat: no-repeat;
-    background-size: 100% 35%; }
+    background-size: 100% 90%; }
     .worksSection .firstPart #workTextImg {
       margin-left: 16px; }
   .worksSection .worksText {
@@ -522,10 +522,10 @@ body {
   .workCard .workTitle {
     color: #697786;
     font-family: Roboto;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 300;
     line-height: 24px;
-    padding: 3%; }
+    padding: 20px 0px 20px 0; }
     .workCard .workTitle img {
       width: 20px; }
 
@@ -1577,6 +1577,16 @@ body {
 #addWorkText {
   outline: none; }
   #addWorkText span {
+    color: #697786;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    outline: none; }
+
+#addProjectText {
+  outline: none; }
+  #addProjectText span {
     color: #697786;
     font-family: Roboto;
     font-size: 14px;

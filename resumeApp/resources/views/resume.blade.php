@@ -40,24 +40,4 @@
         @include('resume_sections.works')
         @include('resume_sections.our_clients')
 
-
-        {{-- modals --}}
-
-        <!-- Modal -->
-        <? for ($i=0;$i<8 ;$i++):?>
-        <div class="modal fade" id="works{{$i}}Modal" tabindex="-1" role="dialog"
-             aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document" style="">
-                        <div class="modal-content">
-                                <div class="modal-body" style="padding: 0;">
-                                        <div class="row">
-                                                <div class="col-md-12">
-                                                        <img src="{{$clearWorks[$i]}}" alt="" width="100%" height="auto">
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-                </div>
-        </div>
-        <? endfor;?>
 @endsection

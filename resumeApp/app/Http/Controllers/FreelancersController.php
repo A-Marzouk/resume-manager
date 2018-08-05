@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Project;
 use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
@@ -136,6 +137,25 @@ class FreelancersController extends Controller
         $userData->jobTitle =$dataFromBehance->occupation;
         $userData->behanceLink =$behanceLink;
         $userData->save();
+
+        // bring user projects from behance and save them : :
+
+        $projects = $dataFromBehance->projects;
+        foreach ($projects as $project){
+            $dist = "resumeApp/uploads/project".$project->id."Behance".$user->id.".png";
+            if (!file_exists($dist)){
+                copy($project->covers->original, $dist);
+            }else{
+                continue;
+            }
+            // create new project :
+            $localProject = new Project();
+            $localProject->user_id = $user->id;
+            $localProject->projectName = $project->name;
+            $localProject->mainImage = $dist;
+            $localProject->save();
+        }
+
 
         return redirect('/admin')->with('successMessage', 'Behance Designer has been successfully added.');
 

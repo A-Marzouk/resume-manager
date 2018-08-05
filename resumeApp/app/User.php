@@ -40,6 +40,11 @@ class User extends Authenticatable
         return $this->hasMany(WorkHistory::class);
     }
 
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
+
 
     public function messages(){
         return $this->hasMany(Message::class);

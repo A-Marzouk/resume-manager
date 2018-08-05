@@ -116,8 +116,9 @@ $(document).ready(function () {
                 $('.freelancerForm :input').on('change', function (e) {
                     e.preventDefault();
                     // if inputs from Job form ( do not submit here )
-                    let jobFormFieldsIDs = ['job_title','job_description','company','date_from','date_to','currently_working'];
-                    if(jobFormFieldsIDs.includes(this.id)){
+                    let dontSaveFields = ['job_title','job_description','company','date_from','date_to','currently_working',
+                        'projectName','link','mainImage','projectDesc','isActive'];
+                    if(dontSaveFields.includes(this.id)){
                         return;
                     }
                     var form = document.getElementsByClassName('freelancerForm')[0];
@@ -1047,6 +1048,7 @@ function getBehanceData(behanceUsername){
             // close modal :
             setTimeout(function () {
                 $('#closeBehanceModal').click();
+                location.reload();
             },2000);
 
             loadProjects(behanceData.projects);

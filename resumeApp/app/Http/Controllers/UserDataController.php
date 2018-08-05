@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Mail\welcome;
+use App\Project;
+use App\User;
 use App\UserData;
 use Behance\Client;
 use Illuminate\Http\Request;
@@ -264,6 +266,34 @@ class UserDataController extends Controller
         }
     }
 
+    public function uploadProjectPhoto($src,$name,$newName){
+        $target_dir = "resumeApp/uploads/";
+        $target_file = $target_dir . $newName. basename($_FILES[$name]["name"]);
+        $uploadOk = 1;
+// Check if image file is a actual image or fake image
+            $check = getimagesize($_FILES[$name]["tmp_name"]);
+            if($check !== false) {
+                $uploadOk = 1;
+            } else {
+                $uploadOk = 0;
+            }
+// Check file size
+        if ($_FILES[$name]["size"] > 250000000) {
+            $uploadOk = 0;
+        }
+// Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            return false;
+// if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
+                return $target_file;
+            } else {
+                return false;
+            }
+        }
+    }
+
 
     public function dataFromBehance($behanceUsername){
 
@@ -273,7 +303,7 @@ class UserDataController extends Controller
 
         if(!empty($behanceUsername)){
             $data = $client->getUser($behanceUsername);
-            $projects = array_slice($client->getUserProjects($behanceUsername), 0, 8, true);
+            $projects = $client->getUserProjects($behanceUsername) ;
             $data->projects = $projects;
             $this->saveBehanceProjects($projects);
         }else{
@@ -290,7 +320,7 @@ class UserDataController extends Controller
 
         if(!empty($behanceUsername)){
             $data = $client->getUser($behanceUsername);
-            $projects = array_slice($client->getUserProjects($behanceUsername), 0, 8, true);
+            $projects = $client->getUserProjects($behanceUsername);
             $data->projects = $projects;
             $this->saveBehanceProjects($projects);
         }else{
@@ -311,19 +341,30 @@ class UserDataController extends Controller
     }
 
     public function saveBehanceProjects($projects){
-        $userData = UserData::where('user_id',auth()->user()->id)->first();
-        $projectsImgs = [];
-        $i=0;
+        $user = User::where('id',auth()->user()->id)->first();
+        $userExistingProjects  = $user->projects ;
+        $existingProjectsNames = [];
+        foreach ($userExistingProjects as $project){
+            $existingProjectsNames[] = $project->projectName;
+        }
        foreach ($projects as $project){
-           $dest = "resumeApp/uploads/works".$i."Behance".auth()->user()->id.".png";
-           copy($project->covers->original, $dest);
-           $projectsImgs[] = $dest;
-           $workDesc = 'workDesc'.$i ;
-           $userData->{$workDesc} = $project->name;
-           $i++;
+            if(in_array($project->name,$existingProjectsNames)){
+                continue;
+            }
+           $dist = "resumeApp/uploads/project".$project->id."Behance".$user->id.".png";
+           if (!file_exists($dist)){
+               copy($project->covers->original, $dist);
+           }else{
+               continue;
+           }
+           // create new project :
+           $localProject = new Project();
+           $localProject->user_id = $user->id;
+           $localProject->projectName = $project->name;
+           $localProject->mainImage = $dist;
+           $localProject->save();
        }
-       $userData->works = implode(',',$projectsImgs);
-       $userData->save();
+
     }
 
 }

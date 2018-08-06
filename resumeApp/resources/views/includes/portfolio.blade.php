@@ -49,8 +49,14 @@
             <projects-list></projects-list>
         </div>
     </div> <!-- freelancer_works -->
+    <hr/>
 
-    <div class="form-group row d-none">
+    <div class="row text-center">
+        <div class="offset-md-10 col-md-2" style="color: red; font-family: Roboto; border:1px red solid; padding:5px; border-radius: 15px;">
+            Section is not active
+        </div>
+    </div><br/>
+    <div class="form-group row">
         {{-- Developer --}}
         <label class="col-md-12 panelFormLabel" style="padding-bottom: 20px;">Please Upload 8 examples of your  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> work (800 wide x 600 height) </label>
         @for($i=0;$i<8;$i++)

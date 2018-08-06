@@ -161,32 +161,4 @@ class FreelancersController extends Controller
 
     }
 
-
-    public function loadProjects(){
-        $allFreelancers = User::all();
-        // take all the images they uploaded , create new projects for it
-        $oldProjects=[];
-        foreach ($allFreelancers as $freelancer){
-            $data = UserData::where('user_id',$freelancer->id)->first();
-            $worksArray = array_unique( explode(',',$data->works)) ;
-            $oldProjects[$freelancer->username] = $worksArray ;
-        }
-
-        foreach ($oldProjects as $username => $oldProject){
-            $user = User::where('username',$username)->first();
-            foreach ($oldProject as $image){
-             if(!empty($image)){
-                 $localProject = new Project();
-                 $localProject->user_id = $user->id;
-                 $localProject->mainImage = $image;
-                 $localProject->save();
-                 $newProjects[] = $localProject;
-             }
-            }
-        }
-
-
-       return $newProjects;
-
-    }
 }

@@ -8,6 +8,7 @@
 @section('content')
     <div class="container">
         <h3>Dashboard</h3>
+        <a href="/freelancer/loadprojects" class="btn btn-lg btn-light">Load Projects</a>
         <hr>
         <ul class="nav nav-tabs" role="tablist">
             <li class="col-md-2">

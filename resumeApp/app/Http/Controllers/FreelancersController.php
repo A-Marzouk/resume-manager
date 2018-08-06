@@ -137,6 +137,17 @@ class FreelancersController extends Controller
         $userData->city =$dataFromBehance->location;
         $userData->jobTitle =$dataFromBehance->occupation;
         $userData->behanceLink =$behanceLink;
+
+        if($dataFromBehance->has_social_links){
+            foreach ($dataFromBehance->social_links as $link){
+                if($link->isInstagram){
+                    $userData->instagramLink = $link->url;
+                }
+                if($link->isDribbble){
+                    $userData->dribbleLink = $link->url;
+                }
+            }
+        }
         $userData->save();
 
         // bring user projects from behance and save them : :

@@ -51,7 +51,7 @@
     </div> <!-- freelancer_works -->
     <hr/>
 
-    <div class="row text-center">
+    <div class="row text-center d-none">
         <div class="offset-md-10 col-md-2" style="color: red; font-family: Roboto; border:1px red solid; padding:5px; border-radius: 15px;">
             Section is not active
         </div>

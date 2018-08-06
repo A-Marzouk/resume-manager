@@ -133,6 +133,7 @@ class FreelancersController extends Controller
         $userData = new UserData;
         $userData->user_id = $user->id;
         $userData->name =$dataFromBehance->display_name;
+        $userData->photo = end($dataFromBehance->images);
         $userData->city =$dataFromBehance->location;
         $userData->jobTitle =$dataFromBehance->occupation;
         $userData->behanceLink =$behanceLink;

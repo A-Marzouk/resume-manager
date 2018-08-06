@@ -140,10 +140,10 @@ class FreelancersController extends Controller
 
         if($dataFromBehance->has_social_links){
             foreach ($dataFromBehance->social_links as $link){
-                if($link->isInstagram){
+                if(isset($link->isInstagram)){
                     $userData->instagramLink = $link->url;
                 }
-                if($link->isDribbble){
+                if(isset($link->isDribbble)){
                     $userData->dribbleLink = $link->url;
                 }
             }

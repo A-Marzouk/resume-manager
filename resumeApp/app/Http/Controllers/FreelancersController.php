@@ -164,6 +164,7 @@ class FreelancersController extends Controller
             $localProject = new Project();
             $localProject->user_id = $user->id;
             $localProject->projectName = $project->name;
+            $localProject->isActive = true;
             $localProject->mainImage = $dist;
             $localProject->save();
         }

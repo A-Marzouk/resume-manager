@@ -8,13 +8,13 @@
         <?
             $workExamples = $user1->projects ;
             $i = 0 ;
-            $maxNumberOfWorks = 8 ;
+            $maxNumberOfWorks = 50 ;
         ?>
         <div class="row">
             <div class="col-lg-10 offset-lg-1 col-12">
                 <div class="row">
                     <? foreach ($workExamples as $workExample):?>
-                       <? if($i >= 8 ){break;}
+                       <? if($i >= $maxNumberOfWorks ){break;}
                           if(!$workExample->isActive){continue;};
                        ?>
                         <div class="col-md-3">
@@ -40,7 +40,7 @@
                     <div class="modal fade" id="works{{$workExample->id}}Modal" tabindex="-1" role="dialog"
                          aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document" style="">
-                            <div class="modal-content">
+                            <div class="modal-content" data-dismiss="modal" aria-label="Close">
                                 <div class="modal-body" style="padding: 0;">
                                     <div class="row">
                                         <div class="col-md-9" style="padding: 0;">

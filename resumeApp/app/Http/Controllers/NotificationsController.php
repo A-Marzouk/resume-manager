@@ -76,10 +76,17 @@ class NotificationsController extends Controller
     // clients :
 
     public function clientPaidEmail($data){
+        $emails = $this->mailingList;
         Mail::send('emails.client_paid',$data, function($message) use ($data)
         {
             $message->to($data['email'])->subject('Freelancer is successfully booked');
         });
+
+        Mail::send('emails.client_paid_admins',$data, function($message) use ($data,$emails)
+        {
+            $message->to($emails)->subject('Client has booked a freelancer');
+        });
+
     }
 
     public function clientRegisteredEmail($data){

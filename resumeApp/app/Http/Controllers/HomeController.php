@@ -51,14 +51,33 @@ class HomeController extends Controller
 
     public function stripePayment(Request $request){
         Stripe::setApiKey("sk_test_WlqUYgob2e2ALpZfJw5AfIaG");
+        $amountToPay = $request->amountToPay;
         $token = $request->stripeToken;
         $charge = Charge::create([
-            'amount' => 97500,
-            'currency' => 'eur',
-            'description' => 'Test charge',
+            'amount' => $amountToPay,
+            'currency' => 'usd',
+            'description' => 'Hire freelancer for 10 hours',
             'source' => $token,
+            'receipt_email' => 'AhmedMarzouk266@gmail.com',
         ]);
 
-        return redirect()->back();
+
+        // send emeail success of payment :
+        $data['email'] = $request->stripeEmail;
+        $data['freelancerName'] = $request->freelancerName;
+
+        if(auth()->guard('client')->guest()){
+            // client is not logged in.
+            $data['clientName']= '123 Workforce Client';
+            // send email to invite him to register.
+        }else{
+            $data['clientName'] = auth()->guard('client')->user()->firstName ;
+            // thank him mail
+        }
+
+        $notification = new NotificationsController;
+        $notification->clientPaidEmail($data);
+
+        return redirect()->back()->with('successMessage','Thank you for your payment, we will get in touch with you soon!');
     }
 }

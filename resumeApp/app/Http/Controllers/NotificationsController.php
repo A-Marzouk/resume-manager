@@ -67,14 +67,20 @@ class NotificationsController extends Controller
     }
 
     public function freelancerWelcomeEmail($data){
-        $emails = $this->mailingList;
-        Mail::send('emails.freelancer_welcome',$data, function($message) use ($emails,$data)
+        Mail::send('emails.freelancer_welcome',$data, function($message) use ($data)
         {
             $message->to($data['email'])->subject('Welcome to 123 Workforce');
         });
     }
 
     // clients :
+
+    public function clientPaidEmail($data){
+        Mail::send('emails.client_paid',$data, function($message) use ($data)
+        {
+            $message->to($data['email'])->subject('Freelancer is successfully booked');
+        });
+    }
 
     public function clientRegisteredEmail($data){
         $emails = $this->mailingList;

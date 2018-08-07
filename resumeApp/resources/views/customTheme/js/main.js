@@ -16,7 +16,7 @@ $(document).ready(function () {
             if($('#successMessage').length !== 0){
                 setTimeout(function () {
                     $('#successMessage').fadeOut('slow');
-                },2000);
+                },4000);
             }
 
             // chat on typing change send button :

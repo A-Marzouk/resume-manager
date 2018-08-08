@@ -37,126 +37,132 @@ Vue.component('projects-list', require('./components/projects/projectsListCompon
 Vue.component('project-detail', require('./components/projects/projectDetailComponent.vue'));
 Vue.component('add-project-modal', require('./components/projects/addProjectComponent.vue'));
 
-let work_overview = new Vue({
-    el:'#work_overview'
-});
 
-let freelancer_works = new Vue({
-    el:'#freelancer_works'
-});
+if ($("#work_overview").length !== 0){
+    let work_overview = new Vue({
+        el:'#work_overview'
+    });
+}
 
-const app = new Vue({
-    el: '#VueChat',
-    data:{
-        messages:[],
-        usersInRoom:[],
-        currentConvId:'',
-        currentUser:''
-    },
-    methods:{
-        addMessage(message){
-            // add to the existing messages
-            // message.created_at = new Date();
-            this.messages.push({
-                message:message.message,
-                created_at:'just now',
-                user:{
-                    firstName:''
-                },
-                client:{
-                    firstName:''
-                },
-                visitor:{
-                    firstName:''
+if ($("#freelancer_works").length !== 0){
+    let freelancer_works = new Vue({
+        el:'#freelancer_works'
+    });
+}
+
+if ($("#VueChat").length !== 0){
+    const app = new Vue({
+        el: '#VueChat',
+        data:{
+            messages:[],
+            usersInRoom:[],
+            currentConvId:'',
+            currentUser:''
+        },
+        methods:{
+            addMessage(message){
+                // add to the existing messages
+                // message.created_at = new Date();
+                this.messages.push({
+                    message:message.message,
+                    created_at:'just now',
+                    user:{
+                        firstName:''
+                    },
+                    client:{
+                        firstName:''
+                    },
+                    visitor:{
+                        firstName:''
+                    }
+                });
+                //scroll down :
+                if ($("#chatBox").length ){
+                    $('#messagesBox').animate({scrollTop: $('#messagesBox')[0].scrollHeight}, 'slow');
                 }
+                if ($("#chatLogs").length && this.currentUser.admin == 1 ){
+                    setTimeout(function(){
+                        $('html,body').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
+                    }, 2000);
+                }
+                // save to DB and so on.
+                axios.post('/messages',message);
+            }
+        },
+        created(){
+            var pageUrl = window.location.pathname;
+            var partsOfUrl = pageUrl.split('/');
+            var conversationID = partsOfUrl[partsOfUrl.length-1];
+            if(isNaN(conversationID)){
+                conversationID = '';
+            }
+            axios.get('/messages/'+conversationID).then(response =>{
+                this.messages = response.data;
             });
-            //scroll down :
-            if ($("#chatBox").length ){
-                $('#messagesBox').animate({scrollTop: $('#messagesBox')[0].scrollHeight}, 'slow');
-            }
-            if ($("#chatLogs").length && this.currentUser.admin == 1 ){
-                setTimeout(function(){
-                    $('html,body').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
-                }, 2000);
-            }
-            // save to DB and so on.
-            axios.post('/messages',message);
-        }
-    },
-    created(){
-        var pageUrl = window.location.pathname;
-        var partsOfUrl = pageUrl.split('/');
-        var conversationID = partsOfUrl[partsOfUrl.length-1];
-        if(isNaN(conversationID)){
-            conversationID = '';
-        }
-        axios.get('/messages/'+conversationID).then(response =>{
-            this.messages = response.data;
-        });
 
-        Echo.channel('talkToSales')
-            .listen('MessagePosted',(e) =>{
-                // handle event here
-                // console.log(e.message);
-                // this.messages.push({
-                //     message:e.message.message,
-                //     created_at:e.message.created_at,
-                //     user: e.user
-                // });
+            Echo.channel('talkToSales')
+                .listen('MessagePosted',(e) =>{
+                    // handle event here
+                    // console.log(e.message);
+                    // this.messages.push({
+                    //     message:e.message.message,
+                    //     created_at:e.message.created_at,
+                    //     user: e.user
+                    // });
 
-                var pageUrl = window.location.pathname;
-                var partsOfUrl = pageUrl.split('/');
-                var conversationID = partsOfUrl[partsOfUrl.length-1];
-                if(isNaN(conversationID)){
-                    conversationID = '';
-                }
-                axios.get('/messages/'+conversationID).then(response =>{
-                    this.messages = response.data;
-                });
-
-                axios.get('/chat/get-conv-id/').then(response =>{
-                    this.currentConvId = response.data.conversationId;
-                    this.currentUser   = response.data.user;
-                });
-
-                // scroll down : only if message is to this conversation.
-                if(this.currentConvId == e.message.conversation_id){
-                    if ($("#chatLogs").length ){
-                        setTimeout(function(){
-                            $('html,body').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
-                        }, 2000);
+                    var pageUrl = window.location.pathname;
+                    var partsOfUrl = pageUrl.split('/');
+                    var conversationID = partsOfUrl[partsOfUrl.length-1];
+                    if(isNaN(conversationID)){
+                        conversationID = '';
                     }
-                    // play sound :
-                    var chatAudio = document.getElementById("chatAudio");
+                    axios.get('/messages/'+conversationID).then(response =>{
+                        this.messages = response.data;
+                    });
 
-                    // if user is not admin and message is from admin
-                    if(this.currentUser.admin != 1 && e.message.user_id == 2){
-                        chatAudio.play();
-                        // open the chat if it is closed.
-                        if($('#chatBox').css('opacity') == 0){
-                            $('#liveChat').click();
+                    axios.get('/chat/get-conv-id/').then(response =>{
+                        this.currentConvId = response.data.conversationId;
+                        this.currentUser   = response.data.user;
+                    });
+
+                    // scroll down : only if message is to this conversation.
+                    if(this.currentConvId == e.message.conversation_id){
+                        if ($("#chatLogs").length ){
+                            setTimeout(function(){
+                                $('html,body').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
+                            }, 2000);
                         }
-                        // write the head is new message
-                        $('#chatText').html('New message !');
-                        setTimeout(function(){
-                            $('#messagesBox').animate({scrollTop: $('#messagesBox')[0].scrollHeight}, 'slow');
-                        }, 1000);
-                        //2 seconds and return it back
-                        setTimeout(function () {
-                            $('#chatText').html('Chat with us');
-                        },4000);
+                        // play sound :
+                        var chatAudio = document.getElementById("chatAudio");
+
+                        // if user is not admin and message is from admin
+                        if(this.currentUser.admin != 1 && e.message.user_id == 2){
+                            chatAudio.play();
+                            // open the chat if it is closed.
+                            if($('#chatBox').css('opacity') == 0){
+                                $('#liveChat').click();
+                            }
+                            // write the head is new message
+                            $('#chatText').html('New message !');
+                            setTimeout(function(){
+                                $('#messagesBox').animate({scrollTop: $('#messagesBox')[0].scrollHeight}, 'slow');
+                            }, 1000);
+                            //2 seconds and return it back
+                            setTimeout(function () {
+                                $('#chatText').html('Chat with us');
+                            },4000);
+                        }
+
+                        // if message is to admin !
+                        if(this.currentUser.admin == 1 && e.message.user_id != 2){
+                            chatAudio.play();
+                        }
                     }
 
-                    // if message is to admin !
-                    if(this.currentUser.admin == 1 && e.message.user_id != 2){
-                        chatAudio.play();
-                    }
-                }
+                })
 
-            })
-
-    }
-});
+        }
+    });
 
 
-
+}

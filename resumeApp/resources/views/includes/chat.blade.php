@@ -1,4 +1,4 @@
-<div id="chatBox" class="col-12 d-none">
+<div id="chatBox" class="col-12 d-none" style="z-index:9999999999;">
     <div class="chatHeading">
         <div class="row">
             <div class="col-2 col-md-1 col-lg-2 chatImage">

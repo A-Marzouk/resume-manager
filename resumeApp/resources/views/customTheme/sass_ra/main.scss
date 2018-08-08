@@ -696,6 +696,22 @@ body{
     padding-top: 10px;
     padding-bottom: 10px;
   }
+  a:hover{
+    text-decoration: none;
+  }
+}
+
+.skypeText{
+  a:hover{
+    text-decoration: none;
+  }
+  span{
+    opacity: 0.4;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+  }
 }
 
 .customFooter{

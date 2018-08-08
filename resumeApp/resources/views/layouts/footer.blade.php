@@ -19,12 +19,20 @@
             </div>
         </div>
         <div class="col-md-4 offset-md-7 text-right four">
-            <a href="https://www.facebook.com/123workforce">
-                <img src="/resumeApp/resources/views/customTheme/images/newResume/fb.png" alt="fb" width="25px">
-            </a>
-            <a href="https://www.instagram.com/123workforce/">
-                <img src="/resumeApp/resources/views/customTheme/images/newResume/instagram.png" alt="insta" width="25px">
-            </a>
+           <p class="skypeText">
+               <a href="skype:magictime.uk?call">
+                   <img src="/resumeApp/resources/views/customTheme/images/skypeLogo.png" alt="skype" width="25px" style="opacity: 1;">
+                   <span>Call us on Skype</span>
+               </a>
+           </p>
+            <div>
+                <a href="https://www.facebook.com/123workforce">
+                    <img src="/resumeApp/resources/views/customTheme/images/newResume/fb.png" alt="fb" width="25px">
+                </a>
+                <a href="https://www.instagram.com/123workforce/">
+                    <img src="/resumeApp/resources/views/customTheme/images/newResume/instagram.png" alt="insta" width="25px">
+                </a>
+            </div>
         </div>
     </div>
 </div>

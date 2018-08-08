@@ -578,6 +578,17 @@ body {
       text-align: center !important;
       padding-top: 10px;
       padding-bottom: 10px; } }
+  .footerText a:hover {
+    text-decoration: none; }
+
+.skypeText a:hover {
+  text-decoration: none; }
+.skypeText span {
+  opacity: 0.4;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px; }
 
 .customFooter {
   padding-top: 6%;

@@ -367,4 +367,37 @@ class UserDataController extends Controller
 
     }
 
+
+    public function dataFromLinkedIn(){
+        $clientID = '865ff2s2qvpkzb' ;
+        $redirectURL = 'https://123workforce.com/freelancer/linkedin';
+        $clientSecret = '9ql6QUkQLNZzS2J9';
+
+        if(isset($_GET['code'])){
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL,"https://www.linkedin.com/oauth/v2/accessToken");
+            curl_setopt($ch, CURLOPT_POST, 0);
+            curl_setopt($ch, CURLOPT_POSTFIELDS,"grant_type=authorization_code&code=".$_GET['code']."&redirect_uri=".$redirectURL."&client_id=".$clientID."&client_secret=.$clientSecret.");
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $server_output = curl_exec ($ch);
+            curl_close ($ch);
+        }
+
+        if(isset($_GET['code']) && json_decode($server_output)->access_token != ''){
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL,"https://api.linkedin.com/v1/people/~?oauth2_access_token=".json_decode($server_output)->access_token."&format=json");
+            curl_setopt($ch, CURLOPT_POST, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $server_output2 = curl_exec ($ch);
+            curl_close ($ch);
+
+            $user_data = json_decode($server_output2);
+
+            dd($user_data);
+
+        }
+
+    }
+
 }

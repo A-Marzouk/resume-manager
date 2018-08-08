@@ -2,7 +2,19 @@
     <a class="btn btn-outline-dark" href="javascript:void(0)" id="importBehanceData" data-toggle="modal" data-target="#behanceDataModal">
         Import data from Behance
     </a>
+
+    <?
+    $clientID = '865ff2s2qvpkzb' ;
+    $redirectURL = 'https://123workforce.com/freelancer/linkedin';
+
+    ?>
+    <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
+    <a class="btn btn-outline-dark"  target="_blank" href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id={{$clientID}}&redirect_uri={{$redirectURL}}&state=987654321&scope=r_basicprofile" id="importBehanceData">
+        Import data from Linkedin
+    </a>
+    <? endif; ?>
 </div>
+
 <div role="tabpanel" class="panel tab-pane active" id="overview">
     <div class="d-none d-md-block panelHeading">
         <ul>

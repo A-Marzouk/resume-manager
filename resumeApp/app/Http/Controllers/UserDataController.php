@@ -7,10 +7,12 @@ use App\Project;
 use App\User;
 use App\UserData;
 use Behance\Client;
+use http\Exception;
 use Illuminate\Http\Request;
 use App\classes\Telegram;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
+use Laravel\Socialite\Facades\Socialite;
 use PharIo\Manifest\Email;
 
 class UserDataController extends Controller
@@ -369,33 +371,19 @@ class UserDataController extends Controller
 
 
     public function dataFromLinkedIn(){
-        $clientID = '865ff2s2qvpkzb' ;
-        $redirectURL = 'https://123workforce.com/freelancer/linkedin';
-        $clientSecret = '9ql6QUkQLNZzS2J9';
+        try {
+            $user = Socialite::driver('linkedin')->stateless()->user();
+            $currentUser = auth()->user();
+            $userData = UserData::where('user_id',$currentUser->id)->first();
+            $userData->name = $user->user['formattedName'];
+            $userData->photo = $user->avatar_original;
+            $userData->intro = $user->user['headline'];
 
-        if(isset($_GET['code'])){
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL,"https://www.linkedin.com/oauth/v2/accessToken");
-            curl_setopt($ch, CURLOPT_POST, 0);
-            curl_setopt($ch, CURLOPT_POSTFIELDS,"grant_type=authorization_code&code=".$_GET['code']."&redirect_uri=".$redirectURL."&client_id=".$clientID."&client_secret=.$clientSecret.");
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $server_output = curl_exec ($ch);
-            curl_close ($ch);
-        }
+            $userData->save();
+            return redirect('/freelancer')->with('successMessage','Data is successfully imported from Linked In.');
 
-        if(isset($_GET['code']) && json_decode($server_output)->access_token != ''){
-
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL,"https://api.linkedin.com/v1/people/~?oauth2_access_token=".json_decode($server_output)->access_token."&format=json");
-            curl_setopt($ch, CURLOPT_POST, 0);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $server_output2 = curl_exec ($ch);
-            curl_close ($ch);
-
-            $user_data = json_decode($server_output2);
-
-            dd($user_data);
-
+        } catch (Exception $e) {
+            return redirect('/freelancer')->with('errorMessage','Something went wrong, please try again.');
         }
 
     }

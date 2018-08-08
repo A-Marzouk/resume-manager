@@ -34,5 +34,10 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    'linkedin' => [
+        'client_id' => '865ff2s2qvpkzb',
+        'client_secret' => '9ql6QUkQLNZzS2J9',
+        'redirect' => 'https://123workforce.com/freelancer/linkedin'
+    ],
 
 ];

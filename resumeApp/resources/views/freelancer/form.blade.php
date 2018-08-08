@@ -142,6 +142,13 @@
             </div>
         @endif
     </div>
+
+    {{-- error message--}}
+    @if (session()->has('errorMessage'))
+        <div class="alert alert-danger" style="margin-top: 30px;">
+            {{ session()->get('errorMessage') }}
+        </div>
+    @endif
 <!-- Display Errors  -->
     <?
         $requiredFields = [

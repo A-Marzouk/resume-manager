@@ -112,6 +112,10 @@ Route::get('/freelancer/behance/{behanceUsername}','UserDataController@dataFromB
 Route::post('/freelancer/behance/save_img','UserDataController@saveImgLink');
 Route::post('/freelancer/behance/save_user','FreelancersController@registerDesignerFromBehance');
 
+// Linked in api :
+Route::get('/freelancer/linkedin/','UserDataController@dataFromLinkedIn');
+
+
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');
 Route::get('/{username}','HomeController@ResumePage');

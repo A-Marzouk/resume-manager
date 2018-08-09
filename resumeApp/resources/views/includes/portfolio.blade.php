@@ -49,54 +49,6 @@
             <projects-list></projects-list>
         </div>
     </div> <!-- freelancer_works -->
-    <hr/>
-
-    <div class="row text-center d-none">
-        <div class="offset-md-10 col-md-2" style="color: red; font-family: Roboto; border:1px red solid; padding:5px; border-radius: 15px;">
-            Section is not active
-        </div>
-    </div><br/>
-    <div class="form-group row">
-        {{-- Developer --}}
-        <label class="col-md-12 panelFormLabel" style="padding-bottom: 20px;">Please Upload 8 examples of your  <? if($profession == 'Developer'):?>development<?else:?>design<?endif;?> work (800 wide x 600 height) </label>
-        @for($i=0;$i<8;$i++)
-            <?
-            $deleteBtn = false;
-            $src = 'resumeApp/resources/views/customTheme/images/add_profile_photo.png';
-            $uploadBtn = 'Choose';
-            foreach ($works as $work){
-                if(strpos($work , 'works'.$i) !== false ){
-                    $src = $work;
-                    $deleteBtn = true;
-                    $uploadBtn = 'Change';
-                }
-            }
-
-            ?>
-            <div class="input-group col-md-3">
-                <div class="row">
-                    <div class="col-md-6" style="opacity: 0; height: 3px;">
-                        <p class="btn btn-outline-danger btn-sm" id="deletePhoto{{$i}}">Delete</p>
-                    </div>
-                    <div class="col-md-3" style="opacity: 0; height:.5px; width: .5px;">
-                        <div class="custom-file" id="customFile{{$i}}" style=" display: block; padding-top: 5px;">
-                            <input type="file" class="custom-file-input" id="works{{$i}}" name="works{{$i}}" value="">
-                            <label class="custom-file-label" for="">{{$uploadBtn}}</label>
-                        </div>
-                    </div>
-                </div>
-                <div style="display:block; padding-bottom: 15px;">
-                    <div id="imgBox{{$i}}" style="border: 1px solid #D5D8DE;	border-radius: 4px;">
-                        <img src="{{$src}}" id="portfolioImg{{$i}}" width="100%" height="193px;" style="min-width: 220px">
-                    </div>
-                </div>
-                <div class="form-group btn-block">
-                    <input type="text" class="form-control panelFormInput"  value="{{$workDesc[$i]}}" name="workDesc{{$i}}" id="workDesc{{$i}}" placeholder="Describe your work">
-                </div>
-            </div>
-        @endfor
-    </div>
-    <!-- works -->
 
     <div class="row">
         <div class="buttonMain col-md-3 offset-md-9">

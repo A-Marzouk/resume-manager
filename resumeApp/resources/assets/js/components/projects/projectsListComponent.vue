@@ -44,8 +44,9 @@
                     'isActive':'',
                     'link' :'',
                     'projectDesc' :'',
-                    'images' :'',
-                    'mainImage':''
+                    'images' :[],
+                    'imagesFiles' :[],
+                    'mainImage':'',
                 }
             }
         },
@@ -117,8 +118,9 @@
                     'isActive':'',
                     'link' :'',
                     'projectDesc' :'',
-                    'images' :'',
-                    'mainImage':''
+                    'images' :[],
+                    'imagesFiles' :[],
+                    'mainImage':'',
                 };
             }
         },

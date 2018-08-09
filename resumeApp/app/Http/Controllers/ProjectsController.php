@@ -21,6 +21,7 @@ class ProjectsController extends Controller
     }
 
     public function addProject(Request $request){
+
         $currentUser = auth()->user();
         $request->validate([
             'projectName' => 'max:190',
@@ -48,6 +49,22 @@ class ProjectsController extends Controller
             $path  = $handler->uploadProjectPhoto('','mainImage','');
             $project->mainImage = '/'. $path ;
         }
+
+        // uploading images and save paths to images :
+
+        for($i=0; $i<100 ; $i++){
+            $currRequest = 'moreImages'.$i ;
+            if(isset($request->{$currRequest})){
+                $handler = new UserDataController;
+                $path  = $handler->uploadProjectPhoto('',$currRequest,'');
+                $moreImages[] =  '/'. $path ;
+            }else{
+                break;
+            }
+        }
+
+        return implode(',',$moreImages);
+
 
         $project->save();
 

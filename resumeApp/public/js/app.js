@@ -54789,6 +54789,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/freelancer/projects').then(function (response) {
                 var currProjects = response.data;
                 _this.projects = currProjects;
+                var i = 0;
+                for (i = 0; i < _this.projects.length; i++) {
+                    var project = _this.projects[i];
+                    console.log(project.projectName);
+                    if (project.images !== null) {
+                        _this.projects[i].images = project.images.split(',');
+                    }
+                }
+
                 _this.checkMaxProjects();
             });
         },
@@ -55263,13 +55272,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedProject'],
     data: function data() {
         return {
             form_data: {},
-            canAddImage: false
+            canAddImage: false,
+            toBeDeletedIndex: []
         };
     },
 
@@ -55290,7 +55312,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.form_data.append('mainImage', mainImage);
             }
 
-            if (this.toBeEditedProject.imagesFiles.length > 0) {
+            if (this.toBeEditedProject.imagesFiles !== undefined) {
                 var i = 0;
                 this.toBeEditedProject.imagesFiles.forEach(function (file) {
                     var name = 'moreImages' + i;
@@ -55337,6 +55359,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.toBeEditedProject.imagesFiles = [];
             }
             this.toBeEditedProject.imagesFiles.push(image);
+        },
+        openNewImageBrowse: function openNewImageBrowse() {
+            $('#newImage').click();
+        },
+        deleteImage: function deleteImage(index, projectID, imageSrc) {
+            if (!confirm('Are you sure you want to delete this photo ?')) {
+                return;
+            }
+            var deleteData = {
+                projectID: projectID,
+                imageSrc: imageSrc
+            };
+            if (index > -1) {
+                this.toBeEditedProject.images.splice(index, 1);
+                axios.post('/freelancer/delete_project_image', deleteData).then(function (response) {
+                    console.log(response.data);
+                });
+            }
         }
     },
     mounted: function mounted() {}
@@ -55409,20 +55449,44 @@ var render = function() {
                         staticClass: "col-md-8"
                       },
                       [
-                        _c("div", [
-                          _c("img", {
+                        _c(
+                          "div",
+                          {
                             staticStyle: {
                               "border-radius": "10px",
                               border: "1px solid lightgray"
-                            },
-                            attrs: {
-                              src: _vm.toBeEditedProject.mainImage,
-                              alt: "",
-                              width: "100%",
-                              height: "auto"
                             }
-                          })
-                        ])
+                          },
+                          [
+                            _c("img", {
+                              attrs: {
+                                src: _vm.toBeEditedProject.mainImage,
+                                alt: "",
+                                width: "100%",
+                                height: "auto"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _vm._l(_vm.toBeEditedProject.images, function(
+                              image
+                            ) {
+                              return _c(
+                                "div",
+                                { staticStyle: { "padding-top": "10px" } },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src: image,
+                                      alt: "",
+                                      width: "100%"
+                                    }
+                                  })
+                                ]
+                              )
+                            })
+                          ],
+                          2
+                        )
                       ]
                     ),
                     _vm._v(" "),
@@ -55608,41 +55672,52 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-12" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "custom-file",
-                                  staticStyle: { "padding-top": "5px" }
-                                },
-                                [
-                                  _c("input", {
-                                    staticClass:
-                                      "custom-file-input panelFormInput",
-                                    attrs: {
-                                      type: "file",
-                                      id: "newImage",
-                                      name: "newImage",
-                                      accept: "image/*"
-                                    },
-                                    on: { change: _vm.handleNewImage }
-                                  }),
-                                  _vm._v(" "),
-                                  _c(
-                                    "label",
-                                    {
-                                      staticClass: "custom-file-label",
-                                      attrs: { id: "newImageLabel" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                                Add image\n                                            "
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "form-group col-md-12",
+                                staticStyle: {
+                                  opacity: "0",
+                                  height: "0.1px !important",
+                                  width: "0.1px"
+                                }
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "custom-file",
+                                    staticStyle: { "padding-top": "5px" }
+                                  },
+                                  [
+                                    _c("input", {
+                                      staticClass:
+                                        "custom-file-input panelFormInput",
+                                      attrs: {
+                                        type: "file",
+                                        id: "newImage",
+                                        name: "newImage",
+                                        accept: "image/*"
+                                      },
+                                      on: { change: _vm.handleNewImage }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "custom-file-label",
+                                        attrs: { id: "newImageLabel" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                More images\n                                            "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            ),
                             _vm._v(" "),
                             _c("div", { staticClass: "form-group col-md-12" }, [
                               _c(
@@ -55728,24 +55803,78 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "div",
-                              { staticClass: "row" },
+                              { staticClass: "text-left noHoverEffect" },
+                              [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn btn-default btn-workExp",
+                                    attrs: { id: "addProjectText" },
+                                    on: { click: _vm.openNewImageBrowse }
+                                  },
+                                  [_vm._m(1)]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "row text-right" },
                               _vm._l(_vm.toBeEditedProject.images, function(
-                                image
+                                image,
+                                index
                               ) {
-                                return _c("div", { staticClass: "col-md-6" }, [
-                                  _c("img", {
-                                    attrs: {
-                                      src: image,
-                                      alt: "",
-                                      width: "100%"
-                                    }
-                                  })
-                                ])
+                                return _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: image !== "",
+                                        expression: "image !== '' "
+                                      }
+                                    ],
+                                    staticClass: "col-md-6",
+                                    staticStyle: { "padding-top": "10px" }
+                                  },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticStyle: { color: "lightgrey" },
+                                        attrs: { href: "javascript:void(0)" },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.deleteImage(
+                                              index,
+                                              _vm.toBeEditedProject.id,
+                                              image
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("x")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      staticStyle: {
+                                        border: "1px solid lightgray",
+                                        "border-radius": "5px"
+                                      },
+                                      attrs: {
+                                        src: image,
+                                        alt: "",
+                                        width: "100%"
+                                      }
+                                    })
+                                  ]
+                                )
                               })
                             )
                           ]),
                           _vm._v(" "),
-                          _vm._m(1)
+                          _vm._m(2)
                         ]
                       )
                     ])
@@ -55783,6 +55912,23 @@ var staticRenderFns = [
         )
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("img", {
+        attrs: {
+          src: "/resumeApp/resources/views/customTheme/images/add_work_img.png",
+          alt: "add project",
+          width: "30px"
+        }
+      }),
+      _vm._v(
+        "\n                                                Add image\n                                            "
+      )
+    ])
   },
   function() {
     var _vm = this

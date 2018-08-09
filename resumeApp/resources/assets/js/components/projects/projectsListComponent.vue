@@ -57,6 +57,16 @@
                     (response) => {
                         let currProjects =  response.data;
                         this.projects = currProjects;
+                        let i =0 ;
+                        for(i=0 ; i< this.projects.length ; i++){
+                            let project= this.projects[i];
+                            console.log(project.projectName);
+                            if(project.images !== null){
+                                this.projects[i].images = (project.images.split(','));
+                            }
+
+                        }
+
                         this.checkMaxProjects();
                     }
                 );

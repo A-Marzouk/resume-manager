@@ -14,8 +14,11 @@
 
                             </div>
                             <div class="col-md-8" v-show="toBeEditedProject.mainImage">
-                                <div>
-                                    <img :src="toBeEditedProject.mainImage" alt="" width="100%" height="auto" style="border-radius:10px; border: 1px solid lightgray;">
+                                <div style="border-radius:10px; border: 1px solid lightgray;">
+                                        <img :src="toBeEditedProject.mainImage" alt="" width="100%" height="auto">
+                                        <div v-for="image in toBeEditedProject.images" style="padding-top: 10px;">
+                                            <img :src="image" alt="" width="100%">
+                                        </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -42,11 +45,11 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group col-md-12" style="opacity: 0; height: 0.1px !important; width:0.1px; !important">
                                             <div class="custom-file" style="padding-top: 5px;">
                                                 <input type="file" id="newImage" class="custom-file-input panelFormInput" name="newImage" @change="handleNewImage" accept="image/*">
                                                 <label class="custom-file-label" id="newImageLabel">
-                                                    Add image
+                                                    More images
                                                 </label>
                                             </div>
                                         </div>
@@ -57,10 +60,19 @@
                                                 <span class="checkmark"></span>
                                             </label>
                                         </div>
-
-                                        <div class="row">
-                                            <div v-for="image in toBeEditedProject.images" class="col-md-6">
-                                                <img :src="image" alt="" width="100%">
+                                        <div class="text-left noHoverEffect">
+                                            <a class="btn btn-default btn-workExp" id="addProjectText"  @click="openNewImageBrowse">
+                                                <span>
+                                                    <img src="/resumeApp/resources/views/customTheme/images/add_work_img.png" alt="add project"
+                                                         width="30px">
+                                                    Add image
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="row text-right">
+                                            <div class="col-md-6" v-for="(image,index) in toBeEditedProject.images" v-show="image !== '' " style="padding-top: 10px;">
+                                                <a href="javascript:void(0)" style="color: lightgrey;" @click="deleteImage(index,toBeEditedProject.id,image)">x</a>
+                                                <img :src="image" alt="" width="100%" style="border: 1px solid lightgray; border-radius: 5px;">
                                             </div>
                                         </div>
 
@@ -85,6 +97,7 @@
             return{
                 form_data:{},
                 canAddImage:false,
+                toBeDeletedIndex:[]
             }
         },
         methods:{
@@ -102,7 +115,7 @@
                     this.form_data.append('mainImage',mainImage);
                 }
 
-                if(this.toBeEditedProject.imagesFiles.length > 0){
+                if(this.toBeEditedProject.imagesFiles !== undefined){
                     let i = 0 ;
                     this.toBeEditedProject.imagesFiles.forEach( (file) => {
                         let name = 'moreImages'+i ;
@@ -152,7 +165,25 @@
                 }
                 this.toBeEditedProject.imagesFiles.push(image);
 
-            }
+            },
+            openNewImageBrowse(){
+                $('#newImage').click();
+            },
+            deleteImage(index,projectID,imageSrc){
+                if(!confirm('Are you sure you want to delete this photo ?')){
+                    return;
+                }
+                let deleteData = {
+                        projectID : projectID,
+                        imageSrc  : imageSrc
+                    };
+                if (index > -1) {
+                    this.toBeEditedProject.images.splice(index, 1);
+                    axios.post('/freelancer/delete_project_image',deleteData).then( (response) => {
+                        console.log(response.data);
+                    });
+                }
+            },
 
     },
         mounted(){

@@ -106,6 +106,7 @@ Route::post('/freelancer/deletework/','WorksHistoryController@deleteWork')->name
 Route::get('/freelancer/projects','ProjectsController@getProjects')->name('get.project');
 Route::post('/freelancer/addproject/','ProjectsController@addProject')->name('add.project');
 Route::post('/freelancer/deleteproject/','ProjectsController@deleteProject')->name('delete.project');
+Route::post('/freelancer/delete_project_image/','ProjectsController@deleteProjectImage')->name('delete.project.image');
 
 // behance api :
 Route::get('/freelancer/behance/{behanceUsername}','UserDataController@dataFromBehance');

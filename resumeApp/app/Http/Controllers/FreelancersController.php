@@ -91,6 +91,9 @@ class FreelancersController extends Controller
             'trnYear3'=> $currFreelancer->userData->trnYear3?? '' ,
             'trnDesc3'=> $currFreelancer->userData->trnDesc3?? '' ,
             'audioFile'=> $currFreelancer->userData->audioFile?? '' ,
+            'telephone'=> $currFreelancer->userData->telephone?? '' ,
+            'skype_id'=> $currFreelancer->userData->skype_id?? '' ,
+            'social_apps'=> $currFreelancer->userData->social_apps?? '' ,
             'video'=> $currFreelancer->userData->video?? '' ,
             'video_file'=> $currFreelancer->userData->video_file?? '' ,
             'workDesc'=> [

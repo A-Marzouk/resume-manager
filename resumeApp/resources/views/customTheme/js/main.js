@@ -904,7 +904,7 @@ function uploadByDrop(elementID,elementName) {
 function highlightCompletedSecs(){
     // array for sections :
     let sections = {
-        overview:[ 'name', 'city','jobTitle','email','languages','intro','photo'],
+        overview:[ 'name', 'city','jobTitle','email','languages','intro','photo','skype_id','telephone','social_apps'],
         pay:['salary','availableHours','freeDate','availableHours','currency','timeZone'],
         multimedia:['audio','audioFile','video','video_file'],
         career:['careerObjective','eduTitle1','eduTitle2','eduTitle3','eduYear1','eduYear2','eduYear3',

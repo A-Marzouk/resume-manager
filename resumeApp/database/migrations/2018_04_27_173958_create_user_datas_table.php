@@ -16,6 +16,9 @@ class CreateUserDatasTable extends Migration
         Schema::create('user_datas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->nullable();
+            $table->string('skype_id')->nullable();
+            $table->string('social_apps')->nullable();
+            $table->string('telephone')->nullable();
             $table->integer('user_id')->nullable();
             $table->string('email')->nullable();
             $table->date('birth_date')->nullable();

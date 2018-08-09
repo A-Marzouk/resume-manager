@@ -154,7 +154,7 @@
         $requiredFields = [
             '1. Overview and personal info'=>[
                 'link'=>'overview',
-                'name', 'city','jobTitle','email','languages','intro','photo'
+                'name', 'city','jobTitle','email','languages','intro','photo','skype_id','telephone','social_apps'
             ],
             '2. Availability and pay' => [
                 'link'=>'pay',

@@ -31,6 +31,9 @@ class UserDataController extends Controller
                    'eduTitle2'=>'max:190',
                    'eduTitle3'=>'max:190',
                    'languages'=>'max:190|required',
+                   'telephone'=>'max:190|required',
+                   'skype_id'=>'max:190',
+                   'social_apps'=>'max:190',
                    'future_plan'=>'max:1500',
                    'photo'=>'required',
                    'nationality'=>'max:190',
@@ -104,6 +107,9 @@ class UserDataController extends Controller
                 }elseif ($key == 'charSkills'){
                     $charSkillsCheckBox = implode(',',$value);
                     $userData->{$key} = $charSkillsCheckBox ;
+                }elseif ($key == 'social_apps'){
+                    $social_appsCheckBoxes = implode(',',$value);
+                    $userData->{$key} = $social_appsCheckBoxes ;
                 }elseif ($key == 'availableHours'){
                     $availableHoursCheckBox = implode(',',$value);
                     $userData->{$key} = $availableHoursCheckBox ;

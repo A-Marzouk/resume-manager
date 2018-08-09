@@ -67,19 +67,50 @@
             </select>
         </div> <!-- job title -->
         <div class="form-group col-md-6 col-lg-4">
-            <label for="birth_date" class="panelFormLabel">Primary contact Email <span style="font-size:small;">*</span><span id="tickMarkemail" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-            <input type="email" style="@if($errors->has('email')) border:1px solid red; @endif" class="form-control panelFormInput" name="email" value="<?if(empty($email)):?>{{$currFreelancer->email}}<?else:?>{{$email}}<? endif;?>">
-        </div> <!-- email -->
-        <div class="form-group col-md-6 col-lg-4">
             <label for="birth_date"  class="panelFormLabel">City where you live & work <span style="font-size:small;">*</span><span id="tickMarkcity" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="text" style="@if($errors->has('city')) border:1px solid red; @endif" class="form-control panelFormInput" name="city" value="{{$city}}" id="city">
         </div> <!-- city -->
         <div class="form-group col-md-6 col-lg-4">
             <label for="languages"  class="panelFormLabel">Languages you speak <span style="font-size:small;">*</span> <span id="tickMarklanguages" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="text" class="form-control panelFormInput" id="languages" name="languages" value="{{$languages}}" required>
-            <small>Separated by commas</small>
         </div> <!-- Languages -->
+
+
     </div>
+    <hr>
+    <div class="row">
+        <div class="form-group col-md-6 col-lg-4">
+            <label for="birth_date" class="panelFormLabel">Primary contact Email <span style="font-size:small;">*</span><span id="tickMarkemail" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <input type="email" style="@if($errors->has('email')) border:1px solid red; @endif" class="form-control panelFormInput" name="email" value="<?if(empty($email)):?>{{$currFreelancer->email}}<?else:?>{{$email}}<? endif;?>">
+        </div> <!-- email -->
+
+        <div class="form-group col-md-6 col-lg-4">
+            <label for="skype_id"  class="panelFormLabel">Skype ID <span id="tickMarkskype_id" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <input type="text" style="@if($errors->has('city')) border:1px solid red; @endif" class="form-control panelFormInput" name="skype_id" value="{{$skype_id}}" id="skype_id">
+        </div> <!-- skype_id -->
+
+        <div class="form-group col-md-6 col-lg-4">
+            <label for="telephone"  class="panelFormLabel">Phone number <span style="font-size:small;">*</span><span id="tickMarktelephone" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <input type="text" style="@if($errors->has('city')) border:1px solid red; @endif" class="form-control panelFormInput" name="telephone" value="{{$telephone}}" id="telephone">
+        </div> <!-- telephone -->
+
+        <div class="form-group col-lg-6 col-md-6">
+            <? $socialApps = ['Whatsapp','Viber','Telegram'] ;
+            $social_appsCheckBoxes = explode(',',$social_apps);
+            ?>
+            <label class="panelFormLabel">Social applications<span id="tickMarksocial_apps" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <div class="form-check" style="padding-top: 15px;">
+                @foreach($socialApps as $app)
+                    <label class="form-check-label col-md-3 checkBoxContainer checkBoxText">{{$app}}
+                        <input  style="@if($errors->has('availableHours')) border:1px solid red; @endif" class="form-check-input" type="checkbox" name="social_apps[]" value="{{$app}}"
+                                <? if(in_array($app,$social_appsCheckBoxes)): ?> checked <?endif;?> >
+                        <span class="checkmark"></span>
+                    </label>
+                @endforeach
+            </div>
+        </div>  <!-- social apps availabel -->
+    </div>
+
     <hr>
     <div class="row">
         <div class="form-group col-md-12">

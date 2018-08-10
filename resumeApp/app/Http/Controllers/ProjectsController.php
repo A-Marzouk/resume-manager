@@ -21,7 +21,6 @@ class ProjectsController extends Controller
     }
 
     public function addProject(Request $request){
-
         $currentUser = auth()->user();
         $request->validate([
             'projectName' => 'max:190',

@@ -35,7 +35,7 @@ class UserDataController extends Controller
                    'skype_id'=>'max:190',
                    'social_apps'=>'max:190',
                    'future_plan'=>'max:1500',
-                   'photo'=>'required',
+//                   'photo'=>'required',
                    'nationality'=>'max:190',
                    'audioFile'=>'max:190',
                    'audio'=>'max:190',

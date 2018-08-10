@@ -158,7 +158,7 @@
             ],
             '2. Availability and pay' => [
                 'link'=>'pay',
-                'salary','availableHours','freeDate','availableHours','currency','timeZone',
+                'salary','availableHours','freeDate','availableHours','currency','timeZone','salary_month',
             ],
             '3. Multimedia' => [
                 'link'=>'multimedia',

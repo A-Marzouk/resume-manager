@@ -27,13 +27,10 @@
     <?$days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];?>
 
     <div class="row">
-        <div class="form-group col-md-12">
-            <hr>
-            <label for="audio_intro" class="panelFormLabel">Expected Salary in (US Dollars ) USD per hour <span style="font-size:small;">*</span> <span id="tickMarksalary" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label><br/>
-            <div>
-                <input type="text"  style="@if($errors->has('salary')) border:1px solid red; @endif" class="form-control panelFormInput d-inline-block col-md-4" id="salary" name="salary" value="<? if(!empty($salary)){echo $salary;}else{echo '';}?>">
-                <input class="form-control panelFormInput d-inline-block col-md-4" id="currency" name="currency" value="USD">
-            </div>
+        <div class="form-group col-md-6 col-lg-4">
+            <label for="salary" class="panelFormLabel">Expected Salary per hour (USD / hour) <span style="font-size:small;">*</span> <span id="tickMarksalary" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label><br/>
+            <input type="text"  style="@if($errors->has('salary')) border:1px solid red; @endif" class="form-control panelFormInput d-inline-block" id="salary" name="salary" value="<? if(!empty($salary)){echo $salary;}else{echo '';}?>">
+
             <? foreach($availableHoursCheckBox as $check):?>
                 <? $hours  = (int)filter_var($check, FILTER_SANITIZE_NUMBER_INT) ?? 1 ;
                 $salary = (int) $salary ;  ?>
@@ -42,7 +39,15 @@
             <p id="paidSalary{{$i}}" class="d-none panelFormLabel">At <span id="paidDays{{$i}}"></span> you will be paid <span id="totalPaid{{$i}}">{{$salary * $hours}}</span> usd </p>
             <? endfor;?>
         </div>  <!-- Salary  -->
+
+        <div class="form-group col-md-6 col-lg-4">
+            <label for="salary_month"  class="panelFormLabel">Expected salary for Full time work (USD / Monthly) <span style="font-size:small;">*</span> <span id="tickMarklanguages" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <input type="text" class="form-control panelFormInput" placeholder="" id="salary_month" name="salary_month" value="{{$salary_month}}">
+
+        </div> <!-- monthly payment -->
     </div>
+
+
 
     <div class="row">
         <div class="form-group col-md-12">

@@ -94,6 +94,7 @@ class FreelancersController extends Controller
             'telephone'=> $currFreelancer->userData->telephone?? '' ,
             'skype_id'=> $currFreelancer->userData->skype_id?? '' ,
             'social_apps'=> $currFreelancer->userData->social_apps?? '' ,
+            'salary_month'=> $currFreelancer->userData->salary_month?? '' ,
             'video'=> $currFreelancer->userData->video?? '' ,
             'video_file'=> $currFreelancer->userData->video_file?? '' ,
             'workDesc'=> [

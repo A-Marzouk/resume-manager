@@ -15,17 +15,16 @@
             <div class="footerText text-right">
                 <a href="/freelancer/register">Join our team of freelancers</a><br/>
                 info@123workforce.com<br>
-                (+44) 2037000685<br/>
+                (+44) 2037000685
             </div>
         </div>
         <div class="col-md-4 offset-md-7 text-right four">
-           <p class="skypeText">
-               <a href="skype:conor_827?call">
-                   <img src="/resumeApp/resources/views/customTheme/images/skypeLogo.png" alt="skype" width="25px" style="opacity: 1;">
-                   <span>Call us on Skype</span>
-               </a>
-           </p>
-            <p>
+            <div class="skypeText">
+                <a href="skype:conor_827?call">
+                    <img src="/resumeApp/resources/views/customTheme/images/skypeLogo.png" alt="skype" width="25px" style="opacity: 1;">
+                    <span>Call us on Skype</span>
+                </a>
+            </div><br/>
                 <!-- Load Facebook SDK for JavaScript -->
             <div id="fb-root"></div>
             <script>
@@ -43,7 +42,15 @@
                      page_id="1010896968958465"
                      theme_color="#0084ff">
                 </div>
-            </p>
+            {{-- facebook like button --}}
+            <script>(function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1';
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+            {{-- end of like button  script --}}
             <div>
                 <a href="https://www.facebook.com/123workforce">
                     <img src="/resumeApp/resources/views/customTheme/images/newResume/fb.png" alt="fb" width="25px">
@@ -51,9 +58,10 @@
                 <a href="https://www.instagram.com/123workforce/">
                     <img src="/resumeApp/resources/views/customTheme/images/newResume/instagram.png" alt="insta" width="25px">
                 </a>
-            </div>
+            </div><br/>
+            {{--<div class="fb-like" data-href="https://123workforce.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>--}}
+
         </div>
-    </div>
 </div>
 
 <style>

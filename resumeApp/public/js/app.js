@@ -14332,73 +14332,59 @@ Vue.component('projects-list', __webpack_require__(74));
 Vue.component('project-detail', __webpack_require__(79));
 Vue.component('add-project-modal', __webpack_require__(82));
 
-var work_overview = new Vue({
-    el: '#work_overview'
-});
+if ($("#work_overview").length !== 0) {
+    var work_overview = new Vue({
+        el: '#work_overview'
+    });
+}
 
-var freelancer_works = new Vue({
-    el: '#freelancer_works'
-});
+if ($("#freelancer_works").length !== 0) {
+    var freelancer_works = new Vue({
+        el: '#freelancer_works'
+    });
+}
 
-var app = new Vue({
-    el: '#VueChat',
-    data: {
-        messages: [],
-        usersInRoom: [],
-        currentConvId: '',
-        currentUser: ''
-    },
-    methods: {
-        addMessage: function addMessage(message) {
-            // add to the existing messages
-            // message.created_at = new Date();
-            this.messages.push({
-                message: message.message,
-                created_at: 'just now',
-                user: {
-                    firstName: ''
-                },
-                client: {
-                    firstName: ''
-                },
-                visitor: {
-                    firstName: ''
+if ($("#VueChat").length !== 0) {
+    var app = new Vue({
+        el: '#VueChat',
+        data: {
+            messages: [],
+            usersInRoom: [],
+            currentConvId: '',
+            currentUser: ''
+        },
+        methods: {
+            addMessage: function addMessage(message) {
+                // add to the existing messages
+                // message.created_at = new Date();
+                this.messages.push({
+                    message: message.message,
+                    created_at: 'just now',
+                    user: {
+                        firstName: ''
+                    },
+                    client: {
+                        firstName: ''
+                    },
+                    visitor: {
+                        firstName: ''
+                    }
+                });
+                //scroll down :
+                if ($("#chatBox").length) {
+                    $('#messagesBox').animate({ scrollTop: $('#messagesBox')[0].scrollHeight }, 'slow');
                 }
-            });
-            //scroll down :
-            if ($("#chatBox").length) {
-                $('#messagesBox').animate({ scrollTop: $('#messagesBox')[0].scrollHeight }, 'slow');
+                if ($("#chatLogs").length && this.currentUser.admin == 1) {
+                    setTimeout(function () {
+                        $('html,body').animate({ scrollTop: $("#sendMessage").offset().top }, 'slow');
+                    }, 2000);
+                }
+                // save to DB and so on.
+                axios.post('/messages', message);
             }
-            if ($("#chatLogs").length && this.currentUser.admin == 1) {
-                setTimeout(function () {
-                    $('html,body').animate({ scrollTop: $("#sendMessage").offset().top }, 'slow');
-                }, 2000);
-            }
-            // save to DB and so on.
-            axios.post('/messages', message);
-        }
-    },
-    created: function created() {
-        var _this = this;
-
-        var pageUrl = window.location.pathname;
-        var partsOfUrl = pageUrl.split('/');
-        var conversationID = partsOfUrl[partsOfUrl.length - 1];
-        if (isNaN(conversationID)) {
-            conversationID = '';
-        }
-        axios.get('/messages/' + conversationID).then(function (response) {
-            _this.messages = response.data;
-        });
-
-        Echo.channel('talkToSales').listen('MessagePosted', function (e) {
-            // handle event here
-            // console.log(e.message);
-            // this.messages.push({
-            //     message:e.message.message,
-            //     created_at:e.message.created_at,
-            //     user: e.user
-            // });
+        },
+        created: function created() {
+            var _this = this;
 
             var pageUrl = window.location.pathname;
             var partsOfUrl = pageUrl.split('/');
@@ -14410,47 +14396,67 @@ var app = new Vue({
                 _this.messages = response.data;
             });
 
-            axios.get('/chat/get-conv-id/').then(function (response) {
-                _this.currentConvId = response.data.conversationId;
-                _this.currentUser = response.data.user;
-            });
+            Echo.channel('talkToSales').listen('MessagePosted', function (e) {
+                // handle event here
+                // console.log(e.message);
+                // this.messages.push({
+                //     message:e.message.message,
+                //     created_at:e.message.created_at,
+                //     user: e.user
+                // });
 
-            // scroll down : only if message is to this conversation.
-            if (_this.currentConvId == e.message.conversation_id) {
-                if ($("#chatLogs").length) {
-                    setTimeout(function () {
-                        $('html,body').animate({ scrollTop: $("#sendMessage").offset().top }, 'slow');
-                    }, 2000);
+                var pageUrl = window.location.pathname;
+                var partsOfUrl = pageUrl.split('/');
+                var conversationID = partsOfUrl[partsOfUrl.length - 1];
+                if (isNaN(conversationID)) {
+                    conversationID = '';
                 }
-                // play sound :
-                var chatAudio = document.getElementById("chatAudio");
+                axios.get('/messages/' + conversationID).then(function (response) {
+                    _this.messages = response.data;
+                });
 
-                // if user is not admin and message is from admin
-                if (_this.currentUser.admin != 1 && e.message.user_id == 2) {
-                    chatAudio.play();
-                    // open the chat if it is closed.
-                    if ($('#chatBox').css('opacity') == 0) {
-                        $('#liveChat').click();
+                axios.get('/chat/get-conv-id/').then(function (response) {
+                    _this.currentConvId = response.data.conversationId;
+                    _this.currentUser = response.data.user;
+                });
+
+                // scroll down : only if message is to this conversation.
+                if (_this.currentConvId == e.message.conversation_id) {
+                    if ($("#chatLogs").length) {
+                        setTimeout(function () {
+                            $('html,body').animate({ scrollTop: $("#sendMessage").offset().top }, 'slow');
+                        }, 2000);
                     }
-                    // write the head is new message
-                    $('#chatText').html('New message !');
-                    setTimeout(function () {
-                        $('#messagesBox').animate({ scrollTop: $('#messagesBox')[0].scrollHeight }, 'slow');
-                    }, 1000);
-                    //2 seconds and return it back
-                    setTimeout(function () {
-                        $('#chatText').html('Chat with us');
-                    }, 4000);
-                }
+                    // play sound :
+                    var chatAudio = document.getElementById("chatAudio");
 
-                // if message is to admin !
-                if (_this.currentUser.admin == 1 && e.message.user_id != 2) {
-                    chatAudio.play();
+                    // if user is not admin and message is from admin
+                    if (_this.currentUser.admin != 1 && e.message.user_id == 2) {
+                        chatAudio.play();
+                        // open the chat if it is closed.
+                        if ($('#chatBox').css('opacity') == 0) {
+                            $('#liveChat').click();
+                        }
+                        // write the head is new message
+                        $('#chatText').html('New message !');
+                        setTimeout(function () {
+                            $('#messagesBox').animate({ scrollTop: $('#messagesBox')[0].scrollHeight }, 'slow');
+                        }, 1000);
+                        //2 seconds and return it back
+                        setTimeout(function () {
+                            $('#chatText').html('Chat with us');
+                        }, 4000);
+                    }
+
+                    // if message is to admin !
+                    if (_this.currentUser.admin == 1 && e.message.user_id != 2) {
+                        chatAudio.play();
+                    }
                 }
-            }
-        });
-    }
-});
+            });
+        }
+    });
+}
 
 /***/ }),
 /* 16 */
@@ -54768,7 +54774,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'isActive': '',
                 'link': '',
                 'projectDesc': '',
-                'images': '',
+                'images': [],
+                'imagesFiles': [],
                 'mainImage': ''
             }
         };
@@ -54782,6 +54789,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/freelancer/projects').then(function (response) {
                 var currProjects = response.data;
                 _this.projects = currProjects;
+                var i = 0;
+                for (i = 0; i < _this.projects.length; i++) {
+                    var project = _this.projects[i];
+                    if (project.images !== null) {
+                        _this.projects[i].images = project.images.split(',');
+                    }
+                }
+
                 _this.checkMaxProjects();
             });
         },
@@ -54838,7 +54853,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'isActive': '',
                 'link': '',
                 'projectDesc': '',
-                'images': '',
+                'images': [],
+                'imagesFiles': [],
                 'mainImage': ''
             };
         }
@@ -55241,6 +55257,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedProject'],
@@ -55268,6 +55310,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.form_data.append('mainImage', mainImage);
             }
 
+            if (this.toBeEditedProject.imagesFiles !== undefined) {
+                var i = 0;
+                this.toBeEditedProject.imagesFiles.forEach(function (file) {
+                    var name = 'moreImages' + i;
+                    _this.form_data.append(name, file);
+                    i++;
+                });
+            }
+
             axios.post('/freelancer/addproject', this.form_data).then(function (response) {
                 console.log(response.data);
 
@@ -55289,7 +55340,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.canAddImage = true;
             var file = this.$refs.file.files[0];
             this.toBeEditedProject.mainImage = URL.createObjectURL(file);
-            // show the picture immediately
+        },
+        handleNewImage: function handleNewImage() {
+            var newImage = document.getElementById('newImage');
+            var image = newImage.files[0];
+            var tempPath = URL.createObjectURL(image);
+
+            var currentImages = this.toBeEditedProject.images;
+            if (currentImages == null) {
+                this.toBeEditedProject.images = [];
+            }
+            this.toBeEditedProject.images.push(tempPath);
+            // save files array
+            var currentImagesFiles = this.toBeEditedProject.imagesFiles;
+            if (currentImagesFiles == null) {
+                this.toBeEditedProject.imagesFiles = [];
+            }
+            this.toBeEditedProject.imagesFiles.push(image);
+        },
+        openNewImageBrowse: function openNewImageBrowse() {
+            $('#newImage').click();
+        },
+        deleteImage: function deleteImage(index, projectID, imageSrc) {
+            if (!confirm('Are you sure you want to delete this photo ?')) {
+                return;
+            }
+            var deleteData = {
+                projectID: projectID,
+                imageSrc: imageSrc
+            };
+            if (index > -1) {
+                this.toBeEditedProject.images.splice(index, 1);
+                // delete from db
+                axios.post('/freelancer/delete_project_image', deleteData).then(function (response) {
+                    console.log(response.data);
+                });
+                // delete from files if exist :
+                if (this.toBeEditedProject.imagesFiles.length > 0) {}
+            }
         }
     },
     mounted: function mounted() {}
@@ -55362,20 +55450,44 @@ var render = function() {
                         staticClass: "col-md-8"
                       },
                       [
-                        _c("div", [
-                          _c("img", {
+                        _c(
+                          "div",
+                          {
                             staticStyle: {
                               "border-radius": "10px",
                               border: "1px solid lightgray"
-                            },
-                            attrs: {
-                              src: _vm.toBeEditedProject.mainImage,
-                              alt: "",
-                              width: "100%",
-                              height: "auto"
                             }
-                          })
-                        ])
+                          },
+                          [
+                            _c("img", {
+                              attrs: {
+                                src: _vm.toBeEditedProject.mainImage,
+                                alt: "",
+                                width: "100%",
+                                height: "auto"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _vm._l(_vm.toBeEditedProject.images, function(
+                              image
+                            ) {
+                              return _c(
+                                "div",
+                                { staticStyle: { "padding-top": "10px" } },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src: image,
+                                      alt: "",
+                                      width: "100%"
+                                    }
+                                  })
+                                ]
+                              )
+                            })
+                          ],
+                          2
+                        )
                       ]
                     ),
                     _vm._v(" "),
@@ -55549,7 +55661,7 @@ var render = function() {
                                     "label",
                                     {
                                       staticClass: "custom-file-label",
-                                      attrs: { id: "audioLabel" }
+                                      attrs: { id: "mainImageLabel" }
                                     },
                                     [
                                       _vm._v(
@@ -55560,6 +55672,53 @@ var render = function() {
                                 ]
                               )
                             ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "form-group col-md-12",
+                                staticStyle: {
+                                  opacity: "0",
+                                  height: "0.1px !important",
+                                  width: "0.1px"
+                                }
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "custom-file",
+                                    staticStyle: { "padding-top": "5px" }
+                                  },
+                                  [
+                                    _c("input", {
+                                      staticClass:
+                                        "custom-file-input panelFormInput",
+                                      attrs: {
+                                        type: "file",
+                                        id: "newImage",
+                                        name: "newImage",
+                                        accept: "image/*"
+                                      },
+                                      on: { change: _vm.handleNewImage }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "custom-file-label",
+                                        attrs: { id: "newImageLabel" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                More images\n                                            "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            ),
                             _vm._v(" "),
                             _c("div", { staticClass: "form-group col-md-12" }, [
                               _c(
@@ -55641,10 +55800,82 @@ var render = function() {
                                   _c("span", { staticClass: "checkmark" })
                                 ]
                               )
-                            ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "text-left noHoverEffect" },
+                              [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn btn-default btn-workExp",
+                                    attrs: { id: "addProjectText" },
+                                    on: { click: _vm.openNewImageBrowse }
+                                  },
+                                  [_vm._m(1)]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "row text-right" },
+                              _vm._l(_vm.toBeEditedProject.images, function(
+                                image,
+                                index
+                              ) {
+                                return _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: image !== "",
+                                        expression: "image !== '' "
+                                      }
+                                    ],
+                                    staticClass: "col-md-6",
+                                    staticStyle: { "padding-top": "10px" }
+                                  },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticStyle: { color: "lightgrey" },
+                                        attrs: { href: "javascript:void(0)" },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.deleteImage(
+                                              index,
+                                              _vm.toBeEditedProject.id,
+                                              image
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("x")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("img", {
+                                      staticStyle: {
+                                        border: "1px solid lightgray",
+                                        "border-radius": "5px"
+                                      },
+                                      attrs: {
+                                        src: image,
+                                        alt: "",
+                                        width: "100%"
+                                      }
+                                    })
+                                  ]
+                                )
+                              })
+                            )
                           ]),
                           _vm._v(" "),
-                          _vm._m(1)
+                          _vm._m(2)
                         ]
                       )
                     ])
@@ -55682,6 +55913,23 @@ var staticRenderFns = [
         )
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("img", {
+        attrs: {
+          src: "/resumeApp/resources/views/customTheme/images/add_work_img.png",
+          alt: "add project",
+          width: "30px"
+        }
+      }),
+      _vm._v(
+        "\n                                                Add image\n                                            "
+      )
+    ])
   },
   function() {
     var _vm = this

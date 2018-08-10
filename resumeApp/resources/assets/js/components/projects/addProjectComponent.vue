@@ -14,8 +14,11 @@
 
                             </div>
                             <div class="col-md-8" v-show="toBeEditedProject.mainImage">
-                                <div>
-                                    <img :src="toBeEditedProject.mainImage" alt="" width="100%" height="auto" style="border-radius:10px; border: 1px solid lightgray;">
+                                <div style="border-radius:10px; border: 1px solid lightgray;">
+                                        <img :src="toBeEditedProject.mainImage" alt="" width="100%" height="auto">
+                                        <div v-for="image in toBeEditedProject.images" style="padding-top: 10px;">
+                                            <img :src="image" alt="" width="100%">
+                                        </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -37,8 +40,16 @@
                                         <div class="form-group col-md-12">
                                             <div class="custom-file" style="padding-top: 5px;">
                                                 <input type="file" id="mainImage" ref="file" class="custom-file-input panelFormInput" name="mainImage" @change="handleFile" accept="image/*">
-                                                <label class="custom-file-label" id="audioLabel">
+                                                <label class="custom-file-label" id="mainImageLabel">
                                                     Main image
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-12" style="opacity: 0; height: 0.1px !important; width:0.1px; !important">
+                                            <div class="custom-file" style="padding-top: 5px;">
+                                                <input type="file" id="newImage" class="custom-file-input panelFormInput" name="newImage" @change="handleNewImage" accept="image/*">
+                                                <label class="custom-file-label" id="newImageLabel">
+                                                    More images
                                                 </label>
                                             </div>
                                         </div>
@@ -48,6 +59,21 @@
                                                 Active
                                                 <span class="checkmark"></span>
                                             </label>
+                                        </div>
+                                        <div class="text-left noHoverEffect">
+                                            <a class="btn btn-default btn-workExp" id="addProjectText"  @click="openNewImageBrowse">
+                                                <span>
+                                                    <img src="/resumeApp/resources/views/customTheme/images/add_work_img.png" alt="add project"
+                                                         width="30px">
+                                                    Add image
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="row text-right">
+                                            <div class="col-md-6" v-for="(image,index) in toBeEditedProject.images" v-show="image !== '' " style="padding-top: 10px;">
+                                                <a href="javascript:void(0)" style="color: lightgrey;" @click="deleteImage(index,toBeEditedProject.id,image)">x</a>
+                                                <img :src="image" alt="" width="100%" style="border: 1px solid lightgray; border-radius: 5px;">
+                                            </div>
                                         </div>
 
                                     </div>
@@ -70,7 +96,7 @@
         data(){
             return{
                 form_data:{},
-                canAddImage:false
+                canAddImage:false,
             }
         },
         methods:{
@@ -86,6 +112,15 @@
                 if(this.canAddImage){
                     let mainImage = this.$refs.file.files[0];
                     this.form_data.append('mainImage',mainImage);
+                }
+
+                if(this.toBeEditedProject.imagesFiles !== undefined){
+                    let i = 0 ;
+                    this.toBeEditedProject.imagesFiles.forEach( (file) => {
+                        let name = 'moreImages'+i ;
+                        this.form_data.append(name,file);
+                        i++;
+                    })
                 }
 
 
@@ -110,8 +145,49 @@
                 this.canAddImage = true;
                 const file = this.$refs.file.files[0];
                 this.toBeEditedProject.mainImage = URL.createObjectURL(file);
-                // show the picture immediately
-            }
+
+            },
+            handleNewImage(){
+                let newImage = document.getElementById('newImage');
+                let image = newImage.files[0];
+                let tempPath = URL.createObjectURL(image);
+
+                let currentImages = this.toBeEditedProject.images ;
+                if(currentImages == null){
+                    this.toBeEditedProject.images = [];
+                }
+                this.toBeEditedProject.images.push(tempPath);
+                // save files array
+                let currentImagesFiles = this.toBeEditedProject.imagesFiles ;
+                if(currentImagesFiles == null){
+                    this.toBeEditedProject.imagesFiles = [];
+                }
+                this.toBeEditedProject.imagesFiles.push(image);
+
+            },
+            openNewImageBrowse(){
+                $('#newImage').click();
+            },
+            deleteImage(index,projectID,imageSrc){
+                if(!confirm('Are you sure you want to delete this photo ?')){
+                    return;
+                }
+                let deleteData = {
+                        projectID : projectID,
+                        imageSrc  : imageSrc
+                    };
+                if (index > -1) {
+                    this.toBeEditedProject.images.splice(index, 1);
+                    // delete from db
+                    axios.post('/freelancer/delete_project_image',deleteData).then( (response) => {
+                        console.log(response.data);
+                    });
+                    // delete from files if exist :
+                    if(this.toBeEditedProject.imagesFiles.length > 0){
+
+                    }
+                }
+            },
 
     },
         mounted(){

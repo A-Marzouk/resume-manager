@@ -49,6 +49,27 @@ class ProjectsController extends Controller
             $project->mainImage = '/'. $path ;
         }
 
+        // uploading images and save paths to images :
+        $moreImages = [];
+        for($i=0; $i<100 ; $i++){
+            $currRequest = 'moreImages'.$i ;
+            if(isset($request->{$currRequest})){
+                $handler = new UserDataController;
+                $path  = $handler->uploadProjectPhoto('',$currRequest,'');
+                $moreImages[] =  '/'. $path ;
+            }else{
+                break;
+            }
+        }
+
+        if(!empty($project->images)){
+            $project->images = $project->images .','. implode(',',$moreImages);
+        }else{
+            $project->images = implode(',',$moreImages);
+
+        }
+
+
         $project->save();
 
         // edited/added project Id
@@ -68,5 +89,24 @@ class ProjectsController extends Controller
         // delete from database :
         $project->delete();
         return 'Project deleted';
+    }
+
+
+    public function deleteProjectImage(Request $request){
+        $project = Project::where('id',$request->projectID)->first();
+        $imageSrc = $request->imageSrc ;
+
+
+        $currentImagesArr = explode(',',$project->images);
+        for($i=0 ; $i< count($currentImagesArr) ; $i++){
+            if($currentImagesArr[$i] == $imageSrc){
+                $currentImagesArr[$i] = '' ;
+            }
+        }
+
+        $project->images = implode(',',array_filter($currentImagesArr));
+        $project->save();
+
+        return $project->id;
     }
 }

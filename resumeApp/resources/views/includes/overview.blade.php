@@ -72,7 +72,7 @@
         </div> <!-- city -->
         <div class="form-group col-md-6 col-lg-4">
             <label for="languages"  class="panelFormLabel">Languages you speak <span style="font-size:small;">*</span> <span id="tickMarklanguages" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-            <input type="text" class="form-control panelFormInput" id="languages" name="languages" value="{{$languages}}">
+            <input type="text" style="@if($errors->has('languages')) border:1px solid red; @endif" class="form-control panelFormInput" id="languages" name="languages" value="{{$languages}}">
         </div> <!-- Languages -->
 
 
@@ -91,7 +91,7 @@
 
         <div class="form-group col-md-6 col-lg-4">
             <label for="telephone"  class="panelFormLabel">Phone number <span style="font-size:small;">*</span><span id="tickMarktelephone" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-            <input type="text" class="form-control panelFormInput" name="telephone" value="{{$telephone}}" id="telephone">
+            <input type="text"  style="@if($errors->has('telephone')) border:1px solid red; @endif" class="form-control panelFormInput" name="telephone" value="{{$telephone}}" id="telephone">
         </div> <!-- telephone -->
 
         <div class="form-group col-lg-6 col-md-6">

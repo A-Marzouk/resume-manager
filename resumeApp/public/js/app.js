@@ -54792,7 +54792,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var i = 0;
                 for (i = 0; i < _this.projects.length; i++) {
                     var project = _this.projects[i];
-                    console.log(project.projectName);
                     if (project.images !== null) {
                         _this.projects[i].images = project.images.split(',');
                     }
@@ -55290,8 +55289,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             form_data: {},
-            canAddImage: false,
-            toBeDeletedIndex: []
+            canAddImage: false
         };
     },
 
@@ -55373,9 +55371,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             if (index > -1) {
                 this.toBeEditedProject.images.splice(index, 1);
+                // delete from db
                 axios.post('/freelancer/delete_project_image', deleteData).then(function (response) {
                     console.log(response.data);
                 });
+                // delete from files if exist :
+                if (this.toBeEditedProject.imagesFiles.length > 0) {}
             }
         }
     },

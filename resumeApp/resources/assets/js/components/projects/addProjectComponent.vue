@@ -97,7 +97,6 @@
             return{
                 form_data:{},
                 canAddImage:false,
-                toBeDeletedIndex:[]
             }
         },
         methods:{
@@ -179,9 +178,14 @@
                     };
                 if (index > -1) {
                     this.toBeEditedProject.images.splice(index, 1);
+                    // delete from db
                     axios.post('/freelancer/delete_project_image',deleteData).then( (response) => {
                         console.log(response.data);
                     });
+                    // delete from files if exist :
+                    if(this.toBeEditedProject.imagesFiles.length > 0){
+
+                    }
                 }
             },
 

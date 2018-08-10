@@ -45,6 +45,15 @@
                                     <div class="row">
                                         <div class="col-md-9" style="padding: 0;">
                                             <img src="{{$workExample->mainImage}}" alt="" width="100%" height="auto">
+                                            <?
+                                                // more images
+                                                $moreImagesArr = explode(',',$workExample->images);
+                                                foreach($moreImagesArr as $image){
+                                                    if(!empty(trim($image))){
+                                                    ?>
+                                                 <img src="{{$image}}" alt="" width="100%" height="auto">
+                                                    <?}
+                                                }?>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group" style="padding-top: 25px;">

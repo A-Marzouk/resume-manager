@@ -56008,9 +56008,6 @@ $('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"]').on
     } else {
         $('#deleteSelectedBtn').addClass('d-none');
     }
-    // console.log('Users : '+toBeDeletedUsers);
-    // console.log('Clients : '+toBeDeletedClients);
-    // console.log('Conversations : '+toBeDeletedConversations);
 
     toBeDeletedData = {
         toBeDeletedUsers: toBeDeletedUsers,
@@ -56038,15 +56035,24 @@ $('#deleteSelectedBtn').on('click', function () {
         if ($('#selectedRowBUser' + userID).length !== 0) {
             $('#selectedRowBUser' + userID).fadeOut(3000);
         }
+
+        // uncheck the deleted ones already :
+        $('#selectedUser' + userID).prop('checked', false);
     });
 
     toBeDeletedData.toBeDeletedClients.forEach(function (clientID) {
         $('#selectedRowClient' + clientID).fadeOut(3000);
+        // uncheck deleted
+        $('#selectedClient' + clientID).prop('checked', false);
     });
 
     toBeDeletedData.toBeDeletedConversations.forEach(function (conversationID) {
         $('#selectedRowConversation' + conversationID).fadeOut(3000);
+        // uncheck deleted
+        $('#selectedConversation' + conversationID).prop('checked', false);
     });
+
+    $('#deleteSelectedBtn').addClass('d-none');
 
     $('#changesSaved').fadeIn('slow');
     setTimeout(function () {

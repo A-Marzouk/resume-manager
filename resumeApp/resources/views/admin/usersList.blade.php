@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-2">
             <h3 class="panelFormLabel text-center">Admin-dashboard</h3>
-            <ul class="nav nav-tabs" role="tablist">
+            <ul class="nav nav-tabs fixedTabs" role="tablist">
                 <li class="col-md-12">
                     <a class="btn btn-block btn-outline-primary active" style="margin-bottom: 6px;" href="#home" role="tab" data-toggle="tab">
                         Home
@@ -30,10 +30,11 @@
                         Chatting rooms
                     </a>
                 </li>
+
+                <li class="col-md-12" style="margin-top: 25px;">
+                    <a href="javascript:void(0)" class="btn btn-block btn-outline-danger d-none" id="deleteSelectedBtn">Delete selected</a>
+                </li>
             </ul>
-            <div class="col-md-12" style="padding-top: 20px;">
-                <a href="javascript:void(0)" class="btn btn-block btn-outline-danger d-none" id="deleteSelectedBtn">Delete selected</a>
-            </div>
         </div>
         <div class="col-md-10">
             <!-- Success Messages  -->
@@ -343,7 +344,7 @@
                         <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Chatting rooms</th>
+                            <th scope="col">Chat rooms</th>
                             <th scope="col">Chat IDs</th>
                             <th scope="col">Visitor/User/Client</th>
                             <th scope="col"></th>

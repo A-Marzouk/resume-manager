@@ -72,6 +72,10 @@ Route::get('/admin','AdminsController@welcomePage')->name('admin.dashboard');
 Route::get('/admin/client/{client_id}','AdminsController@logInAsClient')->name('logInAsClient');
 Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 
+// delete users, clients and conversations :
+Route::post('/admin/delete_multiple','AdminsController@deleteMultiple');
+
+
 // chatting routes :
 Route::get('/chat','ChatController@showChatRoom');
 Route::post('/messages/','ChatController@storeMessages');

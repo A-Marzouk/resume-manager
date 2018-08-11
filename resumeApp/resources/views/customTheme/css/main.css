@@ -1625,4 +1625,19 @@ body {
   margin-top: 30px;
   padding: 20px; }
 
+.adminBox {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin: 30px 10px 0 0px;
+  padding: 20px;
+  height: auto; }
+
+.fixedTabs {
+  position: fixed;
+  width: 15%; }
+  @media only screen and (max-width: 1200px) {
+    .fixedTabs {
+      position: relative;
+      width: 100%; } }
+
 /*# sourceMappingURL=main.css.map */

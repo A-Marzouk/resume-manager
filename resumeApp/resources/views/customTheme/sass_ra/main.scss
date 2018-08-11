@@ -1993,3 +1993,21 @@ body{
   margin-top: 30px;
   padding: 20px;
 }
+
+.adminBox{
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin: 30px 10px 0 0px;
+  padding: 20px;
+  height: auto;
+}
+
+.fixedTabs{
+  @media only screen and (max-width: 1200px){
+    position : relative;
+    width: 100%;
+  }
+
+  position: fixed;
+  width: 15%;
+}

@@ -59,5 +59,26 @@ class AdminsController extends Controller
         return redirect(route('freelancer.dashboard'));
     }
 
+    public function deleteMultiple(Request $request){
+        $usersToD = $request->toBeDeletedUsers ;
+        $clientsToD = $request->toBeDeletedClients ;
+        $conversationsToD = $request->toBeDeletedConversations ;
+
+        foreach ($usersToD as $userID){
+            User::where('id', $userID)->delete();
+        }
+
+        foreach ($clientsToD as $clientID){
+            Client::where('id',$clientID )->delete();
+        }
+
+        foreach ($conversationsToD as $conversationID){
+            Conversation::where('id', $conversationID)->delete();
+        }
+
+        return ['status'=> 'ok'];
+    }
+
+
 
 }

@@ -59,7 +59,7 @@
                     <img src="/resumeApp/resources/views/customTheme/images/newResume/instagram.png" alt="insta" width="25px">
                 </a>
             </div><br/>
-            {{--<div style="padding-top: 6px;" class="fb-like" data-href="https://123workforce.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>--}}
+            <div style="padding-top: 6px;" class="fb-like" data-href="https://123workforce.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
             {{--<div style="padding-top:10px;" class="fb-page" data-href="https://www.facebook.com/123workforce" data-tabs="timeline" data-width="180" data-height="70" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/123workforce" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/123workforce">123 Workforce</a></blockquote></div>--}}
         </div>
 </div>

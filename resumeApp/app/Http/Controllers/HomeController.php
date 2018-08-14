@@ -17,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('stripePayment','welcomePage','ResumePage','stripeTest');
+        $this->middleware('auth')->except('stripePayment','customPayment','welcomePage','ResumePage','stripeTest');
     }
 
     /**
@@ -51,12 +51,16 @@ class HomeController extends Controller
 
     public function stripePayment(Request $request){
         Stripe::setApiKey("sk_test_WlqUYgob2e2ALpZfJw5AfIaG");
-        $amountToPay = $request->amountToPay;
+        $description = "Hire freelancer for 10 hours'";
+        if(isset($request->description)){
+            $description = $request->description ;
+        }
+        $amountToPay = intval($request->amountToPay) * 100;
         $token = $request->stripeToken;
         $charge = Charge::create([
             'amount' => $amountToPay,
             'currency' => 'usd',
-            'description' => 'Hire freelancer for 10 hours',
+            'description' => $description,
             'source' => $token,
             'receipt_email' => 'AhmedMarzouk266@gmail.com',
         ]);
@@ -79,5 +83,10 @@ class HomeController extends Controller
         $notification->clientPaidEmail($data);
 
         return redirect()->back()->with('successMessage','Thank you for your payment, we will get in touch with you soon!');
+    }
+
+
+    public function customPayment(){
+        return view('custom_payment');
     }
 }

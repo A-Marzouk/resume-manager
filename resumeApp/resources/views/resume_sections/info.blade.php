@@ -25,7 +25,7 @@
                 <?
                     $userRate = $user->salary ;
                     $hours =10 ;
-                    $amountToPay = ( $userRate+5 ) * $hours * 100 ;
+                    $amountToPay = ( intval($userRate) +5 ) * $hours ;
                 ?>
                 <input type="hidden" value="{{$amountToPay}}" name="amountToPay">
                 <input type="hidden" value="{{$user->name}}" name="freelancerName">

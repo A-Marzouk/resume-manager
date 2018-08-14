@@ -31,9 +31,17 @@
                     </a>
                 </li>
 
-                <li class="col-md-12" style="margin-top: 25px;">
-                    <a href="javascript:void(0)" class="btn btn-block btn-outline-danger d-none" id="deleteSelectedBtn">Delete selected</a>
-                </li>
+                <div id="actionBtns" class="d-none">
+                    <li class="col-md-12" style="margin-top: 25px;">
+                        <a href="javascript:void(0)" class="btn btn-outline-danger btn-sm" id="deleteSelectedBtn">Delete selected</a>
+                    </li>
+                    <li class="col-md-12" style="margin-top: 5px;">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a href="javascript:void(0)" class="btn btn-outline-dark btn-sm" id="approve">Approve</a>
+                            <a href="javascript:void(0)" class="btn btn-outline-dark btn-sm" id="disApprove">Disapprove</a>
+                        </div>
+                    </li>
+                </div>
             </ul>
         </div>
         <div class="col-md-10">
@@ -86,6 +94,7 @@
                                     <th scope="col">Profession</th>
                                     <th scope="col"></th>
                                     <th scope="col">Empty Fields</th>
+                                    <th scope="col">Approval</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -110,36 +119,36 @@
                                     <td>{{$user->firstName}} {{$user->lastName}}</td>
                                     <td><a href="/{{$user->username}}" target="_blank">Resume</a></td>
                                     <td>{{$user->profession}}</td>
-                                    <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Edit</a>
+                                    <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Open form</a>
                                     </td>
                                     <? if($user->isComplete()):?>
                                     <td>
-                                        <span style="color: green;">Profile Complete</span>
+                                        <span style="color: lawngreen;">Profile Complete</span>
                                     </td>
                                     <? else:?>
                                     <td>
-                                        <ul class="nav nav-tabs" role="tablist">
-                                            <li>
-                                                <a href="#fields{{$user->id}}"  class="btn btn-outline-info" role="tab" data-toggle="tab">
-                                                    Show
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#hide{{$user->id}}" class="btn btn-outline-primary btn-small" role="tab" data-toggle="tab">Hide</a>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-content">
-                                            <div role="tabpanel" class="tab-pane" id="fields{{$user->id}}">
-                                                <br/>
-                                                <? foreach ($user->emptyFields as $data):?>
-                                                <li>{{$data}}</li>
-                                                <? endforeach;?>
-                                            </div>
-                                            <div role="tabpanel" class="tab-pane" id="hide{{$user->id}}">
-                                            </div>
+
+                                        <a href="jacascript:void(0)" class="btn btn-outline-info" data-target="#fields{{$user->id}}" data-toggle="collapse">
+                                            {{count($user->emptyFields)}}
+                                        </a>
+
+                                        <div id="fields{{$user->id}}" class="collapse">
+                                            <br/>
+                                            <? foreach ($user->emptyFields as $data):?>
+                                            <li>{{$data}}</li>
+                                            <? endforeach;?>
                                         </div>
+
                                     </td>
+
                                     <? endif;?>
+                                    <td id="status{{$user->id}}">
+                                        @if($user->userData->approved)
+                                            <span style="color: lawngreen">Approved</span>
+                                        @else
+                                            Not approved
+                                        @endif
+                                    </td>
                                 </tr>
 
 
@@ -159,6 +168,7 @@
                                     <th scope="col">Profession</th>
                                     <th scope="col"></th>
                                     <th scope="col">Empty Fields</th>
+                                    <th scope="col">Approval</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -183,36 +193,33 @@
                                     <td>{{$user->firstName}} {{$user->lastName}}</td>
                                     <td><a href="/{{$user->username}}" target="_blank">Resume</a></td>
                                     <td>{{$user->profession}}</td>
-                                    <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Edit</a>
+                                    <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Open form</a>
                                     </td>
                                     <? if($user->isComplete()):?>
                                     <td>
-                                        <span style="color: green;">Profile Complete</span>
+                                        <span style="color: lawngreen;">Profile Complete</span>
                                     </td>
                                     <? else:?>
                                     <td>
-                                        <ul class="nav nav-tabs" role="tablist">
-                                            <li>
-                                                <a href="#fields{{$user->id}}"  class="btn btn-outline-info" role="tab" data-toggle="tab">
-                                                    Show
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#hide{{$user->id}}" class="btn btn-outline-primary btn-small" role="tab" data-toggle="tab">Hide</a>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-content">
-                                            <div role="tabpanel" class="tab-pane" id="fields{{$user->id}}">
-                                                <br/>
-                                                <? foreach ($user->emptyFields as $data):?>
-                                                <li>{{$data}}</li>
-                                                <? endforeach;?>
-                                            </div>
-                                            <div role="tabpanel" class="tab-pane" id="hide{{$user->id}}">
-                                            </div>
+                                        <a href="jacascript:void(0)" class="btn btn-outline-info" data-target="#fields{{$user->id}}" data-toggle="collapse">
+                                            {{count($user->emptyFields)}}
+                                        </a>
+
+                                        <div id="fields{{$user->id}}" class="collapse">
+                                            <br/>
+                                            <? foreach ($user->emptyFields as $data):?>
+                                            <li>{{$data}}</li>
+                                            <? endforeach;?>
                                         </div>
                                     </td>
                                     <? endif;?>
+                                    <td id="status{{$user->id}}">
+                                        @if($user->userData->approved)
+                                            <span style="color: lawngreen">Approved</span>
+                                        @else
+                                            Not approved
+                                        @endif
+                                    </td>
                                 </tr>
 
 
@@ -268,8 +275,7 @@
                                     <td>{{$userData->city}}</td>
                                     {{-- job title --}}
                                     <td>{{$userData->jobTitle}}</td>
-                                    <td>
-                                        <a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Edit</a></td>
+                                    <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Open form</a></td>
 
                                 </tr>
 

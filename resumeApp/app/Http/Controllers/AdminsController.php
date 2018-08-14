@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Client;
 use App\Conversation;
 use App\User;
+use App\UserData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -77,6 +78,22 @@ class AdminsController extends Controller
         }
 
         return ['status'=> 'ok'];
+    }
+
+    public function controlApproval(Request $request){
+        if($request->status == 'APPROVE'){
+            foreach($request->toBeApprovedUsers as $userID){
+                $userData = UserData::where('user_id', $userID)->first();
+                $userData->approved = true;
+                $userData->save();
+            }
+        }elseif ($request->status == 'DISAPPROVE'){
+            foreach($request->toBeDisApprovedUsers as $userID){
+                $userData = UserData::where('user_id', $userID)->first();
+                $userData->approved = false;
+                $userData->save();
+            }
+        }
     }
 
 

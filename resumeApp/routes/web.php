@@ -74,6 +74,8 @@ Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser
 
 // delete users, clients and conversations :
 Route::post('/admin/delete_multiple','AdminsController@deleteMultiple');
+// approve users
+Route::post('/admin/control_approval','AdminsController@controlApproval');
 
 
 // chatting routes :

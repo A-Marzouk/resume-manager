@@ -30,8 +30,8 @@ class UserDataController extends Controller
                    'eduTitle1'=>'max:190',
                    'eduTitle2'=>'max:190',
                    'eduTitle3'=>'max:190',
-                   'languages'=>'required|max:190',
-                   'telephone'=>'required|max:190',
+                   'languages'=>'max:190',
+                   'telephone'=>'max:190',
                    'skype_id'=>'max:190',
                    'social_apps'=>'max:190',
                    'future_plan'=>'max:1500',
@@ -54,13 +54,13 @@ class UserDataController extends Controller
                    'stackoverflowLink'=>'max:190',
                    'design_skills'=>'max:190',
                    'name'=>'required|max:190',
-                   'jobTitle'=>'required|max:190',
+                   'jobTitle'=>'max:190',
                    'salary'=>'required|max:190',
 //                   'availableHours'=>'required',
-                   'city'=>'required|max:190',
+                   'city'=>'max:190',
                    'email'=>'max:190',
-                   'primarySkills'=>'required',
-                   'design_skills_checkbox'=>'required',
+                   'primarySkills'=>'',
+                   'design_skills_checkbox'=>'',
                 ]);
 
                 $sendTelegram = true;

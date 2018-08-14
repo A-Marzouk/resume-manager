@@ -52,7 +52,8 @@ class User extends Authenticatable
 
     public function isComplete(){
         $userData = $this->userData->attributes;
-        $except    = ['approved','birth_date','trainings','education','nationality','terms','googleCalendar','workForceAgent','preferredTime','surname'];
+        $except    = ['online','approved','birth_date','trainings','education','nationality','terms','googleCalendar','workForceAgent','preferredTime','surname'
+        ,'workDesc0','workDesc1','workDesc2','workDesc3','workDesc4','workDesc5','workDesc6','workDesc7','works','workExperience'];
         if($this->profession == 'Developer'){
             array_push($except,'dribbleLink','instagramLink');
         }elseif($this->profession == 'Designer'){

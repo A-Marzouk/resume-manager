@@ -611,7 +611,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(50)
+var listToStyles = __webpack_require__(51)
 
 /*
 type StyleObject = {
@@ -14286,14 +14286,13 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(85);
+module.exports = __webpack_require__(86);
 
 
 /***/ }),
 /* 15 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -14311,7 +14310,7 @@ $.ajaxSetup({
     }
 });
 
-__webpack_require__(89);
+__webpack_require__(44);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -14321,19 +14320,19 @@ __webpack_require__(89);
 
 Vue.config.devtools = true;
 
-Vue.component('example-component', __webpack_require__(44));
-Vue.component('chat-message', __webpack_require__(47));
-Vue.component('chat-log', __webpack_require__(53));
-Vue.component('chat-composer', __webpack_require__(58));
+Vue.component('example-component', __webpack_require__(45));
+Vue.component('chat-message', __webpack_require__(48));
+Vue.component('chat-log', __webpack_require__(54));
+Vue.component('chat-composer', __webpack_require__(59));
 
-Vue.component('works-list', __webpack_require__(63));
-Vue.component('work-history', __webpack_require__(68));
-Vue.component('add-work-modal', __webpack_require__(71));
+Vue.component('works-list', __webpack_require__(64));
+Vue.component('work-history', __webpack_require__(69));
+Vue.component('add-work-modal', __webpack_require__(72));
 
 // projects
-Vue.component('projects-list', __webpack_require__(74));
-Vue.component('project-detail', __webpack_require__(79));
-Vue.component('add-project-modal', __webpack_require__(82));
+Vue.component('projects-list', __webpack_require__(75));
+Vue.component('project-detail', __webpack_require__(80));
+Vue.component('add-project-modal', __webpack_require__(83));
 
 if ($("#work_overview").length !== 0) {
     var work_overview = new Vue({
@@ -52843,14 +52842,186 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 /* 44 */
+/***/ (function(module, exports) {
+
+
+// submit form to delete multiple users / clients / conversations
+var toBeDeletedUsers = [];
+var toBeDeletedClients = [];
+var toBeDeletedConversations = [];
+
+var toBeDeletedData = {};
+
+$('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"]').on('change', function () {
+    toBeDeletedUsers = [];
+    toBeDeletedClients = [];
+    toBeDeletedConversations = [];
+
+    $("input[name='selectedUsers[]']").each(function () {
+        var val = this.checked ? this.value : '';
+        if (val !== '') {
+            toBeDeletedUsers.push(val);
+        }
+    });
+
+    $("input[name='selectedClients[]']").each(function () {
+        var val = this.checked ? this.value : '';
+        if (val !== '') {
+            toBeDeletedClients.push(val);
+        }
+    });
+
+    $("input[name='selectedConversations[]']").each(function () {
+        var val = this.checked ? this.value : '';
+        if (val !== '') {
+            toBeDeletedConversations.push(val);
+        }
+    });
+
+    if (toBeDeletedUsers.length > 0 || toBeDeletedClients.length > 0 || toBeDeletedConversations.length > 0) {
+        $('#actionBtns').removeClass('d-none');
+    } else {
+        $('#actionBtns').addClass('d-none');
+    }
+
+    toBeDeletedData = {
+        toBeDeletedUsers: toBeDeletedUsers,
+        toBeDeletedClients: toBeDeletedClients,
+        toBeDeletedConversations: toBeDeletedConversations
+    };
+});
+
+// send to DB to be deleted :
+$('#deleteSelectedBtn').on('click', function () {
+
+    if (!confirm('Are you sure you want to delete all selected users,clients or conversations ?')) {
+        return;
+    }
+    axios.post('admin/delete_multiple', toBeDeletedData).then(function (response) {
+        console.log(response.data);
+    });
+
+    // Here hide the deleted records directly.
+    toBeDeletedData.toBeDeletedUsers.forEach(function (userID) {
+        if ($('#selectedRowUser' + userID).length !== 0) {
+            $('#selectedRowUser' + userID).fadeOut(3000);
+        }
+
+        if ($('#selectedRowBUser' + userID).length !== 0) {
+            $('#selectedRowBUser' + userID).fadeOut(3000);
+        }
+
+        // uncheck the deleted ones already :
+        $('#selectedUser' + userID).prop('checked', false);
+    });
+
+    toBeDeletedData.toBeDeletedClients.forEach(function (clientID) {
+        $('#selectedRowClient' + clientID).fadeOut(3000);
+        // uncheck deleted
+        $('#selectedClient' + clientID).prop('checked', false);
+    });
+
+    toBeDeletedData.toBeDeletedConversations.forEach(function (conversationID) {
+        $('#selectedRowConversation' + conversationID).fadeOut(3000);
+        // uncheck deleted
+        $('#selectedConversation' + conversationID).prop('checked', false);
+    });
+
+    // hide the buttons.
+    $('#actionBtns').fadeOut(2005);
+    setTimeout(function () {
+        $('#actionBtns').addClass('d-none');
+        $('#actionBtns').fadeIn(10);
+    }, 2000);
+
+    // show changes are saved
+    $('#changesSaved').fadeIn('slow');
+    setTimeout(function () {
+        $('#changesSaved').fadeOut();
+    }, 4000);
+});
+
+$('#approve').on('click', function () {
+    var toBeApprovedUsers = toBeDeletedUsers;
+    console.log('toBeApprovedUsers :' + toBeApprovedUsers);
+    toBeApprovedUsers.forEach(function (userID) {
+        $('#status' + userID).html('Approved');
+        $('#status' + userID).css('color', 'lawngreen');
+    });
+
+    var approvalData = {
+        toBeApprovedUsers: toBeApprovedUsers,
+        status: 'APPROVE'
+    };
+
+    // send to the DB to approve :
+    axios.post('admin/control_approval', approvalData).then(function (response) {
+        console.log(response.data);
+
+        // uncheck all and empty the string
+        $('[id*="selectedUser"]').prop('checked', false);
+        toBeDeletedUsers = [];
+
+        // hide the buttons.
+        $('#actionBtns').fadeOut(2005);
+        setTimeout(function () {
+            $('#actionBtns').addClass('d-none');
+            $('#actionBtns').fadeIn(10);
+        }, 2000);
+
+        // show changes are saved
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+            $('#changesSaved').fadeOut();
+        }, 4000);
+    });
+});
+
+$('#disApprove').on('click', function () {
+    var toBeDisApprovedUsers = toBeDeletedUsers;
+    console.log('toBeDisApprovedUsers :' + toBeDisApprovedUsers);
+    toBeDisApprovedUsers.forEach(function (userID) {
+        $('#status' + userID).html('Not Approved');
+    });
+
+    var disApprovalData = {
+        toBeDisApprovedUsers: toBeDisApprovedUsers,
+        status: 'DISAPPROVE'
+    };
+
+    // send to the DB to approve :
+    axios.post('admin/control_approval', disApprovalData).then(function (response) {
+        console.log(response.data);
+
+        // uncheck all and empty the string
+        $('[id*="selectedUser"]').prop('checked', false);
+        toBeDeletedUsers = [];
+
+        // hide the buttons.
+        $('#actionBtns').fadeOut(2005);
+        setTimeout(function () {
+            $('#actionBtns').addClass('d-none');
+            $('#actionBtns').fadeIn(10);
+        }, 2000);
+
+        // show changes are saved
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+            $('#changesSaved').fadeOut();
+        }, 4000);
+    });
+});
+
+/***/ }),
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(45)
+var __vue_script__ = __webpack_require__(46)
 /* template */
-var __vue_template__ = __webpack_require__(46)
+var __vue_template__ = __webpack_require__(47)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52889,7 +53060,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52918,7 +53089,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -52961,19 +53132,19 @@ if (false) {
 }
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(48)
+  __webpack_require__(49)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(51)
+var __vue_script__ = __webpack_require__(52)
 /* template */
-var __vue_template__ = __webpack_require__(52)
+var __vue_template__ = __webpack_require__(53)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -53012,13 +53183,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(49);
+var content = __webpack_require__(50);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -53038,7 +53209,7 @@ if(false) {
 }
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -53052,7 +53223,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports) {
 
 /**
@@ -53085,7 +53256,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53123,7 +53294,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -53204,19 +53375,19 @@ if (false) {
 }
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(54)
+  __webpack_require__(55)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(56)
+var __vue_script__ = __webpack_require__(57)
 /* template */
-var __vue_template__ = __webpack_require__(57)
+var __vue_template__ = __webpack_require__(58)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -53255,13 +53426,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(55);
+var content = __webpack_require__(56);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -53281,7 +53452,7 @@ if(false) {
 }
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -53295,7 +53466,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53318,7 +53489,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -53370,19 +53541,19 @@ if (false) {
 }
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(59)
+  __webpack_require__(60)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(61)
+var __vue_script__ = __webpack_require__(62)
 /* template */
-var __vue_template__ = __webpack_require__(62)
+var __vue_template__ = __webpack_require__(63)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -53421,13 +53592,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(60);
+var content = __webpack_require__(61);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -53447,7 +53618,7 @@ if(false) {
 }
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -53461,7 +53632,7 @@ exports.push([module.i, "\n.chat-composer{\n    display:-webkit-box;\n    displa
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53505,7 +53676,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -53577,19 +53748,19 @@ if (false) {
 }
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(64)
+  __webpack_require__(65)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(66)
+var __vue_script__ = __webpack_require__(67)
 /* template */
-var __vue_template__ = __webpack_require__(67)
+var __vue_template__ = __webpack_require__(68)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -53628,13 +53799,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(65);
+var content = __webpack_require__(66);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -53654,7 +53825,7 @@ if(false) {
 }
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -53668,7 +53839,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53808,7 +53979,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54001,15 +54172,15 @@ if (false) {
 }
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(69)
+var __vue_script__ = __webpack_require__(70)
 /* template */
-var __vue_template__ = __webpack_require__(70)
+var __vue_template__ = __webpack_require__(71)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54048,7 +54219,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54067,7 +54238,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54087,15 +54258,15 @@ if (false) {
 }
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(72)
+var __vue_script__ = __webpack_require__(73)
 /* template */
-var __vue_template__ = __webpack_require__(73)
+var __vue_template__ = __webpack_require__(74)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54134,7 +54305,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54226,7 +54397,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54635,19 +54806,19 @@ if (false) {
 }
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(75)
+  __webpack_require__(76)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(77)
+var __vue_script__ = __webpack_require__(78)
 /* template */
-var __vue_template__ = __webpack_require__(78)
+var __vue_template__ = __webpack_require__(79)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54686,13 +54857,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(76);
+var content = __webpack_require__(77);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -54712,7 +54883,7 @@ if(false) {
 }
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -54726,7 +54897,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54869,7 +55040,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55056,15 +55227,15 @@ if (false) {
 }
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(80)
+var __vue_script__ = __webpack_require__(81)
 /* template */
-var __vue_template__ = __webpack_require__(81)
+var __vue_template__ = __webpack_require__(82)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -55103,7 +55274,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55122,7 +55293,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55142,15 +55313,15 @@ if (false) {
 }
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(83)
+var __vue_script__ = __webpack_require__(84)
 /* template */
-var __vue_template__ = __webpack_require__(84)
+var __vue_template__ = __webpack_require__(85)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -55189,7 +55360,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55387,7 +55558,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55957,108 +56128,10 @@ if (false) {
 }
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 86 */,
-/* 87 */,
-/* 88 */,
-/* 89 */
-/***/ (function(module, exports) {
-
-
-// submit form to delete multiple users / clients / conversations
-var toBeDeletedUsers = [];
-var toBeDeletedClients = [];
-var toBeDeletedConversations = [];
-
-var toBeDeletedData = {};
-
-$('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"]').on('change', function () {
-    toBeDeletedUsers = [];
-    toBeDeletedClients = [];
-    toBeDeletedConversations = [];
-
-    $("input[name='selectedUsers[]']").each(function () {
-        var val = this.checked ? this.value : '';
-        if (val !== '') {
-            toBeDeletedUsers.push(val);
-        }
-    });
-
-    $("input[name='selectedClients[]']").each(function () {
-        var val = this.checked ? this.value : '';
-        if (val !== '') {
-            toBeDeletedClients.push(val);
-        }
-    });
-
-    $("input[name='selectedConversations[]']").each(function () {
-        var val = this.checked ? this.value : '';
-        if (val !== '') {
-            toBeDeletedConversations.push(val);
-        }
-    });
-
-    if (toBeDeletedUsers.length > 0 || toBeDeletedClients.length > 0 || toBeDeletedConversations.length > 0) {
-        $('#deleteSelectedBtn').removeClass('d-none');
-    } else {
-        $('#deleteSelectedBtn').addClass('d-none');
-    }
-
-    toBeDeletedData = {
-        toBeDeletedUsers: toBeDeletedUsers,
-        toBeDeletedClients: toBeDeletedClients,
-        toBeDeletedConversations: toBeDeletedConversations
-    };
-});
-
-// send to DB to be deleted :
-$('#deleteSelectedBtn').on('click', function () {
-
-    if (!confirm('Are you sure you want to delete all selected users,clients or conversations ?')) {
-        return;
-    }
-    axios.post('admin/delete_multiple', toBeDeletedData).then(function (response) {
-        console.log(response.data);
-    });
-
-    // Here hide the deleted records directly.
-    toBeDeletedData.toBeDeletedUsers.forEach(function (userID) {
-        if ($('#selectedRowUser' + userID).length !== 0) {
-            $('#selectedRowUser' + userID).fadeOut(3000);
-        }
-
-        if ($('#selectedRowBUser' + userID).length !== 0) {
-            $('#selectedRowBUser' + userID).fadeOut(3000);
-        }
-
-        // uncheck the deleted ones already :
-        $('#selectedUser' + userID).prop('checked', false);
-    });
-
-    toBeDeletedData.toBeDeletedClients.forEach(function (clientID) {
-        $('#selectedRowClient' + clientID).fadeOut(3000);
-        // uncheck deleted
-        $('#selectedClient' + clientID).prop('checked', false);
-    });
-
-    toBeDeletedData.toBeDeletedConversations.forEach(function (conversationID) {
-        $('#selectedRowConversation' + conversationID).fadeOut(3000);
-        // uncheck deleted
-        $('#selectedConversation' + conversationID).prop('checked', false);
-    });
-
-    $('#deleteSelectedBtn').addClass('d-none');
-
-    $('#changesSaved').fadeIn('slow');
-    setTimeout(function () {
-        $('#changesSaved').fadeOut();
-    }, 3000);
-});
 
 /***/ })
 /******/ ]);

@@ -19,3 +19,8 @@ Broadcast::channel('talkToSales', function ($user) {
     return $user ;
 });
 
+Broadcast::channel('users', function ($user) {
+    return true ;
+});
+
+

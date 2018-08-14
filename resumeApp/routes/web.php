@@ -122,6 +122,9 @@ Route::post('/freelancer/behance/save_user','FreelancersController@registerDesig
 // Linked in api :
 Route::get('/freelancer/linkedin/','UserDataController@dataFromLinkedIn');
 
+// payment :
+Route::get('/payment','HomeController@customPayment');
+
 
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');

@@ -91,6 +91,12 @@
                                 <tbody>
                                 <? $designersCounter=1; // designers ?>
                                 <? foreach ($users as $user):?>
+                                <?
+                                        $userData3 = $user->userData ;
+                                        if(!isset($userData3)){
+                                            continue;
+                                        }
+                                ?>
                                 <? if($user->admin == 1 || $user->firstName === 'Visitor' || $user->profession != 'Designer'){ continue;}?>
 
                                 <tr id="selectedRowUser{{$user->id}}">
@@ -158,6 +164,12 @@
                                 <tbody>
                                 <? $developersCounter=1; // developers ?>
                                 <? foreach ($users as $user):?>
+                                <?
+                                $userData3 = $user->userData ;
+                                if(!isset($userData3)){
+                                    continue;
+                                }
+                                ?>
                                 <? if($user->admin == 1 || $user->firstName === 'Visitor' || $user->profession != 'Developer'){ continue;}?>
 
                                 <tr id="selectedRowUser{{$user->id}}">
@@ -225,6 +237,12 @@
                                 <tbody>
                                 <? $i=1; ?>
                                 <? foreach ($users as $user):?>
+                                <?
+                                $userData3 = $user->userData ;
+                                if(!isset($userData3)){
+                                    continue;
+                                }
+                                ?>
                                 <?
                                 $isBehanceUser = false;
                                 if (strpos($user->username, 'BeUser') !== false) {

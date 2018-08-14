@@ -36,9 +36,9 @@ $('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"]').on
 
 
     if(toBeDeletedUsers.length > 0 || toBeDeletedClients.length > 0 || toBeDeletedConversations.length > 0 ){
-        $('#deleteSelectedBtn').removeClass('d-none');
+        $('#actionBtns').removeClass('d-none');
     }else{
-        $('#deleteSelectedBtn').addClass('d-none');
+        $('#actionBtns').addClass('d-none');
     }
 
      toBeDeletedData = {
@@ -85,11 +85,100 @@ $('#deleteSelectedBtn').on('click',function () {
         $('#selectedConversation'+conversationID).prop('checked', false);
     });
 
-    $('#deleteSelectedBtn').addClass('d-none');
+    // hide the buttons.
+    $('#actionBtns').fadeOut(2005);
+    setTimeout(function () {
+        $('#actionBtns').addClass('d-none');
+        $('#actionBtns').fadeIn(10);
+    },2000);
 
+    // show changes are saved
     $('#changesSaved').fadeIn('slow');
     setTimeout(function () {
         $('#changesSaved').fadeOut();
-    },3000);
+    },4000);
 
 });
+
+$('#approve').on('click',function () {
+    let toBeApprovedUsers = toBeDeletedUsers ;
+    console.log( 'toBeApprovedUsers :'  + toBeApprovedUsers);
+    toBeApprovedUsers.forEach( (userID)=>{
+        $('#status' + userID).html('Approved');
+        $('#status' + userID).css('color','lawngreen');
+    });
+
+    let approvalData = {
+        toBeApprovedUsers,
+        status:'APPROVE'
+    };
+
+    // send to the DB to approve :
+    axios.post('admin/control_approval',approvalData).then( (response)=>{
+        console.log(response.data);
+
+        // uncheck all and empty the string
+        $('[id*="selectedUser"]').prop('checked',false);
+        toBeDeletedUsers = [] ;
+
+
+        // hide the buttons.
+        $('#actionBtns').fadeOut(2005);
+        setTimeout(function () {
+            $('#actionBtns').addClass('d-none');
+            $('#actionBtns').fadeIn(10);
+        },2000);
+
+
+        // show changes are saved
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+            $('#changesSaved').fadeOut();
+        },4000);
+    } );
+
+
+
+});
+
+$('#disApprove').on('click',function () {
+    let toBeDisApprovedUsers = toBeDeletedUsers ;
+    console.log( 'toBeDisApprovedUsers :'  + toBeDisApprovedUsers);
+    toBeDisApprovedUsers.forEach( (userID)=>{
+        $('#status' + userID).html('Not Approved');
+    });
+
+
+    let disApprovalData = {
+        toBeDisApprovedUsers,
+        status:'DISAPPROVE'
+    };
+
+    // send to the DB to approve :
+    axios.post('admin/control_approval',disApprovalData).then( (response)=>{
+        console.log(response.data);
+
+        // uncheck all and empty the string
+        $('[id*="selectedUser"]').prop('checked',false);
+        toBeDeletedUsers = [] ;
+
+
+        // hide the buttons.
+        $('#actionBtns').fadeOut(2005);
+        setTimeout(function () {
+            $('#actionBtns').addClass('d-none');
+            $('#actionBtns').fadeIn(10);
+        },2000);
+
+        // show changes are saved
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+            $('#changesSaved').fadeOut();
+        },4000);
+
+    } );
+
+});
+
+
+

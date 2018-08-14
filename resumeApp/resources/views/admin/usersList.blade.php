@@ -91,7 +91,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Full Name</th>
                                     <th scope="col">Link to Resume</th>
-                                    <th scope="col">Profession</th>
+                                    <th scope="col">Hourly / Monthly Rate </th>
                                     <th scope="col"></th>
                                     <th scope="col">Empty Fields</th>
                                     <th scope="col">Approval</th>
@@ -118,7 +118,7 @@
                                     </th>
                                     <td>{{$user->firstName}} {{$user->lastName}}</td>
                                     <td><a href="/{{$user->username}}" target="_blank">Resume</a></td>
-                                    <td>{{$user->profession}}</td>
+                                    <td>{{$user->userData->salary ?? 0}} / {{ $user->userData->salary_month ?? 0}}</td>
                                     <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Open form</a>
                                     </td>
                                     <? if($user->isComplete()):?>
@@ -165,7 +165,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Full Name</th>
                                     <th scope="col">Link to Resume</th>
-                                    <th scope="col">Profession</th>
+                                    <th scope="col">Hourly / Monthly Rate</th>
                                     <th scope="col"></th>
                                     <th scope="col">Empty Fields</th>
                                     <th scope="col">Approval</th>
@@ -192,7 +192,7 @@
                                     </th>
                                     <td>{{$user->firstName}} {{$user->lastName}}</td>
                                     <td><a href="/{{$user->username}}" target="_blank">Resume</a></td>
-                                    <td>{{$user->profession}}</td>
+                                    <td>{{$user->userData->salary ?? 0}} / {{ $user->userData->salary_month ?? 0}}</td>
                                     <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Open form</a>
                                     </td>
                                     <? if($user->isComplete()):?>

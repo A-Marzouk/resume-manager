@@ -19,10 +19,4 @@ class UserData extends Model
         'trnDesc1','trnDesc2','trnDesc3','audioFile','future_plan','skype_id','telephone','social_apps','country'
     ];
 
-
-    public function searches()
-    {
-        return $this->hasMany(ClientSearch::class);
-    }
-
 }

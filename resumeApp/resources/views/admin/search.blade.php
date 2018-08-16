@@ -2,6 +2,15 @@
 
 @section('content')
 
+    <!-- Success Messages  -->
+    <div style="padding-top: 20px;">
+        @if(session()->has('successMessage'))
+            <div class="alert alert-success" id="successMessage">
+                {{ session()->get('successMessage') }}
+            </div>
+        @endif
+    </div>
+
     <div class="container">
         <form method="post" action="/search" class="row">
             {{csrf_field()}}
@@ -47,20 +56,20 @@
 
 
             <div class="form-group col-md-3">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Search</button>
             </div>
         </form>
 
 
+
         {{-- show freelancers result --}}
         @if( isset($freelancers) && !empty($freelancers))
-            <b>Results : {{count($freelancers)}}</b>
-            <hr>
-            <div class="row">
+            <h4 style="padding-top: 30px;"><b>Matched freelancers</b></h4>
+            <div class="row" style="padding-top: 20px;">
                 <div class="col-md-10">
                     @foreach($freelancers as $freelancer)
                         <?php
-                        $freelancers_id[] = $freelancer->id;
+                            $freelancers_id[] = $freelancer->id;
                         ?>
 
                         Name : {{$freelancer->firstName}}<br/>
@@ -76,11 +85,30 @@
                         <hr>
                     @endforeach
                 </div>
-                <div class="col-md-2">
+                <?
+                    // get clients :
+                    $clients = \App\Client::all();
+                ?>
+                <div class="col-md-2" style="border-left:1px solid lightgray; padding-left: 15px; ">
+                    <b>Results : {{count($freelancers)}}</b>
+                    <hr>
                     <form action="/save_search" method="post">
                         {{csrf_field()}}
                         <input type="hidden" name="freelancers_id" value="{{implode(',',$freelancers_id)}}">
-                        <div class="form-group col-md-3">
+                        <input type="hidden" name="search_name" value="First search">
+
+
+                        <div class="form-group">
+                            <label for="client_email" class="panelFormLabel">Client email </label>
+                            <select class="custom-select" id="client_email" name="client_email" required>
+                                <option value="" selected disabled>-- Client email --</option>
+                                <? foreach($clients as $client):?>
+                                    <option value="{{$client->email}}">{{$client->email}}</option>
+                                <? endforeach;?>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <button type="submit" class="btn btn-primary">Save search</button>
                         </div>
                     </form>

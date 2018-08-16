@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\ClientSearch;
 use App\Conversation;
 use App\User;
 use App\UserData;
@@ -203,6 +204,14 @@ class AdminsController extends Controller
     }
 
     public function saveSearch(Request $request){
-        dd($request->freelancers_id);
+        $client = Client::where('email',$request->client_email)->first();
+        // make a new search :
+        $search = new ClientSearch;
+        $search->freelancers_id = $request->freelancers_id;
+        $search->client_id = $client->id;
+        $search->name = $request->search_name;
+        $search->save();
+
+        return redirect()->back()->with('successMessage',"Search has been successgully saved to client's dashboard");
     }
 }

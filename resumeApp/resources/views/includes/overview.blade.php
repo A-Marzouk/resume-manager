@@ -66,10 +66,17 @@
                 <? endif;?>
             </select>
         </div> <!-- job title -->
+
         <div class="form-group col-md-6 col-lg-4">
-            <label for="birth_date"  class="panelFormLabel">City where you live & work <span style="font-size:small;">*</span><span id="tickMarkcity" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label for="country"  class="panelFormLabel">Country where you live & work <span style="font-size:small;">*</span><span id="tickMarkcountry" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <input type="text" style="@if($errors->has('country')) border:1px solid red; @endif" class="form-control panelFormInput" name="country" value="{{$country}}" id="country">
+        </div> <!-- country -->
+
+        <div class="form-group col-md-6 col-lg-4">
+            <label for="birth_date"  class="panelFormLabel">City<span style="font-size:small;">*</span><span id="tickMarkcity" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="text" style="@if($errors->has('city')) border:1px solid red; @endif" class="form-control panelFormInput" name="city" value="{{$city}}" id="city">
         </div> <!-- city -->
+
         <div class="form-group col-md-6 col-lg-4">
             <label for="languages"  class="panelFormLabel">Languages you speak <span style="font-size:small;">*</span> <span id="tickMarklanguages" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="text" style="@if($errors->has('languages')) border:1px solid red; @endif" class="form-control panelFormInput" id="languages" name="languages" value="{{$languages}}">

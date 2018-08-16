@@ -125,6 +125,10 @@ Route::get('/freelancer/linkedin/','UserDataController@dataFromLinkedIn');
 // payment :
 Route::get('/payment','HomeController@customPayment');
 
+//test search functions :
+Route::post('/search','AdminsController@searchFreelancers');
+Route::get('/search','AdminsController@showSearchPage');
+
 
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');

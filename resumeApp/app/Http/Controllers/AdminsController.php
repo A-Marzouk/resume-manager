@@ -214,4 +214,10 @@ class AdminsController extends Controller
 
         return redirect()->back()->with('successMessage',"Search has been successgully saved to client's dashboard");
     }
+
+    public function deleteSearch(Request $request){
+        $search = ClientSearch::where('id',$request->search_id)->first();
+        $search->delete();
+        return redirect()->back()->with('successMessage',"Search deleted");
+    }
 }

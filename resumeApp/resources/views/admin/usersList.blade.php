@@ -27,7 +27,12 @@
                 </li>
                 <li class="col-md-12">
                     <a class="btn btn-block btn-outline-primary" href="#chats"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
-                        Chatting rooms
+                        Chats
+                    </a>
+                </li>
+                <li class="col-md-12">
+                    <a class="btn btn-block btn-outline-dark" href="/search"  style="margin-bottom: 6px;">
+                        Search Freelancers
                     </a>
                 </li>
 

@@ -127,6 +127,7 @@ Route::get('/payment','HomeController@customPayment');
 
 //test search functions :
 Route::post('/search','AdminsController@searchFreelancers');
+Route::post('/save_search','AdminsController@saveSearch');
 Route::get('/search','AdminsController@showSearchPage');
 
 

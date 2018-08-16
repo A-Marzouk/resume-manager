@@ -202,5 +202,7 @@ class AdminsController extends Controller
         return array_unique($freelancers);
     }
 
-
+    public function saveSearch(Request $request){
+        dd($request->freelancers_id);
+    }
 }

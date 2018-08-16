@@ -1994,6 +1994,35 @@ body{
   padding: 20px;
 }
 
+.freelancerCard{
+  #name{
+    color: #30323D;	font-family: Roboto;	font-size: 16px;	font-weight: bold;	line-height: 16px;	text-align: center;
+    padding-top: 18px;
+  }
+  .freelancerCardLeft{
+    border-right: 1px lightgray solid; padding-right: 15px;
+    @media only screen and (max-width: 769px) {
+      border-right: none;
+      padding-bottom: 30px;
+    }
+    .imageContainer{
+      @media only screen and (max-width: 769px) {
+        padding-left: 0px;
+        margin-left: -10px;
+      }
+    }
+  }
+
+  .freelancerCardRight{
+    .panelFormLabel{
+      padding-bottom: 4px;
+      @media only screen and (max-width: 720px) {
+        padding-bottom: 10px;
+      }
+    }
+  }
+}
+
 .adminBox{
   border: 1px solid lightgray;
   border-radius: 5px;

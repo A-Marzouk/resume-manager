@@ -72,16 +72,32 @@
                             $freelancers_id[] = $freelancer->id;
                         ?>
 
-                        Name : {{$freelancer->firstName}}<br/>
-                        Job :{{$freelancer->userData->jobTitle}}<br>
-                        Languages :{{$freelancer->userData->languages}}<br/>
-                        Country :{{$freelancer->userData->country}}<br>
-                        City :{{$freelancer->userData->city}}<br/>
-                        Salary/hour :{{$freelancer->userData->salary}} $<br>
-                        Available hours :{{$freelancer->userData->availableHours}}<br>
-                        Skills :{{$freelancer->userData->design_skills_checkbox}}<br>
-                        Primary skills :{{$freelancer->userData->primarySkills}}<br>
-                        <br/>
+                        <div class="freelancerCard">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-12 freelancerCardLeft">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-6 imageContainer">
+                                            <img src="{{$freelancer->userData->photo}}" alt="freelancer" class="freelancerImg" width="100" height="100">
+
+                                        </div>
+                                        <div class="col-lg-6 col-6">
+                                            <div id="name">
+                                                {{$freelancer->firstName}} {{$freelancer->lastName}}
+                                            </div>
+                                            <div class="buttonMain" style=" margin-top: 10px;">
+                                                <a class="hireBtn btn-block" href="/{{$freelancer->username}}" style="font-weight:normal; padding: 7px 5px 7px 5px; ">Visit profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-12 freelancerCardRight">
+                                    <div class="panelFormLabel" style=" color: #0290D8;"><b>{{$freelancer->profession}}</b></div>
+                                    <div class="panelFormLabel" style="	color: #697786;"><b>Key skills :</b> {{$freelancer->userData->design_skills_checkbox}}</div>
+                                    <div class="panelFormLabel" style="	color: #697786;"><b>Rate: </b>${{$freelancer->userData->salary}}/hour</div>
+                                    <div class="panelFormLabel" style="	color: #697786;"><b>No.hours/week available: </b>{{$freelancer->userData->availableHours}}</div>
+                                </div>
+                            </div>
+                        </div>
                         <hr>
                     @endforeach
                 </div>
@@ -95,9 +111,10 @@
                     <form action="/save_search" method="post">
                         {{csrf_field()}}
                         <input type="hidden" name="freelancers_id" value="{{implode(',',$freelancers_id)}}">
-                        <input type="hidden" name="search_name" value="First search">
-
-
+                        <div class="form-group">
+                            <label for="search_name" class="panelFormLabel">Search name</label>
+                            <input type="text" class="form-control" id="search_name" placeholder="" name="search_name" required>
+                        </div>
                         <div class="form-group">
                             <label for="client_email" class="panelFormLabel">Client email </label>
                             <select class="custom-select" id="client_email" name="client_email" required>

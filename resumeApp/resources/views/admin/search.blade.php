@@ -16,42 +16,50 @@
             {{csrf_field()}}
             <div class="form-group col-md-3">
                 <label for="job_title" class="panelFormLabel">Job title</label>
-                <input type="text" class="form-control" id="job_title" placeholder="Keywords.." name="jobTitle">
+                <input type="text" class="form-control" id="job_title" placeholder="Keywords.." name="jobTitle"
+                       value="@if(session()->has('jobTitle')) {{session()->get('jobTitle')}} @endif">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="languages" class="panelFormLabel">Languages</label>
-                <input type="text" class="form-control" id="languages" placeholder="" name="language">
+                <input type="text" class="form-control" id="languages" placeholder="" name="language"
+                       value="@if(session()->has('languages')) {{session()->get('languages')}} @endif">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="country" class="panelFormLabel">Country</label>
-                <input type="text" class="form-control" id="country" placeholder="" name="country">
+                <input type="text" class="form-control" id="country" placeholder="" name="country"
+                       value="@if(session()->has('country')) {{session()->get('country')}} @endif">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="city" class="panelFormLabel">city</label>
-                <input type="text" class="form-control" id="city" placeholder="" name="city">
+                <input type="text" class="form-control" id="city" placeholder="" name="city"
+                       value="@if(session()->has('city')) {{session()->get('city')}} @endif">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="available_hours" class="panelFormLabel">Available hours (per week)</label>
-                <input type="text" class="form-control" id="available_hours" placeholder="" name="available_hours">
+                <input type="text" class="form-control" id="available_hours" placeholder="" name="available_hours"
+                       value="@if(session()->has('available_hours')) {{session()->get('available_hours')}} @endif">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="salary_hour" class="panelFormLabel">Hourly Rate(max)</label>
-                <input type="text" class="form-control" id="salary_hour" placeholder="" name="salary_hour">
+                <input type="text" class="form-control" id="salary_hour" placeholder="" name="salary_hour"
+                       value="@if(session()->has('salary_hour')) {{session()->get('salary_hour')}} @endif">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="skills" class="panelFormLabel">Top skills</label>
-                <input type="text" class="form-control" id="skills_search" placeholder="" name="skills">
+                <input type="text" class="form-control" id="skills_search" placeholder="" name="skills"
+                       value="@if(session()->has('skills')) {{session()->get('skills')}} @endif">
             </div>
 
             <div class="form-group col-md-3">
                 <label for="primary_skills" class="panelFormLabel"> Technologies / Frameworks   </label>
-                <input type="text" class="form-control" id="primary_skills" placeholder="" name="primary_skills">
+                <input type="text" class="form-control" id="primary_skills" placeholder="" name="primary_skills"
+                       value="@if(session()->has('primary_skills')) {{session()->get('primary_skills')}} @endif">
             </div>
 
 

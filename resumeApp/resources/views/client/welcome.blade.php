@@ -39,21 +39,28 @@
        ?>
 
        @foreach($searchesArr as $key => $value)
-
-           <a class="btn btn-outline-success" data-toggle="collapse" href="#{{$value['id']}}" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-bottom: 10px;">
-               <b>{{$value['name']}}</b>
-           </a>
-               <form action="/search_delete" method="post">
-                   {{csrf_field()}}
-                   <input type="hidden" name="search_id" value="{{$value['id']}}">
-                   <button type="submit" class="btn btn-outline-danger btn-sm">
-                       Delete search
-                   </button>
-               </form>
+                <div class="row">
+                    <div>
+                        <a class="btn btn-outline-default" data-toggle="collapse" href="#{{$value['id']}}" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-bottom: 10px;">
+                            <b>{{$value['name']}}</b>
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <form action="/search_delete" method="post">
+                            {{csrf_field()}}
+                            <input type="hidden" name="search_id" value="{{$value['id']}}">
+                            <button type="submit" class="btn panelFormLabel" id="deleteSearch" onclick="return confirm('Are you sure you want to delete this search ?');">
+                                x
+                            </button>
+                        </form>
+                    </div>
+                </div>
 
            <div class="collapse" id="{{$value['id']}}" style="padding-top: 10px; padding-bottom: 12px;">
                <div class="card card-body">
+                   <? $i = 0 ;?>
                    @foreach($value['freelancers'] as $freelancer)
+                       <? $i++; ?>
                        <div class="freelancerCard">
                            <div class="row">
                                <div class="col-lg-4 col-md-12 freelancerCardLeft">
@@ -80,7 +87,9 @@
                                </div>
                            </div>
                        </div>
-                       <hr>
+                       @if($i < count($value['freelancers']))
+                          <hr>
+                       @endif
                    @endforeach
                </div>
            </div>

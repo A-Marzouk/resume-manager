@@ -58,6 +58,7 @@ class UserDataController extends Controller
                    'salary'=>'required|max:190',
 //                   'availableHours'=>'required',
                    'city'=>'max:190',
+                   'country'=>'max:190',
                    'email'=>'max:190',
                    'primarySkills'=>'',
                    'design_skills_checkbox'=>'',

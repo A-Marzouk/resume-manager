@@ -1625,6 +1625,31 @@ body {
   margin-top: 30px;
   padding: 20px; }
 
+.freelancerCard #name {
+  color: #30323D;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 16px;
+  text-align: center;
+  padding-top: 18px; }
+.freelancerCard .freelancerCardLeft {
+  border-right: 1px lightgray solid;
+  padding-right: 15px; }
+  @media only screen and (max-width: 769px) {
+    .freelancerCard .freelancerCardLeft {
+      border-right: none;
+      padding-bottom: 30px; } }
+  @media only screen and (max-width: 769px) {
+    .freelancerCard .freelancerCardLeft .imageContainer {
+      padding-left: 0px;
+      margin-left: -10px; } }
+.freelancerCard .freelancerCardRight .panelFormLabel {
+  padding-bottom: 4px; }
+  @media only screen and (max-width: 720px) {
+    .freelancerCard .freelancerCardRight .panelFormLabel {
+      padding-bottom: 10px; } }
+
 .adminBox {
   border: 1px solid lightgray;
   border-radius: 5px;
@@ -1639,5 +1664,9 @@ body {
     .fixedTabs {
       position: relative;
       width: 100%; } }
+
+.searchFreelancers {
+  padding-right: 10px;
+  border-right: 1px solid lightgray; }
 
 /*# sourceMappingURL=main.css.map */

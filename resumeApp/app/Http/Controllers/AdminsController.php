@@ -260,7 +260,7 @@ class AdminsController extends Controller
     public function deleteSearch(Request $request){
         $search = ClientSearch::where('id',$request->search_id)->first();
         $search->delete();
-        return redirect()->back()->with('successMessage',"Search deleted");
+        return ['status'=>'ok'];
     }
 
     public function getAllClients(){

@@ -2,9 +2,33 @@ $(document).ready(function () {
 
     /////////////////////////   Freelancer form scripts ////////////////////////
         // overall scripts ( used in all sections )
-    
             // indicators for each section :
 
+            // client page : delete search without realoding the page :
+            $('.deleteSearch').on('click',function () {
+                if(!confirm('Are you sure you want to delete this search ?')){
+                    return;
+                }
+console.log(this.id);
+                let search_id = this.id;
+                let deleteData = {
+                    'search_id':search_id
+                };
+                axios.post('/search_delete',deleteData).then((response)=>{
+                    console.log(response.data);
+
+                    // hide the deleted column slowly :
+                    $('#selectedSearch'+ search_id).fadeOut(2000);
+
+                    // changes are saved on - off
+                    $('#changesSaved').fadeIn('slow');
+                    setTimeout(function () {
+                        $('#changesSaved').fadeOut();
+                    },2000);
+
+                });
+
+            });
             // we need to get if any section is completed.
             highlightCompletedSecs();
 

@@ -39,6 +39,18 @@ Vue.component('projects-list', require('./components/projects/projectsListCompon
 Vue.component('project-detail', require('./components/projects/projectDetailComponent.vue'));
 Vue.component('add-project-modal', require('./components/projects/addProjectComponent.vue'));
 
+// search components :
+Vue.component('search-freelancers', require('./components/search/searchComponent.vue'));
+Vue.component('freelancer-card', require('./components/search/freelancerCardComponent.vue'));
+Vue.component('freelancers-list', require('./components/search/freelancersListComponent.vue'));
+
+
+if ($("#searchFreelancers").length !== 0){
+    let searchFreelancers = new Vue({
+        el:'#searchFreelancers'
+    });
+}
+
 
 if ($("#work_overview").length !== 0){
     let work_overview = new Vue({

@@ -130,6 +130,7 @@ Route::post('/search','AdminsController@searchFreelancers');
 Route::post('/save_search','AdminsController@saveSearch');
 Route::get('/search','AdminsController@showSearchPage');
 Route::post('/search_delete','AdminsController@deleteSearch');
+Route::get('/clients/emails','AdminsController@getClientsEmails');
 
 
 // public routes :

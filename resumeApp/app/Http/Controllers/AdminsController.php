@@ -206,6 +206,24 @@ class AdminsController extends Controller
 
         $freelancers = $this->getFilteredFreelancers($userDatas);
 
+        $dataForFreelancerCard = [] ;
+        // make a freelancer array with only the needed data for vue js :
+        $i=0;
+        foreach ($freelancers as $freelancer){
+            $dataForFreelancerCard[$i] =[
+                'id'=>$freelancer->id,
+                'photo'=>$freelancer->userData->photo,
+                'username'=>$freelancer->username,
+                'profession'=>$freelancer->profession,
+                'design_skills_checkbox'=>$freelancer->userData->design_skills_checkbox,
+                'salary'=>$freelancer->userData->salary,
+                'availableHours'=>$freelancer->userData->availableHours,
+            ];
+            $i++;
+        }
+
+        return $dataForFreelancerCard;
+
         return view('admin.search',compact('freelancers'));
     }
 
@@ -228,20 +246,28 @@ class AdminsController extends Controller
     }
 
     public function saveSearch(Request $request){
+
         $client = Client::where('email',$request->client_email)->first();
         // make a new search :
         $search = new ClientSearch;
-        $search->freelancers_id = $request->freelancers_id;
+        $search->freelancers_id = implode(',',$request->freelancers_id);
         $search->client_id = $client->id;
         $search->name = $request->search_name;
         $search->save();
-
-        return redirect()->back()->with('successMessage',"Search has been successgully saved to client's dashboard");
+        return ['status'=> 'ok'];
     }
 
     public function deleteSearch(Request $request){
         $search = ClientSearch::where('id',$request->search_id)->first();
         $search->delete();
         return redirect()->back()->with('successMessage',"Search deleted");
+    }
+
+    public function getAllClients(){
+        return Client::all();
+    }
+
+    public function getClientsEmails(){
+        return Client::all('email');
     }
 }

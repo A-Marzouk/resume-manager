@@ -213,6 +213,8 @@ class AdminsController extends Controller
             $dataForFreelancerCard[$i] =[
                 'id'=>$freelancer->id,
                 'photo'=>$freelancer->userData->photo,
+                'firstName'=>$freelancer->firstName,
+                'lastName'=>$freelancer->lastName,
                 'username'=>$freelancer->username,
                 'profession'=>$freelancer->profession,
                 'design_skills_checkbox'=>$freelancer->userData->design_skills_checkbox,

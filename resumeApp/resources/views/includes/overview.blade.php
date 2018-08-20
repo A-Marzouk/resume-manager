@@ -4,12 +4,22 @@
     $clientID = '865ff2s2qvpkzb' ;
     $redirectURL = 'https://123workforce.com/freelancer/linkedin';
 
+    $instagramClientID = "f877808c985d4f43ad73ae517db95151";
+    $instagramRedirectURL = 'https://123workforce.com/freelancer/instagram';
+
     ?>
 
     <? if($profession == 'Designer'):?>
         <a class="btn btn-outline-dark" href="javascript:void(0)" id="importBehanceData" data-toggle="modal" data-target="#behanceDataModal">
             Import data from Behance
         </a>
+
+        <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
+            <a class="btn btn-outline-dark"  href="https://api.instagram.com/oauth/authorize/?client_id={{$instagramClientID}}&redirect_uri={{$instagramRedirectURL}}&response_type=code" id="importBehanceData">
+                Import data from Instagram
+            </a>
+        <? endif;?>
+
     <? else:?>
         <a class="btn btn-outline-dark"  href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id={{$clientID}}&redirect_uri={{$redirectURL}}&state=987654321&scope=r_basicprofile" id="importBehanceData">
             Import basic info from Linkedin

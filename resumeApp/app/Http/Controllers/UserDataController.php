@@ -395,4 +395,9 @@ class UserDataController extends Controller
 
     }
 
+    public function dataFromInstagram(){
+        $user = Socialite::driver('instagram')->stateless()->user();
+        dd($user);
+    }
+
 }

@@ -2,8 +2,16 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/clue/stream-filter" />
       <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/laravel/socialite" />
       <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/league/oauth1-client" />
+      <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/php-http/discovery" />
+      <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/php-http/guzzle6-adapter" />
+      <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/php-http/httplug" />
+      <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/php-http/message" />
+      <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/php-http/message-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/php-http/promise" />
+      <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/vinkla/instagram" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

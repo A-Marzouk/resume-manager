@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
 use Laravel\Socialite\Facades\Socialite;
 use PharIo\Manifest\Email;
+use Vinkla\Instagram\Instagram;
 
 class UserDataController extends Controller
 {
@@ -396,8 +397,37 @@ class UserDataController extends Controller
     }
 
     public function dataFromInstagram(){
-        $user = Socialite::driver('instagram')->stateless()->user();
-        dd($user);
+        $client = new \GuzzleHttp\Client();
+
+        $res = $client->request('POST', 'https://api.instagram.com/oauth/access_token',
+            ['form_params' => [
+                'client_id' => 'f877808c985d4f43ad73ae517db95151',
+                'client_secret' => '066768fb9e6b4186b3a3c6eb40da33a8',
+                'grant_type' => 'authorization_code',
+                'redirect_uri' => 'https://123workforce.com/freelancer/instagram',
+                'code' => $_GET['code'] ?? ''
+                ]
+            ]
+        );
+
+        $responseJson  = $res->getBody()->getContents();
+        $responseArr = json_decode($responseJson,true);
+
+        $userMediaJson = $client->request('GET','https://api.instagram.com/v1/users/'.$responseArr["user"]["id"].'/media/recent?access_token='.$responseArr["access_token"]);
+        $userMediaArr  = json_decode($userMediaJson->getBody()->getContents());
+
+        foreach ($userMediaArr->data as $instagramProject){
+            $project = new Project;
+            $project->mainImage = $instagramProject->images->standard_resolution->url;
+            if($instagramProject->caption !== null){
+                $project->projectName = $instagramProject->caption->text;
+            }
+            $project->user_id = auth()->user()->id;
+            $project->save();
+        }
+
+        return redirect()->back()->with('successMessage','Instagram data successfully imported');
+
     }
 
 }

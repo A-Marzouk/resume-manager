@@ -50,7 +50,7 @@
                                         {{ __('Login') }}
                                     </button>
                                     <div class="smallText" style="background: none !important;">
-                                        <a href="/freelancer/register" style="background: none !important;"> Register now!</a>
+                                        <a href="{{route('freelancer.register')}}" style="background: none !important;"> Register now!</a>
                                     </div>
                                 </div>
                             </div>

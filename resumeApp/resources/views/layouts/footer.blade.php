@@ -3,7 +3,12 @@
         <div class="col-md-4 offset-md-1 three">
             <div class="footerText">
                 © Copyright 2018 123Workforce.<br/>
-                All Rights Reserved.
+                All Rights Reserved.<br/>
+                <div class="skypeText" style="padding-top: 5px;">
+                    <a href="{{route('terms')}}">
+                        <span style="opacity: 1;">Terms & Conditions</span>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="col-md-2 text-center two">

@@ -17,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('stripePayment','customPayment','welcomePage','ResumePage','stripeTest');
+        $this->middleware('auth')->except('stripePayment','termsView','customPayment','welcomePage','ResumePage','stripeTest');
     }
 
     /**
@@ -88,5 +88,9 @@ class HomeController extends Controller
 
     public function customPayment(){
         return view('custom_payment');
+    }
+
+    public function termsView(){
+        return view('terms');
     }
 }

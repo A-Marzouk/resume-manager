@@ -1669,4 +1669,15 @@ body {
   padding-right: 10px;
   border-right: 1px solid lightgray; }
 
+#termsBar {
+  width: 100%;
+  z-index: 9999999;
+  background: white;
+  text-align: center;
+  padding: 10px;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  box-shadow: black; }
+
 /*# sourceMappingURL=main.css.map */

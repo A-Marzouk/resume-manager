@@ -20,9 +20,7 @@ class CreateClientsTable extends Migration
             $table->string('agency')->nullable();
             $table->string('contact')->nullable();
             $table->string('phone')->nullable();
-            $table->string('stripe_id')->nullable();
-            $table->string('card_brand')->nullable();
-            $table->string('card_last_four')->nullable();
+            $table->string('agree_with_terms')->nullable();
             $table->string('timeZone')->nullable();
             $table->string('email')->unique();
             $table->string('emailDept')->unique()->nullable();

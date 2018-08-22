@@ -5,7 +5,7 @@
                 © Copyright 2018 123Workforce.<br/>
                 All Rights Reserved.<br/>
                 <div class="skypeText" style="padding-top: 5px;">
-                    <a href="{{route('terms')}}">
+                    <a href="{{route('terms')}}" target="_blank">
                         <span style="opacity: 1;">Terms & Conditions</span>
                     </a>
                 </div>

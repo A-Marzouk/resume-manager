@@ -4,6 +4,27 @@ $(document).ready(function () {
         // overall scripts ( used in all sections )
             // indicators for each section :
 
+
+            // client page : agree with terms and conditions :
+            termsBar();
+            // if client agreed on terms and conditions :
+            $('#termsBar').on('click',function () {
+                if($('#terms').prop('checked')){
+                    // send to post request to axios to save it :
+                    let data = {
+                      terms: 'AGREED'
+                    };
+                    axios.post('/client/set_terms',data).then((response) => {
+                        setTimeout(function () {
+                            $('#termsLabel').hide().html("Thank you !").fadeIn('slow');
+                            $('#termsBar').animate({opacity:0},5000);
+                            setTimeout(function () {
+                                $('#termsBar').addClass('d-none');
+                            },5000);
+                        },1000);
+                    });
+                }
+            });
             // client page : delete search without realoding the page :
             $('.deleteSearch').on('click',function () {
                 if(!confirm('Are you sure you want to delete this search ?')){
@@ -1130,4 +1151,14 @@ function loadSocialLinks(socialLinks){
             $('#dribbleLink').val(link.url);
         }
     });
+}
+
+function termsBar(){
+    // check if current user agrees with terms or not :
+    axios.get('/client/has_agreed').then((response)=>{
+        if(response.data.terms !== 'AGREED'){
+            $('#termsBar').animate({opacity:1},4000);
+        }
+    } );
+
 }

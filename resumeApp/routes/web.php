@@ -26,6 +26,8 @@ Route::prefix('client')->group(function (){
         return redirect()->back();
     });
     Route::get('/','ClientsController@index')->name('client.dashboard');
+    Route::get('/has_agreed','ClientsController@hasAgreed');
+    Route::post('/set_terms','ClientsController@setTerms');
     Route::get('/register','Auth\ClientRegisterController@showRegistrationForm')->name('client.register');
     Route::post('/register/submit','Auth\ClientRegisterController@register')->name('client.register.submit');
     Route::get('/register/submit',function(){
@@ -136,6 +138,7 @@ Route::get('/clients/emails','AdminsController@getClientsEmails');
 
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');
+Route::get('/workforce/terms_and_conditions','HomeController@termsView')->name('terms');
 Route::get('/{username}','HomeController@ResumePage');
 
 

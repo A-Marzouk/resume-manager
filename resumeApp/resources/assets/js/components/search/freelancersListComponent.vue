@@ -28,6 +28,9 @@
                                     <div class="panelFormLabel" style="	color: #697786;"><b>Rate: </b>${{freelancer.salary}}/hour</div>
                                     <div class="panelFormLabel" style="	color: #697786;"><b>No.hours/week available: </b>{{freelancer.availableHours}}</div>
                                 </div>
+                                <button type="button" class="close" style="padding: 5px; outline: none;" @click="removeFreelancer(freelancer)">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
                         </div>
                         <hr>
@@ -43,6 +46,19 @@
         props:['freelancers'],
         data(){
             return{
+            }
+        },
+        methods:{
+            removeFreelancer(freelancer){
+                if(!confirm('Are you sure you want to remove this freelancer from search ?')){
+                    return;
+                }
+                let i = 0 ;
+                for(i=0;i<this.freelancers.length;i++){
+                    if(this.freelancers[i].id === freelancer.id){
+                        this.freelancers.splice(i,1);
+                    }
+                }
             }
         }
     }

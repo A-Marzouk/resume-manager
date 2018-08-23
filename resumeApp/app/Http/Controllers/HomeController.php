@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ClientSearch;
 use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('stripePayment','termsView','customPayment','welcomePage','ResumePage','stripeTest');
+        $this->middleware('auth')->except('getSearch','stripePayment','termsView','customPayment','welcomePage','ResumePage','stripeTest');
     }
 
     /**
@@ -92,5 +93,10 @@ class HomeController extends Controller
 
     public function termsView(){
         return view('terms');
+    }
+
+    public function getSearch($search_id){
+        $search = ClientSearch::where('id',$search_id)->first();
+        $freelancers_id = $search->freelancers_id;
     }
 }

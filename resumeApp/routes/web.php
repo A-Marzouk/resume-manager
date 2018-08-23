@@ -138,6 +138,7 @@ Route::get('/clients/emails','AdminsController@getClientsEmails');
 
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');
+Route::get('/search/{search_id}','HomeController@getSearch')->name('public.search');
 Route::get('/workforce/terms_and_conditions','HomeController@termsView')->name('terms');
 Route::get('/{username}','HomeController@ResumePage');
 

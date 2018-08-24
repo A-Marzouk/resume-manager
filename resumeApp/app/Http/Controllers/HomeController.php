@@ -98,5 +98,11 @@ class HomeController extends Controller
     public function getSearch($search_id){
         $search = ClientSearch::where('id',$search_id)->first();
         $freelancers_id = $search->freelancers_id;
+        $freelancers=[];
+        foreach (explode(',',$freelancers_id) as $id){
+            $freelancers[] = User::where('id',$id)->first();
+        }
+
+        return view('public_search',compact('freelancers'));
     }
 }

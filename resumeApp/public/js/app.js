@@ -56323,6 +56323,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -56340,7 +56343,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             freelancers: [],
             clients: [],
             selectedClient: '',
-            searchName: ''
+            searchName: '',
+            savedSearchLink: ''
         };
     },
 
@@ -56358,6 +56362,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             $('#saveSearchBtn').html('Save search');
         },
         saveSearch: function saveSearch() {
+            var _this2 = this;
+
             var freelancers_id = [];
 
             this.freelancers.forEach(function (freelancer) {
@@ -56370,19 +56376,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
 
             axios.post('/save_search', SaveData).then(function (response) {
-                console.log(response.data);
+                var search_id = response.data.search_id;
 
                 $('#saveSearchBtn').prop('disabled', true);
                 $('#saveSearchBtn').html('Saved');
+                _this2.savedSearchLink = '/search/' + search_id;
             });
         }
     },
 
     created: function created() {
-        var _this2 = this;
+        var _this3 = this;
 
         axios.get('/clients/emails').then(function (response) {
-            _this2.clients = response.data;
+            _this3.clients = response.data;
         });
     }
 });
@@ -56871,6 +56878,30 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _vm._m(0)
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.savedSearchLink,
+                    expression: "savedSearchLink"
+                  }
+                ]
+              },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "panelFormLabel",
+                    attrs: { href: _vm.savedSearchLink, target: "_blank" }
+                  },
+                  [_vm._v("Generated public link")]
+                )
               ]
             )
           ]

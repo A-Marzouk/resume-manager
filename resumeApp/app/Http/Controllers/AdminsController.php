@@ -24,6 +24,7 @@ class AdminsController extends Controller
         $data['users'] = User::all();
         $data['clients'] = Client::all();
         $data['conversations'] = Conversation::all();
+        $data['searches'] = ClientSearch::all();
         $admin = User::where('username','admin_workforce')->first();
         Auth::loginUsingId($admin->id);
         return view('admin.usersList', compact('data'));
@@ -256,7 +257,7 @@ class AdminsController extends Controller
         $search->client_id = $client->id;
         $search->name = $request->search_name;
         $search->save();
-        return ['status'=> 'ok'];
+        return ['search_id'=> $search->id];
     }
 
     public function deleteSearch(Request $request){

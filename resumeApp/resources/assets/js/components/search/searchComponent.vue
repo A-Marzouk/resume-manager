@@ -80,6 +80,9 @@
                             <button type="submit" class="btn btn-outline-primary" id="saveSearchBtn">Save search</button>
                         </div>
                     </form>
+                    <div v-show="savedSearchLink">
+                        <a class="panelFormLabel" :href="savedSearchLink" target="_blank">Generated public link</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -103,7 +106,8 @@
                 freelancers:[],
                 clients:[],
                 selectedClient:'',
-                searchName:''
+                searchName:'',
+                savedSearchLink:''
             }
         },
 
@@ -130,11 +134,11 @@
                 };
 
                 axios.post('/save_search',SaveData).then( (response)=>{
-                    console.log(response.data);
+                    let search_id = response.data.search_id;
 
                     $('#saveSearchBtn').prop('disabled',true);
                     $('#saveSearchBtn').html('Saved');
-
+                    this.savedSearchLink = '/search/'+ search_id ;
                 });
 
             }

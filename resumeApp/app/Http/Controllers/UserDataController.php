@@ -57,6 +57,7 @@ class UserDataController extends Controller
                    'name'=>'required|max:190',
                    'jobTitle'=>'max:190',
                    'salary'=>'required|max:190',
+                   'salary_month'=>'max:190',
 //                   'availableHours'=>'required',
                    'city'=>'max:190',
                    'country'=>'max:190',

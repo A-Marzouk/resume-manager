@@ -41,7 +41,7 @@
         </div>  <!-- Salary  -->
 
         <div class="form-group col-md-6 col-lg-4">
-            <label for="salary_month"  class="panelFormLabel">Expected salary for Full time work (USD / Monthly) <span style="font-size:small;">*</span> <span id="tickMarklanguages" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label for="salary_month"  class="panelFormLabel">Expected salary for Full time work (USD / Monthly) <span style="font-size:small;">*</span> <span id="tickMarksalary_month" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="text" class="form-control panelFormInput" placeholder="" id="salary_month" name="salary_month" value="{{$salary_month}}">
 
         </div> <!-- monthly payment -->

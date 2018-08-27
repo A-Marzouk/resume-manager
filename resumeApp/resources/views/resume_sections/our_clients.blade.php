@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="info">
-                                <p>riz@123workforce.com</p>
+                                <p>shey@123workforce.com</p>
                             </div>
                         </div>
                         <div class="col-md-4">

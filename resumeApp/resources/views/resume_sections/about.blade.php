@@ -12,7 +12,7 @@
                     </div><br/>
                     <div class="row">
                         <div class="col-lg-3 col-4">Email:</div>
-                        <div class="col-lg-6 col-8">riz@123workforce.com</div>
+                        <div class="col-lg-6 col-8">shey@123workforce.com</div>
                     </div>
                 </div>
             </div>

@@ -56381,6 +56381,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 $('#saveSearchBtn').prop('disabled', true);
                 $('#saveSearchBtn').html('Saved');
                 _this2.savedSearchLink = '/search/' + search_id;
+
+                // send mail to client by the new search
+                var searchMailData = {
+                    search_id: search_id,
+                    client_email: SaveData.client_email
+                };
+                axios.post('client/search_mail', searchMailData).then(function (response) {
+                    console.log(response.data);
+                });
             });
         }
     },

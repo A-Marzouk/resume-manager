@@ -139,6 +139,16 @@
                     $('#saveSearchBtn').prop('disabled',true);
                     $('#saveSearchBtn').html('Saved');
                     this.savedSearchLink = '/search/'+ search_id ;
+
+                    // send mail to client by the new search
+                    let searchMailData = {
+                        search_id,
+                        client_email:SaveData.client_email
+                    };
+                    axios.post('client/search_mail',searchMailData).then( (response)=>{
+                        console.log(response.data);
+                    });
+
                 });
 
             }

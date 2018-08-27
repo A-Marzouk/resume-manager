@@ -22,6 +22,7 @@ Route::prefix('client')->group(function (){
     Route::get('/login','Auth\ClientLoginController@showLoginForm')->name('client.login');
     Route::post('/logout','Auth\ClientLoginController@logout')->name('client.logout');
     Route::post('/login/submit','Auth\ClientLoginController@login')->name('client.login.submit');
+    Route::post('/search_mail','NotificationsController@mailSearchToClient');
     Route::get('/login/submit',function(){
         return redirect()->back();
     });

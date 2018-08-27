@@ -8,6 +8,8 @@
 
 namespace App\Http\Controllers;
 use App\classes\Telegram;
+use App\Client;
+use App\ClientSearch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -16,7 +18,6 @@ class NotificationsController extends Controller
     private $mailingList = [
         'shey@123workforce.com',
         'AhmedMarzouk266@gmail.com',
-        'riz@123workforce.com',
         'conor@123workforce.com',
     ];
 
@@ -150,6 +151,24 @@ class NotificationsController extends Controller
 
         return redirect()->back()->with('successMessage', 'Thank you, your message has been sent.');
 
+    }
+
+    public function mailSearchToClient(Request $request){
+        $clientEmail = $request->client_email ;
+        $search_id   = $request->search_id ;
+
+        $clientName  = Client::where('email',$clientEmail)->first()->name;
+        $searchName  = ClientSearch::where('id',$search_id)->first()->name;
+
+        $mailData = [
+            'clientName' => $clientName,
+            'searchID' => $search_id,
+            'searchName'=>$searchName
+        ];
+        Mail::send('emails.searchClient',$mailData, function($message) use ($clientEmail)
+        {
+            $message->to($clientEmail)->subject('A new search has been saved to your profile on 123 Workforce.');
+        });
     }
 
 }

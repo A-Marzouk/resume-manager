@@ -30,14 +30,11 @@ $(document).ready(function () {
                 if(!confirm('Are you sure you want to delete this search ?')){
                     return;
                 }
-console.log(this.id);
                 let search_id = this.id;
                 let deleteData = {
                     'search_id':search_id
                 };
                 axios.post('/search_delete',deleteData).then((response)=>{
-                    console.log(response.data);
-
                     // hide the deleted column slowly :
                     $('#selectedSearch'+ search_id).fadeOut(2000);
 
@@ -50,6 +47,37 @@ console.log(this.id);
                 });
 
             });
+
+    // public search page : delete freelancer search without realoding the page :
+    $('.deleteFreelancerSearch').on('click',function () {
+        if(!confirm('Are you sure you want to delete this freelancer from search ?')){
+            return;
+        }
+
+        let id = this.id ;
+        let idArr = id.split('_');
+        let freelancer_id = idArr[0];
+        let search_id = idArr[1];
+        let deleteData = {
+            freelancer_id,
+            search_id
+        };
+        axios.post('/search_delete_freelancer',deleteData).then((response)=>{
+            console.log(response.data);
+
+            // hide the deleted column slowly :
+            $('#selectedFreelancerSearch'+ freelancer_id).fadeOut(2000);
+
+            // changes are saved on - off
+            $('#changesSaved').fadeIn('slow');
+            setTimeout(function () {
+                $('#changesSaved').fadeOut();
+            },2000);
+
+        });
+
+    });
+
             // we need to get if any section is completed.
             highlightCompletedSecs();
 

@@ -28,6 +28,9 @@
        <?
             $i =0;
           foreach ($searches as $search){
+              if(empty(rtrim($search->freelancers_id,','))){
+                 continue;
+              }
               $searchesArr[$i]['name'] = $search->name;
               $searchesArr[$i]['id'] = $search->id;
               foreach (explode(',',$search->freelancers_id) as $id){
@@ -59,7 +62,7 @@
                                         <? $i = 0 ;?>
                                         @foreach($value['freelancers'] as $freelancer)
                                             <? $i++; ?>
-                                            <div class="freelancerCard">
+                                                <div class="freelancerCard">
                                                 <div class="row">
                                                     <div class="col-lg-5 col-md-12 freelancerCardLeft">
                                                         <div class="row">

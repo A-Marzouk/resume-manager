@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ClientSearch;
 use App\User;
 use App\UserData;
+use Dompdf\Exception;
 use Illuminate\Http\Request;
 use Stripe\Charge;
 use Stripe\Stripe;
@@ -96,12 +97,16 @@ class HomeController extends Controller
     }
 
     public function getSearch($search_id){
+        $freelancers = [];
         $search = ClientSearch::where('id',$search_id)->first();
-        $search_name = $search->name;
-        $freelancers_id = $search->freelancers_id;
-        $freelancers=[];
-        foreach (explode(',',$freelancers_id) as $id){
-            $freelancers[] = User::where('id',$id)->first();
+
+        if($search){
+            $search_name = $search->name;
+            $freelancers_id = $search->freelancers_id;
+            $freelancers=[];
+            foreach (explode(',',$freelancers_id) as $id){
+                $freelancers[] = User::where('id',$id)->first();
+            }
         }
 
         return view('public_search',compact('freelancers','search_name'));

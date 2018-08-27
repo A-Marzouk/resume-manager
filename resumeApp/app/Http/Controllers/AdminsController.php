@@ -266,6 +266,25 @@ class AdminsController extends Controller
         return ['status'=>'ok'];
     }
 
+     public function deleteSearchFreelancer(Request $request){
+
+        $search = ClientSearch::where('id',$request->search_id)->first();
+        // remove freelancer id from the search freelancers_id
+        $freelancer_id = $request->freelancer_id ;
+
+        $freelancers_idArr = explode(',',$search->freelancers_id );
+        // remove the not needed freelancer :
+         if (($key = array_search($freelancer_id, $freelancers_idArr)) !== false) {
+             unset($freelancers_idArr[$key]);
+         }
+
+         $search->freelancers_id = implode(',',$freelancers_idArr);
+         $search->save();
+
+        return ['status'=>'ok'];
+    }
+
+
     public function getAllClients(){
         return Client::all();
     }

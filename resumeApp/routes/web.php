@@ -134,6 +134,7 @@ Route::post('/search','AdminsController@searchFreelancers');
 Route::post('/save_search','AdminsController@saveSearch');
 Route::get('/search','AdminsController@showSearchPage');
 Route::post('/search_delete','AdminsController@deleteSearch');
+Route::post('/search_delete_freelancer','AdminsController@deleteSearchFreelancer');
 Route::get('/clients/emails','AdminsController@getClientsEmails');
 
 

@@ -163,6 +163,13 @@ if($user){
         @include('includes.chat')
     <? endif;?>
 </div>
+{{-- Changes saved --}}
+<div class="changesSavedText d-none" id="changesSaved">
+        <span class="alert alert-success">
+            Changes saved
+        </span>
+</div>
+
 <!-- Modals -->
 <div class="modal fade" style="background-color:rgba(255, 255, 255, 0.95);" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="row">

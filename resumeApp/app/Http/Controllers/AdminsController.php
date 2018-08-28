@@ -40,6 +40,7 @@ class AdminsController extends Controller
 
     public function logInAsClient($client_id){
         // save admins token in separate session,
+
         // log him out and log in the chosen user in
         Auth::guard('client')->loginUsingId($client_id);
         $fromAdmin ='adminView';

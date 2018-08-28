@@ -1994,20 +1994,77 @@ body{
   padding: 20px;
 }
 
+.cardIconsCon{
+  border-radius: 23.5px;
+  width: 90px;
+  padding: 8px 14px 8px 14px;
+  background-color: #00B0F3;
+}
+
+.modal-card-name{
+  color: #18A6DF;	font-family: Roboto;	font-size: 18px;	font-weight: bold;	letter-spacing: 0.12px;	line-height: 21px;
+}
+
+.modal-card-subName{
+  opacity: 0.75;
+  color: #637280;	font-family: Roboto;
+  font-size: 14px;	font-weight: 500;
+  letter-spacing: 0.1px;	line-height: 16px;
+  padding-top: 4px;
+}
+
+.card-audio-con{
+  background-color: #FCFCFC;
+  box-shadow: 0 11px 16px -7px rgba(229,236,237,0.5);
+  padding-top: 25px;
+  margin-top: 20px;
+  padding-bottom: 25px;
+}
+
+.cardIconsCon2{
+  border-radius: 23.5px;
+  width: 50px;
+  padding: 10px 9px 10px 8px;
+  background-color: #00B0F3;
+}
+
 .freelancerCard{
-  #name{
-    color: #30323D;	font-family: Roboto;	font-size: 16px;	font-weight: bold;	line-height: 16px;	text-align: center;
-    padding-top: 18px;
+  background-color: #FFFFFF;	box-shadow: 0 2px 4px 0 rgba(203,203,203,0.5);
+  padding:15px 0 0 0;
+  .nameCard{
+    padding-top: 16px;
+    padding-left: 10px;
+    color: #30323D;	font-family: Roboto;	font-size: 24px;	font-weight: bold;	line-height: 35px;
   }
+  .jobTitle{
+    padding-left: 10px;
+    color: #697786;	font-family: Roboto;	font-size: 14px;	line-height: 19px;
+    font-weight: normal;
+  }
+  .skillsCard{
+    color: #697786;	font-family: Roboto;	font-size: 20px;	font-weight: 300;	line-height: 24px;
+    padding-top: 16px;
+  }
+  .cardLabel{
+    color: #697786;	font-family: Roboto;	font-size: 16px;	line-height: 19px;
+    font-weight: 500;
+  }
+  .cardLabel_interviews{
+    color: #697786;	font-family: Roboto;	font-size: 16px;	line-height: 19px;
+    font-weight: 400;
+    padding-top: 14px;
+  }
+  .interviewIcons{
+    padding-top: 30px;
+  }
+
   .freelancerCardLeft{
-    border-right: 1px lightgray solid; padding-right: 15px;
     @media only screen and (max-width: 769px) {
-      border-right: none;
       padding-bottom: 30px;
     }
     .imageContainer{
+      padding-left: 0px;
       @media only screen and (max-width: 769px) {
-        padding-left: 0px;
         margin-left: -10px;
       }
     }

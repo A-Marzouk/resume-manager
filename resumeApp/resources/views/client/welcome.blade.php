@@ -20,7 +20,7 @@
        $searchesArr = [];
        ?>
        <h3 class="pageHeading text-left">Hello {{$client->name}} !</h3>
-       <hr>
+       <br>
         <? $searches = $client->searches; ?>
 
        @if( count($searches) > 0)
@@ -29,6 +29,8 @@
             $i =0;
           foreach ($searches as $search){
               if(empty(rtrim($search->freelancers_id,','))){
+                 $searchDelete = \App\ClientSearch::where('id',$search->id);
+                 $searchDelete->delete();
                  continue;
               }
               $searchesArr[$i]['name'] = $search->name;
@@ -43,9 +45,6 @@
            <table class="table">
                <thead class="black white-text">
                <tr>
-                   <th scope="col" class="pageSubHeading text-left">Search name</th>
-                   <th scope="col" class="pageSubHeading text-left" >No. Freelancers</th>
-                   <th scope="col" class="pageSubHeading text-left">&nbsp;</th>
                </tr>
                </thead>
                <tbody>
@@ -111,7 +110,6 @@
                                 </div>
                             </th>
                             <td>
-                               {{count($value['freelancers'])}}
                             </td>
                             <td>
                                 <a class="btn panelFormLabel deleteSearch" id="{{$value['id']}}">
@@ -125,6 +123,9 @@
                </tbody>
            </table>
 
+
+       @else
+           <b class="pageSubHeading text-left" style="font-size: 14px;">You don't have any saved searches at the moment</b>
        @endif
 
    </div>

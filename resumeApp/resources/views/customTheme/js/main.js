@@ -3,11 +3,11 @@ $(document).ready(function () {
     /////////////////////////   Freelancer form scripts ////////////////////////
         // overall scripts ( used in all sections )
             // indicators for each section :
-            $('#viewPortfolio').on('click',function () {
+            $("[id*=viewPortfolio]").on('click',function () {
                 $("[id*=eduSection]").removeClass('show');
             });
 
-            $('#viewWork').on('click',function () {
+            $("[id*=viewWork]").on('click',function () {
                 $("[id*=portfolioSection]").removeClass('show');
             });
             // client page : agree with terms and conditions :

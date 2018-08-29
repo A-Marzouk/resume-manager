@@ -113,7 +113,7 @@
                                                     <div class="row">
                                                     <div class="col-lg-3 col-md-12">
                                                         <div class="cardLabel">Pricing:</div>
-                                                        <div class="nameCard" style="padding-left: 0;">${{$freelancer->userData->salary +5}}/hour<br/>
+                                                        <div class="nameCard" style="padding-left: 0;">${{intval($freelancer->userData->salary) +5}}/hour<br/>
                                                             ${{$freelancer->userData->salary_month}}/month
                                                         </div>
                                                         {{-- stripe goes here --}}
@@ -157,7 +157,7 @@
                                                 {{-- end of pricing and skills --}}
 
                                                 {{-- expand btns--}}
-                                                    <div class="row" style="margin-top: 15px ; border-top:1px solid whitesmoke; " id="viewPortfolio">
+                                                    <div class="row" style="margin-top: 15px ; border-top:1px solid whitesmoke; " id="viewPortfolio{{$freelancer->id}}">
                                                             <div class="col-md-6 text-right border-right NoDecor" style="background-color: #FDFDFD;">
                                                                 <a  href="#portfolioSection{{$freelancer->id}}" data-toggle="collapse">
                                                                     <div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">
@@ -166,7 +166,7 @@
                                                                     </div>
                                                                 </a>
                                                             </div>
-                                                    <div class="col-md-6 text-left NoDecor" style="background-color: #FDFDFD;" id="viewWork">
+                                                    <div class="col-md-6 text-left NoDecor" style="background-color: #FDFDFD;" id="viewWork{{$freelancer->id}}">
                                                         <a  href="#eduSection{{$freelancer->id}}" data-toggle="collapse">
                                                             <div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">
                                                                 <img src="resumeApp/resources/views/customTheme/images/newResume/what_i_do.png" alt="read more arrow" width="18px" id="workBtnImg">

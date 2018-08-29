@@ -120,9 +120,9 @@
                                                         <form action="/stripe/payments/pay" method="POST">
                                                             {{ csrf_field() }}
                                                             <?
-                                                            $userRate = $freelancer->userData->salary ;
+                                                            $freelancer->userDataRate = $freelancer->userData->salary ;
                                                             $hours =10 ;
-                                                            $amountToPay = ( intval($userRate) +5 ) * $hours * 100 ;
+                                                            $amountToPay = ( intval($freelancer->userDataRate) +5 ) * $hours * 100 ;
                                                             ?>
                                                             <input type="hidden" value="{{$amountToPay}}" name="amountToPay">
                                                             <input type="hidden" value="{{$freelancer->userData->name}}" name="freelancerName">
@@ -157,26 +157,29 @@
                                                 {{-- end of pricing and skills --}}
 
                                                 {{-- expand btns--}}
-                                                    <div class="row" style="margin-top: 15px ; border-top:1px solid whitesmoke; ">
+                                                    <div class="row" style="margin-top: 15px ; border-top:1px solid whitesmoke; " id="viewPortfolio">
                                                             <div class="col-md-6 text-right border-right NoDecor" style="background-color: #FDFDFD;">
                                                                 <a  href="#portfolioSection{{$freelancer->id}}" data-toggle="collapse">
                                                                     <div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">
                                                                        <img src="resumeApp/resources/views/customTheme/images/portfolio_NOT_active.png" alt="read more arrow" width="18px" id="portfolioBtnImg">
-                                                                       <span style="padding-left: 8px;" id="portfolioBtnText">View Portfolio </span>
+                                                                       <span style="padding-left: 8px;">View Portfolio </span>
                                                                     </div>
                                                                 </a>
                                                             </div>
-                                                    <div class="col-md-6 text-left" style="background-color: #FDFDFD;">
-                                                        <div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">
-                                                            <img src="resumeApp/resources/views/customTheme/images/newResume/what_i_do.png" alt="read more arrow" width="18px" id="workBtnImg">
-                                                            <span style="padding-left: 8px;" id="workBtnText">Work/Education</span>
-                                                        </div>
+                                                    <div class="col-md-6 text-left NoDecor" style="background-color: #FDFDFD;" id="viewWork">
+                                                        <a  href="#eduSection{{$freelancer->id}}" data-toggle="collapse">
+                                                            <div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">
+                                                                <img src="resumeApp/resources/views/customTheme/images/newResume/what_i_do.png" alt="read more arrow" width="18px" id="workBtnImg">
+                                                                <span style="padding-left: 8px;" id="workBtnText">Work/Education</span>
+                                                            </div>
+                                                        </a>
                                                     </div>
                                                 </div>
                                                 {{-- end of expand btns --}}
                                             </div>
 
                                              {{-- resume expanded --}}
+                                                {{-- portfolio --}}
                                                 <div class="row collapse resumeExpand" id="portfolioSection{{$freelancer->id}}">
                                                     <div class="worksSection" style="margin-top: 0;">
                                                         <div class="firstPart" style="background: none; padding-top: 0;">
@@ -381,6 +384,127 @@
                                                     </div>
                                                     {{-- end of un expand btns --}}
 
+                                                </div>
+                                                {{-- education --}}
+                                                <div class="row collapse resumeExpand" id="eduSection{{$freelancer->id}}">
+                                                    <div id="about" class="education">
+                                                        <div class="row">
+                                                            <div class="offset-lg-1 col-lg-5 col-md-6 educationSection">
+                                                                <img src="resumeApp/resources/views/customTheme/images/newResume/education.png" alt="aboutImg" width="30px;">
+                                                                <span class="aboutText">EDUCATION</span>
+                                                                <div class="aboutText">
+                                                                    <? if(!empty($freelancer->userData->eduTitle1)):?>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 aboutSubText">
+                                                                            <div class="year"><span class="circle"></span> {{$freelancer->userData->eduYear1}}</div>
+                                                                            <div class="title">{{$freelancer->userData->eduTitle1}}</div>
+                                                                            <div class="desc">{{$freelancer->userData->eduDesc1}}</div>
+                                                                        </div>
+                                                                    </div><br/>
+                                                                    <? endif; ?>
+                                                                    <? if(!empty($freelancer->userData->eduTitle2)):?>
+                                                                    <div class="row">
+                                                                        <div class="col-md-10 aboutSubText">
+                                                                            <div class="year"><span class="circle"></span> {{$freelancer->userData->eduYear2}}</div>
+                                                                            <div class="title">{{$freelancer->userData->eduTitle2}}</div>
+                                                                            <div class="desc">{{$freelancer->userData->eduDesc2}}</div>
+                                                                        </div>
+                                                                    </div><br/>
+                                                                    <? endif; ?>
+                                                                    <? if(!empty($freelancer->userData->eduTitle3)):?>
+                                                                    <div class="row">
+                                                                        <div class="col-md-10 aboutSubText">
+                                                                            <div class="year"><span class="circle"></span> {{$freelancer->userData->eduYear3}}</div>
+                                                                            <div class="title">{{$freelancer->userData->eduTitle3}}</div>
+                                                                            <div class="desc">{{$freelancer->userData->eduDesc3}}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <? endif; ?>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-lg-5">
+                                                                <img src="resumeApp/resources/views/customTheme/images/newResume/trainings.png" alt="aboutImg" width="30px;">
+                                                                <span class="aboutText">TRAININGS</span>
+                                                                <div class="aboutText">
+                                                                    <? if(!empty($freelancer->userData->trnTitle1)):?>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 aboutSubText">
+                                                                            <div class="year"><span class="circle"></span> {{$freelancer->userData->trnYear1}}</div>
+                                                                            <div class="title">{{$freelancer->userData->trnTitle1}}</div>
+                                                                            <div class="desc">{{$freelancer->userData->trnDesc1}}</div>
+                                                                        </div>
+                                                                    </div><br/>
+                                                                    <? endif; ?>
+                                                                    <? if(!empty($freelancer->userData->trnTitle3)):?>
+                                                                    <div class="row">
+                                                                        <div class="col-md-10 aboutSubText">
+                                                                            <div class="year"><span class="circle"></span> {{$freelancer->userData->trnYear2}}</div>
+                                                                            <div class="title">{{$freelancer->userData->trnTitle2}}</div>
+                                                                            <div class="desc">{{$freelancer->userData->trnDesc2}}</div>
+                                                                        </div>
+                                                                    </div><br/>
+                                                                    <? endif; ?>
+                                                                    <? if(!empty($freelancer->userData->trnTitle3)):?>
+                                                                    <div class="row">
+                                                                        <div class="col-md-10 aboutSubText">
+                                                                            <div class="year"><span class="circle"></span> {{$freelancer->userData->trnYear3}}</div>
+                                                                            <div class="title">{{$freelancer->userData->trnTitle3}}</div>
+                                                                            <div class="desc">{{$freelancer->userData->trnDesc3}}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <? endif; ?>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <hr style="width: 85%">
+                                                    {{-- work exp --}}
+                                                    <div id="about" class="education">
+                                                        <div class="row">
+                                                            <div class="offset-lg-1 col-lg-5 col-md-6 educationSection">
+                                                                <img src="resumeApp/resources/views/customTheme/images/newResume/what_i_do.png" style="padding-bottom: 10px;" alt="aboutImg" width="30px;">
+                                                                <span class="aboutText">WORK OVERVIEW</span>
+                                                                <?php
+                                                                $works = $freelancer->worksHistory;
+                                                                ?>
+                                                                <div class="aboutText">
+                                                                    <? foreach ($works as $work):?>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 aboutSubText">
+                                                                            <div class="title work">
+                                                                                <span class="circle"></span>
+                                                                                {{$work->job_title}}
+                                                                            </div>
+                                                                            <div class="company">{{$work->company}}</div>
+                                                                            <div class="year"><span class="work">
+                                    {{date('F Y', strtotime($work->date_from))}}
+                                                                                    <? if($work->currently_working):?>
+                                                                                    - Present
+                                                                                    <? else: ?>
+                                                                                    - {{date('F Y', strtotime($work->date_to))}}
+                                                                                    <? endif;?>
+                                </span>
+                                                                            </div>
+                                                                            <div class="desc">{{$work->job_description}}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <? endforeach;?>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- un expand btns --}}
+                                                    <div class="row" style="border-top:1px solid whitesmoke; ">
+                                                        <div class="col-md-12 text-center NoDecor" style="background-color: #FDFDFD;">
+                                                            <a  href="#eduSection{{$freelancer->id}}" data-toggle="collapse" id="minmizeCVBtn">
+                                                                <div class="cardLabel_interviews" style="padding-top: 15px;height:52px;">
+                                                                    <span style="padding-right: 6px; color: grey;">Minimize</span>
+                                                                    <img src="resumeApp/resources/views/customTheme/images/close_menu.png" alt="read more arrow" width="11px" id="portfolioBtnImg">
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    {{-- end of un expand btns --}}
                                                 </div>
                                             <br>
                                         @endforeach

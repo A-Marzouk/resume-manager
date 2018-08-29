@@ -1662,6 +1662,16 @@ body {
   padding: 10px 9px 10px 8px;
   background-color: #00B0F3; }
 
+.resumeExpand {
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 4px 0 rgba(203, 203, 203, 0.5);
+  padding: 15px 0 0 0; }
+
+.fullCV {
+  padding: 15px 0 15px 0;
+  border-bottom: 1px whitesmoke solid;
+  border-top: 1px whitesmoke solid; }
+
 .freelancerCard {
   background-color: #FFFFFF;
   box-shadow: 0 2px 4px 0 rgba(203, 203, 203, 0.5);
@@ -1716,6 +1726,11 @@ body {
     @media only screen and (max-width: 720px) {
       .freelancerCard .freelancerCardRight .panelFormLabel {
         padding-bottom: 10px; } }
+
+.NoDecor a {
+  outline: none; }
+.NoDecor a:hover {
+  text-decoration: none; }
 
 .adminBox {
   border: 1px solid lightgray;

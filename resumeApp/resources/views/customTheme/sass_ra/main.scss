@@ -2028,6 +2028,18 @@ body{
   background-color: #00B0F3;
 }
 
+
+.resumeExpand{
+  background-color: #FFFFFF;	box-shadow: 0 2px 4px 0 rgba(203,203,203,0.5);
+  padding:15px 0 0 0;
+}
+
+.fullCV{
+  padding:15px 0 15px 0 ;
+  border-bottom: 1px whitesmoke solid;
+  border-top: 1px whitesmoke solid;
+}
+
 .freelancerCard{
   background-color: #FFFFFF;	box-shadow: 0 2px 4px 0 rgba(203,203,203,0.5);
   padding:15px 0 0 0;
@@ -2079,7 +2091,14 @@ body{
     }
   }
 }
-
+.NoDecor{
+  a{
+    outline: none;
+  }
+  a:hover{
+    text-decoration: none;
+  }
+}
 .adminBox{
   border: 1px solid lightgray;
   border-radius: 5px;

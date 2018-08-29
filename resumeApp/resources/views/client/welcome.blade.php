@@ -52,17 +52,17 @@
                     @foreach($searchesArr as $key => $value)
 
                         <tr id="selectedSearch{{$value['id']}}">
-                            <th scope="row">
+                            <th scope="row" class="NoDecor">
                                 <a class="panelFormLabel" data-toggle="collapse" href="#{{$value['id']}}" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-bottom: 10px;">
                                     <b>{{$value['name']}}</b>
                                 </a>
                                 <div class="collapse" id="{{$value['id']}}" style="padding-top: 10px; padding-bottom: 12px;">
                                     <div style="padding-top: 20px; margin-top: 60px;">
-                                        <? $i = 0 ;?>
                                         @foreach($value['freelancers'] as $freelancer)
-                                            <? $i++; ?>
-                                                <div class="freelancerCard">
-                                                <div class="row">
+
+                                            <div class="freelancerCard">
+                                                {{-- photo and name + multimedia--}}
+                                                    <div class="row">
                                                     <div class="col-lg-5 col-md-12 freelancerCardLeft text-left">
                                                         <div class="row">
                                                             <div class="col-lg-4 col-6 imageContainer">
@@ -84,14 +84,14 @@
                                                             <div class="cardLabel_interviews col-md-6">Recorded interviews</div>
                                                             <div class="col-md-4" style="padding-left: 35px;">
                                                                 <div class="cardIconsCon">
-                                                                    <span style="border-right: 2px white solid; padding-right: 5px">
-                                                                        <img src="/resumeApp/resources/views/customTheme/images/transcript.png" alt="" width="20px;">
-                                                                    </span>
-                                                                    <span style="padding-left: 5px;">
-                                                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#{{$freelancer->id}}_audio_modal" style="outline: none;">
-                                                                            <img src="/resumeApp/resources/views/customTheme/images/mic.png" alt="" width="20px">
-                                                                        </a>
-                                                                    </span>
+                                                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#{{$freelancer->id}}_audio_modal" style="outline: none;">
+                                                                        <span style="border-right: 2px white solid; padding-right: 5px">
+                                                                            <img src="/resumeApp/resources/views/customTheme/images/transcript.png" alt="" width="20px;">
+                                                                        </span>
+                                                                        <span style="padding-left: 5px;">
+                                                                                <img src="/resumeApp/resources/views/customTheme/images/mic.png" alt="" width="20px">
+                                                                        </span>
+                                                                    </a>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-2">
@@ -107,8 +107,10 @@
 
                                                     </div>
                                                 </div>
+                                                {{-- end of photo and multimedia --}}
                                                 <hr style="width: 95%;">
-                                                <div class="row">
+                                                {{-- Pricing and skills --}}
+                                                    <div class="row">
                                                     <div class="col-lg-3 col-md-12">
                                                         <div class="cardLabel">Pricing:</div>
                                                         <div class="nameCard" style="padding-left: 0;">${{$freelancer->userData->salary +5}}/hour<br/>
@@ -152,17 +154,134 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row" style="margin-top: 15px ; border-top:1px solid whitesmoke; ">
-                                                    <div class="col-md-12 text-center" style="background-color: #FDFDFD;">
+                                                {{-- end of pricing and skills --}}
+
+                                                {{-- expand btns--}}
+                                                    <div class="row" style="margin-top: 15px ; border-top:1px solid whitesmoke; ">
+                                                            <div class="col-md-6 text-right border-right NoDecor" style="background-color: #FDFDFD;">
+                                                                <a  href="#portfolioSection" data-toggle="collapse">
+                                                                    <div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">
+                                                                       <img src="resumeApp/resources/views/customTheme/images/portfolio_NOT_active.png" alt="read more arrow" width="18px" id="portfolioBtnImg">
+                                                                       <span style="padding-left: 8px;" id="portfolioBtnText">View Portfolio </span>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                    <div class="col-md-6 text-left" style="background-color: #FDFDFD;">
                                                         <div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">
-                                                           <span style="padding-right: 6px;">Read more </span> <img src="resumeApp/resources/views/customTheme/images/read_more.png" alt="read more arrow" width="11px">
+                                                            <img src="resumeApp/resources/views/customTheme/images/newResume/what_i_do.png" alt="read more arrow" width="18px" id="workBtnImg">
+                                                            <span style="padding-left: 8px;" id="workBtnText">Work/Education</span>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                {{-- end of expand btns --}}
                                             </div>
-                                            @if($i < count($value['freelancers']))
-                                                <br>
-                                            @endif
+
+                                             {{-- resume expanded --}}
+                                                <div class="row collapse resumeExpand" id="portfolioSection">
+                                                    <div class="worksSection" style="margin-top: 0;">
+                                                        <div class="firstPart" style="background: none; padding-top: 0;">
+                                                            <?
+                                                            $workExamples = $freelancer->projects ;
+                                                            $i = 0 ;
+                                                            $maxNumberOfWorks = 50 ;
+                                                            ?>
+                                                            @if($workExamples)
+                                                            <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                    <div class="row">
+                                                                        <? foreach ($workExamples as $workExample):?>
+                                                                        <? if($i >= $maxNumberOfWorks ){break;}
+                                                                        if(!$workExample->isActive){continue;}
+                                                                        ?>
+                                                                        <div class="col-md-6">
+                                                                            <div class="workCard" style="margin-left: 0">
+                                                                                <div class="workImg" style="height: 290px; overflow: hidden; border-bottom:1px solid lightgray;">
+                                                                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#works{{$workExample->id}}Modal">
+                                                                                        <img src="{{$workExample->mainImage}}" alt="work img" width="260">
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="workTitle">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-9">
+                                                                                            {{$workExample->projectName}}
+                                                                                        </div>
+                                                                                        <a class="col-md-2" href="javascript:void(0)" data-toggle="modal" data-target="#works{{$workExample->id}}Modal" style="outline: none;">
+                                                                                            <img src="resumeApp/resources/views/customTheme/images/newResume/link.png" alt="view work">
+                                                                                        </a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        {{-- modal --}}
+                                                                        <div class="modal fade" id="works{{$workExample->id}}Modal" tabindex="-1" role="dialog"
+                                                                             aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                                                            <div class="modal-dialog modal-lg" role="document" style="">
+                                                                                <div class="modal-content" data-dismiss="modal" aria-label="Close">
+                                                                                    <div class="modal-body" style="padding: 0;">
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-9" style="padding: 0;">
+                                                                                                <img src="{{$workExample->mainImage}}" alt="" width="100%" height="auto">
+                                                                                                <?
+                                                                                                // more images
+                                                                                                $moreImagesArr = explode(',',$workExample->images);
+                                                                                                foreach($moreImagesArr as $image){
+                                                                                                if(!empty(trim($image))){
+                                                                                                ?>
+                                                                                                <img src="{{$image}}" alt="" width="100%" height="auto">
+                                                                                                <?}
+                                                                                                }?>
+                                                                                            </div>
+                                                                                            <div class="col-md-3">
+                                                                                                <div class="form-group" style="padding-top: 25px;">
+                                                                                                    <label class="panelFormLabel"> Description <hr></label><br/>
+                                                                                                    {{$workExample->projectDesc}}
+                                                                                                </div>
+                                                                                                <div class="form-group">
+                                                                                                    <label class="panelFormLabel"> Link <hr></label><br/>
+                                                                                                    <a href="{{$workExample->link}}">{{$workExample->link}}</a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <? $i++ ;?>
+                                                                        <? endforeach;?>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    {{-- Full CV row --}}
+                                                    <div class="row fullCV">
+                                                        <div class="col-md-6 text-right">
+                                                            <div class="buttonMain whiteBg text-right" style="padding: 0; margin: 0; margin-left: 60%;">
+                                                                <a href="#" class="hireBtn btn-block hire">Chat</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 text-left">
+                                                            <div class="buttonMain whiteBg" style="padding: 0; margin: 0;">
+                                                                <a href="/{{$freelancer->username}}" class="hireBtn btn-block hire" style="width: 40%;">Full CV</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    {{-- un expand btns --}}
+                                                    <div class="row" style="border-top:1px solid whitesmoke; ">
+                                                        <div class="col-md-12 text-center NoDecor" style="background-color: #FDFDFD;">
+                                                            <a  href="#portfolioSection" data-toggle="collapse" id="minmizeCVBtn">
+                                                                <div class="cardLabel_interviews" style="padding-top: 15px;height:52px;">
+                                                                    <span style="padding-right: 6px; color: grey;">Minimize</span>
+                                                                    <img src="resumeApp/resources/views/customTheme/images/close_menu.png" alt="read more arrow" width="11px" id="portfolioBtnImg">
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    {{-- end of un expand btns --}}
+                                                </div>
+                                            <br>
                                         @endforeach
                                     </div>
                                 </div>

@@ -184,6 +184,9 @@
                                                             $workExamples = $freelancer->projects ;
                                                             $i = 0 ;
                                                             $maxNumberOfWorks = 50 ;
+                                                            $firstSlideWorks=[];
+                                                            $secondSlideWorks=[];
+                                                            $thirdSlideWorks=[];
                                                             ?>
                                                             @if($workExamples)
                                                             <div class="row">
@@ -191,62 +194,51 @@
                                                                     <div class="row">
                                                                         <? foreach ($workExamples as $workExample):?>
                                                                         <? if($i >= $maxNumberOfWorks ){break;}
-                                                                        if(!$workExample->isActive){continue;}
+                                                                           if(!$workExample->isActive){continue;}
+
+                                                                           if($i<4){
+                                                                               $firstSlideWorks[]  = $workExample;
+                                                                           }elseif($i<8){
+                                                                               $secondSlideWorks[] = $workExample;
+                                                                           }elseif($i<12){
+                                                                               $thirdSlideWorks[]  = $workExample;
+                                                                           }
                                                                         ?>
-                                                                        <div class="col-md-6">
-                                                                            <div class="workCard" style="margin-left: 0">
-                                                                                <div class="workImg" style="height: 290px; overflow: hidden; border-bottom:1px solid lightgray;">
-                                                                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#works{{$workExample->id}}Modal">
-                                                                                        <img src="{{$workExample->mainImage}}" alt="work img" width="260">
-                                                                                    </a>
-                                                                                </div>
-                                                                                <div class="workTitle">
-                                                                                    <div class="row">
-                                                                                        <div class="col-md-9">
-                                                                                            {{$workExample->projectName}}
-                                                                                        </div>
-                                                                                        <a class="col-md-2" href="javascript:void(0)" data-toggle="modal" data-target="#works{{$workExample->id}}Modal" style="outline: none;">
-                                                                                            <img src="resumeApp/resources/views/customTheme/images/newResume/link.png" alt="view work">
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        {{-- modal --}}
-                                                                        <div class="modal fade" id="works{{$workExample->id}}Modal" tabindex="-1" role="dialog"
-                                                                             aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                                                            <div class="modal-dialog modal-lg" role="document" style="">
-                                                                                <div class="modal-content" data-dismiss="modal" aria-label="Close">
-                                                                                    <div class="modal-body" style="padding: 0;">
-                                                                                        <div class="row">
-                                                                                            <div class="col-md-9" style="padding: 0;">
-                                                                                                <img src="{{$workExample->mainImage}}" alt="" width="100%" height="auto">
-                                                                                                <?
-                                                                                                // more images
-                                                                                                $moreImagesArr = explode(',',$workExample->images);
-                                                                                                foreach($moreImagesArr as $image){
-                                                                                                if(!empty(trim($image))){
-                                                                                                ?>
-                                                                                                <img src="{{$image}}" alt="" width="100%" height="auto">
-                                                                                                <?}
-                                                                                                }?>
-                                                                                            </div>
-                                                                                            <div class="col-md-3">
-                                                                                                <div class="form-group" style="padding-top: 25px;">
-                                                                                                    <label class="panelFormLabel"> Description <hr></label><br/>
-                                                                                                    {{$workExample->projectDesc}}
+                                                                            {{-- modal --}}
+                                                                            <div class="modal fade" id="works{{$workExample->id}}Modal" tabindex="-1" role="dialog"
+                                                                                 aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                                                                <div class="modal-dialog modal-lg" role="document" style="">
+                                                                                    <div class="modal-content" data-dismiss="modal" aria-label="Close">
+                                                                                        <div class="modal-body" style="padding: 0;">
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-9" style="padding: 0;">
+                                                                                                    <img src="{{$workExample->mainImage}}" alt="" width="100%" height="auto">
+                                                                                                    <?
+                                                                                                    // more images
+                                                                                                    $moreImagesArr = explode(',',$workExample->images);
+                                                                                                    foreach($moreImagesArr as $image){
+                                                                                                    if(!empty(trim($image))){
+                                                                                                    ?>
+                                                                                                    <img src="{{$image}}" alt="" width="100%" height="auto">
+                                                                                                    <?}
+                                                                                                    }?>
                                                                                                 </div>
-                                                                                                <div class="form-group">
-                                                                                                    <label class="panelFormLabel"> Link <hr></label><br/>
-                                                                                                    <a href="{{$workExample->link}}">{{$workExample->link}}</a>
+                                                                                                <div class="col-md-3">
+                                                                                                    <div class="form-group" style="padding-top: 25px;">
+                                                                                                        <label class="panelFormLabel"> Description <hr></label><br/>
+                                                                                                        {{$workExample->projectDesc}}
+                                                                                                    </div>
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="panelFormLabel"> Link <hr></label><br/>
+                                                                                                        <a href="{{$workExample->link}}">{{$workExample->link}}</a>
+                                                                                                    </div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <? $i++ ;?>
+                                                                      <? $i++ ;?>
                                                                         <? endforeach;?>
                                                                     </div>
                                                                 </div>
@@ -254,7 +246,115 @@
                                                             @endif
                                                         </div>
                                                     </div>
-                                                    {{-- Full CV row --}}
+
+                                                    {{-- works section carousel --}}
+
+                                                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
+                                                        <div class="carousel-inner">
+                                                            @if(!empty($firstSlideWorks))
+                                                                <div class="carousel-item active">
+                                                                    <div class="row">
+                                                                        @foreach($firstSlideWorks as $workExample)
+                                                                            <div class="col-md-6">
+                                                                                <div class="workCard" style="margin-left: 0">
+                                                                                    <div class="workImg" style="height: 290px; overflow: hidden; border-bottom:1px solid lightgray;">
+                                                                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#works{{$workExample->id}}Modal">
+                                                                                            <img src="{{$workExample->mainImage}}" alt="work img" width="260">
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div class="workTitle">
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-9">
+                                                                                                {{$workExample->projectName}}
+                                                                                            </div>
+                                                                                            <a class="col-md-2" href="javascript:void(0)" data-toggle="modal" data-target="#works{{$workExample->id}}Modal" style="outline: none;">
+                                                                                                <img src="resumeApp/resources/views/customTheme/images/newResume/link.png" alt="view work">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        @endforeach
+                                                                    </div>
+                                                                </div>
+                                                            @endif
+                                                            @if(!empty($secondSlideWorks))
+                                                                <div class="carousel-item">
+                                                                    <div class="row">
+                                                                        @foreach($secondSlideWorks as $workExample)
+                                                                            <div class="col-md-6">
+                                                                                <div class="workCard" style="margin-left: 0">
+                                                                                    <div class="workImg" style="height: 290px; overflow: hidden; border-bottom:1px solid lightgray;">
+                                                                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#works{{$workExample->id}}Modal">
+                                                                                            <img src="{{$workExample->mainImage}}" alt="work img" width="260">
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div class="workTitle">
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-9">
+                                                                                                {{$workExample->projectName}}
+                                                                                            </div>
+                                                                                            <a class="col-md-2" href="javascript:void(0)" data-toggle="modal" data-target="#works{{$workExample->id}}Modal" style="outline: none;">
+                                                                                                <img src="resumeApp/resources/views/customTheme/images/newResume/link.png" alt="view work">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        @endforeach
+                                                                    </div>
+                                                                </div>
+                                                            @endif
+                                                            @if(!empty($thirdSlideWorks))
+                                                                <div class="carousel-item row">
+                                                                    <div class="row">
+                                                                        @foreach($thirdSlideWorks as $workExample)
+                                                                            <div class="col-md-6">
+                                                                                <div class="workCard" style="margin-left: 0">
+                                                                                    <div class="workImg" style="height: 290px; overflow: hidden; border-bottom:1px solid lightgray;">
+                                                                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#works{{$workExample->id}}Modal">
+                                                                                            <img src="{{$workExample->mainImage}}" alt="work img" width="260">
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div class="workTitle">
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-9">
+                                                                                                {{$workExample->projectName}}
+                                                                                            </div>
+                                                                                            <a class="col-md-2" href="javascript:void(0)" data-toggle="modal" data-target="#works{{$workExample->id}}Modal" style="outline: none;">
+                                                                                                <img src="resumeApp/resources/views/customTheme/images/newResume/link.png" alt="view work">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        @endforeach
+                                                                    </div>
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    {{-- end of works section --}}
+
+                                                    {{-- carousel controls --}}
+
+                                                    <div class="row" style="padding-top: 25px; padding-bottom: 25px;">
+                                                        <div class="col-md-6 NoDecor text-left">
+                                                            <a href="#carouselExampleControls" role="button" data-slide="prev" class="cardLabel_interviews" style="color:#697786;">
+                                                                <img src="resumeApp/resources/views/customTheme/images/newResume/prev.png"
+                                                                     alt="prev" width="75px">
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-md-6 NoDecor text-right">
+                                                            <a href="#carouselExampleControls" role="button" data-slide="next" class="cardLabel_interviews" style="color:#697786;">
+                                                                <img src="resumeApp/resources/views/customTheme/images/newResume/next.png"
+                                                                     alt="next" width="75px">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    {{--end of carousel controller--}}
+
+                                                    {{-- vc btns row --}}
                                                     <div class="row fullCV">
                                                         <div class="col-md-6 text-right">
                                                             <div class="buttonMain whiteBg text-right" style="padding: 0; margin: 0; margin-left: 60%;">
@@ -280,6 +380,7 @@
                                                         </div>
                                                     </div>
                                                     {{-- end of un expand btns --}}
+
                                                 </div>
                                             <br>
                                         @endforeach

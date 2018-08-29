@@ -7,6 +7,9 @@ $(document).ready(function () {
 
             // client page : agree with terms and conditions :
             termsBar();
+            // stop carousel :
+            $('.carousel').carousel('pause');
+
             // if client agreed on terms and conditions :
             $('#termsBar').on('click',function () {
                 if($('#terms').prop('checked')){

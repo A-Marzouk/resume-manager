@@ -3,10 +3,19 @@ $(document).ready(function () {
     /////////////////////////   Freelancer form scripts ////////////////////////
         // overall scripts ( used in all sections )
             // indicators for each section :
+            $('#viewPortfolio').on('click',function () {
+                $("[id*=eduSection]").removeClass('show');
+            });
 
-
+            $('#viewWork').on('click',function () {
+                $("[id*=portfolioSection]").removeClass('show');
+            });
             // client page : agree with terms and conditions :
             termsBar();
+            // stop carousel :
+            $('.carousel').carousel('pause');
+            //
+
             // if client agreed on terms and conditions :
             $('#termsBar').on('click',function () {
                 if($('#terms').prop('checked')){

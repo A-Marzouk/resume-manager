@@ -57,7 +57,7 @@ class HomeController extends Controller
         if(isset($request->description)){
             $description = $request->description ;
         }
-        $amountToPay = intval($request->amountToPay) * 100;
+        $amountToPay = intval($request->amountToPay);
         $token = $request->stripeToken;
         $charge = Charge::create([
             'amount' => $amountToPay,

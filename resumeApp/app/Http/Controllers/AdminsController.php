@@ -21,6 +21,7 @@ class AdminsController extends Controller
 
     public function welcomePage(){
         // get list of freelancers :
+        session()->put('admin', 'AdminWasHere');
         $data['users'] = User::all();
         $data['clients'] = Client::all();
         $data['conversations'] = Conversation::all();
@@ -31,8 +32,6 @@ class AdminsController extends Controller
     }
 
     public function logInAsUser($user_id){
-        // save admins token in separate session,
-        session()->put('admin', 'AdminWasHere');
         // log him out and log in the chosen user in
         Auth::loginUsingId($user_id);
         $fromAdmin ='adminView';
@@ -41,7 +40,7 @@ class AdminsController extends Controller
 
     public function logInAsClient($client_id){
         // save admins token in separate session,
-        session()->put('admin', 'AdminWasHere');
+
         // log him out and log in the chosen user in
         Auth::guard('client')->loginUsingId($client_id);
         $fromAdmin ='adminView';

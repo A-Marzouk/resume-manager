@@ -159,7 +159,7 @@
                                                 {{-- expand btns--}}
                                                     <div class="row" style="margin-top: 15px ; border-top:1px solid whitesmoke; ">
                                                             <div class="col-md-6 text-right border-right NoDecor" style="background-color: #FDFDFD;">
-                                                                <a  href="#portfolioSection" data-toggle="collapse">
+                                                                <a  href="#portfolioSection{{$freelancer->id}}" data-toggle="collapse">
                                                                     <div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">
                                                                        <img src="resumeApp/resources/views/customTheme/images/portfolio_NOT_active.png" alt="read more arrow" width="18px" id="portfolioBtnImg">
                                                                        <span style="padding-left: 8px;" id="portfolioBtnText">View Portfolio </span>
@@ -177,7 +177,7 @@
                                             </div>
 
                                              {{-- resume expanded --}}
-                                                <div class="row collapse resumeExpand" id="portfolioSection">
+                                                <div class="row collapse resumeExpand" id="portfolioSection{{$freelancer->id}}">
                                                     <div class="worksSection" style="margin-top: 0;">
                                                         <div class="firstPart" style="background: none; padding-top: 0;">
                                                             <?
@@ -371,7 +371,7 @@
                                                     {{-- un expand btns --}}
                                                     <div class="row" style="border-top:1px solid whitesmoke; ">
                                                         <div class="col-md-12 text-center NoDecor" style="background-color: #FDFDFD;">
-                                                            <a  href="#portfolioSection" data-toggle="collapse" id="minmizeCVBtn">
+                                                            <a  href="#portfolioSection{{$freelancer->id}}" data-toggle="collapse" id="minmizeCVBtn">
                                                                 <div class="cardLabel_interviews" style="padding-top: 15px;height:52px;">
                                                                     <span style="padding-right: 6px; color: grey;">Minimize</span>
                                                                     <img src="resumeApp/resources/views/customTheme/images/close_menu.png" alt="read more arrow" width="11px" id="portfolioBtnImg">

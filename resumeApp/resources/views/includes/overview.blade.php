@@ -102,8 +102,8 @@
         </div> <!-- email -->
 
         <div class="form-group col-md-6 col-lg-4">
-            <label for="skype_id"  class="panelFormLabel">Skype ID <span id="tickMarkskype_id" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-            <input type="text"  class="form-control panelFormInput" name="skype_id" value="{{$skype_id}}" id="skype_id">
+            <label for="skype_id"  class="panelFormLabel">Skype ID  <span style="font-size:small;">*</span><span id="tickMarkskype_id" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <input type="text"  style="@if($errors->has('skype_id')) border:1px solid red; @endif" class="form-control panelFormInput" name="skype_id" value="{{$skype_id}}" id="skype_id">
         </div> <!-- skype_id -->
 
         <div class="form-group col-md-6 col-lg-4">

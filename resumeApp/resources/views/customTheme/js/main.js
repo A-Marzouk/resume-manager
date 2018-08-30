@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     /////////////////////////   Freelancer form scripts ////////////////////////
         // overall scripts ( used in all sections )
-            // indicators for each section :
+
             // client page ( resume cards )
             $(".viewPortfolioLink").on('click',function () {
                 // check if education is opened ( if yes close it )
@@ -26,6 +26,30 @@ $(document).ready(function () {
                 $('#area_viewEducationBtn'+this.id.replace('minimize','')).fadeOut(1500);
             });
 
+            // client page : delete search
+            $('.deleteSearch').click(
+                function () {
+                    if(!confirm('Are you sure you want to delete this search ?')){
+                        return;
+                    }
+                    let search_id = this.id;
+                    let deleteData = {
+                        'search_id':search_id
+                    };
+                    axios.post('/search_delete',deleteData).then((response)=>{
+                        // hide the deleted column slowly :
+                        $('#selectedSearch'+ search_id).fadeOut(2000);
+
+                        // changes are saved on - off
+                        $('#changesSaved').fadeIn('slow');
+                        setTimeout(function () {
+                            $('#changesSaved').fadeOut();
+                        },2000);
+
+                    });
+
+                }
+            );
 
             // client page : agree with terms and conditions :
             termsBar();
@@ -52,27 +76,7 @@ $(document).ready(function () {
                 }
             });
             // client page : delete search without realoding the page :
-            $('.deleteSearch').on('click',function () {
-                if(!confirm('Are you sure you want to delete this search ?')){
-                    return;
-                }
-                let search_id = this.id;
-                let deleteData = {
-                    'search_id':search_id
-                };
-                axios.post('/search_delete',deleteData).then((response)=>{
-                    // hide the deleted column slowly :
-                    $('#selectedSearch'+ search_id).fadeOut(2000);
 
-                    // changes are saved on - off
-                    $('#changesSaved').fadeIn('slow');
-                    setTimeout(function () {
-                        $('#changesSaved').fadeOut();
-                    },2000);
-
-                });
-
-            });
 
     // public search page : delete freelancer search without realoding the page :
     $('.deleteFreelancerSearch').on('click',function () {
@@ -103,8 +107,8 @@ $(document).ready(function () {
         });
 
     });
-
-            // we need to get if any section is completed.
+// indicators for each section :
+    // we need to get if any section is completed.
             highlightCompletedSecs();
 
             // hiding changes saved :

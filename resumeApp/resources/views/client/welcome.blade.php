@@ -56,7 +56,7 @@
                                 <a class="panelFormLabel" data-toggle="collapse" href="#{{$value['id']}}" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-bottom: 10px;">
                                     <b>{{$value['name']}}</b>
                                 </a>
-                                <div class="collapse" id="{{$value['id']}}" style="padding-top: 10px; padding-bottom: 12px;">
+                                <div class="" id="{{$value['id']}}" style="padding-top: 10px; padding-bottom: 12px;">
                                     <div style="padding-top: 20px; margin-top: 60px;">
                                         @foreach($value['freelancers'] as $freelancer)
 
@@ -122,15 +122,29 @@
                                                         </div>
                                                         {{-- stripe ends here--}}
                                                     </div>
-                                                    <div class="col-lg-7 col-md-12">
+                                                    <div class="col-lg-8 col-md-12">
                                                         <div class="cardLabel">Skills:</div>
                                                         <div class="skillsCard">
                                                                 {{$freelancer->userData->design_skills_checkbox}}
                                                         </div><br/>
                                                         <div class="panelFormLabel" style="	color: #697786;">
-                                                            <div class="cardLabel">No.hours/week available: </div>
-                                                            <div style="font-weight: normal; padding-top: 5px;">
-                                                                {{$freelancer->userData->availableHours}}
+                                                            <div class="cardLabel" style="padding: 15px;">No.hours/week available: </div>
+                                                            <div class="">
+                                                                <div class="form-group">
+                                                                    <? $workingHours = ['10 Hours per Week','20 Hours per Week','30 Hours per Week','40 Hours per Week'] ;?>
+                                                                    <? $k=1 ?>
+                                                                    <? $availableHoursCheckBox = explode(',',$freelancer->userData->availableHours);?>
+                                                                    <div class="form-check">
+                                                                        @foreach($workingHours as $option)
+                                                                            <label class="form-check-label col-md-2 checkBoxContainer checkBoxText"  <? if(!in_array($option,$availableHoursCheckBox)): ?> style="color: lightgray;" <?endif;?>>{{str_replace('per Week','',$option)}}
+                                                                                <input class="form-check-input" id="hours{{$k}}" type="checkbox" name="availableHours[]" value="{{$option}}"
+                                                                                        <? if(in_array($option,$availableHoursCheckBox)): ?> checked <?endif;?> disabled>
+                                                                                <span class="checkmark"></span>
+                                                                            </label>
+                                                                            <? $k++; ?>
+                                                                        @endforeach
+                                                                    </div>
+                                                                </div>  <!-- Hours availabel -->
                                                             </div>
                                                         </div>
                                                     </div>

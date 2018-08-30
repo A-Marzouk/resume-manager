@@ -60,7 +60,7 @@
                                     <div style="padding-top: 20px; margin-top: 60px;">
                                         @foreach($value['freelancers'] as $freelancer)
 
-                                            <div class="freelancerCard">
+                                            <div class="freelancerCard" id="card{{$freelancer->id}}">
                                                 {{-- photo and name + multimedia--}}
                                                     <div class="row">
                                                     <div class="col-lg-5 col-md-12 freelancerCardLeft text-left">
@@ -117,28 +117,9 @@
                                                             ${{$freelancer->userData->salary_month}}/month
                                                         </div>
                                                         {{-- stripe goes here --}}
-                                                        <form action="/stripe/payments/pay" method="POST">
-                                                            {{ csrf_field() }}
-                                                            <?
-                                                            $freelancer->userDataRate = $freelancer->userData->salary ;
-                                                            $hours =10 ;
-                                                            $amountToPay = ( intval($freelancer->userDataRate) +5 ) * $hours * 100 ;
-                                                            ?>
-                                                            <input type="hidden" value="{{$amountToPay}}" name="amountToPay">
-                                                            <input type="hidden" value="{{$freelancer->userData->name}}" name="freelancerName">
-                                                            <script
-                                                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                                                    data-key="pk_test_8Pd2lN3so4z5vBOP98MgNcms"
-                                                                    data-amount="{{$amountToPay}}"
-                                                                    data-name="Hire  {{$freelancer->userData->name}}"
-                                                                    data-description="for 10 hours"
-                                                                    data-image="/resumeApp/resources/views/customTheme/images/newResume/logo.png"
-                                                                    data-locale="auto">
-                                                            </script>
-                                                            <div class="buttonMain whiteBg">
-                                                                <button class="hireBtn btn-block hire" style="width: 80%;" type="submit">Hire Me</button>
-                                                            </div>
-                                                        </form>
+                                                        <div class="buttonMain whiteBg">
+                                                            <button class="hireBtn btn-block hire" style="width: 80%;">Hire Me</button>
+                                                        </div>
                                                         {{-- stripe ends here--}}
                                                     </div>
                                                     <div class="col-lg-7 col-md-12">
@@ -157,17 +138,17 @@
                                                 {{-- end of pricing and skills --}}
 
                                                 {{-- expand btns--}}
-                                                    <div class="row" style="margin-top: 15px ; border-top:1px solid whitesmoke; " id="viewPortfolio">
+                                                    <div class="row" style="margin-top: 15px ; border-top:1px solid whitesmoke; ">
                                                             <div class="col-md-6 text-right border-right NoDecor" style="background-color: #FDFDFD;">
-                                                                <a  href="#portfolioSection{{$freelancer->id}}" data-toggle="collapse">
+                                                                <a  href="#viewEducationBtn{{$freelancer->id}}" id="viewPortfolioBtn{{$freelancer->id}}" class="viewPortfolioLink">
                                                                     <div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">
                                                                        <img src="resumeApp/resources/views/customTheme/images/portfolio_NOT_active.png" alt="read more arrow" width="18px" id="portfolioBtnImg">
                                                                        <span style="padding-left: 8px;">View Portfolio </span>
                                                                     </div>
                                                                 </a>
                                                             </div>
-                                                    <div class="col-md-6 text-left NoDecor" style="background-color: #FDFDFD;" id="viewWork">
-                                                        <a  href="#eduSection{{$freelancer->id}}" data-toggle="collapse">
+                                                    <div class="col-md-6 text-left NoDecor" style="background-color: #FDFDFD;">
+                                                        <a  href="#viewEducationBtn{{$freelancer->id}}" id="viewEducationBtn{{$freelancer->id}}" class="viewEducationLink">
                                                             <div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">
                                                                 <img src="resumeApp/resources/views/customTheme/images/newResume/what_i_do.png" alt="read more arrow" width="18px" id="workBtnImg">
                                                                 <span style="padding-left: 8px;" id="workBtnText">Work/Education</span>
@@ -180,7 +161,7 @@
 
                                              {{-- resume expanded --}}
                                                 {{-- portfolio --}}
-                                                <div class="row collapse resumeExpand" id="portfolioSection{{$freelancer->id}}">
+                                                <div class="row resumeExpand d-none" id="area_viewPortfolioBtn{{$freelancer->id}}">
                                                     <div class="worksSection" style="margin-top: 0;">
                                                         <div class="firstPart" style="background: none; padding-top: 0;">
                                                             <?
@@ -252,7 +233,7 @@
 
                                                     {{-- works section carousel --}}
 
-                                                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
+                                                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
                                                         <div class="carousel-inner">
                                                             @if(!empty($firstSlideWorks))
                                                                 <div class="carousel-item active">
@@ -341,7 +322,7 @@
 
                                                     {{-- carousel controls --}}
 
-                                                    <div class="row" style="padding-top: 25px; padding-bottom: 25px;">
+                                                    <div class="row" style="padding-top: 25px; padding-bottom: 25px; width: 100%;">
                                                         <div class="col-md-6 NoDecor text-left">
                                                             <a href="#carouselExampleControls" role="button" data-slide="prev" class="cardLabel_interviews" style="color:#697786;">
                                                                 <img src="resumeApp/resources/views/customTheme/images/newResume/prev.png"
@@ -358,7 +339,7 @@
                                                     {{--end of carousel controller--}}
 
                                                     {{-- vc btns row --}}
-                                                    <div class="row fullCV">
+                                                    <div class="row fullCV" style="width: 100%;">
                                                         <div class="col-md-6 text-right">
                                                             <div class="buttonMain whiteBg text-right" style="padding: 0; margin: 0; margin-left: 60%;">
                                                                 <a href="#" class="hireBtn btn-block hire">Chat</a>
@@ -372,9 +353,9 @@
                                                     </div>
 
                                                     {{-- un expand btns --}}
-                                                    <div class="row" style="border-top:1px solid whitesmoke; ">
+                                                    <div class="row" style="border-top:1px solid whitesmoke; width: 100%;">
                                                         <div class="col-md-12 text-center NoDecor" style="background-color: #FDFDFD;">
-                                                            <a  href="#portfolioSection{{$freelancer->id}}" data-toggle="collapse" id="minmizeCVBtn">
+                                                            <a href="#card{{$freelancer->id}}" id="minimize{{$freelancer->id}}" class="Minimize" >
                                                                 <div class="cardLabel_interviews" style="padding-top: 15px;height:52px;">
                                                                     <span style="padding-right: 6px; color: grey;">Minimize</span>
                                                                     <img src="resumeApp/resources/views/customTheme/images/close_menu.png" alt="read more arrow" width="11px" id="portfolioBtnImg">
@@ -386,7 +367,7 @@
 
                                                 </div>
                                                 {{-- education --}}
-                                                <div class="row collapse resumeExpand" id="eduSection{{$freelancer->id}}">
+                                                <div class="row resumeExpand d-none" id="area_viewEducationBtn{{$freelancer->id}}">
                                                     <div id="about" class="education">
                                                         <div class="row">
                                                             <div class="offset-lg-1 col-lg-5 col-md-6 educationSection">
@@ -496,7 +477,7 @@
                                                     {{-- un expand btns --}}
                                                     <div class="row" style="border-top:1px solid whitesmoke; ">
                                                         <div class="col-md-12 text-center NoDecor" style="background-color: #FDFDFD;">
-                                                            <a  href="#eduSection{{$freelancer->id}}" data-toggle="collapse" id="minmizeCVBtn">
+                                                            <a href="#card{{$freelancer->id}}" id="minimize{{$freelancer->id}}" class="Minimize" >
                                                                 <div class="cardLabel_interviews" style="padding-top: 15px;height:52px;">
                                                                     <span style="padding-right: 6px; color: grey;">Minimize</span>
                                                                     <img src="resumeApp/resources/views/customTheme/images/close_menu.png" alt="read more arrow" width="11px" id="portfolioBtnImg">
@@ -589,7 +570,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             {{-- video modal--}}
                             <div class="modal fade" style="background-color:rgba(255, 255, 255, 0.95);" id="{{$freelancer->id}}_video_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div class="row">

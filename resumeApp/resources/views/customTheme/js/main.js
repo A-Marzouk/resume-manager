@@ -3,13 +3,30 @@ $(document).ready(function () {
     /////////////////////////   Freelancer form scripts ////////////////////////
         // overall scripts ( used in all sections )
             // indicators for each section :
-            $('#viewPortfolio').on('click',function () {
-                $("[id*=eduSection]").removeClass('show');
+            // client page ( resume cards )
+            $(".viewPortfolioLink").on('click',function () {
+                // check if education is opened ( if yes close it )
+                let educationArea = $('#area_'+this.id.replace('Portfolio','Education'));
+                if(!educationArea.hasClass('d-none')){
+                    educationArea.addClass('d-none');
+                }
+               $('#area_'+this.id).fadeIn(800).removeClass('d-none');
             });
 
-            $('#viewWork').on('click',function () {
-                $("[id*=portfolioSection]").removeClass('show');
+            $(".viewEducationLink").on('click',function () {
+                let portfolioArea = $('#area_'+this.id.replace('Education','Portfolio'));
+                if(!portfolioArea.hasClass('d-none')){
+                    portfolioArea.addClass('d-none');
+                }
+                $('#area_'+this.id).fadeIn(800).removeClass('d-none');
             });
+
+            $(".Minimize").on('click',function () {
+                $('#area_viewPortfolioBtn'+this.id.replace('minimize','')).fadeOut(1500);
+                $('#area_viewEducationBtn'+this.id.replace('minimize','')).fadeOut(1500);
+            });
+
+
             // client page : agree with terms and conditions :
             termsBar();
             // stop carousel :

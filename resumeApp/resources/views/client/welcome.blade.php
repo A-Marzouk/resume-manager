@@ -56,7 +56,7 @@
                                 <a class="panelFormLabel" data-toggle="collapse" href="#{{$value['id']}}" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-bottom: 10px;">
                                     <b>{{$value['name']}}</b>
                                 </a>
-                                <div class="" id="{{$value['id']}}" style="padding-top: 10px; padding-bottom: 12px;">
+                                <div class="collapse" id="{{$value['id']}}" style="padding-top: 10px; padding-bottom: 12px;">
                                     <div style="padding-top: 20px; margin-top: 60px;">
                                         @foreach($value['freelancers'] as $freelancer)
 
@@ -129,7 +129,7 @@
                                                         </div><br/>
                                                         <div class="panelFormLabel" style="	color: #697786;">
                                                             <div class="cardLabel" style="padding: 15px;">No.hours/week available: </div>
-                                                            <div class="collapse">
+                                                            <div class="">
                                                                 <div class="form-group">
                                                                     <? $workingHours = ['10 Hours per Week','20 Hours per Week','30 Hours per Week','40 Hours per Week'] ;?>
                                                                     <? $k=1 ?>

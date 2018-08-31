@@ -18,7 +18,7 @@
                     <div class="col-lg-5 col-md-12 freelancerCardLeft text-left">
                         <div class="row">
                             <div class="col-lg-4 col-6 imageContainer">
-                                <img src="{{$freelancer->userData->photo}}" alt="freelancer" class="freelancerImg"
+                                <img src="/{{$freelancer->userData->photo}}" alt="freelancer" class="freelancerImg"
                                      width="100" height="100">
 
                             </div>
@@ -71,7 +71,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-12">
                         <div class="cardLabel">Pricing:</div>
-                        <div class="nameCard" style="padding-left: 0;">${{$freelancer->userData->salary +5}}/hour<br/>
+                        <div class="nameCard" style="padding-left: 0;">${{intVal($freelancer->userData->salary) +5}}/hour<br/>
                             ${{$freelancer->userData->salary_month}}/month
                         </div>
                         {{-- stripe goes here --}}

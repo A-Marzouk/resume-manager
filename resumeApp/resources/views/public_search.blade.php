@@ -186,7 +186,7 @@
                                              role="dialog"
                                              aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                             <div class="modal-dialog modal-lg" role="document" style="">
-                                                <div class="modal-content" data-dismiss="modal" aria-label="Close">
+                                                <div class="modal-content modal-mobile-resume" data-dismiss="modal" aria-label="Close">
                                                     <div class="modal-body" style="padding: 0;">
                                                         <div class="row">
                                                             <div class="col-md-9" style="padding: 0;">

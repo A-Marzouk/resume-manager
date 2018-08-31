@@ -1676,6 +1676,11 @@ body {
   background-color: #FFFFFF;
   box-shadow: 0 2px 4px 0 rgba(203, 203, 203, 0.5);
   padding: 15px 0 0 0; }
+  .freelancerCard .nameArea {
+    text-align: left; }
+    @media only screen and (max-width: 769px) {
+      .freelancerCard .nameArea {
+        text-align: center; } }
   .freelancerCard .nameCard {
     padding-top: 16px;
     padding-left: 10px;
@@ -1684,6 +1689,22 @@ body {
     font-size: 24px;
     font-weight: bold;
     line-height: 35px; }
+    @media only screen and (max-width: 769px) {
+      .freelancerCard .nameCard {
+        font-size: 20px; } }
+  .freelancerCard .audioTransArea {
+    padding-left: 35px; }
+    @media only screen and (max-width: 769px) {
+      .freelancerCard .audioTransArea {
+        padding-left: 24px;
+        padding-top: 10px; } }
+  @media only screen and (max-width: 769px) {
+    .freelancerCard .videoArea {
+      padding-left: 30px;
+      padding-top: 10px; } }
+  @media only screen and (max-width: 769px) {
+    .freelancerCard .hireBtnArea {
+      padding-bottom: 30px; } }
   .freelancerCard .jobTitle {
     padding-left: 10px;
     color: #697786;
@@ -1713,14 +1734,36 @@ body {
     padding-top: 14px; }
   .freelancerCard .interviewIcons {
     padding-top: 30px; }
-  @media only screen and (max-width: 769px) {
-    .freelancerCard .freelancerCardLeft {
-      padding-bottom: 30px; } }
-  .freelancerCard .freelancerCardLeft .imageContainer {
-    padding-left: 0px; }
     @media only screen and (max-width: 769px) {
-      .freelancerCard .freelancerCardLeft .imageContainer {
-        margin-left: -10px; } }
+      .freelancerCard .interviewIcons {
+        border-top: 1px solid whitesmoke;
+        padding-top: 10px; } }
+  .freelancerCard .dropDownBtnRight {
+    text-align: right; }
+    @media only screen and (max-width: 769px) {
+      .freelancerCard .dropDownBtnRight {
+        text-align: center; } }
+  .freelancerCard .dropDownBtnText {
+    padding-left: 8px; }
+    @media only screen and (max-width: 769px) {
+      .freelancerCard .dropDownBtnText {
+        padding-left: 0; } }
+  .freelancerCard .dropDownBtnLeft {
+    text-align: left; }
+    @media only screen and (max-width: 769px) {
+      .freelancerCard .dropDownBtnLeft {
+        text-align: center; } }
+  .freelancerCard .freelancerCardLeft {
+    text-align: center;
+    padding-left: 3px; }
+    @media only screen and (max-width: 769px) {
+      .freelancerCard .freelancerCardLeft {
+        padding-bottom: 30px; } }
+    .freelancerCard .freelancerCardLeft .imageContainer {
+      padding-left: 0px; }
+      @media only screen and (max-width: 769px) {
+        .freelancerCard .freelancerCardLeft .imageContainer {
+          margin-left: -10px; } }
   .freelancerCard .freelancerCardRight .panelFormLabel {
     padding-bottom: 4px; }
     @media only screen and (max-width: 720px) {
@@ -1746,6 +1789,11 @@ body {
     .fixedTabs {
       position: relative;
       width: 100%; } }
+
+@media only screen and (max-width: 760px) {
+  .modal-mobile-resume {
+    margin-left: 35px;
+    margin-top: 35px; } }
 
 .searchFreelancers {
   padding-right: 10px;

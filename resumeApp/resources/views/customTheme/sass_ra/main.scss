@@ -2043,10 +2043,37 @@ body{
 .freelancerCard{
   background-color: #FFFFFF;	box-shadow: 0 2px 4px 0 rgba(203,203,203,0.5);
   padding:15px 0 0 0;
+  .nameArea{
+    text-align: left;
+    @media only screen and (max-width: 769px) {
+      text-align: center;
+    }
+  }
   .nameCard{
+    @media only screen and (max-width: 769px) {
+      font-size: 20px;
+    }
     padding-top: 16px;
     padding-left: 10px;
     color: #30323D;	font-family: Roboto;	font-size: 24px;	font-weight: bold;	line-height: 35px;
+  }
+  .audioTransArea{
+    padding-left: 35px;
+    @media only screen and (max-width: 769px) {
+      padding-left: 24px;
+      padding-top: 10px;
+    }
+  }
+  .videoArea{
+    @media only screen and (max-width: 769px) {
+      padding-left: 30px;
+      padding-top: 10px;
+    }
+  }
+  .hireBtnArea{
+    @media only screen and (max-width: 769px) {
+      padding-bottom: 30px;
+    }
   }
   .jobTitle{
     padding-left: 10px;
@@ -2068,9 +2095,34 @@ body{
   }
   .interviewIcons{
     padding-top: 30px;
+    @media only screen and (max-width: 769px) {
+      border-top:1px solid whitesmoke ;
+      padding-top: 10px;
+    }
+  }
+  .dropDownBtnRight{
+    text-align:right;
+    @media only screen and (max-width: 769px) {
+      text-align:center;
+    }
+  }
+  .dropDownBtnText{
+    padding-left: 8px;
+    @media only screen and (max-width: 769px) {
+      padding-left: 0;
+    }
+  }
+
+  .dropDownBtnLeft{
+    text-align:left;
+    @media only screen and (max-width: 769px) {
+      text-align:center;
+    }
   }
 
   .freelancerCardLeft{
+    text-align:center;
+    padding-left: 3px;
     @media only screen and (max-width: 769px) {
       padding-bottom: 30px;
     }
@@ -2115,6 +2167,13 @@ body{
 
   position: fixed;
   width: 15%;
+}
+
+.modal-mobile-resume{
+  @media only screen and (max-width: 760px) {
+    margin-left: 35px;
+    margin-top: 35px;
+  }
 }
 
 // freelancers search :

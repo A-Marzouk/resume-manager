@@ -113,7 +113,7 @@
                                                     <div class="row">
                                                     <div class="col-lg-3 col-md-12">
                                                         <div class="cardLabel">Pricing:</div>
-                                                        <div class="nameCard" style="padding-left: 0;">${{$freelancer->userData->salary +5}}/hour<br/>
+                                                        <div class="nameCard" style="padding-left: 0;">${{intval($freelancer->userData->salary) +5}}/hour<br/>
                                                             ${{$freelancer->userData->salary_month}}/month
                                                         </div>
                                                         {{-- stripe goes here --}}

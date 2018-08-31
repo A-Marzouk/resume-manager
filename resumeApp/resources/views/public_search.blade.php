@@ -162,7 +162,7 @@
                                                             <div class="modal-body" style="padding: 0;">
                                                                 <div class="row">
                                                                     <div class="col-md-9" style="padding: 0;">
-                                                                        <img src="{{$workExample->mainImage}}" alt="" width="100%" height="auto">
+                                                                        <img src="/{{$workExample->mainImage}}" alt="" width="100%" height="auto">
                                                                         <?
                                                                         // more images
                                                                         $moreImagesArr = explode(',',$workExample->images);
@@ -236,7 +236,7 @@
                                                     <div class="workCard" style="margin-left: 0">
                                                         <div class="workImg" style="height: 290px; overflow: hidden; border-bottom:1px solid lightgray;">
                                                             <a href="javascript:void(0)" data-toggle="modal" data-target="#works{{$workExample->id}}Modal">
-                                                                <img src="{{$workExample->mainImage}}" alt="work img" width="260">
+                                                                <img src="/{{$workExample->mainImage}}" alt="work img" width="260">
                                                             </a>
                                                         </div>
                                                         <div class="workTitle">
@@ -263,7 +263,7 @@
                                                     <div class="workCard" style="margin-left: 0">
                                                         <div class="workImg" style="height: 290px; overflow: hidden; border-bottom:1px solid lightgray;">
                                                             <a href="javascript:void(0)" data-toggle="modal" data-target="#works{{$workExample->id}}Modal">
-                                                                <img src="{{$workExample->mainImage}}" alt="work img" width="260">
+                                                                <img src="/{{$workExample->mainImage}}" alt="work img" width="260">
                                                             </a>
                                                         </div>
                                                         <div class="workTitle">

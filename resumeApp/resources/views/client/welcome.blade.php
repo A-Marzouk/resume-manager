@@ -129,7 +129,7 @@
                                                         </div><br/>
                                                         <div class="panelFormLabel" style="	color: #697786;">
                                                             <div class="cardLabel" style="padding: 15px;">No.hours/week available: </div>
-                                                            <div class="">
+                                                            <div class="collapse">
                                                                 <div class="form-group">
                                                                     <? $workingHours = ['10 Hours per Week','20 Hours per Week','30 Hours per Week','40 Hours per Week'] ;?>
                                                                     <? $k=1 ?>

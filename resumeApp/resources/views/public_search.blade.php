@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        @if(count($freelancers) >= 1):
+        @if(count($freelancers) >= 1)
         <div style="text-align: left; padding-bottom: 25px;">
             <div class="pageHeading">
                 List of freelancers
@@ -15,14 +15,14 @@
             <div class="freelancerCard" id="card{{$freelancer->id}}">
                 {{-- photo and name + multimedia--}}
                 <div class="row">
-                    <div class="col-lg-5 col-md-12 freelancerCardLeft text-left">
+                    <div class="col-lg-5 col-md-12 freelancerCardLeft">
                         <div class="row">
                             <div class="col-lg-4 col-6 imageContainer">
-                                <img src="/{{$freelancer->userData->photo}}" alt="freelancer" class="freelancerImg"
+                                <img src="{{$freelancer->userData->photo}}" alt="freelancer" class="freelancerImg"
                                      width="100" height="100">
 
                             </div>
-                            <div class="col-lg-8 col-6 text-left">
+                            <div class="col-lg-8 col-6 nameArea">
                                 <div class="nameCard">
                                     {{$freelancer->firstName}} {{$freelancer->lastName}}
                                 </div>
@@ -34,8 +34,8 @@
                     </div>
                     <div class="col-lg-5 offset-lg-1 col-md-12 freelancerCardRight">
                         <div class="row interviewIcons">
-                            <div class="cardLabel_interviews col-md-6">Recorded interviews</div>
-                            <div class="col-md-4" style="padding-left: 35px;">
+                            <div class="cardLabel_interviews col-md-6 col-4">Recorded interviews</div>
+                            <div class="col-md-4 col-4 audioTransArea">
                                 <div class="cardIconsCon">
                                     <a href="javascript:void(0)" data-toggle="modal"
                                        data-target="#{{$freelancer->id}}_audio_modal" style="outline: none;">
@@ -50,7 +50,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-2 videoArea">
                                 <div class="cardIconsCon2">
                                     <a href="javascript:void(0)" data-toggle="modal"
                                        data-target="#{{$freelancer->id}}_video_modal" style="outline: none;">
@@ -66,17 +66,26 @@
                     </div>
                 </div>
                 {{-- end of photo and multimedia --}}
-                <hr style="width: 95%;">
+                <hr style="width: 90%;">
                 {{-- Pricing and skills --}}
-                <div class="row">
+                <div class="row container">
                     <div class="col-lg-3 col-md-12">
                         <div class="cardLabel">Pricing:</div>
-                        <div class="nameCard" style="padding-left: 0;">${{intVal($freelancer->userData->salary) +5}}/hour<br/>
-                            ${{$freelancer->userData->salary_month}}/month
+                        <div class="nameCard" style="padding-left: 0;">
+                            <div class="row">
+                                <div class="col-6 col-md-12">
+                                    ${{intVal($freelancer->userData->salary) +5}}/hour
+                                </div>
+                                <div class="col-6 col-md-12">
+                                    ${{$freelancer->userData->salary_month}}/month
+                                </div>
+                            </div>
                         </div>
                         {{-- stripe goes here --}}
-                        <div class="buttonMain whiteBg">
-                            <button class="hireBtn btn-block hire" style="width: 80%;">Hire Me</button>
+                        <div class="row text-center hireBtnArea">
+                            <div class="buttonMain whiteBg col-md-10 col-8 offset-md-0 offset-2">
+                                <button class="hireBtn btn-block hire">Hire Me</button>
+                            </div>
                         </div>
                         {{-- stripe ends here--}}
                     </div>
@@ -87,7 +96,7 @@
                         </div>
                         <br/>
                         <div class="panelFormLabel" style="	color: #697786;">
-                            <div class="cardLabel" style="padding: 15px;">No.hours/week available:</div>
+                            <div class="cardLabel" style="padding-bottom: 15px;">No.hours/week available:</div>
                             <div class="">
                                 <div class="form-group">
                                     <? $workingHours = ['10 Hours per Week', '20 Hours per Week', '30 Hours per Week', '40 Hours per Week'];?>
@@ -115,23 +124,23 @@
 
                 {{-- expand btns--}}
                 <div class="row" style="margin-top: 15px ; border-top:1px solid whitesmoke; ">
-                    <div class="col-md-6 text-right border-right NoDecor" style="background-color: #FDFDFD;">
+                    <div class="col-md-6 col-6 border-right NoDecor dropDownBtnRight" style="background-color: #FDFDFD;">
                         <a href="#viewEducationBtn{{$freelancer->id}}" id="viewPortfolioBtn{{$freelancer->id}}"
                            class="viewPortfolioLink">
                             <div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">
                                 <img src="/resumeApp/resources/views/customTheme/images/portfolio_NOT_active.png"
-                                     alt="read more arrow" width="18px" id="portfolioBtnImg">
-                                <span style="padding-left: 8px;">View Portfolio </span>
+                                     alt="read more arrow" width="18px" id="portfolioBtnImg" class="d-none d-md-inline">
+                                <span class="dropDownBtnText">View Portfolio </span>
                             </div>
                         </a>
                     </div>
-                    <div class="col-md-6 text-left NoDecor" style="background-color: #FDFDFD;">
+                    <div class="col-md-6 col-6 dropDownBtnLeft NoDecor" style="background-color: #FDFDFD;">
                         <a href="#viewEducationBtn{{$freelancer->id}}" id="viewEducationBtn{{$freelancer->id}}"
                            class="viewEducationLink">
                             <div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">
                                 <img src="/resumeApp/resources/views/customTheme/images/newResume/what_i_do.png"
-                                     alt="read more arrow" width="18px" id="workBtnImg">
-                                <span style="padding-left: 8px;" id="workBtnText">Work/Education</span>
+                                     alt="read more arrow" width="18px" id="workBtnImg" class="d-none d-md-inline">
+                                <span class="dropDownBtnText">Work/Education</span>
                             </div>
                         </a>
                     </div>
@@ -223,117 +232,178 @@
 
                 {{-- works section carousel --}}
 
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
+                <div id="carouselExampleControls" class="carousel slide d-none d-md-block" data-ride="carousel" data-interval="false">
                     <div class="carousel-inner">
-                        @if(!empty($firstSlideWorks))
-                            <div class="carousel-item active">
-                                <div class="row">
-                                    @foreach($firstSlideWorks as $workExample)
-                                        <div class="col-md-6">
-                                            <div class="workCard" style="margin-left: 0">
-                                                <div class="workImg"
-                                                     style="height: 290px; overflow: hidden; border-bottom:1px solid lightgray;">
-                                                    <a href="javascript:void(0)" data-toggle="modal"
-                                                       data-target="#works{{$workExample->id}}Modal">
-                                                        <img src="/{{$workExample->mainImage}}" alt="work img"
-                                                             width="260">
-                                                    </a>
-                                                </div>
-                                                <div class="workTitle">
-                                                    <div class="row">
-                                                        <div class="col-md-9">
-                                                            {{$workExample->projectName}}
-                                                        </div>
-                                                        <a class="col-md-2" href="javascript:void(0)"
-                                                           data-toggle="modal"
-                                                           data-target="#works{{$workExample->id}}Modal"
-                                                           style="outline: none;">
-                                                            <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
-                                                                 alt="view work">
+                            @if(!empty($firstSlideWorks))
+                                <div class="carousel-item active">
+                                    <div class="row">
+                                        @foreach($firstSlideWorks as $workExample)
+                                            <div class="col-md-6">
+                                                <div class="workCard" style="margin-left: 0">
+                                                    <div class="workImg"
+                                                         style="height: 290px; overflow: hidden; border-bottom:1px solid lightgray;">
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                           data-target="#works{{$workExample->id}}Modal">
+                                                            <img src="/{{$workExample->mainImage}}" alt="work img"
+                                                                 width="260">
                                                         </a>
+                                                    </div>
+                                                    <div class="workTitle">
+                                                        <div class="row">
+                                                            <div class="col-md-9">
+                                                                {{$workExample->projectName}}
+                                                            </div>
+                                                            <a class="col-md-2" href="javascript:void(0)"
+                                                               data-toggle="modal"
+                                                               data-target="#works{{$workExample->id}}Modal"
+                                                               style="outline: none;">
+                                                                <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                                                     alt="view work">
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    </div>
                                 </div>
-                            </div>
-                        @endif
-                        @if(!empty($secondSlideWorks))
-                            <div class="carousel-item">
-                                <div class="row">
-                                    @foreach($secondSlideWorks as $workExample)
-                                        <div class="col-md-6">
-                                            <div class="workCard" style="margin-left: 0">
-                                                <div class="workImg"
-                                                     style="height: 290px; overflow: hidden; border-bottom:1px solid lightgray;">
-                                                    <a href="javascript:void(0)" data-toggle="modal"
-                                                       data-target="#works{{$workExample->id}}Modal">
-                                                        <img src="/{{$workExample->mainImage}}" alt="work img"
-                                                             width="260">
-                                                    </a>
-                                                </div>
-                                                <div class="workTitle">
-                                                    <div class="row">
-                                                        <div class="col-md-9">
-                                                            {{$workExample->projectName}}
-                                                        </div>
-                                                        <a class="col-md-2" href="javascript:void(0)"
-                                                           data-toggle="modal"
-                                                           data-target="#works{{$workExample->id}}Modal"
-                                                           style="outline: none;">
-                                                            <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
-                                                                 alt="view work">
+                            @endif
+                            @if(!empty($secondSlideWorks))
+                                <div class="carousel-item">
+                                    <div class="row">
+                                        @foreach($secondSlideWorks as $workExample)
+                                            <div class="col-md-6">
+                                                <div class="workCard" style="margin-left: 0">
+                                                    <div class="workImg"
+                                                         style="height: 290px; overflow: hidden; border-bottom:1px solid lightgray;">
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                           data-target="#works{{$workExample->id}}Modal">
+                                                            <img src="/{{$workExample->mainImage}}" alt="work img"
+                                                                 width="260">
                                                         </a>
+                                                    </div>
+                                                    <div class="workTitle">
+                                                        <div class="row">
+                                                            <div class="col-md-9">
+                                                                {{$workExample->projectName}}
+                                                            </div>
+                                                            <a class="col-md-2" href="javascript:void(0)"
+                                                               data-toggle="modal"
+                                                               data-target="#works{{$workExample->id}}Modal"
+                                                               style="outline: none;">
+                                                                <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                                                     alt="view work">
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    </div>
                                 </div>
-                            </div>
-                        @endif
-                        @if(!empty($thirdSlideWorks))
-                            <div class="carousel-item row">
-                                <div class="row">
-                                    @foreach($thirdSlideWorks as $workExample)
-                                        <div class="col-md-6">
-                                            <div class="workCard" style="margin-left: 0">
-                                                <div class="workImg"
-                                                     style="height: 290px; overflow: hidden; border-bottom:1px solid lightgray;">
-                                                    <a href="javascript:void(0)" data-toggle="modal"
-                                                       data-target="#works{{$workExample->id}}Modal">
-                                                        <img src="/{{$workExample->mainImage}}" alt="work img"
-                                                             width="260">
-                                                    </a>
-                                                </div>
-                                                <div class="workTitle">
-                                                    <div class="row">
-                                                        <div class="col-md-9">
-                                                            {{$workExample->projectName}}
-                                                        </div>
-                                                        <a class="col-md-2" href="javascript:void(0)"
-                                                           data-toggle="modal"
-                                                           data-target="#works{{$workExample->id}}Modal"
-                                                           style="outline: none;">
-                                                            <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
-                                                                 alt="view work">
+                            @endif
+                            @if(!empty($thirdSlideWorks))
+                                <div class="carousel-item row">
+                                    <div class="row">
+                                        @foreach($thirdSlideWorks as $workExample)
+                                            <div class="col-md-6">
+                                                <div class="workCard" style="margin-left: 0">
+                                                    <div class="workImg"
+                                                         style="height: 290px; overflow: hidden; border-bottom:1px solid lightgray;">
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                           data-target="#works{{$workExample->id}}Modal">
+                                                            <img src="/{{$workExample->mainImage}}" alt="work img"
+                                                                 width="260">
                                                         </a>
+                                                    </div>
+                                                    <div class="workTitle">
+                                                        <div class="row">
+                                                            <div class="col-md-9">
+                                                                {{$workExample->projectName}}
+                                                            </div>
+                                                            <a class="col-md-2" href="javascript:void(0)"
+                                                               data-toggle="modal"
+                                                               data-target="#works{{$workExample->id}}Modal"
+                                                               style="outline: none;">
+                                                                <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                                                     alt="view work">
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    </div>
                                 </div>
-                            </div>
-                        @endif
+                            @endif
                     </div>
                 </div>
                 {{-- end of works section --}}
 
+                {{-- carousel on phone --}}
+
+
+
+                <div id="carouselExampleControls_mobile" class="carousel slide d-md-none" data-ride="carousel" data-interval="false">
+                    <div class="carousel-inner">
+                        <? $i=1;?>
+                        @foreach($workExamples as $workExample)
+                            <div class="carousel-item <?if($i==1):?> active <? endif;?>">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="workCard" style="margin-left: 0">
+                                            <div class="workImg"
+                                                 style="height: 190px; overflow: hidden; border-bottom:1px solid lightgray;">
+                                                <a href="javascript:void(0)" data-toggle="modal"
+                                                   data-target="#works{{$workExample->id}}Modal">
+                                                    <img src="/{{$workExample->mainImage}}" alt="work img"
+                                                         width="260">
+                                                </a>
+                                            </div>
+                                            <div class="workTitle">
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        {{$workExample->projectName}}
+                                                    </div>
+                                                    <a class="col-md-2" href="javascript:void(0)"
+                                                       data-toggle="modal"
+                                                       data-target="#works{{$workExample->id}}Modal"
+                                                       style="outline: none;">
+                                                        <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                                             alt="view work">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <? $i++;?>
+                        @endforeach
+                    </div>
+                </div>
+                {{-- carousel end on phone--}}
+                {{-- carousel on phone controller--}}
+                <div class="row d-md-none" style="padding-top: 25px; padding-bottom: 25px; width: 100%;">
+                    <div class="col-md-6 col-6 NoDecor text-center">
+                        <a href="#carouselExampleControls_mobile" role="button" data-slide="prev" class="cardLabel_interviews"
+                           style="color:#697786;">
+                            <img src="/resumeApp/resources/views/customTheme/images/newResume/prev.png"
+                                 alt="prev" width="75px">
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-6 NoDecor text-center">
+                        <a href="#carouselExampleControls_mobile" role="button" data-slide="next" class="cardLabel_interviews"
+                           style="color:#697786;">
+                            <img src="/resumeApp/resources/views/customTheme/images/newResume/next.png"
+                                 alt="next" width="75px">
+                        </a>
+                    </div>
+                </div>
+                {{-- carousel on phone controller end --}}
                 {{-- carousel controls --}}
 
-                <div class="row" style="padding-top: 25px; padding-bottom: 25px; width: 100%;">
+                <div class="row d-none d-md-flex" style="padding-top: 25px; padding-bottom: 25px; width: 100%;">
                     <div class="col-md-6 NoDecor text-left">
                         <a href="#carouselExampleControls" role="button" data-slide="prev" class="cardLabel_interviews"
                            style="color:#697786;">
@@ -353,14 +423,14 @@
 
                 {{-- vc btns row --}}
                 <div class="row fullCV" style="width: 100%;">
-                    <div class="col-md-6 text-right">
-                        <div class="buttonMain whiteBg text-right" style="padding: 0; margin: 0; margin-left: 60%;">
+                    <div class="col-md-3 offset-md-3 col-6">
+                        <div class="buttonMain whiteBg" style="padding: 0; margin: 0;">
                             <a href="#" class="hireBtn btn-block hire">Chat</a>
                         </div>
                     </div>
-                    <div class="col-md-6 text-left">
+                    <div class="col-md-3 col-6">
                         <div class="buttonMain whiteBg" style="padding: 0; margin: 0;">
-                            <a href="/{{$freelancer->username}}" class="hireBtn btn-block hire" style="width: 40%;">Full
+                            <a href="/{{$freelancer->username}}" class="hireBtn btn-block hire">Full
                                 CV</a>
                         </div>
                     </div>
@@ -526,24 +596,24 @@
                     </div>
                 </div>
                 <div class="modal-dialog modal-lg" role="document" style="max-width: 400px;">
-                    <div class="modal-content">
+                    <div class="modal-content modal-mobile-resume">
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-md-6" style="padding-left: 35px; padding-top: 15px;">
+                                <div class="col-md-6" style="padding-top: 15px;">
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 col-6">
                                             <div class="cardIconsCon">
-                                                                <span style="border-right: 2px white solid; padding-right: 5px">
-                                                                    <img src="/resumeApp/resources/views/customTheme/images/transcript.png"
-                                                                         alt="" width="20px;">
-                                                                </span>
+                                                <span style="border-right: 2px white solid; padding-right: 5px">
+                                                    <img src="/resumeApp/resources/views/customTheme/images/transcript.png"
+                                                         alt="" width="20px;">
+                                                </span>
                                                 <span style="padding-left: 5px;">
-                                                                    <img src="/resumeApp/resources/views/customTheme/images/mic.png"
-                                                                         alt="" width="20px">
-                                                                </span>
+                                                    <img src="/resumeApp/resources/views/customTheme/images/mic.png"
+                                                         alt="" width="20px">
+                                                </span>
                                             </div>
                                         </div>
-                                        <div class="col-md-8 ">
+                                        <div class="col-md-8 col-6">
                                             <div class="modal-card-name">
                                                 {{$freelancer->firstName}}
                                                 {{$freelancer->lastName}}
@@ -593,19 +663,19 @@
                     </div>
                 </div>
                 <div class="modal-dialog modal-lg" role="document" style="max-width: 400px;">
-                    <div class="modal-content">
+                    <div class="modal-content modal-mobile-resume">
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-6" style="padding-left: 35px; padding-top: 15px;">
                                     <div class="row">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 col-6">
                                             <div class="cardIconsCon2">
-                                                                    <span style="padding: 5px;">
-                                                                        <img src="/resumeApp/resources/views/customTheme/images/video.png" alt="" width="25px">
-                                                                    </span>
+                                                <span style="padding: 5px;">
+                                                    <img src="/resumeApp/resources/views/customTheme/images/video.png" alt="" width="25px">
+                                                </span>
                                             </div>
                                         </div>
-                                        <div class="col-md-8 ">
+                                        <div class="col-md-8 col-6 ">
                                             <div class="modal-card-name">
                                                 {{$freelancer->firstName}}
                                                 {{$freelancer->lastName}}
@@ -621,7 +691,7 @@
                                         <div class="col-md-12">
                                             <div class="text-center">
                                                 <video width="100%" id="videoResume" height="auto" controls>
-                                                    <source src="{{$freelancer->userData->video_file}}">
+                                                    <source src="/{{$freelancer->userData->video_file}}">
                                                 </video>
                                             </div>
                                         </div>
@@ -630,7 +700,7 @@
                                     <div class="row card-audio-con" style="background-color: white;">
                                         <div class="col-md-12">
                                             <div class="text-center">
-                                                <iframe src="{{$freelancer->userData->video}}" frameborder="1" allow="encrypted-media" allowfullscreen width="100%" height="auto">
+                                                <iframe src="/{{$freelancer->userData->video}}" frameborder="1" allow="encrypted-media" allowfullscreen width="100%" height="auto">
 
                                                 </iframe>
                                             </div>

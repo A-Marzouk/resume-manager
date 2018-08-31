@@ -236,7 +236,8 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                      <? $i++ ;?>
+
+                                                                        <? $i++ ;?>
                                                                         <? endforeach;?>
                                                                     </div>
                                                                 </div>
@@ -502,6 +503,133 @@
                                                     {{-- end of un expand btns --}}
                                                 </div>
                                             <br>
+
+                                            {{-- modals --}}
+                                            {{-- audio modal--}}
+                                            <div class="modal fade" style="background-color:rgba(255, 255, 255, 0.95);" id="{{$freelancer->id}}_audio_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="row">
+                                                    <div class="col-md-12 text-center" style="padding-top: 20px;">
+                                                        <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo" width="250">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-dialog modal-lg" role="document" style="max-width: 400px;">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-md-6" style="padding-left: 35px; padding-top: 15px;">
+                                                                    <div class="row">
+                                                                        <div class="col-md-3">
+                                                                            <div class="cardIconsCon">
+                                                                <span style="border-right: 2px white solid; padding-right: 5px">
+                                                                    <img src="/resumeApp/resources/views/customTheme/images/transcript.png"
+                                                                         alt="" width="20px;">
+                                                                </span>
+                                                                                <span style="padding-left: 5px;">
+                                                                    <img src="/resumeApp/resources/views/customTheme/images/mic.png"
+                                                                         alt="" width="20px">
+                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-8 ">
+                                                                            <div class="modal-card-name">
+                                                                                {{$freelancer->firstName}}
+                                                                                {{$freelancer->lastName}}
+                                                                            </div>
+                                                                            <div class="modal-card-subName">
+                                                                                Audio
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <?
+                                                            $valid = true;
+                                                            $notValidText = 'NOT-VALID-LINK';
+                                                            if ($freelancer->userData->audio == $notValidText) {
+                                                                $valid = false;
+                                                            }
+                                                            $audioSrc = "";
+                                                            if(!empty(trim($freelancer->userData->audioFile))){
+                                                                $audioSrc = $freelancer->userData->audioFile;
+                                                            }else{
+                                                                if($valid){
+                                                                    $audioSrc = "https://drive.google.com/uc?export=download&id=".$freelancer->userData->audio."&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
+                                                                }else{
+                                                                    $audioSrc = "" ;
+                                                                }
+                                                            }
+                                                            ?>
+                                                            <div class="row card-audio-con">
+                                                                <div class="col-md-6 offset-md-3 text-center">
+                                                                    <audio controls>
+                                                                        <source src="{{$audioSrc}}" type="audio/ogg">
+                                                                        Your browser does not support the audio element.
+                                                                    </audio>
+                                                                </div>
+                                                                <hr>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- video modal--}}
+                                            <div class="modal fade" style="background-color:rgba(255, 255, 255, 0.95);" id="{{$freelancer->id}}_video_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="row">
+                                                    <div class="col-md-12 text-center" style="padding-top: 20px;">
+                                                        <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo" width="250">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-dialog modal-lg" role="document" style="max-width: 400px;">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-md-6" style="padding-left: 35px; padding-top: 15px;">
+                                                                    <div class="row">
+                                                                        <div class="col-md-2">
+                                                                            <div class="cardIconsCon2">
+                                                                    <span style="padding: 5px;">
+                                                                        <img src="/resumeApp/resources/views/customTheme/images/video.png" alt="" width="25px">
+                                                                    </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-8 ">
+                                                                            <div class="modal-card-name">
+                                                                                {{$freelancer->firstName}}
+                                                                                {{$freelancer->lastName}}
+                                                                            </div>
+                                                                            <div class="modal-card-subName">
+                                                                                Video
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @if($freelancer->userData->video_file !== null)
+                                                                    <div class="row card-audio-con"  style="background-color: white;">
+                                                                        <div class="col-md-12">
+                                                                            <div class="text-center">
+                                                                                <video width="100%" id="videoResume" height="auto" controls>
+                                                                                    <source src="{{$freelancer->userData->video_file}}">
+                                                                                </video>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                @elseif($freelancer->userData->video !== null)
+                                                                    <div class="row card-audio-con" style="background-color: white;">
+                                                                        <div class="col-md-12">
+                                                                            <div class="text-center">
+                                                                                <iframe src="{{$freelancer->userData->video}}" frameborder="1" allow="encrypted-media" allowfullscreen width="100%" height="auto">
+
+                                                                                </iframe>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         @endforeach
                                     </div>
                                 </div>
@@ -515,133 +643,6 @@
                             </td>
 
                         </tr>
-
-                        {{-- modals --}}
-                            {{-- audio modal--}}
-                            <div class="modal fade" style="background-color:rgba(255, 255, 255, 0.95);" id="{{$freelancer->id}}_audio_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="row">
-                                    <div class="col-md-12 text-center" style="padding-top: 20px;">
-                                        <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo" width="250">
-                                    </div>
-                                </div>
-                                <div class="modal-dialog modal-lg" role="document" style="max-width: 400px;">
-                                    <div class="modal-content">
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-md-6" style="padding-left: 35px; padding-top: 15px;">
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <div class="cardIconsCon">
-                                                                <span style="border-right: 2px white solid; padding-right: 5px">
-                                                                    <img src="/resumeApp/resources/views/customTheme/images/transcript.png"
-                                                                         alt="" width="20px;">
-                                                                </span>
-                                                                <span style="padding-left: 5px;">
-                                                                    <img src="/resumeApp/resources/views/customTheme/images/mic.png"
-                                                                         alt="" width="20px">
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-8 ">
-                                                            <div class="modal-card-name">
-                                                                {{$freelancer->firstName}}
-                                                                {{$freelancer->lastName}}
-                                                            </div>
-                                                            <div class="modal-card-subName">
-                                                                Audio
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <?
-                                            $valid = true;
-                                            $notValidText = 'NOT-VALID-LINK';
-                                            if ($freelancer->userData->audio == $notValidText) {
-                                                $valid = false;
-                                            }
-                                            $audioSrc = "";
-                                            if(!empty(trim($freelancer->userData->audioFile))){
-                                                $audioSrc = $freelancer->userData->audioFile;
-                                            }else{
-                                                if($valid){
-                                                    $audioSrc = "https://drive.google.com/uc?export=download&id=".$freelancer->userData->audio."&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
-                                                }else{
-                                                    $audioSrc = "" ;
-                                                }
-                                            }
-                                            ?>
-                                            <div class="row card-audio-con">
-                                                <div class="col-md-6 offset-md-3 text-center">
-                                                    <audio controls>
-                                                        <source src="{{$audioSrc}}" type="audio/ogg">
-                                                        Your browser does not support the audio element.
-                                                    </audio>
-                                                </div>
-                                                <hr>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- video modal--}}
-                            <div class="modal fade" style="background-color:rgba(255, 255, 255, 0.95);" id="{{$freelancer->id}}_video_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="row">
-                                    <div class="col-md-12 text-center" style="padding-top: 20px;">
-                                        <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo" width="250">
-                                    </div>
-                                </div>
-                                <div class="modal-dialog modal-lg" role="document" style="max-width: 400px;">
-                                    <div class="modal-content">
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-md-6" style="padding-left: 35px; padding-top: 15px;">
-                                                    <div class="row">
-                                                        <div class="col-md-2">
-                                                            <div class="cardIconsCon2">
-                                                                    <span style="padding: 5px;">
-                                                                        <img src="/resumeApp/resources/views/customTheme/images/video.png" alt="" width="25px">
-                                                                    </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-8 ">
-                                                            <div class="modal-card-name">
-                                                                {{$freelancer->firstName}}
-                                                                {{$freelancer->lastName}}
-                                                            </div>
-                                                            <div class="modal-card-subName">
-                                                                Video
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                @if($freelancer->userData->video_file !== null)
-                                                    <div class="row card-audio-con"  style="background-color: white;">
-                                                        <div class="col-md-12">
-                                                            <div class="text-center">
-                                                                <video width="100%" id="videoResume" height="auto" controls>
-                                                                    <source src="{{$freelancer->userData->video_file}}">
-                                                                </video>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @elseif($freelancer->userData->video !== null)
-                                                    <div class="row card-audio-con" style="background-color: white;">
-                                                        <div class="col-md-12">
-                                                            <div class="text-center">
-                                                                <iframe src="{{$freelancer->userData->video}}" frameborder="1" allow="encrypted-media" allowfullscreen width="100%" height="auto">
-
-                                                                </iframe>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                     @endforeach
 
                </tbody>

@@ -70,33 +70,23 @@
                 </div>
             </div>
             {{-- stripe goes here --}}
-            <form action="/stripe/payments/pay" method="POST" id="stripeForm{{$freelancer->id}}">
-                {{ csrf_field() }}
-                <?
-                $userRate = $freelancer->userData->salary ;
-                $hours =10 ;
-                $amountToPay = ( intval($userRate) +5 ) * $hours * 100 ;
-                ?>
-                <input type="hidden" value="{{$amountToPay}}" name="amountToPay">
-                <input type="hidden" value="{{$freelancer->userData->name}}" name="freelancerName">
-                <script
-                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                        data-key="pk_test_8Pd2lN3so4z5vBOP98MgNcms"
-                        data-amount="{{$amountToPay}}"
-                        data-name="Hire  {{$freelancer->userData->name}}"
-                        data-description="for 10 hours"
-                        data-image="/resumeApp/resources/views/customTheme/images/newResume/logo.png"
-                        data-locale="auto">
-                </script>
-                <script>
-                    document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
-                </script>
                 <div class="row text-center hireBtnArea">
                     <div class="buttonMain whiteBg col-md-10 col-8 offset-md-0 offset-2">
-                        <button class="hireBtn btn-block hire" type="submit">Hire Me</button>
+                        <button class="hireBtn btn-block hire openHoursOptions" id="hireMeBtn{{$freelancer->id}}">Hire Me</button>
                     </div>
                 </div>
-            </form>
+                <? $availableHoursCheckBox = explode(',', $freelancer->userData->availableHours);?>
+
+                <div class="row d-none" id="hoursOptions{{$freelancer->id}}">
+                    @foreach($availableHoursCheckBox as $hours)
+                        <?  $hours = str_replace('per week','',strtolower($hours));?>
+                        <div class="buttonMain whiteBg col-md-5 col-5" style="padding: 5px; margin: 0;">
+                            <a class="hireBtn btn-block hire" style="border: none;" target="_blank" href="/stripe/hire?freelancerID={{$freelancer->id}}&hours={{$hours}}">
+                                {{$hours}}
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
             {{-- stripe ends here--}}
         </div>
         <div class="col-lg-8 col-md-12">

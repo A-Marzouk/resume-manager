@@ -3,6 +3,18 @@ $(document).ready(function () {
     /////////////////////////   Freelancer form scripts ////////////////////////
         // overall scripts ( used in all sections )
 
+            // stripe :
+            $('.openHoursOptions').on('click',function () {
+                let hoursAreaID = this.id.replace('hireMeBtn','hoursOptions');
+                if($('#'+hoursAreaID).hasClass('d-none')){
+                    // fade in
+                    $('#'+hoursAreaID).fadeIn(900).removeClass('d-none');
+                }else{
+                    // fade out
+                    $('#'+hoursAreaID).fadeOut(900).addClass('d-none');
+                }
+            });
+
             // client page ( resume cards )
             $(".viewPortfolioLink").on('click',function () {
                 // check if education is opened ( if yes close it )

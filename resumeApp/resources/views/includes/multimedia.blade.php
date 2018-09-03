@@ -175,7 +175,7 @@
      <? else: ?>
 
          <div class="transcript">
-             Multimedia section is not available.
+             We will contact you regarding Audio/Video interviews if needed.
          </div>
 
      <? endif;?>

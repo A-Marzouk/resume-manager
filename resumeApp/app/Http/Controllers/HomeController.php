@@ -8,6 +8,7 @@ use App\UserData;
 use Dompdf\Exception;
 use Illuminate\Http\Request;
 use Stripe\Charge;
+use Stripe\Customer;
 use Stripe\Stripe;
 
 class HomeController extends Controller
@@ -52,26 +53,6 @@ class HomeController extends Controller
     }
 
     public function stripePayment(Request $request){
-        Stripe::setApiKey("sk_test_WlqUYgob2e2ALpZfJw5AfIaG");
-        $description = "Hire freelancer for 10 hours'";
-        if(isset($request->description)){
-            $description = $request->description ;
-        }
-        $amountToPay = intval($request->amountToPay);
-        $token = $request->stripeToken;
-        $charge = Charge::create([
-            'amount' => $amountToPay,
-            'currency' => 'usd',
-            'description' => $description,
-            'source' => $token,
-            'receipt_email' => 'AhmedMarzouk266@gmail.com',
-        ]);
-
-
-        // send emeail success of payment :
-        $data['email'] = $request->stripeEmail;
-        $data['freelancerName'] = $request->freelancerName;
-
         if(auth()->guard('client')->guest()){
             // client is not logged in.
             $data['clientName']= '123 Workforce Client';
@@ -80,6 +61,39 @@ class HomeController extends Controller
             $data['clientName'] = auth()->guard('client')->user()->firstName ;
             // thank him mail
         }
+
+        Stripe::setApiKey("sk_test_WlqUYgob2e2ALpZfJw5AfIaG");
+
+        $description = "Hire freelancer for 10 hours'";
+
+        if(isset($request->description)){
+            $description = $request->description ;
+        }
+
+        $amountToPay = intval($request->amountToPay);
+        $token = $request->stripeToken;
+
+        $customer = Customer::create(
+            [
+                "source" => $token,
+                "description" =>  $data['clientName']
+            ]
+        );
+
+        // Charge the Customer instead of the card
+         $charge = Charge::create([
+             'amount' => $amountToPay,
+             'currency' => 'usd',
+             'description' => $description,
+             "customer" => $customer->id,
+             'receipt_email' => 'AhmedMarzouk266@gmail.com',
+         ]);
+
+
+        // send emeail success of payment :
+        $data['email'] = $request->stripeEmail;
+        $data['freelancerName'] = $request->freelancerName;
+
 
         $notification = new NotificationsController;
         $notification->clientPaidEmail($data);

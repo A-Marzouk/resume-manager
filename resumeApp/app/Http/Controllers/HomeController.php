@@ -20,7 +20,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('getSearch','stripePayment','termsView','customPayment','welcomePage','ResumePage','stripeTest');
+        $this->middleware('auth')->except('showHirePage','getSearch','stripePayment','termsView','customPayment','welcomePage','ResumePage','stripeTest');
     }
 
     /**
@@ -124,5 +124,13 @@ class HomeController extends Controller
         }
 
         return view('public_search',compact('freelancers','search_name'));
+    }
+
+    public function showHirePage(){
+        $freelancer  = User::where('id',request()->freelancerID)->first();
+        $hours       = request()->hours;
+        $amountToPay = ( $freelancer->userData->salary + 5 ) * 100 * intval($hours);
+
+        return view('payment',compact('freelancer','hours','amountToPay'));
     }
 }

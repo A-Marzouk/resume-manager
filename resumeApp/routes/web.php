@@ -106,6 +106,8 @@ Route::get('/stripe/payments/pay',function(){
     return redirect()->back();
 });
 
+Route::get('/stripe/hire','HomeController@showHirePage');
+
 // work history
 Route::get('/freelancer/workshistory','WorksHistoryController@getWorks')->name('get.work');
 Route::post('/freelancer/addwork/','WorksHistoryController@addWork')->name('add.work');

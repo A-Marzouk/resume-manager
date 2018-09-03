@@ -1,6 +1,16 @@
 @extends('layouts.client-app')
 
 @section('content')
+
+    <!-- Success Messages  -->
+    <div style="padding-top: 20px;">
+        @if(session()->has('successMessage'))
+            <div class="alert alert-success" id="successMessage">
+                {{ session()->get('successMessage') }}
+            </div>
+        @endif
+    </div>
+
     <div class="container">
         @if(count($freelancers) >= 1)
         <div style="text-align: left; padding-bottom: 25px;">
@@ -82,11 +92,33 @@
                             </div>
                         </div>
                         {{-- stripe goes here --}}
-                        <div class="row text-center hireBtnArea">
-                            <div class="buttonMain whiteBg col-md-10 col-8 offset-md-0 offset-2">
-                                <button class="hireBtn btn-block hire">Hire Me</button>
+                        <form action="/stripe/payments/pay" method="POST" id="stripeForm{{$freelancer->id}}">
+                            {{ csrf_field() }}
+                            <?
+                            $userRate = $freelancer->userData->salary ;
+                            $hours =10 ;
+                            $amountToPay = ( intval($userRate) +5 ) * $hours * 100 ;
+                            ?>
+                            <input type="hidden" value="{{$amountToPay}}" name="amountToPay">
+                            <input type="hidden" value="{{$freelancer->userData->name}}" name="freelancerName">
+                            <script
+                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                    data-key="pk_test_8Pd2lN3so4z5vBOP98MgNcms"
+                                    data-amount="{{$amountToPay}}"
+                                    data-name="Hire  {{$freelancer->userData->name}}"
+                                    data-description="for 10 hours"
+                                    data-image="/resumeApp/resources/views/customTheme/images/newResume/logo.png"
+                                    data-locale="auto">
+                            </script>
+                            <script>
+                                document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+                            </script>
+                            <div class="row text-center hireBtnArea">
+                                <div class="buttonMain whiteBg col-md-10 col-8 offset-md-0 offset-2">
+                                    <button class="hireBtn btn-block hire" type="submit">Hire Me</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                         {{-- stripe ends here--}}
                     </div>
                     <div class="col-lg-8 col-md-12">
@@ -725,4 +757,11 @@
             </div>
         @endif
     </div>
+    <script>
+        let stripe_buttons = document.getElementsByClassName("stripe-button-el");
+        for (let i = 0; i < stripe_buttons.length; ++i) {
+            let item = stripe_buttons[i];
+            item.style.display = 'none';
+        }
+    </script>
 @endsection

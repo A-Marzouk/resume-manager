@@ -109,13 +109,13 @@
                 <div class="cardLabel" style="padding-bottom: 15px;">No.hours/week available:</div>
                 <div class="">
                     <div class="form-group">
-                        <? $workingHours = ['10 Hours per Week', '20 Hours per Week', '30 Hours per Week', '40 Hours per Week'];?>
+                        <? $workingHours = ['10 Hours per Week', '20 Hours per Week', '30 Hours per Week', '40 Hours per week'];?>
                         <? $k = 1 ?>
                         <? $availableHoursCheckBox = explode(',', $freelancer->userData->availableHours);?>
                         <div class="form-check">
                             @foreach($workingHours as $option)
                                 <label class="form-check-label col-md-2 checkBoxContainer checkBoxText"
-                                       <? if(!in_array($option, $availableHoursCheckBox)): ?> style="color: lightgray;" <?endif;?>>{{str_replace('per Week','',$option)}}
+                                       <? if(!in_array($option, $availableHoursCheckBox)): ?> style="color: lightgray;" <?endif;?>>{{str_replace('per week','',strtolower($option))}}
                                     <input class="form-check-input" id="hours{{$k}}" type="checkbox"
                                            name="availableHours[]" value="{{$option}}"
                                            <? if(in_array($option, $availableHoursCheckBox)): ?> checked

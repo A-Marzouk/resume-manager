@@ -2016,7 +2016,7 @@ body{
 .card-audio-con{
   background-color: #FCFCFC;
   box-shadow: 0 11px 16px -7px rgba(229,236,237,0.5);
-  padding-top: 25px;
+  padding-top: 40px;
   margin-top: 20px;
   padding-bottom: 25px;
 }
@@ -2143,6 +2143,12 @@ body{
     }
   }
 }
+
+.transcript{
+  padding: 25px 40px 15px 49px;
+  opacity: 0.75;	color: #637280;	font-family: Roboto;	font-size: 18px;	letter-spacing: 0.12px;	line-height: 21px;
+}
+
 .NoDecor{
   a{
     outline: none;

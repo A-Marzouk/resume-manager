@@ -3,6 +3,12 @@ $(document).ready(function () {
     /////////////////////////   Freelancer form scripts ////////////////////////
         // overall scripts ( used in all sections )
 
+
+
+            // tap to chat
+            $('.tap-to-chat').on('click',function () {
+                $('#liveChat').click();
+            });
             // animated text :
              $('.freelancerCard').one('mouseenter',function () {
                  let freelancerID = this.id.replace('card','');

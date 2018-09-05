@@ -17,6 +17,9 @@
                     <div class="jobTitle" id="animatedText{{$freelancer->id}}">
                         {{$freelancer->userData->jobTitle}}
                     </div>
+                    <div class="tap-to-chat NoDecor">
+                        <a href="javascript:void(0)" id="liveChat">TAP TO CHAT</a>
+                    </div>
                     <div id="welcomeText{{$freelancer->id}}" class="d-none">
                         Hi, I am {{$freelancer->firstName}}, I am a {{$freelancer->userData->jobTitle}}, How can I help you ?
                     </div>

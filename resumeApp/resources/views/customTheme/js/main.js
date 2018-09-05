@@ -3,6 +3,26 @@ $(document).ready(function () {
     /////////////////////////   Freelancer form scripts ////////////////////////
         // overall scripts ( used in all sections )
 
+            // animated text :
+             $('.freelancerCard').one('mouseenter',function () {
+                 let freelancerID = this.id.replace('card','');
+                 let text         = $('#welcomeText' + freelancerID).html().trim();
+                 let animateTextID  = 'animatedText' + freelancerID;
+                 // clear current text :
+                 $('#' + animateTextID).html('');
+                 let i     = 0;
+                 let txt   = text; /* The text */
+                 let speed = 70; /* The speed/duration of the effect in milliseconds */
+                 typeWriter();
+                 function typeWriter() {
+                     if (i < txt.length) {
+                         document.getElementById(animateTextID).innerHTML += txt.charAt(i);
+                         i++;
+                         setTimeout(typeWriter, speed);
+                     }
+                 }
+             });
+
             // stripe :
             $('.openHoursOptions').on('click',function () {
                 let hoursAreaID = this.id.replace('hireMeBtn','hoursOptions');

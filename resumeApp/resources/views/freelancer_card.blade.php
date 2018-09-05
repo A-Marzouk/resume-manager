@@ -14,8 +14,11 @@
                     <div class="nameCard">
                         {{$freelancer->firstName}} {{$freelancer->lastName}}
                     </div>
-                    <div class="jobTitle">
+                    <div class="jobTitle" id="animatedText{{$freelancer->id}}">
                         {{$freelancer->userData->jobTitle}}
+                    </div>
+                    <div id="welcomeText{{$freelancer->id}}" class="d-none">
+                        Hi, I am {{$freelancer->firstName}}, I am a {{$freelancer->userData->jobTitle}}, How can I help you ?
                     </div>
                 </div>
             </div>

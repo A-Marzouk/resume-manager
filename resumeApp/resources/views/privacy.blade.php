@@ -87,7 +87,7 @@
             ‘Data sharing’ below) or in the event that you leave our employment to provide an appropropriate
             reference in the event that you have nominated us as a referee.
             We may also store information provided by people who express an interest in working for us,
-            whether via a formal application or expressed informally.
+            whether via a formal application or expressed informally.<br/><br/>
 
 
             <b>Contractors to 123 Workforce</b><br/>
@@ -184,7 +184,7 @@
             Contact details
             <br/><br/><br/>
             If you have any comments, questions or concerns about how 123 Workforce handles personal data, or in relation
-            to your personal data held by 123 Workforce, please contact:<br/><br/>
+            to your personal data held by 123 Workforce, please contact:<br/>
             <a href="mailto:info@123Workforce.com">info@123Workforce.com</a> or write to us at Data Governance Officer, 123 Workforce, 326 Swords
             Road, Santry, Dublin 9<br/> <br/>
 

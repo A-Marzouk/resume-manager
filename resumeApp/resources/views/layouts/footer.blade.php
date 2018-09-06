@@ -7,6 +7,9 @@
                 <div class="skypeText" style="padding-top: 5px;">
                     <a href="{{route('terms')}}" target="_blank">
                         <span style="opacity: 1;">Terms & Conditions</span>
+                    </a><br/>
+                    <a href="{{route('privacy')}}" target="_blank">
+                        <span style="opacity: 1;">Privacy policy</span>
                     </a>
                 </div>
             </div>

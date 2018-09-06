@@ -6,7 +6,13 @@
         <div class="col-lg-5 col-md-12 freelancerCardLeft">
             <div class="row">
                 <div class="col-lg-4 col-6 imageContainer">
-                    <img src="{{$freelancer->userData->photo}}" alt="freelancer" class="freelancerImg"
+                    <?
+                        $photoSrc = $freelancer->userData->photo ;
+                        if($photoSrc[0] !== '/' && $photoSrc[0] !== 'h' ){
+                            $photoSrc = '/' . $photoSrc ;
+                        }
+                    ?>
+                    <img src="{{$photoSrc}}" alt="freelancer" class="freelancerImg"
                          width="100" height="100">
 
                 </div>

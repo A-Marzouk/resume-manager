@@ -20,7 +20,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('showHirePage','getSearch','stripePayment','termsView','customPayment','welcomePage','ResumePage','stripeTest');
+        $this->middleware('auth')->except('privacyView','showHirePage','getSearch','stripePayment','termsView','customPayment','welcomePage','ResumePage','stripeTest');
     }
 
     /**
@@ -108,6 +108,10 @@ class HomeController extends Controller
 
     public function termsView(){
         return view('terms');
+    }
+
+    public function privacyView(){
+        return view('privacy');
     }
 
     public function getSearch($search_id){

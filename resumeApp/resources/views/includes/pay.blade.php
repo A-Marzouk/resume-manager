@@ -8,19 +8,14 @@
     </div>
     <div class="row">
         <div class="form-group col-md-12">
-            <? $workingHours = ['10 Hours per Week','20 Hours per Week','30 Hours per Week','40 Hours per week'] ;?>
-            <label style="border-bottom:1px lightgray solid ; padding: 2px;" class="panelFormLabel">Current available hours <span style="font-size:small;">*</span> <span id="tickMarkavailableHours" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-            <? $k=1 ?>
-                <div class="form-check">
-                    @foreach($workingHours as $option)
-                    <label class="form-check-label col-md-3 checkBoxContainer checkBoxText">{{$option}}
-                        <input  style="@if($errors->has('availableHours')) border:1px solid red; @endif" class="form-check-input" id="hours{{$k}}" type="checkbox" name="availableHours[]" value="{{$option}}"
-                               <? if(in_array($option,$availableHoursCheckBox)): ?> checked <?endif;?> >
-                        <span class="checkmark"></span>
-                    </label>
-                        <? $k++; ?>
-                    @endforeach
-                </div>
+            <label style="border-bottom:1px lightgray solid ; padding: 2px;" class="panelFormLabel">Current available hours per week <span style="font-size:small;">*</span> <span id="tickMarkavailableHours" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span>
+            </label>
+
+            <select class="form-control col-md-4 hoursOptions" style="height: 50px;" name="availableHours" id="availableHours{{$currFreelancer->id}}">
+                @for($i=10; $i<=60; $i+=5)
+                    <option value="{{$i}}" @if($availableHours == $i) selected @endif>{{$i}}</option>
+                @endfor
+            </select>
         </div>  <!-- Hours availabel -->
     </div>
 
@@ -28,23 +23,23 @@
 
     <div class="row">
         <div class="form-group col-md-6 col-lg-4">
-            <label for="salary" class="panelFormLabel">Expected Salary per hour (USD / hour) <span style="font-size:small;">*</span> <span id="tickMarksalary" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label><br/>
-            <input type="text"  style="@if($errors->has('salary')) border:1px solid red; @endif" class="form-control panelFormInput d-inline-block" id="salary" name="salary" value="<? if(!empty($salary)){echo $salary;}else{echo '';}?>">
-
-            <? foreach($availableHoursCheckBox as $check):?>
-                <? $hours  = (int)filter_var($check, FILTER_SANITIZE_NUMBER_INT) ?? 1 ;
-                $salary = (int) $salary ;  ?>
-            <? endforeach;?>
-            <? for($i=1;$i<=4;$i++ ):?>
-            <p id="paidSalary{{$i}}" class="d-none panelFormLabel">At <span id="paidDays{{$i}}"></span> you will be paid <span id="totalPaid{{$i}}">{{$salary * $hours}}</span> usd </p>
-            <? endfor;?>
+            <label for="salary" class="panelFormLabel">Exp. Salary per hour (USD / hour) <span style="font-size:small;">*</span> <span id="tickMarksalary" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label><br/>
+            <input type="text"  style="@if($errors->has('salary')) border:1px solid red; @endif" class="form-control panelFormInput d-inline-block" id="salary{{$currFreelancer->id}}" name="salary" value="<? if(!empty($salary)){echo $salary;}else{echo '';}?>">
         </div>  <!-- Salary  -->
 
         <div class="form-group col-md-6 col-lg-4">
-            <label for="salary_month"  class="panelFormLabel">Expected salary for Full time work (USD / Monthly) <span style="font-size:small;">*</span> <span id="tickMarksalary_month" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label for="salary_month"  class="panelFormLabel">Exp. salary for Full time work (USD / Monthly) <span style="font-size:small;">*</span> <span id="tickMarksalary_month" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="text" class="form-control panelFormInput" placeholder="" id="salary_month" name="salary_month" value="{{$salary_month}}">
 
         </div> <!-- monthly payment -->
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panelFormLabel" id="weeklySalary{{$currFreelancer->id}}">
+                For {{$availableHours}} hours per week you will ba paid {{ $availableHours * $salary }} USD
+            </div>
+        </div>
     </div>
 
 

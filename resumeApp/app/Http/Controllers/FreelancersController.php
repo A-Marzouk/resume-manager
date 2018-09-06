@@ -63,7 +63,7 @@ class FreelancersController extends Controller
             'skillsCheckBox'=> explode(',',$currFreelancer->userData->design_skills_checkbox) ?? '' ,
             'charSkillsCheckBox'=> explode(',',$currFreelancer->userData->charSkills) ?? '' ,
             'PrimarySkillsCheckBox'=> explode(',',$currFreelancer->userData->primarySkills) ?? '' ,
-            'availableHoursCheckBox'=> explode(',',$currFreelancer->userData->availableHours) ?? '' ,
+            'availableHours'=> $currFreelancer->userData->availableHours ?? '' ,
             'works'=> explode(',',$currFreelancer->userData->works) ?? '' ,
             'terms'=> $currFreelancer->userData->terms ?? '' ,
             'username'=> auth()->user()->username,

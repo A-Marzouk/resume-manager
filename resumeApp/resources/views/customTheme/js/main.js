@@ -361,6 +361,19 @@ $(document).ready(function () {
                 getBehanceData(behanceUsername);
             });
 
+            // hours selection :
+
+            $('.hoursOptions').on('change',function () {
+                let freelancerID     = this.id.replace('availableHours','');
+                let weeklySalaryID   = 'weeklySalary'+freelancerID;
+                let weeklySalaryText = 'For ' + this.value + ' hours per week, you will be paid ' + this.value * $('#salary' + freelancerID).val() + ' USD';
+                $('#'+weeklySalaryID).fadeOut(1000);
+                $('#'+weeklySalaryID).html(weeklySalaryText);
+                setTimeout(function () {
+                    $('#'+weeklySalaryID).fadeIn(1000);
+                },1000);
+            });
+
 
 
     // 1- overview ( section one )
@@ -426,64 +439,6 @@ $(document).ready(function () {
                 }
             });
         // end calculator
-
-        // Salary and payment :
-            var salaryPerH = $('#salary');
-            salaryPerH.change(function () {
-                $('#hours1').change();
-                $('#hours2').change();
-                $('#hours3').change();
-                $('#hours4').change();
-            });
-
-            $('#hours1').on('change',function(){
-                var timeString = $(this).val();
-                var times = timeString.match(/\d+/)[0];
-                if( $('#hours1').is(':checked')){
-                    $('#paidSalary1').removeClass('d-none');
-                    $('#totalPaid1').html(parseInt(times) * parseInt(salaryPerH.val()));
-                    $('#paidDays1').html(timeString);
-                }else{
-                    $('#paidSalary1').addClass('d-none');
-                }
-            });
-            $('#hours2').on('change',function(){
-                var timeString = $(this).val();
-                var times = timeString.match(/\d+/)[0];
-                if( $('#hours2').is(':checked')){
-                    $('#paidSalary2').removeClass('d-none');
-                    $('#totalPaid2').html(parseInt(times) * parseInt(salaryPerH.val()));
-                    $('#paidDays2').html(timeString);
-                }else{
-                    $('#paidSalary2').addClass('d-none');
-                }
-            });
-            $('#hours3').on('change',function(){
-                var timeString = $(this).val();
-                var times = timeString.match(/\d+/)[0];
-                if( $('#hours3').is(':checked')){
-                    $('#paidSalary3').removeClass('d-none');
-                    $('#totalPaid3').html(parseInt(times) * parseInt(salaryPerH.val()));
-                    $('#paidDays3').html(timeString);
-                }else{
-                    $('#paidSalary3').addClass('d-none');
-                }
-            });
-            $('#hours4').on('change',function(){
-                var timeString = $(this).val();
-                var times = timeString.match(/\d+/)[0];
-                if( $('#hours4').is(':checked')){
-                    $('#paidSalary4').removeClass('d-none');
-                    $('#totalPaid4').html(parseInt(times) * parseInt(salaryPerH.val()));
-                    $('#paidDays4').html(timeString);
-                }else{
-                    $('#paidSalary4').addClass('d-none');
-                }
-            });
-
-            salaryPerH.change();
-        // end salary and payment
-
 
     // 3- Multimedia :
         // audio files :

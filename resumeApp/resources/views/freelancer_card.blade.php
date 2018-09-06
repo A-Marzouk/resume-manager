@@ -87,18 +87,6 @@
                         <button class="hireBtn btn-block hire openHoursOptions" id="hireMeBtn{{$freelancer->id}}">Hire Me</button>
                     </div>
                 </div>
-                <? $availableHoursCheckBox = explode(',', $freelancer->userData->availableHours);?>
-
-                <div class="row d-none" id="hoursOptions{{$freelancer->id}}">
-                    @foreach($availableHoursCheckBox as $hours)
-                        <?  $hours = str_replace('per week','',strtolower($hours));?>
-                        <div class="buttonMain whiteBg col-md-5 col-5" style="padding: 5px; margin: 0;">
-                            <a class="hireBtn btn-block hire" style="border: none;" target="_blank" href="/stripe/hire?freelancerID={{$freelancer->id}}&hours={{$hours}}">
-                                {{$hours}}
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
             {{-- stripe ends here--}}
         </div>
         <div class="col-lg-8 col-md-12">
@@ -110,24 +98,7 @@
             <div class="panelFormLabel" style="	color: #697786;">
                 <div class="cardLabel" style="padding-bottom: 15px;">No.hours/week available:</div>
                 <div class="">
-                    <div class="form-group">
-                        <? $workingHours = ['10 Hours per Week', '20 Hours per Week', '30 Hours per Week', '40 Hours per week'];?>
-                        <? $k = 1 ?>
-                        <? $availableHoursCheckBox = explode(',', $freelancer->userData->availableHours);?>
-                        <div class="form-check">
-                            @foreach($workingHours as $option)
-                                <label class="form-check-label col-md-2 checkBoxContainer checkBoxText"
-                                       <? if(!in_array($option, $availableHoursCheckBox)): ?> style="color: lightgray;" <?endif;?>>{{str_replace('per week','',strtolower($option))}}
-                                    <input class="form-check-input" id="hours{{$k}}" type="checkbox"
-                                           name="availableHours[]" value="{{$option}}"
-                                           <? if(in_array($option, $availableHoursCheckBox)): ?> checked
-                                           <?endif;?> disabled>
-                                    <span class="checkmark"></span>
-                                </label>
-                                <? $k++; ?>
-                            @endforeach
-                        </div>
-                    </div>  <!-- Hours availabel -->
+                    {{$freelancer->userData->availableHours}} Hours
                 </div>
             </div>
         </div>

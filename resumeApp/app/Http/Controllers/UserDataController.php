@@ -59,7 +59,7 @@ class UserDataController extends Controller
                    'jobTitle'=>'required|max:190',
                    'salary'=>'required|max:190',
                    'salary_month'=>'max:190',
-//                   'availableHours'=>'required',
+                   'availableHours'=>'required|max:190',
                    'city'=>'required|max:190',
                    'country'=>'required|max:190',
                    'email'=>'required|max:190',
@@ -114,9 +114,6 @@ class UserDataController extends Controller
                 }elseif ($key == 'social_apps'){
                     $social_appsCheckBoxes = implode(',',$value);
                     $userData->{$key} = $social_appsCheckBoxes ;
-                }elseif ($key == 'availableHours'){
-                    $availableHoursCheckBox = implode(',',$value);
-                    $userData->{$key} = $availableHoursCheckBox ;
                 }elseif(strpos($key, 'works') !== false){
                     // clear array
                     $worksArr = array_filter(explode(',',$works));

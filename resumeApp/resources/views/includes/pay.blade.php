@@ -37,7 +37,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panelFormLabel" id="weeklySalary{{$currFreelancer->id}}">
-                For {{$availableHours}} hours per week you will ba paid {{ $availableHours * $salary }} USD
+                For {{$availableHours}} hours per week you will ba paid {{ intval($availableHours) * intval($salary)}} USD
             </div>
         </div>
     </div>

@@ -1996,8 +1996,7 @@ body{
 
 .cardIconsCon{
   border-radius: 23.5px;
-  width: 90px;
-  padding: 8px 14px 8px 14px;
+  padding: 10px 14px 8px 14px;
   background-color: #00B0F3;
 }
 
@@ -2023,8 +2022,7 @@ body{
 
 .cardIconsCon2{
   border-radius: 23.5px;
-  width: 50px;
-  padding: 10px 9px 10px 8px;
+  padding: 10px 14px 8px 14px;
   background-color: #00B0F3;
 }
 
@@ -2042,7 +2040,18 @@ body{
 
 .freelancerCard{
   background-color: #FFFFFF;	box-shadow: 0 2px 4px 0 rgba(203,203,203,0.5);
-  padding:15px 0 0 0;
+  padding:0;
+
+  .resumeCardLeft{
+    border-right: 1px solid #E5ECED;
+    background-color: #FDFDFD;
+    .imageContainer{
+      padding-top: 17px;
+      @media only screen and (max-width: 769px) {
+
+      }
+    }
+  }
   .nameArea{
     text-align: left;
     @media only screen and (max-width: 769px) {
@@ -2058,7 +2067,6 @@ body{
     color: #30323D;	font-family: Roboto;	font-size: 24px;	font-weight: bold;	line-height: 35px;
   }
   .audioTransArea{
-    padding-left: 35px;
     @media only screen and (max-width: 769px) {
       padding-left: 24px;
       padding-top: 10px;
@@ -2126,12 +2134,6 @@ body{
     @media only screen and (max-width: 769px) {
       padding-bottom: 30px;
     }
-    .imageContainer{
-      padding-left: 0px;
-      @media only screen and (max-width: 769px) {
-        margin-left: -10px;
-      }
-    }
   }
 
   .freelancerCardRight{
@@ -2149,6 +2151,9 @@ body{
   opacity: 0.75;	color: #637280;	font-family: Roboto;	font-size: 18px;	letter-spacing: 0.12px;	line-height: 21px;
 }
 
+.audioText{
+  color: #FFFFFF;	font-family: Roboto;	font-size: 16px;	line-height: 19px;
+}
 .NoDecor{
   a{
     outline: none;

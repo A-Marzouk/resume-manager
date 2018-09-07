@@ -401,7 +401,7 @@ class UserDataController extends Controller
         $res = $client->request('POST', 'https://api.instagram.com/oauth/access_token',
             ['form_params' => [
                 'client_id' => 'f877808c985d4f43ad73ae517db95151',
-                'client_secret' => '066768fb9e6b4186b3a3c6eb40da33a8',
+                'client_secret' => '2f113fcf0bbc4a24ab30e1b5f90b5220',
                 'grant_type' => 'authorization_code',
                 'redirect_uri' => 'https://123workforce.com/freelancer/instagram',
                 'code' => $_GET['code'] ?? ''
@@ -425,7 +425,7 @@ class UserDataController extends Controller
             $project->save();
         }
 
-        return redirect()->back()->with('successMessage','Instagram data successfully imported');
+        return redirect('/freelancer#portfolio')->with('successMessage','Instagram data successfully imported');
 
     }
 

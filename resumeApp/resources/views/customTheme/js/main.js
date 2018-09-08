@@ -18,7 +18,7 @@ $(document).ready(function () {
                  $('#' + animateTextID).html('');
                  let i     = 0;
                  let txt   = text; /* The text */
-                 let speed = 70; /* The speed/duration of the effect in milliseconds */
+                 let speed = 50; /* The speed/duration of the effect in milliseconds */
                  typeWriter();
                  function typeWriter() {
                      if (i < txt.length) {
@@ -29,28 +29,7 @@ $(document).ready(function () {
                  }
              });
 
-            // stripe :
-            $('.openHoursOptions').on('click',function () {
-                let hoursAreaID = this.id.replace('hireMeBtn','hoursOptions');
-                if($('#'+hoursAreaID).hasClass('d-none')){
-                    // fade in
-                    $('#'+hoursAreaID).fadeIn(900).removeClass('d-none');
-                }else{
-                    // fade out
-                    $('#'+hoursAreaID).fadeOut(900).addClass('d-none');
-                }
-            });
-
             // client page ( resume cards )
-            $(".viewPortfolioLink").on('click',function () {
-                // check if education is opened ( if yes close it )
-                let educationArea = $('#area_'+this.id.replace('Portfolio','Education'));
-                if(!educationArea.hasClass('d-none')){
-                    educationArea.addClass('d-none');
-                }
-               $('#area_'+this.id).fadeIn(800).removeClass('d-none');
-            });
-
             $(".viewEducationLink").on('click',function () {
                 let portfolioArea = $('#area_'+this.id.replace('Education','Portfolio'));
                 if(!portfolioArea.hasClass('d-none')){
@@ -63,6 +42,47 @@ $(document).ready(function () {
                 $('#area_viewPortfolioBtn'+this.id.replace('minimize','')).fadeOut(1500);
                 $('#area_viewEducationBtn'+this.id.replace('minimize','')).fadeOut(1500);
             });
+
+            // hours plus minus :
+            $('.hoursPlus').on('click',function(){
+                let ID  = this.id.replace('hoursPlus','');
+                let currentHours = parseInt($('#numberOfHours' + ID ).html());
+                let newHours = currentHours + 5;
+                // set new hours :
+                if(newHours < 61){
+                    $('#numberOfHours' + ID ).fadeOut(150);
+                    setTimeout(function () {
+                        $('#numberOfHours' + ID ).html(newHours);
+                        $('#numberOfHours' + ID ).fadeIn(150);
+                    },100);
+                    // change href of the hire me button :
+                    let hireBtn = $('#hireMeBtn'+ ID);
+                    let href1 = hireBtn.attr('href');
+                    let href2 = href1.slice(0, -2) + newHours;
+                    hireBtn.attr('href',href2);
+                }
+
+            });
+
+            $('.hoursMinus').on('click',function(){
+                let ID  = this.id.replace('hoursMinus','');
+                let currentHours = parseInt($('#numberOfHours' + ID ).html());
+                let newHours = currentHours - 5;
+                // set new hours :
+                if(newHours > 9){
+                    $('#numberOfHours' + ID ).fadeOut(150);
+                    setTimeout(function () {
+                        $('#numberOfHours' + ID ).html(newHours);
+                        $('#numberOfHours' + ID ).fadeIn(150);
+                    },100);
+                    let hireBtn = $('#hireMeBtn'+ ID);
+                    let href1 = hireBtn.attr('href');
+                    let href2 = href1.slice(0, -2) + newHours;
+                    hireBtn.attr('href',href2);
+                }
+            });
+
+
 
             // client page : delete search
             $('.deleteSearch').click(

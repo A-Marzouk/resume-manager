@@ -512,13 +512,19 @@ body {
   border: 1px solid #F7F7F7;
   border-radius: 5px;
   background-color: #FFFFFF;
-  box-shadow: 0 11px 16px -7px #E5ECED; }
+  box-shadow: 0 11px 16px -7px #E5ECED;
+  height: 285px !important;
+  overflow: hidden; }
   @media only screen and (max-width: 600px) {
     .workCard {
       margin-left: 0px; } }
-  .workCard .workImg img {
-    width: 100%;
-    padding: 1%; }
+  .workCard .workImg {
+    height: 205px;
+    overflow: hidden;
+    border-bottom: 1px solid lightgray; }
+    .workCard .workImg img {
+      width: 100%;
+      padding: 1%; }
   .workCard .workTitle {
     color: #697786;
     font-family: Roboto;
@@ -1677,8 +1683,19 @@ body {
   .freelancerCard .resumeCardLeft {
     border-right: 1px solid #E5ECED;
     background-color: #FDFDFD; }
+    .freelancerCard .resumeCardLeft .cardRow {
+      text-align: center;
+      padding-top: 25px; }
     .freelancerCard .resumeCardLeft .imageContainer {
-      padding-top: 17px; }
+      height: 196px;
+      border-bottom: 1px solid #EBEDEF;
+      padding-top: 30px; }
+  .freelancerCard .resumeCardRight {
+    padding-top: 15px; }
+    .freelancerCard .resumeCardRight .nameRow {
+      height: 106px; }
+    .freelancerCard .resumeCardRight .portfolioRow {
+      height: 370px; }
   .freelancerCard .nameArea {
     text-align: left; }
     @media only screen and (max-width: 769px) {
@@ -1716,12 +1733,13 @@ body {
   .freelancerCard .skillsCard {
     color: #697786;
     font-family: Roboto;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 300;
     line-height: 24px;
-    padding-top: 16px; }
+    padding-top: 10px;
+    padding-left: 10px; }
   .freelancerCard .cardLabel {
-    color: #697786;
+    color: #4E75E8;
     font-family: Roboto;
     font-size: 16px;
     line-height: 19px;
@@ -1822,12 +1840,14 @@ body {
   box-shadow: black; }
 
 .tap-to-chat {
-  color: #00B0F3;
+  color: #4E75E8;
   font-family: Roboto;
   font-size: 12px;
   font-weight: bold;
   line-height: 11px;
   padding-left: 10px;
   padding-top: 6px; }
+  .tap-to-chat a {
+    color: #4E75E8; }
 
 /*# sourceMappingURL=main.css.map */

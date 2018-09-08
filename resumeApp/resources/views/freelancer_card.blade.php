@@ -3,7 +3,7 @@
 <div class="freelancerCard" id="card{{$freelancer->id}}">
     <div class="row">
         <div class="col-lg-2 resumeCardLeft text-center">
-            <div class="col-lg-12 imageContainer">
+            <div class="imageContainer">
                 <?
                 $photoSrc = $freelancer->userData->photo;
                 if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
@@ -11,12 +11,38 @@
                 }
                 ?>
                 <img src="{{$photoSrc}}" alt="freelancer" class="freelancerImg"
-                     width="100" height="100">
+                     width="120" height="120">
             </div>
+            <div class="row text-center">
+                <div class="col-12 nameCard" style="font-size: 18px;">
+                    ${{intval($freelancer->userData->salary) +5}}
+                    <div class="cardLabel" style="font-size: 15px;">Hourly rate</div>
+                </div>
+            </div>
+            <div class="row text-center cardRow">
+                <div class="col-12 nameCard" style="font-size: 18px;">
+                    {{intval($freelancer->userData->availableHours)}} hours
+                    <div class="cardLabel" style="font-size: 15px;">Weekly Availability</div>
+                </div>
+            </div>
+
+            <div class="row text-center cardRow">
+                <div class="col-12 nameCard">
+                    <div class="cardLabel" style="font-size: 14px;">Select hours</div>
+                </div>
+            </div>
+
+            <div class="row text-center cardRow">
+                <div class="buttonMain whiteBg col-md-12" style="padding: 0 0 25px 0; margin: 0;">
+                    <button class="hireBtn btn-block hire openHoursOptions" id="hireMeBtn{{$freelancer->id}}">Book Now
+                    </button>
+                </div>
+            </div>
+
         </div>
-        <div class="col-lg-10">
+        <div class="col-lg-10 resumeCardRight">
             {{-- photo and name + multimedia--}}
-            <div class="row">
+            <div class="row nameRow">
                 <div class="col-lg-4 col-md-12 freelancerCardLeft">
                     <div class="nameArea">
                         <div class="nameCard">
@@ -65,61 +91,240 @@
                 </div>
             </div>
             {{-- end of photo and multimedia --}}
-            <hr style="width: 90%;">
-            {{-- Pricing and skills --}}
-            <div class="row container">
-                <div class="col-lg-3 col-md-12">
-                    <div class="cardLabel">Pricing:</div>
-                    <div class="nameCard" style="padding-left: 0;">
-                        <div class="row">
-                            <div class="col-6 col-md-12">
-                                ${{intVal($freelancer->userData->salary) +5}}/hour
-                            </div>
-                            <div class="col-6 col-md-12">
-                                ${{$freelancer->userData->salary_month}}/month
-                            </div>
-                        </div>
-                    </div>
-                    {{-- stripe goes here --}}
-                    <div class="row text-center hireBtnArea">
-                        <div class="buttonMain whiteBg col-md-10 col-8 offset-md-0 offset-2">
-                            <button class="hireBtn btn-block hire openHoursOptions" id="hireMeBtn{{$freelancer->id}}">Hire Me
-                            </button>
-                        </div>
-                    </div>
-                    {{-- stripe ends here--}}
-                </div>
-                <div class="col-lg-8 col-md-12">
-                    <div class="cardLabel">Skills:</div>
-                    <div class="skillsCard">
-                        {{$freelancer->userData->design_skills_checkbox}}
-                    </div>
-                    <br/>
-                    <div class="panelFormLabel" style="	color: #697786;">
-                        <div class="cardLabel" style="padding-bottom: 15px;">No.hours/week available:</div>
-                        <div class="">
-                            {{$freelancer->userData->availableHours}} Hours
-                        </div>
+            <hr style="width: 97%;">
+
+            {{-- skills --}}
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="cardLabel">Skills:</span>
+                        <span class="skillsCard">
+                            <?
+                                $skills = $freelancer->userData->design_skills_checkbox ;
+                                $skillsArr = explode(',',$skills);
+                            ?>
+                            @foreach($skillsArr as $skill)
+                                    <img width="20px" src="/resumeApp/resources/assets/images/skills_icons/skill.png" alt="skill">
+                                    {{$skill}} &nbsp;&nbsp;
+                            @endforeach
+                        </span>
                     </div>
                 </div>
+            {{-- end of skills--}}
+
+            <hr style="width: 97%;">
+
+            {{-- Portfolio --}}
+            <div class="portfolioRow">
+
+                {{-- carousel controls --}}
+                <div class="row" style="width: 100%;">
+                    <div class="col-md-1 NoDecor text-center">
+                        <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="3" role="button" data-slide="prev" class="cardLabel_interviews noScroll"
+                           style="color:#697786;">
+                            <img src="/resumeApp/resources/views/customTheme/images/newResume/prev.png"
+                                 alt="prev" width="25px">
+                        </a>
+                    </div>
+                    <div class="col-md-10 text-center">
+                        <span class="cardLabel">Portfolio</span>
+                    </div>
+                    <div class="col-md-1 NoDecor text-center">
+                        <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="3" role="button" data-slide="next" class="cardLabel_interviews noScroll"
+                           style="color:#697786;">
+                            <img src="/resumeApp/resources/views/customTheme/images/newResume/next.png"
+                                 alt="next" width="25px">
+                        </a>
+                    </div>
+                </div>
+                {{--end of carousel controller--}}
+
+                <?
+                $workExamples = $freelancer->projects;
+                $i = 0;
+                $maxNumberOfWorks = 50;
+                $firstSlideWorks = [];
+                $secondSlideWorks = [];
+                $thirdSlideWorks = [];
+                ?>
+                @if($workExamples)
+                    <? foreach ($workExamples as $workExample):?>
+                    <? if ($i >= $maxNumberOfWorks) {
+                        break;
+                    }
+                    if (!$workExample->isActive) {
+                        continue;
+                    }
+
+                    if ($i < 2) {
+                        $firstSlideWorks[] = $workExample;
+                    } elseif ($i < 4) {
+                        $secondSlideWorks[] = $workExample;
+                    } elseif ($i < 6) {
+                        $thirdSlideWorks[] = $workExample;
+                    }
+                    ?>
+                    {{-- modal --}}
+                    <div class="modal fade" id="works{{$workExample->id}}Modal" tabindex="-1"
+                         role="dialog"
+                         aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document" style="">
+                            <div class="modal-content modal-mobile-resume" data-dismiss="modal"
+                                 aria-label="Close">
+                                <div class="modal-body" style="padding: 0;">
+                                    <div class="row">
+                                        <div class="col-md-9" style="padding: 0;">
+                                            <img src="/{{$workExample->mainImage}}" alt=""
+                                                 width="100%" height="auto">
+                                            <?
+                                            // more images
+                                            $moreImagesArr = explode(',', $workExample->images);
+                                            foreach($moreImagesArr as $image){
+                                            if(!empty(trim($image))){
+                                            ?>
+                                            <img src="{{$image}}" alt="" width="100%" height="auto">
+                                            <?}
+                                            }?>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group" style="padding-top: 25px;">
+                                                <label class="panelFormLabel"> Description
+                                                    <hr>
+                                                </label><br/>
+                                                {{$workExample->projectDesc}}
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="panelFormLabel"> Link
+                                                    <hr>
+                                                </label><br/>
+                                                <a href="{{$workExample->link}}">{{$workExample->link}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <? $i++;?>
+                    <? endforeach;?>
+                @endif
+
+                {{-- works section carousel --}}
+                <div id="carouselExampleControls" class="carousel slide d-none d-md-block" data-ride="carousel"
+                     data-interval="false">
+                    <div class="carousel-inner">
+                        @if(!empty($firstSlideWorks))
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    @foreach($firstSlideWorks as $workExample)
+                                        <div class="col-md-6">
+                                            <div class="workCard" style="margin-left: 0">
+                                                <div class="workImg">
+                                                    <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
+                                                       data-target="#works{{$workExample->id}}Modal">
+                                                        <img src="/{{$workExample->mainImage}}" alt="work img"
+                                                             width="260" >
+                                                    </a>
+                                                </div>
+                                                <div class="workTitle">
+                                                    <div class="row">
+                                                        <div class="col-md-9">
+                                                            {{$workExample->projectName}}
+                                                        </div>
+                                                        <a class="col-md-2" href="javascript:void(0)"
+                                                           data-toggle="modal"
+                                                           data-target="#works{{$workExample->id}}Modal"
+                                                           style="outline: none;">
+                                                            <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                                                 alt="view work">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+                        @if(!empty($secondSlideWorks))
+                            <div class="carousel-item">
+                                <div class="row">
+                                    @foreach($secondSlideWorks as $workExample)
+                                        <div class="col-md-6">
+                                            <div class="workCard" style="margin-left: 0">
+                                                <div class="workImg">
+                                                    <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
+                                                       data-target="#works{{$workExample->id}}Modal">
+                                                        <img src="/{{$workExample->mainImage}}" alt="work img"
+                                                             width="260" >
+                                                    </a>
+                                                </div>
+                                                <div class="workTitle">
+                                                    <div class="row">
+                                                        <div class="col-md-9">
+                                                            {{$workExample->projectName}}
+                                                        </div>
+                                                        <a class="col-md-2" href="javascript:void(0)"
+                                                           data-toggle="modal"
+                                                           data-target="#works{{$workExample->id}}Modal"
+                                                           style="outline: none;">
+                                                            <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                                                 alt="view work">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+                        @if(!empty($thirdSlideWorks))
+                            <div class="carousel-item row">
+                                <div class="row">
+                                    @foreach($thirdSlideWorks as $workExample)
+                                        <div class="col-md-6">
+                                            <div class="workCard" style="margin-left: 0">
+                                                <div class="workImg">
+                                                    <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
+                                                       data-target="#works{{$workExample->id}}Modal">
+                                                        <img src="/{{$workExample->mainImage}}" alt="work img"
+                                                             width="260" >
+                                                    </a>
+                                                </div>
+                                                <div class="workTitle">
+                                                    <div class="row">
+                                                        <div class="col-md-9">
+                                                            {{$workExample->projectName}}
+                                                        </div>
+                                                        <a class="col-md-2" href="javascript:void(0)"
+                                                           data-toggle="modal"
+                                                           data-target="#works{{$workExample->id}}Modal"
+                                                           style="outline: none;">
+                                                            <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                                                 alt="view work">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                {{-- end of works section --}}
+
             </div>
-            {{-- end of pricing and skills --}}
+
+
+            {{-- end of portfolio --}}
         </div>
     </div>
 
     {{-- expand btns--}}
     <div class="row" style="border-top:1px solid whitesmoke; ">
-        <div class="col-md-6 col-6 border-right NoDecor dropDownBtnRight" style="background-color: #FDFDFD;">
-            <a href="#viewEducationBtn{{$freelancer->id}}" id="viewPortfolioBtn{{$freelancer->id}}"
-               class="viewPortfolioLink">
-                <div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">
-                    <img src="/resumeApp/resources/views/customTheme/images/portfolio_NOT_active.png"
-                         alt="read more arrow" width="18px" id="portfolioBtnImg" class="d-none d-md-inline">
-                    <span class="dropDownBtnText">View Portfolio </span>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-6 col-6 dropDownBtnLeft NoDecor" style="background-color: #FDFDFD;">
+        <div class="col-md-12 col-12 dropDownBtnLeft NoDecor text-center" style="background-color: #FDFDFD;">
             <a href="#viewEducationBtn{{$freelancer->id}}" id="viewEducationBtn{{$freelancer->id}}"
                class="viewEducationLink">
                 <div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">
@@ -136,200 +341,8 @@
 {{-- resume expanded --}}
     {{-- portfolio --}}
     <div class="row resumeExpand d-none" id="area_viewPortfolioBtn{{$freelancer->id}}">
-        <div class="worksSection" style="margin-top: 0;">
-            <div class="firstPart" style="background: none; padding-top: 0;">
-                <?
-                $workExamples = $freelancer->projects;
-                $i = 0;
-                $maxNumberOfWorks = 50;
-                $firstSlideWorks = [];
-                $secondSlideWorks = [];
-                $thirdSlideWorks = [];
-                ?>
-                @if($workExamples)
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="row">
-                                <? foreach ($workExamples as $workExample):?>
-                                <? if ($i >= $maxNumberOfWorks) {
-                                    break;
-                                }
-                                if (!$workExample->isActive) {
-                                    continue;
-                                }
-
-                                if ($i < 4) {
-                                    $firstSlideWorks[] = $workExample;
-                                } elseif ($i < 8) {
-                                    $secondSlideWorks[] = $workExample;
-                                } elseif ($i < 12) {
-                                    $thirdSlideWorks[] = $workExample;
-                                }
-                                ?>
-                                {{-- modal --}}
-                                <div class="modal fade" id="works{{$workExample->id}}Modal" tabindex="-1"
-                                     role="dialog"
-                                     aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document" style="">
-                                        <div class="modal-content modal-mobile-resume" data-dismiss="modal"
-                                             aria-label="Close">
-                                            <div class="modal-body" style="padding: 0;">
-                                                <div class="row">
-                                                    <div class="col-md-9" style="padding: 0;">
-                                                        <img src="/{{$workExample->mainImage}}" alt=""
-                                                             width="100%" height="auto">
-                                                        <?
-                                                        // more images
-                                                        $moreImagesArr = explode(',', $workExample->images);
-                                                        foreach($moreImagesArr as $image){
-                                                        if(!empty(trim($image))){
-                                                        ?>
-                                                        <img src="{{$image}}" alt="" width="100%" height="auto">
-                                                        <?}
-                                                        }?>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group" style="padding-top: 25px;">
-                                                            <label class="panelFormLabel"> Description
-                                                                <hr>
-                                                            </label><br/>
-                                                            {{$workExample->projectDesc}}
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="panelFormLabel"> Link
-                                                                <hr>
-                                                            </label><br/>
-                                                            <a href="{{$workExample->link}}">{{$workExample->link}}</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <? $i++;?>
-                                <? endforeach;?>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-            </div>
-        </div>
-
-        {{-- works section carousel --}}
-
-        <div id="carouselExampleControls" class="carousel slide d-none d-md-block" data-ride="carousel"
-             data-interval="false">
-            <div class="carousel-inner">
-                @if(!empty($firstSlideWorks))
-                    <div class="carousel-item active">
-                        <div class="row">
-                            @foreach($firstSlideWorks as $workExample)
-                                <div class="col-md-6">
-                                    <div class="workCard" style="margin-left: 0">
-                                        <div class="workImg"
-                                             style="height: 290px; overflow: hidden; border-bottom:1px solid lightgray;">
-                                            <a href="javascript:void(0)" data-toggle="modal"
-                                               data-target="#works{{$workExample->id}}Modal">
-                                                <img src="/{{$workExample->mainImage}}" alt="work img"
-                                                     width="260">
-                                            </a>
-                                        </div>
-                                        <div class="workTitle">
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    {{$workExample->projectName}}
-                                                </div>
-                                                <a class="col-md-2" href="javascript:void(0)"
-                                                   data-toggle="modal"
-                                                   data-target="#works{{$workExample->id}}Modal"
-                                                   style="outline: none;">
-                                                    <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
-                                                         alt="view work">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
-                @if(!empty($secondSlideWorks))
-                    <div class="carousel-item">
-                        <div class="row">
-                            @foreach($secondSlideWorks as $workExample)
-                                <div class="col-md-6">
-                                    <div class="workCard" style="margin-left: 0">
-                                        <div class="workImg"
-                                             style="height: 290px; overflow: hidden; border-bottom:1px solid lightgray;">
-                                            <a href="javascript:void(0)" data-toggle="modal"
-                                               data-target="#works{{$workExample->id}}Modal">
-                                                <img src="/{{$workExample->mainImage}}" alt="work img"
-                                                     width="260">
-                                            </a>
-                                        </div>
-                                        <div class="workTitle">
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    {{$workExample->projectName}}
-                                                </div>
-                                                <a class="col-md-2" href="javascript:void(0)"
-                                                   data-toggle="modal"
-                                                   data-target="#works{{$workExample->id}}Modal"
-                                                   style="outline: none;">
-                                                    <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
-                                                         alt="view work">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
-                @if(!empty($thirdSlideWorks))
-                    <div class="carousel-item row">
-                        <div class="row">
-                            @foreach($thirdSlideWorks as $workExample)
-                                <div class="col-md-6">
-                                    <div class="workCard" style="margin-left: 0">
-                                        <div class="workImg"
-                                             style="height: 290px; overflow: hidden; border-bottom:1px solid lightgray;">
-                                            <a href="javascript:void(0)" data-toggle="modal"
-                                               data-target="#works{{$workExample->id}}Modal">
-                                                <img src="/{{$workExample->mainImage}}" alt="work img"
-                                                     width="260">
-                                            </a>
-                                        </div>
-                                        <div class="workTitle">
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    {{$workExample->projectName}}
-                                                </div>
-                                                <a class="col-md-2" href="javascript:void(0)"
-                                                   data-toggle="modal"
-                                                   data-target="#works{{$workExample->id}}Modal"
-                                                   style="outline: none;">
-                                                    <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
-                                                         alt="view work">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
-            </div>
-        </div>
-        {{-- end of works section --}}
 
         {{-- carousel on phone --}}
-
-
         <div id="carouselExampleControls_mobile" class="carousel slide d-md-none" data-ride="carousel"
              data-interval="false">
             <div class="carousel-inner">
@@ -339,12 +352,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="workCard" style="margin-left: 0">
-                                    <div class="workImg"
-                                         style="height: 190px; overflow: hidden; border-bottom:1px solid lightgray;">
-                                        <a href="javascript:void(0)" data-toggle="modal"
+                                    <div class="workImg">
+                                        <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
                                            data-target="#works{{$workExample->id}}Modal">
                                             <img src="/{{$workExample->mainImage}}" alt="work img"
-                                                 width="260">
+                                                 width="260" >
                                         </a>
                                     </div>
                                     <div class="workTitle">
@@ -370,6 +382,7 @@
             </div>
         </div>
         {{-- carousel end on phone--}}
+
         {{-- carousel on phone controller--}}
         <div class="row d-md-none" style="padding-top: 25px; padding-bottom: 25px; width: 100%;">
             <div class="col-md-6 col-6 NoDecor text-center">
@@ -388,25 +401,6 @@
             </div>
         </div>
         {{-- carousel on phone controller end --}}
-        {{-- carousel controls --}}
-
-        <div class="row d-none d-md-flex" style="padding-top: 25px; padding-bottom: 25px; width: 100%;">
-            <div class="col-md-6 NoDecor text-left">
-                <a href="#carouselExampleControls" role="button" data-slide="prev" class="cardLabel_interviews"
-                   style="color:#697786;">
-                    <img src="/resumeApp/resources/views/customTheme/images/newResume/prev.png"
-                         alt="prev" width="75px">
-                </a>
-            </div>
-            <div class="col-md-6 NoDecor text-right">
-                <a href="#carouselExampleControls" role="button" data-slide="next" class="cardLabel_interviews"
-                   style="color:#697786;">
-                    <img src="/resumeApp/resources/views/customTheme/images/newResume/next.png"
-                         alt="next" width="75px">
-                </a>
-            </div>
-        </div>
-        {{--end of carousel controller--}}
 
         {{-- vc btns row --}}
         <div class="row fullCV" style="width: 100%;">

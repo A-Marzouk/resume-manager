@@ -340,7 +340,7 @@
             <a href="#viewEducationBtn{{$freelancer->id}}" id="viewEducationBtn{{$freelancer->id}}"
                class="viewEducationLink">
                 <div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">
-                    <img src="/resumeApp/resources/views/customTheme/images/newResume/what_i_do.png"
+                    <img src="/resumeApp/resources/views/customTheme/images/newResume/work.png"
                          alt="read more arrow" width="18px" id="workBtnImg" class="d-none d-md-inline">
                     <span class="dropDownBtnText">Work/Education</span>
                 </div>

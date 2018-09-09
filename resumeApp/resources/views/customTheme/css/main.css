@@ -1773,7 +1773,8 @@ body {
       .freelancerCard .dropDownBtnRight {
         text-align: center; } }
   .freelancerCard .dropDownBtnText {
-    padding-left: 8px; }
+    padding-left: 8px;
+    color: #00B0F3; }
     @media only screen and (max-width: 769px) {
       .freelancerCard .dropDownBtnText {
         padding-left: 0; } }

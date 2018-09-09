@@ -15,6 +15,18 @@ $(document).ready(function () {
                 },650)
             });
 
+            $('.resumeCardRight').on('click','.openVideo',function(){
+               let ID = this.id.replace('_open_video','');
+               let videoContent = $('#videoContent'+ID).html();
+               // change the content :
+               let resumeRightArea  =  $('#resumeCardRight' + ID) ;
+                resumeRightArea.fadeOut(700);
+                setTimeout(function () {
+                    resumeRightArea.html(videoContent);
+                    resumeRightArea.fadeIn(700);
+                },650)
+            });
+
             $('.resumeCardRight').on('click','.audioDismiss',function () {
                 let ID = this.id.replace('audio_dismiss','');
                 let defaultContent     = $('#defaultContent'+ID).html();
@@ -27,7 +39,7 @@ $(document).ready(function () {
             });
 
             // tap to chat
-            $('.tap-to-chat').on('click',function () {
+            $('.resumeCardRight').on('click','.tap-to-chat',function () {
                 $('#liveChat').click();
             });
             // animated text :

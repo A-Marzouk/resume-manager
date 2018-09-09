@@ -585,7 +585,7 @@
         }
         $audioSrc = "";
         if (!empty(trim($freelancer->userData->audioFile))) {
-            $audioSrc = $freelancer->userData->audioFile;
+            $audioSrc = '/'.$freelancer->userData->audioFile;
         } else {
             if ($valid) {
                 $audioSrc = "https://drive.google.com/uc?export=download&id=" . $freelancer->userData->audio . "&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
@@ -640,28 +640,19 @@
     {{-- video div content--}}
 
     <div id="videoContent{{$freelancer->id}}" class="d-none">
-        <div class="row">
-            <div class="col-md-6" style="padding-left: 35px; padding-top: 15px;">
-                <div class="row">
-                    <div class="col-md-2 col-6">
-                        <div class="cardIconsCon2">
-                                        <span style="padding: 5px;">
-                                            <img src="/resumeApp/resources/views/customTheme/images/video.png" alt=""
-                                                 width="25px">
-                                        </span>
-                        </div>
-                    </div>
-                    <div class="col-md-8 col-6 ">
-                        <div class="modal-card-name">
-                            {{$freelancer->firstName}}
-                            {{$freelancer->lastName}}
-                        </div>
-                        <div class="modal-card-subName">
-                            Video
-                        </div>
-                    </div>
-                </div>
+        <div class="row" style="border-bottom: 1px solid whitesmoke; padding-bottom: 25px;">
+            <div class="col-lg-11 text-left" style="padding: 25px 0 0 20px;">
+                 <span>
+                    <img src="/resumeApp/resources/views/customTheme/images/video_blue.png"
+                         alt="" style="padding-right: 14px; width: 34px;">
+                    <span class="audioText" style="color: #4E75E8;">Video Interview</span>
+                </span>
             </div>
+            <div class="col-lg-1 text-center NoDecor" style="padding: 35px 0 0 0;">
+                <a href="javascript:void(0)" class="audioText audioDismiss" style="color: #4E75E8; font-size: large;" id="audio_dismiss{{$freelancer->id}}"> x </a>
+            </div>
+        </div>
+        <div class="row">
             @if($showVideo)
                 @if($freelancer->userData->video_file !== null)
                     <div class="row card-audio-con" style="background-color: white;">

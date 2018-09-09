@@ -2,8 +2,29 @@ $(document).ready(function () {
 
     /////////////////////////   Freelancer form scripts ////////////////////////
         // overall scripts ( used in all sections )
+             // change content
+            $('.resumeCardRight').on('click','.openAudio',function(){
+               let ID = this.id.replace('_open_audio','');
+               let audioContent = $('#audioContent'+ID).html();
+               // change the content :
+               let resumeRightArea  =  $('#resumeCardRight' + ID) ;
+                resumeRightArea.fadeOut(700);
+                setTimeout(function () {
+                    resumeRightArea.html(audioContent);
+                    resumeRightArea.fadeIn(700);
+                },650)
+            });
 
-
+            $('.resumeCardRight').on('click','.audioDismiss',function () {
+                let ID = this.id.replace('audio_dismiss','');
+                let defaultContent     = $('#defaultContent'+ID).html();
+                let resumeRightArea    = $('#resumeCardRight' + ID) ;
+                resumeRightArea.fadeOut(700);
+                setTimeout(function () {
+                    resumeRightArea.html(defaultContent);
+                    resumeRightArea.fadeIn(700);
+                },650)
+            });
 
             // tap to chat
             $('.tap-to-chat').on('click',function () {

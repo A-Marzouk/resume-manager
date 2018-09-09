@@ -52,7 +52,7 @@
             </div>
 
         </div>
-        <div class="col-lg-10 resumeCardRight">
+        <div class="col-lg-10 resumeCardRight" id="resumeCardRight{{$freelancer->id}}">
             {{-- photo and name + multimedia--}}
             <div class="row nameRow">
                 <div class="col-lg-4 col-md-12 freelancerCardLeft">
@@ -76,8 +76,7 @@
                     <div class="row interviewIcons">
                         <div class="col-6 audioTransArea text-center">
                             <div class="cardIconsCon NoDecor">
-                                <a href="javascript:void(0)" data-toggle="modal"
-                                   data-target="#{{$freelancer->id}}_audio_modal" style="outline: none;">
+                                <a href="javascript:void(0)" id="{{$freelancer->id}}_open_audio" style="outline: none;" class="openAudio">
                                     <span>
                                         <img src="/resumeApp/resources/views/customTheme/images/audio_resume_Card.png"
                                              alt="" style="padding-right: 14px; width: 34px;">
@@ -88,8 +87,7 @@
                         </div>
                         <div class="col-5 videoArea">
                             <div class="cardIconsCon2 NoDecor text-center">
-                                <a href="javascript:void(0)" data-toggle="modal"
-                                   data-target="#{{$freelancer->id}}_video_modal" style="outline: none;">
+                                <a href="javascript:void(0)" id="{{$freelancer->id}}_open_video" style="outline: none;" class="openVideo">
                                     <span>
                                         <img src="/resumeApp/resources/views/customTheme/images/video_resume_card.png"
                                              alt="" style="padding-right: 14px; width: 34px;">
@@ -332,6 +330,7 @@
 
             {{-- end of portfolio --}}
         </div>
+
     </div>
 
     {{-- expand btns--}}
@@ -575,163 +574,406 @@
     </div>
     <br>
 {{-- modals --}}
-    {{-- audio modal--}}
-    <div class="modal fade" style="background-color:rgba(255, 255, 255, 0.95);" id="{{$freelancer->id}}_audio_modal"
-         tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="row">
-            <div class="col-md-12 text-center" style="padding-top: 20px;">
-                <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo" width="250">
+    {{-- audio div content --}}
+
+    <div id="audioContent{{$freelancer->id}}" class="d-none">
+        <?
+        $valid = true;
+        $notValidText = 'NOT-VALID-LINK';
+        if ($freelancer->userData->audio == $notValidText) {
+            $valid = false;
+        }
+        $audioSrc = "";
+        if (!empty(trim($freelancer->userData->audioFile))) {
+            $audioSrc = $freelancer->userData->audioFile;
+        } else {
+            if ($valid) {
+                $audioSrc = "https://drive.google.com/uc?export=download&id=" . $freelancer->userData->audio . "&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
+            } else {
+                $audioSrc = "";
+            }
+        }
+        ?>
+        <div class="row" style="border-bottom: 1px solid whitesmoke; padding-bottom: 25px;">
+            <div class="col-lg-11 text-left" style="padding: 25px 0 0 20px;">
+                 <span>
+                    <img src="/resumeApp/resources/views/customTheme/images/audio_blue.png"
+                         alt="" style="padding-right: 14px; width: 34px;">
+                    <span class="audioText" style="color: #4E75E8;">Audio & Text Interview</span>
+                </span>
+            </div>
+            <div class="col-lg-1 text-center NoDecor" style="padding: 35px 0 0 0;">
+                <a href="javascript:void(0)" class="audioText audioDismiss" style="color: #4E75E8; font-size: large;" id="audio_dismiss{{$freelancer->id}}"> x </a>
             </div>
         </div>
-        <div class="modal-dialog modal-lg" role="document" style="max-width: 400px;">
-            <div class="modal-content modal-mobile-resume">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6" style="padding-top: 15px;">
-                            <div class="row">
-                                <div class="col-md-3 col-6">
-                                    <div class="cardIconsCon">
-                                                    <span style="border-right: 2px white solid; padding-right: 5px">
-                                                        <img src="/resumeApp/resources/views/customTheme/images/transcript.png"
-                                                             alt="" width="20px;">
-                                                    </span>
-                                        <span style="padding-left: 5px;">
-                                                        <img src="/resumeApp/resources/views/customTheme/images/mic.png"
-                                                             alt="" width="20px">
-                                                    </span>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 col-6">
-                                    <div class="modal-card-name">
-                                        {{$freelancer->firstName}}
-                                        {{$freelancer->lastName}}
-                                    </div>
-                                    <div class="modal-card-subName">
-                                        Audio & Transcript
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <?
-                    $valid = true;
-                    $notValidText = 'NOT-VALID-LINK';
-                    if ($freelancer->userData->audio == $notValidText) {
-                        $valid = false;
-                    }
-                    $audioSrc = "";
-                    if (!empty(trim($freelancer->userData->audioFile))) {
-                        $audioSrc = $freelancer->userData->audioFile;
-                    } else {
-                        if ($valid) {
-                            $audioSrc = "https://drive.google.com/uc?export=download&id=" . $freelancer->userData->audio . "&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
-                        } else {
-                            $audioSrc = "";
-                        }
-                    }
-                    ?>
-                    <div class="row card-audio-con">
-                        <div class="col-md-6 offset-md-3 text-center">
-                            <audio controls>
-                                <source src="{{$audioSrc}}" type="audio/ogg">
-                                Your browser does not support the audio element.
-                            </audio>
-                        </div>
+        <div class="row card-audio-con">
+            <div class="col-md-10 offset-md-1 text-center">
+                <audio controls style="width: 100%">
+                    <source src="{{$audioSrc}}" type="audio/ogg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
 
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <hr>
-                                <div class="transcript">
-                                    DEMO TEXT <br/><br/>
-                                    One Easy-To-Use Cloud hotel software offering next-gen capabilities needed by hotels to
-                                    simplify reservations, improve operating efficiency and maximize revenue. iOS + Android
-                                    + Web-based Project Overview: This system is built in detail with an easy-to-use
-                                    <br/><br/>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="transcript">
+                        DEMO TEXT <br/><br/>
+                        One Easy-To-Use Cloud hotel software offering next-gen capabilities needed by hotels to
+                        simplify reservations, improve operating efficiency and maximize revenue. iOS + Android
+                        + Web-based Project Overview: This system is built in detail with an easy-to-use
+                        <br/><br/>
 
-                                    nterface keeping in mind the variety of ages that will be using it. <br/><br/>We build
-                                    the web-based app using the same design principles used on old offline softwares. We
-                                    also implemented the latest trends, making it usable on touch-screen displays.
-                                    The app is also responsive and we made sure that anyone can view it on any screen size
-                                    without losing any type of information.
-                                    The mobile app offers the same options.<br/><br/>
-                                    Our user testings show that the same tasks were completed in the same time on mobile and
-                                    web.
-                                </div>
-                            </div>
-                        </div>
+                        nterface keeping in mind the variety of ages that will be using it. <br/><br/>We build
+                        the web-based app using the same design principles used on old offline softwares. We
+                        also implemented the latest trends, making it usable on touch-screen displays.
+                        The app is also responsive and we made sure that anyone can view it on any screen size
+                        without losing any type of information.
+                        The mobile app offers the same options.<br/><br/>
+                        Our user testings show that the same tasks were completed in the same time on mobile and
+                        web.
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    {{-- video modal--}}
-    <div class="modal fade" style="background-color:rgba(255, 255, 255, 0.95);" id="{{$freelancer->id}}_video_modal"
-         tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    {{-- video div content--}}
+
+    <div id="videoContent{{$freelancer->id}}" class="d-none">
         <div class="row">
-            <div class="col-md-12 text-center" style="padding-top: 20px;">
-                <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo" width="250">
-            </div>
-        </div>
-        <div class="modal-dialog modal-lg" role="document" style="max-width: 400px;">
-            <div class="modal-content modal-mobile-resume">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6" style="padding-left: 35px; padding-top: 15px;">
-                            <div class="row">
-                                <div class="col-md-2 col-6">
-                                    <div class="cardIconsCon2">
+            <div class="col-md-6" style="padding-left: 35px; padding-top: 15px;">
+                <div class="row">
+                    <div class="col-md-2 col-6">
+                        <div class="cardIconsCon2">
                                         <span style="padding: 5px;">
                                             <img src="/resumeApp/resources/views/customTheme/images/video.png" alt=""
                                                  width="25px">
                                         </span>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-6 ">
+                        <div class="modal-card-name">
+                            {{$freelancer->firstName}}
+                            {{$freelancer->lastName}}
+                        </div>
+                        <div class="modal-card-subName">
+                            Video
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if($showVideo)
+                @if($freelancer->userData->video_file !== null)
+                    <div class="row card-audio-con" style="background-color: white;">
+                        <div class="col-md-12">
+                            <div class="text-center">
+                                <video width="100%" id="videoResume" height="auto" controls>
+                                    <source src="/{{$freelancer->userData->video_file}}">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                @elseif($freelancer->userData->video !== null)
+                    <div class="row card-audio-con" style="background-color: white;">
+                        <div class="col-md-12">
+                            <div class="text-center">
+                                <iframe src="/{{$freelancer->userData->video}}" frameborder="1"
+                                        allow="encrypted-media" allowfullscreen width="100%" height="auto">
+
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @else
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="transcript">
+                            Video is coming soon..
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </div>
+
+
+
+    {{-- default content --}}
+
+    <div id="defaultContent{{$freelancer->id}}" class="d-none">
+        {{-- photo and name + multimedia--}}
+        <div class="row nameRow">
+            <div class="col-lg-4 col-md-12 freelancerCardLeft">
+                <div class="nameArea">
+                    <div class="nameCard">
+                        {{$freelancer->firstName}} {{$freelancer->lastName}}
+                    </div>
+                    <div class="jobTitle" id="animatedText{{$freelancer->id}}">
+                        {{$freelancer->userData->jobTitle}}
+                    </div>
+                    <div class="tap-to-chat NoDecor">
+                        <a href="javascript:void(0)" id="liveChat">TAP TO CHAT</a>
+                    </div>
+                    <div id="welcomeText{{$freelancer->id}}" class="d-none">
+                        Hi, I am {{$freelancer->firstName}}, I am a {{$freelancer->userData->jobTitle}}, How can I help
+                        you ?
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-12 freelancerCardRight">
+                <div class="row interviewIcons">
+                    <div class="col-6 audioTransArea text-center">
+                        <div class="cardIconsCon NoDecor">
+                            <a href="javascript:void(0)" id="{{$freelancer->id}}_open_audio" style="outline: none;" class="openAudio">
+                                    <span>
+                                        <img src="/resumeApp/resources/views/customTheme/images/audio_resume_Card.png"
+                                             alt="" style="padding-right: 14px; width: 34px;">
+                                        <span class="audioText">Audio & Text Interview</span>
+                                    </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-5 videoArea">
+                        <div class="cardIconsCon2 NoDecor text-center">
+                            <a href="javascript:void(0)" id="{{$freelancer->id}}_open_video" style="outline: none;" class="openVideo">
+                                    <span>
+                                        <img src="/resumeApp/resources/views/customTheme/images/video_resume_card.png"
+                                             alt="" style="padding-right: 14px; width: 34px;">
+                                        <span class="audioText">Video Interview</span>
+                                    </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {{-- end of photo and multimedia --}}
+        <hr style="width: 97%;">
+
+        {{-- skills --}}
+        <div class="row">
+            <div class="col-md-12">
+                <span class="cardLabel">Skills:</span>
+                <span class="skillsCard">
+                            <?
+                    $skills = $freelancer->userData->design_skills_checkbox ;
+                    $skillsArr = explode(',',$skills);
+                    ?>
+                    @foreach($skillsArr as $skill)
+                        <img width="20px" src="/resumeApp/resources/assets/images/skills_icons/skill.png" alt="skill">
+                        {{$skill}} &nbsp;&nbsp;
+                    @endforeach
+                        </span>
+            </div>
+        </div>
+        {{-- end of skills--}}
+
+        <hr style="width: 97%;">
+
+        {{-- Portfolio --}}
+        <div class="portfolioRow">
+
+            {{-- carousel controls --}}
+            <div class="row" style="width: 100%;">
+                <div class="col-md-1 NoDecor text-center">
+                    <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="3" role="button" data-slide="prev" class="cardLabel_interviews noScroll"
+                       style="color:#697786;">
+                        <img src="/resumeApp/resources/views/customTheme/images/newResume/prev.png"
+                             alt="prev" width="25px">
+                    </a>
+                </div>
+                <div class="col-md-10 text-center">
+                    <span class="cardLabel">Portfolio</span>
+                </div>
+                <div class="col-md-1 NoDecor text-center">
+                    <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="3" role="button" data-slide="next" class="cardLabel_interviews noScroll"
+                       style="color:#697786;">
+                        <img src="/resumeApp/resources/views/customTheme/images/newResume/next.png"
+                             alt="next" width="25px">
+                    </a>
+                </div>
+            </div>
+            {{--end of carousel controller--}}
+
+            <?
+            $workExamples = $freelancer->projects;
+            $i = 0;
+            $maxNumberOfWorks = 50;
+            $firstSlideWorks = [];
+            $secondSlideWorks = [];
+            $thirdSlideWorks = [];
+            ?>
+            @if($workExamples)
+                <? foreach ($workExamples as $workExample):?>
+                <? if ($i >= $maxNumberOfWorks) {
+                    break;
+                }
+                if (!$workExample->isActive) {
+                    continue;
+                }
+
+                if ($i < 2) {
+                    $firstSlideWorks[] = $workExample;
+                } elseif ($i < 4) {
+                    $secondSlideWorks[] = $workExample;
+                } elseif ($i < 6) {
+                    $thirdSlideWorks[] = $workExample;
+                }
+                ?>
+                {{-- modal --}}
+                <div class="modal fade" id="works{{$workExample->id}}Modal" tabindex="-1"
+                     role="dialog"
+                     aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document" style="">
+                        <div class="modal-content modal-mobile-resume" data-dismiss="modal"
+                             aria-label="Close">
+                            <div class="modal-body" style="padding: 0;">
+                                <div class="row">
+                                    <div class="col-md-9" style="padding: 0;">
+                                        <img src="/{{$workExample->mainImage}}" alt=""
+                                             width="100%" height="auto">
+                                        <?
+                                        // more images
+                                        $moreImagesArr = explode(',', $workExample->images);
+                                        foreach($moreImagesArr as $image){
+                                        if(!empty(trim($image))){
+                                        ?>
+                                        <img src="{{$image}}" alt="" width="100%" height="auto">
+                                        <?}
+                                        }?>
                                     </div>
-                                </div>
-                                <div class="col-md-8 col-6 ">
-                                    <div class="modal-card-name">
-                                        {{$freelancer->firstName}}
-                                        {{$freelancer->lastName}}
-                                    </div>
-                                    <div class="modal-card-subName">
-                                        Video
+                                    <div class="col-md-3">
+                                        <div class="form-group" style="padding-top: 25px;">
+                                            <label class="panelFormLabel"> Description
+                                                <hr>
+                                            </label><br/>
+                                            {{$workExample->projectDesc}}
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="panelFormLabel"> Link
+                                                <hr>
+                                            </label><br/>
+                                            <a href="{{$workExample->link}}">{{$workExample->link}}</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @if($showVideo)
-                            @if($freelancer->userData->video_file !== null)
-                                <div class="row card-audio-con" style="background-color: white;">
-                                    <div class="col-md-12">
-                                        <div class="text-center">
-                                            <video width="100%" id="videoResume" height="auto" controls>
-                                                <source src="/{{$freelancer->userData->video_file}}">
-                                            </video>
-                                        </div>
-                                    </div>
-                                </div>
-                            @elseif($freelancer->userData->video !== null)
-                                <div class="row card-audio-con" style="background-color: white;">
-                                    <div class="col-md-12">
-                                        <div class="text-center">
-                                            <iframe src="/{{$freelancer->userData->video}}" frameborder="1"
-                                                    allow="encrypted-media" allowfullscreen width="100%" height="auto">
-
-                                            </iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                        @else
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="transcript">
-                                        Video is coming soon..
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
                     </div>
                 </div>
+                <? $i++;?>
+                <? endforeach;?>
+            @endif
+
+            {{-- works section carousel --}}
+            <div id="carouselExampleControls" class="carousel slide d-none d-md-block" data-ride="carousel"
+                 data-interval="false">
+                <div class="carousel-inner">
+                    @if(!empty($firstSlideWorks))
+                        <div class="carousel-item active">
+                            <div class="row">
+                                @foreach($firstSlideWorks as $workExample)
+                                    <div class="col-md-6">
+                                        <div class="workCard" style="margin-left: 0">
+                                            <div class="workImg">
+                                                <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
+                                                   data-target="#works{{$workExample->id}}Modal">
+                                                    <img src="/{{$workExample->mainImage}}" alt="work img"
+                                                         width="260" >
+                                                </a>
+                                            </div>
+                                            <div class="workTitle">
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        {{$workExample->projectName}}
+                                                    </div>
+                                                    <a class="col-md-2" href="javascript:void(0)"
+                                                       data-toggle="modal"
+                                                       data-target="#works{{$workExample->id}}Modal"
+                                                       style="outline: none;">
+                                                        <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                                             alt="view work">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                    @if(!empty($secondSlideWorks))
+                        <div class="carousel-item">
+                            <div class="row">
+                                @foreach($secondSlideWorks as $workExample)
+                                    <div class="col-md-6">
+                                        <div class="workCard" style="margin-left: 0">
+                                            <div class="workImg">
+                                                <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
+                                                   data-target="#works{{$workExample->id}}Modal">
+                                                    <img src="/{{$workExample->mainImage}}" alt="work img"
+                                                         width="260" >
+                                                </a>
+                                            </div>
+                                            <div class="workTitle">
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        {{$workExample->projectName}}
+                                                    </div>
+                                                    <a class="col-md-2" href="javascript:void(0)"
+                                                       data-toggle="modal"
+                                                       data-target="#works{{$workExample->id}}Modal"
+                                                       style="outline: none;">
+                                                        <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                                             alt="view work">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                    @if(!empty($thirdSlideWorks))
+                        <div class="carousel-item row">
+                            <div class="row">
+                                @foreach($thirdSlideWorks as $workExample)
+                                    <div class="col-md-6">
+                                        <div class="workCard" style="margin-left: 0">
+                                            <div class="workImg">
+                                                <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
+                                                   data-target="#works{{$workExample->id}}Modal">
+                                                    <img src="/{{$workExample->mainImage}}" alt="work img"
+                                                         width="260" >
+                                                </a>
+                                            </div>
+                                            <div class="workTitle">
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        {{$workExample->projectName}}
+                                                    </div>
+                                                    <a class="col-md-2" href="javascript:void(0)"
+                                                       data-toggle="modal"
+                                                       data-target="#works{{$workExample->id}}Modal"
+                                                       style="outline: none;">
+                                                        <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                                             alt="view work">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                </div>
             </div>
+            {{-- end of works section --}}
+
         </div>
+        {{-- end of portfolio --}}
     </div>

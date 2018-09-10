@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Booking;
 use App\ClientSearch;
 use App\User;
 use App\UserData;
@@ -56,9 +57,11 @@ class HomeController extends Controller
         if(auth()->guard('client')->guest()){
             // client is not logged in.
             $data['clientName']= '123 Workforce Client';
+            $client_id = null ;
             // send email to invite him to register.
         }else{
             $data['clientName'] = auth()->guard('client')->user()->firstName ;
+            $client_id = auth()->guard('client')->user()->id;
             // thank him mail
         }
 
@@ -97,6 +100,15 @@ class HomeController extends Controller
 
         $notification = new NotificationsController;
         $notification->clientPaidEmail($data);
+
+
+        // create the booking : (user_id,client_id,amount_paid,hours)
+        $booking = new Booking;
+        $booking->amount_paid = $request->amountToPay;
+        $booking->hours       = $request->hours;
+        $booking->user_id     = $request->freelancerID;
+        $booking->client_id   = $client_id;
+        $booking->save();
 
         return redirect()->back()->with('successMessage','Thank you for your payment, we will get in touch with you soon!');
     }

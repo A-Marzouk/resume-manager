@@ -46,4 +46,9 @@ class Client extends Authenticatable
         return $this->hasMany(ClientSearch::class);
     }
 
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
+
 }

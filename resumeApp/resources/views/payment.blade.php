@@ -47,6 +47,7 @@
             </div>
         </form>
         <br/>
+        <hr>
         @include('freelancer_card')
         {{-- end of it --}}
     </div>

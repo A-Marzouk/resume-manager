@@ -26,6 +26,11 @@
                     </a>
                 </li>
                 <li class="col-md-12">
+                    <a class="btn btn-block btn-outline-primary" href="#bookings"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
+                        Bookings
+                    </a>
+                </li>
+                <li class="col-md-12">
                     <a class="btn btn-block btn-outline-primary" href="#chats"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
                         Chats
                     </a>
@@ -69,8 +74,7 @@
             @endif
 
 
-            <div class="tab-content">
-
+            <div class="tab-content" style="min-height: 400px;">
                 <div role="tabpanel" class="tab-pane" id="freelancers">
 
                     <br/>
@@ -432,7 +436,6 @@
                         </tbody>
                     </table>
                 </div>
-
                 <div role="tabpanel" class="tab-pane" id="search_links">
                     <br/>
                     <table class="table">
@@ -461,7 +464,42 @@
                         </tbody>
                     </table>
                 </div>
+                <div role="tabpanel" class="tab-pane" id="bookings">
+                    <br/>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Client email</th>
+                            <th scope="col">Amount paid</th>
+                            <th scope="col">Hours</th>
+                            <th scope="col">Booked Freelancer</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <? $i=1; ?>
+                        <? foreach ($bookings as $booking):?>
+                        <tr>
+                            <th scope="row">
+                            {{$i}}
+                            <?
+                                $clientName = 'Visitor' ;
+                                if($booking->client_id){
+                                    $clientName = App\Client::where('id',$booking->client_id)->first()->name ;
+                                }
+                                $freelancer     = App\User::where('id',$booking->user_id)->first();
+                            ?>
+                            <th scope="row">{{$clientName}}</th>
+                            <th scope="row">{{$booking->amount_paid/100}} USD</th>
+                            <th scope="row">{{$booking->hours}}</th>
+                            <th scope="row">{{$freelancer->firstName}} {{$freelancer->lastName}}</th>
+                        </tr>
 
+                        <? $i++;?>
+                        <? endforeach;?>
+                        </tbody>
+                    </table>
+                </div>
                 <div role="tabpanel" class="tab-pane active" id="home">
                     <div class="container">
                         <div class="row">
@@ -493,7 +531,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 

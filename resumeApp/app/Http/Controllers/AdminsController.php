@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Booking;
 use App\Client;
 use App\ClientSearch;
 use App\Conversation;
@@ -26,6 +27,7 @@ class AdminsController extends Controller
         $data['clients'] = Client::all();
         $data['conversations'] = Conversation::all();
         $data['searches'] = ClientSearch::all();
+        $data['bookings'] = Booking::all();
         $admin = User::where('username','admin_workforce')->first();
         Auth::loginUsingId($admin->id);
         return view('admin.usersList', compact('data'));

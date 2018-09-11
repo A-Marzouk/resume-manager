@@ -26,6 +26,8 @@
 
             <input type="hidden" value="{{$amountToPay}}" name="amountToPay">
             <input type="hidden" value="{{$freelancer->userData->name}}" name="freelancerName">
+            <input type="hidden" value="{{$freelancer->id}}" name="freelancerID">
+            <input type="hidden" value="{{$hours}}" name="hours">
             <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="pk_test_8Pd2lN3so4z5vBOP98MgNcms"
@@ -45,6 +47,7 @@
             </div>
         </form>
         <br/>
+        <hr>
         @include('freelancer_card')
         {{-- end of it --}}
     </div>

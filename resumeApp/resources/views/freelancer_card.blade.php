@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-2 col-md-3 col-12 resumeCardLeft text-center">
             <div class="row border-bottom-mobile" style="padding-bottom: 0;">
-                <div class="col-lg-12 col-5">
+                <div class="col-lg-12 col-md-12 col-6">
                     <div class="imageContainer">
                         <?
                         $photoSrc = $freelancer->userData->photo;
@@ -16,12 +16,12 @@
                              width="120" height="120">
                     </div>
                 </div>
-                <div class="col-7  d-xs-block d-md-none">
+                <div class="col-6 d-xs-block d-md-none">
                     <div class="nameArea" style="padding-top: 30px;">
                         <div class="nameCard">
                             {{$freelancer->firstName}} {{$freelancer->lastName}}
                         </div>
-                        <div class="jobTitle" id="animatedText{{$freelancer->id}}">
+                        <div class="jobTitle" id="animatedText{{$freelancer->id}}_mobile">
                             {{$freelancer->userData->jobTitle}}
                         </div>
                         <div class="tap-to-chat NoDecor">
@@ -36,12 +36,12 @@
 
             </div>
             <div class="row text-center border-bottom-mobile">
-                <div class="col-lg-12 col-6 nameCard" style="font-size: 18px;">
+                <div class="col-lg-12 col-md-12 col-6 nameCard" style="font-size: 18px;">
                     ${{intval($freelancer->userData->salary) +5}}
                     <div class="cardLabel" style="font-size: 15px;">Hourly rate</div>
                 </div>
 
-                <div class="col-lg-12 col-6 nameCard" style="font-size: 18px;">
+                <div class="col-lg-12 col-md-12  col-6 nameCard" style="font-size: 18px;">
                     {{intval($freelancer->userData->availableHours)}} hours
                     <div class="cardLabel" style="font-size: 15px;">Weekly Availability</div>
                 </div>
@@ -54,7 +54,7 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-10 offset-lg-1 hoursBtn col-8 offset-2 NoDecor" style="padding: 11px 0 0 0 ;">
+                <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1 hoursBtn col-8 offset-2 NoDecor" style="padding: 11px 0 0 0 ;">
                     <a href="javascript:void(0)" id="hoursMinus{{$freelancer->id}}" class="hoursMinus">
                         <img src="/resumeApp/resources/views/customTheme/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">
                     </a>
@@ -76,7 +76,7 @@
         <div class="col-lg-10 col-md-9 col-12 resumeCardRight" id="resumeCardRight{{$freelancer->id}}">
             {{-- photo and name + multimedia--}}
             <div class="row nameRow">
-                <div class="col-lg-4 col-md-12 freelancerCardLeft">
+                <div class="col-lg-4 col-md-4 freelancerCardLeft">
                     <div class="nameArea d-none d-md-block">
                         <div class="nameCard">
                             {{$freelancer->firstName}} {{$freelancer->lastName}}
@@ -93,7 +93,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8 col-md-12 freelancerCardRight">
+                <div class="col-lg-8 col-md-8 freelancerCardRight">
                     <div class="row interviewIcons">
                         <div class="col-12 col-lg-6 audioTransArea text-center">
                             <div class="cardIconsCon NoDecor">
@@ -629,7 +629,7 @@
     <div id="defaultContent{{$freelancer->id}}" class="d-none">
         {{-- photo and name + multimedia--}}
         <div class="row nameRow">
-            <div class="col-lg-4 col-md-12 freelancerCardLeft">
+            <div class="col-lg-4 col-md-4 freelancerCardLeft">
                 <div class="nameArea d-none d-md-block">
                     <div class="nameCard">
                         {{$freelancer->firstName}} {{$freelancer->lastName}}
@@ -646,7 +646,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8 col-md-12 freelancerCardRight">
+            <div class="col-lg-8 col-md-8 freelancerCardRight">
                 <div class="row interviewIcons">
                     <div class="col-12 col-lg-6 audioTransArea text-center">
                         <div class="cardIconsCon NoDecor">
@@ -900,6 +900,7 @@
             {{-- end of works section --}}
 
         </div>
+
 
         {{-- end of portfolio --}}
     </div>

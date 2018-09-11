@@ -1635,6 +1635,10 @@ body {
   border-radius: 23.5px;
   padding: 10px 14px 8px 14px;
   background-color: #00B0F3; }
+  @media only screen and (max-width: 900px) {
+    .cardIconsCon {
+      margin-bottom: 7px;
+      margin-top: -10px; } }
 
 .modal-card-name {
   color: #18A6DF;
@@ -1710,14 +1714,17 @@ body {
         padding-top: 0; } }
     .freelancerCard .resumeCardRight .nameRow {
       height: 106px; }
+      @media only screen and (max-width: 769px) {
+        .freelancerCard .resumeCardRight .nameRow {
+          height: 130px; } }
     .freelancerCard .resumeCardRight .portfolioRow {
       height: 370px; }
       @media only screen and (max-width: 769px) {
         .freelancerCard .resumeCardRight .portfolioRow {
           height: auto; } }
-  @media only screen and (max-width: 769px) {
+  @media only screen and (max-width: 767px) {
     .freelancerCard .skillsRow {
-      margin-top: 60px;
+      margin-top: 70px;
       padding-top: 15px;
       border-top: 1px solid #EBEDEF; } }
   .freelancerCard .nameArea {
@@ -1733,7 +1740,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     line-height: 35px; }
-    @media only screen and (max-width: 769px) {
+    @media only screen and (max-width: 766px) {
       .freelancerCard .nameCard {
         font-size: 20px;
         padding-left: 0; } }

@@ -598,7 +598,7 @@ body {
 
 .customFooter {
   padding-top: 6%;
-  padding-bottom: 100px; }
+  padding-bottom: 20px; }
   @media only screen and (max-width: 600px) {
     .customFooter {
       height: auto;
@@ -1700,12 +1700,26 @@ body {
       height: 196px;
       border-bottom: 1px solid #EBEDEF;
       padding-top: 30px; }
+      @media only screen and (max-width: 769px) {
+        .freelancerCard .resumeCardLeft .imageContainer {
+          border-bottom: 0; } }
   .freelancerCard .resumeCardRight {
     padding-top: 15px; }
+    @media only screen and (max-width: 769px) {
+      .freelancerCard .resumeCardRight {
+        padding-top: 0; } }
     .freelancerCard .resumeCardRight .nameRow {
       height: 106px; }
     .freelancerCard .resumeCardRight .portfolioRow {
       height: 370px; }
+      @media only screen and (max-width: 769px) {
+        .freelancerCard .resumeCardRight .portfolioRow {
+          height: auto; } }
+  @media only screen and (max-width: 769px) {
+    .freelancerCard .skillsRow {
+      margin-top: 60px;
+      padding-top: 15px;
+      border-top: 1px solid #EBEDEF; } }
   .freelancerCard .nameArea {
     text-align: left; }
     @media only screen and (max-width: 769px) {
@@ -1721,7 +1735,8 @@ body {
     line-height: 35px; }
     @media only screen and (max-width: 769px) {
       .freelancerCard .nameCard {
-        font-size: 20px; } }
+        font-size: 20px;
+        padding-left: 0; } }
   @media only screen and (max-width: 769px) {
     .freelancerCard .audioTransArea {
       padding-left: 24px;
@@ -1860,5 +1875,10 @@ body {
   padding-top: 6px; }
   .tap-to-chat a {
     color: #4E75E8; }
+
+@media only screen and (max-width: 760px) {
+  .border-bottom-mobile {
+    border-bottom: 1px solid #EBEDEF;
+    padding-bottom: 25px; } }
 
 /*# sourceMappingURL=main.css.map */

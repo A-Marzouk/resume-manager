@@ -721,7 +721,7 @@ body{
 
 .customFooter{
   padding-top: 6%;
-  padding-bottom: 100px;
+  padding-bottom: 20px;
   @media only screen and (max-width: 600px) {
     height: auto;
     text-align: center;
@@ -2070,18 +2070,31 @@ body{
       border-bottom: 1px solid #EBEDEF;
       padding-top: 30px;
       @media only screen and (max-width: 769px) {
-
+        border-bottom:0;
       }
     }
   }
 
   .resumeCardRight{
     padding-top: 15px;
+    @media only screen and (max-width: 769px) {
+      padding-top: 0;
+    }
     .nameRow{
       height: 106px;
     }
     .portfolioRow{
       height: 370px;
+      @media only screen and (max-width: 769px) {
+        height: auto;
+      }
+    }
+  }
+  .skillsRow{
+    @media only screen and (max-width: 769px) {
+      margin-top:60px;
+      padding-top: 15px;
+      border-top: 1px solid #EBEDEF;
     }
   }
   .nameArea{
@@ -2093,6 +2106,7 @@ body{
   .nameCard{
     @media only screen and (max-width: 769px) {
       font-size: 20px;
+      padding-left: 0;
     }
     padding-top: 16px;
     padding-left: 10px;
@@ -2240,5 +2254,12 @@ body{
   padding-left: 10px; padding-top:6px;
   a{
     color: #4E75E8;
+  }
+}
+
+.border-bottom-mobile{
+  @media only screen and (max-width: 760px) {
+   border-bottom: 1px solid #EBEDEF;
+    padding-bottom: 25px;
   }
 }

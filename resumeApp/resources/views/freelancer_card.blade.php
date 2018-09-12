@@ -8,8 +8,10 @@
                     <div class="imageContainer">
                         <?
                         $photoSrc = $freelancer->userData->photo;
-                        if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
-                            $photoSrc = '/' . $photoSrc;
+                        if(!empty($photoSrc)){
+                            if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
+                                $photoSrc = '/' . $photoSrc;
+                            }
                         }
                         ?>
                         <img src="{{$photoSrc}}" alt="freelancer" class="freelancerImg"

@@ -122,11 +122,11 @@
 
                                                         <div class="row">
                                                             <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1 hoursBtn col-8 offset-2 NoDecor" style="padding: 11px 0 0 0 ;">
-                                                                <a href="javascript:void(0)" id="hoursMinus{{$freelancer->id}}" class="hoursMinus">
+                                                                <a href="javascript:void(0)" id="hoursMinus{{$value['id']}}{{$freelancer->id}}" class="hoursMinus">
                                                                     <img src="/resumeApp/resources/views/customTheme/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">
                                                                 </a>
-                                                                <span id="numberOfHours{{$freelancer->id}}">10</span> hours
-                                                                <a href="javscript:void(0)" id="hoursPlus{{$freelancer->id}}" class="hoursPlus">
+                                                                <span id="numberOfHours{{$value['id']}}{{$freelancer->id}}">10</span> hours
+                                                                <a href="javscript:void(0)" id="hoursPlus{{$value['id']}}{{$freelancer->id}}" class="hoursPlus">
                                                                     <img src="/resumeApp/resources/views/customTheme/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus">
                                                                 </a>
                                                             </div>
@@ -134,7 +134,7 @@
 
                                                         <div class="row text-center cardRow">
                                                             <div class="buttonMain whiteBg col-lg-12" style="padding: 0 0 25px 0; margin: 0;">
-                                                                <a class="hireBtn btn-block hire" href="/stripe/hire?freelancerID={{$freelancer->id}}&hours=10" id="hireMeBtn{{$freelancer->id}}">Book Now
+                                                                <a class="hireBtn btn-block hire" href="/stripe/hire?freelancerID={{$freelancer->id}}&hours=10" id="hireMeBtn{{$value['id']}}{{$freelancer->id}}">Book Now
                                                                 </a>
                                                             </div>
                                                         </div>

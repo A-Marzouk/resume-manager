@@ -237,7 +237,7 @@
                                                             {{--end of carousel controller--}}
 
                                                             <?
-                                                            $workExamples = $freelancer->projects;
+                                                            $workExamples = \App\Project::where('user_id',$freelancer->id)->orderBy('order','ASC')->get();
                                                             $i = 0;
                                                             $maxNumberOfWorks = 50;
                                                             $firstSlideWorks = [];
@@ -790,7 +790,7 @@
                                                     {{--end of carousel controller--}}
 
                                                     <?
-                                                    $workExamples = $freelancer->projects;
+                                                    $workExamples =\App\Project::where('user_id',$freelancer->id)->orderBy('order','ASC')->get();
                                                     $i = 0;
                                                     $maxNumberOfWorks = 50;
                                                     $firstSlideWorks = [];

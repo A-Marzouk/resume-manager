@@ -152,7 +152,7 @@
                 {{-- carousel controls --}}
                 <div class="row" style="width: 100%;">
                     <div class="col-2 NoDecor text-center">
-                        <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="3" role="button" data-slide="prev" class="cardLabel_interviews noScroll"
+                        <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="4" role="button" data-slide="prev" class="cardLabel_interviews noScroll"
                            style="color:#697786;">
                             <img src="/resumeApp/resources/views/customTheme/images/newResume/prev.png"
                                  alt="prev" width="25px">
@@ -162,7 +162,7 @@
                         <span class="cardLabel">Portfolio</span>
                     </div>
                     <div class="col-2 NoDecor text-center">
-                        <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="3" role="button" data-slide="next" class="cardLabel_interviews noScroll"
+                        <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="4" role="button" data-slide="next" class="cardLabel_interviews noScroll"
                            style="color:#697786;">
                             <img src="/resumeApp/resources/views/customTheme/images/newResume/next.png"
                                  alt="next" width="25px">
@@ -172,12 +172,13 @@
                 {{--end of carousel controller--}}
 
                 <?
-                $workExamples = $freelancer->projects;
+                $workExamples =\App\Project::where('user_id',$freelancer->id)->orderBy('order','ASC')->get();
                 $i = 0;
                 $maxNumberOfWorks = 50;
                 $firstSlideWorks = [];
                 $secondSlideWorks = [];
                 $thirdSlideWorks = [];
+                $fourthSlideWorks = [];
                 ?>
                 @if($workExamples)
                     <? foreach ($workExamples as $workExample):?>
@@ -194,6 +195,8 @@
                         $secondSlideWorks[] = $workExample;
                     } elseif ($i < 6) {
                         $thirdSlideWorks[] = $workExample;
+                    } elseif ($i < 8) {
+                        $fourthSlideWorks[] = $workExample;
                     }
                     ?>
                     {{-- modal --}}
@@ -344,6 +347,39 @@
                                 </div>
                             </div>
                         @endif
+                        @if(!empty($fourthSlideWorks))
+                                <div class="carousel-item row">
+                                    <div class="row">
+                                        @foreach($fourthSlideWorks as $workExample)
+                                            <div class="col-md-6">
+                                                <div class="workCard" style="margin-left: 0">
+                                                    <div class="workImg">
+                                                        <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
+                                                           data-target="#works{{$workExample->id}}Modal">
+                                                            <img src="/{{$workExample->mainImage}}" alt="work img"
+                                                                 width="260" >
+                                                        </a>
+                                                    </div>
+                                                    <div class="workTitle">
+                                                        <div class="row">
+                                                            <div class="col-md-9">
+                                                                {{$workExample->projectName}}
+                                                            </div>
+                                                            <a class="col-md-2" href="javascript:void(0)"
+                                                               data-toggle="modal"
+                                                               data-target="#works{{$workExample->id}}Modal"
+                                                               style="outline: none;">
+                                                                <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                                                     alt="view work">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
                     </div>
                 </div>
                 {{-- end of works section --}}
@@ -705,7 +741,7 @@
             {{-- carousel controls --}}
             <div class="row" style="width: 100%;">
                 <div class="col-2 NoDecor text-center">
-                    <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="3" role="button" data-slide="prev" class="cardLabel_interviews noScroll"
+                    <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="4" role="button" data-slide="prev" class="cardLabel_interviews noScroll"
                        style="color:#697786;">
                         <img src="/resumeApp/resources/views/customTheme/images/newResume/prev.png"
                              alt="prev" width="25px">
@@ -715,7 +751,7 @@
                     <span class="cardLabel">Portfolio</span>
                 </div>
                 <div class="col-2 NoDecor text-center">
-                    <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="3" role="button" data-slide="next" class="cardLabel_interviews noScroll"
+                    <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="4" role="button" data-slide="next" class="cardLabel_interviews noScroll"
                        style="color:#697786;">
                         <img src="/resumeApp/resources/views/customTheme/images/newResume/next.png"
                              alt="next" width="25px">
@@ -725,12 +761,13 @@
             {{--end of carousel controller--}}
 
             <?
-            $workExamples = $freelancer->projects;
+            $workExamples = \App\Project::where('user_id',$freelancer->id)->orderBy('order','DESC')->get();
             $i = 0;
             $maxNumberOfWorks = 50;
             $firstSlideWorks = [];
             $secondSlideWorks = [];
             $thirdSlideWorks = [];
+            $fourthSlideWorks = [];
             ?>
             @if($workExamples)
                 <? foreach ($workExamples as $workExample):?>
@@ -747,6 +784,9 @@
                     $secondSlideWorks[] = $workExample;
                 } elseif ($i < 6) {
                     $thirdSlideWorks[] = $workExample;
+                }
+                elseif ($i < 8) {
+                    $fourthSlideWorks[] = $workExample;
                 }
                 ?>
                 {{-- modal --}}
@@ -868,6 +908,39 @@
                         <div class="carousel-item row">
                             <div class="row">
                                 @foreach($thirdSlideWorks as $workExample)
+                                    <div class="col-md-6">
+                                        <div class="workCard" style="margin-left: 0">
+                                            <div class="workImg">
+                                                <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
+                                                   data-target="#works{{$workExample->id}}Modal">
+                                                    <img src="/{{$workExample->mainImage}}" alt="work img"
+                                                         width="260" >
+                                                </a>
+                                            </div>
+                                            <div class="workTitle">
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        {{$workExample->projectName}}
+                                                    </div>
+                                                    <a class="col-md-2" href="javascript:void(0)"
+                                                       data-toggle="modal"
+                                                       data-target="#works{{$workExample->id}}Modal"
+                                                       style="outline: none;">
+                                                        <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                                             alt="view work">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                    @if(!empty($fourthSlideWorks))
+                        <div class="carousel-item row">
+                            <div class="row">
+                                @foreach($fourthSlideWorks as $workExample)
                                     <div class="col-md-6">
                                         <div class="workCard" style="margin-left: 0">
                                             <div class="workImg">

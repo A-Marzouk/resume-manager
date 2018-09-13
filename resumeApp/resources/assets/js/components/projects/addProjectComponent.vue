@@ -35,8 +35,16 @@
                                         <div class="form-group col-md-12">
                                             <label for="projectDesc" class="panelFormLabel">Description :</label>
                                             <textarea class="form-control" rows="3" id="projectDesc" name="projectDesc" v-model="toBeEditedProject.projectDesc">
-                                    </textarea>
+                                            </textarea>
                                         </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="order" class="panelFormLabel">Choose project order
+                                            </label>
+                                            <select class="custom-select" style="@if($errors->has('jobTitle')) border:1px solid red; @endif padding-top: 12px !important; padding-bottom: 12px !important; height: auto!important;" id="order" name="order"  v-model="toBeEditedProject.order">
+                                                <option :value="index" v-for="index in 8" :key="index" :selected="index === toBeEditedProject.order">{{index}}</option>
+                                            </select>
+                                        </div>
+
                                         <div class="form-group col-md-12">
                                             <div class="custom-file" style="padding-top: 5px;">
                                                 <input type="file" id="mainImage" ref="file" class="custom-file-input panelFormInput" name="mainImage" @change="handleFile" accept="image/*">
@@ -108,6 +116,7 @@
                 this.form_data.append('link',this.toBeEditedProject.link||'');
                 this.form_data.append('projectDesc',this.toBeEditedProject.projectDesc||'');
                 this.form_data.append('isActive',this.toBeEditedProject.isActive||'');
+                this.form_data.append('order',this.toBeEditedProject.order||'');
 
                 if(this.canAddImage){
                     let mainImage = this.$refs.file.files[0];

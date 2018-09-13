@@ -15,7 +15,7 @@ class Project extends Model
 {
     protected $table = 'projects';
     protected $fillable = [
-        'projectName','isActive','link','projectDesc','images','mainImage'
+        'projectName','isActive','link','projectDesc','images','mainImage','order'
     ];
 
 

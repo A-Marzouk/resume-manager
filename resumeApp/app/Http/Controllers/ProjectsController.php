@@ -26,6 +26,7 @@ class ProjectsController extends Controller
             'projectName' => 'max:190',
             'projectDesc' => 'max:1500',
             'link' => 'max:190',
+            'order' => 'max:190',
             'isActive' => 'max:190',
         ]);
 
@@ -43,6 +44,7 @@ class ProjectsController extends Controller
         $project->projectDesc = $request->projectDesc;
         $project->link = $request->link;
         $project->isActive = $request->isActive;
+        $project->order = $request->order;
         if(isset($request->mainImage)){
             $handler = new UserDataController;
             $path  = $handler->uploadProjectPhoto('','mainImage','');

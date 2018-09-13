@@ -54961,7 +54961,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'projectDesc': '',
                 'images': [],
                 'imagesFiles': [],
-                'mainImage': ''
+                'mainImage': '',
+                'order': 1
             }
         };
     },
@@ -55040,7 +55041,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'projectDesc': '',
                 'images': [],
                 'imagesFiles': [],
-                'mainImage': ''
+                'mainImage': '',
+                'order': 1
             };
         }
     },
@@ -55468,6 +55470,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedProject'],
@@ -55489,6 +55499,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.form_data.append('link', this.toBeEditedProject.link || '');
             this.form_data.append('projectDesc', this.toBeEditedProject.projectDesc || '');
             this.form_data.append('isActive', this.toBeEditedProject.isActive || '');
+            this.form_data.append('order', this.toBeEditedProject.order || '');
 
             if (this.canAddImage) {
                 var mainImage = this.$refs.file.files[0];
@@ -55819,6 +55830,80 @@ var render = function() {
                                   }
                                 }
                               })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "form-group col-md-12" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "panelFormLabel",
+                                  attrs: { for: "order" }
+                                },
+                                [
+                                  _vm._v(
+                                    "Choose project order\n                                        "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.toBeEditedProject.order,
+                                      expression: "toBeEditedProject.order"
+                                    }
+                                  ],
+                                  staticClass: "custom-select",
+                                  staticStyle: {
+                                    "@if($errors->has('jobTitle')) border":
+                                      "1px solid red",
+                                    "@endif padding-top": "12px !important",
+                                    "padding-bottom": "12px !important",
+                                    height: "auto!important"
+                                  },
+                                  attrs: { id: "order", name: "order" },
+                                  on: {
+                                    change: function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        _vm.toBeEditedProject,
+                                        "order",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    }
+                                  }
+                                },
+                                _vm._l(8, function(index) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: index,
+                                      domProps: {
+                                        value: index,
+                                        selected:
+                                          index === _vm.toBeEditedProject.order
+                                      }
+                                    },
+                                    [_vm._v(_vm._s(index))]
+                                  )
+                                })
+                              )
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "form-group col-md-12" }, [

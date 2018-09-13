@@ -47,6 +47,7 @@
                     'images' :[],
                     'imagesFiles' :[],
                     'mainImage':'',
+                    'order':1,
                 }
             }
         },
@@ -130,6 +131,7 @@
                     'images' :[],
                     'imagesFiles' :[],
                     'mainImage':'',
+                    'order':1,
                 };
             }
         },

@@ -144,7 +144,36 @@
                     'Character Design'=> '/resumeApp/resources/assets/images/skills_icons/char_design.png',
                     'Digital Painting'=> '/resumeApp/resources/assets/images/skills_icons/digital-painting.png',
                     'Creative Director'=> '/resumeApp/resources/assets/images/skills_icons/director.png',
-                    'HTML / CSS'=> '/resumeApp/resources/assets/images/skills_icons/HTML.png'
+                    'HTML / CSS'=> '/resumeApp/resources/assets/images/skills_icons/HTML.png',
+                    // developer :
+
+                    'JavaScript' =>'/resumeApp/resources/assets/images/skills_icons/javascript.png',
+                    'SQL'=>'',
+                    'Java'=>'',
+                    'C#'=>'/resumeApp/resources/assets/images/skills_icons/c#.png',
+                    'Python'=>'/resumeApp/resources/assets/images/skills_icons/python.png',
+                    'PHP'=>'/resumeApp/resources/assets/images/skills_icons/php.png',
+                    'C++'=>'',
+                    'C'=>'',
+                    'TypeScript'=>'',
+                    'Ruby'=>'',
+                    'Objective-C'=>'',
+                    'Swift'=>'',
+                    'VB.NET'=>'',
+                    'Go'=>'',
+                    'Perl'=>'',
+                    'Scala'=>'',
+                    'Groovy'=>'',
+                    'Assembly'=>'',
+                    'CoffeeScript'=>'',
+                    'VBA'=>'',
+                    'R'=>'',
+                    'Matlab'=>'',
+                    'Visual Basic 6'=>'',
+                    'Lua'=>'',
+                    'Haskell'=>'',
+                    'HTML'=>'/resumeApp/resources/assets/images/skills_icons/HTML.png',
+                    'CSS'=>'/resumeApp/resources/assets/images/skills_icons/CSS.png'
                 ];
                 ?>
 
@@ -753,10 +782,20 @@
                         <?
                     $skills = $freelancer->userData->design_skills_checkbox ;
                     $skillsArr = explode(',',$skills);
+                    $i=0;
                     ?>
                     @foreach($skillsArr as $skill)
-                        <img width="20px" src="/resumeApp/resources/assets/images/skills_icons/skill.png" alt="skill">
-                        {{$skill}} &nbsp;&nbsp;
+                        <?
+                        $imgSrc = '/resumeApp/resources/assets/images/skills_icons/skill.png' ;
+                        if(isset($skillsDesigner[$skill]) && !empty($skillsDesigner[$skill])){
+                            $imgSrc = $skillsDesigner[$skill] ;
+                        }
+                        ?>
+                        <span id="skillContainer{{$i}}" class="highlightSkill">
+                                     <img width="20px" src="{{$imgSrc}}" alt="skill" id="skillImage{{$i}}">
+                            {{$skill}} &nbsp;&nbsp;
+                                </span>
+                        <? $i++;?>
                     @endforeach
                     </span>
             </div>

@@ -1888,4 +1888,7 @@ body {
     border-bottom: 1px solid #EBEDEF;
     padding-bottom: 25px; } }
 
+.highlightSkill img {
+  filter: grayscale(100%); }
+
 /*# sourceMappingURL=main.css.map */

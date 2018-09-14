@@ -2270,3 +2270,9 @@ body{
     padding-bottom: 25px;
   }
 }
+
+.highlightSkill{
+  img{
+    filter: grayscale(100%);
+  }
+}

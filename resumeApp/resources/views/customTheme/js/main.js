@@ -63,6 +63,20 @@ $(document).ready(function () {
              });
 
             // client page ( resume cards )
+
+                // skills images :
+            $('.highlightSkill').hover(function () {
+                // hover in
+                let ID         = this.id.replace('skillContainer','');
+                let skillImg   = $('#skillImage'+ID);
+                skillImg.css('filter','grayscale(0)');
+            },function () {
+                // hover out
+                let ID         = this.id.replace('skillContainer','');
+                // change the src of the image to colored
+                let skillImg   = $('#skillImage'+ID);
+                skillImg.css('filter','grayscale(100%)');
+            });
             $(".viewEducationLink").on('click',function () {
                 let portfolioArea = $('#area_'+this.id.replace('Education','Portfolio'));
                 if(!portfolioArea.hasClass('d-none')){

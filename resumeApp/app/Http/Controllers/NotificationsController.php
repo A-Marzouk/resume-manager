@@ -102,7 +102,7 @@ class NotificationsController extends Controller
     // message to sales :
 
     public function messageToSales(Request $request){
-        $emails = [$request->email,'AhmedMarzouk266@gmail.com','conor@123workforce.com'];
+        $emails = ['AhmedMarzouk266@gmail.com','conor@123workforce.com','shey@123workforce.com'];
         $data = [
             'subject' => $request->subject,
             'messageBody' => trim($request->message),

@@ -70,6 +70,7 @@ $(document).ready(function () {
                 let ID         = this.id.replace('skillContainer','');
                 let skillImg   = $('#skillImage'+ID);
                 skillImg.css('filter','grayscale(0)');
+                skillImg.css('width','21');
             });
 
             $('.resumeCardRight').on('mouseout','.highlightSkill',function () {
@@ -78,6 +79,7 @@ $(document).ready(function () {
                 // change the src of the image to colored
                 let skillImg   = $('#skillImage'+ID);
                 skillImg.css('filter','grayscale(100%)');
+                skillImg.css('width','20');
             });
 
             $(".viewEducationLink").on('click',function () {

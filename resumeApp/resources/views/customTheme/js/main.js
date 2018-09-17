@@ -2,6 +2,11 @@ $(document).ready(function () {
 
     /////////////////////////   Freelancer form scripts ////////////////////////
         // overall scripts ( used in all sections )
+
+             // cursor pointer on hover :
+                $('.cursorPointerOnHover').hover(function () {
+                    $(this).css('cursor','pointer');
+                });
              // change content
             $('.resumeCardRight').on('click','.openAudio',function(){
                let ID = this.id.replace('_open_audio','');
@@ -100,8 +105,9 @@ $(document).ready(function () {
                 let ID  = this.id.replace('hoursPlus','');
                 let currentHours = parseInt($('#numberOfHours' + ID ).html());
                 let newHours = currentHours + 5;
+                let maxHours = parseInt($('#maxHours'+ID).html()) ;
                 // set new hours :
-                if(newHours < 61){
+                if(newHours < maxHours+1){
                     $('#numberOfHours' + ID ).fadeOut(150);
                     setTimeout(function () {
                         $('#numberOfHours' + ID ).html(newHours);

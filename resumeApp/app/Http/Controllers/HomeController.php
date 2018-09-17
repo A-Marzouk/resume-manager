@@ -110,7 +110,16 @@ class HomeController extends Controller
         $booking->client_id   = $client_id;
         $booking->save();
 
-        return redirect()->back()->with('successMessage','Thank you for your payment, we will get in touch with you soon!');
+        $freelancer     = User::where('id',$request->freelancerID)->first();
+        $currentHours   = $freelancer->userData->availableHours;
+        $freelancerData = UserData::where('user_id',$freelancer->id)->first();
+        $freelancerData->availableHours = intval($currentHours) - intval( $request->hours) ;
+        if($freelancerData->availableHours < 0){
+            $freelancerData->availableHours  = 0 ;
+        }
+        $freelancerData->save();
+
+        return redirect('/'.$freelancer->username)->with('successMessage','Thank you for your payment, we will get in touch with you soon!');
     }
 
 

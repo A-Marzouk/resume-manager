@@ -2276,3 +2276,44 @@ body{
     filter: grayscale(100%);
   }
 }
+
+// payment page :
+
+.paymentOption{
+  padding:36px;
+  border: 1px solid #F5F2F2;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 4px 0 rgba(232,232,232,0.5);
+}
+
+.paymentDetails{
+  padding:36px;
+  width: 90%;
+  border: 1px solid #F5F2F2;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 4px 0 rgba(232,232,232,0.5);
+}
+
+.paymentHeader{
+  padding-bottom: 15px;
+  color: #697786;	font-family: Roboto;
+  font-size: 19px;	font-weight: bold;
+  letter-spacing: 0.13px;	line-height: 23px;
+}
+
+.paymentText{
+  color: #526374;	font-family: Roboto;	font-size: 14px;letter-spacing: 0.1px;	line-height: 16px;
+}
+
+.paymentBtn{
+  border: 1px solid #00B0F3;	border-radius: 5px;	background-color: #00B0F3;
+  color: white;
+  height: 45px;
+}
+
+.paymentNote{
+  color: #72808E;	font-family: Roboto;	font-size: 12px;	letter-spacing: 0.08px;	line-height: 14px;
+  padding-top: 10px; padding-left: 26px;
+}

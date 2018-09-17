@@ -306,7 +306,7 @@
                                                                         $i=0;
                                                                         ?>
                                                                         @foreach($allSKills as $skill)
-                                                                            <? if($i < 8):?>
+                                                                            <? if($i < 6):?>
                                                                             <?
                                                                             $imgSrc = '/resumeApp/resources/assets/images/skills_icons/skill.png';
                                                                             if (isset($skillsDesigner[$skill]) && !empty($skillsDesigner[$skill])) {

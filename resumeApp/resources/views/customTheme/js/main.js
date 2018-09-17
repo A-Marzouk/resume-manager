@@ -2,6 +2,11 @@ $(document).ready(function () {
 
     /////////////////////////   Freelancer form scripts ////////////////////////
         // overall scripts ( used in all sections )
+
+             // cursor pointer on hover :
+                $('.cursorPointerOnHover').hover(function () {
+                    $(this).css('cursor','pointer');
+                });
              // change content
             $('.resumeCardRight').on('click','.openAudio',function(){
                let ID = this.id.replace('_open_audio','');

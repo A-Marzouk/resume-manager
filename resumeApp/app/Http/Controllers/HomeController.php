@@ -104,10 +104,11 @@ class HomeController extends Controller
 
         // create the booking : (user_id,client_id,amount_paid,hours)
         $booking = new Booking;
-        $booking->amount_paid = $request->amountToPay;
-        $booking->hours       = $request->hours;
-        $booking->user_id     = $request->freelancerID;
-        $booking->client_id   = $client_id;
+        $booking->amount_paid   = $request->amountToPay;
+        $booking->hours         = $request->hours;
+        $booking->user_id       = $request->freelancerID;
+        $booking->client_id     = $client_id;
+        $booking->booking_email = $request->stripeEmail;
         $booking->save();
 
         $freelancer     = User::where('id',$request->freelancerID)->first();

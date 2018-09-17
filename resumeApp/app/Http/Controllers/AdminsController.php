@@ -69,6 +69,7 @@ class AdminsController extends Controller
         $usersToD = $request->toBeDeletedUsers ;
         $clientsToD = $request->toBeDeletedClients ;
         $conversationsToD = $request->toBeDeletedConversations ;
+        $bookingsToD = $request->toBeDeletedBookings ;
 
         foreach ($usersToD as $userID){
             User::where('id', $userID)->delete();
@@ -80,6 +81,10 @@ class AdminsController extends Controller
 
         foreach ($conversationsToD as $conversationID){
             Conversation::where('id', $conversationID)->delete();
+        }
+
+        foreach ($bookingsToD as $bookingID){
+            Booking::where('id', $bookingID)->delete();
         }
 
         return ['status'=> 'ok'];
@@ -293,4 +298,23 @@ class AdminsController extends Controller
     public function getClientsEmails(){
         return Client::all('email');
     }
+
+    public function releaseBookingsHours(Request $request){
+        $booking = Booking::where('id',$request->booking_id)->first();
+        $hours   = $booking->hours;
+        $freelancerID = $booking->user_id;
+
+        $userData = UserData::where('user_id',$freelancerID)->first();
+        $currentHours = $userData->availableHours;
+        $newHours     = $currentHours + $hours ;
+
+        $userData->availableHours = $newHours;
+        $userData->save();
+
+        $booking->canceled = true ;
+        $booking->save();
+
+        return ['user_id'=>$booking->user_id];
+    }
+
 }

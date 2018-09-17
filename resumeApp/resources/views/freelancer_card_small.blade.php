@@ -62,7 +62,7 @@
             <hr style="width: 97%;" class="d-none d-md-block">
 
             {{-- skills --}}
-            <div class="row skillsRow">
+            <div class="row skillsRow marginMobile-0">
                 <?
                 $skillsDesigner = [
                     // designer

@@ -52860,13 +52860,15 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 var toBeDeletedUsers = [];
 var toBeDeletedClients = [];
 var toBeDeletedConversations = [];
+var toBeDeletedBookings = [];
 
 var toBeDeletedData = {};
 
-$('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"]').on('change', function () {
+$('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"],[id*="selectedBooking"]').on('change', function () {
     toBeDeletedUsers = [];
     toBeDeletedClients = [];
     toBeDeletedConversations = [];
+    toBeDeletedBookings = [];
 
     $("input[name='selectedUsers[]']").each(function () {
         var val = this.checked ? this.value : '';
@@ -52889,7 +52891,14 @@ $('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"]').on
         }
     });
 
-    if (toBeDeletedUsers.length > 0 || toBeDeletedClients.length > 0 || toBeDeletedConversations.length > 0) {
+    $("input[name='selectedBookings[]']").each(function () {
+        var val = this.checked ? this.value : '';
+        if (val !== '') {
+            toBeDeletedBookings.push(val);
+        }
+    });
+
+    if (toBeDeletedUsers.length > 0 || toBeDeletedClients.length > 0 || toBeDeletedConversations.length > 0 || toBeDeletedBookings.length > 0) {
         $('#actionBtns').removeClass('d-none');
     } else {
         $('#actionBtns').addClass('d-none');
@@ -52898,14 +52907,15 @@ $('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"]').on
     toBeDeletedData = {
         toBeDeletedUsers: toBeDeletedUsers,
         toBeDeletedClients: toBeDeletedClients,
-        toBeDeletedConversations: toBeDeletedConversations
+        toBeDeletedConversations: toBeDeletedConversations,
+        toBeDeletedBookings: toBeDeletedBookings
     };
 });
 
 // send to DB to be deleted :
 $('#deleteSelectedBtn').on('click', function () {
 
-    if (!confirm('Are you sure you want to delete all selected users,clients or conversations ?')) {
+    if (!confirm('Are you sure you want to delete all selected users, clients, bookings or conversations ?')) {
         return;
     }
     axios.post('admin/delete_multiple', toBeDeletedData).then(function (response) {
@@ -52938,6 +52948,12 @@ $('#deleteSelectedBtn').on('click', function () {
         $('#selectedConversation' + conversationID).prop('checked', false);
     });
 
+    toBeDeletedData.toBeDeletedBookings.forEach(function (bookingID) {
+        $('#selectedRowBooking' + bookingID).fadeOut(3000);
+        // uncheck deleted
+        $('#selectedBooking' + bookingID).prop('checked', false);
+    });
+
     // hide the buttons.
     $('#actionBtns').fadeOut(2005);
     setTimeout(function () {
@@ -52952,6 +52968,7 @@ $('#deleteSelectedBtn').on('click', function () {
     }, 4000);
 });
 
+// approve users
 $('#approve').on('click', function () {
     var toBeApprovedUsers = toBeDeletedUsers;
     console.log('toBeApprovedUsers :' + toBeApprovedUsers);
@@ -52987,7 +53004,7 @@ $('#approve').on('click', function () {
         }, 4000);
     });
 });
-
+// disapprove users
 $('#disApprove').on('click', function () {
     var toBeDisApprovedUsers = toBeDeletedUsers;
     console.log('toBeDisApprovedUsers :' + toBeDisApprovedUsers);
@@ -53020,6 +53037,17 @@ $('#disApprove').on('click', function () {
         setTimeout(function () {
             $('#changesSaved').fadeOut();
         }, 4000);
+    });
+});
+
+// release booking hours
+
+$('.releaseBooking').on('click', function () {
+    var booking_id = this.id.replace('addHoursBtn', '');
+    axios.post('admin/releaseBooking', { 'booking_id': booking_id }).then(function (response) {
+        $('#bookingStatus' + booking_id).html('Hours added back to freelancer!');
+        var currBookings = parseInt($('#finishedBookings' + response.data.user_id).html());
+        $('#finishedBookings' + response.data.user_id).html(currBookings + 1);
     });
 });
 

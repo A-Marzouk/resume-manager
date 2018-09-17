@@ -1890,6 +1890,9 @@ body {
 
 .highlightSkill img {
   filter: grayscale(100%); }
+@media only screen and (max-width: 760px) {
+  .highlightSkill {
+    display: block; } }
 
 .paymentOption {
   padding: 36px;
@@ -1905,6 +1908,9 @@ body {
   border-radius: 5px;
   background-color: #FFFFFF;
   box-shadow: 0 2px 4px 0 rgba(232, 232, 232, 0.5); }
+  @media only screen and (max-width: 760px) {
+    .paymentDetails {
+      width: 100%; } }
 
 .paymentHeader {
   padding-bottom: 15px;
@@ -1914,6 +1920,9 @@ body {
   font-weight: bold;
   letter-spacing: 0.13px;
   line-height: 23px; }
+  @media only screen and (max-width: 760px) {
+    .paymentHeader {
+      padding-top: 20px; } }
 
 .paymentText {
   color: #526374;
@@ -1928,6 +1937,11 @@ body {
   background-color: #00B0F3;
   color: white;
   height: 45px; }
+  @media only screen and (max-width: 760px) {
+    .paymentBtn {
+      height: 50px;
+      padding-left: 10px;
+      padding-right: 10px; } }
 
 .paymentNote {
   color: #72808E;
@@ -1937,5 +1951,21 @@ body {
   line-height: 14px;
   padding-top: 10px;
   padding-left: 26px; }
+
+.stripeImage {
+  text-align: right; }
+  @media only screen and (max-width: 760px) {
+    .stripeImage {
+      padding-top: 25px;
+      text-align: center; } }
+
+@media only screen and (max-width: 760px) {
+  .totalPayText {
+    padding-top: 20px;
+    text-align: center !important; } }
+
+@media only screen and (max-width: 760px) {
+  .marginMobile-0 {
+    margin: 0 !important; } }
 
 /*# sourceMappingURL=main.css.map */

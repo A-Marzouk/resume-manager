@@ -105,8 +105,9 @@ $(document).ready(function () {
                 let ID  = this.id.replace('hoursPlus','');
                 let currentHours = parseInt($('#numberOfHours' + ID ).html());
                 let newHours = currentHours + 5;
+                let maxHours = parseInt($('#maxHours'+ID).html()) ;
                 // set new hours :
-                if(newHours < 61){
+                if(newHours < maxHours+1){
                     $('#numberOfHours' + ID ).fadeOut(150);
                     setTimeout(function () {
                         $('#numberOfHours' + ID ).html(newHours);

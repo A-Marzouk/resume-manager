@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="col-lg-12 col-md-12  col-6 nameCard" style="font-size: 18px;">
-                    {{intval($freelancer->userData->availableHours)}} hours
+                    <span id="maxHours{{$freelancer->id}}">{{intval($freelancer->userData->availableHours)}}</span> hours
                     <div class="cardLabel" style="font-size: 15px;">Weekly Availability</div>
                 </div>
             </div>
@@ -60,19 +60,20 @@
                     <a href="javascript:void(0)" id="hoursMinus{{$freelancer->id}}" class="hoursMinus">
                         <img src="/resumeApp/resources/views/customTheme/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">
                     </a>
-                    <span id="numberOfHours{{$freelancer->id}}">10</span> hours
+                    <span id="numberOfHours{{$freelancer->id}}">@if($freelancer->userData->availableHours==0) 0 @else 10 @endif</span> hours
                     <a href="javscript:void(0)" id="hoursPlus{{$freelancer->id}}" class="hoursPlus">
                         <img src="/resumeApp/resources/views/customTheme/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus">
                     </a>
                 </div>
             </div>
-
-            <div class="row text-center cardRow">
-                <div class="buttonMain whiteBg col-lg-12" style="padding: 0 0 25px 0; margin: 0;">
-                    <a class="hireBtn btn-block hire" href="/stripe/hire?freelancerID={{$freelancer->id}}&hours=10" id="hireMeBtn{{$freelancer->id}}">Book Now
-                    </a>
+            @if($freelancer->userData->availableHours !=0)
+                <div class="row text-center cardRow">
+                    <div class="buttonMain whiteBg col-lg-12" style="padding: 0 0 25px 0; margin: 0;">
+                        <a class="hireBtn btn-block hire" href="/stripe/hire?freelancerID={{$freelancer->id}}&hours=10" id="hireMeBtn{{$freelancer->id}}">Book Now
+                        </a>
+                    </div>
                 </div>
-            </div>
+            @endif
 
         </div>
         <div class="col-lg-10 col-md-9 col-12 resumeCardRight" id="resumeCardRight{{$freelancer->id}}">

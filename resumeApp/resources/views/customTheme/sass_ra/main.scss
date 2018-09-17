@@ -2275,6 +2275,11 @@ body{
   img{
     filter: grayscale(100%);
   }
+
+  @media only screen and (max-width: 760px) {
+   display: block;
+  }
+
 }
 
 // payment page :
@@ -2294,6 +2299,9 @@ body{
   border-radius: 5px;
   background-color: #FFFFFF;
   box-shadow: 0 2px 4px 0 rgba(232,232,232,0.5);
+  @media only screen and (max-width: 760px) {
+    width: 100%;
+  }
 }
 
 .paymentHeader{
@@ -2301,6 +2309,9 @@ body{
   color: #697786;	font-family: Roboto;
   font-size: 19px;	font-weight: bold;
   letter-spacing: 0.13px;	line-height: 23px;
+  @media only screen and (max-width: 760px) {
+   padding-top: 20px;
+  }
 }
 
 .paymentText{
@@ -2311,9 +2322,36 @@ body{
   border: 1px solid #00B0F3;	border-radius: 5px;	background-color: #00B0F3;
   color: white;
   height: 45px;
+  @media only screen and (max-width: 760px) {
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
 }
 
 .paymentNote{
   color: #72808E;	font-family: Roboto;	font-size: 12px;	letter-spacing: 0.08px;	line-height: 14px;
   padding-top: 10px; padding-left: 26px;
+}
+
+.stripeImage{
+  text-align: right;
+  @media only screen and (max-width: 760px) {
+    padding-top: 25px;
+    text-align: center;
+  }
+}
+
+.totalPayText{
+  @media only screen and (max-width: 760px) {
+    padding-top: 20px;
+    text-align: center !important;
+  }
+}
+
+.marginMobile-0{
+  @media only screen and (max-width: 760px) {
+    margin: 0!important;
+  }
 }

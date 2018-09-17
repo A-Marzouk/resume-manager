@@ -3,13 +3,15 @@
 let toBeDeletedUsers = [] ;
 let toBeDeletedClients = [] ;
 let toBeDeletedConversations = [] ;
+let toBeDeletedBookings = [] ;
 
 let toBeDeletedData = {} ;
 
-$('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"]').on('change', function () {
+$('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"],[id*="selectedBooking"]').on('change', function () {
     toBeDeletedUsers = [];
     toBeDeletedClients = [];
     toBeDeletedConversations = [];
+    toBeDeletedBookings = [];
 
 
     $("input[name='selectedUsers[]']").each(function () {
@@ -33,9 +35,16 @@ $('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"]').on
         }
     });
 
+    $("input[name='selectedBookings[]']").each(function () {
+        let val = this.checked ? this.value : '';
+        if(val !== ''){
+            toBeDeletedBookings.push(val);
+        }
+    });
 
 
-    if(toBeDeletedUsers.length > 0 || toBeDeletedClients.length > 0 || toBeDeletedConversations.length > 0 ){
+
+    if(toBeDeletedUsers.length > 0 || toBeDeletedClients.length > 0 || toBeDeletedConversations.length > 0 || toBeDeletedBookings.length > 0){
         $('#actionBtns').removeClass('d-none');
     }else{
         $('#actionBtns').addClass('d-none');
@@ -44,7 +53,8 @@ $('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"]').on
      toBeDeletedData = {
         toBeDeletedUsers,
         toBeDeletedClients,
-        toBeDeletedConversations
+        toBeDeletedConversations,
+        toBeDeletedBookings
     };
 
 });
@@ -52,7 +62,7 @@ $('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"]').on
 // send to DB to be deleted :
 $('#deleteSelectedBtn').on('click',function () {
 
-    if(!confirm('Are you sure you want to delete all selected users,clients or conversations ?')){
+    if(!confirm('Are you sure you want to delete all selected users, clients, bookings or conversations ?')){
         return;
     }
     axios.post('admin/delete_multiple',toBeDeletedData).then( (response) => {
@@ -85,6 +95,12 @@ $('#deleteSelectedBtn').on('click',function () {
         $('#selectedConversation'+conversationID).prop('checked', false);
     });
 
+    toBeDeletedData.toBeDeletedBookings.forEach( (bookingID) => {
+        $('#selectedRowBooking'+bookingID).fadeOut(3000);
+        // uncheck deleted
+        $('#selectedBooking'+bookingID).prop('checked', false);
+    });
+
     // hide the buttons.
     $('#actionBtns').fadeOut(2005);
     setTimeout(function () {
@@ -100,6 +116,7 @@ $('#deleteSelectedBtn').on('click',function () {
 
 });
 
+// approve users
 $('#approve').on('click',function () {
     let toBeApprovedUsers = toBeDeletedUsers ;
     console.log( 'toBeApprovedUsers :'  + toBeApprovedUsers);
@@ -140,7 +157,7 @@ $('#approve').on('click',function () {
 
 
 });
-
+// disapprove users
 $('#disApprove').on('click',function () {
     let toBeDisApprovedUsers = toBeDeletedUsers ;
     console.log( 'toBeDisApprovedUsers :'  + toBeDisApprovedUsers);
@@ -178,6 +195,15 @@ $('#disApprove').on('click',function () {
 
     } );
 
+});
+
+// release booking hours
+
+$('.releaseBooking').on('click',function () {
+    let booking_id = this.id.replace('addHoursBtn','');
+    axios.post('admin/releaseBooking',{'booking_id':booking_id}).then( (response) => {
+        $('#bookingStatus' + booking_id).html('Hours added back to freelancer!');
+    })
 });
 
 

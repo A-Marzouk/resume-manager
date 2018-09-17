@@ -80,6 +80,8 @@ Route::post('/admin/delete_multiple','AdminsController@deleteMultiple');
 // approve users
 Route::post('/admin/control_approval','AdminsController@controlApproval');
 
+// release booked hours
+Route::post('/admin/releaseBooking','AdminsController@releaseBookingsHours');
 
 // chatting routes :
 Route::get('/chat','ChatController@showChatRoom');

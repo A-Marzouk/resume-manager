@@ -109,6 +109,7 @@
                                     <th scope="col"></th>
                                     <th scope="col">Empty Fields</th>
                                     <th scope="col">Approval</th>
+                                    <th scope="col">Bookings</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -163,6 +164,12 @@
                                             Not approved
                                         @endif
                                     </td>
+                                    <td>
+                                        @foreach($user->bookings as $booking)
+                                            ID : {{$booking->id}}
+                                            <br/>
+                                        @endforeach
+                                    </td>
                                 </tr>
 
 
@@ -183,6 +190,7 @@
                                     <th scope="col"></th>
                                     <th scope="col">Empty Fields</th>
                                     <th scope="col">Approval</th>
+                                    <th scope="col">Bookings</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -233,6 +241,11 @@
                                         @else
                                             Not approved
                                         @endif
+                                    </td>
+                                    <td>
+                                        @foreach($user->bookings as $booking)
+                                            {{$booking->id}}
+                                        @endforeach
                                     </td>
                                 </tr>
 

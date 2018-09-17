@@ -203,6 +203,8 @@ $('.releaseBooking').on('click',function () {
     let booking_id = this.id.replace('addHoursBtn','');
     axios.post('admin/releaseBooking',{'booking_id':booking_id}).then( (response) => {
         $('#bookingStatus' + booking_id).html('Hours added back to freelancer!');
+        let currBookings = parseInt( $('#finishedBookings' + response.data.user_id).html());
+        $('#finishedBookings' + response.data.user_id).html(currBookings+1);
     })
 });
 

@@ -107,9 +107,9 @@
 
                         @endforeach
                         @if($finishedBookings)
-                            <span class="panelFormLabel NoDecor">
-                                                Finished bookings : {{$finishedBookings}}
-                                            </span>
+                            <div class="panelFormLabel NoDecor text-center">
+                                Finished bookings : <span id="finishedBookings{{$user->id}}">{{$finishedBookings}}</span>
+                            </div>
                         @endif
                     </td>
                 </tr>

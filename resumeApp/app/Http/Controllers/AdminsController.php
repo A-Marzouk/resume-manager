@@ -314,7 +314,7 @@ class AdminsController extends Controller
         $booking->canceled = true ;
         $booking->save();
 
-        return ['status'=>'ok'];
+        return ['user_id'=>$booking->user_id];
     }
 
 }

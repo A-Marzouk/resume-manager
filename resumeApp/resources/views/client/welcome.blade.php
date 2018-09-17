@@ -109,7 +109,7 @@
                                                             </div>
 
                                                             <div class="col-lg-12 col-md-12  col-6 nameCard" style="font-size: 18px;">
-                                                                {{intval($freelancer->userData->availableHours)}} hours
+                                                                <span id="maxHours{{$freelancer->id}}{{$value['id']}}">{{intval($freelancer->userData->availableHours)}}</span> hours
                                                                 <div class="cardLabel" style="font-size: 15px;">Weekly Availability</div>
                                                             </div>
                                                         </div>
@@ -122,11 +122,11 @@
 
                                                         <div class="row">
                                                             <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1 hoursBtn col-8 offset-2 NoDecor" style="padding: 11px 0 0 0 ;">
-                                                                <a href="javascript:void(0)" id="hoursMinus{{$value['id']}}{{$freelancer->id}}" class="hoursMinus">
+                                                                <a href="javascript:void(0)" id="hoursMinus{{$freelancer->id}}{{$value['id']}}" class="hoursMinus">
                                                                     <img src="/resumeApp/resources/views/customTheme/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">
                                                                 </a>
-                                                                <span id="numberOfHours{{$value['id']}}{{$freelancer->id}}">10</span> hours
-                                                                <a href="javscript:void(0)" id="hoursPlus{{$value['id']}}{{$freelancer->id}}" class="hoursPlus">
+                                                                <span id="numberOfHours{{$freelancer->id}}{{$value['id']}}">@if($freelancer->userData->availableHours==0) 0 @else 10 @endif</span> hours
+                                                                <a href="javscript:void(0)" id="hoursPlus{{$freelancer->id}}{{$value['id']}}" class="hoursPlus">
                                                                     <img src="/resumeApp/resources/views/customTheme/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus">
                                                                 </a>
                                                             </div>
@@ -134,7 +134,7 @@
 
                                                         <div class="row text-center cardRow">
                                                             <div class="buttonMain whiteBg col-lg-12" style="padding: 0 0 25px 0; margin: 0;">
-                                                                <a class="hireBtn btn-block hire" href="/stripe/hire?freelancerID={{$freelancer->id}}&hours=10" id="hireMeBtn{{$value['id']}}{{$freelancer->id}}">Book Now
+                                                                <a class="hireBtn btn-block hire" href="/stripe/hire?freelancerID={{$freelancer->id}}&hours=10" id="hireMeBtn{{$freelancer->id}}{{$value['id']}}">Book Now
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -232,7 +232,7 @@
                                                             'JavaScript' =>'/resumeApp/resources/assets/images/skills_icons/javascript.png',
                                                             'SQL'=>'/resumeApp/resources/assets/images/skills_icons/mysql.png',
                                                             'Java'=>'resumeApp/resources/assets/images/skills_icons/java.png',
-                                                            'C#'=>'/resumeApp/resources/assets/images/skills_icons/c#.png',
+                                                            'C#'=>'/resumeApp/resources/assets/images/skills_icons/c_sharp.png',
                                                             'Python'=>'/resumeApp/resources/assets/images/skills_icons/python.png',
                                                             'PHP'=>'/resumeApp/resources/assets/images/skills_icons/php.png',
                                                             'C++'=>'/resumeApp/resources/assets/images/skills_icons/c_language.png',
@@ -313,10 +313,10 @@
                                                                                 $imgSrc = $skillsDesigner[$skill];
                                                                             }
                                                                             ?>
-                                                                            <span id="skillContainer{{$i}}{{$value['id']}}"
+                                                                            <span id="skillContainer{{$i}}{{$freelancer->id}}{{$value['id']}}"
                                                                                   class="highlightSkill">
                                      <img width="20px" src="{{$imgSrc}}" alt="skill"
-                                          id="skillImage{{$i}}{{$value['id']}}">
+                                          id="skillImage{{$i}}{{$freelancer->id}}{{$value['id']}}">
                                                                                 {{$skill}} &nbsp;&nbsp;
                                                                                  </span>
                                                                             <? endif;?>
@@ -879,8 +879,8 @@
                                                                     $imgSrc = $skillsDesigner[$skill] ;
                                                                 }
                                                                 ?>
-                                                                <span id="skillContainer{{$i}}{{$value['id']}}" class="highlightSkill">
-                                     <img width="20px" src="{{$imgSrc}}" alt="skill" id="skillImage{{$i}}{{$value['id']}}">
+                                                                <span id="skillContainer{{$i}}{{$freelancer->id}}{{$value['id']}}" class="highlightSkill">
+                                     <img width="20px" src="{{$imgSrc}}" alt="skill" id="skillImage{{$i}}{{$freelancer->id}}{{$value['id']}}">
                                                                     {{$skill}} &nbsp;&nbsp;
                                 </span>
                                                                 <? $i++;?>

@@ -36,7 +36,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <? foreach ($users as $user):?>
+                <? use App\UserData;foreach ($users as $user):?>
                 <?
                 $userData3 = $user->userData ;
                 if(!isset($userData3)){

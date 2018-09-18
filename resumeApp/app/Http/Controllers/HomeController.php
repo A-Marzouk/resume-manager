@@ -76,19 +76,33 @@ class HomeController extends Controller
         $amountToPay = intval($request->amountToPay);
         $token = $request->stripeToken;
 
-        $customer = Customer::create(
-            [
-                "source" => $token,
-                "description" =>  $data['clientName']
-            ]
-        );
+        $customers = Customer::all(array("limit" => 1000));
+        foreach ($customers['data'] as $key => $customer){
+            if($customer->email == $request->stripeEmail){
+                $customerID = $customer->id;
+                break;
+            }
+        }
+
+        if(!isset($customerID)){
+            $customer = Customer::create(
+                [
+                    "source" => $token,
+                    "description" =>  $data['clientName'],
+                    "email" => $request->stripeEmail
+                ]
+            );
+
+            $customerID = $customer->id;
+        }
+
 
         // Charge the Customer instead of the card
          $charge = Charge::create([
              'amount' => $amountToPay,
              'currency' => 'usd',
              'description' => $description,
-             "customer" => $customer->id,
+             "customer" => $customerID,
              'receipt_email' => 'AhmedMarzouk266@gmail.com',
          ]);
 

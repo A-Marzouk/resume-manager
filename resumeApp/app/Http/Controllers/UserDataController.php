@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\classes\Upload;
 use App\Mail\welcome;
 use App\Project;
 use App\User;
@@ -79,14 +80,14 @@ class UserDataController extends Controller
                     if(is_numeric($value)){
                         $userData->{$key} = "";
                     }else{
-                        $pathToPhoto = $this->uploadPhoto($value,'photo','');
+                        $pathToPhoto = Upload::photo($value,'photo','');
                         $userData->{$key} = $pathToPhoto ;
                     }
                 }elseif($key == 'audioFile'){
                     if(is_numeric($value)){
                         $userData->{$key} = " ";
                     }else{
-                        $pathToAudio = $this->uploadAudio($value,'audioFile','');
+                        $pathToAudio = Upload::audio($value,'audioFile','');
                         if($pathToAudio){
                             $userData->{$key} = $pathToAudio ;
                         }
@@ -95,7 +96,7 @@ class UserDataController extends Controller
                     if(is_numeric($value)){
                         $userData->{$key} = " ";
                     }else{
-                        $pathToVideo = $this->uploadVideo($value,'video_file','');
+                        $pathToVideo = Upload::video($value,'video_file','');
                         if($pathToVideo){
                             $userData->{$key} = $pathToVideo ;
                         }
@@ -129,7 +130,7 @@ class UserDataController extends Controller
                         }
                     }else{
                         // check if photo is not repeated :
-                        $pathToPhoto = $this->uploadPhoto($value,$key,$key);
+                        $pathToPhoto = Upload::photo($value,$key,$key);
                         if(empty($works)){
                             $works = $pathToPhoto ;
                         }else{

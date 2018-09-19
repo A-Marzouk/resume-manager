@@ -485,7 +485,7 @@ $(document).ready(function () {
                     $('#photoPreview').attr('src','resumeApp/resources/views/customTheme/images/add_profile_photo.png');
                     $('#photoInput').attr('type','text');
                     $('#photoInput').attr('value',10);
-                    $('#works0').change();
+                    $('#jobTitle').change();
                     $('#photoInput').attr('type','file');
                 }else{
                     $('#photoInput').click();
@@ -527,7 +527,7 @@ $(document).ready(function () {
                 }
                 $('#audioFile').attr('type','text');
                 $('#audioFile').attr('value',0);
-                $('#works0').change();
+                $('#jobTitle').change();
                 $('#audioFile').attr('type','file');
                 $('#audioText').val('Upload audio');
                 // change the src of the Audio
@@ -587,7 +587,7 @@ $(document).ready(function () {
                 }
                 $('#video_file').attr('type','text');
                 $('#video_file').attr('value',0);
-                $('#works0').change();
+                $('#jobTitle').change();
                 $('#video_file').attr('type','file');
                 $('#videoText').val('Upload video');
                 // change the src of the video
@@ -601,325 +601,7 @@ $(document).ready(function () {
     ////////////////////////////////////////// portfolio scripts  //////////////////////////////
 
     // load photo directly :
-
-    $("#works0").change(function() {
-        readURL(this,'#portfolioImg0');
-    });
-    $("#works1").change(function() {
-        readURL(this,'#portfolioImg1');
-    });
-    $("#works2").change(function() {
-        readURL(this,'#portfolioImg2');
-    });
-    $("#works3").change(function() {
-        readURL(this,'#portfolioImg3');
-    });
-    $("#works4").change(function() {
-        readURL(this,'#portfolioImg4');
-    });
-    $("#works5").change(function() {
-        readURL(this,'#portfolioImg5');
-    });
-    $("#works6").change(function() {
-        readURL(this,'#portfolioImg6');
-    });
-    $("#works7").change(function() {
-        readURL(this,'#portfolioImg7');
-    });
-
-    // giving the ability to upload by drop for portfolio images :
-    for(let i=0; i<=7 ; i++){
-        uploadByDrop('#portfolioImg'+i,'works'+i);
-    }
-
-    // image as browse and delete button :
-    var src0 = '' ;
-    $('#portfolioImg0').hover(function () {
-        src0 = $('#portfolioImg0').attr('src');
-        if(src0 !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#portfolioImg0').fadeTo(500, .1);
-            $('#imgBox0').css('background', 'url("/resumeApp/resources/views/customTheme/images/delete.png")');
-            $('#imgBox0').css('background-repeat','no-repeat');
-            $('#imgBox0').css('background-position','center');
-        }
-       },function () {
-        $('#portfolioImg0').fadeTo(500, 1);
-        $('#imgBox0').css('background', '');
-
-    });
-
-    $('#portfolioImg0').on('click',function () {
-        if(src0 !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#deletePhoto0').click();
-        }else{
-            $('#works0').click();
-        }
-    });
-
-    var src1 = '' ;
-    $('#portfolioImg1').hover(function () {
-        src1 = $('#portfolioImg1').attr('src');
-        if(src1 !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#portfolioImg1').fadeTo(500, .1);
-            $('#imgBox1').css('background', 'url("/resumeApp/resources/views/customTheme/images/delete.png")');
-            $('#imgBox1').css('background-repeat','no-repeat');
-            $('#imgBox1').css('background-position','center');
-        }
-    },function () {
-        $('#portfolioImg1').fadeTo(500, 1);
-        $('#imgBox1').css('background', '');
-
-    });
-
-    $('#portfolioImg1').on('click',function () {
-        if(src1 !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#deletePhoto1').click();
-        }else{
-            $('#works1').click();
-        }
-    });
-
-    var src2 = '' ;
-    $('#portfolioImg2').hover(function () {
-        src2 = $('#portfolioImg2').attr('src');
-        if(src2 !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#portfolioImg2').fadeTo(500, .1);
-            $('#imgBox2').css('background', 'url("/resumeApp/resources/views/customTheme/images/delete.png")');
-            $('#imgBox2').css('background-repeat','no-repeat');
-            $('#imgBox2').css('background-position','center');
-        }
-    },function () {
-        $('#portfolioImg2').fadeTo(500, 1);$('#imgBox2').css('background', '');
-    });
-
-
-    $('#portfolioImg2').on('click',function () {
-        if(src2 !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#deletePhoto2').click();
-        }else{
-            $('#works2').click();
-        }
-    });
-
-    var src3 = '' ;
-    $('#portfolioImg3').hover(function () {
-        src3 = $('#portfolioImg3').attr('src');
-        if(src3 !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#portfolioImg3').fadeTo(500, .1);
-            $('#imgBox3').css('background', 'url("/resumeApp/resources/views/customTheme/images/delete.png")');
-            $('#imgBox3').css('background-repeat','no-repeat');
-            $('#imgBox3').css('background-position','center');
-        }
-    },function () {
-        $('#portfolioImg3').fadeTo(500, 1);
-        $('#imgBox3').css('background', '');
-    });
-
-    $('#portfolioImg3').on('click',function () {
-        if(src3 !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#deletePhoto3').click();
-        }else{
-            $('#works3').click();
-        }
-    });
-
-    var src4 = '' ;
-    $('#portfolioImg4').hover(function () {
-        src4 = $('#portfolioImg4').attr('src');
-        if(src4 !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#portfolioImg4').fadeTo(500, .1);
-            $('#imgBox4').css('background', 'url("/resumeApp/resources/views/customTheme/images/delete.png")');
-            $('#imgBox4').css('background-repeat','no-repeat');
-            $('#imgBox4').css('background-position','center');
-        }
-    },function () {
-        $('#portfolioImg4').fadeTo(500, 1);
-        $('#imgBox4').css('background', '');
-    });
-    $('#portfolioImg4').on('click',function () {
-        if(src4 !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#deletePhoto4').click();
-        }else{
-            $('#works4').click();
-        }
-    });
-
-    var src5 = '' ;
-    $('#portfolioImg5').hover(function () {
-        src5 = $('#portfolioImg5').attr('src');
-        if(src5 !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#portfolioImg5').fadeTo(500, .1);
-            $('#imgBox5').css('background', 'url("/resumeApp/resources/views/customTheme/images/delete.png")');
-            $('#imgBox5').css('background-repeat','no-repeat');
-            $('#imgBox5').css('background-position','center');
-        }
-    },function () {
-        $('#portfolioImg5').fadeTo(500, 1);
-        $('#imgBox5').css('background', '');
-    });
-
-    $('#portfolioImg5').on('click',function () {
-        if(src5 !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#deletePhoto5').click();
-        }else{
-            $('#works5').click();
-        }
-    });
-
-
-    var src6 = '' ;
-    $('#portfolioImg6').hover(function () {
-        src6 = $('#portfolioImg6').attr('src');
-        if(src6 !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#portfolioImg6').fadeTo(500, .1);
-            $('#imgBox6').css('background', 'url("/resumeApp/resources/views/customTheme/images/delete.png")');
-            $('#imgBox6').css('background-repeat','no-repeat');
-            $('#imgBox6').css('background-position','center');
-        }
-    },function () {
-        $('#portfolioImg6').fadeTo(500, 1);
-        $('#imgBox6').css('background', '');
-    });
-
-    $('#portfolioImg6').on('click',function () {
-        if(src6 !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#deletePhoto6').click();
-        }else{
-            $('#works6').click();
-        }
-    });
-
-
-    var src7 = '' ;
-    $('#portfolioImg7').hover(function () {
-        src7 = $('#portfolioImg7').attr('src');
-        if(src7 !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#portfolioImg7').fadeTo(500, .1);
-            $('#imgBox7').css('background', 'url("/resumeApp/resources/views/customTheme/images/delete.png")');
-            $('#imgBox7').css('background-repeat','no-repeat');
-            $('#imgBox7').css('background-position','center');
-        }
-    },function () {
-        $('#portfolioImg7').fadeTo(500, 1);
-        $('#imgBox7').css('background', '');
-    });
-
-    $('#portfolioImg7').on('click',function () {
-        if(src7 !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
-            $('#deletePhoto7').click();
-        }else{
-            $('#works7').click();
-        }
-    });
-
-
-
-    // deleting portfolio project photo :
-    $('#deletePhoto0').on('click', function(){
-        if(!confirm('Are you sure you want to delete this project?')){
-           return;
-        }
-        $('#portfolioImg0').attr('src','resumeApp/resources/views/customTheme/images/add_profile_photo.png');
-        $('#works0').attr('type','text');
-        $('#works0').attr('value',0);
-        $('#works0').change();
-    });
-    $('#deletePhoto1').on('click', function(e){
-        if(!confirm('Are you sure you want to delete this project?')){
-            return;
-        }
-        $('#portfolioImg1').attr('src','resumeApp/resources/views/customTheme/images/add_profile_photo.png');
-        $('#works1').attr('type','text');
-        $('#works1').attr('value',1);
-        $('#works1').change();
-    });
-    $('#deletePhoto2').on('click', function(e){
-        if(!confirm('Are you sure you want to delete this project?')){
-            return;
-        }
-        $('#portfolioImg2').attr('src','resumeApp/resources/views/customTheme/images/add_profile_photo.png');
-        $('#works2').attr('type','text');
-        $('#works2').attr('value',2);
-        $('#works2').change();
-    });
-    $('#deletePhoto3').on('click', function(e){
-        if(!confirm('Are you sure you want to delete this project?')){
-            return;
-        }
-        $('#portfolioImg3').attr('src','resumeApp/resources/views/customTheme/images/add_profile_photo.png');
-        $('#works3').attr('type','text');
-        $('#works3').attr('value',3);
-        $('#works3').change();
-    });
-    $('#deletePhoto4').on('click', function(e){
-        if(!confirm('Are you sure you want to delete this project?')){
-            return;
-        }
-        $('#portfolioImg4').attr('src','resumeApp/resources/views/customTheme/images/add_profile_photo.png');
-        $('#works4').attr('type','text');
-        $('#works4').attr('value',4);
-        $('#works4').change();
-    });
-    $('#deletePhoto5').on('click', function(e){
-        if(!confirm('Are you sure you want to delete this project?')){
-            return;
-        }
-        $('#portfolioImg5').attr('src','resumeApp/resources/views/customTheme/images/add_profile_photo.png');
-        $('#works5').attr('type','text');
-        $('#works5').attr('value',5);
-        $('#works5').change();
-    });
-    $('#deletePhoto6').on('click', function(e){
-        if(!confirm('Are you sure you want to delete this project?')){
-            return;
-        }
-        $('#portfolioImg6').attr('src','resumeApp/resources/views/customTheme/images/add_profile_photo.png');
-        $('#works6').attr('type','text');
-        $('#works6').attr('value',6);
-        $('#works6').change();
-    });
-    $('#deletePhoto7').on('click', function(e){
-        if(!confirm('Are you sure you want to delete this project?')){
-            return;
-        }
-        $('#portfolioImg7').attr('src','resumeApp/resources/views/customTheme/images/add_profile_photo.png');
-        $('#works7').attr('type','text');
-        $('#works7').attr('value',7);
-        $('#works7').change();
-    });
-
-    $("[id*=portfolioImg]").hover(function () {
-        $(this).css('cursor','pointer');
-    });
-
-
-    $('#customFile0').on('click',function () {
-        $('#works0').attr('type','file');
-    });
-    $('#customFile1').on('click',function () {
-        $('#works1').attr('type','file');
-    });
-    $('#customFile2').on('click',function () {
-        $('#works2').attr('type','file');
-    });
-    $('#customFile3').on('click',function () {
-        $('#works3').attr('type','file');
-    });
-    $('#customFile4').on('click',function () {
-        $('#works4').attr('type','file');
-    });
-    $('#customFile5').on('click',function () {
-        $('#works5').attr('type','file');
-    });
-    $('#customFile6').on('click',function () {
-        $('#works6').attr('type','file');
-    });
-    $('#customFile7').on('click',function () {
-        $('#works7').attr('type','file');
-    });
-
-    /////////////////////////   end of portfolio scripts ////////////////////////////////
-
+    
     ////////////////////////////    Freelancer Resume page scripts ////////////////////////////////
         // education and training description section
             // show the full desc
@@ -1229,7 +911,7 @@ function getBehanceData(behanceUsername){
             }
 
             // save to database :
-            $('#works0').change();
+            $('#jobTitle').change();
 
         }else{
             // error

@@ -2,7 +2,7 @@
     <div class="row customContainer">
         <div class="col-md-10 offset-md-1 offset-lg-0 col-lg-8">
             <div class="mainSectionHeading">
-                Ensure your <span>business success</span> by hiring approved Freelancers.
+                Build <span>your team</span> with approved Freelancers.
             </div>
             <div class="mainSectionSubHeading">
                 Access our global talent network of professional Freelancers, they are<br/>reliable, qualified

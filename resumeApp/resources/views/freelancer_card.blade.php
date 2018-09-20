@@ -348,13 +348,19 @@
                                                 <label class="panelFormLabel"> Description
                                                     <hr>
                                                 </label><br/>
-                                                {{$workExample->projectDesc}}
+                                                <div class="panelFormLabel">
+                                                    {{$workExample->projectDesc}}
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="panelFormLabel"> Link
                                                     <hr>
                                                 </label><br/>
-                                                <a href="{{$workExample->link}}">{{$workExample->link}}</a>
+                                                @if(!empty($workExample->link))
+                                                    <a href="{{$workExample->link}}" onclick="javascript:window.location='{{$workExample->link}}'">
+                                                        Project Link
+                                                    </a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -783,7 +789,6 @@
     </div>
 
 
-
     {{-- default content --}}
 
     <div id="defaultContent{{$freelancer->id}}" class="d-none">
@@ -948,13 +953,19 @@
                                             <label class="panelFormLabel"> Description
                                                 <hr>
                                             </label><br/>
-                                            {{$workExample->projectDesc}}
+                                            <div class="panelFormLabel">
+                                                {{$workExample->projectDesc}}
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="panelFormLabel"> Link
                                                 <hr>
                                             </label><br/>
-                                            <a href="{{$workExample->link}}">{{$workExample->link}}</a>
+                                            @if(!empty($workExample->link))
+                                                <a href="{{$workExample->link}}" onclick="javascript:window.location='{{$workExample->link}}'">
+                                                    Project Link
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

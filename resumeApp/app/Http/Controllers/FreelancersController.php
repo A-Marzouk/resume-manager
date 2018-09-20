@@ -183,6 +183,8 @@ class FreelancersController extends Controller
             $localProject->user_id = $user->id;
             $localProject->projectName = $project->name;
             $localProject->isActive = true;
+            $localProject->projectDesc = $project->description;
+            $localProject->link = $project->url;
             $localProject->mainImage = $dist;
             $localProject->images = implode(',',$moreMedia);
             $localProject->save();

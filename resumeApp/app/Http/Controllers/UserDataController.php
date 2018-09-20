@@ -394,6 +394,8 @@ class UserDataController extends Controller
            $localProject = new Project();
            $localProject->user_id = $user->id;
            $localProject->projectName = $project->name;
+           $localProject->projectDesc = $project->description;
+           $localProject->link = $project->url;
            $localProject->mainImage = $dist;
            $localProject->images = implode(',',$moreMedia);
            $localProject->save();

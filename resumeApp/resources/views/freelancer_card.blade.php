@@ -30,7 +30,7 @@
                             <a href="javascript:void(0)" id="liveChat">TAP TO CHAT</a>
                         </div>
                         <div id="welcomeText{{$freelancer->id}}" class="d-none">
-                            Hi, I am {{$freelancer->firstName}}, I am a {{$freelancer->userData->jobTitle}}, How can I help
+                            Hi, I am {{$freelancer->firstName}}, I am a {{str_replace('&','and',$freelancer->userData->jobTitle)}}, How can I help
                             you ?
                         </div>
                     </div>
@@ -334,7 +334,12 @@
                                             foreach($moreImagesArr as $image){
                                             if(!empty(trim($image))){
                                             ?>
-                                            <img src="{{$image}}" alt="" width="100%" height="auto">
+                                            @if(strpos($image, 'embed') !== false)
+                                                <iframe height="400" width="100%" src="{{$image}}?bgcolor=%23191919" allowfullscreen autoplay style="margin: 0px auto; display: block;"></iframe>
+                                            @else
+                                                <img src="{{$image}}" alt="" width="100%" height="auto">
+                                            @endif
+
                                             <?}
                                             }?>
                                         </div>

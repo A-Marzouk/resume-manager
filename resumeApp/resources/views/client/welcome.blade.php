@@ -397,7 +397,11 @@
                                                                                         foreach($moreImagesArr as $image){
                                                                                         if(!empty(trim($image))){
                                                                                         ?>
-                                                                                        <img src="{{$image}}" alt="" width="100%" height="auto">
+                                                                                        @if(strpos($image, 'embed') !== false)
+                                                                                            <iframe height="400" width="100%" src="{{$image}}?bgcolor=%23191919" allowfullscreen autoplay style="margin: 0px auto; display: block;"></iframe>
+                                                                                        @else
+                                                                                            <img src="{{$image}}" alt="" width="100%" height="auto">
+                                                                                        @endif
                                                                                         <?}
                                                                                         }?>
                                                                                     </div>

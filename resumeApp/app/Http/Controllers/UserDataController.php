@@ -306,16 +306,21 @@ class UserDataController extends Controller
 
 
     public function dataFromBehance($behanceUsername){
-
         $apiKey = "JqLizSfJOtrq1fNwBPnJ56oTerbqVh2P";
-
         $client = new Client($apiKey);
 
         if(!empty($behanceUsername)){
             $data = $client->getUser($behanceUsername);
-            $projects = $client->getUserProjects($behanceUsername) ;
-            $data->projects = $projects;
-            $this->saveBehanceProjects($projects);
+            if(!$data){
+                return;
+            }
+            $projects = $client->getUserProjects($behanceUsername);
+            $fullProjects = [] ;
+            foreach($projects as $project){
+                $fullProjects[] = $client->getProject($project->id);
+            }
+            $data->projects = $fullProjects;
+            $this->saveBehanceProjects($fullProjects);
         }else{
             $data = [];
         }
@@ -330,9 +335,15 @@ class UserDataController extends Controller
 
         if(!empty($behanceUsername)){
             $data = $client->getUser($behanceUsername);
+            if(!$data){
+                return;
+            }
             $projects = $client->getUserProjects($behanceUsername);
-            $data->projects = $projects;
-            $this->saveBehanceProjects($projects);
+            $fullProjects = [] ;
+            foreach($projects as $project){
+                $fullProjects[] = $client->getProject($project->id);
+            }
+            $data->projects = $fullProjects;
         }else{
             $data = [];
         }
@@ -353,10 +364,12 @@ class UserDataController extends Controller
     public function saveBehanceProjects($projects){
         $user = User::where('id',auth()->user()->id)->first();
         $userExistingProjects  = $user->projects ;
+
         $existingProjectsNames = [];
         foreach ($userExistingProjects as $project){
             $existingProjectsNames[] = $project->projectName;
         }
+
        foreach ($projects as $project){
             if(in_array($project->name,$existingProjectsNames)){
                 continue;
@@ -368,10 +381,21 @@ class UserDataController extends Controller
                continue;
            }
            // create new project :
+           // check if we have more images ( modules )
+           $modules   = $project->modules;
+           $moreMedia =[];
+           if(!empty($modules)){
+               foreach ($modules as $module){
+                   if(isset($module->src)){
+                       $moreMedia[] = $module->src;
+                   }
+               }
+           }
            $localProject = new Project();
            $localProject->user_id = $user->id;
            $localProject->projectName = $project->name;
            $localProject->mainImage = $dist;
+           $localProject->images = implode(',',$moreMedia);
            $localProject->save();
        }
 

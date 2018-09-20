@@ -2,7 +2,6 @@ $(document).ready(function () {
 
     /////////////////////////   Freelancer form scripts ////////////////////////
         // overall scripts ( used in all sections )
-
              // cursor pointer on hover :
                 $('.cursorPointerOnHover').hover(function () {
                     $(this).css('cursor','pointer');
@@ -436,7 +435,9 @@ $(document).ready(function () {
                 e.preventDefault();
                 let behanceLink = $('#behanceLink').val();
                 let behanceUsername = getBehanceUsername(behanceLink);
-                getBehanceData(behanceUsername);
+                if(behanceUsername !== false){
+                    getBehanceData(behanceUsername);
+                }
             });
 
             // hours selection :
@@ -887,6 +888,8 @@ function getBehanceData(behanceUsername){
 
     $('#behanceLinkWait').removeClass('d-none');
     $('#behanceLinkError').addClass('d-none');
+    // hdie import button
+    $('#importBtn').addClass('d-none');
 
     axios.get('/freelancer/behance/'+behanceUsername).then( (response)=> {
         let behanceData =  response.data;
@@ -915,12 +918,14 @@ function getBehanceData(behanceUsername){
 
         }else{
             // error
-            $('#behanceLinkError').addClass('d-none');
-            $('#behanceLinkWait').removeClass('d-none');
+            $('#behanceLinkError').removeClass('d-none');
+            $('#behanceLinkWait').addClass('d-none');
+            $('#importBtn').removeClass('d-none');
         }
     }).catch((error)=> {
         $('#behanceLinkError').removeClass('d-none');
         $('#behanceLinkWait').addClass('d-none');
+        $('#importBtn').removeClass('d-none');
         });
 
 
@@ -937,6 +942,10 @@ function saveBehanceData(images,fields){
 }
 
 function getBehanceUsername(behanceLink) {
+    if(!behanceLink.includes('behance.net/')){
+        $('#behanceLinkError').removeClass('d-none');
+        return false;
+    }
     let linkArr = behanceLink.split('/');
     return linkArr[linkArr.length-1] ;
 }

@@ -30,7 +30,7 @@
                             <a href="javascript:void(0)" id="liveChat">TAP TO CHAT</a>
                         </div>
                         <div id="welcomeText{{$freelancer->id}}" class="d-none">
-                            Hi, I am {{$freelancer->firstName}}, I am a {{$freelancer->userData->jobTitle}}, How can I help
+                            Hi, I am {{$freelancer->firstName}}, I am a {{str_replace('&','and',$freelancer->userData->jobTitle)}}, How can I help
                             you ?
                         </div>
                     </div>

@@ -16,7 +16,7 @@
                             <div class="col-md-8" v-show="toBeEditedProject.mainImage">
                                 <div style="border-radius:10px; border: 1px solid lightgray;">
                                         <img :src="toBeEditedProject.mainImage" alt="" width="100%" height="auto">
-                                        <div v-for="image in toBeEditedProject.images" style="padding-top: 10px;">
+                                        <div v-for="image in toBeEditedProject.images">
                                             <img :src="image" alt="" width="100%">
                                         </div>
                                 </div>

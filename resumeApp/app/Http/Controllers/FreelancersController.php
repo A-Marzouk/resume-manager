@@ -115,9 +115,9 @@ class FreelancersController extends Controller
     }
 
     public function registerDesignerFromBehance(Request $request){
-        $userData = new UserDataController;
-        $behanceLink = $request->behanceDesignerLink;
-        $behanceLinkArr = explode('/',$behanceLink);
+        $userData        = new UserDataController;
+        $behanceLink     = $request->behanceDesignerLink;
+        $behanceLinkArr  = explode('/',$behanceLink);
         $behanceUsername = end($behanceLinkArr);
         $dataFromBehance =  $userData->ArrDataFromBehance($behanceUsername);
 
@@ -156,10 +156,11 @@ class FreelancersController extends Controller
         }
         $userData->save();
 
-        // bring user projects from behance and save them : :
+//         bring user projects from behance and save them : :
 
         $projects = $dataFromBehance->projects;
         foreach ($projects as $project){
+
             $dist = "resumeApp/uploads/project".$project->id."Behance".$user->id.".png";
             if (!file_exists($dist)){
                 copy($project->covers->original, $dist);
@@ -167,11 +168,23 @@ class FreelancersController extends Controller
                 continue;
             }
             // create new project :
+
+            $modules   = $project->modules;
+            $moreMedia =[];
+            if(!empty($modules)){
+                foreach ($modules as $module){
+                    if(isset($module->src)){
+                        $moreMedia[] = $module->src;
+                    }
+                }
+            }
+
             $localProject = new Project();
             $localProject->user_id = $user->id;
             $localProject->projectName = $project->name;
             $localProject->isActive = true;
             $localProject->mainImage = $dist;
+            $localProject->images = implode(',',$moreMedia);
             $localProject->save();
         }
 

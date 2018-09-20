@@ -55695,19 +55695,11 @@ var render = function() {
                             _vm._l(_vm.toBeEditedProject.images, function(
                               image
                             ) {
-                              return _c(
-                                "div",
-                                { staticStyle: { "padding-top": "10px" } },
-                                [
-                                  _c("img", {
-                                    attrs: {
-                                      src: image,
-                                      alt: "",
-                                      width: "100%"
-                                    }
-                                  })
-                                ]
-                              )
+                              return _c("div", [
+                                _c("img", {
+                                  attrs: { src: image, alt: "", width: "100%" }
+                                })
+                              ])
                             })
                           ],
                           2

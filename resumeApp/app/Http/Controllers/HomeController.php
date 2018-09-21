@@ -2,15 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Booking;
+
 use App\ClientSearch;
 use App\User;
-use App\UserData;
-use Dompdf\Exception;
-use Illuminate\Http\Request;
-use Stripe\Charge;
-use Stripe\Customer;
-use Stripe\Stripe;
 
 class HomeController extends Controller
 {
@@ -21,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('privacyView','showHirePage','getSearch','stripePayment','termsView','customPayment','welcomePage','ResumePage','stripeTest');
+        $this->middleware('auth')->except('privacyView','getSearch','termsView','welcomePage','ResumePage');
     }
 
     /**
@@ -44,102 +38,8 @@ class HomeController extends Controller
         return view('resume', compact('user','profession','primarySkills','charSkills','user1'));
     }
 
-
     public function welcomePage(){
         return view('welcome');
-    }
-
-    public function stripeTest(){
-       return view('stripe');
-    }
-
-    public function stripePayment(Request $request){
-        if(auth()->guard('client')->guest()){
-            // client is not logged in.
-            $data['clientName']= '123 Workforce Client';
-            $client_id = null ;
-            // send email to invite him to register.
-        }else{
-            $data['clientName'] = auth()->guard('client')->user()->firstName ;
-            $client_id = auth()->guard('client')->user()->id;
-            // thank him mail
-        }
-
-        Stripe::setApiKey("sk_test_WlqUYgob2e2ALpZfJw5AfIaG");
-
-        $description = "Hire freelancer for 10 hours'";
-
-        if(isset($request->description)){
-            $description = $request->description ;
-        }
-
-        $amountToPay = intval($request->amountToPay);
-        $token = $request->stripeToken;
-
-        $customers = Customer::all(array("limit" => 1000));
-        foreach ($customers['data'] as $key => $customer){
-            if($customer->email == $request->stripeEmail){
-                $customerID = $customer->id;
-                break;
-            }
-        }
-
-        if(!isset($customerID)){
-            $customer = Customer::create(
-                [
-                    "source" => $token,
-                    "description" =>  $data['clientName'],
-                    "email" => $request->stripeEmail
-                ]
-            );
-
-            $customerID = $customer->id;
-        }
-
-
-        // Charge the Customer instead of the card
-         $charge = Charge::create([
-             'amount' => $amountToPay,
-             'currency' => 'usd',
-             'description' => $description,
-             "customer" => $customerID,
-             'receipt_email' => 'AhmedMarzouk266@gmail.com',
-         ]);
-
-
-        // send emeail success of payment :
-        $data['email'] = $request->stripeEmail;
-        $data['freelancerName'] = $request->freelancerName;
-
-
-        $notification = new NotificationsController;
-        $notification->clientPaidEmail($data);
-
-
-        // create the booking : (user_id,client_id,amount_paid,hours)
-        $booking = new Booking;
-        $booking->amount_paid   = $request->amountToPay;
-        $booking->hours         = $request->hours;
-        $booking->user_id       = $request->freelancerID;
-        $booking->client_id     = $client_id;
-        $booking->booking_email = $request->stripeEmail;
-        $booking->save();
-
-        $freelancer     = User::where('id',$request->freelancerID)->first();
-        $currentHours   = $freelancer->userData->availableHours;
-        $freelancerData = UserData::where('user_id',$freelancer->id)->first();
-        $freelancerData->availableHours = intval($currentHours) - intval( $request->hours) ;
-        if($freelancerData->availableHours < 0){
-            $freelancerData->availableHours  = 0 ;
-        }
-        $freelancerData->save();
-
-        return redirect('/'.$freelancer->username)->with('successMessage','Thank you for your payment, we will get in touch with you soon!');
-    }
-
-
-    public function customPayment(){
-        return view('custom_payment');
     }
 
     public function termsView(){
@@ -166,11 +66,4 @@ class HomeController extends Controller
         return view('public_search',compact('freelancers','search_name'));
     }
 
-    public function showHirePage(){
-        $freelancer  = User::where('id',request()->freelancerID)->first();
-        $hours       = request()->hours;
-        $amountToPay = ( $freelancer->userData->salary + 5 ) * 100 * intval($hours);
-
-        return view('payment',compact('freelancer','hours','amountToPay'));
-    }
 }

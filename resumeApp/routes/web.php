@@ -102,13 +102,14 @@ Route::post('/','NotificationsController@messageToSales')->name('message.to.sale
 Route::post('/message/freelancer','NotificationsController@messageToFreelancer')->name('message.to.freelancer');
 
 // stripe integration test
-Route::get('/stripe/payments','HomeController@stripeTest');
-Route::post('/stripe/payments/pay','HomeController@stripePayment');
+Route::get('/stripe/payments','\App\classes\StripePayments@stripeTest');
+Route::post('/stripe/payments/pay','\App\classes\StripePayments@stripePayment');
+Route::get('/stripe/hire','\App\classes\StripePayments@showHirePage');
+// stripe custom payment :
+Route::get('/payment','\App\classes\StripePayments@customPayment');
 Route::get('/stripe/payments/pay',function(){
     return redirect()->back();
 });
-
-Route::get('/stripe/hire','HomeController@showHirePage');
 
 // work history
 Route::get('/freelancer/workshistory','WorksHistoryController@getWorks')->name('get.work');
@@ -129,9 +130,6 @@ Route::post('/freelancer/behance/save_user','FreelancersController@registerDesig
 // Linked in api :
 Route::get('/freelancer/linkedin/','UserDataController@dataFromLinkedIn');
 Route::get('/freelancer/instagram/','UserDataController@dataFromInstagram');
-
-// payment :
-Route::get('/payment','HomeController@customPayment');
 
 //test search functions :
 Route::post('/search','AdminsController@searchFreelancers');

@@ -9,6 +9,6 @@ class Booking extends Model
     protected $table = 'bookings';
 
     protected $fillable = [
-        'user_id','client_id','amount_paid','hours','canceled'
+        'user_id','client_id','amount_paid','hours','canceled','weeks'
     ];
 }

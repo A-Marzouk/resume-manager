@@ -99,47 +99,6 @@ $(document).ready(function () {
                 $('#area_viewEducationBtn'+this.id.replace('minimize','')).fadeOut(1500);
             });
 
-            // hours plus minus :
-            $('.hoursPlus').on('click',function(){
-                let ID  = this.id.replace('hoursPlus','');
-                let currentHours = parseInt($('#numberOfHours' + ID ).html());
-                let newHours = currentHours + 5;
-                let maxHours = parseInt($('#maxHours'+ID).html()) ;
-                // set new hours :
-                if(newHours < maxHours+1){
-                    $('#numberOfHours' + ID ).fadeOut(150);
-                    setTimeout(function () {
-                        $('#numberOfHours' + ID ).html(newHours);
-                        $('#numberOfHours' + ID ).fadeIn(150);
-                    },100);
-                    // change href of the hire me button :
-                    let hireBtn = $('#hireMeBtn'+ ID);
-                    let href1 = hireBtn.attr('href');
-                    let href2 = href1.slice(0, -2) + newHours;
-                    hireBtn.attr('href',href2);
-                }
-
-            });
-
-            $('.hoursMinus').on('click',function(){
-                let ID  = this.id.replace('hoursMinus','');
-                let currentHours = parseInt($('#numberOfHours' + ID ).html());
-                let newHours = currentHours - 5;
-                // set new hours :
-                if(newHours > 9){
-                    $('#numberOfHours' + ID ).fadeOut(150);
-                    setTimeout(function () {
-                        $('#numberOfHours' + ID ).html(newHours);
-                        $('#numberOfHours' + ID ).fadeIn(150);
-                    },100);
-                    let hireBtn = $('#hireMeBtn'+ ID);
-                    let href1 = hireBtn.attr('href');
-                    let href2 = href1.slice(0, -2) + newHours;
-                    hireBtn.attr('href',href2);
-                }
-            });
-
-
 
             // client page : delete search
             $('.deleteSearch').click(

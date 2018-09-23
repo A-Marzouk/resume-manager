@@ -6,7 +6,7 @@
             <th scope="col">#</th>
             <th scope="col">Client email</th>
             <th scope="col">Amount paid</th>
-            <th scope="col">Hours</th>
+            <th scope="col">Hours / weeks</th>
             <th scope="col">Booked Freelancer</th>
             <th scope="col">Status</th>
         </tr>
@@ -29,7 +29,7 @@
             </th>
             <td scope="row">{{$clientName}}</td>
             <td scope="row">{{$booking->amount_paid/100}} USD</td>
-            <td scope="row">{{$booking->hours}}</td>
+            <td scope="row">{{$booking->hours}} / {{$booking->weeks}}</td>
             <td scope="row">{{$freelancer->firstName}} {{$freelancer->lastName}}</td>
             <td scope="row">
                 @if($booking->canceled)

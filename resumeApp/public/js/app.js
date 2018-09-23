@@ -14311,6 +14311,7 @@ $.ajaxSetup({
 });
 
 __webpack_require__(44);
+__webpack_require__(103);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -57493,6 +57494,92 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */
+/***/ (function(module, exports) {
+
+
+// hours selection :
+$('.hoursPlus').on('click', function () {
+    var ID = this.id.replace('hoursPlus', '');
+    var currentHours = parseInt($('#numberOfHours' + ID).html());
+    var newHours = currentHours + 5;
+    var maxHours = parseInt($('#maxHours' + ID).html());
+    // set new hours :
+    if (newHours < maxHours + 1) {
+        $('#numberOfHours' + ID).fadeOut(150);
+        setTimeout(function () {
+            $('#numberOfHours' + ID).html(newHours);
+            $('#numberOfHours' + ID).fadeIn(150);
+        }, 100);
+        // change href of the hire me button :
+        var hireBtn = $('#hireMeBtn' + ID);
+        var href1 = hireBtn.attr('href');
+        var href2 = href1.replace('hours=' + currentHours, 'hours=' + newHours);
+        hireBtn.attr('href', href2);
+    }
+});
+
+$('.hoursMinus').on('click', function () {
+    var ID = this.id.replace('hoursMinus', '');
+    var currentHours = parseInt($('#numberOfHours' + ID).html());
+    var newHours = currentHours - 5;
+    // set new hours :
+    if (newHours > 9) {
+        $('#numberOfHours' + ID).fadeOut(150);
+        setTimeout(function () {
+            $('#numberOfHours' + ID).html(newHours);
+            $('#numberOfHours' + ID).fadeIn(150);
+        }, 100);
+        var hireBtn = $('#hireMeBtn' + ID);
+        var href1 = hireBtn.attr('href');
+        var href2 = href1.replace('hours=' + currentHours, 'hours=' + newHours);
+        hireBtn.attr('href', href2);
+    }
+});
+
+// weeks selection
+$('.weeksPlus').on('click', function () {
+    var ID = this.id.replace('weeksPlus', '');
+    var currentWeeks = parseInt($('#numberOfWeeks' + ID).html());
+    var newWeeks = currentWeeks + 1;
+    var maxWeeks = 4;
+    // set new hours :
+    if (newWeeks <= maxWeeks) {
+        $('#numberOfWeeks' + ID).fadeOut(150);
+        setTimeout(function () {
+            $('#numberOfWeeks' + ID).html(newWeeks);
+            $('#numberOfWeeks' + ID).fadeIn(150);
+        }, 100);
+        // change href of the hire me button :
+        var hireBtn = $('#hireMeBtn' + ID);
+        var href1 = hireBtn.attr('href');
+        var href2 = href1.replace('weeks=' + currentWeeks, 'weeks=' + newWeeks);
+        hireBtn.attr('href', href2);
+    }
+});
+
+$('.weeksMinus').on('click', function () {
+    var ID = this.id.replace('weeksMinus', '');
+    var currentWeeks = parseInt($('#numberOfWeeks' + ID).html());
+    var newWeeks = currentWeeks - 1;
+    // set new hours :
+    if (newWeeks > 0) {
+        $('#numberOfWeeks' + ID).fadeOut(150);
+        setTimeout(function () {
+            $('#numberOfWeeks' + ID).html(newWeeks);
+            $('#numberOfWeeks' + ID).fadeIn(150);
+        }, 100);
+        var hireBtn = $('#hireMeBtn' + ID);
+        var href1 = hireBtn.attr('href');
+        var href2 = href1.replace('weeks=' + currentWeeks, 'weeks=' + newWeeks);
+        hireBtn.attr('href', href2);
+    }
+});
 
 /***/ })
 /******/ ]);

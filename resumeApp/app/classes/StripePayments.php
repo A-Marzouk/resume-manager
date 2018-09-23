@@ -28,13 +28,34 @@ class StripePayments
 
         Stripe::setApiKey($this->apiKey);
 
+
         $description = "Hire freelancer";
         if(isset($request->description)){
             $description = $request->description ;
         }
+
+        $weeks       = intval($request->weeks);
         $amountToPay = intval($request->amountToPay);
         $token = $request->stripeToken;
 
+        // creare product
+        $product = \Stripe\Product::create([
+            'name' =>'Freelancer : '.$request->freelancerName,
+            'type' => 'service',
+        ]);
+
+
+        // create plan
+        $plan = \Stripe\Plan::create([
+            'product' => $product->id,
+            'nickname' => $description,
+            'interval' => 'week',
+            'currency' => 'usd',
+            'amount' => $amountToPay,
+        ]);
+
+
+        // create customer
         $currCustomerID = $this->getCurrCustomer($request->stripeEmail);
 
         if(!($currCustomerID)){
@@ -49,8 +70,16 @@ class StripePayments
             $currCustomerID = $customer->id;
         }
 
+        // subscripe the customer to the plan :
+
+        $subscription = \Stripe\Subscription::create([
+            'customer' => $currCustomerID,
+            'items' => [['plan' => $plan->id]],
+        ]);
+
         // Charge the Customer instead of the card
-        $this->chargeCustomer($amountToPay,$description,$currCustomerID);
+//        $this->chargeCustomer($amountToPay,$description,$currCustomerID);
+
         // send emeail success of payment :
         $data['email'] = $request->stripeEmail;
         $data['freelancerName'] = $request->freelancerName;
@@ -70,9 +99,10 @@ class StripePayments
         }
         $freelancer  = User::where('id',request()->freelancerID)->first();
         $hours       = request()->hours;
+        $weeks      = request()->weeks;
         $amountToPay = ( $freelancer->userData->salary + 5 ) * 100 * intval($hours);
 
-        return view('payment',compact('freelancer','hours','amountToPay'));
+        return view('payment',compact('freelancer','hours','amountToPay','weeks'));
     }
 
     public function customPayment(){
@@ -121,6 +151,7 @@ class StripePayments
         $booking = new Booking;
         $booking->amount_paid   = $request->amountToPay;
         $booking->hours         = $request->hours;
+        $booking->weeks         = $request->weeks;
         $booking->user_id       = $request->freelancerID;
         $booking->client_id     =$client_id;
         $booking->booking_email = $request->stripeEmail;

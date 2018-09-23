@@ -97,7 +97,10 @@
                             ?>
                             @if(!$booking->canceled)
                                 <div class="panelFormLabel text-center" id="bookingStatus{{$booking->id}}">
-                                    <b>{{$booking->hours}}</b> hours to <b>{{$clientName}}</b> - <b>{{$booking->booking_email}}</b>
+                                    <div>
+                                        <b>{{$booking->hours}}</b> hours - <b>{{$booking->weeks}}</b> weeks to <b>{{$clientName}}</b>
+                                    </div><br/>
+                                    <b>{{$booking->booking_email}}</b><br/>
                                     <a href="javascript:void(0)" class="btn btn-sm btn-default releaseBooking" id="addHoursBtn{{$booking->id}}">Add hours back</a>
                                 </div>
                                 <hr width="50%">

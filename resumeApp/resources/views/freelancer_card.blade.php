@@ -59,7 +59,7 @@
                     <a href="javascript:void(0)" id="hoursMinus{{$freelancer->id}}" class="hoursMinus">
                         <img src="/resumeApp/resources/views/customTheme/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">
                     </a>
-                    <span id="numberOfHours{{$freelancer->id}}">@if($freelancer->userData->availableHours==0) 0 @else 10 @endif</span> hours
+                    <span id="numberOfHours{{$freelancer->id}}">@if($freelancer->userData->availableHours==0) 0 @else {{$freelancer->userData->availableHours}} @endif</span> hours
                     <a href="javascript:void(0)" id="hoursPlus{{$freelancer->id}}" class="hoursPlus">
                         <img src="/resumeApp/resources/views/customTheme/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus">
                     </a>

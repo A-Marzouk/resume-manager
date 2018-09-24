@@ -125,7 +125,7 @@
                                                                 <a href="javascript:void(0)" id="hoursMinus{{$freelancer->id}}{{$value['id']}}" class="hoursMinus">
                                                                     <img src="/resumeApp/resources/views/customTheme/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">
                                                                 </a>
-                                                                <span id="numberOfHours{{$freelancer->id}}{{$value['id']}}">@if($freelancer->userData->availableHours==0) 0 @else 10 @endif</span> hours
+                                                                <span id="numberOfHours{{$freelancer->id}}{{$value['id']}}">@if($freelancer->userData->availableHours==0) 0 @else {{$freelancer->userData->availableHours}} @endif</span> hours
                                                                 <a href="javscript:void(0)" id="hoursPlus{{$freelancer->id}}{{$value['id']}}" class="hoursPlus">
                                                                     <img src="/resumeApp/resources/views/customTheme/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus">
                                                                 </a>
@@ -133,8 +133,25 @@
                                                         </div>
 
                                                         <div class="row text-center cardRow">
+                                                            <div class="col-12 nameCard">
+                                                                <div class="cardLabel" style="font-size: 14px;">Select weeks</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1 hoursBtn col-8 offset-2 NoDecor" style="padding: 11px 0 0 0 ;">
+                                                                <a href="javascript:void(0)" id="weeksMinus{{$freelancer->id}}{{$value['id']}}" class="weeksMinus">
+                                                                    <img src="/resumeApp/resources/views/customTheme/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">
+                                                                </a>
+                                                                <span id="numberOfWeeks{{$freelancer->id}}{{$value['id']}}">4</span> weeks
+                                                                <a href="javascript:void(0)" id="weeksPlus{{$freelancer->id}}{{$value['id']}}" class="weeksPlus">
+                                                                    <img src="/resumeApp/resources/views/customTheme/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus">
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row text-center cardRow">
                                                             <div class="buttonMain whiteBg col-lg-12" style="padding: 0 0 25px 0; margin: 0;">
-                                                                <a class="hireBtn btn-block hire" href="/stripe/hire?freelancerID={{$freelancer->id}}&hours=10" id="hireMeBtn{{$freelancer->id}}{{$value['id']}}">Book Now
+                                                                <a class="hireBtn btn-block hire" href="/stripe/hire?freelancerID={{$freelancer->id}}&hours=10&weeks=4" id="hireMeBtn{{$freelancer->id}}{{$value['id']}}">Book Now
                                                                 </a>
                                                             </div>
                                                         </div>

@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="/resumeApp/public/css/app.css" rel="stylesheet">
     <link href="/resumeApp/resources/views/customTheme/css/main.css" rel="stylesheet" media="screen">
     <link href="/resumeApp/resources/views/customTheme/css/freelancerForm.css" rel="stylesheet">
 

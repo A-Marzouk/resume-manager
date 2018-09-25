@@ -456,4 +456,26 @@ class UserDataController extends Controller
 
     }
 
+    public function showAudioPage(){
+        return view('audio');
+    }
+
+    public function saveAudio(Request $request){
+        $currFreelancer = auth()->user();
+        if(isset($_FILES['file']) and !$_FILES['file']['error']){
+            $fname = "Record".$currFreelancer->id.'.ogg';
+            $target_file = "resumeApp/uploads/audios/" . $fname ;
+
+            if (file_exists($target_file)) {
+                unlink($target_file);
+            }
+
+            move_uploaded_file($_FILES['file']['tmp_name'], $target_file);
+        }
+
+        // save audio to the freelancer :
+        $userData = UserData::where('user_id',$currFreelancer->id)->first();
+        $userData->audioFile = "/" . $target_file ;
+        $userData->save();
+    }
 }

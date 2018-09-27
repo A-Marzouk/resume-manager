@@ -57867,6 +57867,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id', 'user_id'],
@@ -57875,7 +57883,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             conversations: [],
             currentConversation: {},
             currentMessagesList: [],
-            newMessage: ''
+            newMessage: '',
+            currFreelancer: {},
+            currClient: {}
         };
     },
 
@@ -57895,14 +57905,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.conversations.forEach(function (data) {
                 if (data.conversation.id === conversation_id) {
                     _this2.currentConversation = data.conversation;
+                    _this2.currFreelancer = data.freelancer;
+                    _this2.currClient = data.client;
                 }
             });
 
             // listen to this conversation to add the message.
             window.Echo.channel('chat.' + this.currentConversation.id).listen('MessageSent', function (e) {
-                _this2.currentMessagesList.push(e.message);
+                if (e.message.conversation_id === _this2.currentConversation.id) {
+                    _this2.currentMessagesList.push(e.message);
+                } else {
+                    _this2.conversations.forEach(function (data) {
+                        if (data.conversation.id === e.message.conversation_id) {
+                            data.conversation.unread_messages_client = data.conversation.unread_messages_client + 1;
+                            data.conversation.unread_messages_freelancer = data.conversation.unread_messages_freelancer + 1;
+                        }
+                    });
+                }
             });
 
+            this.currentConversation.unread_messages_count_client = 0;
+            this.currentConversation.unread_messages_count_freelancer = 0;
+            axios.post('/chat-room/allRead', { conversation_id: this.currentConversation.id }).then(function (response) {
+                console.log('cleared');
+            });
             this.setConversationMessages();
         },
         setConversationMessages: function setConversationMessages() {
@@ -57956,7 +57982,7 @@ var render = function() {
         "div",
         { staticClass: "col-md-3 text-left" },
         _vm._l(_vm.conversations, function(data) {
-          return _c("div", [
+          return _c("div", { staticClass: "NoDecor" }, [
             _c(
               "a",
               {
@@ -57970,10 +57996,13 @@ var render = function() {
               [
                 _c("div", { staticClass: "freelancerChatBox" }, [
                   _vm._v(
-                    "\n                        " +
+                    "\n                        Freelancer : " +
                       _vm._s(data.freelancer.firstName) +
-                      "\n                    "
-                  )
+                      " " +
+                      _vm._s(data.freelancer.lastName) +
+                      " "
+                  ),
+                  _c("br")
                 ])
               ]
             )
@@ -57986,23 +58015,76 @@ var render = function() {
         { staticClass: "col-md-8" },
         [
           _vm._l(_vm.currentMessagesList, function(message) {
-            return _c(
-              "div",
-              {
-                class: {
-                  clientMessage: message.client_id,
-                  freelancerMessage: message.user_id,
-                  defaultMessage: !message.user_id && !message.client_id
-                }
-              },
-              [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(message.message) +
-                    "\n            "
-                )
-              ]
-            )
+            return _c("div", [
+              _c(
+                "div",
+                {
+                  class: {
+                    clientMessage: message.client_id,
+                    freelancerMessage: message.user_id,
+                    defaultMessage: !message.user_id && !message.client_id
+                  }
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: message.client_id,
+                          expression: "message.client_id"
+                        }
+                      ],
+                      staticClass: "panelFormLabel"
+                    },
+                    [_vm._v(_vm._s(_vm.currClient.firstName) + " : ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: message.user_id,
+                          expression: "message.user_id"
+                        }
+                      ],
+                      staticClass: "panelFormLabel"
+                    },
+                    [_vm._v(_vm._s(_vm.currFreelancer.firstName) + " : ")]
+                  ),
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(message.message) +
+                      "\n                    "
+                  ),
+                  _c("div", { staticClass: "text-right" }, [
+                    _c(
+                      "small",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: message.created_at !== undefined,
+                            expression: "message.created_at !== undefined"
+                          }
+                        ]
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(new Date(message.created_at).toDateString())
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              )
+            ])
           }),
           _vm._v(" "),
           _c("small", {

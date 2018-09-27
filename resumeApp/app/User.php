@@ -57,7 +57,7 @@ class User extends Authenticatable
 
 
     public function conversations(){
-        return $this->hasMany(Conversation::class);
+        return $this->hasMany(Conversation::class)->orderBy('updated_at','desc');
     }
 
     public function isComplete(){

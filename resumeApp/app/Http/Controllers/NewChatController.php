@@ -40,7 +40,17 @@ class NewChatController extends Controller
 
             $message->save();
             // dispatch the event :
-            event(new MessageSent($message));
+            broadcast(new MessageSent($message))->toOthers();
+
+            // update the un read messages on the conversation
+            $conversation = Conversation::where('id',$request->conversation_id)->first();
+            if($currClient){
+                $conversation->unread_messages_client = $conversation->unread_messages_client+1;
+            }elseif($currUser){
+                $conversation->unread_messages_freelancer = $conversation->unread_messages_freelancer+1;
+            }
+            $conversation->save();
+
             return $message;
         }
     }
@@ -70,5 +80,11 @@ class NewChatController extends Controller
     public function getMessagesByConversationID($conversation_id){
         $conversation = Conversation::where('id',$conversation_id)->first();
         return $conversation->messages;
+    }
+
+    public function zeroUnread(Request $request){
+        $conversation = Conversation::where('id',$request->conversation_id)->first();
+        $conversation->unread_messages_count = 0;
+        $conversation->save();
     }
 }

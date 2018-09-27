@@ -3,18 +3,26 @@
         <div class="row">
             <div class="col-md-3 text-left">
                 <!-- here goes all conversations related to the signed in client -->
-                <div v-for="data in conversations">
+                <div v-for="data in conversations" class="NoDecor">
                     <a href="javascript:void(0)" @click="setCurrentConversation(data.conversation.id)">
                         <div class="freelancerChatBox">
-                            {{data.freelancer.firstName}}
+                            Freelancer : {{data.freelancer.firstName}} {{data.freelancer.lastName}} <br/>
+                            <!--Unreaded messages : {{data.conversation.unread_messages_count}}-->
                         </div>
                     </a>
                 </div>
             </div>
             <div class="col-md-8">
                 <!-- here goes the chat itself -->
-                <div v-for="message in currentMessagesList" :class="{ clientMessage : message.client_id , freelancerMessage : message.user_id, defaultMessage: !message.user_id && !message.client_id}">
-                    {{message.message}}
+                <div v-for="message in currentMessagesList">
+                    <div :class="{ clientMessage : message.client_id , freelancerMessage : message.user_id, defaultMessage: !message.user_id && !message.client_id}">
+                        <span v-show="message.client_id" class="panelFormLabel">{{currClient.firstName}} : </span>
+                        <span v-show="message.user_id" class="panelFormLabel">{{currFreelancer.firstName}} : </span>
+                        {{message.message}}
+                        <div class="text-right">
+                            <small v-show="message.created_at !== undefined">{{new Date(message.created_at).toDateString()}}</small>
+                        </div>
+                    </div>
                 </div>
                 <small id="status" class="panelFormLabel" style="margin: 10px;"></small>
 
@@ -34,7 +42,9 @@
                 conversations:[],
                 currentConversation:{},
                 currentMessagesList:[],
-                newMessage:''
+                newMessage:'',
+                currFreelancer:{},
+                currClient:{}
             }
         },
 
@@ -49,15 +59,31 @@
                 this.conversations.forEach( (data) => {
                     if(data.conversation.id === conversation_id){
                        this.currentConversation = data.conversation ;
+                       this.currFreelancer = data.freelancer;
+                       this.currClient = data.client;
                     }
                 });
 
                 // listen to this conversation to add the message.
                 window.Echo.channel('chat.'+this.currentConversation.id)
                     .listen('MessageSent', e => {
-                        this.currentMessagesList.push(e.message);
+                        if(e.message.conversation_id === this.currentConversation.id){
+                            this.currentMessagesList.push(e.message);
+                        }else{
+                            this.conversations.forEach( (data) => {
+                                if(data.conversation.id === e.message.conversation_id){
+                                    data.conversation.unread_messages_client = data.conversation.unread_messages_client +1 ;
+                                    data.conversation.unread_messages_freelancer = data.conversation.unread_messages_freelancer +1 ;
+                                }
+                            });
+                        }
                     });
 
+                this.currentConversation.unread_messages_count_client = 0 ;
+                this.currentConversation.unread_messages_count_freelancer = 0 ;
+                axios.post('/chat-room/allRead',{conversation_id:this.currentConversation.id}).then( (response)=>{
+                    console.log('cleared');
+                });
                 this.setConversationMessages();
             },
             setConversationMessages(){

@@ -170,31 +170,32 @@
 }
 
 .freelancerChatBox {
-  border: 1px black solid;
-  border-radius: 5px;
-  padding: 15px;
+  border: 1px lightgrey solid;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 15px;
 }
 
 .clientMessage {
-  border: 3px blue solid;
-  padding: 15px;
-  border-radius: 10px;
+  border: 1px lightgrey solid;
+  padding: 10px;
+  border-radius: 20px;
   margin-top: 10px;
-  background: lightblue;
-  text-align: right;
+  background: lightgrey;
+  text-align: left;
 }
 
 .freelancerMessage {
-  border: 3px green solid;
-  padding: 15px;
-  border-radius: 10px;
+  border: 1px lightgrey solid;
+  padding: 10px;
+  border-radius: 20px;
   margin-top: 10px;
-  background: lightgreen;
+  background: whitesmoke;
   text-align: left;
 }
 
 .defaultMessage {
-  border: 3px gray solid;
+  border: 1px lightgrey solid;
   padding: 15px;
   border-radius: 10px;
   margin-top: 10px;

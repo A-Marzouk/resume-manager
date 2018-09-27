@@ -147,6 +147,7 @@ Route::get('/chat-room','NewChatCOntroller@showChatPage');
 Route::get('/chat-room/conversations','NewChatCOntroller@getAuthorConversations');
 Route::get('/chat-room/messages/{conversation_id}','NewChatCOntroller@getMessagesByConversationID');
 Route::post('/chat-room/addMessage','NewChatCOntroller@addMessage');
+Route::post('/chat-room/allRead','NewChatCOntroller@zeroUnread');
 
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');

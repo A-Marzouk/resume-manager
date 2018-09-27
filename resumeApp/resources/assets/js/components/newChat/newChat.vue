@@ -6,7 +6,12 @@
                 <div v-for="data in conversations" class="NoDecor">
                     <a href="javascript:void(0)" @click="setCurrentConversation(data.conversation.id)">
                         <div class="freelancerChatBox">
-                            Freelancer : {{data.freelancer.firstName}} {{data.freelancer.lastName}} <br/>
+                            <div v-show="client_id">
+                                Freelancer : {{data.freelancer.firstName}} {{data.freelancer.lastName}} <br/>
+                            </div>
+                            <div v-show="user_id">
+                                Client : {{data.client.firstName}}
+                            </div>
                             <!--Unreaded messages : {{data.conversation.unread_messages_count}}-->
                         </div>
                     </a>

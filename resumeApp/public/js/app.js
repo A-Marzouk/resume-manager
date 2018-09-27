@@ -57875,6 +57875,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id', 'user_id'],
@@ -57995,14 +58000,50 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "freelancerChatBox" }, [
-                  _vm._v(
-                    "\n                        Freelancer : " +
-                      _vm._s(data.freelancer.firstName) +
-                      " " +
-                      _vm._s(data.freelancer.lastName) +
-                      " "
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.client_id,
+                          expression: "client_id"
+                        }
+                      ]
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Freelancer : " +
+                          _vm._s(data.freelancer.firstName) +
+                          " " +
+                          _vm._s(data.freelancer.lastName) +
+                          " "
+                      ),
+                      _c("br")
+                    ]
                   ),
-                  _c("br")
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.user_id,
+                          expression: "user_id"
+                        }
+                      ]
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Client : " +
+                          _vm._s(data.client.firstName) +
+                          "\n                        "
+                      )
+                    ]
+                  )
                 ])
               ]
             )

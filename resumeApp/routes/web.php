@@ -142,6 +142,12 @@ Route::get('/clients/emails','AdminsController@getClientsEmails');
 // audio record test :
 Route::post('/audio/save','UserDataController@saveAudio');
 
+// chat new :
+Route::get('/chat-room','NewChatCOntroller@showChatPage');
+Route::get('/chat-room/conversations','NewChatCOntroller@getAuthorConversations');
+Route::get('/chat-room/messages/{conversation_id}','NewChatCOntroller@getMessagesByConversationID');
+Route::post('/chat-room/addMessage','NewChatCOntroller@addMessage');
+
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');
 Route::get('/search/{search_id}','HomeController@getSearch')->name('public.search');

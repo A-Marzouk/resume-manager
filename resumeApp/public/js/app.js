@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(101);
+module.exports = __webpack_require__(104);
 
 
 /***/ }),
@@ -14341,9 +14341,18 @@ Vue.component('search-freelancers', __webpack_require__(88));
 Vue.component('freelancer-card', __webpack_require__(93));
 Vue.component('freelancers-list', __webpack_require__(96));
 
+// chat room:
+Vue.component('new-chat', __webpack_require__(101));
+
 if ($("#searchFreelancers").length !== 0) {
     var searchFreelancers = new Vue({
         el: '#searchFreelancers'
+    });
+}
+
+if ($("#newChat").length !== 0) {
+    var newChat = new Vue({
+        el: '#newChat'
     });
 }
 
@@ -57779,6 +57788,278 @@ if (false) {
 
 /***/ }),
 /* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(102)
+/* template */
+var __vue_template__ = __webpack_require__(103)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\newChat\\newChat.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-55902e4d", Component.options)
+  } else {
+    hotAPI.reload("data-v-55902e4d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 102 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['client_id', 'user_id'],
+    data: function data() {
+        return {
+            conversations: [],
+            currentConversation: {},
+            currentMessagesList: [],
+            newMessage: ''
+        };
+    },
+
+
+    methods: {
+        getAuthorConversations: function getAuthorConversations() {
+            var _this = this;
+
+            axios.get('/chat-room/conversations').then(function (response) {
+                _this.conversations = response.data;
+                _this.setDefaultConversation();
+            });
+        },
+        setCurrentConversation: function setCurrentConversation(conversation_id) {
+            var _this2 = this;
+
+            this.conversations.forEach(function (data) {
+                if (data.conversation.id === conversation_id) {
+                    _this2.currentConversation = data.conversation;
+                }
+            });
+
+            this.setConversationMessages();
+        },
+        setConversationMessages: function setConversationMessages() {
+            var _this3 = this;
+
+            axios.get('/chat-room/messages/' + this.currentConversation.id).then(function (response) {
+                _this3.currentMessagesList = response.data;
+            });
+        },
+        sendMessage: function sendMessage() {
+            var message = {
+                conversation_id: this.currentConversation.id,
+                message: this.newMessage,
+                client_id: this.client_id,
+                user_id: this.user_id
+            };
+            // clear input :
+            this.currentMessagesList.push(message);
+            $('#status').html('Sending..');
+            this.newMessage = '';
+            axios.post('/chat-room/addMessage', message).then(function (response) {
+                $('#status').html('Sent');
+            });
+        },
+        setDefaultConversation: function setDefaultConversation() {
+            if (this.conversations.length > 0) {
+                this.setCurrentConversation(this.conversations[0].conversation.id);
+            }
+        }
+    },
+
+    mounted: function mounted() {
+        this.getAuthorConversations();
+    }
+});
+
+/***/ }),
+/* 103 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-3 text-left" },
+        _vm._l(_vm.conversations, function(data) {
+          return _c("div", [
+            _c(
+              "a",
+              {
+                attrs: { href: "javascript:void(0)" },
+                on: {
+                  click: function($event) {
+                    _vm.setCurrentConversation(data.conversation.id)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "freelancerChatBox" }, [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(data.freelancer.firstName) +
+                      "\n                    "
+                  )
+                ])
+              ]
+            )
+          ])
+        })
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-md-8" },
+        [
+          _vm._l(_vm.currentMessagesList, function(message) {
+            return _c(
+              "div",
+              {
+                class: {
+                  clientMessage: message.client_id,
+                  freelancerMessage: message.user_id,
+                  defaultMessage: !message.user_id && !message.client_id
+                }
+              },
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(message.message) +
+                    "\n            "
+                )
+              ]
+            )
+          }),
+          _vm._v(" "),
+          _c("small", {
+            staticClass: "panelFormLabel",
+            staticStyle: { margin: "10px" },
+            attrs: { id: "status" }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "form-group",
+              staticStyle: { "padding-top": "25px" }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.newMessage,
+                    expression: "newMessage"
+                  }
+                ],
+                staticClass: "form-control panelFormInput",
+                attrs: { type: "text" },
+                domProps: { value: _vm.newMessage },
+                on: {
+                  keyup: function($event) {
+                    if (
+                      !("button" in $event) &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                    ) {
+                      return null
+                    }
+                    return _vm.sendMessage($event)
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.newMessage = $event.target.value
+                  }
+                }
+              })
+            ]
+          )
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-55902e4d", module.exports)
+  }
+}
+
+/***/ }),
+/* 104 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

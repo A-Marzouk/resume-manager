@@ -20,6 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="/resumeApp/public/css/app.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/resumeApp/resources/views/customTheme/js/slick-master/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="/resumeApp/resources/views/customTheme/js/slick-master/slick/slick-theme.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">

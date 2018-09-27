@@ -57898,6 +57898,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
 
+            // listen to this conversation to add the message.
+            window.Echo.channel('chat.' + this.currentConversation.id).listen('MessageSent', function (e) {
+                _this2.currentMessagesList.push(e.message);
+            });
+
             this.setConversationMessages();
         },
         setConversationMessages: function setConversationMessages() {
@@ -57923,10 +57928,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         setDefaultConversation: function setDefaultConversation() {
-            if (this.conversations.length > 0) {
+            if (this.currentConversation.id !== undefined) {
+                this.setCurrentConversation(this.currentConversation.id);
+            } else if (this.conversations.length > 0) {
                 this.setCurrentConversation(this.conversations[0].conversation.id);
             }
-        }
+        },
+        updateUnReadMessageCount: function updateUnReadMessageCount($conversation_id, $newNumber) {}
     },
 
     mounted: function mounted() {

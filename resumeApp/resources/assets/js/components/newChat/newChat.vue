@@ -52,6 +52,12 @@
                     }
                 });
 
+                // listen to this conversation to add the message.
+                window.Echo.channel('chat.'+this.currentConversation.id)
+                    .listen('MessageSent', e => {
+                        this.currentMessagesList.push(e.message);
+                    });
+
                 this.setConversationMessages();
             },
             setConversationMessages(){
@@ -73,12 +79,19 @@
                 axios.post('/chat-room/addMessage',message).then((response) => {
                    $('#status').html('Sent');
                 });
+
             },
 
             setDefaultConversation(){
-                if( this.conversations.length > 0){
+                if(this.currentConversation.id !== undefined){
+                    this.setCurrentConversation(this.currentConversation.id);
+                }
+                else if( this.conversations.length > 0){
                     this.setCurrentConversation(this.conversations[0].conversation.id);
                 }
+            },
+            updateUnReadMessageCount($conversation_id , $newNumber){
+
             }
         },
 

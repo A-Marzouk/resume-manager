@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use App\Conversation;
+use App\Events\MessageSent;
 use App\Message;
 use App\User;
 use Illuminate\Http\Request;
@@ -38,7 +39,8 @@ class NewChatController extends Controller
             }
 
             $message->save();
-
+            // dispatch the event :
+            event(new MessageSent($message));
             return $message;
         }
     }

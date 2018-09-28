@@ -12,13 +12,24 @@
                             <div v-show="user_id">
                                 Client : {{data.client.firstName}}
                             </div>
-                            <!--Unreaded messages : {{data.conversation.unread_messages_count}}-->
+                            <div v-show="user_id">
+                                Unread messages : {{data.conversation.unread_messages_freelancer}}
+                            </div>
+                            <div v-show="client_id">
+                                Unread messages : {{data.conversation.unread_messages_client}}
+                            </div>
                         </div>
                     </a>
                 </div>
             </div>
             <div class="col-md-8">
                 <!-- here goes the chat itself -->
+                <div>
+                    {{this.currFreelancer.firstName}} - {{this.currClient.firstName}}
+                </div><br/>
+                <div v-show="currentMessagesList.length < 1">
+                    <span class="panelFormLabel">No messages yet</span>
+                </div>
                 <div v-for="message in currentMessagesList">
                     <div :class="{ clientMessage : message.client_id , freelancerMessage : message.user_id, defaultMessage: !message.user_id && !message.client_id}">
                         <span v-show="message.client_id" class="panelFormLabel">{{currClient.firstName}} : </span>
@@ -69,27 +80,32 @@
                     }
                 });
 
+                // clear unread messages :
+                axios.post('/chat-room/allRead',{conversation_id:this.currentConversation.id,client_id:this.client_id,user_id:this.user_id})
+                    .then( (response)=>{
+                        if(this.client_id){
+                            this.currentConversation.unread_messages_client = 0 ;
+                        }
+                        if(this.user_id){
+                            this.currentConversation.unread_messages_freelancer = 0 ;
+                        }
+                });
+
                 // listen to this conversation to add the message.
                 window.Echo.channel('chat.'+this.currentConversation.id)
                     .listen('MessageSent', e => {
                         if(e.message.conversation_id === this.currentConversation.id){
+                            // i am on this conversation
                             this.currentMessagesList.push(e.message);
-                        }else{
-                            this.conversations.forEach( (data) => {
-                                if(data.conversation.id === e.message.conversation_id){
-                                    data.conversation.unread_messages_client = data.conversation.unread_messages_client +1 ;
-                                    data.conversation.unread_messages_freelancer = data.conversation.unread_messages_freelancer +1 ;
-                                }
-                            });
+                        }
+                        else{
+                            // i am on another conversation :
+                            this.updateUnReadMessageCount(e.message.conversation_id);
                         }
                     });
 
-                this.currentConversation.unread_messages_count_client = 0 ;
-                this.currentConversation.unread_messages_count_freelancer = 0 ;
-                axios.post('/chat-room/allRead',{conversation_id:this.currentConversation.id}).then( (response)=>{
-                    console.log('cleared');
-                });
                 this.setConversationMessages();
+
             },
             setConversationMessages(){
                 axios.get('/chat-room/messages/'+this.currentConversation.id).then( (response) => {
@@ -121,8 +137,17 @@
                     this.setCurrentConversation(this.conversations[0].conversation.id);
                 }
             },
-            updateUnReadMessageCount($conversation_id , $newNumber){
-
+            updateUnReadMessageCount($conversation_id){
+                this.conversations.forEach( (data) => {
+                    if(data.conversation.id === $conversation_id){
+                        if(this.client_id){
+                            data.conversation.unread_messages_client +=1  ;
+                        }
+                        if(this.user_id){
+                            data.conversation.unread_messages_freelancer += 1 ;
+                        }
+                    }
+                })
             }
         },
 

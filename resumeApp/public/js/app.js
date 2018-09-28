@@ -57880,6 +57880,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id', 'user_id'],
@@ -57915,25 +57926,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
 
-            // listen to this conversation to add the message.
-            window.Echo.channel('chat.' + this.currentConversation.id).listen('MessageSent', function (e) {
-                if (e.message.conversation_id === _this2.currentConversation.id) {
-                    _this2.currentMessagesList.push(e.message);
-                } else {
-                    _this2.conversations.forEach(function (data) {
-                        if (data.conversation.id === e.message.conversation_id) {
-                            data.conversation.unread_messages_client = data.conversation.unread_messages_client + 1;
-                            data.conversation.unread_messages_freelancer = data.conversation.unread_messages_freelancer + 1;
-                        }
-                    });
+            // clear unread messages :
+            axios.post('/chat-room/allRead', { conversation_id: this.currentConversation.id, client_id: this.client_id, user_id: this.user_id }).then(function (response) {
+                if (_this2.client_id) {
+                    _this2.currentConversation.unread_messages_client = 0;
+                }
+                if (_this2.user_id) {
+                    _this2.currentConversation.unread_messages_freelancer = 0;
                 }
             });
 
-            this.currentConversation.unread_messages_count_client = 0;
-            this.currentConversation.unread_messages_count_freelancer = 0;
-            axios.post('/chat-room/allRead', { conversation_id: this.currentConversation.id }).then(function (response) {
-                console.log('cleared');
+            // listen to this conversation to add the message.
+            window.Echo.channel('chat.' + this.currentConversation.id).listen('MessageSent', function (e) {
+                if (e.message.conversation_id === _this2.currentConversation.id) {
+                    // i am on this conversation
+                    _this2.currentMessagesList.push(e.message);
+                } else {
+                    // i am on another conversation :
+                    _this2.updateUnReadMessageCount(e.message.conversation_id);
+                }
             });
+
             this.setConversationMessages();
         },
         setConversationMessages: function setConversationMessages() {
@@ -57965,7 +57978,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.setCurrentConversation(this.conversations[0].conversation.id);
             }
         },
-        updateUnReadMessageCount: function updateUnReadMessageCount($conversation_id, $newNumber) {}
+        updateUnReadMessageCount: function updateUnReadMessageCount($conversation_id) {
+            var _this4 = this;
+
+            this.conversations.forEach(function (data) {
+                if (data.conversation.id === $conversation_id) {
+                    if (_this4.client_id) {
+                        data.conversation.unread_messages_client += 1;
+                    }
+                    if (_this4.user_id) {
+                        data.conversation.unread_messages_freelancer += 1;
+                    }
+                }
+            });
+        }
     },
 
     mounted: function mounted() {
@@ -58043,6 +58069,48 @@ var render = function() {
                           "\n                        "
                       )
                     ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.user_id,
+                          expression: "user_id"
+                        }
+                      ]
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Unread messages : " +
+                          _vm._s(data.conversation.unread_messages_freelancer) +
+                          "\n                        "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.client_id,
+                          expression: "client_id"
+                        }
+                      ]
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Unread messages : " +
+                          _vm._s(data.conversation.unread_messages_client) +
+                          "\n                        "
+                      )
+                    ]
                   )
                 ])
               ]
@@ -58055,6 +58123,36 @@ var render = function() {
         "div",
         { staticClass: "col-md-8" },
         [
+          _c("div", [
+            _vm._v(
+              "\n                " +
+                _vm._s(this.currFreelancer.firstName) +
+                " - " +
+                _vm._s(this.currClient.firstName) +
+                "\n            "
+            )
+          ]),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.currentMessagesList.length < 1,
+                  expression: "currentMessagesList.length < 1"
+                }
+              ]
+            },
+            [
+              _c("span", { staticClass: "panelFormLabel" }, [
+                _vm._v("No messages yet")
+              ])
+            ]
+          ),
+          _vm._v(" "),
           _vm._l(_vm.currentMessagesList, function(message) {
             return _c("div", [
               _c(

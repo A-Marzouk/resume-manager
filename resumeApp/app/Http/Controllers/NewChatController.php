@@ -44,10 +44,10 @@ class NewChatController extends Controller
 
             // update the un read messages on the conversation
             $conversation = Conversation::where('id',$request->conversation_id)->first();
-            if($currClient){
-                $conversation->unread_messages_client = $conversation->unread_messages_client+1;
-            }elseif($currUser){
+            if($currClient){ // message from client
                 $conversation->unread_messages_freelancer = $conversation->unread_messages_freelancer+1;
+            }elseif($currUser){ // message from user
+                $conversation->unread_messages_client= $conversation->unread_messages_client+1;
             }
             $conversation->save();
 
@@ -84,7 +84,13 @@ class NewChatController extends Controller
 
     public function zeroUnread(Request $request){
         $conversation = Conversation::where('id',$request->conversation_id)->first();
-        $conversation->unread_messages_count = 0;
+        if($request->client_id){
+            $conversation->unread_messages_client = 0;
+        }
+        elseif($request->user_id){
+            $conversation->unread_messages_freelancer = 0;
+        }
+
         $conversation->save();
     }
 }

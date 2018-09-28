@@ -57889,8 +57889,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id', 'user_id'],
@@ -58039,14 +58037,70 @@ var render = function() {
                       ]
                     },
                     [
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: data.freelancer.userData.photo,
+                            expression: "data.freelancer.userData.photo"
+                          }
+                        ],
+                        staticStyle: { "border-radius": "50%" },
+                        attrs: {
+                          src: data.freelancer.userData.photo,
+                          alt: "img",
+                          width: "25px"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !data.freelancer.userData.photo,
+                            expression: "!data.freelancer.userData.photo"
+                          }
+                        ],
+                        staticStyle: { "border-radius": "50%" },
+                        attrs: {
+                          src:
+                            "/resumeApp/resources/views/customTheme/images/no-image-icon-.png",
+                          alt: "img",
+                          width: "25px"
+                        }
+                      }),
                       _vm._v(
-                        "\n                            Freelancer : " +
+                        "\n                             " +
                           _vm._s(data.freelancer.firstName) +
                           " " +
                           _vm._s(data.freelancer.lastName) +
-                          " "
+                          "\n                            "
                       ),
-                      _c("br")
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value:
+                                data.conversation.unread_messages_client > 0,
+                              expression:
+                                "data.conversation.unread_messages_client> 0"
+                            }
+                          ],
+                          staticClass: "unread"
+                        },
+                        [
+                          _vm._v(
+                            " " +
+                              _vm._s(data.conversation.unread_messages_client) +
+                              " "
+                          )
+                        ]
+                      )
                     ]
                   ),
                   _vm._v(" "),
@@ -58064,51 +58118,35 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                            Client : " +
+                        "\n                            " +
                           _vm._s(data.client.firstName) +
-                          "\n                        "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      directives: [
+                          "\n                            "
+                      ),
+                      _c(
+                        "span",
                         {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.user_id,
-                          expression: "user_id"
-                        }
-                      ]
-                    },
-                    [
-                      _vm._v(
-                        "\n                            Unread messages : " +
-                          _vm._s(data.conversation.unread_messages_freelancer) +
-                          "\n                        "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.client_id,
-                          expression: "client_id"
-                        }
-                      ]
-                    },
-                    [
-                      _vm._v(
-                        "\n                            Unread messages : " +
-                          _vm._s(data.conversation.unread_messages_client) +
-                          "\n                        "
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value:
+                                data.conversation.unread_messages_freelancer >
+                                0,
+                              expression:
+                                "data.conversation.unread_messages_freelancer > 0"
+                            }
+                          ],
+                          staticClass: "unread"
+                        },
+                        [
+                          _vm._v(
+                            " " +
+                              _vm._s(
+                                data.conversation.unread_messages_freelancer
+                              ) +
+                              " "
+                          )
+                        ]
                       )
                     ]
                   )

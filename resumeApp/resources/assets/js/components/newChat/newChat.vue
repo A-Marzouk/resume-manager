@@ -7,16 +7,14 @@
                     <a href="javascript:void(0)" @click="setCurrentConversation(data.conversation.id)">
                         <div class="freelancerChatBox">
                             <div v-show="client_id">
-                                Freelancer : {{data.freelancer.firstName}} {{data.freelancer.lastName}} <br/>
+                                <img v-show="data.freelancer.userData.photo" :src="data.freelancer.userData.photo" alt="img" width="25px" style="border-radius: 50%">
+                                <img v-show="!data.freelancer.userData.photo" src="/resumeApp/resources/views/customTheme/images/no-image-icon-.png" alt="img" width="25px" style="border-radius: 50%">
+                                 {{data.freelancer.firstName}} {{data.freelancer.lastName}}
+                                <span class="unread" v-show="data.conversation.unread_messages_client> 0"> {{data.conversation.unread_messages_client}} </span>
                             </div>
                             <div v-show="user_id">
-                                Client : {{data.client.firstName}}
-                            </div>
-                            <div v-show="user_id">
-                                Unread messages : {{data.conversation.unread_messages_freelancer}}
-                            </div>
-                            <div v-show="client_id">
-                                Unread messages : {{data.conversation.unread_messages_client}}
+                                {{data.client.firstName}}
+                                <span class="unread" v-show="data.conversation.unread_messages_freelancer > 0"> {{data.conversation.unread_messages_freelancer}} </span>
                             </div>
                         </div>
                     </a>

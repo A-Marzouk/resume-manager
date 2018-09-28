@@ -71,6 +71,7 @@ class NewChatController extends Controller
             $secondParticipant = Client::where('id',$conversation->client_id)->first();
             $data[$i]['conversation'] = $conversation ;
             $data[$i]['freelancer']   = $firstParticipant ;
+            $data[$i]['freelancer']['userData']   = $firstParticipant->userData;
             $data[$i]['client']       = $secondParticipant ;
             $i++;
         }

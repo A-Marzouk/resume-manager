@@ -21,6 +21,10 @@ class NewChatController extends Controller
         elseif($currClient){
             return view('newChat.chat_client',compact('currUser','currClient'));
         }
+        else{
+            return redirect(route('welcome'));
+
+        }
     }
 
 
@@ -93,5 +97,33 @@ class NewChatController extends Controller
         }
 
         $conversation->save();
+    }
+
+    public function startConversation(Request $request){
+        $currClient = auth()->guard('client')->user();
+        if(!$currClient){
+            return redirect()->back()->with('errorMessage','You need to log in first.');
+        }
+
+        $conversation = Conversation::where([
+            'user_id' => $request->freelancer_id,
+            'client_id'=>$currClient->id
+        ])->first();
+
+        if($conversation){
+            $conversation->updated_at = date();
+            $conversation->save();
+            return redirect(route('chat-room'));
+        }
+
+        if(!$conversation){
+            $conversation = new Conversation;
+            $conversation->user_id   = $request->freelancer_id;
+            $conversation->client_id = $currClient->id;
+            $conversation->save();
+            return redirect(route('chat-room'));
+        }
+
+        return redirect()->back();
     }
 }

@@ -143,11 +143,12 @@ Route::get('/clients/emails','AdminsController@getClientsEmails');
 Route::post('/audio/save','UserDataController@saveAudio');
 
 // chat new :
-Route::get('/chat-room','NewChatCOntroller@showChatPage');
-Route::get('/chat-room/conversations','NewChatCOntroller@getAuthorConversations');
-Route::get('/chat-room/messages/{conversation_id}','NewChatCOntroller@getMessagesByConversationID');
-Route::post('/chat-room/addMessage','NewChatCOntroller@addMessage');
-Route::post('/chat-room/allRead','NewChatCOntroller@zeroUnread');
+Route::get('/chat-room','NewChatController@showChatPage')->name('chat-room');
+Route::get('/chat-room/conversations','NewChatController@getAuthorConversations');
+Route::get('/chat-room/messages/{conversation_id}','NewChatController@getMessagesByConversationID');
+Route::post('/chat-room/addMessage','NewChatController@addMessage');
+Route::post('/chat-room/allRead','NewChatController@zeroUnread');
+Route::post('/chat-room/start_conversation','NewChatController@startConversation');
 
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');

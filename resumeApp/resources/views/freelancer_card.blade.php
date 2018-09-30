@@ -26,9 +26,11 @@
                         <div class="jobTitle" id="animatedText{{$freelancer->id}}_mobile">
                             {{$freelancer->userData->jobTitle}}
                         </div>
-                        <div class="tap-to-chat NoDecor">
-                            <a href="javascript:void(0)" id="liveChat">TAP TO CHAT1</a>
-                        </div>
+                        <form action="/chat-room/start_conversation" method="post">
+                            {{csrf_field()}}
+                            <input type="hidden" name="freelancer_id" value="{{$freelancer->id}}">
+                            <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
+                        </form>
                         <div id="welcomeText{{$freelancer->id}}" class="d-none">
                             Hi, I am {{$freelancer->firstName}}, I am a {{str_replace('&','and',$freelancer->userData->jobTitle)}}, How can I help
                             you ?
@@ -823,9 +825,11 @@
                     <div class="jobTitle" id="animatedText{{$freelancer->id}}">
                         {{$freelancer->userData->jobTitle}}
                     </div>
-                    <div class="tap-to-chat NoDecor">
-                        <a href="javascript:void(0)" id="liveChat">TAP TO CHAT</a>
-                    </div>
+                    <form action="/chat-room/start_conversation" method="post">
+                        {{csrf_field()}}
+                        <input type="hidden" name="freelancer_id" value="{{$freelancer->id}}">
+                        <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
+                    </form>
                     <div id="welcomeText{{$freelancer->id}}" class="d-none">
                         Hi, I am {{$freelancer->firstName}}, I am a {{$freelancer->userData->jobTitle}}, How can I help
                         you ?

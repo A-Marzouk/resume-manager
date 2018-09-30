@@ -57916,6 +57916,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         setCurrentConversation: function setCurrentConversation(conversation_id) {
             var _this2 = this;
 
+            this.currentMessagesList = [];
             this.conversations.forEach(function (data) {
                 if (data.conversation.id === conversation_id) {
                     _this2.currentConversation = data.conversation;

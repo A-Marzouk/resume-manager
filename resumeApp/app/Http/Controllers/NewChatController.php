@@ -111,7 +111,7 @@ class NewChatController extends Controller
         ])->first();
 
         if($conversation){
-            $conversation->updated_at = date();
+            $conversation->updated_at = date('Y-m-d H:i:s',time());
             $conversation->save();
             return redirect(route('chat-room'));
         }

@@ -70,6 +70,7 @@
                 });
             },
             setCurrentConversation(conversation_id){
+                this.currentMessagesList = [] ;
                 this.conversations.forEach( (data) => {
                     if(data.conversation.id === conversation_id){
                        this.currentConversation = data.conversation ;

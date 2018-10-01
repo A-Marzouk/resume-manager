@@ -149,6 +149,7 @@ Route::get('/chat-room/messages/{conversation_id}','NewChatController@getMessage
 Route::post('/chat-room/addMessage','NewChatController@addMessage');
 Route::post('/chat-room/allRead','NewChatController@zeroUnread');
 Route::post('/chat-room/start_conversation','NewChatController@startConversation');
+Route::post('/chat-room/message_file','NewChatController@handleFileMessage');
 
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');

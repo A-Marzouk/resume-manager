@@ -8,6 +8,7 @@
 
 namespace App\classes;
 use App\UserData;
+use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeExtensionGuesser;
 
 class Upload
 {
@@ -98,6 +99,38 @@ class Upload
         if ($uploadOk == 0) {
             return false;
 // if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
+                return $target_file;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    public static function chatFile($src,$name,$newName){
+        $target_dir = "resumeApp/uploads/chat_shared_files/";
+        $target_file = $target_dir . $newName. basename($_FILES[$name]["name"]);
+        $uploadOk = 1;
+
+        // check file extensions
+        $guesser = new MimeTypeExtensionGuesser ;
+        $format  = $guesser->guess($_FILES[$name]['type']);
+
+
+        // check file type :
+        if(!$format){
+            $uploadOk = 0 ;
+        }
+
+        // Check file size
+        if ($_FILES[$name]["size"] > 35000000) {
+            $uploadOk = 0;
+        }
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            return false;
+        // if everything is ok, try to upload file
         } else {
             if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
                 return $target_file;

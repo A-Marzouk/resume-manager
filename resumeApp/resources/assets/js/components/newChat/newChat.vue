@@ -40,9 +40,18 @@
                 </div>
                 <small id="status" class="panelFormLabel" style="margin: 10px;"></small>
 
-                <div class="form-group" style="padding-top: 25px;">
-                    <input type="text" class="form-control panelFormInput" v-model="newMessage" @keyup.enter="sendMessage">
-                </div> <!-- message input -->
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group" style="padding-top: 25px;">
+                            <input type="text" class="form-control panelFormInput" v-model="newMessage" @keyup.enter="sendMessage">
+                        </div> <!-- message input -->
+                    </div>
+                    <div class="col-md-4 NoDecor">
+                        <!--<a href="javascript:void(0)" @click="openFileSelect">Share file</a>-->
+                        <input type="file" name="shared_file" ref="file" id="shared_file" @change="handleChatFile" class="d-none">
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -70,7 +79,6 @@
                 });
             },
             setCurrentConversation(conversation_id){
-                this.currentMessagesList = [] ;
                 this.conversations.forEach( (data) => {
                     if(data.conversation.id === conversation_id){
                        this.currentConversation = data.conversation ;
@@ -104,6 +112,9 @@
                     });
 
                 this.setConversationMessages();
+
+                // clear status :
+                $('#status').html('');
 
             },
             setConversationMessages(){
@@ -147,6 +158,23 @@
                         }
                     }
                 })
+            },
+            handleChatFile(){
+                let chat_form_data = new FormData;
+                let chatFile = this.$refs.file.files[0];
+                chat_form_data.append('shared_file',chatFile);
+
+                axios.post('/chat-room/message_file',chat_form_data).then( (response) => {
+                    // response.data is the file path
+                    this.sendFileMessage(response.data);
+                });
+
+            },
+            openFileSelect(){
+                $('#shared_file').click();
+            },
+            sendFileMessage(filePath){
+
             }
         },
 

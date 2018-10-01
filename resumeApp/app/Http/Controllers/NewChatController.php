@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\classes\Upload;
 use App\Client;
 use App\Conversation;
 use App\Events\MessageSent;
@@ -125,5 +126,11 @@ class NewChatController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function handleFileMessage(Request $request){
+        if(isset($request->shared_file)){
+            return Upload::chatFile('','shared_file','');
+        }
     }
 }

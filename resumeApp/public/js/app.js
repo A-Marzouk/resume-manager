@@ -57889,6 +57889,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id', 'user_id'],
@@ -57916,7 +57925,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         setCurrentConversation: function setCurrentConversation(conversation_id) {
             var _this2 = this;
 
-            this.currentMessagesList = [];
             this.conversations.forEach(function (data) {
                 if (data.conversation.id === conversation_id) {
                     _this2.currentConversation = data.conversation;
@@ -57947,6 +57955,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
 
             this.setConversationMessages();
+
+            // clear status :
+            $('#status').html('');
         },
         setConversationMessages: function setConversationMessages() {
             var _this3 = this;
@@ -57990,7 +58001,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 }
             });
-        }
+        },
+        handleChatFile: function handleChatFile() {
+            var _this5 = this;
+
+            var chat_form_data = new FormData();
+            var chatFile = this.$refs.file.files[0];
+            chat_form_data.append('shared_file', chatFile);
+
+            axios.post('/chat-room/message_file', chat_form_data).then(function (response) {
+                // response.data is the file path
+                _this5.sendFileMessage(response.data);
+            });
+        },
+        openFileSelect: function openFileSelect() {
+            $('#shared_file').click();
+        },
+        sendFileMessage: function sendFileMessage(filePath) {}
     },
 
     mounted: function mounted() {
@@ -58271,45 +58298,64 @@ var render = function() {
             attrs: { id: "status" }
           }),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "form-group",
-              staticStyle: { "padding-top": "25px" }
-            },
-            [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-8" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "form-group",
+                  staticStyle: { "padding-top": "25px" }
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.newMessage,
+                        expression: "newMessage"
+                      }
+                    ],
+                    staticClass: "form-control panelFormInput",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.newMessage },
+                    on: {
+                      keyup: function($event) {
+                        if (
+                          !("button" in $event) &&
+                          _vm._k(
+                            $event.keyCode,
+                            "enter",
+                            13,
+                            $event.key,
+                            "Enter"
+                          )
+                        ) {
+                          return null
+                        }
+                        return _vm.sendMessage($event)
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.newMessage = $event.target.value
+                      }
+                    }
+                  })
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4 NoDecor" }, [
               _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.newMessage,
-                    expression: "newMessage"
-                  }
-                ],
-                staticClass: "form-control panelFormInput",
-                attrs: { type: "text" },
-                domProps: { value: _vm.newMessage },
-                on: {
-                  keyup: function($event) {
-                    if (
-                      !("button" in $event) &&
-                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                    ) {
-                      return null
-                    }
-                    return _vm.sendMessage($event)
-                  },
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.newMessage = $event.target.value
-                  }
-                }
+                ref: "file",
+                staticClass: "d-none",
+                attrs: { type: "file", name: "shared_file", id: "shared_file" },
+                on: { change: _vm.handleChatFile }
               })
-            ]
-          )
+            ])
+          ])
         ],
         2
       )

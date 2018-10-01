@@ -72,6 +72,9 @@ class NewChatController extends Controller
         $data=[];
         $i=0;
         foreach ($conversations as $conversation){
+            if(!isset($conversation->user_id) || !isset($conversation->client_id)){
+                continue;
+            }
             $firstParticipant  = User::where('id',$conversation->user_id)->first();
             $secondParticipant = Client::where('id',$conversation->client_id)->first();
             $data[$i]['conversation'] = $conversation ;

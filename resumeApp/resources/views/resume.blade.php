@@ -12,6 +12,14 @@
                 </div>
             @endif
         </div>
+
+        {{-- error message --}}
+        @if (session()->has('errorMessage'))
+                <div class="alert alert-danger">
+                        {{ session()->get('errorMessage') }}
+                </div>
+        @endif
+
         <div class="container">
             @include('freelancer_card')
         </div>

@@ -42,10 +42,6 @@ $(document).ready(function () {
                 },650)
             });
 
-            // tap to chat
-            $('.resumeCardRight').on('click','.tap-to-chat',function () {
-                $('#liveChat').click();
-            });
             // animated text :
              $('.freelancerCard').one('mouseenter',function () {
                  let freelancerID = this.id.replace('card','');

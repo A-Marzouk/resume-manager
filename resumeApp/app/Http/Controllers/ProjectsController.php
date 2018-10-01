@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 
+use App\classes\Upload;
 use App\Project;
 use Illuminate\Http\Request;
 
@@ -46,8 +47,7 @@ class ProjectsController extends Controller
         $project->isActive = $request->isActive;
         $project->order = $request->order;
         if(isset($request->mainImage)){
-            $handler = new UserDataController;
-            $path  = $handler->uploadProjectPhoto('','mainImage','');
+            $path  = Upload::projectPhoto('','mainImage','');
             $project->mainImage = '/'. $path ;
         }
 
@@ -56,8 +56,7 @@ class ProjectsController extends Controller
         for($i=0; $i<100 ; $i++){
             $currRequest = 'moreImages'.$i ;
             if(isset($request->{$currRequest})){
-                $handler = new UserDataController;
-                $path  = $handler->uploadProjectPhoto('',$currRequest,'');
+                $path  = Upload::projectPhoto('',$currRequest,'');
                 $moreImages[] =  '/'. $path ;
             }else{
                 break;

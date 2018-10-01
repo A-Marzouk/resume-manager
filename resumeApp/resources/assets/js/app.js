@@ -46,10 +46,20 @@ Vue.component('search-freelancers', require('./components/search/searchComponent
 Vue.component('freelancer-card', require('./components/search/freelancerCardComponent.vue'));
 Vue.component('freelancers-list', require('./components/search/freelancersListComponent.vue'));
 
+// chat room:
+Vue.component('new-chat', require('./components/newChat/newChat'));
+
+
 
 if ($("#searchFreelancers").length !== 0){
     let searchFreelancers = new Vue({
         el:'#searchFreelancers'
+    });
+}
+
+if ($("#newChat").length !== 0){
+    let newChat = new Vue({
+        el:'#newChat'
     });
 }
 

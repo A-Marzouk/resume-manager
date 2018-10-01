@@ -55,6 +55,11 @@ class User extends Authenticatable
         return $this->hasMany(Message::class);
     }
 
+
+    public function conversations(){
+        return $this->hasMany(Conversation::class)->orderBy('updated_at','desc');
+    }
+
     public function isComplete(){
         $userData = $this->userData->attributes;
         $except    = ['online','approved','birth_date','trainings','education','nationality','terms','googleCalendar','workForceAgent','preferredTime','surname'

@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(101);
+module.exports = __webpack_require__(104);
 
 
 /***/ }),
@@ -14341,9 +14341,18 @@ Vue.component('search-freelancers', __webpack_require__(88));
 Vue.component('freelancer-card', __webpack_require__(93));
 Vue.component('freelancers-list', __webpack_require__(96));
 
+// chat room:
+Vue.component('new-chat', __webpack_require__(101));
+
 if ($("#searchFreelancers").length !== 0) {
     var searchFreelancers = new Vue({
         el: '#searchFreelancers'
+    });
+}
+
+if ($("#newChat").length !== 0) {
+    var newChat = new Vue({
+        el: '#newChat'
     });
 }
 
@@ -57779,6 +57788,592 @@ if (false) {
 
 /***/ }),
 /* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(102)
+/* template */
+var __vue_template__ = __webpack_require__(103)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\newChat\\newChat.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-55902e4d", Component.options)
+  } else {
+    hotAPI.reload("data-v-55902e4d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 102 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['client_id', 'user_id'],
+    data: function data() {
+        return {
+            conversations: [],
+            currentConversation: {},
+            currentMessagesList: [],
+            newMessage: '',
+            currFreelancer: {},
+            currClient: {}
+        };
+    },
+
+
+    methods: {
+        getAuthorConversations: function getAuthorConversations() {
+            var _this = this;
+
+            axios.get('/chat-room/conversations').then(function (response) {
+                _this.conversations = response.data;
+                _this.setDefaultConversation();
+            });
+        },
+        setCurrentConversation: function setCurrentConversation(conversation_id) {
+            var _this2 = this;
+
+            this.conversations.forEach(function (data) {
+                if (data.conversation.id === conversation_id) {
+                    _this2.currentConversation = data.conversation;
+                    _this2.currFreelancer = data.freelancer;
+                    _this2.currClient = data.client;
+                }
+            });
+
+            // clear unread messages :
+            axios.post('/chat-room/allRead', { conversation_id: this.currentConversation.id, client_id: this.client_id, user_id: this.user_id }).then(function (response) {
+                if (_this2.client_id) {
+                    _this2.currentConversation.unread_messages_client = 0;
+                }
+                if (_this2.user_id) {
+                    _this2.currentConversation.unread_messages_freelancer = 0;
+                }
+            });
+
+            // listen to this conversation to add the message.
+            window.Echo.channel('chat.' + this.currentConversation.id).listen('MessageSent', function (e) {
+                if (e.message.conversation_id === _this2.currentConversation.id) {
+                    // i am on this conversation
+                    _this2.currentMessagesList.push(e.message);
+                } else {
+                    // i am on another conversation :
+                    _this2.updateUnReadMessageCount(e.message.conversation_id);
+                }
+            });
+
+            this.setConversationMessages();
+
+            // clear status :
+            $('#status').html('');
+        },
+        setConversationMessages: function setConversationMessages() {
+            var _this3 = this;
+
+            axios.get('/chat-room/messages/' + this.currentConversation.id).then(function (response) {
+                _this3.currentMessagesList = response.data;
+            });
+        },
+        sendMessage: function sendMessage() {
+            var message = {
+                conversation_id: this.currentConversation.id,
+                message: this.newMessage,
+                client_id: this.client_id,
+                user_id: this.user_id
+            };
+            // clear input :
+            this.currentMessagesList.push(message);
+            $('#status').html('Sending..');
+            this.newMessage = '';
+            axios.post('/chat-room/addMessage', message).then(function (response) {
+                $('#status').html('Sent');
+            });
+        },
+        setDefaultConversation: function setDefaultConversation() {
+            if (this.currentConversation.id !== undefined) {
+                this.setCurrentConversation(this.currentConversation.id);
+            } else if (this.conversations.length > 0) {
+                this.setCurrentConversation(this.conversations[0].conversation.id);
+            }
+        },
+        updateUnReadMessageCount: function updateUnReadMessageCount($conversation_id) {
+            var _this4 = this;
+
+            this.conversations.forEach(function (data) {
+                if (data.conversation.id === $conversation_id) {
+                    if (_this4.client_id) {
+                        data.conversation.unread_messages_client += 1;
+                    }
+                    if (_this4.user_id) {
+                        data.conversation.unread_messages_freelancer += 1;
+                    }
+                }
+            });
+        },
+        handleChatFile: function handleChatFile() {
+            var _this5 = this;
+
+            var chat_form_data = new FormData();
+            var chatFile = this.$refs.file.files[0];
+            chat_form_data.append('shared_file', chatFile);
+
+            axios.post('/chat-room/message_file', chat_form_data).then(function (response) {
+                // response.data is the file path
+                _this5.sendFileMessage(response.data);
+            });
+        },
+        openFileSelect: function openFileSelect() {
+            $('#shared_file').click();
+        },
+        sendFileMessage: function sendFileMessage(filePath) {}
+    },
+
+    mounted: function mounted() {
+        this.getAuthorConversations();
+    }
+});
+
+/***/ }),
+/* 103 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-md-3 text-left" },
+        _vm._l(_vm.conversations, function(data) {
+          return _c("div", { staticClass: "NoDecor" }, [
+            _c(
+              "a",
+              {
+                attrs: { href: "javascript:void(0)" },
+                on: {
+                  click: function($event) {
+                    _vm.setCurrentConversation(data.conversation.id)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "freelancerChatBox" }, [
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.client_id,
+                          expression: "client_id"
+                        }
+                      ]
+                    },
+                    [
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: data.freelancer.userData.photo,
+                            expression: "data.freelancer.userData.photo"
+                          }
+                        ],
+                        staticStyle: { "border-radius": "50%" },
+                        attrs: {
+                          src: data.freelancer.userData.photo,
+                          alt: "img",
+                          width: "25px"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !data.freelancer.userData.photo,
+                            expression: "!data.freelancer.userData.photo"
+                          }
+                        ],
+                        staticStyle: { "border-radius": "50%" },
+                        attrs: {
+                          src:
+                            "/resumeApp/resources/views/customTheme/images/no-image-icon-.png",
+                          alt: "img",
+                          width: "25px"
+                        }
+                      }),
+                      _vm._v(
+                        "\n                             " +
+                          _vm._s(data.freelancer.firstName) +
+                          " " +
+                          _vm._s(data.freelancer.lastName) +
+                          "\n                            "
+                      ),
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value:
+                                data.conversation.unread_messages_client > 0,
+                              expression:
+                                "data.conversation.unread_messages_client> 0"
+                            }
+                          ],
+                          staticClass: "unread"
+                        },
+                        [
+                          _vm._v(
+                            " " +
+                              _vm._s(data.conversation.unread_messages_client) +
+                              " "
+                          )
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.user_id,
+                          expression: "user_id"
+                        }
+                      ]
+                    },
+                    [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(data.client.firstName) +
+                          "\n                            "
+                      ),
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value:
+                                data.conversation.unread_messages_freelancer >
+                                0,
+                              expression:
+                                "data.conversation.unread_messages_freelancer > 0"
+                            }
+                          ],
+                          staticClass: "unread"
+                        },
+                        [
+                          _vm._v(
+                            " " +
+                              _vm._s(
+                                data.conversation.unread_messages_freelancer
+                              ) +
+                              " "
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              ]
+            )
+          ])
+        })
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-md-8" },
+        [
+          _c("div", [
+            _vm._v(
+              "\n                " +
+                _vm._s(this.currFreelancer.firstName) +
+                " - " +
+                _vm._s(this.currClient.firstName) +
+                "\n            "
+            )
+          ]),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.currentMessagesList.length < 1,
+                  expression: "currentMessagesList.length < 1"
+                }
+              ]
+            },
+            [
+              _c("span", { staticClass: "panelFormLabel" }, [
+                _vm._v("No messages yet")
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.currentMessagesList, function(message) {
+            return _c("div", [
+              _c(
+                "div",
+                {
+                  class: {
+                    clientMessage: message.client_id,
+                    freelancerMessage: message.user_id,
+                    defaultMessage: !message.user_id && !message.client_id
+                  }
+                },
+                [
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: message.client_id,
+                          expression: "message.client_id"
+                        }
+                      ],
+                      staticClass: "panelFormLabel"
+                    },
+                    [_vm._v(_vm._s(_vm.currClient.firstName) + " : ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: message.user_id,
+                          expression: "message.user_id"
+                        }
+                      ],
+                      staticClass: "panelFormLabel"
+                    },
+                    [_vm._v(_vm._s(_vm.currFreelancer.firstName) + " : ")]
+                  ),
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(message.message) +
+                      "\n                    "
+                  ),
+                  _c("div", { staticClass: "text-right" }, [
+                    _c(
+                      "small",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: message.created_at !== undefined,
+                            expression: "message.created_at !== undefined"
+                          }
+                        ]
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(new Date(message.created_at).toDateString())
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              )
+            ])
+          }),
+          _vm._v(" "),
+          _c("small", {
+            staticClass: "panelFormLabel",
+            staticStyle: { margin: "10px" },
+            attrs: { id: "status" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-8" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "form-group",
+                  staticStyle: { "padding-top": "25px" }
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.newMessage,
+                        expression: "newMessage"
+                      }
+                    ],
+                    staticClass: "form-control panelFormInput",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.newMessage },
+                    on: {
+                      keyup: function($event) {
+                        if (
+                          !("button" in $event) &&
+                          _vm._k(
+                            $event.keyCode,
+                            "enter",
+                            13,
+                            $event.key,
+                            "Enter"
+                          )
+                        ) {
+                          return null
+                        }
+                        return _vm.sendMessage($event)
+                      },
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.newMessage = $event.target.value
+                      }
+                    }
+                  })
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4 NoDecor" }, [
+              _c("input", {
+                ref: "file",
+                staticClass: "d-none",
+                attrs: { type: "file", name: "shared_file", id: "shared_file" },
+                on: { change: _vm.handleChatFile }
+              })
+            ])
+          ])
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-55902e4d", module.exports)
+  }
+}
+
+/***/ }),
+/* 104 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

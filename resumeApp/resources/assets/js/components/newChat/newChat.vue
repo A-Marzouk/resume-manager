@@ -109,7 +109,7 @@
                 // listen to this conversation to add the message.
                 window.Echo.channel('chat.'+this.currentConversation.id)
                     .listen('MessageSent', e => {
-                        if(e.message.conversation_id === this.currentConversation.id){
+                        if(e.message.conversation_id == this.currentConversation.id){
                             // i am on this conversation
                             this.currentMessagesList.push(e.message);
                         }
@@ -157,7 +157,7 @@
             },
             updateUnReadMessageCount($conversation_id){
                 this.conversations.forEach( (data) => {
-                    if(data.conversation.id === $conversation_id){
+                    if(data.conversation.id == $conversation_id){
                         if(this.client_id){
                             data.conversation.unread_messages_client +=1  ;
                         }

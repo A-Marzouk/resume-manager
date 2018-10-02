@@ -57953,7 +57953,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             // listen to this conversation to add the message.
             window.Echo.channel('chat.' + this.currentConversation.id).listen('MessageSent', function (e) {
-                if (e.message.conversation_id === _this2.currentConversation.id) {
+                if (e.message.conversation_id == _this2.currentConversation.id) {
                     // i am on this conversation
                     _this2.currentMessagesList.push(e.message);
                 } else {
@@ -58000,7 +58000,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this4 = this;
 
             this.conversations.forEach(function (data) {
-                if (data.conversation.id === $conversation_id) {
+                if (data.conversation.id == $conversation_id) {
                     if (_this4.client_id) {
                         data.conversation.unread_messages_client += 1;
                     }

@@ -32,7 +32,15 @@
                     <div :class="{ clientMessage : message.client_id , freelancerMessage : message.user_id, defaultMessage: !message.user_id && !message.client_id}">
                         <span v-show="message.client_id" class="panelFormLabel">{{currClient.firstName}} : </span>
                         <span v-show="message.user_id" class="panelFormLabel">{{currFreelancer.firstName}} : </span>
-                        {{message.message}}
+                        <span v-if="message.type == 'file' ">
+                            <a :href="'/chat-room/download/'+getFileName(message.message)">
+                                <img src="/resumeApp/resources/assets/images/file-icon.png" alt="file" width="45px">
+                                {{getFileName(message.message)}}
+                            </a>
+                        </span>
+                        <span v-else>
+                            {{message.message}}
+                        </span>
                         <div class="text-right">
                             <small v-show="message.created_at !== undefined">{{new Date(message.created_at).toDateString()}}</small>
                         </div>
@@ -43,11 +51,11 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="form-group" style="padding-top: 25px;">
-                            <input type="text" class="form-control panelFormInput" v-model="newMessage" @keyup.enter="sendMessage">
+                            <input type="text" class="form-control panelFormInput" v-model="newMessage.body" @keyup.enter="sendMessage">
                         </div> <!-- message input -->
                     </div>
                     <div class="col-md-4 NoDecor">
-                        <!--<a href="javascript:void(0)" @click="openFileSelect">Share file</a>-->
+                        <a href="javascript:void(0)" @click="openFileSelect">Share file</a>
                         <input type="file" name="shared_file" ref="file" id="shared_file" @change="handleChatFile" class="d-none">
                     </div>
                 </div>
@@ -73,7 +81,10 @@
                 conversations:[],
                 currentConversation:{},
                 currentMessagesList:[],
-                newMessage:'',
+                newMessage:{
+                    body:'',
+                    type:'text'
+                },
                 currFreelancer:{},
                 currClient:{}
             }
@@ -135,14 +146,15 @@
             sendMessage(){
                 let message = {
                     conversation_id : this.currentConversation.id,
-                    message : this.newMessage,
+                    message : this.newMessage.body,
                     client_id: this.client_id,
-                    user_id: this.user_id
+                    user_id: this.user_id,
+                    type:this.newMessage.type
                 };
                 // clear input :
                 this.currentMessagesList.push(message);
                 $('#status').html('Sending..');
-                this.newMessage = '' ;
+                this.newMessage.body = '' ;
                 axios.post('/chat-room/addMessage',message).then((response) => {
                    $('#status').html('Sent');
                 });
@@ -184,7 +196,24 @@
                 $('#shared_file').click();
             },
             sendFileMessage(filePath){
-
+                let message = {
+                    conversation_id : this.currentConversation.id,
+                    message :filePath,
+                    client_id: this.client_id,
+                    user_id: this.user_id,
+                    type:'file'
+                };
+                // clear input :
+                this.currentMessagesList.push(message);
+                $('#status').html('Sending..');
+                this.newMessage.body = '' ;
+                axios.post('/chat-room/addMessage',message).then((response) => {
+                    $('#status').html('Sent');
+                });
+            },
+            getFileName(path){
+                let parts = path.split('/');
+                return parts.pop() || parts.pop();
             }
         },
 

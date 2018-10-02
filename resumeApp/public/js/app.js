@@ -57923,6 +57923,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id', 'user_id'],
@@ -57931,7 +57939,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             conversations: [],
             currentConversation: {},
             currentMessagesList: [],
-            newMessage: '',
+            newMessage: {
+                body: '',
+                type: 'text'
+            },
             currFreelancer: {},
             currClient: {}
         };
@@ -57994,14 +58005,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         sendMessage: function sendMessage() {
             var message = {
                 conversation_id: this.currentConversation.id,
-                message: this.newMessage,
+                message: this.newMessage.body,
                 client_id: this.client_id,
-                user_id: this.user_id
+                user_id: this.user_id,
+                type: this.newMessage.type
             };
             // clear input :
             this.currentMessagesList.push(message);
             $('#status').html('Sending..');
-            this.newMessage = '';
+            this.newMessage.body = '';
             axios.post('/chat-room/addMessage', message).then(function (response) {
                 $('#status').html('Sent');
             });
@@ -58042,7 +58054,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         openFileSelect: function openFileSelect() {
             $('#shared_file').click();
         },
-        sendFileMessage: function sendFileMessage(filePath) {}
+        sendFileMessage: function sendFileMessage(filePath) {
+            var message = {
+                conversation_id: this.currentConversation.id,
+                message: filePath,
+                client_id: this.client_id,
+                user_id: this.user_id,
+                type: 'file'
+            };
+            // clear input :
+            this.currentMessagesList.push(message);
+            $('#status').html('Sending..');
+            this.newMessage.body = '';
+            axios.post('/chat-room/addMessage', message).then(function (response) {
+                $('#status').html('Sent');
+            });
+        },
+        getFileName: function getFileName(path) {
+            var parts = path.split('/');
+            return parts.pop() || parts.pop();
+        }
     },
 
     mounted: function mounted() {
@@ -58312,11 +58343,43 @@ var render = function() {
                     },
                     [_vm._v(_vm._s(_vm.currFreelancer.firstName) + " : ")]
                   ),
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(message.message) +
-                      "\n                    "
-                  ),
+                  _vm._v(" "),
+                  message.type == "file"
+                    ? _c("span", [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href:
+                                "/chat-room/download/" +
+                                _vm.getFileName(message.message)
+                            }
+                          },
+                          [
+                            _c("img", {
+                              attrs: {
+                                src:
+                                  "/resumeApp/resources/assets/images/file-icon.png",
+                                alt: "file",
+                                width: "45px"
+                              }
+                            }),
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(_vm.getFileName(message.message)) +
+                                "\n                        "
+                            )
+                          ]
+                        )
+                      ])
+                    : _c("span", [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(message.message) +
+                            "\n                    "
+                        )
+                      ]),
+                  _vm._v(" "),
                   _c("div", { staticClass: "text-right" }, [
                     _c(
                       "small",
@@ -58362,13 +58425,13 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.newMessage,
-                        expression: "newMessage"
+                        value: _vm.newMessage.body,
+                        expression: "newMessage.body"
                       }
                     ],
                     staticClass: "form-control panelFormInput",
                     attrs: { type: "text" },
-                    domProps: { value: _vm.newMessage },
+                    domProps: { value: _vm.newMessage.body },
                     on: {
                       keyup: function($event) {
                         if (
@@ -58389,7 +58452,7 @@ var render = function() {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.newMessage = $event.target.value
+                        _vm.$set(_vm.newMessage, "body", $event.target.value)
                       }
                     }
                   })
@@ -58398,6 +58461,15 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-4 NoDecor" }, [
+              _c(
+                "a",
+                {
+                  attrs: { href: "javascript:void(0)" },
+                  on: { click: _vm.openFileSelect }
+                },
+                [_vm._v("Share file")]
+              ),
+              _vm._v(" "),
               _c("input", {
                 ref: "file",
                 staticClass: "d-none",

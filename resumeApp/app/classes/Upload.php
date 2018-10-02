@@ -109,7 +109,7 @@ class Upload
     }
 
     public static function chatFile($src,$name,$newName){
-        $target_dir = "resumeApp/uploads/chat_shared_files/";
+        $target_dir = "resumeApp/storage/chat_shared_files/";
         $target_file = $target_dir . $newName. basename($_FILES[$name]["name"]);
         $uploadOk = 1;
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\classes\Upload;
 use App\Client;
 use App\Conversation;
+use App\Events\ConversationStarted;
 use App\Events\MessageSent;
 use App\Message;
 use App\User;
@@ -122,6 +123,8 @@ class NewChatController extends Controller
             $conversation->user_id   = $request->freelancer_id;
             $conversation->client_id = $currClient->id;
             $conversation->save();
+            // give event that a new conversation has started !
+            broadcast(new ConversationStarted($conversation))->toOthers();
             return redirect(route('chat-room'));
         }
 

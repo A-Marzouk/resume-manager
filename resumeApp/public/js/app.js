@@ -57898,6 +57898,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id', 'user_id'],
@@ -58021,7 +58029,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     mounted: function mounted() {
+        var _this6 = this;
+
         this.getAuthorConversations();
+
+        // listen to new conversations made :
+        window.Echo.channel('conversations').listen('ConversationStarted', function (e) {
+            _this6.getAuthorConversations();
+        });
     }
 });
 
@@ -58187,7 +58202,17 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-md-8" },
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.conversations.length > 0,
+              expression: "conversations.length > 0"
+            }
+          ],
+          staticClass: "col-md-8"
+        },
         [
           _c("div", [
             _vm._v(
@@ -58359,10 +58384,47 @@ var render = function() {
         ],
         2
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.conversations.length === 0,
+            expression: "conversations.length === 0"
+          }
+        ],
+        staticClass: "row text-center"
+      },
+      [_vm._m(0)]
+    )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c(
+        "div",
+        {
+          staticClass: "pageHeading",
+          staticStyle: { "padding-bottom": "50px", "padding-top": "50px" }
+        },
+        [
+          _vm._v(
+            "\n                You have no conversations yet.\n            "
+          )
+        ]
+      ),
+      _c("br")
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

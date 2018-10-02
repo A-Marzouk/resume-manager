@@ -192,3 +192,25 @@ if ($("#VueChat").length !== 0){
 
 
 }
+
+
+// update Messaging unread messages :
+window.Echo.channel('conversations')
+    .listen('UpdateMessageCount', e => {
+        if(e.message.user_id){
+            // sent from user  : update client unread messages
+            axios.get('/chat-room/getUnreadMessagesClient/'+e.currClient_id).then((response) => {
+                let countClient = response.data.unread_messages_client;
+                $('#MessagingClient'+e.currClient_id).html(countClient);
+            });
+        }
+        else if(e.message.client_id){
+            // sent from client  : update user unread messages
+            axios.get('/chat-room/getUnreadMessagesUser/'+e.currFreelancer_id).then((response) => {
+                let countClient = response.data.unread_messages_freelancer;
+                $('#MessagingFreelancer'+e.currFreelancer_id).html(countClient);
+            });
+        }
+    });
+
+

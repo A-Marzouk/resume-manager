@@ -55,4 +55,14 @@ class Client extends Authenticatable
         return $this->hasMany(Booking::class);
     }
 
+    public function unreadMessages(){
+        $conversations = $this->conversations;
+        $countUnread = 0 ;
+        foreach ($conversations as $conversation){
+            $countUnread += $conversation->unread_messages_client ;
+        }
+
+        return $countUnread;
+    }
+
 }

@@ -20,7 +20,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8" v-show="conversations.length > 0">
                 <!-- here goes the chat itself -->
                 <div>
                     {{this.currFreelancer.firstName}} - {{this.currClient.firstName}}
@@ -54,6 +54,14 @@
 
             </div>
         </div>
+
+        <div class="row text-center" v-show="conversations.length === 0">
+            <div class="col-md-12">
+                <div class="pageHeading" style="padding-bottom: 50px; padding-top: 50px;">
+                    You have no conversations yet.
+                </div><br/>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -79,6 +87,7 @@
                 });
             },
             setCurrentConversation(conversation_id){
+
                 this.conversations.forEach( (data) => {
                     if(data.conversation.id === conversation_id){
                        this.currentConversation = data.conversation ;
@@ -98,6 +107,9 @@
                         }
                 });
 
+
+                this.setConversationMessages();
+
                 // listen to this conversation to add the message.
                 window.Echo.channel('chat.'+this.currentConversation.id)
                     .listen('MessageSent', e => {
@@ -110,8 +122,6 @@
                             this.updateUnReadMessageCount(e.message.conversation_id);
                         }
                     });
-
-                this.setConversationMessages();
 
                 // clear status :
                 $('#status').html('');
@@ -180,6 +190,20 @@
 
         mounted(){
             this.getAuthorConversations();
+
+            // listen to new conversations made :
+            window.Echo.channel('conversations')
+                .listen('ConversationStarted', e => {
+                    this.getAuthorConversations();
+                });
+
+            // clear messaging :
+            if(this.client_id){
+                $('#MessagingClient'+this.client_id).addClass('d-none');
+            }
+            if(this.user_id){
+                $('#MessagingFreelancer'+this.user_id).addClass('d-none');
+            }
         }
     }
 </script>

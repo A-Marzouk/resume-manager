@@ -7,6 +7,7 @@ use App\Client;
 use App\Conversation;
 use App\Events\ConversationStarted;
 use App\Events\MessageSent;
+use App\Events\UpdateMessageCount;
 use App\Message;
 use App\User;
 use Illuminate\Http\Request;
@@ -32,6 +33,8 @@ class NewChatController extends Controller
 
     public function addMessage(Request $request){
         if(isset($request->message) && isset($request->conversation_id)){
+            $conversation = Conversation::where('id',$request->conversation_id)->first();
+
             $message = new Message;
             $message->message         = $request->message;
             $message->conversation_id = $request->conversation_id;
@@ -48,8 +51,10 @@ class NewChatController extends Controller
             // dispatch the event :
             broadcast(new MessageSent($message))->toOthers();
 
+            // update main unread messages count :
+            broadcast(new UpdateMessageCount($message,$conversation->client_id,$conversation->user_id))->toOthers();
+
             // update the un read messages on the conversation
-            $conversation = Conversation::where('id',$request->conversation_id)->first();
             if($currClient){ // message from client
                 $conversation->unread_messages_freelancer = $conversation->unread_messages_freelancer+1;
             }elseif($currUser){ // message from user
@@ -138,5 +143,23 @@ class NewChatController extends Controller
         if(isset($request->shared_file)){
             return Upload::chatFile('','shared_file','');
         }
+    }
+
+    public function getUnreadMessagesClient($client_id){
+        $client = Client::where('id',$client_id)->first();
+        $data = [
+            'unread_messages_client' => $client->unreadMessages(),
+        ];
+
+        return $data;
+    }
+
+    public function getUnreadMessagesUser($user_id){
+        $user   = User::where('id',$user_id)->first();
+        $data = [
+            'unread_messages_freelancer' => $user->unreadMessages()
+        ];
+
+        return $data;
     }
 }

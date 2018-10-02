@@ -14482,6 +14482,23 @@ if ($("#VueChat").length !== 0) {
     });
 }
 
+// update Messaging unread messages :
+window.Echo.channel('conversations').listen('UpdateMessageCount', function (e) {
+    if (e.message.user_id) {
+        // sent from user  : update client unread messages
+        axios.get('/chat-room/getUnreadMessagesClient/' + e.currClient_id).then(function (response) {
+            var countClient = response.data.unread_messages_client;
+            $('#MessagingClient' + e.currClient_id).html(countClient);
+        });
+    } else if (e.message.client_id) {
+        // sent from client  : update user unread messages
+        axios.get('/chat-room/getUnreadMessagesUser/' + e.currFreelancer_id).then(function (response) {
+            var countClient = response.data.unread_messages_freelancer;
+            $('#MessagingFreelancer' + e.currFreelancer_id).html(countClient);
+        });
+    }
+});
+
 /***/ }),
 /* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -57951,6 +57968,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
 
+            this.setConversationMessages();
+
             // listen to this conversation to add the message.
             window.Echo.channel('chat.' + this.currentConversation.id).listen('MessageSent', function (e) {
                 if (e.message.conversation_id == _this2.currentConversation.id) {
@@ -57961,8 +57980,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this2.updateUnReadMessageCount(e.message.conversation_id);
                 }
             });
-
-            this.setConversationMessages();
 
             // clear status :
             $('#status').html('');
@@ -58037,6 +58054,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         window.Echo.channel('conversations').listen('ConversationStarted', function (e) {
             _this6.getAuthorConversations();
         });
+
+        // clear messaging :
+        if (this.client_id) {
+            $('#MessagingClient' + this.client_id).addClass('d-none');
+        }
+        if (this.user_id) {
+            $('#MessagingFreelancer' + this.user_id).addClass('d-none');
+        }
     }
 });
 

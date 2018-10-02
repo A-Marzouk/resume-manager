@@ -87,6 +87,7 @@
                 });
             },
             setCurrentConversation(conversation_id){
+
                 this.conversations.forEach( (data) => {
                     if(data.conversation.id === conversation_id){
                        this.currentConversation = data.conversation ;
@@ -106,6 +107,9 @@
                         }
                 });
 
+
+                this.setConversationMessages();
+
                 // listen to this conversation to add the message.
                 window.Echo.channel('chat.'+this.currentConversation.id)
                     .listen('MessageSent', e => {
@@ -118,8 +122,6 @@
                             this.updateUnReadMessageCount(e.message.conversation_id);
                         }
                     });
-
-                this.setConversationMessages();
 
                 // clear status :
                 $('#status').html('');
@@ -194,6 +196,14 @@
                 .listen('ConversationStarted', e => {
                     this.getAuthorConversations();
                 });
+
+            // clear messaging :
+            if(this.client_id){
+                $('#MessagingClient'+this.client_id).addClass('d-none');
+            }
+            if(this.user_id){
+                $('#MessagingFreelancer'+this.user_id).addClass('d-none');
+            }
         }
     }
 </script>

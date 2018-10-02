@@ -90,4 +90,14 @@ class User extends Authenticatable
         return true;
 
     }
+
+    public function unreadMessages(){
+        $conversations = $this->conversations;
+        $countUnread = 0 ;
+        foreach ($conversations as $conversation){
+            $countUnread += $conversation->unread_messages_freelancer ;
+        }
+
+        return $countUnread;
+    }
 }

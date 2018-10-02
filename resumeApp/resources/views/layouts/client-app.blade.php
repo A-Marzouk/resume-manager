@@ -95,7 +95,6 @@ if($user){
                 <a class="nav-item nav-link customNavLink" href="#chatOn" id="liveChat" style="color:#0290D8;">
                     <img src="/resumeApp/resources/views/customTheme/images/textsms_24px.png" alt="chat img" width="16px">
                     &nbsp; Chat with us!
-
                 </a>
                 <? endif;?>
             </li>
@@ -107,6 +106,12 @@ if($user){
                         <a href="{{ route('client.login') }}" data-toggle="modal" data-target="#loginModal" style="padding-left: 30px; padding-right: 30px;">{{ __('Log in') }}</a>
                     </li>
                 <? else: ?>
+                    <a class="nav-item nav-link customNavLink" href="/chat-room" style="color:#0290D8;">
+                        Messaging
+                        <span id="MessagingClient{{Auth::guard('client')->user()->id}}" class="unread" style="margin-left: 0;">
+                            {{Auth::guard('client')->user()->unreadMessages()}}
+                        </span>
+                    </a>
                     <a class="nav-item nav-link customNavLink" href="/client">
                         {{ Auth::guard('client')->user()->name }}
                     </a>

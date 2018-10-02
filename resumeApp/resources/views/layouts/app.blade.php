@@ -54,11 +54,10 @@ if($user){
                     <? if($admin || (session()->get('admin') && session()->get('admin') == 'AdminWasHere')):?>
                     <a class="nav-item nav-link customNavLink" href="/admin" style="color:#0290D8;">Admin-area</a>
                     <?else :?>
-                    <a class="nav-item nav-link customNavLink" href="#chatOn" id="liveChat" style="color:#0290D8;">
-                        <img src="/resumeApp/resources/views/customTheme/images/textsms_24px.png" alt="chat img" width="16px">
-                        &nbsp; Chat with us!
-
-                    </a>
+                        <a class="nav-item nav-link customNavLink" href="#chatOn" id="liveChat" style="color:#0290D8;">
+                            <img src="/resumeApp/resources/views/customTheme/images/textsms_24px.png" alt="chat img" width="16px">
+                            &nbsp; Chat with us!
+                        </a>
                     <? endif;?>
                 </li>
                 <ul class="navbar-nav">
@@ -69,9 +68,17 @@ if($user){
                             <a href="{{ route('freelancer.register') }}">{{ __('Join') }}</a>
                         </li>
                     @else
-                        <li class="nav-link nav-item customNavLink">
+                        <li class="nav-link nav-item customNavLink NoDecor" style="color:#0290D8;">
                             <a style="color:#637280;" href="/freelancer">
                                 {{auth()->user()->firstName}}
+                            </a>
+                        </li>
+                        <li class="nav-link nav-item customNavLink NoDecor" style="color:#0290D8;">
+                            <a href="/chat-room">
+                                Messaging
+                                <span id="MessagingFreelancer{{auth()->user()->id}}" class="unread" style="margin-left: 0;">
+                                    {{auth()->user()->unreadMessages()}}
+                                </span>
                             </a>
                         </li>
                         <li>

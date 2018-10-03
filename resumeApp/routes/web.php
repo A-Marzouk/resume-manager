@@ -148,7 +148,7 @@ Route::get('/chat-room/conversations','NewChatController@getAuthorConversations'
 Route::get('/chat-room/messages/{conversation_id}','NewChatController@getMessagesByConversationID');
 Route::get('/chat-room/getUnreadMessagesClient/{client_id}','NewChatController@getUnreadMessagesClient');
 Route::get('/chat-room/getUnreadMessagesUser/{user_id}','NewChatController@getUnreadMessagesUser');
-Route::get('/chat-room/download/{filePath}','NewChatController@getDownload');
+Route::get('/chat-room/download/{filePath}/{conversation_id}','NewChatController@getDownload');
 Route::post('/chat-room/addMessage','NewChatController@addMessage');
 Route::post('/chat-room/allRead','NewChatController@zeroUnread');
 Route::post('/chat-room/start_conversation','NewChatController@startConversation');

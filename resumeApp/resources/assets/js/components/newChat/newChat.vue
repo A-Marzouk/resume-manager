@@ -20,7 +20,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-8" v-show="conversations.length > 0">
+            <div class="col-md-8 chatMessagesArea" id="newChatMessagesArea" v-show="conversations.length > 0">
                 <!-- here goes the chat itself -->
                 <div>
                     {{this.currFreelancer.firstName}} - {{this.currClient.firstName}}
@@ -33,7 +33,7 @@
                         <span v-show="message.client_id" class="panelFormLabel">{{currClient.firstName}} : </span>
                         <span v-show="message.user_id" class="panelFormLabel">{{currFreelancer.firstName}} : </span>
                         <span v-if="message.type == 'application' || message.type == 'txt' ">
-                            <a :href="'/chat-room/download/'+getFileName(message.message)">
+                            <a :href="'/chat-room/download/'+getFileName(message.message)+'/'+currentConversation.id">
                                 <img src="/resumeApp/resources/assets/images/file-icon.png" alt="file" width="45px">
                                 {{getFileName(message.message)}}
                             </a>
@@ -46,7 +46,7 @@
                                     <source :src="message.message">
                                 </video>
                             </div>
-                             <a :href="'/chat-room/download/'+getFileName(message.message)">
+                             <a :href="'/chat-room/download/'+getFileName(message.message)+'/'+currentConversation.id">
                                  <small style="padding-left:20px;">Download</small>
                             </a>
                         </span>
@@ -60,7 +60,7 @@
                                 Your browser does not support the audio element.
                             </audio>
                             </div>
-                            <a :href="'/chat-room/download/'+getFileName(message.message)">
+                            <a :href="'/chat-room/download/'+getFileName(message.message)+'/'+currentConversation.id">
                                  <small style="padding-left:20px;">Download</small>
                             </a>
                         </span>
@@ -73,7 +73,7 @@
                                     <img :src="message.message" alt="image" width="250px" height="auto">
                                 </a>
                             </div>
-                              <a :href="'/chat-room/download/'+getFileName(message.message)">
+                              <a :href="'/chat-room/download/'+getFileName(message.message)+'/'+currentConversation.id">
                                  <small style="padding-left:20px;">Download</small>
                               </a>
 
@@ -102,19 +102,18 @@
                     </div>
                 </div>
                 <small id="status" class="panelFormLabel" style="margin: 10px;"></small>
-
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="form-group" style="padding-top: 25px;">
-                            <input type="text" class="form-control panelFormInput" v-model="newMessage.body" @keyup.enter="sendMessage">
-                        </div> <!-- message input -->
-                    </div>
-                    <div class="col-md-4 NoDecor">
-                        <a href="javascript:void(0)" @click="openFileSelect">Share file</a>
-                        <input type="file" name="shared_file" ref="file" id="shared_file" @change="handleChatFile" class="d-none">
-                    </div>
-                </div>
-
+            </div>
+        </div>
+        <hr/>
+        <div class="row" v-show="conversations.length > 0">
+            <div class="col-md-6 offset-md-3">
+                <div class="form-group" style="padding-top: 25px;">
+                    <input type="text" class="form-control panelFormInput" v-model="newMessage.body" @keyup.enter="sendMessage">
+                </div> <!-- message input -->
+            </div>
+            <div class="col-md-2 NoDecor" style="padding-top: 33px;">
+                <a href="javascript:void(0)" @click="openFileSelect" class="btn btn-primary">Share file</a>
+                <input type="file" name="shared_file" ref="file" id="shared_file" @change="handleChatFile" class="d-none">
             </div>
         </div>
 
@@ -182,6 +181,9 @@
                         if(e.message.conversation_id == this.currentConversation.id){
                             // i am on this conversation
                             this.currentMessagesList.push(e.message);
+
+                            // scroll down:
+                            $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight")}, 1000);
                         }
                         else{
                             // i am on another conversation :
@@ -196,6 +198,12 @@
             setConversationMessages(){
                 axios.get('/chat-room/messages/'+this.currentConversation.id).then( (response) => {
                     this.currentMessagesList = response.data;
+
+                    // scroll down to the messages
+                    setTimeout(function(){
+                        $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight")}, 1000);
+                    },2000);
+
                 });
             },
             sendMessage(){
@@ -213,6 +221,8 @@
                 axios.post('/chat-room/addMessage',message).then((response) => {
                    $('#status').html('Sent');
                 });
+
+                $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight")}, 1000);
 
             },
 
@@ -266,6 +276,7 @@
                 axios.post('/chat-room/addMessage',message).then((response) => {
                     $('#status').html('Sent');
                 });
+                $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight")}, 1000);
             },
             getFileName(path){
                 let parts = path.split('/');

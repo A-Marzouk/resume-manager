@@ -57984,8 +57984,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id', 'user_id'],
@@ -58323,7 +58321,7 @@ var render = function() {
               expression: "conversations.length > 0"
             }
           ],
-          staticClass: "col-md-8"
+          staticClass: "col-md-8 chatMessagesArea"
         },
         [
           _c("div", [
@@ -58679,77 +58677,76 @@ var render = function() {
             staticClass: "panelFormLabel",
             staticStyle: { margin: "10px" },
             attrs: { id: "status" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-8" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "form-group",
-                  staticStyle: { "padding-top": "25px" }
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.newMessage.body,
-                        expression: "newMessage.body"
-                      }
-                    ],
-                    staticClass: "form-control panelFormInput",
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.newMessage.body },
-                    on: {
-                      keyup: function($event) {
-                        if (
-                          !("button" in $event) &&
-                          _vm._k(
-                            $event.keyCode,
-                            "enter",
-                            13,
-                            $event.key,
-                            "Enter"
-                          )
-                        ) {
-                          return null
-                        }
-                        return _vm.sendMessage($event)
-                      },
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.newMessage, "body", $event.target.value)
-                      }
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4 NoDecor" }, [
-              _c(
-                "a",
-                {
-                  attrs: { href: "javascript:void(0)" },
-                  on: { click: _vm.openFileSelect }
-                },
-                [_vm._v("Share file")]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                ref: "file",
-                staticClass: "d-none",
-                attrs: { type: "file", name: "shared_file", id: "shared_file" },
-                on: { change: _vm.handleChatFile }
-              })
-            ])
-          ])
+          })
         ],
         2
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6 offset-md-3" }, [
+        _c(
+          "div",
+          { staticClass: "form-group", staticStyle: { "padding-top": "25px" } },
+          [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.newMessage.body,
+                  expression: "newMessage.body"
+                }
+              ],
+              staticClass: "form-control panelFormInput",
+              attrs: { type: "text" },
+              domProps: { value: _vm.newMessage.body },
+              on: {
+                keyup: function($event) {
+                  if (
+                    !("button" in $event) &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                  ) {
+                    return null
+                  }
+                  return _vm.sendMessage($event)
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.newMessage, "body", $event.target.value)
+                }
+              }
+            })
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "col-md-2 NoDecor",
+          staticStyle: { "padding-top": "33px" }
+        },
+        [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { href: "javascript:void(0)" },
+              on: { click: _vm.openFileSelect }
+            },
+            [_vm._v("Share file")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            ref: "file",
+            staticClass: "d-none",
+            attrs: { type: "file", name: "shared_file", id: "shared_file" },
+            on: { change: _vm.handleChatFile }
+          })
+        ]
       )
     ]),
     _vm._v(" "),

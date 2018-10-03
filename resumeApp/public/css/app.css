@@ -211,3 +211,9 @@
   margin-left: 10px;
 }
 
+.chatMessagesArea {
+  height: 350px;
+  float: left;
+  overflow-y: auto;
+}
+

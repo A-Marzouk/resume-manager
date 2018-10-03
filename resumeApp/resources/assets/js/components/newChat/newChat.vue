@@ -20,7 +20,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-8" v-show="conversations.length > 0">
+            <div class="col-md-8 chatMessagesArea" v-show="conversations.length > 0">
                 <!-- here goes the chat itself -->
                 <div>
                     {{this.currFreelancer.firstName}} - {{this.currClient.firstName}}
@@ -102,19 +102,17 @@
                     </div>
                 </div>
                 <small id="status" class="panelFormLabel" style="margin: 10px;"></small>
-
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="form-group" style="padding-top: 25px;">
-                            <input type="text" class="form-control panelFormInput" v-model="newMessage.body" @keyup.enter="sendMessage">
-                        </div> <!-- message input -->
-                    </div>
-                    <div class="col-md-4 NoDecor">
-                        <a href="javascript:void(0)" @click="openFileSelect">Share file</a>
-                        <input type="file" name="shared_file" ref="file" id="shared_file" @change="handleChatFile" class="d-none">
-                    </div>
-                </div>
-
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="form-group" style="padding-top: 25px;">
+                    <input type="text" class="form-control panelFormInput" v-model="newMessage.body" @keyup.enter="sendMessage">
+                </div> <!-- message input -->
+            </div>
+            <div class="col-md-2 NoDecor" style="padding-top: 33px;">
+                <a href="javascript:void(0)" @click="openFileSelect" class="btn btn-primary">Share file</a>
+                <input type="file" name="shared_file" ref="file" id="shared_file" @change="handleChatFile" class="d-none">
             </div>
         </div>
 

@@ -33,7 +33,7 @@
                         <span v-show="message.client_id" class="panelFormLabel">{{currClient.firstName}} : </span>
                         <span v-show="message.user_id" class="panelFormLabel">{{currFreelancer.firstName}} : </span>
                         <span v-if="message.type == 'application' || message.type == 'txt' ">
-                            <a :href="'/chat-room/download/'+getFileName(message.message)">
+                            <a :href="'/chat-room/download/'+getFileName(message.message)+'/'+currentConversation.id">
                                 <img src="/resumeApp/resources/assets/images/file-icon.png" alt="file" width="45px">
                                 {{getFileName(message.message)}}
                             </a>
@@ -46,7 +46,7 @@
                                     <source :src="message.message">
                                 </video>
                             </div>
-                             <a :href="'/chat-room/download/'+getFileName(message.message)">
+                             <a :href="'/chat-room/download/'+getFileName(message.message)+'/'+currentConversation.id">
                                  <small style="padding-left:20px;">Download</small>
                             </a>
                         </span>
@@ -60,7 +60,7 @@
                                 Your browser does not support the audio element.
                             </audio>
                             </div>
-                            <a :href="'/chat-room/download/'+getFileName(message.message)">
+                            <a :href="'/chat-room/download/'+getFileName(message.message)+'/'+currentConversation.id">
                                  <small style="padding-left:20px;">Download</small>
                             </a>
                         </span>
@@ -73,7 +73,7 @@
                                     <img :src="message.message" alt="image" width="250px" height="auto">
                                 </a>
                             </div>
-                              <a :href="'/chat-room/download/'+getFileName(message.message)">
+                              <a :href="'/chat-room/download/'+getFileName(message.message)+'/'+currentConversation.id">
                                  <small style="padding-left:20px;">Download</small>
                               </a>
 

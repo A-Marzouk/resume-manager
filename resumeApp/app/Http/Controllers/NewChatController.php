@@ -193,14 +193,32 @@ class NewChatController extends Controller
         return $data;
     }
 
-    public function getDownload($filePath)
+    public function getDownload($filePath,$conversation_id)
     {
         // get permission before download : for each file only one user and one client has access to it.
-        // check if file exists :
-        if(file_exists(storage_path('chat_shared_files/'.$filePath))){
-            return response()->download(storage_path('chat_shared_files/'.$filePath));
-        }else{
-            return 'File can not be Uploaded';
+        $canDownload = false ;
+
+        $conversation = Conversation::where('id',$conversation_id)->first();
+        $user         = User::where('id',$conversation->user_id)->first();
+        $client       = Client::where('id',$conversation->client_id)->first();
+
+        if(isset(auth()->user()->id) && $user->id == auth()->user()->id){
+            $canDownload = true;
+        }
+        if(isset(auth()->guard('client')->user()->id) && $client->id == auth()->guard('client')->user()->id){
+            $canDownload = true;
+        }
+
+        if($canDownload){
+            // check if file exists :
+            if(file_exists(storage_path('chat_shared_files/'.$filePath))){
+                return response()->download(storage_path('chat_shared_files/'.$filePath));
+            }else{
+                return 'File can not be Uploaded';
+            }
+        }
+        else{
+            return 'You have no access to this file.' ;
         }
     }
 }

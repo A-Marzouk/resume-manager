@@ -58408,7 +58408,9 @@ var render = function() {
                             attrs: {
                               href:
                                 "/chat-room/download/" +
-                                _vm.getFileName(message.message)
+                                _vm.getFileName(message.message) +
+                                "/" +
+                                _vm.currentConversation.id
                             }
                           },
                           [
@@ -58459,7 +58461,9 @@ var render = function() {
                               attrs: {
                                 href:
                                   "/chat-room/download/" +
-                                  _vm.getFileName(message.message)
+                                  _vm.getFileName(message.message) +
+                                  "/" +
+                                  _vm.currentConversation.id
                               }
                             },
                             [
@@ -58506,7 +58510,9 @@ var render = function() {
                                 attrs: {
                                   href:
                                     "/chat-room/download/" +
-                                    _vm.getFileName(message.message)
+                                    _vm.getFileName(message.message) +
+                                    "/" +
+                                    _vm.currentConversation.id
                                 }
                               },
                               [
@@ -58557,7 +58563,9 @@ var render = function() {
                                   attrs: {
                                     href:
                                       "/chat-room/download/" +
-                                      _vm.getFileName(message.message)
+                                      _vm.getFileName(message.message) +
+                                      "/" +
+                                      _vm.currentConversation.id
                                   }
                                 },
                                 [

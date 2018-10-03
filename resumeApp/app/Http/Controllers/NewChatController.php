@@ -11,6 +11,7 @@ use App\Events\UpdateMessageCount;
 use App\Message;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class NewChatController extends Controller
 {
@@ -38,6 +39,7 @@ class NewChatController extends Controller
             $message = new Message;
             $message->message         = $request->message;
             $message->conversation_id = $request->conversation_id;
+            $message->type = $request->type;
             $currClient = auth()->guard('client')->user();
             $currUser   = auth()->user();
             if($currClient){
@@ -141,7 +143,35 @@ class NewChatController extends Controller
 
     public function handleFileMessage(Request $request){
         if(isset($request->shared_file)){
-            return Upload::chatFile('','shared_file','');
+            $fileInfo = Upload::chatFile('','shared_file','');
+            $type     = 'unknown';
+            if(str_contains($fileInfo['format'], 'video')){
+                $type = 'video';
+            }
+            elseif (str_contains($fileInfo['format'], 'application')){
+                $type = 'application' ;
+            }
+            elseif (str_contains($fileInfo['format'], 'text')){
+                $type = 'txt' ;
+            }
+            elseif (str_contains($fileInfo['format'], 'image')){
+                $type = 'image' ;
+            }
+            elseif (str_contains($fileInfo['format'], 'audio')){
+                $type = 'audio' ;
+            }
+
+            if($fileInfo){
+                return [
+                    'path' => $fileInfo['path'],
+                    'type' => $type
+                ];
+            }
+
+            return [
+                'path' => '',
+                'type' => 'UNKNOWN'
+            ];
         }
     }
 
@@ -161,5 +191,16 @@ class NewChatController extends Controller
         ];
 
         return $data;
+    }
+
+    public function getDownload($filePath)
+    {
+        // get permission before download : for each file only one user and one client has access to it.
+        // check if file exists :
+        if(file_exists(storage_path('chat_shared_files/'.$filePath))){
+            return response()->download(storage_path('chat_shared_files/'.$filePath));
+        }else{
+            return 'File can not be Uploaded';
+        }
     }
 }

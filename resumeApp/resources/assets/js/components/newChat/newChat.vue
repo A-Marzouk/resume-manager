@@ -32,7 +32,70 @@
                     <div :class="{ clientMessage : message.client_id , freelancerMessage : message.user_id, defaultMessage: !message.user_id && !message.client_id}">
                         <span v-show="message.client_id" class="panelFormLabel">{{currClient.firstName}} : </span>
                         <span v-show="message.user_id" class="panelFormLabel">{{currFreelancer.firstName}} : </span>
-                        {{message.message}}
+                        <span v-if="message.type == 'application' || message.type == 'txt' ">
+                            <a :href="'/chat-room/download/'+getFileName(message.message)">
+                                <img src="/resumeApp/resources/assets/images/file-icon.png" alt="file" width="45px">
+                                {{getFileName(message.message)}}
+                            </a>
+                        </span>
+                        <span v-else-if="message.type == 'video' " class="NoDecor">
+
+                            {{getFileName(message.message)}}
+                            <div class="text-center col-md-6">
+                                <video width="100%" height="auto" controls>
+                                    <source :src="message.message">
+                                </video>
+                            </div>
+                             <a :href="'/chat-room/download/'+getFileName(message.message)">
+                                 <small style="padding-left:20px;">Download</small>
+                            </a>
+                        </span>
+                        <span v-else-if="message.type == 'audio' ">
+                            <span>
+                                {{getFileName(message.message)}}
+                            </span>
+                            <div style="padding-top: 30px;">
+                                <audio controls preload="auto">
+                                <source :src="message.message">
+                                Your browser does not support the audio element.
+                            </audio>
+                            </div>
+                            <a :href="'/chat-room/download/'+getFileName(message.message)">
+                                 <small style="padding-left:20px;">Download</small>
+                            </a>
+                        </span>
+                        <span v-else-if="message.type == 'image' ">
+                             <span>
+                                {{getFileName(message.message)}}
+                            </span>
+                            <div>
+                                <a href="javascript:void(0)" data-toggle="modal" :data-target="'#chatImage'+message.id">
+                                    <img :src="message.message" alt="image" width="250px" height="auto">
+                                </a>
+                            </div>
+                              <a :href="'/chat-room/download/'+getFileName(message.message)">
+                                 <small style="padding-left:20px;">Download</small>
+                              </a>
+
+                            <div class="modal fade" :id="'chatImage'+message.id" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document" style="">
+                                    <div class="modal-content" data-dismiss="modal" aria-label="Close">
+                                        <div class="modal-body" style="padding: 0;">
+                                            <div class="row">
+                                                <img :src="message.message" alt="image" width="100%" height="auto">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </span>
+                        <span v-else-if="message.type == 'text'">
+                            {{message.message}}
+                        </span>
+                        <span v-else>
+                            File can not be uploaded.
+                        </span>
                         <div class="text-right">
                             <small v-show="message.created_at !== undefined">{{new Date(message.created_at).toDateString()}}</small>
                         </div>
@@ -43,11 +106,11 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="form-group" style="padding-top: 25px;">
-                            <input type="text" class="form-control panelFormInput" v-model="newMessage" @keyup.enter="sendMessage">
+                            <input type="text" class="form-control panelFormInput" v-model="newMessage.body" @keyup.enter="sendMessage">
                         </div> <!-- message input -->
                     </div>
                     <div class="col-md-4 NoDecor">
-                        <!--<a href="javascript:void(0)" @click="openFileSelect">Share file</a>-->
+                        <a href="javascript:void(0)" @click="openFileSelect">Share file</a>
                         <input type="file" name="shared_file" ref="file" id="shared_file" @change="handleChatFile" class="d-none">
                     </div>
                 </div>
@@ -73,7 +136,10 @@
                 conversations:[],
                 currentConversation:{},
                 currentMessagesList:[],
-                newMessage:'',
+                newMessage:{
+                    body:'',
+                    type:'text'
+                },
                 currFreelancer:{},
                 currClient:{}
             }
@@ -135,14 +201,15 @@
             sendMessage(){
                 let message = {
                     conversation_id : this.currentConversation.id,
-                    message : this.newMessage,
+                    message : this.newMessage.body,
                     client_id: this.client_id,
-                    user_id: this.user_id
+                    user_id: this.user_id,
+                    type:this.newMessage.type
                 };
                 // clear input :
                 this.currentMessagesList.push(message);
                 $('#status').html('Sending..');
-                this.newMessage = '' ;
+                this.newMessage.body = '' ;
                 axios.post('/chat-room/addMessage',message).then((response) => {
                    $('#status').html('Sent');
                 });
@@ -176,6 +243,7 @@
 
                 axios.post('/chat-room/message_file',chat_form_data).then( (response) => {
                     // response.data is the file path
+                    // TODO: receive file type to handle how the message is shown
                     this.sendFileMessage(response.data);
                 });
 
@@ -183,8 +251,25 @@
             openFileSelect(){
                 $('#shared_file').click();
             },
-            sendFileMessage(filePath){
-
+            sendFileMessage(fileInfo){
+                let message = {
+                    conversation_id : this.currentConversation.id,
+                    message :fileInfo.path,
+                    client_id: this.client_id,
+                    user_id: this.user_id,
+                    type:fileInfo.type
+                };
+                // clear input :
+                this.currentMessagesList.push(message);
+                $('#status').html('Sending..');
+                this.newMessage.body = '' ;
+                axios.post('/chat-room/addMessage',message).then((response) => {
+                    $('#status').html('Sent');
+                });
+            },
+            getFileName(path){
+                let parts = path.split('/');
+                return parts.pop() || parts.pop();
             }
         },
 

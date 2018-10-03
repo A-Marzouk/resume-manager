@@ -109,7 +109,7 @@ class Upload
     }
 
     public static function chatFile($src,$name,$newName){
-        $target_dir = "resumeApp/uploads/chat_shared_files/";
+        $target_dir = "resumeApp/storage/chat_shared_files/";
         $target_file = $target_dir . $newName. basename($_FILES[$name]["name"]);
         $uploadOk = 1;
 
@@ -124,7 +124,7 @@ class Upload
         }
 
         // Check file size
-        if ($_FILES[$name]["size"] > 35000000) {
+        if ($_FILES[$name]["size"] > 45000000) {
             $uploadOk = 0;
         }
         // Check if $uploadOk is set to 0 by an error
@@ -133,7 +133,10 @@ class Upload
         // if everything is ok, try to upload file
         } else {
             if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
-                return $target_file;
+                return [
+                    'path' => $target_file,
+                    'format' => $_FILES[$name]['type']
+                ];
             } else {
                 return false;
             }

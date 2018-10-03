@@ -133,7 +133,10 @@ class Upload
         // if everything is ok, try to upload file
         } else {
             if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
-                return $target_file;
+                return [
+                    'path' => $target_file,
+                    'format' => $_FILES[$name]['type']
+                ];
             } else {
                 return false;
             }

@@ -143,7 +143,35 @@ class NewChatController extends Controller
 
     public function handleFileMessage(Request $request){
         if(isset($request->shared_file)){
-            return Upload::chatFile('','shared_file','');
+            $fileInfo = Upload::chatFile('','shared_file','');
+            $type     = 'unknown';
+            if(str_contains($fileInfo['format'], 'video')){
+                $type = 'video';
+            }
+            elseif (str_contains($fileInfo['format'], 'application')){
+                $type = 'application' ;
+            }
+            elseif (str_contains($fileInfo['format'], 'text')){
+                $type = 'txt' ;
+            }
+            elseif (str_contains($fileInfo['format'], 'image')){
+                $type = 'image' ;
+            }
+            elseif (str_contains($fileInfo['format'], 'audio')){
+                $type = 'audio' ;
+            }
+
+            if($fileInfo){
+                return [
+                    'path' => $fileInfo['path'],
+                    'type' => $type
+                ];
+            }
+
+            return [
+                'path' => '',
+                'type' => 'UNKNOWN'
+            ];
         }
     }
 

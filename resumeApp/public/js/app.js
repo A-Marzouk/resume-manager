@@ -57931,6 +57931,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id', 'user_id'],
@@ -58048,19 +58103,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.post('/chat-room/message_file', chat_form_data).then(function (response) {
                 // response.data is the file path
+                // TODO: receive file type to handle how the message is shown
                 _this5.sendFileMessage(response.data);
             });
         },
         openFileSelect: function openFileSelect() {
             $('#shared_file').click();
         },
-        sendFileMessage: function sendFileMessage(filePath) {
+        sendFileMessage: function sendFileMessage(fileInfo) {
             var message = {
                 conversation_id: this.currentConversation.id,
-                message: filePath,
+                message: fileInfo.path,
                 client_id: this.client_id,
                 user_id: this.user_id,
-                type: 'file'
+                type: fileInfo.type
             };
             // clear input :
             this.currentMessagesList.push(message);
@@ -58344,7 +58400,7 @@ var render = function() {
                     [_vm._v(_vm._s(_vm.currFreelancer.firstName) + " : ")]
                   ),
                   _vm._v(" "),
-                  message.type == "file"
+                  message.type == "application" || message.type == "txt"
                     ? _c("span", [
                         _c(
                           "a",
@@ -58372,13 +58428,219 @@ var render = function() {
                           ]
                         )
                       ])
-                    : _c("span", [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(message.message) +
-                            "\n                    "
-                        )
-                      ]),
+                    : message.type == "video"
+                      ? _c("span", { staticClass: "NoDecor" }, [
+                          _vm._v(
+                            "\n\n                        " +
+                              _vm._s(_vm.getFileName(message.message)) +
+                              "\n                        "
+                          ),
+                          _c("div", { staticClass: "text-center col-md-6" }, [
+                            _c(
+                              "video",
+                              {
+                                attrs: {
+                                  width: "100%",
+                                  height: "auto",
+                                  controls: ""
+                                }
+                              },
+                              [
+                                _c("source", {
+                                  attrs: { src: message.message }
+                                })
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                href:
+                                  "/chat-room/download/" +
+                                  _vm.getFileName(message.message)
+                              }
+                            },
+                            [
+                              _c(
+                                "small",
+                                { staticStyle: { "padding-left": "20px" } },
+                                [_vm._v("Download")]
+                              )
+                            ]
+                          )
+                        ])
+                      : message.type == "audio"
+                        ? _c("span", [
+                            _c("span", [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(_vm.getFileName(message.message)) +
+                                  "\n                        "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticStyle: { "padding-top": "30px" } },
+                              [
+                                _c(
+                                  "audio",
+                                  { attrs: { controls: "", preload: "auto" } },
+                                  [
+                                    _c("source", {
+                                      attrs: { src: message.message }
+                                    }),
+                                    _vm._v(
+                                      "\n                            Your browser does not support the audio element.\n                        "
+                                    )
+                                  ]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                attrs: {
+                                  href:
+                                    "/chat-room/download/" +
+                                    _vm.getFileName(message.message)
+                                }
+                              },
+                              [
+                                _c(
+                                  "small",
+                                  { staticStyle: { "padding-left": "20px" } },
+                                  [_vm._v("Download")]
+                                )
+                              ]
+                            )
+                          ])
+                        : message.type == "image"
+                          ? _c("span", [
+                              _c("span", [
+                                _vm._v(
+                                  "\n                            " +
+                                    _vm._s(_vm.getFileName(message.message)) +
+                                    "\n                        "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: {
+                                      href: "javascript:void(0)",
+                                      "data-toggle": "modal",
+                                      "data-target": "#chatImage" + message.id
+                                    }
+                                  },
+                                  [
+                                    _c("img", {
+                                      attrs: {
+                                        src: message.message,
+                                        alt: "image",
+                                        width: "250px",
+                                        height: "auto"
+                                      }
+                                    })
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  attrs: {
+                                    href:
+                                      "/chat-room/download/" +
+                                      _vm.getFileName(message.message)
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "small",
+                                    { staticStyle: { "padding-left": "20px" } },
+                                    [_vm._v("Download")]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "modal fade",
+                                  attrs: {
+                                    id: "chatImage" + message.id,
+                                    tabindex: "-1",
+                                    role: "dialog",
+                                    "aria-hidden": "true"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "modal-dialog",
+                                      attrs: { role: "document" }
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "modal-content",
+                                          attrs: {
+                                            "data-dismiss": "modal",
+                                            "aria-label": "Close"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "modal-body",
+                                              staticStyle: { padding: "0" }
+                                            },
+                                            [
+                                              _c(
+                                                "div",
+                                                { staticClass: "row" },
+                                                [
+                                                  _c("img", {
+                                                    attrs: {
+                                                      src: message.message,
+                                                      alt: "image",
+                                                      width: "100%",
+                                                      height: "auto"
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ])
+                          : message.type == "text"
+                            ? _c("span", [
+                                _vm._v(
+                                  "\n                        " +
+                                    _vm._s(message.message) +
+                                    "\n                    "
+                                )
+                              ])
+                            : _c("span", [
+                                _vm._v(
+                                  "\n                        File can not be uploaded.\n                    "
+                                )
+                              ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "text-right" }, [
                     _c(

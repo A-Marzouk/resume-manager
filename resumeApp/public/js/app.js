@@ -57984,6 +57984,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id', 'user_id'],
@@ -58039,6 +58040,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (e.message.conversation_id == _this2.currentConversation.id) {
                     // i am on this conversation
                     _this2.currentMessagesList.push(e.message);
+
+                    // scroll down:
+                    $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight") }, 1000);
                 } else {
                     // i am on another conversation :
                     _this2.updateUnReadMessageCount(e.message.conversation_id);
@@ -58053,6 +58057,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/chat-room/messages/' + this.currentConversation.id).then(function (response) {
                 _this3.currentMessagesList = response.data;
+
+                // scroll down to the messages
+                setTimeout(function () {
+                    $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight") }, 1000);
+                }, 2000);
             });
         },
         sendMessage: function sendMessage() {
@@ -58070,6 +58079,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/chat-room/addMessage', message).then(function (response) {
                 $('#status').html('Sent');
             });
+
+            $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight") }, 1000);
         },
         setDefaultConversation: function setDefaultConversation() {
             if (this.currentConversation.id !== undefined) {
@@ -58123,6 +58134,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/chat-room/addMessage', message).then(function (response) {
                 $('#status').html('Sent');
             });
+            $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight") }, 1000);
         },
         getFileName: function getFileName(path) {
             var parts = path.split('/');
@@ -58321,7 +58333,8 @@ var render = function() {
               expression: "conversations.length > 0"
             }
           ],
-          staticClass: "col-md-8 chatMessagesArea"
+          staticClass: "col-md-8 chatMessagesArea",
+          attrs: { id: "newChatMessagesArea" }
         },
         [
           _c("div", [
@@ -58683,72 +58696,91 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6 offset-md-3" }, [
+    _c("hr"),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.conversations.length > 0,
+            expression: "conversations.length > 0"
+          }
+        ],
+        staticClass: "row"
+      },
+      [
+        _c("div", { staticClass: "col-md-6 offset-md-3" }, [
+          _c(
+            "div",
+            {
+              staticClass: "form-group",
+              staticStyle: { "padding-top": "25px" }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.newMessage.body,
+                    expression: "newMessage.body"
+                  }
+                ],
+                staticClass: "form-control panelFormInput",
+                attrs: { type: "text" },
+                domProps: { value: _vm.newMessage.body },
+                on: {
+                  keyup: function($event) {
+                    if (
+                      !("button" in $event) &&
+                      _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                    ) {
+                      return null
+                    }
+                    return _vm.sendMessage($event)
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.newMessage, "body", $event.target.value)
+                  }
+                }
+              })
+            ]
+          )
+        ]),
+        _vm._v(" "),
         _c(
           "div",
-          { staticClass: "form-group", staticStyle: { "padding-top": "25px" } },
+          {
+            staticClass: "col-md-2 NoDecor",
+            staticStyle: { "padding-top": "33px" }
+          },
           [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { href: "javascript:void(0)" },
+                on: { click: _vm.openFileSelect }
+              },
+              [_vm._v("Share file")]
+            ),
+            _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.newMessage.body,
-                  expression: "newMessage.body"
-                }
-              ],
-              staticClass: "form-control panelFormInput",
-              attrs: { type: "text" },
-              domProps: { value: _vm.newMessage.body },
-              on: {
-                keyup: function($event) {
-                  if (
-                    !("button" in $event) &&
-                    _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-                  ) {
-                    return null
-                  }
-                  return _vm.sendMessage($event)
-                },
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.newMessage, "body", $event.target.value)
-                }
-              }
+              ref: "file",
+              staticClass: "d-none",
+              attrs: { type: "file", name: "shared_file", id: "shared_file" },
+              on: { change: _vm.handleChatFile }
             })
           ]
         )
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "col-md-2 NoDecor",
-          staticStyle: { "padding-top": "33px" }
-        },
-        [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-primary",
-              attrs: { href: "javascript:void(0)" },
-              on: { click: _vm.openFileSelect }
-            },
-            [_vm._v("Share file")]
-          ),
-          _vm._v(" "),
-          _c("input", {
-            ref: "file",
-            staticClass: "d-none",
-            attrs: { type: "file", name: "shared_file", id: "shared_file" },
-            on: { change: _vm.handleChatFile }
-          })
-        ]
-      )
-    ]),
+      ]
+    ),
     _vm._v(" "),
     _c(
       "div",

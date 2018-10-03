@@ -20,7 +20,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-8 chatMessagesArea" v-show="conversations.length > 0">
+            <div class="col-md-8 chatMessagesArea" id="newChatMessagesArea" v-show="conversations.length > 0">
                 <!-- here goes the chat itself -->
                 <div>
                     {{this.currFreelancer.firstName}} - {{this.currClient.firstName}}
@@ -104,7 +104,8 @@
                 <small id="status" class="panelFormLabel" style="margin: 10px;"></small>
             </div>
         </div>
-        <div class="row">
+        <hr/>
+        <div class="row" v-show="conversations.length > 0">
             <div class="col-md-6 offset-md-3">
                 <div class="form-group" style="padding-top: 25px;">
                     <input type="text" class="form-control panelFormInput" v-model="newMessage.body" @keyup.enter="sendMessage">
@@ -180,6 +181,9 @@
                         if(e.message.conversation_id == this.currentConversation.id){
                             // i am on this conversation
                             this.currentMessagesList.push(e.message);
+
+                            // scroll down:
+                            $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight")}, 1000);
                         }
                         else{
                             // i am on another conversation :
@@ -194,6 +198,12 @@
             setConversationMessages(){
                 axios.get('/chat-room/messages/'+this.currentConversation.id).then( (response) => {
                     this.currentMessagesList = response.data;
+
+                    // scroll down to the messages
+                    setTimeout(function(){
+                        $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight")}, 1000);
+                    },2000);
+
                 });
             },
             sendMessage(){
@@ -211,6 +221,8 @@
                 axios.post('/chat-room/addMessage',message).then((response) => {
                    $('#status').html('Sent');
                 });
+
+                $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight")}, 1000);
 
             },
 
@@ -264,6 +276,7 @@
                 axios.post('/chat-room/addMessage',message).then((response) => {
                     $('#status').html('Sent');
                 });
+                $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight")}, 1000);
             },
             getFileName(path){
                 let parts = path.split('/');

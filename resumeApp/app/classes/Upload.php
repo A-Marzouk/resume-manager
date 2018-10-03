@@ -124,7 +124,7 @@ class Upload
         }
 
         // Check file size
-        if ($_FILES[$name]["size"] > 35000000) {
+        if ($_FILES[$name]["size"] > 45000000) {
             $uploadOk = 0;
         }
         // Check if $uploadOk is set to 0 by an error

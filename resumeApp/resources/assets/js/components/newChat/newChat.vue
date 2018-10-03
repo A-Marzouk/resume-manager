@@ -78,7 +78,7 @@
                               </a>
 
                             <div class="modal fade" :id="'chatImage'+message.id" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="modal-dialog" role="document" style="">
+                                <div class="modal-dialog modal-lg" role="document" style="">
                                     <div class="modal-content" data-dismiss="modal" aria-label="Close">
                                         <div class="modal-body" style="padding: 0;">
                                             <div class="row">

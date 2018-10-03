@@ -58584,7 +58584,7 @@ var render = function() {
                                   _c(
                                     "div",
                                     {
-                                      staticClass: "modal-dialog",
+                                      staticClass: "modal-dialog modal-lg",
                                       attrs: { role: "document" }
                                     },
                                     [

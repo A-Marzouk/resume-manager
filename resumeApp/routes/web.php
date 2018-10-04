@@ -139,8 +139,9 @@ Route::post('/search_delete','AdminsController@deleteSearch');
 Route::post('/search_delete_freelancer','AdminsController@deleteSearchFreelancer');
 Route::get('/clients/emails','AdminsController@getClientsEmails');
 
-// audio record test :
+// audio record :
 Route::post('/audio/save','UserDataController@saveAudio');
+Route::post('/audio/save_for_chat','UserDataController@saveAudioForChat');
 
 // chat new :
 Route::get('/chat-room','NewChatController@showChatPage')->name('chat-room');

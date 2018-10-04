@@ -59,10 +59,13 @@ if ( navigator.mediaDevices.getUserMedia ) {
 
 
     function start() {
+        $('#record_status').fadeIn().removeClass('d-none');
         navigator.mediaDevices.getUserMedia( { 'audio': true } ).then( function ( stream ) {
             mediaRecorder = new MediaRecorder( stream );
             mediaRecorder.start();
             status.html('<span class="panelFormLabel">Recording</span>');
+            $('#counter').removeClass('d-none');
+            $('#counter').html('00');
             btn_status = 'recording';
             $('#recordImg').addClass('recording');
             $('#stopAudio').fadeIn(500).removeClass('d-none');
@@ -112,11 +115,13 @@ if ( navigator.mediaDevices.getUserMedia ) {
 
         var t = parseTime( now - time );
 
-        status.html('Recorded : ' + t);
+        status.html('Recorded: ' + t);
         $('#stopAudio').fadeOut(500).addClass('d-none');
         $('#downloadAudio').fadeIn(500).removeClass('d-none');
         $('#playAudio').fadeIn(500).removeClass('d-none');
         $('#saveAudio').fadeIn(500).removeClass('d-none');
+        $('#sendAudio').fadeIn(500).removeClass('d-none');
+        $('#discardAudio').fadeIn(500).removeClass('d-none');
 
 
     }
@@ -139,6 +144,10 @@ if ( navigator.mediaDevices.getUserMedia ) {
 
     $('#saveAudio').on('click',function () {
         saveToDB();
+    });
+
+    $('#sendAudio').on('click',function () {
+        saveAudioForChat();
     });
 
 
@@ -164,7 +173,29 @@ if ( navigator.mediaDevices.getUserMedia ) {
 
             },
             error: function() {
-                console.log("Error while saveing audio");
+                console.log("Error while saving audio");
+            }
+        });
+    }
+
+    function saveAudioForChat(){
+        var data = new FormData();
+        data.append('file', blob);
+        data.append('type', blob.type);
+
+        status.html('');
+        $.ajax({
+            url :  "audio/save_for_chat",
+            type: 'POST',
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                $('#currAudioChatSrc').html(data);
+            },
+            error: function() {
+                console.log("Error while saving audio");
+                $('#currAudioChatSrc').html('');
             }
         });
     }

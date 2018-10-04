@@ -111,9 +111,30 @@
                     <input type="text" class="form-control panelFormInput" v-model="newMessage.body" @keyup.enter="sendMessage">
                 </div> <!-- message input -->
             </div>
-            <div class="col-md-2 NoDecor" style="padding-top: 33px;">
+            <div class="col-md-1 NoDecor" style="padding-top: 33px;">
                 <a href="javascript:void(0)" @click="openFileSelect" class="btn btn-primary">Share file</a>
                 <input type="file" name="shared_file" ref="file" id="shared_file" @change="handleChatFile" class="d-none">
+            </div>
+            <div class="col-md-2 NoDecor" style="padding-top: 33px;">
+                <div class="recorder_wrapper">
+                    <div class="recorder">
+                        <div id="recordImg">
+                            <a href="javascript:void(0)"  id="startRecord" @click="startCount">
+                                <img src="/resumeApp/resources/assets/images/Microphone_1.png" alt="mic" width="25px">
+                            </a>
+                        </div>
+                        <p>
+                            <span id="record_status"></span> <span id="counter" class="panelFormLabel d-none">0</span>
+                        </p>
+                        <div class="NoDecor" style="padding-top:20px;">
+                            <a href="javascript:void(0)" id="stopAudio" class="d-none" @click="stopCount">Stop</a>
+                            <a href="javascript:void(0)" id="playAudio" class="d-none">Play</a>
+                            <a href="javascript:void(0)" id="sendAudio" class="d-none" @click="sendAudioRecord">Send </a>
+                            <a href="javascript:void(0)" id="discardAudio" class="d-none" @click="resetAudio"a>Discard</a>
+                            <span class="d-none" id="currAudioChatSrc"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -140,7 +161,8 @@
                     type:'text'
                 },
                 currFreelancer:{},
-                currClient:{}
+                currClient:{},
+                time:''
             }
         },
 
@@ -253,7 +275,6 @@
 
                 axios.post('/chat-room/message_file',chat_form_data).then( (response) => {
                     // response.data is the file path
-                    // TODO: receive file type to handle how the message is shown
                     this.sendFileMessage(response.data);
                 });
 
@@ -281,6 +302,76 @@
             getFileName(path){
                 let parts = path.split('/');
                 return parts.pop() || parts.pop();
+            },
+            sendAudioRecord(){
+                let currAudioSrc = $('#currAudioChatSrc').html() ;
+                if( currAudioSrc !== ''){
+                    let fileInfo ={
+                        path: currAudioSrc,
+                        type: 'audio'
+                    };
+
+                    let message = {
+                        conversation_id : this.currentConversation.id,
+                        message :fileInfo.path,
+                        client_id: this.client_id,
+                        user_id: this.user_id,
+                        type:fileInfo.type
+                    };
+
+                    this.currentMessagesList.push(message);
+
+                    // save the message to the database of messages :
+                    axios.post('/chat-room/addMessage',message).then((response) => {
+                        $('#status').html('Sent');
+                    });
+
+                    // scroll down:
+                    $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight")}, 1000);
+
+                    $('#currAudioChatSrc').html('');
+
+                    // hide play and send
+                    $('#sendAudio').fadeOut().addClass('d-none');
+                    $('#playAudio').fadeOut().addClass('d-none');
+                    $('#record_status').fadeOut().addClass('d-none');
+                    $('#discardAudio').fadeOut().addClass('d-none');
+                    $('#startRecord').fadeIn().removeClass('d-none');
+                }else{
+                    setTimeout(this.sendAudioRecord,3000);
+                }
+            },
+            resetAudio(){
+                $('#currAudioChatSrc').html('');
+
+                // hide play and send
+                $('#sendAudio').fadeOut().addClass('d-none');
+                $('#playAudio').fadeOut().addClass('d-none');
+                $('#record_status').fadeOut().addClass('d-none');
+                $('#discardAudio').fadeOut().addClass('d-none');
+                $('#startRecord').fadeIn().removeClass('d-none');
+                $('#record_status').html('');
+            },
+            startCount(){
+                let counter = parseInt($('#counter').html()) ;
+                this.timer = setInterval(function () {
+                    let counter = parseInt($('#counter').html()) ;
+                    counter++;
+                    if(counter < 10 ){
+                        $('#counter').html('0'+counter);
+                    }else{
+                        $('#counter').html(counter);
+                    }
+                    if(counter > 30){
+                        $('#stopAudio').click();
+                        clearInterval(this.timer);
+                        $('#counter').addClass('d-none');
+                    }
+                },1000);
+            },
+            stopCount(){
+                clearInterval(this.timer);
+                $('#counter').addClass('d-none');
             }
         },
 

@@ -124,7 +124,7 @@
                             </a>
                         </div>
                         <p>
-                            <span id="record_status"></span> <span id="counter" class="panelFormLabel"></span>
+                            <span id="record_status"></span> <span id="counter" class="panelFormLabel d-none">0</span>
                         </p>
                         <div class="NoDecor" style="padding-top:20px;">
                             <a href="javascript:void(0)" id="stopAudio" class="d-none" @click="stopCount">Stop</a>
@@ -353,13 +353,19 @@
                 $('#record_status').html('');
             },
             startCount(){
-                let counter = 0 ;
+                let counter = parseInt($('#counter').html()) ;
                 this.timer = setInterval(function () {
+                    let counter = parseInt($('#counter').html()) ;
                     counter++;
                     if(counter < 10 ){
                         $('#counter').html('0'+counter);
                     }else{
                         $('#counter').html(counter);
+                    }
+                    if(counter > 30){
+                        $('#stopAudio').click();
+                        clearInterval(this.timer);
+                        $('#counter').addClass('d-none');
                     }
                 },1000);
             },

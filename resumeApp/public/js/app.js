@@ -53216,6 +53216,7 @@ if (navigator.mediaDevices.getUserMedia) {
             mediaRecorder.start();
             status.html('<span class="panelFormLabel">Recording</span>');
             $('#counter').removeClass('d-none');
+            $('#counter').html('00');
             btn_status = 'recording';
             $('#recordImg').addClass('recording');
             $('#stopAudio').fadeIn(500).removeClass('d-none');
@@ -58242,13 +58243,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             $('#record_status').html('');
         },
         startCount: function startCount() {
-            var counter = 0;
+            var counter = parseInt($('#counter').html());
             this.timer = setInterval(function () {
+                var counter = parseInt($('#counter').html());
                 counter++;
                 if (counter < 10) {
                     $('#counter').html('0' + counter);
                 } else {
                     $('#counter').html(counter);
+                }
+                if (counter > 30) {
+                    $('#stopAudio').click();
+                    clearInterval(this.timer);
+                    $('#counter').addClass('d-none');
                 }
             }, 1000);
         },
@@ -59015,7 +59022,11 @@ var staticRenderFns = [
     return _c("p", [
       _c("span", { attrs: { id: "record_status" } }),
       _vm._v(" "),
-      _c("span", { staticClass: "panelFormLabel", attrs: { id: "counter" } })
+      _c(
+        "span",
+        { staticClass: "panelFormLabel d-none", attrs: { id: "counter" } },
+        [_vm._v("0")]
+      )
     ])
   },
   function() {

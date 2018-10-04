@@ -65,6 +65,7 @@ if ( navigator.mediaDevices.getUserMedia ) {
             mediaRecorder.start();
             status.html('<span class="panelFormLabel">Recording</span>');
             $('#counter').removeClass('d-none');
+            $('#counter').html('00');
             btn_status = 'recording';
             $('#recordImg').addClass('recording');
             $('#stopAudio').fadeIn(500).removeClass('d-none');

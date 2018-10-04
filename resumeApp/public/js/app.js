@@ -14312,7 +14312,6 @@ $.ajaxSetup({
 
 __webpack_require__(44);
 __webpack_require__(45);
-__webpack_require__(46);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -14498,6 +14497,8 @@ window.Echo.channel('conversations').listen('UpdateMessageCount', function (e) {
         });
     }
 });
+
+__webpack_require__(46);
 
 /***/ }),
 /* 16 */
@@ -53209,10 +53210,12 @@ if (navigator.mediaDevices.getUserMedia) {
     };
 
     var start = function start() {
+        $('#record_status').fadeIn().removeClass('d-none');
         navigator.mediaDevices.getUserMedia({ 'audio': true }).then(function (stream) {
             mediaRecorder = new MediaRecorder(stream);
             mediaRecorder.start();
             status.html('<span class="panelFormLabel">Recording</span>');
+            $('#counter').removeClass('d-none');
             btn_status = 'recording';
             $('#recordImg').addClass('recording');
             $('#stopAudio').fadeIn(500).removeClass('d-none');
@@ -53259,11 +53262,13 @@ if (navigator.mediaDevices.getUserMedia) {
 
         var t = parseTime(now - time);
 
-        status.html('Recorded : ' + t);
+        status.html('Recorded: ' + t);
         $('#stopAudio').fadeOut(500).addClass('d-none');
         $('#downloadAudio').fadeIn(500).removeClass('d-none');
         $('#playAudio').fadeIn(500).removeClass('d-none');
         $('#saveAudio').fadeIn(500).removeClass('d-none');
+        $('#sendAudio').fadeIn(500).removeClass('d-none');
+        $('#discardAudio').fadeIn(500).removeClass('d-none');
     };
 
     var saveToDB = function saveToDB() {
@@ -53287,7 +53292,29 @@ if (navigator.mediaDevices.getUserMedia) {
                 }, 1000);
             },
             error: function error() {
-                console.log("Error while saveing audio");
+                console.log("Error while saving audio");
+            }
+        });
+    };
+
+    var saveAudioForChat = function saveAudioForChat() {
+        var data = new FormData();
+        data.append('file', blob);
+        data.append('type', blob.type);
+
+        status.html('');
+        $.ajax({
+            url: "audio/save_for_chat",
+            type: 'POST',
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function success(data) {
+                $('#currAudioChatSrc').html(data);
+            },
+            error: function error() {
+                console.log("Error while saving audio");
+                $('#currAudioChatSrc').html('');
             }
         });
     };
@@ -53357,6 +53384,10 @@ if (navigator.mediaDevices.getUserMedia) {
 
     $('#saveAudio').on('click', function () {
         saveToDB();
+    });
+
+    $('#sendAudio').on('click', function () {
+        saveAudioForChat();
     });
 } else {
     if (location.protocol != 'https:') {
@@ -57985,6 +58016,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id', 'user_id'],
@@ -57998,7 +58050,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 type: 'text'
             },
             currFreelancer: {},
-            currClient: {}
+            currClient: {},
+            time: ''
         };
     },
 
@@ -58112,7 +58165,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.post('/chat-room/message_file', chat_form_data).then(function (response) {
                 // response.data is the file path
-                // TODO: receive file type to handle how the message is shown
                 _this5.sendFileMessage(response.data);
             });
         },
@@ -58139,6 +58191,70 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getFileName: function getFileName(path) {
             var parts = path.split('/');
             return parts.pop() || parts.pop();
+        },
+        sendAudioRecord: function sendAudioRecord() {
+            var currAudioSrc = $('#currAudioChatSrc').html();
+            if (currAudioSrc !== '') {
+                var fileInfo = {
+                    path: currAudioSrc,
+                    type: 'audio'
+                };
+
+                var message = {
+                    conversation_id: this.currentConversation.id,
+                    message: fileInfo.path,
+                    client_id: this.client_id,
+                    user_id: this.user_id,
+                    type: fileInfo.type
+                };
+
+                this.currentMessagesList.push(message);
+
+                // save the message to the database of messages :
+                axios.post('/chat-room/addMessage', message).then(function (response) {
+                    $('#status').html('Sent');
+                });
+
+                // scroll down:
+                $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight") }, 1000);
+
+                $('#currAudioChatSrc').html('');
+
+                // hide play and send
+                $('#sendAudio').fadeOut().addClass('d-none');
+                $('#playAudio').fadeOut().addClass('d-none');
+                $('#record_status').fadeOut().addClass('d-none');
+                $('#discardAudio').fadeOut().addClass('d-none');
+                $('#startRecord').fadeIn().removeClass('d-none');
+            } else {
+                setTimeout(this.sendAudioRecord, 3000);
+            }
+        },
+        resetAudio: function resetAudio() {
+            $('#currAudioChatSrc').html('');
+
+            // hide play and send
+            $('#sendAudio').fadeOut().addClass('d-none');
+            $('#playAudio').fadeOut().addClass('d-none');
+            $('#record_status').fadeOut().addClass('d-none');
+            $('#discardAudio').fadeOut().addClass('d-none');
+            $('#startRecord').fadeIn().removeClass('d-none');
+            $('#record_status').html('');
+        },
+        startCount: function startCount() {
+            var counter = 0;
+            this.timer = setInterval(function () {
+                counter++;
+                if (counter < 10) {
+                    $('#counter').html('0' + counter);
+                } else {
+                    $('#counter').html(counter);
+                }
+            }, 1000);
+        },
+        stopCount: function stopCount() {
+            clearInterval(this.timer);
+            $('#counter').addClass('d-none');
         }
     },
 
@@ -58757,7 +58873,7 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "col-md-2 NoDecor",
+            staticClass: "col-md-1 NoDecor",
             staticStyle: { "padding-top": "33px" }
           },
           [
@@ -58778,6 +58894,98 @@ var render = function() {
               on: { change: _vm.handleChatFile }
             })
           ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "col-md-2 NoDecor",
+            staticStyle: { "padding-top": "33px" }
+          },
+          [
+            _c("div", { staticClass: "recorder_wrapper" }, [
+              _c("div", { staticClass: "recorder" }, [
+                _c("div", { attrs: { id: "recordImg" } }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "javascript:void(0)", id: "startRecord" },
+                      on: { click: _vm.startCount }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src:
+                            "/resumeApp/resources/assets/images/Microphone_1.png",
+                          alt: "mic",
+                          width: "25px"
+                        }
+                      })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "NoDecor",
+                    staticStyle: { "padding-top": "20px" }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "d-none",
+                        attrs: { href: "javascript:void(0)", id: "stopAudio" },
+                        on: { click: _vm.stopCount }
+                      },
+                      [_vm._v("Stop")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "d-none",
+                        attrs: { href: "javascript:void(0)", id: "playAudio" }
+                      },
+                      [_vm._v("Play")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "d-none",
+                        attrs: { href: "javascript:void(0)", id: "sendAudio" },
+                        on: { click: _vm.sendAudioRecord }
+                      },
+                      [_vm._v("Send ")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "d-none",
+                        attrs: {
+                          href: "javascript:void(0)",
+                          id: "discardAudio",
+                          a: ""
+                        },
+                        on: { click: _vm.resetAudio }
+                      },
+                      [_vm._v("Discard")]
+                    ),
+                    _vm._v(" "),
+                    _c("span", {
+                      staticClass: "d-none",
+                      attrs: { id: "currAudioChatSrc" }
+                    })
+                  ]
+                )
+              ])
+            ])
+          ]
         )
       ]
     ),
@@ -58795,11 +59003,21 @@ var render = function() {
         ],
         staticClass: "row text-center"
       },
-      [_vm._m(0)]
+      [_vm._m(1)]
     )
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("span", { attrs: { id: "record_status" } }),
+      _vm._v(" "),
+      _c("span", { staticClass: "panelFormLabel", attrs: { id: "counter" } })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

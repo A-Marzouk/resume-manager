@@ -353,4 +353,19 @@ class UserDataController extends Controller
         $userData->audioFile = "/" . $target_file ;
         $userData->save();
     }
+
+    public function saveAudioForChat(Request $request){
+        if(isset($_FILES['file']) and !$_FILES['file']['error']){
+            $fname = "Record_".date(time()).'.ogg';
+            $target_file = "resumeApp/storage/chat_shared_files/" . $fname ;
+
+            if (file_exists($target_file)) {
+                unlink($target_file);
+            }
+
+            move_uploaded_file($_FILES['file']['tmp_name'], $target_file);
+        }
+
+        return $target_file;
+    }
 }

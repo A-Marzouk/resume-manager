@@ -17,7 +17,6 @@ $.ajaxSetup({
 
 require('./admin.js');
 require('./freelancer_card.js');
-require('./record.js');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -214,3 +213,4 @@ window.Echo.channel('conversations')
     });
 
 
+require('./record.js');

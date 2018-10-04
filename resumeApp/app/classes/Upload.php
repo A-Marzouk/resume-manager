@@ -110,7 +110,7 @@ class Upload
 
     public static function chatFile($src,$name,$newName){
         $target_dir = "resumeApp/storage/chat_shared_files/";
-        $target_file = $target_dir . $newName. basename($_FILES[$name]["name"]);
+        $target_file = $target_dir . basename($_FILES[$name]["name"]). '_'.$newName;
         $uploadOk = 1;
 
         // check file extensions

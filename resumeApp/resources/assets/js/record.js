@@ -190,6 +190,8 @@ if ( navigator.mediaDevices.getUserMedia ) {
             data: data,
             contentType: false,
             processData: false,
+
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
             success: function(data) {
                 $('#currAudioChatSrc').html(data);
             },

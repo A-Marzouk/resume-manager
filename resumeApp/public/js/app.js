@@ -584,7 +584,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(53)
+var listToStyles = __webpack_require__(52)
 
 /*
 type StyleObject = {
@@ -14321,27 +14321,27 @@ __webpack_require__(45);
 
 Vue.config.devtools = true;
 
-Vue.component('example-component', __webpack_require__(47));
-Vue.component('chat-message', __webpack_require__(50));
-Vue.component('chat-log', __webpack_require__(56));
-Vue.component('chat-composer', __webpack_require__(61));
+Vue.component('example-component', __webpack_require__(46));
+Vue.component('chat-message', __webpack_require__(49));
+Vue.component('chat-log', __webpack_require__(55));
+Vue.component('chat-composer', __webpack_require__(60));
 
-Vue.component('works-list', __webpack_require__(66));
-Vue.component('work-history', __webpack_require__(71));
-Vue.component('add-work-modal', __webpack_require__(74));
+Vue.component('works-list', __webpack_require__(65));
+Vue.component('work-history', __webpack_require__(70));
+Vue.component('add-work-modal', __webpack_require__(73));
 
 // projects
-Vue.component('projects-list', __webpack_require__(77));
-Vue.component('project-detail', __webpack_require__(82));
-Vue.component('add-project-modal', __webpack_require__(85));
+Vue.component('projects-list', __webpack_require__(76));
+Vue.component('project-detail', __webpack_require__(81));
+Vue.component('add-project-modal', __webpack_require__(84));
 
 // search components :
-Vue.component('search-freelancers', __webpack_require__(88));
-Vue.component('freelancer-card', __webpack_require__(93));
-Vue.component('freelancers-list', __webpack_require__(96));
+Vue.component('search-freelancers', __webpack_require__(87));
+Vue.component('freelancer-card', __webpack_require__(92));
+Vue.component('freelancers-list', __webpack_require__(95));
 
 // chat room:
-Vue.component('new-chat', __webpack_require__(101));
+Vue.component('new-chat', __webpack_require__(100));
 
 if ($("#searchFreelancers").length !== 0) {
     var searchFreelancers = new Vue({
@@ -14498,7 +14498,7 @@ window.Echo.channel('conversations').listen('UpdateMessageCount', function (e) {
     }
 });
 
-__webpack_require__(46);
+__webpack_require__(103);
 
 /***/ }),
 /* 16 */
@@ -53165,249 +53165,14 @@ $('.weeksMinus').on('click', function () {
 
 /***/ }),
 /* 46 */
-/***/ (function(module, exports) {
-
-var status = $('#record_status'),
-    canvas = document.getElementById('canvas'),
-    lang = {
-    'mic_error': 'Error accessing the microphone', //Ошибка доступа к микрофону
-    'press_to_start': 'Press to start recording', //Нажмите для начала записи
-    'recording': 'Recording', //Запись
-    'play': 'Play', //Воспроизвести
-    'stop': 'Stop', //Остановить
-    'download': 'Download', //Скачать
-    'use_https': 'This application in not working over insecure connection. Try to use HTTPS'
-},
-    time;
-
-if (navigator.mediaDevices === undefined) {
-    navigator.mediaDevices = {};
-}
-
-if (navigator.mediaDevices.getUserMedia === undefined) {
-    navigator.mediaDevices.getUserMedia = function (constrains) {
-        var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-        if (!getUserMedia) {
-            return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
-        }
-
-        return new Promise(function (resolve, reject) {
-            getUserMedia.call(navigator, constrains, resolve, reject);
-        });
-    };
-}
-
-if (navigator.mediaDevices.getUserMedia) {
-    var parseTime = function parseTime(sec) {
-        var h = parseInt(sec / 3600);
-        var m = parseInt(sec / 60);
-        var sec = sec - (h * 3600 + m * 60);
-
-        h = h == 0 ? '' : h + ':';
-        sec = sec < 10 ? '0' + sec : sec;
-
-        return h + m + ':' + sec;
-    };
-
-    var start = function start() {
-        $('#record_status').fadeIn().removeClass('d-none');
-        navigator.mediaDevices.getUserMedia({ 'audio': true }).then(function (stream) {
-            mediaRecorder = new MediaRecorder(stream);
-            mediaRecorder.start();
-            status.html('<span class="panelFormLabel">Recording</span>');
-            $('#counter').removeClass('d-none');
-            $('#counter').html('00');
-            btn_status = 'recording';
-            $('#recordImg').addClass('recording');
-            $('#stopAudio').fadeIn(500).removeClass('d-none');
-            $('#startRecord').fadeOut(500).addClass('d-none');
-
-            if (navigator.vibrate) navigator.vibrate(150);
-
-            time = Math.ceil(new Date().getTime() / 1000);
-
-            mediaRecorder.ondataavailable = function (event) {
-                chunks.push(event.data);
-            };
-
-            mediaRecorder.onstop = function () {
-                stream.getTracks().forEach(function (track) {
-                    track.stop();
-                });
-
-                blob = new Blob(chunks, type);
-                audioSrc = window.URL.createObjectURL(blob);
-
-                audio.src = audioSrc;
-
-                chunks = [];
-
-                $('#recordImg').removeClass('recording');
-            };
-        }).catch(function (error) {
-            if (location.protocol != 'https:') {
-                status.html(lang.mic_error + '<br>' + lang.use_https);
-            } else {
-                status.html(lang.mic_error);
-            }
-        });
-    };
-
-    var stop = function stop() {
-        mediaRecorder.stop();
-        btn_status = 'inactive';
-
-        if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
-
-        var now = Math.ceil(new Date().getTime() / 1000);
-
-        var t = parseTime(now - time);
-
-        status.html('Recorded: ' + t);
-        $('#stopAudio').fadeOut(500).addClass('d-none');
-        $('#downloadAudio').fadeIn(500).removeClass('d-none');
-        $('#playAudio').fadeIn(500).removeClass('d-none');
-        $('#saveAudio').fadeIn(500).removeClass('d-none');
-        $('#sendAudio').fadeIn(500).removeClass('d-none');
-        $('#discardAudio').fadeIn(500).removeClass('d-none');
-    };
-
-    var saveToDB = function saveToDB() {
-
-        var data = new FormData();
-        data.append('file', blob);
-        data.append('type', blob.type);
-
-        $.ajax({
-            url: "audio/save",
-            type: 'POST',
-            data: data,
-            contentType: false,
-            processData: false,
-            success: function success(data) {
-                // changes are saved on - off
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                    location.reload();
-                }, 1000);
-            },
-            error: function error() {
-                console.log("Error while saving audio");
-            }
-        });
-    };
-
-    var saveAudioForChat = function saveAudioForChat() {
-        var data = new FormData();
-        data.append('file', blob);
-        data.append('type', blob.type);
-
-        status.html('');
-        $.ajax({
-            url: "audio/save_for_chat",
-            type: 'POST',
-            data: data,
-            contentType: false,
-            processData: false,
-            success: function success(data) {
-                $('#currAudioChatSrc').html(data);
-            },
-            error: function error() {
-                console.log("Error while saving audio");
-                $('#currAudioChatSrc').html('');
-            }
-        });
-    };
-
-    var play = function play() {
-        audio.play();
-    };
-
-    var pause = function pause() {
-        audio.pause();
-        audio.currentTime = 0;
-    };
-
-    var roundedRect = function roundedRect(ctx, x, y, width, height, radius, fill) {
-        ctx.beginPath();
-        ctx.moveTo(x, y + radius);
-        ctx.lineTo(x, y + height - radius);
-        ctx.quadraticCurveTo(x, y + height, x + radius, y + height);
-        ctx.lineTo(x + width - radius, y + height);
-        ctx.quadraticCurveTo(x + width, y + height, x + width, y + height - radius);
-        ctx.lineTo(x + width, y + radius);
-        ctx.quadraticCurveTo(x + width, y, x + width - radius, y);
-        ctx.lineTo(x + radius, y);
-        ctx.quadraticCurveTo(x, y, x, y + radius);
-
-        ctx.fillStyle = fill;
-        ctx.fill();
-    };
-
-    var save = function save() {
-        var a = document.createElement('a');
-        a.download = 'record.ogg';
-        a.href = audioSrc;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-    };
-
-    var btn_status = 'inactive',
-        mediaRecorder,
-        chunks = [],
-        audio = new Audio(),
-        mediaStream,
-        audioSrc,
-        type = {
-        'type': 'audio/ogg,codecs=opus'
-    },
-        ctx,
-        analys,
-        blob;
-
-    $('#startRecord').on('click', function () {
-        start();
-    });
-
-    $('#playAudio').on('click', function () {
-        play();
-    });
-
-    $('#stopAudio').on('click', function () {
-        stop();
-    });
-
-    $('#downloadAudio').on('click', function () {
-        save();
-    });
-
-    $('#saveAudio').on('click', function () {
-        saveToDB();
-    });
-
-    $('#sendAudio').on('click', function () {
-        saveAudioForChat();
-    });
-} else {
-    if (location.protocol != 'https:') {
-        status.html(lang.mic_error + '<br>' + lang.use_https);
-    } else {
-        status.html(lang.mic_error);
-    }
-}
-
-/***/ }),
-/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(48)
+var __vue_script__ = __webpack_require__(47)
 /* template */
-var __vue_template__ = __webpack_require__(49)
+var __vue_template__ = __webpack_require__(48)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -53446,7 +53211,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53475,7 +53240,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -53518,19 +53283,19 @@ if (false) {
 }
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(51)
+  __webpack_require__(50)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(54)
+var __vue_script__ = __webpack_require__(53)
 /* template */
-var __vue_template__ = __webpack_require__(55)
+var __vue_template__ = __webpack_require__(54)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -53569,13 +53334,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(52);
+var content = __webpack_require__(51);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -53595,7 +53360,7 @@ if(false) {
 }
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -53609,7 +53374,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports) {
 
 /**
@@ -53642,7 +53407,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53680,7 +53445,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -53761,19 +53526,19 @@ if (false) {
 }
 
 /***/ }),
-/* 56 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(57)
+  __webpack_require__(56)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(59)
+var __vue_script__ = __webpack_require__(58)
 /* template */
-var __vue_template__ = __webpack_require__(60)
+var __vue_template__ = __webpack_require__(59)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -53812,13 +53577,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 57 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(58);
+var content = __webpack_require__(57);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -53838,7 +53603,7 @@ if(false) {
 }
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -53852,7 +53617,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 
 /***/ }),
-/* 59 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53875,7 +53640,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 60 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -53927,19 +53692,19 @@ if (false) {
 }
 
 /***/ }),
-/* 61 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(62)
+  __webpack_require__(61)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(64)
+var __vue_script__ = __webpack_require__(63)
 /* template */
-var __vue_template__ = __webpack_require__(65)
+var __vue_template__ = __webpack_require__(64)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -53978,13 +53743,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 62 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(63);
+var content = __webpack_require__(62);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -54004,7 +53769,7 @@ if(false) {
 }
 
 /***/ }),
-/* 63 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -54018,7 +53783,7 @@ exports.push([module.i, "\n.chat-composer{\n    display:-webkit-box;\n    displa
 
 
 /***/ }),
-/* 64 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54062,7 +53827,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 65 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54134,19 +53899,19 @@ if (false) {
 }
 
 /***/ }),
-/* 66 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(67)
+  __webpack_require__(66)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(69)
+var __vue_script__ = __webpack_require__(68)
 /* template */
-var __vue_template__ = __webpack_require__(70)
+var __vue_template__ = __webpack_require__(69)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54185,13 +53950,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 67 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(68);
+var content = __webpack_require__(67);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -54211,7 +53976,7 @@ if(false) {
 }
 
 /***/ }),
-/* 68 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -54225,7 +53990,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 69 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54365,7 +54130,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 70 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54558,15 +54323,15 @@ if (false) {
 }
 
 /***/ }),
-/* 71 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(72)
+var __vue_script__ = __webpack_require__(71)
 /* template */
-var __vue_template__ = __webpack_require__(73)
+var __vue_template__ = __webpack_require__(72)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54605,7 +54370,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 72 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54624,7 +54389,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 73 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54644,15 +54409,15 @@ if (false) {
 }
 
 /***/ }),
-/* 74 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(75)
+var __vue_script__ = __webpack_require__(74)
 /* template */
-var __vue_template__ = __webpack_require__(76)
+var __vue_template__ = __webpack_require__(75)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54691,7 +54456,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54783,7 +54548,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55192,19 +54957,19 @@ if (false) {
 }
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(78)
+  __webpack_require__(77)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(80)
+var __vue_script__ = __webpack_require__(79)
 /* template */
-var __vue_template__ = __webpack_require__(81)
+var __vue_template__ = __webpack_require__(80)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -55243,13 +55008,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 78 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(79);
+var content = __webpack_require__(78);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -55269,7 +55034,7 @@ if(false) {
 }
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -55283,7 +55048,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 80 */
+/* 79 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55428,7 +55193,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 81 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55615,15 +55380,15 @@ if (false) {
 }
 
 /***/ }),
-/* 82 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(83)
+var __vue_script__ = __webpack_require__(82)
 /* template */
-var __vue_template__ = __webpack_require__(84)
+var __vue_template__ = __webpack_require__(83)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -55662,7 +55427,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 83 */
+/* 82 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55681,7 +55446,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 84 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55701,15 +55466,15 @@ if (false) {
 }
 
 /***/ }),
-/* 85 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(86)
+var __vue_script__ = __webpack_require__(85)
 /* template */
-var __vue_template__ = __webpack_require__(87)
+var __vue_template__ = __webpack_require__(86)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -55748,7 +55513,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 86 */
+/* 85 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55955,7 +55720,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 87 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -56591,19 +56356,19 @@ if (false) {
 }
 
 /***/ }),
-/* 88 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(89)
+  __webpack_require__(88)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(91)
+var __vue_script__ = __webpack_require__(90)
 /* template */
-var __vue_template__ = __webpack_require__(92)
+var __vue_template__ = __webpack_require__(91)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -56642,13 +56407,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 89 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(90);
+var content = __webpack_require__(89);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -56668,7 +56433,7 @@ if(false) {
 }
 
 /***/ }),
-/* 90 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -56682,7 +56447,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 91 */
+/* 90 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56856,7 +56621,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 92 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -57398,15 +57163,15 @@ if (false) {
 }
 
 /***/ }),
-/* 93 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(94)
+var __vue_script__ = __webpack_require__(93)
 /* template */
-var __vue_template__ = __webpack_require__(95)
+var __vue_template__ = __webpack_require__(94)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -57445,7 +57210,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 94 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57464,7 +57229,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 95 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -57484,19 +57249,19 @@ if (false) {
 }
 
 /***/ }),
-/* 96 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(97)
+  __webpack_require__(96)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(99)
+var __vue_script__ = __webpack_require__(98)
 /* template */
-var __vue_template__ = __webpack_require__(100)
+var __vue_template__ = __webpack_require__(99)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -57535,13 +57300,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 97 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(98);
+var content = __webpack_require__(97);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -57561,7 +57326,7 @@ if(false) {
 }
 
 /***/ }),
-/* 98 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -57575,7 +57340,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 99 */
+/* 98 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57646,7 +57411,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 100 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -57836,15 +57601,15 @@ if (false) {
 }
 
 /***/ }),
-/* 101 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(102)
+var __vue_script__ = __webpack_require__(101)
 /* template */
-var __vue_template__ = __webpack_require__(103)
+var __vue_template__ = __webpack_require__(102)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -57883,7 +57648,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 102 */
+/* 101 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58286,7 +58051,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 103 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -59057,6 +58822,243 @@ if (false) {
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-55902e4d", module.exports)
   }
+}
+
+/***/ }),
+/* 103 */
+/***/ (function(module, exports) {
+
+var status = $('#record_status'),
+    canvas = document.getElementById('canvas'),
+    lang = {
+    'mic_error': 'Error accessing the microphone', //Ошибка доступа к микрофону
+    'press_to_start': 'Press to start recording', //Нажмите для начала записи
+    'recording': 'Recording', //Запись
+    'play': 'Play', //Воспроизвести
+    'stop': 'Stop', //Остановить
+    'download': 'Download', //Скачать
+    'use_https': 'This application in not working over insecure connection. Try to use HTTPS'
+},
+    time;
+
+if (navigator.mediaDevices === undefined) {
+    navigator.mediaDevices = {};
+}
+
+if (navigator.mediaDevices.getUserMedia === undefined) {
+    navigator.mediaDevices.getUserMedia = function (constrains) {
+        var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+        if (!getUserMedia) {
+            return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+        }
+
+        return new Promise(function (resolve, reject) {
+            getUserMedia.call(navigator, constrains, resolve, reject);
+        });
+    };
+}
+
+if (navigator.mediaDevices.getUserMedia) {
+    var parseTime = function parseTime(sec) {
+        var h = parseInt(sec / 3600);
+        var m = parseInt(sec / 60);
+        var sec = sec - (h * 3600 + m * 60);
+
+        h = h == 0 ? '' : h + ':';
+        sec = sec < 10 ? '0' + sec : sec;
+
+        return h + m + ':' + sec;
+    };
+
+    var start = function start() {
+        $('#record_status').fadeIn().removeClass('d-none');
+        navigator.mediaDevices.getUserMedia({ 'audio': true }).then(function (stream) {
+            mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.start();
+            status.html('<span class="panelFormLabel">Recording</span>');
+            $('#counter').removeClass('d-none');
+            $('#counter').html('00');
+            btn_status = 'recording';
+            $('#recordImg').addClass('recording');
+            $('#stopAudio').fadeIn(500).removeClass('d-none');
+            $('#startRecord').fadeOut(500).addClass('d-none');
+
+            if (navigator.vibrate) navigator.vibrate(150);
+
+            time = Math.ceil(new Date().getTime() / 1000);
+
+            mediaRecorder.ondataavailable = function (event) {
+                chunks.push(event.data);
+            };
+
+            mediaRecorder.onstop = function () {
+                stream.getTracks().forEach(function (track) {
+                    track.stop();
+                });
+
+                blob = new Blob(chunks, type);
+                audioSrc = window.URL.createObjectURL(blob);
+
+                audio.src = audioSrc;
+
+                chunks = [];
+
+                $('#recordImg').removeClass('recording');
+            };
+        }).catch(function (error) {
+            if (location.protocol != 'https:') {
+                status.html(lang.mic_error + '<br>' + lang.use_https);
+            } else {
+                status.html(lang.mic_error);
+            }
+        });
+    };
+
+    var stop = function stop() {
+        mediaRecorder.stop();
+        btn_status = 'inactive';
+
+        if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+
+        var now = Math.ceil(new Date().getTime() / 1000);
+
+        var t = parseTime(now - time);
+
+        status.html('Recorded: ' + t);
+        $('#stopAudio').fadeOut(500).addClass('d-none');
+        $('#downloadAudio').fadeIn(500).removeClass('d-none');
+        $('#playAudio').fadeIn(500).removeClass('d-none');
+        $('#saveAudio').fadeIn(500).removeClass('d-none');
+        $('#sendAudio').fadeIn(500).removeClass('d-none');
+        $('#discardAudio').fadeIn(500).removeClass('d-none');
+    };
+
+    var saveToDB = function saveToDB() {
+
+        var data = new FormData();
+        data.append('file', blob);
+        data.append('type', blob.type);
+
+        $.ajax({
+            url: "audio/save",
+            type: 'POST',
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function success(data) {
+                // changes are saved on - off
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                    location.reload();
+                }, 1000);
+            },
+            error: function error() {
+                console.log("Error while saving audio");
+            }
+        });
+    };
+
+    var saveAudioForChat = function saveAudioForChat() {
+        var data = new FormData();
+        data.append('file', blob);
+        data.append('type', blob.type);
+
+        status.html('');
+        $.ajax({
+            url: "audio/save_for_chat",
+            type: 'POST',
+            data: data,
+            contentType: false,
+            processData: false,
+
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            success: function success(data) {
+                $('#currAudioChatSrc').html(data);
+            },
+            error: function error() {
+                console.log("Error while saving audio");
+                $('#currAudioChatSrc').html('');
+            }
+        });
+    };
+
+    var play = function play() {
+        audio.play();
+    };
+
+    var pause = function pause() {
+        audio.pause();
+        audio.currentTime = 0;
+    };
+
+    var roundedRect = function roundedRect(ctx, x, y, width, height, radius, fill) {
+        ctx.beginPath();
+        ctx.moveTo(x, y + radius);
+        ctx.lineTo(x, y + height - radius);
+        ctx.quadraticCurveTo(x, y + height, x + radius, y + height);
+        ctx.lineTo(x + width - radius, y + height);
+        ctx.quadraticCurveTo(x + width, y + height, x + width, y + height - radius);
+        ctx.lineTo(x + width, y + radius);
+        ctx.quadraticCurveTo(x + width, y, x + width - radius, y);
+        ctx.lineTo(x + radius, y);
+        ctx.quadraticCurveTo(x, y, x, y + radius);
+
+        ctx.fillStyle = fill;
+        ctx.fill();
+    };
+
+    var save = function save() {
+        var a = document.createElement('a');
+        a.download = 'record.ogg';
+        a.href = audioSrc;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    };
+
+    var btn_status = 'inactive',
+        mediaRecorder,
+        chunks = [],
+        audio = new Audio(),
+        mediaStream,
+        audioSrc,
+        type = {
+        'type': 'audio/ogg,codecs=opus'
+    },
+        ctx,
+        analys,
+        blob;
+
+    $('#startRecord').on('click', function () {
+        start();
+    });
+
+    $('#playAudio').on('click', function () {
+        play();
+    });
+
+    $('#stopAudio').on('click', function () {
+        stop();
+    });
+
+    $('#downloadAudio').on('click', function () {
+        save();
+    });
+
+    $('#saveAudio').on('click', function () {
+        saveToDB();
+    });
+
+    $('#sendAudio').on('click', function () {
+        saveAudioForChat();
+    });
+} else {
+    if (location.protocol != 'https:') {
+        status.html(lang.mic_error + '<br>' + lang.use_https);
+    } else {
+        status.html(lang.mic_error);
+    }
 }
 
 /***/ }),

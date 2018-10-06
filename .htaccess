@@ -19,6 +19,12 @@
     RewriteRule ^/?(.*)$ https://123workforce.com/$1 [R=301,L,QSA,NE]
 
 
+    <Files ~ "^.*\.([Ee][Nn][Vv])">
+     order allow,deny
+     deny from all
+     satisfy all
+    </Files>
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

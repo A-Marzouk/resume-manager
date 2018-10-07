@@ -145,7 +145,8 @@ body{
 .freelancerImg{
   border-radius: 50%;
   padding: 3px;
-  border: 2px solid rgba(24, 166, 223, 0.3);
+  background: #A4B7ED;
+  border: 2px solid #A4B7ED;
 }
 
 .freelancerName{
@@ -614,13 +615,13 @@ body{
   border-radius: 5px;
   background-color: #FFFFFF;
   box-shadow: 0 11px 16px -7px #E5ECED;
-  height: 285px !important;
+  height: 308px !important;
   overflow: hidden;
   @media only screen and (max-width: 600px) {
     margin-left: 0px;
   }
   .workImg{
-    height: 205px;
+    height: 242px;
     overflow: hidden;
     border-bottom:1px solid lightgray;
    img{
@@ -2000,9 +2001,9 @@ body{
 }
 
 .cardIconsCon{
-  border-radius: 23.5px;
   padding: 10px 14px 8px 14px;
-  background-color: #00B0F3;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
   @media only screen and (max-width: 900px) {
     margin-bottom: 7px;
     margin-top: -10px;
@@ -2030,9 +2031,9 @@ body{
 }
 
 .cardIconsCon2{
-  border-radius: 23.5px;
-  padding: 10px 14px 8px 14px;
-  background-color: #00B0F3;
+  padding: 10px 0px 8px 0px;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
 }
 
 
@@ -2079,13 +2080,16 @@ body{
     }
   }
 
+
   .resumeCardRight{
-    padding-top: 15px;
+    padding: 0;
     @media only screen and (max-width: 769px) {
       padding-top: 0;
     }
     .nameRow{
-      height: 106px;
+      background-color: #4E75E8;
+      border-radius: 5px;
+      padding: 8px 5px 10px 5px;
       @media only screen and (max-width: 769px) {
         height: 130px;
       }
@@ -2096,6 +2100,17 @@ body{
         height: auto;
       }
     }
+
+    .hireCardBtn{
+      background-color: #00BA86;
+      border-radius: 5px;
+      color: white;
+      font-family: Roboto;	font-size: 14px;
+      font-weight: 500;	line-height: 15px;
+      padding: 10px 10px 10px 10px;
+      margin-top: 4px;
+    }
+
   }
   .skillsRow{
     @media only screen and (max-width: 767px) {
@@ -2117,7 +2132,7 @@ body{
     }
     padding-top: 16px;
     padding-left: 10px;
-    color: #30323D;	font-family: Roboto;	font-size: 24px;	font-weight: bold;	line-height: 35px;
+    color: white;	font-family: Roboto;	font-size: 24px;	font-weight: bold;	line-height: 35px;
   }
   .audioTransArea{
     @media only screen and (max-width: 769px) {
@@ -2146,7 +2161,7 @@ body{
     padding-top: 10px; padding-left: 10px;
   }
   .cardLabel{
-    color: #4E75E8;	font-family: Roboto;	font-size: 16px;	line-height: 19px;
+    color: white;	font-family: Roboto;	font-size: 16px;	line-height: 19px;
     font-weight: 500;
   }
   .cardLabel_interviews{
@@ -2197,6 +2212,12 @@ body{
         padding-bottom: 10px;
       }
     }
+  }
+
+  .hireRow{
+    border-radius: 5px;	background-color: #4367D3;
+    padding: 5px 10px 5px 10px;
+    margin-top: 15px;
   }
 }
 
@@ -2258,7 +2279,10 @@ body{
 
 .tap-to-chat{
   color: #4E75E8;	font-family: Roboto;	font-size: 12px;	font-weight: bold;	line-height: 11px;
-  padding-left: 10px; padding-top:6px;
+  background: white !important;
+  border-radius: 10px !important;
+  margin: 8px;
+  padding: 8px 10px 5px 10px;
   a{
     color: #4E75E8;
   }

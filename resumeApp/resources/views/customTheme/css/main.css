@@ -122,7 +122,8 @@ body {
 .freelancerImg {
   border-radius: 50%;
   padding: 3px;
-  border: 2px solid rgba(24, 166, 223, 0.3); }
+  background: #A4B7ED;
+  border: 2px solid #A4B7ED; }
 
 .freelancerName {
   color: #30323D;
@@ -513,13 +514,13 @@ body {
   border-radius: 5px;
   background-color: #FFFFFF;
   box-shadow: 0 11px 16px -7px #E5ECED;
-  height: 285px !important;
+  height: 308px !important;
   overflow: hidden; }
   @media only screen and (max-width: 600px) {
     .workCard {
       margin-left: 0px; } }
   .workCard .workImg {
-    height: 205px;
+    height: 242px;
     overflow: hidden;
     border-bottom: 1px solid lightgray; }
     .workCard .workImg img {
@@ -1632,9 +1633,9 @@ body {
   padding: 20px; }
 
 .cardIconsCon {
-  border-radius: 23.5px;
   padding: 10px 14px 8px 14px;
-  background-color: #00B0F3; }
+  border: 1px solid #FFFFFF;
+  border-radius: 5px; }
   @media only screen and (max-width: 900px) {
     .cardIconsCon {
       margin-bottom: 7px;
@@ -1666,9 +1667,9 @@ body {
   padding-bottom: 25px; }
 
 .cardIconsCon2 {
-  border-radius: 23.5px;
-  padding: 10px 14px 8px 14px;
-  background-color: #00B0F3; }
+  padding: 10px 0px 8px 0px;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px; }
 
 .resumeExpand {
   background-color: #FFFFFF;
@@ -1708,12 +1709,14 @@ body {
         .freelancerCard .resumeCardLeft .imageContainer {
           border-bottom: 0; } }
   .freelancerCard .resumeCardRight {
-    padding-top: 15px; }
+    padding: 0; }
     @media only screen and (max-width: 769px) {
       .freelancerCard .resumeCardRight {
         padding-top: 0; } }
     .freelancerCard .resumeCardRight .nameRow {
-      height: 106px; }
+      background-color: #4E75E8;
+      border-radius: 5px;
+      padding: 8px 5px 10px 5px; }
       @media only screen and (max-width: 769px) {
         .freelancerCard .resumeCardRight .nameRow {
           height: 130px; } }
@@ -1722,6 +1725,16 @@ body {
       @media only screen and (max-width: 769px) {
         .freelancerCard .resumeCardRight .portfolioRow {
           height: auto; } }
+    .freelancerCard .resumeCardRight .hireCardBtn {
+      background-color: #00BA86;
+      border-radius: 5px;
+      color: white;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 15px;
+      padding: 10px 10px 10px 10px;
+      margin-top: 4px; }
   @media only screen and (max-width: 767px) {
     .freelancerCard .skillsRow {
       margin-top: 70px;
@@ -1735,7 +1748,7 @@ body {
   .freelancerCard .nameCard {
     padding-top: 16px;
     padding-left: 10px;
-    color: #30323D;
+    color: white;
     font-family: Roboto;
     font-size: 24px;
     font-weight: bold;
@@ -1771,7 +1784,7 @@ body {
     padding-top: 10px;
     padding-left: 10px; }
   .freelancerCard .cardLabel {
-    color: #4E75E8;
+    color: white;
     font-family: Roboto;
     font-size: 16px;
     line-height: 19px;
@@ -1816,6 +1829,11 @@ body {
     @media only screen and (max-width: 720px) {
       .freelancerCard .freelancerCardRight .panelFormLabel {
         padding-bottom: 10px; } }
+  .freelancerCard .hireRow {
+    border-radius: 5px;
+    background-color: #4367D3;
+    padding: 5px 10px 5px 10px;
+    margin-top: 15px; }
 
 .transcript {
   padding: 25px 40px 15px 49px;
@@ -1878,8 +1896,10 @@ body {
   font-size: 12px;
   font-weight: bold;
   line-height: 11px;
-  padding-left: 10px;
-  padding-top: 6px; }
+  background: white !important;
+  border-radius: 10px !important;
+  margin: 8px;
+  padding: 8px 10px 5px 10px; }
   .tap-to-chat a {
     color: #4E75E8; }
 

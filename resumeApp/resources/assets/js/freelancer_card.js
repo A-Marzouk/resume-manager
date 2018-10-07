@@ -79,3 +79,96 @@ $('.weeksMinus').on('click',function(){
         hireBtn.attr('href',href2);
     }
 });
+
+
+// animated text :
+$('.freelancerCard').one('mouseenter',function () {
+    let freelancerID = this.id.replace('card','');
+    let text         = $('#welcomeText' + freelancerID).html().trim();
+    let animateTextID  = 'animatedText' + freelancerID;
+    // clear current text :
+    $('#' + animateTextID).html('');
+    let i     = 0;
+    let txt   = text; /* The text */
+    let speed = 50; /* The speed/duration of the effect in milliseconds */
+    typeWriter();
+    function typeWriter() {
+        if (i < txt.length) {
+            document.getElementById(animateTextID).innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+});
+
+
+// change content
+$('.resumeCardRight').on('click','.openAudio',function(){
+    let ID = this.id.replace('_open_audio','');
+    let audioContent = $('#audioContent'+ID).html();
+    // change the content :
+    let resumeRightArea  =  $('#resumeCardRight' + ID) ;
+    resumeRightArea.fadeOut(700);
+    setTimeout(function () {
+        resumeRightArea.html(audioContent);
+        resumeRightArea.fadeIn(700);
+    },650)
+});
+
+$('.resumeCardRight').on('click','.openVideo',function(){
+    let ID = this.id.replace('_open_video','');
+    let videoContent = $('#videoContent'+ID).html();
+    // change the content :
+    let resumeRightArea  =  $('#resumeCardRight' + ID) ;
+    resumeRightArea.fadeOut(700);
+    setTimeout(function () {
+        resumeRightArea.html(videoContent);
+        resumeRightArea.fadeIn(700);
+    },650)
+});
+
+$('.resumeCardRight').on('click','.audioDismiss',function () {
+    let ID = this.id.replace('audio_dismiss','');
+    let defaultContent     = $('#defaultContent'+ID).html();
+    let resumeRightArea    = $('#resumeCardRight' + ID) ;
+    resumeRightArea.fadeOut(700);
+    setTimeout(function () {
+        resumeRightArea.html(defaultContent);
+        resumeRightArea.fadeIn(700);
+    },650)
+});
+
+
+
+// client page ( resume cards )
+
+// skills images :
+$('.resumeCardRight').on('mouseover','.highlightSkill',function () {
+    // hover in
+    let ID         = this.id.replace('skillContainer','');
+    let skillImg   = $('#skillImage'+ID);
+    skillImg.css('filter','grayscale(0)');
+    skillImg.css('width','21');
+});
+
+$('.resumeCardRight').on('mouseout','.highlightSkill',function () {
+    // hover out
+    let ID         = this.id.replace('skillContainer','');
+    // change the src of the image to colored
+    let skillImg   = $('#skillImage'+ID);
+    skillImg.css('filter','grayscale(100%)');
+    skillImg.css('width','20');
+});
+
+$(".viewEducationLink").on('click',function () {
+    let portfolioArea = $('#area_'+this.id.replace('Education','Portfolio'));
+    if(!portfolioArea.hasClass('d-none')){
+        portfolioArea.addClass('d-none');
+    }
+    $('#area_'+this.id).fadeIn(800).removeClass('d-none');
+});
+
+$(".Minimize").on('click',function () {
+    $('#area_viewPortfolioBtn'+this.id.replace('minimize','')).fadeOut(1500);
+    $('#area_viewEducationBtn'+this.id.replace('minimize','')).fadeOut(1500);
+});

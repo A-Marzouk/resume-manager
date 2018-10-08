@@ -106,10 +106,10 @@
                                         </div>
                                         <div class="workTitle">
                                             <div class="row">
-                                                <div class="col-md-9">
+                                                <div class="col-md-9 col-10">
                                                     {{$workExample->projectName}}
                                                 </div>
-                                                <a class="col-md-2" href="javascript:void(0)"
+                                                <a class="col-md-2 col-2" href="javascript:void(0)"
                                                    data-toggle="modal"
                                                    data-target="#works{{$workExample->id}}Modal"
                                                    style="outline: none;">
@@ -140,10 +140,10 @@
                                         </div>
                                         <div class="workTitle">
                                             <div class="row">
-                                                <div class="col-md-9">
+                                                <div class="col-md-9 col-10">
                                                     {{$workExample->projectName}}
                                                 </div>
-                                                <a class="col-md-2" href="javascript:void(0)"
+                                                <a class="col-md-2 col-2" href="javascript:void(0)"
                                                    data-toggle="modal"
                                                    data-target="#works{{$workExample->id}}Modal"
                                                    style="outline: none;">
@@ -174,10 +174,10 @@
                                         </div>
                                         <div class="workTitle">
                                             <div class="row">
-                                                <div class="col-md-9">
+                                                <div class="col-md-9 col-10">
                                                     {{$workExample->projectName}}
                                                 </div>
-                                                <a class="col-md-2" href="javascript:void(0)"
+                                                <a class="col-md-2 col-2" href="javascript:void(0)"
                                                    data-toggle="modal"
                                                    data-target="#works{{$workExample->id}}Modal"
                                                    style="outline: none;">
@@ -208,10 +208,10 @@
                                         </div>
                                         <div class="workTitle">
                                             <div class="row">
-                                                <div class="col-md-9">
+                                                <div class="col-md-9 col-10">
                                                     {{$workExample->projectName}}
                                                 </div>
-                                                <a class="col-md-2" href="javascript:void(0)"
+                                                <a class="col-md-2 col-2" href="javascript:void(0)"
                                                    data-toggle="modal"
                                                    data-target="#works{{$workExample->id}}Modal"
                                                    style="outline: none;">

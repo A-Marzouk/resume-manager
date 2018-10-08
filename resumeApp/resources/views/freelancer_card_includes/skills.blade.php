@@ -121,9 +121,9 @@
                 }
                 ?>
                 <span id="skillContainer{{$i}}" class="highlightSkill">
-                                         <img width="20px" src="{{$imgSrc}}" alt="skill" id="skillImage{{$i}}">
+                    <img width="20px" src="{{$imgSrc}}" alt="skill" id="skillImage{{$i}}">
                     {{$skill}} &nbsp;&nbsp;
-                                    </span>
+                </span>
                 <? $i++;?>
                 <? endif;?>
             @endforeach

@@ -7,34 +7,9 @@
 ?>
 
 <div class="freelancerCard" id="card{{$freelancer->id}}{{$value['id']}}">
+
     <div class="row">
-        <div class="col-lg-12 col-md-12 col-12 resumeCardLeft text-center">
-            <div class="row border-bottom-mobile" style="padding-bottom: 0;">
-                <div class="col-lg-12 col-md-12 col-6">
-
-                </div>
-                <div class="col-6 d-xs-block d-md-none">
-                    <div class="nameArea" style="padding-top: 30px;">
-                        <div class="nameCard">
-                            {{$freelancer->firstName}} {{$freelancer->lastName}}
-                        </div>
-                        <div class="jobTitle" id="animatedText{{$freelancer->id}}{{$value['id']}}_mobile">
-                            {{$freelancer->userData->jobTitle}}
-                        </div>
-                        <form action="/chat-room/start_conversation" method="post">
-                            {{csrf_field()}}
-                            <input type="hidden" name="freelancer_id" value="{{$freelancer->id}}{{$value['id']}}">
-                            <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
-                        </form>
-                        <div id="welcomeText{{$freelancer->id}}{{$value['id']}}" class="d-none">
-                            Hi, I am {{$freelancer->firstName}}, I am a {{str_replace('&','and',$freelancer->userData->jobTitle)}}, How can I help
-                            you ?
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
+        {{--<div class="col-lg-12 col-md-12 col-12 resumeCardLeft text-center">--}}
 
             {{--<div class="row text-center cardRow">--}}
                 {{--<div class="col-12 nameCard">--}}
@@ -71,10 +46,16 @@
             {{--</div>--}}
 
 
-        </div>
-        <div class="col-lg-12 col-md-12 col-12 resumeCardRight" id="resumeCardRight{{$freelancer->id}}{{$value['id']}}">
-            @include('freelancer_card_includes.main_card_info')
+        {{--</div>--}}
 
+        <div class="col-lg-12 col-md-12 col-12 resumeCardRight" id="resumeCardRight{{$freelancer->id}}{{$value['id']}}">
+            <div class="showOnlyOnmd">
+                @include('freelancer_card_includes.main_card_info')
+            </div>
+
+            <div class="showOnlyOnsm">
+                @include('freelancer_card_includes.main_card_info_mob')
+            </div>
             @include('freelancer_card_includes.skills')
 
             @include('freelancer_card_includes.navRow')
@@ -84,24 +65,10 @@
 
     </div>
 
-    {{-- expand btns--}}
-    {{--<div class="row" style="border-top:1px solid whitesmoke; ">--}}
-        {{--<div class="col-md-12 col-12 dropDownBtnLeft NoDecor text-center" style="background-color: #FDFDFD;">--}}
-            {{--<a href="#viewEducationBtn{{$freelancer->id}}{{$value['id']}}" id="viewEducationBtn{{$freelancer->id}}{{$value['id']}}"--}}
-               {{--class="viewEducationLink">--}}
-                {{--<div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">--}}
-                    {{--<img src="/resumeApp/resources/views/customTheme/images/newResume/work.png"--}}
-                         {{--alt="read more arrow" width="18px" id="workBtnImg" class="d-none d-md-inline">--}}
-                    {{--<span class="dropDownBtnText">Work/Education</span>--}}
-                {{--</div>--}}
-            {{--</a>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-    {{-- end of expand btns --}}
 </div>
 
-{{-- resume expanded --}}
-    {{-- education --}}
+
+    {{-- education and work experience --}}
     <div class="row resumeExpand d-none" id="area_viewEducationBtn{{$freelancer->id}}{{$value['id']}}">
         <div id="educationContent{{$freelancer->id}}{{$value['id']}}" class="education about addScroll">
             <div class="row" style="padding-top: 35px;">
@@ -144,7 +111,7 @@
                         <? endif; ?>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-5">
+                <div class="col-md-6 col-lg-5 paddingTop_mob">
                     <img src="/resumeApp/resources/views/customTheme/images/newResume/trainings.png"
                          alt="aboutImg" width="30px;">
                     <span class="aboutText">TRAININGS</span>
@@ -344,7 +311,13 @@
     {{-- default content --}}
 
     <div id="defaultContent{{$freelancer->id}}{{$value['id']}}" class="d-none">
-        @include('freelancer_card_includes.main_card_info')
+        <div class="showOnlyOnmd">
+            @include('freelancer_card_includes.main_card_info')
+        </div>
+
+        <div class="showOnlyOnsm">
+            @include('freelancer_card_includes.main_card_info_mob')
+        </div>
 
         @include('freelancer_card_includes.skills')
 

@@ -255,3 +255,13 @@ resumeCardContent.on('click','.nextSlide',function(){
         $('#slideNumber'+id).html('1');
     }
 });
+
+
+// education and training description section
+// show the full desc
+resumeCardContent.on('click','.desc',function () {
+    $(this).css('width','auto');
+    $(this).css('text-overflow','unset');
+    $(this).css('overflow','normal');
+    $(this).css('white-space','normal');
+});

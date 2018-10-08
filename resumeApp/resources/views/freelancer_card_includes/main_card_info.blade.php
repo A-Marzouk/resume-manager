@@ -1,6 +1,8 @@
 {{-- photo and name + multimedia--}}
 <div class="row nameRow">
-    <div class="col-lg-2 text-right">
+
+
+    <div class="col-lg-2 col-6 imageCol">
         <div class="imageContainer" style="padding: 10px;">
             <?
             $photoSrc = $freelancer->userData->photo;
@@ -14,8 +16,8 @@
                  width="120" height="120">
         </div>
     </div>
-    <div class="col-lg-3 col-md-4 freelancerCardLeft">
-        <div class="nameArea d-none d-md-block">
+    <div class="col-lg-3 col-md-4 col-6 freelancerCardLeft">
+        <div class="nameArea">
             <div class="nameCard">
                 {{$freelancer->firstName}} {{$freelancer->lastName}}
             </div>
@@ -35,9 +37,11 @@
             </div>
         </div>
     </div>
+
+
     <div class="col-lg-7 col-md-8 freelancerCardRight">
         @if(!$smallCard)
-            <div class="row interviewIcons">
+        <div class="row interviewIcons">
             <div class="col-md-4 jobTitle text-right" style="color: white; padding-top: 13px; padding-right: 30px;">
                 View interviews :
             </div>
@@ -83,8 +87,8 @@
                                 Hire me
                             </a>
                         </div>
+                    @endif
                 </div>
-            @endif
         </div>
         @endif
 

@@ -53330,6 +53330,15 @@ resumeCardContent.on('click', '.nextSlide', function () {
     }
 });
 
+// education and training description section
+// show the full desc
+resumeCardContent.on('click', '.desc', function () {
+    $(this).css('width', 'auto');
+    $(this).css('text-overflow', 'unset');
+    $(this).css('overflow', 'normal');
+    $(this).css('white-space', 'normal');
+});
+
 /***/ }),
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {

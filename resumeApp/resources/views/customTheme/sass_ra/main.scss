@@ -20,6 +20,19 @@ body{
 
 }
 
+.showOnlyOnmd{
+  @media only screen and (max-width: 760px){
+    display: none;
+  }
+}
+
+.showOnlyOnsm{
+  display: none;
+  @media only screen and (max-width: 760px){
+    display: block;
+  }
+}
+
 
 #photoPreview{
   border: 1px solid #D5D8DE;	border-radius: 4px;
@@ -2009,6 +2022,7 @@ body{
   @media only screen and (max-width: 900px) {
     margin-bottom: 7px;
     margin-top: -10px;
+    border: 1px solid #4E75E8;
   }
 }
 
@@ -2036,6 +2050,9 @@ body{
   padding: 10px 0px 8px 0px;
   border: 1px solid #FFFFFF;
   border-radius: 5px;
+  @media only screen and (max-width: 900px) {
+    border: 1px solid #4E75E8;
+  }
 }
 
 
@@ -2083,6 +2100,15 @@ body{
   }
 
 
+  // card on mobile :
+  .cardMainInfo_mob{
+    @media only screen and (max-width: 767px) {
+      background: #4E75E8;
+      border-radius: 5px 5px 0 0;
+      box-shadow: 0 11px 16px -7px #E5ECED;
+    }
+  }
+
   .resumeCardRight{
     padding: 0;
     @media only screen and (max-width: 769px) {
@@ -2093,7 +2119,13 @@ body{
       border-radius: 5px;
       padding: 8px 5px 10px 5px;
       @media only screen and (max-width: 769px) {
-        height: 130px;
+        height:auto;
+      }
+      .imageCol{
+        text-align: right;
+        @media only screen and (max-width: 769px) {
+         text-align: left;
+        }
       }
     }
     .portfolioRow{
@@ -2101,6 +2133,7 @@ body{
       overflow-y: auto;
       @media only screen and (max-width: 769px) {
         height: auto;
+        padding-bottom: 15px;
       }
     }
 
@@ -2112,7 +2145,10 @@ body{
       font-weight: 500;	line-height: 15px;
       padding: 10px 10px 10px 10px;
       margin-top: 4px;
-    }
+      @media only screen and (max-width: 767px) {
+        padding: 15px 10px 15px 10px;
+        }
+      }
 
   }
   .skillsRow{
@@ -2125,13 +2161,16 @@ body{
   .nameArea{
     text-align: left;
     @media only screen and (max-width: 769px) {
-      text-align: center;
+      text-align: left;
     }
   }
   .navRow{
     height: 52px;
     border-bottom: 1px solid whitesmoke;
     border-top: 1px solid whitesmoke;
+    @media only screen and (max-width: 769px) {
+      border-top: none;
+    }
     margin-top: 16px;
     padding-top: 10px;
     padding-bottom: 7px;
@@ -2145,11 +2184,13 @@ body{
       border-bottom: 5px solid #4E75E8;
       border-radius: 1.5px 1.5px 0 0;
     }
+
   }
   .nameCard{
     @media only screen and (max-width: 766px) {
       font-size: 20px;
       padding-left: 0;
+      text-align: left;
     }
     padding-top: 16px;
     padding-left: 10px;
@@ -2157,14 +2198,12 @@ body{
   }
   .audioTransArea{
     @media only screen and (max-width: 769px) {
-      padding-left: 24px;
       padding-top: 10px;
     }
   }
   .videoArea{
     @media only screen and (max-width: 769px) {
-      padding-left: 30px;
-      padding-top: 10px;
+
     }
   }
   .hireBtnArea{
@@ -2197,6 +2236,7 @@ body{
       padding-top: 10px;
     }
   }
+
   .dropDownBtnRight{
     text-align:right;
     @media only screen and (max-width: 769px) {
@@ -2223,6 +2263,7 @@ body{
     padding-left: 3px;
     @media only screen and (max-width: 769px) {
       padding-bottom: 30px;
+      text-align:left;
     }
   }
 
@@ -2319,10 +2360,13 @@ body{
 .highlightSkill{
   img{
     filter: grayscale(100%);
+    @media only screen and (max-width: 760px) {
+      display: none;
+    }
   }
 
   @media only screen and (max-width: 760px) {
-   display: block;
+   display: inline;
   }
 
 }
@@ -2403,4 +2447,13 @@ body{
 
 .carousel-item{
   height:360px !important;
+  @media only screen and (max-width: 760px) {
+    height:auto !important;
+  }
+}
+
+.paddingTop_mob{
+  @media only screen and (max-width: 760px) {
+   padding-top: 20px !important;
+  }
 }

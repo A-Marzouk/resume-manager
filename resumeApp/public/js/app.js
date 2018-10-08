@@ -53163,6 +53163,173 @@ $('.weeksMinus').on('click', function () {
     }
 });
 
+// animated text :
+$('.freelancerCard').one('mouseenter', function () {
+    var freelancerID = this.id.replace('card', '');
+    var text = $('#welcomeText' + freelancerID).html().trim();
+    var animateTextID = 'animatedText' + freelancerID;
+    // clear current text :
+    $('#' + animateTextID).html('');
+    var i = 0;
+    var txt = text; /* The text */
+    var speed = 50; /* The speed/duration of the effect in milliseconds */
+    typeWriter();
+    function typeWriter() {
+        if (i < txt.length) {
+            document.getElementById(animateTextID).innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+});
+
+// change content
+
+var resumeCardContent = $('.resumeCardRight');
+
+resumeCardContent.on('click', '.openAudio', function () {
+    var ID = this.id.replace('_open_audio', '');
+    var audioContent = $('#audioContent' + ID).html();
+    // change the content :
+    var resumeRightArea = $('#resumeCardRight' + ID);
+    resumeRightArea.fadeOut(700);
+    setTimeout(function () {
+        resumeRightArea.html(audioContent);
+        resumeRightArea.fadeIn(700);
+    }, 650);
+});
+
+resumeCardContent.on('click', '.openVideo', function () {
+    var ID = this.id.replace('_open_video', '');
+    var videoContent = $('#videoContent' + ID).html();
+    // change the content :
+    var resumeRightArea = $('#resumeCardRight' + ID);
+    resumeRightArea.fadeOut(700);
+    setTimeout(function () {
+        resumeRightArea.html(videoContent);
+        resumeRightArea.fadeIn(700);
+    }, 650);
+});
+
+resumeCardContent.on('click', '.audioDismiss', function () {
+    var ID = this.id.replace('audio_dismiss', '');
+    var defaultContent = $('#defaultContent' + ID).html();
+    var resumeRightArea = $('#resumeCardRight' + ID);
+    resumeRightArea.fadeOut(700);
+    setTimeout(function () {
+        resumeRightArea.html(defaultContent);
+        resumeRightArea.fadeIn(700);
+    }, 650);
+});
+
+// client page ( resume cards )
+
+// skills images :
+resumeCardContent.on('mouseover', '.highlightSkill', function () {
+    // hover in
+    var ID = this.id.replace('skillContainer', '');
+    var skillImg = $('#skillImage' + ID);
+    skillImg.css('filter', 'grayscale(0)');
+    skillImg.css('width', '21');
+});
+
+resumeCardContent.on('mouseout', '.highlightSkill', function () {
+    // hover out
+    var ID = this.id.replace('skillContainer', '');
+    // change the src of the image to colored
+    var skillImg = $('#skillImage' + ID);
+    skillImg.css('filter', 'grayscale(100%)');
+    skillImg.css('width', '20');
+});
+
+// nav row :
+
+resumeCardContent.on('click', '.showPortfolio', function () {
+    if (!$(this).hasClass('active')) {
+        // add class active
+        $(this).addClass('active');
+        // remove class from other taps :
+        $('.showWork').removeClass('active');
+        $('.showEducation').removeClass('active');
+
+        // change the content :
+        var freelancerID = this.id.replace('showPortfolio', '');
+        var portfolioContent = $('#portfolioContent' + freelancerID).html();
+        var tapsArea = $('#tapsArea' + freelancerID);
+        tapsArea.fadeOut(700);
+        setTimeout(function () {
+            tapsArea.html(portfolioContent);
+            tapsArea.fadeIn(700);
+        }, 650);
+    }
+});
+
+resumeCardContent.on('click', '.showWork', function () {
+    if (!$(this).hasClass('active')) {
+        // add class active
+        $(this).addClass('active');
+        // remove class from other taps :
+        $('.showPortfolio').removeClass('active');
+        $('.showEducation').removeClass('active');
+
+        // change the content :
+        var freelancerID = this.id.replace('showWork', '');
+        var workContent = $('#workContent' + freelancerID).html();
+        var tapsArea = $('#tapsArea' + freelancerID);
+        tapsArea.fadeOut(700);
+        setTimeout(function () {
+            tapsArea.html(workContent);
+            tapsArea.fadeIn(700);
+        }, 650);
+    }
+});
+
+resumeCardContent.on('click', '.showEducation', function () {
+    if (!$(this).hasClass('active')) {
+        // add class active
+        $(this).addClass('active');
+        // remove class from other taps :
+        $('.showWork').removeClass('active');
+        $('.showPortfolio').removeClass('active');
+        // change the content :
+        var freelancerID = this.id.replace('showEducation', '');
+        var educationContent = $('#educationContent' + freelancerID).html();
+        var tapsArea = $('#tapsArea' + freelancerID);
+        tapsArea.fadeOut(700);
+        setTimeout(function () {
+            tapsArea.html(educationContent);
+            tapsArea.fadeIn(700);
+        }, 650);
+    }
+});
+
+// controlling slides numbers :
+resumeCardContent.on('click', '.prevSlide', function () {
+    var id = this.id.replace('prevSlide', '');
+    var maxNum = parseInt($('#maxNumSlide' + id).html());
+    var currSlide = parseInt($('#slideNumber' + id).html());
+    var newNum = currSlide - 1;
+
+    if (newNum > 0) {
+        $('#slideNumber' + id).html(newNum);
+    } else {
+        $('#slideNumber' + id).html(maxNum);
+    }
+});
+
+resumeCardContent.on('click', '.nextSlide', function () {
+    var id = this.id.replace('nextSlide', '');
+    var currSlide = parseInt($('#slideNumber' + id).html());
+    var newNum = currSlide + 1;
+    var maxNum = parseInt($('#maxNumSlide' + id).html());
+
+    if (newNum <= maxNum) {
+        $('#slideNumber' + id).html(newNum);
+    } else {
+        $('#slideNumber' + id).html('1');
+    }
+});
+
 /***/ }),
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {

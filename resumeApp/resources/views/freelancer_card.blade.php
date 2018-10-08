@@ -216,19 +216,7 @@
                 </div>
             </div>
         </div>
-        {{-- un expand btns --}}
-        <div class="row" style="border-top:1px solid whitesmoke; ">
-            <div class="col-md-12 text-center NoDecor" style="background-color: #FDFDFD;">
-                <a href="#card{{$freelancer->id}}" id="minimize{{$freelancer->id}}" class="Minimize">
-                    <div class="cardLabel_interviews" style="padding-top: 15px;height:52px;">
-                        <span style="padding-right: 6px; color: grey;"></span>
-                        <img src="/resumeApp/resources/views/customTheme/images/close_menu.png"
-                             alt="read more arrow" width="11px" id="portfolioBtnImg">
-                    </div>
-                </a>
-            </div>
-        </div>
-        {{-- end of un expand btns --}}
+
     </div>
     <br>
 {{-- modals --}}

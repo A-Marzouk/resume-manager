@@ -53184,7 +53184,10 @@ $('.freelancerCard').one('mouseenter', function () {
 });
 
 // change content
-$('.resumeCardRight').on('click', '.openAudio', function () {
+
+var resumeCardContent = $('.resumeCardRight');
+
+resumeCardContent.on('click', '.openAudio', function () {
     var ID = this.id.replace('_open_audio', '');
     var audioContent = $('#audioContent' + ID).html();
     // change the content :
@@ -53196,7 +53199,7 @@ $('.resumeCardRight').on('click', '.openAudio', function () {
     }, 650);
 });
 
-$('.resumeCardRight').on('click', '.openVideo', function () {
+resumeCardContent.on('click', '.openVideo', function () {
     var ID = this.id.replace('_open_video', '');
     var videoContent = $('#videoContent' + ID).html();
     // change the content :
@@ -53208,7 +53211,7 @@ $('.resumeCardRight').on('click', '.openVideo', function () {
     }, 650);
 });
 
-$('.resumeCardRight').on('click', '.audioDismiss', function () {
+resumeCardContent.on('click', '.audioDismiss', function () {
     var ID = this.id.replace('audio_dismiss', '');
     var defaultContent = $('#defaultContent' + ID).html();
     var resumeRightArea = $('#resumeCardRight' + ID);
@@ -53222,7 +53225,7 @@ $('.resumeCardRight').on('click', '.audioDismiss', function () {
 // client page ( resume cards )
 
 // skills images :
-$('.resumeCardRight').on('mouseover', '.highlightSkill', function () {
+resumeCardContent.on('mouseover', '.highlightSkill', function () {
     // hover in
     var ID = this.id.replace('skillContainer', '');
     var skillImg = $('#skillImage' + ID);
@@ -53230,7 +53233,7 @@ $('.resumeCardRight').on('mouseover', '.highlightSkill', function () {
     skillImg.css('width', '21');
 });
 
-$('.resumeCardRight').on('mouseout', '.highlightSkill', function () {
+resumeCardContent.on('mouseout', '.highlightSkill', function () {
     // hover out
     var ID = this.id.replace('skillContainer', '');
     // change the src of the image to colored
@@ -53239,22 +53242,9 @@ $('.resumeCardRight').on('mouseout', '.highlightSkill', function () {
     skillImg.css('width', '20');
 });
 
-$(".viewEducationLink").on('click', function () {
-    var portfolioArea = $('#area_' + this.id.replace('Education', 'Portfolio'));
-    if (!portfolioArea.hasClass('d-none')) {
-        portfolioArea.addClass('d-none');
-    }
-    $('#area_' + this.id).fadeIn(800).removeClass('d-none');
-});
-
-$(".Minimize").on('click', function () {
-    $('#area_viewPortfolioBtn' + this.id.replace('minimize', '')).fadeOut(1500);
-    $('#area_viewEducationBtn' + this.id.replace('minimize', '')).fadeOut(1500);
-});
-
 // nav row :
 
-$('.showPortfolio').on('click', function () {
+resumeCardContent.on('click', '.showPortfolio', function () {
     if (!$(this).hasClass('active')) {
         // add class active
         $(this).addClass('active');
@@ -53274,7 +53264,7 @@ $('.showPortfolio').on('click', function () {
     }
 });
 
-$('.showWork').on('click', function () {
+resumeCardContent.on('click', '.showWork', function () {
     if (!$(this).hasClass('active')) {
         // add class active
         $(this).addClass('active');
@@ -53294,7 +53284,7 @@ $('.showWork').on('click', function () {
     }
 });
 
-$('.showEducation').on('click', function () {
+resumeCardContent.on('click', '.showEducation', function () {
     if (!$(this).hasClass('active')) {
         // add class active
         $(this).addClass('active');

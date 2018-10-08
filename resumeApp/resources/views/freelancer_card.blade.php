@@ -67,32 +67,30 @@
 
         </div>
         <div class="col-lg-12 col-md-12 col-12 resumeCardRight" id="resumeCardRight{{$freelancer->id}}">
-
             @include('freelancer_card_includes.main_card_info')
 
             @include('freelancer_card_includes.skills')
 
-            <hr style="width: 97%;">
+            @include('freelancer_card_includes.navRow')
 
             @include('freelancer_card_includes.portfolio')
-
         </div>
 
     </div>
 
     {{-- expand btns--}}
-    <div class="row" style="border-top:1px solid whitesmoke; ">
-        <div class="col-md-12 col-12 dropDownBtnLeft NoDecor text-center" style="background-color: #FDFDFD;">
-            <a href="#viewEducationBtn{{$freelancer->id}}" id="viewEducationBtn{{$freelancer->id}}"
-               class="viewEducationLink">
-                <div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">
-                    <img src="/resumeApp/resources/views/customTheme/images/newResume/work.png"
-                         alt="read more arrow" width="18px" id="workBtnImg" class="d-none d-md-inline">
-                    <span class="dropDownBtnText">Work/Education</span>
-                </div>
-            </a>
-        </div>
-    </div>
+    {{--<div class="row" style="border-top:1px solid whitesmoke; ">--}}
+        {{--<div class="col-md-12 col-12 dropDownBtnLeft NoDecor text-center" style="background-color: #FDFDFD;">--}}
+            {{--<a href="#viewEducationBtn{{$freelancer->id}}" id="viewEducationBtn{{$freelancer->id}}"--}}
+               {{--class="viewEducationLink">--}}
+                {{--<div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">--}}
+                    {{--<img src="/resumeApp/resources/views/customTheme/images/newResume/work.png"--}}
+                         {{--alt="read more arrow" width="18px" id="workBtnImg" class="d-none d-md-inline">--}}
+                    {{--<span class="dropDownBtnText">Work/Education</span>--}}
+                {{--</div>--}}
+            {{--</a>--}}
+        {{--</div>--}}
+    {{--</div>--}}
     {{-- end of expand btns --}}
 </div>
 
@@ -352,12 +350,11 @@
     {{-- default content --}}
 
     <div id="defaultContent{{$freelancer->id}}" class="d-none">
-
-
         @include('freelancer_card_includes.main_card_info')
+
         @include('freelancer_card_includes.skills')
 
-        <hr style="width: 97%;">
+        @include('freelancer_card_includes.navRow')
 
         @include('freelancer_card_includes.portfolio')
     </div>

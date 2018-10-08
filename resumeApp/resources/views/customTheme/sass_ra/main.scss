@@ -615,18 +615,19 @@ body{
   border-radius: 5px;
   background-color: #FFFFFF;
   box-shadow: 0 11px 16px -7px #E5ECED;
-  height: 308px !important;
+  height: 325px !important;
   overflow: hidden;
   @media only screen and (max-width: 600px) {
     margin-left: 0px;
   }
   .workImg{
-    height: 242px;
+    height: 260px;
     overflow: hidden;
     border-bottom:1px solid lightgray;
    img{
      width: 100%;
      padding: 1%;
+     border-radius: 10px;
    }
   }
   .workTitle{
@@ -2095,7 +2096,7 @@ body{
       }
     }
     .portfolioRow{
-      height: 370px;
+      height: 415px;
       @media only screen and (max-width: 769px) {
         height: auto;
       }
@@ -2123,6 +2124,24 @@ body{
     text-align: left;
     @media only screen and (max-width: 769px) {
       text-align: center;
+    }
+  }
+  .navRow{
+    height: 52px;
+    border-bottom: 1px solid whitesmoke;
+    border-top: 1px solid whitesmoke;
+    margin-top: 16px;
+    padding-top: 10px;
+    padding-bottom: 7px;
+    .navTab{
+      color: #4E75E8;	font-family: Roboto;	font-size: 14px;	font-weight: bold;	line-height: 16px;
+      padding-right: 18px;
+      padding-left: 18px;
+      padding-bottom: 15px;
+    }
+    .navTab.active{
+      border-bottom: 5px solid #4E75E8;
+      border-radius: 1.5px 1.5px 0 0;
     }
   }
   .nameCard{
@@ -2378,4 +2397,8 @@ body{
   @media only screen and (max-width: 760px) {
     margin: 0!important;
   }
+}
+
+.carousel-item{
+  height:360px !important;
 }

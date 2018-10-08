@@ -1,28 +1,6 @@
 {{-- Portfolio --}}
 <div class="portfolioRow">
 
-    {{-- carousel controls --}}
-    <div class="row" style="width: 100%;">
-        <div class="col-2 NoDecor text-center">
-            <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="4" role="button" data-slide="prev" class="cardLabel_interviews noScroll"
-               style="color:#697786;">
-                <img src="/resumeApp/resources/views/customTheme/images/newResume/prev.png"
-                     alt="prev" width="25px">
-            </a>
-        </div>
-        <div class="col-8 text-center">
-            <span class="cardLabel">Portfolio</span>
-        </div>
-        <div class="col-2 NoDecor text-center">
-            <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="4" role="button" data-slide="next" class="cardLabel_interviews noScroll"
-               style="color:#697786;">
-                <img src="/resumeApp/resources/views/customTheme/images/newResume/next.png"
-                     alt="next" width="25px">
-            </a>
-        </div>
-    </div>
-    {{--end of carousel controller--}}
-
     <?
     $workExamples =\App\Project::where('user_id',$freelancer->id)->orderBy('order','ASC')->get();
     $i = 0;
@@ -245,7 +223,28 @@
             @endif
         </div>
     </div>
+
     {{-- end of works section --}}
+
+    {{-- carousel controls --}}
+    <div class="row" style="width: 100%; padding-top: 15px;">
+        <div class=" col-12 text-center NoDecor">
+            <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="4" role="button" data-slide="prev" class="cardLabel_interviews noScroll"
+               style="color:#697786;">
+                <img src="/resumeApp/resources/views/customTheme/images/newResume/prev.png"
+                     alt="prev" width="18px">
+            </a>
+
+           <span class="jobTitle" style="padding: 0 5px 0 5px"> <span id="slideNumber">1</span>/4 </span>
+
+            <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="4" role="button" data-slide="next" class="cardLabel_interviews noScroll"
+               style="color:#697786;">
+                <img src="/resumeApp/resources/views/customTheme/images/newResume/next.png"
+                     alt="next" width="18px">
+            </a>
+        </div>
+    </div>
+    {{--end of carousel controller--}}
 
 </div>
 

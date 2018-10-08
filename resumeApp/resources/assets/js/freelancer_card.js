@@ -172,3 +172,68 @@ $(".Minimize").on('click',function () {
     $('#area_viewPortfolioBtn'+this.id.replace('minimize','')).fadeOut(1500);
     $('#area_viewEducationBtn'+this.id.replace('minimize','')).fadeOut(1500);
 });
+
+// nav row :
+
+$('.showPortfolio').on('click',function(){
+    if(!$(this).hasClass('active')){
+        // add class active
+        $(this).addClass('active');
+        // remove class from other taps :
+        $('.showWork').removeClass('active');
+        $('.showEducation').removeClass('active');
+
+        // change the content :
+        let freelancerID = this.id.replace('showPortfolio','');
+        let portfolioContent     = $('#portfolioContent'+freelancerID).html();
+        let tapsArea    = $('#tapsArea' + freelancerID) ;
+        tapsArea.fadeOut(700);
+        setTimeout(function () {
+            tapsArea.html(portfolioContent);
+            tapsArea.fadeIn(700);
+        },650)
+
+    }
+});
+
+$('.showWork').on('click',function(){
+    if(!$(this).hasClass('active')){
+        // add class active
+        $(this).addClass('active');
+        // remove class from other taps :
+        $('.showPortfolio').removeClass('active');
+        $('.showEducation').removeClass('active');
+
+        // change the content :
+        let freelancerID = this.id.replace('showWork','');
+        let workContent     = $('#workContent'+freelancerID).html();
+        let tapsArea    = $('#tapsArea' + freelancerID) ;
+        tapsArea.fadeOut(700);
+        setTimeout(function () {
+            tapsArea.html(workContent);
+            tapsArea.fadeIn(700);
+        },650)
+
+    }
+});
+
+
+$('.showEducation').on('click',function(){
+    if(!$(this).hasClass('active')){
+        // add class active
+        $(this).addClass('active');
+        // remove class from other taps :
+        $('.showWork').removeClass('active');
+        $('.showPortfolio').removeClass('active');
+        // change the content :
+        let freelancerID = this.id.replace('showEducation','');
+        let educationContent     = $('#educationContent'+freelancerID).html();
+        let tapsArea    = $('#tapsArea' + freelancerID) ;
+        tapsArea.fadeOut(700);
+        setTimeout(function () {
+            tapsArea.html(educationContent);
+            tapsArea.fadeIn(700);
+        },650)
+
+    }
+});

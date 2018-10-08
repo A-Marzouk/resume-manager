@@ -97,8 +97,8 @@
 {{-- resume expanded --}}
     {{-- education --}}
     <div class="row resumeExpand d-none" id="area_viewEducationBtn{{$freelancer->id}}">
-        <div id="about" class="education">
-            <div class="row">
+        <div id="educationContent{{$freelancer->id}}" class="education about addScroll">
+            <div class="row" style="padding-top: 35px;">
                 <div class="offset-lg-1 col-lg-5 col-md-6 educationSection">
                     <img src="/resumeApp/resources/views/customTheme/images/newResume/education.png"
                          alt="aboutImg" width="30px;">
@@ -181,8 +181,8 @@
         </div>
         <hr style="width: 85%">
         {{-- work exp --}}
-        <div id="about" class="education">
-            <div class="row">
+        <div id="workContent{{$freelancer->id}}" class="education about">
+            <div class="row" style="padding-top: 35px;">
                 <div class="offset-lg-1 col-lg-5 col-md-6 educationSection">
                     <img src="/resumeApp/resources/views/customTheme/images/newResume/what_i_do.png"
                          style="padding-bottom: 10px;" alt="aboutImg" width="30px;">

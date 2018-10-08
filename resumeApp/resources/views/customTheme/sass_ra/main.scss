@@ -330,7 +330,7 @@ body{
   }
 }
 
-#about{
+.about{
   margin-top:5%;
   .aboutLeftSideContainer{
     @media only screen and (max-width: 600px){
@@ -344,6 +344,7 @@ body{
     }
   }
 }
+
 .aboutText{
   color: #6A6F72;
   font-family: Roboto;
@@ -2097,6 +2098,7 @@ body{
     }
     .portfolioRow{
       height: 415px;
+      overflow-y: auto;
       @media only screen and (max-width: 769px) {
         height: auto;
       }

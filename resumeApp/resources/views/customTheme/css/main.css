@@ -277,15 +277,15 @@ body {
   .downCV :hover {
     text-decoration: none !important; }
 
-#about {
+.about {
   margin-top: 5%; }
   @media only screen and (max-width: 600px) {
-    #about .aboutLeftSideContainer {
+    .about .aboutLeftSideContainer {
       padding-bottom: 50px; } }
-  #about img {
+  .about img {
     padding-bottom: 7px; }
     @media only screen and (max-width: 991px) {
-      #about img {
+      .about img {
         margin-left: 12px; } }
 
 .aboutText {
@@ -1722,7 +1722,8 @@ body {
         .freelancerCard .resumeCardRight .nameRow {
           height: 130px; } }
     .freelancerCard .resumeCardRight .portfolioRow {
-      height: 415px; }
+      height: 415px;
+      overflow-y: auto; }
       @media only screen and (max-width: 769px) {
         .freelancerCard .resumeCardRight .portfolioRow {
           height: auto; } }

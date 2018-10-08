@@ -53252,6 +53252,67 @@ $(".Minimize").on('click', function () {
     $('#area_viewEducationBtn' + this.id.replace('minimize', '')).fadeOut(1500);
 });
 
+// nav row :
+
+$('.showPortfolio').on('click', function () {
+    if (!$(this).hasClass('active')) {
+        // add class active
+        $(this).addClass('active');
+        // remove class from other taps :
+        $('.showWork').removeClass('active');
+        $('.showEducation').removeClass('active');
+
+        // change the content :
+        var freelancerID = this.id.replace('showPortfolio', '');
+        var portfolioContent = $('#portfolioContent' + freelancerID).html();
+        var tapsArea = $('#tapsArea' + freelancerID);
+        tapsArea.fadeOut(700);
+        setTimeout(function () {
+            tapsArea.html(portfolioContent);
+            tapsArea.fadeIn(700);
+        }, 650);
+    }
+});
+
+$('.showWork').on('click', function () {
+    if (!$(this).hasClass('active')) {
+        // add class active
+        $(this).addClass('active');
+        // remove class from other taps :
+        $('.showPortfolio').removeClass('active');
+        $('.showEducation').removeClass('active');
+
+        // change the content :
+        var freelancerID = this.id.replace('showWork', '');
+        var workContent = $('#workContent' + freelancerID).html();
+        var tapsArea = $('#tapsArea' + freelancerID);
+        tapsArea.fadeOut(700);
+        setTimeout(function () {
+            tapsArea.html(workContent);
+            tapsArea.fadeIn(700);
+        }, 650);
+    }
+});
+
+$('.showEducation').on('click', function () {
+    if (!$(this).hasClass('active')) {
+        // add class active
+        $(this).addClass('active');
+        // remove class from other taps :
+        $('.showWork').removeClass('active');
+        $('.showPortfolio').removeClass('active');
+        // change the content :
+        var freelancerID = this.id.replace('showEducation', '');
+        var educationContent = $('#educationContent' + freelancerID).html();
+        var tapsArea = $('#tapsArea' + freelancerID);
+        tapsArea.fadeOut(700);
+        setTimeout(function () {
+            tapsArea.html(educationContent);
+            tapsArea.fadeIn(700);
+        }, 650);
+    }
+});
+
 /***/ }),
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {

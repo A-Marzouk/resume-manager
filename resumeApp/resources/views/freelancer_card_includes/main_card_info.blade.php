@@ -36,7 +36,8 @@
         </div>
     </div>
     <div class="col-lg-7 col-md-8 freelancerCardRight">
-        <div class="row interviewIcons">
+        @if(!$smallCard)
+            <div class="row interviewIcons">
             <div class="col-md-4 jobTitle text-right" style="color: white; padding-top: 13px; padding-right: 30px;">
                 View interviews :
             </div>
@@ -54,34 +55,38 @@
             <div class="col-12 col-lg-4 videoArea NoDecor">
                 <a href="javascript:void(0)" id="{{$freelancer->id}}{{$value['id']}}_open_video" style="outline: none;" class="openVideo">
                     <div class="cardIconsCon2  text-center">
-                                    <span>
-                                        <img src="/resumeApp/resources/views/customTheme/images/video_resume_card.png"
-                                             alt="" style="padding-right: 14px; width: 34px;">
-                                        <span class="audioText">Video Interview</span>
-                                    </span>
+                        <span>
+                            <img src="/resumeApp/resources/views/customTheme/images/video_resume_card.png"
+                                 alt="" style="padding-right: 14px; width: 34px;">
+                            <span class="audioText">Video Interview</span>
+                        </span>
                     </div>
                 </a>
             </div>
         </div>
-        <div class="row hireRow">
-            <div  class="col-md-4 text-center" style="font-size: 15px; color: white;" >
-                ${{intval($freelancer->userData->salary) +5}}
-                <div class="cardLabel" style="font-size: 13px;">Hourly rate</div>
-            </div>
-            <div class="col-md-4 text-center"  style="font-size: 15px; color: white;">
-                <span id="maxHours{{$freelancer->id}}{{$value['id']}}">{{intval($freelancer->userData->availableHours)}} hours</span>
-                <div class="cardLabel" style="font-size: 13px;">Weekly Availability</div>
-            </div>
-            <div class="col-md-4">
-                @if($freelancer->userData->availableHours !=0)
-                    <div class="row text-center cardRow NoDecor">
-                        <a class="hireCardBtn btn-block " href="/stripe/hire?freelancerID={{$freelancer->id}}{{$value['id']}}&hours=10&weeks=4" id="hireMeBtn{{$freelancer->id}}{{$value['id']}}">
-                            Hire me
-                        </a>
-                    </div>
-                @endif
-            </div>
+        @endif
+        @if(!$smallCard)
+            <div class="row hireRow">
+                <div  class="col-md-4 text-center" style="font-size: 15px; color: white;" >
+                    ${{intval($freelancer->userData->salary) +5}}
+                    <div class="cardLabel" style="font-size: 13px;">Hourly rate</div>
+                </div>
+                <div class="col-md-4 text-center"  style="font-size: 15px; color: white;">
+                    <span id="maxHours{{$freelancer->id}}{{$value['id']}}">{{intval($freelancer->userData->availableHours)}} hours</span>
+                    <div class="cardLabel" style="font-size: 13px;">Weekly Availability</div>
+                </div>
+
+                <div class="col-md-4">
+                    @if($freelancer->userData->availableHours !=0)
+                        <div class="row text-center cardRow NoDecor">
+                            <a class="hireCardBtn btn-block " href="/stripe/hire?freelancerID={{$freelancer->id}}&hours=10&weeks=4" id="hireMeBtn{{$freelancer->id}}{{$value['id']}}">
+                                Hire me
+                            </a>
+                        </div>
+                </div>
+            @endif
         </div>
+        @endif
 
     </div>
 </div>

@@ -2,6 +2,8 @@
    if(!isset($value['id'])){
        $value['id'] = '';
    }
+
+   $smallCard = false ;
 ?>
 
 <div class="freelancerCard" id="card{{$freelancer->id}}{{$value['id']}}">

@@ -1,6 +1,6 @@
 {{-- Portfolio --}}
-<div class="portfolioRow" id="tapsArea{{$freelancer->id}}">
-    <div class="row" id="portfolioContent{{$freelancer->id}}">
+<div class="portfolioRow" id="tapsArea{{$freelancer->id}}{{$value['id']}}">
+    <div class="row" id="portfolioContent{{$freelancer->id}}{{$value['id']}}">
         <?
         $workExamples =\App\Project::where('user_id',$freelancer->id)->orderBy('order','ASC')->get();
         $i = 0;
@@ -87,7 +87,7 @@
 
         {{-- works section carousel --}}
             <? $numSlides = 0;?>
-        <div id="portfolioCarousel{{$freelancer->id}}" class="carousel slide d-md-block" data-ride="carousel"
+        <div id="portfolioCarousel{{$freelancer->id}}{{$value['id']}}" class="carousel slide d-md-block" data-ride="carousel"
              data-interval="false">
             <div class="carousel-inner">
                 @if(!empty($firstSlideWorks))
@@ -234,15 +234,15 @@
         {{-- carousel controls --}}
         <div class="row" style="width: 100%; padding-top: 15px;">
             <div class=" col-12 text-center NoDecor">
-                <a href="javascript:void(0)" id="prevSlide{{$freelancer->id}}"  data-target="#portfolioCarousel{{$freelancer->id}}" data-slide-to="4" role="button" data-slide="prev" class="cardLabel_interviews noScroll prevSlide"
+                <a href="javascript:void(0)" id="prevSlide{{$freelancer->id}}{{$value['id']}}"  data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}" data-slide-to="4" role="button" data-slide="prev" class="cardLabel_interviews noScroll prevSlide"
                    style="color:#697786;">
                     <img src="/resumeApp/resources/assets/images/left_arrow.png"
                          alt="prev" width="15px">
                 </a>
 
-                <span class="jobTitle" style="padding: 0 5px 0 5px"> <span id="slideNumber{{$freelancer->id}}">1</span>/<span id="maxNumSlide{{$freelancer->id}}">{{$numSlides}}</span></span>
+                <span class="jobTitle" style="padding: 0 5px 0 5px"> <span id="slideNumber{{$freelancer->id}}{{$value['id']}}">1</span>/<span id="maxNumSlide{{$freelancer->id}}{{$value['id']}}">{{$numSlides}}</span></span>
 
-                <a href="javascript:void(0)" id="nextSlide{{$freelancer->id}}" data-target="#portfolioCarousel{{$freelancer->id}}" data-slide-to="4" role="button" data-slide="next" class="cardLabel_interviews noScroll nextSlide"
+                <a href="javascript:void(0)" id="nextSlide{{$freelancer->id}}{{$value['id']}}" data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}" data-slide-to="4" role="button" data-slide="next" class="cardLabel_interviews noScroll nextSlide"
                    style="color:#697786;">
                     <img src="/resumeApp/resources/assets/images/right_arrow.png"
                          alt="next" width="15px">

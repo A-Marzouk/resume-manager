@@ -1,6 +1,10 @@
-<? $showVideo = false; ?>
+<? $showVideo = false;
+   if(!isset($value['id'])){
+       $value['id'] = '';
+   }
+?>
 
-<div class="freelancerCard" id="card{{$freelancer->id}}">
+<div class="freelancerCard" id="card{{$freelancer->id}}{{$value['id']}}">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-12 resumeCardLeft text-center">
             <div class="row border-bottom-mobile" style="padding-bottom: 0;">
@@ -12,15 +16,15 @@
                         <div class="nameCard">
                             {{$freelancer->firstName}} {{$freelancer->lastName}}
                         </div>
-                        <div class="jobTitle" id="animatedText{{$freelancer->id}}_mobile">
+                        <div class="jobTitle" id="animatedText{{$freelancer->id}}{{$value['id']}}_mobile">
                             {{$freelancer->userData->jobTitle}}
                         </div>
                         <form action="/chat-room/start_conversation" method="post">
                             {{csrf_field()}}
-                            <input type="hidden" name="freelancer_id" value="{{$freelancer->id}}">
+                            <input type="hidden" name="freelancer_id" value="{{$freelancer->id}}{{$value['id']}}">
                             <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
                         </form>
-                        <div id="welcomeText{{$freelancer->id}}" class="d-none">
+                        <div id="welcomeText{{$freelancer->id}}{{$value['id']}}" class="d-none">
                             Hi, I am {{$freelancer->firstName}}, I am a {{str_replace('&','and',$freelancer->userData->jobTitle)}}, How can I help
                             you ?
                         </div>
@@ -37,11 +41,11 @@
             {{--</div>--}}
             {{--<div class="row">--}}
                 {{--<div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1 hoursBtn col-8 offset-2 NoDecor" style="padding: 11px 0 0 0 ;">--}}
-                    {{--<a href="javascript:void(0)" id="hoursMinus{{$freelancer->id}}" class="hoursMinus">--}}
+                    {{--<a href="javascript:void(0)" id="hoursMinus{{$freelancer->id}}{{$value['id']}}" class="hoursMinus">--}}
                         {{--<img src="/resumeApp/resources/views/customTheme/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">--}}
                     {{--</a>--}}
-                    {{--<span id="numberOfHours{{$freelancer->id}}">@if($freelancer->userData->availableHours==0) 0 @else {{$freelancer->userData->availableHours}} @endif</span> hours--}}
-                    {{--<a href="javascript:void(0)" id="hoursPlus{{$freelancer->id}}" class="hoursPlus">--}}
+                    {{--<span id="numberOfHours{{$freelancer->id}}{{$value['id']}}">@if($freelancer->userData->availableHours==0) 0 @else {{$freelancer->userData->availableHours}} @endif</span> hours--}}
+                    {{--<a href="javascript:void(0)" id="hoursPlus{{$freelancer->id}}{{$value['id']}}" class="hoursPlus">--}}
                         {{--<img src="/resumeApp/resources/views/customTheme/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus">--}}
                     {{--</a>--}}
                 {{--</div>--}}
@@ -54,11 +58,11 @@
             {{--</div>--}}
             {{--<div class="row">--}}
                 {{--<div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1 hoursBtn col-8 offset-2 NoDecor" style="padding: 11px 0 0 0 ;">--}}
-                    {{--<a href="javascript:void(0)" id="weeksMinus{{$freelancer->id}}" class="weeksMinus">--}}
+                    {{--<a href="javascript:void(0)" id="weeksMinus{{$freelancer->id}}{{$value['id']}}" class="weeksMinus">--}}
                         {{--<img src="/resumeApp/resources/views/customTheme/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">--}}
                     {{--</a>--}}
-                    {{--<span id="numberOfWeeks{{$freelancer->id}}">4</span> weeks--}}
-                    {{--<a href="javascript:void(0)" id="weeksPlus{{$freelancer->id}}" class="weeksPlus">--}}
+                    {{--<span id="numberOfWeeks{{$freelancer->id}}{{$value['id']}}">4</span> weeks--}}
+                    {{--<a href="javascript:void(0)" id="weeksPlus{{$freelancer->id}}{{$value['id']}}" class="weeksPlus">--}}
                         {{--<img src="/resumeApp/resources/views/customTheme/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus">--}}
                     {{--</a>--}}
                 {{--</div>--}}
@@ -66,7 +70,7 @@
 
 
         </div>
-        <div class="col-lg-12 col-md-12 col-12 resumeCardRight" id="resumeCardRight{{$freelancer->id}}">
+        <div class="col-lg-12 col-md-12 col-12 resumeCardRight" id="resumeCardRight{{$freelancer->id}}{{$value['id']}}">
             @include('freelancer_card_includes.main_card_info')
 
             @include('freelancer_card_includes.skills')
@@ -81,7 +85,7 @@
     {{-- expand btns--}}
     {{--<div class="row" style="border-top:1px solid whitesmoke; ">--}}
         {{--<div class="col-md-12 col-12 dropDownBtnLeft NoDecor text-center" style="background-color: #FDFDFD;">--}}
-            {{--<a href="#viewEducationBtn{{$freelancer->id}}" id="viewEducationBtn{{$freelancer->id}}"--}}
+            {{--<a href="#viewEducationBtn{{$freelancer->id}}{{$value['id']}}" id="viewEducationBtn{{$freelancer->id}}{{$value['id']}}"--}}
                {{--class="viewEducationLink">--}}
                 {{--<div class="cardLabel_interviews" style="padding-bottom: 10px; height:52px;">--}}
                     {{--<img src="/resumeApp/resources/views/customTheme/images/newResume/work.png"--}}
@@ -96,8 +100,8 @@
 
 {{-- resume expanded --}}
     {{-- education --}}
-    <div class="row resumeExpand d-none" id="area_viewEducationBtn{{$freelancer->id}}">
-        <div id="educationContent{{$freelancer->id}}" class="education about addScroll">
+    <div class="row resumeExpand d-none" id="area_viewEducationBtn{{$freelancer->id}}{{$value['id']}}">
+        <div id="educationContent{{$freelancer->id}}{{$value['id']}}" class="education about addScroll">
             <div class="row" style="padding-top: 35px;">
                 <div class="offset-lg-1 col-lg-5 col-md-6 educationSection">
                     <img src="/resumeApp/resources/views/customTheme/images/newResume/education.png"
@@ -181,7 +185,7 @@
         </div>
         <hr style="width: 85%">
         {{-- work exp --}}
-        <div id="workContent{{$freelancer->id}}" class="education about">
+        <div id="workContent{{$freelancer->id}}{{$value['id']}}" class="education about">
             <div class="row" style="padding-top: 35px;">
                 <div class="offset-lg-1 col-lg-5 col-md-6 educationSection">
                     <img src="/resumeApp/resources/views/customTheme/images/newResume/what_i_do.png"
@@ -222,7 +226,7 @@
 {{-- modals --}}
     {{-- audio div content --}}
 
-    <div id="audioContent{{$freelancer->id}}" class="d-none">
+    <div id="audioContent{{$freelancer->id}}{{$value['id']}}" class="d-none">
         <?
         $valid = true;
         $notValidText = 'NOT-VALID-LINK';
@@ -249,7 +253,7 @@
                 </span>
             </div>
             <div class="col-lg-1 col-1 text-center NoDecor" style="padding: 24px 0 0 0;">
-                <a href="javascript:void(0)" class="audioText audioDismiss" style="color: #4E75E8; font-size: large;" id="audio_dismiss{{$freelancer->id}}"> x </a>
+                <a href="javascript:void(0)" class="audioText audioDismiss" style="color: #4E75E8; font-size: large;" id="audio_dismiss{{$freelancer->id}}{{$value['id']}}"> x </a>
             </div>
         </div>
         <div class="row card-audio-con">
@@ -285,7 +289,7 @@
     </div>
     {{-- video div content--}}
 
-    <div id="videoContent{{$freelancer->id}}" class="d-none">
+    <div id="videoContent{{$freelancer->id}}{{$value['id']}}" class="d-none">
         <div class="row" style="border-bottom: 1px solid whitesmoke; padding-bottom: 25px;">
             <div class="col-lg-11 col-11 text-left" style="padding: 25px 0 0 20px;">
                  <span>
@@ -295,7 +299,7 @@
                 </span>
             </div>
             <div class="col-lg-1 col-1 text-center NoDecor" style="padding: 24px 0 0 0;">
-                <a href="javascript:void(0)" class="audioText audioDismiss" style="color: #4E75E8; font-size: large;" id="audio_dismiss{{$freelancer->id}}"> x </a>
+                <a href="javascript:void(0)" class="audioText audioDismiss" style="color: #4E75E8; font-size: large;" id="audio_dismiss{{$freelancer->id}}{{$value['id']}}"> x </a>
             </div>
         </div>
         <div class="row">
@@ -337,7 +341,7 @@
 
     {{-- default content --}}
 
-    <div id="defaultContent{{$freelancer->id}}" class="d-none">
+    <div id="defaultContent{{$freelancer->id}}{{$value['id']}}" class="d-none">
         @include('freelancer_card_includes.main_card_info')
 
         @include('freelancer_card_includes.skills')

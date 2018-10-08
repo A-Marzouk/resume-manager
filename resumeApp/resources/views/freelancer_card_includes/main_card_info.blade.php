@@ -19,17 +19,17 @@
             <div class="nameCard">
                 {{$freelancer->firstName}} {{$freelancer->lastName}}
             </div>
-            <div class="jobTitle" style="color: white; font-size: 17;" id="animatedText{{$freelancer->id}}">
+            <div class="jobTitle" style="color: white; font-size: 17;" id="animatedText{{$freelancer->id}}{{$value['id']}}">
                 {{$freelancer->userData->jobTitle}}
             </div>
 
             <form action="/chat-room/start_conversation" method="post">
                 {{csrf_field()}}
-                <input type="hidden" name="freelancer_id" value="{{$freelancer->id}}">
+                <input type="hidden" name="freelancer_id" value="{{$freelancer->id}}{{$value['id']}}">
                 <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
             </form>
 
-            <div id="welcomeText{{$freelancer->id}}" class="d-none">
+            <div id="welcomeText{{$freelancer->id}}{{$value['id']}}" class="d-none">
                 Hi, I am {{$freelancer->firstName}}, I am a {{$freelancer->userData->jobTitle}}, How can I help
                 you ?
             </div>
@@ -41,7 +41,7 @@
                 View interviews :
             </div>
             <div class="col-12 col-lg-4 audioTransArea text-center NoDecor">
-                <a href="javascript:void(0)" id="{{$freelancer->id}}_open_audio" style="outline: none;" class="openAudio">
+                <a href="javascript:void(0)" id="{{$freelancer->id}}{{$value['id']}}_open_audio" style="outline: none;" class="openAudio">
                     <div class="cardIconsCon ">
                                     <span>
                                         <img src="/resumeApp/resources/views/customTheme/images/audio_resume_Card.png"
@@ -52,7 +52,7 @@
                 </a>
             </div>
             <div class="col-12 col-lg-4 videoArea NoDecor">
-                <a href="javascript:void(0)" id="{{$freelancer->id}}_open_video" style="outline: none;" class="openVideo">
+                <a href="javascript:void(0)" id="{{$freelancer->id}}{{$value['id']}}_open_video" style="outline: none;" class="openVideo">
                     <div class="cardIconsCon2  text-center">
                                     <span>
                                         <img src="/resumeApp/resources/views/customTheme/images/video_resume_card.png"
@@ -69,13 +69,13 @@
                 <div class="cardLabel" style="font-size: 13px;">Hourly rate</div>
             </div>
             <div class="col-md-4 text-center"  style="font-size: 15px; color: white;">
-                <span id="maxHours{{$freelancer->id}}">{{intval($freelancer->userData->availableHours)}} hours</span>
+                <span id="maxHours{{$freelancer->id}}{{$value['id']}}">{{intval($freelancer->userData->availableHours)}} hours</span>
                 <div class="cardLabel" style="font-size: 13px;">Weekly Availability</div>
             </div>
             <div class="col-md-4">
                 @if($freelancer->userData->availableHours !=0)
                     <div class="row text-center cardRow NoDecor">
-                        <a class="hireCardBtn btn-block " href="/stripe/hire?freelancerID={{$freelancer->id}}&hours=10&weeks=4" id="hireMeBtn{{$freelancer->id}}">
+                        <a class="hireCardBtn btn-block " href="/stripe/hire?freelancerID={{$freelancer->id}}{{$value['id']}}&hours=10&weeks=4" id="hireMeBtn{{$freelancer->id}}{{$value['id']}}">
                             Hire me
                         </a>
                     </div>

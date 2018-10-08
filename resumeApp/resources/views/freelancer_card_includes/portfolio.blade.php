@@ -86,10 +86,12 @@
         @endif
 
         {{-- works section carousel --}}
-        <div id="carouselExampleControls" class="carousel slide d-md-block" data-ride="carousel"
+            <? $numSlides = 0;?>
+        <div id="portfolioCarousel{{$freelancer->id}}" class="carousel slide d-md-block" data-ride="carousel"
              data-interval="false">
             <div class="carousel-inner">
                 @if(!empty($firstSlideWorks))
+                    <? $numSlides++; ?>
                     <div class="carousel-item active">
                         <div class="row">
                             @foreach($firstSlideWorks as $workExample)
@@ -123,7 +125,8 @@
                     </div>
                 @endif
                 @if(!empty($secondSlideWorks))
-                    <div class="carousel-item">
+                        <? $numSlides++; ?>
+                        <div class="carousel-item">
                         <div class="row">
                             @foreach($secondSlideWorks as $workExample)
                                 <div class="col-md-6">
@@ -156,7 +159,8 @@
                     </div>
                 @endif
                 @if(!empty($thirdSlideWorks))
-                    <div class="carousel-item row">
+                        <? $numSlides++; ?>
+                        <div class="carousel-item row">
                         <div class="row">
                             @foreach($thirdSlideWorks as $workExample)
                                 <div class="col-md-6">
@@ -189,7 +193,8 @@
                     </div>
                 @endif
                 @if(!empty($fourthSlideWorks))
-                    <div class="carousel-item row">
+                        <? $numSlides++; ?>
+                        <div class="carousel-item row">
                         <div class="row">
                             @foreach($fourthSlideWorks as $workExample)
                                 <div class="col-md-6">
@@ -229,18 +234,18 @@
         {{-- carousel controls --}}
         <div class="row" style="width: 100%; padding-top: 15px;">
             <div class=" col-12 text-center NoDecor">
-                <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="4" role="button" data-slide="prev" class="cardLabel_interviews noScroll"
+                <a href="javascript:void(0)" id="prevSlide{{$freelancer->id}}"  data-target="#portfolioCarousel{{$freelancer->id}}" data-slide-to="4" role="button" data-slide="prev" class="cardLabel_interviews noScroll prevSlide"
                    style="color:#697786;">
-                    <img src="/resumeApp/resources/views/customTheme/images/newResume/prev.png"
-                         alt="prev" width="18px">
+                    <img src="/resumeApp/resources/assets/images/left_arrow.png"
+                         alt="prev" width="15px">
                 </a>
 
-                <span class="jobTitle" style="padding: 0 5px 0 5px"> <span id="slideNumber">1</span>/4 </span>
+                <span class="jobTitle" style="padding: 0 5px 0 5px"> <span id="slideNumber{{$freelancer->id}}">1</span>/<span id="maxNumSlide{{$freelancer->id}}">{{$numSlides}}</span></span>
 
-                <a href="javascript:void(0)"  data-target="#carouselExampleControls" data-slide-to="4" role="button" data-slide="next" class="cardLabel_interviews noScroll"
+                <a href="javascript:void(0)" id="nextSlide{{$freelancer->id}}" data-target="#portfolioCarousel{{$freelancer->id}}" data-slide-to="4" role="button" data-slide="next" class="cardLabel_interviews noScroll nextSlide"
                    style="color:#697786;">
-                    <img src="/resumeApp/resources/views/customTheme/images/newResume/next.png"
-                         alt="next" width="18px">
+                    <img src="/resumeApp/resources/assets/images/right_arrow.png"
+                         alt="next" width="15px">
                 </a>
             </div>
         </div>

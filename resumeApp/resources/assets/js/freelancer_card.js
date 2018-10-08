@@ -228,3 +228,30 @@ resumeCardContent.on('click','.showEducation',function(){
 
     }
 });
+
+// controlling slides numbers :
+resumeCardContent.on('click','.prevSlide',function(){
+    let id = this.id.replace('prevSlide','');
+    let maxNum = parseInt($('#maxNumSlide'+id).html());
+    let currSlide = parseInt($('#slideNumber'+id).html());
+    let newNum = currSlide-1;
+
+    if(newNum > 0){
+        $('#slideNumber'+id).html(newNum);
+    }else{
+        $('#slideNumber'+id).html(maxNum);
+    }
+});
+
+resumeCardContent.on('click','.nextSlide',function(){
+    let id = this.id.replace('nextSlide','');
+    let currSlide = parseInt($('#slideNumber'+id).html());
+    let newNum = currSlide+1;
+    let maxNum = parseInt($('#maxNumSlide'+id).html());
+
+    if(newNum <= maxNum){
+        $('#slideNumber'+id).html(newNum);
+    }else{
+        $('#slideNumber'+id).html('1');
+    }
+});

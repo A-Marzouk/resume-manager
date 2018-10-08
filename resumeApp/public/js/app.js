@@ -53303,6 +53303,33 @@ resumeCardContent.on('click', '.showEducation', function () {
     }
 });
 
+// controlling slides numbers :
+resumeCardContent.on('click', '.prevSlide', function () {
+    var id = this.id.replace('prevSlide', '');
+    var maxNum = parseInt($('#maxNumSlide' + id).html());
+    var currSlide = parseInt($('#slideNumber' + id).html());
+    var newNum = currSlide - 1;
+
+    if (newNum > 0) {
+        $('#slideNumber' + id).html(newNum);
+    } else {
+        $('#slideNumber' + id).html(maxNum);
+    }
+});
+
+resumeCardContent.on('click', '.nextSlide', function () {
+    var id = this.id.replace('nextSlide', '');
+    var currSlide = parseInt($('#slideNumber' + id).html());
+    var newNum = currSlide + 1;
+    var maxNum = parseInt($('#maxNumSlide' + id).html());
+
+    if (newNum <= maxNum) {
+        $('#slideNumber' + id).html(newNum);
+    } else {
+        $('#slideNumber' + id).html('1');
+    }
+});
+
 /***/ }),
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {

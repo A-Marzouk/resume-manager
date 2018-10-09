@@ -21,14 +21,14 @@ body{
 }
 
 .showOnlyOnmd{
-  @media only screen and (max-width: 760px){
+  @media only screen and (max-width: 992px){
     display: none;
   }
 }
 
 .showOnlyOnsm{
   display: none;
-  @media only screen and (max-width: 760px){
+  @media only screen and (max-width: 992px){
     display: block;
   }
 }
@@ -2019,9 +2019,8 @@ body{
   padding: 10px 14px 8px 14px;
   border: 1px solid #FFFFFF;
   border-radius: 5px;
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 992px) {
     margin-bottom: 7px;
-    margin-top: -10px;
     border: 1px solid #4E75E8;
   }
 }
@@ -2047,10 +2046,10 @@ body{
 }
 
 .cardIconsCon2{
-  padding: 10px 0px 8px 0px;
+  padding: 10px 0 8px 0;
   border: 1px solid #FFFFFF;
   border-radius: 5px;
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 992px) {
     border: 1px solid #4E75E8;
   }
 }
@@ -2102,7 +2101,7 @@ body{
 
   // card on mobile :
   .cardMainInfo_mob{
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 992px) {
       background: #4E75E8;
       border-radius: 5px 5px 0 0;
       box-shadow: 0 11px 16px -7px #E5ECED;
@@ -2162,6 +2161,7 @@ body{
     text-align: left;
     @media only screen and (max-width: 769px) {
       text-align: left;
+      padding-left: 6px;
     }
   }
   .navRow{
@@ -2179,6 +2179,10 @@ body{
       padding-right: 18px;
       padding-left: 18px;
       padding-bottom: 15px;
+      @media only screen and (max-width: 350px) {
+        padding-right: 0;
+        padding-left: 0;
+      }
     }
     .navTab.active{
       border-bottom: 5px solid #4E75E8;
@@ -2188,17 +2192,15 @@ body{
   }
   .nameCard{
     @media only screen and (max-width: 766px) {
-      font-size: 20px;
+      font-size: 22px;
       padding-left: 0;
       text-align: left;
     }
     padding-top: 16px;
-    padding-left: 10px;
     color: white;	font-family: Roboto;	font-size: 24px;	font-weight: bold;	line-height: 35px;
   }
   .audioTransArea{
     @media only screen and (max-width: 769px) {
-      padding-top: 10px;
     }
   }
   .videoArea{
@@ -2232,7 +2234,6 @@ body{
   .interviewIcons{
     padding-top: 30px;
     @media only screen and (max-width: 769px) {
-      border-top:1px solid whitesmoke ;
       padding-top: 10px;
     }
   }

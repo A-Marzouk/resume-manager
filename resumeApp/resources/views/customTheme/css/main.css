@@ -15,13 +15,13 @@ body {
     .customContainer {
       padding: 0; } }
 
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 992px) {
   .showOnlyOnmd {
     display: none; } }
 
 .showOnlyOnsm {
   display: none; }
-  @media only screen and (max-width: 760px) {
+  @media only screen and (max-width: 992px) {
     .showOnlyOnsm {
       display: block; } }
 
@@ -1647,10 +1647,9 @@ body {
   padding: 10px 14px 8px 14px;
   border: 1px solid #FFFFFF;
   border-radius: 5px; }
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 992px) {
     .cardIconsCon {
       margin-bottom: 7px;
-      margin-top: -10px;
       border: 1px solid #4E75E8; } }
 
 .modal-card-name {
@@ -1679,10 +1678,10 @@ body {
   padding-bottom: 25px; }
 
 .cardIconsCon2 {
-  padding: 10px 0px 8px 0px;
+  padding: 10px 0 8px 0;
   border: 1px solid #FFFFFF;
   border-radius: 5px; }
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 992px) {
     .cardIconsCon2 {
       border: 1px solid #4E75E8; } }
 
@@ -1723,7 +1722,7 @@ body {
       @media only screen and (max-width: 769px) {
         .freelancerCard .resumeCardLeft .imageContainer {
           border-bottom: 0; } }
-  @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: 992px) {
     .freelancerCard .cardMainInfo_mob {
       background: #4E75E8;
       border-radius: 5px 5px 0 0;
@@ -1774,7 +1773,8 @@ body {
     text-align: left; }
     @media only screen and (max-width: 769px) {
       .freelancerCard .nameArea {
-        text-align: left; } }
+        text-align: left;
+        padding-left: 6px; } }
   .freelancerCard .navRow {
     height: 52px;
     border-bottom: 1px solid whitesmoke;
@@ -1794,12 +1794,15 @@ body {
       padding-right: 18px;
       padding-left: 18px;
       padding-bottom: 15px; }
+      @media only screen and (max-width: 350px) {
+        .freelancerCard .navRow .navTab {
+          padding-right: 0;
+          padding-left: 0; } }
     .freelancerCard .navRow .navTab.active {
       border-bottom: 5px solid #4E75E8;
       border-radius: 1.5px 1.5px 0 0; }
   .freelancerCard .nameCard {
     padding-top: 16px;
-    padding-left: 10px;
     color: white;
     font-family: Roboto;
     font-size: 24px;
@@ -1807,12 +1810,9 @@ body {
     line-height: 35px; }
     @media only screen and (max-width: 766px) {
       .freelancerCard .nameCard {
-        font-size: 20px;
+        font-size: 22px;
         padding-left: 0;
         text-align: left; } }
-  @media only screen and (max-width: 769px) {
-    .freelancerCard .audioTransArea {
-      padding-top: 10px; } }
   @media only screen and (max-width: 769px) {
     .freelancerCard .hireBtnArea {
       padding-bottom: 30px; } }
@@ -1848,7 +1848,6 @@ body {
     padding-top: 30px; }
     @media only screen and (max-width: 769px) {
       .freelancerCard .interviewIcons {
-        border-top: 1px solid whitesmoke;
         padding-top: 10px; } }
   .freelancerCard .dropDownBtnRight {
     text-align: right; }

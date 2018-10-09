@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="text-left"  style="font-size: 15px; color: white; padding-top: 5px;">
-                <div class="cardLabel" style="font-weight: normal;">Availability :  <span id="maxHours{{$freelancer->id}}{{$value['id']}}" style="font-weight: bold;">{{intval($freelancer->userData->availableHours)}} h/week</span></div>
+                <div class="cardLabel" style="font-weight: normal;">Availability :  <span id="maxHours{{$freelancer->id}}{{$value['id']}}" style="font-weight: bold;">{{intval($freelancer->userData->availableHours)}}h/week</span></div>
             </div>
             <div id="welcomeText{{$freelancer->id}}{{$value['id']}}" class="d-none">
                 Hi, I am {{$freelancer->firstName}}, I am a {{$freelancer->userData->jobTitle}}, How can I help

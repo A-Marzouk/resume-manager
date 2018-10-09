@@ -89,7 +89,7 @@
             <? $numSlides = 0;?>
         <div id="portfolioCarousel{{$freelancer->id}}{{$value['id']}}" class="carousel slide d-md-block" data-ride="carousel"
              data-interval="false">
-            <div class="carousel-inner">
+            <div class="carousel-inner" style="background: #fdfdfd;">
                 @if(!empty($firstSlideWorks))
                     <? $numSlides++; ?>
                     <div class="carousel-item active">
@@ -232,7 +232,7 @@
         {{-- end of works section --}}
 
         {{-- carousel controls --}}
-        <div class="row" style="width: 100%; padding-top: 15px;">
+        <div class="row" style="width: 100%; padding-top: 16px;">
             <div class=" col-12 text-center NoDecor">
                 <a href="javascript:void(0)" id="prevSlide{{$freelancer->id}}{{$value['id']}}"  data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}" data-slide-to="4" role="button" data-slide="prev" class="cardLabel_interviews noScroll prevSlide"
                    style="color:#697786;">

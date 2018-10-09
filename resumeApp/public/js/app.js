@@ -53192,11 +53192,11 @@ resumeCardContent.on('click', '.openAudio', function () {
     var audioContent = $('#audioContent' + ID).html();
     // change the content :
     var resumeRightArea = $('#resumeCardRight' + ID);
-    resumeRightArea.fadeOut(700);
+    resumeRightArea.fadeOut(300);
     setTimeout(function () {
         resumeRightArea.html(audioContent);
-        resumeRightArea.fadeIn(700);
-    }, 650);
+        resumeRightArea.fadeIn(300);
+    }, 250);
 });
 
 resumeCardContent.on('click', '.openVideo', function () {
@@ -53204,22 +53204,22 @@ resumeCardContent.on('click', '.openVideo', function () {
     var videoContent = $('#videoContent' + ID).html();
     // change the content :
     var resumeRightArea = $('#resumeCardRight' + ID);
-    resumeRightArea.fadeOut(700);
+    resumeRightArea.fadeOut(300);
     setTimeout(function () {
         resumeRightArea.html(videoContent);
-        resumeRightArea.fadeIn(700);
-    }, 650);
+        resumeRightArea.fadeIn(300);
+    }, 250);
 });
 
 resumeCardContent.on('click', '.audioDismiss', function () {
     var ID = this.id.replace('audio_dismiss', '');
     var defaultContent = $('#defaultContent' + ID).html();
     var resumeRightArea = $('#resumeCardRight' + ID);
-    resumeRightArea.fadeOut(700);
+    resumeRightArea.fadeOut(300);
     setTimeout(function () {
         resumeRightArea.html(defaultContent);
-        resumeRightArea.fadeIn(700);
-    }, 650);
+        resumeRightArea.fadeIn(300);
+    }, 250);
 });
 
 // client page ( resume cards )
@@ -53256,11 +53256,11 @@ resumeCardContent.on('click', '.showPortfolio', function () {
         var freelancerID = this.id.replace('showPortfolio', '');
         var portfolioContent = $('#portfolioContent' + freelancerID).html();
         var tapsArea = $('#tapsArea' + freelancerID);
-        tapsArea.fadeOut(700);
+        tapsArea.fadeOut(500);
         setTimeout(function () {
             tapsArea.html(portfolioContent);
-            tapsArea.fadeIn(700);
-        }, 650);
+            tapsArea.fadeIn(500);
+        }, 450);
     }
 });
 
@@ -53276,11 +53276,11 @@ resumeCardContent.on('click', '.showWork', function () {
         var freelancerID = this.id.replace('showWork', '');
         var workContent = $('#workContent' + freelancerID).html();
         var tapsArea = $('#tapsArea' + freelancerID);
-        tapsArea.fadeOut(700);
+        tapsArea.fadeOut(500);
         setTimeout(function () {
             tapsArea.html(workContent);
-            tapsArea.fadeIn(700);
-        }, 650);
+            tapsArea.fadeIn(500);
+        }, 450);
     }
 });
 
@@ -53295,11 +53295,11 @@ resumeCardContent.on('click', '.showEducation', function () {
         var freelancerID = this.id.replace('showEducation', '');
         var educationContent = $('#educationContent' + freelancerID).html();
         var tapsArea = $('#tapsArea' + freelancerID);
-        tapsArea.fadeOut(700);
+        tapsArea.fadeOut(500);
         setTimeout(function () {
             tapsArea.html(educationContent);
-            tapsArea.fadeIn(700);
-        }, 650);
+            tapsArea.fadeIn(500);
+        }, 450);
     }
 });
 

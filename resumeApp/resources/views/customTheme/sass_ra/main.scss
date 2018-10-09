@@ -625,7 +625,7 @@ body{
   margin-top: 6%;
   padding: 2%;
   margin-left: 39px;
-  border: 1px solid #F7F7F7;
+  border: 1px solid #EBEDEF;
   border-radius: 5px;
   background-color: #FFFFFF;
   box-shadow: 0 11px 16px -7px #E5ECED;
@@ -635,13 +635,13 @@ body{
     margin-left: 0px;
   }
   .workImg{
-    height: 260px;
+    height: 242px;
     overflow: hidden;
-    border-bottom:1px solid lightgray;
+    border-radius: 12px;
    img{
      width: 100%;
      padding: 1%;
-     border-radius: 10px;
+     border-radius: 12px;
    }
   }
   .workTitle{
@@ -2016,9 +2016,11 @@ body{
 }
 
 .cardIconsCon{
-  padding: 10px 14px 8px 14px;
   border: 1px solid #FFFFFF;
   border-radius: 5px;
+  height: 36px;
+  width: 154px;
+  padding-top: 5px;
   @media only screen and (max-width: 992px) {
     margin-bottom: 7px;
     border: 1px solid #4E75E8;
@@ -2046,9 +2048,11 @@ body{
 }
 
 .cardIconsCon2{
-  padding: 10px 0 8px 0;
   border: 1px solid #FFFFFF;
   border-radius: 5px;
+  height: 36px;
+  width: 154px;
+  padding-top: 5px;
   @media only screen and (max-width: 992px) {
     border: 1px solid #4E75E8;
   }
@@ -2067,8 +2071,13 @@ body{
 }
 
 .freelancerCard{
+  width: 910px;
   background-color: #FFFFFF;	box-shadow: 0 2px 4px 0 rgba(203,203,203,0.5);
   padding:0;
+  border-radius: 5px;
+  @media only screen and (max-width: 769px) {
+    width: auto;
+  }
 
   .resumeCardLeft{
     border-right: 1px solid #E5ECED;
@@ -2115,21 +2124,23 @@ body{
     }
     .nameRow{
       background-color: #4E75E8;
-      border-radius: 5px;
+      border-radius: 5px 5px 0 0;
       padding: 8px 5px 10px 5px;
       @media only screen and (max-width: 769px) {
         height:auto;
       }
       .imageCol{
-        text-align: right;
+        text-align: left;
+        padding-left:10px;
         @media only screen and (max-width: 769px) {
          text-align: left;
         }
       }
     }
     .portfolioRow{
-      height: 415px;
+      height: 425px;
       overflow-y: auto;
+      background: #fdfdfd;
       @media only screen and (max-width: 769px) {
         height: auto;
         padding-bottom: 15px;
@@ -2140,10 +2151,13 @@ body{
       background-color: #00BA86;
       border-radius: 5px;
       color: white;
-      font-family: Roboto;	font-size: 14px;
+      font-family: Roboto;	font-size: 13px;
       font-weight: 500;	line-height: 15px;
-      padding: 10px 10px 10px 10px;
+      padding-top:10px;
+      height: 36px;
+      width: 154px;
       margin-top: 4px;
+      margin-bottom: 4px;
       @media only screen and (max-width: 767px) {
         padding: 15px 10px 15px 10px;
         }
@@ -2165,20 +2179,20 @@ body{
     }
   }
   .navRow{
-    height: 52px;
-    border-bottom: 1px solid whitesmoke;
-    border-top: 1px solid whitesmoke;
+    height: 50px;
+    border-bottom: 1px solid #EBEDEF;
+    border-top: 1px solid #EBEDEF;
+    background: #FDFDFD;
     @media only screen and (max-width: 769px) {
       border-top: none;
     }
-    margin-top: 16px;
-    padding-top: 10px;
+    padding-top: 14px;
     padding-bottom: 7px;
     .navTab{
       color: #4E75E8;	font-family: Roboto;	font-size: 14px;	font-weight: bold;	line-height: 16px;
       padding-right: 18px;
       padding-left: 18px;
-      padding-bottom: 15px;
+      padding-bottom: 9px;
       @media only screen and (max-width: 350px) {
         padding-right: 0;
         padding-left: 0;
@@ -2196,10 +2210,12 @@ body{
       padding-left: 0;
       text-align: left;
     }
-    padding-top: 16px;
+    padding-left: 10px;
+    padding-top: 18px;
     color: white;	font-family: Roboto;	font-size: 24px;	font-weight: bold;	line-height: 35px;
   }
   .audioTransArea{
+    padding: 0;
     @media only screen and (max-width: 769px) {
     }
   }
@@ -2232,7 +2248,8 @@ body{
     padding-top: 14px;
   }
   .interviewIcons{
-    padding-top: 30px;
+    padding-top: 20px;
+    padding-right: 25px;
     @media only screen and (max-width: 769px) {
       padding-top: 10px;
     }
@@ -2261,7 +2278,7 @@ body{
 
   .freelancerCardLeft{
     text-align:center;
-    padding-left: 3px;
+    padding-left: 0;
     @media only screen and (max-width: 769px) {
       padding-bottom: 30px;
       text-align:left;
@@ -2269,6 +2286,7 @@ body{
   }
 
   .freelancerCardRight{
+    padding-right: 20px;
     .panelFormLabel{
       padding-bottom: 4px;
       @media only screen and (max-width: 720px) {
@@ -2279,7 +2297,7 @@ body{
 
   .hireRow{
     border-radius: 5px;	background-color: #4367D3;
-    padding: 5px 10px 5px 10px;
+    padding: 5px 6px 5px 10px;
     margin-top: 15px;
   }
 }
@@ -2290,7 +2308,7 @@ body{
 }
 
 .audioText{
-  color: #FFFFFF;	font-family: Roboto;	font-size: 16px;	line-height: 19px;
+  color: #FFFFFF;	font-family: Roboto;	font-size: 13px;	line-height: 19px;
 }
 .NoDecor{
   a{
@@ -2343,7 +2361,7 @@ body{
 .tap-to-chat{
   color: #4E75E8;	font-family: Roboto;	font-size: 12px;	font-weight: bold;	line-height: 11px;
   background: white !important;
-  border-radius: 10px !important;
+  border-radius: 12px !important;
   margin: 8px;
   padding: 8px 10px 5px 10px;
   a{
@@ -2447,7 +2465,7 @@ body{
 }
 
 .carousel-item{
-  height:360px !important;
+  height:365px !important;
   @media only screen and (max-width: 760px) {
     height:auto !important;
   }

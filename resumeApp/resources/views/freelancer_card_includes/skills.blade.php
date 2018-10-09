@@ -1,5 +1,7 @@
 {{-- skills --}}
-<div class="row" style="margin-top: 15px;">
+<div class="row" style="padding-top: 17px;
+    padding-bottom: 16px;
+    background: #fdfdfd;">
     <?
     $skillsDesigner = [
         // designer
@@ -121,7 +123,7 @@
                 }
                 ?>
                 <span id="skillContainer{{$i}}" class="highlightSkill">
-                    <img width="20px" src="{{$imgSrc}}" alt="skill" id="skillImage{{$i}}">
+                    <img style="width: 17px;padding-bottom: 3px;" src="{{$imgSrc}}" alt="skill" id="skillImage{{$i}}">
                     {{$skill}} &nbsp;&nbsp;
                 </span>
                 <? $i++;?>

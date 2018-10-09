@@ -157,11 +157,6 @@
         <div id="workContent{{$freelancer->id}}{{$value['id']}}" class="education about">
             <div class="row" style="padding-top: 35px;">
                 <div class="offset-lg-1 col-lg-5 col-md-6 educationSection">
-                    <div class="showOnlyOnmd">
-                        <img src="/resumeApp/resources/views/customTheme/images/newResume/what_i_do.png"
-                             style="padding-bottom: 10px;" alt="aboutImg" width="30px;">
-                        <span class="aboutText">WORK OVERVIEW</span>
-                    </div>
                     <?php
                     $works = $freelancer->worksHistory;
                     ?>

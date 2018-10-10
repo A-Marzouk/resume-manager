@@ -5,9 +5,10 @@
         </a>
     </div>
     <div class="col-md-2 col-4 text-center NoDecor" style="border-right:1px solid #EBEDEF;">
-        <a class="navTab showWork" style="padding-right: 30px;padding-left: 30px;" href="javascript:void(0)" id="showWork{{$freelancer->id}}{{$value['id']}}">Work</a>
+        <a class="navTab showWork" href="javascript:void(0)" id="showWork{{$freelancer->id}}{{$value['id']}}">Work</a>
     </div>
     <div class="col-md-2 col-4 text-center NoDecor">
         <a class="navTab showEducation" href="javascript:void(0)" id="showEducation{{$freelancer->id}}{{$value['id']}}">Education</a>
     </div>
 </div>
+<div class="activeTap" id="activeTap{{$freelancer->id}}{{$value['id']}}"></div>

@@ -1809,16 +1809,23 @@ body {
       font-size: 14px;
       font-weight: bold;
       line-height: 16px;
-      padding-right: 18px;
-      padding-left: 18px;
       padding-bottom: 9px; }
       @media only screen and (max-width: 350px) {
         .freelancerCard .navRow .navTab {
           padding-right: 0;
           padding-left: 0; } }
-    .freelancerCard .navRow .navTab.active {
-      border-bottom: 5px solid #4E75E8;
-      border-radius: 1.5px 1.5px 0 0; }
+  .freelancerCard .activeTap {
+    height: 5px;
+    width: 110px;
+    border-radius: 1.5px 1.5px 0 0;
+    background-color: #4E75E8;
+    margin-top: -5px;
+    transform: translateX(250px);
+    transition: transform 1s; }
+  .freelancerCard .activeTap.workTrans {
+    transform: translateX(400px); }
+  .freelancerCard .activeTap.educationTrans {
+    transform: translateX(550px); }
   .freelancerCard .nameCard {
     padding-left: 10px;
     padding-top: 18px;

@@ -53245,15 +53245,26 @@ resumeCardContent.on('mouseout', '.highlightSkill', function () {
 // nav row :
 
 resumeCardContent.on('click', '.showPortfolio', function () {
+    var freelancerID = this.id.replace('showPortfolio', '');
+
     if (!$(this).hasClass('active')) {
         // add class active
         $(this).addClass('active');
         // remove class from other taps :
-        $('.showWork').removeClass('active');
-        $('.showEducation').removeClass('active');
+        $('#showWork' + freelancerID).removeClass('active');
+        $('#showEducation' + freelancerID).removeClass('active');
+
+        // active tap transition :
+        var currentActiveTap = $('#activeTap' + freelancerID);
+        // remove not needed classes :
+        if (currentActiveTap.hasClass('educationTrans')) {
+            currentActiveTap.removeClass('educationTrans');
+        }
+        if (currentActiveTap.hasClass('workTrans')) {
+            currentActiveTap.removeClass('workTrans');
+        }
 
         // change the content :
-        var freelancerID = this.id.replace('showPortfolio', '');
         var portfolioContent = $('#portfolioContent' + freelancerID).html();
         var tapsArea = $('#tapsArea' + freelancerID);
         tapsArea.fadeOut(500);
@@ -53265,15 +53276,27 @@ resumeCardContent.on('click', '.showPortfolio', function () {
 });
 
 resumeCardContent.on('click', '.showWork', function () {
+    var freelancerID = this.id.replace('showWork', '');
+
     if (!$(this).hasClass('active')) {
         // add class active
         $(this).addClass('active');
         // remove class from other taps :
-        $('.showPortfolio').removeClass('active');
-        $('.showEducation').removeClass('active');
+        $('#showPortfolio' + freelancerID).removeClass('active');
+        $('#showEducation' + freelancerID).removeClass('active');
+
+        // active tap transition :
+        var currentActiveTap = $('#activeTap' + freelancerID);
+        // remove not needed classes :
+        if (currentActiveTap.hasClass('educationTrans')) {
+            currentActiveTap.removeClass('educationTrans');
+        }
+        if (currentActiveTap.hasClass('portfolioTrans')) {
+            currentActiveTap.removeClass('portfolioTrans');
+        }
+        currentActiveTap.addClass('workTrans');
 
         // change the content :
-        var freelancerID = this.id.replace('showWork', '');
         var workContent = $('#workContent' + freelancerID).html();
         var tapsArea = $('#tapsArea' + freelancerID);
         tapsArea.fadeOut(500);
@@ -53285,14 +53308,27 @@ resumeCardContent.on('click', '.showWork', function () {
 });
 
 resumeCardContent.on('click', '.showEducation', function () {
+    var freelancerID = this.id.replace('showEducation', '');
+
     if (!$(this).hasClass('active')) {
         // add class active
         $(this).addClass('active');
         // remove class from other taps :
-        $('.showWork').removeClass('active');
-        $('.showPortfolio').removeClass('active');
+        $('#showWork' + freelancerID).removeClass('active');
+        $('#showPortfolio' + freelancerID).removeClass('active');
+
+        // active tap transition :
+        var currentActiveTap = $('#activeTap' + freelancerID);
+        // remove not needed classes :
+        if (currentActiveTap.hasClass('portfolioTrans')) {
+            currentActiveTap.removeClass('portfolioTrans');
+        }
+        if (currentActiveTap.hasClass('workTrans')) {
+            currentActiveTap.removeClass('workTrans');
+        }
+        currentActiveTap.addClass('educationTrans');
+
         // change the content :
-        var freelancerID = this.id.replace('showEducation', '');
         var educationContent = $('#educationContent' + freelancerID).html();
         var tapsArea = $('#tapsArea' + freelancerID);
         tapsArea.fadeOut(500);

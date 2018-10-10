@@ -111,11 +111,11 @@ resumeCardContent.on('click','.openAudio',function(){
     let audioContent = $('#audioContent'+ID).html();
     // change the content :
     let resumeRightArea  =  $('#resumeCardRight' + ID) ;
-    resumeRightArea.fadeOut(700);
+    resumeRightArea.fadeOut(300);
     setTimeout(function () {
         resumeRightArea.html(audioContent);
-        resumeRightArea.fadeIn(700);
-    },650)
+        resumeRightArea.fadeIn(300);
+    },250)
 });
 
 resumeCardContent.on('click','.openVideo',function(){
@@ -123,22 +123,22 @@ resumeCardContent.on('click','.openVideo',function(){
     let videoContent = $('#videoContent'+ID).html();
     // change the content :
     let resumeRightArea  =  $('#resumeCardRight' + ID) ;
-    resumeRightArea.fadeOut(700);
+    resumeRightArea.fadeOut(300);
     setTimeout(function () {
         resumeRightArea.html(videoContent);
-        resumeRightArea.fadeIn(700);
-    },650)
+        resumeRightArea.fadeIn(300);
+    },250)
 });
 
 resumeCardContent.on('click','.audioDismiss',function () {
     let ID = this.id.replace('audio_dismiss','');
     let defaultContent     = $('#defaultContent'+ID).html();
     let resumeRightArea    = $('#resumeCardRight' + ID) ;
-    resumeRightArea.fadeOut(700);
+    resumeRightArea.fadeOut(300);
     setTimeout(function () {
         resumeRightArea.html(defaultContent);
-        resumeRightArea.fadeIn(700);
-    },650)
+        resumeRightArea.fadeIn(300);
+    },250)
 });
 
 
@@ -167,64 +167,68 @@ resumeCardContent.on('mouseout','.highlightSkill',function () {
 // nav row :
 
 resumeCardContent.on('click','.showPortfolio',function(){
+    let freelancerID = this.id.replace('showPortfolio','');
+
     if(!$(this).hasClass('active')){
         // add class active
         $(this).addClass('active');
         // remove class from other taps :
-        $('.showWork').removeClass('active');
-        $('.showEducation').removeClass('active');
+        $('#showWork'+freelancerID).removeClass('active');
+        $('#showEducation'+freelancerID).removeClass('active');
 
         // change the content :
-        let freelancerID = this.id.replace('showPortfolio','');
         let portfolioContent     = $('#portfolioContent'+freelancerID).html();
         let tapsArea    = $('#tapsArea' + freelancerID) ;
-        tapsArea.fadeOut(700);
+        tapsArea.fadeOut(500);
         setTimeout(function () {
             tapsArea.html(portfolioContent);
-            tapsArea.fadeIn(700);
-        },650)
+            tapsArea.fadeIn(500);
+        },450)
 
     }
 });
 
 resumeCardContent.on('click','.showWork',function(){
+    let freelancerID = this.id.replace('showWork','');
+
     if(!$(this).hasClass('active')){
         // add class active
         $(this).addClass('active');
         // remove class from other taps :
-        $('.showPortfolio').removeClass('active');
-        $('.showEducation').removeClass('active');
+        $('#showPortfolio'+freelancerID).removeClass('active');
+        $('#showEducation'+freelancerID).removeClass('active');
 
         // change the content :
-        let freelancerID = this.id.replace('showWork','');
         let workContent     = $('#workContent'+freelancerID).html();
         let tapsArea    = $('#tapsArea' + freelancerID) ;
-        tapsArea.fadeOut(700);
+        tapsArea.fadeOut(500);
         setTimeout(function () {
             tapsArea.html(workContent);
-            tapsArea.fadeIn(700);
-        },650)
+            tapsArea.fadeIn(500);
+        },450)
 
     }
 });
 
 
 resumeCardContent.on('click','.showEducation',function(){
+    let freelancerID = this.id.replace('showEducation','');
+
     if(!$(this).hasClass('active')){
         // add class active
         $(this).addClass('active');
         // remove class from other taps :
-        $('.showWork').removeClass('active');
-        $('.showPortfolio').removeClass('active');
+        $('#showWork'+freelancerID).removeClass('active');
+        $('#showPortfolio'+freelancerID).removeClass('active');
+
         // change the content :
-        let freelancerID = this.id.replace('showEducation','');
         let educationContent     = $('#educationContent'+freelancerID).html();
         let tapsArea    = $('#tapsArea' + freelancerID) ;
-        tapsArea.fadeOut(700);
+        tapsArea.fadeOut(500);
         setTimeout(function () {
             tapsArea.html(educationContent);
-            tapsArea.fadeIn(700);
-        },650)
+            tapsArea.fadeIn(500);
+        },450)
 
     }
 });
@@ -254,4 +258,14 @@ resumeCardContent.on('click','.nextSlide',function(){
     }else{
         $('#slideNumber'+id).html('1');
     }
+});
+
+
+// education and training description section
+// show the full desc
+resumeCardContent.on('click','.desc',function () {
+    $(this).css('width','auto');
+    $(this).css('text-overflow','unset');
+    $(this).css('overflow','normal');
+    $(this).css('white-space','normal');
 });

@@ -465,20 +465,6 @@ $(document).ready(function () {
 
 
 
-    ////////////////////////////////////////// portfolio scripts  //////////////////////////////
-
-    // load photo directly :
-    
-    ////////////////////////////    Freelancer Resume page scripts ////////////////////////////////
-        // education and training description section
-            // show the full desc
-                $('.desc').on('click',function () {
-                    $(this).css('width','auto');
-                    $(this).css('text-overflow','unset');
-                    $(this).css('overflow','normal');
-                    $(this).css('white-space','normal');
-                });
-
 });
 
 

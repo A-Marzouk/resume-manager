@@ -1,19 +1,31 @@
 body {
-  background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);
+  background: #f4f4f4;
   overflow-x: hidden;
   width: 100%;
   margin-top: 72px;
   font-family: Roboto !important; }
 
-@media only screen and (max-width: 600px) {
-  .py-4 {
-    padding-top: 0 !important; } }
+.py-4 {
+  background: #f4f4f4; }
+  @media only screen and (max-width: 600px) {
+    .py-4 {
+      padding-top: 0 !important; } }
 
 .customContainer {
   padding: 0 0 0 8.50%; }
   @media only screen and (max-width: 991px) {
     .customContainer {
       padding: 0; } }
+
+@media only screen and (max-width: 992px) {
+  .showOnlyOnmd {
+    display: none; } }
+
+.showOnlyOnsm {
+  display: none; }
+  @media only screen and (max-width: 992px) {
+    .showOnlyOnsm {
+      display: block; } }
 
 #photoPreview {
   border: 1px solid #D5D8DE;
@@ -390,11 +402,12 @@ body {
     padding-left: 10px; }
 
 .aboutSubText .year {
-  color: #697786;
+  color: #74818F;
   font-family: Roboto;
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 24px; }
+  font-size: 16px;
+  line-height: 14px;
+  padding-bottom: 6px;
+  padding-top: 4px; }
   .aboutSubText .year .circle:before {
     background: white;
     color: white;
@@ -404,11 +417,11 @@ body {
     padding-left: 39px;
     font-size: 16px; }
 .aboutSubText .title {
-  color: #697786;
+  color: #474953;
   font-family: Roboto;
-  font-size: 22px;
-  font-weight: 500;
-  line-height: 25px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 20px;
   padding-left: 39px;
   word-spacing: .15rem; }
   .aboutSubText .title .circle:before {
@@ -419,12 +432,13 @@ body {
   .aboutSubText .title.work {
     padding-left: 0px; }
 .aboutSubText .desc {
-  color: #C5A7FD;
+  color: #30323D;
   font-family: Roboto;
-  font-size: 22px;
-  font-weight: 300;
-  line-height: 25px;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: normal;
   padding-left: 39px;
+  padding-top: 4px;
   word-spacing: .15rem; }
   @media only screen and (max-width: 991px) {
     .aboutSubText .desc {
@@ -433,11 +447,11 @@ body {
       white-space: nowrap;
       overflow: hidden; } }
 .aboutSubText .company {
-  color: #697786;
+  color: #474953;
   font-family: Roboto;
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 24px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
   padding-left: 37px;
   padding-top: 3px;
   padding-bottom: 3px; }
@@ -510,30 +524,30 @@ body {
   margin-top: 6%;
   padding: 2%;
   margin-left: 39px;
-  border: 1px solid #F7F7F7;
+  border: 1px solid #EBEDEF;
   border-radius: 5px;
   background-color: #FFFFFF;
-  box-shadow: 0 11px 16px -7px #E5ECED;
-  height: 325px !important;
+  box-shadow: 0 13px 19px -8px #E5ECED;
+  height: 308px !important;
   overflow: hidden; }
   @media only screen and (max-width: 600px) {
     .workCard {
       margin-left: 0px; } }
   .workCard .workImg {
-    height: 260px;
+    height: 242px;
     overflow: hidden;
-    border-bottom: 1px solid lightgray; }
+    border-radius: 12px; }
     .workCard .workImg img {
       width: 100%;
       padding: 1%;
-      border-radius: 10px; }
+      border-radius: 12px; }
   .workCard .workTitle {
     color: #697786;
     font-family: Roboto;
     font-size: 16px;
     font-weight: 300;
     line-height: 24px;
-    padding: 20px 0px 20px 0; }
+    padding: 17px 0px 20px 0; }
     .workCard .workTitle img {
       width: 20px; }
 
@@ -1141,7 +1155,6 @@ body {
         padding-top: 0;
         height: 80px; } }
   .tabsArea .tabCircle {
-    background-color: #FCFCFC;
     margin-bottom: 8%;
     max-width: 45px;
     padding: 12px 0px 8px 0px;
@@ -1161,16 +1174,34 @@ body {
 .panel {
   padding: 0px; }
 
-.nav-tabs {
+.formTaps .nav-tabs {
   border-bottom: 0 !important; }
-
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+.formTaps .nav-tabs .nav-item.show .nav-link, .formTaps .nav-tabs .nav-link.active {
   color: #495057;
   background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%) !important;
   border-top: 0 !important;
   border-left: 0 !important;
   border-right: 0 !important;
   border-bottom: 2px solid #AC81FC; }
+
+#nav-taps-resume .nav-tabs {
+  padding-left: 22%; }
+  @media only screen and (max-width: 992px) {
+    #nav-taps-resume .nav-tabs {
+      padding-left: 10.5%; } }
+#nav-taps-resume .nav-tabs .nav-item.show .nav-link, #nav-taps-resume .nav-tabs .nav-link.active {
+  color: #4E75E8; }
+#nav-taps-resume .nav-tabs .nav-item :hover {
+  background: #FDFDFD; }
+#nav-taps-resume .nav-tabs .nav-item.show .nav-link, #nav-taps-resume .nav-tabs .nav-link {
+  color: #697786;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  margin: -2px 0 0 0; }
 
 .panelHeading {
   padding-top: 15px;
@@ -1634,13 +1665,15 @@ body {
   padding: 20px; }
 
 .cardIconsCon {
-  padding: 10px 14px 8px 14px;
   border: 1px solid #FFFFFF;
-  border-radius: 5px; }
-  @media only screen and (max-width: 900px) {
+  border-radius: 5px;
+  height: 36px;
+  width: 154px;
+  padding-top: 5px; }
+  @media only screen and (max-width: 992px) {
     .cardIconsCon {
       margin-bottom: 7px;
-      margin-top: -10px; } }
+      border: 1px solid #4E75E8; } }
 
 .modal-card-name {
   color: #18A6DF;
@@ -1668,9 +1701,14 @@ body {
   padding-bottom: 25px; }
 
 .cardIconsCon2 {
-  padding: 10px 0px 8px 0px;
   border: 1px solid #FFFFFF;
-  border-radius: 5px; }
+  border-radius: 5px;
+  height: 36px;
+  width: 154px;
+  padding-top: 5px; }
+  @media only screen and (max-width: 992px) {
+    .cardIconsCon2 {
+      border: 1px solid #4E75E8; } }
 
 .resumeExpand {
   background-color: #FFFFFF;
@@ -1683,9 +1721,16 @@ body {
   border-top: 1px whitesmoke solid; }
 
 .freelancerCard {
+  width: 910px;
   background-color: #FFFFFF;
-  box-shadow: 0 2px 4px 0 rgba(203, 203, 203, 0.5);
-  padding: 0; }
+  box-shadow: 0 11px 16px -7px #E5ECED;
+  padding: 0;
+  border-radius: 5px;
+  margin-left: 9.07%; }
+  @media only screen and (max-width: 1200px) {
+    .freelancerCard {
+      width: auto;
+      margin-left: auto; } }
   .freelancerCard .resumeCardLeft {
     border-right: 1px solid #E5ECED;
     background-color: #FDFDFD; }
@@ -1709,6 +1754,11 @@ body {
       @media only screen and (max-width: 769px) {
         .freelancerCard .resumeCardLeft .imageContainer {
           border-bottom: 0; } }
+  @media only screen and (max-width: 992px) {
+    .freelancerCard .cardMainInfo_mob {
+      background: #4E75E8;
+      border-radius: 5px 5px 0 0;
+      box-shadow: 0 11px 16px -7px #E5ECED; } }
   .freelancerCard .resumeCardRight {
     padding: 0; }
     @media only screen and (max-width: 769px) {
@@ -1716,27 +1766,41 @@ body {
         padding-top: 0; } }
     .freelancerCard .resumeCardRight .nameRow {
       background-color: #4E75E8;
-      border-radius: 5px;
+      border-radius: 5px 5px 0 0;
       padding: 8px 5px 10px 5px; }
       @media only screen and (max-width: 769px) {
         .freelancerCard .resumeCardRight .nameRow {
-          height: 130px; } }
+          height: auto; } }
+      .freelancerCard .resumeCardRight .nameRow .imageCol {
+        text-align: left;
+        padding-left: 10px; }
+        @media only screen and (max-width: 769px) {
+          .freelancerCard .resumeCardRight .nameRow .imageCol {
+            text-align: left; } }
     .freelancerCard .resumeCardRight .portfolioRow {
-      height: 415px;
-      overflow-y: auto; }
+      height: 412px;
+      overflow-y: auto;
+      background: #fdfdfd; }
       @media only screen and (max-width: 769px) {
         .freelancerCard .resumeCardRight .portfolioRow {
-          height: auto; } }
+          height: auto;
+          padding-bottom: 15px; } }
     .freelancerCard .resumeCardRight .hireCardBtn {
       background-color: #00BA86;
       border-radius: 5px;
       color: white;
       font-family: Roboto;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
       line-height: 15px;
-      padding: 10px 10px 10px 10px;
-      margin-top: 4px; }
+      padding-top: 10px;
+      height: 36px;
+      width: 154px;
+      margin-top: 4px;
+      margin-bottom: 4px; }
+      @media only screen and (max-width: 767px) {
+        .freelancerCard .resumeCardRight .hireCardBtn {
+          padding: 15px 10px 15px 10px; } }
   @media only screen and (max-width: 767px) {
     .freelancerCard .skillsRow {
       margin-top: 70px;
@@ -1746,29 +1810,35 @@ body {
     text-align: left; }
     @media only screen and (max-width: 769px) {
       .freelancerCard .nameArea {
-        text-align: center; } }
+        text-align: left;
+        padding-left: 6px; } }
   .freelancerCard .navRow {
-    height: 52px;
-    border-bottom: 1px solid whitesmoke;
-    border-top: 1px solid whitesmoke;
-    margin-top: 16px;
-    padding-top: 10px;
+    height: 50px;
+    border-bottom: 1px solid #EBEDEF;
+    border-top: 1px solid #EBEDEF;
+    background: #FDFDFD;
+    padding-top: 14px;
     padding-bottom: 7px; }
-    .freelancerCard .navRow .navTab {
+    @media only screen and (max-width: 769px) {
+      .freelancerCard .navRow {
+        border-top: none; } }
+    .freelancerCard .navRow .navTab a {
       color: #4E75E8;
       font-family: Roboto;
       font-size: 14px;
       font-weight: bold;
       line-height: 16px;
-      padding-right: 18px;
-      padding-left: 18px;
-      padding-bottom: 15px; }
+      padding-bottom: 9px; }
+      @media only screen and (max-width: 350px) {
+        .freelancerCard .navRow .navTab a {
+          padding-right: 0;
+          padding-left: 0; } }
     .freelancerCard .navRow .navTab.active {
       border-bottom: 5px solid #4E75E8;
-      border-radius: 1.5px 1.5px 0 0; }
+      padding-bottom: 5px; }
   .freelancerCard .nameCard {
-    padding-top: 16px;
     padding-left: 10px;
+    padding-top: 18px;
     color: white;
     font-family: Roboto;
     font-size: 24px;
@@ -1776,16 +1846,11 @@ body {
     line-height: 35px; }
     @media only screen and (max-width: 766px) {
       .freelancerCard .nameCard {
-        font-size: 20px;
-        padding-left: 0; } }
-  @media only screen and (max-width: 769px) {
-    .freelancerCard .audioTransArea {
-      padding-left: 24px;
-      padding-top: 10px; } }
-  @media only screen and (max-width: 769px) {
-    .freelancerCard .videoArea {
-      padding-left: 30px;
-      padding-top: 10px; } }
+        font-size: 22px;
+        padding-left: 0;
+        text-align: left; } }
+  .freelancerCard .audioTransArea {
+    padding: 0; }
   @media only screen and (max-width: 769px) {
     .freelancerCard .hireBtnArea {
       padding-bottom: 30px; } }
@@ -1818,10 +1883,10 @@ body {
     font-weight: 400;
     padding-top: 14px; }
   .freelancerCard .interviewIcons {
-    padding-top: 30px; }
+    padding-top: 20px;
+    padding-right: 25px; }
     @media only screen and (max-width: 769px) {
       .freelancerCard .interviewIcons {
-        border-top: 1px solid whitesmoke;
         padding-top: 10px; } }
   .freelancerCard .dropDownBtnRight {
     text-align: right; }
@@ -1841,19 +1906,22 @@ body {
         text-align: center; } }
   .freelancerCard .freelancerCardLeft {
     text-align: center;
-    padding-left: 3px; }
+    padding-left: 0; }
     @media only screen and (max-width: 769px) {
       .freelancerCard .freelancerCardLeft {
-        padding-bottom: 30px; } }
-  .freelancerCard .freelancerCardRight .panelFormLabel {
-    padding-bottom: 4px; }
-    @media only screen and (max-width: 720px) {
-      .freelancerCard .freelancerCardRight .panelFormLabel {
-        padding-bottom: 10px; } }
+        padding-bottom: 30px;
+        text-align: left; } }
+  .freelancerCard .freelancerCardRight {
+    padding-right: 20px; }
+    .freelancerCard .freelancerCardRight .panelFormLabel {
+      padding-bottom: 4px; }
+      @media only screen and (max-width: 720px) {
+        .freelancerCard .freelancerCardRight .panelFormLabel {
+          padding-bottom: 10px; } }
   .freelancerCard .hireRow {
     border-radius: 5px;
     background-color: #4367D3;
-    padding: 5px 10px 5px 10px;
+    padding: 5px 6px 5px 10px;
     margin-top: 15px; }
 
 .transcript {
@@ -1868,7 +1936,7 @@ body {
 .audioText {
   color: #FFFFFF;
   font-family: Roboto;
-  font-size: 16px;
+  font-size: 13px;
   line-height: 19px; }
 
 .NoDecor a {
@@ -1918,7 +1986,7 @@ body {
   font-weight: bold;
   line-height: 11px;
   background: white !important;
-  border-radius: 10px !important;
+  border-radius: 12px !important;
   margin: 8px;
   padding: 8px 10px 5px 10px; }
   .tap-to-chat a {
@@ -1931,9 +1999,12 @@ body {
 
 .highlightSkill img {
   filter: grayscale(100%); }
+  @media only screen and (max-width: 760px) {
+    .highlightSkill img {
+      display: none; } }
 @media only screen and (max-width: 760px) {
   .highlightSkill {
-    display: block; } }
+    display: inline; } }
 
 .paymentOption {
   padding: 36px;
@@ -2010,6 +2081,13 @@ body {
     margin: 0 !important; } }
 
 .carousel-item {
-  height: 360px !important; }
+  height: 365px !important; }
+  @media only screen and (max-width: 760px) {
+    .carousel-item {
+      height: auto !important; } }
+
+@media only screen and (max-width: 760px) {
+  .paddingTop_mob {
+    padding-top: 20px !important; } }
 
 /*# sourceMappingURL=main.css.map */

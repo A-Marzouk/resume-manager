@@ -89,7 +89,7 @@
             <? $numSlides = 0;?>
         <div id="portfolioCarousel{{$freelancer->id}}{{$value['id']}}" class="carousel slide d-md-block" data-ride="carousel"
              data-interval="false">
-            <div class="carousel-inner">
+            <div class="carousel-inner" style="background: #fdfdfd;">
                 @if(!empty($firstSlideWorks))
                     <? $numSlides++; ?>
                     <div class="carousel-item active">
@@ -106,13 +106,13 @@
                                         </div>
                                         <div class="workTitle">
                                             <div class="row">
-                                                <div class="col-md-9">
+                                                <div class="col-md-10 col-10">
                                                     {{$workExample->projectName}}
                                                 </div>
-                                                <a class="col-md-2" href="javascript:void(0)"
+                                                <a class="col-md-1 col-2" href="javascript:void(0)"
                                                    data-toggle="modal"
                                                    data-target="#works{{$workExample->id}}Modal"
-                                                   style="outline: none;">
+                                                   style="outline: none; margin-left: 16px;">
                                                     <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
                                                          alt="view work">
                                                 </a>
@@ -140,10 +140,10 @@
                                         </div>
                                         <div class="workTitle">
                                             <div class="row">
-                                                <div class="col-md-9">
+                                                <div class="col-md-9 col-10">
                                                     {{$workExample->projectName}}
                                                 </div>
-                                                <a class="col-md-2" href="javascript:void(0)"
+                                                <a class="col-md-2 col-2" href="javascript:void(0)"
                                                    data-toggle="modal"
                                                    data-target="#works{{$workExample->id}}Modal"
                                                    style="outline: none;">
@@ -174,10 +174,10 @@
                                         </div>
                                         <div class="workTitle">
                                             <div class="row">
-                                                <div class="col-md-9">
+                                                <div class="col-md-9 col-10">
                                                     {{$workExample->projectName}}
                                                 </div>
-                                                <a class="col-md-2" href="javascript:void(0)"
+                                                <a class="col-md-2 col-2" href="javascript:void(0)"
                                                    data-toggle="modal"
                                                    data-target="#works{{$workExample->id}}Modal"
                                                    style="outline: none;">
@@ -208,10 +208,10 @@
                                         </div>
                                         <div class="workTitle">
                                             <div class="row">
-                                                <div class="col-md-9">
+                                                <div class="col-md-9 col-10">
                                                     {{$workExample->projectName}}
                                                 </div>
-                                                <a class="col-md-2" href="javascript:void(0)"
+                                                <a class="col-md-2 col-2" href="javascript:void(0)"
                                                    data-toggle="modal"
                                                    data-target="#works{{$workExample->id}}Modal"
                                                    style="outline: none;">
@@ -232,7 +232,7 @@
         {{-- end of works section --}}
 
         {{-- carousel controls --}}
-        <div class="row" style="width: 100%; padding-top: 15px;">
+        <div class="row" style="width: 100%;">
             <div class=" col-12 text-center NoDecor">
                 <a href="javascript:void(0)" id="prevSlide{{$freelancer->id}}{{$value['id']}}"  data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}" data-slide-to="4" role="button" data-slide="prev" class="cardLabel_interviews noScroll prevSlide"
                    style="color:#697786;">

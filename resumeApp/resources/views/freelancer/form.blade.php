@@ -19,7 +19,7 @@
     </div>
 <div class="container">
     <div class="row tabsArea fixed-top d-sm-block d-xs-block d-md-block d-lg-none" id="tabsMobile" style="margin-top: 50px;   background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);">
-        <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center formTaps">
             <ul class="nav nav-tabs" id="mytabs" role="tablist">
                 <li class="nav-item" id="tap1phone">
                     <a class="nav-link active text-center tabText" href="#overview" role="tab" data-toggle="tab">
@@ -82,7 +82,7 @@
     </div>
             {{-- tabs section first on phone --}}
     <div class="row tabsArea d-none d-lg-block">
-        <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center formTaps">
             <ul class="nav nav-tabs" id="mytabs" role="tablist">
                 <li class="nav-item" id="tap1">
                     <a class="nav-link active text-center tabText" href="#overview" role="tab" data-toggle="tab">

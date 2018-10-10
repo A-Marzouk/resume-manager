@@ -1153,7 +1153,6 @@ body {
         padding-top: 0;
         height: 80px; } }
   .tabsArea .tabCircle {
-    background-color: #FCFCFC;
     margin-bottom: 8%;
     max-width: 45px;
     padding: 12px 0px 8px 0px;
@@ -1173,16 +1172,34 @@ body {
 .panel {
   padding: 0px; }
 
-.nav-tabs {
+.formTaps .nav-tabs {
   border-bottom: 0 !important; }
-
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+.formTaps .nav-tabs .nav-item.show .nav-link, .formTaps .nav-tabs .nav-link.active {
   color: #495057;
   background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%) !important;
   border-top: 0 !important;
   border-left: 0 !important;
   border-right: 0 !important;
   border-bottom: 2px solid #AC81FC; }
+
+#nav-taps-resume .nav-tabs {
+  padding-left: 22%; }
+  @media only screen and (max-width: 992px) {
+    #nav-taps-resume .nav-tabs {
+      padding-left: 10.5%; } }
+#nav-taps-resume .nav-tabs .nav-item.show .nav-link, #nav-taps-resume .nav-tabs .nav-link.active {
+  color: #4E75E8; }
+#nav-taps-resume .nav-tabs .nav-item :hover {
+  background: #FDFDFD; }
+#nav-taps-resume .nav-tabs .nav-item.show .nav-link, #nav-taps-resume .nav-tabs .nav-link {
+  color: #697786;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  margin: -2px 0 0 0; }
 
 .panelHeading {
   padding-top: 15px;
@@ -1759,7 +1776,7 @@ body {
           .freelancerCard .resumeCardRight .nameRow .imageCol {
             text-align: left; } }
     .freelancerCard .resumeCardRight .portfolioRow {
-      height: 425px;
+      height: 412px;
       overflow-y: auto;
       background: #fdfdfd; }
       @media only screen and (max-width: 769px) {

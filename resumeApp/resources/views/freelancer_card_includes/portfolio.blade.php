@@ -232,7 +232,7 @@
         {{-- end of works section --}}
 
         {{-- carousel controls --}}
-        <div class="row" style="width: 100%; padding-top: 16px;">
+        <div class="row" style="width: 100%;">
             <div class=" col-12 text-center NoDecor">
                 <a href="javascript:void(0)" id="prevSlide{{$freelancer->id}}{{$value['id']}}"  data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}" data-slide-to="4" role="button" data-slide="prev" class="cardLabel_interviews noScroll prevSlide"
                    style="color:#697786;">

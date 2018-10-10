@@ -1441,7 +1441,6 @@ body{
 
   }
   .tabCircle{
-    background-color: #FCFCFC;
     margin-bottom: 8%;
     max-width: 45px;
     padding: 12px 0px 8px 0px;
@@ -1470,17 +1469,49 @@ body{
 .panel{
   padding: 0px;
 }
-.nav-tabs {
-  border-bottom: 0 !important;
+
+.formTaps{
+  .nav-tabs {
+    border-bottom: 0 !important;
+  }
+  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #495057;
+    background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%) !important;
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-bottom: 2px solid #AC81FC;
+  }
 }
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-  color: #495057;
-  background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%) !important;
-  border-top: 0 !important;
-  border-left: 0 !important;
-  border-right: 0 !important;
-  border-bottom: 2px solid #AC81FC;
+
+#nav-taps-resume{
+  .nav-tabs{
+    padding-left: 22%;
+    @media only screen and (max-width: 992px) {
+      padding-left: 10.5%;
+    }
+  }
+  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #4E75E8;
+  }
+
+  .nav-tabs .nav-item{
+    :hover{
+      background: #FDFDFD;
+    }
+  }
+  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
+    color: #697786;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    margin: -2px 0 0 0;
+  }
 }
+
 
 .panelHeading{
   padding-top: 15px;
@@ -2141,7 +2172,7 @@ body{
       }
     }
     .portfolioRow{
-      height: 425px;
+      height: 412px;
       overflow-y: auto;
       background: #fdfdfd;
       @media only screen and (max-width: 769px) {

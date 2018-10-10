@@ -176,16 +176,6 @@ resumeCardContent.on('click','.showPortfolio',function(){
         $('#showWork'+freelancerID).removeClass('active');
         $('#showEducation'+freelancerID).removeClass('active');
 
-        // active tap transition :
-        let currentActiveTap = $('#activeTap'+freelancerID);
-        // remove not needed classes :
-        if(currentActiveTap.hasClass('educationTrans')){
-            currentActiveTap.removeClass('educationTrans');
-        }
-        if(currentActiveTap.hasClass('workTrans')){
-            currentActiveTap.removeClass('workTrans');
-        }
-
         // change the content :
         let portfolioContent     = $('#portfolioContent'+freelancerID).html();
         let tapsArea    = $('#tapsArea' + freelancerID) ;
@@ -207,17 +197,6 @@ resumeCardContent.on('click','.showWork',function(){
         // remove class from other taps :
         $('#showPortfolio'+freelancerID).removeClass('active');
         $('#showEducation'+freelancerID).removeClass('active');
-
-        // active tap transition :
-        let currentActiveTap = $('#activeTap'+freelancerID);
-        // remove not needed classes :
-        if(currentActiveTap.hasClass('educationTrans')){
-            currentActiveTap.removeClass('educationTrans');
-        }
-        if(currentActiveTap.hasClass('portfolioTrans')){
-            currentActiveTap.removeClass('portfolioTrans');
-        }
-        currentActiveTap.addClass('workTrans');
 
         // change the content :
         let workContent     = $('#workContent'+freelancerID).html();
@@ -241,17 +220,6 @@ resumeCardContent.on('click','.showEducation',function(){
         // remove class from other taps :
         $('#showWork'+freelancerID).removeClass('active');
         $('#showPortfolio'+freelancerID).removeClass('active');
-
-        // active tap transition :
-        let currentActiveTap = $('#activeTap'+freelancerID);
-        // remove not needed classes :
-        if(currentActiveTap.hasClass('portfolioTrans')){
-            currentActiveTap.removeClass('portfolioTrans');
-        }
-        if(currentActiveTap.hasClass('workTrans')){
-            currentActiveTap.removeClass('workTrans');
-        }
-        currentActiveTap.addClass('educationTrans');
 
         // change the content :
         let educationContent     = $('#educationContent'+freelancerID).html();

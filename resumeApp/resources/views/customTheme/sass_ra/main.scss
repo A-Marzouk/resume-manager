@@ -2192,36 +2192,21 @@ body{
     padding-top: 14px;
     padding-bottom: 7px;
     .navTab{
-      color: #4E75E8;	font-family: Roboto;	font-size: 14px;	font-weight: bold;	line-height: 16px;
-      padding-bottom: 9px;
-      @media only screen and (max-width: 350px) {
-        padding-right: 0;
-        padding-left: 0;
+      a{
+        color: #4E75E8;	font-family: Roboto;	font-size: 14px;	font-weight: bold;	line-height: 16px;
+        padding-bottom: 9px;
+        @media only screen and (max-width: 350px) {
+          padding-right: 0;
+          padding-left: 0;
+        }
       }
     }
     .navTab.active{
-
+      border-bottom: 5px solid #4E75E8;
+      padding-bottom: 5px;
     }
 
   }
-  .activeTap{
-    height: 5px;
-    width: 110px;
-    border-radius: 1.5px 1.5px 0 0;
-    background-color: #4E75E8;
-    margin-top: -5px;
-    // transition :
-    transform:translateX(250px);
-    transition:
-            transform 1s;
-  }
-  .activeTap.workTrans{
-    transform:translateX(400px);
-  }
-  .activeTap.educationTrans{
-    transform:translateX(550px);
-  }
-
   .nameCard{
     @media only screen and (max-width: 766px) {
       font-size: 22px;

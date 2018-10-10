@@ -156,7 +156,7 @@
         {{-- work exp --}}
         <div id="workContent{{$freelancer->id}}{{$value['id']}}" class="education about">
             <div class="row" style="padding-top: 35px;">
-                <div class="offset-lg-1 col-lg-5 col-md-6 educationSection">
+                <div class="col-12 educationSection">
                     <?php
                     $works = $freelancer->worksHistory;
                     ?>

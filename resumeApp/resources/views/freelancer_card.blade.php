@@ -72,7 +72,7 @@
     <div class="row resumeExpand d-none" id="area_viewEducationBtn{{$freelancer->id}}{{$value['id']}}">
         <div id="educationContent{{$freelancer->id}}{{$value['id']}}" class="education about addScroll">
             <div class="row" style="padding-top: 35px;">
-                <div class="offset-lg-1 col-lg-5 col-md-6 educationSection">
+                <div class="col-12 educationSection">
                     <img src="/resumeApp/resources/views/customTheme/images/newResume/education.png"
                          alt="aboutImg" width="30px;">
                     <span class="aboutText">EDUCATION</span>
@@ -111,7 +111,7 @@
                         <? endif; ?>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-5 paddingTop_mob">
+                <div class="col-12 paddingTop_mob" style="padding-top: 15px;">
                     <img src="/resumeApp/resources/views/customTheme/images/newResume/trainings.png"
                          alt="aboutImg" width="30px;">
                     <span class="aboutText">TRAININGS</span>

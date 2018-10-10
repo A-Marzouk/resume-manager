@@ -477,11 +477,12 @@ body{
 
 .aboutSubText{
   .year{
-    color: #697786;
+    color: #74818F;
     font-family: Roboto;
-    font-size: 20px;
-    font-weight: 300;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 14px;
+    padding-bottom: 6px;
+    padding-top: 4px;
     .circle:before{
       background: white;
       color: white;
@@ -494,11 +495,11 @@ body{
     }
   }
   .title{
-    color: #697786;
+    color: #474953;
     font-family: Roboto;
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 20px;
     padding-left: 39px;
     word-spacing: .15rem;
     .circle:before{
@@ -512,12 +513,10 @@ body{
     }
   }
   .desc{
-    color: #C5A7FD;
-    font-family: Roboto;
-    font-size: 22px;
-    font-weight: 300;
-    line-height: 25px;
+    color: #30323D;	font-family: Roboto;	font-size: 14px;	line-height: 16px;
+    font-weight: normal;
     padding-left: 39px;
+    padding-top: 4px;
     word-spacing: .15rem;
     @media only screen and (max-width: 991px){
       width: 160px;
@@ -528,9 +527,9 @@ body{
   }
 
   .company{
-    color: #697786;
-    font-family: Roboto;	font-size: 20px;
-    font-weight: 300;	line-height: 24px;
+    color: #474953;
+    font-family: Roboto;	font-size: 18px;
+    font-weight: 500;	line-height: 20px;
     padding-left: 37px;
     padding-top:3px;
     padding-bottom: 3px;

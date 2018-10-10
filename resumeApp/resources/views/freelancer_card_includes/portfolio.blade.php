@@ -106,13 +106,13 @@
                                         </div>
                                         <div class="workTitle">
                                             <div class="row">
-                                                <div class="col-md-9 col-10">
+                                                <div class="col-md-10 col-10">
                                                     {{$workExample->projectName}}
                                                 </div>
-                                                <a class="col-md-2 col-2" href="javascript:void(0)"
+                                                <a class="col-md-1 col-2" href="javascript:void(0)"
                                                    data-toggle="modal"
                                                    data-target="#works{{$workExample->id}}Modal"
-                                                   style="outline: none;">
+                                                   style="outline: none; margin-left: 16px;">
                                                     <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
                                                          alt="view work">
                                                 </a>

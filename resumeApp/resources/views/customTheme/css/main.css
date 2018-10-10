@@ -1,13 +1,15 @@
 body {
-  background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);
+  background: #f4f4f4;
   overflow-x: hidden;
   width: 100%;
   margin-top: 72px;
   font-family: Roboto !important; }
 
-@media only screen and (max-width: 600px) {
-  .py-4 {
-    padding-top: 0 !important; } }
+.py-4 {
+  background: #f4f4f4; }
+  @media only screen and (max-width: 600px) {
+    .py-4 {
+      padding-top: 0 !important; } }
 
 .customContainer {
   padding: 0 0 0 8.50%; }
@@ -523,8 +525,8 @@ body {
   border: 1px solid #EBEDEF;
   border-radius: 5px;
   background-color: #FFFFFF;
-  box-shadow: 0 11px 16px -7px #E5ECED;
-  height: 325px !important;
+  box-shadow: 0 13px 19px -8px #E5ECED;
+  height: 308px !important;
   overflow: hidden; }
   @media only screen and (max-width: 600px) {
     .workCard {
@@ -543,7 +545,7 @@ body {
     font-size: 16px;
     font-weight: 300;
     line-height: 24px;
-    padding: 20px 0px 20px 0; }
+    padding: 17px 0px 20px 0; }
     .workCard .workTitle img {
       width: 20px; }
 
@@ -1702,12 +1704,14 @@ body {
 .freelancerCard {
   width: 910px;
   background-color: #FFFFFF;
-  box-shadow: 0 2px 4px 0 rgba(203, 203, 203, 0.5);
+  box-shadow: 0 11px 16px -7px #E5ECED;
   padding: 0;
-  border-radius: 5px; }
-  @media only screen and (max-width: 769px) {
+  border-radius: 5px;
+  margin-left: 9.07%; }
+  @media only screen and (max-width: 1200px) {
     .freelancerCard {
-      width: auto; } }
+      width: auto;
+      margin-left: auto; } }
   .freelancerCard .resumeCardLeft {
     border-right: 1px solid #E5ECED;
     background-color: #FDFDFD; }

@@ -2054,6 +2054,7 @@ body{
   @media only screen and (max-width: 992px) {
     margin-bottom: 7px;
     border: 1px solid #4E75E8;
+    width: 100%;
   }
 }
 
@@ -2085,6 +2086,7 @@ body{
   padding-top: 5px;
   @media only screen and (max-width: 992px) {
     border: 1px solid #4E75E8;
+    width: 100%;
   }
 }
 
@@ -2191,8 +2193,8 @@ body{
       width: 154px;
       margin-top: 4px;
       margin-bottom: 4px;
-      @media only screen and (max-width: 767px) {
-        padding: 15px 10px 15px 10px;
+      @media only screen and (max-width: 992px) {
+          width: auto;
         }
       }
 
@@ -2242,6 +2244,7 @@ body{
       font-size: 22px;
       padding-left: 0;
       text-align: left;
+      padding-top: 20px;
     }
     padding-left: 10px;
     padding-top: 18px;
@@ -2250,6 +2253,7 @@ body{
   .audioTransArea{
     padding: 0;
     @media only screen and (max-width: 769px) {
+
     }
   }
   .videoArea{
@@ -2395,7 +2399,7 @@ body{
   color: #4E75E8;	font-family: Roboto;	font-size: 12px;	font-weight: bold;	line-height: 11px;
   background: white !important;
   border-radius: 12px !important;
-  margin: 8px;
+  margin: 5px 8px 8px 8px;
   padding: 8px 10px 5px 10px;
   a{
     color: #4E75E8;

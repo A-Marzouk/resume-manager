@@ -1673,7 +1673,8 @@ body {
   @media only screen and (max-width: 992px) {
     .cardIconsCon {
       margin-bottom: 7px;
-      border: 1px solid #4E75E8; } }
+      border: 1px solid #4E75E8;
+      width: 100%; } }
 
 .modal-card-name {
   color: #18A6DF;
@@ -1708,7 +1709,8 @@ body {
   padding-top: 5px; }
   @media only screen and (max-width: 992px) {
     .cardIconsCon2 {
-      border: 1px solid #4E75E8; } }
+      border: 1px solid #4E75E8;
+      width: 100%; } }
 
 .resumeExpand {
   background-color: #FFFFFF;
@@ -1798,9 +1800,9 @@ body {
       width: 154px;
       margin-top: 4px;
       margin-bottom: 4px; }
-      @media only screen and (max-width: 767px) {
+      @media only screen and (max-width: 992px) {
         .freelancerCard .resumeCardRight .hireCardBtn {
-          padding: 15px 10px 15px 10px; } }
+          width: auto; } }
   @media only screen and (max-width: 767px) {
     .freelancerCard .skillsRow {
       margin-top: 70px;
@@ -1848,7 +1850,8 @@ body {
       .freelancerCard .nameCard {
         font-size: 22px;
         padding-left: 0;
-        text-align: left; } }
+        text-align: left;
+        padding-top: 20px; } }
   .freelancerCard .audioTransArea {
     padding: 0; }
   @media only screen and (max-width: 769px) {
@@ -1987,7 +1990,7 @@ body {
   line-height: 11px;
   background: white !important;
   border-radius: 12px !important;
-  margin: 8px;
+  margin: 5px 8px 8px 8px;
   padding: 8px 10px 5px 10px; }
   .tap-to-chat a {
     color: #4E75E8; }

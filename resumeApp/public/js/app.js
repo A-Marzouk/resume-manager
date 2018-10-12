@@ -53259,18 +53259,11 @@ resumeCardContent.on('click', '.showPortfolio', function () {
         var tapsArea = $('#tapsArea' + freelancerID);
         tapsArea.fadeOut(500);
         setTimeout(function () {
-            tapsArea.html(portfolioContent);
-            tapsArea.fadeIn(500);
-            // show the portfolio content on phone :
             var portfolioContent_mob = $('#portfolioContent' + freelancerID + '_mob');
-            portfolioContent_mob.fadeIn(500);
+            tapsArea.html(portfolioContent + portfolioContent_mob.html());
+            portfolioContent_mob.addClass('d-none');
+            tapsArea.fadeIn(500);
         }, 450);
-
-        // show the portfolio content on phone :
-        var portfolioContent_mob = $('#portfolioContent' + freelancerID + '_mob');
-        if (portfolioContent_mob.hasClass('d-none')) {
-            portfolioContent_mob.removeClass('d-none');
-        }
     }
 });
 
@@ -53290,10 +53283,10 @@ resumeCardContent.on('click', '.showWork', function () {
         tapsArea.fadeOut(500);
         // show the portfolio content on phone :
         var portfolioContent_mob = $('#portfolioContent' + freelancerID + '_mob');
-        portfolioContent_mob.fadeOut(500);
         setTimeout(function () {
             tapsArea.html(workContent);
             tapsArea.fadeIn(500);
+            portfolioContent_mob.addClass('d-none');
         }, 450);
     }
 });
@@ -53314,10 +53307,10 @@ resumeCardContent.on('click', '.showEducation', function () {
         tapsArea.fadeOut(500);
         // show the portfolio content on phone :
         var portfolioContent_mob = $('#portfolioContent' + freelancerID + '_mob');
-        portfolioContent_mob.fadeOut(500);
         setTimeout(function () {
             tapsArea.html(educationContent);
             tapsArea.fadeIn(500);
+            portfolioContent_mob.addClass('d-none');
         }, 450);
     }
 });

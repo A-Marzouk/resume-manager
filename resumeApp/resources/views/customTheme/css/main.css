@@ -136,6 +136,10 @@ body {
   padding: 3px;
   background: #A4B7ED;
   border: 2px solid #A4B7ED; }
+  @media only screen and (max-width: 325px) {
+    .freelancerImg {
+      height: 100px;
+      width: 100px; } }
 
 .freelancerName {
   color: #30323D;
@@ -537,6 +541,9 @@ body {
     height: 242px;
     overflow: hidden;
     border-radius: 12px; }
+    @media only screen and (max-width: 600px) {
+      .workCard .workImg {
+        height: 216px; } }
     .workCard .workImg img {
       width: 100%;
       padding: 1%;
@@ -1814,6 +1821,9 @@ body {
       .freelancerCard .nameArea {
         text-align: left;
         padding-left: 6px; } }
+    @media only screen and (max-width: 325px) {
+      .freelancerCard .nameArea {
+        padding-left: 0; } }
   .freelancerCard .navRow {
     height: 50px;
     border-bottom: 1px solid #EBEDEF;
@@ -1994,6 +2004,13 @@ body {
   padding: 8px 10px 5px 10px; }
   .tap-to-chat a {
     color: #4E75E8; }
+  @media only screen and (max-width: 325px) {
+    .tap-to-chat {
+      margin-left: 0; } }
+
+@media only screen and (max-width: 992px) {
+  .carouselControls {
+    padding-top: 15px; } }
 
 @media only screen and (max-width: 760px) {
   .border-bottom-mobile {

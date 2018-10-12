@@ -38,6 +38,17 @@
             opacity: 1;
         }
 
+        .single-item{
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease;
+            -webkit-transition: opacity 1s ease;
+        }
+        .single-item.slick-initialized {
+            visibility: visible;
+            opacity: 1;
+        }
+
         /* styles only for IE*/
     </style>
 </head>
@@ -644,6 +655,23 @@ if($user){
             });
         }
 
+    });
+
+    $('.single-item').slick({
+        lazyLoad: 'ondemand',
+        dots: true,
+        arrows:false,
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        responsive: [
+            {
+                breakpoint: 786,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            }
+        ]
     });
 
     function handler1() {

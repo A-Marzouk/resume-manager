@@ -1847,7 +1847,7 @@ body {
           padding-left: 0; } }
     .freelancerCard .navRow .navTab.active {
       border-bottom: 5px solid #4E75E8;
-      padding-bottom: 5px; }
+      padding-bottom: 8px; }
   .freelancerCard .nameCard {
     padding-left: 10px;
     padding-top: 18px;

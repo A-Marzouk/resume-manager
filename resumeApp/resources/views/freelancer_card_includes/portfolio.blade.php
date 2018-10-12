@@ -2,35 +2,35 @@
 <div class="portfolioRow" id="tapsArea{{$freelancer->id}}{{$value['id']}}">
     <div class="row" id="portfolioContent{{$freelancer->id}}{{$value['id']}}">
         <?
-        $workExamples =\App\Project::where('user_id',$freelancer->id)->orderBy('order','ASC')->get();
-        $i = 0;
-        $maxNumberOfWorks = 50;
-        $firstSlideWorks = [];
-        $secondSlideWorks = [];
-        $thirdSlideWorks = [];
-        $fourthSlideWorks = [];
+            $workExamples =\App\Project::where('user_id',$freelancer->id)->orderBy('order','ASC')->get();
+            $i = 0;
+            $maxNumberOfWorks = 50;
+            $firstSlideWorks = [];
+            $secondSlideWorks = [];
+            $thirdSlideWorks = [];
+            $fourthSlideWorks = [];
         ?>
         @if($workExamples)
             <? foreach ($workExamples as $workExample):?>
-            <? if ($i >= $maxNumberOfWorks) {
-                break;
-            }
-            if (!$workExample->isActive) {
-                continue;
-            }
+                <? if ($i >= $maxNumberOfWorks) {
+                    break;
+                }
+                if (!$workExample->isActive) {
+                    continue;
+                }
 
-            if ($i < 2) {
-                $firstSlideWorks[] = $workExample;
-            } elseif ($i < 4) {
-                $secondSlideWorks[] = $workExample;
-            } elseif ($i < 6) {
-                $thirdSlideWorks[] = $workExample;
-            } elseif ($i < 8) {
-                $fourthSlideWorks[] = $workExample;
-            }
-            ?>
+                if ($i < 2) {
+                    $firstSlideWorks[] = $workExample;
+                } elseif ($i < 4) {
+                    $secondSlideWorks[] = $workExample;
+                } elseif ($i < 6) {
+                    $thirdSlideWorks[] = $workExample;
+                } elseif ($i < 8) {
+                    $fourthSlideWorks[] = $workExample;
+                }
+                ?>
             {{-- modal --}}
-            <div class="modal fade" id="works{{$workExample->id}}Modal" tabindex="-1"
+                <div class="modal fade" id="works{{$workExample->id}}Modal" tabindex="-1"
                  role="dialog"
                  aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document" style="">
@@ -81,13 +81,13 @@
                     </div>
                 </div>
             </div>
-            <? $i++;?>
+                <? $i++;?>
             <? endforeach;?>
         @endif
 
         {{-- works section carousel --}}
             <? $numSlides = 0;?>
-        <div id="portfolioCarousel{{$freelancer->id}}{{$value['id']}}" class="carousel slide d-md-block" data-ride="carousel"
+            <div id="portfolioCarousel{{$freelancer->id}}{{$value['id']}}" class="carousel slide d-md-block" data-ride="carousel"
              data-interval="false">
             <div class="carousel-inner" style="background: #fdfdfd;">
                 @if(!empty($firstSlideWorks))
@@ -228,11 +228,10 @@
                 @endif
             </div>
         </div>
-
         {{-- end of works section --}}
 
         {{-- carousel controls --}}
-        <div class="row carouselControls" style="width: 100%;">
+            <div class="row carouselControls" style="width: 100%;">
             <div class=" col-12 text-center NoDecor">
                 <a href="javascript:void(0)" id="prevSlide{{$freelancer->id}}{{$value['id']}}"  data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}" data-slide-to="4" role="button" data-slide="prev" class="cardLabel_interviews noScroll prevSlide"
                    style="color:#697786;">

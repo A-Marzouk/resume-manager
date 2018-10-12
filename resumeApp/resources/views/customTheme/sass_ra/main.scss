@@ -160,6 +160,10 @@ body{
   padding: 3px;
   background: #A4B7ED;
   border: 2px solid #A4B7ED;
+  @media only screen and (max-width: 325px) {
+    height:100px;
+    width: 100px;
+  }
 }
 
 .freelancerName{
@@ -637,11 +641,15 @@ body{
     height: 242px;
     overflow: hidden;
     border-radius: 12px;
+    @media only screen and (max-width: 600px) {
+      height: 216px;
+    }
    img{
      width: 100%;
      padding: 1%;
      border-radius: 12px;
    }
+
   }
   .workTitle{
     color: #697786;
@@ -2212,6 +2220,9 @@ body{
       text-align: left;
       padding-left: 6px;
     }
+    @media only screen and (max-width: 325px) {
+      padding-left: 0;
+    }
   }
   .navRow{
     height: 50px;
@@ -2235,7 +2246,7 @@ body{
     }
     .navTab.active{
       border-bottom: 5px solid #4E75E8;
-      padding-bottom: 5px;
+      padding-bottom: 8px;
     }
 
   }
@@ -2403,6 +2414,15 @@ body{
   padding: 8px 10px 5px 10px;
   a{
     color: #4E75E8;
+  }
+  @media only screen and (max-width: 325px) {
+    margin-left: 0;
+  }
+}
+
+.carouselControls{
+  @media only screen and (max-width: 992px) {
+    padding-top: 15px;
   }
 }
 

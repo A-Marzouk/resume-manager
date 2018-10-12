@@ -53261,7 +53261,16 @@ resumeCardContent.on('click', '.showPortfolio', function () {
         setTimeout(function () {
             tapsArea.html(portfolioContent);
             tapsArea.fadeIn(500);
+            // show the portfolio content on phone :
+            var portfolioContent_mob = $('#portfolioContent' + freelancerID + '_mob');
+            portfolioContent_mob.fadeIn(500);
         }, 450);
+
+        // show the portfolio content on phone :
+        var portfolioContent_mob = $('#portfolioContent' + freelancerID + '_mob');
+        if (portfolioContent_mob.hasClass('d-none')) {
+            portfolioContent_mob.removeClass('d-none');
+        }
     }
 });
 
@@ -53279,6 +53288,9 @@ resumeCardContent.on('click', '.showWork', function () {
         var workContent = $('#workContent' + freelancerID).html();
         var tapsArea = $('#tapsArea' + freelancerID);
         tapsArea.fadeOut(500);
+        // show the portfolio content on phone :
+        var portfolioContent_mob = $('#portfolioContent' + freelancerID + '_mob');
+        portfolioContent_mob.fadeOut(500);
         setTimeout(function () {
             tapsArea.html(workContent);
             tapsArea.fadeIn(500);
@@ -53300,6 +53312,9 @@ resumeCardContent.on('click', '.showEducation', function () {
         var educationContent = $('#educationContent' + freelancerID).html();
         var tapsArea = $('#tapsArea' + freelancerID);
         tapsArea.fadeOut(500);
+        // show the portfolio content on phone :
+        var portfolioContent_mob = $('#portfolioContent' + freelancerID + '_mob');
+        portfolioContent_mob.fadeOut(500);
         setTimeout(function () {
             tapsArea.html(educationContent);
             tapsArea.fadeIn(500);

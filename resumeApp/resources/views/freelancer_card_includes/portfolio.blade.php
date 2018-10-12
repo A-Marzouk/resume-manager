@@ -151,38 +151,42 @@
 {{-- end of portfolio --}}
 
 {{-- using slick --}}
-<div class="single-item showOnlyOnsm" id="portfolioContent{{$freelancer->id}}{{$value['id']}}_mob">
-    <? $slidesCount =0; ?>
-    @foreach($workExamples as $workExample)
-        @if($slidesCount <= 8)
-            <? $slidesCount++;?>
-            <div class="col-md-12">
-                <div class="workCard" style="margin-left: 0">
-                    <div class="workImg">
-                        <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
-                           data-target="#works{{$workExample->id}}Modal">
-                            <img src="/{{$workExample->mainImage}}" alt="work img"
-                                 width="260" >
-                        </a>
-                    </div>
-                    <div class="workTitle">
-                        <div class="row">
-                            <div class="col-md-9 col-9">
-                                {{$workExample->projectName}}
+<div id="portfolioContent{{$freelancer->id}}{{$value['id']}}_mob">
+    <div class="showOnlyOnsm">
+        <div class="single-item" >
+            <? $slidesCount =0; ?>
+            @foreach($workExamples as $workExample)
+                @if($slidesCount <= 8)
+                    <? $slidesCount++;?>
+                    <div class="col-md-12">
+                        <div class="workCard" style="margin-left: 0">
+                            <div class="workImg">
+                                <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
+                                   data-target="#works{{$workExample->id}}Modal">
+                                    <img src="/{{$workExample->mainImage}}" alt="work img"
+                                         width="260" >
+                                </a>
                             </div>
-                            <a class="col-md-2 col-1" href="javascript:void(0)"
-                               data-toggle="modal"
-                               data-target="#works{{$workExample->id}}Modal"
-                               style="outline: none;">
-                                <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
-                                     alt="view work">
-                            </a>
+                            <div class="workTitle">
+                                <div class="row">
+                                    <div class="col-md-9 col-9">
+                                        {{$workExample->projectName}}
+                                    </div>
+                                    <a class="col-md-2 col-1" href="javascript:void(0)"
+                                       data-toggle="modal"
+                                       data-target="#works{{$workExample->id}}Modal"
+                                       style="outline: none;">
+                                        <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                             alt="view work">
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        @endif
-    @endforeach
+                @endif
+            @endforeach
+        </div>
+    </div>
 </div>
 {{-- end of using slick --}}
 

@@ -83,7 +83,7 @@
 ];
 ?>
 
-<div id="nav-taps-resume">
+<div id="nav-taps-resume" class="showOnlyOnmd">
     <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
             <a class="nav-link text-center active" href="#languagesTab{{$freelancer->id}}{{$value['id']}}" role="tab" data-toggle="tab">
@@ -192,6 +192,44 @@
             <div class="text-center panelFormLabel" style="padding-top: 17px; padding-bottom: 17px;">
                 No skills found
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="showOnlyOnsm">
+    <div class="row" style="border-top:1px solid #EBEDEF; padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
+        <div class="col-md-12  text-center">
+                    <span class="skillsCard">
+                        <?
+                        $skills_2 = $freelancer->userData->primarySkills;
+
+                        $skillsArr_2 = explode(',',$skills_2);
+
+                        $j = 0 ;
+                        foreach ($skillsArr_2 as $skill_2){
+                            if($j<=5){
+                                $allSKills[] = $skill_2;
+                            }
+                            $j++;
+                        }
+                        $i=0;
+                        ?>
+                        @foreach($allSKills as $skill)
+                            <? if($i<6):?>
+                            <?
+                            $imgSrc = '/resumeApp/resources/assets/images/skills_icons/skill.png' ;
+                            if(isset($skillsDesigner[$skill]) && !empty($skillsDesigner[$skill])){
+                                $imgSrc = $skillsDesigner[$skill] ;
+                            }
+                            ?>
+                            <span id="skillContainer{{$i}}" class="highlightSkill">
+                    <img style="width: 17px;padding-bottom: 3px;" src="{{$imgSrc}}" alt="skill" id="skillImage{{$i}}">
+                                {{$skill}} &nbsp;&nbsp;
+                </span>
+                            <? $i++;?>
+                            <? endif;?>
+                        @endforeach
+                    </span>
         </div>
     </div>
 </div>

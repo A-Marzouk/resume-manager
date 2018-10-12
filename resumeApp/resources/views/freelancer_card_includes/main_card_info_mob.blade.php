@@ -1,6 +1,6 @@
 <div class="row cardMainInfo_mob">
     <div class="col-6">
-        <div class="imageContainer" style="padding: 10px;">
+        <div class="imageContainer" style="padding: 20px 10px 10px 10px;">
             <?
             $photoSrc = $freelancer->userData->photo;
             if(!empty($photoSrc)){
@@ -22,14 +22,14 @@
                 {{$freelancer->userData->jobTitle}}
             </div>
             <div  class="text-left" style="font-size: 15px; color: white; padding-top: 5px;" >
-                <div class="cardLabel" style="font-weight: normal;">Hourly rate :
+                <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Hourly rate :
                     <span style="font-weight: bold;">
                         ${{intval($freelancer->userData->salary) +5}}
                     </span>
                 </div>
             </div>
             <div class="text-left"  style="font-size: 15px; color: white; padding-top: 5px;">
-                <div class="cardLabel" style="font-weight: normal;">Availability :  <span id="maxHours{{$freelancer->id}}{{$value['id']}}" style="font-weight: bold;">{{intval($freelancer->userData->availableHours)}}h/week</span></div>
+                <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :  <span id="maxHours{{$freelancer->id}}{{$value['id']}}" style="font-weight: bold;">{{intval($freelancer->userData->availableHours)}}h/week</span></div>
             </div>
             <div id="welcomeText{{$freelancer->id}}{{$value['id']}}" class="d-none">
                 Hi, I am {{$freelancer->firstName}}, I am a {{$freelancer->userData->jobTitle}}, How can I help
@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <div class="col-12" style="padding: 10px 20px 20px 20px;">
+    <div class="col-12" style="padding: 10px 20px 16px 20px;">
         <div class="text-center cardRow NoDecor">
             <a class="hireCardBtn btn-block" href="/stripe/hire?freelancerID={{$freelancer->id}}&hours=10&weeks=4" id="hireMeBtn{{$freelancer->id}}{{$value['id']}}">
                 Hire me
@@ -57,30 +57,37 @@
 </div>
 
 {{-- interviews --}}
-<div class="row interviewIcons" style="border-bottom: 1px solid #E6EDEE; padding-bottom: 15px;">
-    <div class="col-12 jobTitle text-center" style="color:#4E75E8; padding-top: 8px; padding-bottom: 15px;">
+<div class="row interviewIcons" style="padding:10px 0 0 0;">
+    <div class="col-12 jobTitle text-center" style="color:#4E75E8; padding-top: 0; padding-bottom: 15px; padding-left: 0;">
         View interviews
     </div>
-    <div class="col-6 audioTransArea text-center NoDecor">
-        <a href="javascript:void(0)" id="{{$freelancer->id}}{{$value['id']}}_open_audio" style="outline: none;" class="openAudio">
-            <div class="cardIconsCon">
-                <span>
-                    <img src="/resumeApp/resources/assets/images/audio_blue.png"
-                         alt="" style="padding-right: 14px; width: 34px;">
-                    <span class="audioText" style="color: #4E75E8;">Audio & Text</span>
-                </span>
-            </div>
-        </a>
+</div>
+
+<div class="row" style="padding-bottom: 15px;">
+    <div class="col-6">
+        <div class="audioTransArea text-center NoDecor">
+            <a href="javascript:void(0)" id="{{$freelancer->id}}{{$value['id']}}_open_audio" style="outline: none;" class="openAudio">
+                <div class="cardIconsCon ">
+                    <span>
+                        <img src="/resumeApp/resources/views/customTheme/images/audio_blue.png"
+                             alt="" style="padding-right: 5px; width: 23px;">
+                        <span class="audioText"  style="color: #4E75E8;">Audio & Text</span>
+                    </span>
+                </div>
+            </a>
+        </div>
     </div>
-    <div class="col-6 videoArea NoDecor">
-        <a href="javascript:void(0)" id="{{$freelancer->id}}{{$value['id']}}_open_video" style="outline: none;" class="openVideo">
-            <div class="cardIconsCon2  text-center">
-                <span>
-                    <img src="/resumeApp/resources/assets/images/video_blue.png"
-                         alt="" style="padding-right: 14px; width: 34px;">
-                    <span class="audioText" style="color: #4E75E8;">Video Interview</span>
-                </span>
-            </div>
-        </a>
+    <div class="col-6">
+        <div class="videoArea NoDecor">
+            <a href="javascript:void(0)" id="{{$freelancer->id}}{{$value['id']}}_open_video" style="outline: none;" class="openVideo">
+                <div class="cardIconsCon2  text-center">
+            <span>
+                <img src="/resumeApp/resources/views/customTheme/images/video_blue.png"
+                     alt="" style="padding-right: 5px; width: 23px;">
+                <span class="audioText"  style="color: #4E75E8;">Video</span>
+            </span>
+                </div>
+            </a>
+        </div>
     </div>
 </div>

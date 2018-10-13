@@ -1795,9 +1795,9 @@ body {
           height: auto;
           padding-bottom: 15px; } }
     .freelancerCard .resumeCardRight .hireCardBtn {
-      background-color: #00BA86;
+      background-color: white;
       border-radius: 5px;
-      color: white;
+      color: #4E75E8;
       font-family: Roboto;
       font-size: 13px;
       font-weight: 500;

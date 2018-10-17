@@ -25,11 +25,13 @@
                 {{$freelancer->userData->jobTitle}}
             </div>
 
+            @if(!$smallCard)
             <form action="/chat-room/start_conversation" method="post">
                 {{csrf_field()}}
                 <input type="hidden" name="freelancer_id" value="{{$freelancer->id}}{{$value['id']}}">
                 <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
             </form>
+            @endif
 
             <div id="welcomeText{{$freelancer->id}}{{$value['id']}}" class="d-none">
                 Hi, I am {{$freelancer->firstName}}, I am a {{$freelancer->userData->jobTitle}}, How can I help

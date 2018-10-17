@@ -1729,6 +1729,19 @@ body {
   border-bottom: 1px whitesmoke solid;
   border-top: 1px whitesmoke solid; }
 
+.summaryBtn {
+  border: none;
+  border-radius: 5px;
+  height: 43px;
+  background-color: #476DDD;
+  padding-top: 12px;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 16px;
+  text-align: center; }
+
 .freelancerCard {
   width: 910px;
   background-color: #FFFFFF;
@@ -1766,17 +1779,6 @@ body {
     height: 43px;
     padding-top: 12px;
     color: #768290;
-    font-family: Roboto;
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 16px;
-    text-align: center; }
-  .freelancerCard .summaryBtn {
-    border-radius: 5px;
-    height: 43px;
-    background-color: #476DDD;
-    padding-top: 12px;
-    color: #FFFFFF;
     font-family: Roboto;
     font-size: 14px;
     font-weight: bold;
@@ -2067,7 +2069,7 @@ body {
 
 .paymentDetails {
   padding: 36px;
-  width: 90%;
+  width: 100%;
   border: 1px solid #F5F2F2;
   border-radius: 5px;
   background-color: #FFFFFF;

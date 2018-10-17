@@ -80,14 +80,14 @@ $smallCard = true;
                         </div>
                     </div>
                 @endif
-                <div class="row hireRow" style="margin-top: 35px;">
-                    <div  class="col-md-5 offset-md-1 text-center" style="font-size: 15px; color: white;" >
+                <div class="row hireRow" style="margin-top: 35px; margin-bottom: 10px;">
+                    <div  class="col-md-5 offset-md-1 col-6 text-center" style="font-size: 15px; color: white;" >
                 <span style="font-weight: bold;">
                     ${{intval($freelancer->userData->salary) +5}}
                 </span>
                         <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Hourly rate</div>
                     </div>
-                    <div class="col-md-5 text-center"  style="font-size: 15px; color: white;">
+                    <div class="col-md-5 col-6 text-center"  style="font-size: 15px; color: white;">
                         <span id="maxHours{{$freelancer->id}}{{$value['id']}}" style="font-weight: bold;">{{intval($freelancer->userData->availableHours)}} hours</span>
                         <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly Availability</div>
                     </div>

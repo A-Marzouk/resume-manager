@@ -118,17 +118,7 @@ resumeCardContent.on('click','.openAudio',function(){
     },250)
 });
 
-resumeCardContent.on('click','.hireCardBtn',function(){
-    let ID = this.id.replace('showHireSection','');
-    let hireContent = $('#hireContent'+ID).html();
-    // change the content :
-    let fullPortfolioRow  =  $('#full_portfolio_row' + ID) ;
-    fullPortfolioRow.fadeOut(300);
-    setTimeout(function () {
-        fullPortfolioRow.html(hireContent);
-        fullPortfolioRow.fadeIn(300);
-    },250);
-});
+
 
 resumeCardContent.on('click','.openVideo',function(){
         let ID = this.id.replace('_open_video','');
@@ -156,6 +146,13 @@ resumeCardContent.on('click','.audioDismiss',function () {
 resumeCardContent.on('click','.showHireSection',function(){
     // add d-none class to the portfolio row and show the other content
     let ID =  this.id.replace('showHireSection','');
+    $('#hireSection' + ID).removeClass('d-none').show(300);
+    $('#portfolioFull' + ID).hide(300);
+});
+
+resumeCardContent.on('click','.showHireSection_mob',function(){
+    // add d-none class to the portfolio row and show the other content
+    let ID =  this.id.replace('showHireSection_mob','');
     $('#hireSection' + ID).removeClass('d-none').show(300);
     $('#portfolioFull' + ID).hide(300);
 });

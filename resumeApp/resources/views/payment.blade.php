@@ -10,11 +10,11 @@
     </div>
 
 
-    <div style="margin-left: 9.07%;">
+    <div class="paymentAndCard">
         @include('freelancer_card_small')
-        <div style="width: 910px;margin-left: 9.07%;">
+        <div class="paymentContainer">
             <div class="row">
-                <div class="col-md-6 col-12" style="padding: 41px 25px 5px 0;">
+                <div class="col-md-6 col-12 paymentOptsCont showOnlyOnmd">
                     <div class="paymentHeader">
                         Payment Options
                     </div>
@@ -33,8 +33,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-12" style="padding: 41px 0 5px 25px;">
-                    <div class="paymentHeader">
+                <div class="col-md-6 col-12 paymentDetailsCont">
+                    <div class="paymentHeader showOnlyOnmd">
                         Payment Details
                     </div>
                     <div class="paymentDetails">

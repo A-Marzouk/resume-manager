@@ -49,11 +49,7 @@
 
     <div class="col-12" style="padding: 10px 20px 16px 20px;">
         <div class="text-center cardRow NoDecor">
-            <a class="hireCardBtn btn-block" href="javascript:void(0)" id="showHireSection{{$freelancer->id}}{{$value['id']}}">
-                {{--
-                    // this should be in the booking summary
-                     href="/stripe/hire?freelancerID={{$freelancer->id}}&hours=10&weeks=4" id="hireMeBtn{{$freelancer->id}}{{$value['id']}}"
-                --}}
+            <a class="hireCardBtn btn-block showHireSection_mob" href="javascript:void(0)" id="showHireSection_mob{{$freelancer->id}}{{$value['id']}}">
                 Hire me
             </a>
         </div>

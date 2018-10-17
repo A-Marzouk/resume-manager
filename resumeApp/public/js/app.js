@@ -53199,18 +53199,6 @@ resumeCardContent.on('click', '.openAudio', function () {
     }, 250);
 });
 
-resumeCardContent.on('click', '.hireCardBtn', function () {
-    var ID = this.id.replace('showHireSection', '');
-    var hireContent = $('#hireContent' + ID).html();
-    // change the content :
-    var fullPortfolioRow = $('#full_portfolio_row' + ID);
-    fullPortfolioRow.fadeOut(300);
-    setTimeout(function () {
-        fullPortfolioRow.html(hireContent);
-        fullPortfolioRow.fadeIn(300);
-    }, 250);
-});
-
 resumeCardContent.on('click', '.openVideo', function () {
     var ID = this.id.replace('_open_video', '');
     var videoContent = $('#videoContent' + ID).html();
@@ -53237,6 +53225,13 @@ resumeCardContent.on('click', '.audioDismiss', function () {
 resumeCardContent.on('click', '.showHireSection', function () {
     // add d-none class to the portfolio row and show the other content
     var ID = this.id.replace('showHireSection', '');
+    $('#hireSection' + ID).removeClass('d-none').show(300);
+    $('#portfolioFull' + ID).hide(300);
+});
+
+resumeCardContent.on('click', '.showHireSection_mob', function () {
+    // add d-none class to the portfolio row and show the other content
+    var ID = this.id.replace('showHireSection_mob', '');
     $('#hireSection' + ID).removeClass('d-none').show(300);
     $('#portfolioFull' + ID).hide(300);
 });

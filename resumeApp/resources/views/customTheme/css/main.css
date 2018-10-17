@@ -1742,6 +1742,32 @@ body {
   line-height: 16px;
   text-align: center; }
 
+.paymentAndCard {
+  margin-left: 9.07%; }
+  @media only screen and (max-width: 768px) {
+    .paymentAndCard {
+      margin: 0; } }
+
+.paymentOptsCont {
+  padding: 41px 25px 5px 0; }
+  @media only screen and (max-width: 768px) {
+    .paymentOptsCont {
+      padding: 20px; } }
+
+.paymentDetailsCont {
+  padding: 41px 0 5px 25px; }
+  @media only screen and (max-width: 768px) {
+    .paymentDetailsCont {
+      padding: 20px; } }
+
+.paymentContainer {
+  width: 910px;
+  margin-left: 9.07%; }
+  @media only screen and (max-width: 768px) {
+    .paymentContainer {
+      margin: 0;
+      width: 100%; } }
+
 .freelancerCard {
   width: 910px;
   background-color: #FFFFFF;
@@ -1761,6 +1787,9 @@ body {
     line-height: 14px;
     padding-bottom: 4px;
     padding-top: 55px; }
+    @media only screen and (max-width: 768px) {
+      .freelancerCard .hireText {
+        padding-top: 30px; } }
   .freelancerCard .hoursBtn {
     border: 1px solid #D5D8DE;
     border-radius: 4px;

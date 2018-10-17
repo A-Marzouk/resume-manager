@@ -41,7 +41,7 @@
         <div class="col-6" style="margin-top: -39px; padding-left: 28px;">
             <form action="/chat-room/start_conversation" method="post">
                 {{csrf_field()}}
-                <input type="hidden" name="freelancer_id" value="{{$freelancer->id}}{{$value['id']}}">
+                <input type="hidden" name="freelancer_id" value="{{$freelancer->id}}">
                 <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
             </form>
         </div>
@@ -49,7 +49,11 @@
 
     <div class="col-12" style="padding: 10px 20px 16px 20px;">
         <div class="text-center cardRow NoDecor">
-            <a class="hireCardBtn btn-block" href="/stripe/hire?freelancerID={{$freelancer->id}}&hours=10&weeks=4" id="hireMeBtn{{$freelancer->id}}{{$value['id']}}">
+            <a class="hireCardBtn btn-block" href="javascript:void(0)" id="showHireSection{{$freelancer->id}}{{$value['id']}}">
+                {{--
+                    // this should be in the booking summary
+                     href="/stripe/hire?freelancerID={{$freelancer->id}}&hours=10&weeks=4" id="hireMeBtn{{$freelancer->id}}{{$value['id']}}"
+                --}}
                 Hire me
             </a>
         </div>

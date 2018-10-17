@@ -118,17 +118,29 @@ resumeCardContent.on('click','.openAudio',function(){
     },250)
 });
 
-resumeCardContent.on('click','.openVideo',function(){
-    let ID = this.id.replace('_open_video','');
-    let videoContent = $('#videoContent'+ID).html();
+resumeCardContent.on('click','.hireCardBtn',function(){
+    let ID = this.id.replace('showHireSection','');
+    let hireContent = $('#hireContent'+ID).html();
     // change the content :
-    let resumeRightArea  =  $('#resumeCardRight' + ID) ;
-    resumeRightArea.fadeOut(300);
+    let fullPortfolioRow  =  $('#full_portfolio_row' + ID) ;
+    fullPortfolioRow.fadeOut(300);
     setTimeout(function () {
-        resumeRightArea.html(videoContent);
-        resumeRightArea.fadeIn(300);
-    },250)
+        fullPortfolioRow.html(hireContent);
+        fullPortfolioRow.fadeIn(300);
+    },250);
 });
+
+resumeCardContent.on('click','.openVideo',function(){
+        let ID = this.id.replace('_open_video','');
+        let videoContent = $('#videoContent'+ID).html();
+        // change the content :
+        let resumeRightArea  =  $('#resumeCardRight' + ID) ;
+        resumeRightArea.fadeOut(300);
+        setTimeout(function () {
+            resumeRightArea.html(videoContent);
+            resumeRightArea.fadeIn(300);
+        },250)
+    });
 
 resumeCardContent.on('click','.audioDismiss',function () {
     let ID = this.id.replace('audio_dismiss','');
@@ -141,6 +153,20 @@ resumeCardContent.on('click','.audioDismiss',function () {
     },250)
 });
 
+resumeCardContent.on('click','.showHireSection',function(){
+    // add d-none class to the portfolio row and show the other content
+    let ID =  this.id.replace('showHireSection','');
+    $('#hireSection' + ID).removeClass('d-none').show(300);
+    $('#portfolioFull' + ID).hide(300);
+});
+
+resumeCardContent.on('click','.cancelBooking',function(){
+    // add d-none class to the portfolio row and show the other content
+    let ID =  this.id.replace('cancelBooking','');
+    $('#hireSection' + ID).hide(300);
+    $('#portfolioFull' + ID).show(300);
+});
+
 
 
 // client page ( resume cards )
@@ -151,7 +177,6 @@ resumeCardContent.on('mouseover','.highlightSkill',function () {
     let ID         = this.id.replace('skillContainer','');
     let skillImg   = $('#skillImage'+ID);
     skillImg.css('filter','grayscale(0)');
-    skillImg.css('width','21');
 });
 
 resumeCardContent.on('mouseout','.highlightSkill',function () {
@@ -160,7 +185,6 @@ resumeCardContent.on('mouseout','.highlightSkill',function () {
     // change the src of the image to colored
     let skillImg   = $('#skillImage'+ID);
     skillImg.css('filter','grayscale(100%)');
-    skillImg.css('width','20');
 });
 
 
@@ -275,4 +299,20 @@ resumeCardContent.on('click','.desc',function () {
     $(this).css('text-overflow','unset');
     $(this).css('overflow','normal');
     $(this).css('white-space','normal');
+});
+
+$(".carousel").on("touchstart", function(event){
+    var xClick = event.originalEvent.touches[0].pageX;
+    $(this).one("touchmove", function(event){
+        var xMove = event.originalEvent.touches[0].pageX;
+        if( Math.floor(xClick - xMove) > 5 ){
+            $(this).carousel('next');
+        }
+        else if( Math.floor(xClick - xMove) < -5 ){
+            $(this).carousel('prev');
+        }
+    });
+    $(".carousel").on("touchend", function(){
+        $(this).off("touchmove");
+    });
 });

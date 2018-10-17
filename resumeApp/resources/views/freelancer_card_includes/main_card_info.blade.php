@@ -85,7 +85,7 @@
                 <div class="col-md-4" style="padding: 0;">
                     @if($freelancer->userData->availableHours !=0)
                         <div class="row text-center cardRow NoDecor">
-                            <a class="hireCardBtn btn-block " href="/stripe/hire?freelancerID={{$freelancer->id}}&hours=10&weeks=4" id="hireMeBtn{{$freelancer->id}}{{$value['id']}}">
+                            <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" id="showHireSection{{$freelancer->id}}{{$value['id']}}">
                                 Hire me
                             </a>
                         </div>

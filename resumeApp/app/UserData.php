@@ -9,7 +9,7 @@ class UserData extends Model
     protected $fillable = [
         'name', 'birth_date','user_id','email','city','nationality','languages','design_styles','photo','trainings',
         'design_skills','design_skills_checkbox','professional_attributes','personal_interests','audio','works','workForceAgent',
-        'careerObjective','education','workExperience','primarySkills','charSkills','availableHours','salary',
+        'careerObjective','education','workExperience','primarySkills','charSkills','availableHours','salary','salary_month',
         'currency','preferredTime','surname','jobTitle','intro','githubLink','stackoverflowLink','googleCalendar','personalSite'
         ,'terms','MondayHours','TuesdayHours','WednesdayHours','ThursdayHours','FridayHours','SaturdayHours','SundayHours','behanceLink',
         'instagramLink','dribbleLink','freeDate','workDesc1','workDesc2','workDesc3',

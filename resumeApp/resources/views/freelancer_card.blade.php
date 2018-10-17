@@ -9,44 +9,6 @@
 <div class="freelancerCard" id="card{{$freelancer->id}}{{$value['id']}}">
 
     <div class="row">
-        {{--<div class="col-lg-12 col-md-12 col-12 resumeCardLeft text-center">--}}
-
-            {{--<div class="row text-center cardRow">--}}
-                {{--<div class="col-12 nameCard">--}}
-                    {{--<div class="cardLabel" style="font-size: 14px;">Select hours</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="row">--}}
-                {{--<div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1 hoursBtn col-8 offset-2 NoDecor" style="padding: 11px 0 0 0 ;">--}}
-                    {{--<a href="javascript:void(0)" id="hoursMinus{{$freelancer->id}}{{$value['id']}}" class="hoursMinus">--}}
-                        {{--<img src="/resumeApp/resources/views/customTheme/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">--}}
-                    {{--</a>--}}
-                    {{--<span id="numberOfHours{{$freelancer->id}}{{$value['id']}}">@if($freelancer->userData->availableHours==0) 0 @else {{$freelancer->userData->availableHours}} @endif</span> hours--}}
-                    {{--<a href="javascript:void(0)" id="hoursPlus{{$freelancer->id}}{{$value['id']}}" class="hoursPlus">--}}
-                        {{--<img src="/resumeApp/resources/views/customTheme/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus">--}}
-                    {{--</a>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-
-            {{--<div class="row text-center cardRow">--}}
-                {{--<div class="col-12 nameCard">--}}
-                    {{--<div class="cardLabel" style="font-size: 14px;">Select weeks</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="row">--}}
-                {{--<div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1 hoursBtn col-8 offset-2 NoDecor" style="padding: 11px 0 0 0 ;">--}}
-                    {{--<a href="javascript:void(0)" id="weeksMinus{{$freelancer->id}}{{$value['id']}}" class="weeksMinus">--}}
-                        {{--<img src="/resumeApp/resources/views/customTheme/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">--}}
-                    {{--</a>--}}
-                    {{--<span id="numberOfWeeks{{$freelancer->id}}{{$value['id']}}">4</span> weeks--}}
-                    {{--<a href="javascript:void(0)" id="weeksPlus{{$freelancer->id}}{{$value['id']}}" class="weeksPlus">--}}
-                        {{--<img src="/resumeApp/resources/views/customTheme/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus">--}}
-                    {{--</a>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-
-
-        {{--</div>--}}
 
         <div class="col-lg-12 col-md-12 col-12 resumeCardRight" id="resumeCardRight{{$freelancer->id}}{{$value['id']}}">
             <div class="showOnlyOnmd">
@@ -56,11 +18,17 @@
             <div class="showOnlyOnsm">
                 @include('freelancer_card_includes.main_card_info_mob')
             </div>
+
             @include('freelancer_card_includes.skills')
 
-            @include('freelancer_card_includes.navRow')
+            <div id="portfolioFull{{$freelancer->id}}{{$value['id']}}">
+                @include('freelancer_card_includes.navRow')
+                @include('freelancer_card_includes.portfolio')
+            </div>
+            <div class="d-none" id="hireSection{{$freelancer->id}}{{$value['id']}}">
+                @include('freelancer_card_includes.hireSection')
+            </div>
 
-            @include('freelancer_card_includes.portfolio')
         </div>
 
     </div>
@@ -317,8 +285,12 @@
         </div>
 
         @include('freelancer_card_includes.skills')
+        <div id="portfolioFull{{$freelancer->id}}{{$value['id']}}">
+            @include('freelancer_card_includes.navRow')
+            @include('freelancer_card_includes.portfolio')
+        </div>
+        <div class="d-none" id="hireSection{{$freelancer->id}}{{$value['id']}}">
+            @include('freelancer_card_includes.hireSection')
+        </div>
 
-        @include('freelancer_card_includes.navRow')
-
-        @include('freelancer_card_includes.portfolio')
     </div>

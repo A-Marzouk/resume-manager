@@ -2122,23 +2122,56 @@ body{
     margin-left: auto;
   }
 
+  .hireText{
+    color: #818C99;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 14px;
+    padding-bottom: 4px;
+    padding-top: 55px;
+  }
+
+  .hoursBtn{
+    border: 1px solid #D5D8DE;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    height: 32px;
+    padding-top: 7px;
+    color: #30323D;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 19px;
+    text-align: center;
+  }
+
+  .cancelBtn{
+    border: 1px solid #DEDEDE;
+    border-radius: 5px;
+    height: 43px;
+    padding-top: 12px;
+    color: #768290;	font-family: Roboto;	font-size: 14px;	font-weight: bold;	line-height: 16px;	text-align: center;
+  }
+
+  .summaryBtn{
+    border-radius: 5px;
+    height: 43px;
+    background-color: #476DDD;
+    padding-top: 12px;
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 14px;	font-weight: bold;
+    line-height: 16px;
+    text-align: center;
+  }
+
   .resumeCardLeft{
     border-right: 1px solid #E5ECED;
     background-color: #FDFDFD;
     .cardRow{
       text-align: center;
       padding-top:25px ;
-    }
-    .hoursBtn{
-      border: 1px solid #D5D8DE;
-      border-radius: 4px;
-      background-color: #FFFFFF;
-      height: 43px;
-      color: #30323D;
-      font-family: Roboto;
-      font-size: 16px;
-      font-weight: bold;
-      line-height: 19px;
     }
     .imageContainer{
       height: 196px;

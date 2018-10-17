@@ -20,7 +20,11 @@
                 if($booking->client_id){
                     $clientName = App\Client::where('id',$booking->client_id)->first()->name ;
                 }
-                $freelancer     = App\User::where('id',$booking->user_id)->first();
+                    $freelancer     = App\User::where('id',$booking->user_id)->first();
+
+                    if(!$freelancer){
+                        continue;
+                    }
                 ?>
                 <label class="form-check-label col-md-3 checkBoxContainer checkBoxText">
                     <input  style="@if($errors->has('availableHours')) border:1px solid red; @endif" class="form-check-input" id="selectedBooking{{$booking->id}}" type="checkbox" name="selectedBookings[]" value="{{$booking->id}}">

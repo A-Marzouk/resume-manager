@@ -22,15 +22,15 @@ $smallCard = true;
                     }
                     ?>
                     <img src="{{$photoSrc}}" alt="freelancer" class="freelancerImg"
-                         width="100" height="100">
+                         width="96" height="96">
                 </div>
             </div>
             <div class="col-lg-3 col-md-4 col-6 freelancerCardLeft">
                 <div class="nameArea">
-                    <div class="nameCard">
+                    <div class="nameCard" style="padding-top: 26px;">
                         {{$freelancer->firstName}}
                     </div>
-                    <div class="jobTitle" style="color: white; font-size: 14px; padding-top: 7px;" id="animatedText{{$freelancer->id}}{{$value['id']}}">
+                    <div class="jobTitle" style="color: white; font-size: 14px; padding-top: 7px; padding-left: 0;" id="animatedText{{$freelancer->id}}{{$value['id']}}">
                         {{$freelancer->userData->jobTitle}}
                     </div>
 
@@ -80,11 +80,11 @@ $smallCard = true;
                         </div>
                     </div>
                 @endif
-                <div class="row hireRow" style="margin-top: 35px; margin-bottom: 10px;">
+                <div class="row hireRow showOnlyOnmd" style="margin-top: 35px; margin-bottom: 10px;">
                     <div  class="col-md-5 offset-md-1 col-6 text-center" style="font-size: 15px; color: white;" >
-                <span style="font-weight: bold;">
-                    ${{intval($freelancer->userData->salary) +5}}
-                </span>
+                        <span style="font-weight: bold;">
+                            ${{intval($freelancer->userData->salary) +5}}
+                        </span>
                         <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Hourly rate</div>
                     </div>
                     <div class="col-md-5 col-6 text-center"  style="font-size: 15px; color: white;">

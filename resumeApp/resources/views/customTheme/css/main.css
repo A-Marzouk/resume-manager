@@ -1767,7 +1767,7 @@ body {
   padding: 41px 0 5px 25px; }
   @media only screen and (max-width: 768px) {
     .paymentDetailsCont {
-      padding: 20px; } }
+      padding: 0; } }
 
 .paymentContainer {
   width: 910px;

@@ -16,7 +16,7 @@
     <div class="col-6 resumeCardRight">
         <div class="nameArea">
             <div class="nameCard">
-                {{$freelancer->firstName}} {{$freelancer->lastName}}
+                {{$freelancer->firstName}}
             </div>
             <div class="jobTitle" style="font-size: 17px; padding-left: 0; color: #c1d1ff" id="animatedText{{$freelancer->id}}{{$value['id']}}">
                 {{$freelancer->userData->jobTitle}}

@@ -150,7 +150,7 @@
     <div id="portfolioContent{{$freelancer->id}}{{$value['id']}}_mob">
         <div class="showOnlyOnsm">
             {{-- works section carousel --}}
-            <div id="portfolioCarousel{{$freelancer->id}}{{$value['id']}}_mob" class="carousel slide d-md-block" data-ride="carousel"
+            <div id="portfolioCarousel{{$freelancer->id}}{{$value['id']}}_mob" class="carousel slide" data-ride="carousel"
                  data-interval="false">
                 <div class="carousel-inner" style="background: #fdfdfd;">
                     @if(!empty($workExamples))
@@ -195,19 +195,17 @@
             {{-- carousel controls --}}
             <div class="row carouselControls" style="width: 100%;">
                 <div class=" col-12 text-center NoDecor">
-                    @for($i=0; $i<count($workExamples); $i++)
-                        <a href="javascript:void(0)" data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}_mob" data-slide-to="{{$i}}" role="button" class="noScroll"
-                           style="color:#697786;">
-                            o
-                        </a>
-                    @endfor
+                    <ol class="carousel-indicators" style="position: relative;margin-bottom: -5px; margin-top: 18px;">
+                        @for($i=0; $i<count($workExamples); $i++)
+                            <li data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}_mob" data-slide-to="{{$i}}" class="active"></li>
+                        @endfor
+                    </ol>
                 </div>
             </div>
             {{--end of carousel controller--}}
+
         </div>
     </div>
-
 </div>
 
 {{-- end of portfolio --}}
-

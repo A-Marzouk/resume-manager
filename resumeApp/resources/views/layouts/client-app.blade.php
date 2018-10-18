@@ -576,6 +576,20 @@ if($user){
 </div>
 <script type="text/javascript" src="/resumeApp/public/js/app.js"></script>
 <script type="text/javascript" src="/resumeApp/resources/views/customTheme/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js" type="text/javascript"></script>
+<script>
+    $(".carousel.slide").swipe({
+
+        swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+
+            if (direction == 'left') $(this).carousel('next');
+            if (direction == 'right') $(this).carousel('prev');
+
+        },
+        allowPageScroll:"vertical"
+
+    });
+</script>
 <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -584,6 +598,7 @@ if($user){
         src="https://code.jquery.com/jquery-migrate-3.0.1.min.js"
         integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4="
         crossorigin="anonymous"></script>
+
 <script type="text/javascript" src="/resumeApp/resources/views/customTheme/js/slick-master/slick/slick.min.js"></script>
 <script type="text/javascript" src="/resumeApp/resources/views/customTheme/js/custom.js"></script>
 <script>
@@ -684,6 +699,7 @@ if($user){
     }
 
     $(".designerBtn a").one("click", handler1);
+
 
 </script>
 

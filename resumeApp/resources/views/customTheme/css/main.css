@@ -1143,6 +1143,15 @@ body {
 .carousel-item.active .tabsArea .tabText {
   border-bottom: 2px solid  #AC81FC; }
 
+.carousel-indicators li {
+  height: 6px;
+  width: 6px;
+  background: #F1F0F0;
+  border-radius: 50%; }
+
+.carousel-indicators li.active {
+  background: #85C8EC; }
+
 .tabsArea {
   padding-top: 30px; }
   .tabsArea .tabText {

@@ -444,12 +444,6 @@ body {
   padding-left: 40px;
   padding-top: 4px;
   word-spacing: .15rem; }
-  @media only screen and (max-width: 991px) {
-    .aboutSubText .desc {
-      width: 160px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden; } }
 .aboutSubText .company {
   color: #474953;
   font-family: Roboto;

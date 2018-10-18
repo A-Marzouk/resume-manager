@@ -523,7 +523,10 @@ body{
     padding-top: 4px;
     word-spacing: .15rem;
     @media only screen and (max-width: 991px){
-
+      //width: 160px;
+      //text-overflow: ellipsis;
+      //white-space: nowrap;
+      //overflow: hidden;
     }
   }
 

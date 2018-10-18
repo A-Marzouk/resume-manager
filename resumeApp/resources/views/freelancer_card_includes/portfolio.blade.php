@@ -146,69 +146,68 @@
         </div>
 
     </div>
-</div>
 
-{{-- end of portfolio --}}
-
-{{-- using slick --}}
-<div id="portfolioContent{{$freelancer->id}}{{$value['id']}}_mob">
-    <div class="showOnlyOnsm">
-        {{-- works section carousel --}}
-        <div id="portfolioCarousel{{$freelancer->id}}{{$value['id']}}_mob" class="carousel slide d-md-block" data-ride="carousel"
-             data-interval="false">
-            <div class="carousel-inner" style="background: #fdfdfd;">
-                @if(!empty($workExamples))
-                    <? $i=1;?>
-                    @foreach($workExamples as $workExample)
-                        <div class="carousel-item @if($i===1) active @endif">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="workCard" style="margin-left: 0">
-                                        <div class="workImg">
-                                            <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
-                                               data-target="#works{{$workExample->id}}Modal">
-                                                <img src="/{{$workExample->mainImage}}" alt="work img"
-                                                     width="260" >
-                                            </a>
-                                        </div>
-                                        <div class="workTitle">
-                                            <div class="row">
-                                                <div class="col-md-10 col-9">
-                                                    {{$workExample->projectName}}
-                                                </div>
-                                                <a class="col-md-1 col-1" href="javascript:void(0)"
-                                                   data-toggle="modal"
-                                                   data-target="#works{{$workExample->id}}Modal"
-                                                   style="outline: none; margin-left: 16px;">
-                                                    <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
-                                                         alt="view work">
+    <div id="portfolioContent{{$freelancer->id}}{{$value['id']}}_mob">
+        <div class="showOnlyOnsm">
+            {{-- works section carousel --}}
+            <div id="portfolioCarousel{{$freelancer->id}}{{$value['id']}}_mob" class="carousel slide d-md-block" data-ride="carousel"
+                 data-interval="false">
+                <div class="carousel-inner" style="background: #fdfdfd;">
+                    @if(!empty($workExamples))
+                        <? $i=1;?>
+                        @foreach($workExamples as $workExample)
+                            <div class="carousel-item @if($i===1) active @endif">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="workCard" style="margin-left: 0">
+                                            <div class="workImg">
+                                                <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
+                                                   data-target="#works{{$workExample->id}}Modal">
+                                                    <img src="/{{$workExample->mainImage}}" alt="work img"
+                                                         width="260" >
                                                 </a>
+                                            </div>
+                                            <div class="workTitle">
+                                                <div class="row">
+                                                    <div class="col-md-10 col-9">
+                                                        {{$workExample->projectName}}
+                                                    </div>
+                                                    <a class="col-md-1 col-1" href="javascript:void(0)"
+                                                       data-toggle="modal"
+                                                       data-target="#works{{$workExample->id}}Modal"
+                                                       style="outline: none; margin-left: 16px;">
+                                                        <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                                             alt="view work">
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <? $i++ ;?>
-                    @endforeach
-                @endif
+                            <? $i++ ;?>
+                        @endforeach
+                    @endif
+                </div>
             </div>
-        </div>
-        {{-- end of works section carousel --}}
+            {{-- end of works section carousel --}}
 
-        {{-- carousel controls --}}
-        <div class="row carouselControls" style="width: 100%;">
-            <div class=" col-12 text-center NoDecor">
-                @for($i=0; $i<count($workExamples); $i++)
-                    <a href="javascript:void(0)" data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}_mob" data-slide-to="{{$i}}" role="button" class="noScroll"
-                       style="color:#697786;">
-                        o
-                    </a>
-                @endfor
+            {{-- carousel controls --}}
+            <div class="row carouselControls" style="width: 100%;">
+                <div class=" col-12 text-center NoDecor">
+                    @for($i=0; $i<count($workExamples); $i++)
+                        <a href="javascript:void(0)" data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}_mob" data-slide-to="{{$i}}" role="button" class="noScroll"
+                           style="color:#697786;">
+                            o
+                        </a>
+                    @endfor
+                </div>
             </div>
+            {{--end of carousel controller--}}
         </div>
-        {{--end of carousel controller--}}
     </div>
+
 </div>
-{{-- end of using slick --}}
+
+{{-- end of portfolio --}}
 

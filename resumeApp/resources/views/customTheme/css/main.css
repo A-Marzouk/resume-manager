@@ -1855,7 +1855,7 @@ body {
       background: #fdfdfd; }
       @media only screen and (max-width: 769px) {
         .freelancerCard .resumeCardRight .portfolioRow {
-          height: auto;
+          height: 380px;
           padding-bottom: 15px; } }
     .freelancerCard .resumeCardRight .hireCardBtn {
       background-color: white;

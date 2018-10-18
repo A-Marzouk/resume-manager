@@ -41,8 +41,6 @@
         <div id="educationContent{{$freelancer->id}}{{$value['id']}}" class="education about addScroll">
             <div class="row" style="padding-top: 35px;">
                 <div class="col-12 educationSection">
-                    <img src="/resumeApp/resources/views/customTheme/images/newResume/education.png"
-                         alt="aboutImg" width="30px;">
                     <span class="aboutText">EDUCATION</span>
                     <div class="aboutText">
                         <? if(!empty($freelancer->userData->eduTitle1)):?>
@@ -80,8 +78,6 @@
                     </div>
                 </div>
                 <div class="col-12 paddingTop_mob" style="padding-top: 15px;">
-                    <img src="/resumeApp/resources/views/customTheme/images/newResume/trainings.png"
-                         alt="aboutImg" width="30px;">
                     <span class="aboutText">TRAININGS</span>
                     <div class="aboutText">
                         <? if(!empty($freelancer->userData->trnTitle1)):?>

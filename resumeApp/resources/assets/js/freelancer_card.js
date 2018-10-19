@@ -137,8 +137,10 @@ resumeCardContent.on('click','.audioDismiss',function () {
     let defaultContent     = $('#defaultContent'+ID).html();
     let resumeRightArea    = $('#resumeCardRight' + ID) ;
     resumeRightArea.fadeOut(300);
+    let portfolioContent_mob = $('#portfolioContent'+ID+'_mob') ;
     setTimeout(function () {
         resumeRightArea.html(defaultContent);
+        portfolioContent_mob.removeClass('d-none');
         resumeRightArea.fadeIn(300);
     },250)
 });
@@ -196,6 +198,9 @@ resumeCardContent.on('click','.showPortfolio',function(){
         // remove class from other taps :
         $('#showWork'+freelancerID).removeClass('active');
         $('#showEducation'+freelancerID).removeClass('active');
+        $('#showInterviews'+freelancerID).removeClass('active');
+        $('#showSkills'+freelancerID).removeClass('active');
+
 
         // change the content :
         let portfolioContent     = $('#portfolioContent'+freelancerID).html();
@@ -220,6 +225,7 @@ resumeCardContent.on('click','.showWork',function(){
         // remove class from other taps :
         $('#showPortfolio'+freelancerID).removeClass('active');
         $('#showEducation'+freelancerID).removeClass('active');
+        $('#showSkills'+freelancerID).removeClass('active');
 
         // change the content :
         let workContent     = $('#workContent'+freelancerID).html();
@@ -236,7 +242,6 @@ resumeCardContent.on('click','.showWork',function(){
     }
 });
 
-
 resumeCardContent.on('click','.showEducation',function(){
     let freelancerID = this.id.replace('showEducation','');
 
@@ -246,6 +251,8 @@ resumeCardContent.on('click','.showEducation',function(){
         // remove class from other taps :
         $('#showWork'+freelancerID).removeClass('active');
         $('#showPortfolio'+freelancerID).removeClass('active');
+        $('#showSkills'+freelancerID).removeClass('active');
+
 
         // change the content :
         let educationContent     = $('#educationContent'+freelancerID).html();
@@ -260,6 +267,61 @@ resumeCardContent.on('click','.showEducation',function(){
         },450)
     }
 });
+
+resumeCardContent.on('click','.showSkills',function(){
+    let freelancerID = this.id.replace('showSkills','');
+
+    if(!$(this).hasClass('active')){
+        // add class active
+        $(this).addClass('active');
+        // remove class from other taps :
+        $('#showWork'+freelancerID).removeClass('active');
+        $('#showPortfolio'+freelancerID).removeClass('active');
+        $('#showEducation'+freelancerID).removeClass('active');
+        $('#showInterviews'+freelancerID).removeClass('active');
+
+        // change the content :
+        let skillsContent     = $('#skillsContent'+freelancerID).html();
+        let tapsArea    = $('#tapsArea' + freelancerID) ;
+        tapsArea.fadeOut(500);
+        // show the portfolio content on phone :
+        let portfolioContent_mob = $('#portfolioContent'+freelancerID+'_mob') ;
+        setTimeout(function () {
+            tapsArea.html(skillsContent);
+            tapsArea.fadeIn(500);
+            portfolioContent_mob.addClass('d-none');
+        },450)
+    }
+});
+
+resumeCardContent.on('click','.showInterviews',function(){
+    let freelancerID = this.id.replace('showInterviews','');
+
+    if(!$(this).hasClass('active')){
+        // add class active
+        $(this).addClass('active');
+        // remove class from other taps :
+        $('#showWork'+freelancerID).removeClass('active');
+        $('#showPortfolio'+freelancerID).removeClass('active');
+        $('#showEducation'+freelancerID).removeClass('active');
+        $('#showSkills'+freelancerID).removeClass('active');
+
+
+        // change the content :
+        let interviewsContent     = $('#interviewsContent'+freelancerID).html();
+        let tapsArea    = $('#tapsArea' + freelancerID) ;
+        tapsArea.fadeOut(500);
+        // show the portfolio content on phone :
+        let portfolioContent_mob = $('#portfolioContent'+freelancerID+'_mob') ;
+        setTimeout(function () {
+            tapsArea.html(interviewsContent);
+            tapsArea.fadeIn(500);
+            portfolioContent_mob.addClass('d-none');
+        },450)
+    }
+});
+
+
 
 // controlling slides numbers :
 resumeCardContent.on('click','.prevSlide',function(){

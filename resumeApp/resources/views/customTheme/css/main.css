@@ -139,7 +139,7 @@ body {
   @media only screen and (max-width: 325px) {
     .freelancerImg {
       height: 100px;
-      width: 100px; } }
+      width: 70px; } }
 
 .freelancerName {
   color: #30323D;
@@ -1198,7 +1198,10 @@ body {
   padding-left: 22%; }
   @media only screen and (max-width: 992px) {
     #nav-taps-resume .nav-tabs {
-      padding-left: 10.5%; } }
+      width: 100%;
+      display: -webkit-inline-box;
+      overflow-x: scroll;
+      padding-left: 0; } }
 #nav-taps-resume .nav-tabs .nav-item.show .nav-link, #nav-taps-resume .nav-tabs .nav-link.active {
   color: #4E75E8; }
 #nav-taps-resume .nav-tabs .nav-item :hover {
@@ -1895,11 +1898,14 @@ body {
     border-bottom: 1px solid #EBEDEF;
     border-top: 1px solid #EBEDEF;
     background: #FDFDFD;
-    padding-top: 14px;
+    padding-top: 11px;
     padding-bottom: 7px; }
     @media only screen and (max-width: 769px) {
       .freelancerCard .navRow {
-        border-top: none; } }
+        display: -webkit-inline-box;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        width: 100%; } }
     .freelancerCard .navRow .navTab a {
       color: #4E75E8;
       font-family: Roboto;
@@ -2066,7 +2072,7 @@ body {
   line-height: 11px;
   background: white !important;
   border-radius: 12px !important;
-  margin: 5px 8px 8px 8px;
+  margin: 5px 8px 23px 8px;
   padding: 8px 10px 5px 10px; }
   .tap-to-chat a {
     color: #4E75E8; }
@@ -2085,9 +2091,6 @@ body {
 
 .highlightSkill img {
   filter: grayscale(100%); }
-  @media only screen and (max-width: 760px) {
-    .highlightSkill img {
-      display: none; } }
 @media only screen and (max-width: 760px) {
   .highlightSkill {
     display: inline; } }

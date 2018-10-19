@@ -161,6 +161,7 @@ Route::get('/','HomeController@welcomePage')->name('welcome');
 Route::get('/search/{search_id}','HomeController@getSearch')->name('public.search');
 Route::get('/workforce/terms_and_conditions','HomeController@termsView')->name('terms');
 Route::get('/workforce/privacy_policy','HomeController@privacyView')->name('privacy');
+Route::get('/resume_sample/{username}','HomeController@ResumeSample');
 Route::get('/{username}','HomeController@ResumePage');
 
 

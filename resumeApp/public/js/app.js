@@ -53216,8 +53216,10 @@ resumeCardContent.on('click', '.audioDismiss', function () {
     var defaultContent = $('#defaultContent' + ID).html();
     var resumeRightArea = $('#resumeCardRight' + ID);
     resumeRightArea.fadeOut(300);
+    var portfolioContent_mob = $('#portfolioContent' + ID + '_mob');
     setTimeout(function () {
         resumeRightArea.html(defaultContent);
+        portfolioContent_mob.removeClass('d-none');
         resumeRightArea.fadeIn(300);
     }, 250);
 });
@@ -53272,6 +53274,8 @@ resumeCardContent.on('click', '.showPortfolio', function () {
         // remove class from other taps :
         $('#showWork' + freelancerID).removeClass('active');
         $('#showEducation' + freelancerID).removeClass('active');
+        $('#showInterviews' + freelancerID).removeClass('active');
+        $('#showSkills' + freelancerID).removeClass('active');
 
         // change the content :
         var portfolioContent = $('#portfolioContent' + freelancerID).html();
@@ -53295,6 +53299,7 @@ resumeCardContent.on('click', '.showWork', function () {
         // remove class from other taps :
         $('#showPortfolio' + freelancerID).removeClass('active');
         $('#showEducation' + freelancerID).removeClass('active');
+        $('#showSkills' + freelancerID).removeClass('active');
 
         // change the content :
         var workContent = $('#workContent' + freelancerID).html();
@@ -53319,6 +53324,7 @@ resumeCardContent.on('click', '.showEducation', function () {
         // remove class from other taps :
         $('#showWork' + freelancerID).removeClass('active');
         $('#showPortfolio' + freelancerID).removeClass('active');
+        $('#showSkills' + freelancerID).removeClass('active');
 
         // change the content :
         var educationContent = $('#educationContent' + freelancerID).html();
@@ -53328,6 +53334,58 @@ resumeCardContent.on('click', '.showEducation', function () {
         var portfolioContent_mob = $('#portfolioContent' + freelancerID + '_mob');
         setTimeout(function () {
             tapsArea.html(educationContent);
+            tapsArea.fadeIn(500);
+            portfolioContent_mob.addClass('d-none');
+        }, 450);
+    }
+});
+
+resumeCardContent.on('click', '.showSkills', function () {
+    var freelancerID = this.id.replace('showSkills', '');
+
+    if (!$(this).hasClass('active')) {
+        // add class active
+        $(this).addClass('active');
+        // remove class from other taps :
+        $('#showWork' + freelancerID).removeClass('active');
+        $('#showPortfolio' + freelancerID).removeClass('active');
+        $('#showEducation' + freelancerID).removeClass('active');
+        $('#showInterviews' + freelancerID).removeClass('active');
+
+        // change the content :
+        var skillsContent = $('#skillsContent' + freelancerID).html();
+        var tapsArea = $('#tapsArea' + freelancerID);
+        tapsArea.fadeOut(500);
+        // show the portfolio content on phone :
+        var portfolioContent_mob = $('#portfolioContent' + freelancerID + '_mob');
+        setTimeout(function () {
+            tapsArea.html(skillsContent);
+            tapsArea.fadeIn(500);
+            portfolioContent_mob.addClass('d-none');
+        }, 450);
+    }
+});
+
+resumeCardContent.on('click', '.showInterviews', function () {
+    var freelancerID = this.id.replace('showInterviews', '');
+
+    if (!$(this).hasClass('active')) {
+        // add class active
+        $(this).addClass('active');
+        // remove class from other taps :
+        $('#showWork' + freelancerID).removeClass('active');
+        $('#showPortfolio' + freelancerID).removeClass('active');
+        $('#showEducation' + freelancerID).removeClass('active');
+        $('#showSkills' + freelancerID).removeClass('active');
+
+        // change the content :
+        var interviewsContent = $('#interviewsContent' + freelancerID).html();
+        var tapsArea = $('#tapsArea' + freelancerID);
+        tapsArea.fadeOut(500);
+        // show the portfolio content on phone :
+        var portfolioContent_mob = $('#portfolioContent' + freelancerID + '_mob');
+        setTimeout(function () {
+            tapsArea.html(interviewsContent);
             tapsArea.fadeIn(500);
             portfolioContent_mob.addClass('d-none');
         }, 450);

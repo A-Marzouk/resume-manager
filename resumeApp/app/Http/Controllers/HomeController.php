@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('privacyView','getSearch','termsView','welcomePage','ResumePage');
+        $this->middleware('auth')->except('privacyView','getSearch','termsView','welcomePage','ResumePage','ResumeSample');
     }
 
     /**
@@ -36,6 +36,20 @@ class HomeController extends Controller
         $primarySkills = explode(',',$user->primarySkills);
         $charSkills = explode(',',$user->charSkills);
         return view('resume', compact('user','profession','primarySkills','charSkills','user1'));
+    }
+
+    public function ResumeSample($username){
+        $user1 =  User::where('username',$username)->first();
+        if($user1 !== null){
+            $profession = $user1->profession;
+            $user = $user1->userData;
+            $user->username = $user1->username;
+        }else{
+            return redirect('/');
+        }
+        $primarySkills = explode(',',$user->primarySkills);
+        $charSkills = explode(',',$user->charSkills);
+        return view('resume_sample', compact('user','profession','primarySkills','charSkills','user1'));
     }
 
     public function welcomePage(){

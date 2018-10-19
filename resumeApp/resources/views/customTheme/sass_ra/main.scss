@@ -162,7 +162,10 @@ body{
   border: 2px solid #A4B7ED;
   @media only screen and (max-width: 325px) {
     height:100px;
-    width: 100px;
+    width: 70px;
+  }
+  @media only screen and (max-width: 325px) {
+
   }
 }
 
@@ -1505,7 +1508,10 @@ body{
   .nav-tabs{
     padding-left: 22%;
     @media only screen and (max-width: 992px) {
-      padding-left: 10.5%;
+      width: 100%;
+      display: -webkit-inline-box;
+      overflow-x: scroll;
+      padding-left: 0;
     }
   }
   .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
@@ -2307,9 +2313,12 @@ body{
     border-top: 1px solid #EBEDEF;
     background: #FDFDFD;
     @media only screen and (max-width: 769px) {
-      border-top: none;
+      display: -webkit-inline-box;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      width: 100%;
     }
-    padding-top: 14px;
+    padding-top: 11px;
     padding-bottom: 7px;
     .navTab{
       a{
@@ -2487,7 +2496,7 @@ body{
   color: #4E75E8;	font-family: Roboto;	font-size: 12px;	font-weight: bold;	line-height: 11px;
   background: white !important;
   border-radius: 12px !important;
-  margin: 5px 8px 8px 8px;
+  margin: 5px 8px 23px 8px;
   padding: 8px 10px 5px 10px;
   a{
     color: #4E75E8;
@@ -2514,7 +2523,7 @@ body{
   img{
     filter: grayscale(100%);
     @media only screen and (max-width: 760px) {
-      display: none;
+
     }
   }
 

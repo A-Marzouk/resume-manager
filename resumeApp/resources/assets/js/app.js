@@ -48,7 +48,7 @@ Vue.component('freelancers-list', require('./components/search/freelancersListCo
 // chat room:
 Vue.component('new-chat', require('./components/newChat/newChat'));
 
-
+// new resume form :
 
 if ($("#searchFreelancers").length !== 0){
     let searchFreelancers = new Vue({

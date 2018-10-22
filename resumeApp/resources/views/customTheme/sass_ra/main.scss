@@ -2619,3 +2619,97 @@ body{
    padding-top: 20px !important;
   }
 }
+
+
+.actionRow{
+  height:69px; background-color: #4367D3;
+  @media only screen and (max-width: 760px) {
+    height: auto;
+  }
+}
+.importBtn{
+  height: 30px;
+  border: 1px solid #4367D3;
+  border-radius: 5px;
+  background-color: #6288F8;
+  color: #4367D3;
+  box-shadow: 0 15px 13px -11px #3150AE;
+  margin-top: 20px;
+  margin-left: 18px;
+  padding-top: 3px;
+  text-align: center;
+  // text
+  span{
+    color: #D9E2FF;	font-family: Roboto;	font-size: 13px;	line-height: 15px;	text-align: center;
+  }
+  a{
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 15px;
+    text-align: center;
+  }
+}
+
+.editBtn{
+  height: 30px;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+  padding-top: 3px;
+  margin-top: 20px;
+  text-align: center;
+  width: 118px;
+  a{
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 15px;
+    text-align: center;
+  }
+  img{
+    width: 18px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    height: 16px;
+  }
+}
+
+.progressBtn{
+  margin-right: 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: 1px solid #6186F5;
+  height: 30px;
+  width: 104px;
+  a{
+    text-decoration: none;
+    display: block;
+    height: 28px;
+    width: 104px;
+    text-align: center;
+    font-family: Roboto;
+    color: #fff;
+    padding-top: 3px;
+    position: relative;
+  }
+
+  a span{
+    position: relative;
+    z-index: 1;
+  }
+
+  a:before{
+    background: #658BFB;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 70%;
+    border-radius: 0px 5px 5px 0px;
+  }
+
+
+}

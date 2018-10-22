@@ -14343,6 +14343,8 @@ Vue.component('freelancers-list', __webpack_require__(95));
 // chat room:
 Vue.component('new-chat', __webpack_require__(100));
 
+// new resume form :
+
 if ($("#searchFreelancers").length !== 0) {
     var searchFreelancers = new Vue({
         el: '#searchFreelancers'

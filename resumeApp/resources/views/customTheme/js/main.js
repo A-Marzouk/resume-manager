@@ -194,7 +194,7 @@ $(document).ready(function () {
 
             // save to data base when any data changes !
             $(function () {
-                $('.freelancerForm :input').on('change', function (e) {
+                $('#saveChanges').on('click', function (e) {
                     e.preventDefault();
                     // if inputs from Job form ( do not submit here )
                     let dontSaveFields = ['job_title','job_description','company','date_from','date_to','currently_working',
@@ -202,7 +202,7 @@ $(document).ready(function () {
                     if(dontSaveFields.includes(this.id)){
                         return;
                     }
-                    var form = document.getElementsByClassName('freelancerForm')[0];
+                    let form = document.getElementsByClassName('freelancerForm')[0];
 
                     // disable all empty files
 

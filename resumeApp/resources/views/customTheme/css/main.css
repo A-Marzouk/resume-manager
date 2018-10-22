@@ -1240,9 +1240,16 @@ body {
     padding: 0 !important; }
 
 .panelFormInput {
-  border: 1px solid #D5D8DE;
-  border-radius: 4px;
-  height: 50px; }
+  height: 38px;
+  width: 178px;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+  background-color: rgba(67, 103, 211, 0.5);
+  color: #FDFDFD;
+  font-family: Roboto;
+  font-size: 13px;
+  letter-spacing: 0.09px;
+  line-height: 15px; }
 
 .checkBoxText {
   color: #697786;

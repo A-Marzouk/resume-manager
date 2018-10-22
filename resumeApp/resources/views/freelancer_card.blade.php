@@ -1,4 +1,4 @@
-<? $showVideo = false;
+<? $showVideo = true;
    if(!isset($value['id'])){
        $value['id'] = '';
    }

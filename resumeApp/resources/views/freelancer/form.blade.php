@@ -44,7 +44,7 @@ $freelancer = auth()->user();
                     </a>
                 </div>
                 <div class="editBtn NoDecor">
-                    <a href="javascript:void(0)">
+                    <a href="{{route('show.edit_form')}}">
                         <img src="/resumeApp/resources/assets/images/edit_profile.png" alt="edit profile">
                         Edit profile
                     </a>

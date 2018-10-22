@@ -28,6 +28,11 @@ class FreelancersController extends Controller
         return view('freelancer.form',compact('data'));
     }
 
+    public function showEditForm(){
+        $data = $this->getFreelancerData();
+        return view('freelancer.edit_form',compact('data'));
+    }
+
     public function getFreelancerData () {
         $currFreelancer = auth()->user();
         $data = [

@@ -63,6 +63,7 @@ Route::prefix('freelancer')->group(function (){
         return redirect()->back();
     });
     Route::get('/delete/{id}','AdminsController@deleteFreelancer')->name('freelancer.delete');
+    Route::get('/edit_form/','FreelancersController@showEditForm')->name('show.edit_form');
 });
 
 Route::get('/clear-cache', function() {

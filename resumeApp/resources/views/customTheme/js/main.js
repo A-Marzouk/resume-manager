@@ -219,7 +219,7 @@ $(document).ready(function () {
 
                     $.ajax({
                         type: 'post',
-                        url: 'freelancer/store',
+                        url: '/freelancer/store',
                         data: new FormData(form),
                         contentType: false,
                         cache: false,
@@ -234,6 +234,7 @@ $(document).ready(function () {
                                     //Do something with upload progress here
                                     if($('#audioFile').val()){
                                         $('#loadingText').removeClass('d-none');
+                                        $('#spanTextAudio').text('Uploading audio..');
                                         $('#progressAudio').html(parseInt(percentComplete*100)+' %')
                                         if(percentComplete == 1){
                                             // success
@@ -246,6 +247,7 @@ $(document).ready(function () {
                                     }
                                     if($('#video_file').val()){
                                         $('#loadingTextVideo').removeClass('d-none');
+                                        $('#spanTextVideo').text('Uploading video..');
                                         $('#progress').html(parseInt(percentComplete*100)+' %')
                                         if(percentComplete == 1){
                                             // success
@@ -416,6 +418,8 @@ $(document).ready(function () {
                 $('#audioText').val(fileName);
                 // change the src of the Audio
                 $('#audioIntroForm').attr('src','resumeApp/uploads/'+fileName);
+                $('#loadingText').removeClass('d-none');
+                $('#spanTextAudio').text('Audio will be uploaded on save.');
             });
 
             // click on browse btn:
@@ -438,8 +442,8 @@ $(document).ready(function () {
                 $('#videoText').val(fileName);
                 // change the src of the video
                 $('#videoFileFrame').attr('src','resumeApp/uploads/videos/'+fileName);
-
-
+                $('#loadingTextVideo').removeClass('d-none');
+                $('#spanTextVideo').text('Video will be uploaded on save.');
             });
 
             // browse for video :
@@ -588,7 +592,7 @@ function uploadByDrop(elementID,elementName) {
 
             $.ajax({
                 type: 'POST',
-                url: 'freelancer/store',
+                url: '/freelancer/store',
                 data: formData,
                 contentType: false,
                 cache: false,

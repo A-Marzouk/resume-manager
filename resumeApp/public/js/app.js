@@ -53126,6 +53126,40 @@ $('.hoursMinus').on('click', function () {
     }
 });
 
+// dollars selection :
+$('.dollarsPlus').on('click', function () {
+    var ID = this.id.replace('dollarsPlus', '');
+    var currentDollars = parseInt($('#numberOfDollars' + ID).html());
+    var newDollars = currentDollars + 1;
+    var maxDollars = 100;
+    // set new hours :
+    if (newDollars <= maxDollars) {
+        $('#numberOfDollars' + ID).fadeOut(150);
+        setTimeout(function () {
+            $('#numberOfDollars' + ID).html(newDollars);
+            $('#numberOfDollars' + ID).fadeIn(150);
+        }, 100);
+        // change the salary :
+        $('#salary' + ID).val(newDollars);
+    }
+});
+
+$('.dollarsMinus').on('click', function () {
+    var ID = this.id.replace('dollarsMinus', '');
+    var currentDollars = parseInt($('#numberOfDollars' + ID).html());
+    var newDollars = currentDollars - 1;
+    // set new hours :
+    if (newDollars >= 1) {
+        $('#numberOfDollars' + ID).fadeOut(150);
+        setTimeout(function () {
+            $('#numberOfDollars' + ID).html(newDollars);
+            $('#numberOfDollars' + ID).fadeIn(150);
+        }, 100);
+    }
+    // change the salary :
+    $('#salary' + ID).val(newDollars);
+});
+
 // weeks selection
 $('.weeksPlus').on('click', function () {
     var ID = this.id.replace('weeksPlus', '');
@@ -54415,7 +54449,8 @@ var render = function() {
             "work-history",
             {
               key: index,
-              staticClass: "list-item workExperience col-lg-3 col-md-5"
+              staticClass: "list-item workExperience",
+              staticStyle: { width: "410px", margin: "0px 10px 20px" }
             },
             [
               _c(
@@ -55478,7 +55513,8 @@ var render = function() {
             "project-detail",
             {
               key: index,
-              staticClass: "list-item workExperience col-lg-3 col-md-5"
+              staticClass: "list-item workExperience",
+              staticStyle: { width: "410px", margin: "0px 10px 20px" }
             },
             [
               _c(

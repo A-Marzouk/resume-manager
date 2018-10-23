@@ -1645,7 +1645,7 @@ body {
   font-family: Roboto;
   font-size: 14px;
   font-weight: 300;
-  margin: 20px;
+  margin: 0;
   line-height: 24px;
   border: 1px solid lightgray;
   border-radius: 15px;
@@ -2311,5 +2311,8 @@ body {
     border: none;
     border-bottom: 5px solid #4E75E8;
     background: none; }
+#nav-taps-resume-card .tab-content {
+  height: 400px !important;
+  overflow-y: auto; }
 
 /*# sourceMappingURL=main.css.map */

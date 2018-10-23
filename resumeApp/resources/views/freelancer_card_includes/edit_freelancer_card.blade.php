@@ -123,18 +123,18 @@
                             <div class="hoursBtn NoDecor" style="color:white; background: none; border:none;">
                                 <div class="row">
                                     <div class="col-md-2" style="padding: 9px 0 0 0;">
-                                        <a href="javascript:void(0)" id="weeksMinus{{$freelancer->id}}" class="weeksMinus">
+                                        <a href="javascript:void(0)" id="dollarsMinus{{$freelancer->id}}" class="dollarsMinus">
                                             <img src="/resumeApp/resources/views/customTheme/images/newResume/minus copy 6.png" style="width: 18px; padding-right: 8px;" alt="minus">
                                         </a>
                                     </div>
 
                                     <div class="col-md-8 textBox">
-                                        <span id="numberOfWeeks{{$freelancer->id}}">10</span> $<br/>
+                                        <span id="numberOfDollars{{$freelancer->id}}">10</span> $<br/>
                                         <span style="font-size: 13px; font-weight: normal">Hourly Rate</span>
                                     </div>
 
                                     <div class="col-md-2" style="padding: 9px 0 0 0;">
-                                        <a href="javascript:void(0)" id="weeksPlus{{$freelancer->id}}" class="weeksPlus">
+                                        <a href="javascript:void(0)" id="dollarsPlus{{$freelancer->id}}" class="dollarsPlus">
                                             <img src="/resumeApp/resources/views/customTheme/images/newResume/plus copy 6.png" style="width: 18px; padding-left: 8px;" alt="plus">
                                         </a>
                                     </div>
@@ -172,6 +172,7 @@
                 <input type="file" id="audioFile" class="custom-file-input panelFormInput" name="audioFile" style="width: 1px; height: 1px; opacity: 0; right:145%;">
                 <input type="file" id="video_file" class="custom-file-input panelFormInput" name="video_file" style="width: 1px; height: 1px; opacity: 0; right:145%;">
                 <input type="file" class="custom-file-input" name="photo" id="photoInput" style="width: 1px; height: 1px; opacity: 0; right:145%;">
+                <input type="text" class="form-control panelFormInput d-inline-block" id="salary{{$freelancer->id}}" name="salary" style="width: 1px; height: 1px; opacity: 0; right:145%;" value="<? if(!empty($salary)){echo $salary;}else{echo '';}?>">
             </form>
         </div>
     </div>
@@ -256,15 +257,19 @@
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active firstItem" id="portfolio{{$freelancer->id}}">
                 <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
-                    <div class="col-md-12  text-center">
-                        portfolio
+                    <div class="col-md-12">
+                        <div id="freelancer_works">
+                            <projects-list></projects-list>
+                        </div>
                     </div>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="work{{$freelancer->id}}">
-                <div class="text-center panelFormLabel" style="padding-top: 17px; padding-bottom: 17px;">
-                    <div class="col-md-12  text-center">
-                        Work
+                <div class="panelFormLabel" style="padding-top: 17px; padding-bottom: 17px;">
+                    <div class="col-md-12">
+                        <div  id="work_overview">
+                            <works-list></works-list>
+                        </div>
                     </div>
                 </div>
             </div>

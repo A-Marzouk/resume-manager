@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition-group name="list" class="row">
-            <project-detail v-for="(project,index) in projects" v-bind:key="index" class="list-item workExperience col-lg-3 col-md-5">
+            <project-detail v-for="(project,index) in projects" v-bind:key="index" class="list-item workExperience" style="width: 410px;margin: 0px 10px 20px;">
                 <div style="height: 200px; overflow: hidden;">
                     <a href="javascript:void(0)" @click="editProject(project.id)"  data-toggle="modal" data-target="#addProjectModal" style="outline: none;">
                         <img :src="project.mainImage" alt="" width="100%" id="projectImg" style="border-radius:5px;">

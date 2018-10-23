@@ -275,8 +275,62 @@
             </div>
             <div role="tabpanel" class="tab-pane fade" id="education{{$freelancer->id}}">
                 <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
-                    <div class="col-md-12  text-center">
-                       Education
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12" style="padding: 0!important;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Title<span id="tickMarkeduTitle1" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+                                        <input type="text" class="form-control" name="eduTitle1" value="{{$eduTitle1}}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Year<span id="tickMarkeduYear1" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+                                        <input type="text" name="eduYear1" value="{{$eduYear1}}" class="form-control">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="education" class="panelFormLabel">Description <span id="tickMarkeduDesc1" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+                                        <textarea class="form-control" rows="4" id="education" name="eduDesc1">{{$eduDesc1}}
+                            </textarea><br/>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="col-md-12" style="padding: 0!important;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Title<span id="tickMarkeduTitle2" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+                                        <input type="text" class="form-control" name="eduTitle2" value="{{$eduTitle2}}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Year<span id="tickMarkeduYear2" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+                                        <input type="text" name="eduYear2" value="{{$eduYear2}}" class="form-control">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="education" class="panelFormLabel">Description <span id="tickMarkeduDesc2" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+                                        <textarea class="form-control" rows="4" id="education" name="eduDesc2">{{$eduDesc2}}
+                                 </textarea><br/>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="col-md-12" style="padding: 0!important;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Title<span id="tickMarkeduTitle3" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+                                        <input type="text" class="form-control" name="eduTitle3" value="{{$eduTitle3}}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="education" class="panelFormLabel">Year<span id="tickMarkeduYear3" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+                                        <input type="text" name="eduYear3" value="{{$eduYear3}}" class="form-control">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="education" class="panelFormLabel">Description <span id="tickMarkeduDesc3" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+                                        <textarea class="form-control" rows="4" id="education" name="eduDesc3">{{$eduDesc3}}
+                                </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -301,5 +355,40 @@
     </div>
     <div id="imageUploadSave" class="d-none" style="color:lightseagreen; padding: 10px;">
         Please save your changes before leaving.
+    </div>
+</div>
+
+
+{{-- modals : modal of import behance --}}
+
+<!-- Modal -->
+<div class="modal fade" id="behanceDataModal" tabindex="-1" role="dialog" aria-labelledby="behanceDataModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border: none;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeBehanceModal" style="outline: none;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <form method="post" action="" id="behanceDataForm">
+                    {{csrf_field()}}
+                    <div class="form-group">
+                        <label for="userName" class="panelFormLabel">Your Behance profile link :</label>
+                        <input type="text" class="form-control panelFormInput" id="behanceLink" name="behanceLink"  value="" required>
+                        <p id="behanceLinkError" class="d-none" style="color: red;">Link is not correct.</p>
+                        <p id="behanceLinkWait" class="d-none" style="color: gray;">
+                            Please wait, importing your data from Behance..
+                        </p>
+                    </div>
+
+                    <div class="modal-footer" style="border: none;">
+                        <div class="buttonMain col-md-3 offset-md-9" style="margin-top: 0;">
+                            <button type="submit" class="btn-block hireBtn" id="importBtn">Import</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

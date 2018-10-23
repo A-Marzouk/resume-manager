@@ -4,6 +4,8 @@
 <?
 extract($data);
 $freelancer = auth()->user();
+$clientID = '865ff2s2qvpkzb' ;
+$redirectURL = 'https://123workforce.com/freelancer/linkedin';
 ?>
 @section('content')
     <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
@@ -25,8 +27,8 @@ $freelancer = auth()->user();
             <div class="row actionRow">
                 <div class="importBtn NoDecor" style="margin-left: 29px; width: 205px;">
                     <span>Import : </span>&nbsp;
-                    <a href="javascript:void(0)">Behance </a> &nbsp; | &nbsp;
-                    <a href="javascript:void(0)"> linkedIn</a>
+                    <a href="javascript:void(0)" id="importBehanceData" data-toggle="modal" data-target="#behanceDataModal">Behance </a> &nbsp; | &nbsp;
+                    <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id={{$clientID}}&redirect_uri={{$redirectURL}}&state=987654321&scope=r_basicprofile"> linkedIn</a>
                 </div>
                 <div class="importBtn NoDecor" style="width: 228px;">
                     <a href="javascript:void(0)">
@@ -55,5 +57,38 @@ $freelancer = auth()->user();
             @include('freelancer_card')
         </div>
     </div>
-@endsection
 
+    {{-- modals : modal of import behance --}}
+
+    <!-- Modal -->
+    <div class="modal fade" id="behanceDataModal" tabindex="-1" role="dialog" aria-labelledby="behanceDataModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border: none;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeBehanceModal" style="outline: none;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <form method="post" action="" id="behanceDataForm">
+                        {{csrf_field()}}
+                        <div class="form-group">
+                            <label for="userName" class="panelFormLabel">Your Behance profile link :</label>
+                            <input type="text" class="form-control panelFormInput" id="behanceLink" name="behanceLink"  value="" required>
+                            <p id="behanceLinkError" class="d-none" style="color: red;">Link is not correct.</p>
+                            <p id="behanceLinkWait" class="d-none" style="color: gray;">
+                                Please wait, importing your data from Behance..
+                            </p>
+                        </div>
+
+                        <div class="modal-footer" style="border: none;">
+                            <div class="buttonMain col-md-3 offset-md-9" style="margin-top: 0;">
+                                <button type="submit" class="btn-block hireBtn" id="importBtn">Import</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

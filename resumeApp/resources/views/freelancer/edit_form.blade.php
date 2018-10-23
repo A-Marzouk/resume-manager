@@ -25,7 +25,7 @@ $freelancer = auth()->user();
             <div class="row actionRow">
                 <div class="importBtn NoDecor" style="margin-left: 29px; width: 205px;">
                     <span>Import : </span>&nbsp;
-                    <a href="javascript:void(0)">Behance </a> &nbsp; | &nbsp;
+                    <a href="javascript:void(0)"id="importBehanceData" data-toggle="modal" data-target="#behanceDataModal">Behance </a> &nbsp; | &nbsp;
                     <a href="javascript:void(0)"> linkedIn</a>
                 </div>
                 <div class="importBtn NoDecor" style="width: 228px;">

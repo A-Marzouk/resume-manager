@@ -2298,4 +2298,18 @@ body {
     height: 20px;
     width: 20px; }
 
+#nav-taps-resume-card .navRow .navTab {
+  border: none;
+  background: none;
+  color: #4E75E8;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 16px;
+  padding-bottom: 9px; }
+  #nav-taps-resume-card .navRow .navTab.active {
+    border: none;
+    border-bottom: 5px solid #4E75E8;
+    background: none; }
+
 /*# sourceMappingURL=main.css.map */

@@ -328,6 +328,12 @@ $(document).ready(function () {
 
             $("#photoInput").change(function() {
                 readURL(this,'#photoPreview');
+                readURL(this,'#photoPreview_card');
+                $('#imageUploadSave').removeClass('d-none')
+            });
+
+            $('#addPhoto_card').on('click',function () {
+                $("#photoInput").click();
             });
 
             var srcPreview = '' ;

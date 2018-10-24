@@ -14343,6 +14343,8 @@ Vue.component('freelancers-list', __webpack_require__(95));
 // chat room:
 Vue.component('new-chat', __webpack_require__(100));
 
+// new resume form :
+
 if ($("#searchFreelancers").length !== 0) {
     var searchFreelancers = new Vue({
         el: '#searchFreelancers'
@@ -53100,9 +53102,13 @@ $('.hoursPlus').on('click', function () {
         }, 100);
         // change href of the hire me button :
         var hireBtn = $('#hireMeBtn' + ID);
-        var href1 = hireBtn.attr('href');
-        var href2 = href1.replace('hours=' + currentHours, 'hours=' + newHours);
-        hireBtn.attr('href', href2);
+        if (hireBtn.length > 0) {
+            var href1 = hireBtn.attr('href');
+            var href2 = href1.replace('hours=' + currentHours, 'hours=' + newHours);
+            hireBtn.attr('href', href2);
+        }
+        // change available hours :
+        $('#availableHours' + ID).val(newHours).change();
     }
 });
 
@@ -53118,10 +53124,49 @@ $('.hoursMinus').on('click', function () {
             $('#numberOfHours' + ID).fadeIn(150);
         }, 100);
         var hireBtn = $('#hireMeBtn' + ID);
-        var href1 = hireBtn.attr('href');
-        var href2 = href1.replace('hours=' + currentHours, 'hours=' + newHours);
-        hireBtn.attr('href', href2);
+        if (hireBtn.length > 0) {
+            var href1 = hireBtn.attr('href');
+            var href2 = href1.replace('hours=' + currentHours, 'hours=' + newHours);
+            hireBtn.attr('href', href2);
+        }
+
+        // change available hours :
+        $('#availableHours' + ID).val(newHours).change();
     }
+});
+
+// dollars selection :
+$('.dollarsPlus').on('click', function () {
+    var ID = this.id.replace('dollarsPlus', '');
+    var currentDollars = parseInt($('#numberOfDollars' + ID).html());
+    var newDollars = currentDollars + 1;
+    var maxDollars = 100;
+    // set new hours :
+    if (newDollars <= maxDollars) {
+        $('#numberOfDollars' + ID).fadeOut(150);
+        setTimeout(function () {
+            $('#numberOfDollars' + ID).html(newDollars);
+            $('#numberOfDollars' + ID).fadeIn(150);
+        }, 100);
+        // change the salary :
+        $('#salary' + ID).val(newDollars).change();
+    }
+});
+
+$('.dollarsMinus').on('click', function () {
+    var ID = this.id.replace('dollarsMinus', '');
+    var currentDollars = parseInt($('#numberOfDollars' + ID).html());
+    var newDollars = currentDollars - 1;
+    // set new hours :
+    if (newDollars >= 1) {
+        $('#numberOfDollars' + ID).fadeOut(150);
+        setTimeout(function () {
+            $('#numberOfDollars' + ID).html(newDollars);
+            $('#numberOfDollars' + ID).fadeIn(150);
+        }, 100);
+    }
+    // change the salary :
+    $('#salary' + ID).val(newDollars).change();
 });
 
 // weeks selection
@@ -54413,7 +54458,8 @@ var render = function() {
             "work-history",
             {
               key: index,
-              staticClass: "list-item workExperience col-lg-3 col-md-5"
+              staticClass: "list-item workExperience",
+              staticStyle: { width: "410px", margin: "0px 10px 20px" }
             },
             [
               _c(
@@ -55476,7 +55522,8 @@ var render = function() {
             "project-detail",
             {
               key: index,
-              staticClass: "list-item workExperience col-lg-3 col-md-5"
+              staticClass: "list-item workExperience",
+              staticStyle: { width: "410px", margin: "0px 10px 20px" }
             },
             [
               _c(

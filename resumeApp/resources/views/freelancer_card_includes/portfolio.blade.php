@@ -9,6 +9,7 @@
             $i = 0;
             $numberOfSlides = ceil(count($workExamples) / 2);
             $maxNumberOfWorks = 12;
+            $slides=[];
 
            for ($j=0; $j <= $numberOfSlides+1; $j+=2){
                if(isset($workExamples[$j])){
@@ -32,7 +33,7 @@
                             <div class="modal-body" style="padding: 0;">
                                 <div class="row">
                                     <div class="col-md-9" style="padding: 0;">
-                                        <img src="/{{$workExample->mainImage}}" alt=""
+                                        <img src="{{$workExample->mainImage}}" alt=""
                                              width="100%" height="auto">
                                         <?
                                         // more images
@@ -94,7 +95,7 @@
                                                 <div class="workImg">
                                                     <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
                                                        data-target="#works{{$workExample->id}}Modal">
-                                                        <img src="/{{$workExample->mainImage}}" alt="work img"
+                                                        <img src="{{$workExample->mainImage}}" alt="work img"
                                                              width="260" >
                                                     </a>
                                                 </div>
@@ -163,7 +164,7 @@
                                             <div class="workImg">
                                                 <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
                                                    data-target="#works{{$workExample->id}}Modal">
-                                                    <img src="/{{$workExample->mainImage}}" alt="work img"
+                                                    <img src="{{$workExample->mainImage}}" alt="work img"
                                                          width="260" >
                                                 </a>
                                             </div>

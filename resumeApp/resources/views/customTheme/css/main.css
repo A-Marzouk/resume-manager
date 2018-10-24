@@ -1240,9 +1240,25 @@ body {
     padding: 0 !important; }
 
 .panelFormInput {
-  border: 1px solid #D5D8DE;
-  border-radius: 4px;
-  height: 50px; }
+  height: 38px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  font-family: Roboto;
+  font-size: 13px;
+  letter-spacing: 0.09px;
+  line-height: 15px; }
+
+.cardInput {
+  height: 38px;
+  width: 178px;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+  background-color: rgba(67, 103, 211, 0.5);
+  color: #FDFDFD;
+  font-family: Roboto;
+  font-size: 13px;
+  letter-spacing: 0.09px;
+  line-height: 15px; }
 
 .checkBoxText {
   color: #697786;
@@ -1629,7 +1645,7 @@ body {
   font-family: Roboto;
   font-size: 14px;
   font-weight: 300;
-  margin: 20px;
+  margin: 0;
   line-height: 24px;
   border: 1px solid lightgray;
   border-radius: 15px;
@@ -1919,7 +1935,7 @@ body {
           padding-left: 0; } }
     .freelancerCard .navRow .navTab.active {
       border-bottom: 5px solid #4E75E8;
-      padding-bottom: 8px; }
+      padding-bottom: 9px; }
   .freelancerCard .nameCard {
     padding-left: 10px;
     padding-top: 18px;
@@ -2008,6 +2024,16 @@ body {
     background-color: #4367D3;
     padding: 5px 6px 5px 10px;
     margin-top: 15px; }
+    .freelancerCard .hireRow .textBox {
+      padding: 0;
+      border-left: 1px solid #4E75E8;
+      border-right: 1px solid #4E75E8; }
+  .freelancerCard .calculateBox {
+    padding-top: 0;
+    height: 49px;
+    font-size: 15px;
+    color: white;
+    width: 230px; }
 
 .transcript {
   padding: 25px 40px 15px 49px;
@@ -2178,5 +2204,115 @@ body {
 @media only screen and (max-width: 760px) {
   .paddingTop_mob {
     padding-top: 20px !important; } }
+
+.actionRow {
+  height: 69px;
+  background-color: #4367D3; }
+  @media only screen and (max-width: 760px) {
+    .actionRow {
+      height: auto; } }
+
+.importBtn {
+  height: 30px;
+  border: 1px solid #4367D3;
+  border-radius: 5px;
+  background-color: #6288F8;
+  color: #4367D3;
+  box-shadow: 0 15px 13px -11px #3150AE;
+  margin-top: 20px;
+  margin-left: 18px;
+  padding-top: 3px;
+  text-align: center; }
+  .importBtn span {
+    color: #D9E2FF;
+    font-family: Roboto;
+    font-size: 13px;
+    line-height: 15px;
+    text-align: center; }
+  .importBtn a {
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 15px;
+    text-align: center; }
+
+.editBtn {
+  height: 30px;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+  padding-top: 3px;
+  margin-top: 20px;
+  text-align: center;
+  width: 118px; }
+  .editBtn a {
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 15px;
+    text-align: center; }
+  .editBtn img {
+    width: 18px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    height: 16px; }
+
+.progressBtn {
+  margin-right: 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: 1px solid #6186F5;
+  height: 30px;
+  width: 104px; }
+  .progressBtn a {
+    text-decoration: none;
+    display: block;
+    height: 28px;
+    width: 104px;
+    text-align: center;
+    font-family: Roboto;
+    color: #fff;
+    padding-top: 3px;
+    position: relative; }
+  .progressBtn a span {
+    position: relative;
+    z-index: 1; }
+  .progressBtn a:before {
+    background: #658BFB;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 70%;
+    border-radius: 0px 5px 5px 0px; }
+
+.addImageContainer {
+  background: white;
+  padding: 5px;
+  border-radius: 50%;
+  margin: -30px 0px 0px 74px; }
+  .addImageContainer img {
+    padding: 0px 2px 3px 0px;
+    height: 20px;
+    width: 20px; }
+
+#nav-taps-resume-card .navRow .navTab {
+  border: none;
+  background: none;
+  color: #4E75E8;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 16px;
+  padding-bottom: 9px; }
+  #nav-taps-resume-card .navRow .navTab.active {
+    border: none;
+    border-bottom: 5px solid #4E75E8;
+    background: none; }
+#nav-taps-resume-card .tab-content {
+  height: 400px !important;
+  overflow-y: auto; }
 
 /*# sourceMappingURL=main.css.map */

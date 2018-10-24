@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition-group name="list" class="row">
-            <work-history v-for="(work,index) in works" v-bind:key="index" class="list-item workExperience col-lg-3 col-md-5">
+            <work-history v-for="(work,index) in works" v-bind:key="index" class="list-item workExperience" style="width: 410px;margin: 0px 10px 20px;">
                 <button type="button" class="close" style="padding: 5px; outline: none;" @click="deleteWork(work)">
                     <span aria-hidden="true">&times;</span>
                 </button>

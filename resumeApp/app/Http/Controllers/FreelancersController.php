@@ -25,6 +25,16 @@ class FreelancersController extends Controller
             return redirect(route('admin.dashboard'));
         }
         $data = $this->getFreelancerData();
+        return view('freelancer.old_form',compact('data'));
+    }
+
+    public function showEditForm(){
+        $data = $this->getFreelancerData();
+        return view('freelancer.edit_form',compact('data'));
+    }
+
+    public function showNewForm(){
+        $data = $this->getFreelancerData();
         return view('freelancer.form',compact('data'));
     }
 

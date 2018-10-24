@@ -3,7 +3,7 @@
 $('.hoursPlus').on('click',function(){
     let ID  = this.id.replace('hoursPlus','');
     let currentHours = parseInt($('#numberOfHours' + ID ).html());
-    let newHours = currentHours + 5;
+    let  newHours = currentHours + 5;
     let maxHours = parseInt($('#maxHours'+ID).html()) ;
     // set new hours :
     if(newHours < maxHours+1){
@@ -14,9 +14,13 @@ $('.hoursPlus').on('click',function(){
         },100);
         // change href of the hire me button :
         let hireBtn = $('#hireMeBtn'+ ID);
-        let href1 = hireBtn.attr('href');
-        let href2 = href1.replace('hours='+currentHours,'hours='+newHours);
-        hireBtn.attr('href',href2);
+        if(hireBtn.length > 0){
+            let href1 = hireBtn.attr('href');
+            let href2 = href1.replace('hours='+currentHours,'hours='+newHours);
+            hireBtn.attr('href',href2);
+        }
+        // change available hours :
+        $('#availableHours'+ID).val(newHours).change();
     }
 
 });
@@ -33,12 +37,51 @@ $('.hoursMinus').on('click',function(){
             $('#numberOfHours' + ID ).fadeIn(150);
         },100);
         let hireBtn = $('#hireMeBtn'+ ID);
-        let href1 = hireBtn.attr('href');
-        let href2 = href1.replace('hours='+currentHours,'hours='+newHours);
-        hireBtn.attr('href',href2);
+        if(hireBtn.length > 0) {
+            let href1 = hireBtn.attr('href');
+            let href2 = href1.replace('hours=' + currentHours, 'hours=' + newHours);
+            hireBtn.attr('href', href2);
+        }
+
+        // change available hours :
+        $('#availableHours'+ID).val(newHours).change();
     }
 });
 
+// dollars selection :
+$('.dollarsPlus').on('click',function(){
+    let ID  = this.id.replace('dollarsPlus','');
+    let currentDollars = parseInt($('#numberOfDollars' + ID ).html());
+    let newDollars = currentDollars + 1;
+    let maxDollars = 100 ;
+    // set new hours :
+    if(newDollars <= maxDollars){
+        $('#numberOfDollars' + ID ).fadeOut(150);
+        setTimeout(function () {
+            $('#numberOfDollars' + ID ).html(newDollars);
+            $('#numberOfDollars' + ID ).fadeIn(150);
+        },100);
+        // change the salary :
+        $('#salary'+ID).val(newDollars).change();
+    }
+
+});
+
+$('.dollarsMinus').on('click',function(){
+    let ID  = this.id.replace('dollarsMinus','');
+    let currentDollars = parseInt($('#numberOfDollars' + ID ).html());
+    let newDollars = currentDollars - 1;
+    // set new hours :
+    if(newDollars >= 1){
+        $('#numberOfDollars' + ID ).fadeOut(150);
+        setTimeout(function () {
+            $('#numberOfDollars' + ID ).html(newDollars);
+            $('#numberOfDollars' + ID ).fadeIn(150);
+        },100);
+    }
+    // change the salary :
+    $('#salary'+ID).val(newDollars).change();
+});
 
 // weeks selection
 $('.weeksPlus').on('click',function(){

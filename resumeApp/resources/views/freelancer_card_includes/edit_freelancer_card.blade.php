@@ -276,62 +276,10 @@
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="education{{$freelancer->id}}">
-                <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
+                <div class="panelFormLabel" style="padding-top: 17px; padding-bottom: 17px;">
                     <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-12" style="padding: 0!important;">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="education" class="panelFormLabel">Title<span id="tickMarkeduTitle1" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-                                        <input type="text" class="form-control" name="eduTitle1" value="{{$eduTitle1}}">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="education" class="panelFormLabel">Year<span id="tickMarkeduYear1" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-                                        <input type="text" name="eduYear1" value="{{$eduYear1}}" class="form-control">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="education" class="panelFormLabel">Description <span id="tickMarkeduDesc1" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-                                        <textarea class="form-control" rows="4" id="education" name="eduDesc1">{{$eduDesc1}}
-                            </textarea><br/>
-                                    </div>
-                                </div>
-                                <hr>
-                            </div>
-                            <div class="col-md-12" style="padding: 0!important;">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="education" class="panelFormLabel">Title<span id="tickMarkeduTitle2" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-                                        <input type="text" class="form-control" name="eduTitle2" value="{{$eduTitle2}}">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="education" class="panelFormLabel">Year<span id="tickMarkeduYear2" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-                                        <input type="text" name="eduYear2" value="{{$eduYear2}}" class="form-control">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="education" class="panelFormLabel">Description <span id="tickMarkeduDesc2" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-                                        <textarea class="form-control" rows="4" id="education" name="eduDesc2">{{$eduDesc2}}
-                                 </textarea><br/>
-                                    </div>
-                                </div>
-                                <hr>
-                            </div>
-                            <div class="col-md-12" style="padding: 0!important;">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="education" class="panelFormLabel">Title<span id="tickMarkeduTitle3" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-                                        <input type="text" class="form-control" name="eduTitle3" value="{{$eduTitle3}}">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="education" class="panelFormLabel">Year<span id="tickMarkeduYear3" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-                                        <input type="text" name="eduYear3" value="{{$eduYear3}}" class="form-control">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="education" class="panelFormLabel">Description <span id="tickMarkeduDesc3" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
-                                        <textarea class="form-control" rows="4" id="education" name="eduDesc3">{{$eduDesc3}}
-                                </textarea>
-                                    </div>
-                                </div>
-                            </div>
+                        <div  id="freelancer_educations">
+                            <educations-list></educations-list>
                         </div>
                     </div>
                 </div>

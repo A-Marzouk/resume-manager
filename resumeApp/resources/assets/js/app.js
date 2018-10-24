@@ -31,9 +31,16 @@ Vue.component('chat-message', require('./components/chatMessage.vue'));
 Vue.component('chat-log', require('./components/chatLog.vue'));
 Vue.component('chat-composer', require('./components/chatComposer.vue'));
 
+// works
 Vue.component('works-list', require('./components/worksListComponent.vue'));
 Vue.component('work-history', require('./components/workHistoryComponent.vue'));
 Vue.component('add-work-modal', require('./components/addWorkComponent.vue'));
+
+// educations
+Vue.component('educations-list', require('./components/education/educationListComponent.vue'));
+Vue.component('education-history', require('./components/education/educationHistoryComponent.vue'));
+Vue.component('add-education-modal', require('./components/education/addEducationComponent.vue'));
+
 
 // projects
 Vue.component('projects-list', require('./components/projects/projectsListComponent.vue'));
@@ -74,6 +81,13 @@ if ($("#freelancer_works").length !== 0){
         el:'#freelancer_works'
     });
 }
+
+if ($("#freelancer_educations").length !== 0){
+    let freelancer_educations = new Vue({
+        el:'#freelancer_educations'
+    });
+}
+
 
 if ($("#VueChat").length !== 0){
     const app = new Vue({

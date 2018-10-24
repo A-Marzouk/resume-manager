@@ -67,7 +67,7 @@ $freelancer = auth()->user();
                     </a>
                 </div>
                 <div class="editBtn NoDecor" style="margin-left: 10px;">
-                    <a href="{{route('show.new_form')}}" id="saveChanges">
+                    <a href="{{route('show.new_form')}}">
                         <img src="/resumeApp/resources/assets/images/check_24px.png" alt="edit profile">
                         Finish editing
                     </a>

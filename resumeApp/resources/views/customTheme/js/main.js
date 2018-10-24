@@ -193,11 +193,8 @@ $(document).ready(function () {
 
 
             // save to data base when any data changes !
-            $('.freelancerForm :input').on('change',function () {
-                $('#saveChanges').click();
-            });
             $(function () {
-                $('#saveChanges').on('click', function (e) {
+                $('.freelancerForm :input').on('change', function (e) {
                     e.preventDefault();
                     // if inputs from Job form ( do not submit here )
                     let dontSaveFields = ['job_title','job_description','company','date_from','date_to','currently_working',

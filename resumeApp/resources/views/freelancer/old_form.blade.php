@@ -10,10 +10,13 @@ $currFreelancer = auth()->user();
         You are viewing as Admin
     </div>
     <? endif;?>
-    <div class="container m-auto infoBar container">
+    <div class="container m-auto infoBar container row">
         <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
-        <div class="col-md-2 offset-md-10">
+        <div class="col-md-2 offset-md-8">
             <a target="_blank" href="{{$username}}">Link to resume </a>
+        </div>
+        <div class="col-md-2">
+            <a href="{{route('show.new_form')}}">Show new form</a>
         </div>
         <? endif; ?>
     </div>

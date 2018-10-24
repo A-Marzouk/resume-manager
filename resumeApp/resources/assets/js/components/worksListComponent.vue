@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition-group name="list" class="row">
-            <work-history v-for="(work,index) in works" v-bind:key="index" class="list-item workExperience" style="width: 410px;margin: 0px 10px 20px;">
+            <work-history v-for="(work,index) in works" v-bind:key="index" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
                 <button type="button" class="close" style="padding: 5px; outline: none;" @click="deleteWork(work)">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -10,7 +10,7 @@
                     <img src="/resumeApp/resources/views/customTheme/images/edit.png" alt="edit" width="17px">
                 </span>
                 </button>
-                <b style="font-size:16px; font-weight:bolder; ">{{work.job_title}}</b><br/>
+                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">{{work.job_title}}</b><br/>
                 {{work.company}}<br/>
                 Start :{{work.date_from}}
                 <span v-show="work.date_to && work.currently_working !== true"> End : {{work.date_to}}</span>

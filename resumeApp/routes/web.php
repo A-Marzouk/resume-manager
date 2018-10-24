@@ -118,6 +118,11 @@ Route::get('/freelancer/workshistory','WorksHistoryController@getWorks')->name('
 Route::post('/freelancer/addwork/','WorksHistoryController@addWork')->name('add.work');
 Route::post('/freelancer/deletework/','WorksHistoryController@deleteWork')->name('delete.work');
 
+// education history
+Route::get('/freelancer/educationshistory','EducationHistoryController@getEducations')->name('get.education');
+Route::post('/freelancer/addeducation/','EducationHistoryController@addEducation')->name('add.education');
+Route::post('/freelancer/deleteeducation/','EducationHistoryController@deleteEducation')->name('delete.education');
+
 // projects overview
 Route::get('/freelancer/projects','ProjectsController@getProjects')->name('get.project');
 Route::post('/freelancer/addproject/','ProjectsController@addProject')->name('add.project');

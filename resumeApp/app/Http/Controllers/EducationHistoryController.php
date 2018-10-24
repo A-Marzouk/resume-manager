@@ -10,7 +10,6 @@ namespace App\Http\Controllers;
 
 
 use App\EducationHistory;
-use App\WorkHistory;
 use Illuminate\Http\Request;
 
 class EducationHistoryController extends Controller
@@ -42,7 +41,7 @@ class EducationHistoryController extends Controller
         $educationH->school_title = $request->school_title;
         $educationH->description = $request->description;
         $educationH->date_from = $request->date_from;
-        if($request->currently_working !== true){
+        if($request->currently_learning !== true){
             $educationH->date_to = $request->date_to;
         }
         $educationH->currently_learning = $request->currently_learning;
@@ -55,7 +54,7 @@ class EducationHistoryController extends Controller
     }
 
     public function deleteEducation(Request $request){
-        // delete work history
+        // delete education history
         $eduHistory = EducationHistory::where('id',$request->educationHistoryID);
         $eduHistory->delete();
         return 'Education deleted';

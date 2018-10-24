@@ -33,7 +33,13 @@
                             <div class="modal-body" style="padding: 0;">
                                 <div class="row">
                                     <div class="col-md-9" style="padding: 0;">
-                                        <img src="{{$workExample->mainImage}}" alt=""
+                                        <?
+                                        $photoSrc = $workExample->mainImage ;
+                                        if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
+                                            $photoSrc = '/' . $photoSrc;
+                                        }
+                                        ?>
+                                        <img src="{{$photoSrc}}" alt=""
                                              width="100%" height="auto">
                                         <?
                                         // more images
@@ -95,7 +101,13 @@
                                                 <div class="workImg">
                                                     <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
                                                        data-target="#works{{$workExample->id}}Modal">
-                                                        <img src="{{$workExample->mainImage}}" alt="work img"
+                                                        <?
+                                                        $photoSrc = $workExample->mainImage ;
+                                                        if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
+                                                            $photoSrc = '/' . $photoSrc;
+                                                        }
+                                                        ?>
+                                                        <img src="{{$photoSrc}}" alt="work img"
                                                              width="260" >
                                                     </a>
                                                 </div>
@@ -164,7 +176,13 @@
                                             <div class="workImg">
                                                 <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
                                                    data-target="#works{{$workExample->id}}Modal">
-                                                    <img src="{{$workExample->mainImage}}" alt="work img"
+                                                    <?
+                                                        $photoSrc = $workExample->mainImage ;
+                                                        if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
+                                                            $photoSrc = '/' . $photoSrc;
+                                                        }
+                                                    ?>
+                                                    <img src="{{$photoSrc}}" alt="work img"
                                                          width="260" >
                                                 </a>
                                             </div>

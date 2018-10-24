@@ -54458,8 +54458,8 @@ var render = function() {
             "work-history",
             {
               key: index,
-              staticClass: "list-item workExperience",
-              staticStyle: { width: "410px", margin: "0px 10px 20px" }
+              staticClass: "list-item workExperience col-12",
+              staticStyle: { margin: "0px 10px 20px" }
             },
             [
               _c(
@@ -54514,7 +54514,13 @@ var render = function() {
               _c(
                 "b",
                 {
-                  staticStyle: { "font-size": "16px", "font-weight": "bolder" }
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
                 },
                 [_vm._v(_vm._s(work.job_title))]
               ),

@@ -41,77 +41,30 @@
         <div id="educationContent{{$freelancer->id}}{{$value['id']}}" class="education about addScroll">
             <div class="row" style="padding-top: 35px;">
                 <div class="col-12 educationSection">
-                    <span class="aboutText">EDUCATION</span>
+                    <?php
+                    $educations = $freelancer->educationsHistory;
+                    ?>
                     <div class="aboutText">
-                        <? if(!empty($freelancer->userData->eduTitle1)):?>
+                        <? foreach ($educations as $education):?>
                         <div class="row">
                             <div class="col-md-12 aboutSubText">
-                                <div class="year"><span
-                                            class="circle"></span> {{$freelancer->userData->eduYear1}}</div>
-                                <div class="title">{{$freelancer->userData->eduTitle1}}</div>
-                                <div class="desc">{{$freelancer->userData->eduDesc1}}</div>
+                                <div class="title work">
+                                    <span class="circle"></span>
+                                    {{$education->school_title}}
+                                </div>
+                                <div class="year"><span class="work">
+                                                {{date('F Y', strtotime($education->date_from))}}
+                                        <? if($education->currently_learning):?>
+                                        - Present
+                                        <? else: ?>
+                                        - {{date('F Y', strtotime($education->date_to))}}
+                                        <? endif;?>
+                                            </span>
+                                </div>
+                                <div class="desc">{{$education->description}}</div>
                             </div>
                         </div>
-                        <br/>
-                        <? endif; ?>
-                        <? if(!empty($freelancer->userData->eduTitle2)):?>
-                        <div class="row">
-                            <div class="col-md-10 aboutSubText">
-                                <div class="year"><span
-                                            class="circle"></span> {{$freelancer->userData->eduYear2}}</div>
-                                <div class="title">{{$freelancer->userData->eduTitle2}}</div>
-                                <div class="desc">{{$freelancer->userData->eduDesc2}}</div>
-                            </div>
-                        </div>
-                        <br/>
-                        <? endif; ?>
-                        <? if(!empty($freelancer->userData->eduTitle3)):?>
-                        <div class="row">
-                            <div class="col-md-10 aboutSubText">
-                                <div class="year"><span
-                                            class="circle"></span> {{$freelancer->userData->eduYear3}}</div>
-                                <div class="title">{{$freelancer->userData->eduTitle3}}</div>
-                                <div class="desc">{{$freelancer->userData->eduDesc3}}</div>
-                            </div>
-                        </div>
-                        <? endif; ?>
-                    </div>
-                </div>
-                <div class="col-12 paddingTop_mob" style="padding-top: 15px;">
-                    <span class="aboutText">TRAININGS</span>
-                    <div class="aboutText">
-                        <? if(!empty($freelancer->userData->trnTitle1)):?>
-                        <div class="row">
-                            <div class="col-md-12 aboutSubText">
-                                <div class="year"><span
-                                            class="circle"></span> {{$freelancer->userData->trnYear1}}</div>
-                                <div class="title">{{$freelancer->userData->trnTitle1}}</div>
-                                <div class="desc">{{$freelancer->userData->trnDesc1}}</div>
-                            </div>
-                        </div>
-                        <br/>
-                        <? endif; ?>
-                        <? if(!empty($freelancer->userData->trnTitle3)):?>
-                        <div class="row">
-                            <div class="col-md-10 aboutSubText">
-                                <div class="year"><span
-                                            class="circle"></span> {{$freelancer->userData->trnYear2}}</div>
-                                <div class="title">{{$freelancer->userData->trnTitle2}}</div>
-                                <div class="desc">{{$freelancer->userData->trnDesc2}}</div>
-                            </div>
-                        </div>
-                        <br/>
-                        <? endif; ?>
-                        <? if(!empty($freelancer->userData->trnTitle3)):?>
-                        <div class="row">
-                            <div class="col-md-10 aboutSubText">
-                                <div class="year"><span
-                                            class="circle"></span> {{$freelancer->userData->trnYear3}}</div>
-                                <div class="title">{{$freelancer->userData->trnTitle3}}</div>
-                                <div class="desc">{{$freelancer->userData->trnDesc3}}</div>
-                            </div>
-                        </div>
-                        <? endif; ?>
+                        <? endforeach;?>
                     </div>
                 </div>
             </div>

@@ -53102,9 +53102,13 @@ $('.hoursPlus').on('click', function () {
         }, 100);
         // change href of the hire me button :
         var hireBtn = $('#hireMeBtn' + ID);
-        var href1 = hireBtn.attr('href');
-        var href2 = href1.replace('hours=' + currentHours, 'hours=' + newHours);
-        hireBtn.attr('href', href2);
+        if (hireBtn.length > 0) {
+            var href1 = hireBtn.attr('href');
+            var href2 = href1.replace('hours=' + currentHours, 'hours=' + newHours);
+            hireBtn.attr('href', href2);
+        }
+        // change available hours :
+        $('#availableHours' + ID).val(newHours).change();
     }
 });
 
@@ -53120,9 +53124,14 @@ $('.hoursMinus').on('click', function () {
             $('#numberOfHours' + ID).fadeIn(150);
         }, 100);
         var hireBtn = $('#hireMeBtn' + ID);
-        var href1 = hireBtn.attr('href');
-        var href2 = href1.replace('hours=' + currentHours, 'hours=' + newHours);
-        hireBtn.attr('href', href2);
+        if (hireBtn.length > 0) {
+            var href1 = hireBtn.attr('href');
+            var href2 = href1.replace('hours=' + currentHours, 'hours=' + newHours);
+            hireBtn.attr('href', href2);
+        }
+
+        // change available hours :
+        $('#availableHours' + ID).val(newHours).change();
     }
 });
 
@@ -53140,7 +53149,7 @@ $('.dollarsPlus').on('click', function () {
             $('#numberOfDollars' + ID).fadeIn(150);
         }, 100);
         // change the salary :
-        $('#salary' + ID).val(newDollars);
+        $('#salary' + ID).val(newDollars).change();
     }
 });
 
@@ -53157,7 +53166,7 @@ $('.dollarsMinus').on('click', function () {
         }, 100);
     }
     // change the salary :
-    $('#salary' + ID).val(newDollars);
+    $('#salary' + ID).val(newDollars).change();
 });
 
 // weeks selection

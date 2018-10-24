@@ -19,6 +19,23 @@ $freelancer = auth()->user();
         <? endif; ?>
     </div>
 
+    <div style="margin-left: 8.07%; ">
+        <div class="freelancerCard" style="background: none;">
+            <div id="loadingText" class="d-none" style="color:lightseagreen; padding: 10px;">
+        <span id="spanTextAudio">
+            Processing audio...
+        </span>
+                <span id="progressAudio"></span>
+            </div>
+            <div id="loadingTextVideo" class="d-none" style="color:lightseagreen; padding: 10px;">
+        <span id="spanTextVideo">
+            Processing video...
+        </span>
+                <span id="progress"></span>
+            </div>
+        </div>
+    </div>
+
     {{-- include the freelancer card + the new edit row--}}
     <div style="margin-left: 8.07%">
         <div class="freelancerCard" style="margin-bottom: -3px;">
@@ -44,15 +61,15 @@ $freelancer = auth()->user();
                     </a>
                 </div>
                 <div class="editBtn NoDecor" style="width: 97px;">
-                    <a href="/freelancer">
+                    <a href="{{route('show.new_form')}}">
                         <img src="/resumeApp/resources/assets/images/close_24px.png" alt="edit profile">
                         Discard
                     </a>
                 </div>
                 <div class="editBtn NoDecor" style="margin-left: 10px;">
-                    <a href="javascript:void(0)" id="saveChanges">
+                    <a href="{{route('show.new_form')}}" id="saveChanges">
                         <img src="/resumeApp/resources/assets/images/check_24px.png" alt="edit profile">
-                        Save changes
+                        Finish editing
                     </a>
                 </div>
             </div>

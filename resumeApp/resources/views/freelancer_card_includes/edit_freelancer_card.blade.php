@@ -25,7 +25,7 @@
                         }
                         ?>
                         <img src="{{$photoSrc}}" alt="freelancer" class="freelancerImg"
-                             width="100" height="100" id="photoPreview_card">
+                             width="108" height="108" id="photoPreview_card">
                         <div class="row NoDecor">
                             <a class="addImageContainer" href="javascript:void(0)" id="addPhoto_card">
                                 <img src="/resumeApp/resources/assets/images/add_photo.png" alt="add photo">
@@ -129,7 +129,7 @@
                                     </div>
 
                                     <div class="col-md-8 textBox">
-                                        <span id="numberOfDollars{{$freelancer->id}}">10</span> $<br/>
+                                        <span id="numberOfDollars{{$freelancer->id}}">{{$freelancer->userData->salary}}</span> $<br/>
                                         <span style="font-size: 13px; font-weight: normal">Hourly Rate</span>
                                     </div>
 
@@ -156,6 +156,7 @@
                                     <div class="col-md-8 textBox">
                                         <span id="numberOfHours{{$freelancer->id}}">@if($freelancer->userData->availableHours==0) 0 @else {{$freelancer->userData->availableHours}} @endif</span>
                                         hours<br/>
+                                        <span id="maxHours{{$freelancer->id}}" class="d-none">60</span>
                                         <span style="font-size: 13px; font-weight: normal">Weekly Availability</span>
                                     </div>
                                     <div class="col-md-2" style="padding: 9px 0 0 0;">
@@ -169,10 +170,11 @@
                     </div>
                 </div>
                 
-                <input type="file" id="audioFile" class="custom-file-input panelFormInput" name="audioFile" style="width: 1px; height: 1px; opacity: 0; right:145%;">
-                <input type="file" id="video_file" class="custom-file-input panelFormInput" name="video_file" style="width: 1px; height: 1px; opacity: 0; right:145%;">
-                <input type="file" class="custom-file-input" name="photo" id="photoInput" style="width: 1px; height: 1px; opacity: 0; right:145%;">
-                <input type="text" class="form-control panelFormInput d-inline-block" id="salary{{$freelancer->id}}" name="salary" style="width: 1px; height: 1px; opacity: 0; right:145%;" value="<? if(!empty($salary)){echo $salary;}else{echo '';}?>">
+                <input type="file" id="audioFile" name="audioFile" style="width: 1px; height: 1px; opacity: 0; right:145%;">
+                <input type="file" id="video_file" name="video_file" style="width: 1px; height: 1px; opacity: 0; right:145%;">
+                <input type="file" id="photoInput" name="photo" style="width: 1px; height: 1px; opacity: 0; right:145%;">
+                <input type="text" id="salary{{$freelancer->id}}" name="salary" style="width: 1px; height: 1px; opacity: 0; right:145%;" value="<? if(!empty($salary)){echo $salary;}else{echo '';}?>">
+                <input type="text" id="availableHours{{$freelancer->id}}" name="availableHours" style="width: 1px; height: 1px; opacity: 0; right:145%;" value="<? if(!empty($availableHours)){echo $availableHours;}else{echo '';}?>">
             </form>
         </div>
     </div>
@@ -337,25 +339,6 @@
         </div>
     </div>
 
-</div>
-
-<div class="freelancerCard" style="background: none;">
-    <hr>
-    <div id="loadingText" class="d-none" style="color:lightseagreen; padding: 10px;">
-        <span id="spanTextAudio">
-            Processing audio...
-        </span>
-        <span id="progressAudio"></span>
-    </div>
-    <div id="loadingTextVideo" class="d-none" style="color:lightseagreen; padding: 10px;">
-        <span id="spanTextVideo">
-            Processing video...
-        </span>
-        <span id="progress"></span>
-    </div>
-    <div id="imageUploadSave" class="d-none" style="color:lightseagreen; padding: 10px;">
-        Please save your changes before leaving.
-    </div>
 </div>
 
 

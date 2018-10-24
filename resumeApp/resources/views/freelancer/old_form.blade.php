@@ -17,9 +17,9 @@ $currFreelancer = auth()->user();
         </div>
         <? endif; ?>
     </div>
-    <div class="row">
-        <a href="#" id="saveChanges">Save data</a>
-    </div>
+
+    <a href="#" class="d-none" id="saveChanges">Save data</a>
+
     <div class="container">
         <div class="row tabsArea fixed-top d-sm-block d-xs-block d-md-block d-lg-none" id="tabsMobile" style="margin-top: 50px;   background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);">
             <div class="col-md-12 text-center formTaps">

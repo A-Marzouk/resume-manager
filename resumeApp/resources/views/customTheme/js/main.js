@@ -193,6 +193,9 @@ $(document).ready(function () {
 
 
             // save to data base when any data changes !
+            $('.freelancerForm :input').on('change',function () {
+                $('#saveChanges').click();
+            });
             $(function () {
                 $('#saveChanges').on('click', function (e) {
                     e.preventDefault();
@@ -240,7 +243,7 @@ $(document).ready(function () {
                                             // success
                                             $('#loadingText').html('Success.');
                                             setTimeout(function () {
-                                                $('#loadingText').addClass('d-none');
+                                                $('#loadingText').fadeOut(500).addClass('d-none');
                                                 location.reload();
                                             },2500);
                                         }

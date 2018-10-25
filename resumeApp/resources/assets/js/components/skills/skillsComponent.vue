@@ -7,7 +7,7 @@
                         Programming Languages
                     </a>
                 </li>
-                <li class="nav-item" @click="setCurrSkillType('frameworkes')">
+                <li class="nav-item" @click="setCurrSkillType('frameworks')">
                     <a class="nav-link text-center" href="javascript:void(0)" role="tab" data-toggle="tab">
                         Frameworks / Databases
                     </a>

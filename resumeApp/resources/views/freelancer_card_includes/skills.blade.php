@@ -2,84 +2,84 @@
     $skillsDesigner = [
     // designer
     // 1-
-    'UI design' => '/resumeApp/resources/assets/images/skills_icons/user_interface.png',
-    'UX design' => '/resumeApp/resources/assets/images/skills_icons/user_experience.png',
-    'Logo design' => '/resumeApp/resources/assets/images/skills_icons/logo_design.png',
-    'Animation' => '/resumeApp/resources/assets/images/skills_icons/animation.jpg',
-    'Motion Graphics' => '/resumeApp/resources/assets/images/skills_icons/motion_graphics.png',
-    'Illustration' => '/resumeApp/resources/assets/images/skills_icons/illustration.png',
-    'Advertising' => '/resumeApp/resources/assets/images/skills_icons/advertising.png',
-    'Branding'=> '/resumeApp/resources/assets/images/skills_icons/branding.png',
-    'Brochure Design'=> '/resumeApp/resources/assets/images/skills_icons/brochure_design.png',
-    'Website Design'=> '/resumeApp/resources/assets/images/skills_icons/web_design.png',
-    'Game Designer'=> '/resumeApp/resources/assets/images/skills_icons/game_designer.png',
-    'Character Design'=> '/resumeApp/resources/assets/images/skills_icons/character_design.png',
-    'Digital Painting'=> '/resumeApp/resources/assets/images/skills_icons/digital_painting.png',
-    'Creative Director'=> '/resumeApp/resources/assets/images/skills_icons/creative_director.png',
-    'HTML / CSS'=> '/resumeApp/resources/assets/images/skills_icons/HTML.png',
+    'ui design' => '/resumeApp/resources/assets/images/skills_icons/user_interface.png',
+    'ux design' => '/resumeApp/resources/assets/images/skills_icons/user_experience.png',
+    'logo design' => '/resumeApp/resources/assets/images/skills_icons/logo_design.png',
+    'animation' => '/resumeApp/resources/assets/images/skills_icons/animation.jpg',
+    'motion graphics' => '/resumeApp/resources/assets/images/skills_icons/motion_graphics.png',
+    'illustration' => '/resumeApp/resources/assets/images/skills_icons/illustration.png',
+    'advertising' => '/resumeApp/resources/assets/images/skills_icons/advertising.png',
+    'branding'=> '/resumeApp/resources/assets/images/skills_icons/branding.png',
+    'brochure Design'=> '/resumeApp/resources/assets/images/skills_icons/brochure_design.png',
+    'website design'=> '/resumeApp/resources/assets/images/skills_icons/web_design.png',
+    'game designer'=> '/resumeApp/resources/assets/images/skills_icons/game_designer.png',
+    'character design'=> '/resumeApp/resources/assets/images/skills_icons/character_design.png',
+    'digital painting'=> '/resumeApp/resources/assets/images/skills_icons/digital_painting.png',
+    'creative director'=> '/resumeApp/resources/assets/images/skills_icons/creative_director.png',
+    'html / css'=> '/resumeApp/resources/assets/images/skills_icons/HTML.png',
     // 2-
 
-    'Adobe After Effects'=>'/resumeApp/resources/assets/images/skills_icons/AE.png',
-    'Sketch'=>'/resumeApp/resources/assets/images/skills_icons/Sketch.png',
-    'Adobe Illustrator'=>'/resumeApp/resources/assets/images/skills_icons/Illustrator.png',
-    'Adobe XD'=>'/resumeApp/resources/assets/images/skills_icons/AdobeXD.png',
-    'Photoshop'=>'/resumeApp/resources/assets/images/skills_icons/Photoshop.png',
-    'Autocad'=>'/resumeApp/resources/assets/images/skills_icons/autocad.png',
-    'Solidworks'=>'/resumeApp/resources/assets/images/skills_icons/solid_works.png',
-    'Adobe Flash'=>'/resumeApp/resources/assets/images/skills_icons/adobe_flash.png',
-    'Digital Drawing Tablet'=>'/resumeApp/resources/assets/images/skills_icons/digital_drawing_tablet.png',
-    'Adobe Indesign'=>'/resumeApp/resources/assets/images/skills_icons/indesign.png',
-    'CorelDraw'=>'/resumeApp/resources/assets/images/skills_icons/corel_draw.png',
-    '3d Max'=>'/resumeApp/resources/assets/images/skills_icons/3d_max.png',
+    'adobe after effects'=>'/resumeApp/resources/assets/images/skills_icons/AE.png',
+    'sketch'=>'/resumeApp/resources/assets/images/skills_icons/Sketch.png',
+    'adobe illustrator'=>'/resumeApp/resources/assets/images/skills_icons/Illustrator.png',
+    'adobe xd'=>'/resumeApp/resources/assets/images/skills_icons/AdobeXD.png',
+    'photoshop'=>'/resumeApp/resources/assets/images/skills_icons/Photoshop.png',
+    'autocad'=>'/resumeApp/resources/assets/images/skills_icons/autocad.png',
+    'solidworks'=>'/resumeApp/resources/assets/images/skills_icons/solid_works.png',
+    'adobe flash'=>'/resumeApp/resources/assets/images/skills_icons/adobe_flash.png',
+    'digital drawing Tablet'=>'/resumeApp/resources/assets/images/skills_icons/digital_drawing_tablet.png',
+    'adobe indesign'=>'/resumeApp/resources/assets/images/skills_icons/indesign.png',
+    'coreldraw'=>'/resumeApp/resources/assets/images/skills_icons/corel_draw.png',
+    '3d max'=>'/resumeApp/resources/assets/images/skills_icons/3d_max.png',
 
     // developer :
     // 1-
-    'JavaScript' =>'/resumeApp/resources/assets/images/skills_icons/javascript.png',
-    'SQL'=>'/resumeApp/resources/assets/images/skills_icons/mysql.png',
-    'Java'=>'resumeApp/resources/assets/images/skills_icons/java.png',
-    'C#'=>'/resumeApp/resources/assets/images/skills_icons/c#.png',
-    'Python'=>'/resumeApp/resources/assets/images/skills_icons/python.png',
-    'PHP'=>'/resumeApp/resources/assets/images/skills_icons/php.png',
-    'C++'=>'/resumeApp/resources/assets/images/skills_icons/c_language.png',
-    'C'=>'/resumeApp/resources/assets/images/skills_icons/c_language.png',
-    'TypeScript'=>'/resumeApp/resources/assets/images/skills_icons/typescript.png',
-    'Ruby'=>'/resumeApp/resources/assets/images/skills_icons/ruby.png',
-    'Objective-C'=>'/resumeApp/resources/assets/images/skills_icons/objective_c.png',
-    'Swift'=>'/resumeApp/resources/assets/images/skills_icons/swift.png',
-    'VB.NET'=>'/resumeApp/resources/assets/images/skills_icons/vb_net.png',
-    'Go'=>'/resumeApp/resources/assets/images/skills_icons/go.png',
-    'Perl'=>'/resumeApp/resources/assets/images/skills_icons/perl.png',
-    'Scala'=>'/resumeApp/resources/assets/images/skills_icons/scala.png',
-    'Groovy'=>'/resumeApp/resources/assets/images/skills_icons/groovy.png',
-    'Assembly'=>'/resumeApp/resources/assets/images/skills_icons/assembly.png',
-    'CoffeeScript'=>'/resumeApp/resources/assets/images/skills_icons/coffeeScript.png',
-    'VBA'=>'/resumeApp/resources/assets/images/skills_icons/vba.png',
-    'R'=>'/resumeApp/resources/assets/images/skills_icons/r_lang.png',
-    'Matlab'=>'/resumeApp/resources/assets/images/skills_icons/matlab.png',
-    'Visual Basic 6'=>'/resumeApp/resources/assets/images/skills_icons/matlab.png',
-    'Lua'=>'/resumeApp/resources/assets/images/skills_icons/lua.png',
-    'Haskell'=>'/resumeApp/resources/assets/images/skills_icons/haskell.png',
-    'HTML'=>'/resumeApp/resources/assets/images/skills_icons/HTML.png',
-    'CSS'=>'/resumeApp/resources/assets/images/skills_icons/CSS.png',
+    'javascript' =>'/resumeApp/resources/assets/images/skills_icons/javascript.png',
+    'sql'=>'/resumeApp/resources/assets/images/skills_icons/mysql.png',
+    'java'=>'resumeApp/resources/assets/images/skills_icons/java.png',
+    'c#'=>'/resumeApp/resources/assets/images/skills_icons/c#.png',
+    'python'=>'/resumeApp/resources/assets/images/skills_icons/python.png',
+    'php'=>'/resumeApp/resources/assets/images/skills_icons/php.png',
+    'c++'=>'/resumeApp/resources/assets/images/skills_icons/c_language.png',
+    'c'=>'/resumeApp/resources/assets/images/skills_icons/c_language.png',
+    'typescript'=>'/resumeApp/resources/assets/images/skills_icons/typescript.png',
+    'ruby'=>'/resumeApp/resources/assets/images/skills_icons/ruby.png',
+    'objective-C'=>'/resumeApp/resources/assets/images/skills_icons/objective_c.png',
+    'swift'=>'/resumeApp/resources/assets/images/skills_icons/swift.png',
+    'vb.net'=>'/resumeApp/resources/assets/images/skills_icons/vb_net.png',
+    'go'=>'/resumeApp/resources/assets/images/skills_icons/go.png',
+    'perl'=>'/resumeApp/resources/assets/images/skills_icons/perl.png',
+    'scala'=>'/resumeApp/resources/assets/images/skills_icons/scala.png',
+    'groovy'=>'/resumeApp/resources/assets/images/skills_icons/groovy.png',
+    'assembly'=>'/resumeApp/resources/assets/images/skills_icons/assembly.png',
+    'coffeescript'=>'/resumeApp/resources/assets/images/skills_icons/coffeeScript.png',
+    'vba'=>'/resumeApp/resources/assets/images/skills_icons/vba.png',
+    'r'=>'/resumeApp/resources/assets/images/skills_icons/r_lang.png',
+    'matlab'=>'/resumeApp/resources/assets/images/skills_icons/matlab.png',
+    'visual basic 6'=>'/resumeApp/resources/assets/images/skills_icons/matlab.png',
+    'lua'=>'/resumeApp/resources/assets/images/skills_icons/lua.png',
+    'haskell'=>'/resumeApp/resources/assets/images/skills_icons/haskell.png',
+    'html'=>'/resumeApp/resources/assets/images/skills_icons/HTML.png',
+    'css'=>'/resumeApp/resources/assets/images/skills_icons/CSS.png',
 
     //2-
-    'AngularJS' => '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
-    'Node.js' => '/resumeApp/resources/assets/images/skills_icons/node_js.png',
-    '.NET Core' => '/resumeApp/resources/assets/images/skills_icons/netcore.png',
-    'React' => '/resumeApp/resources/assets/images/skills_icons/react.png',
-    'Cordova' => '/resumeApp/resources/assets/images/skills_icons/cordava.png',
-    'Firebase' => '',
-    'Xamarin' => '',
-    'Hadoop' => '/resumeApp/resources/assets/images/skills_icons/hadoop.png',
-    'Spark' => '/resumeApp/resources/assets/images/skills_icons/spark.png',
-    'MySQL' => '/resumeApp/resources/assets/images/skills_icons/mysql.png',
-    'SQL Server' => '/resumeApp/resources/assets/images/skills_icons/sql server.png',
-    'PostgreSQL' => '/resumeApp/resources/assets/images/skills_icons/postgreSQL.png',
-    'SQLite' => '/resumeApp/resources/assets/images/skills_icons/SQLite.png',
-    'MongoDB' => '/resumeApp/resources/assets/images/skills_icons/mongoDB.png',
-    'Oracle' => '/resumeApp/resources/assets/images/skills_icons/Oracle.png',
-    'Redis' => '/resumeApp/resources/assets/images/skills_icons/redis.png',
-    'Cassandra' => '/resumeApp/resources/assets/images/skills_icons/cassandra.png'
+    'angularjs' => '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
+    'node.js' => '/resumeApp/resources/assets/images/skills_icons/node_js.png',
+    '.net Core' => '/resumeApp/resources/assets/images/skills_icons/netcore.png',
+    'react' => '/resumeApp/resources/assets/images/skills_icons/react.png',
+    'cordova' => '/resumeApp/resources/assets/images/skills_icons/cordava.png',
+    'firebase' => '',
+    'xamarin' => '',
+    'hadoop' => '/resumeApp/resources/assets/images/skills_icons/hadoop.png',
+    'spark' => '/resumeApp/resources/assets/images/skills_icons/spark.png',
+    'mysql' => '/resumeApp/resources/assets/images/skills_icons/mysql.png',
+    'sql server' => '/resumeApp/resources/assets/images/skills_icons/sql server.png',
+    'postgresql' => '/resumeApp/resources/assets/images/skills_icons/postgreSQL.png',
+    'sqlite' => '/resumeApp/resources/assets/images/skills_icons/SQLite.png',
+    'mongodb' => '/resumeApp/resources/assets/images/skills_icons/mongoDB.png',
+    'oracle' => '/resumeApp/resources/assets/images/skills_icons/Oracle.png',
+    'redis' => '/resumeApp/resources/assets/images/skills_icons/redis.png',
+    'cassandra' => '/resumeApp/resources/assets/images/skills_icons/cassandra.png'
 ];
 ?>
 
@@ -106,39 +106,30 @@
             </a>
         </li>
     </ul>
+    <?
+    $freelancerSkills = $freelancer->skills;
+    $i=0;
+    ?>
     <!-- Tab panes -->
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active firstItem" id="languagesTab{{$freelancer->id}}{{$value['id']}}">
             <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                 <div class="col-md-12  text-center">
                     <span class="skillsCard">
-                        <?
-                        $skills_2 = $freelancer->userData->primarySkills;
-
-                        $skillsArr_2 = explode(',',$skills_2);
-
-                        $j = 0 ;
-                        foreach ($skillsArr_2 as $skill_2){
-                            if($j<=5){
-                                $allSKills[] = $skill_2;
-                            }
-                            $j++;
-                        }
-                        $i=0;
-                        ?>
-                        @foreach($allSKills as $skill)
-                            <? if($i<6):?>
-                            <?
-                            $imgSrc = '/resumeApp/resources/assets/images/skills_icons/skill.png' ;
-                            if(isset($skillsDesigner[$skill]) && !empty($skillsDesigner[$skill])){
-                                $imgSrc = $skillsDesigner[$skill] ;
-                            }
-                            ?>
-                            <span id="skillContainer{{$i}}" class="highlightSkill">
-                    <img style="width: 17px;padding-bottom: 3px;" src="{{$imgSrc}}" alt="skill" id="skillImage{{$i}}">
-                                {{$skill}} &nbsp;&nbsp;
-                </span>
-                            <? $i++;?>
+                        <? $i= 0 ;?>
+                        @foreach($freelancerSkills as $skill)
+                            <? if($i<6 && $skill->type == 'programming'):?>
+                                    <?
+                                    $imgSrc = '/resumeApp/resources/assets/images/skills_icons/skill.png' ;
+                                    if(isset($skillsDesigner[strtolower($skill->skill_title)]) && !empty($skillsDesigner[strtolower($skill->skill_title)])){
+                                        $imgSrc = $skillsDesigner[strtolower($skill->skill_title)] ;
+                                    }
+                                    ?>
+                                    <span id="skillContainer{{$i}}" class="highlightSkill">
+                                        <img style="width: 17px;padding-bottom: 3px;" src="{{$imgSrc}}" alt="skill" id="skillImage{{$i}}">
+                                        {{$skill->skill_title}} &nbsp;&nbsp;
+                                    </span>
+                                <?$i++;?>
                             <? endif;?>
                         @endforeach
                     </span>
@@ -147,41 +138,42 @@
         </div>
         <div role="tabpanel" class="tab-pane fade" id="databases{{$freelancer->id}}{{$value['id']}}">
             <div class="text-center panelFormLabel" style="padding-top: 17px; padding-bottom: 17px;">
-                No skills found
+                <? $i=10 ;?>
+                @foreach($freelancerSkills as $skill)
+                    <? if($i<16 && $skill->type == 'frameworks'):?>
+                    <?
+                    $imgSrc = '/resumeApp/resources/assets/images/skills_icons/skill.png' ;
+                    if(isset($skillsDesigner[strtolower($skill->skill_title)]) && !empty($skillsDesigner[strtolower($skill->skill_title)])){
+                        $imgSrc = $skillsDesigner[strtolower($skill->skill_title)] ;
+                    }
+                    ?>
+                    <span id="skillContainer{{$i}}" class="highlightSkill">
+                                        <img style="width: 17px;padding-bottom: 3px;" src="{{$imgSrc}}" alt="skill" id="skillImage{{$i}}">
+                        {{$skill->skill_title}} &nbsp;&nbsp;
+                    </span>
+                    <?$i++;?>
+                    <? endif;?>
+                @endforeach
             </div>
         </div>
         <div role="tabpanel" class="tab-pane fade" id="skillsTab{{$freelancer->id}}{{$value['id']}}">
             <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                 <div class="col-md-12  text-center">
                     <span class="skillsCard">
-                        <?
-                        $skills_1 = $freelancer->userData->design_skills_checkbox ;
-
-                        $skillsArr_1 = explode(',',$skills_1);
-
-                        $allSKills = [];
-                        $j = 0 ;
-                        foreach ($skillsArr_1 as $skill_1){
-                            if($j<=5){
-                                $allSKills[] = $skill_1;
-                            }
-                            $j++;
-                        }
-                        $i=0;
-                        ?>
-                        @foreach($allSKills as $skill)
-                            <? if($i<6):?>
+                        <?$i=20;?>
+                      @foreach($freelancerSkills as $skill)
+                            <? if($i<26 && $skill->type == 'design'):?>
                             <?
                             $imgSrc = '/resumeApp/resources/assets/images/skills_icons/skill.png' ;
-                            if(isset($skillsDesigner[$skill]) && !empty($skillsDesigner[$skill])){
-                                $imgSrc = $skillsDesigner[$skill] ;
+                            if(isset($skillsDesigner[strtolower($skill->skill_title)]) && !empty($skillsDesigner[strtolower($skill->skill_title)])){
+                                $imgSrc = $skillsDesigner[strtolower($skill->skill_title)] ;
                             }
                             ?>
                             <span id="skillContainer{{$i}}" class="highlightSkill">
-                    <img style="width: 17px;padding-bottom: 3px;" src="{{$imgSrc}}" alt="skill" id="skillImage{{$i}}">
-                                {{$skill}} &nbsp;&nbsp;
-                </span>
-                            <? $i++;?>
+                                        <img style="width: 17px;padding-bottom: 3px;" src="{{$imgSrc}}" alt="skill" id="skillImage{{$i}}">
+                                {{$skill->skill_title}} &nbsp;&nbsp;
+                                    </span>
+                                <?$i++;?>
                             <? endif;?>
                         @endforeach
                     </span>
@@ -190,7 +182,22 @@
         </div>
         <div role="tabpanel" class="tab-pane fade" id="software{{$freelancer->id}}{{$value['id']}}">
             <div class="text-center panelFormLabel" style="padding-top: 17px; padding-bottom: 17px;">
-                No skills found
+                <?$i=30;?>
+                @foreach($freelancerSkills as $skill)
+                    <? if($i<36 && $skill->type == 'software'):?>
+                    <?
+                    $imgSrc = '/resumeApp/resources/assets/images/skills_icons/skill.png' ;
+                    if(isset($skillsDesigner[strtolower($skill->skill_title)]) && !empty($skillsDesigner[strtolower($skill->skill_title)])){
+                        $imgSrc = $skillsDesigner[strtolower($skill->skill_title)] ;
+                    }
+                    ?>
+                    <span id="skillContainer{{$i}}" class="highlightSkill">
+                                        <img style="width: 17px;padding-bottom: 3px;" src="{{$imgSrc}}" alt="skill" id="skillImage{{$i}}">
+                        {{$skill->skill_title}} &nbsp;&nbsp;
+                                    </span>
+                        <?$i++;?>
+                    <? endif;?>
+                @endforeach
             </div>
         </div>
     </div>

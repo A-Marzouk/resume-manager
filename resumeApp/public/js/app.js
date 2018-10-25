@@ -60730,7 +60730,7 @@ var render = function() {
             staticClass: "nav-item",
             on: {
               click: function($event) {
-                _vm.setCurrSkillType("frameworkes")
+                _vm.setCurrSkillType("frameworks")
               }
             }
           },

@@ -60609,7 +60609,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -60629,10 +60628,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/freelancer/skills').then(function (response) {
                 _this.skills = response.data;
-                console.log(_this.skills);
             });
         },
-        deleteSkill: function deleteSkill(skill) {},
+        deleteSkill: function deleteSkill(skill) {
+            var _this2 = this;
+
+            axios.post('/freelancer/deleteskill', { skillID: skill.id }).then(function (response) {
+                var skills = _this2.skills;
+                $.each(skills, function (i) {
+                    if (skills[i].id === skill.id) {
+                        skills.splice(i, 1);
+                        return false;
+                    }
+                });
+
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+            });
+        },
         editSkill: function editSkill(skillID) {},
         addSkill: function addSkill() {
             var newSkill = {
@@ -60810,7 +60826,7 @@ var render = function() {
                   "div",
                   {
                     staticClass: "col-md-9",
-                    staticStyle: { "padding-top": "10px" }
+                    staticStyle: { "padding-top": "5px" }
                   },
                   [
                     _c(
@@ -60849,7 +60865,14 @@ var render = function() {
                               }
                             ],
                             key: index,
-                            staticClass: "list-item text-center skillView col-2"
+                            staticClass:
+                              "list-item text-center skillView col-3",
+                            staticStyle: {
+                              background: "whitesmoke",
+                              "border-radius": "10px",
+                              "margin-top": "5px",
+                              "margin-bottom": "5px"
+                            }
                           },
                           [
                             _c(
@@ -60865,9 +60888,32 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                                    " +
+                                  "\n                                   " +
                                     _vm._s(skill.skill_title) +
-                                    "\n                                "
+                                    "\n                                   "
+                                ),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "close",
+                                    staticStyle: {
+                                      padding: "2px",
+                                      outline: "none"
+                                    },
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.deleteSkill(skill)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      { attrs: { "aria-hidden": "true" } },
+                                      [_vm._v("×")]
+                                    )
+                                  ]
                                 )
                               ]
                             )

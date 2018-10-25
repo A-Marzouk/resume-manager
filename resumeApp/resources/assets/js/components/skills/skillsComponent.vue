@@ -27,22 +27,21 @@
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active firstItem" id="languagesTab">
                     <div class="row" style="padding-top: 17px;background: #fdfdfd;">
-                        <div class="col-md-9" style="padding-top: 10px;">
+                        <div class="col-md-9" style="padding-top: 5px;">
                              <span class="jobTitle" v-show="skills.length < 1">
                                    Your skills section looks empty. Please add your skills.
                              </span>
                            <transition-group name="list" class="row">
-                               <div v-show="skill.type == currType" v-for="(skill,index) in skills" v-bind:key="index" class="list-item text-center skillView col-2">
-                                    <!--<button type="button" class="close" style="padding: 5px; outline: none;" @click="deleteSkill(skill)">-->
-                                    <!--<span aria-hidden="true">&times;</span>-->
-                                    <!--</button>-->
-                                    <!--<button type="button"  class="close" style="padding:3px 2px 5px 0px; outline: none;" @click="editSkill(skill.id)">-->
-                                    <!--<span aria-hidden="true">-->
-                                    <!--<img src="/resumeApp/resources/views/customTheme/images/edit.png" alt="edit" width="17px">-->
-                                    <!--</span>-->
-                                    <!--</button>-->
+                               <div v-show="skill.type == currType" v-for="(skill,index) in skills"
+                                    v-bind:key="index"
+                                    class="list-item text-center skillView col-3"
+                                    style="background: whitesmoke;border-radius: 10px; margin-top:5px; margin-bottom:5px;"
+                               >
                                    <b style="color: #697786;font-family: Roboto;font-size: 16px;font-weight: 300;line-height: 24px;">
-                                        {{skill.skill_title}}
+                                       {{skill.skill_title}}
+                                       <button type="button" class="close" style="padding: 2px; outline: none;" @click="deleteSkill(skill)">
+                                           <span aria-hidden="true">&times;</span>
+                                       </button>
                                     </b>
                                 </div>
                             </transition-group>
@@ -85,12 +84,26 @@
                 axios.get('/freelancer/skills').then(
                     (response) => {
                         this.skills = response.data;
-                        console.log(this.skills);
                     }
                 );
             },
             deleteSkill(skill){
+                axios.post('/freelancer/deleteskill',{skillID:skill.id}).then((response)=>{
+                    let skills = this.skills;
+                    $.each(skills, function(i){
+                        if(skills[i].id === skill.id) {
+                            skills.splice(i,1);
+                            return false;
+                        }
+                    });
 
+                    // changes saved :
+                    $('#changesSaved').fadeIn('slow');
+                    setTimeout(function () {
+                        $('#changesSaved').fadeOut();
+                    },2000);
+
+                });
             },
             editSkill(skillID){
 

@@ -41,6 +41,9 @@ Vue.component('educations-list', require('./components/education/educationListCo
 Vue.component('education-history', require('./components/education/educationHistoryComponent.vue'));
 Vue.component('add-education-modal', require('./components/education/addEducationComponent.vue'));
 
+// skills
+Vue.component('skills-list', require('./components/skills/skillsComponent.vue'));
+
 
 // projects
 Vue.component('projects-list', require('./components/projects/projectsListComponent.vue'));
@@ -85,6 +88,13 @@ if ($("#freelancer_works").length !== 0){
 if ($("#freelancer_educations").length !== 0){
     let freelancer_educations = new Vue({
         el:'#freelancer_educations'
+    });
+}
+
+
+if ($("#freelancer_skills").length !== 0){
+    let freelancer_skills = new Vue({
+        el:'#freelancer_skills'
     });
 }
 

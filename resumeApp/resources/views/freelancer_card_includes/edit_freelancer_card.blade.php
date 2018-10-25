@@ -180,60 +180,8 @@
     </div>
 
     {{-- Skills area --}}
-    <div id="nav-taps-resume">
-        <ul class="nav nav-tabs" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link text-center active" href="#languagesTab{{$freelancer->id}}" role="tab" data-toggle="tab">
-                    Programming Languages
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-center" href="#databases{{$freelancer->id}}" role="tab" data-toggle="tab">
-                    Frameworks / Databases
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-center" href="#skillsTab{{$freelancer->id}}" role="tab" data-toggle="tab">
-                    Design Skills
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-center" href="#software{{$freelancer->id}}" role="tab" data-toggle="tab">
-                    Software
-                </a>
-            </li>
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active firstItem" id="languagesTab{{$freelancer->id}}">
-                <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
-                    <div class="col-md-12  text-center">
-                        <span class="skillsCard">
-                           No skills found 1
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="databases{{$freelancer->id}}">
-                <div class="text-center panelFormLabel" style="padding-top: 17px; padding-bottom: 17px;">
-                    No skills found 2
-                </div>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="skillsTab{{$freelancer->id}}">
-                <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
-                    <div class="col-md-12  text-center">
-                        <span class="skillsCard">
-                            No skills found 3
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="software{{$freelancer->id}}">
-                <div class="text-center panelFormLabel" style="padding-top: 17px; padding-bottom: 17px;">
-                    No skills found 4
-                </div>
-            </div>
-        </div>
+    <div  id="freelancer_skills">
+        <skills-list></skills-list>
     </div>
 
 

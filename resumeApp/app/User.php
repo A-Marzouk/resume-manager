@@ -46,6 +46,11 @@ class User extends Authenticatable
     }
 
 
+    public function skills()
+    {
+        return $this->hasMany(Skill::class);
+    }
+
     public function bookings()
     {
         return $this->hasMany(Booking::class);

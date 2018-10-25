@@ -123,6 +123,12 @@ Route::get('/freelancer/educationshistory','EducationHistoryController@getEducat
 Route::post('/freelancer/addeducation/','EducationHistoryController@addEducation')->name('add.education');
 Route::post('/freelancer/deleteeducation/','EducationHistoryController@deleteEducation')->name('delete.education');
 
+
+// skills
+Route::get('/freelancer/skills','SkillsController@getskills')->name('get.skills');
+Route::post('/freelancer/addskill/','SkillsController@addSkill')->name('add.skill');
+Route::post('/freelancer/deleteskill/','SkillsController@deleteSkill')->name('delete.skill');
+
 // projects overview
 Route::get('/freelancer/projects','ProjectsController@getProjects')->name('get.project');
 Route::post('/freelancer/addproject/','ProjectsController@addProject')->name('add.project');

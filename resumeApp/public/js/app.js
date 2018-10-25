@@ -60649,23 +60649,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }, 2000);
             });
         },
-        editSkill: function editSkill(skillID) {},
         addSkill: function addSkill() {
-            var newSkill = {
-                skill_title: this.currSkill.skill_title,
-                type: this.currType
-            };
+            var _this3 = this;
 
-            this.skills.push(newSkill);
-            // clear input :
-            this.currSkill.skill_title = '';
-
+            // disable the input :
+            $('#skill_title').attr('disabled', true);
+            $('#skill_title').css('background-color', 'lightgrey');
             // post data :
             axios.post('/freelancer/addskill', {
-                skill_title: newSkill.skill_title,
+                skill_title: this.currSkill.skill_title,
                 type: this.currType
             }).then(function (response) {
+                var newSkill = {
+                    id: response.data.id,
+                    skill_title: _this3.currSkill.skill_title,
+                    type: _this3.currType
+                };
 
+                _this3.skills.push(newSkill);
+                // clear input :
+                _this3.currSkill.skill_title = '';
+                // enable the input :
+                $('#skill_title').attr('disabled', false);
+                $('#skill_title').css('background-color', 'white');
                 // changes saved :
                 $('#changesSaved').fadeIn('slow');
                 setTimeout(function () {

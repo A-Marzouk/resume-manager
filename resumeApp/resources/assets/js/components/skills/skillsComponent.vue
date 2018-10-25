@@ -105,27 +105,29 @@
 
                 });
             },
-            editSkill(skillID){
-
-            },
             addSkill(){
-                let newSkill = {
-                    skill_title : this.currSkill.skill_title,
-                    type :this.currType
-                };
-
-                this.skills.push(newSkill);
-                // clear input :
-                this.currSkill.skill_title = '';
-
+                // disable the input :
+                $('#skill_title').attr('disabled',true);
+                $('#skill_title').css('background-color','lightgrey');
                 // post data :
                 axios.post('/freelancer/addskill',
                     {
-                        skill_title : newSkill.skill_title,
+                        skill_title : this.currSkill.skill_title,
                         type: this.currType
                     }
                     ).then( (response) => {
+                    let newSkill = {
+                        id:response.data.id,
+                        skill_title : this.currSkill.skill_title,
+                        type :this.currType
+                    };
 
+                    this.skills.push(newSkill);
+                    // clear input :
+                    this.currSkill.skill_title = '';
+                    // enable the input :
+                    $('#skill_title').attr('disabled',false);
+                    $('#skill_title').css('background-color','white');
                     // changes saved :
                     $('#changesSaved').fadeIn('slow');
                     setTimeout(function () {

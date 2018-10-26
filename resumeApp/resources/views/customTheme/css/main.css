@@ -1647,10 +1647,46 @@ body {
   font-weight: 300;
   margin: 0;
   line-height: 24px;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid #D8D8D8;
   padding: 10px; }
   .workExperience span {
     padding-left: 5px; }
+
+.projectBox {
+  color: #697786;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 24px;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  padding: 10px;
+  width: 410px;
+  margin: 0px 10px 20px; }
+  .projectBox span {
+    padding-left: 5px; }
+
+.deleteWorkBtn {
+  height: 30px;
+  border: 1px solid #DADADA;
+  border-radius: 5px;
+  padding-top: 3px;
+  text-align: center;
+  width: 89px;
+  float: right; }
+  .deleteWorkBtn a {
+    color: #6C7A89;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    text-align: center;
+    padding-right: 7px; }
+  .deleteWorkBtn img {
+    width: 18px;
+    padding-right: 7px;
+    padding-bottom: 2px;
+    height: 12px; }
 
 #addWorkText {
   outline: none; }

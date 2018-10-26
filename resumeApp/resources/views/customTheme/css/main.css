@@ -521,6 +521,7 @@ body {
   background: white;
   margin-top: 6%;
   padding: 2%;
+  min-width: 425px;
   margin-left: 39px;
   border: 1px solid #EBEDEF;
   border-radius: 5px;
@@ -530,7 +531,8 @@ body {
   overflow: hidden; }
   @media only screen and (max-width: 600px) {
     .workCard {
-      margin-left: 0px; } }
+      margin-left: 0px;
+      min-width: 325px; } }
   .workCard .workImg {
     height: 242px;
     overflow: hidden;

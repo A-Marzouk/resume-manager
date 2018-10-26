@@ -19,14 +19,13 @@
                 <b style="font-size:16px; font-weight:bolder; ">{{project.projectName}}</b><br/>
             </project-detail>
         </transition-group>
-        <div class="text-left align-middle col-lg-3 col-md-5 noHoverEffect" v-show="this.canAddProject" @click="clearData">
-            <a class="btn btn-default btn-workExp" data-toggle="modal" data-target="#addProjectModal" id="addProjectText">
-                <span>
-                    <img src="/resumeApp/resources/views/customTheme/images/add_work_img.png" alt="add project" width="30px">
-                    Add new work example
-                </span>
+        <hr>
+        <span class="deleteWorkBtn NoDecor" v-show="this.canAddProject" @click="clearData" style="width:137px">
+            <a href="javascript:void(0)" data-toggle="modal" data-target="#addProjectModal">
+                <img src="/resumeApp/resources/assets/images/add_blue.png" alt="edit profile">
+                Add work
             </a>
-        </div>
+        </span>
         <br/>
         <add-project-modal @projectAdded="addProject" :toBeEditedProject="toBeEditedProject"></add-project-modal>
     </div>

@@ -56801,6 +56801,7 @@ var render = function() {
                             key: index,
                             staticClass: "text-center skillView col-3",
                             staticStyle: {
+                              "margin-right": "10px",
                               background: "whitesmoke",
                               "border-radius": "10px",
                               "margin-top": "5px",
@@ -57062,7 +57063,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -57285,8 +57285,10 @@ var render = function() {
         })
       ),
       _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
       _c(
-        "div",
+        "span",
         {
           directives: [
             {
@@ -57296,7 +57298,8 @@ var render = function() {
               expression: "this.canAddProject"
             }
           ],
-          staticClass: "text-left align-middle col-lg-3 col-md-5 noHoverEffect",
+          staticClass: "deleteWorkBtn NoDecor",
+          staticStyle: { width: "137px" },
           on: { click: _vm.clearData }
         },
         [_vm._m(0)]
@@ -57320,25 +57323,20 @@ var staticRenderFns = [
     return _c(
       "a",
       {
-        staticClass: "btn btn-default btn-workExp",
         attrs: {
+          href: "javascript:void(0)",
           "data-toggle": "modal",
-          "data-target": "#addProjectModal",
-          id: "addProjectText"
+          "data-target": "#addProjectModal"
         }
       },
       [
-        _c("span", [
-          _c("img", {
-            attrs: {
-              src:
-                "/resumeApp/resources/views/customTheme/images/add_work_img.png",
-              alt: "add project",
-              width: "30px"
-            }
-          }),
-          _vm._v("\n                Add new work example\n            ")
-        ])
+        _c("img", {
+          attrs: {
+            src: "/resumeApp/resources/assets/images/add_blue.png",
+            alt: "edit profile"
+          }
+        }),
+        _vm._v("\n            Add work\n        ")
       ]
     )
   }

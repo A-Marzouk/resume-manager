@@ -35,7 +35,7 @@
                                <div v-show="skill.type == currType" v-for="(skill,index) in skills"
                                     v-bind:key="index"
                                     class="text-center skillView col-3"
-                                    style="background: whitesmoke;border-radius: 10px; margin-top:5px; margin-bottom:5px;"
+                                    style="margin-right: 10px; background: whitesmoke;border-radius: 10px; margin-top:5px; margin-bottom:5px;"
                                >
                                    <b style="color: #697786;font-family: Roboto;font-size: 16px;font-weight: 300;line-height: 24px;">
                                        {{skill.skill_title}}

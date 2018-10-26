@@ -56784,7 +56784,7 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _c(
-                      "transition-group",
+                      "div",
                       { staticClass: "row", attrs: { name: "list" } },
                       _vm._l(_vm.skills, function(skill, index) {
                         return _c(
@@ -56799,8 +56799,7 @@ var render = function() {
                               }
                             ],
                             key: index,
-                            staticClass:
-                              "list-item text-center skillView col-3",
+                            staticClass: "text-center skillView col-3",
                             staticStyle: {
                               background: "whitesmoke",
                               "border-radius": "10px",
@@ -56855,8 +56854,7 @@ var render = function() {
                         )
                       })
                     )
-                  ],
-                  1
+                  ]
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-3" }, [

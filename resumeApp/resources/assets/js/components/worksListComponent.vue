@@ -2,31 +2,37 @@
     <div>
         <transition-group name="list" class="row">
             <work-history v-for="(work,index) in works" v-bind:key="index" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
-                <button type="button" class="close" style="padding: 5px; outline: none;" @click="deleteWork(work)">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <button type="button" data-toggle="modal" data-target="#addWorkModal" class="close" style="padding:3px 2px 5px 0px; outline: none;" @click="editWork(work.id)">
-                <span aria-hidden="true">
-                    <img src="/resumeApp/resources/views/customTheme/images/edit.png" alt="edit" width="17px">
+                <span class="deleteWorkBtn NoDecor" @click="deleteWork(work)">
+                    <a href="javascript:void(0)">
+                        <img src="/resumeApp/resources/assets/images/close_blue.png" alt="edit profile">
+                        Delete
+                    </a>
                 </span>
-                </button>
+
+                <span class="deleteWorkBtn NoDecor" @click="editWork(work.id)" style=" width: 75px; margin-right:5px;">
+                    <a href="javascript:void(0)" data-target="#addWorkModal"  data-toggle="modal">
+                        <img src="/resumeApp/resources/assets/images/edit_blue.png" alt="edit profile" style="width: 20px;
+    padding-right: 7px;
+    padding-bottom: 2px;
+    height: 15px;">
+                        Edit
+                    </a>
+                </span>
                 <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">{{work.job_title}}</b><br/>
                 {{work.company}}<br/>
                 Start :{{work.date_from}}
                 <span v-show="work.date_to && work.currently_working !== true"> End : {{work.date_to}}</span>
-                <span v-show="work.currently_working !== false"> - Present</span><br/><br/>
+                <span v-show="work.currently_working !== false"> - Present</span><br/>
 
-                {{work.job_description}}
+                <div class="desc" style="color: #30323D;font-family: Roboto;">{{work.job_description}}</div>
             </work-history>
         </transition-group>
-        <div class="text-left align-middle col-lg-3 col-md-5 noHoverEffect" v-show="this.canAdd" @click="clearData">
-            <a class="btn btn-default btn-workExp" data-toggle="modal" data-target="#addWorkModal" id="addWorkText">
-                <span>
-                    <img src="/resumeApp/resources/views/customTheme/images/add_work_img.png" alt="add work" width="30px">
-                    Add new work experience
-                </span>
+        <span class="deleteWorkBtn NoDecor" v-show="this.canAdd" @click="clearData" style="width:137px">
+            <a href="javascript:void(0)" data-toggle="modal" data-target="#addWorkModal">
+                <img src="/resumeApp/resources/assets/images/add_blue.png" alt="edit profile">
+                Add work
             </a>
-        </div>
+        </span>
         <br/>
         <add-work-modal @workAdded="addWorkHistory" :toBeEditedWork="toBeEditedWork"></add-work-modal>
     </div>

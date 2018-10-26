@@ -31,10 +31,10 @@
                              <span class="jobTitle" v-show="skills.length < 1">
                                    Your skills section looks empty. Please add your skills.
                              </span>
-                           <transition-group name="list" class="row">
+                           <div name="list" class="row">
                                <div v-show="skill.type == currType" v-for="(skill,index) in skills"
                                     v-bind:key="index"
-                                    class="list-item text-center skillView col-3"
+                                    class="text-center skillView col-3"
                                     style="background: whitesmoke;border-radius: 10px; margin-top:5px; margin-bottom:5px;"
                                >
                                    <b style="color: #697786;font-family: Roboto;font-size: 16px;font-weight: 300;line-height: 24px;">
@@ -44,7 +44,7 @@
                                        </button>
                                     </b>
                                 </div>
-                            </transition-group>
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <form action="/freelancer/addskill/" method="post" @submit.prevent="addSkill">
@@ -105,27 +105,29 @@
 
                 });
             },
-            editSkill(skillID){
-
-            },
             addSkill(){
-                let newSkill = {
-                    skill_title : this.currSkill.skill_title,
-                    type :this.currType
-                };
-
-                this.skills.push(newSkill);
-                // clear input :
-                this.currSkill.skill_title = '';
-
+                // disable the input :
+                $('#skill_title').attr('disabled',true);
+                $('#skill_title').css('background-color','lightgrey');
                 // post data :
                 axios.post('/freelancer/addskill',
                     {
-                        skill_title : newSkill.skill_title,
+                        skill_title : this.currSkill.skill_title,
                         type: this.currType
                     }
                     ).then( (response) => {
+                    let newSkill = {
+                        id:response.data.id,
+                        skill_title : this.currSkill.skill_title,
+                        type :this.currType
+                    };
 
+                    this.skills.push(newSkill);
+                    // clear input :
+                    this.currSkill.skill_title = '';
+                    // enable the input :
+                    $('#skill_title').attr('disabled',false);
+                    $('#skill_title').css('background-color','white');
                     // changes saved :
                     $('#changesSaved').fadeIn('slow');
                     setTimeout(function () {

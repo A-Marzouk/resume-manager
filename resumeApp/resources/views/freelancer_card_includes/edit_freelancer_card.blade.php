@@ -215,7 +215,7 @@
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="work{{$freelancer->id}}">
-                <div class="panelFormLabel" style="padding-top: 17px; padding-bottom: 17px;">
+                <div style="padding-top: 17px; padding-bottom: 17px;">
                     <div class="col-md-12">
                         <div  id="work_overview">
                             <works-list></works-list>
@@ -224,7 +224,7 @@
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="education{{$freelancer->id}}">
-                <div class="panelFormLabel" style="padding-top: 17px; padding-bottom: 17px;">
+                <div class="" style="padding-top: 17px; padding-bottom: 17px;">
                     <div class="col-md-12">
                         <div  id="freelancer_educations">
                             <educations-list></educations-list>

@@ -98,6 +98,12 @@ body {
       .navbar-brand img {
         width: 140px; } }
 
+.formDisplay {
+  display: inline-flex; }
+  @media only screen and (max-width: 996px) {
+    .formDisplay {
+      display: block; } }
+
 .loginBtnHolder {
   margin-left: auto; }
 
@@ -1265,6 +1271,15 @@ body {
   font-size: 13px;
   letter-spacing: 0.09px;
   line-height: 15px; }
+  @media only screen and (max-width: 996px) {
+    .cardInput {
+      width: 100%; } }
+
+.cardSelect {
+  width: 178px; }
+  @media only screen and (max-width: 996px) {
+    .cardSelect {
+      width: 100%; } }
 
 .checkBoxText {
   color: #697786;
@@ -1961,9 +1976,6 @@ body {
         padding-left: 0; } }
     .freelancerCard .nameArea_edit_Card {
       padding-left: 0; }
-      @media only screen and (max-width: 769px) {
-        .freelancerCard .nameArea_edit_Card {
-          margin-left: -12px; } }
   .freelancerCard .navRow {
     height: 50px;
     border-bottom: 1px solid #EBEDEF;
@@ -2071,6 +2083,8 @@ body {
       .freelancerCard .freelancerCardLeft {
         padding-bottom: 30px;
         text-align: left; } }
+    .freelancerCard .freelancerCardLeft_edit_card {
+      padding-left: 15px; }
   .freelancerCard .freelancerCardRight {
     padding-right: 20px; }
     .freelancerCard .freelancerCardRight .panelFormLabel {

@@ -5,12 +5,12 @@
             <form method="post"
                   action="{{route('freelancer.data.store')}}"
                   enctype="multipart/form-data"
-                  class="container freelancerForm d-md-inline-flex"
+                  class="container freelancerForm formDisplay"
             >
                 {{csrf_field()}}
 
                 <div class="col-lg-2 col-6 imageCol">
-                    <div class="imageContainer" style="padding: 10px; margin-left: 4px;">
+                    <div class="imageContainer" style="padding: 10px;">
                         <?
                         $defaultSrc = 'resumeApp/resources/views/customTheme/images/add_profile_photo.png';
 
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-6 freelancerCardLeft mobile-auto-margin">
+                    <div class="col-lg-3 col-md-4 col-12 freelancerCardLeft freelancerCardLeft_edit_card mobile-auto-margin">
                     <div class="nameArea nameArea_edit_Card">
                         <div class="nameCard">
                             <input type="text" class="form-control cardInput"
@@ -54,7 +54,7 @@
                                 'Illustrator','Motion Graphics','Art Director','Branding',
                                 'Graphic Designer',' Web Designer','Game Designer','Digital Artist'];
                             ?>
-                            <select class="custom-select"
+                            <select class="custom-select cardSelect"
                                     style="
                                         background-color: rgba(67,103,211,0.5);
                                         background:rgba(67,103,211,0.5) url('/resumeApp/resources/assets/images/white_arrow.png')  no-repeat right .75rem center;
@@ -62,7 +62,6 @@
                                         border-radius: 5px;
                                         height: 38px;
                                         border: 1px solid #FFFFFF;
-                                        width: 178px;
                                         color: #FDFDFD;
                                         font-family: Roboto;
                                         font-size: 13px;

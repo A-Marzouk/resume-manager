@@ -19,7 +19,7 @@ $freelancer = auth()->user();
         <? endif; ?>
     </div>
 
-    <div style="margin-left: 8.07%; ">
+    <div style="margin-left: 8.07%; " class="marginMobile-0">
         <div class="freelancerCard" style="background: none;">
             <div id="loadingText" class="d-none" style="color:lightseagreen; padding: 10px;">
         <span id="spanTextAudio">
@@ -37,35 +37,35 @@ $freelancer = auth()->user();
     </div>
 
     {{-- include the freelancer card + the new edit row--}}
-    <div style="margin-left: 8.07%">
+    <div style="margin-left: 8.07%" class="marginMobile-0">
         <div class="freelancerCard" style="margin-bottom: -3px;">
             <div class="row actionRow">
-                <div class="importBtn NoDecor" style="margin-left: 29px; width: 205px;">
+                <div class="importBtn NoDecor">
                     <span>Import : </span>&nbsp;
                     <a href="javascript:void(0)"id="importBehanceData" data-toggle="modal" data-target="#behanceDataModal">Behance </a> &nbsp; | &nbsp;
                     <a href="javascript:void(0)"> linkedIn</a>
                 </div>
-                <div class="importBtn NoDecor" style="width: 228px;">
+                <div class="importBtn importBtn_upload NoDecor">
                     <a href="javascript:void(0)">
                         Upload References / Testimonials
                     </a>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2">
 
                 </div>
-                <div class="progressBtn" style="margin-left: -10px; margin-right: 10px;">
+                <div class="progressBtn">
                     <a href="javascript:void(0)">
                        <span>
                             70% Complete
                        </span>
                     </a>
                 </div>
-                <div class="editBtn NoDecor" style="width: 97px;">
-                    <a href="{{route('show.new_form')}}">
-                        <img src="/resumeApp/resources/assets/images/close_24px.png" alt="edit profile">
-                        Discard
-                    </a>
-                </div>
+                {{--<div class="editBtn NoDecor" style="width: 97px;">--}}
+                    {{--<a href="{{route('show.new_form')}}">--}}
+                        {{--<img src="/resumeApp/resources/assets/images/close_24px.png" alt="edit profile">--}}
+                        {{--Discard--}}
+                    {{--</a>--}}
+                {{--</div>--}}
                 <div class="editBtn NoDecor" style="margin-left: 10px;">
                     <a href="{{route('show.new_form')}}">
                         <img src="/resumeApp/resources/assets/images/check_24px.png" alt="edit profile">

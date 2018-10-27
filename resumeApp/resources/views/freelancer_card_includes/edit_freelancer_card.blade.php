@@ -5,8 +5,7 @@
             <form method="post"
                   action="{{route('freelancer.data.store')}}"
                   enctype="multipart/form-data"
-                  class="container freelancerForm"
-                  style="display: inherit"
+                  class="container freelancerForm d-md-inline-flex"
             >
                 {{csrf_field()}}
 
@@ -33,8 +32,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-6 freelancerCardLeft">
-                    <div class="nameArea">
+                <div class="col-lg-3 col-md-4 col-6 freelancerCardLeft mobile-auto-margin">
+                    <div class="nameArea nameArea_edit_Card">
                         <div class="nameCard">
                             <input type="text" class="form-control cardInput"
                                    id="fullName" name="name"
@@ -42,7 +41,7 @@
                                    value="<?if(empty($name)):?>{{$freelancer->firstName}} {{$freelancer->lastName}}<?else:?>{{$name}}<? endif;?>"
                             >
                         </div>
-                        <div class="jobTitle" style="color: white; font-size: 14px; padding-top: 7px;">
+                        <div class="jobTitle jobTitle_edit_card" style="color: white; font-size: 14px; padding-top: 7px;">
                             <?
                             $developer = [
                                 'Full-Stack Developer', 'Front-End Developer', 'PHP Developer',
@@ -86,15 +85,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7 col-md-8 freelancerCardRight">
+                <div class="col-lg-7 col-md-8 col-12 freelancerCardRight">
                     <div class="row interviewIcons">
-                        <div class="col-md-4 jobTitle text-right" style="font-size:12px;color: white; padding-top: 13px; padding-right: 30px;">
+                        <div class="col-md-4 jobTitle text-right d-none d-md-inline" style="font-size:12px;color: white; padding-top: 13px; padding-right: 30px;">
                             Your interviews :
                         </div>
                         <div class="col-12 col-lg-4 audioTransArea text-center NoDecor">
                             <a href="javascript:void(0)" style="outline: none;" id="browseBtn">
-                                <div class="cardIconsCon ">
-                            <span>
+                                <div class="cardIconsCon  cardIconsCon_edit">
+                                    <span>
                                 <img src="/resumeApp/resources/views/customTheme/images/audio_resume_Card.png"
                                      alt="" style="padding-right: 5px; width: 23px;">
                                 <span class="audioText">
@@ -103,11 +102,10 @@
                             </span>
                                 </div>
                             </a>
-
                         </div>
                         <div class="col-12 col-lg-4 videoArea NoDecor">
                             <a href="javascript:void(0)" style="outline: none;" class="" id="browseBtnVideo">
-                                <div class="cardIconsCon2  text-center">
+                                <div class="cardIconsCon2 cardIconsCon2_edit text-center">
                             <span>
                                 <img src="/resumeApp/resources/views/customTheme/images/video_resume_card.png"
                                      alt="" style="padding-right: 5px; width: 23px;">
@@ -117,49 +115,45 @@
                             </a>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="text-center hireRow calculateBox">
                             <div class="hoursBtn NoDecor" style="color:white; background: none; border:none;">
                                 <div class="row">
-                                    <div class="col-md-2" style="padding: 9px 0 0 0;">
+                                    <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
                                         <a href="javascript:void(0)" id="dollarsMinus{{$freelancer->id}}" class="dollarsMinus">
                                             <img src="/resumeApp/resources/views/customTheme/images/newResume/minus copy 6.png" style="width: 18px; padding-right: 8px;" alt="minus">
                                         </a>
                                     </div>
 
-                                    <div class="col-md-8 textBox">
+                                    <div class="col-md-8 col-8 textBox">
                                         <span id="numberOfDollars{{$freelancer->id}}">{{$freelancer->userData->salary}}</span> $<br/>
                                         <span style="font-size: 13px; font-weight: normal">Hourly Rate</span>
                                     </div>
 
-                                    <div class="col-md-2" style="padding: 9px 0 0 0;">
+                                    <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
                                         <a href="javascript:void(0)" id="dollarsPlus{{$freelancer->id}}" class="dollarsPlus">
                                             <img src="/resumeApp/resources/views/customTheme/images/newResume/plus copy 6.png" style="width: 18px; padding-left: 8px;" alt="plus">
                                         </a>
                                     </div>
                                 </div>
-
-
-
                             </div>
                         </div>
 
-                        <div  class="text-center hireRow calculateBox" style="margin-left: 7px;" >
+                        <div  class="text-center hireRow calculateBox" style="margin-left: 7px;">
                             <div class="hoursBtn NoDecor" style="color:white; background: none; border:none;">
                                 <div class="row">
-                                    <div class="col-md-2" style="padding: 9px 0 0 0;">
+                                    <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
                                         <a href="javascript:void(0)" id="hoursMinus{{$freelancer->id}}" class="hoursMinus">
                                             <img src="/resumeApp/resources/views/customTheme/images/newResume/minus copy 6.png" style="width: 18px; padding-right: 8px;" alt="minus">
                                         </a>
                                     </div>
-                                    <div class="col-md-8 textBox">
+                                    <div class="col-md-8 col-8 textBox">
                                         <span id="numberOfHours{{$freelancer->id}}">@if($freelancer->userData->availableHours==0) 0 @else {{$freelancer->userData->availableHours}} @endif</span>
                                         hours<br/>
                                         <span id="maxHours{{$freelancer->id}}" class="d-none">60</span>
                                         <span style="font-size: 13px; font-weight: normal">Weekly Availability</span>
                                     </div>
-                                    <div class="col-md-2" style="padding: 9px 0 0 0;">
+                                    <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
                                         <a href="javascript:void(0)" id="hoursPlus{{$freelancer->id}}" class="hoursPlus">
                                             <img src="/resumeApp/resources/views/customTheme/images/newResume/plus copy 6.png" style="width: 18px; padding-left: 8px;" alt="plus">
                                         </a>
@@ -169,7 +163,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <input type="file" id="audioFile" name="audioFile" style="width: 1px; height: 1px; opacity: 0; right:145%;">
                 <input type="file" id="video_file" name="video_file" style="width: 1px; height: 1px; opacity: 0; right:145%;">
                 <input type="file" id="photoInput" name="photo" style="width: 1px; height: 1px; opacity: 0; right:145%;">
@@ -178,26 +172,24 @@
             </form>
         </div>
     </div>
-
     {{-- Skills area --}}
     <div  id="freelancer_skills">
         <skills-list></skills-list>
     </div>
 
-
     <div id="nav-taps-resume-card">
         <ul class="nav nav-tabs navRow" role="tablist">
-            <li class="offset-md-3 col-md-2 nav-item NoDecor">
+            <li class="offset-md-3 col-md-2 col-6 nav-item NoDecor">
                 <a class="nav-link navTab text-center active" href="#portfolio{{$freelancer->id}}" role="tab" data-toggle="tab">
                     Portfolio
                 </a>
             </li>
-            <li class="nav-item col-md-2 NoDecor">
+            <li class="nav-item col-md-2 col-6 NoDecor">
                 <a class="nav-link navTab text-center" href="#work{{$freelancer->id}}" role="tab" data-toggle="tab">
                     Work
                 </a>
             </li>
-            <li class="nav-item col-md-2 NoDecor">
+            <li class="nav-item col-md-2 col-6 NoDecor">
                 <a class="nav-link navTab text-center" href="#education{{$freelancer->id}}" role="tab" data-toggle="tab">
                     Education
                 </a>
@@ -234,7 +226,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 

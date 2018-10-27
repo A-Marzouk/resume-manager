@@ -22,15 +22,15 @@ $redirectURL = 'https://123workforce.com/freelancer/linkedin';
     </div>
 
     {{-- include the freelancer card + the new edit row--}}
-    <div style="margin-left: 8.07%">
+    <div style="margin-left: 8.07%" class="marginMobile-0">
         <div class="freelancerCard" style="margin-bottom: -3px;">
             <div class="row actionRow">
-                <div class="importBtn NoDecor" style="margin-left: 29px; width: 205px;">
+                <div class="importBtn NoDecor">
                     <span>Import : </span>&nbsp;
                     <a href="javascript:void(0)" id="importBehanceData" data-toggle="modal" data-target="#behanceDataModal">Behance </a> &nbsp; | &nbsp;
                     <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id={{$clientID}}&redirect_uri={{$redirectURL}}&state=987654321&scope=r_basicprofile"> linkedIn</a>
                 </div>
-                <div class="importBtn NoDecor" style="width: 228px;">
+                <div class="importBtn importBtn_upload NoDecor">
                     <a href="javascript:void(0)">
                         Upload References / Testimonials
                     </a>
@@ -40,9 +40,9 @@ $redirectURL = 'https://123workforce.com/freelancer/linkedin';
                 </div>
                 <div class="progressBtn">
                     <a href="javascript:void(0)">
-                       <span>
-                            70% Complete
-                       </span>
+                   <span>
+                        70% Complete
+                   </span>
                     </a>
                 </div>
                 <div class="editBtn NoDecor">
@@ -51,6 +51,7 @@ $redirectURL = 'https://123workforce.com/freelancer/linkedin';
                         Edit profile
                     </a>
                 </div>
+
             </div>
         </div>
         <div>

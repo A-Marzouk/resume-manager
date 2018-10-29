@@ -178,17 +178,17 @@
 
     <div id="nav-taps-resume-card">
         <ul class="nav nav-tabs navRow" role="tablist">
-            <li class="offset-md-3 col-md-2 col-6 nav-item NoDecor">
+            <li class="offset-md-3 col-md-2 col-4 nav-item NoDecor">
                 <a class="nav-link navTab text-center active" href="#portfolio{{$freelancer->id}}" role="tab" data-toggle="tab">
                     Portfolio
                 </a>
             </li>
-            <li class="nav-item col-md-2 col-6 NoDecor">
+            <li class="nav-item col-md-2 col-4 NoDecor">
                 <a class="nav-link navTab text-center" href="#work{{$freelancer->id}}" role="tab" data-toggle="tab">
                     Work
                 </a>
             </li>
-            <li class="nav-item col-md-2 col-6 NoDecor">
+            <li class="nav-item col-md-2 col-4 NoDecor">
                 <a class="nav-link navTab text-center" href="#education{{$freelancer->id}}" role="tab" data-toggle="tab">
                     Education
                 </a>

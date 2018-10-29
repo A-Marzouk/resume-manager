@@ -111,4 +111,9 @@ class User extends Authenticatable
 
         return $countUnread;
     }
+
+    public function getCompletionPercent(){
+        // field to check :
+        // name, profession, audio, video,
+    }
 }

@@ -13,11 +13,13 @@ use App\Booking;
 use App\Http\Controllers\NotificationsController;
 use App\User;
 use App\UserData;
+use Dompdf\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Stripe\Charge;
 use Stripe\Customer;
 use Stripe\Stripe;
+use Stripe\Subscription;
 
 class StripePayments
 {
@@ -87,7 +89,7 @@ class StripePayments
         $this->sendMailSuccess($data);
 
         // create the booking : (user_id,client_id,amount_paid,hours)
-        $this->createBooking($request , $data['client_id']);
+        $this->createBooking($request , $data['client_id'],$subscription->id);
         // update user available hours
         $freelancer = $this->updateHours($request);
 
@@ -148,14 +150,15 @@ class StripePayments
         $notification->clientPaidEmail($data);
     }
 
-    protected function createBooking($request,$client_id){
+    protected function createBooking($request,$client_id,$subscription_id){
         $booking = new Booking;
-        $booking->amount_paid   = $request->amountToPay;
-        $booking->hours         = $request->hours;
-        $booking->weeks         = $request->weeks;
-        $booking->user_id       = $request->freelancerID;
-        $booking->client_id     =$client_id;
-        $booking->booking_email = $request->stripeEmail;
+        $booking->amount_paid     = $request->amountToPay;
+        $booking->hours           = $request->hours;
+        $booking->weeks           = $request->weeks;
+        $booking->user_id         = $request->freelancerID;
+        $booking->client_id       = $client_id;
+        $booking->booking_email   = $request->stripeEmail;
+        $booking->subscription_id = $subscription_id ;
         $booking->save();
     }
 
@@ -174,7 +177,62 @@ class StripePayments
 
 
     public function webhocks(Request $request){
-        return new Response('Webhook Handled', 200);
+        Stripe::setApiKey($this->apiKey);
+        if($request->type === 'charge.succeeded'){
+            // a charge has been made
+            /*
+             * 1- get the customer email
+             * 2- get all not canceled bookings of this email
+             * 3- compare the amount paid and the amount in this booking.
+             * 4- if everything is fine
+             * 5- reduce nu,ber of weeks.
+             * 6- if number of weeks == 0 so stop subscription
+             * */
+            $data   = $request->data;
+            $object = $data['object'];
+            $amount = $object['amount'];
+            $customerID = $object['source']['customer'];
+            $customerEmail = Customer::retrieve('cus_DcuSkTZMxusrCq')->email;
+
+            $bookings = Booking::where('booking_email',$customerEmail)->get();
+            foreach ($bookings as $booking){
+                if($booking->canceled || intval($booking->amount_paid)/100 != $amount){
+                    continue;
+                }
+                $currWeeks = $booking->weeks;
+                $booking->weeks = $currWeeks - 1 ;
+
+                if($currWeeks -1 == 0){
+                    // stop subscription
+                    $subscription = Subscription::retrieve($booking->subscription_id);
+                    $subscription->cancel();
+
+                    // web hook telegram message
+                    $telegram = new Telegram('-228260999');
+                    $msg  = "A subscription with ID of : " ;
+                    $msg .= $subscription->id;
+                    $msg .= "has been canceled";
+                    $telegram->sendMessage($msg);
+                }
+                $booking->save();
+                break;
+            }
+
+            // web hook telegram message
+            $telegram = new Telegram('-228260999');
+            $msg2   = 'A client :('.$customerEmail;
+            $msg2  .= ') has paid for this week, Amount: ';
+            $msg2  .= $amount/100;
+            $msg2  .= '$, weeks left :';
+            if(isset($currWeeks)){
+                $msg2  .= $currWeeks -1 ;
+            }else{
+                $msg2  .= 'First Payment';
+            }
+            $telegram->sendMessage($msg2);
+
+        }
+        return new Response('webhock handled', 200);
     }
 }
 

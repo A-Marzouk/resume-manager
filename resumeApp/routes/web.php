@@ -103,10 +103,11 @@ Route::get('/conversation/delete/{id}','ConversationsController@deleteConversati
 Route::post('/','NotificationsController@messageToSales')->name('message.to.sales');
 Route::post('/message/freelancer','NotificationsController@messageToFreelancer')->name('message.to.freelancer');
 
-// stripe integration test
+// stripe integration
 Route::get('/stripe/payments','\App\classes\StripePayments@stripeTest');
 Route::post('/stripe/payments/pay','\App\classes\StripePayments@stripePayment');
 Route::get('/stripe/hire','\App\classes\StripePayments@showHirePage');
+Route::post('/stripe/webhocks','\App\classes\StripePayments@webhocks');
 // stripe custom payment :
 Route::get('/payment','\App\classes\StripePayments@customPayment');
 Route::get('/stripe/payments/pay',function(){

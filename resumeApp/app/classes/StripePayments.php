@@ -14,6 +14,7 @@ use App\Http\Controllers\NotificationsController;
 use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Stripe\Charge;
 use Stripe\Customer;
 use Stripe\Stripe;
@@ -172,5 +173,8 @@ class StripePayments
     }
 
 
+    public function webhocks(Request $request){
+        return new Response('Webhook Handled', 200);
+    }
 }
 

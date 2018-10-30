@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        '/chat/store/message'
+        '/chat/store/message',
+        '/stripe/webhocks',
     ];
 }

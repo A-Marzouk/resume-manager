@@ -179,12 +179,21 @@ class FreelancersController extends Controller
             }
             // create new project :
 
-            $modules   = $project->modules;
             $moreMedia =[];
+            $modules   = $project->modules;
             if(!empty($modules)){
                 foreach ($modules as $module){
                     if(isset($module->src)){
-                        $moreMedia[] = $module->src;
+                        if(strpos($module->src, 'embed') !== false){ // it is video link !
+                            $moreMedia[] = $module->src;
+                        }else{
+                            $newName = str_replace('https://mir-s3-cdn-cf.behance.net/project_modules/disp/','',$module->src);
+                            $distMoreMedia = "resumeApp/uploads/behance_data/new_img".$project->id."Behance".$user->id.$newName;
+                            if (!file_exists($distMoreMedia)){
+                                copy($module->src, $distMoreMedia);
+                            }
+                            $moreMedia[] = $distMoreMedia;
+                        }
                     }
                 }
             }

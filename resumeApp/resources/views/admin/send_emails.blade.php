@@ -10,5 +10,7 @@
         @endif
     </div>
 
-   Send Emails page
+    <div id="send_emails_vue">
+        <send-emails></send-emails>
+    </div>
 @endsection

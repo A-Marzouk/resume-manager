@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(120);
+module.exports = __webpack_require__(125);
 
 
 /***/ }),
@@ -14352,11 +14352,17 @@ Vue.component('freelancers-list', __webpack_require__(111));
 // chat room:
 Vue.component('new-chat', __webpack_require__(116));
 
-// new resume form :
+//
+Vue.component('send-emails', __webpack_require__(119));
 
 if ($("#searchFreelancers").length !== 0) {
     var searchFreelancers = new Vue({
         el: '#searchFreelancers'
+    });
+}
+if ($("#send_emails_vue").length !== 0) {
+    var send_emails_vue = new Vue({
+        el: '#send_emails_vue'
     });
 }
 
@@ -14521,7 +14527,7 @@ window.Echo.channel('conversations').listen('UpdateMessageCount', function (e) {
     }
 });
 
-__webpack_require__(119);
+__webpack_require__(124);
 
 /***/ }),
 /* 16 */
@@ -60811,6 +60817,580 @@ if (false) {
 
 /***/ }),
 /* 119 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(120)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(122)
+/* template */
+var __vue_template__ = __webpack_require__(123)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\sendEmailsComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4b8ff437", Component.options)
+  } else {
+    hotAPI.reload("data-v-4b8ff437", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(121);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("02a994c5", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4b8ff437\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./sendEmailsComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4b8ff437\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./sendEmailsComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 121 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n.emailTemplate{\n    padding: 20px;\n    border-radius: 5px;\n    margin: 10px;\n    text-transform: uppercase;\n    border: 2px solid lightgrey;\n    text-align:center;\n    color: #697786;\n    font-family: Roboto;\n}\n.emailTemplate:hover{\n    cursor: pointer;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 122 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            currEmail: '',
+            mailsList: [],
+            template: '',
+            currEmailSubject: '',
+            templatesList: ['company_info', 'test_mail_content']
+        };
+    },
+
+    methods: {
+        addEmail: function addEmail() {
+            // validate it is an email :
+            if (this.isValidEmailAddress(this.currEmail)) {
+                this.mailsList.push(this.currEmail);
+                this.currEmail = '';
+            } else {
+                alert('Not valid mail');
+            }
+        },
+        deleteEmail: function deleteEmail(mail) {
+            var emails = this.mailsList;
+            $.each(emails, function (i) {
+                if (emails[i] === mail) {
+                    emails.splice(i, 1);
+                    return false;
+                }
+            });
+        },
+        sendEmail: function sendEmail() {
+            var _this = this;
+
+            var data = {
+                emailTemplate: this.template,
+                mailingList: this.mailsList,
+                emailSubject: this.currEmailSubject
+            };
+            if (this.canSend()) {
+                $('#sendEmailBtn').attr('disabled', true);
+                $('#sendEmailBtn').text('Sending');
+                axios.post('/send_emails', data).then(function (response) {
+                    alert(response.data);
+                    _this.mailsList = [];
+                    _this.template = '';
+                    _this.currEmailSubject = '';
+                    $('#sendEmailBtn').attr('disabled', false);
+                    $('#sendEmailBtn').text('Send');
+                    $('.emailTemplate').css('border', '2px lightgrey solid');
+                });
+            } else {
+                alert('Please fill in empty fields !');
+            }
+        },
+        chooseTemplate: function chooseTemplate(template) {
+            var _this2 = this;
+
+            $('.emailTemplate').css('border', '2px lightgrey solid');
+            var templates = this.templatesList;
+            $(templates).each(function (i) {
+                if (templates[i] === template) {
+                    _this2.template = template;
+                    $('#' + template).css('border', '2px #0D96DB solid');
+                    return false;
+                }
+            });
+        },
+        canSend: function canSend() {
+            if (this.mailsList.length > 0 && this.template.length > 0 && this.currEmailSubject.length > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        viewTemplate: function viewTemplate(template) {
+            axios.post('/get_emailTemplate', {
+                templateName: template
+            }).then(function (response) {
+                $('#templateContent').html(response.data);
+                $('#openTemplateModal').click();
+                $('#emailsheader').css('padding-top', '80px');
+                $('.customFooter').css('background', 'whitesmoke');
+            });
+        },
+        isValidEmailAddress: function isValidEmailAddress(emailAddress) {
+            var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+            return pattern.test(emailAddress);
+        }
+    },
+    created: function created() {}
+});
+
+/***/ }),
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      {
+        staticClass: "pageHeading",
+        staticStyle: { "padding-bottom": "15px", "padding-top": "20px" },
+        attrs: { id: "emailsheader" }
+      },
+      [_vm._v("\n        Emails list\n    ")]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-6" }, [
+        _c(
+          "form",
+          {
+            attrs: { action: "", method: "post" },
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.addEmail($event)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "form-group" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.currEmail,
+                    expression: "currEmail"
+                  }
+                ],
+                staticClass: "form-control",
+                staticStyle: {
+                  background:
+                    "white url('/resumeApp/resources/assets/images/add_skill.png')  no-repeat right .75rem center",
+                  "background-size": "15px 15px"
+                },
+                attrs: {
+                  type: "text",
+                  placeholder: "Add email",
+                  id: "email_address",
+                  name: "email_address",
+                  required: ""
+                },
+                domProps: { value: _vm.currEmail },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.currEmail = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row" },
+      _vm._l(_vm.mailsList, function(mail, index) {
+        return _c(
+          "div",
+          {
+            key: index,
+            staticClass: "text-center skillView col-4",
+            staticStyle: {
+              "margin-right": "10px",
+              background: "white",
+              "border-radius": "10px",
+              "margin-top": "5px",
+              "margin-bottom": "5px"
+            }
+          },
+          [
+            _c(
+              "b",
+              {
+                staticStyle: {
+                  color: "#697786",
+                  "font-family": "Roboto",
+                  "font-size": "16px",
+                  "font-weight": "300",
+                  "line-height": "24px"
+                }
+              },
+              [
+                _vm._v(
+                  "\n                " + _vm._s(mail) + "\n                "
+                ),
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    staticStyle: { padding: "2px", outline: "none" },
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.deleteEmail(mail)
+                      }
+                    }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("×")
+                    ])
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      })
+    ),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "pageHeading", staticStyle: { "padding-bottom": "15px" } },
+      [_vm._v("\n        Choose Template\n    ")]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row" },
+      _vm._l(_vm.templatesList, function(template, index) {
+        return _c(
+          "div",
+          {
+            key: index,
+            staticClass: "col-3 emailTemplate",
+            attrs: { id: template },
+            on: {
+              click: function($event) {
+                _vm.chooseTemplate(template)
+              }
+            }
+          },
+          [
+            _vm._v("\n            " + _vm._s(template)),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                attrs: { href: "javascript:void(0)" },
+                on: {
+                  click: function($event) {
+                    _vm.viewTemplate(template)
+                  }
+                }
+              },
+              [_vm._v("View email template")]
+            )
+          ]
+        )
+      })
+    ),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "pageHeading", staticStyle: { "padding-bottom": "15px" } },
+      [_vm._v("\n        Enter email subject\n    ")]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-6" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.currEmailSubject,
+                expression: "currEmailSubject"
+              }
+            ],
+            staticClass: "form-control panelFormInput",
+            staticStyle: { background: "white" },
+            attrs: { type: "text", placeholder: "Email subject.." },
+            domProps: { value: _vm.currEmailSubject },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.currEmailSubject = $event.target.value
+              }
+            }
+          })
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-6" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-outline-primary",
+            attrs: { id: "sendEmailBtn" },
+            on: { click: _vm.sendEmail }
+          },
+          [_vm._v("Send")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("button", {
+      staticClass: "d-none",
+      attrs: {
+        type: "button",
+        id: "openTemplateModal",
+        "data-toggle": "modal",
+        "data-target": "#templateModal"
+      }
+    }),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: { id: "templateModal", role: "dialog" }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-lg" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("×")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", {
+              staticClass: "modal-body",
+              attrs: { id: "templateContent" }
+            })
+          ])
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4b8ff437", module.exports)
+  }
+}
+
+/***/ }),
+/* 124 */
 /***/ (function(module, exports) {
 
 var status = $('#record_status'),
@@ -61047,7 +61627,7 @@ if (navigator.mediaDevices.getUserMedia) {
 }
 
 /***/ }),
-/* 120 */
+/* 125 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

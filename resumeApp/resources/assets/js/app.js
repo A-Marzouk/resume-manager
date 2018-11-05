@@ -58,11 +58,18 @@ Vue.component('freelancers-list', require('./components/search/freelancersListCo
 // chat room:
 Vue.component('new-chat', require('./components/newChat/newChat'));
 
-// new resume form :
+//
+Vue.component('send-emails', require('./components/sendEmailsComponent.vue'));
+
 
 if ($("#searchFreelancers").length !== 0){
     let searchFreelancers = new Vue({
         el:'#searchFreelancers'
+    });
+}
+if ($("#send_emails_vue").length !== 0){
+    let send_emails_vue = new Vue({
+        el:'#send_emails_vue'
     });
 }
 

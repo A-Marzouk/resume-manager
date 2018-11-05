@@ -155,6 +155,8 @@ Route::get('/clients/emails','AdminsController@getClientsEmails');
 
 // send Emails:
 Route::get('/send_emails','EmailsController@showSendEmailsPage')->name('show.send_emails_page');
+Route::post('/send_emails','EmailsController@sendCustomEmails')->name('send.emails');
+Route::post('/get_emailTemplate','EmailsController@getEmailTemplate')->name('get.email_template');
 
 // audio record :
 Route::post('/audio/save','UserDataController@saveAudio');

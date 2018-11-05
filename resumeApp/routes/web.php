@@ -145,13 +145,18 @@ Route::post('/freelancer/behance/save_user','FreelancersController@registerDesig
 Route::get('/freelancer/linkedin/','UserDataController@dataFromLinkedIn');
 Route::get('/freelancer/instagram/','UserDataController@dataFromInstagram');
 
-//test search functions :
-Route::post('/search','AdminsController@searchFreelancers');
-Route::post('/save_search','AdminsController@saveSearch');
-Route::get('/search','AdminsController@showSearchPage');
-Route::post('/search_delete','AdminsController@deleteSearch');
-Route::post('/search_delete_freelancer','AdminsController@deleteSearchFreelancer');
+// search functions :
+Route::post('/search','SearchesController@searchFreelancers');
+Route::post('/save_search','SearchesController@saveSearch');
+Route::get('/search','SearchesController@showSearchPage');
+Route::post('/search_delete','SearchesController@deleteSearch');
+Route::post('/search_delete_freelancer','SearchesController@deleteSearchFreelancer');
 Route::get('/clients/emails','AdminsController@getClientsEmails');
+
+// send Emails:
+Route::get('/send_emails','EmailsController@showSendEmailsPage')->name('show.send_emails_page');
+Route::post('/send_emails','EmailsController@sendCustomEmails')->name('send.emails');
+Route::post('/get_emailTemplate','EmailsController@getEmailTemplate')->name('get.email_template');
 
 // audio record :
 Route::post('/audio/save','UserDataController@saveAudio');

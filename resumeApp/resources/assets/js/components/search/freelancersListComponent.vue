@@ -4,7 +4,7 @@
             <freelancer-card v-for="(freelancer,index) in freelancers" v-bind:key="index" class="list-item">
                 <div class="row" style="padding-top: 20px;">
                     <div class="col-lg-12">
-                        <div class="freelancerCard">
+                        <div class="freelancerCard" style="width: auto;">
                             <div class="row">
                                 <div class="col-lg-5 col-md-12 freelancerCardLeft">
                                     <div class="row">

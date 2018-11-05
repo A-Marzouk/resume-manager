@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="mailText">
-    Hello (First Name),<br/><br/>
+    Hello,<br/><br/>
 
     We would love to help your business...
 
@@ -21,6 +21,8 @@
     Please feel free to contact us with any questions.
     <br/><br/>
     Kind regards,<br/>
+
+    123Workforce team.
 
 </div>
 @endsection

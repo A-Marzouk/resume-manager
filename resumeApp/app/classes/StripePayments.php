@@ -23,7 +23,9 @@ use Stripe\Subscription;
 
 class StripePayments
 {
-    private $apiKey = 'sk_test_WlqUYgob2e2ALpZfJw5AfIaG' ;
+    private $apiKey = 'sk_live_vRNRg2Lmexmse8Bxm6VS89DK' ;
+    // test mode key : sk_test_WlqUYgob2e2ALpZfJw5AfIaG
+    // live mode key : sk_live_vRNRg2Lmexmse8Bxm6VS89DK
 
     public function stripePayment(Request $request){
 

@@ -59405,149 +59405,163 @@ var render = function() {
                 { staticClass: "row", staticStyle: { "padding-top": "20px" } },
                 [
                   _c("div", { staticClass: "col-lg-12" }, [
-                    _c("div", { staticClass: "freelancerCard" }, [
-                      _c("div", { staticClass: "row" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col-lg-5 col-md-12 freelancerCardLeft"
-                          },
-                          [
-                            _c("div", { staticClass: "row" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "col-lg-6 col-6 imageContainer"
-                                },
-                                [
-                                  _c("img", {
-                                    staticClass: "freelancerImg",
-                                    attrs: {
-                                      src: freelancer.photo,
-                                      alt: "freelancer",
-                                      width: "100",
-                                      height: "100"
-                                    }
-                                  })
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col-lg-6 col-6" }, [
-                                _c("div", { attrs: { id: "name" } }, [
-                                  _vm._v(
-                                    "\n                                            " +
-                                      _vm._s(freelancer.firstName) +
-                                      " " +
-                                      _vm._s(freelancer.lastName) +
-                                      "\n                                        "
-                                  )
-                                ]),
-                                _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "freelancerCard",
+                        staticStyle: { width: "auto" }
+                      },
+                      [
+                        _c("div", { staticClass: "row" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "col-lg-5 col-md-12 freelancerCardLeft"
+                            },
+                            [
+                              _c("div", { staticClass: "row" }, [
                                 _c(
                                   "div",
                                   {
-                                    staticClass: "buttonMain",
-                                    staticStyle: { "margin-top": "10px" }
+                                    staticClass: "col-lg-6 col-6 imageContainer"
                                   },
                                   [
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass: "hireBtn btn-block",
-                                        staticStyle: {
-                                          "font-weight": "normal",
-                                          padding: "7px 5px 7px 5px"
-                                        },
-                                        attrs: { href: freelancer.username }
-                                      },
-                                      [_vm._v("Visit profile")]
-                                    )
+                                    _c("img", {
+                                      staticClass: "freelancerImg",
+                                      attrs: {
+                                        src: freelancer.photo,
+                                        alt: "freelancer",
+                                        width: "100",
+                                        height: "100"
+                                      }
+                                    })
                                   ]
-                                )
+                                ),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-lg-6 col-6" }, [
+                                  _c("div", { attrs: { id: "name" } }, [
+                                    _vm._v(
+                                      "\n                                            " +
+                                        _vm._s(freelancer.firstName) +
+                                        " " +
+                                        _vm._s(freelancer.lastName) +
+                                        "\n                                        "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "buttonMain",
+                                      staticStyle: { "margin-top": "10px" }
+                                    },
+                                    [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "hireBtn btn-block",
+                                          staticStyle: {
+                                            "font-weight": "normal",
+                                            padding: "7px 5px 7px 5px"
+                                          },
+                                          attrs: { href: freelancer.username }
+                                        },
+                                        [_vm._v("Visit profile")]
+                                      )
+                                    ]
+                                  )
+                                ])
                               ])
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "col-lg-7 col-md-12 freelancerCardRight"
-                          },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticClass: "panelFormLabel",
-                                staticStyle: { color: "#0290D8" }
-                              },
-                              [_c("b", [_vm._v(_vm._s(freelancer.profession))])]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "panelFormLabel",
-                                staticStyle: { color: "#697786" }
-                              },
-                              [
-                                _c("b", [_vm._v("Key skills :")]),
-                                _vm._v(
-                                  " " +
-                                    _vm._s(freelancer.design_skills_checkbox)
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "panelFormLabel",
-                                staticStyle: { color: "#697786" }
-                              },
-                              [
-                                _c("b", [_vm._v("Rate: ")]),
-                                _vm._v(
-                                  "$" + _vm._s(freelancer.salary) + "/hour"
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "panelFormLabel",
-                                staticStyle: { color: "#697786" }
-                              },
-                              [
-                                _c("b", [_vm._v("No.hours/week available: ")]),
-                                _vm._v(_vm._s(freelancer.availableHours))
-                              ]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "close",
-                            staticStyle: { padding: "5px", outline: "none" },
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                _vm.removeFreelancer(freelancer)
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "col-lg-7 col-md-12 freelancerCardRight"
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "panelFormLabel",
+                                  staticStyle: { color: "#0290D8" }
+                                },
+                                [
+                                  _c("b", [
+                                    _vm._v(_vm._s(freelancer.profession))
+                                  ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "panelFormLabel",
+                                  staticStyle: { color: "#697786" }
+                                },
+                                [
+                                  _c("b", [_vm._v("Key skills :")]),
+                                  _vm._v(
+                                    " " +
+                                      _vm._s(freelancer.design_skills_checkbox)
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "panelFormLabel",
+                                  staticStyle: { color: "#697786" }
+                                },
+                                [
+                                  _c("b", [_vm._v("Rate: ")]),
+                                  _vm._v(
+                                    "$" + _vm._s(freelancer.salary) + "/hour"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "panelFormLabel",
+                                  staticStyle: { color: "#697786" }
+                                },
+                                [
+                                  _c("b", [
+                                    _vm._v("No.hours/week available: ")
+                                  ]),
+                                  _vm._v(_vm._s(freelancer.availableHours))
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "close",
+                              staticStyle: { padding: "5px", outline: "none" },
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.removeFreelancer(freelancer)
+                                }
                               }
-                            }
-                          },
-                          [
-                            _c("span", { attrs: { "aria-hidden": "true" } }, [
-                              _vm._v("×")
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
+                            },
+                            [
+                              _c("span", { attrs: { "aria-hidden": "true" } }, [
+                                _vm._v("×")
+                              ])
+                            ]
+                          )
+                        ])
+                      ]
+                    ),
                     _vm._v(" "),
                     _c("hr")
                   ])

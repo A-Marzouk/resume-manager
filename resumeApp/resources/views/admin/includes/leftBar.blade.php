@@ -36,6 +36,11 @@
                 Search Freelancers
             </a>
         </li>
+        <li class="col-md-12">
+            <a class="btn btn-block btn-outline-dark" href="/send_emails"  style="margin-bottom: 6px;">
+                Send emails
+            </a>
+        </li>
 
         <div id="actionBtns" class="d-none">
             <li class="col-md-12" style="margin-top: 25px;">

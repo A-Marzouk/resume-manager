@@ -158,6 +158,10 @@ Route::get('/send_emails','EmailsController@showSendEmailsPage')->name('show.sen
 Route::post('/send_emails','EmailsController@sendCustomEmails')->name('send.emails');
 Route::post('/get_emailTemplate','EmailsController@getEmailTemplate')->name('get.email_template');
 
+// add owner
+Route::post('/freelancer/owners/add_owner','OwnersController@addOwner')->name('add.owner');
+Route::post('/freelancer/owners/update_owner','OwnersController@updateOwner')->name('update.owner');
+
 // audio record :
 Route::post('/audio/save','UserDataController@saveAudio');
 Route::post('/audio/save_for_chat','UserDataController@saveAudioForChat');

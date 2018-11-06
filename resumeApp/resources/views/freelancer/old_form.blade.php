@@ -6,20 +6,38 @@ $currFreelancer = auth()->user();
 ?>
 @section('content')
     <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
-    <div class="container alert alert-success">
-        You are viewing as Admin
+    <div class="row container">
+        <div class="col-3 alert-success alert"  style="margin-left: 15px;">
+            Viewing as admin
+        </div>
+    </div>
+
+    <div class="row container">
+        <div class="col-6">
+            <div class="form-group">
+                <label class="panelFormLabel">Assigned owner</label>
+                <select class="custom-select" style="@if($errors->has('jobTitle')) border:1px solid red; @endif padding-top: 12px !important; padding-bottom: 12px !important; height: auto!important;" id="ownerEmail" name="ownerEmail">
+                    <option value="" disabled selected>-- Owner's Email --</option>
+                    <? foreach($owners as $owner):?>
+                    <option value="{{$owner->id}}"<?if($currFreelancer->owner['email'] == $owner->email):?>selected<?endif;?>>{{$owner->email}}</option>
+                    <? endforeach;?>
+                </select>
+                <a href="javascript:void(0)" id="saveOwner" class="btn btn-outline-primary d-none" style="margin-top: 6px;">Save</a>
+            </div> <!-- owner assignment -->
+        </div>
     </div>
     <? endif;?>
-    <div class="container m-auto infoBar container row">
+    <div class="row container">
         <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
-        <div class="col-md-2 offset-md-8">
-            <a target="_blank" href="{{$username}}">Link to resume </a>
+        <div class="col-md-2">
+            <a target="_blank" class="btn btn-outline-primary" href="{{$username}}">Link to resume </a>
         </div>
         <div class="col-md-2">
-            <a href="{{route('show.new_form')}}">Show new form</a>
+            <a href="{{route('show.new_form')}}" class="btn btn-outline-primary">Show new form</a>
         </div>
         <? endif; ?>
     </div>
+    <hr>
 
     <div class="container">
         <div class="row tabsArea fixed-top d-sm-block d-xs-block d-md-block d-lg-none" id="tabsMobile" style="margin-top: 50px;   background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%);">

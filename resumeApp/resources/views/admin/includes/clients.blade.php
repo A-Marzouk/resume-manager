@@ -7,7 +7,7 @@
             <th scope="col">Full Name</th>
             <th scope="col">Link to Profile</th>
             <th scope="col">View details</th>
-            <th scope="col"></th>
+            <th scope="col" class="text-center">Owners' name</th>
         </tr>
         </thead>
         <tbody>
@@ -65,6 +65,9 @@
                         </div>
                     </div>
                 </div>
+            </td>
+            <td class="panelFormLabel text-center">
+                {{$client->owner['name']}}
             </td>
         </tr>
 

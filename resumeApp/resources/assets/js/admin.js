@@ -4,14 +4,16 @@ let toBeDeletedUsers = [] ;
 let toBeDeletedClients = [] ;
 let toBeDeletedConversations = [] ;
 let toBeDeletedBookings = [] ;
+let toBeDeletedOwners = [] ;
 
 let toBeDeletedData = {} ;
 
-$('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"],[id*="selectedBooking"]').on('change', function () {
+$('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedOwner"],[id*="selectedConversation"],[id*="selectedBooking"]').on('change', function () {
     toBeDeletedUsers = [];
     toBeDeletedClients = [];
     toBeDeletedConversations = [];
     toBeDeletedBookings = [];
+    toBeDeletedOwners = [];
 
 
     $("input[name='selectedUsers[]']").each(function () {
@@ -42,9 +44,15 @@ $('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"],[id*
         }
     });
 
+    $("input[name='selectedOwners[]']").each(function () {
+        let val = this.checked ? this.value : '';
+        if(val !== ''){
+            toBeDeletedOwners.push(val);
+        }
+    });
 
 
-    if(toBeDeletedUsers.length > 0 || toBeDeletedClients.length > 0 || toBeDeletedConversations.length > 0 || toBeDeletedBookings.length > 0){
+    if(toBeDeletedUsers.length > 0 || toBeDeletedOwners.length > 0 || toBeDeletedClients.length > 0 || toBeDeletedConversations.length > 0 || toBeDeletedBookings.length > 0){
         $('#actionBtns').removeClass('d-none');
     }else{
         $('#actionBtns').addClass('d-none');
@@ -54,7 +62,8 @@ $('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"],[id*
         toBeDeletedUsers,
         toBeDeletedClients,
         toBeDeletedConversations,
-        toBeDeletedBookings
+        toBeDeletedBookings,
+        toBeDeletedOwners
     };
 
 });
@@ -62,7 +71,7 @@ $('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"],[id*
 // send to DB to be deleted :
 $('#deleteSelectedBtn').on('click',function () {
 
-    if(!confirm('Are you sure you want to delete all selected users, clients, bookings or conversations ?')){
+    if(!confirm('Are you sure you want to delete all selected users, owners, clients, bookings or conversations ?')){
         return;
     }
     axios.post('admin/delete_multiple',toBeDeletedData).then( (response) => {
@@ -99,6 +108,12 @@ $('#deleteSelectedBtn').on('click',function () {
         $('#selectedRowBooking'+bookingID).fadeOut(3000);
         // uncheck deleted
         $('#selectedBooking'+bookingID).prop('checked', false);
+    });
+
+    toBeDeletedData.toBeDeletedOwners.forEach( (ownerID) => {
+        $('#selectedRowOwner'+ownerID).fadeOut(3000);
+        // uncheck deleted
+        $('#selectedOwner'+ownerID).prop('checked', false);
     });
 
     // hide the buttons.
@@ -209,3 +224,27 @@ $('.releaseBooking').on('click',function () {
 });
 
 
+// admin view on form : save owner
+$('#ownerEmail').on('change',function () {
+    $('#saveOwner').removeClass('d-none');
+});
+
+$('#saveOwner').on('click',function () {
+    // disable the btn
+    $('#saveOwner').attr('disabled',true);
+
+    // send request through axios to change the id of the owner id to this freelancer.
+    let ownerID      = $('#ownerEmail').val();
+    axios.post('/freelancer/owners/update_owner',{ownerID}).then( (response) => {
+
+        // show changes are saved
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+            $('#changesSaved').fadeOut();
+        },4000);
+
+        // hide the button and enable it
+        $('#saveOwner').attr('disabled',false);
+        $('#saveOwner').addClass('d-none');
+    });
+});

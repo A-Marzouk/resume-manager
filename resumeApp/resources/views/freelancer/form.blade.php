@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-{{-- variables : $data . freelancer userdata --}}
+{{-- variables : $data -> freelancer userdata  and $owners --}}
 <?
 extract($data);
 $freelancer = auth()->user();
@@ -9,17 +9,35 @@ $redirectURL = 'https://123workforce.com/freelancer/linkedin';
 ?>
 @section('content')
     <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
-    <div class="container alert alert-success">
-        You are viewing as Admin
-    </div>
+        <div class="row container">
+            <div class="col-3 alert-success alert"  style="margin-left: 15px;">
+               Viewing as admin
+            </div>
+        </div>
+
+        <div class="row container">
+            <div class="col-6">
+                <div class="form-group">
+                    <label class="panelFormLabel">Assigned owner</label>
+                    <select class="custom-select" style="@if($errors->has('jobTitle')) border:1px solid red; @endif padding-top: 12px !important; padding-bottom: 12px !important; height: auto!important;" id="ownerEmail" name="ownerEmail">
+                        <option value="" disabled selected>-- Owner's Email --</option>
+                        <? foreach($owners as $owner):?>
+                            <option value="{{$owner->id}}"<?if($freelancer->owner['email'] == $owner->email):?>selected<?endif;?>>{{$owner->email}}</option>
+                        <? endforeach;?>
+                    </select>
+                    <a href="javascript:void(0)" id="saveOwner" class="btn btn-outline-primary d-none" style="margin-top: 6px;">Save</a>
+                </div> <!-- owner assignment -->
+            </div>
+        </div>
     <? endif;?>
-    <div class="container m-auto infoBar container">
+    <div class="row container">
         <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
-        <div class="col-md-2 offset-md-10">
-            <a target="_blank" href="{{$username}}">Link to resume </a>
+        <div class="col-md-2">
+            <a target="_blank" class="btn btn-outline-primary" href="{{$username}}">Link to resume </a>
         </div>
         <? endif; ?>
     </div>
+    <hr>
 
     {{-- include the freelancer card + the new edit row--}}
     <div style="margin-left: 8.07%" class="marginMobile-0">

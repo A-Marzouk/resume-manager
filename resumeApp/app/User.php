@@ -45,6 +45,11 @@ class User extends Authenticatable
         return $this->hasMany(EducationHistory::class);
     }
 
+    public function owner()
+    {
+        return $this->belongsTo(Owner::class);
+    }
+
 
     public function skills()
     {

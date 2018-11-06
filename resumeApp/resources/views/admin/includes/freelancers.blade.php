@@ -33,6 +33,7 @@
                     <th scope="col">Empty Fields</th>
                     <th scope="col">Approval</th>
                     <th scope="col" class="text-center">Bookings</th>
+                    <th scope="col" class="text-center">Owner's name</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -115,6 +116,9 @@
                             </div>
                         @endif
                     </td>
+                    <td class="panelFormLabel text-center">
+                        {{$user->owner['name']}}
+                    </td>
                 </tr>
 
                 <? endforeach;?>
@@ -134,6 +138,7 @@
                     <th scope="col">Empty Fields</th>
                     <th scope="col">Approval</th>
                     <th scope="col">Bookings</th>
+                    <th scope="col">Owner's name</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -185,9 +190,36 @@
                         @endif
                     </td>
                     <td>
+                        <? $finishedBookings =  0 ;?>
                         @foreach($user->bookings as $booking)
-                            {{$booking->id}}
+                            <?
+                            $clientName = 'Visitor' ;
+                            if($booking->client_id){
+                                $clientName = App\Client::where('id',$booking->client_id)->first()->name ;
+                            }
+                            ?>
+                            @if(!$booking->canceled)
+                                <div class="panelFormLabel text-center" id="bookingStatus{{$booking->id}}">
+                                    <div>
+                                        <b>{{$booking->hours}}</b> hours - <b>{{$booking->weeks}}</b> weeks to <b>{{$clientName}}</b>
+                                    </div><br/>
+                                    <b>{{$booking->booking_email}}</b><br/>
+                                    <a href="javascript:void(0)" class="btn btn-sm btn-default releaseBooking" id="addHoursBtn{{$booking->id}}">Add hours back</a>
+                                </div>
+                                <hr width="50%">
+                            @else
+                                <? $finishedBookings++; ?>
+                            @endif
+
                         @endforeach
+                        @if($finishedBookings)
+                            <div class="panelFormLabel NoDecor text-center">
+                                Finished bookings : <span id="finishedBookings{{$user->id}}">{{$finishedBookings}}</span>
+                            </div>
+                        @endif
+                    </td>
+                    <td class="panelFormLabel text-center">
+                        {{$user->owner['name']}}
                     </td>
                 </tr>
 

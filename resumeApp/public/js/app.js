@@ -52919,14 +52919,16 @@ var toBeDeletedUsers = [];
 var toBeDeletedClients = [];
 var toBeDeletedConversations = [];
 var toBeDeletedBookings = [];
+var toBeDeletedOwners = [];
 
 var toBeDeletedData = {};
 
-$('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"],[id*="selectedBooking"]').on('change', function () {
+$('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedOwner"],[id*="selectedConversation"],[id*="selectedBooking"]').on('change', function () {
     toBeDeletedUsers = [];
     toBeDeletedClients = [];
     toBeDeletedConversations = [];
     toBeDeletedBookings = [];
+    toBeDeletedOwners = [];
 
     $("input[name='selectedUsers[]']").each(function () {
         var val = this.checked ? this.value : '';
@@ -52956,7 +52958,14 @@ $('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"],[id*
         }
     });
 
-    if (toBeDeletedUsers.length > 0 || toBeDeletedClients.length > 0 || toBeDeletedConversations.length > 0 || toBeDeletedBookings.length > 0) {
+    $("input[name='selectedOwners[]']").each(function () {
+        var val = this.checked ? this.value : '';
+        if (val !== '') {
+            toBeDeletedOwners.push(val);
+        }
+    });
+
+    if (toBeDeletedUsers.length > 0 || toBeDeletedOwners.length > 0 || toBeDeletedClients.length > 0 || toBeDeletedConversations.length > 0 || toBeDeletedBookings.length > 0) {
         $('#actionBtns').removeClass('d-none');
     } else {
         $('#actionBtns').addClass('d-none');
@@ -52966,14 +52975,15 @@ $('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedConversation"],[id*
         toBeDeletedUsers: toBeDeletedUsers,
         toBeDeletedClients: toBeDeletedClients,
         toBeDeletedConversations: toBeDeletedConversations,
-        toBeDeletedBookings: toBeDeletedBookings
+        toBeDeletedBookings: toBeDeletedBookings,
+        toBeDeletedOwners: toBeDeletedOwners
     };
 });
 
 // send to DB to be deleted :
 $('#deleteSelectedBtn').on('click', function () {
 
-    if (!confirm('Are you sure you want to delete all selected users, clients, bookings or conversations ?')) {
+    if (!confirm('Are you sure you want to delete all selected users, owners, clients, bookings or conversations ?')) {
         return;
     }
     axios.post('admin/delete_multiple', toBeDeletedData).then(function (response) {
@@ -53010,6 +53020,12 @@ $('#deleteSelectedBtn').on('click', function () {
         $('#selectedRowBooking' + bookingID).fadeOut(3000);
         // uncheck deleted
         $('#selectedBooking' + bookingID).prop('checked', false);
+    });
+
+    toBeDeletedData.toBeDeletedOwners.forEach(function (ownerID) {
+        $('#selectedRowOwner' + ownerID).fadeOut(3000);
+        // uncheck deleted
+        $('#selectedOwner' + ownerID).prop('checked', false);
     });
 
     // hide the buttons.

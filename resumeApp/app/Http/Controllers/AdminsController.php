@@ -6,6 +6,7 @@ use App\Booking;
 use App\Client;
 use App\ClientSearch;
 use App\Conversation;
+use App\Owner;
 use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
@@ -26,6 +27,7 @@ class AdminsController extends Controller
         $data['conversations'] = Conversation::all();
         $data['searches'] = ClientSearch::all();
         $data['bookings'] = Booking::all();
+        $data['owners']   = Owner::all();
         $admin = User::where('username','admin_workforce')->first();
         Auth::loginUsingId($admin->id);
         return view('admin.usersList', compact('data'));
@@ -64,10 +66,11 @@ class AdminsController extends Controller
     }
 
     public function deleteMultiple(Request $request){
-        $usersToD = $request->toBeDeletedUsers ;
-        $clientsToD = $request->toBeDeletedClients ;
+        $usersToD         = $request->toBeDeletedUsers ;
+        $clientsToD       = $request->toBeDeletedClients ;
         $conversationsToD = $request->toBeDeletedConversations ;
-        $bookingsToD = $request->toBeDeletedBookings ;
+        $bookingsToD      = $request->toBeDeletedBookings ;
+        $ownersToD        = $request->toBeDeletedOwners ;
 
         foreach ($usersToD as $userID){
             User::where('id', $userID)->delete();
@@ -83,6 +86,10 @@ class AdminsController extends Controller
 
         foreach ($bookingsToD as $bookingID){
             Booking::where('id', $bookingID)->delete();
+        }
+
+        foreach ($ownersToD as $ownerID){
+            Owner::where('id', $ownerID)->delete();
         }
 
         return ['status'=> 'ok'];

@@ -27,6 +27,11 @@
             </a>
         </li>
         <li class="col-md-12">
+            <a class="btn btn-block btn-outline-primary" href="#owners"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
+                Owners
+            </a>
+        </li>
+        <li class="col-md-12">
             <a class="btn btn-block btn-outline-dark" href="#search_links"  style="margin-bottom: 6px;">
                 Public search links
             </a>

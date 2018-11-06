@@ -23,6 +23,7 @@
                 @include('admin.includes.chats')
                 @include('admin.includes.searches')
                 @include('admin.includes.bookings')
+                @include('admin.includes.owners')
             </div>
         </div>
     </div>

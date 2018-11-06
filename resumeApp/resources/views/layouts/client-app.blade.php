@@ -510,7 +510,7 @@ if($user){
                         </div>
                         <div>
                             <form method="POST" class="clientForm" action="{{ route('message.to.sales') }}">
-                                @csrf
+                                {{csrf_field()}}
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">

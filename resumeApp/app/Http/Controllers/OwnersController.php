@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Owner;
+use App\User;
 use Illuminate\Http\Request;
 
 class OwnersController extends Controller
@@ -30,4 +31,11 @@ class OwnersController extends Controller
         return redirect('/admin')->with('successMessage','Owner has been added.');
     }
 
+    public function updateOwner(Request $request){
+        $ownerID = $request->ownerID ;
+        $currFreelancer = User::where('id',auth()->user()->id)->first();
+        $currFreelancer->owner_id = $ownerID;
+        $currFreelancer->save();
+        return ['status' => 'ok'];
+    }
 }

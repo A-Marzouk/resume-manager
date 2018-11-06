@@ -26,7 +26,8 @@ class FreelancersController extends Controller
             return redirect(route('admin.dashboard'));
         }
         $data = $this->getFreelancerData();
-        return view('freelancer.old_form',compact('data'));
+        $owners = Owner::all();
+        return view('freelancer.old_form',compact('data','owners'));
     }
 
     public function showEditForm(){

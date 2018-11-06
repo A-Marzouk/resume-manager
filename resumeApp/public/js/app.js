@@ -53125,6 +53125,31 @@ $('.releaseBooking').on('click', function () {
     });
 });
 
+// admin view on form : save owner
+$('#ownerEmail').on('change', function () {
+    $('#saveOwner').removeClass('d-none');
+});
+
+$('#saveOwner').on('click', function () {
+    // disable the btn
+    $('#saveOwner').attr('disabled', true);
+
+    // send request through axios to change the id of the owner id to this freelancer.
+    var ownerID = $('#ownerEmail').val();
+    axios.post('/freelancer/owners/update_owner', { ownerID: ownerID }).then(function (response) {
+
+        // show changes are saved
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+            $('#changesSaved').fadeOut();
+        }, 4000);
+
+        // hide the button and enable it
+        $('#saveOwner').attr('disabled', false);
+        $('#saveOwner').addClass('d-none');
+    });
+});
+
 /***/ }),
 /* 45 */
 /***/ (function(module, exports) {

@@ -18,13 +18,14 @@ $redirectURL = 'https://123workforce.com/freelancer/linkedin';
         <div class="row container">
             <div class="col-6">
                 <div class="form-group">
-                    <label for="ownerEmail" class="panelFormLabel">Assigned owner <span id="tickMarkjobTitle" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+                    <label class="panelFormLabel">Assigned owner</label>
                     <select class="custom-select" style="@if($errors->has('jobTitle')) border:1px solid red; @endif padding-top: 12px !important; padding-bottom: 12px !important; height: auto!important;" id="ownerEmail" name="ownerEmail">
                         <option value="" disabled selected>-- Owner's Email --</option>
                         <? foreach($owners as $owner):?>
                             <option value="{{$owner->id}}"<?if($freelancer->owner['email'] == $owner->email):?>selected<?endif;?>>{{$owner->email}}</option>
                         <? endforeach;?>
                     </select>
+                    <a href="javascript:void(0)" id="saveOwner" class="btn btn-outline-primary d-none" style="margin-top: 6px;">Save</a>
                 </div> <!-- owner assignment -->
             </div>
         </div>

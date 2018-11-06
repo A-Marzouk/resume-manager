@@ -6,8 +6,7 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
-            <th scope="col">Freelancers owned</th>
-            <th scope="col" class="text-center">Clients owned</th>
+            <th scope="col">Code</th>
         </tr>
         </thead>
         <tbody>
@@ -23,6 +22,7 @@
             </th>
             <td>{{$owner->name}}</td>
             <td>{{$owner->email}}</td>
+            <td>{{$owner->code}}</td>
         </tr>
 
         <? $i++;?>

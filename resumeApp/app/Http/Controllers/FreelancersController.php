@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Owner;
 use App\Project;
 use App\User;
 use App\UserData;
@@ -35,7 +36,8 @@ class FreelancersController extends Controller
 
     public function showNewForm(){
         $data = $this->getFreelancerData();
-        return view('freelancer.form',compact('data'));
+        $owners = Owner::all();
+        return view('freelancer.form',compact('data','owners'));
     }
 
     public function getFreelancerData () {

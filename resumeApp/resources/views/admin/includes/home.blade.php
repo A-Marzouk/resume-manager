@@ -34,7 +34,7 @@
                         <input type="text" placeholder="Behance user profile link.." class="form-control panelFormInput" id="languages" name="behanceDesignerLink" value="" required>
                     </div>
                     <div class="buttonMain" style="margin-top: 86px;">
-                        <button type="submit" class="btn-block hireBtn">Add</button>
+                        <button type="submit" class="btn-block hireBtn">Add Behance designer</button>
                     </div>
                 </form>
             </div>

@@ -27,7 +27,7 @@ class OwnersController extends Controller
         $owner->email = $ownerEmail;
         $owner->save();
 
-        return redirect('/admin#owners')->with('successMessage','Owner has been added.');
+        return redirect('/admin')->with('successMessage','Owner has been added.');
     }
 
 }

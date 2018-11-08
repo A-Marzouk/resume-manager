@@ -162,6 +162,7 @@ Route::post('/get_emailTemplate','EmailsController@getEmailTemplate')->name('get
 Route::post('/freelancer/owners/add_owner','OwnersController@addOwner')->name('add.owner');
 Route::post('/freelancer/owners/update_owner','OwnersController@updateOwner')->name('update.owner');
 Route::post('/freelancer/owners/update_owner_client','OwnersController@updateClientOwner')->name('update.owner.client');
+Route::get('/freelancer/owners/show_owner_page/{owner_id}','OwnersController@showSingleOwnerPage')->name('view.owner.single.page');
 
 // audio record :
 Route::post('/audio/save','UserDataController@saveAudio');

@@ -50,4 +50,13 @@ class OwnersController extends Controller
         $currClient->save();
         return ['status' => 'ok'];
     }
+
+    public function showSingleOwnerPage($owner_id){
+        $owner = Owner::where('id',$owner_id)->first();
+        if($owner){
+            return view('admin.single_owner',compact('owner'));
+        }else{
+            return redirect('/admin')->with('errorMessage','No owner found');
+        }
+    }
 }

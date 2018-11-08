@@ -21,7 +21,9 @@
                     <span class="checkmark"></span>
                 </label>
             </th>
-            <td>{{$owner->name}}</td>
+            <td>
+                <a href="{{route('view.owner.single.page',$owner->id)}}" target="_blank">{{$owner->name}}</a>
+            </td>
             <td>{{$owner->email}}</td>
             <td>
                 <span class="oneLineHiddenOverflow" id="uniqueLink_{{$owner->id}}">Https://123workforce.com/freelancer/workforce/register?ownerCode={{$owner->code}}</span>

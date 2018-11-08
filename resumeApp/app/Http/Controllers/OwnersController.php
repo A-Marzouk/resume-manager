@@ -20,12 +20,15 @@ class OwnersController extends Controller
             'ownerName'=> 'required|max:190',
             'email'=>'required|unique:owners|email|max:190',
         ]);
+        // generate unique code for owner :
+        $ownerCode  =  md5(uniqid(rand(), true)) ;
         $ownerName  = $request->ownerName;
         $ownerEmail = $request->email;
 
         $owner        = new Owner;
         $owner->name  = $ownerName;
         $owner->email = $ownerEmail;
+        $owner->code  = $ownerCode;
         $owner->save();
 
         return redirect('/admin')->with('successMessage','Owner has been added.');

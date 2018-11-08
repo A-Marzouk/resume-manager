@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Client;
 use App\Http\Controllers\NotificationsController;
+use App\Owner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -19,9 +20,12 @@ class ClientRegisterController extends Controller
         $this->middleware('guest:client');
     }
 
-    public function showRegistrationForm()
+    public function showRegistrationForm(Request $request)
     {
-        return view('auth.client-register');
+        if(isset($request->ownerCode)){
+            $ownerCode = $request->ownerCode;
+        }
+        return view('auth.client-register',compact('ownerCode'));
     }
 
     public function register(Request $request){
@@ -31,6 +35,7 @@ class ClientRegisterController extends Controller
         {
             return redirect('/client/register')->withErrors($validator)->withInput();
         }
+
         // register a client
         $client = $this->create($request->all());
         // log the client in :
@@ -65,12 +70,23 @@ class ClientRegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        $client = Client::where('email',$data['email'])->first();
-        // send notification of registered client :
 
+        $client = Client::where('email',$data['email'])->first();
+
+        // send notification of registered client :
         $notification = new NotificationsController();
         $data['id'] = $client->id ;
         $notification->clientRegisteredEmail($data);
+
+        // save the owner :
+        // add the owner code if exists
+        if(isset($data['ownerCode'])){
+            // get owner with this code
+            $owner = Owner::where('code',$data['ownerCode'])->first();
+            $client->owner_id = $owner->id;
+            $client->save();
+        }
+
         return $client;
 
     }

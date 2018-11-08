@@ -189,6 +189,13 @@ if($user){
         </span>
 </div>
 
+{{-- Copied --}}
+<div class="changesSavedText d-none" id="copied">
+    <span class="alert alert-success">
+        Copied
+    </span>
+</div>
+
 <!-- Modals -->
 <div class="modal fade" style="background-color:rgba(255, 255, 255, 0.95);" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="row">

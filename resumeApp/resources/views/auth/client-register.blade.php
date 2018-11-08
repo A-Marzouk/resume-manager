@@ -192,6 +192,9 @@
                         </div>
                         <div class="smallText">Already have an account?<span> <a href="/client/login"> Log in!</a></span></div>
                     </div>
+                    @if(isset($ownerCode))
+                        <input type="hidden" name="ownerCode" value="{{$ownerCode}}">
+                    @endif
                 </form>
                 </div>
             </div>

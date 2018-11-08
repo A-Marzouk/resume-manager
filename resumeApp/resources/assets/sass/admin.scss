@@ -1,0 +1,7 @@
+.oneLineHiddenOverflow{
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  width: 200px;
+  text-overflow: ellipsis;
+}

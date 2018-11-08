@@ -169,6 +169,14 @@
           animation: text_btn 0.3s ease-in-out;
 }
 
+.oneLineHiddenOverflow {
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  width: 200px;
+  text-overflow: ellipsis;
+}
+
 .freelancerChatBox {
   border: 1px lightgrey solid;
   border-radius: 15px;

@@ -248,3 +248,64 @@ $('#saveOwner').on('click',function () {
         $('#saveOwner').addClass('d-none');
     });
 });
+
+// admin view on form : save owner
+$('#ownerEmail_client').on('change',function () {
+    $('#saveOwner_client').removeClass('d-none');
+});
+
+$('#saveOwner_client').on('click',function () {
+    // disable the btn
+    $('#saveOwner_client').attr('disabled',true);
+
+    // send request through axios to change the id of the owner id to this freelancer.
+    let ownerID      = $('#ownerEmail_client').val();
+    axios.post('/freelancer/owners/update_owner_client',{ownerID}).then( (response) => {
+
+        // show changes are saved
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+            $('#changesSaved').fadeOut();
+        },4000);
+
+        // hide the button and enable it
+        $('#saveOwner_client').attr('disabled',false);
+        $('#saveOwner_client').addClass('d-none');
+    });
+});
+
+
+// owners section copy link to clipboard :
+$('.copyLinkBtn').on('click',function(){
+    let currOwnerID = this.id.replace('copyLinkBtn_','');
+    copyToClipboard('#uniqueLink_'+currOwnerID);
+});
+
+$('.copyClientLinkBtn').on('click',function(){
+    let currOwnerID = this.id.replace('copyClientLinkBtn_','');
+    copyToClipboard('#uniqueClientLink_'+currOwnerID);
+});
+
+// to show full link :
+$('.oneLineHiddenOverflow').on('click',function () {
+    $(this).css({
+        'overflow':'auto',
+        'text-overflow':'unset'
+    });
+});
+
+function copyToClipboard(element) { // pass the element by id, example : copyToClipboard('#linkone') ;
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+
+    // notification copied :
+
+    $('#copied').removeClass('d-none');
+    setTimeout(function () {
+        $('#copied').addClass('d-none');
+    },2000);
+}
+

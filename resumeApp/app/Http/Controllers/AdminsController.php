@@ -54,7 +54,8 @@ class AdminsController extends Controller
             Client::where('id', $id)->delete();
             return redirect('/admin#clients')->with('successMessage', 'Client has been deleted !');
         }
-        return view('client.welcome');
+        $owners = Owner::all();
+        return view('client.welcome',compact('owners'));
     }
 
     public function deleteFreelancer($id){

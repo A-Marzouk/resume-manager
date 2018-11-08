@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\NotificationsController;
+use App\Owner;
 use App\User;
 use App\Http\Controllers\Controller;
 use App\UserData;
@@ -87,6 +88,16 @@ class RegisterController extends Controller
         $userData->user_id = $user->id;
         $userData->name = $user->name;
         $userData->save();
+
+        // save the owner :
+        // add the owner code if exists
+        if(isset($data['ownerCode'])){
+            // get owner with this code
+            $owner = Owner::where('code',$data['ownerCode'])->first();
+            $user->owner_id = $owner->id;
+            $user->save();
+        }
+
         // send admins email when freelancer registers.
         $notification = new NotificationsController();
         $notification->freelancerRegisteredEmail($data);

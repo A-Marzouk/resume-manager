@@ -53150,6 +53150,31 @@ $('#saveOwner').on('click', function () {
     });
 });
 
+// admin view on form : save owner
+$('#ownerEmail_client').on('change', function () {
+    $('#saveOwner_client').removeClass('d-none');
+});
+
+$('#saveOwner_client').on('click', function () {
+    // disable the btn
+    $('#saveOwner_client').attr('disabled', true);
+
+    // send request through axios to change the id of the owner id to this freelancer.
+    var ownerID = $('#ownerEmail_client').val();
+    axios.post('/freelancer/owners/update_owner_client', { ownerID: ownerID }).then(function (response) {
+
+        // show changes are saved
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+            $('#changesSaved').fadeOut();
+        }, 4000);
+
+        // hide the button and enable it
+        $('#saveOwner_client').attr('disabled', false);
+        $('#saveOwner_client').addClass('d-none');
+    });
+});
+
 // owners section copy link to clipboard :
 $('.copyLinkBtn').on('click', function () {
     var currOwnerID = this.id.replace('copyLinkBtn_', '');

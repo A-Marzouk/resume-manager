@@ -161,6 +161,7 @@ Route::post('/get_emailTemplate','EmailsController@getEmailTemplate')->name('get
 // add owner
 Route::post('/freelancer/owners/add_owner','OwnersController@addOwner')->name('add.owner');
 Route::post('/freelancer/owners/update_owner','OwnersController@updateOwner')->name('update.owner');
+Route::post('/freelancer/owners/update_owner_client','OwnersController@updateClientOwner')->name('update.owner.client');
 
 // audio record :
 Route::post('/audio/save','UserDataController@saveAudio');

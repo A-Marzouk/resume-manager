@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Client;
 use App\Owner;
 use App\User;
 use Illuminate\Http\Request;
@@ -39,6 +40,14 @@ class OwnersController extends Controller
         $currFreelancer = User::where('id',auth()->user()->id)->first();
         $currFreelancer->owner_id = $ownerID;
         $currFreelancer->save();
+        return ['status' => 'ok'];
+    }
+
+    public function updateClientOwner(Request $request){
+        $ownerID = $request->ownerID ;
+        $currClient = Client::where('id',auth()->guard('client')->user()->id)->first();
+        $currClient->owner_id = $ownerID;
+        $currClient->save();
         return ['status' => 'ok'];
     }
 }

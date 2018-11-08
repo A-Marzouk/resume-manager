@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Owner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,8 @@ class ClientsController extends Controller
     }
 
     public function index(){
-        return view('client.welcome');
+        $owners = Owner::all();
+        return view('client.welcome',compact('owners'));
     }
 
     public function hasAgreed(){

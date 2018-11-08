@@ -1,10 +1,32 @@
 @extends('layouts.client-app')
 @section('content')
-    <? use Illuminate\Support\Facades\Auth;if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
-    <div class="container alert alert-success">
-        You are viewing as Admin
+    <? use Illuminate\Support\Facades\Auth;
+       $client = Auth::guard('client')->user();
+    ?>
+
+    <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
+    <div class="row container">
+        <div class="col-3 alert-success alert"  style="margin-left: 15px;">
+            Viewing as admin
+        </div>
+    </div>
+
+    <div class="row container">
+        <div class="col-6">
+            <div class="form-group">
+                <label class="panelFormLabel">Assigned owner</label>
+                <select class="custom-select" style="@if($errors->has('jobTitle')) border:1px solid red; @endif padding-top: 12px !important; padding-bottom: 12px !important; height: auto!important;" id="ownerEmail_client" name="ownerEmail">
+                    <option value="" disabled selected>-- Owner's Email --</option>
+                    <? foreach($owners as $owner):?>
+                    <option value="{{$owner->id}}"<?if($client->owner['email'] == $owner->email):?>selected<?endif;?>>{{$owner->email}}</option>
+                    <? endforeach;?>
+                </select>
+                <a href="javascript:void(0)" id="saveOwner_client" class="btn btn-outline-primary d-none" style="margin-top: 6px;">Save</a>
+            </div> <!-- owner assignment -->
+        </div>
     </div>
     <? endif;?>
+    <hr>
    <div class="container">
        <!-- Success Messages  -->
        <div style="padding-top: 20px;">
@@ -16,7 +38,6 @@
        </div>
 
        <?
-        $client = Auth::guard('client')->user();
        $searchesArr = [];
        ?>
        <h3 class="pageHeading text-left">Hello {{$client->name}} !</h3>

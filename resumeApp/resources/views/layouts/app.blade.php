@@ -130,6 +130,12 @@ if($user){
             Changes saved
         </span>
     </div>
+    {{-- Copied --}}
+    <div class="changesSavedText d-none" id="copied">
+        <span class="alert alert-success">
+            Copied
+        </span>
+    </div>
 
     {{-- Chat box --}}
     <div>

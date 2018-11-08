@@ -6,7 +6,8 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
-            <th scope="col">Code</th>
+            <th scope="col">Unique FREELANCER invite link</th>
+            <th scope="col">Unique CLIENT invite link</th>
         </tr>
         </thead>
         <tbody>
@@ -22,7 +23,15 @@
             </th>
             <td>{{$owner->name}}</td>
             <td>{{$owner->email}}</td>
-            <td>{{$owner->code}}</td>
+            <td>
+                <span class="oneLineHiddenOverflow" id="uniqueLink_{{$owner->id}}">Https://123workforce.com/freelancer/workforce/register?ownerCode={{$owner->code}}</span>
+                <a href="javascript:void(0)" class="btn btn-outline-primary btn-sm copyLinkBtn" id="copyLinkBtn_{{$owner->id}}">Copy</a>
+            </td>
+            <td>
+                <span class="oneLineHiddenOverflow" id="uniqueClientLink_{{$owner->id}}">Https://123workforce.com/client/register?ownerCode={{$owner->code}}</span>
+                <a href="javascript:void(0)" class="btn btn-outline-primary btn-sm copyClientLinkBtn" id="copyClientLinkBtn_{{$owner->id}}">Copy</a>
+            </td>
+
         </tr>
 
         <? $i++;?>

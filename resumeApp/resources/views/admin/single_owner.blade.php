@@ -12,11 +12,47 @@
 
     <div class="text-center">
         <div class="row">
-            <div class="">
-
+            <div class="col-12">
+                <div class="pageSubHeading">
+                    Information about owner
+                </div><br/>
+            </div>
+            <div class="col-6" style="border-right: 1px solid lightgray">
+                <div class="pageSubHeading">
+                    Personal info
+                </div><br/>
+                <div class="text-left">
+                    Name : <strong>{{$owner->name}}</strong><br/>
+                    Email: <strong>{{$owner->email}}</strong><br/>
+                    Unique Code : <strong> {{$owner->code}}</strong>  <br/>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="pageSubHeading">
+                    Earnings according to owned clients' bookings
+                </div><br/>
+                <div class="text-left">
+                    <? $totalBookings = 0 ;
+                        foreach($owner->clients as $client){
+                            foreach($client->bookings as $booking){
+                                if(!$booking->canceled){
+                                    $totalBookings += $booking->amount_paid;
+                                }
+                            }
+                        }
+                    ?>
+                    Total earnings : <strong>{{$totalBookings/100}} $</strong><br/>
+                    Percent - 5% : <strong>{{ ($totalBookings/100) * (5/100) }} $</strong>
+                </div>
             </div>
         </div>
+        <hr>
         <div class="row">
+            <div class="col-12">
+                <div class="pageSubHeading">
+                    Assigned users
+                </div><br/>
+            </div>
             <div class="col-6" style="border-right: 1px lightgray solid;">
                 <div class="pageSubHeading">
                     Owner assigned freelancers : #{{count($owner->freelancers)}}

@@ -4,8 +4,10 @@
    }
 
    $smallCard = false ;
+   if(!isset($freelancer->id)){
+       return;
+   }
 ?>
-
 <div class="freelancerCard" id="card{{$freelancer->id}}{{$value['id']}}">
 
     <div class="row">

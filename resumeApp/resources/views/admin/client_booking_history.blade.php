@@ -87,7 +87,7 @@
                     </div>
                     <div class="row">
                         <div class="col-2">
-                            <span class="panelFormLabel">Weeks booked</span>
+                            <span class="panelFormLabel">Booked weeks:</span>
                         </div>
                         <div class="col-8">
                             {{$booking->weeks_original}} Weeks

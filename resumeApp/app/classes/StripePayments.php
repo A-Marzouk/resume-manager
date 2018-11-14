@@ -157,6 +157,7 @@ class StripePayments
         $booking->amount_paid     = $request->amountToPay;
         $booking->hours           = $request->hours;
         $booking->weeks           = $request->weeks;
+        $booking->weeks_original  = $request->weeks;
         $booking->user_id         = $request->freelancerID;
         $booking->client_id       = $client_id;
         $booking->booking_email   = $request->stripeEmail;

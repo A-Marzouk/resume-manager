@@ -9,6 +9,7 @@
             <th scope="col">Hours / weeks</th>
             <th scope="col">Booked Freelancer</th>
             <th scope="col">Status</th>
+            <th scope="col">Date</th>
         </tr>
         </thead>
         <tbody>
@@ -41,6 +42,9 @@
                 @else
                     <span class="panelFormLabel" style="color: lightgreen;">On going</span>
                 @endif
+            </td>
+            <td scope="row">
+                {{$booking->created_at->format('M d, Y') }}
             </td>
 
         </tr>

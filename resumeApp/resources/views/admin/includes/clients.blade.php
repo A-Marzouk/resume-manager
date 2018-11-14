@@ -6,7 +6,8 @@
             <th scope="col">#</th>
             <th scope="col">Full Name</th>
             <th scope="col">Link to Profile</th>
-            <th scope="col">View details</th>
+            <th scope="col" class="text-center">View details</th>
+            <th scope="col" class="text-center">Bookings history</th>
             <th scope="col" class="text-center">Owners' name</th>
         </tr>
         </thead>
@@ -23,7 +24,7 @@
             </th>
             <td>{{$client->name}}</td>
             <td><a href="{{route('logInAsClient',$client->id)}}" target="_blank">Link to profile</a></td>
-            <td>
+            <td class="text-center">
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#clientDetails{{$client->id}}">
                     Details
                 </button>
@@ -65,6 +66,9 @@
                         </div>
                     </div>
                 </div>
+            </td>
+            <td class="text-center">
+                <a href="{{route('show.bookings_history',$client->id)}}" class="btn btn-outline-primary">Booking history</a>
             </td>
             <td class="panelFormLabel text-center">
                 {{$client->owner['name']}}

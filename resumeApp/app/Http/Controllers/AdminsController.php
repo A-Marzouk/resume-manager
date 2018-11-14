@@ -138,4 +138,9 @@ class AdminsController extends Controller
         return ['user_id'=>$booking->user_id];
     }
 
+    public function showBookingsHistory($client_id){
+        $client = Client::where('id',$client_id)->first();
+        return view('admin.client_booking_history',compact('client'));
+    }
+
 }

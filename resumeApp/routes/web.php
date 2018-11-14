@@ -85,6 +85,10 @@ Route::post('/admin/control_approval','AdminsController@controlApproval');
 // release booked hours
 Route::post('/admin/releaseBooking','AdminsController@releaseBookingsHours');
 
+// show bookings history of client
+Route::get('/admin/client/booking_history/{client_id}','AdminsController@showBookingsHistory')->name('show.bookings_history');
+
+
 // chatting routes :
 Route::get('/chat','ChatController@showChatRoom');
 Route::post('/messages/','ChatController@storeMessages');

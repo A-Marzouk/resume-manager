@@ -57,7 +57,7 @@
                             <span class="panelFormLabel">Booking Date :</span>
                         </div>
                         <div class="col-8">
-                            {{$booking->created_at->format('M d, Y')}}
+                            {{$booking->created_at->format('M d, Y')}} /
                         </div>
                     </div>
                     <div class="row">
@@ -83,6 +83,14 @@
                         </div>
                         <div class="col-8">
                             {{$booking->weeks}} Week<?if(($booking->weeks > 1)){ ?>s<?}?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <span class="panelFormLabel">Weeks booked</span>
+                        </div>
+                        <div class="col-8">
+                            {{$booking->weeks_original}} Weeks
                         </div>
                     </div>
                     <div class="row">

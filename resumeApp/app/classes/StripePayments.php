@@ -187,14 +187,14 @@ class StripePayments
              * 2- get all not canceled bookings of this email
              * 3- compare the amount paid and the amount in this booking.
              * 4- if everything is fine
-             * 5- reduce nu,ber of weeks.
+             * 5- reduce number of weeks.
              * 6- if number of weeks == 0 so stop subscription
              * */
             $data   = $request->data;
             $object = $data['object'];
             $amount = $object['amount'];
             $customerID = $object['source']['customer'];
-            $customerEmail = Customer::retrieve('cus_DcuSkTZMxusrCq')->email;
+            $customerEmail = Customer::retrieve($customerID)->email;
 
             $bookings = Booking::where('booking_email',$customerEmail)->get();
             foreach ($bookings as $booking){

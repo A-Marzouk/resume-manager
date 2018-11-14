@@ -79,10 +79,10 @@
                     </div>
                     <div class="row">
                         <div class="col-2">
-                            <span class="panelFormLabel">Weeks booked :</span>
+                            <span class="panelFormLabel">Unpaid weeks :</span>
                         </div>
                         <div class="col-8">
-                            {{$booking->weeks}} Weeks
+                            {{$booking->weeks}} Week<?if(($booking->weeks > 1)){ ?>s<?}?>
                         </div>
                     </div>
                     <div class="row">

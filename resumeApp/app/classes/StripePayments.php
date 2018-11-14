@@ -23,7 +23,7 @@ use Stripe\Subscription;
 
 class StripePayments
 {
-    private $apiKey = 'sk_live_vRNRg2Lmexmse8Bxm6VS89DK' ;
+    private $apiKey = 'sk_test_WlqUYgob2e2ALpZfJw5AfIaG' ;
     // test mode key : sk_test_WlqUYgob2e2ALpZfJw5AfIaG
     // live mode key : sk_live_vRNRg2Lmexmse8Bxm6VS89DK
 
@@ -197,10 +197,12 @@ class StripePayments
             $customerEmail = Customer::retrieve($customerID)->email;
 
             $bookings = Booking::where('booking_email',$customerEmail)->get();
+
             foreach ($bookings as $booking){
-                if($booking->canceled || intval($booking->amount_paid)/100 != $amount){
+                if($booking->canceled || intval($booking->amount_paid) != $amount){
                     continue;
                 }
+
                 $currWeeks = $booking->weeks;
                 $booking->weeks = $currWeeks - 1 ;
 
@@ -213,7 +215,7 @@ class StripePayments
                     $telegram = new Telegram('-228260999');
                     $msg  = "A subscription with ID of : " ;
                     $msg .= $subscription->id;
-                    $msg .= "has been canceled";
+                    $msg .= "has been ended";
                     $telegram->sendMessage($msg);
                 }
                 $booking->save();

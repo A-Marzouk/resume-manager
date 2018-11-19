@@ -98,6 +98,22 @@ class NotificationsController extends Controller
         });
     }
 
+    public function affiliateRegisteredEmail($data){
+        $emails = $this->mailingList;
+        Mail::send('emails.affiliate_registered',$data, function($message) use ($emails)
+        {
+            $message->to($emails)->subject('New affiliate on board!');
+        });
+    }
+
+    public function affiliateWelcomeEmail($data){
+        $emails = $this->mailingList;
+        Mail::send('emails.affiliate_welcome',$data, function($message) use ($emails)
+        {
+            $message->to($emails)->subject('Welcome to 123 Workforce!');
+        });
+    }
+
 
     // message to sales :
 

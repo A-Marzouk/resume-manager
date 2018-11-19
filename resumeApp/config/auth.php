@@ -49,6 +49,10 @@ return [
             'driver' => 'session',
             'provider' => 'clients',
         ],
+        'affiliate' => [
+            'driver' => 'session',
+            'provider' => 'affiliates',
+        ],
     ],
 
     /*
@@ -76,6 +80,10 @@ return [
         'clients' => [
             'driver' => 'eloquent',
             'model' => App\Client::class,
+        ],
+        'affiliates' => [
+            'driver' => 'eloquent',
+            'model' => App\Affiliate::class,
         ],
 
         // 'users' => [
@@ -107,6 +115,11 @@ return [
         ],
         'clients' => [
             'provider' => 'clients',
+            'table' => 'password_resets',
+            'expire' => 60, // minutes
+        ],
+        'affiliates' => [
+            'provider' => 'affiliates',
             'table' => 'password_resets',
             'expire' => 60, // minutes
         ],

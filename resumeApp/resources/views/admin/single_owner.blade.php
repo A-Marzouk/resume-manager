@@ -42,7 +42,7 @@
                         }
                     ?>
                     Total earnings : <strong>{{$totalBookings/100}} $</strong><br/>
-                    Percent - 5% : <strong>{{ ($totalBookings/100) * (5/100) }} $</strong>
+                    Percent (5%) : <strong>{{ ($totalBookings/100) * (5/100) }} $</strong>
                 </div>
             </div>
         </div>

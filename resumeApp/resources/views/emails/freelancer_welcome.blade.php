@@ -10,7 +10,7 @@
 
         <br/><br/>Please feel free to contact us at anytime with questions that you could have on <b style="color: #0290D8;"><a href="mailto:riz@123 workforce.com">riz@123 workforce.com</a></b>.  Could we also ask you to please edit your availability of hours should it change over time by signing in and edit hours. With this, we can accurately place and match  you with the most suitable clients.
 
-        <br/><br/>Wishing you onging success with your current projects !<br/><br/>
+        <br/><br/>Wishing you ongoing success with your current projects !<br/><br/>
 
         Kindest Regards,<br/><b>123 Workforce</b></p>
     </div>

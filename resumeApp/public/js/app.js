@@ -53135,8 +53135,8 @@ $('#saveOwner').on('click', function () {
     $('#saveOwner').attr('disabled', true);
 
     // send request through axios to change the id of the owner id to this freelancer.
-    var ownerID = $('#ownerEmail').val();
-    axios.post('/freelancer/owners/update_owner', { ownerID: ownerID }).then(function (response) {
+    var affiliateID = $('#ownerEmail').val();
+    axios.post('/affiliate/update_affiliate', { affiliateID: affiliateID }).then(function (response) {
 
         // show changes are saved
         $('#changesSaved').fadeIn('slow');
@@ -53159,9 +53159,9 @@ $('#saveOwner_client').on('click', function () {
     // disable the btn
     $('#saveOwner_client').attr('disabled', true);
 
-    // send request through axios to change the id of the owner id to this freelancer.
-    var ownerID = $('#ownerEmail_client').val();
-    axios.post('/freelancer/owners/update_owner_client', { ownerID: ownerID }).then(function (response) {
+    // send request through axios to change the id of the owner id to this client.
+    var affiliateID = $('#ownerEmail_client').val();
+    axios.post('/affiliate/update_affiliate_client', { affiliateID: affiliateID }).then(function (response) {
 
         // show changes are saved
         $('#changesSaved').fadeIn('slow');

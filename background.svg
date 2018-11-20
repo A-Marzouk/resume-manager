@@ -7,7 +7,7 @@
         </defs>
     <g>
         <title>background</title>
-        <rect fill="#FCFCFC" id="canvas_background" height="102" width="102" y="-1" x="-1"/>
+        <rect fill="whitesmoke" id="canvas_background" height="102" width="102" y="-1" x="-1"/>
     </g>
     <polygon points="0 0, 100 3, 100 85, 0 100" fill="url(#linearGradient-1)" />
 </svg>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Affiliate;
 use App\Client;
 use App\Owner;
 use Illuminate\Http\Request;
@@ -15,8 +16,8 @@ class ClientsController extends Controller
     }
 
     public function index(){
-        $owners = Owner::all();
-        return view('client.welcome',compact('owners'));
+        $affiliates = Affiliate::all();
+        return view('client.welcome',compact('affiliates'));
     }
 
     public function hasAgreed(){

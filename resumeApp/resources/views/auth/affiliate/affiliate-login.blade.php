@@ -1,14 +1,14 @@
-@extends('layouts.client-app')
+@extends('layouts.affiliate-app')
 
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div>
-                    <div class="customFormHeader">{{ __('Client Log in') }}</div>
+                    <div class="customFormHeader">{{ __('Affiliate Log in') }}</div>
 
                     <div>
-                        <form method="POST" class="clientForm" action="{{ route('client.login.submit') }}">
+                        <form method="POST" class="clientForm" action="{{ route('affiliate.login.submit') }}">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6 offset-md-3">
@@ -28,7 +28,7 @@
 
                                     <div class="form-group">
                                         <label for="password" class="formLabel forgotText">{{ __('Password ') }}
-                                            <a href="{{ route('client.password.reset') }}">
+                                            <a href="{{ route('affiliate.password.reset') }}">
                                                 {{ __(' Forgot?') }}
                                             </a>
                                         </label>
@@ -60,7 +60,7 @@
                                             </button>
                                             <div class="smallText" style="background: none !important;">
                                                     <span style="background: none !important;">
-                                                        <a href="/client/register" style="background: none !important;"> Register now!</a>
+                                                        <a href="/affiliate/register" style="background: none !important;"> Register now!</a>
                                                     </span>
                                             </div>
                                         </div>

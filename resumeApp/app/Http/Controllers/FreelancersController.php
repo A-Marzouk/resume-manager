@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Affiliate;
 use App\Owner;
 use App\Project;
 use App\User;
@@ -26,8 +27,8 @@ class FreelancersController extends Controller
             return redirect(route('admin.dashboard'));
         }
         $data = $this->getFreelancerData();
-        $owners = Owner::all();
-        return view('freelancer.old_form',compact('data','owners'));
+        $affiliates = Affiliate::all();
+        return view('freelancer.old_form',compact('data','affiliates'));
     }
 
     public function showEditForm(){
@@ -37,8 +38,8 @@ class FreelancersController extends Controller
 
     public function showNewForm(){
         $data = $this->getFreelancerData();
-        $owners = Owner::all();
-        return view('freelancer.form',compact('data','owners'));
+        $affiliates = Affiliate::all();
+        return view('freelancer.form',compact('data','affiliates'));
     }
 
     public function getFreelancerData () {
@@ -172,46 +173,47 @@ class FreelancersController extends Controller
 //         bring user projects from behance and save them : :
 
         $projects = $dataFromBehance->projects;
-        foreach ($projects as $project){
+        if(count($projects > 0)){
+            foreach ($projects as $project){
 
-            $dist = "resumeApp/uploads/project".$project->id."Behance".$user->id.".png";
-            if (!file_exists($dist)){
-                copy($project->covers->original, $dist);
-            }else{
-                continue;
-            }
-            // create new project :
+                $dist = "resumeApp/uploads/project".$project->id."Behance".$user->id.".png";
+                if (!file_exists($dist)){
+                    copy($project->covers->original, $dist);
+                }else{
+                    continue;
+                }
+                // create new project :
 
-            $moreMedia =[];
-            $modules   = $project->modules;
-            if(!empty($modules)){
-                foreach ($modules as $module){
-                    if(isset($module->src)){
-                        if(strpos($module->src, 'embed') !== false){ // it is video link !
-                            $moreMedia[] = $module->src;
-                        }else{
-                            $newName = str_replace('https://mir-s3-cdn-cf.behance.net/project_modules/disp/','',$module->src);
-                            $distMoreMedia = "resumeApp/uploads/behance_data/new_img".$project->id."Behance".$user->id.$newName;
-                            if (!file_exists($distMoreMedia)){
-                                copy($module->src, $distMoreMedia);
+                $moreMedia =[];
+                $modules   = $project->modules;
+                if(!empty($modules)){
+                    foreach ($modules as $module){
+                        if(isset($module->src)){
+                            if(strpos($module->src, 'embed') !== false){ // it is video link !
+                                $moreMedia[] = $module->src;
+                            }else{
+                                $newName = str_replace('https://mir-s3-cdn-cf.behance.net/project_modules/disp/','',$module->src);
+                                $distMoreMedia = "resumeApp/uploads/behance_data/new_img".$project->id."Behance".$user->id.$newName;
+                                if (!file_exists($distMoreMedia)){
+                                    copy($module->src, $distMoreMedia);
+                                }
+                                $moreMedia[] = $distMoreMedia;
                             }
-                            $moreMedia[] = $distMoreMedia;
                         }
                     }
                 }
+
+                $localProject = new Project();
+                $localProject->user_id = $user->id;
+                $localProject->projectName = $project->name;
+                $localProject->isActive = true;
+                $localProject->projectDesc = $project->description;
+                $localProject->link = $project->url;
+                $localProject->mainImage = $dist;
+                $localProject->images = implode(',',$moreMedia);
+                $localProject->save();
             }
-
-            $localProject = new Project();
-            $localProject->user_id = $user->id;
-            $localProject->projectName = $project->name;
-            $localProject->isActive = true;
-            $localProject->projectDesc = $project->description;
-            $localProject->link = $project->url;
-            $localProject->mainImage = $dist;
-            $localProject->images = implode(',',$moreMedia);
-            $localProject->save();
         }
-
 
         return redirect('/admin')->with('successMessage', 'Behance Designer has been successfully added.');
 

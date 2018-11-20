@@ -1,4 +1,4 @@
-<div role="tabpanel" class="tab-pane" id="owners">
+<div role="tabpanel" class="tab-pane" id="affiliates">
     <br/>
     <table class="table">
         <thead>

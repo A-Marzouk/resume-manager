@@ -41,6 +41,11 @@ class Client extends Authenticatable
         return $this->belongsTo(Owner::class);
     }
 
+    public function affiliate()
+    {
+        return $this->belongsTo(Affiliate::class);
+    }
+
     public function messages(){
         return $this->hasMany(Message::class);
     }

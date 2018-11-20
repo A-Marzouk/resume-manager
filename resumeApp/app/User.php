@@ -47,7 +47,13 @@ class User extends Authenticatable
 
     public function owner()
     {
-        return $this->belongsTo(Owner::class);
+        return $this->belongsTo(Affiliate::class);
+    }
+
+
+    public function affiliate()
+    {
+        return $this->belongsTo(Affiliate::class);
     }
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Affiliate;
 use App\Booking;
 use App\Client;
 use App\ClientSearch;
@@ -27,7 +28,7 @@ class AdminsController extends Controller
         $data['conversations'] = Conversation::all();
         $data['searches'] = ClientSearch::all();
         $data['bookings'] = Booking::all();
-        $data['owners']   = Owner::all();
+        $data['owners']   = Affiliate::all();
         $admin = User::where('username','admin_workforce')->first();
         Auth::loginUsingId($admin->id);
         return view('admin.usersList', compact('data'));
@@ -41,8 +42,6 @@ class AdminsController extends Controller
     }
 
     public function logInAsClient($client_id){
-        // save admins token in separate session,
-
         // log him out and log in the chosen user in
         Auth::guard('client')->loginUsingId($client_id);
         $fromAdmin ='adminView';
@@ -90,7 +89,7 @@ class AdminsController extends Controller
         }
 
         foreach ($ownersToD as $ownerID){
-            Owner::where('id', $ownerID)->delete();
+            Affiliate::where('id', $ownerID)->delete();
         }
 
         return ['status'=> 'ok'];

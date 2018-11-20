@@ -38,13 +38,21 @@
                 </thead>
                 <tbody>
                 <? use App\UserData;foreach ($users as $user):?>
+
+                <?
+                $isBehanceUser = false;
+                if (strpos($user->username, 'BeUser') !== false) {
+                    $isBehanceUser = true;
+                    $userData = UserData::where('user_id',$user->id)->first();
+                }
+                ?>
                 <?
                 $userData3 = $user->userData ;
                 if(!isset($userData3)){
                     continue;
                 }
                 ?>
-                <? if($user->admin == 1 || $user->firstName === 'Visitor' || $user->profession != 'Designer'){ continue;}?>
+                <? if($user->admin == 1 || $user->firstName === 'Visitor' || $user->profession != 'Designer' || $isBehanceUser ){ continue;}?>
 
                 <tr id="selectedRowUser{{$user->id}}">
                     <th scope="row">

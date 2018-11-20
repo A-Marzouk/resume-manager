@@ -41,6 +41,13 @@ class AdminsController extends Controller
         return redirect(route('freelancer.dashboard',$fromAdmin));
     }
 
+    public function logInAsAffiliate($affiliate_id){
+        // log him out and log in the chosen user in
+        Auth::guard('affiliate')->loginUsingId($affiliate_id);
+        $fromAdmin ='adminView';
+        return redirect(route('affiliate.dashboard',$fromAdmin));
+    }
+
     public function logInAsClient($client_id){
         // log him out and log in the chosen user in
         Auth::guard('client')->loginUsingId($client_id);

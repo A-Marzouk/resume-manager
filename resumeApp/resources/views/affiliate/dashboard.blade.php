@@ -1,6 +1,14 @@
 @extends('layouts.affiliate-app')
 
 @section('content')
+    <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
+    <div class="row container">
+        <div class="col-3 alert-success alert"  style="margin-left: 15px;">
+            Viewing as admin
+        </div>
+    </div>
+    <hr>
+    <? endif;?>
     <div class="container" id="affiliateDashboard">
         <div class="pageHeading">
              Personal info
@@ -54,6 +62,27 @@
                     <div class="col-9">
                         {{$affiliate->code}}
                     </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <div class="pageSubHeading">
+                    Invite new clients through this link.
+                </div>
+                <div class="col-12" style="padding-top: 15px;">
+                    <span class="oneLineHiddenOverflow" id="uniqueLink_{{$affiliate->id}}">Https://123workforce.com/freelancer/workforce/register?ownerCode={{$affiliate->code}}</span>
+                    <a href="javascript:void(0)" class="btn btn-outline-primary btn-sm copyLinkBtn" id="copyLinkBtn_{{$affiliate->id}}">Copy</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="pageSubHeading">
+                    Invite new freelancer through this link.
+                </div>
+                <div class="col-12" style="padding-top: 15px;">
+                    <span class="oneLineHiddenOverflow" id="uniqueClientLink_{{$affiliate->id}}">Https://123workforce.com/client/register?ownerCode={{$affiliate->code}}</span>
+                    <a href="javascript:void(0)" class="btn btn-outline-primary btn-sm copyClientLinkBtn" id="copyClientLinkBtn_{{$affiliate->id}}">Copy</a>
                 </div>
             </div>
         </div>

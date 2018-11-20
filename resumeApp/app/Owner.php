@@ -14,7 +14,7 @@ class Owner extends Model
 
     protected $table = 'owners';
     protected $fillable = [
-        'email','name','owned_freelancers','owned_clients'
+        'email','name'
     ];
 
     public function freelancers(){

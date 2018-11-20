@@ -18,8 +18,8 @@ $currFreelancer = auth()->user();
                 <label class="panelFormLabel">Assigned owner</label>
                 <select class="custom-select" style="@if($errors->has('jobTitle')) border:1px solid red; @endif padding-top: 12px !important; padding-bottom: 12px !important; height: auto!important;" id="ownerEmail" name="ownerEmail">
                     <option value="" disabled selected>-- Owner's Email --</option>
-                    <? foreach($owners as $owner):?>
-                    <option value="{{$owner->id}}"<?if($currFreelancer->owner['email'] == $owner->email):?>selected<?endif;?>>{{$owner->email}}</option>
+                    <? foreach($affiliates as $affiliate):?>
+                    <option value="{{$affiliate->id}}"<?if($currFreelancer->affiliate['email'] == $affiliate->email):?>selected<?endif;?>>{{$affiliate->email}}</option>
                     <? endforeach;?>
                 </select>
                 <a href="javascript:void(0)" id="saveOwner" class="btn btn-outline-primary d-none" style="margin-top: 6px;">Save</a>

@@ -18,6 +18,8 @@ class Affiliate extends Authenticatable
      *
      * @var array
      */
+    protected $table = 'affiliates';
+
     protected $guard = 'affiliate';
 
     protected $fillable = [
@@ -36,6 +38,14 @@ class Affiliate extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new AffiliateResetPasswordNotification($token));
+    }
+
+    public function freelancers(){
+        return $this->hasMany(User::class);
+    }
+
+    public function clients(){
+        return $this->hasMany(Client::class);
     }
 
 

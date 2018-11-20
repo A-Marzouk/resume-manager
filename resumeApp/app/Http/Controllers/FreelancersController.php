@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Affiliate;
 use App\Owner;
 use App\Project;
 use App\User;
@@ -26,8 +27,8 @@ class FreelancersController extends Controller
             return redirect(route('admin.dashboard'));
         }
         $data = $this->getFreelancerData();
-        $owners = Owner::all();
-        return view('freelancer.old_form',compact('data','owners'));
+        $affiliates = Affiliate::all();
+        return view('freelancer.old_form',compact('data','affiliates'));
     }
 
     public function showEditForm(){
@@ -37,8 +38,8 @@ class FreelancersController extends Controller
 
     public function showNewForm(){
         $data = $this->getFreelancerData();
-        $owners = Owner::all();
-        return view('freelancer.form',compact('data','owners'));
+        $affiliates = Affiliate::all();
+        return view('freelancer.form',compact('data','affiliates'));
     }
 
     public function getFreelancerData () {

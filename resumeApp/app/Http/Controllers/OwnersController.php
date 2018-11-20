@@ -35,22 +35,6 @@ class OwnersController extends Controller
         return redirect('/admin')->with('successMessage','Owner has been added.');
     }
 
-    public function updateOwner(Request $request){
-        $ownerID = $request->ownerID ;
-        $currFreelancer = User::where('id',auth()->user()->id)->first();
-        $currFreelancer->owner_id = $ownerID;
-        $currFreelancer->save();
-        return ['status' => 'ok'];
-    }
-
-    public function updateClientOwner(Request $request){
-        $ownerID = $request->ownerID ;
-        $currClient = Client::where('id',auth()->guard('client')->user()->id)->first();
-        $currClient->owner_id = $ownerID;
-        $currClient->save();
-        return ['status' => 'ok'];
-    }
-
     public function showSingleOwnerPage($owner_id){
         $owner = Owner::where('id',$owner_id)->first();
         if($owner){

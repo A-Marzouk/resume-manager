@@ -164,8 +164,6 @@ Route::post('/get_emailTemplate','EmailsController@getEmailTemplate')->name('get
 
 // add owner
 Route::post('/freelancer/owners/add_owner','OwnersController@addOwner')->name('add.owner');
-Route::post('/freelancer/owners/update_owner','OwnersController@updateOwner')->name('update.owner');
-Route::post('/freelancer/owners/update_owner_client','OwnersController@updateClientOwner')->name('update.owner.client');
 Route::get('/freelancer/owners/show_owner_page/{owner_id}','OwnersController@showSingleOwnerPage')->name('view.owner.single.page');
 
 // audio record :
@@ -191,7 +189,8 @@ Route::post('affiliate/register/submit','Auth\Affiliates\AffiliateRegisterContro
 Route::post('affiliate/logout','Auth\Affiliates\AffiliateLoginController@logout')->name('affiliate.logout');
 Route::get('affiliate/login','Auth\Affiliates\AffiliateLoginController@showLoginForm')->name('affiliate.login');
 Route::post('affiliate/login/submit','Auth\Affiliates\AffiliateLoginController@login')->name('affiliate.login.submit');
-
+Route::post('/affiliate/update_affiliate','AffiliatesController@updateAffiliate')->name('update.affiliate');
+Route::post('/affiliate/update_affiliate_client','AffiliatesController@updateClientAffiliate')->name('update.affiliate.client');
 //Password reset routes for affiliates
 Route::get('affiliate/password/reset', 'Auth\Affiliates\AffiliateForgotPasswordController@showLinkRequestForm')->name('affiliate.password.reset');
 Route::post('affiliate/password/email', 'Auth\Affiliates\AffiliateForgotPasswordController@sendResetLinkEmail');

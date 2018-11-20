@@ -6,3 +6,30 @@
     }
   }
 }
+
+#loginTabs{
+
+  .nav-tabs{
+    border:none !important;
+  }
+  .nav-item{
+    a.active{
+      color: #4E75E8 !important;
+    }
+    a{
+      color: grey !important;
+    }
+  }
+
+  .customTab{
+    a{
+      color: #4E75E8;
+      font-family: Roboto;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      line-height: 18px;
+      padding-bottom: 9px;
+    }
+  }
+}

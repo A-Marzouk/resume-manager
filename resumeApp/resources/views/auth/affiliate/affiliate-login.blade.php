@@ -1,4 +1,4 @@
-@extends('layouts.client-app')
+@extends('layouts.affiliate-app')
 
 @section('content')
     <div class="container">

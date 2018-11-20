@@ -135,6 +135,7 @@ body {
 
 .freelancerItem {
   margin-top: 2.5%;
+  padding-top: 5px;
   padding-bottom: 10px; }
 
 .freelancerImg {
@@ -833,6 +834,7 @@ body {
     transform: translateY(-2px);
     border-radius: 5px;
     background-color: #FFFFFF;
+    width: 80%;
     box-shadow: 0 11px 16px -7px #E5ECED;
     transition-duration: 300ms; }
   #content .textImg {

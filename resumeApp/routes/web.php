@@ -183,6 +183,7 @@ Route::post('/chat-room/start_conversation','NewChatController@startConversation
 Route::post('/chat-room/message_file','NewChatController@handleFileMessage');
 
 // affiliates routs :
+Route::get('/affiliate','Auth\Affiliates\AffiliateLoginController@showLoginForm');
 Route::get('affiliate/register','Auth\Affiliates\AffiliateRegisterController@showRegistrationForm')->name('affiliate.register');
 Route::get('affiliate/dashboard','AffiliatesController@showDashboard')->name('affiliate.dashboard');
 Route::post('affiliate/register/submit','Auth\Affiliates\AffiliateRegisterController@register')->name('affiliate.register.submit');

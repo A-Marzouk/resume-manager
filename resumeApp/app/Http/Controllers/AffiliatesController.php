@@ -10,13 +10,16 @@ use Illuminate\Support\Facades\Auth;
 
 class AffiliatesController extends Controller
 {
+    protected $redirectTo = '/affiliate';
+
     public function __construct()
     {
         $this->middleware('auth:affiliate')->except('updateAffiliate','updateClientAffiliate');
     }
 
     public function showDashboard(){
-        return view('affiliate.dashboard');
+        $affiliate = auth()->guard('affiliate')->user();
+        return view('affiliate.dashboard',compact('affiliate'));
     }
 
     public function updateAffiliate(Request $request){

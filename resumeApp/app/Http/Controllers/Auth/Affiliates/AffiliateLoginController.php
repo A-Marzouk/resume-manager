@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class AffiliateLoginController extends Controller
 {
+    protected $redirectTo ='/affiliate';
+
     public function showLoginForm(){
         if(Auth::guard('affiliate')->check()){
             return redirect(route('affiliate.dashboard'));

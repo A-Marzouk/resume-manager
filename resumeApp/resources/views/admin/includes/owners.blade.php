@@ -22,7 +22,7 @@
                 </label>
             </th>
             <td>
-                <a href="{{route('view.owner.single.page',$owner->id)}}" target="_blank">{{$owner->name}}</a>
+                <a href="{{route('view.affiliate.profile',$owner->id)}}" target="_blank">{{$owner->name}}</a>
             </td>
             <td>{{$owner->email}}</td>
             <td>

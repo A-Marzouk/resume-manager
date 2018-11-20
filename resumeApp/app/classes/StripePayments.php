@@ -229,7 +229,7 @@ class StripePayments
             $msg2  .= ') has paid for this week, Amount: ';
             $msg2  .= $amount/100;
             $msg2  .= '$, weeks left :';
-            if(isset($currWeeks)){
+            if(isset($booking->weeks)){
                 $msg2  .= $currWeeks -1 ;
             }else{
                 $msg2  .= 'First Payment';

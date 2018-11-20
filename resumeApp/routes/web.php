@@ -183,6 +183,7 @@ Route::post('/chat-room/start_conversation','NewChatController@startConversation
 Route::post('/chat-room/message_file','NewChatController@handleFileMessage');
 
 // affiliates routs :
+Route::get('/affiliate','Auth\Affiliates\AffiliateLoginController@showLoginForm');
 Route::get('affiliate/register','Auth\Affiliates\AffiliateRegisterController@showRegistrationForm')->name('affiliate.register');
 Route::get('affiliate/dashboard','AffiliatesController@showDashboard')->name('affiliate.dashboard');
 Route::post('affiliate/register/submit','Auth\Affiliates\AffiliateRegisterController@register')->name('affiliate.register.submit');
@@ -191,6 +192,7 @@ Route::get('affiliate/login','Auth\Affiliates\AffiliateLoginController@showLogin
 Route::post('affiliate/login/submit','Auth\Affiliates\AffiliateLoginController@login')->name('affiliate.login.submit');
 Route::post('/affiliate/update_affiliate','AffiliatesController@updateAffiliate')->name('update.affiliate');
 Route::post('/affiliate/update_affiliate_client','AffiliatesController@updateClientAffiliate')->name('update.affiliate.client');
+Route::get('/affiliate/view_profile/{affiliate_id}','AdminsController@logInAsAffiliate')->name('view.affiliate.profile');
 //Password reset routes for affiliates
 Route::get('affiliate/password/reset', 'Auth\Affiliates\AffiliateForgotPasswordController@showLinkRequestForm')->name('affiliate.password.reset');
 Route::post('affiliate/password/email', 'Auth\Affiliates\AffiliateForgotPasswordController@sendResetLinkEmail');

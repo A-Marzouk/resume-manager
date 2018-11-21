@@ -66,6 +66,7 @@ class AffiliateRegisterController extends Controller
         // send notification of registered client :
         $notification = new NotificationsController();
         $data['id'] = $affiliate->id ;
+        $data['affiliateEmail'] = $affiliate->email ;
         $notification->affiliateRegisteredEmail($data);
 
 

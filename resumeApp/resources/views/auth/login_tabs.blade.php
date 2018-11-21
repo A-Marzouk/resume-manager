@@ -1,17 +1,23 @@
+<?
+    $errorType = 'client';
+    if ($errors->has('email')){
+        $errorType = $errors->first('type');
+    }
+?>
 <div id="loginTabs">
     <ul class="nav nav-tabs row" role="tablist">
         <li class="nav-item customTab NoDecor col-4 text-center">
-            <a class="text-center" href="#freelancerTab" role="tab" data-toggle="tab">
+            <a class="text-center @if($errorType == 'freelancer')active @endif" href="#freelancerTab" role="tab" data-toggle="tab">
                 Freelancer
             </a>
         </li>
         <li class="nav-item customTab NoDecor col-4 text-center">
-            <a class="text-center active" href="#clientTab" role="tab" data-toggle="tab">
+            <a class="text-center @if($errorType == 'client')active @endif" href="#clientTab" role="tab" data-toggle="tab">
                 Client
             </a>
         </li>
         <li class="nav-item customTab NoDecor col-4 text-center">
-            <a class="text-center" href="#affiliateTab" role="tab" data-toggle="tab">
+            <a class="text-center @if($errorType == 'affiliate')active @endif" href="#affiliateTab" role="tab" data-toggle="tab">
                 Affiliate
             </a>
         </li>
@@ -19,7 +25,7 @@
 </div>
 <hr>
 <div class="tab-content">
-    <div role="tabpanel" class="tab-pane firstItem" id="freelancerTab">
+    <div role="tabpanel" class="tab-pane  @if($errorType == 'freelancer')active @endif firstItem" id="freelancerTab">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div>
@@ -31,9 +37,9 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="email" class="formLabel">{{ __('E-Mail Address') }}</label>
-                                    <input id="email" type="email" class="panelFormInput form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                    <input id="email" type="email" class="panelFormInput form-control{{ $errors->has('email') && $errorType== 'freelancer'? ' is-invalid' : '' }}" name="email" value="@if($errorType == 'freelancer') {{ old('email') }} @endif" required autofocus>
 
-                                    @if ($errors->has('email'))
+                                    @if ($errors->has('email') && $errorType== 'freelancer')
                                         <span class="invalid-feedback">
                                 <strong>{{ $errors->first('email') }}</strong>
                             </span>
@@ -45,9 +51,9 @@
                                             {{ __(' Forgot?') }}
                                         </a>
                                     </label>
-                                    <input id="password" type="password" class="panelFormInput form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                    <input id="password" type="password" class="panelFormInput form-control{{ $errors->has('password') && $errorType== 'freelancer'? ' is-invalid' : '' }}" name="password" required>
 
-                                    @if ($errors->has('password'))
+                                    @if ($errors->has('password') && $errorType== 'freelancer')
                                         <span class="invalid-feedback">
                                 <strong>{{ $errors->first('password') }}</strong>
                             </span>
@@ -79,7 +85,7 @@
             </div>
         </div>
     </div>
-    <div role="tabpanel" class="tab-pane active firstItem" id="clientTab">
+    <div role="tabpanel" class="tab-pane @if($errorType == 'client')active @endif firstItem" id="clientTab">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div>
@@ -94,9 +100,9 @@
                                         <label for="email" class="formLabel">{{ __('E-Mail Address') }}</label>
 
                                         <div class="">
-                                            <input id="email" type="email" class="panelFormInput form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                            <input id="email" type="email" class="panelFormInput form-control{{ $errors->has('email') && $errorType== 'client' ? ' is-invalid' : '' }}" name="email" value="@if($errorType == 'client') {{ old('email') }} @endif" required autofocus>
 
-                                            @if ($errors->has('email'))
+                                            @if ($errors->has('email')&& $errorType== 'client')
                                                 <span class="invalid-feedback">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
@@ -113,9 +119,9 @@
 
 
                                         <div>
-                                            <input id="password" type="password" class="panelFormInput form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                            <input id="password" type="password" class="panelFormInput form-control{{ $errors->has('password') && $errorType== 'client'? ' is-invalid' : '' }}" name="password" required>
 
-                                            @if ($errors->has('password'))
+                                            @if ($errors->has('password') && $errorType== 'client')
                                                 <span class="invalid-feedback">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
@@ -152,7 +158,7 @@
             </div>
         </div>
     </div>
-    <div role="tabpanel" class="tab-pane firstItem" id="affiliateTab">
+    <div role="tabpanel" class="tab-pane @if($errorType == 'affiliate')active @endif firstItem" id="affiliateTab">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="customFormHeader" style="padding-top: 8px;">{{ __('Affiliate Log in') }}</div>
@@ -165,9 +171,9 @@
                                     <label for="email" class="formLabel">{{ __('E-Mail Address') }}</label>
 
                                     <div class="">
-                                        <input id="email" type="email" class="panelFormInput form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                        <input id="email" type="email" class="panelFormInput form-control{{ $errors->has('email')&& $errorType== 'affiliate' ? ' is-invalid' : '' }}" name="email" value="@if($errorType == 'affiliate') {{ old('email') }} @endif" required autofocus>
 
-                                        @if ($errors->has('email'))
+                                        @if ($errors->has('email') && $errorType== 'affiliate')
                                             <span class="invalid-feedback">
                                     <strong>{{ $errors->first('email') }}</strong>
                                 </span>
@@ -184,9 +190,9 @@
 
 
                                     <div>
-                                        <input id="password" type="password" class="panelFormInput form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                        <input id="password" type="password" class="panelFormInput form-control{{ $errors->has('password') && $errorType== 'affiliate' ? ' is-invalid' : '' }}" name="password" required>
 
-                                        @if ($errors->has('password'))
+                                        @if ($errors->has('password') && $errorType== 'affiliate')
                                             <span class="invalid-feedback">
                                     <strong>{{ $errors->first('password') }}</strong>
                                 </span>

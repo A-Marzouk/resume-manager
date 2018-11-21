@@ -34,6 +34,7 @@ class ClientLoginController extends Controller
         }
         // if un successful redirect them back :
          $errors['email'] = 'Your e-mail or password is not correct';
+         $errors['type']  = 'client';
         return redirect('/client/login')->withErrors($errors)->withInput($request->only('email','remember'));
     }
 

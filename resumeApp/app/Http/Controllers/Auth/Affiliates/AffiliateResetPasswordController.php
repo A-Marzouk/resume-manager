@@ -42,18 +42,18 @@ class AffiliateResetPasswordController extends Controller
 
     public function showResetForm(Request $request, $token = null)
     {
-        return view('client.passwords.reset')->with(
+        return view('auth.affiliate.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
         );
     }
 
     public function broker()
     {
-        return Password::broker('clients');
+        return Password::broker('affiliates');
     }
 
     protected function guard()
     {
-        return Auth::guard('client');
+        return Auth::guard('affiliate');
     }
 }

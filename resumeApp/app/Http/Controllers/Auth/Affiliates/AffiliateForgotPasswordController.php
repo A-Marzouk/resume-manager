@@ -20,19 +20,19 @@ class AffiliateForgotPasswordController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest:client');
+        $this->middleware('guest:affiliate');
     }
 
     //Shows form to request password reset
     public function showLinkRequestForm()
     {
-        return view('client.passwords.email');
+        return view('auth.affiliate.passwords.email');
     }
 
     //Password Broker for Seller Model
     public function broker()
     {
-        return Password::broker('clients');
+        return Password::broker('affiliates');
     }
 
 }

@@ -107,10 +107,10 @@ class NotificationsController extends Controller
     }
 
     public function affiliateWelcomeEmail($data){
-        $emails = $this->mailingList;
-        Mail::send('emails.affiliate_welcome',$data, function($message) use ($emails)
+        $email = $data['affiliateEmail'];
+        Mail::send('emails.affiliate_welcome',$data, function($message) use ($email)
         {
-            $message->to($emails)->subject('Welcome to 123 Workforce!');
+            $message->to($email)->subject('Welcome to 123 Workforce!');
         });
     }
 

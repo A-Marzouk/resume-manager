@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AffiliateRegisterController extends Controller
 {
-    protected $redirectTo = '/affiliate';
+    protected $redirectTo = '/affiliate/dashboard';
 
     public function __construct()
     {

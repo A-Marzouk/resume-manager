@@ -48,5 +48,9 @@ class Affiliate extends Authenticatable
         return $this->hasMany(Client::class);
     }
 
+    public function paymentHistory(){
+        return $this->hasMany(AffiliatePaymentHistory::class);
+    }
+
 
 }

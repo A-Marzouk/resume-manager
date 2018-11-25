@@ -167,6 +167,7 @@
       <path value="$PROJECT_DIR$/resumeApp/vendor/php-http/httplug" />
       <path value="$PROJECT_DIR$/resumeApp/vendor/vinkla/instagram" />
       <path value="$PROJECT_DIR$/resumeApp/vendor/clue/stream-filter" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/paypal/rest-api-sdk-php" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

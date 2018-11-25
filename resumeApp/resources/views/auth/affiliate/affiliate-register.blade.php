@@ -40,7 +40,7 @@
                             {{-- email --}}
 
                             <div class="col-md-12"> <div class="form-group">
-                                    <label for="paypal_email" class="formLabel">{{ __('E-Mail Address') }}</label>
+                                    <label for="paypal_email" class="formLabel">{{ __('PayPal account e-Mail address') }}</label>
                                     <div class="">
                                         <input id="paypal_email" type="email" class="panelFormInput form-control{{ $errors->has('paypal_email') ? ' is-invalid' : '' }}" name="paypal_email" value="{{ old('paypal_email') }}" required>
 

@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 use App\Affiliate;
 use App\AffiliatePaymentHistory;
+use App\classes\Telegram;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
@@ -27,7 +28,7 @@ use PayPal\Api\PayoutItem;
 use PayPal\Api\PayoutSenderBatchHeader;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
-use PayPal\auth\OAuthTokenCredential;
+use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Exception\PayPalConnectionException;
 use PayPal\Rest\ApiContext;
 
@@ -156,7 +157,6 @@ class PaypalController extends Controller
 
         try {
             $output = $payouts->createSynchronous($this->_api_context);
-
         } catch (PayPalConnectionException $ex) {
             return redirect('/affiliate/dashboard')->with('errorMessage','Could not complete the payment');
         }
@@ -173,6 +173,15 @@ class PaypalController extends Controller
         $aff_PayHistory->amount_paid  = $request->amount;
         $aff_PayHistory->affiliate_id = $affiliate->id;
         $aff_PayHistory->save();
+
+        // send notification to Telegram with the payment :
+        $telegram = new Telegram('-228260999');
+        $msg  = "Hi Ahmed,\n a new PayPal payment to affiliate has been sent." ;
+        $msg .= "\nAffiliate name : ".$affiliate->name;
+        $msg .= "\nAffiliate email: " .$affiliate->email;
+        $msg .= "\nAffiliate PayPal email: " .$affiliate->paypal_email;
+        $msg .= "\nAmount sent: " .$affiliate->amount_paid;
+        $telegram->sendMessage($msg);
     }
 
 }

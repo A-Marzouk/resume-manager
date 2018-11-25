@@ -5,6 +5,7 @@
       <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/clue/stream-filter" />
       <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/laravel/socialite" />
       <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/league/oauth1-client" />
+      <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/paypal/rest-api-sdk-php" />
       <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/php-http/discovery" />
       <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/php-http/guzzle6-adapter" />
       <excludeFolder url="file://$MODULE_DIR$/resumeApp/vendor/php-http/httplug" />

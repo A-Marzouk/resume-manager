@@ -23,7 +23,7 @@ class Affiliate extends Authenticatable
     protected $guard = 'affiliate';
 
     protected $fillable = [
-        'name','email','password','agree_with_terms','code'
+        'name','email','password','agree_with_terms','code','paypal_email'
     ];
 
     /**

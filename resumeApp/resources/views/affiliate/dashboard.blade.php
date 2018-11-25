@@ -63,6 +63,16 @@
                         {{$affiliate->code}}
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-3">
+                        <span class="panelFormLabel">
+                            PayPal account :
+                        </span>
+                    </div>
+                    <div class="col-9">
+                        {{$affiliate->paypal_email}}
+                    </div>
+                </div>
             </div>
         </div>
         <hr>
@@ -88,52 +98,91 @@
         </div>
         <hr>
         <div class="row">
-            <div class="pageSubHeading">
-                Earnings according to owned clients' bookings
-            </div>
-            <div class="col-12" style="padding-top: 15px;">
-                <?
-                $totalBookings = 0 ;
-                $bookingsCount = 0 ;
-                foreach($affiliate->clients as $client){
-                    foreach($client->bookings as $booking){
-                        if(!$booking->canceled){
-                            $totalBookings += $booking->amount_paid;
-                            $bookingsCount++;
+            <div class="col-6">
+                <div class="pageSubHeading">
+                    Earnings according to owned clients' bookings
+                </div>
+                <div class="col-12" style="padding-top: 15px;">
+                    <?
+                    $totalBookings = 0 ;
+                    $bookingsCount = 0 ;
+                    foreach($affiliate->clients as $client){
+                        foreach($client->bookings as $booking){
+                            if(!$booking->canceled){
+                                $totalBookings += $booking->amount_paid;
+                                $bookingsCount++;
+                            }
                         }
                     }
-                }
-                ?>
-                <div class="row">
-                    <div class="col-3">
+                    ?>
+                    <div class="row">
+                        <div class="col-3">
                     <span class="panelFormLabel">
                         Total number of bookings :
                     </span>
+                        </div>
+                        <div class="col-9">
+                            <strong>{{$bookingsCount}} #</strong><br/>
+                        </div>
                     </div>
-                    <div class="col-9">
-                        <strong>{{$bookingsCount}} #</strong><br/>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-3">
+                    <div class="row">
+                        <div class="col-3">
                         <span class="panelFormLabel">
                             Total earnings :
                         </span>
+                        </div>
+                        <div class="col-9">
+                            <strong>{{$totalBookings/100}} $</strong><br/>
+                        </div>
                     </div>
-                    <div class="col-9">
-                        <strong>{{$totalBookings/100}} $</strong><br/>
+                    <div class="row">
+                        <div class="col-3">
+                        <span class="panelFormLabel">
+                            Total percent (5%) :
+                        </span>
+                        </div>
+                        <div class="col-9">
+                            <strong>{{ ($totalBookings/100) * (5/100) }} $</strong>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-3">
-                <span class="panelFormLabel">
-                    Percent (5%) :
-                </span>
-                    </div>
-                    <div class="col-9">
-                        <strong>{{ ($totalBookings/100) * (5/100) }} $</strong>
-                    </div>
+                <div class="col-12">
+                    <hr>
+                    <form action="{{route('submit.paypal.send.form')}}" method="POST">
+                        {{ csrf_field() }}
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group" style="padding-top: 25px;">
+                                    <input type="text" class="form-control" id="amount" placeholder="Amount to pay" name="amount" required>
+                                </div> <!-- amount to pay -->
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group col-md-6 offset-md-3">
+                                    <input type="hidden" class="form-control panelFormInput" id="paypal_email" name="paypal_email" value="{{$affiliate->paypal_email}}">
+                                </div> <!-- paypal email -->
+
+                                <div class="buttonMain whiteBg" style="padding-top: 0">
+                                    <button class="hireBtn btn-block hire" type="submit">Pay via Paypal</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="pageSubHeading">
+                    Payments' History
+                </div>
+                <br/>
+                <div class="container text-left">
+                    @foreach($affiliate->paymentHistory as $pHistory)
+                        <div style="display: list-item;">
+                            Amount paid : {{$pHistory->amount_paid}} USD<br/>
+                            Date : {{$pHistory->created_at->format('M d, Y')}}<br/>
+                        </div><br/>
+                    @endforeach
                 </div>
             </div>
         </div>

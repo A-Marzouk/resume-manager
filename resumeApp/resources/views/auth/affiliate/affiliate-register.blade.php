@@ -39,6 +39,21 @@
                             </div>
                             {{-- email --}}
 
+                            <div class="col-md-12"> <div class="form-group">
+                                    <label for="paypal_email" class="formLabel">{{ __('E-Mail Address') }}</label>
+                                    <div class="">
+                                        <input id="paypal_email" type="email" class="panelFormInput form-control{{ $errors->has('paypal_email') ? ' is-invalid' : '' }}" name="paypal_email" value="{{ old('paypal_email') }}" required>
+
+                                        @if ($errors->has('paypal_email'))
+                                            <span class="invalid-feedback">
+                                            <strong>{{ $errors->first('paypal_email') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- email --}}
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="password" class="formLabel">{{ __('Password') }}</label>

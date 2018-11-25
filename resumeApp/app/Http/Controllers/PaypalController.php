@@ -8,6 +8,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Affiliate;
+use App\AffiliatePaymentHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
@@ -142,10 +144,10 @@ class PaypalController extends Controller
         $senderItem = new PayoutItem();
         $senderItem->setRecipientType('Email')
             ->setNote('Thanks for your patronage!')
-            ->setReceiver($request->email)
+            ->setReceiver($request->paypal_email)
             ->setSenderItemId(uniqid())
             ->setAmount(new Currency([
-                'value'=>$request->amount,
+                'value'=>intval($request->amount),
                 'currency'=>'USD'
             ]));
 
@@ -156,10 +158,21 @@ class PaypalController extends Controller
             $output = $payouts->createSynchronous($this->_api_context);
 
         } catch (PayPalConnectionException $ex) {
-            return redirect('/')->with('errorMessage','Could not complete the payment');
+            return redirect('/affiliate/dashboard')->with('errorMessage','Could not complete the payment');
         }
 
-        return redirect('/')->with('successMessage','Payment success!');
+        // if payment is successful : update the affiliate info :
+        $this->updateAffiliatePaymentHistory($request);
+        return redirect('/affiliate/dashboard')->with('successMessage','Payment success!');
+    }
+
+    protected function updateAffiliatePaymentHistory($request){
+        $affiliate = Affiliate::where('paypal_email',$request->paypal_email)->first();
+
+        $aff_PayHistory = new AffiliatePaymentHistory();
+        $aff_PayHistory->amount_paid  = $request->amount;
+        $aff_PayHistory->affiliate_id = $affiliate->id;
+        $aff_PayHistory->save();
     }
 
 }

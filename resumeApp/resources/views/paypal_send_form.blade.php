@@ -8,16 +8,14 @@
 
             <div class="form-group col-md-6 offset-md-3">
                 <label for="amount" class="panelFormLabel">Amount to pay * <small> (USD) </small>
-                    </span>
                 </label>
                 <input type="text" class="form-control panelFormInput" id="amount" name="amount" required>
             </div> <!-- amount to pay -->
 
             <div class="form-group col-md-6 offset-md-3">
-            <label for="email" class="panelFormLabel">Email *
-            </span>
+            <label for="paypal_email" class="panelFormLabel">Email *
             </label>
-            <input type="text" class="form-control panelFormInput" id="email" name="email" required>
+            <input type="text" class="form-control panelFormInput" id="paypal_email" name="paypal_email" required>
             </div> <!-- paypal email -->
 
 

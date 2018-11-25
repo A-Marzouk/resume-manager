@@ -45,6 +45,7 @@ class AffiliateRegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:affiliates',
+            'paypal_email' => 'required|string|email|max:255|unique:affiliates',
             'agree_with_terms' => 'required',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -55,6 +56,7 @@ class AffiliateRegisterController extends Controller
         Affiliate::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'paypal_email' => $data['paypal_email'],
             'agree_with_terms' => $data['agree_with_terms'],
             'password' => Hash::make($data['password']),
             'code' => md5(uniqid(rand(), true))

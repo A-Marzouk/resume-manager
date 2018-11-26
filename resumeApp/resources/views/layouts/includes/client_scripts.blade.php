@@ -1,19 +1,5 @@
 <script type="text/javascript" src="/resumeApp/public/js/app.js"></script>
 <script type="text/javascript" src="/resumeApp/resources/views/customTheme/js/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js" type="text/javascript"></script>
-<script>
-    $(".carousel.slide").swipe({
-
-        swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
-
-            if (direction == 'left') $(this).carousel('next');
-            if (direction == 'right') $(this).carousel('prev');
-
-        },
-        allowPageScroll:"vertical"
-
-    });
-</script>
 <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -57,6 +43,15 @@
                     }
                 }
             ]
+        });
+
+        $('.slickSlide_portfolio').slick({
+            lazyLoad: true,
+            dots: true,
+            arrows:false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay:true,
         });
 
         if ($("#sendMessage").length ){

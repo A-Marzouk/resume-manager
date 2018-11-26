@@ -12,6 +12,7 @@
             $slides=[];
 
            for ($j=0; $j <= $numberOfSlides+1; $j+=2){
+               // each slide has 2 works
                if(isset($workExamples[$j])){
                    $slides[$j][] = $workExamples[$j];
                }
@@ -165,11 +166,10 @@
             {{-- works section carousel --}}
             <div id="portfolioCarousel{{$freelancer->id}}{{$value['id']}}_mob" class="carousel slide" data-ride="carousel"
                  data-interval="false">
-                <div class="carousel-inner" style="background: #fdfdfd;">
+                <div class="slickSlide_portfolio" style="background: #fdfdfd;">
                     @if(!empty($workExamples))
                         <? $i=1;?>
                         @foreach($workExamples as $workExample)
-                            <div class="carousel-item @if($i===1) active @endif">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="workCard" style="margin-left: 0">
@@ -203,25 +203,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             <? $i++ ;?>
                         @endforeach
                     @endif
                 </div>
             </div>
             {{-- end of works section carousel --}}
-
-            {{-- carousel controls --}}
-            <div class="row carouselControls" style="width: 100%;">
-                <div class=" col-12 text-center NoDecor">
-                    <ol class="carousel-indicators" style="position: relative;margin-bottom: -5px; margin-top: 18px;">
-                        @for($i=0; $i<count($workExamples); $i++)
-                            <li data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}_mob" data-slide-to="{{$i}}" class="active"></li>
-                        @endfor
-                    </ol>
-                </div>
-            </div>
-            {{--end of carousel controller--}}
 
         </div>
     </div>

@@ -96,6 +96,7 @@ if($user){
                 </ul>
             </div>
         </nav>
+        @include('admin.includes.messages')
         <main class="py-4">
             @yield('content')
         </main>

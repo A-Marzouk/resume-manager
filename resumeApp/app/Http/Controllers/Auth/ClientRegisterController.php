@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Affiliate;
+use App\AffiliateClick;
+use App\AffiliateClicks;
 use App\Client;
 use App\Http\Controllers\NotificationsController;
 use App\Owner;
@@ -9,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class ClientRegisterController extends Controller
@@ -24,6 +28,18 @@ class ClientRegisterController extends Controller
     {
         if(isset($request->ownerCode)){
             $ownerCode = $request->ownerCode;
+            $affiliate = Affiliate::where('code',$request->ownerCode)->first();
+            if(!$affiliate){
+                return redirect('client/register')->with('errorMessage','Wrong affiliate code');
+            }
+            // new click on the affiliate link
+            if(!Session::get('AffiliateLinkClient')){ // if not clicked
+                $click = new AffiliateClick;
+                $click->affiliate_id = $affiliate->id;
+                $click->client = 1;
+                $click->save();
+            }
+            Session::put('AffiliateLinkClient','clicked'); // clicked once
         }
         return view('auth.client-register',compact('ownerCode'));
     }

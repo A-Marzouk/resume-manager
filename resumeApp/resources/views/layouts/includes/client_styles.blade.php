@@ -14,7 +14,7 @@
 <link href="/resumeApp/resources/views/customTheme/css/main.css" rel="stylesheet" media="screen">
 <style>
     {{-- styles for slick slider only --}}
-        .slickSlide{
+    .slickSlide{
         opacity: 0;
         visibility: hidden;
         transition: opacity 1s ease;
@@ -25,13 +25,19 @@
         opacity: 1;
     }
 
-    .single-item{
+    .slickSlide_portfolio{
         opacity: 0;
         visibility: hidden;
         transition: opacity 1s ease;
         -webkit-transition: opacity 1s ease;
     }
-    .single-item.slick-initialized {
+    .slickSlide_portfolio .slick-dots li button:before
+    {
+        font-size: 12px;
+        line-height: 12px;
+        color:#18A6DF;
+    }
+    .slickSlide_portfolio.slick-initialized {
         visibility: visible;
         opacity: 1;
     }

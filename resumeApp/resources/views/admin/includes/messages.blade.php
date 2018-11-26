@@ -1,13 +1,21 @@
 <!-- Success Messages  -->
 @if(session()->has('successMessage'))
-    <div class="alert alert-success" style="margin-top: 30px;">
-        {{ session()->get('successMessage') }}
+    <div class="row container">
+        <div class="col-6">
+            <div class="alert alert-success" style="margin-top: 30px;">
+                {{ session()->get('successMessage') }}
+            </div>
+        </div>
     </div>
-@endif
 
+@endif
 @if (session()->has('errorMessage'))
-    <div class="alert alert-danger" style="margin-top: 30px;">
-        {{ session()->get('errorMessage') }}
+    <div class="row container">
+        <div class="col-6">
+            <div class="alert alert-danger" style="margin-top: 30px;">
+                {{ session()->get('errorMessage') }}
+            </div>
+        </div>
     </div>
 @endif
 

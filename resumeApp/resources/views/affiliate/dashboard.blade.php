@@ -3,7 +3,7 @@
 @section('content')
     <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
     <div class="row container">
-        <div class="col-3 alert-success alert"  style="margin-left: 15px;">
+        <div class="col-md-3 alert-success alert"  style="margin-left: 15px;">
             Viewing as admin
         </div>
     </div>
@@ -98,7 +98,7 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="pageSubHeading">
                     Earnings according to owned clients' bookings
                 </div>
@@ -116,12 +116,12 @@
                     }
                     ?>
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-md-3">
                     <span class="panelFormLabel">
                         Total number of bookings :
                     </span>
                         </div>
-                        <div class="col-9">
+                        <div class="col-md-9">
                             <strong>{{$bookingsCount}} #</strong><br/>
                         </div>
                     </div>
@@ -148,30 +148,35 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <hr>
-                    <form action="{{route('submit.paypal.send.form')}}" method="POST">
-                        {{ csrf_field() }}
+                    <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
+                        <br/>
+                        <div style="border: 2px solid lightgray; border-radius: 10px;">
+                            <span class="alert alert-success" style="margin-left: -2px;">Visible only to admin</span>
+                            <form action="{{route('submit.paypal.send.form')}}" method="POST">
+                                {{ csrf_field() }}
 
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group" style="padding-top: 25px;">
-                                    <input type="text" class="form-control" id="amount" placeholder="Amount to pay" name="amount" required>
-                                </div> <!-- amount to pay -->
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group col-md-6 offset-md-3">
-                                    <input type="hidden" class="form-control panelFormInput" id="paypal_email" name="paypal_email" value="{{$affiliate->paypal_email}}">
-                                </div> <!-- paypal email -->
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group" style="padding-top: 25px;">
+                                            <input type="text" class="form-control" id="amount" placeholder="Amount to pay" name="amount" required>
+                                        </div> <!-- amount to pay -->
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group col-md-6 offset-md-3">
+                                            <input type="hidden" class="form-control panelFormInput" id="paypal_email" name="paypal_email" value="{{$affiliate->paypal_email}}">
+                                        </div> <!-- paypal email -->
 
-                                <div class="buttonMain whiteBg" style="padding-top: 0">
-                                    <button class="hireBtn btn-block hire" type="submit">Pay via Paypal</button>
+                                        <div class="buttonMain whiteBg" style="padding-top: 0">
+                                            <button class="hireBtn btn-block hire" type="submit">Pay via Paypal</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
-                    </form>
+                    <? endif; ?>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="pageSubHeading">
                     Payments' History
                 </div>

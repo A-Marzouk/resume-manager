@@ -64,8 +64,11 @@
                                                 <option value="Developer" >Developer
                                                     (Front-end / Back-end / Full-Stack / Javascript / Wordpress / PHP )
                                                 </option>
-                                                <option value="Designer">Designer (UX / UI / Illustrator / Art Director )
-
+                                                <option value="Designer">Designer
+                                                    (UX / UI / Illustrator / Art Director )
+                                                </option>
+                                                <option value="businessSupport">Business Support
+                                                    (sales telesales / administrator / email marketing / recruiting)
                                                 </option>
 
                                             </select>

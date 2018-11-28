@@ -6,7 +6,7 @@
 
     <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
     <div class="row container">
-        <div class="col-3 alert-success alert"  style="margin-left: 15px;">
+        <div class="col-md-3 alert-success alert"  style="margin-left: 15px;">
             Viewing as admin
         </div>
     </div>

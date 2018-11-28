@@ -53,7 +53,10 @@
                             $designer =['UI/UX Designer','UI Designer',' UX Designer',
                                 'Illustrator','Motion Graphics','Art Director','Branding',
                                 'Graphic Designer',' Web Designer','Game Designer','Digital Artist'];
+
+                            $businessSupport = ['Business Support'];
                             ?>
+
                             <select class="custom-select cardSelect"
                                     style="
                                         background-color: rgba(67,103,211,0.5);
@@ -71,14 +74,19 @@
                                     id="jobTitle" name="jobTitle">
                                 <? if($profession == 'Developer'):?>
                                     <option value="" selected disabled>-- Developer --</option>
-                                <? foreach($developer as $job):?>
-                                    <option value="{{$job}}" <?if($jobTitle == $job):?>selected<?endif;?> >{{$job}}</option>
-                                <? endforeach;?>
-                                <?else:?>
+                                    <? foreach($developer as $job):?>
+                                        <option value="{{$job}}" <?if($jobTitle == $job):?>selected<?endif;?> >{{$job}}</option>
+                                    <? endforeach;?>
+                                <?elseif($profession == 'Designer'):?>
                                     <option value="" disabled selected>-- Designer --</option>
-                                <? foreach($designer as $job):?>
-                                    <option value="{{$job}}"<?if($jobTitle == $job):?>selected<?endif;?>>{{$job}}</option>
-                                <? endforeach;?>
+                                    <? foreach($designer as $job):?>
+                                        <option value="{{$job}}"<?if($jobTitle == $job):?>selected<?endif;?>>{{$job}}</option>
+                                    <? endforeach;?>
+                                <?else:?>
+                                    <option value="" disabled selected>-- Bussiness support --</option>
+                                    <? foreach($businessSupport as $job):?>
+                                        <option value="{{$job}}"<?if($jobTitle == $job):?>selected<?endif;?>>{{$job}}</option>
+                                    <? endforeach;?>
                                 <? endif;?>
                             </select>
                         </div>

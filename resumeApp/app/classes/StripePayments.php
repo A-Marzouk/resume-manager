@@ -95,7 +95,7 @@ class StripePayments
         // update user available hours
         $freelancer = $this->updateHours($request);
 
-        return redirect('/'.$freelancer->username)->with('successMessage','Thank you for your payment, we will get in touch with you soon!');
+        return redirect('/'.$freelancer->username)->with('successMessage','Thank you for your order, we will get in touch with you soon!');
     }
 
     public function showHirePage(){

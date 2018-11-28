@@ -1,7 +1,7 @@
 <!-- Success Messages  -->
 @if(session()->has('successMessage'))
     <div class="row container">
-        <div class="col-6">
+        <div class="col-md-6">
             <div class="alert alert-success" style="margin-top: 30px;">
                 {{ session()->get('successMessage') }}
             </div>
@@ -11,7 +11,7 @@
 @endif
 @if (session()->has('errorMessage'))
     <div class="row container">
-        <div class="col-6">
+        <div class="col-md-6">
             <div class="alert alert-danger" style="margin-top: 30px;">
                 {{ session()->get('errorMessage') }}
             </div>

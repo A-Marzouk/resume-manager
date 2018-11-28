@@ -14,7 +14,8 @@ class AffiliateLoginController extends Controller
         if(Auth::guard('affiliate')->check()){
             return redirect(route('affiliate.dashboard'));
         }
-        return view('auth.affiliate.affiliate-login');
+        $page = 'affiliateLogin';
+        return view('auth.affiliate.affiliate-login',compact('page'));
     }
 
     public function login(Request $request){

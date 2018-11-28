@@ -19,7 +19,6 @@
                 <b style="font-size:16px; font-weight:bolder; ">{{project.projectName}}</b><br/>
             </project-detail>
         </transition-group>
-        <hr>
         <span class="deleteWorkBtn NoDecor" v-show="this.canAddProject" @click="clearData" style="width:137px">
             <a href="javascript:void(0)" data-toggle="modal" data-target="#addProjectModal">
                 <img src="/resumeApp/resources/assets/images/add_blue.png" alt="edit profile">

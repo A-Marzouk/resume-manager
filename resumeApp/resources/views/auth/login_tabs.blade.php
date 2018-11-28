@@ -3,6 +3,14 @@
     if ($errors->has('email')){
         $errorType = $errors->first('type');
     }
+    if(isset($page)){
+        if($page == 'freelancerLogin'){
+            $errorType = 'freelancer';
+        }
+        else if($page == 'affiliateLogin'){
+            $errorType = 'affiliate';
+        }
+    }
 ?>
 <div id="loginTabs">
     <ul class="nav nav-tabs row" role="tablist">

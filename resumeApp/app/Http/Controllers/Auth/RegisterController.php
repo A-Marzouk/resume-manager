@@ -86,6 +86,7 @@ class RegisterController extends Controller
 
         $userData = new UserData;
         $userData->user_id = $user->id;
+        $userData->salary = 5;
         $userData->name = $user->name;
         $userData->save();
 

@@ -153,20 +153,24 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="transcript">
-                        DEMO TEXT <br/><br/>
-                        One Easy-To-Use Cloud hotel software offering next-gen capabilities needed by hotels to
-                        simplify reservations, improve operating efficiency and maximize revenue. iOS + Android
-                        + Web-based Project Overview: This system is built in detail with an easy-to-use
-                        <br/><br/>
+                        @if(!empty($freelancer->userData->audio_transcript))
+                            {{$freelancer->userData->audio_transcript}}
+                        @else
+                            DEMO TEXT <br/><br/>
+                            One Easy-To-Use Cloud hotel software offering next-gen capabilities needed by hotels to
+                            simplify reservations, improve operating efficiency and maximize revenue. iOS + Android
+                            + Web-based Project Overview: This system is built in detail with an easy-to-use
+                            <br/><br/>
 
-                        nterface keeping in mind the variety of ages that will be using it. <br/><br/>We build
-                        the web-based app using the same design principles used on old offline softwares. We
-                        also implemented the latest trends, making it usable on touch-screen displays.
-                        The app is also responsive and we made sure that anyone can view it on any screen size
-                        without losing any type of information.
-                        The mobile app offers the same options.<br/><br/>
-                        Our user testings show that the same tasks were completed in the same time on mobile and
-                        web.
+                            nterface keeping in mind the variety of ages that will be using it. <br/><br/>We build
+                            the web-based app using the same design principles used on old offline softwares. We
+                            also implemented the latest trends, making it usable on touch-screen displays.
+                            The app is also responsive and we made sure that anyone can view it on any screen size
+                            without losing any type of information.
+                            The mobile app offers the same options.<br/><br/>
+                            Our user testings show that the same tasks were completed in the same time on mobile and
+                            web.
+                        @endif
                     </div>
                 </div>
             </div>

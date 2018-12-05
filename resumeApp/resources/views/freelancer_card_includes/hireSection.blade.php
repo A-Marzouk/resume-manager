@@ -36,7 +36,7 @@
         <div class="offset-md-2 col-12 col-md-8" style="border-top: 1px solid #EBEDEF;">
             <div class="row">
                 <div class="col-md-2 col-4 text-left jobTitle" style="font-size: 12px; color: #30323D;">
-                    Weekly rate
+                    Monthly rate
                 </div>
                 <div class="col-md-2 col-3 offset-5 offset-md-8 text-right jobTitle" style="font-weight: bold;font-size: 12px; color: #30323D;">
                     {{$freelancer->userData->salary_month}} $

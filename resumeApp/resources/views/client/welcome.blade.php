@@ -38,74 +38,77 @@
        </div>
 
        <?
-       $searchesArr = [];
+            $searchesArr = [];
        ?>
-       <h3 class="pageHeading text-left">Hello {{$client->name}} !</h3>
-       <br>
-        <? $searches = $client->searches; ?>
+       <div class="row">
+           <div class="row">
+               <div class="col-8">
+                   <h3 class="pageHeading text-left">Hello {{$client->name}} !</h3>
+               </div>
+               <div class="col-4">
+                   <a href="{{route('client.profile',$client->id)}}">Edit profile</a>
+               </div>
+           </div>
+           <div class="col-md-12">
+               <? $searches = $client->searches; ?>
 
-       @if( count($searches) > 0)
-       <b class="pageSubHeading text-left" style="font-size: 14px;">Your saved searches :</b><br/><br/>
-       <?
-            $i =0;
-          foreach ($searches as $search){
-              if(empty(rtrim($search->freelancers_id,','))){
-                 $searchDelete = \App\ClientSearch::where('id',$search->id);
-                 $searchDelete->delete();
-                 continue;
-              }
-              $searchesArr[$i]['name'] = $search->name;
-              $searchesArr[$i]['id'] = $search->id;
-              foreach (explode(',',$search->freelancers_id) as $id){
-                  $searchesArr[$i]['freelancers'][] = \App\User::where('id',$id)->first();
-              }
-              $i++;
-          }
-       ?>
+               @if( count($searches) > 0)
+                   <b class="pageSubHeading text-left" style="font-size: 14px;">Your saved searches :</b><br/><br/>
+                   <?
+                   $i =0;
+                   foreach ($searches as $search){
+                       if(empty(rtrim($search->freelancers_id,','))){
+                           $searchDelete = \App\ClientSearch::where('id',$search->id);
+                           $searchDelete->delete();
+                           continue;
+                       }
+                       $searchesArr[$i]['name'] = $search->name;
+                       $searchesArr[$i]['id'] = $search->id;
+                       foreach (explode(',',$search->freelancers_id) as $id){
+                           $searchesArr[$i]['freelancers'][] = \App\User::where('id',$id)->first();
+                       }
+                       $i++;
+                   }
+                   ?>
 
-           <table class="table">
-               <thead class="black white-text">
-               <tr>
-               </tr>
-               </thead>
-               <tbody>
+                   <table class="table">
+                       <thead class="black white-text">
+                       <tr>
+                       </tr>
+                       </thead>
+                       <tbody>
 
-                    @foreach($searchesArr as $key => $value)
+                       @foreach($searchesArr as $key => $value)
 
-                        <tr id="selectedSearch{{$value['id']}}">
-                            <td class="NoDecor">
-                                <a class="panelFormLabel" data-toggle="collapse" href="#{{$value['id']}}" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-bottom: 10px;">
-                                    <b>{{$value['name']}}</b>
-                                </a>
-                                <div class="collapse" id="{{$value['id']}}" style="padding-top: 10px; padding-bottom: 12px;">
-                                    <div style="padding-top: 20px; margin-top: 60px;">
-                                        @foreach($value['freelancers'] as $freelancer)
-                                            @include('freelancer_card')
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <a class="btn panelFormLabel deleteSearch" id="{{$value['id']}}">
-                                    x
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
+                           <tr id="selectedSearch{{$value['id']}}">
+                               <td class="NoDecor">
+                                   <a class="panelFormLabel" data-toggle="collapse" href="#{{$value['id']}}" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-bottom: 10px;">
+                                       <b>{{$value['name']}}</b>
+                                   </a>
+                                   <div class="collapse" id="{{$value['id']}}" style="padding-top: 10px; padding-bottom: 12px;">
+                                       <div style="padding-top: 20px; margin-top: 60px;">
+                                           @foreach($value['freelancers'] as $freelancer)
+                                               @include('freelancer_card')
+                                           @endforeach
+                                       </div>
+                                   </div>
+                               </td>
+                               <td>
+                                   <a class="btn panelFormLabel deleteSearch" id="{{$value['id']}}">
+                                       x
+                                   </a>
+                               </td>
+                           </tr>
+                       @endforeach
 
-               </tbody>
-           </table>
+                       </tbody>
+                   </table>
 
-           <script>
-               let stripe_buttons = document.getElementsByClassName("stripe-button-el");
-               for (let i = 0; i < stripe_buttons.length; ++i) {
-                   let item = stripe_buttons[i];
-                   item.style.display = 'none';
-               }
-           </script>
-       @else
-           <b class="pageSubHeading text-left" style="font-size: 14px;">You don't have any saved searches at the moment</b>
-       @endif
+               @else
+                   <b class="pageSubHeading text-left" style="font-size: 14px;">You don't have any saved searches at the moment</b>
+               @endif
+           </div>
+       </div>
 
    </div>
 

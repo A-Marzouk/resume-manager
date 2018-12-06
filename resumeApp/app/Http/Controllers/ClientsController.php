@@ -35,4 +35,8 @@ class ClientsController extends Controller
             $currClient->save();
         }
     }
+
+    public function viewProfilePage(){
+        return view('client.profile');
+    }
 }

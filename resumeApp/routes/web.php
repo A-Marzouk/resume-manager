@@ -42,6 +42,8 @@ Route::prefix('client')->group(function (){
     Route::post('/password/reset', 'Auth\ClientResetPasswordController@reset');
 // delete a client
     Route::get('/delete/{id}','AdminsController@deleteClient')->name('client.delete');
+// client profile
+    Route::get('/profile/{id}','ClientsController@viewProfilePage')->name('client.profile');
 });
 
 Route::prefix('freelancer')->group(function (){

@@ -740,7 +740,7 @@ body {
     padding-bottom: 50px; }
     @media only screen and (max-width: 768px) {
       #content #mainSection {
-        background: linear-gradient(0deg, #FFFFFF 0%, #FCFCFC 100%); } }
+        background: #f4f4f4; } }
   #content .mainSectionHeading {
     padding: 30px 0 30px 0;
     color: #30323D;

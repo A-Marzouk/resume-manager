@@ -41,14 +41,14 @@
             $searchesArr = [];
        ?>
        <div class="row">
-           <div class="row">
-               <div class="col-8">
-                   <h3 class="pageHeading text-left">Hello {{$client->name}} !</h3>
-               </div>
-               <div class="col-4">
-                   <a href="{{route('client.profile',$client->id)}}">Edit profile</a>
-               </div>
+           <div class="col-8">
+               <h3 class="pageHeading text-left">Hello {{$client->name}} !</h3>
            </div>
+           <div class="col-4">
+               <a href="{{route('client.profile',$client->id)}}">Edit profile</a>
+           </div>
+       </div>
+       <div class="row">
            <div class="col-md-12">
                <? $searches = $client->searches; ?>
 

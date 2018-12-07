@@ -36,10 +36,6 @@ class Client extends Authenticatable
         $this->notify(new ClientResetPasswordNotification($token));
     }
 
-    public function owner()
-    {
-        return $this->belongsTo(Owner::class);
-    }
 
     public function affiliate()
     {

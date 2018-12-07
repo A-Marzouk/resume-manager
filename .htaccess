@@ -9,8 +9,8 @@
     Options +FollowSymlinks -MultiViews
 
     #redirect all to https:
-    RewriteCond %{SERVER_PORT} 80
-    RewriteRule ^(.*)$ https://123workforce.com/$1 [R,L]
+#    RewriteCond %{SERVER_PORT} 80
+#    RewriteRule ^(.*)$ https://123workforce.com/$1 [R,L]
 
     # handles https redirect
     RewriteCond %{SERVER_PORT} =443

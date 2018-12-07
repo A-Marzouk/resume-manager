@@ -43,7 +43,7 @@ Route::prefix('client')->group(function (){
 // delete a client
     Route::get('/delete/{id}','AdminsController@deleteClient')->name('client.delete');
 // client profile
-    Route::get('/profile/{id}','ClientsController@viewProfilePage')->name('client.profile');
+    Route::get('/profile/{client_id}','ClientsController@viewProfilePage')->name('client.profile');
 });
 
 Route::prefix('freelancer')->group(function (){

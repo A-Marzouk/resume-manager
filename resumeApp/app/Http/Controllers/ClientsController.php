@@ -36,7 +36,8 @@ class ClientsController extends Controller
         }
     }
 
-    public function viewProfilePage(){
-        return view('client.profile');
+    public function viewProfilePage($client_id){
+        $client = Client::where('id',$client_id)->first();
+        return view('client.profile',compact('client'));
     }
 }

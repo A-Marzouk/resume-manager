@@ -13,7 +13,9 @@
             Phone : {{$client->phone}}<br/>
             Agency : {{$client->agency}}<br/>
             Time zone : {{$client->timeZone}}<br/>
-            Affiliate : {{$client->affiliate->name}}<br/>
+            @if(isset($client->affiliate))
+                Affiliate : {{$client->affiliate->name}}<br/>
+            @endif
         </div>
     </div>
 @endsection

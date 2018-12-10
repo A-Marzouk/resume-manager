@@ -42,6 +42,8 @@ Route::prefix('client')->group(function (){
     Route::post('/password/reset', 'Auth\ClientResetPasswordController@reset');
 // delete a client
     Route::get('/delete/{id}','AdminsController@deleteClient')->name('client.delete');
+// client profile
+    Route::get('/profile/{client_id}','ClientsController@viewProfilePage')->name('client.profile');
 });
 
 Route::prefix('freelancer')->group(function (){
@@ -156,6 +158,10 @@ Route::get('/search','SearchesController@showSearchPage');
 Route::post('/search_delete','SearchesController@deleteSearch');
 Route::post('/search_delete_freelancer','SearchesController@deleteSearchFreelancer');
 Route::get('/clients/emails','AdminsController@getClientsEmails');
+
+// open client search page
+Route::get('/client/search','ClientsController@showClientSearchPage')->name('client.search');
+
 
 // send Emails:
 Route::get('/send_emails','EmailsController@showSendEmailsPage')->name('show.send_emails_page');

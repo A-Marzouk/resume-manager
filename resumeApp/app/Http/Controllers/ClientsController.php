@@ -35,4 +35,13 @@ class ClientsController extends Controller
             $currClient->save();
         }
     }
+
+    public function viewProfilePage($client_id){
+        $client = Client::where('id',$client_id)->first();
+        return view('client.profile',compact('client'));
+    }
+
+    public function showClientSearchPage(){
+        return view('client.search');
+    }
 }

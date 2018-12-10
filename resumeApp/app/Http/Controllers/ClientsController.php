@@ -40,4 +40,8 @@ class ClientsController extends Controller
         $client = Client::where('id',$client_id)->first();
         return view('client.profile',compact('client'));
     }
+
+    public function showClientSearchPage(){
+        return view('client.search');
+    }
 }

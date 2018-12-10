@@ -25,8 +25,9 @@
             </div> <!-- owner assignment -->
         </div>
     </div>
-    <? endif;?>
     <hr>
+    <? endif;?>
+
    <div class="container">
        <!-- Success Messages  -->
        <div style="padding-top: 20px;">
@@ -44,8 +45,11 @@
            <div class="col-8">
                <h3 class="pageHeading text-left">Hello {{$client->name}} !</h3>
            </div>
-           <div class="col-4">
+           <div class="col-2">
                <a href="{{route('client.profile',$client->id)}}">Edit profile</a>
+           </div>
+           <div class="col-2">
+               <a href="{{route('client.search')}}">Search freelancers</a>
            </div>
        </div>
        <div class="row">

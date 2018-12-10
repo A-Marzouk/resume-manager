@@ -159,6 +159,10 @@ Route::post('/search_delete','SearchesController@deleteSearch');
 Route::post('/search_delete_freelancer','SearchesController@deleteSearchFreelancer');
 Route::get('/clients/emails','AdminsController@getClientsEmails');
 
+// open client search page
+Route::get('/client/search','ClientsController@showClientSearchPage')->name('client.search');
+
+
 // send Emails:
 Route::get('/send_emails','EmailsController@showSendEmailsPage')->name('show.send_emails_page');
 Route::post('/send_emails','EmailsController@sendCustomEmails')->name('send.emails');

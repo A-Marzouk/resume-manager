@@ -12,14 +12,16 @@ use Illuminate\Http\Request;
 
 class SearchesController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
 
     public function showSearchPage(){
-        return view('admin.search');
+        if(auth()->user()){
+            if(auth()->user()->admin){
+                return view('admin.search');
+            }
+        }
+        return redirect()->back();
     }
+
 
     public function searchFreelancers(Request $request){
 

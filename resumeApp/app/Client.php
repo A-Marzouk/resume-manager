@@ -61,6 +61,10 @@ class Client extends Authenticatable
         return $this->hasMany(Booking::class);
     }
 
+    public function jobs(){
+        return $this->hasMany(Job::class);
+    }
+
     public function unreadMessages(){
         $conversations = $this->conversations;
         $countUnread = 0 ;
@@ -70,5 +74,6 @@ class Client extends Authenticatable
 
         return $countUnread;
     }
+
 
 }

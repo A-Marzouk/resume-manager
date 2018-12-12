@@ -29,6 +29,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function jobs(){
+        return $this->belongsToMany(Job::class);
+    }
 
     public function userData()
     {

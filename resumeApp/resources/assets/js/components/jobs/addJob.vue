@@ -41,7 +41,6 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
-                                    <label for="status" class="panelFormLabel">Status :</label>
                                     <input type="hidden" class="form-control" id="status" name="status" v-model="toBeEditedJob.status">
                                 </div>
 

@@ -62177,7 +62177,7 @@ var staticRenderFns = [
         attrs: {
           href: "javascript:void(0)",
           "data-toggle": "modal",
-          "data-target": "#addEducationModal"
+          "data-target": "#addJobModal"
         }
       },
       [
@@ -62301,7 +62301,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -62675,15 +62674,6 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group col-md-6" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "panelFormLabel",
-                            attrs: { for: "status" }
-                          },
-                          [_vm._v("Status :")]
-                        ),
-                        _vm._v(" "),
                         _c("input", {
                           directives: [
                             {

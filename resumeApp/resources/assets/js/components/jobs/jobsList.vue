@@ -29,7 +29,7 @@
         </transition-group>
 
         <span class="deleteWorkBtn NoDecor" v-show="this.canAdd" @click="clearData" style="width:137px">
-            <a href="javascript:void(0)" data-toggle="modal" data-target="#addEducationModal">
+            <a href="javascript:void(0)" data-toggle="modal" data-target="#addJobModal">
                 <img src="/resumeApp/resources/assets/images/add_blue.png" alt="edit profile">
                 Add job
             </a>

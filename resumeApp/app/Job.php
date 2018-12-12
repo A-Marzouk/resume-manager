@@ -15,7 +15,7 @@ class Job extends Model
 {
     protected $table = 'jobs';
     protected $fillable = [
-        'client_id','title','description','time','budget','time','skills','status','posted'
+        'client_id','title','description','budget','time','skills','status','posted','level'
     ];
 
     public function freelancersApplied(){

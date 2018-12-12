@@ -36,6 +36,16 @@ class ClientsController extends Controller
         }
     }
 
+    public function viewJobsPage(){
+        $currClient = auth()->guard('client')->user();
+        return view('client.jobs',compact('currClient'));
+    }
+
+    public function getJobs(){
+        $currClient = auth()->guard('client')->user();
+        return $currClient->jobs;
+    }
+
     public function viewProfilePage($client_id){
         $client = Client::where('id',$client_id)->first();
         return view('client.profile',compact('client'));

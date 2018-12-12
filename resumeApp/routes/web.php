@@ -35,6 +35,17 @@ Route::prefix('client')->group(function (){
         return redirect()->back();
     });
 
+//client jobs :
+    Route::get('/jobs','ClientsController@viewJobsPage')->name('jobs.page');
+
+    Route::get('/get_jobs','ClientsController@getJobs')->name('get.jobs');
+    Route::post('/jobs/delete','ClientsController@deleteJob')->name('get.jobs');
+    Route::post('/jobs/add/','JobsController@addJobPost')->name('add.job');
+    Route::post('/jobs/delete','JobsController@deleteJobPost')->name('delete.job');
+
+
+
+
 //Password reset routes for client
     Route::get('/password/reset', 'Auth\ClientForgotPasswordController@showLinkRequestForm')->name('client.password.reset');
     Route::post('/password/email', 'Auth\ClientForgotPasswordController@sendResetLinkEmail');

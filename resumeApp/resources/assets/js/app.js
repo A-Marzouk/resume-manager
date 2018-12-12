@@ -33,14 +33,19 @@ Vue.component('chat-log', require('./components/chatLog.vue'));
 Vue.component('chat-composer', require('./components/chatComposer.vue'));
 
 // works
-Vue.component('works-list', require('./components/worksListComponent.vue'));
-Vue.component('work-history', require('./components/workHistoryComponent.vue'));
-Vue.component('add-work-modal', require('./components/addWorkComponent.vue'));
+Vue.component('works-list', require('./components/work/worksListComponent.vue'));
+Vue.component('work-history', require('./components/work/workHistoryComponent.vue'));
+Vue.component('add-work-modal', require('./components/work/addWorkComponent.vue'));
 
 // educations
 Vue.component('educations-list', require('./components/education/educationListComponent.vue'));
 Vue.component('education-history', require('./components/education/educationHistoryComponent.vue'));
 Vue.component('add-education-modal', require('./components/education/addEducationComponent.vue'));
+
+// jobs
+Vue.component('jobs-list', require('./components/jobs/jobsList.vue'));
+Vue.component('job-post', require('./components/jobs/jobPost.vue'));
+Vue.component('add-job-modal', require('./components/jobs/addJob.vue'));
 
 // skills
 Vue.component('skills-list', require('./components/skills/skillsComponent.vue'));
@@ -66,6 +71,12 @@ Vue.component('send-emails', require('./components/sendEmailsComponent.vue'));
 if ($("#searchFreelancers").length !== 0){
     let searchFreelancers = new Vue({
         el:'#searchFreelancers'
+    });
+}
+
+if ($("#clientJobs").length !== 0){
+    let clientJobs = new Vue({
+        el:'#clientJobs'
     });
 }
 if ($("#send_emails_vue").length !== 0){

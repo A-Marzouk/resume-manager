@@ -36,7 +36,7 @@ Route::prefix('client')->group(function (){
     });
 
 //client jobs :
-    Route::get('/jobs','ClientsController@viewJobsPage')->name('jobs.page');
+    Route::get('/jobs','ClientsController@viewJobsPage')->name('client.jobs');
 
     Route::get('/get_jobs','ClientsController@getJobs')->name('get.jobs');
     Route::post('/jobs/delete','ClientsController@deleteJob')->name('get.jobs');

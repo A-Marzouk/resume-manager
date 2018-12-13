@@ -35,6 +35,18 @@ Route::prefix('client')->group(function (){
         return redirect()->back();
     });
 
+//client jobs :
+    Route::get('/jobs','ClientsController@viewJobsPage')->name('client.jobs');
+
+    Route::get('/get_jobs','ClientsController@getJobs')->name('get.jobs');
+    Route::post('/jobs/delete','ClientsController@deleteJob')->name('get.jobs');
+    Route::post('/jobs/add/','JobsController@addJobPost')->name('add.job');
+    Route::post('/jobs/delete','JobsController@deleteJobPost')->name('delete.job');
+    Route::post('/jobs/applied_freelancers','JobsController@appliedFreelancers')->name('job.freelancers');
+
+
+
+
 //Password reset routes for client
     Route::get('/password/reset', 'Auth\ClientForgotPasswordController@showLinkRequestForm')->name('client.password.reset');
     Route::post('/password/email', 'Auth\ClientForgotPasswordController@sendResetLinkEmail');
@@ -66,7 +78,10 @@ Route::prefix('freelancer')->group(function (){
     });
     Route::get('/delete/{id}','AdminsController@deleteFreelancer')->name('freelancer.delete');
     Route::get('/edit_form/','FreelancersController@showEditForm')->name('show.edit_form');
-    Route::get('/new_form/','FreelancersController@showNewForm')->name('show.new_form');
+    Route::get('/old_form/','FreelancersController@showOldForm')->name('show.old_form');
+    Route::get('/jobs/','FreelancersController@showFreelancerJobs')->name('show.freelancer.jobs');
+    Route::post('/jobs/apply','FreelancersController@applyToJob')->name('freelancer.apply.job');
+    Route::post('/jobs/leave','FreelancersController@leaveJob')->name('freelancer.leave.job');
 });
 
 Route::get('/clear-cache', function() {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Affiliate;
+use App\Job;
 use App\Owner;
 use App\Project;
 use App\User;
@@ -28,7 +29,7 @@ class FreelancersController extends Controller
         }
         $data = $this->getFreelancerData();
         $affiliates = Affiliate::all();
-        return view('freelancer.old_form',compact('data','affiliates'));
+        return view('freelancer.form',compact('data','affiliates'));
     }
 
     public function showEditForm(){
@@ -36,10 +37,10 @@ class FreelancersController extends Controller
         return view('freelancer.edit_form',compact('data'));
     }
 
-    public function showNewForm(){
+    public function showOldForm(){
         $data = $this->getFreelancerData();
         $affiliates = Affiliate::all();
-        return view('freelancer.form',compact('data','affiliates'));
+        return view('freelancer.old_form',compact('data','affiliates'));
     }
 
     public function getFreelancerData () {
@@ -217,6 +218,23 @@ class FreelancersController extends Controller
 
         return redirect('/admin')->with('successMessage', 'Behance Designer has been successfully added.');
 
+    }
+
+    public function showFreelancerJobs(){
+        $currFreelancer = auth()->user();
+        $freelancerJobs = $currFreelancer->jobs;
+        $allJobs        = Job::orderBy('created_at', 'DESC')->get();
+        return view('freelancer.jobs',compact('freelancerJobs','allJobs','currFreelancer'));
+    }
+
+    public function applyToJob(Request $request){
+        Job::find($request->jobID)->freelancersApplied()->attach(auth()->user()->id);
+        return ['status'=> 'Applied'];
+    }
+
+    public function leaveJob(Request $request){
+        Job::find($request->jobID)->freelancersApplied()->detach(auth()->user()->id);
+        return ['status'=> 'Left'];
     }
 
 }

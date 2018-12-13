@@ -29,6 +29,21 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function jobs(){
+        return $this->belongsToMany(Job::class);
+    }
+
+    public function hasApplied($jobID){
+        $job        = Job::find($jobID);
+        $freelancersApplied = $job->freelancersApplied()->get(['user_id']);
+        $hasApplied = false;
+        foreach ($freelancersApplied as $freelancer){
+            if($freelancer->user_id == auth()->user()->id){
+                $hasApplied = true;
+            }
+        }
+        return $hasApplied;
+    }
 
     public function userData()
     {

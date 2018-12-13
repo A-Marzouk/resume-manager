@@ -35,6 +35,10 @@ $redirectURL = 'https://123workforce.com/freelancer/linkedin';
         <div class="col-md-2">
             <a target="_blank" class="btn btn-outline-primary" href="{{$username}}">Link to resume </a>
         </div>
+
+        <div class="col-md-2">
+            <a class="btn btn-outline-primary" href="{{route('show.old_form')}}">Old form</a>
+        </div>
         <? endif; ?>
     </div>
     <hr>

@@ -25,6 +25,13 @@
                 <div  style="color: #30323D;font-family: Roboto;"> Time : {{job.time}}</div>
                 <div  style="color: #30323D;font-family: Roboto;">Level : {{job.level}}</div>
                 <div  style="color: #30323D;font-family: Roboto;">Skills : {{job.skills}}</div>
+                <button :id="'seeApplied'+job.id" class="btn btn-sm btn-outline-primary" @click="getAppliedFreelancers(job.id)">See who applied</button>
+                <br/>
+                <div v-for="(data,index) in appliedFreelancers" v-bind:key="index">
+                    <div v-if="data.jobID == job.id">
+                        <a target="_blank" :href="'/'+data.freelancer.username">{{data.freelancer.firstName}}</a>
+                    </div>
+                </div>
             </job-post>
         </transition-group>
 
@@ -55,8 +62,8 @@
                     'status':'',
                     'level':'',
                     'posted':''
-
-                }
+                },
+                appliedFreelancers:[]
             }
         },
 
@@ -66,7 +73,6 @@
                     (response) => {
                         let currJobs=  response.data;
                         $.each(currJobs, function(i){
-                          // now let it empty
                         });
                         this.jobs = currJobs;
                         this.checkMaxJobs();
@@ -135,6 +141,22 @@
                     'level':'',
                     'posted':''
                 };
+            },
+
+            getAppliedFreelancers(jobID){
+                axios.post('/client/jobs/applied_freelancers',{jobID:jobID}).then((response)=>{
+                    console.log(response.data);
+                    let results = response.data;
+                    let applied = false;
+                    results.forEach( (freelancer) => {
+                        this.appliedFreelancers.push({jobID:jobID,freelancer:freelancer});
+                        applied = true;
+                    });
+                    $('#seeApplied'+jobID).attr('disabled',true);
+                    if(!applied){
+                       alert('No one has been applied to this job yet..');
+                    }
+                });
             }
         },
 

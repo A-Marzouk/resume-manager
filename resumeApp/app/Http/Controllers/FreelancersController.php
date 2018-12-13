@@ -223,7 +223,7 @@ class FreelancersController extends Controller
     public function showFreelancerJobs(){
         $currFreelancer = auth()->user();
         $freelancerJobs = $currFreelancer->jobs;
-        $allJobs        = Job::all();
+        $allJobs        = Job::orderBy('created_at', 'DESC')->get();
         return view('freelancer.jobs',compact('freelancerJobs','allJobs','currFreelancer'));
     }
 

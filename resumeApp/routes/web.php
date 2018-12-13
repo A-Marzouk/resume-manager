@@ -42,6 +42,7 @@ Route::prefix('client')->group(function (){
     Route::post('/jobs/delete','ClientsController@deleteJob')->name('get.jobs');
     Route::post('/jobs/add/','JobsController@addJobPost')->name('add.job');
     Route::post('/jobs/delete','JobsController@deleteJobPost')->name('delete.job');
+    Route::post('/jobs/applied_freelancers','JobsController@appliedFreelancers')->name('job.freelancers');
 
 
 

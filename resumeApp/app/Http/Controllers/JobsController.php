@@ -26,6 +26,11 @@ class JobsController extends Controller
         return $currFreelancer->jobs;
     }
 
+    public function appliedFreelancers(Request $request){
+        $jobID = $request->jobID;
+        return Job::find($jobID)->freelancersApplied;
+    }
+
     public function addJobPost(Request $request){
         $currClient = auth()->guard('client')->user();
         $request->validate([

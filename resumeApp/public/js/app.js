@@ -56659,6 +56659,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -56675,8 +56682,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'status': '',
                 'level': '',
                 'posted': ''
-
-            }
+            },
+            appliedFreelancers: []
         };
     },
 
@@ -56687,9 +56694,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/client/get_jobs').then(function (response) {
                 var currJobs = response.data;
-                $.each(currJobs, function (i) {
-                    // now let it empty
-                });
+                $.each(currJobs, function (i) {});
                 _this.jobs = currJobs;
                 _this.checkMaxJobs();
             });
@@ -56752,6 +56757,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'level': '',
                 'posted': ''
             };
+        },
+        getAppliedFreelancers: function getAppliedFreelancers(jobID) {
+            var _this3 = this;
+
+            axios.post('/client/jobs/applied_freelancers', { jobID: jobID }).then(function (response) {
+                console.log(response.data);
+                var results = response.data;
+                var applied = false;
+                results.forEach(function (freelancer) {
+                    _this3.appliedFreelancers.push({ jobID: jobID, freelancer: freelancer });
+                    applied = true;
+                });
+                $('#seeApplied' + jobID).attr('disabled', true);
+                if (!applied) {
+                    alert('No one has been applied to this job yet..');
+                }
+            });
         }
     },
 
@@ -56891,8 +56913,44 @@ var render = function() {
                 "div",
                 { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
                 [_vm._v("Skills : " + _vm._s(job.skills))]
-              )
-            ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm btn-outline-primary",
+                  attrs: { id: "seeApplied" + job.id },
+                  on: {
+                    click: function($event) {
+                      _vm.getAppliedFreelancers(job.id)
+                    }
+                  }
+                },
+                [_vm._v("See who applied")]
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _vm._l(_vm.appliedFreelancers, function(data, index) {
+                return _c("div", { key: index }, [
+                  data.jobID == job.id
+                    ? _c("div", [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              target: "_blank",
+                              href: "/" + data.freelancer.username
+                            }
+                          },
+                          [_vm._v(_vm._s(data.freelancer.firstName))]
+                        )
+                      ])
+                    : _vm._e()
+                ])
+              })
+            ],
+            2
           )
         })
       ),

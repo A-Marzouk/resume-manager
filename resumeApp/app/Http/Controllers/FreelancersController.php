@@ -29,7 +29,7 @@ class FreelancersController extends Controller
         }
         $data = $this->getFreelancerData();
         $affiliates = Affiliate::all();
-        return view('freelancer.old_form',compact('data','affiliates'));
+        return view('freelancer.form',compact('data','affiliates'));
     }
 
     public function showEditForm(){
@@ -37,10 +37,10 @@ class FreelancersController extends Controller
         return view('freelancer.edit_form',compact('data'));
     }
 
-    public function showNewForm(){
+    public function showOldForm(){
         $data = $this->getFreelancerData();
         $affiliates = Affiliate::all();
-        return view('freelancer.form',compact('data','affiliates'));
+        return view('freelancer.old_form',compact('data','affiliates'));
     }
 
     public function getFreelancerData () {

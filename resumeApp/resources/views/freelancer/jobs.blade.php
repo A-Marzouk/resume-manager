@@ -12,7 +12,7 @@
                     <p class="panelFormLabel"> You have not applied to any job yet.</p>
                 @endif
                 <div>
-                    @foreach($freelancerJobs as $job)   
+                    @foreach($freelancerJobs as $job)
                         <div style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">{{$job->title}}</div><br/>
                         <div  style="color: #30323D;font-family: Roboto;">Description : {{$job->description}}</div>
                         <div  style="color: #30323D;font-family: Roboto;">Budget : {{$job->budget}}</div>
@@ -31,7 +31,7 @@
             </div>
             <div class="col-md-8">
                 <p class="pageSubHeading2 text-left">
-                    Recommended jobs
+                    Recent jobs
                 </p>
                 <div>
                     @foreach($allJobs as $job)

@@ -81,6 +81,11 @@ if($user){
                                 </span>
                             </a>
                         </li>
+                        <li class="nav-link nav-item customNavLink NoDecor" style="color:#0290D8;">
+                            <a href="{{route('show.freelancer.jobs')}}">
+                               Jobs
+                            </a>
+                        </li>
                         <li>
                             <a class="nav-link nav-item nav-link customNavLink" href="{{ route('logout') }}"
                                onclick="event.preventDefault();

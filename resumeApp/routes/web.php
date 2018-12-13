@@ -77,7 +77,7 @@ Route::prefix('freelancer')->group(function (){
     });
     Route::get('/delete/{id}','AdminsController@deleteFreelancer')->name('freelancer.delete');
     Route::get('/edit_form/','FreelancersController@showEditForm')->name('show.edit_form');
-    Route::get('/new_form/','FreelancersController@showNewForm')->name('show.new_form');
+    Route::get('/old_form/','FreelancersController@showOldForm')->name('show.old_form');
     Route::get('/jobs/','FreelancersController@showFreelancerJobs')->name('show.freelancer.jobs');
     Route::post('/jobs/apply','FreelancersController@applyToJob')->name('freelancer.apply.job');
     Route::post('/jobs/leave','FreelancersController@leaveJob')->name('freelancer.leave.job');

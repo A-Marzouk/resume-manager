@@ -35,6 +35,9 @@ $currFreelancer = auth()->user();
         <div class="col-md-2">
             <a href="{{route('show.new_form')}}" class="btn btn-outline-primary">Show new form</a>
         </div>
+        <div class="col-md-2">
+            <a href="{{route('show.freelancer.jobs')}}" class="btn btn-outline-primary">View jobs</a>
+        </div>
         <? endif; ?>
     </div>
     <hr>

@@ -584,7 +584,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(53)
+var listToStyles = __webpack_require__(54)
 
 /*
 type StyleObject = {
@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(126);
+module.exports = __webpack_require__(138);
 
 
 /***/ }),
@@ -14313,6 +14313,7 @@ $.ajaxSetup({
 __webpack_require__(44);
 __webpack_require__(45);
 __webpack_require__(46);
+__webpack_require__(47);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -14322,44 +14323,44 @@ __webpack_require__(46);
 
 Vue.config.devtools = true;
 
-Vue.component('example-component', __webpack_require__(47));
-Vue.component('chat-message', __webpack_require__(50));
-Vue.component('chat-log', __webpack_require__(56));
-Vue.component('chat-composer', __webpack_require__(61));
+Vue.component('example-component', __webpack_require__(48));
+Vue.component('chat-message', __webpack_require__(51));
+Vue.component('chat-log', __webpack_require__(57));
+Vue.component('chat-composer', __webpack_require__(62));
 
 // works
-Vue.component('works-list', __webpack_require__(130));
-Vue.component('work-history', __webpack_require__(135));
-Vue.component('add-work-modal', __webpack_require__(138));
+Vue.component('works-list', __webpack_require__(67));
+Vue.component('work-history', __webpack_require__(72));
+Vue.component('add-work-modal', __webpack_require__(75));
 
 // educations
-Vue.component('educations-list', __webpack_require__(77));
-Vue.component('education-history', __webpack_require__(82));
-Vue.component('add-education-modal', __webpack_require__(85));
+Vue.component('educations-list', __webpack_require__(78));
+Vue.component('education-history', __webpack_require__(83));
+Vue.component('add-education-modal', __webpack_require__(86));
 
 // jobs
-Vue.component('jobs-list', __webpack_require__(141));
-Vue.component('job-post', __webpack_require__(146));
-Vue.component('add-job-modal', __webpack_require__(147));
+Vue.component('jobs-list', __webpack_require__(89));
+Vue.component('job-post', __webpack_require__(94));
+Vue.component('add-job-modal', __webpack_require__(97));
 
 // skills
-Vue.component('skills-list', __webpack_require__(88));
+Vue.component('skills-list', __webpack_require__(100));
 
 // projects
-Vue.component('projects-list', __webpack_require__(93));
-Vue.component('project-detail', __webpack_require__(98));
-Vue.component('add-project-modal', __webpack_require__(101));
+Vue.component('projects-list', __webpack_require__(105));
+Vue.component('project-detail', __webpack_require__(110));
+Vue.component('add-project-modal', __webpack_require__(113));
 
 // search components :
-Vue.component('search-freelancers', __webpack_require__(104));
-Vue.component('freelancer-card', __webpack_require__(109));
-Vue.component('freelancers-list', __webpack_require__(112));
+Vue.component('search-freelancers', __webpack_require__(116));
+Vue.component('freelancer-card', __webpack_require__(121));
+Vue.component('freelancers-list', __webpack_require__(124));
 
 // chat room:
-Vue.component('new-chat', __webpack_require__(117));
+Vue.component('new-chat', __webpack_require__(129));
 
 //
-Vue.component('send-emails', __webpack_require__(120));
+Vue.component('send-emails', __webpack_require__(132));
 
 if ($("#searchFreelancers").length !== 0) {
     var searchFreelancers = new Vue({
@@ -14539,7 +14540,7 @@ window.Echo.channel('conversations').listen('UpdateMessageCount', function (e) {
     }
 });
 
-__webpack_require__(125);
+__webpack_require__(137);
 
 /***/ }),
 /* 16 */
@@ -53621,14 +53622,38 @@ resumeCardContent.on('click', '.desc', function () {
 
 /***/ }),
 /* 47 */
+/***/ (function(module, exports) {
+
+$('.applyToJobBtn').on('click', function () {
+    var jobID = this.id.replace('applyToJob', '');
+    $('#' + this.id).attr('disabled', true);
+    $('#' + this.id).text('Applied');
+    axios.post('/freelancer/jobs/apply', { 'jobID': jobID }).then(function (response) {
+        console.log(response.data);
+    });
+});
+
+$('.cancelApplyBtn').on('click', function () {
+    var jobID = this.id.replace('cancelApply', '');
+    $('#' + this.id).attr('disabled', true);
+    $('#' + this.id).text('Canceled');
+    // hide applied word
+    $('#applied' + jobID).hide();
+    axios.post('/freelancer/jobs/leave', { 'jobID': jobID }).then(function (response) {
+        console.log(response.data);
+    });
+});
+
+/***/ }),
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(48)
+var __vue_script__ = __webpack_require__(49)
 /* template */
-var __vue_template__ = __webpack_require__(49)
+var __vue_template__ = __webpack_require__(50)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -53667,7 +53692,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53696,7 +53721,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -53739,19 +53764,19 @@ if (false) {
 }
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(51)
+  __webpack_require__(52)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(54)
+var __vue_script__ = __webpack_require__(55)
 /* template */
-var __vue_template__ = __webpack_require__(55)
+var __vue_template__ = __webpack_require__(56)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -53790,13 +53815,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(52);
+var content = __webpack_require__(53);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -53816,7 +53841,7 @@ if(false) {
 }
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -53830,7 +53855,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports) {
 
 /**
@@ -53863,7 +53888,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53901,7 +53926,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -53982,19 +54007,19 @@ if (false) {
 }
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(57)
+  __webpack_require__(58)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(59)
+var __vue_script__ = __webpack_require__(60)
 /* template */
-var __vue_template__ = __webpack_require__(60)
+var __vue_template__ = __webpack_require__(61)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54033,13 +54058,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(58);
+var content = __webpack_require__(59);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -54059,7 +54084,7 @@ if(false) {
 }
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -54073,7 +54098,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54096,7 +54121,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54148,19 +54173,19 @@ if (false) {
 }
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(62)
+  __webpack_require__(63)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(64)
+var __vue_script__ = __webpack_require__(65)
 /* template */
-var __vue_template__ = __webpack_require__(65)
+var __vue_template__ = __webpack_require__(66)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54199,13 +54224,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(63);
+var content = __webpack_require__(64);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -54225,7 +54250,7 @@ if(false) {
 }
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -54239,7 +54264,7 @@ exports.push([module.i, "\n.chat-composer{\n    display:-webkit-box;\n    displa
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54283,7 +54308,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54355,30 +54380,1107 @@ if (false) {
 }
 
 /***/ }),
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(78)
+  __webpack_require__(68)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(80)
+var __vue_script__ = __webpack_require__(70)
 /* template */
-var __vue_template__ = __webpack_require__(81)
+var __vue_template__ = __webpack_require__(71)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\work\\worksListComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ec64757e", Component.options)
+  } else {
+    hotAPI.reload("data-v-ec64757e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(69);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("ec322706", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-ec64757e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./worksListComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-ec64757e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./worksListComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 70 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            works: [],
+            canAdd: true,
+            toBeEditedWork: {
+                'id': '',
+                'job_title': '',
+                'job_description': '',
+                'company': '',
+                'date_from': '',
+                'date_to': '',
+                'currently_working': ''
+            }
+        };
+    },
+
+
+    methods: {
+        getCurrentWorks: function getCurrentWorks() {
+            var _this = this;
+
+            axios.get('/freelancer/workshistory').then(function (response) {
+                var currWorks = response.data;
+                $.each(currWorks, function (i) {
+                    if (currWorks[i].currently_working == "0") {
+                        currWorks[i].currently_working = false;
+                    } else {
+                        currWorks[i].currently_working = true;
+                    }
+                });
+                _this.works = currWorks;
+                _this.checkMaxWorks();
+            });
+        },
+        addWorkHistory: function addWorkHistory(newWork) {
+            this.works.push(newWork);
+            this.checkMaxWorks();
+        },
+        deleteWork: function deleteWork(work) {
+            var _this2 = this;
+
+            if (!confirm('Are you sure you want to delete this work experience ?')) {
+                return;
+            }
+            axios.post('/freelancer/deletework', { workHistoryID: work.id }).then(function (response) {
+                var works = _this2.works;
+                $.each(works, function (i) {
+                    if (works[i].id === work.id) {
+                        works.splice(i, 1);
+                        return false;
+                    }
+                });
+
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+
+                _this2.checkMaxWorks();
+            });
+        },
+        editWork: function editWork(workID) {
+            var works = this.works;
+            var editedWork = {};
+
+            $.each(works, function (i) {
+                if (works[i].id === workID) {
+                    editedWork = works[i];
+                }
+            });
+            this.toBeEditedWork = editedWork;
+        },
+        checkMaxWorks: function checkMaxWorks() {
+            if (this.works.length > 4) {
+                this.canAdd = false;
+            } else {
+                this.canAdd = true;
+            }
+        },
+        clearData: function clearData() {
+            this.toBeEditedWork = {
+                'id': '',
+                'job_title': '',
+                'job_description': '',
+                'company': '',
+                'date_from': '',
+                'date_to': '',
+                'currently_working': ''
+            };
+        }
+    },
+
+    created: function created() {
+        this.getCurrentWorks();
+    }
+});
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "transition-group",
+        { staticClass: "row", attrs: { name: "list" } },
+        _vm._l(_vm.works, function(work, index) {
+          return _c(
+            "work-history",
+            {
+              key: index,
+              staticClass: "list-item workExperience col-12",
+              staticStyle: { margin: "0px 10px 20px" }
+            },
+            [
+              _c(
+                "span",
+                {
+                  staticClass: "deleteWorkBtn NoDecor",
+                  on: {
+                    click: function($event) {
+                      _vm.deleteWork(work)
+                    }
+                  }
+                },
+                [
+                  _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/resources/assets/images/close_blue.png",
+                        alt: "edit profile"
+                      }
+                    }),
+                    _vm._v("\n                    Delete\n                ")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass: "deleteWorkBtn NoDecor",
+                  staticStyle: { width: "75px", "margin-right": "5px" },
+                  on: {
+                    click: function($event) {
+                      _vm.editWork(work.id)
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "javascript:void(0)",
+                        "data-target": "#addWorkModal",
+                        "data-toggle": "modal"
+                      }
+                    },
+                    [
+                      _c("img", {
+                        staticStyle: {
+                          width: "20px",
+                          "padding-right": "7px",
+                          "padding-bottom": "2px",
+                          height: "15px"
+                        },
+                        attrs: {
+                          src:
+                            "/resumeApp/resources/assets/images/edit_blue.png",
+                          alt: "edit profile"
+                        }
+                      }),
+                      _vm._v("\n                    Edit\n                ")
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v(_vm._s(work.job_title))]
+              ),
+              _c("br"),
+              _vm._v("\n            " + _vm._s(work.company)),
+              _c("br"),
+              _vm._v(
+                "\n            Start :" +
+                  _vm._s(work.date_from) +
+                  "\n            "
+              ),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: work.date_to && work.currently_working !== true,
+                      expression:
+                        "work.date_to && work.currently_working !== true"
+                    }
+                  ]
+                },
+                [_vm._v(" End : " + _vm._s(work.date_to))]
+              ),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: work.currently_working !== false,
+                      expression: "work.currently_working !== false"
+                    }
+                  ]
+                },
+                [_vm._v(" - Present")]
+              ),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "desc",
+                  staticStyle: { color: "#30323D", "font-family": "Roboto" }
+                },
+                [_vm._v(_vm._s(work.job_description))]
+              )
+            ]
+          )
+        })
+      ),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: this.canAdd,
+              expression: "this.canAdd"
+            }
+          ],
+          staticClass: "deleteWorkBtn NoDecor",
+          staticStyle: { width: "137px" },
+          on: { click: _vm.clearData }
+        },
+        [_vm._m(0)]
+      ),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("add-work-modal", {
+        attrs: { toBeEditedWork: _vm.toBeEditedWork },
+        on: { workAdded: _vm.addWorkHistory }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        attrs: {
+          href: "javascript:void(0)",
+          "data-toggle": "modal",
+          "data-target": "#addWorkModal"
+        }
+      },
+      [
+        _c("img", {
+          attrs: {
+            src: "/resumeApp/resources/assets/images/add_blue.png",
+            alt: "edit profile"
+          }
+        }),
+        _vm._v("\n            Add work\n        ")
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-ec64757e", module.exports)
+  }
+}
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(73)
+/* template */
+var __vue_template__ = __webpack_require__(74)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\work\\workHistoryComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4dc6ee1e", Component.options)
+  } else {
+    hotAPI.reload("data-v-4dc6ee1e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 73 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {};
+    }
+});
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4dc6ee1e", module.exports)
+  }
+}
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(76)
+/* template */
+var __vue_template__ = __webpack_require__(77)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\work\\addWorkComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7365cd22", Component.options)
+  } else {
+    hotAPI.reload("data-v-7365cd22", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 76 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['toBeEditedWork'],
+    data: function data() {
+        return {};
+    },
+
+    methods: {
+        submitForm: function submitForm() {
+            var _this = this;
+
+            // post data :
+            axios.post('/freelancer/addwork', this.toBeEditedWork).then(function (response) {
+                //
+                if (_this.toBeEditedWork.id === "") {
+                    _this.$emit('workAdded', _this.toBeEditedWork);
+                }
+                // save the work id :
+                _this.toBeEditedWork.id = response.data.id;
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+            });
+            $('#closeModal').click();
+        }
+    },
+    mounted: function mounted() {}
+});
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addWorkModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addWorkModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  {
+                    attrs: { action: "/freelancer/addwork/", method: "post" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.submitForm($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "job_title" }
+                          },
+                          [_vm._v("Job title :")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedWork.job_title,
+                              expression: "toBeEditedWork.job_title"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "job_title",
+                            name: "job_title",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedWork.job_title },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedWork,
+                                "job_title",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "company" }
+                          },
+                          [_vm._v("Company:")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedWork.company,
+                              expression: "toBeEditedWork.company"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "company",
+                            name: "company",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedWork.company },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedWork,
+                                "company",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "job_description" }
+                          },
+                          [_vm._v("Job description :")]
+                        ),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedWork.job_description,
+                              expression: "toBeEditedWork.job_description"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            rows: "3",
+                            id: "job_description",
+                            name: "job_description",
+                            required: ""
+                          },
+                          domProps: {
+                            value: _vm.toBeEditedWork.job_description
+                          },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedWork,
+                                "job_description",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "date_from" }
+                          },
+                          [_vm._v("Start :")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedWork.date_from,
+                              expression: "toBeEditedWork.date_from"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "date",
+                            id: "date_from",
+                            name: "date_from",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedWork.date_from },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedWork,
+                                "date_from",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: !_vm.toBeEditedWork.currently_working,
+                              expression: "!toBeEditedWork.currently_working"
+                            }
+                          ],
+                          staticClass: "form-group col-md-6"
+                        },
+                        [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "panelFormLabel",
+                              attrs: { for: "date_from" }
+                            },
+                            [_vm._v("End :")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.toBeEditedWork.date_to,
+                                expression: "toBeEditedWork.date_to"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "date",
+                              id: "date_to",
+                              name: "date_to"
+                            },
+                            domProps: { value: _vm.toBeEditedWork.date_to },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.toBeEditedWork,
+                                  "date_to",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass:
+                              "form-check-label checkBoxText checkBoxContainer"
+                          },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.toBeEditedWork.currently_working,
+                                  expression: "toBeEditedWork.currently_working"
+                                }
+                              ],
+                              staticClass: "form-check-input",
+                              staticStyle: {
+                                "@if($errors->has('design_skills_checkbox')) border":
+                                  "1px solid red"
+                              },
+                              attrs: {
+                                id: "currently_working",
+                                type: "checkbox",
+                                name: "currently_working"
+                              },
+                              domProps: {
+                                checked: _vm.toBeEditedWork.currently_working,
+                                checked: Array.isArray(
+                                  _vm.toBeEditedWork.currently_working
+                                )
+                                  ? _vm._i(
+                                      _vm.toBeEditedWork.currently_working,
+                                      null
+                                    ) > -1
+                                  : _vm.toBeEditedWork.currently_working
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a =
+                                      _vm.toBeEditedWork.currently_working,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = null,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        _vm.$set(
+                                          _vm.toBeEditedWork,
+                                          "currently_working",
+                                          $$a.concat([$$v])
+                                        )
+                                    } else {
+                                      $$i > -1 &&
+                                        _vm.$set(
+                                          _vm.toBeEditedWork,
+                                          "currently_working",
+                                          $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1))
+                                        )
+                                    }
+                                  } else {
+                                    _vm.$set(
+                                      _vm.toBeEditedWork,
+                                      "currently_working",
+                                      $$c
+                                    )
+                                  }
+                                }
+                              }
+                            }),
+                            _vm._v(
+                              "\n                                  Present\n                                  "
+                            ),
+                            _c("span", { staticClass: "checkmark" })
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "text-right", staticStyle: { padding: "15px 10px 0 0" } },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "modal",
+              "aria-label": "Close",
+              id: "closeModal"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Save")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7365cd22", module.exports)
+  }
+}
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(79)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(81)
+/* template */
+var __vue_template__ = __webpack_require__(82)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54417,13 +55519,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(79);
+var content = __webpack_require__(80);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -54443,7 +55545,7 @@ if(false) {
 }
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -54457,7 +55559,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54602,7 +55704,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54816,15 +55918,15 @@ if (false) {
 }
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(83)
+var __vue_script__ = __webpack_require__(84)
 /* template */
-var __vue_template__ = __webpack_require__(84)
+var __vue_template__ = __webpack_require__(85)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54863,7 +55965,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54882,7 +55984,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -54902,15 +56004,15 @@ if (false) {
 }
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(86)
+var __vue_script__ = __webpack_require__(87)
 /* template */
-var __vue_template__ = __webpack_require__(87)
+var __vue_template__ = __webpack_require__(88)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -54949,7 +56051,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55037,7 +56139,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55420,19 +56522,1070 @@ if (false) {
 }
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(89)
+  __webpack_require__(90)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(91)
+var __vue_script__ = __webpack_require__(92)
 /* template */
-var __vue_template__ = __webpack_require__(92)
+var __vue_template__ = __webpack_require__(93)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\jobs\\jobsList.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-404ff7da", Component.options)
+  } else {
+    hotAPI.reload("data-v-404ff7da", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(91);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("42b8526c", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-404ff7da\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./jobsList.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-404ff7da\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./jobsList.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 92 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            jobs: [],
+            canAdd: true,
+            toBeEditedJob: {
+                'id': '',
+                'title': '',
+                'description': '',
+                'budget': '',
+                'time': '',
+                'skills': '',
+                'status': '',
+                'level': '',
+                'posted': ''
+
+            }
+        };
+    },
+
+
+    methods: {
+        getCurrentJobs: function getCurrentJobs() {
+            var _this = this;
+
+            axios.get('/client/get_jobs').then(function (response) {
+                var currJobs = response.data;
+                $.each(currJobs, function (i) {
+                    // now let it empty
+                });
+                _this.jobs = currJobs;
+                _this.checkMaxJobs();
+            });
+        },
+        addJobPost: function addJobPost(newJob) {
+            this.jobs.push(newJob);
+            this.checkMaxJobs();
+        },
+        deleteJob: function deleteJob(job) {
+            var _this2 = this;
+
+            if (!confirm('Are you sure you want to delete this job post ?')) {
+                return;
+            }
+            axios.post('/client/jobs/delete', { jobID: job.id }).then(function (response) {
+                var jobs = _this2.jobs;
+                $.each(jobs, function (i) {
+                    if (jobs[i].id === job.id) {
+                        jobs.splice(i, 1);
+                        return false;
+                    }
+                });
+
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+
+                _this2.checkMaxJobs();
+            });
+        },
+        editJob: function editJob(jobID) {
+            var jobs = this.jobs;
+            var editedJob = {};
+
+            $.each(jobs, function (i) {
+                if (jobs[i].id === jobID) {
+                    editedJob = jobs[i];
+                }
+            });
+            this.toBeEditedJob = editedJob;
+        },
+        checkMaxJobs: function checkMaxJobs() {
+            if (this.jobs.length > 4) {
+                this.canAdd = false;
+            } else {
+                this.canAdd = true;
+            }
+        },
+        clearData: function clearData() {
+            this.toBeEditedJob = {
+                'id': '',
+                'title': '',
+                'description': '',
+                'budget': '',
+                'time': '',
+                'skills': '',
+                'status': '',
+                'level': '',
+                'posted': ''
+            };
+        }
+    },
+
+    created: function created() {
+        this.getCurrentJobs();
+    }
+});
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "transition-group",
+        { staticClass: "row", attrs: { name: "list" } },
+        _vm._l(_vm.jobs, function(job, index) {
+          return _c(
+            "job-post",
+            {
+              key: index,
+              staticClass: "list-item workExperience col-12",
+              staticStyle: { margin: "0px 10px 20px" }
+            },
+            [
+              _c(
+                "span",
+                {
+                  staticClass: "deleteWorkBtn NoDecor",
+                  on: {
+                    click: function($event) {
+                      _vm.deleteJob(job)
+                    }
+                  }
+                },
+                [
+                  _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/resources/assets/images/close_blue.png",
+                        alt: "edit profile"
+                      }
+                    }),
+                    _vm._v("\n                    Delete\n                ")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass: "deleteWorkBtn NoDecor",
+                  staticStyle: { width: "75px", "margin-right": "5px" },
+                  on: {
+                    click: function($event) {
+                      _vm.editJob(job.id)
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "javascript:void(0)",
+                        "data-target": "#addJobModal",
+                        "data-toggle": "modal"
+                      }
+                    },
+                    [
+                      _c("img", {
+                        staticStyle: {
+                          width: "20px",
+                          "padding-right": "7px",
+                          "padding-bottom": "2px",
+                          height: "15px"
+                        },
+                        attrs: {
+                          src:
+                            "/resumeApp/resources/assets/images/edit_blue.png",
+                          alt: "edit profile"
+                        }
+                      }),
+                      _vm._v("\n                    Edit\n                ")
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v(_vm._s(job.title))]
+              ),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
+                [_vm._v("Description : " + _vm._s(job.description))]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
+                [_vm._v("Budget : " + _vm._s(job.budget))]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
+                [_vm._v(" Time : " + _vm._s(job.time))]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
+                [_vm._v("Level : " + _vm._s(job.level))]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
+                [_vm._v("Skills : " + _vm._s(job.skills))]
+              )
+            ]
+          )
+        })
+      ),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: this.canAdd,
+              expression: "this.canAdd"
+            }
+          ],
+          staticClass: "deleteWorkBtn NoDecor",
+          staticStyle: { width: "137px" },
+          on: { click: _vm.clearData }
+        },
+        [_vm._m(0)]
+      ),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("add-job-modal", {
+        attrs: { toBeEditedJob: _vm.toBeEditedJob },
+        on: { jobAdded: _vm.addJobPost }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        attrs: {
+          href: "javascript:void(0)",
+          "data-toggle": "modal",
+          "data-target": "#addJobModal"
+        }
+      },
+      [
+        _c("img", {
+          attrs: {
+            src: "/resumeApp/resources/assets/images/add_blue.png",
+            alt: "edit profile"
+          }
+        }),
+        _vm._v("\n            Add job\n        ")
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-404ff7da", module.exports)
+  }
+}
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(95)
+/* template */
+var __vue_template__ = __webpack_require__(96)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\jobs\\jobPost.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-75dae064", Component.options)
+  } else {
+    hotAPI.reload("data-v-75dae064", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 95 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {};
+    }
+});
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-75dae064", module.exports)
+  }
+}
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(98)
+/* template */
+var __vue_template__ = __webpack_require__(99)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\jobs\\addJob.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-cc3b79ca", Component.options)
+  } else {
+    hotAPI.reload("data-v-cc3b79ca", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 98 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['toBeEditedJob'],
+    data: function data() {
+        return {};
+    },
+
+    methods: {
+        submitForm: function submitForm() {
+            var _this = this;
+
+            // post data :
+            axios.post('/client/jobs/add', this.toBeEditedJob).then(function (response) {
+                //
+                if (_this.toBeEditedJob.id === "") {
+                    _this.$emit('jobAdded', _this.toBeEditedJob);
+                }
+                // save the job id :
+                _this.toBeEditedJob.id = response.data.id;
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+            });
+            $('#closeJobModal').click();
+        }
+    },
+    mounted: function mounted() {}
+});
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addJobModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addJobModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  {
+                    attrs: { action: "/client/jobs/add", method: "post" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.submitForm($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "title" }
+                          },
+                          [_vm._v("Title :")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedJob.title,
+                              expression: "toBeEditedJob.title"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "title",
+                            name: "title",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedJob.title },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedJob,
+                                "title",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "description" }
+                          },
+                          [_vm._v("Description :")]
+                        ),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedJob.description,
+                              expression: "toBeEditedJob.description"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            rows: "3",
+                            id: "description",
+                            name: "description",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedJob.description },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedJob,
+                                "description",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "Budget" }
+                          },
+                          [_vm._v("Budget :")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedJob.budget,
+                              expression: "toBeEditedJob.budget"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "Budget",
+                            name: "Budget",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedJob.budget },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedJob,
+                                "budget",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "time" }
+                          },
+                          [_vm._v("Time :")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedJob.time,
+                              expression: "toBeEditedJob.time"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "time",
+                            name: "time",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedJob.time },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedJob,
+                                "time",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "skills" }
+                          },
+                          [_vm._v("skills :")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedJob.skills,
+                              expression: "toBeEditedJob.skills"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "skills",
+                            name: "skills",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedJob.skills },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedJob,
+                                "skills",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedJob.level,
+                              expression: "toBeEditedJob.level"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", id: "level", name: "level" },
+                          domProps: { value: _vm.toBeEditedJob.level },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedJob,
+                                "level",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedJob.status,
+                              expression: "toBeEditedJob.status"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "hidden",
+                            id: "status",
+                            name: "status"
+                          },
+                          domProps: { value: _vm.toBeEditedJob.status },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedJob,
+                                "status",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "text-right", staticStyle: { padding: "15px 10px 0 0" } },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "modal",
+              "aria-label": "Close",
+              id: "closeJobModal"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      { staticClass: "panelFormLabel", attrs: { for: "level" } },
+      [_vm._v("Level : "), _c("small", [_vm._v("Junior, Middle..")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Post")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-cc3b79ca", module.exports)
+  }
+}
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(101)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(103)
+/* template */
+var __vue_template__ = __webpack_require__(104)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -55471,13 +57624,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 89 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(90);
+var content = __webpack_require__(102);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -55497,7 +57650,7 @@ if(false) {
 }
 
 /***/ }),
-/* 90 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -55511,7 +57664,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 91 */
+/* 103 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55666,7 +57819,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 92 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -55982,19 +58135,19 @@ if (false) {
 }
 
 /***/ }),
-/* 93 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(94)
+  __webpack_require__(106)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(96)
+var __vue_script__ = __webpack_require__(108)
 /* template */
-var __vue_template__ = __webpack_require__(97)
+var __vue_template__ = __webpack_require__(109)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -56033,13 +58186,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 94 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(95);
+var content = __webpack_require__(107);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -56059,7 +58212,7 @@ if(false) {
 }
 
 /***/ }),
-/* 95 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -56073,7 +58226,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 96 */
+/* 108 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56216,7 +58369,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 97 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -56257,7 +58410,7 @@ var render = function() {
                       _c("img", {
                         staticStyle: { "border-radius": "5px" },
                         attrs: {
-                          src: project.mainImage,
+                          src: "/" + project.mainImage,
                           alt: "",
                           width: "100%",
                           id: "projectImg"
@@ -56396,15 +58549,15 @@ if (false) {
 }
 
 /***/ }),
-/* 98 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(99)
+var __vue_script__ = __webpack_require__(111)
 /* template */
-var __vue_template__ = __webpack_require__(100)
+var __vue_template__ = __webpack_require__(112)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -56443,7 +58596,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 99 */
+/* 111 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56462,7 +58615,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 100 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -56482,15 +58635,15 @@ if (false) {
 }
 
 /***/ }),
-/* 101 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(102)
+var __vue_script__ = __webpack_require__(114)
 /* template */
-var __vue_template__ = __webpack_require__(103)
+var __vue_template__ = __webpack_require__(115)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -56529,7 +58682,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 102 */
+/* 114 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56736,7 +58889,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 103 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -56813,7 +58966,7 @@ var render = function() {
                           [
                             _c("img", {
                               attrs: {
-                                src: _vm.toBeEditedProject.mainImage,
+                                src: "/" + _vm.toBeEditedProject.mainImage,
                                 alt: "",
                                 width: "100%",
                                 height: "auto"
@@ -56825,7 +58978,11 @@ var render = function() {
                             ) {
                               return _c("div", [
                                 _c("img", {
-                                  attrs: { src: image, alt: "", width: "100%" }
+                                  attrs: {
+                                    src: "/" + image,
+                                    alt: "",
+                                    width: "100%"
+                                  }
                                 })
                               ])
                             })
@@ -57282,7 +59439,7 @@ var render = function() {
                                         "border-radius": "5px"
                                       },
                                       attrs: {
-                                        src: image,
+                                        src: "/" + image,
                                         alt: "",
                                         width: "100%"
                                       }
@@ -57372,19 +59529,19 @@ if (false) {
 }
 
 /***/ }),
-/* 104 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(105)
+  __webpack_require__(117)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(107)
+var __vue_script__ = __webpack_require__(119)
 /* template */
-var __vue_template__ = __webpack_require__(108)
+var __vue_template__ = __webpack_require__(120)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -57423,13 +59580,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 105 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(106);
+var content = __webpack_require__(118);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -57449,7 +59606,7 @@ if(false) {
 }
 
 /***/ }),
-/* 106 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -57463,7 +59620,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 107 */
+/* 119 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57637,7 +59794,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 108 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -58179,15 +60336,15 @@ if (false) {
 }
 
 /***/ }),
-/* 109 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(110)
+var __vue_script__ = __webpack_require__(122)
 /* template */
-var __vue_template__ = __webpack_require__(111)
+var __vue_template__ = __webpack_require__(123)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -58226,7 +60383,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 110 */
+/* 122 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58245,7 +60402,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 111 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -58265,19 +60422,19 @@ if (false) {
 }
 
 /***/ }),
-/* 112 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(113)
+  __webpack_require__(125)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(115)
+var __vue_script__ = __webpack_require__(127)
 /* template */
-var __vue_template__ = __webpack_require__(116)
+var __vue_template__ = __webpack_require__(128)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -58316,13 +60473,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 113 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(114);
+var content = __webpack_require__(126);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -58342,7 +60499,7 @@ if(false) {
 }
 
 /***/ }),
-/* 114 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -58356,7 +60513,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 115 */
+/* 127 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58427,7 +60584,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 116 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -58631,15 +60788,15 @@ if (false) {
 }
 
 /***/ }),
-/* 117 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(118)
+var __vue_script__ = __webpack_require__(130)
 /* template */
-var __vue_template__ = __webpack_require__(119)
+var __vue_template__ = __webpack_require__(131)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -58678,7 +60835,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 118 */
+/* 130 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -59081,7 +61238,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 119 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -59855,19 +62012,19 @@ if (false) {
 }
 
 /***/ }),
-/* 120 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(121)
+  __webpack_require__(133)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(123)
+var __vue_script__ = __webpack_require__(135)
 /* template */
-var __vue_template__ = __webpack_require__(124)
+var __vue_template__ = __webpack_require__(136)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -59906,13 +62063,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 121 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(122);
+var content = __webpack_require__(134);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -59932,7 +62089,7 @@ if(false) {
 }
 
 /***/ }),
-/* 122 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -59946,7 +62103,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 123 */
+/* 135 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60138,7 +62295,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 124 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -60429,7 +62586,7 @@ if (false) {
 }
 
 /***/ }),
-/* 125 */
+/* 137 */
 /***/ (function(module, exports) {
 
 var status = $('#record_status'),
@@ -60666,2152 +62823,10 @@ if (navigator.mediaDevices.getUserMedia) {
 }
 
 /***/ }),
-/* 126 */
+/* 138 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 127 */,
-/* 128 */,
-/* 129 */,
-/* 130 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(131)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(133)
-/* template */
-var __vue_template__ = __webpack_require__(134)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\work\\worksListComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ec64757e", Component.options)
-  } else {
-    hotAPI.reload("data-v-ec64757e", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 131 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(132);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("ec322706", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-ec64757e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./worksListComponent.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-ec64757e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./worksListComponent.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 132 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 133 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            works: [],
-            canAdd: true,
-            toBeEditedWork: {
-                'id': '',
-                'job_title': '',
-                'job_description': '',
-                'company': '',
-                'date_from': '',
-                'date_to': '',
-                'currently_working': ''
-            }
-        };
-    },
-
-
-    methods: {
-        getCurrentWorks: function getCurrentWorks() {
-            var _this = this;
-
-            axios.get('/freelancer/workshistory').then(function (response) {
-                var currWorks = response.data;
-                $.each(currWorks, function (i) {
-                    if (currWorks[i].currently_working == "0") {
-                        currWorks[i].currently_working = false;
-                    } else {
-                        currWorks[i].currently_working = true;
-                    }
-                });
-                _this.works = currWorks;
-                _this.checkMaxWorks();
-            });
-        },
-        addWorkHistory: function addWorkHistory(newWork) {
-            this.works.push(newWork);
-            this.checkMaxWorks();
-        },
-        deleteWork: function deleteWork(work) {
-            var _this2 = this;
-
-            if (!confirm('Are you sure you want to delete this work experience ?')) {
-                return;
-            }
-            axios.post('/freelancer/deletework', { workHistoryID: work.id }).then(function (response) {
-                var works = _this2.works;
-                $.each(works, function (i) {
-                    if (works[i].id === work.id) {
-                        works.splice(i, 1);
-                        return false;
-                    }
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-
-                _this2.checkMaxWorks();
-            });
-        },
-        editWork: function editWork(workID) {
-            var works = this.works;
-            var editedWork = {};
-
-            $.each(works, function (i) {
-                if (works[i].id === workID) {
-                    editedWork = works[i];
-                }
-            });
-            this.toBeEditedWork = editedWork;
-        },
-        checkMaxWorks: function checkMaxWorks() {
-            if (this.works.length > 4) {
-                this.canAdd = false;
-            } else {
-                this.canAdd = true;
-            }
-        },
-        clearData: function clearData() {
-            this.toBeEditedWork = {
-                'id': '',
-                'job_title': '',
-                'job_description': '',
-                'company': '',
-                'date_from': '',
-                'date_to': '',
-                'currently_working': ''
-            };
-        }
-    },
-
-    created: function created() {
-        this.getCurrentWorks();
-    }
-});
-
-/***/ }),
-/* 134 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "transition-group",
-        { staticClass: "row", attrs: { name: "list" } },
-        _vm._l(_vm.works, function(work, index) {
-          return _c(
-            "work-history",
-            {
-              key: index,
-              staticClass: "list-item workExperience col-12",
-              staticStyle: { margin: "0px 10px 20px" }
-            },
-            [
-              _c(
-                "span",
-                {
-                  staticClass: "deleteWorkBtn NoDecor",
-                  on: {
-                    click: function($event) {
-                      _vm.deleteWork(work)
-                    }
-                  }
-                },
-                [
-                  _c("a", { attrs: { href: "javascript:void(0)" } }, [
-                    _c("img", {
-                      attrs: {
-                        src:
-                          "/resumeApp/resources/assets/images/close_blue.png",
-                        alt: "edit profile"
-                      }
-                    }),
-                    _vm._v("\n                    Delete\n                ")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass: "deleteWorkBtn NoDecor",
-                  staticStyle: { width: "75px", "margin-right": "5px" },
-                  on: {
-                    click: function($event) {
-                      _vm.editWork(work.id)
-                    }
-                  }
-                },
-                [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "javascript:void(0)",
-                        "data-target": "#addWorkModal",
-                        "data-toggle": "modal"
-                      }
-                    },
-                    [
-                      _c("img", {
-                        staticStyle: {
-                          width: "20px",
-                          "padding-right": "7px",
-                          "padding-bottom": "2px",
-                          height: "15px"
-                        },
-                        attrs: {
-                          src:
-                            "/resumeApp/resources/assets/images/edit_blue.png",
-                          alt: "edit profile"
-                        }
-                      }),
-                      _vm._v("\n                    Edit\n                ")
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(_vm._s(work.job_title))]
-              ),
-              _c("br"),
-              _vm._v("\n            " + _vm._s(work.company)),
-              _c("br"),
-              _vm._v(
-                "\n            Start :" +
-                  _vm._s(work.date_from) +
-                  "\n            "
-              ),
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: work.date_to && work.currently_working !== true,
-                      expression:
-                        "work.date_to && work.currently_working !== true"
-                    }
-                  ]
-                },
-                [_vm._v(" End : " + _vm._s(work.date_to))]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: work.currently_working !== false,
-                      expression: "work.currently_working !== false"
-                    }
-                  ]
-                },
-                [_vm._v(" - Present")]
-              ),
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "desc",
-                  staticStyle: { color: "#30323D", "font-family": "Roboto" }
-                },
-                [_vm._v(_vm._s(work.job_description))]
-              )
-            ]
-          )
-        })
-      ),
-      _vm._v(" "),
-      _c(
-        "span",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: this.canAdd,
-              expression: "this.canAdd"
-            }
-          ],
-          staticClass: "deleteWorkBtn NoDecor",
-          staticStyle: { width: "137px" },
-          on: { click: _vm.clearData }
-        },
-        [_vm._m(0)]
-      ),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("add-work-modal", {
-        attrs: { toBeEditedWork: _vm.toBeEditedWork },
-        on: { workAdded: _vm.addWorkHistory }
-      })
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        attrs: {
-          href: "javascript:void(0)",
-          "data-toggle": "modal",
-          "data-target": "#addWorkModal"
-        }
-      },
-      [
-        _c("img", {
-          attrs: {
-            src: "/resumeApp/resources/assets/images/add_blue.png",
-            alt: "edit profile"
-          }
-        }),
-        _vm._v("\n            Add work\n        ")
-      ]
-    )
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-ec64757e", module.exports)
-  }
-}
-
-/***/ }),
-/* 135 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(136)
-/* template */
-var __vue_template__ = __webpack_require__(137)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\work\\workHistoryComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4dc6ee1e", Component.options)
-  } else {
-    hotAPI.reload("data-v-4dc6ee1e", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 136 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {};
-    }
-});
-
-/***/ }),
-/* 137 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [_vm._t("default")], 2)
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4dc6ee1e", module.exports)
-  }
-}
-
-/***/ }),
-/* 138 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(139)
-/* template */
-var __vue_template__ = __webpack_require__(140)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\work\\addWorkComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7365cd22", Component.options)
-  } else {
-    hotAPI.reload("data-v-7365cd22", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 139 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['toBeEditedWork'],
-    data: function data() {
-        return {};
-    },
-
-    methods: {
-        submitForm: function submitForm() {
-            var _this = this;
-
-            // post data :
-            axios.post('/freelancer/addwork', this.toBeEditedWork).then(function (response) {
-                //
-                if (_this.toBeEditedWork.id === "") {
-                    _this.$emit('workAdded', _this.toBeEditedWork);
-                }
-                // save the work id :
-                _this.toBeEditedWork.id = response.data.id;
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-            });
-            $('#closeModal').click();
-        }
-    },
-    mounted: function mounted() {}
-});
-
-/***/ }),
-/* 140 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "addWorkModal",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "addWorkModalLabel",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "form",
-                  {
-                    attrs: { action: "/freelancer/addwork/", method: "post" },
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.submitForm($event)
-                      }
-                    }
-                  },
-                  [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "form-group col-md-6" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "panelFormLabel",
-                            attrs: { for: "job_title" }
-                          },
-                          [_vm._v("Job title :")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.toBeEditedWork.job_title,
-                              expression: "toBeEditedWork.job_title"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            id: "job_title",
-                            name: "job_title",
-                            required: ""
-                          },
-                          domProps: { value: _vm.toBeEditedWork.job_title },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.toBeEditedWork,
-                                "job_title",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-6" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "panelFormLabel",
-                            attrs: { for: "company" }
-                          },
-                          [_vm._v("Company:")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.toBeEditedWork.company,
-                              expression: "toBeEditedWork.company"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            id: "company",
-                            name: "company",
-                            required: ""
-                          },
-                          domProps: { value: _vm.toBeEditedWork.company },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.toBeEditedWork,
-                                "company",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-12" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "panelFormLabel",
-                            attrs: { for: "job_description" }
-                          },
-                          [_vm._v("Job description :")]
-                        ),
-                        _vm._v(" "),
-                        _c("textarea", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.toBeEditedWork.job_description,
-                              expression: "toBeEditedWork.job_description"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            rows: "3",
-                            id: "job_description",
-                            name: "job_description",
-                            required: ""
-                          },
-                          domProps: {
-                            value: _vm.toBeEditedWork.job_description
-                          },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.toBeEditedWork,
-                                "job_description",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-6" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "panelFormLabel",
-                            attrs: { for: "date_from" }
-                          },
-                          [_vm._v("Start :")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.toBeEditedWork.date_from,
-                              expression: "toBeEditedWork.date_from"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "date",
-                            id: "date_from",
-                            name: "date_from",
-                            required: ""
-                          },
-                          domProps: { value: _vm.toBeEditedWork.date_from },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.toBeEditedWork,
-                                "date_from",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: !_vm.toBeEditedWork.currently_working,
-                              expression: "!toBeEditedWork.currently_working"
-                            }
-                          ],
-                          staticClass: "form-group col-md-6"
-                        },
-                        [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "panelFormLabel",
-                              attrs: { for: "date_from" }
-                            },
-                            [_vm._v("End :")]
-                          ),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.toBeEditedWork.date_to,
-                                expression: "toBeEditedWork.date_to"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "date",
-                              id: "date_to",
-                              name: "date_to"
-                            },
-                            domProps: { value: _vm.toBeEditedWork.date_to },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.toBeEditedWork,
-                                  "date_to",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-12" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass:
-                              "form-check-label checkBoxText checkBoxContainer"
-                          },
-                          [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.toBeEditedWork.currently_working,
-                                  expression: "toBeEditedWork.currently_working"
-                                }
-                              ],
-                              staticClass: "form-check-input",
-                              staticStyle: {
-                                "@if($errors->has('design_skills_checkbox')) border":
-                                  "1px solid red"
-                              },
-                              attrs: {
-                                id: "currently_working",
-                                type: "checkbox",
-                                name: "currently_working"
-                              },
-                              domProps: {
-                                checked: _vm.toBeEditedWork.currently_working,
-                                checked: Array.isArray(
-                                  _vm.toBeEditedWork.currently_working
-                                )
-                                  ? _vm._i(
-                                      _vm.toBeEditedWork.currently_working,
-                                      null
-                                    ) > -1
-                                  : _vm.toBeEditedWork.currently_working
-                              },
-                              on: {
-                                change: function($event) {
-                                  var $$a =
-                                      _vm.toBeEditedWork.currently_working,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = null,
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        _vm.$set(
-                                          _vm.toBeEditedWork,
-                                          "currently_working",
-                                          $$a.concat([$$v])
-                                        )
-                                    } else {
-                                      $$i > -1 &&
-                                        _vm.$set(
-                                          _vm.toBeEditedWork,
-                                          "currently_working",
-                                          $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1))
-                                        )
-                                    }
-                                  } else {
-                                    _vm.$set(
-                                      _vm.toBeEditedWork,
-                                      "currently_working",
-                                      $$c
-                                    )
-                                  }
-                                }
-                              }
-                            }),
-                            _vm._v(
-                              "\n                                  Present\n                                  "
-                            ),
-                            _c("span", { staticClass: "checkmark" })
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(1)
-                  ]
-                )
-              ])
-            ])
-          ]
-        )
-      ]
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "text-right", staticStyle: { padding: "15px 10px 0 0" } },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "close",
-            attrs: {
-              type: "button",
-              "data-dismiss": "modal",
-              "aria-label": "Close",
-              id: "closeModal"
-            }
-          },
-          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save")]
-      )
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7365cd22", module.exports)
-  }
-}
-
-/***/ }),
-/* 141 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(142)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(144)
-/* template */
-var __vue_template__ = __webpack_require__(145)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\jobs\\jobsList.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-404ff7da", Component.options)
-  } else {
-    hotAPI.reload("data-v-404ff7da", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 142 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(143);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("42b8526c", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-404ff7da\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./jobsList.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-404ff7da\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./jobsList.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 143 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 144 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            jobs: [],
-            canAdd: true,
-            toBeEditedJob: {
-                'id': '',
-                'title': '',
-                'description': '',
-                'budget': '',
-                'time': '',
-                'skills': '',
-                'status': '',
-                'level': '',
-                'posted': ''
-
-            }
-        };
-    },
-
-
-    methods: {
-        getCurrentJobs: function getCurrentJobs() {
-            var _this = this;
-
-            axios.get('/client/get_jobs').then(function (response) {
-                var currJobs = response.data;
-                $.each(currJobs, function (i) {
-                    // now let it empty
-                });
-                _this.jobs = currJobs;
-                _this.checkMaxJobs();
-            });
-        },
-        addJobPost: function addJobPost(newJob) {
-            this.jobs.push(newJob);
-            this.checkMaxJobs();
-        },
-        deleteJob: function deleteJob(job) {
-            var _this2 = this;
-
-            if (!confirm('Are you sure you want to delete this job post ?')) {
-                return;
-            }
-            axios.post('/client/jobs/delete', { jobID: job.id }).then(function (response) {
-                var jobs = _this2.jobs;
-                $.each(jobs, function (i) {
-                    if (jobs[i].id === job.id) {
-                        jobs.splice(i, 1);
-                        return false;
-                    }
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-
-                _this2.checkMaxJobs();
-            });
-        },
-        editJob: function editJob(jobID) {
-            var jobs = this.jobs;
-            var editedJob = {};
-
-            $.each(jobs, function (i) {
-                if (jobs[i].id === jobID) {
-                    editedJob = jobs[i];
-                }
-            });
-            this.toBeEditedJob = editedJob;
-        },
-        checkMaxJobs: function checkMaxJobs() {
-            if (this.jobs.length > 4) {
-                this.canAdd = false;
-            } else {
-                this.canAdd = true;
-            }
-        },
-        clearData: function clearData() {
-            this.toBeEditedJob = {
-                'id': '',
-                'title': '',
-                'description': '',
-                'budget': '',
-                'time': '',
-                'skills': '',
-                'status': '',
-                'level': '',
-                'posted': ''
-            };
-        }
-    },
-
-    created: function created() {
-        this.getCurrentJobs();
-    }
-});
-
-/***/ }),
-/* 145 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "transition-group",
-        { staticClass: "row", attrs: { name: "list" } },
-        _vm._l(_vm.jobs, function(job, index) {
-          return _c(
-            "job-post",
-            {
-              key: index,
-              staticClass: "list-item workExperience col-12",
-              staticStyle: { margin: "0px 10px 20px" }
-            },
-            [
-              _c(
-                "span",
-                {
-                  staticClass: "deleteWorkBtn NoDecor",
-                  on: {
-                    click: function($event) {
-                      _vm.deleteJob(job)
-                    }
-                  }
-                },
-                [
-                  _c("a", { attrs: { href: "javascript:void(0)" } }, [
-                    _c("img", {
-                      attrs: {
-                        src:
-                          "/resumeApp/resources/assets/images/close_blue.png",
-                        alt: "edit profile"
-                      }
-                    }),
-                    _vm._v("\n                    Delete\n                ")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass: "deleteWorkBtn NoDecor",
-                  staticStyle: { width: "75px", "margin-right": "5px" },
-                  on: {
-                    click: function($event) {
-                      _vm.editJob(job.id)
-                    }
-                  }
-                },
-                [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "javascript:void(0)",
-                        "data-target": "#addJobModal",
-                        "data-toggle": "modal"
-                      }
-                    },
-                    [
-                      _c("img", {
-                        staticStyle: {
-                          width: "20px",
-                          "padding-right": "7px",
-                          "padding-bottom": "2px",
-                          height: "15px"
-                        },
-                        attrs: {
-                          src:
-                            "/resumeApp/resources/assets/images/edit_blue.png",
-                          alt: "edit profile"
-                        }
-                      }),
-                      _vm._v("\n                    Edit\n                ")
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(_vm._s(job.title))]
-              ),
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
-                [_vm._v("Description : " + _vm._s(job.description))]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
-                [_vm._v("Budget : " + _vm._s(job.budget))]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
-                [_vm._v(" Time : " + _vm._s(job.time))]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
-                [_vm._v("Level : " + _vm._s(job.level))]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
-                [_vm._v("Skills : " + _vm._s(job.skills))]
-              )
-            ]
-          )
-        })
-      ),
-      _vm._v(" "),
-      _c(
-        "span",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: this.canAdd,
-              expression: "this.canAdd"
-            }
-          ],
-          staticClass: "deleteWorkBtn NoDecor",
-          staticStyle: { width: "137px" },
-          on: { click: _vm.clearData }
-        },
-        [_vm._m(0)]
-      ),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("add-job-modal", {
-        attrs: { toBeEditedJob: _vm.toBeEditedJob },
-        on: { jobAdded: _vm.addJobPost }
-      })
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        attrs: {
-          href: "javascript:void(0)",
-          "data-toggle": "modal",
-          "data-target": "#addJobModal"
-        }
-      },
-      [
-        _c("img", {
-          attrs: {
-            src: "/resumeApp/resources/assets/images/add_blue.png",
-            alt: "edit profile"
-          }
-        }),
-        _vm._v("\n            Add job\n        ")
-      ]
-    )
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-404ff7da", module.exports)
-  }
-}
-
-/***/ }),
-/* 146 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(150)
-/* template */
-var __vue_template__ = __webpack_require__(151)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\jobs\\jobPost.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-75dae064", Component.options)
-  } else {
-    hotAPI.reload("data-v-75dae064", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 147 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(148)
-/* template */
-var __vue_template__ = __webpack_require__(149)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\jobs\\addJob.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-cc3b79ca", Component.options)
-  } else {
-    hotAPI.reload("data-v-cc3b79ca", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 148 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['toBeEditedJob'],
-    data: function data() {
-        return {};
-    },
-
-    methods: {
-        submitForm: function submitForm() {
-            var _this = this;
-
-            // post data :
-            axios.post('/client/jobs/add', this.toBeEditedJob).then(function (response) {
-                //
-                if (_this.toBeEditedJob.id === "") {
-                    _this.$emit('jobAdded', _this.toBeEditedJob);
-                }
-                // save the job id :
-                _this.toBeEditedJob.id = response.data.id;
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-            });
-            $('#closeJobModal').click();
-        }
-    },
-    mounted: function mounted() {}
-});
-
-/***/ }),
-/* 149 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "addJobModal",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "addJobModalLabel",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "form",
-                  {
-                    attrs: { action: "/client/jobs/add", method: "post" },
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.submitForm($event)
-                      }
-                    }
-                  },
-                  [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "form-group col-md-6" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "panelFormLabel",
-                            attrs: { for: "title" }
-                          },
-                          [_vm._v("Title :")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.toBeEditedJob.title,
-                              expression: "toBeEditedJob.title"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            id: "title",
-                            name: "title",
-                            required: ""
-                          },
-                          domProps: { value: _vm.toBeEditedJob.title },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.toBeEditedJob,
-                                "title",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-12" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "panelFormLabel",
-                            attrs: { for: "description" }
-                          },
-                          [_vm._v("Description :")]
-                        ),
-                        _vm._v(" "),
-                        _c("textarea", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.toBeEditedJob.description,
-                              expression: "toBeEditedJob.description"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            rows: "3",
-                            id: "description",
-                            name: "description",
-                            required: ""
-                          },
-                          domProps: { value: _vm.toBeEditedJob.description },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.toBeEditedJob,
-                                "description",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-6" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "panelFormLabel",
-                            attrs: { for: "Budget" }
-                          },
-                          [_vm._v("Budget :")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.toBeEditedJob.budget,
-                              expression: "toBeEditedJob.budget"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            id: "Budget",
-                            name: "Budget",
-                            required: ""
-                          },
-                          domProps: { value: _vm.toBeEditedJob.budget },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.toBeEditedJob,
-                                "budget",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-6" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "panelFormLabel",
-                            attrs: { for: "time" }
-                          },
-                          [_vm._v("Time :")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.toBeEditedJob.time,
-                              expression: "toBeEditedJob.time"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            id: "time",
-                            name: "time",
-                            required: ""
-                          },
-                          domProps: { value: _vm.toBeEditedJob.time },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.toBeEditedJob,
-                                "time",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-6" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "panelFormLabel",
-                            attrs: { for: "skills" }
-                          },
-                          [_vm._v("skills :")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.toBeEditedJob.skills,
-                              expression: "toBeEditedJob.skills"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            id: "skills",
-                            name: "skills",
-                            required: ""
-                          },
-                          domProps: { value: _vm.toBeEditedJob.skills },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.toBeEditedJob,
-                                "skills",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-6" }, [
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.toBeEditedJob.level,
-                              expression: "toBeEditedJob.level"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "text", id: "level", name: "level" },
-                          domProps: { value: _vm.toBeEditedJob.level },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.toBeEditedJob,
-                                "level",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-6" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.toBeEditedJob.status,
-                              expression: "toBeEditedJob.status"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "hidden",
-                            id: "status",
-                            name: "status"
-                          },
-                          domProps: { value: _vm.toBeEditedJob.status },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.toBeEditedJob,
-                                "status",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(2)
-                  ]
-                )
-              ])
-            ])
-          ]
-        )
-      ]
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "text-right", staticStyle: { padding: "15px 10px 0 0" } },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "close",
-            attrs: {
-              type: "button",
-              "data-dismiss": "modal",
-              "aria-label": "Close",
-              id: "closeJobModal"
-            }
-          },
-          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticClass: "panelFormLabel", attrs: { for: "level" } },
-      [_vm._v("Level : "), _c("small", [_vm._v("Junior, Middle..")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Post")]
-      )
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-cc3b79ca", module.exports)
-  }
-}
-
-/***/ }),
-/* 150 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {};
-    }
-});
-
-/***/ }),
-/* 151 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [_vm._t("default")], 2)
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-75dae064", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

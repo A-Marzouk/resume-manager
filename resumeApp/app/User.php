@@ -33,6 +33,18 @@ class User extends Authenticatable
         return $this->belongsToMany(Job::class);
     }
 
+    public function hasApplied($jobID){
+        $job        = Job::find($jobID);
+        $freelancersApplied = $job->freelancersApplied()->get(['user_id']);
+        $hasApplied = false;
+        foreach ($freelancersApplied as $freelancer){
+            if($freelancer->user_id == auth()->user()->id){
+                $hasApplied = true;
+            }
+        }
+        return $hasApplied;
+    }
+
     public function userData()
     {
         return $this->hasOne(UserData::class);

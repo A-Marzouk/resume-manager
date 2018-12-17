@@ -31,6 +31,11 @@ class JobsController extends Controller
         return Job::find($jobID)->freelancersApplied;
     }
 
+    public function viewSingleJobPost($job_id){
+        $job = Job::find($job_id);
+        return view('single_job_post',compact('job'));
+    }
+
     public function addJobPost(Request $request){
         $currClient = auth()->guard('client')->user();
         $request->validate([

@@ -5,15 +5,17 @@ let toBeDeletedClients = [] ;
 let toBeDeletedConversations = [] ;
 let toBeDeletedBookings = [] ;
 let toBeDeletedOwners = [] ;
+let toBeDeletedJobs = [] ;
 
 let toBeDeletedData = {} ;
 
-$('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedOwner"],[id*="selectedConversation"],[id*="selectedBooking"]').on('change', function () {
+$('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedOwner"],[id*="selectedJob"],[id*="selectedConversation"],[id*="selectedBooking"]').on('change', function () {
     toBeDeletedUsers = [];
     toBeDeletedClients = [];
     toBeDeletedConversations = [];
     toBeDeletedBookings = [];
     toBeDeletedOwners = [];
+    toBeDeletedJobs = [];
 
 
     $("input[name='selectedUsers[]']").each(function () {
@@ -51,8 +53,15 @@ $('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedOwner"],[id*="selec
         }
     });
 
+    $("input[name='selectedJobs[]']").each(function () {
+        let val = this.checked ? this.value : '';
+        if(val !== ''){
+            toBeDeletedJobs.push(val);
+        }
+    });
 
-    if(toBeDeletedUsers.length > 0 || toBeDeletedOwners.length > 0 || toBeDeletedClients.length > 0 || toBeDeletedConversations.length > 0 || toBeDeletedBookings.length > 0){
+
+    if(toBeDeletedUsers.length > 0 || toBeDeletedOwners.length > 0 || toBeDeletedJobs.length > 0 || toBeDeletedClients.length > 0 || toBeDeletedConversations.length > 0 || toBeDeletedBookings.length > 0){
         $('#actionBtns').removeClass('d-none');
     }else{
         $('#actionBtns').addClass('d-none');
@@ -63,7 +72,8 @@ $('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedOwner"],[id*="selec
         toBeDeletedClients,
         toBeDeletedConversations,
         toBeDeletedBookings,
-        toBeDeletedOwners
+        toBeDeletedOwners,
+        toBeDeletedJobs
     };
 
 });
@@ -71,7 +81,7 @@ $('[id*="selectedUser"],[id*="selectedClient"],[id*="selectedOwner"],[id*="selec
 // send to DB to be deleted :
 $('#deleteSelectedBtn').on('click',function () {
 
-    if(!confirm('Are you sure you want to delete all selected users, owners, clients, bookings or conversations ?')){
+    if(!confirm('Are you sure you want to delete all selected items ?')){
         return;
     }
     axios.post('admin/delete_multiple',toBeDeletedData).then( (response) => {
@@ -114,6 +124,12 @@ $('#deleteSelectedBtn').on('click',function () {
         $('#selectedRowOwner'+ownerID).fadeOut(3000);
         // uncheck deleted
         $('#selectedOwner'+ownerID).prop('checked', false);
+    });
+
+    toBeDeletedData.toBeDeletedJobs.forEach( (jobID) => {
+        $('#selectedRowJob'+jobID).fadeOut(3000);
+        // uncheck deleted
+        $('#selectedJob'+jobID).prop('checked', false);
     });
 
     // hide the buttons.

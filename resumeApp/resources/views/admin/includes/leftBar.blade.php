@@ -32,6 +32,11 @@
             </a>
         </li>
         <li class="col-md-12">
+            <a class="btn btn-block btn-outline-primary" href="#jobs"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
+                Jobs
+            </a>
+        </li>
+        <li class="col-md-12">
             <a class="btn btn-block btn-outline-dark" href="#search_links"  style="margin-bottom: 6px;">
                 Public search links
             </a>

@@ -24,6 +24,7 @@
                 @include('admin.includes.searches')
                 @include('admin.includes.bookings')
                 @include('admin.includes.owners')
+                @include('admin.includes.jobs_posts')
             </div>
         </div>
     </div>

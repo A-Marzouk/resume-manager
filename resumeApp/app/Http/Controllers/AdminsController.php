@@ -7,6 +7,7 @@ use App\Booking;
 use App\Client;
 use App\ClientSearch;
 use App\Conversation;
+use App\Job;
 use App\Owner;
 use App\User;
 use App\UserData;
@@ -29,6 +30,7 @@ class AdminsController extends Controller
         $data['searches'] = ClientSearch::all();
         $data['bookings'] = Booking::all();
         $data['owners']   = Affiliate::all();
+        $data['jobs']     = Job::all();
         $admin = User::where('username','admin_workforce')->first();
         Auth::loginUsingId($admin->id);
         return view('admin.usersList', compact('data'));
@@ -78,6 +80,7 @@ class AdminsController extends Controller
         $conversationsToD = $request->toBeDeletedConversations ;
         $bookingsToD      = $request->toBeDeletedBookings ;
         $ownersToD        = $request->toBeDeletedOwners ;
+        $jobsToD          = $request->toBeDeletedJobs ;
 
         foreach ($usersToD as $userID){
             User::where('id', $userID)->delete();
@@ -97,6 +100,10 @@ class AdminsController extends Controller
 
         foreach ($ownersToD as $ownerID){
             Affiliate::where('id', $ownerID)->delete();
+        }
+
+        foreach ($jobsToD as $jobID){
+            Job::where('id', $jobID)->delete();
         }
 
         return ['status'=> 'ok'];

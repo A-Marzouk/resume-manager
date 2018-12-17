@@ -231,6 +231,7 @@ Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('pa
 
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');
+Route::get('/jobs/view_post/{job_id}','JobsController@viewSingleJobPost')->name('jobs.view_single');
 Route::get('/search/{search_id}','HomeController@getSearch')->name('public.search');
 Route::get('/workforce/terms_and_conditions','HomeController@termsView')->name('terms');
 Route::get('/workforce/privacy_policy','HomeController@privacyView')->name('privacy');

@@ -14324,9 +14324,9 @@ __webpack_require__(47);
 Vue.config.devtools = true;
 
 Vue.component('example-component', __webpack_require__(48));
-Vue.component('chat-message', __webpack_require__(51));
-Vue.component('chat-log', __webpack_require__(57));
-Vue.component('chat-composer', __webpack_require__(62));
+Vue.component('chat-message', __webpack_require__(142));
+Vue.component('chat-log', __webpack_require__(147));
+Vue.component('chat-composer', __webpack_require__(152));
 
 // works
 Vue.component('works-list', __webpack_require__(67));
@@ -14360,7 +14360,8 @@ Vue.component('freelancers-list', __webpack_require__(124));
 Vue.component('new-chat', __webpack_require__(129));
 
 //
-Vue.component('send-emails', __webpack_require__(132));
+Vue.component('send-emails', __webpack_require__(157));
+Vue.component('send-invitations', __webpack_require__(162));
 
 if ($("#searchFreelancers").length !== 0) {
     var searchFreelancers = new Vue({
@@ -14376,6 +14377,11 @@ if ($("#clientJobs").length !== 0) {
 if ($("#send_emails_vue").length !== 0) {
     var send_emails_vue = new Vue({
         el: '#send_emails_vue'
+    });
+}
+if ($("#send_invitations_vue").length !== 0) {
+    var send_invitations_vue = new Vue({
+        el: '#send_invitations_vue'
     });
 }
 
@@ -53780,97 +53786,9 @@ if (false) {
 }
 
 /***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(52)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(55)
-/* template */
-var __vue_template__ = __webpack_require__(56)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\chatMessage.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-bbb28ef0", Component.options)
-  } else {
-    hotAPI.reload("data-v-bbb28ef0", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(53);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("555f11de", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-bbb28ef0\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chatMessage.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-bbb28ef0\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chatMessage.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 51 */,
+/* 52 */,
+/* 53 */,
 /* 54 */
 /***/ (function(module, exports) {
 
@@ -53904,498 +53822,18 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 55 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['message']
-});
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm.message.user !== null
-      ? _c("div", [
-          _vm.message.user.firstName === "Admin"
-            ? _c("div", [
-                _c("div", { staticClass: "messageTextAdmin" }, [
-                  _vm._v(_vm._s(_vm.message.message))
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "name" }, [
-                  _c("b", [_vm._v(_vm._s(_vm.message.user.firstName))]),
-                  _vm._v(" - " + _vm._s(_vm.message.created_at))
-                ])
-              ])
-            : _vm.message.user.lastName == null
-              ? _c("div", [
-                  _c("div", { staticClass: "messageTextVisitor" }, [
-                    _vm._v(_vm._s(_vm.message.message))
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "name" }, [
-                    _c("b", [_vm._v(_vm._s(_vm.message.user.firstName) + " ")]),
-                    _vm._v(" - " + _vm._s(_vm.message.created_at))
-                  ])
-                ])
-              : _vm.message.user.lastName !== null
-                ? _c("div", [
-                    _c("div", { staticClass: "messageText" }, [
-                      _vm._v(_vm._s(_vm.message.message))
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "name" }, [
-                      _c("b", [_vm._v(_vm._s(_vm.message.user.firstName))]),
-                      _vm._v(" - " + _vm._s(_vm.message.created_at))
-                    ])
-                  ])
-                : _vm._e()
-        ])
-      : _vm.message.visitor !== null
-        ? _c("div", [
-            _c("div", { staticClass: "messageText" }, [
-              _vm._v(_vm._s(_vm.message.message))
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "name" }, [
-              _c("b", [_vm._v(_vm._s(_vm.message.visitor.firstName))]),
-              _vm._v(" - " + _vm._s(_vm.message.created_at))
-            ])
-          ])
-        : _vm.message.client !== null
-          ? _c("div", [
-              _c("div", { staticClass: "messageText" }, [
-                _vm._v(_vm._s(_vm.message.message))
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "name" }, [
-                _c("b", [_vm._v(_vm._s(_vm.message.client.firstName))]),
-                _vm._v(" - " + _vm._s(_vm.message.created_at))
-              ])
-            ])
-          : _vm._e()
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-bbb28ef0", module.exports)
-  }
-}
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(58)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(60)
-/* template */
-var __vue_template__ = __webpack_require__(61)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\chatLog.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3ec291c5", Component.options)
-  } else {
-    hotAPI.reload("data-v-3ec291c5", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(59);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("34a16fc2", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3ec291c5\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chatLog.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3ec291c5\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chatLog.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 60 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-   props: ['messages']
-});
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "chat-log", attrs: { id: "messagesBox" } },
-    [
-      _vm._l(_vm.messages, function(message) {
-        return _c("chat-message", {
-          key: message.text,
-          attrs: { message: message }
-        })
-      }),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.messages.length === 0,
-              expression: "messages.length === 0"
-            }
-          ],
-          staticClass: "empty"
-        },
-        [
-          _c("div", { staticClass: "messageTextAdmin" }, [
-            _vm._v("Hi, how can I hep you ?")
-          ])
-        ]
-      )
-    ],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3ec291c5", module.exports)
-  }
-}
-
-/***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(63)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(65)
-/* template */
-var __vue_template__ = __webpack_require__(66)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\chatComposer.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-463ca122", Component.options)
-  } else {
-    hotAPI.reload("data-v-463ca122", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(64);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("55fd9a42", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-463ca122\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chatComposer.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-463ca122\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chatComposer.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.chat-composer{\n    display:-webkit-box;\n    display:-ms-flexbox;\n    display:flex;\n}\n.chat-composer input{\n    -webkit-box-flex: 1;\n        -ms-flex: 1 auto;\n            flex: 1 auto;\n}\n.typing{\n    opacity: 0.6;\tcolor: #697786;\n    font-family: Roboto;\n    font-size: 12px;\n    letter-spacing: 0.08px;\n    line-height: 14px;\n    padding-bottom:15px;\n    padding-top:4px;\n}\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 65 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            messageText: ''
-        };
-    },
-
-    methods: {
-        sendMessage: function sendMessage() {
-            // emit an event : ( event name, data )
-            this.$emit('messagesent', {
-                message: this.messageText,
-                user: {
-                    firstName: 'Current',
-                    lastName: 'User'
-                },
-                pageUrl: window.location.pathname
-            });
-            this.messageText = '';
-        }
-    }
-});
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass: "chat-composer",
-        staticStyle: {
-          "border-top": "0.7px solid #EBEDF8",
-          "padding-top": "10px"
-        }
-      },
-      [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.messageText,
-              expression: "messageText"
-            }
-          ],
-          staticClass: "chatMessageInput form-control",
-          attrs: {
-            type: "text",
-            placeholder: "Type your message..",
-            autofocus: "",
-            id: "sendMessage"
-          },
-          domProps: { value: _vm.messageText },
-          on: {
-            keydown: function($event) {
-              if (
-                !("button" in $event) &&
-                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-              ) {
-                return null
-              }
-              return _vm.sendMessage($event)
-            },
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.messageText = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("a", { attrs: { id: "chatIcon" }, on: { click: _vm.sendMessage } })
-      ]
-    ),
-    _vm._v(" "),
-    _c("div")
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-463ca122", module.exports)
-  }
-}
-
-/***/ }),
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
 /* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -62086,19 +61524,270 @@ if (false) {
 }
 
 /***/ }),
-/* 132 */
+/* 132 */,
+/* 133 */,
+/* 134 */,
+/* 135 */,
+/* 136 */,
+/* 137 */
+/***/ (function(module, exports) {
+
+var status = $('#record_status'),
+    canvas = document.getElementById('canvas'),
+    lang = {
+    'mic_error': 'Error accessing the microphone', //Ошибка доступа к микрофону
+    'press_to_start': 'Press to start recording', //Нажмите для начала записи
+    'recording': 'Recording', //Запись
+    'play': 'Play', //Воспроизвести
+    'stop': 'Stop', //Остановить
+    'download': 'Download', //Скачать
+    'use_https': 'This application in not working over insecure connection. Try to use HTTPS'
+},
+    time;
+
+if (navigator.mediaDevices === undefined) {
+    navigator.mediaDevices = {};
+}
+
+if (navigator.mediaDevices.getUserMedia === undefined) {
+    navigator.mediaDevices.getUserMedia = function (constrains) {
+        var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+        if (!getUserMedia) {
+            return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+        }
+
+        return new Promise(function (resolve, reject) {
+            getUserMedia.call(navigator, constrains, resolve, reject);
+        });
+    };
+}
+
+if (navigator.mediaDevices.getUserMedia) {
+    var parseTime = function parseTime(sec) {
+        var h = parseInt(sec / 3600);
+        var m = parseInt(sec / 60);
+        var sec = sec - (h * 3600 + m * 60);
+
+        h = h == 0 ? '' : h + ':';
+        sec = sec < 10 ? '0' + sec : sec;
+
+        return h + m + ':' + sec;
+    };
+
+    var start = function start() {
+        $('#record_status').fadeIn().removeClass('d-none');
+        navigator.mediaDevices.getUserMedia({ 'audio': true }).then(function (stream) {
+            mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.start();
+            status.html('<span class="panelFormLabel">Recording</span>');
+            $('#counter').removeClass('d-none');
+            $('#counter').html('00');
+            btn_status = 'recording';
+            $('#recordImg').addClass('recording');
+            $('#stopAudio').fadeIn(500).removeClass('d-none');
+            $('#startRecord').fadeOut(500).addClass('d-none');
+
+            if (navigator.vibrate) navigator.vibrate(150);
+
+            time = Math.ceil(new Date().getTime() / 1000);
+
+            mediaRecorder.ondataavailable = function (event) {
+                chunks.push(event.data);
+            };
+
+            mediaRecorder.onstop = function () {
+                stream.getTracks().forEach(function (track) {
+                    track.stop();
+                });
+
+                blob = new Blob(chunks, type);
+                audioSrc = window.URL.createObjectURL(blob);
+
+                audio.src = audioSrc;
+
+                chunks = [];
+
+                $('#recordImg').removeClass('recording');
+            };
+        }).catch(function (error) {
+            if (location.protocol != 'https:') {
+                status.html(lang.mic_error + '<br>' + lang.use_https);
+            } else {
+                status.html(lang.mic_error);
+            }
+        });
+    };
+
+    var stop = function stop() {
+        mediaRecorder.stop();
+        btn_status = 'inactive';
+
+        if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+
+        var now = Math.ceil(new Date().getTime() / 1000);
+
+        var t = parseTime(now - time);
+
+        status.html('Recorded: ' + t);
+        $('#stopAudio').fadeOut(500).addClass('d-none');
+        $('#downloadAudio').fadeIn(500).removeClass('d-none');
+        $('#playAudio').fadeIn(500).removeClass('d-none');
+        $('#saveAudio').fadeIn(500).removeClass('d-none');
+        $('#sendAudio').fadeIn(500).removeClass('d-none');
+        $('#discardAudio').fadeIn(500).removeClass('d-none');
+    };
+
+    var saveToDB = function saveToDB() {
+
+        var data = new FormData();
+        data.append('file', blob);
+        data.append('type', blob.type);
+
+        $.ajax({
+            url: "audio/save",
+            type: 'POST',
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function success(data) {
+                // changes are saved on - off
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                    location.reload();
+                }, 1000);
+            },
+            error: function error() {
+                console.log("Error while saving audio");
+            }
+        });
+    };
+
+    var saveAudioForChat = function saveAudioForChat() {
+        var data = new FormData();
+        data.append('file', blob);
+        data.append('type', blob.type);
+
+        status.html('');
+        $.ajax({
+            url: "audio/save_for_chat",
+            type: 'POST',
+            data: data,
+            contentType: false,
+            processData: false,
+
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            success: function success(data) {
+                $('#currAudioChatSrc').html(data);
+            },
+            error: function error() {
+                console.log("Error while saving audio");
+                $('#currAudioChatSrc').html('');
+            }
+        });
+    };
+
+    var play = function play() {
+        audio.play();
+    };
+
+    var pause = function pause() {
+        audio.pause();
+        audio.currentTime = 0;
+    };
+
+    var roundedRect = function roundedRect(ctx, x, y, width, height, radius, fill) {
+        ctx.beginPath();
+        ctx.moveTo(x, y + radius);
+        ctx.lineTo(x, y + height - radius);
+        ctx.quadraticCurveTo(x, y + height, x + radius, y + height);
+        ctx.lineTo(x + width - radius, y + height);
+        ctx.quadraticCurveTo(x + width, y + height, x + width, y + height - radius);
+        ctx.lineTo(x + width, y + radius);
+        ctx.quadraticCurveTo(x + width, y, x + width - radius, y);
+        ctx.lineTo(x + radius, y);
+        ctx.quadraticCurveTo(x, y, x, y + radius);
+
+        ctx.fillStyle = fill;
+        ctx.fill();
+    };
+
+    var save = function save() {
+        var a = document.createElement('a');
+        a.download = 'record.ogg';
+        a.href = audioSrc;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    };
+
+    var btn_status = 'inactive',
+        mediaRecorder,
+        chunks = [],
+        audio = new Audio(),
+        mediaStream,
+        audioSrc,
+        type = {
+        'type': 'audio/ogg,codecs=opus'
+    },
+        ctx,
+        analys,
+        blob;
+
+    $('#startRecord').on('click', function () {
+        start();
+    });
+
+    $('#playAudio').on('click', function () {
+        play();
+    });
+
+    $('#stopAudio').on('click', function () {
+        stop();
+    });
+
+    $('#downloadAudio').on('click', function () {
+        save();
+    });
+
+    $('#saveAudio').on('click', function () {
+        saveToDB();
+    });
+
+    $('#sendAudio').on('click', function () {
+        saveAudioForChat();
+    });
+} else {
+    if (location.protocol != 'https:') {
+        status.html(lang.mic_error + '<br>' + lang.use_https);
+    } else {
+        status.html(lang.mic_error);
+    }
+}
+
+/***/ }),
+/* 138 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(133)
+  __webpack_require__(143)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(135)
+var __vue_script__ = __webpack_require__(145)
 /* template */
-var __vue_template__ = __webpack_require__(136)
+var __vue_template__ = __webpack_require__(146)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -62115,7 +61804,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\sendEmailsComponent.vue"
+Component.options.__file = "resources\\assets\\js\\components\\chat\\chatMessage.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -62124,9 +61813,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4b8ff437", Component.options)
+    hotAPI.createRecord("data-v-6766163c", Component.options)
   } else {
-    hotAPI.reload("data-v-4b8ff437", Component.options)
+    hotAPI.reload("data-v-6766163c", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -62137,23 +61826,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 133 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(134);
+var content = __webpack_require__(144);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("02a994c5", content, false, {});
+var update = __webpack_require__(3)("780d8bf0", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4b8ff437\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./sendEmailsComponent.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4b8ff437\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./sendEmailsComponent.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6766163c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chatMessage.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6766163c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chatMessage.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -62163,7 +61852,590 @@ if(false) {
 }
 
 /***/ }),
-/* 134 */
+/* 144 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 145 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['message']
+});
+
+/***/ }),
+/* 146 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.message.user !== null
+      ? _c("div", [
+          _vm.message.user.firstName === "Admin"
+            ? _c("div", [
+                _c("div", { staticClass: "messageTextAdmin" }, [
+                  _vm._v(_vm._s(_vm.message.message))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "name" }, [
+                  _c("b", [_vm._v(_vm._s(_vm.message.user.firstName))]),
+                  _vm._v(" - " + _vm._s(_vm.message.created_at))
+                ])
+              ])
+            : _vm.message.user.lastName == null
+              ? _c("div", [
+                  _c("div", { staticClass: "messageTextVisitor" }, [
+                    _vm._v(_vm._s(_vm.message.message))
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "name" }, [
+                    _c("b", [_vm._v(_vm._s(_vm.message.user.firstName) + " ")]),
+                    _vm._v(" - " + _vm._s(_vm.message.created_at))
+                  ])
+                ])
+              : _vm.message.user.lastName !== null
+                ? _c("div", [
+                    _c("div", { staticClass: "messageText" }, [
+                      _vm._v(_vm._s(_vm.message.message))
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "name" }, [
+                      _c("b", [_vm._v(_vm._s(_vm.message.user.firstName))]),
+                      _vm._v(" - " + _vm._s(_vm.message.created_at))
+                    ])
+                  ])
+                : _vm._e()
+        ])
+      : _vm.message.visitor !== null
+        ? _c("div", [
+            _c("div", { staticClass: "messageText" }, [
+              _vm._v(_vm._s(_vm.message.message))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "name" }, [
+              _c("b", [_vm._v(_vm._s(_vm.message.visitor.firstName))]),
+              _vm._v(" - " + _vm._s(_vm.message.created_at))
+            ])
+          ])
+        : _vm.message.client !== null
+          ? _c("div", [
+              _c("div", { staticClass: "messageText" }, [
+                _vm._v(_vm._s(_vm.message.message))
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "name" }, [
+                _c("b", [_vm._v(_vm._s(_vm.message.client.firstName))]),
+                _vm._v(" - " + _vm._s(_vm.message.created_at))
+              ])
+            ])
+          : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6766163c", module.exports)
+  }
+}
+
+/***/ }),
+/* 147 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(148)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(150)
+/* template */
+var __vue_template__ = __webpack_require__(151)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\chat\\chatLog.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-35d90b1f", Component.options)
+  } else {
+    hotAPI.reload("data-v-35d90b1f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 148 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(149);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("8e9a539c", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-35d90b1f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chatLog.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-35d90b1f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chatLog.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 149 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 150 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+   props: ['messages']
+});
+
+/***/ }),
+/* 151 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "chat-log", attrs: { id: "messagesBox" } },
+    [
+      _vm._l(_vm.messages, function(message) {
+        return _c("chat-message", {
+          key: message.text,
+          attrs: { message: message }
+        })
+      }),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.messages.length === 0,
+              expression: "messages.length === 0"
+            }
+          ],
+          staticClass: "empty"
+        },
+        [
+          _c("div", { staticClass: "messageTextAdmin" }, [
+            _vm._v("Hi, how can I hep you ?")
+          ])
+        ]
+      )
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-35d90b1f", module.exports)
+  }
+}
+
+/***/ }),
+/* 152 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(153)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(155)
+/* template */
+var __vue_template__ = __webpack_require__(156)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\chat\\chatComposer.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-10fa0356", Component.options)
+  } else {
+    hotAPI.reload("data-v-10fa0356", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 153 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(154);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("1481a12c", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-10fa0356\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chatComposer.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-10fa0356\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./chatComposer.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 154 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.chat-composer{\n    display:-webkit-box;\n    display:-ms-flexbox;\n    display:flex;\n}\n.chat-composer input{\n    -webkit-box-flex: 1;\n        -ms-flex: 1 auto;\n            flex: 1 auto;\n}\n.typing{\n    opacity: 0.6;\tcolor: #697786;\n    font-family: Roboto;\n    font-size: 12px;\n    letter-spacing: 0.08px;\n    line-height: 14px;\n    padding-bottom:15px;\n    padding-top:4px;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 155 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            messageText: ''
+        };
+    },
+
+    methods: {
+        sendMessage: function sendMessage() {
+            // emit an event : ( event name, data )
+            this.$emit('messagesent', {
+                message: this.messageText,
+                user: {
+                    firstName: 'Current',
+                    lastName: 'User'
+                },
+                pageUrl: window.location.pathname
+            });
+            this.messageText = '';
+        }
+    }
+});
+
+/***/ }),
+/* 156 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "chat-composer",
+        staticStyle: {
+          "border-top": "0.7px solid #EBEDF8",
+          "padding-top": "10px"
+        }
+      },
+      [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.messageText,
+              expression: "messageText"
+            }
+          ],
+          staticClass: "chatMessageInput form-control",
+          attrs: {
+            type: "text",
+            placeholder: "Type your message..",
+            autofocus: "",
+            id: "sendMessage"
+          },
+          domProps: { value: _vm.messageText },
+          on: {
+            keydown: function($event) {
+              if (
+                !("button" in $event) &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.sendMessage($event)
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.messageText = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("a", { attrs: { id: "chatIcon" }, on: { click: _vm.sendMessage } })
+      ]
+    ),
+    _vm._v(" "),
+    _c("div")
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-10fa0356", module.exports)
+  }
+}
+
+/***/ }),
+/* 157 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(158)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(160)
+/* template */
+var __vue_template__ = __webpack_require__(161)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\mails\\sendEmailsComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6b217d37", Component.options)
+  } else {
+    hotAPI.reload("data-v-6b217d37", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 158 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(159);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("0f37c2f4", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6b217d37\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./sendEmailsComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6b217d37\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./sendEmailsComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -62177,7 +62449,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 135 */
+/* 160 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62369,7 +62641,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 136 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -62655,252 +62927,592 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4b8ff437", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6b217d37", module.exports)
   }
 }
 
 /***/ }),
-/* 137 */
-/***/ (function(module, exports) {
+/* 162 */
+/***/ (function(module, exports, __webpack_require__) {
 
-var status = $('#record_status'),
-    canvas = document.getElementById('canvas'),
-    lang = {
-    'mic_error': 'Error accessing the microphone', //Ошибка доступа к микрофону
-    'press_to_start': 'Press to start recording', //Нажмите для начала записи
-    'recording': 'Recording', //Запись
-    'play': 'Play', //Воспроизвести
-    'stop': 'Stop', //Остановить
-    'download': 'Download', //Скачать
-    'use_https': 'This application in not working over insecure connection. Try to use HTTPS'
-},
-    time;
-
-if (navigator.mediaDevices === undefined) {
-    navigator.mediaDevices = {};
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(163)
 }
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(165)
+/* template */
+var __vue_template__ = __webpack_require__(166)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\mails\\sendInvitationMail.vue"
 
-if (navigator.mediaDevices.getUserMedia === undefined) {
-    navigator.mediaDevices.getUserMedia = function (constrains) {
-        var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-        if (!getUserMedia) {
-            return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
-        }
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6f81052f", Component.options)
+  } else {
+    hotAPI.reload("data-v-6f81052f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
 
-        return new Promise(function (resolve, reject) {
-            getUserMedia.call(navigator, constrains, resolve, reject);
-        });
-    };
-}
+module.exports = Component.exports
 
-if (navigator.mediaDevices.getUserMedia) {
-    var parseTime = function parseTime(sec) {
-        var h = parseInt(sec / 3600);
-        var m = parseInt(sec / 60);
-        var sec = sec - (h * 3600 + m * 60);
 
-        h = h == 0 ? '' : h + ':';
-        sec = sec < 10 ? '0' + sec : sec;
+/***/ }),
+/* 163 */
+/***/ (function(module, exports, __webpack_require__) {
 
-        return h + m + ':' + sec;
-    };
+// style-loader: Adds some css to the DOM by adding a <style> tag
 
-    var start = function start() {
-        $('#record_status').fadeIn().removeClass('d-none');
-        navigator.mediaDevices.getUserMedia({ 'audio': true }).then(function (stream) {
-            mediaRecorder = new MediaRecorder(stream);
-            mediaRecorder.start();
-            status.html('<span class="panelFormLabel">Recording</span>');
-            $('#counter').removeClass('d-none');
-            $('#counter').html('00');
-            btn_status = 'recording';
-            $('#recordImg').addClass('recording');
-            $('#stopAudio').fadeIn(500).removeClass('d-none');
-            $('#startRecord').fadeOut(500).addClass('d-none');
-
-            if (navigator.vibrate) navigator.vibrate(150);
-
-            time = Math.ceil(new Date().getTime() / 1000);
-
-            mediaRecorder.ondataavailable = function (event) {
-                chunks.push(event.data);
-            };
-
-            mediaRecorder.onstop = function () {
-                stream.getTracks().forEach(function (track) {
-                    track.stop();
-                });
-
-                blob = new Blob(chunks, type);
-                audioSrc = window.URL.createObjectURL(blob);
-
-                audio.src = audioSrc;
-
-                chunks = [];
-
-                $('#recordImg').removeClass('recording');
-            };
-        }).catch(function (error) {
-            if (location.protocol != 'https:') {
-                status.html(lang.mic_error + '<br>' + lang.use_https);
-            } else {
-                status.html(lang.mic_error);
-            }
-        });
-    };
-
-    var stop = function stop() {
-        mediaRecorder.stop();
-        btn_status = 'inactive';
-
-        if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
-
-        var now = Math.ceil(new Date().getTime() / 1000);
-
-        var t = parseTime(now - time);
-
-        status.html('Recorded: ' + t);
-        $('#stopAudio').fadeOut(500).addClass('d-none');
-        $('#downloadAudio').fadeIn(500).removeClass('d-none');
-        $('#playAudio').fadeIn(500).removeClass('d-none');
-        $('#saveAudio').fadeIn(500).removeClass('d-none');
-        $('#sendAudio').fadeIn(500).removeClass('d-none');
-        $('#discardAudio').fadeIn(500).removeClass('d-none');
-    };
-
-    var saveToDB = function saveToDB() {
-
-        var data = new FormData();
-        data.append('file', blob);
-        data.append('type', blob.type);
-
-        $.ajax({
-            url: "audio/save",
-            type: 'POST',
-            data: data,
-            contentType: false,
-            processData: false,
-            success: function success(data) {
-                // changes are saved on - off
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                    location.reload();
-                }, 1000);
-            },
-            error: function error() {
-                console.log("Error while saving audio");
-            }
-        });
-    };
-
-    var saveAudioForChat = function saveAudioForChat() {
-        var data = new FormData();
-        data.append('file', blob);
-        data.append('type', blob.type);
-
-        status.html('');
-        $.ajax({
-            url: "audio/save_for_chat",
-            type: 'POST',
-            data: data,
-            contentType: false,
-            processData: false,
-
-            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-            success: function success(data) {
-                $('#currAudioChatSrc').html(data);
-            },
-            error: function error() {
-                console.log("Error while saving audio");
-                $('#currAudioChatSrc').html('');
-            }
-        });
-    };
-
-    var play = function play() {
-        audio.play();
-    };
-
-    var pause = function pause() {
-        audio.pause();
-        audio.currentTime = 0;
-    };
-
-    var roundedRect = function roundedRect(ctx, x, y, width, height, radius, fill) {
-        ctx.beginPath();
-        ctx.moveTo(x, y + radius);
-        ctx.lineTo(x, y + height - radius);
-        ctx.quadraticCurveTo(x, y + height, x + radius, y + height);
-        ctx.lineTo(x + width - radius, y + height);
-        ctx.quadraticCurveTo(x + width, y + height, x + width, y + height - radius);
-        ctx.lineTo(x + width, y + radius);
-        ctx.quadraticCurveTo(x + width, y, x + width - radius, y);
-        ctx.lineTo(x + radius, y);
-        ctx.quadraticCurveTo(x, y, x, y + radius);
-
-        ctx.fillStyle = fill;
-        ctx.fill();
-    };
-
-    var save = function save() {
-        var a = document.createElement('a');
-        a.download = 'record.ogg';
-        a.href = audioSrc;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-    };
-
-    var btn_status = 'inactive',
-        mediaRecorder,
-        chunks = [],
-        audio = new Audio(),
-        mediaStream,
-        audioSrc,
-        type = {
-        'type': 'audio/ogg,codecs=opus'
-    },
-        ctx,
-        analys,
-        blob;
-
-    $('#startRecord').on('click', function () {
-        start();
-    });
-
-    $('#playAudio').on('click', function () {
-        play();
-    });
-
-    $('#stopAudio').on('click', function () {
-        stop();
-    });
-
-    $('#downloadAudio').on('click', function () {
-        save();
-    });
-
-    $('#saveAudio').on('click', function () {
-        saveToDB();
-    });
-
-    $('#sendAudio').on('click', function () {
-        saveAudioForChat();
-    });
-} else {
-    if (location.protocol != 'https:') {
-        status.html(lang.mic_error + '<br>' + lang.use_https);
-    } else {
-        status.html(lang.mic_error);
-    }
+// load the styles
+var content = __webpack_require__(164);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("8e3790d8", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6f81052f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./sendInvitationMail.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6f81052f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./sendInvitationMail.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
 }
 
 /***/ }),
-/* 138 */
-/***/ (function(module, exports) {
+/* 164 */
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 165 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['job'],
+    data: function data() {
+        return {
+            currEmail: '',
+            invitationData: {
+                job_id: this.job.id,
+                mailingLists: [],
+                customEmails: []
+            }
+        };
+    },
+
+    methods: {
+        invite: function invite() {
+            var sendBtn = $('#sendInv');
+            sendBtn.prop('disabled', true);
+            $('#sendInv').text('Sending..');
+            axios.post('/admin/invite', this.invitationData).then(function (response) {
+                sendBtn.text('Invitation sent');
+                sendBtn.css('background', 'lightgreen');
+                sendBtn.css('border', 'none');
+            });
+        },
+        addEmail: function addEmail() {
+            // validate it is an email :
+            if (this.isValidEmailAddress(this.currEmail)) {
+                this.invitationData.customEmails.push(this.currEmail);
+                this.currEmail = '';
+            } else {
+                alert('Not valid mail');
+            }
+        },
+        deleteEmail: function deleteEmail(mail) {
+            var emails = this.invitationData.customEmails;
+            $.each(emails, function (i) {
+                if (emails[i] === mail) {
+                    emails.splice(i, 1);
+                    return false;
+                }
+            });
+        },
+        isValidEmailAddress: function isValidEmailAddress(emailAddress) {
+            var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+            return pattern.test(emailAddress);
+        }
+    },
+    created: function created() {}
+});
+
+/***/ }),
+/* 166 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "pageHeading" }, [
+      _vm._v("\n        Send job invitation\n    ")
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "pageSubHeading" }, [
+      _vm._v("\n        Title: " + _vm._s(this.job.title)),
+      _c("br"),
+      _vm._v("\n        Desc: " + _vm._s(this.job.description) + "\n    ")
+    ]),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "panelFormLabel" }, [
+          _vm._v("\n                Please choose mailing list :\n            ")
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-check" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.invitationData.mailingLists,
+                expression: "invitationData.mailingLists"
+              }
+            ],
+            staticClass: "form-check-input",
+            attrs: { type: "checkbox", value: "developers" },
+            domProps: {
+              checked: Array.isArray(_vm.invitationData.mailingLists)
+                ? _vm._i(_vm.invitationData.mailingLists, "developers") > -1
+                : _vm.invitationData.mailingLists
+            },
+            on: {
+              change: function($event) {
+                var $$a = _vm.invitationData.mailingLists,
+                  $$el = $event.target,
+                  $$c = $$el.checked ? true : false
+                if (Array.isArray($$a)) {
+                  var $$v = "developers",
+                    $$i = _vm._i($$a, $$v)
+                  if ($$el.checked) {
+                    $$i < 0 &&
+                      _vm.$set(
+                        _vm.invitationData,
+                        "mailingLists",
+                        $$a.concat([$$v])
+                      )
+                  } else {
+                    $$i > -1 &&
+                      _vm.$set(
+                        _vm.invitationData,
+                        "mailingLists",
+                        $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                      )
+                  }
+                } else {
+                  _vm.$set(_vm.invitationData, "mailingLists", $$c)
+                }
+              }
+            }
+          }),
+          _vm._v(" Developers"),
+          _c("br"),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.invitationData.mailingLists,
+                expression: "invitationData.mailingLists"
+              }
+            ],
+            staticClass: "form-check-input",
+            attrs: { type: "checkbox", value: "designers" },
+            domProps: {
+              checked: Array.isArray(_vm.invitationData.mailingLists)
+                ? _vm._i(_vm.invitationData.mailingLists, "designers") > -1
+                : _vm.invitationData.mailingLists
+            },
+            on: {
+              change: function($event) {
+                var $$a = _vm.invitationData.mailingLists,
+                  $$el = $event.target,
+                  $$c = $$el.checked ? true : false
+                if (Array.isArray($$a)) {
+                  var $$v = "designers",
+                    $$i = _vm._i($$a, $$v)
+                  if ($$el.checked) {
+                    $$i < 0 &&
+                      _vm.$set(
+                        _vm.invitationData,
+                        "mailingLists",
+                        $$a.concat([$$v])
+                      )
+                  } else {
+                    $$i > -1 &&
+                      _vm.$set(
+                        _vm.invitationData,
+                        "mailingLists",
+                        $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                      )
+                  }
+                } else {
+                  _vm.$set(_vm.invitationData, "mailingLists", $$c)
+                }
+              }
+            }
+          }),
+          _vm._v(" Designers"),
+          _c("br"),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.invitationData.mailingLists,
+                expression: "invitationData.mailingLists"
+              }
+            ],
+            staticClass: "form-check-input",
+            attrs: { type: "checkbox", value: "business_support" },
+            domProps: {
+              checked: Array.isArray(_vm.invitationData.mailingLists)
+                ? _vm._i(_vm.invitationData.mailingLists, "business_support") >
+                  -1
+                : _vm.invitationData.mailingLists
+            },
+            on: {
+              change: function($event) {
+                var $$a = _vm.invitationData.mailingLists,
+                  $$el = $event.target,
+                  $$c = $$el.checked ? true : false
+                if (Array.isArray($$a)) {
+                  var $$v = "business_support",
+                    $$i = _vm._i($$a, $$v)
+                  if ($$el.checked) {
+                    $$i < 0 &&
+                      _vm.$set(
+                        _vm.invitationData,
+                        "mailingLists",
+                        $$a.concat([$$v])
+                      )
+                  } else {
+                    $$i > -1 &&
+                      _vm.$set(
+                        _vm.invitationData,
+                        "mailingLists",
+                        $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                      )
+                  }
+                } else {
+                  _vm.$set(_vm.invitationData, "mailingLists", $$c)
+                }
+              }
+            }
+          }),
+          _vm._v(" Business support"),
+          _c("br"),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.invitationData.mailingLists,
+                expression: "invitationData.mailingLists"
+              }
+            ],
+            staticClass: "form-check-input",
+            attrs: { type: "checkbox", value: "all" },
+            domProps: {
+              checked: Array.isArray(_vm.invitationData.mailingLists)
+                ? _vm._i(_vm.invitationData.mailingLists, "all") > -1
+                : _vm.invitationData.mailingLists
+            },
+            on: {
+              change: function($event) {
+                var $$a = _vm.invitationData.mailingLists,
+                  $$el = $event.target,
+                  $$c = $$el.checked ? true : false
+                if (Array.isArray($$a)) {
+                  var $$v = "all",
+                    $$i = _vm._i($$a, $$v)
+                  if ($$el.checked) {
+                    $$i < 0 &&
+                      _vm.$set(
+                        _vm.invitationData,
+                        "mailingLists",
+                        $$a.concat([$$v])
+                      )
+                  } else {
+                    $$i > -1 &&
+                      _vm.$set(
+                        _vm.invitationData,
+                        "mailingLists",
+                        $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                      )
+                  }
+                } else {
+                  _vm.$set(_vm.invitationData, "mailingLists", $$c)
+                }
+              }
+            }
+          }),
+          _vm._v(" All freelancers"),
+          _c("br")
+        ]),
+        _vm._v(" "),
+        _c("br")
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "panelFormLabel" }, [
+          _vm._v("\n                Add custom emails\n            ")
+        ]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            attrs: { action: "", method: "post" },
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.addEmail($event)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "form-group" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.currEmail,
+                    expression: "currEmail"
+                  }
+                ],
+                staticClass: "form-control",
+                staticStyle: {
+                  background:
+                    "white url('/resumeApp/resources/assets/images/add_skill.png')  no-repeat right .75rem center",
+                  "background-size": "15px 15px"
+                },
+                attrs: {
+                  type: "text",
+                  placeholder: "Add email",
+                  id: "email_address",
+                  name: "email_address",
+                  required: ""
+                },
+                domProps: { value: _vm.currEmail },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.currEmail = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row" },
+      _vm._l(_vm.invitationData.customEmails, function(mail, index) {
+        return _c(
+          "div",
+          {
+            key: index,
+            staticClass: "text-center skillView col-4",
+            staticStyle: {
+              "margin-right": "10px",
+              background: "white",
+              "border-radius": "10px",
+              "margin-top": "5px",
+              "margin-bottom": "5px"
+            }
+          },
+          [
+            _c(
+              "b",
+              {
+                staticStyle: {
+                  color: "#697786",
+                  "font-family": "Roboto",
+                  "font-size": "16px",
+                  "font-weight": "300",
+                  "line-height": "24px"
+                }
+              },
+              [
+                _vm._v(
+                  "\n                " + _vm._s(mail) + "\n                "
+                ),
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    staticStyle: { padding: "2px", outline: "none" },
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.deleteEmail(mail)
+                      }
+                    }
+                  },
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("×")
+                    ])
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      })
+    ),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            attrs: { id: "sendInv" },
+            on: { click: _vm.invite }
+          },
+          [_vm._v("Send invitation")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6f81052f", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

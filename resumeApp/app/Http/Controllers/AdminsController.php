@@ -43,6 +43,43 @@ class AdminsController extends Controller
         return redirect(route('freelancer.dashboard',$fromAdmin));
     }
 
+    public function inviteToJob(Request $request){
+        $job          = Job::find($request->job_id);
+        $mailingLists = $request->mailingLists;
+        $emails = [] ;
+        if(in_array('developers',$mailingLists)){
+            $emails = User::where('profession','Developer')->pluck('email')->toArray();;
+        }
+
+        if(in_array('designers',$mailingLists)){
+            $emails = array_merge($emails ,User::where('profession','Designer')->pluck('email')->toArray());
+        }
+
+        if(in_array('business_support',$mailingLists)){
+            $emails = array_merge($emails ,User::where('profession','businessSupport')->pluck('email')->toArray());
+
+        }
+
+        if(in_array('all',$mailingLists)){
+            $emails = User::all()->pluck('email')->toArray();
+        }
+
+        if(isset($request->customEmails) && !empty($request->customEmails)){
+            $emails = array_merge($emails, $request->customEmails);
+        }
+
+        $notification = new NotificationsController;
+        $invitationData = [
+            'emails'=> $emails,
+            'jobTitle'=> $job->title,
+            'jobPostLink'=>'123workforce.magictimeapps.com/jobs/view_post/'.$job->id
+        ];
+
+        $notification->inviteFreelancersToJob($invitationData);
+
+        return 'invitation sent';
+    }
+
     public function logInAsAffiliate($affiliate_id){
         // log him out and log in the chosen user in
         Auth::guard('affiliate')->loginUsingId($affiliate_id);
@@ -154,6 +191,11 @@ class AdminsController extends Controller
     public function showBookingsHistory($client_id){
         $client = Client::where('id',$client_id)->first();
         return view('admin.client_booking_history',compact('client'));
+    }
+
+    public function invitePage($job_id){
+        $job = Job::find($job_id);
+        return view('admin.invitePage',compact('job'));
     }
 
 }

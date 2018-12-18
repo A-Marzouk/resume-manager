@@ -41,8 +41,7 @@ $redirectURL = 'https://123workforce.com/freelancer/linkedin';
         </div>
         <? endif; ?>
     </div>
-    <hr>
-
+    <br/>
     {{-- include the freelancer card + the new edit row--}}
     <div style="margin-left: 8.07%" class="marginMobile-0">
         <div class="freelancerCard" style="margin-bottom: -3px;">

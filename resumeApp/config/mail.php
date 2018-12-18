@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'resume-manager@123workforce.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info@123workforce.com'),
         'name' => env('MAIL_FROM_NAME', '123 Workforce'),
     ],
 

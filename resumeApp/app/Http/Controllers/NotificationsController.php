@@ -187,4 +187,17 @@ class NotificationsController extends Controller
         });
     }
 
+    public function inviteFreelancersToJob($invitationData){
+        $emails   = $invitationData['emails'];
+        $jobTitle = $invitationData['jobTitle'];
+        $data   = [
+            'jobPostLink' => $invitationData['jobPostLink'],
+        ];
+
+        Mail::send('emails.invite_freelancer_to_job',$data, function($message) use ($emails,$jobTitle)
+        {
+            $message->to($emails)->subject('Invitation to Apply - '.$jobTitle);
+        });
+    }
+
 }

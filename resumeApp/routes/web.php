@@ -98,6 +98,8 @@ Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser
 Route::post('/admin/delete_multiple','AdminsController@deleteMultiple');
 // approve users
 Route::post('/admin/control_approval','AdminsController@controlApproval');
+Route::post('/admin/invite','AdminsController@inviteToJob')->name('admin.invite.to.job');
+Route::get('/admin/invite/{job_id}','AdminsController@invitePage')->name('admin.invite.page');
 
 // release booked hours
 Route::post('/admin/releaseBooking','AdminsController@releaseBookingsHours');

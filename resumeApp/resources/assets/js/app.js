@@ -29,9 +29,9 @@ require('./freelancer.js');
 Vue.config.devtools = true;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('chat-message', require('./components/chatMessage.vue'));
-Vue.component('chat-log', require('./components/chatLog.vue'));
-Vue.component('chat-composer', require('./components/chatComposer.vue'));
+Vue.component('chat-message', require('./components/chat/chatMessage.vue'));
+Vue.component('chat-log', require('./components/chat/chatLog.vue'));
+Vue.component('chat-composer', require('./components/chat/chatComposer.vue'));
 
 // works
 Vue.component('works-list', require('./components/work/worksListComponent.vue'));
@@ -66,7 +66,8 @@ Vue.component('freelancers-list', require('./components/search/freelancersListCo
 Vue.component('new-chat', require('./components/newChat/newChat'));
 
 //
-Vue.component('send-emails', require('./components/sendEmailsComponent.vue'));
+Vue.component('send-emails', require('./components/mails/sendEmailsComponent.vue'));
+Vue.component('send-invitations', require('./components/mails/sendInvitationMail.vue'));
 
 
 if ($("#searchFreelancers").length !== 0){
@@ -83,6 +84,11 @@ if ($("#clientJobs").length !== 0){
 if ($("#send_emails_vue").length !== 0){
     let send_emails_vue = new Vue({
         el:'#send_emails_vue'
+    });
+}
+if ($("#send_invitations_vue").length !== 0){
+    let send_invitations_vue = new Vue({
+        el:'#send_invitations_vue'
     });
 }
 

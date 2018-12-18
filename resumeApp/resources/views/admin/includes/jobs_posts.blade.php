@@ -8,6 +8,7 @@
             <th scope="col">Job owner</th>
             <th scope="col">Budget</th>
             <th scope="col">&nbsp;</th>
+            <th scope="col">&nbsp;</th>
         </tr>
         </thead>
         <tbody>
@@ -29,8 +30,11 @@
                     {{\App\Client::find($job->client_id)->email}}
                 </a>
             </td>
-            <td><a href="{{route('jobs.view_single',$job->id)}}" class="btn btn-sm btn-outline-primary" target="_blank">View job post</a></td>
             <td>{{$job->budget}}</td>
+            <td><a href="{{route('jobs.view_single',$job->id)}}" class="btn btn-sm btn-outline-primary" target="_blank">View job post</a></td>
+            <td>
+                <a href="{{route('admin.invite.page',$job->id)}}" class="btn btn-sm btn-outline-primary" target="_blank">Invite</a>
+            </td>
         </tr>
 
         <? $i++;?>

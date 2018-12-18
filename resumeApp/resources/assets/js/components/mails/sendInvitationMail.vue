@@ -78,6 +78,11 @@
         },
         methods:{
             invite(){
+                // check before invitation
+                if(this.invitationData.mailingLists.length < 1 && this.invitationData.customEmails.length < 1){
+                    alert('Please choose mailing list or add custom emails');
+                    return;
+                }
                 let sendBtn = $('#sendInv');
                 sendBtn.prop('disabled',true);
                 $('#sendInv').text('Sending..');

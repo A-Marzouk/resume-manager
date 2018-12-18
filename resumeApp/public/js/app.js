@@ -63109,6 +63109,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         invite: function invite() {
+            // check before invitation
+            if (this.invitationData.mailingLists.length < 1 && this.invitationData.customEmails.length < 1) {
+                alert('Please choose mailing list or add custom emails');
+                return;
+            }
             var sendBtn = $('#sendInv');
             sendBtn.prop('disabled', true);
             $('#sendInv').text('Sending..');

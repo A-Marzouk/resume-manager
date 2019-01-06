@@ -4,7 +4,7 @@
         <?
             $workExamples =\App\Project::where([
                 'user_id'=>$freelancer->id,
-                'isActive' => 'true'
+                'isActive' => true
                 ])->orderBy('order','ASC')->get();
             $i = 0;
             $numberOfSlides = ceil(count($workExamples) / 2);
@@ -141,7 +141,7 @@
             {{-- carousel controls --}}
             <div class="row carouselControls" style="width: 100%;">
                 <div class=" col-12 text-center NoDecor">
-                    <a href="javascript:void(0)" id="prevSlide{{$freelancer->id}}{{$value['id']}}"  data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}" data-slide-to="4" role="button" data-slide="prev" class="cardLabel_interviews noScroll prevSlide"
+                    <a href="javascript:void(0)" id="prevSlide{{$freelancer->id}}{{$value['id']}}"  data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}" data-slide-to="{{$numberOfSlides}}" role="button" data-slide="prev" class="cardLabel_interviews noScroll prevSlide"
                        style="color:#697786;">
                         <img src="/resumeApp/resources/assets/images/left_arrow.png"
                              alt="prev" width="15px">
@@ -149,7 +149,7 @@
 
                     <span class="jobTitle" style="padding: 0 5px 0 5px"> <span id="slideNumber{{$freelancer->id}}{{$value['id']}}">1</span>/<span id="maxNumSlide{{$freelancer->id}}{{$value['id']}}">{{$numberOfSlides}}</span></span>
 
-                    <a href="javascript:void(0)" id="nextSlide{{$freelancer->id}}{{$value['id']}}" data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}" data-slide-to="4" role="button" data-slide="next" class="cardLabel_interviews noScroll nextSlide"
+                    <a href="javascript:void(0)" id="nextSlide{{$freelancer->id}}{{$value['id']}}" data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}" data-slide-to="{{$numberOfSlides}}" role="button" data-slide="next" class="cardLabel_interviews noScroll nextSlide"
                        style="color:#697786;">
                         <img src="/resumeApp/resources/assets/images/right_arrow.png"
                              alt="next" width="15px">

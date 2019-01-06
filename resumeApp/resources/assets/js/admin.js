@@ -325,3 +325,37 @@ function copyToClipboard(element) { // pass the element by id, example : copyToC
     },2000);
 }
 
+// add/remove freelancer to homepage
+$('.addFreelancerToHomePage').on('click',function () {
+    let userID = this.id.replace('addFreelancerToHomePage','');
+
+    let addData = {
+        userID:userID,
+        action:'ADD'
+    };
+
+    // send to the DB to approve :
+    axios.post('admin/control_homepage_freelancers',addData).then( (response)=> {
+            $('#addFreelancerToHomePage'+userID).html('<p>Added</p>');
+            $('#addFreelancerToHomePage'+userID).removeAttr('href');
+        }
+    );
+
+});
+
+$('.removeFreelancerFromHomePage').on('click',function () {
+    let userID = this.id.replace('removeFreelancerFromHomePage','');
+
+    let removeData = {
+        userID:userID,
+        action:'REMOVE'
+    };
+
+    // send to the DB to approve :
+    axios.post('admin/control_homepage_freelancers',removeData).then( (response)=> {
+            $('#removeFreelancerFromHomePage'+userID).html('<p>Removed</p>');
+            $('#removeFreelancerFromHomePage'+userID).removeAttr('href');
+        }
+    );
+
+});

@@ -162,6 +162,23 @@ class AdminsController extends Controller
         }
     }
 
+    public function controlHomepageFreelancers(Request $request){
+        $userID = $request->userID ;
+        if($request->action == 'ADD'){
+                $userData = UserData::where('user_id', $userID)->first();
+                $userData->home_page_freelancer = true;
+                $userData->save();
+                return 'added';
+        }
+        elseif($request->action == 'REMOVE'){
+            $userData = UserData::where('user_id', $userID)->first();
+            $userData->home_page_freelancer = false;
+            $userData->save();
+            return 'removed';
+        }
+        return 'wrong data';
+    }
+
     public function getAllClients(){
         return Client::all();
     }

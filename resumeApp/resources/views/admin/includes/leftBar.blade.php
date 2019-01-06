@@ -1,6 +1,6 @@
 <div class="col-md-2">
     <h3 class="panelFormLabel text-center">Admin-dashboard</h3>
-    <ul class="nav nav-tabs fixedTabs" role="tablist">
+    <ul class="nav nav-tabs" role="tablist">
         <li class="col-md-12">
             <a class="btn btn-block btn-outline-primary active" style="margin-bottom: 6px;" href="#home" role="tab" data-toggle="tab">
                 Home
@@ -57,11 +57,12 @@
                 <a href="javascript:void(0)" class="btn btn-outline-danger btn-sm" id="deleteSelectedBtn">Delete selected</a>
             </li>
             <li class="col-md-12" style="margin-top: 5px;">
-                <div class="btn-group" role="group" aria-label="Basic example">
+                <div class="btn-group" role="group">
                     <a href="javascript:void(0)" class="btn btn-outline-dark btn-sm" id="approve">Approve</a>
                     <a href="javascript:void(0)" class="btn btn-outline-dark btn-sm" id="disApprove">Disapprove</a>
                 </div>
             </li>
+            <br>
         </div>
     </ul>
 </div>

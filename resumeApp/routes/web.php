@@ -98,6 +98,7 @@ Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser
 Route::post('/admin/delete_multiple','AdminsController@deleteMultiple');
 // approve users
 Route::post('/admin/control_approval','AdminsController@controlApproval');
+Route::post('/admin/control_homepage_freelancers','AdminsController@controlHomepageFreelancers');
 Route::post('/admin/invite','AdminsController@inviteToJob')->name('admin.invite.to.job');
 Route::get('/admin/invite/{job_id}','AdminsController@invitePage')->name('admin.invite.page');
 

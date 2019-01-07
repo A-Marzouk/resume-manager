@@ -11,164 +11,45 @@
         <div class="col-md-10 offset-md-1">
             <section class="freelancers">
                 <div class="slickSlide">
-                    <div class="col-md-12 freelancerBox">
-                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">
-                            <div class="freelancerItem">
-                                <img src="/resumeApp/resources/views/customTheme/images/freelancers/Dmitri.jpg"
-                                     alt="freelancer" class="slickFreelancerImg">
-                                <div class="freelancerData">
-                                    <div class="freelancerName nohover">
-                                        Dmitri
-                                    </div>
-                                    <div class="freelancerJob">
-                                        Full-Stack Developer
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-12 freelancerBox">
-                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">                            <div class="freelancerItem">
-                                <img src="/resumeApp/resources/views/customTheme/images/freelancers/Anton.jpg"
-                                     alt="freelancer" class="slickFreelancerImg">
-                                <div class="freelancerData">
-                                    <div class="freelancerName">
-                                        Anton
-                                    </div>
-                                    <div class="freelancerJob">
-                                        Python Developer
+                    @foreach($homeFreelancers as $freelancer)
+                        {{--<? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?>--}}
+                        <div class="col-md-12 freelancerBox">
+                            <a  data-toggle="modal" data-target="#portfolio{{$freelancer->id}}" href="javascript:void(0)" class="itemLink">
+                                <div class="freelancerItem">
+                                    @if($freelancer->userData->photo)
+                                        <img src="{{$freelancer->userData->photo}}"
+                                             alt="freelancer" class="slickFreelancerImg">
+                                    @else
+                                        <img src="/resumeApp/resources/views/customTheme/images/user.png"
+                                             alt="freelancer" class="slickFreelancerImg" style="background: none;">
+                                    @endif
+                                    <div class="freelancerData">
+                                        <div class="freelancerName nohover">
+                                            {{$freelancer->firstName}}
+                                        </div>
+                                        <div class="freelancerJob">
+                                            {{$freelancer->userData->jobTitle}}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-12 freelancerBox">
-                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">                            <div class="freelancerItem">
-                                <img src="/resumeApp/resources/views/customTheme/images/freelancers/Arnold.jpg"
-                                     alt="freelancer" class="slickFreelancerImg">
-                                <div class="freelancerData">
-                                    <div class="freelancerName">
-                                        Arnold
-                                    </div>
-                                    <div class="freelancerJob">
-                                        UX_UI Designer
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-12 freelancerBox">
-                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink"><div class="freelancerItem">
-                                <img src="/resumeApp/resources/views/customTheme/images/freelancers/Costa.jpg"
-                                     alt="freelancer" class="slickFreelancerImg">
-                                <div class="freelancerData">
-                                    <div class="freelancerName">
-                                        Costa
-                                    </div>
-                                    <div class="freelancerJob">
-                                        Front-End Developer
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-12 freelancerBox">
-                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">
-                            <div class="freelancerItem">
-                                <img src="/resumeApp/resources/views/customTheme/images/freelancers/Evgeny.jpg"
-                                     alt="freelancer" class="slickFreelancerImg">
-                                <div class="freelancerData">
-                                    <div class="freelancerName">
-                                        Evgeny
-                                    </div>
-                                    <div class="freelancerJob">
-                                        PHP Developer
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-12 freelancerBox">
-                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">
-                            <div class="freelancerItem">
-                                <img src="/resumeApp/resources/views/customTheme/images/freelancers/Jon.png"
-                                     alt="freelancer" class="slickFreelancerImg">
-                                <div class="freelancerData">
-                                    <div class="freelancerName">
-                                        Jon
-                                    </div>
-                                    <div class="freelancerJob">
-                                        UI Designer
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-12 freelancerBox">
-                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">
-                            <div class="freelancerItem">
-                                <img src="/resumeApp/resources/views/customTheme/images/freelancers/Lars.jpg"
-                                     alt="freelancer" class="slickFreelancerImg">
-                                <div class="freelancerData">
-                                    <div class="freelancerName">
-                                        Lars
-                                    </div>
-                                    <div class="freelancerJob">
-                                        Javascript Developer
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-12 freelancerBox">
-                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">
-                            <div class="freelancerItem">
-                                <img src="/resumeApp/resources/views/customTheme/images/freelancers/Michelle.jpg"
-                                     alt="freelancer" class="slickFreelancerImg">
-                                <div class="freelancerData">
-                                    <div class="freelancerName">
-                                        Michelle
-                                    </div>
-                                    <div class="freelancerJob">
-                                        UI Designer
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-12 freelancerBox">
-                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">                            <div class="freelancerItem">
-                                <img src="/resumeApp/resources/views/customTheme/images/freelancers/Shen.jpg"
-                                     alt="freelancer" class="slickFreelancerImg">
-                                <div class="freelancerData">
-                                    <div class="freelancerName">
-                                        Shen
-                                    </div>
-                                    <div class="freelancerJob">
-                                        iOS Developer
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-12 freelancerBox">
-                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">
-                            <div class="freelancerItem">
-                                <img src="/resumeApp/resources/views/customTheme/images/freelancers/Vitaly.jpg"
-                                     alt="freelancer" class="slickFreelancerImg">
-                                <div class="freelancerData">
-                                    <div class="freelancerName">
-                                        Vitaly
-                                    </div>
-                                    <div class="freelancerJob">
-                                        UX Designer
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
             </section>
         </div>
     </div>
+
+    @foreach($homeFreelancers as $freelancer)
+        <div class="modal" id="portfolio{{$freelancer->id}}">
+            <div class="modal-dialog modal-lg-phone">
+                <div class="modal-content" style="background:none; border: none">
+                    <div class="modal-body">
+                        <? $portfolioModal = false ;?>
+                        @include('freelancer_card')
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 </div>

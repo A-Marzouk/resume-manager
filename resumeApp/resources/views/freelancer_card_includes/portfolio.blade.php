@@ -2,10 +2,16 @@
 <div class="portfolioRow" id="tapsArea{{$freelancer->id}}{{$value['id']}}">
     <div class="row" id="portfolioContent{{$freelancer->id}}{{$value['id']}}">
         <?
-            $workExamples =\App\Project::where([
-                'user_id'=>$freelancer->id,
-                'isActive' => true
+            $workExamples_all =\App\Project::where([
+                'user_id'=>$freelancer->id
                 ])->orderBy('order','ASC')->get();
+
+            $workExamples = [] ;
+            foreach ($workExamples_all as $work){
+                if( $work->isActive == true ||  $work->isActive == 'true'){
+                    $workExamples[] = $work;
+                }
+            }
             $i = 0;
             $numberOfSlides = ceil(count($workExamples) / 2);
             $maxNumberOfWorks = 12;
@@ -25,7 +31,8 @@
         {{-- modals --}}
         @if($workExamples)
             <? foreach ($workExamples as $workExample):?>
-                <div class="modal fade" id="works{{$workExample->id}}Modal" tabindex="-1"
+                    <div class="modal fade" id="works{{$workExample->id}}Modal" tabindex="-1"
+
                      role="dialog"
                      aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document" style="">
@@ -71,9 +78,12 @@
                                                 <hr>
                                             </label><br/>
                                             @if(!empty($workExample->link))
-                                                <a href="{{$workExample->link}}" onclick="javascript:window.location='{{$workExample->link}}'">
-                                                    Project Link
-                                                </a>
+                                                @if(!strpos($workExample->link, 'www.behance.net'))
+                                                    {{-- does not containe behance link --}}
+                                                    <a href="{{$workExample->link}}" onclick="javascript:window.location='{{$workExample->link}}'">
+                                                        Project Link
+                                                    </a>
+                                                @endif
                                             @endif
                                         </div>
                                     </div>
@@ -100,8 +110,12 @@
                                         <div class="col-md-6">
                                             <div class="workCard" style="margin-left: 0">
                                                 <div class="workImg">
-                                                    <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
-                                                       data-target="#works{{$workExample->id}}Modal">
+                                                    <a href="javascript:void(0)"
+                                                       @if(!isset($portfolioModal))
+                                                            data-toggle="modal" style="outline: none;"
+                                                            data-target="#works{{$workExample->id}}Modal"
+                                                       @endif
+                                                    >
                                                         <?
                                                         $photoSrc = $workExample->mainImage ;
                                                         if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
@@ -174,8 +188,12 @@
                                     <div class="col-12">
                                         <div class="workCard" style="margin-left: 0">
                                             <div class="workImg">
-                                                <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
-                                                   data-target="#works{{$workExample->id}}Modal">
+                                                <a href="javascript:void(0)"
+                                                   @if(!isset($portfolioModal))
+                                                       data-toggle="modal" style="outline: none;"
+                                                       data-target="#works{{$workExample->id}}Modal"
+                                                   @endif
+                                                >
                                                     <?
                                                         $photoSrc = $workExample->mainImage ;
                                                         if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {

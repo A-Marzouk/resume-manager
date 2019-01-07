@@ -49,9 +49,15 @@
 
     <div class="col-12" style="padding: 10px 20px 16px 20px;">
         <div class="text-center cardRow NoDecor">
-            <a class="hireCardBtn btn-block showHireSection_mob" href="javascript:void(0)" id="showHireSection_mob{{$freelancer->id}}{{$value['id']}}">
-                Hire me
-            </a>
+            @if(isset($portfolioModal) && !$isClient)
+                <a class="hireCardBtn btn-block showHireSection" href="{{route('client.login')}}">
+                    Hire me
+                </a>
+            @else
+                <a class="hireCardBtn btn-block showHireSection_mob" href="javascript:void(0)" id="showHireSection_mob{{$freelancer->id}}{{$value['id']}}">
+                    Hire me
+                </a>
+            @endif
         </div>
     </div>
 </div>

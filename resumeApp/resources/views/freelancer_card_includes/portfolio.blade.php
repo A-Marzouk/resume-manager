@@ -78,9 +78,12 @@
                                                 <hr>
                                             </label><br/>
                                             @if(!empty($workExample->link))
-                                                <a href="{{$workExample->link}}" onclick="javascript:window.location='{{$workExample->link}}'">
-                                                    Project Link
-                                                </a>
+                                                @if(!strpos($workExample->link, 'www.behance.net'))
+                                                    {{-- does not containe behance link --}}
+                                                    <a href="{{$workExample->link}}" onclick="javascript:window.location='{{$workExample->link}}'">
+                                                        Project Link
+                                                    </a>
+                                                @endif
                                             @endif
                                         </div>
                                     </div>
@@ -107,8 +110,12 @@
                                         <div class="col-md-6">
                                             <div class="workCard" style="margin-left: 0">
                                                 <div class="workImg">
-                                                    <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
-                                                       data-target="#works{{$workExample->id}}Modal">
+                                                    <a href="javascript:void(0)"
+                                                       @if(!isset($portfolioModal))
+                                                            data-toggle="modal" style="outline: none;"
+                                                            data-target="#works{{$workExample->id}}Modal"
+                                                       @endif
+                                                    >
                                                         <?
                                                         $photoSrc = $workExample->mainImage ;
                                                         if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
@@ -181,8 +188,12 @@
                                     <div class="col-12">
                                         <div class="workCard" style="margin-left: 0">
                                             <div class="workImg">
-                                                <a href="javascript:void(0)" data-toggle="modal" style="outline: none;"
-                                                   data-target="#works{{$workExample->id}}Modal">
+                                                <a href="javascript:void(0)"
+                                                   @if(!isset($portfolioModal))
+                                                       data-toggle="modal" style="outline: none;"
+                                                       data-target="#works{{$workExample->id}}Modal"
+                                                   @endif
+                                                >
                                                     <?
                                                         $photoSrc = $workExample->mainImage ;
                                                         if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {

@@ -42,11 +42,11 @@
 
     @foreach($homeFreelancers as $freelancer)
         <div class="modal" id="portfolio{{$freelancer->id}}">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Modal body -->
+            <div class="modal-dialog modal-lg-phone">
+                <div class="modal-content" style="background:none; border: none">
                     <div class="modal-body">
-                        {{$freelancer->firstName}}
+                        <? $portfolioModal = false ;?>
+                        @include('freelancer_card')
                     </div>
                 </div>
             </div>

@@ -2888,3 +2888,11 @@ body{
 .mobile-auto-margin{
   margin: auto ;
 }
+
+
+.modal-lg-phone{
+  max-width: 80% !important;
+  @media only screen and (max-width: 760px){
+    max-width: 100% !important;
+  }
+}

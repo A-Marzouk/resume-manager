@@ -12,8 +12,9 @@
             <section class="freelancers">
                 <div class="slickSlide">
                     @foreach($homeFreelancers as $freelancer)
+                        {{--<? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?>--}}
                         <div class="col-md-12 freelancerBox">
-                            <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">
+                            <a  data-toggle="modal" data-target="#portfolio{{$freelancer->id}}" href="javascript:void(0)" class="itemLink">
                                 <div class="freelancerItem">
                                     @if($freelancer->userData->photo)
                                         <img src="{{$freelancer->userData->photo}}"
@@ -38,4 +39,17 @@
             </section>
         </div>
     </div>
+
+    @foreach($homeFreelancers as $freelancer)
+        <div class="modal" id="portfolio{{$freelancer->id}}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        {{$freelancer->firstName}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 </div>

@@ -87,9 +87,15 @@
                 <div class="col-md-4" style="padding: 0;">
                     @if($freelancer->userData->availableHours !=0)
                         <div class="row text-center cardRow NoDecor">
-                            <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" id="showHireSection{{$freelancer->id}}{{$value['id']}}">
-                                Hire me
-                            </a>
+                            @if(isset($portfolioModal) && !$isClient)
+                                <a class="hireCardBtn btn-block showHireSection" href="{{route('client.login')}}">
+                                    Hire me
+                                </a>
+                            @else
+                                <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" id="showHireSection{{$freelancer->id}}{{$value['id']}}">
+                                    Hire me
+                                </a>
+                            @endif
                         </div>
                     @endif
                 </div>

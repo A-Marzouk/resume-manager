@@ -815,7 +815,8 @@ body {
       margin: auto; }
   #content .slickFreelancerImg {
     border-radius: 50%;
-    width: 110px;
+    width: 110px !important;
+    height: 110px !important;
     opacity: 0.9;
     background: linear-gradient(135deg, #32FBFC 0%, #3214F2 100%);
     box-shadow: 0 2px 4px 0 rgba(8, 38, 168, 0.15); }

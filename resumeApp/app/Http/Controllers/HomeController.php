@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\ClientSearch;
 use App\User;
+use App\UserData;
 
 class HomeController extends Controller
 {
@@ -53,7 +54,13 @@ class HomeController extends Controller
     }
 
     public function welcomePage(){
-        return view('welcome');
+        // homepage freelancers
+        $homeFreelancersData = UserData::where('home_page_freelancer',true)->get();
+        $homeFreelancers = [];
+        foreach ($homeFreelancersData as $data){
+            $homeFreelancers[] = $data->user;
+        }
+        return view('welcome',compact('homeFreelancers'));
     }
 
     public function termsView(){

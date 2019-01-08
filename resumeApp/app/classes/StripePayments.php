@@ -23,7 +23,7 @@ use Stripe\Subscription;
 
 class StripePayments
 {
-    private $apiKey = 'sk_test_WlqUYgob2e2ALpZfJw5AfIaG' ;
+    private $apiKey = 'sk_live_vRNRg2Lmexmse8Bxm6VS89DK' ;
     // test mode key : sk_test_WlqUYgob2e2ALpZfJw5AfIaG
     // live mode key : sk_live_vRNRg2Lmexmse8Bxm6VS89DK
 
@@ -42,6 +42,9 @@ class StripePayments
         $weeks       = intval($request->weeks);
         $amountToPay = intval($request->amountToPay);
         $token = $request->stripeToken;
+        if($request->freelancerName == 'custom_payment'){
+            $amountToPay = $amountToPay *100;
+        }
 
         // creare product
         $product = \Stripe\Product::create([
@@ -90,12 +93,20 @@ class StripePayments
         $data['freelancerName'] = $request->freelancerName;
         $this->sendMailSuccess($data);
 
+
+        if($request->freelancerName == 'custom_payment'){
+            return redirect('/payment')->with('successMessage','Thank you for your payment, we will get in touch with you soon!');
+        }
+
         // create the booking : (user_id,client_id,amount_paid,hours)
         $this->createBooking($request , $data['client_id'],$subscription->id);
         // update user available hours
         $freelancer = $this->updateHours($request);
-
         return redirect('/'.$freelancer->username)->with('successMessage','Thank you for your order, we will get in touch with you soon!');
+
+
+
+
     }
 
     public function showHirePage(){

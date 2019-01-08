@@ -76,7 +76,7 @@
                                     <input type="hidden" value="{{$weeks}}" name="weeks">
                                     <script
                                             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                            data-key="pk_test_8Pd2lN3so4z5vBOP98MgNcms"
+                                            data-key="pk_live_JaqaQq8e8cJYTXSEk9UZoy8k"
                                             data-amount="{{$amountToPay}}"
                                             data-name="Hire  {{$freelancer->userData->name}}"
                                             data-description="For {{$hours}}"

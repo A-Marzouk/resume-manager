@@ -2,14 +2,6 @@
 
 @section('content')
 
-    <div style="padding-top: 20px;">
-        @if(session()->has('successMessage'))
-            <div class="alert alert-success" id="successMessage">
-                {{ session()->get('successMessage') }}
-            </div>
-        @endif
-    </div>
-
     <div class="container">
         <div class="customFormHeader">
             Payments
@@ -30,10 +22,10 @@
                 <textarea class="form-control" rows="3" id="description" name="description" required></textarea>
             </div> <!-- description -->
 
-            <input type="hidden" value="Freelancer (Custom payment)" name="freelancerName">
+            <input type="hidden" value="custom_payment" name="freelancerName">
             <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="pk_test_8Pd2lN3so4z5vBOP98MgNcms"
+                    data-key="pk_live_JaqaQq8e8cJYTXSEk9UZoy8k"
                     data-amount=""
                     data-name="123 Workforce"
                     data-description="Custom payment"

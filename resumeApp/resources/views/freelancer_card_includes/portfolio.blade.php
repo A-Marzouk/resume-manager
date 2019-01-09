@@ -1,101 +1,123 @@
 {{-- Portfolio --}}
 <div class="portfolioRow" id="tapsArea{{$freelancer->id}}{{$value['id']}}">
     <div class="row" id="portfolioContent{{$freelancer->id}}{{$value['id']}}">
+    @if($freelancer->profession == 'businessSupport')
+            <? $i=1;?>
+            @foreach($freelancer->recordings as $record)
+                <div class="col-md-12 aboutSubText">
+                    <div class="title work">
+                        <span class="circle"></span>
+                        {{$record->title}}
+                    </div>
+                    <div class="desc">{{$record->transcription}}</div>
+                    <div class="row" style="padding-top: 30px;">
+                        <div class="offset-md-4 col-md-4">
+                            <audio controls style="padding-bottom: 10px;" preload="auto">
+                                <source src="{{$record->src}}">
+                                Your browser does not support the audio element.
+                            </audio><!--/.audio-container-->
+                        </div>
+                    </div>
+                    @if($i < count($freelancer->recordings))
+                        <hr>
+                    @endif
+                </div>
+                <? $i++;?>
+            @endforeach
+    @else
         <?
-            $workExamples_all =\App\Project::where([
-                'user_id'=>$freelancer->id
-                ])->orderBy('order','ASC')->get();
+        $workExamples_all =\App\Project::where([
+            'user_id'=>$freelancer->id
+        ])->orderBy('order','ASC')->get();
 
-            $workExamples = [] ;
-            foreach ($workExamples_all as $work){
-                if( $work->isActive == true ||  $work->isActive == 'true'){
-                    $workExamples[] = $work;
-                }
+        $workExamples = [] ;
+        foreach ($workExamples_all as $work){
+            if( $work->isActive == true ||  $work->isActive == 'true'){
+                $workExamples[] = $work;
             }
-            $i = 0;
-            $numberOfSlides = ceil(count($workExamples) / 2);
-            $maxNumberOfWorks = 12;
-            $slides=[];
+        }
+        $i = 0;
+        $numberOfSlides = ceil(count($workExamples) / 2);
+        $maxNumberOfWorks = 12;
+        $slides=[];
 
-           for ($j=0; $j <= $numberOfSlides+1; $j+=2){
-               // each slide has 2 works
-               if(isset($workExamples[$j])){
-                   $slides[$j][] = $workExamples[$j];
-               }
-               if(isset($workExamples[$j+1])){
-                   $slides[$j][] = $workExamples[$j+1];
-               }
-           }
+        for ($j=0; $j <= $numberOfSlides+1; $j+=2){
+            // each slide has 2 works
+            if(isset($workExamples[$j])){
+                $slides[$j][] = $workExamples[$j];
+            }
+            if(isset($workExamples[$j+1])){
+                $slides[$j][] = $workExamples[$j+1];
+            }
+        }
         ?>
 
         {{-- modals --}}
         @if($workExamples)
             <? foreach ($workExamples as $workExample):?>
-                    <div class="modal fade" id="works{{$workExample->id}}Modal" tabindex="-1"
+            <div class="modal fade" id="works{{$workExample->id}}Modal" tabindex="-1"
 
-                     role="dialog"
-                     aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document" style="">
-                        <div class="modal-content modal-mobile-resume" data-dismiss="modal"
-                             aria-label="Close">
-                            <div class="modal-body" style="padding: 0;">
-                                <div class="row">
-                                    <div class="col-md-9" style="padding: 0;">
-                                        <?
-                                        $photoSrc = $workExample->mainImage ;
-                                        if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
-                                            $photoSrc = '/' . $photoSrc;
-                                        }
-                                        ?>
-                                        <img src="{{$photoSrc}}" alt=""
-                                             width="100%" height="auto">
-                                        <?
-                                        // more images
-                                        $moreImagesArr = explode(',', $workExample->images);
-                                        foreach($moreImagesArr as $image){
-                                        if(!empty(trim($image))){
-                                        ?>
-                                        @if(strpos($image, 'embed') !== false)
-                                            <iframe height="400" width="100%" src="{{$image}}?bgcolor=%23191919" allowfullscreen autoplay style="margin: 0px auto; display: block;"></iframe>
-                                        @else
-                                            <img src="{{$image}}" alt="" width="100%" height="auto">
-                                        @endif
+                 role="dialog"
+                 aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document" style="">
+                    <div class="modal-content modal-mobile-resume" data-dismiss="modal"
+                         aria-label="Close">
+                        <div class="modal-body" style="padding: 0;">
+                            <div class="row">
+                                <div class="col-md-9" style="padding: 0;">
+                                    <?
+                                    $photoSrc = $workExample->mainImage ;
+                                    if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
+                                        $photoSrc = '/' . $photoSrc;
+                                    }
+                                    ?>
+                                    <img src="{{$photoSrc}}" alt=""
+                                         width="100%" height="auto">
+                                    <?
+                                    // more images
+                                    $moreImagesArr = explode(',', $workExample->images);
+                                    foreach($moreImagesArr as $image){
+                                    if(!empty(trim($image))){
+                                    ?>
+                                    @if(strpos($image, 'embed') !== false)
+                                        <iframe height="400" width="100%" src="{{$image}}?bgcolor=%23191919" allowfullscreen autoplay style="margin: 0px auto; display: block;"></iframe>
+                                    @else
+                                        <img src="{{$image}}" alt="" width="100%" height="auto">
+                                    @endif
 
-                                        <?}
-                                        }?>
+                                    <?}
+                                    }?>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group" style="padding-top: 25px;">
+                                        <label class="panelFormLabel"> Description
+                                            <hr>
+                                        </label><br/>
+                                        <div class="panelFormLabel">
+                                            {{$workExample->projectDesc}}
+                                        </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group" style="padding-top: 25px;">
-                                            <label class="panelFormLabel"> Description
-                                                <hr>
-                                            </label><br/>
-                                            <div class="panelFormLabel">
-                                                {{$workExample->projectDesc}}
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="panelFormLabel"> Link
-                                                <hr>
-                                            </label><br/>
-                                            @if(!empty($workExample->link))
-                                                @if(!strpos($workExample->link, 'www.behance.net'))
-                                                    {{-- does not containe behance link --}}
-                                                    <a href="{{$workExample->link}}" onclick="javascript:window.location='{{$workExample->link}}'">
-                                                        Project Link
-                                                    </a>
-                                                @endif
+                                    <div class="form-group">
+                                        <label class="panelFormLabel"> Link
+                                            <hr>
+                                        </label><br/>
+                                        @if(!empty($workExample->link))
+                                            @if(!strpos($workExample->link, 'www.behance.net'))
+                                                {{-- does not containe behance link --}}
+                                                <a href="{{$workExample->link}}" onclick="javascript:window.location='{{$workExample->link}}'">
+                                                    Project Link
+                                                </a>
                                             @endif
-                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             <? endforeach; ?>
         @endif
-
-
         <div class="showOnlyOnmd">
             {{-- works section carousel --}}
             <div id="portfolioCarousel{{$freelancer->id}}{{$value['id']}}" class="carousel slide d-md-block" data-ride="carousel"
@@ -112,9 +134,9 @@
                                                 <div class="workImg">
                                                     <a href="javascript:void(0)"
                                                        @if(!isset($portfolioModal))
-                                                            data-toggle="modal" style="outline: none;"
-                                                            data-target="#works{{$workExample->id}}Modal"
-                                                       @endif
+                                                       data-toggle="modal" style="outline: none;"
+                                                       data-target="#works{{$workExample->id}}Modal"
+                                                            @endif
                                                     >
                                                         <?
                                                         $photoSrc = $workExample->mainImage ;
@@ -171,65 +193,65 @@
                 </div>
             </div>
             {{--end of carousel controller--}}
+            </div>
+
         </div>
-
-    </div>
-
-    <div id="portfolioContent{{$freelancer->id}}{{$value['id']}}_mob">
-        <div class="showOnlyOnsm">
-            {{-- works section carousel --}}
-            <div id="portfolioCarousel{{$freelancer->id}}{{$value['id']}}_mob" class="carousel slide" data-ride="carousel"
-                 data-interval="false">
-                <div class="slickSlide_portfolio" style="background: #fdfdfd;">
-                    @if(!empty($workExamples))
-                        <? $i=1;?>
-                        @foreach($workExamples as $workExample)
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="workCard" style="margin-left: 0">
-                                            <div class="workImg">
-                                                <a href="javascript:void(0)"
-                                                   @if(!isset($portfolioModal))
-                                                       data-toggle="modal" style="outline: none;"
-                                                       data-target="#works{{$workExample->id}}Modal"
-                                                   @endif
-                                                >
-                                                    <?
-                                                        $photoSrc = $workExample->mainImage ;
-                                                        if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
-                                                            $photoSrc = '/' . $photoSrc;
-                                                        }
-                                                    ?>
-                                                    <img src="{{$photoSrc}}" alt="work img"
-                                                         width="260" >
-                                                </a>
+        <div id="portfolioContent{{$freelancer->id}}{{$value['id']}}_mob">
+    <div class="showOnlyOnsm">
+        {{-- works section carousel --}}
+        <div id="portfolioCarousel{{$freelancer->id}}{{$value['id']}}_mob" class="carousel slide" data-ride="carousel"
+             data-interval="false">
+            <div class="slickSlide_portfolio" style="background: #fdfdfd;">
+                @if(!empty($workExamples))
+                    <? $i=1;?>
+                    @foreach($workExamples as $workExample)
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="workCard" style="margin-left: 0">
+                                    <div class="workImg">
+                                        <a href="javascript:void(0)"
+                                           @if(!isset($portfolioModal))
+                                           data-toggle="modal" style="outline: none;"
+                                           data-target="#works{{$workExample->id}}Modal"
+                                                @endif
+                                        >
+                                            <?
+                                            $photoSrc = $workExample->mainImage ;
+                                            if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
+                                                $photoSrc = '/' . $photoSrc;
+                                            }
+                                            ?>
+                                            <img src="{{$photoSrc}}" alt="work img"
+                                                 width="260" >
+                                        </a>
+                                    </div>
+                                    <div class="workTitle">
+                                        <div class="row">
+                                            <div class="col-md-10 col-9">
+                                                {{$workExample->projectName}}
                                             </div>
-                                            <div class="workTitle">
-                                                <div class="row">
-                                                    <div class="col-md-10 col-9">
-                                                        {{$workExample->projectName}}
-                                                    </div>
-                                                    <a class="col-md-1 col-1" href="javascript:void(0)"
-                                                       data-toggle="modal"
-                                                       data-target="#works{{$workExample->id}}Modal"
-                                                       style="outline: none; margin-left: 16px;">
-                                                        <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
-                                                             alt="view work">
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            <a class="col-md-1 col-1" href="javascript:void(0)"
+                                               data-toggle="modal"
+                                               data-target="#works{{$workExample->id}}Modal"
+                                               style="outline: none; margin-left: 16px;">
+                                                <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                                     alt="view work">
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
-                            <? $i++ ;?>
-                        @endforeach
-                    @endif
-                </div>
+                            </div>
+                        </div>
+                        <? $i++ ;?>
+                    @endforeach
+                @endif
             </div>
-            {{-- end of works section carousel --}}
-
         </div>
+        {{-- end of works section carousel --}}
+
     </div>
+</div>
+    @endif
 </div>
 
 {{-- end of portfolio --}}

@@ -43,6 +43,11 @@ Vue.component('educations-list', require('./components/education/educationListCo
 Vue.component('education-history', require('./components/education/educationHistoryComponent.vue'));
 Vue.component('add-education-modal', require('./components/education/addEducationComponent.vue'));
 
+// recordings
+Vue.component('records-list', require('./components/recordings/recordsListComponent.vue'));
+Vue.component('record-component', require('./components/recordings/recordComponent.vue'));
+Vue.component('add-record-modal', require('./components/recordings/addRecordComponent.vue'));
+
 // jobs
 Vue.component('jobs-list', require('./components/jobs/jobsList.vue'));
 Vue.component('job-post', require('./components/jobs/jobPost.vue'));
@@ -114,6 +119,12 @@ if ($("#freelancer_works").length !== 0){
 if ($("#freelancer_educations").length !== 0){
     let freelancer_educations = new Vue({
         el:'#freelancer_educations'
+    });
+}
+
+if ($("#freelancer_records").length !== 0){
+    let freelancer_records = new Vue({
+        el:'#freelancer_records'
     });
 }
 

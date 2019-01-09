@@ -149,6 +149,11 @@ Route::get('/freelancer/educationshistory','EducationHistoryController@getEducat
 Route::post('/freelancer/addeducation/','EducationHistoryController@addEducation')->name('add.education');
 Route::post('/freelancer/deleteeducation/','EducationHistoryController@deleteEducation')->name('delete.education');
 
+// recordings
+Route::get('/freelancer/records','RecordingsController@getRecords')->name('get.records');
+Route::post('/freelancer/addrecord/','RecordingsController@addRecord')->name('add.record');
+Route::post('/freelancer/deleterecord/','RecordingsController@deleteRecord')->name('delete.record');
+
 
 // skills
 Route::get('/freelancer/skills','SkillsController@getskills')->name('get.skills');

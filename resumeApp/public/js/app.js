@@ -56807,7 +56807,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'transcription': '',
                 'src': ''
             };
-            $('#record' + this.toBeEditedRecord.id)[0].load();
         }
     },
 
@@ -57246,7 +57245,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             formData.append('id', this.toBeEditedRecord.id);
             axios.post('/freelancer/addrecord', formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 onUploadProgress: function (progressEvent) {
                     this.uploadPercentage = parseInt(Math.round(progressEvent.loaded * 100 / progressEvent.total));

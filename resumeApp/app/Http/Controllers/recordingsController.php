@@ -22,9 +22,6 @@ class recordingsController extends Controller
         return $currentUser->recordings;
     }
 
-    public function saveRecord(Request $request){
-
-    }
     public function addRecord(Request $request){
         $currentUser = auth()->user();
         $request->validate([

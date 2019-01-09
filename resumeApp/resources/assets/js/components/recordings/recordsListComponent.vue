@@ -127,7 +127,6 @@
                         'transcription':'',
                         'src' :'',
                 };
-                $('#record'+this.toBeEditedRecord.id)[0].load();
             }
         },
 

@@ -40,7 +40,7 @@ class AdminsController extends Controller
         // log him out and log in the chosen user in
         Auth::loginUsingId($user_id);
         $fromAdmin ='adminView';
-        return redirect(route('freelancer.dashboard',$fromAdmin));
+        return redirect(route('show.edit_form',$fromAdmin));
     }
 
     public function inviteToJob(Request $request){

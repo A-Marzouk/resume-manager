@@ -186,11 +186,20 @@
 
     <div id="nav-taps-resume-card">
         <ul class="nav nav-tabs navRow" role="tablist">
-            <li class="offset-md-3 col-md-2 col-4 nav-item NoDecor">
-                <a class="nav-link navTab text-center active" href="#portfolio{{$freelancer->id}}" role="tab" data-toggle="tab">
-                    Portfolio
-                </a>
-            </li>
+            @if($freelancer->profession == 'businessSupport')
+                <li class="offset-md-3 col-md-2 col-4 nav-item NoDecor">
+                    <a class="nav-link navTab text-center active" href="#recordings{{$freelancer->id}}" role="tab" data-toggle="tab">
+                        Recordings
+                    </a>
+                </li>
+            @else
+                <li class="offset-md-3 col-md-2 col-4 nav-item NoDecor">
+                    <a class="nav-link navTab text-center active" href="#portfolio{{$freelancer->id}}" role="tab" data-toggle="tab">
+                        Portfolio
+                    </a>
+                </li>
+            @endif
+
             <li class="nav-item col-md-2 col-4 NoDecor">
                 <a class="nav-link navTab text-center" href="#work{{$freelancer->id}}" role="tab" data-toggle="tab">
                     Work
@@ -204,15 +213,29 @@
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active firstItem" id="portfolio{{$freelancer->id}}">
-                <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
-                    <div class="col-md-12">
-                        <div id="freelancer_works">
-                            <projects-list></projects-list>
+            @if($freelancer->profession == 'businessSupport')
+                <div role="tabpanel" class="tab-pane active firstItem" id="recordings{{$freelancer->id}}">
+                    <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
+                        <div class="col-md-12">
+                            <div id="freelancer_works">
+                                <records-list></records-list>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @else
+                <div role="tabpanel" class="tab-pane active firstItem" id="portfolio{{$freelancer->id}}">
+                    <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
+                        <div class="col-md-12">
+                            <div id="freelancer_works">
+                                <projects-list></projects-list>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            @endif
+
             <div role="tabpanel" class="tab-pane fade" id="work{{$freelancer->id}}">
                 <div style="padding-top: 17px; padding-bottom: 17px;">
                     <div class="col-md-12">

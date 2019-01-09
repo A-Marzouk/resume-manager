@@ -3,7 +3,11 @@
         <div class="modal fade" id="addRecordModal" tabindex="-1" role="dialog" aria-labelledby="addRecordModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="text-right" style="padding: 15px 10px 0 0;">
+                    <div class="modal-header">
+                        <div class="pageSubHeading text-left">
+                            Add a new record
+                        </div>
+
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeRecordModal">
                             <span aria-hidden="true">&times;</span>
                         </button>

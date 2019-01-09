@@ -19,8 +19,8 @@
                         Edit
                     </a>
                 </span>
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">{{record.title}}</b><br/>
-                <div  style="color: #30323D;font-family: Roboto;">{{record.transcription}}</div>
+                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">Title : {{record.title}}</b><br/>
+                <div  style="color: #30323D;font-family: Roboto;">Transcription : {{record.transcription}}</div>
                 <div  style="color: #30323D;font-family: Roboto;">{{record.src}}</div>
             </record-component>
         </transition-group>

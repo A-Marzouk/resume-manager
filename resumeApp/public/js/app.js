@@ -63885,14 +63885,14 @@ var render = function() {
                     "font-weight": "bold"
                   }
                 },
-                [_vm._v(_vm._s(record.title))]
+                [_vm._v("Title : " + _vm._s(record.title))]
               ),
               _c("br"),
               _vm._v(" "),
               _c(
                 "div",
                 { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
-                [_vm._v(_vm._s(record.transcription))]
+                [_vm._v("Transcription : " + _vm._s(record.transcription))]
               ),
               _vm._v(" "),
               _c(
@@ -64141,6 +64141,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedRecord'],
@@ -64316,25 +64320,27 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "text-right", staticStyle: { padding: "15px 10px 0 0" } },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "close",
-            attrs: {
-              type: "button",
-              "data-dismiss": "modal",
-              "aria-label": "Close",
-              id: "closeRecordModal"
-            }
-          },
-          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("div", { staticClass: "pageSubHeading text-left" }, [
+        _vm._v(
+          "\n                        Add a new record\n                    "
         )
-      ]
-    )
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close",
+            id: "closeRecordModal"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
   },
   function() {
     var _vm = this

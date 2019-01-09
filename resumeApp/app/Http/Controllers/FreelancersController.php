@@ -33,6 +33,11 @@ class FreelancersController extends Controller
     }
 
     public function showEditForm(){
+        if(Auth::user()->admin == 1){
+            Auth::user()->token = str_random(16);
+            Auth::user()->save();
+            return redirect(route('admin.dashboard'));
+        }
         $data = $this->getFreelancerData();
         return view('freelancer.edit_form',compact('data'));
     }

@@ -6,6 +6,7 @@
         ?>
 
         <div class="container">
+            <? $profit = 5 ;?>
             @include('freelancer_card')
         </div>
 

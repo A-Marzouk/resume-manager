@@ -10,6 +10,8 @@
                 if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
                     $photoSrc = '/' . $photoSrc;
                 }
+            }else{
+                $photoSrc = '/resumeApp/resources/views/customTheme/images/user.png';
             }
             ?>
             <img src="{{$photoSrc}}" alt="freelancer" class="freelancerImg"
@@ -75,7 +77,14 @@
             <div class="row hireRow">
                 <div  class="col-md-4 text-center" style="font-size: 15px; color: white;" >
                     <span style="font-weight: bold;">
-                        ${{intval($freelancer->userData->salary) +5}}
+                        <?
+                            if(isset($profit)){
+                                $salary = intval($freelancer->userData->salary) + $profit ;
+                            }else{
+                                $salary = intval($freelancer->userData->salary);
+                            }
+                        ?>
+                        ${{$salary}}
                     </span>
                     <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Hourly rate</div>
                 </div>

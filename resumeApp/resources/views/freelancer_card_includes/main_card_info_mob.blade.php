@@ -7,6 +7,8 @@
                 if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
                     $photoSrc = '/' . $photoSrc;
                 }
+            }else{
+                $photoSrc = '/resumeApp/resources/views/customTheme/images/user.png';
             }
             ?>
             <img src="{{$photoSrc}}" alt="freelancer" class="freelancerImg"
@@ -24,7 +26,7 @@
             <div  class="text-left" style="font-size: 15px; color: white; padding-top: 5px;" >
                 <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Hourly rate :
                     <span style="font-weight: bold;">
-                        ${{intval($freelancer->userData->salary) +5}}
+                        ${{intval($freelancer->userData->salary)}}
                     </span>
                 </div>
             </div>

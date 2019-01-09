@@ -57769,7 +57769,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n#addSKillBtn{\n    border:1px lightgray solid;\n    margin-bottom: 8px;\n    margin-left: -30px;\n}\n@media only screen and (max-width: 600px) {\n#addSKillBtn{\n        margin-left: 0px;\n}\n}\n", ""]);
 
 // exports
 
@@ -57780,6 +57780,9 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -58071,7 +58074,7 @@ var render = function() {
                 _c(
                   "div",
                   {
-                    staticClass: "col-md-9",
+                    staticClass: "col-md-8",
                     staticStyle: { "padding-top": "5px" }
                   },
                   [
@@ -58225,6 +58228,26 @@ var render = function() {
                         })
                       ])
                     ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-1" }, [
+                  _c(
+                    "a",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.currSkill.skill_title.length > 0,
+                          expression: "currSkill.skill_title.length > 0"
+                        }
+                      ],
+                      staticClass: "btn btn-outline-dark",
+                      attrs: { href: "javascript:void(0)", id: "addSKillBtn" },
+                      on: { click: _vm.addSkill }
+                    },
+                    [_vm._v("Add")]
                   )
                 ])
               ]

@@ -46,17 +46,17 @@ $redirectURL = 'https://123workforce.com/freelancer/linkedin';
     <div style="margin-left: 8.07%" class="marginMobile-0">
         <div class="freelancerCard" style="margin-bottom: -3px;">
             <div class="row actionRow">
-                <div class="importBtn NoDecor">
-                    <span>Import : </span>&nbsp;
-                    <a href="javascript:void(0)" id="importBehanceData" data-toggle="modal" data-target="#behanceDataModal">Behance </a> &nbsp; | &nbsp;
-                    <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id={{$clientID}}&redirect_uri={{$redirectURL}}&state=987654321&scope=r_basicprofile"> linkedIn</a>
-                </div>
+                {{--<div class="importBtn NoDecor">--}}
+                    {{--<span>Import : </span>&nbsp;--}}
+                    {{--<a href="javascript:void(0)" id="importBehanceData" data-toggle="modal" data-target="#behanceDataModal">Behance </a> &nbsp; | &nbsp;--}}
+                    {{--<a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id={{$clientID}}&redirect_uri={{$redirectURL}}&state=987654321&scope=r_basicprofile"> linkedIn</a>--}}
+                {{--</div>--}}
                 <div class="importBtn importBtn_upload NoDecor">
                     <a href="javascript:void(0)">
-                        Upload References / Testimonials
+                        References / Testimonials
                     </a>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-5">
 
                 </div>
                 <div class="progressBtn">

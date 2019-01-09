@@ -27,7 +27,7 @@
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active firstItem" id="languagesTab">
                     <div class="row" style="padding-top: 17px;background: #fdfdfd;">
-                        <div class="col-md-9" style="padding-top: 5px;">
+                        <div class="col-md-8" style="padding-top: 5px;">
                              <span class="jobTitle" v-show="skills.length < 1">
                                    Your skills section looks empty. Please add your skills.
                              </span>
@@ -58,6 +58,9 @@
                                     >
                                 </div>
                             </form>
+                        </div>
+                        <div class="col-md-1">
+                            <a href="javascript:void(0)" v-show="currSkill.skill_title.length > 0" id="addSKillBtn" @click="addSkill" class="btn btn-outline-dark">Add</a>
                         </div>
                     </div>
                 </div>
@@ -157,6 +160,17 @@
     .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
         opacity: 0;
         transform: translateY(30px);
+    }
+
+    #addSKillBtn{
+        border:1px lightgray solid;
+        margin-bottom: 8px;
+        margin-left: -30px;
+    }
+    @media only screen and (max-width: 600px) {
+        #addSKillBtn{
+            margin-left: 0px;
+        }
     }
 </style>
 

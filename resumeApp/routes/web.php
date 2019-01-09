@@ -61,7 +61,9 @@ Route::prefix('client')->group(function (){
 Route::prefix('freelancer')->group(function (){
     Route::get('/login','Auth\LoginController@showLoginForm')->name('freelancer.login');
     Route::get('/logout','Auth\LoginController@logout')->name('freelancer.logout');
-    Route::get('/','FreelancersController@form')->name('freelancer.dashboard');
+    Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard');
+    Route::get('/','FreelancersController@showEditForm')->name('show.edit_form');
+
     Route::post('/store','UserDataController@store')->name('freelancer.data.store');
     Route::get('/store',function(){
         return redirect()->back();
@@ -77,7 +79,6 @@ Route::prefix('freelancer')->group(function (){
         return redirect()->back();
     });
     Route::get('/delete/{id}','AdminsController@deleteFreelancer')->name('freelancer.delete');
-    Route::get('/edit_form/','FreelancersController@showEditForm')->name('show.edit_form');
     Route::get('/old_form/','FreelancersController@showOldForm')->name('show.old_form');
     Route::get('/jobs/','FreelancersController@showFreelancerJobs')->name('show.freelancer.jobs');
     Route::post('/jobs/apply','FreelancersController@applyToJob')->name('freelancer.apply.job');

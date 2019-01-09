@@ -5,7 +5,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <div class="pageSubHeading text-left">
-                            Add a new record
+                            Add\Edit a record
                         </div>
 
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeRecordModal">
@@ -23,7 +23,23 @@
                                     <label for="transcription" class="panelFormLabel">Transcription :</label>
                                     <textarea class="form-control" rows="3" id="transcription" name="transcription" v-model="toBeEditedRecord.transcription">
                                     </textarea>
-                                </div>
+                              </div>
+
+                              <div class="form-group" v-show="toBeEditedRecord.src">
+                                  Current uploaded Audio : {{toBeEditedRecord.src.replace('/resumeApp/uploads/','')}}.
+                                  <br/><br/>
+                              </div>
+
+                              <div v-show="!toBeEditedRecord.src">
+                                  <div class="form-group col-md-12">
+                                      <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                          <progress style="width: 300px;height:5px;" max="100" :value.prop="uploadPercentage"></progress>
+                                      </div>
+                                  </div>
+                              </div>
                           </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Save</button>
@@ -41,25 +57,49 @@
         props:['toBeEditedRecord'],
         data(){
             return{
+                file: '',
+                uploadPercentage: 0
             }
         },
         methods:{
+            handleFileUpload(){
+                this.file = this.$refs.file.files[0];
+            },
             submitForm(){
-               // post data :
-                axios.post('/freelancer/addrecord',this.toBeEditedRecord).then( (response) => {
+                let formData = new FormData();
+                formData.append('audioFile', this.file);
+                formData.append('title', this.toBeEditedRecord.title);
+                formData.append('transcription', this.toBeEditedRecord.transcription);
+                formData.append('id', this.toBeEditedRecord.id);
+                axios.post( '/freelancer/addrecord',
+                    formData,
+                    {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        },
+                        onUploadProgress: function( progressEvent ) {
+                            this.uploadPercentage = parseInt( Math.round( ( progressEvent.loaded * 100 ) / progressEvent.total ) );
+                        }.bind(this)
+                    }
+                ).then((response)=>{
                     if(this.toBeEditedRecord.id === ""){
                         this.$emit('recordAdded',this.toBeEditedRecord);
                     }
+                    this.toBeEditedRecord.src = response.data.recordSrc;
                     // save the record id :
                     this.toBeEditedRecord.id = response.data.id;
-                    // changes saved :
-                    $('#changesSaved').fadeIn('slow');
-                    setTimeout(function () {
-                        $('#changesSaved').fadeOut();
-                    },2000);
+                    this.changesSaved();
+                    $('#closeRecordModal').click();
+                    this.uploadPercentage= 0;
                 });
-                $('#closeRecordModal').click();
             },
+            changesSaved(){
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                },2000);
+            }
         },
         mounted(){
         }

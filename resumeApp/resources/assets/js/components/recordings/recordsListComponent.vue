@@ -21,7 +21,15 @@
                 </span>
                 <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">Title : {{record.title}}</b><br/>
                 <div  style="color: #30323D;font-family: Roboto;">Transcription : {{record.transcription}}</div>
-                <div  style="color: #30323D;font-family: Roboto;">{{record.src}}</div>
+                <div  style="color: #30323D;font-family: Roboto;"> Audio : {{record.src.replace('/resumeApp/uploads/','')}}</div>
+                <div class="row" style="padding-top: 30px;">
+                    <div class="col-12">
+                        <audio :id="'record'+record.id" controls style="padding-bottom: 10px;" preload="auto">
+                            <source :src="record.src">
+                            Your browser does not support the audio element.
+                        </audio><!--/.audio-container-->
+                    </div>
+                </div>
             </record-component>
         </transition-group>
 
@@ -56,7 +64,6 @@
                     (response) => {
                         let currRecords =  response.data;
                         $.each(currRecords, function(i){
-                            
                         });
                         this.records = currRecords;
                         this.checkMaxRecords();
@@ -120,6 +127,7 @@
                         'transcription':'',
                         'src' :'',
                 };
+                $('#record'+this.toBeEditedRecord.id)[0].load();
             }
         },
 

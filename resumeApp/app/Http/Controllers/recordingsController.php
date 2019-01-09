@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 
+use App\classes\Upload;
 use App\EducationHistory;
 use App\Recording;
 use Illuminate\Http\Request;
@@ -21,6 +22,9 @@ class recordingsController extends Controller
         return $currentUser->recordings;
     }
 
+    public function saveRecord(Request $request){
+
+    }
     public function addRecord(Request $request){
         $currentUser = auth()->user();
         $request->validate([
@@ -40,17 +44,20 @@ class recordingsController extends Controller
         if(isset($request->title)){
             $record->title = $request->title;
         }
-        if(isset($request->title)) {
+        if(isset($request->transcription)) {
             $record->transcription = $request->transcription;
         }
-        if(isset($request->title)) {
-            $record->src = $request->src;
+        if($request->audioFile) {
+            $pathToAudio = Upload::audio($request->audioFile, 'audioFile', '_159'.$currentUser->id.'Record_');
+            if ($pathToAudio) {
+                $record->src = '/'.$pathToAudio;
+            }
         }
 
         $record->save();
 
 
-        return ['id'=>$record->id];
+        return ['id'=>$record->id , 'recordSrc'=> $record->src];
 
     }
 

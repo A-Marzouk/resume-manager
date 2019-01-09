@@ -14,7 +14,7 @@ use App\EducationHistory;
 use App\Recording;
 use Illuminate\Http\Request;
 
-class recordingsController extends Controller
+class RecordingsController extends Controller
 {
     public function getRecords(){
        // get current authenticated freelancer :

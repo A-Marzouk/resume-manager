@@ -10,10 +10,25 @@
                         {{$record->title}}
                     </div>
                     <div class="desc">{{$record->transcription}}</div>
+                    <?
+                        // getting the record source right:
+                        $source = $record->src;
+                        if (strpos($record->src, 'drive.google.com') !== false) {
+                            // it is link from google. get the ID
+                            $explodedData= explode("/", $record->src);
+                            foreach ($explodedData as $id){
+                                if(strlen($id) > 20 ){
+                                    $source = "https://drive.google.com/uc?export=download&id=".$id."&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
+
+                                }
+                            }
+                        }
+
+                    ?>
                     <div class="row" style="padding-top: 30px;">
                         <div class="offset-md-4 col-md-4">
                             <audio controls style="padding-bottom: 10px;" preload="auto">
-                                <source src="{{$record->src}}">
+                                <source src="{{$source}}">
                                 Your browser does not support the audio element.
                             </audio><!--/.audio-container-->
                         </div>

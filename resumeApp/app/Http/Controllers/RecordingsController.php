@@ -49,6 +49,8 @@ class RecordingsController extends Controller
             if ($pathToAudio) {
                 $record->src = '/'.$pathToAudio;
             }
+        }elseif($request->src){
+            $record->src = $request->src;
         }
 
         $record->save();
@@ -61,6 +63,10 @@ class RecordingsController extends Controller
     public function deleteRecord(Request $request){
         // delete education history
         $record = Recording::where('id',$request->recordID);
+        // delete the audio file
+        if (file_exists(substr($record->first()->src, 1))){
+            unlink(substr($record->first()->src, 1));
+        }
         $record->delete();
         return 'Record deleted';
     }

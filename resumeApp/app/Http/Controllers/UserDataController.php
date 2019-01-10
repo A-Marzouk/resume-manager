@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\classes\Upload;
 use App\Mail\welcome;
 use App\Project;
+use App\Recording;
 use App\User;
 use App\UserData;
 use Behance\Client;
@@ -347,8 +348,9 @@ class UserDataController extends Controller
 
     public function saveAudio(Request $request){
         $currFreelancer = auth()->user();
+        $record = new Recording;
         if(isset($_FILES['file']) and !$_FILES['file']['error']){
-            $fname = "Record".$currFreelancer->id.'.ogg';
+            $fname = "Record".$currFreelancer->id.'_'.time().'.ogg';
             $target_file = "resumeApp/uploads/audios/" . $fname ;
 
             if (file_exists($target_file)) {
@@ -358,10 +360,14 @@ class UserDataController extends Controller
             move_uploaded_file($_FILES['file']['tmp_name'], $target_file);
         }
 
-        // save audio to the freelancer :
-        $userData = UserData::where('user_id',$currFreelancer->id)->first();
-        $userData->audioFile = "/" . $target_file ;
-        $userData->save();
+
+        $record->user_id = $currFreelancer->id;
+        $record->title = $request->get('recordTitle');
+        $record->transcription = $request->get('recordTranscription');
+        $record->src = "/" . $target_file;
+        $record->save();
+
+        return ['recordID' => $record->id ];
     }
 
     public function saveAudioForChat(Request $request){

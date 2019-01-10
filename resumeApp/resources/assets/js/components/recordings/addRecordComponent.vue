@@ -65,7 +65,6 @@
                                               <br>
                                               <a href="javascript:void(0)" id="playAudio" class="d-none">Play</a><br/>
                                               <a href="javascript:void(0)" id="downloadAudio" class="d-none">Download</a><br/>
-                                              <a href="javascript:void(0)" id="saveAudio" class="d-none">Save</a>
                                           </div>
                                       </div>
                                   </div>
@@ -78,7 +77,8 @@
                           </div>
                             <div class="modal-footer">
                                 <a href="javascript:void(0)" class="btn btn-primary" @click="cleareUploadMethod" v-show="uploadMethod.length > 0"> Back </a>
-                                <button type="submit" class="btn btn-primary" v-bind:disabled="toBeEditedRecord.src.length < 1 && !fileChosen">Save</button>
+                                <button type="submit" class="btn btn-primary"  v-show="uploadMethod != 'record'" v-bind:disabled="toBeEditedRecord.src.length < 1 && !fileChosen">Save</button>
+                                <a class="btn btn-primary d-none" id="saveAudio" style="color: white!important;" v-show="uploadMethod == 'record'">Save</a>
                             </div>
                         </form>
                     </div>

@@ -57717,6 +57717,14 @@ var render = function() {
                       _c(
                         "button",
                         {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.uploadMethod != "record",
+                              expression: "uploadMethod != 'record'"
+                            }
+                          ],
                           staticClass: "btn btn-primary",
                           attrs: {
                             type: "submit",
@@ -57724,6 +57732,24 @@ var render = function() {
                               _vm.toBeEditedRecord.src.length < 1 &&
                               !_vm.fileChosen
                           }
+                        },
+                        [_vm._v("Save")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.uploadMethod == "record",
+                              expression: "uploadMethod == 'record'"
+                            }
+                          ],
+                          staticClass: "btn btn-primary d-none",
+                          staticStyle: { color: "white!important" },
+                          attrs: { id: "saveAudio" }
                         },
                         [_vm._v("Save")]
                       )
@@ -57823,16 +57849,7 @@ var staticRenderFns = [
             },
             [_vm._v("Download")]
           ),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "d-none",
-              attrs: { href: "javascript:void(0)", id: "saveAudio" }
-            },
-            [_vm._v("Save")]
-          )
+          _c("br")
         ])
       ])
     ])

@@ -76,9 +76,11 @@
                               </div>
                           </div>
                             <div class="modal-footer">
-                                <a href="javascript:void(0)" class="btn btn-primary" @click="cleareUploadMethod" v-show="uploadMethod.length > 0"> Back </a>
+                                <a href="javascript:void(0)" class="btn btn-primary" @click="clearUploadMethod" v-show="uploadMethod.length > 0"> Back </a>
                                 <button type="submit" class="btn btn-primary"  v-show="uploadMethod != 'record'" v-bind:disabled="toBeEditedRecord.src.length < 1 && !fileChosen">Save</button>
-                                <a class="btn btn-primary d-none" id="saveAudio" style="color: white!important;" v-show="uploadMethod == 'record'">Save</a>
+                                <!-- submit button for records -->
+                                <a class="btn btn-primary d-none" id="saveAudio" @click="loadingBtn" style="color: white!important;" v-show="uploadMethod == 'record'">Save</a>
+                                <button disabled id="loadingBtn" class="d-none btn btn-primary">Uploading..</button>
                             </div>
                         </form>
                     </div>
@@ -145,9 +147,14 @@
             setUploadMethod(method){
                 this.uploadMethod = method;
             },
-            cleareUploadMethod(){
+            clearUploadMethod(){
                 this.uploadMethod = '' ;
+            },
+            loadingBtn(){
+                $('#loadingBtn').removeClass('d-none');
+                $('#saveAudio').addClass('d-none');
             }
+            
         },
         mounted(){
         }

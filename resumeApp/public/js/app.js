@@ -57280,6 +57280,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedRecord'],
@@ -57337,8 +57339,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         setUploadMethod: function setUploadMethod(method) {
             this.uploadMethod = method;
         },
-        cleareUploadMethod: function cleareUploadMethod() {
+        clearUploadMethod: function clearUploadMethod() {
             this.uploadMethod = '';
+        },
+        loadingBtn: function loadingBtn() {
+            $('#loadingBtn').removeClass('d-none');
+            $('#saveAudio').addClass('d-none');
         }
     },
     mounted: function mounted() {}
@@ -57709,7 +57715,7 @@ var render = function() {
                           ],
                           staticClass: "btn btn-primary",
                           attrs: { href: "javascript:void(0)" },
-                          on: { click: _vm.cleareUploadMethod }
+                          on: { click: _vm.clearUploadMethod }
                         },
                         [_vm._v(" Back ")]
                       ),
@@ -57749,9 +57755,19 @@ var render = function() {
                           ],
                           staticClass: "btn btn-primary d-none",
                           staticStyle: { color: "white!important" },
-                          attrs: { id: "saveAudio" }
+                          attrs: { id: "saveAudio" },
+                          on: { click: _vm.loadingBtn }
                         },
                         [_vm._v("Save")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "d-none btn btn-primary",
+                          attrs: { disabled: "", id: "loadingBtn" }
+                        },
+                        [_vm._v("Uploading..")]
                       )
                     ])
                   ]

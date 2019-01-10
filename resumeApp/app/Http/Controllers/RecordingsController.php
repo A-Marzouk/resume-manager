@@ -44,13 +44,15 @@ class RecordingsController extends Controller
         if(isset($request->transcription)) {
             $record->transcription = $request->transcription;
         }
-        if($request->audioFile) {
+
+        if($request->src){
+            $record->src = $request->src;
+        }
+        elseif($request->audioFile) {
             $pathToAudio = Upload::audio($request->audioFile, 'audioFile', '_159'.$currentUser->id.'Record_');
             if ($pathToAudio) {
                 $record->src = '/'.$pathToAudio;
             }
-        }elseif($request->src){
-            $record->src = $request->src;
         }
 
         $record->save();
@@ -64,6 +66,10 @@ class RecordingsController extends Controller
         // delete education history
         $record = Recording::where('id',$request->recordID);
         // delete the audio file
+        if(strpos($record->first()->src,'drive.google.com') !== false){
+            $record->delete();
+            return 'Record deleted';
+        }
         if (file_exists(substr($record->first()->src, 1))){
             unlink(substr($record->first()->src, 1));
         }

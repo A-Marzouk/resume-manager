@@ -54,6 +54,7 @@
                     'id':'',
                     'title' :'',
                     'transcription':'',
+                    'src':''
                 }
             }
         },
@@ -127,6 +128,9 @@
                         'transcription':'',
                         'src' :'',
                 };
+                this.uploadMethod = '';
+                this.uploadPercentage=0;
+                this.fileChosen=false;
             },
             getRecordSrc(source){
                 if(source.includes('drive.google.com')){

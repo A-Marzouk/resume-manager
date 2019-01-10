@@ -11,7 +11,7 @@ var status = $('#record_status'),
     },
     time;
 
-
+let currentRecordID = '';
 if ( navigator.mediaDevices === undefined ) {
     navigator.mediaDevices = {};
 }
@@ -156,6 +156,8 @@ if ( navigator.mediaDevices.getUserMedia ) {
         var data = new FormData();
         data.append('file', blob);
         data.append('type', blob.type);
+        data.append('recordTitle', $('#recordTitle').val());
+        data.append('recordTranscription', $('#recordTranscription').val());
 
         $.ajax({
             url :  "audio/save",
@@ -171,6 +173,7 @@ if ( navigator.mediaDevices.getUserMedia ) {
                     location.reload();
                 },1000);
 
+                currentRecordID = data.recordID ;
             },
             error: function() {
                 console.log("Error while saving audio");

@@ -16,14 +16,15 @@
                         <form action="/freelancer/addrecord/" method="post" @submit.prevent="submitForm">
                           <div class="row">
                               <div class="form-group col-md-6">
-                                  <label for="title" class="panelFormLabel">Title :</label>
-                                  <input type="text" class="form-control" id="title" name="title" v-model="toBeEditedRecord.title" required>
+                                  <label for="recordTitle" class="panelFormLabel">Title :</label>
+                                  <input type="text" class="form-control" id="recordTitle" name="title" v-model="toBeEditedRecord.title" required>
                               </div>
                               <div class="form-group col-md-12">
-                                    <label for="transcription" class="panelFormLabel">Transcription :</label>
-                                    <textarea class="form-control" rows="3" id="transcription" name="transcription" v-model="toBeEditedRecord.transcription">
+                                    <label for="recordTranscription" class="panelFormLabel">Transcription :</label>
+                                    <textarea class="form-control" rows="3" id="recordTranscription" name="transcription" v-model="toBeEditedRecord.transcription">
                                     </textarea>
                               </div>
+                              <hr>
 
                               <div class="form-group" v-show="toBeEditedRecord.src">
                                   Current uploaded Audio : {{toBeEditedRecord.src.replace('/resumeApp/uploads/','')}}.
@@ -43,7 +44,7 @@
 
                               <div id="uploadFile" v-show="uploadMethod == 'upload'">
                                   <div class="form-group col-md-12">
-                                      <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+                                      <input type="file" id="file" ref="file" v-on:change="handleFileUpload"/>
                                   </div>
                                   <div class="row">
                                       <div class="col-md-12" v-show="uploadPercentage > 0">
@@ -51,17 +52,33 @@
                                       </div>
                                   </div>
                               </div>
-                              <div id="recordAudio" v-show="uploadMethod == 'record'">
-                                  record audio
+                              <div id="recordAudio" class="form-group col-md-12" v-show="uploadMethod == 'record'">
+                                  <div class="recorder_wrapper">
+                                      <div class="recorder">
+                                          <div id="recordImg">
+                                              <img src="/resumeApp/resources/assets/images/Microphone_1.png" alt="mic" width="30px">
+                                          </div>
+                                          <p id="record_status"></p>
+                                          <div class="NoDecor">
+                                              <a href="javascript:void(0)" id="startRecord" class="btn btn-default">New record</a>
+                                              <a href="javascript:void(0)" id="stopAudio" style="padding-top: 20px;" class="d-none">Stop</a>
+                                              <br>
+                                              <a href="javascript:void(0)" id="playAudio" class="d-none">Play</a><br/>
+                                              <a href="javascript:void(0)" id="downloadAudio" class="d-none">Download</a><br/>
+                                              <a href="javascript:void(0)" id="saveAudio" class="d-none">Save</a>
+                                          </div>
+                                      </div>
+                                  </div>
                               </div>
 
-                              <div class="form-group col-md-12" id="urlToAudio" v-show="uploadMethod == 'url'">
+                              <div id="urlToAudio" class="form-group col-md-12" v-show="uploadMethod == 'url'">
                                   <label class="panelFormLabel">Link from Google drive :</label>
                                   <input type="text" class="form-control panelFormInput" v-model="toBeEditedRecord.src">
                               </div>
                           </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary" @click="this.disable()">Save</button>
+                                <a href="javascript:void(0)" class="btn btn-primary" @click="cleareUploadMethod" v-show="uploadMethod.length > 0"> Back </a>
+                                <button type="submit" class="btn btn-primary" v-bind:disabled="toBeEditedRecord.src.length < 1 && !fileChosen">Save</button>
                             </div>
                         </form>
                     </div>
@@ -77,6 +94,7 @@
         data(){
             return{
                 file: '',
+                fileChosen: false,
                 uploadPercentage: 0,
                 uploadMethod:''
             }
@@ -84,6 +102,7 @@
         methods:{
             handleFileUpload(){
                 this.file = this.$refs.file.files[0];
+                this.fileChosen = true;
             },
             submitForm(){
                 let formData = new FormData();
@@ -125,6 +144,9 @@
             },
             setUploadMethod(method){
                 this.uploadMethod = method;
+            },
+            cleareUploadMethod(){
+                this.uploadMethod = '' ;
             }
         },
         mounted(){

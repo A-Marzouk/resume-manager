@@ -56737,7 +56737,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             toBeEditedRecord: {
                 'id': '',
                 'title': '',
-                'transcription': ''
+                'transcription': '',
+                'src': ''
             }
         };
     },
@@ -56807,6 +56808,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'transcription': '',
                 'src': ''
             };
+            this.uploadMethod = '';
+            this.uploadPercentage = 0;
+            this.fileChosen = false;
         },
         getRecordSrc: function getRecordSrc(source) {
             if (source.includes('drive.google.com')) {
@@ -57258,12 +57262,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedRecord'],
     data: function data() {
         return {
             file: '',
+            fileChosen: false,
             uploadPercentage: 0,
             uploadMethod: ''
         };
@@ -57272,6 +57294,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         handleFileUpload: function handleFileUpload() {
             this.file = this.$refs.file.files[0];
+            this.fileChosen = true;
         },
         submitForm: function submitForm() {
             var _this = this;
@@ -57312,6 +57335,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         setUploadMethod: function setUploadMethod(method) {
             this.uploadMethod = method;
+        },
+        cleareUploadMethod: function cleareUploadMethod() {
+            this.uploadMethod = '';
         }
     },
     mounted: function mounted() {}
@@ -57365,7 +57391,7 @@ var render = function() {
                           "label",
                           {
                             staticClass: "panelFormLabel",
-                            attrs: { for: "title" }
+                            attrs: { for: "recordTitle" }
                           },
                           [_vm._v("Title :")]
                         ),
@@ -57382,7 +57408,7 @@ var render = function() {
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            id: "title",
+                            id: "recordTitle",
                             name: "title",
                             required: ""
                           },
@@ -57407,7 +57433,7 @@ var render = function() {
                           "label",
                           {
                             staticClass: "panelFormLabel",
-                            attrs: { for: "transcription" }
+                            attrs: { for: "recordTranscription" }
                           },
                           [_vm._v("Transcription :")]
                         ),
@@ -57424,7 +57450,7 @@ var render = function() {
                           staticClass: "form-control",
                           attrs: {
                             rows: "3",
-                            id: "transcription",
+                            id: "recordTranscription",
                             name: "transcription"
                           },
                           domProps: {
@@ -57444,6 +57470,8 @@ var render = function() {
                           }
                         })
                       ]),
+                      _vm._v(" "),
+                      _c("hr"),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -57568,11 +57596,7 @@ var render = function() {
                             _c("input", {
                               ref: "file",
                               attrs: { type: "file", id: "file" },
-                              on: {
-                                change: function($event) {
-                                  _vm.handleFileUpload()
-                                }
-                              }
+                              on: { change: _vm.handleFileUpload }
                             })
                           ]),
                           _vm._v(" "),
@@ -57616,13 +57640,10 @@ var render = function() {
                               expression: "uploadMethod == 'record'"
                             }
                           ],
+                          staticClass: "form-group col-md-12",
                           attrs: { id: "recordAudio" }
                         },
-                        [
-                          _vm._v(
-                            "\n                              record audio\n                          "
-                          )
-                        ]
+                        [_vm._m(1)]
                       ),
                       _vm._v(" "),
                       _c(
@@ -57675,14 +57696,32 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-footer" }, [
                       _c(
+                        "a",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.uploadMethod.length > 0,
+                              expression: "uploadMethod.length > 0"
+                            }
+                          ],
+                          staticClass: "btn btn-primary",
+                          attrs: { href: "javascript:void(0)" },
+                          on: { click: _vm.cleareUploadMethod }
+                        },
+                        [_vm._v(" Back ")]
+                      ),
+                      _vm._v(" "),
+                      _c(
                         "button",
                         {
                           staticClass: "btn btn-primary",
-                          attrs: { type: "submit" },
-                          on: {
-                            click: function($event) {
-                              this.disable()
-                            }
+                          attrs: {
+                            type: "submit",
+                            disabled:
+                              _vm.toBeEditedRecord.src.length < 1 &&
+                              !_vm.fileChosen
                           }
                         },
                         [_vm._v("Save")]
@@ -57723,6 +57762,78 @@ var staticRenderFns = [
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "recorder_wrapper" }, [
+      _c("div", { staticClass: "recorder" }, [
+        _c("div", { attrs: { id: "recordImg" } }, [
+          _c("img", {
+            attrs: {
+              src: "/resumeApp/resources/assets/images/Microphone_1.png",
+              alt: "mic",
+              width: "30px"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("p", { attrs: { id: "record_status" } }),
+        _vm._v(" "),
+        _c("div", { staticClass: "NoDecor" }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-default",
+              attrs: { href: "javascript:void(0)", id: "startRecord" }
+            },
+            [_vm._v("New record")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "d-none",
+              staticStyle: { "padding-top": "20px" },
+              attrs: { href: "javascript:void(0)", id: "stopAudio" }
+            },
+            [_vm._v("Stop")]
+          ),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "d-none",
+              attrs: { href: "javascript:void(0)", id: "playAudio" }
+            },
+            [_vm._v("Play")]
+          ),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "d-none",
+              attrs: { href: "javascript:void(0)", id: "downloadAudio" }
+            },
+            [_vm._v("Download")]
+          ),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "d-none",
+              attrs: { href: "javascript:void(0)", id: "saveAudio" }
+            },
+            [_vm._v("Save")]
+          )
+        ])
+      ])
     ])
   }
 ]
@@ -64485,6 +64596,7 @@ var status = $('#record_status'),
 },
     time;
 
+var currentRecordID = '';
 if (navigator.mediaDevices === undefined) {
     navigator.mediaDevices = {};
 }
@@ -64582,6 +64694,8 @@ if (navigator.mediaDevices.getUserMedia) {
         var data = new FormData();
         data.append('file', blob);
         data.append('type', blob.type);
+        data.append('recordTitle', $('#recordTitle').val());
+        data.append('recordTranscription', $('#recordTranscription').val());
 
         $.ajax({
             url: "audio/save",
@@ -64596,6 +64710,8 @@ if (navigator.mediaDevices.getUserMedia) {
                     $('#changesSaved').fadeOut();
                     location.reload();
                 }, 1000);
+
+                currentRecordID = data.recordID;
             },
             error: function error() {
                 console.log("Error while saving audio");

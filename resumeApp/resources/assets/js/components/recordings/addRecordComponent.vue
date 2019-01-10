@@ -5,7 +5,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <div class="pageSubHeading text-left">
-                            Add\Edit a record
+                            Add \ Edit a record
                         </div>
 
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeRecordModal">
@@ -30,19 +30,37 @@
                                   <br/><br/>
                               </div>
 
-                              <div v-show="!toBeEditedRecord.src">
+                              <div class="form-group col-md-12" v-show="!toBeEditedRecord.src && uploadMethod.length < 1">
+                                  <div class="panelFormLabel" style="padding-bottom: 15px;">
+                                      Please choose uploading method :
+                                  </div>
+                                  <!-- when there is no src and no upload method was chosen we give them to choose.-->
+                                  <a href="javascript:void(0)" class="btn btn-primary" @click="setUploadMethod('upload')">Upload audio file</a>
+                                  <a href="javascript:void(0)" class="btn btn-primary" @click="setUploadMethod('record')">Record audio</a>
+                                  <a href="javascript:void(0)" class="btn btn-primary" @click="setUploadMethod('url')">GDrive URL</a>
+                                  <br/>
+                              </div>
+
+                              <div id="uploadFile" v-show="uploadMethod == 'upload'">
                                   <div class="form-group col-md-12">
                                       <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
                                   </div>
                                   <div class="row">
-                                      <div class="col-md-12">
+                                      <div class="col-md-12" v-show="uploadPercentage > 0">
                                           <progress style="width: 300px;height:5px;" max="100" :value.prop="uploadPercentage"></progress>
                                       </div>
                                   </div>
                               </div>
+                              <div id="recordAudio" v-show="uploadMethod == 'record'">
+                                  record audio
+                              </div>
+
+                              <div id="urlToAudio" v-show="uploadMethod == 'url'">
+                                  url to audio
+                              </div>
                           </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary" @click="this.disable()">Save</button>
                             </div>
                         </form>
                     </div>
@@ -58,7 +76,8 @@
         data(){
             return{
                 file: '',
-                uploadPercentage: 0
+                uploadPercentage: 0,
+                uploadMethod:''
             }
         },
         methods:{
@@ -92,6 +111,7 @@
                     this.changesSaved();
                     $('#closeRecordModal').click();
                     this.uploadPercentage= 0;
+                    this.uploadMethod='';
                 });
             },
             changesSaved(){
@@ -100,6 +120,9 @@
                 setTimeout(function () {
                     $('#changesSaved').fadeOut();
                 },2000);
+            },
+            setUploadMethod(method){
+                this.uploadMethod = method;
             }
         },
         mounted(){

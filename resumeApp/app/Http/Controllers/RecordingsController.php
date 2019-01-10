@@ -61,6 +61,10 @@ class RecordingsController extends Controller
     public function deleteRecord(Request $request){
         // delete education history
         $record = Recording::where('id',$request->recordID);
+        // delete the audio file
+        if (file_exists(substr($record->first()->src, 1))){
+            unlink(substr($record->first()->src, 1));
+        }
         $record->delete();
         return 'Record deleted';
     }

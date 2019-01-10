@@ -57221,13 +57221,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedRecord'],
     data: function data() {
         return {
             file: '',
-            uploadPercentage: 0
+            uploadPercentage: 0,
+            uploadMethod: ''
         };
     },
 
@@ -57261,6 +57280,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.changesSaved();
                 $('#closeRecordModal').click();
                 _this.uploadPercentage = 0;
+                _this.uploadMethod = '';
             });
         },
         changesSaved: function changesSaved() {
@@ -57269,6 +57289,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             setTimeout(function () {
                 $('#changesSaved').fadeOut();
             }, 2000);
+        },
+        setUploadMethod: function setUploadMethod(method) {
+            this.uploadMethod = method;
         }
     },
     mounted: function mounted() {}
@@ -57438,10 +57461,87 @@ var render = function() {
                             {
                               name: "show",
                               rawName: "v-show",
-                              value: !_vm.toBeEditedRecord.src,
-                              expression: "!toBeEditedRecord.src"
+                              value:
+                                !_vm.toBeEditedRecord.src &&
+                                _vm.uploadMethod.length < 1,
+                              expression:
+                                "!toBeEditedRecord.src && uploadMethod.length < 1"
                             }
-                          ]
+                          ],
+                          staticClass: "form-group col-md-12"
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "panelFormLabel",
+                              staticStyle: { "padding-bottom": "15px" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                  Please choose uploading method :\n                              "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: { href: "javascript:void(0)" },
+                              on: {
+                                click: function($event) {
+                                  _vm.setUploadMethod("upload")
+                                }
+                              }
+                            },
+                            [_vm._v("Upload audio file")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: { href: "javascript:void(0)" },
+                              on: {
+                                click: function($event) {
+                                  _vm.setUploadMethod("record")
+                                }
+                              }
+                            },
+                            [_vm._v("Record audio")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: { href: "javascript:void(0)" },
+                              on: {
+                                click: function($event) {
+                                  _vm.setUploadMethod("url")
+                                }
+                              }
+                            },
+                            [_vm._v("GDrive URL")]
+                          ),
+                          _vm._v(" "),
+                          _c("br")
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.uploadMethod == "upload",
+                              expression: "uploadMethod == 'upload'"
+                            }
+                          ],
+                          attrs: { id: "uploadFile" }
                         },
                         [
                           _c("div", { staticClass: "form-group col-md-12" }, [
@@ -57457,19 +57557,90 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-md-12" }, [
-                              _c("progress", {
-                                staticStyle: { width: "300px", height: "5px" },
-                                attrs: { max: "100" },
-                                domProps: { value: _vm.uploadPercentage }
-                              })
-                            ])
+                            _c(
+                              "div",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.uploadPercentage > 0,
+                                    expression: "uploadPercentage > 0"
+                                  }
+                                ],
+                                staticClass: "col-md-12"
+                              },
+                              [
+                                _c("progress", {
+                                  staticStyle: {
+                                    width: "300px",
+                                    height: "5px"
+                                  },
+                                  attrs: { max: "100" },
+                                  domProps: { value: _vm.uploadPercentage }
+                                })
+                              ]
+                            )
                           ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.uploadMethod == "record",
+                              expression: "uploadMethod == 'record'"
+                            }
+                          ],
+                          attrs: { id: "recordAudio" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                              record audio\n                          "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.uploadMethod == "url",
+                              expression: "uploadMethod == 'url'"
+                            }
+                          ],
+                          attrs: { id: "urlToAudio" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                              url to audio\n                          "
+                          )
                         ]
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(1)
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "submit" },
+                          on: {
+                            click: function($event) {
+                              this.disable()
+                            }
+                          }
+                        },
+                        [_vm._v("Save")]
+                      )
+                    ])
                   ]
                 )
               ])
@@ -57488,7 +57659,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "modal-header" }, [
       _c("div", { staticClass: "pageSubHeading text-left" }, [
         _vm._v(
-          "\n                        Add\\Edit a record\n                    "
+          "\n                        Add \\ Edit a record\n                    "
         )
       ]),
       _vm._v(" "),
@@ -57504,18 +57675,6 @@ var staticRenderFns = [
           }
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save")]
       )
     ])
   }

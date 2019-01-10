@@ -25,7 +25,7 @@
                 <div class="row" style="padding-top: 30px;">
                     <div class="col-12">
                         <audio :id="'record'+record.id" controls style="padding-bottom: 10px;" preload="auto">
-                            <source :src="record.src">
+                            <source :src="getRecordSrc(record.src)">
                             Your browser does not support the audio element.
                         </audio><!--/.audio-container-->
                     </div>
@@ -127,6 +127,22 @@
                         'transcription':'',
                         'src' :'',
                 };
+            },
+            getRecordSrc(source){
+                if(source.includes('drive.google.com')){
+                    let fileID = '';
+                    let arrayOfSource = source.split('/');
+                    $.each(arrayOfSource, function(i){
+                        if(arrayOfSource[i].length > 20){
+                            fileID = arrayOfSource[i] ;
+                        }
+                    });
+
+                    let gDriveSrc = "https://drive.google.com/uc?export=download&id="+fileID+"&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
+                    return gDriveSrc;
+                }else{
+                    return source ;
+                }
             }
         },
 

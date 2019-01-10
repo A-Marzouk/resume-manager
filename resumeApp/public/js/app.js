@@ -56807,6 +56807,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'transcription': '',
                 'src': ''
             };
+        },
+        getRecordSrc: function getRecordSrc(source) {
+            if (source.includes('drive.google.com')) {
+                var fileID = '';
+                var arrayOfSource = source.split('/');
+                $.each(arrayOfSource, function (i) {
+                    if (arrayOfSource[i].length > 20) {
+                        fileID = arrayOfSource[i];
+                    }
+                });
+
+                var gDriveSrc = "https://drive.google.com/uc?export=download&id=" + fileID + "&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
+                return gDriveSrc;
+            } else {
+                return source;
+            }
         }
     },
 
@@ -56951,7 +56967,9 @@ var render = function() {
                         }
                       },
                       [
-                        _c("source", { attrs: { src: record.src } }),
+                        _c("source", {
+                          attrs: { src: _vm.getRecordSrc(record.src) }
+                        }),
                         _vm._v(
                           "\n                        Your browser does not support the audio element.\n                    "
                         )
@@ -57239,6 +57257,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedRecord'],
@@ -57260,6 +57279,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var formData = new FormData();
             formData.append('audioFile', this.file);
             formData.append('title', this.toBeEditedRecord.title);
+            formData.append('src', this.toBeEditedRecord.src);
             formData.append('transcription', this.toBeEditedRecord.transcription);
             formData.append('id', this.toBeEditedRecord.id);
             axios.post('/freelancer/addrecord', formData, {
@@ -57616,12 +57636,39 @@ var render = function() {
                               expression: "uploadMethod == 'url'"
                             }
                           ],
+                          staticClass: "form-group col-md-12",
                           attrs: { id: "urlToAudio" }
                         },
                         [
-                          _vm._v(
-                            "\n                              url to audio\n                          "
-                          )
+                          _c("label", { staticClass: "panelFormLabel" }, [
+                            _vm._v("Link from Google drive :")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.toBeEditedRecord.src,
+                                expression: "toBeEditedRecord.src"
+                              }
+                            ],
+                            staticClass: "form-control panelFormInput",
+                            attrs: { type: "text" },
+                            domProps: { value: _vm.toBeEditedRecord.src },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.toBeEditedRecord,
+                                  "src",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
                         ]
                       )
                     ]),

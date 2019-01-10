@@ -55,8 +55,9 @@
                                   record audio
                               </div>
 
-                              <div id="urlToAudio" v-show="uploadMethod == 'url'">
-                                  url to audio
+                              <div class="form-group col-md-12" id="urlToAudio" v-show="uploadMethod == 'url'">
+                                  <label class="panelFormLabel">Link from Google drive :</label>
+                                  <input type="text" class="form-control panelFormInput" v-model="toBeEditedRecord.src">
                               </div>
                           </div>
                             <div class="modal-footer">
@@ -88,6 +89,7 @@
                 let formData = new FormData();
                 formData.append('audioFile', this.file);
                 formData.append('title', this.toBeEditedRecord.title);
+                formData.append('src', this.toBeEditedRecord.src);
                 formData.append('transcription', this.toBeEditedRecord.transcription);
                 formData.append('id', this.toBeEditedRecord.id);
                 axios.post( '/freelancer/addrecord',

@@ -49,6 +49,8 @@ class RecordingsController extends Controller
             if ($pathToAudio) {
                 $record->src = '/'.$pathToAudio;
             }
+        }elseif($request->src){
+            $record->src = $request->src;
         }
 
         $record->save();

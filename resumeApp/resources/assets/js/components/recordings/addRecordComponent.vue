@@ -23,8 +23,8 @@
                                     <label for="recordTranscription" class="panelFormLabel">Transcription :</label>
                                     <textarea class="form-control" rows="3" id="recordTranscription" name="transcription" v-model="toBeEditedRecord.transcription">
                                     </textarea>
+                                  <hr>
                               </div>
-                              <hr>
 
                               <div class="form-group" v-show="toBeEditedRecord.src">
                                   Current uploaded Audio : {{toBeEditedRecord.src.replace('/resumeApp/uploads/','')}}.

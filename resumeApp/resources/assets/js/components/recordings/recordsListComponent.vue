@@ -131,6 +131,7 @@
                 this.uploadMethod = '';
                 this.uploadPercentage=0;
                 this.fileChosen=false;
+                this.file = '';
             },
             getRecordSrc(source){
                 if(source.includes('drive.google.com')){

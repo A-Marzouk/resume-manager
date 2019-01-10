@@ -56811,6 +56811,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.uploadMethod = '';
             this.uploadPercentage = 0;
             this.fileChosen = false;
+            this.file = '';
         },
         getRecordSrc: function getRecordSrc(source) {
             if (source.includes('drive.google.com')) {
@@ -57468,10 +57469,10 @@ var render = function() {
                               )
                             }
                           }
-                        })
+                        }),
+                        _vm._v(" "),
+                        _c("hr")
                       ]),
-                      _vm._v(" "),
-                      _c("hr"),
                       _vm._v(" "),
                       _c(
                         "div",

@@ -37,6 +37,7 @@ class RecordingsController extends Controller
             // add
             $record = new Recording;
             $record->user_id = $currentUser->id;
+            $record->src = "";
         }
         if(isset($request->title)){
             $record->title = $request->title;

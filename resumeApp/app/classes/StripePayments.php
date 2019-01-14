@@ -177,6 +177,8 @@ class StripePayments
         $booking->client_id       = $client_id;
         $booking->booking_email   = $request->stripeEmail;
         $booking->subscription_id = $subscription_id ;
+        $booking->payment_method  = 'Stripe' ;
+        $booking->is_paid         = true ;
         $booking->save();
     }
 

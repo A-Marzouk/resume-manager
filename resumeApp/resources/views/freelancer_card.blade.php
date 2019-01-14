@@ -228,6 +228,47 @@
     </div>
 
 
+    {{-- references content --}}
+    <div id="referencesContent{{$freelancer->id}}{{$value['id']}}" class="d-none">
+        <div class="row" style="border-bottom: 1px solid whitesmoke; padding-bottom: 25px;">
+                <div class="col-lg-11 col-11 text-left" style="padding: 25px 0 0 20px;">
+                 <span>
+                    <span class="audioText" style="color: #4E75E8;"> - References & Testimonials</span>
+                </span>
+                </div>
+                <div class="col-lg-1 col-1 text-center NoDecor" style="padding: 24px 0 0 0;">
+                    <a href="javascript:void(0)" class="audioText audioDismiss" style="color: #4E75E8; font-size: large;" id="audio_dismiss{{$freelancer->id}}{{$value['id']}}"> x </a>
+                </div>
+</div>
+        <div style="padding-bottom: 35px;">
+            @foreach($freelancer->references as  $reference)
+                <div class="row">
+                    <div class="col-md-12 aboutSubText">
+                        <div class="title work">
+                            <span class="circle"></span>
+                            {{$reference->title}}
+                        </div>
+                        <div class="year">
+                        <span class="work">
+                            {{$reference->company}}
+                        </span>
+                        </div>
+                        <div class="year">
+                        <span class="work">
+                            {{$reference->email}}
+                        </span>
+                        </div>
+                        <div class="year">
+                        <span class="work">
+                            {{$reference->phone}}
+                        </span>
+                        </div>
+                        <div class="desc">{{$reference->details}}</div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
     {{-- default content --}}
 
     <div id="defaultContent{{$freelancer->id}}{{$value['id']}}" class="d-none">

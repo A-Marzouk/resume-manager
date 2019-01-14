@@ -161,6 +161,17 @@ resumeCardContent.on('click','.openAudio',function(){
     },250)
 });
 
+$('.openReferences').on('click',function(){
+    let ID = this.id.replace('_open_references','');
+    let referencesContent = $('#referencesContent'+ID).html();
+    // change the content :
+    let resumeRightArea  =  $('#resumeCardRight' + ID) ;
+    resumeRightArea.fadeOut(300);
+    setTimeout(function () {
+        resumeRightArea.html(referencesContent);
+        resumeRightArea.fadeIn(300);
+    },250)
+});
 
 
 resumeCardContent.on('click','.openVideo',function(){

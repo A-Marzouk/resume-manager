@@ -53460,6 +53460,18 @@ resumeCardContent.on('click', '.openAudio', function () {
     }, 250);
 });
 
+$('.openReferences').on('click', function () {
+    var ID = this.id.replace('_open_references', '');
+    var referencesContent = $('#referencesContent' + ID).html();
+    // change the content :
+    var resumeRightArea = $('#resumeCardRight' + ID);
+    resumeRightArea.fadeOut(300);
+    setTimeout(function () {
+        resumeRightArea.html(referencesContent);
+        resumeRightArea.fadeIn(300);
+    }, 250);
+});
+
 resumeCardContent.on('click', '.openVideo', function () {
     var ID = this.id.replace('_open_video', '');
     var videoContent = $('#videoContent' + ID).html();

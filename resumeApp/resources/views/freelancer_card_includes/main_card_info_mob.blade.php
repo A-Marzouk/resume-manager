@@ -50,7 +50,7 @@
     </div>
 
     <div class="col-12" style="padding: 10px 20px 16px 20px;">
-        @if($freelancer->userData->availableHours !=0 && !$freelancer_form)
+        @if($freelancer->userData->availableHours !=0)
             <div class="text-center cardRow NoDecor">
             @if(isset($portfolioModal) && !$isClient)
                 <a class="hireCardBtn btn-block showHireSection" href="{{route('client.login')}}">

@@ -53709,7 +53709,6 @@ resumeCardContent.on('click', '.desc', function () {
 $('.uploadReferences').on('click', function () {
     var id = this.id.replace('uploadReferences', '');
     $('#showReferences' + id).click();
-    alert(id);
 });
 
 /***/ }),

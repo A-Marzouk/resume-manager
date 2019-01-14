@@ -2,7 +2,7 @@
     <div class="row customContainer">
         <div class="col-md-8 offset-md-1 offset-lg-0">
             <div class="secondSectionHeading">
-                Hire Top<br/><span>Freelancers.</span>
+                Build<br/><span>Great Teams.</span>
                 <div class="lineDivider"></div>
             </div>
         </div>
@@ -28,6 +28,38 @@
                         </a>
                     </div>
                     <div class="col-md-12 freelancerBox">
+                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">
+                            <div class="freelancerItem">
+                                <img src="/resumeApp/resources/views/customTheme/images/freelancers/conor-sales-agent.jpg"
+                                     alt="freelancer" class="slickFreelancerImg">
+                                <div class="freelancerData">
+                                    <div class="freelancerName nohover">
+                                        Conor
+                                    </div>
+                                    <div class="freelancerJob">
+                                        Sales Agent
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-12 freelancerBox">
+                        <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">
+                            <div class="freelancerItem">
+                                <img src="/resumeApp/resources/views/customTheme/images/freelancers/jaime-sales-pro.jpg"
+                                     alt="freelancer" class="slickFreelancerImg">
+                                <div class="freelancerData">
+                                    <div class="freelancerName nohover">
+                                        Jaime
+                                    </div>
+                                    <div class="freelancerJob">
+                                        Telesales
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-12 freelancerBox">
                         <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">                            <div class="freelancerItem">
                                 <img src="/resumeApp/resources/views/customTheme/images/freelancers/Anton.jpg"
                                      alt="freelancer" class="slickFreelancerImg">
@@ -36,7 +68,7 @@
                                         Anton
                                     </div>
                                     <div class="freelancerJob">
-                                        Python Developer
+                                        Appointment Setter
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +83,7 @@
                                         Arnold
                                     </div>
                                     <div class="freelancerJob">
-                                        UX_UI Designer
+                                        Telemarketing
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +98,7 @@
                                         Costa
                                     </div>
                                     <div class="freelancerJob">
-                                        Front-End Developer
+                                        Business Development
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +114,7 @@
                                         Evgeny
                                     </div>
                                     <div class="freelancerJob">
-                                        PHP Developer
+                                        Inside Sales
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +130,7 @@
                                         Jon
                                     </div>
                                     <div class="freelancerJob">
-                                        UI Designer
+                                        Customer Success
                                     </div>
                                 </div>
                             </div>
@@ -114,7 +146,7 @@
                                         Lars
                                     </div>
                                     <div class="freelancerJob">
-                                        Javascript Developer
+                                        Customer Service
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +162,7 @@
                                         Michelle
                                     </div>
                                     <div class="freelancerJob">
-                                        UI Designer
+                                        Global Sales
                                     </div>
                                 </div>
                             </div>
@@ -145,7 +177,7 @@
                                         Shen
                                     </div>
                                     <div class="freelancerJob">
-                                        iOS Developer
+                                        Sales manager
                                     </div>
                                 </div>
                             </div>
@@ -161,7 +193,7 @@
                                         Vitaly
                                     </div>
                                     <div class="freelancerJob">
-                                        UX Designer
+                                        Lead Generation
                                     </div>
                                 </div>
                             </div>

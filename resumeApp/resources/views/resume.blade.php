@@ -7,6 +7,7 @@
 
         <div class="container">
             <? $profit = 5 ;?>
+            <? $freelancer_form = false;?>
             @include('freelancer_card')
         </div>
 

@@ -94,7 +94,7 @@
                 </div>
 
                 <div class="col-md-4" style="padding: 0;">
-                    @if($freelancer->userData->availableHours !=0)
+                    @if($freelancer->userData->availableHours !=0 && !$freelancer_form)
                         <div class="row text-center cardRow NoDecor">
                             @if(isset($portfolioModal) && !$isClient)
                                 <a class="hireCardBtn btn-block showHireSection" href="{{route('client.login')}}">

@@ -76,6 +76,7 @@ $redirectURL = 'https://123workforce.com/freelancer/linkedin';
             </div>
         </div>
         <div>
+            <? $freelancer_form = true;?>
             @include('freelancer_card')
         </div>
     </div>

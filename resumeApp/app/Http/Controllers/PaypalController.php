@@ -10,7 +10,11 @@ namespace App\Http\Controllers;
 
 use App\Affiliate;
 use App\AffiliatePaymentHistory;
+use App\Booking;
 use App\classes\Telegram;
+use App\Client;
+use App\User;
+use App\UserData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
@@ -62,10 +66,10 @@ class PaypalController extends Controller
         $payer->setPaymentMethod("paypal");
 
         $item_1 = new Item();
-        $item_1->setName('Item 1') /** item name **/
+        $item_1->setName('Hire freelancer') /** item name **/
         ->setCurrency('USD')
             ->setQuantity(1)
-            ->setPrice($request->amount); /** unit price **/
+            ->setPrice($request->amountToPay); /** unit price **/
 
         $itemList = new ItemList();
         $itemList->setItems(array($item_1));
@@ -73,12 +77,12 @@ class PaypalController extends Controller
 
         $amount = new Amount();
         $amount->setCurrency("USD")
-            ->setTotal($request->amount);
+            ->setTotal($request->amountToPay);
 
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($itemList)
-            ->setDescription("Payment description")
+            ->setDescription("Hire a freelancer.")
             ->setInvoiceNumber(uniqid());
 
         $redirectUrls = new RedirectUrls();
@@ -106,6 +110,28 @@ class PaypalController extends Controller
         $approvalUrl = $payment->getApprovalLink();
 
         if (isset($approvalUrl)) {
+            // make an unpaid booking
+            $booking = new Booking;
+            $booking->amount_paid     = $request->amountToPay;
+            $booking->hours           = $request->hours;
+            $booking->weeks           = $request->weeks;
+            $booking->weeks_original  = $request->weeks;
+            $booking->user_id         = $request->freelancerID;
+            $client_id = null ;
+            if(isset($request->client_id)){
+                $client_id = $request->client_id;
+            }
+            $booking->client_id       = $client_id;
+            if(isset($request->client_email)){
+                $booking->booking_email   = $request->client_email;
+            }
+            $booking->subscription_id = null ;
+            $booking->payment_method  = 'PayPal' ;
+            $booking->is_paid         = false ;
+            $booking->save();
+
+            //
+            session::put('last_booking_id',$booking->id);
             return redirect($approvalUrl);
         }
 
@@ -127,10 +153,44 @@ class PaypalController extends Controller
         /**Execute the payment **/
         $result = $payment->execute($execution, $this->_api_context);
         if ($result->getState() == 'approved') {
-            return redirect('/')->with('successMessage','Payment success');
+            /////////// if approved make the booking paid & update the booking email & hours
+            $booking = Booking::where('id',session::get('last_booking_id'))->first();
+            $booking->is_paid = true;
+            $booking->booking_email = $payment->getPayer()->payer_info->email ;
+            $this->updateHours($booking);
+            $booking->save();
+            // send email successfull
+            $data['email'] = $booking->booking_email;
+            $data['clientName'] = '123 Workforce visitor';
+            if(isset($booking->client_id)){
+                $data['clientName'] = Client::where('id',$booking->client_id)->first()->name;
+            }
+            $data['freelancerName'] = User::where('id',$booking->user_id)->first()->firstName;
+            $this->sendMailSuccess($data);
+
+            session::forget('last_booking_id');
+            return redirect('/')->with('successMessage','Payment success, we will get in touch with you soon.');
         }
         return redirect('/')->with('errorMessage','Payment failed');
 
+    }
+
+    protected function sendMailSuccess($data){
+        $notification = new NotificationsController;
+        $notification->clientPaidEmail($data);
+    }
+
+    protected function updateHours($booking){
+        $freelancer     = User::where('id',$booking->user_id)->first();
+        $currentHours   = $freelancer->userData->availableHours;
+        $freelancerData = UserData::where('user_id',$freelancer->id)->first();
+        $freelancerData->availableHours = intval($currentHours) - intval( $booking->hours) ;
+        if($freelancerData->availableHours < 0){
+            $freelancerData->availableHours  = 0 ;
+        }
+        $freelancerData->save();
+
+        return 'Updated';
     }
 
 
@@ -148,7 +208,7 @@ class PaypalController extends Controller
             ->setReceiver($request->paypal_email)
             ->setSenderItemId(uniqid())
             ->setAmount(new Currency([
-                'value'=>intval($request->amount),
+                'value'=>intval($request->amountToPay),
                 'currency'=>'USD'
             ]));
 
@@ -170,7 +230,7 @@ class PaypalController extends Controller
         $affiliate = Affiliate::where('paypal_email',$request->paypal_email)->first();
 
         $aff_PayHistory = new AffiliatePaymentHistory();
-        $aff_PayHistory->amount_paid  = $request->amount;
+        $aff_PayHistory->amount_paid  = $request->amountToPay;
         $aff_PayHistory->affiliate_id = $affiliate->id;
         $aff_PayHistory->save();
 

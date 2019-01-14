@@ -234,14 +234,16 @@ Route::post('affiliate/password/email', 'Auth\Affiliates\AffiliateForgotPassword
 Route::get('affiliate/password/reset/{token}', 'Auth\Affiliates\AffiliateResetPasswordController@showResetForm');
 Route::post('affiliate/password/reset', 'Auth\Affiliates\AffiliateResetPasswordController@reset');
 
+
+// paypal routes
 Route::get('payment/paypal','PaypalController@showForm')->name('show.paypal.form');
 Route:: post('payment/paypal/submit','PaypalController@payWithPaypal')->name('submit.paypal.form');
 Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('paypal.status');
 
-
-Route::get('payment/paypal/send','PaypalController@showSendForm')->name('show.paypal.form');
-Route:: post('payment/paypal_send/submit','PaypalController@sendPaymentByPayPal')->name('submit.paypal.send.form');
-Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('paypal.status');
+// send payments to our users.
+//Route::get('payment/paypal/send','PaypalController@showSendForm')->name('show.paypal.form');
+//Route:: post('payment/paypal_send/submit','PaypalController@sendPaymentByPayPal')->name('submit.paypal.send.form');
+//Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('paypal.status');
 
 // public routes :
 Route::get('/','HomeController@welcomePage')->name('welcome');

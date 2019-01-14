@@ -127,7 +127,12 @@ $('.weeksMinus').on('click',function(){
 // animated text :
 $('.freelancerCard').one('mouseenter',function () {
     let freelancerID = this.id.replace('card','');
-    let text         = $('#welcomeText' + freelancerID).html().trim();
+    let text         = $('#welcomeText' + freelancerID).html();
+    if(text !== undefined){
+        text = text.trim();
+    }else{
+        return;
+    }
     let animateTextID  = 'animatedText' + freelancerID;
     // clear current text :
     $('#' + animateTextID).html('');
@@ -412,4 +417,10 @@ resumeCardContent.on('click','.desc',function () {
     $(this).css('text-overflow','unset');
     $(this).css('overflow','normal');
     $(this).css('white-space','normal');
+});
+
+$('.uploadReferences').on('click',function () {
+    let id = this.id.replace('uploadReferences','');
+    $('#showReferences'+id).click();
+    alert(id);
 });

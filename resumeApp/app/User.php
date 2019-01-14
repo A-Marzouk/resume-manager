@@ -92,6 +92,11 @@ class User extends Authenticatable
         return $this->hasMany(Recording::class);
     }
 
+    public function references()
+    {
+        return $this->hasMany(Reference::class);
+    }
+
 
     public function messages(){
         return $this->hasMany(Message::class);

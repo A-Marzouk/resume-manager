@@ -48,6 +48,11 @@ Vue.component('records-list', require('./components/recordings/recordsListCompon
 Vue.component('record-component', require('./components/recordings/recordComponent.vue'));
 Vue.component('add-record-modal', require('./components/recordings/addRecordComponent.vue'));
 
+// references
+Vue.component('references-list', require('./components/references/referencesListComponent.vue'));
+Vue.component('reference-component', require('./components/references/referenceComponent.vue'));
+Vue.component('add-reference-modal', require('./components/references/addReferenceComponent.vue'));
+
 // jobs
 Vue.component('jobs-list', require('./components/jobs/jobsList.vue'));
 Vue.component('job-post', require('./components/jobs/jobPost.vue'));
@@ -125,6 +130,12 @@ if ($("#freelancer_educations").length !== 0){
 if ($("#freelancer_records").length !== 0){
     let freelancer_records = new Vue({
         el:'#freelancer_records'
+    });
+}
+
+if ($("#freelancer_references").length !== 0){
+    let freelancer_references = new Vue({
+        el:'#freelancer_references'
     });
 }
 

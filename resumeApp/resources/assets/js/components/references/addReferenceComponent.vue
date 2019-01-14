@@ -19,13 +19,24 @@
                                   <label for="referenceTitle" class="panelFormLabel">Title :</label>
                                   <input type="text" class="form-control" id="referenceTitle" name="title" v-model="toBeEditedReference.title" required>
                               </div>
+                              <div class="form-group col-md-6">
+                                  <label for="company" class="panelFormLabel">Company :</label>
+                                  <input type="text" class="form-control" id="company" name="company" v-model="toBeEditedReference.company" required>
+                              </div>
+                              <div class="form-group col-md-6">
+                                  <label for="phone" class="panelFormLabel">Phone :</label>
+                                  <input type="text" class="form-control" id="phone" name="phone" v-model="toBeEditedReference.phone" required>
+                              </div>
+                              <div class="form-group col-md-6">
+                                  <label for="email" class="panelFormLabel">Email :</label>
+                                  <input type="text" class="form-control" id="email" name="email" v-model="toBeEditedReference.email" required>
+                              </div>
                               <div class="form-group col-md-12">
                                     <label for="referenceDetails" class="panelFormLabel">Details :</label>
                                     <textarea class="form-control" rows="3" id="referenceDetails" name="details" v-model="toBeEditedReference.details">
                                     </textarea>
-                                  <hr>
                               </div>
-                          </div>
+                            </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </div>

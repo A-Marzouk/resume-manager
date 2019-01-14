@@ -157,7 +157,7 @@ Route::post('/freelancer/deleterecord/','RecordingsController@deleteRecord')->na
 // references
 Route::get('/freelancer/references','ReferencesController@getReferences')->name('get.references');
 Route::post('/freelancer/addreference/','ReferencesController@addReference')->name('add.reference');
-Route::post('/freelancer/deletereference/','ReferencesController@deleteReferences')->name('delete.reference');
+Route::post('/freelancer/deletereference/','ReferencesController@deleteReference')->name('delete.reference');
 
 
 // skills

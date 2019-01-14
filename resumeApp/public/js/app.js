@@ -65010,6 +65010,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -65211,6 +65214,24 @@ var render = function() {
                 "div",
                 { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
                 [_vm._v("Details : " + _vm._s(reference.details))]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
+                [_vm._v("Company : " + _vm._s(reference.company))]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
+                [_vm._v("phone : " + _vm._s(reference.phone))]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
+                [_vm._v("email : " + _vm._s(reference.email))]
               )
             ]
           )
@@ -65458,6 +65479,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedReference'],
@@ -65577,6 +65609,132 @@ var render = function() {
                         })
                       ]),
                       _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "company" }
+                          },
+                          [_vm._v("Company :")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedReference.company,
+                              expression: "toBeEditedReference.company"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "company",
+                            name: "company",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedReference.company },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedReference,
+                                "company",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "phone" }
+                          },
+                          [_vm._v("Phone :")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedReference.phone,
+                              expression: "toBeEditedReference.phone"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "phone",
+                            name: "phone",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedReference.phone },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedReference,
+                                "phone",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "email" }
+                          },
+                          [_vm._v("Email :")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedReference.email,
+                              expression: "toBeEditedReference.email"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "email",
+                            name: "email",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedReference.email },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedReference,
+                                "email",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
                       _c("div", { staticClass: "form-group col-md-12" }, [
                         _c(
                           "label",
@@ -65615,9 +65773,7 @@ var render = function() {
                               )
                             }
                           }
-                        }),
-                        _vm._v(" "),
-                        _c("hr")
+                        })
                       ])
                     ]),
                     _vm._v(" "),

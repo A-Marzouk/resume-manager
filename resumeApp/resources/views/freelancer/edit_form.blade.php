@@ -46,7 +46,7 @@ $freelancer = auth()->user();
                     <a href="javascript:void(0)"> linkedIn</a>
                 </div>
                 <div class="importBtn importBtn_upload NoDecor">
-                    <a href="javascript:void(0)">
+                    <a href="javascript:void(0)" id="uploadReferences{{$freelancer->id}}" class="uploadReferences">
                         Upload References / Testimonials
                     </a>
                 </div>

@@ -22,6 +22,9 @@
                 
                 <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">Title : {{reference.title}}</b><br/>
                 <div  style="color: #30323D;font-family: Roboto;">Details : {{reference.details}}</div>
+                <div  style="color: #30323D;font-family: Roboto;">Company : {{reference.company}}</div>
+                <div  style="color: #30323D;font-family: Roboto;">phone : {{reference.phone}}</div>
+                <div  style="color: #30323D;font-family: Roboto;">email : {{reference.email}}</div>
             </reference-component>
         </transition-group>
 

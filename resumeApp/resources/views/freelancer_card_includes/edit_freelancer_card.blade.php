@@ -205,6 +205,11 @@
                     Work
                 </a>
             </li>
+            <li class="nav-item col-md-2 col-4 NoDecor d-none">
+                <a class="nav-link navTab text-center" id="showReferences{{$freelancer->id}}" href="#references{{$freelancer->id}}" role="tab" data-toggle="tab">
+                </a>
+            </li>
+
             <li class="nav-item col-md-2 col-4 NoDecor">
                 <a class="nav-link navTab text-center" href="#education{{$freelancer->id}}" role="tab" data-toggle="tab">
                     Education
@@ -250,6 +255,16 @@
                     <div class="col-md-12">
                         <div  id="freelancer_educations">
                             <educations-list></educations-list>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane fade" id="references{{$freelancer->id}}">
+                <div class="" style="padding-top: 17px; padding-bottom: 17px;">
+                    <div class="col-md-12">
+                        <div  id="freelancer_references">
+                            <references-list></references-list>
                         </div>
                     </div>
                 </div>

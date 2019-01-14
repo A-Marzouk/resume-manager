@@ -154,6 +154,11 @@ Route::get('/freelancer/records','RecordingsController@getRecords')->name('get.r
 Route::post('/freelancer/addrecord/','RecordingsController@addRecord')->name('add.record');
 Route::post('/freelancer/deleterecord/','RecordingsController@deleteRecord')->name('delete.record');
 
+// references
+Route::get('/freelancer/references','ReferencesController@getReferences')->name('get.references');
+Route::post('/freelancer/addreference/','ReferencesController@addReference')->name('add.reference');
+Route::post('/freelancer/deletereference/','ReferencesController@deleteReference')->name('delete.reference');
+
 
 // skills
 Route::get('/freelancer/skills','SkillsController@getskills')->name('get.skills');

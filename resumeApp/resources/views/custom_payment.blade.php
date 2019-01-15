@@ -4,7 +4,7 @@
 
     <div class="container">
         <div class="customFormHeader">
-            Payments
+            Stripe Payments
         </div>
         <form action="/stripe/payments/pay" method="POST">
             {{ csrf_field() }}

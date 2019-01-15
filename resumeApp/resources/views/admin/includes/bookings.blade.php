@@ -33,7 +33,13 @@
                 </label>
             </th>
             <td scope="row">{{$clientName}}</td>
-            <td scope="row">{{$booking->amount_paid/100}} USD</td>
+            <td scope="row">
+                @if($booking->payment_method == 'PayPal')
+                    {{$booking->amount_paid}} USD
+                @else
+                    {{$booking->amount_paid/100}} USD
+                @endif
+            </td>
             <td scope="row">{{$booking->hours}} / {{$booking->weeks}}</td>
             <td scope="row">{{$freelancer->firstName}} {{$freelancer->lastName}}</td>
             <td scope="row">
@@ -42,6 +48,13 @@
                 @else
                     <span class="panelFormLabel" style="color: lightgreen;">On going</span>
                 @endif
+                <div>
+                    @if($booking->payment_method == 'PayPal')
+                        @if($booking->is_paid) Paid @else Unpaid @endif
+                    @else
+                        Paid
+                    @endif
+                </div>
             </td>
             <td scope="row">
                 {{$booking->created_at->format('M d, Y') }}

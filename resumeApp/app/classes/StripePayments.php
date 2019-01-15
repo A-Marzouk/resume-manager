@@ -99,6 +99,12 @@ class StripePayments
 
 
         if($request->freelancerName == 'custom_payment'){
+            $telegram = new Telegram('-228260999');
+            $msg      = "Stripe custom payment has been made.\n" ;
+            $msg     .= "With amount of ".$amountToPay ." USD";
+            $msg     .= "\nFrom : " . $request->stripeEmail;
+            $msg     .= "\nDescription : " . $request->description;
+            $telegram->sendMessage($msg);
             return redirect('/payment')->with('successMessage','Thank you for your payment, we will get in touch with you soon!');
         }
 

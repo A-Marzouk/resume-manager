@@ -134,7 +134,7 @@ Route::post('/stripe/payments/pay','\App\classes\StripePayments@stripePayment');
 Route::get('/stripe/hire','\App\classes\StripePayments@showHirePage');
 Route::post('/stripe/webhocks','\App\classes\StripePayments@webhocks');
 // stripe custom payment :
-Route::get('/payment','\App\classes\StripePayments@customPayment');
+Route::get('/payment/stripe','\App\classes\StripePayments@customPayment');
 Route::get('/stripe/payments/pay',function(){
     return redirect()->back();
 });

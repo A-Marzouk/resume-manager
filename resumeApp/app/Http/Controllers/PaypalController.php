@@ -110,6 +110,13 @@ class PaypalController extends Controller
         $approvalUrl = $payment->getApprovalLink();
 
         if (isset($approvalUrl)) {
+            // if it is custom payment :
+            if(isset($request->custom_payment)){
+                session::put('custom_payment',true);
+                session::put('description',$request->description);
+                session::put('custom_payment_amount',$request->amountToPay);
+                return redirect($approvalUrl);
+            }
             // make an unpaid booking
             $booking = new Booking;
             $booking->amount_paid     = $request->amountToPay;
@@ -153,6 +160,17 @@ class PaypalController extends Controller
         /**Execute the payment **/
         $result = $payment->execute($execution, $this->_api_context);
         if ($result->getState() == 'approved') {
+            if(session::get('custom_payment') == true){
+                // send a notification of custom payment.
+                $telegram = new Telegram('-228260999');
+                $msg      = "PayPal custom payment has been made.\n" ;
+                $msg     .= "With amount of ". session::get('custom_payment_amount') . " USD";
+                $msg     .= "\nFrom : ".  $payment->getPayer()->payer_info->email;
+                $msg     .= "\nDescription : ".  session::get('description');
+                $telegram->sendMessage($msg);
+                session::forget(['custom_payment','custom_payment_amount','description']);
+                return redirect('/')->with('successMessage','Payment success, we will get in touch with you soon.');
+            }
             /////////// if approved make the booking paid & update the booking email & hours
             $booking = Booking::where('id',session::get('last_booking_id'))->first();
             $booking->is_paid = true;
@@ -169,6 +187,7 @@ class PaypalController extends Controller
             $this->sendMailSuccess($data);
 
             session::forget('last_booking_id');
+
             return redirect('/')->with('successMessage','Payment success, we will get in touch with you soon.');
         }
         return redirect('/')->with('errorMessage','Payment failed');

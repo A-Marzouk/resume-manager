@@ -88,8 +88,8 @@
                                     <input type="hidden" value="{{$hours}}" name="hours">
                                     <input type="hidden" value="{{$weeks}}" name="weeks">
                                     @if(!auth()->guard('client')->guest())
-                                        <input type="hidden" value="{{$weeks}}" name="client_id" value="{{auth()->guard('client')->user()->id}}">
-                                        <input type="hidden" value="{{$weeks}}" name="client_email" value="{{auth()->guard('client')->user()->email}}">
+                                        <input type="hidden" name="client_id" value="{{auth()->guard('client')->user()->id}}">
+                                        <input type="hidden" name="client_email" value="{{auth()->guard('client')->user()->email}}">
                                     @endif
                                     <input type="hidden" value="{{$weeks}}" name="weeks">
 

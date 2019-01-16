@@ -233,7 +233,9 @@
         <div class="row" style="border-bottom: 1px solid whitesmoke; padding-bottom: 25px;">
                 <div class="col-lg-11 col-11 text-left" style="padding: 25px 0 0 20px;">
                  <span>
-                    <span class="audioText" style="color: #4E75E8;"> - References & Testimonials</span>
+                     <img src="/resumeApp/resources/views/customTheme/images/comment-512.png"
+                          alt="" style="padding-right: 14px; width: 34px;">
+                    <span class="audioText" style="color: #4E75E8;">  References & Testimonials</span>
                 </span>
                 </div>
                 <div class="col-lg-1 col-1 text-center NoDecor" style="padding: 24px 0 0 0;">

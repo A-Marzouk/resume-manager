@@ -13,6 +13,7 @@ use App\AffiliatePaymentHistory;
 use App\Booking;
 use App\classes\Telegram;
 use App\Client;
+use App\Invoice;
 use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
@@ -114,6 +115,9 @@ class PaypalController extends Controller
                 session::put('custom_payment',true);
                 session::put('description',$request->description);
                 session::put('custom_payment_amount',$request->amountToPay);
+                if(isset($request->invoice_id)){
+                    session::put('invoice_id',$request->invoice_id);
+                }
                 return redirect($approvalUrl);
             }
             // make an unpaid booking
@@ -167,7 +171,15 @@ class PaypalController extends Controller
                 $msg     .= "\nFrom : ".  $payment->getPayer()->payer_info->email;
                 $msg     .= "\nDescription : ".  session::get('description');
                 $telegram->sendMessage($msg);
-                session::forget(['custom_payment','custom_payment_amount','description']);
+
+                // check if it is an invoice to set it as paid:
+                if(session::get('invoice_id')){
+                    $invoice = Invoice::where('id',session::get('invoice_id'))->first();
+                    $invoice->status = 'Paid';
+                    $invoice->save();
+                }
+
+                session::forget(['custom_payment','custom_payment_amount','description','invoice_id']);
                 return redirect('/')->with('successMessage','Payment success, we will get in touch with you soon.');
             }
             /////////// if approved make the booking paid & update the booking email & hours

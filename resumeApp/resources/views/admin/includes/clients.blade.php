@@ -9,6 +9,7 @@
             <th scope="col" class="text-center">View details</th>
             <th scope="col" class="text-center">Bookings history</th>
             <th scope="col" class="text-center">Owners' name</th>
+            <th scope="col" class="text-center">Invoices</th>
         </tr>
         </thead>
         <tbody>
@@ -72,6 +73,9 @@
             </td>
             <td class="panelFormLabel text-center">
                 {{$client->owner['name']}}
+            </td>
+            <td class="text-center">
+                <a href="{{route('show.invoices.page',$client->id)}}" class="btn btn-outline-primary">Invoices</a>
             </td>
         </tr>
 

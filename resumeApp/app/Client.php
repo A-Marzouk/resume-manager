@@ -50,6 +50,11 @@ class Client extends Authenticatable
         return $this->hasMany(Conversation::class)->orderBy('updated_at','desc');
     }
 
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
 
     public function searches()
     {

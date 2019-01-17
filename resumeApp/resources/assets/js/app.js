@@ -43,6 +43,12 @@ Vue.component('educations-list', require('./components/education/educationListCo
 Vue.component('education-history', require('./components/education/educationHistoryComponent.vue'));
 Vue.component('add-education-modal', require('./components/education/addEducationComponent.vue'));
 
+
+// invoices
+Vue.component('invoices-list', require('./components/invoices/invoicesListComponent.vue'));
+Vue.component('invoice-component', require('./components/invoices/invoiceComponent.vue'));
+Vue.component('add-invoice-modal', require('./components/invoices/addInvoiceComponent.vue'));
+
 // recordings
 Vue.component('records-list', require('./components/recordings/recordsListComponent.vue'));
 Vue.component('record-component', require('./components/recordings/recordComponent.vue'));
@@ -124,6 +130,12 @@ if ($("#freelancer_works").length !== 0){
 if ($("#freelancer_educations").length !== 0){
     let freelancer_educations = new Vue({
         el:'#freelancer_educations'
+    });
+}
+
+if ($("#client_invoices").length !== 0){
+    let client_invoices = new Vue({
+        el:'#client_invoices'
     });
 }
 

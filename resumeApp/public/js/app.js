@@ -56776,6 +56776,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
@@ -56788,6 +56792,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'unique_number': '',
                 'client_id': this.client_id,
                 'total_amount': '',
+                'agentName': '',
                 'hours': '',
                 'rate': '',
                 'service': '',
@@ -56862,6 +56867,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'unique_number': '',
                 'client_id': this.client_id,
                 'total_amount': '',
+                'agentName': '',
                 'hours': '',
                 'rate': '',
                 'service': '',
@@ -57013,6 +57019,21 @@ var render = function() {
                 [_vm._v(" " + _vm._s(invoice.rate))]
               ),
               _c("br"),
+              _vm._v("\n            Agent :"),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v(" " + _vm._s(invoice.agentName))]
+              ),
+              _c("br"),
               _vm._v(" "),
               _c(
                 "div",
@@ -57105,6 +57126,22 @@ var render = function() {
             ]
           )
         })
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: this.invoices.length < 1,
+              expression: "this.invoices.length < 1"
+            }
+          ],
+          staticClass: "pageSubHeading text-left"
+        },
+        [_vm._v("\n        Currently this client has no invoices.\n    ")]
       ),
       _vm._v(" "),
       _c(
@@ -57309,6 +57346,11 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -57575,6 +57617,48 @@ var render = function() {
                           "label",
                           {
                             staticClass: "panelFormLabel",
+                            attrs: { for: "agentName" }
+                          },
+                          [_vm._v("Agent :")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedInvoice.agentName,
+                              expression: "toBeEditedInvoice.agentName"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "agentName",
+                            name: "agentName",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedInvoice.agentName },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedInvoice,
+                                "agentName",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
                             attrs: { for: "service" }
                           },
                           [_vm._v("Service :")]
@@ -57591,7 +57675,7 @@ var render = function() {
                           ],
                           staticClass: "form-control",
                           attrs: {
-                            rows: "3",
+                            rows: "2",
                             id: "service",
                             name: "service",
                             required: ""
@@ -57626,7 +57710,7 @@ var render = function() {
                           ],
                           staticClass: "form-control",
                           attrs: {
-                            rows: "3",
+                            rows: "2",
                             id: "time_of_service",
                             name: "time_of_service",
                             required: ""
@@ -57662,7 +57746,7 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { rows: "3", id: "notes", name: "notes" },
+                          attrs: { rows: "2", id: "notes", name: "notes" },
                           domProps: { value: _vm.toBeEditedInvoice.notes },
                           on: {
                             input: function($event) {

@@ -25,6 +25,7 @@
                 Total amount to pay :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.total_amount}}</b><br/>
                 Hours :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.hours}}</b><br/>
                 Rate per Hour :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.rate}}</b><br/>
+                Agent :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.agentName}}</b><br/>
                 <div  style="color: #30323D;font-family: Roboto;">Service provided : {{invoice.service}}</div>
                 <div  style="color: #30323D;font-family: Roboto;" v-show="invoice.notes != null">Notes : {{invoice.notes}}</div>
                 <div  style="color: #30323D;font-family: Roboto;" v-show="invoice.time_of_service != null">Time : {{invoice.time_of_service}}</div>
@@ -37,6 +38,9 @@
             </invoice-component>
         </transition-group>
 
+        <div class="pageSubHeading text-left" v-show="this.invoices.length < 1">
+            Currently this client has no invoices.
+        </div>
         <span class="deleteWorkBtn NoDecor" v-show="this.canAdd" @click="clearData" style="width:137px">
             <a href="javascript:void(0)" data-toggle="modal" data-target="#addInvoiceModal">
                 <img src="/resumeApp/resources/assets/images/add_blue.png" alt="edit profile">
@@ -60,6 +64,7 @@
                     'unique_number':'',
                     'client_id':this.client_id,
                     'total_amount' :'',
+                    'agentName' :'',
                     'hours':'',
                     'rate' :'',
                     'service' :'',
@@ -138,6 +143,7 @@
                     'unique_number':'',
                     'client_id':this.client_id,
                     'total_amount' :'',
+                    'agentName' :'',
                     'hours':'',
                     'rate' :'',
                     'service' :'',

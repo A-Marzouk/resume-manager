@@ -25,18 +25,23 @@
                               </div>
 
                               <div class="form-group col-md-12">
+                                  <label for="agentName" class="panelFormLabel">Agent :</label>
+                                  <input type="text" class="form-control" id="agentName" name="agentName" v-model="toBeEditedInvoice.agentName" required>
+                              </div>
+
+                              <div class="form-group col-md-12">
                                     <label for="service" class="panelFormLabel">Service :</label>
-                                    <textarea class="form-control" rows="3" id="service" name="service" v-model="toBeEditedInvoice.service" required>
+                                    <textarea class="form-control" rows="2" id="service" name="service" v-model="toBeEditedInvoice.service" required>
                                     </textarea>
                               </div>
                               <div class="form-group col-md-12">
                                   <label for="time_of_service" class="panelFormLabel">Time of service <small>(explained)</small> :</label>
-                                  <textarea class="form-control" rows="3" id="time_of_service" name="time_of_service" v-model="toBeEditedInvoice.time_of_service" required>
+                                  <textarea class="form-control" rows="2" id="time_of_service" name="time_of_service" v-model="toBeEditedInvoice.time_of_service" required>
                                     </textarea>
                               </div>
                               <div class="form-group col-md-12">
                                   <label for="notes" class="panelFormLabel">Notes <small>(optional)</small> :</label>
-                                  <textarea class="form-control" rows="3" id="notes" name="notes" v-model="toBeEditedInvoice.notes">
+                                  <textarea class="form-control" rows="2" id="notes" name="notes" v-model="toBeEditedInvoice.notes">
                                     </textarea>
                               </div>
                               <div class="form-group col-12">

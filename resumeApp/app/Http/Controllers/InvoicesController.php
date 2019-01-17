@@ -22,7 +22,7 @@ class InvoicesController extends Controller
 
     public function viewInvoicePublicPage($unique_number){
         $invoice = Invoice::where('unique_number',$unique_number)->first();
-        return $invoice;
+        return view('pay_invoice',compact('invoice'));
     }
 
     public function viewInvoicesPage($client_id){
@@ -41,6 +41,7 @@ class InvoicesController extends Controller
         $request->validate([
             'total_amount' => 'max:10|required',
             'service' => 'max:1500|required',
+            'agentName' => 'max:191|required',
             'hours' => 'max:10|required',
             'rate' => 'max:10|required',
             'status' => 'max:191|required',
@@ -63,6 +64,7 @@ class InvoicesController extends Controller
         $invoice->hours        = $request->hours;
         $invoice->rate         = $request->rate;
         $invoice->status       = $request->status;
+        $invoice->agentName       = $request->agentName;
         if(isset($request->notes)){
             $invoice->notes = $request->notes;
         }

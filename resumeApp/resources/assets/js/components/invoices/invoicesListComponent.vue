@@ -29,6 +29,11 @@
                 <div  style="color: #30323D;font-family: Roboto;" v-show="invoice.notes != null">Notes : {{invoice.notes}}</div>
                 <div  style="color: #30323D;font-family: Roboto;" v-show="invoice.time_of_service != null">Time : {{invoice.time_of_service}}</div>
                 Status : <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.status}}</b><br/>
+                <div class="NoDecor">
+                    Public link : <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
+                    <a :href="'https://123workforce.com/workforce/invoices/'+invoice.unique_number" target="_blank">https://123workforce.com/workforce/invoices/{{invoice.unique_number}}</a>
+                    </b><br/>
+                </div>
             </invoice-component>
         </transition-group>
 
@@ -52,6 +57,7 @@
                 canAdd:true,
                 toBeEditedInvoice:{
                     'id':'',
+                    'unique_number':'',
                     'client_id':this.client_id,
                     'total_amount' :'',
                     'hours':'',
@@ -129,6 +135,7 @@
             clearData(){
                 this.toBeEditedInvoice={
                     'id':'',
+                    'unique_number':'',
                     'client_id':this.client_id,
                     'total_amount' :'',
                     'hours':'',

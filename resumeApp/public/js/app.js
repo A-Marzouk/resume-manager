@@ -56771,6 +56771,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
@@ -56780,6 +56785,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             canAdd: true,
             toBeEditedInvoice: {
                 'id': '',
+                'unique_number': '',
                 'client_id': this.client_id,
                 'total_amount': '',
                 'hours': '',
@@ -56853,6 +56859,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         clearData: function clearData() {
             this.toBeEditedInvoice = {
                 'id': '',
+                'unique_number': '',
                 'client_id': this.client_id,
                 'total_amount': '',
                 'hours': '',
@@ -57058,7 +57065,43 @@ var render = function() {
                 },
                 [_vm._v(" " + _vm._s(invoice.status))]
               ),
-              _c("br")
+              _c("br"),
+              _vm._v(" "),
+              _c("div", { staticClass: "NoDecor" }, [
+                _vm._v("\n                Public link : "),
+                _c(
+                  "b",
+                  {
+                    staticStyle: {
+                      "font-size": "16px",
+                      color: "#30323D",
+                      "font-family": "Roboto",
+                      "line-height": "19px",
+                      "font-weight": "bold"
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        attrs: {
+                          href:
+                            "https://123workforce.com/workforce/invoices/" +
+                            invoice.unique_number,
+                          target: "_blank"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "https://123workforce.com/workforce/invoices/" +
+                            _vm._s(invoice.unique_number)
+                        )
+                      ]
+                    )
+                  ]
+                ),
+                _c("br")
+              ])
             ]
           )
         })
@@ -57326,6 +57369,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedInvoice'],
@@ -57344,6 +57388,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
                 // save the education id :
                 _this.toBeEditedInvoice.id = response.data.id;
+                _this.toBeEditedInvoice.unique_number = response.data.unique_number;
                 // changes saved :
                 $('#changesSaved').fadeIn('slow');
                 setTimeout(function () {
@@ -57636,6 +57681,15 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group col-12" }, [
                         _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "status" }
+                          },
+                          [_vm._v("Status :")]
+                        ),
+                        _vm._v(" "),
+                        _c(
                           "select",
                           {
                             directives: [
@@ -57647,6 +57701,7 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-control",
+                            attrs: { id: "status" },
                             on: {
                               change: function($event) {
                                 var $$selectedVal = Array.prototype.filter

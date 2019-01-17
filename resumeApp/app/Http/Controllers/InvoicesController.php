@@ -17,7 +17,12 @@ class InvoicesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('admin')->except('viewInvoicePublicPage');
+    }
+
+    public function viewInvoicePublicPage($unique_number){
+        $invoice = Invoice::where('unique_number',$unique_number)->first();
+        return $invoice;
     }
 
     public function viewInvoicesPage($client_id){
@@ -67,7 +72,17 @@ class InvoicesController extends Controller
 
         $invoice->save();
 
-        return ['id'=> $invoice->id];
+        if($invoice->id < 10){
+            $invoice->unique_number = 'EH00' . $invoice->id;
+        }elseif ($invoice->id < 100){
+            $invoice->unique_number = 'EH0' . $invoice->id;
+        }else{
+            $invoice->unique_number = 'EH' . $invoice->id;
+        }
+
+        $invoice->save();
+
+        return ['id'=> $invoice->id , 'unique_number'=>$invoice->unique_number];
 
     }
 

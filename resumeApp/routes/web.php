@@ -155,6 +155,12 @@ Route::get('/admin/client/all_invoices/{client_id}','InvoicesController@viewInvo
 Route::get('/admin/client/invoices/{client_id}','InvoicesController@getInvoices')->name('get.invoices');
 Route::post('/admin/client/addinvoice/','InvoicesController@addInvoice')->name('add.invoice');
 Route::post('/admin/client/deleteinvoice/','InvoicesController@deleteInvoice')->name('delete.invoice');
+    // invoice public link
+
+Route::get('/workforce/invoices/{unique_number}','InvoicesController@viewInvoicePublicPage')->name('show.invoice.public.page');
+
+
+
 
 // recordings
 Route::get('/freelancer/records','RecordingsController@getRecords')->name('get.records');

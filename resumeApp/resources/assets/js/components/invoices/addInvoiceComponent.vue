@@ -40,7 +40,8 @@
                                     </textarea>
                               </div>
                               <div class="form-group col-12">
-                                  <select  class="form-control" v-model="toBeEditedInvoice.status">
+                                  <label for="status" class="panelFormLabel">Status :</label>
+                                  <select  id="status" class="form-control" v-model="toBeEditedInvoice.status">
                                       <option disabled value="">Please select one</option>
                                       <option>Paid</option>
                                       <option>Outstanding</option>
@@ -74,6 +75,7 @@
                     }
                     // save the education id :
                     this.toBeEditedInvoice.id = response.data.id;
+                    this.toBeEditedInvoice.unique_number = response.data.unique_number;
                     // changes saved :
                     $('#changesSaved').fadeIn('slow');
                     setTimeout(function () {

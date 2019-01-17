@@ -1,3 +1,66 @@
+#invoice .agentName {
+  color: #2997c8;
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: justify;
+}
+
+#invoice .termsText {
+  color: #2997c8;
+  padding-top: 10px;
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+#invoice .invoiceNumber {
+  color: #767676;
+  font-family: Roboto;
+  font-size: 18px;
+  text-align: justify;
+  padding-top: 10px;
+}
+
+#invoice .invoiceNumber:after,
+#invoice .agentName:after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  padding: 0;
+}
+
+#invoice .clientInfo {
+  background-color: #dbedf7;
+  margin-top: 15px;
+}
+
+#invoice .clientInfo div {
+  text-align: center;
+  color: #2997c8;
+  padding: 10px 0 10px 0;
+  font-weight: bold;
+}
+
+#invoice .clientInfo_detail {
+  border-top: 2px lightblue solid;
+  padding-top: 15px;
+  margin-top: 10px;
+}
+
+#invoice .clientInfo_detail div {
+  text-align: center;
+  color: #939498;
+  padding-top: 15px;
+  border-right: 1.5px lightblue solid;
+}
+
+#invoice .buttonsRow {
+  border-top: 2px lightblue solid;
+  border-bottom: 2px lightblue solid;
+  margin-top: 15px;
+}
+
 .recorder_wrapper {
   width: 100%;
   display: -moz-flex;

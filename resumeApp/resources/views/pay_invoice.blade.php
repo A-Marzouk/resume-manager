@@ -5,11 +5,11 @@
         <div class="row">
             <div class="offset-md-2 col-md-8">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-md-4 col-12">
                         <div>
                             <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo" width="100%">
                         </div>
-                        <div style="padding-top: 10px; padding-left: 5px;">
+                        <div style="padding-top: 10px;">
                             <img src="/resumeApp/resources/assets/images/invoice/invoice_word.png" alt="word" width="99%">
                         </div>
                         <div class="invoiceNumber">
@@ -23,7 +23,7 @@
                             Status     : {{$invoice->status}}
                         </div>
                     </div>
-                    <div class="col-4 offset-4">
+                    <div class="col-md-4 offset-md-4 d-none d-md-block">
                         <div>
                             <img src="/resumeApp/resources/assets/images/invoice/circle_logo.png" alt="word" width="auto" height="150px">
                         </div>
@@ -48,7 +48,7 @@
                     <div class="col-4">
                         {{$invoice->client->agency}}
                     </div>
-                    <div class="col-4" style="border: none;">
+                    <div class="col-4" style="border: none; word-break: break-word;">
                          {{$invoice->client->phone}}<br/>
                          {{$invoice->client->email}}
                     </div>
@@ -59,10 +59,10 @@
                         SERVICE PROVIDED
                     </div>
                     <div class="col-2">
-                        NO. OF HRS/WEEK
+                        NO. OF HRS / WEEK
                     </div>
                     <div class="col-2">
-                        RATE/HR
+                        RATE / HR
                     </div>
                     <div class="col-2">
                         TOTAL DUE
@@ -78,7 +78,7 @@
                         {{$invoice->hours}}
                     </div>
                     <div class="col-2">
-                        {{$invoice->rate}} (USD)
+                        {{$invoice->rate}} USD
                     </div>
                     <div class="col-2" style="border: none;">
                         {{$invoice->total_amount}}
@@ -141,11 +141,11 @@
                     </div>
                 </div>
 
-                {{--<div class="row" style="padding-top:15px; ">--}}
-                    {{--<div class="col-8">--}}
-                        {{--<img src="/resumeApp/resources/assets/images/invoice/payment-systems.png" alt="payment" width="100%">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+                <div class="row" style="padding-top:15px; ">
+                    <div class="col-md-8 col-12">
+                        <img src="/resumeApp/resources/assets/images/invoice/payment-systems.png" alt="payment" width="100%">
+                    </div>
+                </div>
             </div>
         </div>
     </div>

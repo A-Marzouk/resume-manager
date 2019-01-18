@@ -49,7 +49,6 @@ class InvoicesController extends Controller
             'notes' => 'max:1500',
         ]);
 
-
         if(isset($request->id)){
             // edit
             $invoice = Invoice::where('id',$request->id)->first();
@@ -74,12 +73,20 @@ class InvoicesController extends Controller
 
         $invoice->save();
 
+        $clientName = $invoice->client->name;
+        $words = explode(" ", $clientName);
+        $firstLetters = "";
+
+        foreach ($words as $w) {
+            $firstLetters .= $w[0];
+        }
+
         if($invoice->id < 10){
-            $invoice->unique_number = 'EH00' . $invoice->id;
+            $invoice->unique_number = $firstLetters.'00' . $invoice->id;
         }elseif ($invoice->id < 100){
-            $invoice->unique_number = 'EH0' . $invoice->id;
+            $invoice->unique_number = $firstLetters.'0' . $invoice->id;
         }else{
-            $invoice->unique_number = 'EH' . $invoice->id;
+            $invoice->unique_number = $firstLetters . $invoice->id;
         }
 
         $invoice->save();

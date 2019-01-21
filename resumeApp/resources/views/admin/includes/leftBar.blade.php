@@ -17,6 +17,11 @@
             </a>
         </li>
         <li class="col-md-12">
+            <a class="btn btn-block btn-outline-primary" href="{{route('view.campaigns')}}"  style="margin-bottom: 6px;">
+                Campaigns
+            </a>
+        </li>
+        <li class="col-md-12">
             <a class="btn btn-block btn-outline-primary" href="#bookings"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
                 Bookings
             </a>

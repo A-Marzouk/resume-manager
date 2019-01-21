@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(176);
+module.exports = __webpack_require__(187);
 
 
 /***/ }),
@@ -14366,17 +14366,22 @@ Vue.component('projects-list', __webpack_require__(138));
 Vue.component('project-detail', __webpack_require__(143));
 Vue.component('add-project-modal', __webpack_require__(146));
 
+// campaigns
+Vue.component('campaigns-list', __webpack_require__(149));
+Vue.component('campaign-component', __webpack_require__(154));
+Vue.component('add-campaign-modal', __webpack_require__(157));
+
 // search components :
-Vue.component('search-freelancers', __webpack_require__(149));
-Vue.component('freelancer-card', __webpack_require__(154));
-Vue.component('freelancers-list', __webpack_require__(157));
+Vue.component('search-freelancers', __webpack_require__(160));
+Vue.component('freelancer-card', __webpack_require__(165));
+Vue.component('freelancers-list', __webpack_require__(168));
 
 // chat room:
-Vue.component('new-chat', __webpack_require__(162));
+Vue.component('new-chat', __webpack_require__(173));
 
 //
-Vue.component('send-emails', __webpack_require__(165));
-Vue.component('send-invitations', __webpack_require__(170));
+Vue.component('send-emails', __webpack_require__(176));
+Vue.component('send-invitations', __webpack_require__(181));
 
 if ($("#searchFreelancers").length !== 0) {
     var searchFreelancers = new Vue({
@@ -14427,6 +14432,12 @@ if ($("#freelancer_educations").length !== 0) {
 if ($("#client_invoices").length !== 0) {
     var client_invoices = new Vue({
         el: '#client_invoices'
+    });
+}
+
+if ($("#client_campaings").length !== 0) {
+    var client_campaings = new Vue({
+        el: '#client_campaings'
     });
 }
 
@@ -14579,7 +14590,7 @@ window.Echo.channel('conversations').listen('UpdateMessageCount', function (e) {
     }
 });
 
-__webpack_require__(175);
+__webpack_require__(186);
 
 /***/ }),
 /* 16 */
@@ -63288,7 +63299,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\search\\searchComponent.vue"
+Component.options.__file = "resources\\assets\\js\\components\\campaigns\\campaingsListComponent.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -63297,9 +63308,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-81fb14d0", Component.options)
+    hotAPI.createRecord("data-v-00b28b1e", Component.options)
   } else {
-    hotAPI.reload("data-v-81fb14d0", Component.options)
+    hotAPI.reload("data-v-00b28b1e", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -63320,13 +63331,13 @@ var content = __webpack_require__(151);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("5467ac3a", content, false, {});
+var update = __webpack_require__(2)("335e37ad", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-81fb14d0\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./searchComponent.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-81fb14d0\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./searchComponent.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-00b28b1e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./campaingsListComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-00b28b1e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./campaingsListComponent.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -63351,6 +63362,1112 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 /***/ }),
 /* 152 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            camps: [],
+            canAdd: true,
+            toBeEditedCamp: {
+                'id': '',
+                'client_id': '',
+                'title': '',
+                'description': '',
+                'status': '',
+                'start_date': '',
+                'end_date': ''
+            },
+            members: []
+        };
+    },
+
+
+    methods: {
+        getCurrentCamps: function getCurrentCamps() {
+            var _this = this;
+
+            axios.get('/admin/get_camps').then(function (response) {
+                var currCamps = response.data;
+                $.each(currCamps, function (i) {});
+                _this.camps = currCamps;
+                _this.checkMaxCamps();
+            });
+        },
+        addCamp: function addCamp(newCamp) {
+            this.camps.push(newCamp);
+            this.checkMaxCamps();
+        },
+        deleteCamp: function deleteCamp(camp) {
+            var _this2 = this;
+
+            if (!confirm('Are you sure you want to delete this campaign ?')) {
+                return;
+            }
+            axios.post('/admin/camps/delete', { campID: camp.id }).then(function (response) {
+                var camps = _this2.camps;
+                $.each(camps, function (i) {
+                    if (camps[i].id === camp.id) {
+                        camps.splice(i, 1);
+                        return false;
+                    }
+                });
+
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+
+                _this2.checkMaxCamps();
+            });
+        },
+        editCamp: function editCamp(campID) {
+            var camps = this.camps;
+            var editedCamp = {};
+
+            $.each(camps, function (i) {
+                if (camps[i].id === campID) {
+                    editedCamp = camps[i];
+                }
+            });
+            this.toBeEditedCamp = editedCamp;
+        },
+        checkMaxCamps: function checkMaxCamps() {
+            if (this.camps.length > 4) {
+                this.canAdd = false;
+            } else {
+                this.canAdd = true;
+            }
+        },
+        clearData: function clearData() {
+            this.toBeEditedCamp = {
+                'id': '',
+                'client_id': '',
+                'title': '',
+                'description': '',
+                'status': '',
+                'start_date': '',
+                'end_date': ''
+            };
+        },
+        getCampMembers: function getCampMembers(campID) {
+            var _this3 = this;
+
+            axios.post('/admin/camp/members', { campID: campID }).then(function (response) {
+                var results = response.data;
+                var isMember = false;
+                results.forEach(function (freelancer) {
+                    _this3.members.push({ campID: campID, freelancer: freelancer });
+                    isMember = true;
+                });
+
+                $('#seeApplied' + campID).attr('disabled', true);
+                if (!isMember) {
+                    alert('No members yet..');
+                }
+            });
+        }
+    },
+
+    created: function created() {
+        this.getCurrentCamps();
+    }
+});
+
+/***/ }),
+/* 153 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "transition-group",
+        { staticClass: "row", attrs: { name: "list" } },
+        _vm._l(_vm.camps, function(camp, index) {
+          return _c(
+            "campaign-component",
+            {
+              key: index,
+              staticClass: "list-item workExperience col-12",
+              staticStyle: { margin: "0px 10px 20px" }
+            },
+            [
+              _c(
+                "span",
+                {
+                  staticClass: "deleteWorkBtn NoDecor",
+                  on: {
+                    click: function($event) {
+                      _vm.deleteCamp(camp)
+                    }
+                  }
+                },
+                [
+                  _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/resources/assets/images/close_blue.png",
+                        alt: "edit profile"
+                      }
+                    }),
+                    _vm._v("\n                    Delete\n                ")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass: "deleteWorkBtn NoDecor",
+                  staticStyle: { width: "75px", "margin-right": "5px" },
+                  on: {
+                    click: function($event) {
+                      _vm.editCamp(camp.id)
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "javascript:void(0)",
+                        "data-target": "#addCampModal",
+                        "data-toggle": "modal"
+                      }
+                    },
+                    [
+                      _c("img", {
+                        staticStyle: {
+                          width: "20px",
+                          "padding-right": "7px",
+                          "padding-bottom": "2px",
+                          height: "15px"
+                        },
+                        attrs: {
+                          src:
+                            "/resumeApp/resources/assets/images/edit_blue.png",
+                          alt: "edit profile"
+                        }
+                      }),
+                      _vm._v("\n                    Edit\n                ")
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v("Campaign :" + _vm._s(camp.title))]
+              ),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
+                [_vm._v("Description : " + _vm._s(camp.description))]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
+                [_vm._v("Starts at : " + _vm._s(camp.start_date))]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
+                [_vm._v("Ends at : " + _vm._s(camp.end_date))]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
+                [_vm._v("Status : " + _vm._s(camp.status))]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm btn-outline-primary",
+                  attrs: { id: "seeApplied" + camp.id },
+                  on: {
+                    click: function($event) {
+                      _vm.getCampMembers(camp.id)
+                    }
+                  }
+                },
+                [_vm._v("Get camp members")]
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _vm._l(_vm.members, function(data, index) {
+                return _c("div", { key: index }, [
+                  data.campID == camp.id
+                    ? _c("div", [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              target: "_blank",
+                              href: "/" + data.freelancer.username
+                            }
+                          },
+                          [_vm._v(_vm._s(data.freelancer.firstName))]
+                        )
+                      ])
+                    : _vm._e()
+                ])
+              })
+            ],
+            2
+          )
+        })
+      ),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: this.canAdd,
+              expression: "this.canAdd"
+            }
+          ],
+          staticClass: "deleteWorkBtn NoDecor",
+          staticStyle: { width: "137px" },
+          on: { click: _vm.clearData }
+        },
+        [_vm._m(0)]
+      ),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("add-campaign-modal", {
+        attrs: { toBeEditedCamp: _vm.toBeEditedCamp },
+        on: { campAdded: _vm.addCamp }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        attrs: {
+          href: "javascript:void(0)",
+          "data-toggle": "modal",
+          "data-target": "#addCampModal"
+        }
+      },
+      [
+        _c("img", {
+          attrs: {
+            src: "/resumeApp/resources/assets/images/add_blue.png",
+            alt: "edit profile"
+          }
+        }),
+        _vm._v("\n            Create campaign\n        ")
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-00b28b1e", module.exports)
+  }
+}
+
+/***/ }),
+/* 154 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(155)
+/* template */
+var __vue_template__ = __webpack_require__(156)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\campaigns\\campaingComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5de6030a", Component.options)
+  } else {
+    hotAPI.reload("data-v-5de6030a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 155 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {};
+    }
+});
+
+/***/ }),
+/* 156 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5de6030a", module.exports)
+  }
+}
+
+/***/ }),
+/* 157 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(158)
+/* template */
+var __vue_template__ = __webpack_require__(159)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\campaigns\\addCampaingComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-df29d9ec", Component.options)
+  } else {
+    hotAPI.reload("data-v-df29d9ec", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 158 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['toBeEditedCamp'],
+    data: function data() {
+        return {
+            clients: []
+        };
+    },
+
+    methods: {
+        submitForm: function submitForm() {
+            var _this = this;
+
+            // post data :
+            axios.post('/admin/camps/add', this.toBeEditedCamp).then(function (response) {
+                //
+                if (_this.toBeEditedCamp.id === "") {
+                    _this.$emit('campAdded', _this.toBeEditedCamp);
+                }
+                // save the camp id :
+                _this.toBeEditedCamp.id = response.data.id;
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+            });
+            $('#closeCampModal').click();
+        },
+        getClients: function getClients() {
+            var _this2 = this;
+
+            axios.get('/admin/get_clients').then(function (response) {
+                var currClients = response.data;
+                _this2.clients = currClients;
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.getClients();
+    }
+});
+
+/***/ }),
+/* 159 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addCampModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addCampModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  {
+                    attrs: { action: "/admin/camps/add", method: "post" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.submitForm($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "title" }
+                          },
+                          [_vm._v("Title :")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedCamp.title,
+                              expression: "toBeEditedCamp.title"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "title",
+                            name: "title",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedCamp.title },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedCamp,
+                                "title",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "description" }
+                          },
+                          [_vm._v("Description :")]
+                        ),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedCamp.description,
+                              expression: "toBeEditedCamp.description"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            rows: "3",
+                            id: "description",
+                            name: "description",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedCamp.description },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedCamp,
+                                "description",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "time" }
+                          },
+                          [_vm._v("Starts at :")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedCamp.start_date,
+                              expression: "toBeEditedCamp.start_date"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "date",
+                            id: "time",
+                            name: "time",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedCamp.start_date },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedCamp,
+                                "start_date",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "Budget" }
+                          },
+                          [_vm._v("Ends at :")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedCamp.end_date,
+                              expression: "toBeEditedCamp.end_date"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "date",
+                            id: "Budget",
+                            name: "Budget",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedCamp.end_date },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedCamp,
+                                "end_date",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "status" }
+                          },
+                          [_vm._v("Status :")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedCamp.status,
+                              expression: "toBeEditedCamp.status"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", id: "status", name: "status" },
+                          domProps: { value: _vm.toBeEditedCamp.status },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedCamp,
+                                "status",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "client_id" }
+                          },
+                          [_vm._v("Choose client :")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.toBeEditedCamp.client_id,
+                                expression: "toBeEditedCamp.client_id"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { id: "client_id" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.toBeEditedCamp,
+                                  "client_id",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { disabled: "", value: "" } },
+                              [_vm._v("Please select one")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.clients, function(client, index) {
+                              return _c(
+                                "option",
+                                { key: index, domProps: { value: client.id } },
+                                [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(client.name) +
+                                      " (" +
+                                      _vm._s(client.email) +
+                                      ")\n                                    "
+                                  )
+                                ]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "text-right", staticStyle: { padding: "15px 10px 0 0" } },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "modal",
+              "aria-label": "Close",
+              id: "closeCampModal"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Create")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-df29d9ec", module.exports)
+  }
+}
+
+/***/ }),
+/* 160 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(161)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(163)
+/* template */
+var __vue_template__ = __webpack_require__(164)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\search\\searchComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-81fb14d0", Component.options)
+  } else {
+    hotAPI.reload("data-v-81fb14d0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 161 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(162);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("5467ac3a", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-81fb14d0\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./searchComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-81fb14d0\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./searchComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 162 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 163 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63524,7 +64641,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 153 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -64066,15 +65183,15 @@ if (false) {
 }
 
 /***/ }),
-/* 154 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(155)
+var __vue_script__ = __webpack_require__(166)
 /* template */
-var __vue_template__ = __webpack_require__(156)
+var __vue_template__ = __webpack_require__(167)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -64113,7 +65230,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 155 */
+/* 166 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64132,7 +65249,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 156 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -64152,19 +65269,19 @@ if (false) {
 }
 
 /***/ }),
-/* 157 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(158)
+  __webpack_require__(169)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(160)
+var __vue_script__ = __webpack_require__(171)
 /* template */
-var __vue_template__ = __webpack_require__(161)
+var __vue_template__ = __webpack_require__(172)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -64203,13 +65320,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 158 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(159);
+var content = __webpack_require__(170);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -64229,7 +65346,7 @@ if(false) {
 }
 
 /***/ }),
-/* 159 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -64243,7 +65360,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 160 */
+/* 171 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64314,7 +65431,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 161 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -64518,15 +65635,15 @@ if (false) {
 }
 
 /***/ }),
-/* 162 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(163)
+var __vue_script__ = __webpack_require__(174)
 /* template */
-var __vue_template__ = __webpack_require__(164)
+var __vue_template__ = __webpack_require__(175)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -64565,7 +65682,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 163 */
+/* 174 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64968,7 +66085,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 164 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -65742,19 +66859,19 @@ if (false) {
 }
 
 /***/ }),
-/* 165 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(166)
+  __webpack_require__(177)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(168)
+var __vue_script__ = __webpack_require__(179)
 /* template */
-var __vue_template__ = __webpack_require__(169)
+var __vue_template__ = __webpack_require__(180)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -65793,13 +66910,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 166 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(167);
+var content = __webpack_require__(178);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -65819,7 +66936,7 @@ if(false) {
 }
 
 /***/ }),
-/* 167 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -65833,7 +66950,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 168 */
+/* 179 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66025,7 +67142,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 169 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -66316,19 +67433,19 @@ if (false) {
 }
 
 /***/ }),
-/* 170 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(171)
+  __webpack_require__(182)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(173)
+var __vue_script__ = __webpack_require__(184)
 /* template */
-var __vue_template__ = __webpack_require__(174)
+var __vue_template__ = __webpack_require__(185)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -66367,13 +67484,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 171 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(172);
+var content = __webpack_require__(183);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -66393,7 +67510,7 @@ if(false) {
 }
 
 /***/ }),
-/* 172 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -66407,7 +67524,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 173 */
+/* 184 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66534,7 +67651,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 174 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -66904,7 +68021,7 @@ if (false) {
 }
 
 /***/ }),
-/* 175 */
+/* 186 */
 /***/ (function(module, exports) {
 
 var status = $('#record_status'),
@@ -67146,7 +68263,7 @@ if (navigator.mediaDevices.getUserMedia) {
 }
 
 /***/ }),
-/* 176 */
+/* 187 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

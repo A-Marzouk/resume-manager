@@ -12,7 +12,7 @@ class ClientsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:client');
+        $this->middleware('auth:client')->except('hasAgreed');
     }
 
     public function index(){
@@ -22,6 +22,9 @@ class ClientsController extends Controller
 
     public function hasAgreed(){
         $currClient = auth()->guard('client')->user();
+        if(!$currClient){
+            return ['terms' =>'NO_USER'];
+        }
         if($currClient->agree_with_terms){
             return ['terms' =>'AGREED'];
         }

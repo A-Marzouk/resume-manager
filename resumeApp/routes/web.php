@@ -35,17 +35,15 @@ Route::prefix('client')->group(function (){
         return redirect()->back();
     });
 
+
 //client jobs :
     Route::get('/jobs','ClientsController@viewJobsPage')->name('client.jobs');
 
     Route::get('/get_jobs','ClientsController@getJobs')->name('get.jobs');
-    Route::post('/jobs/delete','ClientsController@deleteJob')->name('get.jobs');
+    Route::post('/jobs/delete','ClientsController@deleteJob');
     Route::post('/jobs/add/','JobsController@addJobPost')->name('add.job');
     Route::post('/jobs/delete','JobsController@deleteJobPost')->name('delete.job');
     Route::post('/jobs/applied_freelancers','JobsController@appliedFreelancers')->name('job.freelancers');
-
-
-
 
 //Password reset routes for client
     Route::get('/password/reset', 'Auth\ClientForgotPasswordController@showLinkRequestForm')->name('client.password.reset');
@@ -93,6 +91,16 @@ Route::get('/clear-cache', function() {
 // admin area :
 Route::get('/admin','AdminsController@welcomePage')->name('admin.dashboard');
 Route::get('/admin/client/{client_id}','AdminsController@logInAsClient')->name('logInAsClient');
+
+// view and edit campaigns is only for admin,
+Route::get('/admin/get_camps','CampaignsController@getAllCamps')->name('get.camps');
+Route::get('admin/get_clients','CampaignsController@getAllClients')->name('get.clients');
+Route::post('/admin/camps/delete','CampaignsController@deleteCamp')->name('delete.camp');
+Route::post('/admin/camps/add','CampaignsController@addCamp')->name('add.camp');
+Route::post('/admin/camp/members','CampaignsController@getCampMembers')->name('camp.members');
+
+Route::get('/admin/campaigns','CampaignsController@viewCampaigns')->name('view.campaigns');
+
 Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 
 // delete users, clients and conversations :
@@ -157,12 +165,6 @@ Route::post('/admin/client/addinvoice/','InvoicesController@addInvoice')->name('
 Route::post('/admin/client/deleteinvoice/','InvoicesController@deleteInvoice')->name('delete.invoice');
     // invoice public link
 Route::get('/workforce/invoices/{unique_number}','InvoicesController@viewInvoicePublicPage')->name('show.invoice.public.page');
-
-
-// campaigns :
-
-Route::get('/campaigns','CampaignsController@viewCampaigns')->name('view.campaigns');
-
 
 
 // recordings

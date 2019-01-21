@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Campaign;
+use App\Client;
 use Illuminate\Http\Request;
 
 class CampaignsController extends Controller
@@ -23,14 +24,22 @@ class CampaignsController extends Controller
         return view('admin.campaigns');
     }
 
-    public function getClientCampaigns(){
+    public function getAllClients(){
+        return Client::all();
+    }
+
+    public function getAllCamps(){
+        return Campaign::all();
+    }
+
+    public function getClientCamps(){
        // get current authenticated client :
         $currClient = auth()->guard('client')->user();
         return $currClient->campaigns;
     }
 
-    public function addCampaign(Request $request){
-        $currClient = auth()->guard('client')->user();
+    public function addCamp(Request $request){
+        $currClient = Client::where('id',$request->client_id)->first();
         $request->validate([
             'title' => 'max:190|required',
             'description' => 'max:1500|required',
@@ -60,11 +69,16 @@ class CampaignsController extends Controller
 
     }
 
-    public function deleteCampaign(Request $request){
+    public function deleteCamp(Request $request){
         // delete $campaign
-        $campaign = Campaign::where('id',$request->campaignID);
+        $campaign = Campaign::where('id',$request->campID);
         $campaign->delete();
         return 'Campaign has been deleted';
+    }
+
+    public function getCampMembers(Request $request){
+        $campID = $request->campID;
+        return Campaign::find($campID)->members;
     }
 
 }

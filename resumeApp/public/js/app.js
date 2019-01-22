@@ -64707,7 +64707,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return '/resumeApp/resources/views/customTheme/images/user.png';
             }
 
-            return '/' + userImage;
+            if (userImage.charAt(0) !== 'h') {
+                return '/' + userImage;
+            }
+
+            return userImage;
         }
     },
     mounted: function mounted() {

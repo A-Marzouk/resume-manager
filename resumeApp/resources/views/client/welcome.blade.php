@@ -45,15 +45,6 @@
            <div class="col-6">
                <h3 class="pageHeading text-left">Hello {{$client->name}} !</h3>
            </div>
-           <div class="col-2 text-center">
-               <a href="{{route('client.profile',$client->id)}}">Profile</a>
-           </div>
-           <div class="col-2 text-center">
-               <a href="{{route('client.search')}}">Search freelancers</a>
-           </div>
-           <div class="col-2 text-center">
-               <a href="{{route('client.jobs')}}">My jobs</a>
-           </div>
        </div>
        <div class="row">
            <div class="col-md-12">

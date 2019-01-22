@@ -12,6 +12,7 @@
 */
 
 
+use App\Campaign;
 use App\Message;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -95,9 +96,11 @@ Route::get('/admin/client/{client_id}','AdminsController@logInAsClient')->name('
 // view and edit campaigns is only for admin,
 Route::get('/admin/get_camps','CampaignsController@getAllCamps')->name('get.camps');
 Route::get('admin/get_clients','CampaignsController@getAllClients')->name('get.clients');
+Route::get('admin/get_users','CampaignsController@getBusinessSupportUsers')->name('get.users');
 Route::post('/admin/camps/delete','CampaignsController@deleteCamp')->name('delete.camp');
 Route::post('/admin/camps/add','CampaignsController@addCamp')->name('add.camp');
 Route::post('/admin/camp/members','CampaignsController@getCampMembers')->name('camp.members');
+Route::post('/admin/camp/update_members','CampaignsController@addMembersToCamp')->name('add.members.to.camp');
 
 Route::get('/admin/campaigns','CampaignsController@viewCampaigns')->name('view.campaigns');
 

@@ -63,7 +63,7 @@
         props:['toBeEditedCamp'],
         data(){
             return{
-                clients:[]
+                clients:[],
             }
         },
         methods:{
@@ -97,7 +97,7 @@
                         this.toBeEditedCamp.clientName = this.clients[i].name;
                     }
                 });
-            }
+            },
         },
         mounted(){
             this.getClients();

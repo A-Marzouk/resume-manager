@@ -14370,6 +14370,7 @@ Vue.component('add-project-modal', __webpack_require__(146));
 Vue.component('campaigns-list', __webpack_require__(149));
 Vue.component('campaign-component', __webpack_require__(154));
 Vue.component('add-campaign-modal', __webpack_require__(157));
+Vue.component('update-members-modal', __webpack_require__(191));
 
 // search components :
 Vue.component('search-freelancers', __webpack_require__(160));
@@ -63415,6 +63416,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -63429,9 +63438,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'status': '',
                 'start_date': '',
                 'end_date': '',
-                'clientName': ''
-            },
-            members: []
+                'clientName': '',
+                'members': []
+            }
         };
     },
 
@@ -63484,6 +63493,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             this.toBeEditedCamp = editedCamp;
         },
+        updateMembers: function updateMembers(campID) {
+            var camps = this.camps;
+            var editedCamp = {};
+
+            $.each(camps, function (i) {
+                if (camps[i].id === campID) {
+                    editedCamp = camps[i];
+                }
+            });
+            this.toBeEditedCamp = editedCamp;
+        },
         checkMaxCamps: function checkMaxCamps() {
             if (this.camps.length > 4) {
                 this.canAdd = false;
@@ -63500,25 +63520,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'status': '',
                 'start_date': '',
                 'end_date': '',
-                'clientName': ''
+                'clientName': '',
+                'members': []
             };
-        },
-        getCampMembers: function getCampMembers(campID) {
-            var _this3 = this;
-
-            axios.post('/admin/camp/members', { campID: campID }).then(function (response) {
-                var results = response.data;
-                var isMember = false;
-                results.forEach(function (freelancer) {
-                    _this3.members.push({ campID: campID, freelancer: freelancer });
-                    isMember = true;
-                });
-
-                $('#seeApplied' + campID).attr('disabled', true);
-                if (!isMember) {
-                    alert('No members yet..');
-                }
-            });
         }
     },
 
@@ -63550,156 +63554,194 @@ var render = function() {
               staticStyle: { margin: "0px 10px 20px" }
             },
             [
-              _c(
-                "span",
-                {
-                  staticClass: "deleteWorkBtn NoDecor",
-                  on: {
-                    click: function($event) {
-                      _vm.deleteCamp(camp)
-                    }
-                  }
-                },
-                [
-                  _c("a", { attrs: { href: "javascript:void(0)" } }, [
-                    _c("img", {
-                      attrs: {
-                        src:
-                          "/resumeApp/resources/assets/images/close_blue.png",
-                        alt: "edit profile"
-                      }
-                    }),
-                    _vm._v("\n                    Delete\n                ")
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass: "deleteWorkBtn NoDecor",
-                  staticStyle: { width: "75px", "margin-right": "5px" },
-                  on: {
-                    click: function($event) {
-                      _vm.editCamp(camp.id)
-                    }
-                  }
-                },
-                [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-8" }, [
                   _c(
-                    "a",
+                    "div",
                     {
-                      attrs: {
-                        href: "javascript:void(0)",
-                        "data-target": "#addCampModal",
-                        "data-toggle": "modal"
+                      staticStyle: {
+                        "font-size": "16px",
+                        color: "#30323D",
+                        "font-family": "Roboto",
+                        "line-height": "19px",
+                        "font-weight": "bold"
+                      }
+                    },
+                    [_vm._v("Campaign :" + _vm._s(camp.title))]
+                  ),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticStyle: { color: "#30323D", "font-family": "Roboto" }
+                    },
+                    [
+                      _c("b", [_vm._v("Description :")]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(_vm._s(camp.description))
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticStyle: { color: "#30323D", "font-family": "Roboto" }
+                    },
+                    [
+                      _c("b", [_vm._v("Starts at :")]),
+                      _vm._v(" " + _vm._s(camp.start_date))
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticStyle: { color: "#30323D", "font-family": "Roboto" }
+                    },
+                    [
+                      _c("b", [_vm._v("Ends at : ")]),
+                      _vm._v(_vm._s(camp.end_date))
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticStyle: { color: "#30323D", "font-family": "Roboto" }
+                    },
+                    [
+                      _c("b", [_vm._v("Status :")]),
+                      _vm._v(" " + _vm._s(camp.status))
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticStyle: { color: "#30323D", "font-family": "Roboto" }
+                    },
+                    [
+                      _c("b", [_vm._v("Client :")]),
+                      _vm._v(" " + _vm._s(camp.clientName))
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-4" }, [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "deleteWorkBtn NoDecor",
+                      on: {
+                        click: function($event) {
+                          _vm.deleteCamp(camp)
+                        }
                       }
                     },
                     [
-                      _c("img", {
-                        staticStyle: {
-                          width: "20px",
-                          "padding-right": "7px",
-                          "padding-bottom": "2px",
-                          height: "15px"
-                        },
-                        attrs: {
-                          src:
-                            "/resumeApp/resources/assets/images/edit_blue.png",
-                          alt: "edit profile"
-                        }
-                      }),
-                      _vm._v("\n                    Edit\n                ")
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v("Campaign :" + _vm._s(camp.title))]
-              ),
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
-                [
-                  _vm._v("Description : "),
-                  _c("br"),
-                  _vm._v(_vm._s(camp.description))
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
-                [_vm._v("Starts at : " + _vm._s(camp.start_date))]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
-                [_vm._v("Ends at : " + _vm._s(camp.end_date))]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
-                [_vm._v("Status : " + _vm._s(camp.status))]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
-                [_vm._v("Client : " + _vm._s(camp.clientName))]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-sm btn-outline-primary",
-                  attrs: { id: "seeApplied" + camp.id },
-                  on: {
-                    click: function($event) {
-                      _vm.getCampMembers(camp.id)
-                    }
-                  }
-                },
-                [_vm._v("Get camp members")]
-              ),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _vm._l(_vm.members, function(data, index) {
-                return _c("div", { key: index }, [
-                  data.campID == camp.id
-                    ? _c("div", [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              target: "_blank",
-                              href: "/" + data.freelancer.username
-                            }
-                          },
-                          [_vm._v(_vm._s(data.freelancer.firstName))]
+                      _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                        _c("img", {
+                          attrs: {
+                            src:
+                              "/resumeApp/resources/assets/images/close_blue.png",
+                            alt: "edit profile"
+                          }
+                        }),
+                        _vm._v(
+                          "\n                            Delete\n                        "
                         )
                       ])
-                    : _vm._e()
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "deleteWorkBtn NoDecor",
+                      staticStyle: { width: "75px", "margin-right": "5px" },
+                      on: {
+                        click: function($event) {
+                          _vm.editCamp(camp.id)
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "javascript:void(0)",
+                            "data-target": "#addCampModal",
+                            "data-toggle": "modal"
+                          }
+                        },
+                        [
+                          _c("img", {
+                            staticStyle: {
+                              width: "20px",
+                              "padding-right": "7px",
+                              "padding-bottom": "2px",
+                              height: "15px"
+                            },
+                            attrs: {
+                              src:
+                                "/resumeApp/resources/assets/images/edit_blue.png",
+                              alt: "edit profile"
+                            }
+                          }),
+                          _vm._v("\n                    Edit\n                ")
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "deleteWorkBtn NoDecor",
+                      staticStyle: { width: "169px", "margin-top": "5px" },
+                      on: {
+                        click: function($event) {
+                          _vm.updateMembers(camp.id)
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "javascript:void(0)",
+                            "data-target": "#updateMembersModal",
+                            "data-toggle": "modal"
+                          }
+                        },
+                        [
+                          _c("img", {
+                            staticStyle: {
+                              width: "20px",
+                              "padding-right": "7px",
+                              "padding-bottom": "2px",
+                              height: "15px"
+                            },
+                            attrs: {
+                              src:
+                                "/resumeApp/resources/assets/images/add_blue.png",
+                              alt: "edit profile"
+                            }
+                          }),
+                          _vm._v(
+                            "\n                            Update members\n                        "
+                          )
+                        ]
+                      )
+                    ]
+                  )
                 ])
-              })
-            ],
-            2
+              ])
+            ]
           )
         })
       ),
@@ -63727,6 +63769,10 @@ var render = function() {
       _c("add-campaign-modal", {
         attrs: { toBeEditedCamp: _vm.toBeEditedCamp },
         on: { campAdded: _vm.addCamp }
+      }),
+      _vm._v(" "),
+      _c("update-members-modal", {
+        attrs: { toBeEditedCamp: _vm.toBeEditedCamp }
       })
     ],
     1
@@ -68292,6 +68338,605 @@ if (navigator.mediaDevices.getUserMedia) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(194)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(192)
+/* template */
+var __vue_template__ = __webpack_require__(193)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\campaigns\\updateMembersComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e144c086", Component.options)
+  } else {
+    hotAPI.reload("data-v-e144c086", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 192 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['toBeEditedCamp'],
+    data: function data() {
+        return {
+            businessUsers: []
+        };
+    },
+
+    methods: {
+        updateCampMembers: function updateCampMembers() {
+            axios.post('/admin/camp/update_members', { users: this.toBeEditedCamp.members, campID: this.toBeEditedCamp.id }).then(function (response) {
+
+                console.log(response.data);
+
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+            });
+
+            $('#closeMembersModal').click();
+        },
+        getBusinessUsers: function getBusinessUsers() {
+            var _this = this;
+
+            axios.get('/admin/get_users').then(function (response) {
+                _this.businessUsers = response.data;
+            });
+        },
+        addMember: function addMember(user) {
+            var _this2 = this;
+
+            var canAdd = true;
+            $.each(this.toBeEditedCamp.members, function (i) {
+                if (_this2.toBeEditedCamp.members[i].id === user.id) {
+                    alert('Freelancer already exists.');
+                    canAdd = false;
+                }
+            });
+            if (canAdd) {
+                this.toBeEditedCamp.members.push(user);
+            }
+        },
+        removeMember: function removeMember(user) {
+            var _this3 = this;
+
+            $.each(this.toBeEditedCamp.members, function (i) {
+                if (_this3.toBeEditedCamp.members[i].id === user.id) {
+                    _this3.toBeEditedCamp.members.splice(i, 1);
+                    return false;
+                }
+            });
+        },
+        freelancerExists: function freelancerExists(user_id) {
+            var _this4 = this;
+
+            var canAdd = true;
+            $.each(this.toBeEditedCamp.members, function (i) {
+                if (_this4.toBeEditedCamp.members[i].id === user_id) {
+                    canAdd = false;
+                }
+            });
+
+            return canAdd;
+        }
+    },
+    mounted: function mounted() {
+        this.getBusinessUsers();
+    }
+});
+
+/***/ }),
+/* 193 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "updateMembersModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "updateMembersModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal-body", attrs: { id: "content" } },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "pageHeading text-left",
+                      staticStyle: { "padding-bottom": "15px" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Current campaign members.\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "transition-group",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: this.toBeEditedCamp.members.length > 0,
+                          expression: "this.toBeEditedCamp.members.length > 0"
+                        }
+                      ],
+                      staticClass: "row",
+                      attrs: { name: "list" }
+                    },
+                    _vm._l(_vm.toBeEditedCamp.members, function(user, index) {
+                      return _c(
+                        "div",
+                        {
+                          key: index,
+                          staticClass: "col-md-2 col-6 freelancerBox list-item"
+                        },
+                        [
+                          _c("div", { staticClass: "freelancerItem" }, [
+                            _c("img", {
+                              staticClass: "slickFreelancerImg",
+                              attrs: {
+                                src:
+                                  "/resumeApp/resources/views/customTheme/images/freelancers/Dmitri.jpg",
+                                alt: "freelancer"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "freelancerData" }, [
+                              _c(
+                                "div",
+                                { staticClass: "freelancerName nohover" },
+                                [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(user.firstName) +
+                                      " " +
+                                      _vm._s(user.lastName) +
+                                      "\n                                    "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "freelancerJob" }, [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(user.profession) +
+                                    "\n                                    "
+                                )
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "deleteWorkBtn NoDecor",
+                              staticStyle: { width: "100%" },
+                              on: {
+                                click: function($event) {
+                                  _vm.removeMember(user)
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "a",
+                                { attrs: { href: "javascript:void(0)" } },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src:
+                                        "/resumeApp/resources/assets/images/close_blue.png",
+                                      alt: "edit profile"
+                                    }
+                                  }),
+                                  _vm._v(
+                                    "\n                                    Remove\n                                "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    })
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: this.toBeEditedCamp.members.length < 1,
+                          expression: "this.toBeEditedCamp.members.length < 1"
+                        }
+                      ],
+                      staticClass: "pageSubHeading text-left"
+                    },
+                    [
+                      _vm._v(
+                        "\n                       No members assigned to this campaign.\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "pageHeading text-left",
+                      staticStyle: { "padding-bottom": "15px" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Business support freelancers.\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "transition-group",
+                    { staticClass: "row", attrs: { name: "list" } },
+                    _vm._l(_vm.businessUsers, function(user, index) {
+                      return _c(
+                        "div",
+                        {
+                          key: index,
+                          staticClass: "list-item col-md-2 col-6 freelancerBox"
+                        },
+                        [
+                          _c("div", { staticClass: "freelancerItem" }, [
+                            _c("img", {
+                              staticClass: "slickFreelancerImg",
+                              attrs: {
+                                src:
+                                  "/resumeApp/resources/views/customTheme/images/freelancers/Dmitri.jpg",
+                                alt: "freelancer"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "freelancerData" }, [
+                              _c(
+                                "div",
+                                { staticClass: "freelancerName nohover" },
+                                [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(user.firstName) +
+                                      " " +
+                                      _vm._s(user.lastName) +
+                                      "\n                                    "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "freelancerJob" }, [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(user.profession) +
+                                    "\n                                    "
+                                )
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.freelancerExists(user.id),
+                                  expression: "freelancerExists(user.id)"
+                                }
+                              ],
+                              staticClass: "deleteWorkBtn NoDecor",
+                              staticStyle: { width: "100%" },
+                              on: {
+                                click: function($event) {
+                                  _vm.addMember(user)
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "a",
+                                { attrs: { href: "javascript:void(0)" } },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src:
+                                        "/resumeApp/resources/assets/images/add_blue.png",
+                                      alt: "edit profile"
+                                    }
+                                  }),
+                                  _vm._v(
+                                    "\n                                    Add\n                                "
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.freelancerExists(user.id),
+                                  expression: "!freelancerExists(user.id)"
+                                }
+                              ]
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "text-center",
+                                  staticStyle: { color: "lightgreen" }
+                                },
+                                [_vm._v("Campaign member")]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    })
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "modal-footer",
+                      staticStyle: { "margin-top": "15px" }
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          on: { click: _vm.updateCampMembers }
+                        },
+                        [_vm._v("Update")]
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "text-right", staticStyle: { padding: "15px 10px 0 0" } },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "modal",
+              "aria-label": "Close",
+              id: "closeMembersModal"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        )
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e144c086", module.exports)
+  }
+}
+
+/***/ }),
+/* 194 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(195);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("541dd442", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e144c086\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./updateMembersComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e144c086\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./updateMembersComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 195 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 2s;\n    transition: all 2s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

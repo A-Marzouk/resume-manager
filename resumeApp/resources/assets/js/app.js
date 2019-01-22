@@ -78,6 +78,7 @@ Vue.component('add-project-modal', require('./components/projects/addProjectComp
 Vue.component('campaigns-list', require('./components/campaigns/campaingsListComponent.vue'));
 Vue.component('campaign-component', require('./components/campaigns/campaingComponent.vue'));
 Vue.component('add-campaign-modal', require('./components/campaigns/addCampaingComponent.vue'));
+Vue.component('update-members-modal', require('./components/campaigns/updateMembersComponent.vue'));
 
 // search components :
 Vue.component('search-freelancers', require('./components/search/searchComponent.vue'));

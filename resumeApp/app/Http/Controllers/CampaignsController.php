@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 use App\Campaign;
 use App\Client;
+use App\User;
 use Illuminate\Http\Request;
 
 class CampaignsController extends Controller
@@ -28,10 +29,15 @@ class CampaignsController extends Controller
         return Client::all();
     }
 
+    public function getBusinessSupportUsers(){
+        return User::where('profession','businessSupport')->get();
+    }
+
     public function getAllCamps(){
         $campaigns = Campaign::all();
         foreach ($campaigns as &$campaign){
             $campaign['clientName'] = Client::where('id',$campaign->client_id)->first()->name;
+            $campaign['members']    = $campaign->members;
         }
         return $campaigns;
     }
@@ -85,8 +91,21 @@ class CampaignsController extends Controller
         return Campaign::find($campID)->members;
     }
 
-    public function getCampClient($client_id){
-        return Client::where('id',$client_id)->first();
+    public function addMembersToCamp(Request $request){
+        $campaign = Campaign::find($request->campID) ;
+        if(empty($request->users)){
+            // remove all freelancers from the campaign.
+            foreach ($campaign->members as $member){
+                $campaign->members()->detach($member->id);
+            }
+        }else{
+            foreach ($request->users as $user){
+                // sync with the id's sent.
+                $IDs[] = $user['id'];
+            }
+            $campaign->members()->sync($IDs);
+        }
+        return 'Members Updated';
     }
 
 }

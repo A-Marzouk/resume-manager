@@ -48,7 +48,14 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button type="submit" class="btn btn-primary">
+                                    <div v-if="this.toBeEditedCamp.id != '' ">
+                                       Update
+                                    </div>
+                                    <div v-else>
+                                       Create
+                                    </div>
+                                </button>
                             </div>
                         </form>
                     </div>

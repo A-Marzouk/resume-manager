@@ -63567,7 +63567,7 @@ var render = function() {
                         "font-weight": "bold"
                       }
                     },
-                    [_vm._v("Campaign :" + _vm._s(camp.title))]
+                    [_vm._v("Campaign : " + _vm._s(camp.title))]
                   ),
                   _c("br"),
                   _vm._v(" "),
@@ -63577,9 +63577,7 @@ var render = function() {
                       staticStyle: { color: "#30323D", "font-family": "Roboto" }
                     },
                     [
-                      _c("b", [_vm._v("Description :")]),
-                      _vm._v(" "),
-                      _c("br"),
+                      _c("b", [_vm._v("Description : ")]),
                       _vm._v(_vm._s(camp.description))
                     ]
                   ),
@@ -63590,7 +63588,7 @@ var render = function() {
                       staticStyle: { color: "#30323D", "font-family": "Roboto" }
                     },
                     [
-                      _c("b", [_vm._v("Starts at :")]),
+                      _c("b", [_vm._v("Starts at : ")]),
                       _vm._v(" " + _vm._s(camp.start_date))
                     ]
                   ),
@@ -63612,7 +63610,7 @@ var render = function() {
                       staticStyle: { color: "#30323D", "font-family": "Roboto" }
                     },
                     [
-                      _c("b", [_vm._v("Status :")]),
+                      _c("b", [_vm._v("Status : ")]),
                       _vm._v(" " + _vm._s(camp.status))
                     ]
                   ),
@@ -63623,7 +63621,7 @@ var render = function() {
                       staticStyle: { color: "#30323D", "font-family": "Roboto" }
                     },
                     [
-                      _c("b", [_vm._v("Client :")]),
+                      _c("b", [_vm._v("Client : ")]),
                       _vm._v(" " + _vm._s(camp.clientName))
                     ]
                   )
@@ -63952,6 +63950,13 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -64388,7 +64393,28 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(1)
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "submit" }
+                        },
+                        [
+                          this.toBeEditedCamp.id != ""
+                            ? _c("div", [
+                                _vm._v(
+                                  "\n                                   Update\n                                "
+                                )
+                              ])
+                            : _c("div", [
+                                _vm._v(
+                                  "\n                                   Create\n                                "
+                                )
+                              ])
+                        ]
+                      )
+                    ])
                   ]
                 )
               ])
@@ -64423,18 +64449,6 @@ var staticRenderFns = [
         )
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Create")]
-      )
-    ])
   }
 ]
 render._withStripped = true
@@ -68586,7 +68600,7 @@ var render = function() {
                   _c(
                     "div",
                     {
-                      staticClass: "pageHeading text-left",
+                      staticClass: "pageHeading",
                       staticStyle: { "padding-bottom": "15px" }
                     },
                     [
@@ -68712,7 +68726,7 @@ var render = function() {
                   _c(
                     "div",
                     {
-                      staticClass: "pageHeading text-left",
+                      staticClass: "pageHeading",
                       staticStyle: { "padding-bottom": "15px" }
                     },
                     [

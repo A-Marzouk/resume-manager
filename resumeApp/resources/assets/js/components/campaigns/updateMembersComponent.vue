@@ -9,7 +9,7 @@
                         </button>
                     </div>
                     <div class="modal-body" id="content">
-                        <div class="pageHeading text-left" style="padding-bottom:15px;">
+                        <div class="pageHeading" style="padding-bottom:15px;">
                             Current campaign members.
                         </div>
                         <transition-group name="list" class="row" v-show="this.toBeEditedCamp.members.length > 0">
@@ -38,7 +38,7 @@
                            No members assigned to this campaign.
                         </div>
                         <hr>
-                        <div class="pageHeading text-left" style="padding-bottom:15px;">
+                        <div class="pageHeading" style="padding-bottom:15px;">
                             Business support freelancers.
                         </div>
                         <transition-group name="list" class="row">

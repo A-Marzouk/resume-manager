@@ -139,7 +139,11 @@
                     return '/resumeApp/resources/views/customTheme/images/user.png';
                 }
 
-                return '/'+userImage;
+                if(userImage.charAt(0) !== 'h'){
+                    return '/'+userImage;
+                }
+
+                return userImage;
             }
         },
         mounted(){

@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(187);
+module.exports = __webpack_require__(192);
 
 
 /***/ }),
@@ -14370,19 +14370,19 @@ Vue.component('add-project-modal', __webpack_require__(146));
 Vue.component('campaigns-list', __webpack_require__(149));
 Vue.component('campaign-component', __webpack_require__(154));
 Vue.component('add-campaign-modal', __webpack_require__(157));
-Vue.component('update-members-modal', __webpack_require__(191));
+Vue.component('update-members-modal', __webpack_require__(160));
 
 // search components :
-Vue.component('search-freelancers', __webpack_require__(160));
-Vue.component('freelancer-card', __webpack_require__(165));
-Vue.component('freelancers-list', __webpack_require__(168));
+Vue.component('search-freelancers', __webpack_require__(165));
+Vue.component('freelancer-card', __webpack_require__(170));
+Vue.component('freelancers-list', __webpack_require__(173));
 
 // chat room:
-Vue.component('new-chat', __webpack_require__(173));
+Vue.component('new-chat', __webpack_require__(178));
 
 //
-Vue.component('send-emails', __webpack_require__(176));
-Vue.component('send-invitations', __webpack_require__(181));
+Vue.component('send-emails', __webpack_require__(181));
+Vue.component('send-invitations', __webpack_require__(186));
 
 if ($("#searchFreelancers").length !== 0) {
     var searchFreelancers = new Vue({
@@ -14591,7 +14591,7 @@ window.Echo.channel('conversations').listen('UpdateMessageCount', function (e) {
     }
 });
 
-__webpack_require__(186);
+__webpack_require__(191);
 
 /***/ }),
 /* 16 */
@@ -64490,6 +64490,609 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
+Component.options.__file = "resources\\assets\\js\\components\\campaigns\\updateMembersComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e144c086", Component.options)
+  } else {
+    hotAPI.reload("data-v-e144c086", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 161 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(162);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("541dd442", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e144c086\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./updateMembersComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e144c086\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./updateMembersComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 162 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 2s;\n    transition: all 2s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 163 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['toBeEditedCamp'],
+    data: function data() {
+        return {
+            businessUsers: []
+        };
+    },
+
+    methods: {
+        updateCampMembers: function updateCampMembers() {
+            axios.post('/admin/camp/update_members', { users: this.toBeEditedCamp.members, campID: this.toBeEditedCamp.id }).then(function (response) {
+
+                console.log(response.data);
+
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+            });
+
+            $('#closeMembersModal').click();
+        },
+        getBusinessUsers: function getBusinessUsers() {
+            var _this = this;
+
+            axios.get('/admin/get_users').then(function (response) {
+                _this.businessUsers = response.data;
+            });
+        },
+        addMember: function addMember(user) {
+            var _this2 = this;
+
+            var canAdd = true;
+            $.each(this.toBeEditedCamp.members, function (i) {
+                if (_this2.toBeEditedCamp.members[i].id === user.id) {
+                    alert('Freelancer already exists.');
+                    canAdd = false;
+                }
+            });
+            if (canAdd) {
+                this.toBeEditedCamp.members.push(user);
+            }
+        },
+        removeMember: function removeMember(user) {
+            var _this3 = this;
+
+            $.each(this.toBeEditedCamp.members, function (i) {
+                if (_this3.toBeEditedCamp.members[i].id === user.id) {
+                    _this3.toBeEditedCamp.members.splice(i, 1);
+                    return false;
+                }
+            });
+        },
+        freelancerExists: function freelancerExists(user_id) {
+            var _this4 = this;
+
+            var canAdd = true;
+            $.each(this.toBeEditedCamp.members, function (i) {
+                if (_this4.toBeEditedCamp.members[i].id === user_id) {
+                    canAdd = false;
+                }
+            });
+
+            return canAdd;
+        },
+        getImageSrc: function getImageSrc(userImage) {
+            if (!userImage || userImage === null) {
+                return '/resumeApp/resources/views/customTheme/images/user.png';
+            }
+
+            return '/' + userImage;
+        }
+    },
+    mounted: function mounted() {
+        this.getBusinessUsers();
+    }
+});
+
+/***/ }),
+/* 164 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "updateMembersModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "updateMembersModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal-body", attrs: { id: "content" } },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "pageHeading",
+                      staticStyle: { "padding-bottom": "15px" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Current campaign members.\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "transition-group",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: this.toBeEditedCamp.members.length > 0,
+                          expression: "this.toBeEditedCamp.members.length > 0"
+                        }
+                      ],
+                      staticClass: "row",
+                      attrs: { name: "list" }
+                    },
+                    _vm._l(_vm.toBeEditedCamp.members, function(user, index) {
+                      return _c(
+                        "div",
+                        {
+                          key: index,
+                          staticClass: "col-md-2 col-6 freelancerBox list-item"
+                        },
+                        [
+                          _c("div", { staticClass: "freelancerItem" }, [
+                            _c("img", {
+                              staticClass: "slickFreelancerImg",
+                              staticStyle: { background: "white" },
+                              attrs: {
+                                src: _vm.getImageSrc(user.image),
+                                alt: "freelancer"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "freelancerData" }, [
+                              _c(
+                                "div",
+                                { staticClass: "freelancerName nohover" },
+                                [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(user.firstName) +
+                                      " " +
+                                      _vm._s(user.lastName) +
+                                      "\n                                    "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "freelancerJob" }, [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(user.profession) +
+                                    "\n                                    "
+                                )
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "deleteWorkBtn NoDecor",
+                              staticStyle: { width: "100%" },
+                              on: {
+                                click: function($event) {
+                                  _vm.removeMember(user)
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "a",
+                                { attrs: { href: "javascript:void(0)" } },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src:
+                                        "/resumeApp/resources/assets/images/close_blue.png",
+                                      alt: "edit profile"
+                                    }
+                                  }),
+                                  _vm._v(
+                                    "\n                                    Remove\n                                "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    })
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: this.toBeEditedCamp.members.length < 1,
+                          expression: "this.toBeEditedCamp.members.length < 1"
+                        }
+                      ],
+                      staticClass: "pageSubHeading text-left"
+                    },
+                    [
+                      _vm._v(
+                        "\n                       No members assigned to this campaign.\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "pageHeading",
+                      staticStyle: { "padding-bottom": "15px" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Business support freelancers.\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "transition-group",
+                    { staticClass: "row", attrs: { name: "list" } },
+                    _vm._l(_vm.businessUsers, function(user, index) {
+                      return _c(
+                        "div",
+                        {
+                          key: index,
+                          staticClass: "list-item col-md-2 col-6 freelancerBox"
+                        },
+                        [
+                          _c("div", { staticClass: "freelancerItem" }, [
+                            _c("img", {
+                              staticClass: "slickFreelancerImg",
+                              staticStyle: { background: "white" },
+                              attrs: {
+                                src: _vm.getImageSrc(user.image),
+                                alt: "freelancer"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "freelancerData" }, [
+                              _c(
+                                "div",
+                                { staticClass: "freelancerName nohover" },
+                                [
+                                  _vm._v(
+                                    "\n                                        " +
+                                      _vm._s(user.firstName) +
+                                      " " +
+                                      _vm._s(user.lastName) +
+                                      "\n                                    "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "freelancerJob" }, [
+                                _vm._v(
+                                  "\n                                        " +
+                                    _vm._s(user.profession) +
+                                    "\n                                    "
+                                )
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.freelancerExists(user.id),
+                                  expression: "freelancerExists(user.id)"
+                                }
+                              ],
+                              staticClass: "deleteWorkBtn NoDecor",
+                              staticStyle: { width: "100%" },
+                              on: {
+                                click: function($event) {
+                                  _vm.addMember(user)
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "a",
+                                { attrs: { href: "javascript:void(0)" } },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src:
+                                        "/resumeApp/resources/assets/images/add_blue.png",
+                                      alt: "edit profile"
+                                    }
+                                  }),
+                                  _vm._v(
+                                    "\n                                    Add\n                                "
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.freelancerExists(user.id),
+                                  expression: "!freelancerExists(user.id)"
+                                }
+                              ]
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "text-center",
+                                  staticStyle: { color: "lightgreen" }
+                                },
+                                [_vm._v("Campaign member")]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    })
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "modal-footer",
+                      staticStyle: { "margin-top": "15px" }
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          on: { click: _vm.updateCampMembers }
+                        },
+                        [_vm._v("Update")]
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "text-right", staticStyle: { padding: "15px 10px 0 0" } },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "modal",
+              "aria-label": "Close",
+              id: "closeMembersModal"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        )
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e144c086", module.exports)
+  }
+}
+
+/***/ }),
+/* 165 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(166)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(168)
+/* template */
+var __vue_template__ = __webpack_require__(169)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
 Component.options.__file = "resources\\assets\\js\\components\\search\\searchComponent.vue"
 
 /* hot reload */
@@ -64512,13 +65115,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 161 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(162);
+var content = __webpack_require__(167);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -64538,7 +65141,7 @@ if(false) {
 }
 
 /***/ }),
-/* 162 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -64552,7 +65155,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 163 */
+/* 168 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64726,7 +65329,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 164 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -65268,15 +65871,15 @@ if (false) {
 }
 
 /***/ }),
-/* 165 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(166)
+var __vue_script__ = __webpack_require__(171)
 /* template */
-var __vue_template__ = __webpack_require__(167)
+var __vue_template__ = __webpack_require__(172)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -65315,7 +65918,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 166 */
+/* 171 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65334,7 +65937,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 167 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -65354,19 +65957,19 @@ if (false) {
 }
 
 /***/ }),
-/* 168 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(169)
+  __webpack_require__(174)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(171)
+var __vue_script__ = __webpack_require__(176)
 /* template */
-var __vue_template__ = __webpack_require__(172)
+var __vue_template__ = __webpack_require__(177)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -65405,13 +66008,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 169 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(170);
+var content = __webpack_require__(175);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -65431,7 +66034,7 @@ if(false) {
 }
 
 /***/ }),
-/* 170 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -65445,7 +66048,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 171 */
+/* 176 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65516,7 +66119,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 172 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -65720,15 +66323,15 @@ if (false) {
 }
 
 /***/ }),
-/* 173 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(174)
+var __vue_script__ = __webpack_require__(179)
 /* template */
-var __vue_template__ = __webpack_require__(175)
+var __vue_template__ = __webpack_require__(180)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -65767,7 +66370,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 174 */
+/* 179 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66170,7 +66773,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 175 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -66944,19 +67547,19 @@ if (false) {
 }
 
 /***/ }),
-/* 176 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(177)
+  __webpack_require__(182)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(179)
+var __vue_script__ = __webpack_require__(184)
 /* template */
-var __vue_template__ = __webpack_require__(180)
+var __vue_template__ = __webpack_require__(185)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -66995,13 +67598,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 177 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(178);
+var content = __webpack_require__(183);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -67021,7 +67624,7 @@ if(false) {
 }
 
 /***/ }),
-/* 178 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -67035,7 +67638,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 179 */
+/* 184 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67227,7 +67830,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 180 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -67518,19 +68121,19 @@ if (false) {
 }
 
 /***/ }),
-/* 181 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(182)
+  __webpack_require__(187)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(184)
+var __vue_script__ = __webpack_require__(189)
 /* template */
-var __vue_template__ = __webpack_require__(185)
+var __vue_template__ = __webpack_require__(190)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -67569,13 +68172,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 182 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(183);
+var content = __webpack_require__(188);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -67595,7 +68198,7 @@ if(false) {
 }
 
 /***/ }),
-/* 183 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -67609,7 +68212,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 184 */
+/* 189 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67736,7 +68339,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 185 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -68106,7 +68709,7 @@ if (false) {
 }
 
 /***/ }),
-/* 186 */
+/* 191 */
 /***/ (function(module, exports) {
 
 var status = $('#record_status'),
@@ -68348,607 +68951,10 @@ if (navigator.mediaDevices.getUserMedia) {
 }
 
 /***/ }),
-/* 187 */
+/* 192 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 188 */,
-/* 189 */,
-/* 190 */,
-/* 191 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(194)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(192)
-/* template */
-var __vue_template__ = __webpack_require__(193)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\campaigns\\updateMembersComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e144c086", Component.options)
-  } else {
-    hotAPI.reload("data-v-e144c086", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 192 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['toBeEditedCamp'],
-    data: function data() {
-        return {
-            businessUsers: []
-        };
-    },
-
-    methods: {
-        updateCampMembers: function updateCampMembers() {
-            axios.post('/admin/camp/update_members', { users: this.toBeEditedCamp.members, campID: this.toBeEditedCamp.id }).then(function (response) {
-
-                console.log(response.data);
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-            });
-
-            $('#closeMembersModal').click();
-        },
-        getBusinessUsers: function getBusinessUsers() {
-            var _this = this;
-
-            axios.get('/admin/get_users').then(function (response) {
-                _this.businessUsers = response.data;
-            });
-        },
-        addMember: function addMember(user) {
-            var _this2 = this;
-
-            var canAdd = true;
-            $.each(this.toBeEditedCamp.members, function (i) {
-                if (_this2.toBeEditedCamp.members[i].id === user.id) {
-                    alert('Freelancer already exists.');
-                    canAdd = false;
-                }
-            });
-            if (canAdd) {
-                this.toBeEditedCamp.members.push(user);
-            }
-        },
-        removeMember: function removeMember(user) {
-            var _this3 = this;
-
-            $.each(this.toBeEditedCamp.members, function (i) {
-                if (_this3.toBeEditedCamp.members[i].id === user.id) {
-                    _this3.toBeEditedCamp.members.splice(i, 1);
-                    return false;
-                }
-            });
-        },
-        freelancerExists: function freelancerExists(user_id) {
-            var _this4 = this;
-
-            var canAdd = true;
-            $.each(this.toBeEditedCamp.members, function (i) {
-                if (_this4.toBeEditedCamp.members[i].id === user_id) {
-                    canAdd = false;
-                }
-            });
-
-            return canAdd;
-        }
-    },
-    mounted: function mounted() {
-        this.getBusinessUsers();
-    }
-});
-
-/***/ }),
-/* 193 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "updateMembersModal",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "updateMembersModalLabel",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "modal-body", attrs: { id: "content" } },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "pageHeading",
-                      staticStyle: { "padding-bottom": "15px" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        Current campaign members.\n                    "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "transition-group",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: this.toBeEditedCamp.members.length > 0,
-                          expression: "this.toBeEditedCamp.members.length > 0"
-                        }
-                      ],
-                      staticClass: "row",
-                      attrs: { name: "list" }
-                    },
-                    _vm._l(_vm.toBeEditedCamp.members, function(user, index) {
-                      return _c(
-                        "div",
-                        {
-                          key: index,
-                          staticClass: "col-md-2 col-6 freelancerBox list-item"
-                        },
-                        [
-                          _c("div", { staticClass: "freelancerItem" }, [
-                            _c("img", {
-                              staticClass: "slickFreelancerImg",
-                              attrs: {
-                                src: "/" + user.image,
-                                alt: "freelancer"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "freelancerData" }, [
-                              _c(
-                                "div",
-                                { staticClass: "freelancerName nohover" },
-                                [
-                                  _vm._v(
-                                    "\n                                        " +
-                                      _vm._s(user.firstName) +
-                                      " " +
-                                      _vm._s(user.lastName) +
-                                      "\n                                    "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "freelancerJob" }, [
-                                _vm._v(
-                                  "\n                                        " +
-                                    _vm._s(user.profession) +
-                                    "\n                                    "
-                                )
-                              ])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              staticClass: "deleteWorkBtn NoDecor",
-                              staticStyle: { width: "100%" },
-                              on: {
-                                click: function($event) {
-                                  _vm.removeMember(user)
-                                }
-                              }
-                            },
-                            [
-                              _c(
-                                "a",
-                                { attrs: { href: "javascript:void(0)" } },
-                                [
-                                  _c("img", {
-                                    attrs: {
-                                      src:
-                                        "/resumeApp/resources/assets/images/close_blue.png",
-                                      alt: "edit profile"
-                                    }
-                                  }),
-                                  _vm._v(
-                                    "\n                                    Remove\n                                "
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    })
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: this.toBeEditedCamp.members.length < 1,
-                          expression: "this.toBeEditedCamp.members.length < 1"
-                        }
-                      ],
-                      staticClass: "pageSubHeading text-left"
-                    },
-                    [
-                      _vm._v(
-                        "\n                       No members assigned to this campaign.\n                    "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("hr"),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "pageHeading",
-                      staticStyle: { "padding-bottom": "15px" }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        Business support freelancers.\n                    "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "transition-group",
-                    { staticClass: "row", attrs: { name: "list" } },
-                    _vm._l(_vm.businessUsers, function(user, index) {
-                      return _c(
-                        "div",
-                        {
-                          key: index,
-                          staticClass: "list-item col-md-2 col-6 freelancerBox"
-                        },
-                        [
-                          _c("div", { staticClass: "freelancerItem" }, [
-                            _c("img", {
-                              staticClass: "slickFreelancerImg",
-                              attrs: {
-                                src: "/" + user.image,
-                                alt: "freelancer"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "freelancerData" }, [
-                              _c(
-                                "div",
-                                { staticClass: "freelancerName nohover" },
-                                [
-                                  _vm._v(
-                                    "\n                                        " +
-                                      _vm._s(user.firstName) +
-                                      " " +
-                                      _vm._s(user.lastName) +
-                                      "\n                                    "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "freelancerJob" }, [
-                                _vm._v(
-                                  "\n                                        " +
-                                    _vm._s(user.profession) +
-                                    "\n                                    "
-                                )
-                              ])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: _vm.freelancerExists(user.id),
-                                  expression: "freelancerExists(user.id)"
-                                }
-                              ],
-                              staticClass: "deleteWorkBtn NoDecor",
-                              staticStyle: { width: "100%" },
-                              on: {
-                                click: function($event) {
-                                  _vm.addMember(user)
-                                }
-                              }
-                            },
-                            [
-                              _c(
-                                "a",
-                                { attrs: { href: "javascript:void(0)" } },
-                                [
-                                  _c("img", {
-                                    attrs: {
-                                      src:
-                                        "/resumeApp/resources/assets/images/add_blue.png",
-                                      alt: "edit profile"
-                                    }
-                                  }),
-                                  _vm._v(
-                                    "\n                                    Add\n                                "
-                                  )
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: !_vm.freelancerExists(user.id),
-                                  expression: "!freelancerExists(user.id)"
-                                }
-                              ]
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "text-center",
-                                  staticStyle: { color: "lightgreen" }
-                                },
-                                [_vm._v("Campaign member")]
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    })
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "modal-footer",
-                      staticStyle: { "margin-top": "15px" }
-                    },
-                    [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary",
-                          on: { click: _vm.updateCampMembers }
-                        },
-                        [_vm._v("Update")]
-                      )
-                    ]
-                  )
-                ],
-                1
-              )
-            ])
-          ]
-        )
-      ]
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "text-right", staticStyle: { padding: "15px 10px 0 0" } },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "close",
-            attrs: {
-              type: "button",
-              "data-dismiss": "modal",
-              "aria-label": "Close",
-              id: "closeMembersModal"
-            }
-          },
-          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-        )
-      ]
-    )
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-e144c086", module.exports)
-  }
-}
-
-/***/ }),
-/* 194 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(195);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("541dd442", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e144c086\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./updateMembersComponent.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e144c086\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./updateMembersComponent.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 195 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 2s;\n    transition: all 2s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
-
-// exports
-
 
 /***/ })
 /******/ ]);

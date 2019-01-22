@@ -68622,8 +68622,7 @@ var render = function() {
                             _c("img", {
                               staticClass: "slickFreelancerImg",
                               attrs: {
-                                src:
-                                  "/resumeApp/resources/views/customTheme/images/freelancers/Dmitri.jpg",
+                                src: "/" + user.image,
                                 alt: "freelancer"
                               }
                             }),
@@ -68738,8 +68737,7 @@ var render = function() {
                             _c("img", {
                               staticClass: "slickFreelancerImg",
                               attrs: {
-                                src:
-                                  "/resumeApp/resources/views/customTheme/images/freelancers/Dmitri.jpg",
+                                src: "/" + user.image,
                                 alt: "freelancer"
                               }
                             }),

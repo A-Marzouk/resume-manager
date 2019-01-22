@@ -15,7 +15,7 @@
                         <transition-group name="list" class="row" v-show="this.toBeEditedCamp.members.length > 0">
                             <div class="col-md-2 col-6 freelancerBox list-item" v-for="(user,index) in toBeEditedCamp.members" v-bind:key="index">
                                 <div class="freelancerItem">
-                                    <img src="/resumeApp/resources/views/customTheme/images/freelancers/Dmitri.jpg"
+                                    <img :src="'/'+user.image"
                                          alt="freelancer" class="slickFreelancerImg">
                                     <div class="freelancerData">
                                         <div class="freelancerName nohover">
@@ -44,7 +44,7 @@
                         <transition-group name="list" class="row">
                             <div class="list-item col-md-2 col-6 freelancerBox" v-for="(user,index) in businessUsers" v-bind:key="index">
                                 <div class="freelancerItem">
-                                    <img src="/resumeApp/resources/views/customTheme/images/freelancers/Dmitri.jpg"
+                                    <img :src="'/'+user.image"
                                          alt="freelancer" class="slickFreelancerImg">
                                     <div class="freelancerData">
                                         <div class="freelancerName nohover">

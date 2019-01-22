@@ -12,6 +12,7 @@ namespace App\Http\Controllers;
 use App\Campaign;
 use App\Client;
 use App\User;
+use App\UserData;
 use Illuminate\Http\Request;
 
 class CampaignsController extends Controller
@@ -30,14 +31,22 @@ class CampaignsController extends Controller
     }
 
     public function getBusinessSupportUsers(){
-        return User::where('profession','businessSupport')->get();
+        $members = User::where('profession','businessSupport')->get();
+        foreach ($members as &$member){
+            $member['image'] = $member->userData->photo ;
+        }
+        return $members;
     }
 
     public function getAllCamps(){
         $campaigns = Campaign::all();
         foreach ($campaigns as &$campaign){
             $campaign['clientName'] = Client::where('id',$campaign->client_id)->first()->name;
-            $campaign['members']    = $campaign->members;
+            $members = $campaign->members;
+            foreach ($members as &$member){
+                $member['image'] = $member->userData->photo ;
+            }
+            $campaign['members']    = $members;
         }
         return $campaigns;
     }

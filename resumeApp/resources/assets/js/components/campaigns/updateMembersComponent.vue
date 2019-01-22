@@ -15,8 +15,8 @@
                         <transition-group name="list" class="row" v-show="this.toBeEditedCamp.members.length > 0">
                             <div class="col-md-2 col-6 freelancerBox list-item" v-for="(user,index) in toBeEditedCamp.members" v-bind:key="index">
                                 <div class="freelancerItem">
-                                    <img :src="'/'+user.image"
-                                         alt="freelancer" class="slickFreelancerImg">
+                                    <img :src="getImageSrc(user.image)"
+                                         alt="freelancer" class="slickFreelancerImg" style="background:white">
                                     <div class="freelancerData">
                                         <div class="freelancerName nohover">
                                             {{user.firstName}} {{user.lastName}}
@@ -44,8 +44,8 @@
                         <transition-group name="list" class="row">
                             <div class="list-item col-md-2 col-6 freelancerBox" v-for="(user,index) in businessUsers" v-bind:key="index">
                                 <div class="freelancerItem">
-                                    <img :src="'/'+user.image"
-                                         alt="freelancer" class="slickFreelancerImg">
+                                    <img :src="getImageSrc(user.image)"
+                                         alt="freelancer" class="slickFreelancerImg" style="background:white">
                                     <div class="freelancerData">
                                         <div class="freelancerName nohover">
                                             {{user.firstName}} {{user.lastName}}
@@ -133,6 +133,13 @@
                 });
 
                 return canAdd;
+            },
+            getImageSrc(userImage){
+                if(!userImage || userImage === null){
+                    return '/resumeApp/resources/views/customTheme/images/user.png';
+                }
+
+                return '/'+userImage;
             }
         },
         mounted(){

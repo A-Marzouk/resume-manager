@@ -38,7 +38,7 @@
 
                                 <div class="form-group col-12">
                                     <label for="client_id" class="panelFormLabel">Choose client :</label>
-                                    <select  id="client_id" class="form-control" v-model="toBeEditedCamp.client_id">
+                                    <select  id="client_id" class="form-control" v-model="toBeEditedCamp.client_id" @change="setClientName">
                                         <option disabled value="">Please select one</option>
                                         <option v-for="(client,index) in clients" v-bind:key="index" :value="client.id" >
                                             {{client.name}} ({{client.email}})
@@ -88,6 +88,14 @@
                 axios.get('/admin/get_clients').then( (response)=>{
                     let currClients = response.data;
                     this.clients  = currClients ;
+                });
+            },
+            setClientName(){
+                let client_id = this.toBeEditedCamp.client_id ;
+                $.each(this.clients,(i) => {
+                    if(this.clients[i].id == client_id){
+                        this.toBeEditedCamp.clientName = this.clients[i].name;
+                    }
                 });
             }
         },

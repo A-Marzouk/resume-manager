@@ -29,7 +29,11 @@ class CampaignsController extends Controller
     }
 
     public function getAllCamps(){
-        return Campaign::all();
+        $campaigns = Campaign::all();
+        foreach ($campaigns as &$campaign){
+            $campaign['clientName'] = Client::where('id',$campaign->client_id)->first()->name;
+        }
+        return $campaigns;
     }
 
     public function getClientCamps(){
@@ -79,6 +83,10 @@ class CampaignsController extends Controller
     public function getCampMembers(Request $request){
         $campID = $request->campID;
         return Campaign::find($campID)->members;
+    }
+
+    public function getCampClient($client_id){
+        return Client::where('id',$client_id)->first();
     }
 
 }

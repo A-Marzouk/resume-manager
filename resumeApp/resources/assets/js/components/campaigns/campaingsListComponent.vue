@@ -20,10 +20,11 @@
                     </a>
                 </span>
                 <div style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">Campaign :{{camp.title}}</div><br/>
-                <div  style="color: #30323D;font-family: Roboto;">Description : {{camp.description}}</div>
+                <div  style="color: #30323D;font-family: Roboto;">Description : <br/>{{camp.description}}</div>
                 <div  style="color: #30323D;font-family: Roboto;">Starts at : {{camp.start_date}}</div>
                 <div  style="color: #30323D;font-family: Roboto;">Ends at : {{camp.end_date}}</div>
                 <div  style="color: #30323D;font-family: Roboto;">Status : {{camp.status}}</div>
+                <div  style="color: #30323D;font-family: Roboto;">Client : {{camp.clientName}}</div>
 
                 <button :id="'seeApplied'+camp.id" class="btn btn-sm btn-outline-primary" @click="getCampMembers(camp.id)">Get camp members</button>
                 <br/>
@@ -60,18 +61,16 @@
                     'status' :'',
                     'start_date' :'',
                     'end_date':'',
+                    'clientName':'',
                 },
                 members:[]
             }
         },
-
         methods: {
             getCurrentCamps() {
                 axios.get('/admin/get_camps').then(
                     (response) => {
-                        let currCamps=  response.data;
-                        $.each(currCamps, function(i){
-                        });
+                        let currCamps =  response.data;
                         this.camps = currCamps;
                         this.checkMaxCamps();
                     }
@@ -136,6 +135,7 @@
                     'status':'',
                     'start_date':'',
                     'end_date':'',
+                    'clientName':''
                 };
             },
 
@@ -153,7 +153,7 @@
                         alert('No members yet..');
                     }
                 });
-            }
+            },
         },
 
         created() {

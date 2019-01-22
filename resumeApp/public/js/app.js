@@ -63414,6 +63414,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -63427,12 +63428,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'description': '',
                 'status': '',
                 'start_date': '',
-                'end_date': ''
+                'end_date': '',
+                'clientName': ''
             },
             members: []
         };
     },
-
 
     methods: {
         getCurrentCamps: function getCurrentCamps() {
@@ -63440,7 +63441,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/admin/get_camps').then(function (response) {
                 var currCamps = response.data;
-                $.each(currCamps, function (i) {});
                 _this.camps = currCamps;
                 _this.checkMaxCamps();
             });
@@ -63499,7 +63499,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'description': '',
                 'status': '',
                 'start_date': '',
-                'end_date': ''
+                'end_date': '',
+                'clientName': ''
             };
         },
         getCampMembers: function getCampMembers(campID) {
@@ -63632,7 +63633,11 @@ var render = function() {
               _c(
                 "div",
                 { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
-                [_vm._v("Description : " + _vm._s(camp.description))]
+                [
+                  _vm._v("Description : "),
+                  _c("br"),
+                  _vm._v(_vm._s(camp.description))
+                ]
               ),
               _vm._v(" "),
               _c(
@@ -63651,6 +63656,12 @@ var render = function() {
                 "div",
                 { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
                 [_vm._v("Status : " + _vm._s(camp.status))]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
+                [_vm._v("Client : " + _vm._s(camp.clientName))]
               ),
               _vm._v(" "),
               _c(
@@ -63991,6 +64002,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var currClients = response.data;
                 _this2.clients = currClients;
             });
+        },
+        setClientName: function setClientName() {
+            var _this3 = this;
+
+            var client_id = this.toBeEditedCamp.client_id;
+            $.each(this.clients, function (i) {
+                if (_this3.clients[i].id == client_id) {
+                    _this3.toBeEditedCamp.clientName = _this3.clients[i].name;
+                }
+            });
         }
     },
     mounted: function mounted() {
@@ -64270,23 +64291,27 @@ var render = function() {
                             staticClass: "form-control",
                             attrs: { id: "client_id" },
                             on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.toBeEditedCamp,
-                                  "client_id",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
+                              change: [
+                                function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.toBeEditedCamp,
+                                    "client_id",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                },
+                                _vm.setClientName
+                              ]
                             }
                           },
                           [

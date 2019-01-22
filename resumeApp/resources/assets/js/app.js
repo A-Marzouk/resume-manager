@@ -73,6 +73,13 @@ Vue.component('projects-list', require('./components/projects/projectsListCompon
 Vue.component('project-detail', require('./components/projects/projectDetailComponent.vue'));
 Vue.component('add-project-modal', require('./components/projects/addProjectComponent.vue'));
 
+
+// campaigns
+Vue.component('campaigns-list', require('./components/campaigns/campaingsListComponent.vue'));
+Vue.component('campaign-component', require('./components/campaigns/campaingComponent.vue'));
+Vue.component('add-campaign-modal', require('./components/campaigns/addCampaingComponent.vue'));
+Vue.component('update-members-modal', require('./components/campaigns/updateMembersComponent.vue'));
+
 // search components :
 Vue.component('search-freelancers', require('./components/search/searchComponent.vue'));
 Vue.component('freelancer-card', require('./components/search/freelancerCardComponent.vue'));
@@ -136,6 +143,12 @@ if ($("#freelancer_educations").length !== 0){
 if ($("#client_invoices").length !== 0){
     let client_invoices = new Vue({
         el:'#client_invoices'
+    });
+}
+
+if ($("#client_campaings").length !== 0){
+    let client_campaings = new Vue({
+        el:'#client_campaings'
     });
 }
 

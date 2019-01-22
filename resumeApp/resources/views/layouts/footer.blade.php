@@ -33,41 +33,45 @@
                 </a>
             </div><br/>
                 <!-- Load Facebook SDK for JavaScript -->
-            <div id="fb-root"></div>
-            <script>
-                    (function(d, s, id) {
+
+            {{-- if this is the working site --}}
+            @if(env('APP_ENV') !== 'local')
+                <div id="fb-root"></div>
+                <script>
+                        (function(d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s); js.id = id;
+                            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));
+                </script>
+                <!-- Your customer chat code -->
+                    <div class="fb-customerchat"
+                         attribution=setup_tool
+                         page_id="1010896968958465"
+                         theme_color="#0084ff">
+                    </div>
+                {{-- facebook like button --}}
+                <script>(function(d, s, id) {
                         var js, fjs = d.getElementsByTagName(s)[0];
                         if (d.getElementById(id)) return;
                         js = d.createElement(s); js.id = id;
-                        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+                        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1';
                         fjs.parentNode.insertBefore(js, fjs);
-                    }(document, 'script', 'facebook-jssdk'));
-            </script>
-            <!-- Your customer chat code -->
-                <div class="fb-customerchat"
-                     attribution=setup_tool
-                     page_id="1010896968958465"
-                     theme_color="#0084ff">
-                </div>
-            {{-- facebook like button --}}
-            <script>(function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) return;
-                    js = d.createElement(s); js.id = id;
-                    js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1';
-                    fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));</script>
-            {{-- end of like button  script --}}
-            <div>
-                <a href="https://www.facebook.com/123workforce">
-                    <img src="/resumeApp/resources/views/customTheme/images/newResume/fb.png" alt="fb" width="25px">
-                </a>
-                <a href="https://www.instagram.com/123workforce/">
-                    <img src="/resumeApp/resources/views/customTheme/images/newResume/instagram.png" alt="insta" width="25px">
-                </a>
-            </div><br/>
-            {{--<div style="padding-top: 6px;" class="fb-like" data-href="https://123workforce.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>--}}
-            {{--<div style="padding-top:10px;" class="fb-page" data-href="https://www.facebook.com/123workforce" data-tabs="timeline" data-width="180" data-height="70" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/123workforce" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/123workforce">123 Workforce</a></blockquote></div>--}}
+                    }(document, 'script', 'facebook-jssdk'));</script>
+                {{-- end of like button  script --}}
+                <div>
+                    <a href="https://www.facebook.com/123workforce">
+                        <img src="/resumeApp/resources/views/customTheme/images/newResume/fb.png" alt="fb" width="25px">
+                    </a>
+                    <a href="https://www.instagram.com/123workforce/">
+                        <img src="/resumeApp/resources/views/customTheme/images/newResume/instagram.png" alt="insta" width="25px">
+                    </a>
+                </div><br/>
+                {{--<div style="padding-top: 6px;" class="fb-like" data-href="https://123workforce.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>--}}
+                {{--<div style="padding-top:10px;" class="fb-page" data-href="https://www.facebook.com/123workforce" data-tabs="timeline" data-width="180" data-height="70" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/123workforce" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/123workforce">123 Workforce</a></blockquote></div>--}}
+            @endif
         </div>
         <div class="col-md-12 text-center four" style="padding-top: 25px;
     padding-left: 40px;">

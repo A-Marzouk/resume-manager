@@ -63424,6 +63424,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -63523,6 +63527,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'clientName': '',
                 'members': []
             };
+        },
+        getDate: function getDate(date) {
+            var event = new Date(date);
+            var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+            return event.toLocaleDateString('en-EN', options);
         }
     },
 
@@ -63589,7 +63598,7 @@ var render = function() {
                     },
                     [
                       _c("b", [_vm._v("Starts at : ")]),
-                      _vm._v(" " + _vm._s(camp.start_date))
+                      _vm._v(" " + _vm._s(_vm.getDate(camp.start_date)))
                     ]
                   ),
                   _vm._v(" "),
@@ -63600,7 +63609,7 @@ var render = function() {
                     },
                     [
                       _c("b", [_vm._v("Ends at : ")]),
-                      _vm._v(_vm._s(camp.end_date))
+                      _vm._v(_vm._s(_vm.getDate(camp.end_date)))
                     ]
                   ),
                   _vm._v(" "),
@@ -63618,11 +63627,28 @@ var render = function() {
                   _c(
                     "div",
                     {
+                      staticClass: "NoDecor",
                       staticStyle: { color: "#30323D", "font-family": "Roboto" }
                     },
                     [
                       _c("b", [_vm._v("Client : ")]),
-                      _vm._v(" " + _vm._s(camp.clientName))
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "/admin/client/" + camp.client.id,
+                            target: "_blank"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(camp.client.name) +
+                              "\n                        "
+                          )
+                        ]
+                      )
                     ]
                   )
                 ]),

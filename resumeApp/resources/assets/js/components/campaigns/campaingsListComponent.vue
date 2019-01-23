@@ -7,10 +7,14 @@
                     <div class="col-md-8">
                         <div style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">Campaign : {{camp.title}}</div><br/>
                         <div  style="color: #30323D;font-family: Roboto;"><b>Description : </b>{{camp.description}}</div>
-                        <div  style="color: #30323D;font-family: Roboto;"><b>Starts at : </b> {{camp.start_date}}</div>
-                        <div  style="color: #30323D;font-family: Roboto;"><b>Ends at : </b>{{camp.end_date}}</div>
+                        <div  style="color: #30323D;font-family: Roboto;"><b>Starts at : </b> {{getDate(camp.start_date)}}</div>
+                        <div  style="color: #30323D;font-family: Roboto;"><b>Ends at : </b>{{getDate(camp.end_date)}}</div>
                         <div  style="color: #30323D;font-family: Roboto;"><b>Status : </b> {{camp.status}}</div>
-                        <div  style="color: #30323D;font-family: Roboto;"><b>Client : </b> {{camp.clientName}}</div>
+                        <div  style="color: #30323D;font-family: Roboto;" class="NoDecor"><b>Client : </b>
+                            <a :href="'/admin/client/'+camp.client.id" target="_blank">
+                                {{camp.client.name}}
+                            </a>
+                        </div>
                     </div>
                     <div class="col-md-4">
                         <span class="deleteWorkBtn NoDecor" @click="deleteCamp(camp)">
@@ -159,6 +163,11 @@
                     'members':[]
                 };
             },
+            getDate(date){
+                let event = new Date(date);
+                let options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                return event.toLocaleDateString('en-EN', options);
+            }
         },
 
         created() {

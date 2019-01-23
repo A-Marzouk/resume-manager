@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(192);
+module.exports = __webpack_require__(197);
 
 
 /***/ }),
@@ -14371,18 +14371,19 @@ Vue.component('campaigns-list', __webpack_require__(149));
 Vue.component('campaign-component', __webpack_require__(154));
 Vue.component('add-campaign-modal', __webpack_require__(157));
 Vue.component('update-members-modal', __webpack_require__(160));
+Vue.component('add-shift-modal', __webpack_require__(165));
 
 // search components :
-Vue.component('search-freelancers', __webpack_require__(165));
-Vue.component('freelancer-card', __webpack_require__(170));
-Vue.component('freelancers-list', __webpack_require__(173));
+Vue.component('search-freelancers', __webpack_require__(170));
+Vue.component('freelancer-card', __webpack_require__(175));
+Vue.component('freelancers-list', __webpack_require__(178));
 
 // chat room:
-Vue.component('new-chat', __webpack_require__(178));
+Vue.component('new-chat', __webpack_require__(183));
 
 //
-Vue.component('send-emails', __webpack_require__(181));
-Vue.component('send-invitations', __webpack_require__(186));
+Vue.component('send-emails', __webpack_require__(186));
+Vue.component('send-invitations', __webpack_require__(191));
 
 if ($("#searchFreelancers").length !== 0) {
     var searchFreelancers = new Vue({
@@ -14591,7 +14592,7 @@ window.Echo.channel('conversations').listen('UpdateMessageCount', function (e) {
     }
 });
 
-__webpack_require__(191);
+__webpack_require__(196);
 
 /***/ }),
 /* 16 */
@@ -63424,6 +63425,52 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -63439,7 +63486,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'start_date': '',
                 'end_date': '',
                 'clientName': '',
-                'members': []
+                'members': [],
+                'shifts': []
             }
         };
     },
@@ -63482,18 +63530,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.checkMaxCamps();
             });
         },
-        editCamp: function editCamp(campID) {
-            var camps = this.camps;
-            var editedCamp = {};
+        deleteShift: function deleteShift(shift) {
+            var _this3 = this;
 
-            $.each(camps, function (i) {
-                if (camps[i].id === campID) {
-                    editedCamp = camps[i];
-                }
+            if (!confirm('Are you sure you want to delete this shift ?')) {
+                return;
+            }
+            axios.post('/admin/camps/delete_shift', { shiftID: shift.id }).then(function (response) {
+                var camps = _this3.camps;
+                $.each(camps, function (i) {
+                    $.each(camps[i].shifts, function (j) {
+                        if (camps[i].shifts[j].id === shift.id) {
+                            camps[i].shifts.splice(j, 1);
+                            return false;
+                        }
+                    });
+                });
+
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+
+                _this3.checkMaxCamps();
             });
-            this.toBeEditedCamp = editedCamp;
         },
-        updateMembers: function updateMembers(campID) {
+        updateCamp: function updateCamp(campID) {
             var camps = this.camps;
             var editedCamp = {};
 
@@ -63521,8 +63584,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'start_date': '',
                 'end_date': '',
                 'clientName': '',
-                'members': []
+                'members': [],
+                'shifts': []
             };
+        },
+        getDate: function getDate(date) {
+            var event = new Date(date);
+            var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+            return event.toLocaleDateString('en-EN', options);
         }
     },
 
@@ -63589,7 +63658,7 @@ var render = function() {
                     },
                     [
                       _c("b", [_vm._v("Starts at : ")]),
-                      _vm._v(" " + _vm._s(camp.start_date))
+                      _vm._v(" " + _vm._s(_vm.getDate(camp.start_date)))
                     ]
                   ),
                   _vm._v(" "),
@@ -63600,7 +63669,7 @@ var render = function() {
                     },
                     [
                       _c("b", [_vm._v("Ends at : ")]),
-                      _vm._v(_vm._s(camp.end_date))
+                      _vm._v(_vm._s(_vm.getDate(camp.end_date)))
                     ]
                   ),
                   _vm._v(" "),
@@ -63618,12 +63687,168 @@ var render = function() {
                   _c(
                     "div",
                     {
+                      staticClass: "NoDecor",
                       staticStyle: { color: "#30323D", "font-family": "Roboto" }
                     },
                     [
                       _c("b", [_vm._v("Client : ")]),
-                      _vm._v(" " + _vm._s(camp.clientName))
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "/admin/client/" + camp.client.id,
+                            target: "_blank"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(camp.client.name) +
+                              "\n                        "
+                          )
+                        ]
+                      )
                     ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: camp.shifts.length < 1,
+                          expression: "camp.shifts.length < 1"
+                        }
+                      ],
+                      staticClass: "font-weight-bold"
+                    },
+                    [
+                      _vm._v(
+                        "\n                        No shifts in this campaign.\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: camp.shifts.length > 0,
+                          expression: "camp.shifts.length > 0"
+                        }
+                      ],
+                      staticClass: "row"
+                    },
+                    [
+                      _c("div", { staticClass: "font-weight-bold" }, [
+                        _vm._v(
+                          "\n                            Shifts : (" +
+                            _vm._s(camp.shifts.length) +
+                            "#)\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "transition-group",
+                        { staticClass: "col-12", attrs: { name: "list" } },
+                        _vm._l(camp.shifts, function(shift, index) {
+                          return _c(
+                            "div",
+                            {
+                              key: index,
+                              staticClass: "list-item",
+                              staticStyle: {
+                                margin: "5px 0 5px 5px",
+                                padding: "5px 0 5px 5px",
+                                border: "1px solid lightgrey",
+                                "border-radius": "5px"
+                              }
+                            },
+                            [
+                              _c("div", { staticClass: "text-center" }, [
+                                _c(
+                                  "span",
+                                  {
+                                    staticStyle: {
+                                      padding: "10px 0 5px 0",
+                                      "border-bottom": "1px solid lightgrey"
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                        Shift details\n                                    "
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "row" }, [
+                                _c("div", { staticClass: "col-md-8" }, [
+                                  _c("b", [_vm._v("Starts at :")]),
+                                  _vm._v(_vm._s(shift.start_time)),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("b", [_vm._v("Ends at : ")]),
+                                  _vm._v(" " + _vm._s(shift.end_time)),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b",
+                                    [_vm._v("Shift days : "), _c("Br")],
+                                    1
+                                  ),
+                                  _vm._v(
+                                    _vm._s(shift.days) +
+                                      "\n                                    "
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-md-4" }, [
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass: "deleteWorkBtn NoDecor",
+                                      on: {
+                                        click: function($event) {
+                                          _vm.deleteShift(shift)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "a",
+                                        {
+                                          attrs: { href: "javascript:void(0)" }
+                                        },
+                                        [
+                                          _c("img", {
+                                            attrs: {
+                                              src:
+                                                "/resumeApp/resources/assets/images/close_blue.png",
+                                              alt: "edit profile"
+                                            }
+                                          }),
+                                          _vm._v(
+                                            "\n                                                Delete\n                                            "
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ])
+                            ]
+                          )
+                        })
+                      )
+                    ],
+                    1
                   )
                 ]),
                 _vm._v(" "),
@@ -63661,7 +63886,7 @@ var render = function() {
                       staticStyle: { width: "75px", "margin-right": "5px" },
                       on: {
                         click: function($event) {
-                          _vm.editCamp(camp.id)
+                          _vm.updateCamp(camp.id)
                         }
                       }
                     },
@@ -63702,7 +63927,7 @@ var render = function() {
                       staticStyle: { width: "169px", "margin-top": "5px" },
                       on: {
                         click: function($event) {
-                          _vm.updateMembers(camp.id)
+                          _vm.updateCamp(camp.id)
                         }
                       }
                     },
@@ -63726,12 +63951,55 @@ var render = function() {
                             },
                             attrs: {
                               src:
-                                "/resumeApp/resources/assets/images/add_blue.png",
+                                "/resumeApp/resources/assets/images/edit_blue.png",
                               alt: "edit profile"
                             }
                           }),
                           _vm._v(
                             "\n                            Update members\n                        "
+                          )
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "deleteWorkBtn NoDecor",
+                      staticStyle: { width: "169px", "margin-top": "5px" },
+                      on: {
+                        click: function($event) {
+                          _vm.updateCamp(camp.id)
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "javascript:void(0)",
+                            "data-target": "#addShiftModal",
+                            "data-toggle": "modal"
+                          }
+                        },
+                        [
+                          _c("img", {
+                            staticStyle: {
+                              width: "20px",
+                              "padding-right": "7px",
+                              "padding-bottom": "2px",
+                              height: "15px"
+                            },
+                            attrs: {
+                              src:
+                                "/resumeApp/resources/assets/images/add_blue.png",
+                              alt: "edit profile"
+                            }
+                          }),
+                          _vm._v(
+                            "\n                            Add shift\n                        "
                           )
                         ]
                       )
@@ -63771,7 +64039,9 @@ var render = function() {
       _vm._v(" "),
       _c("update-members-modal", {
         attrs: { toBeEditedCamp: _vm.toBeEditedCamp }
-      })
+      }),
+      _vm._v(" "),
+      _c("add-shift-modal", { attrs: { toBeEditedCamp: _vm.toBeEditedCamp } })
     ],
     1
   )
@@ -65097,6 +65367,543 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
+Component.options.__file = "resources\\assets\\js\\components\\campaigns\\addShiftComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-656cf348", Component.options)
+  } else {
+    hotAPI.reload("data-v-656cf348", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 166 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(167);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("4299863a", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-656cf348\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./addShiftComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-656cf348\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./addShiftComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 167 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 2s;\n    transition: all 2s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 168 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['toBeEditedCamp'],
+    data: function data() {
+        return {
+            shift: {
+                'id': '',
+                'start_time': '',
+                'end_time': '',
+                'days': [],
+                campID: ''
+            },
+            datesArray: [],
+            customDates: false
+        };
+    },
+
+    methods: {
+        addShift: function addShift() {
+            this.shift.campID = this.toBeEditedCamp.id;
+            axios.post('/admin/camp/add_shift', this.shift).then(function (response) {
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+            });
+
+            this.toBeEditedCamp.shifts.push(this.shift);
+            this.clearShiftData();
+            $('#closeShiftModal').click();
+        },
+        clearShiftData: function clearShiftData() {
+            this.shift = {
+                'id': '',
+                'start_time': '',
+                'end_time': '',
+                'days': [],
+                campID: ''
+            };
+            this.customDates = false;
+        },
+        getDates: function getDates(startDate, stopDate) {
+            var oneDay = 24 * 3600 * 1000;
+            for (var datesArray = [], ms = startDate * 1, last = stopDate * 1; ms < last; ms += oneDay) {
+                var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                datesArray.push(new Date(ms).toLocaleDateString('en-EN', options));
+            }
+            return datesArray;
+        }
+    },
+    mounted: function mounted() {}
+});
+
+/***/ }),
+/* 169 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addShiftModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addShiftModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal-body", attrs: { id: "content" } },
+                [
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "panelFormLabel",
+                        attrs: { for: "start_time" }
+                      },
+                      [_vm._v("Starts at :")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.shift.start_time,
+                          expression: "shift.start_time"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "time",
+                        id: "start_time",
+                        name: "start_time",
+                        required: ""
+                      },
+                      domProps: { value: _vm.shift.start_time },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.shift, "start_time", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "panelFormLabel",
+                        attrs: { for: "end_time" }
+                      },
+                      [_vm._v("Starts at :")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.shift.end_time,
+                          expression: "shift.end_time"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "time",
+                        id: "end_time",
+                        name: "end_time",
+                        required: ""
+                      },
+                      domProps: { value: _vm.shift.end_time },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.shift, "end_time", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-12" }, [
+                    _c("label", { staticClass: "panelFormLabel" }, [
+                      _vm._v("Choose shift days :")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.shift.days,
+                            expression: "shift.days"
+                          }
+                        ],
+                        attrs: { type: "checkbox", value: "all_dayes" },
+                        domProps: {
+                          checked: Array.isArray(_vm.shift.days)
+                            ? _vm._i(_vm.shift.days, "all_dayes") > -1
+                            : _vm.shift.days
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.shift.days,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "all_dayes",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  _vm.$set(_vm.shift, "days", $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  _vm.$set(
+                                    _vm.shift,
+                                    "days",
+                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                  )
+                              }
+                            } else {
+                              _vm.$set(_vm.shift, "days", $$c)
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(
+                        "\n                            All campaign days.\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.customDates,
+                            expression: "customDates"
+                          }
+                        ],
+                        attrs: { type: "checkbox", value: "" },
+                        domProps: {
+                          checked: Array.isArray(_vm.customDates)
+                            ? _vm._i(_vm.customDates, "") > -1
+                            : _vm.customDates
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.customDates = !_vm.customDates
+                          },
+                          change: function($event) {
+                            var $$a = _vm.customDates,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.customDates = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.customDates = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.customDates = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(
+                        "\n                            Custom days.\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.customDates,
+                            expression: "customDates"
+                          }
+                        ],
+                        staticClass: "row"
+                      },
+                      _vm._l(
+                        _vm.getDates(
+                          new Date(_vm.toBeEditedCamp.start_date),
+                          new Date(_vm.toBeEditedCamp.end_date)
+                        ),
+                        function(date, index) {
+                          return _c("div", { staticClass: "col-md-3" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.shift.days,
+                                  expression: "shift.days"
+                                }
+                              ],
+                              key: index,
+                              attrs: { type: "checkbox" },
+                              domProps: {
+                                value: date,
+                                checked: Array.isArray(_vm.shift.days)
+                                  ? _vm._i(_vm.shift.days, date) > -1
+                                  : _vm.shift.days
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a = _vm.shift.days,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = date,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        _vm.$set(
+                                          _vm.shift,
+                                          "days",
+                                          $$a.concat([$$v])
+                                        )
+                                    } else {
+                                      $$i > -1 &&
+                                        _vm.$set(
+                                          _vm.shift,
+                                          "days",
+                                          $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1))
+                                        )
+                                    }
+                                  } else {
+                                    _vm.$set(_vm.shift, "days", $$c)
+                                  }
+                                }
+                              }
+                            }),
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(date) +
+                                "\n                            "
+                            )
+                          ])
+                        }
+                      )
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { href: "javascript:void(0)" },
+                    on: { click: _vm.addShift }
+                  },
+                  [_vm._v("Add")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "text-right", staticStyle: { padding: "15px 10px 0 0" } },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "modal",
+              "aria-label": "Close",
+              id: "closeShiftModal"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        )
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-656cf348", module.exports)
+  }
+}
+
+/***/ }),
+/* 170 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(171)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(173)
+/* template */
+var __vue_template__ = __webpack_require__(174)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
 Component.options.__file = "resources\\assets\\js\\components\\search\\searchComponent.vue"
 
 /* hot reload */
@@ -65119,13 +65926,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 166 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(167);
+var content = __webpack_require__(172);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -65145,7 +65952,7 @@ if(false) {
 }
 
 /***/ }),
-/* 167 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -65159,7 +65966,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 168 */
+/* 173 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65333,7 +66140,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 169 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -65875,15 +66682,15 @@ if (false) {
 }
 
 /***/ }),
-/* 170 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(171)
+var __vue_script__ = __webpack_require__(176)
 /* template */
-var __vue_template__ = __webpack_require__(172)
+var __vue_template__ = __webpack_require__(177)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -65922,7 +66729,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 171 */
+/* 176 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65941,7 +66748,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 172 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -65961,19 +66768,19 @@ if (false) {
 }
 
 /***/ }),
-/* 173 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(174)
+  __webpack_require__(179)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(176)
+var __vue_script__ = __webpack_require__(181)
 /* template */
-var __vue_template__ = __webpack_require__(177)
+var __vue_template__ = __webpack_require__(182)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -66012,13 +66819,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 174 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(175);
+var content = __webpack_require__(180);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -66038,7 +66845,7 @@ if(false) {
 }
 
 /***/ }),
-/* 175 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -66052,7 +66859,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 176 */
+/* 181 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66123,7 +66930,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 177 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -66327,15 +67134,15 @@ if (false) {
 }
 
 /***/ }),
-/* 178 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(179)
+var __vue_script__ = __webpack_require__(184)
 /* template */
-var __vue_template__ = __webpack_require__(180)
+var __vue_template__ = __webpack_require__(185)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -66374,7 +67181,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 179 */
+/* 184 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66777,7 +67584,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 180 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -67551,19 +68358,19 @@ if (false) {
 }
 
 /***/ }),
-/* 181 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(182)
+  __webpack_require__(187)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(184)
+var __vue_script__ = __webpack_require__(189)
 /* template */
-var __vue_template__ = __webpack_require__(185)
+var __vue_template__ = __webpack_require__(190)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -67602,13 +68409,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 182 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(183);
+var content = __webpack_require__(188);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -67628,7 +68435,7 @@ if(false) {
 }
 
 /***/ }),
-/* 183 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -67642,7 +68449,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 184 */
+/* 189 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67834,7 +68641,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 185 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -68125,19 +68932,19 @@ if (false) {
 }
 
 /***/ }),
-/* 186 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(187)
+  __webpack_require__(192)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(189)
+var __vue_script__ = __webpack_require__(194)
 /* template */
-var __vue_template__ = __webpack_require__(190)
+var __vue_template__ = __webpack_require__(195)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -68176,13 +68983,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 187 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(188);
+var content = __webpack_require__(193);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -68202,7 +69009,7 @@ if(false) {
 }
 
 /***/ }),
-/* 188 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -68216,7 +69023,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 189 */
+/* 194 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68343,7 +69150,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 190 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -68713,7 +69520,7 @@ if (false) {
 }
 
 /***/ }),
-/* 191 */
+/* 196 */
 /***/ (function(module, exports) {
 
 var status = $('#record_status'),
@@ -68955,7 +69762,7 @@ if (navigator.mediaDevices.getUserMedia) {
 }
 
 /***/ }),
-/* 192 */
+/* 197 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

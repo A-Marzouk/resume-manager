@@ -26,4 +26,8 @@ class Campaign extends Model
         return $this->hasMany(FAQ::class);
     }
 
+    public function shifts(){
+        return $this->hasMany(Shift::class);
+    }
+
 }

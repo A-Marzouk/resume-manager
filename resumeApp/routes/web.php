@@ -101,10 +101,12 @@ Route::post('/admin/camps/delete','CampaignsController@deleteCamp')->name('delet
 Route::post('/admin/camps/add','CampaignsController@addCamp')->name('add.camp');
 Route::post('/admin/camp/members','CampaignsController@getCampMembers')->name('camp.members');
 Route::post('/admin/camp/update_members','CampaignsController@addMembersToCamp')->name('add.members.to.camp');
-
 Route::get('/admin/campaigns','CampaignsController@viewCampaigns')->name('view.campaigns');
-
 Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
+    // campaign shifts
+Route::post('/admin/camp/add_shift','ShiftsController@addShiftToCamp')->name('add.shift.to.camp');
+Route::post('/admin/camps/delete_shift','ShiftsController@deleteShift')->name('delete.shift');
+
 
 // delete users, clients and conversations :
 Route::post('/admin/delete_multiple','AdminsController@deleteMultiple');

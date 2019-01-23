@@ -835,7 +835,7 @@ function loadSocialLinks(socialLinks){
 function termsBar(){
     // check if current user agrees with terms or not :
     axios.get('/client/has_agreed').then((response)=>{
-        if(response.data.terms !== 'AGREED'){
+        if(response.data.terms === 'NOT_AGREED'){
             $('#termsBar').animate({opacity:1},4000);
         }
     } );

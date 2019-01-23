@@ -41,12 +41,13 @@ class CampaignsController extends Controller
     public function getAllCamps(){
         $campaigns = Campaign::all();
         foreach ($campaigns as &$campaign){
-            $campaign['clientName'] = Client::where('id',$campaign->client_id)->first()->name;
+            $campaign['client'] = Client::where('id',$campaign->client_id)->first();
             $members = $campaign->members;
             foreach ($members as &$member){
                 $member['image'] = $member->userData->photo ;
             }
             $campaign['members']    = $members;
+            $campaign['shifts']     = $campaign->shifts;
         }
         return $campaigns;
     }

@@ -37,6 +37,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Campaign::class);
     }
 
+    public function shifts(){
+        return $this->belongsToMany(Shift::class);
+    }
+
     public function hasApplied($jobID){
         $job        = Job::find($jobID);
         $freelancersApplied = $job->freelancersApplied()->get(['user_id']);

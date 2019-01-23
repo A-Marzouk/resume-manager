@@ -79,6 +79,7 @@ Vue.component('campaigns-list', require('./components/campaigns/campaingsListCom
 Vue.component('campaign-component', require('./components/campaigns/campaingComponent.vue'));
 Vue.component('add-campaign-modal', require('./components/campaigns/addCampaingComponent.vue'));
 Vue.component('update-members-modal', require('./components/campaigns/updateMembersComponent.vue'));
+Vue.component('add-shift-modal', require('./components/campaigns/addShiftComponent.vue'));
 
 // search components :
 Vue.component('search-freelancers', require('./components/search/searchComponent.vue'));

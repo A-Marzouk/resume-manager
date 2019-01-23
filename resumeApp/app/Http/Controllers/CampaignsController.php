@@ -47,6 +47,7 @@ class CampaignsController extends Controller
                 $member['image'] = $member->userData->photo ;
             }
             $campaign['members']    = $members;
+            $campaign['shifts']     = $campaign->shifts;
         }
         return $campaigns;
     }

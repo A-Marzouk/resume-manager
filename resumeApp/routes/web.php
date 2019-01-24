@@ -81,6 +81,9 @@ Route::prefix('freelancer')->group(function (){
     // new register for business support  :
     Route::get('/workforce/register','BusinessSupportController@showRegistrationForm')->name('freelancer.register');
     Route::post('/apply/register_business','BusinessSupportController@register')->name('business.apply.submit');
+    Route::get('/workforce/success','BusinessSupportController@applicationSuccess');
+
+
     //////////
     Route::get('/delete/{id}','AdminsController@deleteFreelancer')->name('freelancer.delete');
     Route::get('/old_form/','FreelancersController@showOldForm')->name('show.old_form');

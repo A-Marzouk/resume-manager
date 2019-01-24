@@ -12,6 +12,7 @@ namespace App\Http\Controllers;
 use App\classes\Upload;
 use App\EducationHistory;
 use App\Recording;
+use App\User;
 use Illuminate\Http\Request;
 
 class RecordingsController extends Controller
@@ -22,10 +23,14 @@ class RecordingsController extends Controller
         return $currentUser->recordings;
     }
 
-    public function addRecord(Request $request){
-        $currentUser = auth()->user();
+    public function addRecord(Request $request,$businessSupport_id = ""){
+        if(!empty($businessSupport_id)){
+            $currentUser = User::where('id',$businessSupport_id)->first();
+        }else{
+            $currentUser = auth()->user();
+        }
         $request->validate([
-            'title' => 'max:190|required',
+            'title' => 'max:190',
             'transcription' => 'max:1500',
             'src' => 'max:190',
         ]);

@@ -24,13 +24,20 @@ class BusinessSupportController extends Controller
         $validator = $this->validator($request->all());
         if ($validator->fails())
         {
-            return redirect('/freelancer/workforce/register')->withErrors($validator)->withInput();
+            return  ['errors' => $validator->errors()];
         }
 
         // register a business support user
 
         $businessSupport = $this->create($request->all());
-        return view('business_application_received');
+
+        if ($businessSupport->id){
+            // save the record
+            $recordSaver = new RecordingsController;
+            $recordSaver->addRecord($request,$businessSupport->id);
+            return 'success';
+        }
+
     }
 
     protected function validator(array $data)
@@ -69,6 +76,10 @@ class BusinessSupportController extends Controller
 
         return $businessSupport;
 
+    }
+
+    public function applicationSuccess(){
+        return view('business_application_received');
     }
 
 }

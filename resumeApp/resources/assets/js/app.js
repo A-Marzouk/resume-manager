@@ -67,6 +67,10 @@ Vue.component('add-job-modal', require('./components/jobs/addJob.vue'));
 // skills
 Vue.component('skills-list', require('./components/skills/skillsComponent.vue'));
 
+// record while register
+Vue.component('record-input', require('./components/record_while_register.vue'));
+
+
 
 // projects
 Vue.component('projects-list', require('./components/projects/projectsListComponent.vue'));
@@ -99,6 +103,14 @@ if ($("#searchFreelancers").length !== 0){
         el:'#searchFreelancers'
     });
 }
+
+
+if ($("#record_input").length !== 0){
+    let record_input = new Vue({
+        el:'#record_input'
+    });
+}
+
 
 if ($("#clientJobs").length !== 0){
     let clientJobs = new Vue({

@@ -54,8 +54,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="email" class="formLabel">{{ __('E-Mail Address') }}</label>
-                                    <input id="email" type="email" class="panelFormInput form-control{{ $errors->has('email') && $errorType== 'freelancer'? ' is-invalid' : '' }}" name="email" value="@if($errorType == 'freelancer') {{ old('email') }} @endif" required autofocus>
+                                    <label for="emailFreelancer" class="formLabel">{{ __('E-Mail Address') }}</label>
+                                    <input id="emailFreelancer" type="email" class="panelFormInput form-control{{ $errors->has('email') && $errorType== 'freelancer'? ' is-invalid' : '' }}" name="email" value="@if($errorType == 'freelancer') {{ old('email') }} @endif" required autofocus>
 
                                     @if ($errors->has('email') && $errorType== 'freelancer')
                                         <span class="invalid-feedback">
@@ -69,7 +69,7 @@
                                             {{ __(' Forgot?') }}
                                         </a>
                                     </label>
-                                    <input id="password" type="password" class="panelFormInput form-control{{ $errors->has('password') && $errorType== 'freelancer'? ' is-invalid' : '' }}" name="password" required>
+                                    <input id="passwordFreelancer" type="password" class="panelFormInput form-control{{ $errors->has('password') && $errorType== 'freelancer'? ' is-invalid' : '' }}" name="password" required>
 
                                     @if ($errors->has('password') && $errorType== 'freelancer')
                                         <span class="invalid-feedback">
@@ -125,10 +125,10 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="email" class="formLabel">{{ __('E-Mail Address') }}</label>
+                                        <label for="emailCLient" class="formLabel">{{ __('E-Mail Address') }}</label>
 
                                         <div class="">
-                                            <input id="email" type="email" class="panelFormInput form-control{{ $errors->has('email') && $errorType== 'client' ? ' is-invalid' : '' }}" name="email" value="@if($errorType == 'client') {{ old('email') }} @endif" required autofocus>
+                                            <input id="emailCLient" type="email" class="panelFormInput form-control{{ $errors->has('email') && $errorType== 'client' ? ' is-invalid' : '' }}" name="email" value="@if($errorType == 'client') {{ old('email') }} @endif" required autofocus>
 
                                             @if ($errors->has('email')&& $errorType== 'client')
                                                 <span class="invalid-feedback">
@@ -147,7 +147,7 @@
 
 
                                         <div>
-                                            <input id="password" type="password" class="panelFormInput form-control{{ $errors->has('password') && $errorType== 'client'? ' is-invalid' : '' }}" name="password" required>
+                                            <input id="passwordClient" type="password" class="panelFormInput form-control{{ $errors->has('password') && $errorType== 'client'? ' is-invalid' : '' }}" name="password" required>
 
                                             @if ($errors->has('password') && $errorType== 'client')
                                                 <span class="invalid-feedback">
@@ -208,10 +208,10 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="email" class="formLabel">{{ __('E-Mail Address') }}</label>
+                                        <label for="emailAffiliate" class="formLabel">{{ __('E-Mail Address') }}</label>
 
                                         <div class="">
-                                            <input id="email" type="email" class="panelFormInput form-control{{ $errors->has('email')&& $errorType== 'affiliate' ? ' is-invalid' : '' }}" name="email" value="@if($errorType == 'affiliate') {{ old('email') }} @endif" required autofocus>
+                                            <input id="emailAffiliate" type="email" class="panelFormInput form-control{{ $errors->has('email')&& $errorType== 'affiliate' ? ' is-invalid' : '' }}" name="email" value="@if($errorType == 'affiliate') {{ old('email') }} @endif" required autofocus>
 
                                             @if ($errors->has('email') && $errorType== 'affiliate')
                                                 <span class="invalid-feedback">
@@ -230,7 +230,7 @@
 
 
                                         <div>
-                                            <input id="password" type="password" class="panelFormInput form-control{{ $errors->has('password') && $errorType== 'affiliate' ? ' is-invalid' : '' }}" name="password" required>
+                                            <input id="passwordAffiliate" type="password" class="panelFormInput form-control{{ $errors->has('password') && $errorType== 'affiliate' ? ' is-invalid' : '' }}" name="password" required>
 
                                             @if ($errors->has('password') && $errorType== 'affiliate')
                                                 <span class="invalid-feedback">

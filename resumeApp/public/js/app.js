@@ -63471,6 +63471,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -63488,6 +63494,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'clientName': '',
                 'members': [],
                 'shifts': []
+            },
+            toBeEditedShift: {
+                'id': '',
+                'start_time': '',
+                'end_time': '',
+                'days': [],
+                'campaign_id': ''
             }
         };
     },
@@ -63505,6 +63518,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         addCamp: function addCamp(newCamp) {
             this.camps.push(newCamp);
             this.checkMaxCamps();
+        },
+        shiftAdded: function shiftAdded(newShift) {
+            var currCamps = this.camps;
+            $.each(currCamps, function (i) {
+                if (currCamps[i].id === newShift.campaign_id) {
+                    currCamps[i].shifts.push(newShift);
+                }
+            });
         },
         deleteCamp: function deleteCamp(camp) {
             var _this2 = this;
@@ -63567,6 +63588,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             this.toBeEditedCamp = editedCamp;
         },
+        updateShift: function updateShift(shift) {
+            this.updateCamp(shift.campaign_id);
+            var shifts = this.toBeEditedCamp.shifts;
+            var editedShift = {};
+            $.each(shifts, function (i) {
+                if (shifts[i].id === shift.id) {
+                    editedShift = shifts[i];
+                }
+            });
+            this.toBeEditedShift = editedShift;
+        },
         checkMaxCamps: function checkMaxCamps() {
             if (this.camps.length > 4) {
                 this.canAdd = false;
@@ -63586,6 +63618,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'clientName': '',
                 'members': [],
                 'shifts': []
+            };
+        },
+        clearShiftData: function clearShiftData() {
+            this.toBeEditedShift = {
+                'id': '',
+                'start_time': '',
+                'end_time': '',
+                'days': [],
+                'campaign_id': ''
             };
         },
         getDate: function getDate(date) {
@@ -63840,6 +63881,42 @@ var render = function() {
                                         ]
                                       )
                                     ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass: "deleteWorkBtn NoDecor",
+                                      on: {
+                                        click: function($event) {
+                                          _vm.updateShift(shift)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "a",
+                                        {
+                                          attrs: {
+                                            href: "javascript:void(0)",
+                                            "data-target": "#addShiftModal",
+                                            "data-toggle": "modal"
+                                          }
+                                        },
+                                        [
+                                          _c("img", {
+                                            attrs: {
+                                              src:
+                                                "/resumeApp/resources/assets/images/edit_blue.png",
+                                              alt: "edit profile"
+                                            }
+                                          }),
+                                          _vm._v(
+                                            "\n                                                Edit\n                                            "
+                                          )
+                                        ]
+                                      )
+                                    ]
                                   )
                                 ])
                               ])
@@ -63971,6 +64048,7 @@ var render = function() {
                       on: {
                         click: function($event) {
                           _vm.updateCamp(camp.id)
+                          _vm.clearShiftData()
                         }
                       }
                     },
@@ -64041,7 +64119,13 @@ var render = function() {
         attrs: { toBeEditedCamp: _vm.toBeEditedCamp }
       }),
       _vm._v(" "),
-      _c("add-shift-modal", { attrs: { toBeEditedCamp: _vm.toBeEditedCamp } })
+      _c("add-shift-modal", {
+        attrs: {
+          toBeEditedCamp: _vm.toBeEditedCamp,
+          toBeEditedShift: _vm.toBeEditedShift
+        },
+        on: { shiftAdded: _vm.shiftAdded }
+      })
     ],
     1
   )
@@ -65479,28 +65563,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['toBeEditedCamp'],
+    props: ['toBeEditedCamp', 'toBeEditedShift'],
     data: function data() {
         return {
-            shift: {
-                'id': '',
-                'start_time': '',
-                'end_time': '',
-                'days': [],
-                campID: ''
-            },
             datesArray: [],
-            customDates: false
+            customDates: true
         };
     },
 
     methods: {
         addShift: function addShift() {
-            this.shift.campID = this.toBeEditedCamp.id;
-            axios.post('/admin/camp/add_shift', this.shift).then(function (response) {
+            var _this = this;
+
+            this.toBeEditedShift.campaign_id = this.toBeEditedCamp.id;
+            axios.post('/admin/camp/add_shift', this.toBeEditedShift).then(function (response) {
+                // assign id to the shift which has been just added
+
+                if (_this.toBeEditedShift.id === "") {
+                    _this.$emit('shiftAdded', _this.toBeEditedShift);
+                }
+
+                _this.toBeEditedShift.id = response.data.id;
+
                 // changes saved :
                 $('#changesSaved').fadeIn('slow');
                 setTimeout(function () {
@@ -65508,19 +65594,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }, 2000);
             });
 
-            this.toBeEditedCamp.shifts.push(this.shift);
-            this.clearShiftData();
             $('#closeShiftModal').click();
-        },
-        clearShiftData: function clearShiftData() {
-            this.shift = {
-                'id': '',
-                'start_time': '',
-                'end_time': '',
-                'days': [],
-                campID: ''
-            };
-            this.customDates = false;
         },
         getDates: function getDates(startDate, stopDate) {
             var oneDay = 24 * 3600 * 1000;
@@ -65582,8 +65656,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.shift.start_time,
-                          expression: "shift.start_time"
+                          value: _vm.toBeEditedShift.start_time,
+                          expression: "toBeEditedShift.start_time"
                         }
                       ],
                       staticClass: "form-control",
@@ -65593,13 +65667,17 @@ var render = function() {
                         name: "start_time",
                         required: ""
                       },
-                      domProps: { value: _vm.shift.start_time },
+                      domProps: { value: _vm.toBeEditedShift.start_time },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.$set(_vm.shift, "start_time", $event.target.value)
+                          _vm.$set(
+                            _vm.toBeEditedShift,
+                            "start_time",
+                            $event.target.value
+                          )
                         }
                       }
                     })
@@ -65620,8 +65698,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.shift.end_time,
-                          expression: "shift.end_time"
+                          value: _vm.toBeEditedShift.end_time,
+                          expression: "toBeEditedShift.end_time"
                         }
                       ],
                       staticClass: "form-control",
@@ -65631,13 +65709,17 @@ var render = function() {
                         name: "end_time",
                         required: ""
                       },
-                      domProps: { value: _vm.shift.end_time },
+                      domProps: { value: _vm.toBeEditedShift.end_time },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.$set(_vm.shift, "end_time", $event.target.value)
+                          _vm.$set(
+                            _vm.toBeEditedShift,
+                            "end_time",
+                            $event.target.value
+                          )
                         }
                       }
                     })
@@ -65654,19 +65736,22 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.shift.days,
-                            expression: "shift.days"
+                            value: _vm.toBeEditedShift.days,
+                            expression: "toBeEditedShift.days"
                           }
                         ],
                         attrs: { type: "checkbox", value: "all_dayes" },
                         domProps: {
-                          checked: Array.isArray(_vm.shift.days)
-                            ? _vm._i(_vm.shift.days, "all_dayes") > -1
-                            : _vm.shift.days
+                          checked: Array.isArray(_vm.toBeEditedShift.days)
+                            ? _vm._i(_vm.toBeEditedShift.days, "all_dayes") > -1
+                            : _vm.toBeEditedShift.days
                         },
                         on: {
+                          click: function($event) {
+                            _vm.customDates = !_vm.customDates
+                          },
                           change: function($event) {
-                            var $$a = _vm.shift.days,
+                            var $$a = _vm.toBeEditedShift.days,
                               $$el = $event.target,
                               $$c = $$el.checked ? true : false
                             if (Array.isArray($$a)) {
@@ -65674,69 +65759,27 @@ var render = function() {
                                 $$i = _vm._i($$a, $$v)
                               if ($$el.checked) {
                                 $$i < 0 &&
-                                  _vm.$set(_vm.shift, "days", $$a.concat([$$v]))
+                                  _vm.$set(
+                                    _vm.toBeEditedShift,
+                                    "days",
+                                    $$a.concat([$$v])
+                                  )
                               } else {
                                 $$i > -1 &&
                                   _vm.$set(
-                                    _vm.shift,
+                                    _vm.toBeEditedShift,
                                     "days",
                                     $$a.slice(0, $$i).concat($$a.slice($$i + 1))
                                   )
                               }
                             } else {
-                              _vm.$set(_vm.shift, "days", $$c)
+                              _vm.$set(_vm.toBeEditedShift, "days", $$c)
                             }
                           }
                         }
                       }),
                       _vm._v(
                         "\n                            All campaign days.\n                        "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.customDates,
-                            expression: "customDates"
-                          }
-                        ],
-                        attrs: { type: "checkbox", value: "" },
-                        domProps: {
-                          checked: Array.isArray(_vm.customDates)
-                            ? _vm._i(_vm.customDates, "") > -1
-                            : _vm.customDates
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.customDates = !_vm.customDates
-                          },
-                          change: function($event) {
-                            var $$a = _vm.customDates,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = "",
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 && (_vm.customDates = $$a.concat([$$v]))
-                              } else {
-                                $$i > -1 &&
-                                  (_vm.customDates = $$a
-                                    .slice(0, $$i)
-                                    .concat($$a.slice($$i + 1)))
-                              }
-                            } else {
-                              _vm.customDates = $$c
-                            }
-                          }
-                        }
-                      }),
-                      _vm._v(
-                        "\n                            Custom days.\n                        "
                       )
                     ]),
                     _vm._v(" "),
@@ -65753,69 +65796,82 @@ var render = function() {
                         ],
                         staticClass: "row"
                       },
-                      _vm._l(
-                        _vm.getDates(
-                          new Date(_vm.toBeEditedCamp.start_date),
-                          new Date(_vm.toBeEditedCamp.end_date)
-                        ),
-                        function(date, index) {
-                          return _c("div", { staticClass: "col-md-3" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.shift.days,
-                                  expression: "shift.days"
-                                }
-                              ],
-                              key: index,
-                              attrs: { type: "checkbox" },
-                              domProps: {
-                                value: date,
-                                checked: Array.isArray(_vm.shift.days)
-                                  ? _vm._i(_vm.shift.days, date) > -1
-                                  : _vm.shift.days
-                              },
-                              on: {
-                                change: function($event) {
-                                  var $$a = _vm.shift.days,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = date,
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        _vm.$set(
-                                          _vm.shift,
-                                          "days",
-                                          $$a.concat([$$v])
-                                        )
+                      [
+                        _c("div", { staticClass: "panelFormLabel col-md-12" }, [
+                          _vm._v(
+                            "\n                                Custom dates :\n                            "
+                          )
+                        ]),
+                        _c("br"),
+                        _vm._v(" "),
+                        _vm._l(
+                          _vm.getDates(
+                            new Date(_vm.toBeEditedCamp.start_date),
+                            new Date(_vm.toBeEditedCamp.end_date)
+                          ),
+                          function(date, index) {
+                            return _c("div", { staticClass: "col-md-3" }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.toBeEditedShift.days,
+                                    expression: "toBeEditedShift.days"
+                                  }
+                                ],
+                                key: index,
+                                attrs: { type: "checkbox" },
+                                domProps: {
+                                  value: date,
+                                  checked: Array.isArray(
+                                    _vm.toBeEditedShift.days
+                                  )
+                                    ? _vm._i(_vm.toBeEditedShift.days, date) >
+                                      -1
+                                    : _vm.toBeEditedShift.days
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$a = _vm.toBeEditedShift.days,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = date,
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          _vm.$set(
+                                            _vm.toBeEditedShift,
+                                            "days",
+                                            $$a.concat([$$v])
+                                          )
+                                      } else {
+                                        $$i > -1 &&
+                                          _vm.$set(
+                                            _vm.toBeEditedShift,
+                                            "days",
+                                            $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1))
+                                          )
+                                      }
                                     } else {
-                                      $$i > -1 &&
-                                        _vm.$set(
-                                          _vm.shift,
-                                          "days",
-                                          $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1))
-                                        )
+                                      _vm.$set(_vm.toBeEditedShift, "days", $$c)
                                     }
-                                  } else {
-                                    _vm.$set(_vm.shift, "days", $$c)
                                   }
                                 }
-                              }
-                            }),
-                            _vm._v(
-                              "\n                                " +
-                                _vm._s(date) +
-                                "\n                            "
-                            )
-                          ])
-                        }
-                      )
+                              }),
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(date) +
+                                  "\n                            "
+                              )
+                            ])
+                          }
+                        )
+                      ],
+                      2
                     )
                   ])
                 ]

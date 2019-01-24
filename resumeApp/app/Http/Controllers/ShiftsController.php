@@ -22,7 +22,7 @@ class ShiftsController extends Controller
 
 
     public function addShiftToCamp(Request $request){
-        $currCampaign = Campaign::where('id',$request->campID)->first();
+        $currCampaign = Campaign::where('id',$request->campaign_id)->first();
         $request->validate([
             'start_time' => 'required',
             'end_time' => 'required',

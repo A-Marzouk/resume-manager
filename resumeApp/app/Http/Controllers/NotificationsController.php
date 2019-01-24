@@ -29,6 +29,23 @@ class NotificationsController extends Controller
         });
     }
 
+    public function businessSupportApplication($data){
+        $emails = [
+            '123@123workforce.com'
+        ];
+        Mail::send('emails.business_supprt_application',$data, function($message) use ($emails)
+        {
+            $message->to($emails)->subject('New application (Business support) !');
+        });
+
+        $telegram = new Telegram('-228260999');
+        $msg      = "New Application has been submitted.\n" ;
+        $msg     .= "Name : ". $data['firstName'] . " ". $data['lastName'];
+        $msg     .= "\nEmail :". $data['email'];
+        $telegram->sendMessage($msg);
+    }
+
+
     public function messageToAdminMail($userMessage){
         $emails = ['AhmedMarzouk266@gmail.com','conor@123workforce.com'];
         $data  = [

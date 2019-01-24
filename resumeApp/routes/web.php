@@ -72,11 +72,16 @@ Route::prefix('freelancer')->group(function (){
         return redirect()->back();
     });
 
-    Route::get('/workforce/register','Auth\RegisterController@showRegistrationForm')->name('freelancer.register');
+//    Route::get('/workforce/register','Auth\RegisterController@showRegistrationForm')->name('freelancer.register');
     Route::post('/register/submit','Auth\RegisterController@register')->name('freelancer.register.submit');
     Route::get('/register/submit',function(){
         return redirect()->back();
     });
+    //////////////
+    // new register for business support  :
+    Route::get('/workforce/register','BusinessSupportController@showRegistrationForm')->name('freelancer.register');
+    Route::post('/apply/register_business','BusinessSupportController@register')->name('business.apply.submit');
+    //////////
     Route::get('/delete/{id}','AdminsController@deleteFreelancer')->name('freelancer.delete');
     Route::get('/old_form/','FreelancersController@showOldForm')->name('show.old_form');
     Route::get('/jobs/','FreelancersController@showFreelancerJobs')->name('show.freelancer.jobs');

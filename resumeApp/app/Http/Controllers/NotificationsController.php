@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 use App\classes\Telegram;
 use App\Client;
 use App\ClientSearch;
+use App\Recording;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -28,6 +29,34 @@ class NotificationsController extends Controller
             $message->to($emails)->subject('User has updated resume !');
         });
     }
+
+    public function businessSupportApplication($data){
+        $recording = Recording::where('user_id',$data['id'])->first();
+        if (strpos($recording->src, 'drive.google.com') !== false) {
+            // it is link from google.
+            $data['recordLink'] = $recording->src;
+        }else{
+            $data['recordLink'] = '123workforce.magictimeapps.com'.$recording->src;
+        }
+        $emails = [
+            '123@123workforce.com'
+        ];
+        Mail::send('emails.business_supprt_application',$data, function($message) use ($emails)
+        {
+            $message->to($emails)->subject('New application (Business support) !');
+        });
+
+        $telegram = new Telegram('-228260999');
+        $msg      = "New Application has been submitted.\n" ;
+        $msg     .= "Name : ". $data['firstName'] . " ". $data['lastName'];
+        $msg     .= "\nEmail :". $data['email'];
+        if($recording){
+            $msg     .= "\nSrc : https://123workforce.com". $recording->src;
+
+        }
+        $telegram->sendMessage($msg);
+    }
+
 
     public function messageToAdminMail($userMessage){
         $emails = ['AhmedMarzouk266@gmail.com','conor@123workforce.com'];

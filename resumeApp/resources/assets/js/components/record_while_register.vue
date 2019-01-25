@@ -4,8 +4,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="firstName" class="panelFormLabel">First name *</label>
-                        <input id="firstName" type="text" class="panelFormInput form-control" name="firstName" v-model="freelancerData.firstName" required autofocus>
+                        <label for="business_firstName" class="panelFormLabel">First name *</label>
+                        <input id="business_firstName" type="text" class="panelFormInput form-control" name="firstName" v-model="freelancerData.firstName" required autofocus>
                         
                         <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
                             <strong>{{ errors.firstName }}</strong>
@@ -14,8 +14,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="lastName" class="panelFormLabel">Last name *</label>
-                        <input id="lastName" type="text" class="panelFormInput form-control " name="lastName" v-model="freelancerData.lastName" required autofocus>
+                        <label for="business_lastName" class="panelFormLabel">Last name *</label>
+                        <input id="business_lastName" type="text" class="panelFormInput form-control " name="lastName" v-model="freelancerData.lastName" required autofocus>
                        
                         <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
                             <strong>{{ errors.lastName }}</strong>
@@ -28,9 +28,9 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="email" class="panelFormLabel">Email *</label>
+                        <label for="business_email" class="panelFormLabel">Email *</label>
 
-                        <input id="email" type="email" class="panelFormInput form-control" name="email" v-model="freelancerData.email" required>
+                        <input id="business_email" type="email" class="panelFormInput form-control" name="email" v-model="freelancerData.email" required>
 
                         <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
                             <strong>{{errors.email}}</strong>
@@ -39,9 +39,9 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="phone" class="panelFormLabel">Phone *</label>
+                        <label for="business_phone" class="panelFormLabel">Phone *</label>
 
-                        <input id="phone" type="tel" class="panelFormInput form-control" name="phone" v-model="freelancerData.phone" required>
+                        <input id="business_phone" type="tel" class="panelFormInput form-control" name="phone" v-model="freelancerData.phone" required>
 
                         <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
                             <strong>{{ errors.phone }}</strong>
@@ -52,8 +52,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="whatsapp" class="panelFormLabel">Whatsapp</label>
-                        <input id="whatsapp" type="text" class="panelFormInput form-control" v-model="freelancerData.whatsapp" name="whatsapp">
+                        <label for="business_whatsapp" class="panelFormLabel">Whatsapp</label>
+                        <input id="business_whatsapp" type="text" class="panelFormInput form-control" v-model="freelancerData.whatsapp" name="whatsapp">
 
 
                         <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
@@ -63,8 +63,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="skype" class="panelFormLabel">Skype</label>
-                        <input id="skype" type="text" class="panelFormInput form-control" v-model="freelancerData.skype" name="skype">
+                        <label for="business_skype" class="panelFormLabel">Skype</label>
+                        <input id="business_skype" type="text" class="panelFormInput form-control" v-model="freelancerData.skype" name="skype">
 
                         <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
                             <strong>{{ errors.skype }}</strong>
@@ -135,7 +135,7 @@
                                 Apply
                             </a>
 
-                            <a class="hireBtn" style="padding: 15px 100px 15px 100px; color:white!important;" id="saveAudio" v-show="uploadMethod == 'record'">
+                            <a class="hireBtn" style="padding: 15px 100px 15px 100px; color:white!important;" id="saveAudioRegister" v-show="uploadMethod == 'record'">
                                 Apply
                             </a>
                         </div>

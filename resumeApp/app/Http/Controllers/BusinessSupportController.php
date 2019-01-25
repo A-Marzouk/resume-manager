@@ -19,6 +19,22 @@ class BusinessSupportController extends Controller
         return view('auth.business_support.register');
     }
 
+    public function saveAudioForRegister(Request $request){
+    if(isset($_FILES['file']) and !$_FILES['file']['error']){
+        $fname = "Record_".date(time()).'.ogg';
+        $target_file = "resumeApp/uploads/register_audios/" . $fname ;
+
+        if (file_exists($target_file)) {
+            unlink($target_file);
+        }
+
+        move_uploaded_file($_FILES['file']['tmp_name'], $target_file);
+
+        return $target_file;
+    }
+
+}
+
     public function register(Request $request){
         // validate data
         $validator = $this->validator($request->all());

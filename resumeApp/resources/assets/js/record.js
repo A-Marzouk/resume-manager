@@ -150,6 +150,10 @@ if ( navigator.mediaDevices.getUserMedia ) {
         saveAudioForChat();
     });
 
+    $('#saveAudioRegister').on('click',function () {
+        saveAudioForRegister();
+    });
+
 
     function saveToDB() {
 
@@ -202,6 +206,22 @@ if ( navigator.mediaDevices.getUserMedia ) {
                 console.log("Error while saving audio");
                 $('#currAudioChatSrc').html('');
             }
+        });
+    }
+
+    function saveAudioForRegister(){
+        var data = new FormData();
+        data.append('file', blob);
+        data.append('type', blob.type);
+        data.append('firstName',$('#business_firstName').val() );
+        data.append('lastName',$('#business_lastName').val() );
+        data.append('email',$('#business_email').val() );
+        data.append('phone',$('#business_phone').val() );
+        data.append('skype',$('#business_skype').val() );
+        data.append('whatsapp',$('#business_whatsapp').val() );
+
+        axios.post('/audio/save_for_register',data).then( (response) => {
+            console.log(response.data)
         });
     }
 

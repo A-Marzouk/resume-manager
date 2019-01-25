@@ -62286,7 +62286,10 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _c(
                 "label",
-                { staticClass: "panelFormLabel", attrs: { for: "firstName" } },
+                {
+                  staticClass: "panelFormLabel",
+                  attrs: { for: "business_firstName" }
+                },
                 [_vm._v("First name *")]
               ),
               _vm._v(" "),
@@ -62301,7 +62304,7 @@ var render = function() {
                 ],
                 staticClass: "panelFormInput form-control",
                 attrs: {
-                  id: "firstName",
+                  id: "business_firstName",
                   type: "text",
                   name: "firstName",
                   required: "",
@@ -62341,7 +62344,10 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _c(
                 "label",
-                { staticClass: "panelFormLabel", attrs: { for: "lastName" } },
+                {
+                  staticClass: "panelFormLabel",
+                  attrs: { for: "business_lastName" }
+                },
                 [_vm._v("Last name *")]
               ),
               _vm._v(" "),
@@ -62356,7 +62362,7 @@ var render = function() {
                 ],
                 staticClass: "panelFormInput form-control ",
                 attrs: {
-                  id: "lastName",
+                  id: "business_lastName",
                   type: "text",
                   name: "lastName",
                   required: "",
@@ -62398,7 +62404,10 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _c(
                 "label",
-                { staticClass: "panelFormLabel", attrs: { for: "email" } },
+                {
+                  staticClass: "panelFormLabel",
+                  attrs: { for: "business_email" }
+                },
                 [_vm._v("Email *")]
               ),
               _vm._v(" "),
@@ -62413,7 +62422,7 @@ var render = function() {
                 ],
                 staticClass: "panelFormInput form-control",
                 attrs: {
-                  id: "email",
+                  id: "business_email",
                   type: "email",
                   name: "email",
                   required: ""
@@ -62448,7 +62457,10 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _c(
                 "label",
-                { staticClass: "panelFormLabel", attrs: { for: "phone" } },
+                {
+                  staticClass: "panelFormLabel",
+                  attrs: { for: "business_phone" }
+                },
                 [_vm._v("Phone *")]
               ),
               _vm._v(" "),
@@ -62463,7 +62475,7 @@ var render = function() {
                 ],
                 staticClass: "panelFormInput form-control",
                 attrs: {
-                  id: "phone",
+                  id: "business_phone",
                   type: "tel",
                   name: "phone",
                   required: ""
@@ -62500,7 +62512,10 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _c(
                 "label",
-                { staticClass: "panelFormLabel", attrs: { for: "whatsapp" } },
+                {
+                  staticClass: "panelFormLabel",
+                  attrs: { for: "business_whatsapp" }
+                },
                 [_vm._v("Whatsapp")]
               ),
               _vm._v(" "),
@@ -62514,7 +62529,11 @@ var render = function() {
                   }
                 ],
                 staticClass: "panelFormInput form-control",
-                attrs: { id: "whatsapp", type: "text", name: "whatsapp" },
+                attrs: {
+                  id: "business_whatsapp",
+                  type: "text",
+                  name: "whatsapp"
+                },
                 domProps: { value: _vm.freelancerData.whatsapp },
                 on: {
                   input: function($event) {
@@ -62549,7 +62568,10 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _c(
                 "label",
-                { staticClass: "panelFormLabel", attrs: { for: "skype" } },
+                {
+                  staticClass: "panelFormLabel",
+                  attrs: { for: "business_skype" }
+                },
                 [_vm._v("Skype")]
               ),
               _vm._v(" "),
@@ -62563,7 +62585,7 @@ var render = function() {
                   }
                 ],
                 staticClass: "panelFormInput form-control",
-                attrs: { id: "skype", type: "text", name: "skype" },
+                attrs: { id: "business_skype", type: "text", name: "skype" },
                 domProps: { value: _vm.freelancerData.skype },
                 on: {
                   input: function($event) {
@@ -62841,7 +62863,7 @@ var render = function() {
                       padding: "15px 100px 15px 100px",
                       color: "white!important"
                     },
-                    attrs: { id: "saveAudio" }
+                    attrs: { id: "saveAudioRegister" }
                   },
                   [
                     _vm._v(
@@ -70767,6 +70789,22 @@ if (navigator.mediaDevices.getUserMedia) {
         });
     };
 
+    var saveAudioForRegister = function saveAudioForRegister() {
+        var data = new FormData();
+        data.append('file', blob);
+        data.append('type', blob.type);
+        data.append('firstName', $('#business_firstName').val());
+        data.append('lastName', $('#business_lastName').val());
+        data.append('email', $('#business_email').val());
+        data.append('phone', $('#business_phone').val());
+        data.append('skype', $('#business_skype').val());
+        data.append('whatsapp', $('#business_whatsapp').val());
+
+        axios.post('/audio/save_for_register', data).then(function (response) {
+            console.log(response.data);
+        });
+    };
+
     var play = function play() {
         audio.play();
     };
@@ -70836,6 +70874,10 @@ if (navigator.mediaDevices.getUserMedia) {
 
     $('#sendAudio').on('click', function () {
         saveAudioForChat();
+    });
+
+    $('#saveAudioRegister').on('click', function () {
+        saveAudioForRegister();
     });
 } else {
     if (location.protocol != 'https:') {

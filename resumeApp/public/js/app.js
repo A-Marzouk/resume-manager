@@ -62139,6 +62139,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -62176,8 +62178,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.file = this.$refs.file.files[0];
             this.fileChosen = true;
         },
-        submitForm: function submitForm() {
+        validateForm: function validateForm() {
             var _this = this;
+
+            var formData = new FormData();
+            formData.append('firstName', this.freelancerData.firstName);
+            formData.append('lastName', this.freelancerData.lastName);
+            formData.append('email', this.freelancerData.email);
+            formData.append('phone', this.freelancerData.phone);
+            formData.append('whatsapp', this.freelancerData.whatsapp);
+            formData.append('skype', this.freelancerData.skype);
+
+            this.clearErros();
+            this.isLoading = true;
+            axios.post('/freelancer/workforce/form/validate', formData).then(function (response) {
+                console.log(response.data);
+                if (response.data.errors) {
+                    _this.updateErrors(response.data.errors);
+                    _this.isLoading = false;
+                } else {
+                    $('#saveAudioRegister').click();
+                    _this.isLoading = true;
+                }
+            });
+        },
+        submitForm: function submitForm() {
+            var _this2 = this;
 
             this.isLoading = true;
             var formData = new FormData();
@@ -62191,6 +62217,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             formData.append('phone', this.freelancerData.phone);
             formData.append('whatsapp', this.freelancerData.whatsapp);
             formData.append('skype', this.freelancerData.skype);
+            formData.append('audioType', 'uploaded');
+
+            this.clearErros();
+
             axios.post('/freelancer/apply/register_business', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
@@ -62201,8 +62231,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }.bind(this)
             }).then(function (response) {
                 if (response.data.errors) {
-                    _this.updateErrors(response.data.errors);
-                    _this.isLoading = false;
+                    _this2.updateErrors(response.data.errors);
+                    _this2.isLoading = false;
                 } else {
                     window.location.href = '/freelancer/workforce/success';
                 }
@@ -62214,6 +62244,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             setTimeout(function () {
                 $('#changesSaved').fadeOut();
             }, 2000);
+        },
+        clearErros: function clearErros() {
+            this.errors = {
+                'firstName': '',
+                'lastName': '',
+                'phone': '',
+                'email': '',
+                'whatsapp': '',
+                'skype': ''
+            };
         },
         setUploadMethod: function setUploadMethod(method) {
             this.uploadMethod = method;
@@ -62257,592 +62297,385 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { class: { loader: _vm.isLoading } }, [
-    _c(
-      "form",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: !_vm.isLoading,
-            expression: "!isLoading"
+  return _c(
+    "div",
+    { class: { loader: _vm.isLoading }, attrs: { id: "loaderArea" } },
+    [
+      _c(
+        "form",
+        {
+          class: { "d-none": _vm.isLoading },
+          attrs: {
+            action: "/freelancer/workforce/register_business",
+            id: "businessRegisterForm",
+            method: "post"
+          },
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.submitForm($event)
+            }
           }
-        ],
-        attrs: {
-          action: "/freelancer/workforce/register_business",
-          method: "post"
         },
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.submitForm($event)
-          }
-        }
-      },
-      [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "panelFormLabel",
-                  attrs: { for: "business_firstName" }
-                },
-                [_vm._v("First name *")]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.freelancerData.firstName,
-                    expression: "freelancerData.firstName"
-                  }
-                ],
-                staticClass: "panelFormInput form-control",
-                attrs: {
-                  id: "business_firstName",
-                  type: "text",
-                  name: "firstName",
-                  required: "",
-                  autofocus: ""
-                },
-                domProps: { value: _vm.freelancerData.firstName },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(
-                      _vm.freelancerData,
-                      "firstName",
-                      $event.target.value
-                    )
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticStyle: {
-                    width: "100%",
-                    "margin-top": ".25rem",
-                    "font-size": "80%",
-                    color: "#dc3545"
-                  }
-                },
-                [_c("strong", [_vm._v(_vm._s(_vm.errors.firstName))])]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "panelFormLabel",
-                  attrs: { for: "business_lastName" }
-                },
-                [_vm._v("Last name *")]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.freelancerData.lastName,
-                    expression: "freelancerData.lastName"
-                  }
-                ],
-                staticClass: "panelFormInput form-control ",
-                attrs: {
-                  id: "business_lastName",
-                  type: "text",
-                  name: "lastName",
-                  required: "",
-                  autofocus: ""
-                },
-                domProps: { value: _vm.freelancerData.lastName },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(
-                      _vm.freelancerData,
-                      "lastName",
-                      $event.target.value
-                    )
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticStyle: {
-                    width: "100%",
-                    "margin-top": ".25rem",
-                    "font-size": "80%",
-                    color: "#dc3545"
-                  }
-                },
-                [_c("strong", [_vm._v(_vm._s(_vm.errors.lastName))])]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "panelFormLabel",
-                  attrs: { for: "business_email" }
-                },
-                [_vm._v("Email *")]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.freelancerData.email,
-                    expression: "freelancerData.email"
-                  }
-                ],
-                staticClass: "panelFormInput form-control",
-                attrs: {
-                  id: "business_email",
-                  type: "email",
-                  name: "email",
-                  required: ""
-                },
-                domProps: { value: _vm.freelancerData.email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.freelancerData, "email", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticStyle: {
-                    width: "100%",
-                    "margin-top": ".25rem",
-                    "font-size": "80%",
-                    color: "#dc3545"
-                  }
-                },
-                [_c("strong", [_vm._v(_vm._s(_vm.errors.email))])]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "panelFormLabel",
-                  attrs: { for: "business_phone" }
-                },
-                [_vm._v("Phone *")]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.freelancerData.phone,
-                    expression: "freelancerData.phone"
-                  }
-                ],
-                staticClass: "panelFormInput form-control",
-                attrs: {
-                  id: "business_phone",
-                  type: "tel",
-                  name: "phone",
-                  required: ""
-                },
-                domProps: { value: _vm.freelancerData.phone },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.freelancerData, "phone", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticStyle: {
-                    width: "100%",
-                    "margin-top": ".25rem",
-                    "font-size": "80%",
-                    color: "#dc3545"
-                  }
-                },
-                [_c("strong", [_vm._v(_vm._s(_vm.errors.phone))])]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "panelFormLabel",
-                  attrs: { for: "business_whatsapp" }
-                },
-                [_vm._v("Whatsapp")]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.freelancerData.whatsapp,
-                    expression: "freelancerData.whatsapp"
-                  }
-                ],
-                staticClass: "panelFormInput form-control",
-                attrs: {
-                  id: "business_whatsapp",
-                  type: "text",
-                  name: "whatsapp"
-                },
-                domProps: { value: _vm.freelancerData.whatsapp },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(
-                      _vm.freelancerData,
-                      "whatsapp",
-                      $event.target.value
-                    )
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticStyle: {
-                    width: "100%",
-                    "margin-top": ".25rem",
-                    "font-size": "80%",
-                    color: "#dc3545"
-                  }
-                },
-                [_c("strong", [_vm._v(_vm._s(_vm.errors.whatsapp))])]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "panelFormLabel",
-                  attrs: { for: "business_skype" }
-                },
-                [_vm._v("Skype")]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.freelancerData.skype,
-                    expression: "freelancerData.skype"
-                  }
-                ],
-                staticClass: "panelFormInput form-control",
-                attrs: { id: "business_skype", type: "text", name: "skype" },
-                domProps: { value: _vm.freelancerData.skype },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.freelancerData, "skype", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticStyle: {
-                    width: "100%",
-                    "margin-top": ".25rem",
-                    "font-size": "80%",
-                    color: "#dc3545"
-                  }
-                },
-                [_c("strong", [_vm._v(_vm._s(_vm.errors.skype))])]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.uploadMethod.length < 1,
-                  expression: "uploadMethod.length < 1"
-                }
-              ],
-              staticClass: "form-group col-md-12"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "panelFormLabel",
-                  staticStyle: { "padding-bottom": "15px" }
-                },
-                [
-                  _vm._v(
-                    "\n                    Please choose uploading method :\n                "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { href: "javascript:void(0)" },
-                  on: {
-                    click: function($event) {
-                      _vm.setUploadMethod("upload")
-                    }
-                  }
-                },
-                [_vm._v("Upload audio file")]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { href: "javascript:void(0)" },
-                  on: {
-                    click: function($event) {
-                      _vm.setUploadMethod("record")
-                    }
-                  }
-                },
-                [_vm._v("Record audio")]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { href: "javascript:void(0)" },
-                  on: {
-                    click: function($event) {
-                      _vm.setUploadMethod("url")
-                    }
-                  }
-                },
-                [_vm._v("GDrive URL")]
-              ),
-              _vm._v(" "),
-              _c("br")
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.uploadMethod == "upload",
-                  expression: "uploadMethod == 'upload'"
-                }
-              ],
-              attrs: { id: "uploadFile" }
-            },
-            [
-              _c("div", { staticClass: "form-group col-md-12" }, [
-                _c("input", {
-                  ref: "file",
-                  attrs: { type: "file", id: "file" },
-                  on: { change: _vm.handleFileUpload }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "form-group" }, [
                 _c(
-                  "div",
+                  "label",
                   {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.uploadPercentage > 0,
-                        expression: "uploadPercentage > 0"
-                      }
-                    ],
-                    staticClass: "col-md-12"
+                    staticClass: "panelFormLabel",
+                    attrs: { for: "business_firstName" }
                   },
-                  [
-                    _c("progress", {
-                      staticStyle: { width: "300px", height: "5px" },
-                      attrs: { max: "100" },
-                      domProps: { value: _vm.uploadPercentage }
-                    })
-                  ]
+                  [_vm._v("First name *")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.freelancerData.firstName,
+                      expression: "freelancerData.firstName"
+                    }
+                  ],
+                  staticClass: "panelFormInput form-control",
+                  attrs: {
+                    id: "business_firstName",
+                    type: "text",
+                    name: "firstName",
+                    required: "",
+                    autofocus: ""
+                  },
+                  domProps: { value: _vm.freelancerData.firstName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.freelancerData,
+                        "firstName",
+                        $event.target.value
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticStyle: {
+                      width: "100%",
+                      "margin-top": ".25rem",
+                      "font-size": "80%",
+                      color: "#dc3545"
+                    }
+                  },
+                  [_c("strong", [_vm._v(_vm._s(_vm.errors.firstName))])]
                 )
               ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.uploadMethod == "record",
-                  expression: "uploadMethod == 'record'"
-                }
-              ],
-              staticClass: "form-group col-md-12",
-              attrs: { id: "recordAudio" }
-            },
-            [_vm._m(1)]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.uploadMethod == "url",
-                  expression: "uploadMethod == 'url'"
-                }
-              ],
-              staticClass: "form-group col-md-12",
-              attrs: { id: "urlToAudio" }
-            },
-            [
-              _c("label", { staticClass: "panelFormLabel" }, [
-                _vm._v("Link from Google drive :")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.toBeEditedRecord.src,
-                    expression: "toBeEditedRecord.src"
-                  }
-                ],
-                staticClass: "form-control panelFormInput",
-                attrs: { type: "text" },
-                domProps: { value: _vm.toBeEditedRecord.src },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                    staticClass: "panelFormLabel",
+                    attrs: { for: "business_lastName" }
+                  },
+                  [_vm._v("Last name *")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.freelancerData.lastName,
+                      expression: "freelancerData.lastName"
                     }
-                    _vm.$set(_vm.toBeEditedRecord, "src", $event.target.value)
+                  ],
+                  staticClass: "panelFormInput form-control ",
+                  attrs: {
+                    id: "business_lastName",
+                    type: "text",
+                    name: "lastName",
+                    required: "",
+                    autofocus: ""
+                  },
+                  domProps: { value: _vm.freelancerData.lastName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.freelancerData,
+                        "lastName",
+                        $event.target.value
+                      )
+                    }
                   }
-                }
-              })
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12" }, [
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticStyle: {
+                      width: "100%",
+                      "margin-top": ".25rem",
+                      "font-size": "80%",
+                      color: "#dc3545"
+                    }
+                  },
+                  [_c("strong", [_vm._v(_vm._s(_vm.errors.lastName))])]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "panelFormLabel",
+                    attrs: { for: "business_email" }
+                  },
+                  [_vm._v("Email *")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.freelancerData.email,
+                      expression: "freelancerData.email"
+                    }
+                  ],
+                  staticClass: "panelFormInput form-control",
+                  attrs: {
+                    id: "business_email",
+                    type: "email",
+                    name: "email",
+                    required: ""
+                  },
+                  domProps: { value: _vm.freelancerData.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.freelancerData, "email", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticStyle: {
+                      width: "100%",
+                      "margin-top": ".25rem",
+                      "font-size": "80%",
+                      color: "#dc3545"
+                    }
+                  },
+                  [_c("strong", [_vm._v(_vm._s(_vm.errors.email))])]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "panelFormLabel",
+                    attrs: { for: "business_phone" }
+                  },
+                  [_vm._v("Phone *")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.freelancerData.phone,
+                      expression: "freelancerData.phone"
+                    }
+                  ],
+                  staticClass: "panelFormInput form-control",
+                  attrs: {
+                    id: "business_phone",
+                    type: "tel",
+                    name: "phone",
+                    required: ""
+                  },
+                  domProps: { value: _vm.freelancerData.phone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.freelancerData, "phone", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticStyle: {
+                      width: "100%",
+                      "margin-top": ".25rem",
+                      "font-size": "80%",
+                      color: "#dc3545"
+                    }
+                  },
+                  [_c("strong", [_vm._v(_vm._s(_vm.errors.phone))])]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "panelFormLabel",
+                    attrs: { for: "business_whatsapp" }
+                  },
+                  [_vm._v("Whatsapp")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.freelancerData.whatsapp,
+                      expression: "freelancerData.whatsapp"
+                    }
+                  ],
+                  staticClass: "panelFormInput form-control",
+                  attrs: {
+                    id: "business_whatsapp",
+                    type: "text",
+                    name: "whatsapp"
+                  },
+                  domProps: { value: _vm.freelancerData.whatsapp },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.freelancerData,
+                        "whatsapp",
+                        $event.target.value
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticStyle: {
+                      width: "100%",
+                      "margin-top": ".25rem",
+                      "font-size": "80%",
+                      color: "#dc3545"
+                    }
+                  },
+                  [_c("strong", [_vm._v(_vm._s(_vm.errors.whatsapp))])]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "panelFormLabel",
+                    attrs: { for: "business_skype" }
+                  },
+                  [_vm._v("Skype")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.freelancerData.skype,
+                      expression: "freelancerData.skype"
+                    }
+                  ],
+                  staticClass: "panelFormInput form-control",
+                  attrs: { id: "business_skype", type: "text", name: "skype" },
+                  domProps: { value: _vm.freelancerData.skype },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.freelancerData, "skype", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticStyle: {
+                      width: "100%",
+                      "margin-top": ".25rem",
+                      "font-size": "80%",
+                      color: "#dc3545"
+                    }
+                  },
+                  [_c("strong", [_vm._v(_vm._s(_vm.errors.skype))])]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _vm._m(0),
+            _vm._v(" "),
             _c(
-              "a",
+              "div",
               {
                 directives: [
                   {
                     name: "show",
                     rawName: "v-show",
-                    value: _vm.uploadMethod.length > 0,
-                    expression: "uploadMethod.length > 0"
+                    value: _vm.uploadMethod.length < 1,
+                    expression: "uploadMethod.length < 1"
                   }
                 ],
-                staticClass: "btn btn-primary",
-                attrs: { href: "javascript:void(0)" },
-                on: { click: _vm.clearUploadMethod }
+                staticClass: "form-group col-md-12"
               },
-              [_vm._v(" Back ")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("div", { staticClass: "buttonMain text-center" }, [
+              [
                 _c(
-                  "a",
+                  "div",
                   {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.uploadMethod != "record",
-                        expression: "uploadMethod != 'record'"
-                      }
-                    ],
-                    staticClass: "hireBtn",
-                    staticStyle: { padding: "15px 100px 15px 100px" },
-                    attrs: {
-                      href: "javascript:void(0)",
-                      disabled:
-                        _vm.toBeEditedRecord.src.length < 1 && !_vm.fileChosen
-                    },
-                    on: { click: _vm.submitForm }
+                    staticClass: "panelFormLabel",
+                    staticStyle: { "padding-bottom": "15px" }
                   },
                   [
                     _vm._v(
-                      "\n                            Apply\n                        "
+                      "\n                    Please choose uploading method :\n                "
                     )
                   ]
                 ),
@@ -62850,36 +62683,250 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.uploadMethod == "record",
-                        expression: "uploadMethod == 'record'"
+                    staticClass: "btn btn-primary",
+                    attrs: { href: "javascript:void(0)" },
+                    on: {
+                      click: function($event) {
+                        _vm.setUploadMethod("upload")
                       }
-                    ],
-                    staticClass: "hireBtn",
-                    staticStyle: {
-                      padding: "15px 100px 15px 100px",
-                      color: "white!important"
-                    },
-                    attrs: { id: "saveAudioRegister" }
+                    }
                   },
-                  [
-                    _vm._v(
-                      "\n                            Apply\n                        "
-                    )
-                  ]
-                )
-              ]),
+                  [_vm._v("Upload audio file")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { href: "javascript:void(0)" },
+                    on: {
+                      click: function($event) {
+                        _vm.setUploadMethod("record")
+                      }
+                    }
+                  },
+                  [_vm._v("Record audio")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { href: "javascript:void(0)" },
+                    on: {
+                      click: function($event) {
+                        _vm.setUploadMethod("url")
+                      }
+                    }
+                  },
+                  [_vm._v("GDrive URL")]
+                ),
+                _vm._v(" "),
+                _c("br")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.uploadMethod == "upload",
+                    expression: "uploadMethod == 'upload'"
+                  }
+                ],
+                attrs: { id: "uploadFile" }
+              },
+              [
+                _c("div", { staticClass: "form-group col-md-12" }, [
+                  _c("input", {
+                    ref: "file",
+                    attrs: { type: "file", id: "file" },
+                    on: { change: _vm.handleFileUpload }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.uploadPercentage > 0,
+                          expression: "uploadPercentage > 0"
+                        }
+                      ],
+                      staticClass: "col-md-12"
+                    },
+                    [
+                      _c("progress", {
+                        staticStyle: { width: "300px", height: "5px" },
+                        attrs: { max: "100" },
+                        domProps: { value: _vm.uploadPercentage }
+                      })
+                    ]
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.uploadMethod == "record",
+                    expression: "uploadMethod == 'record'"
+                  }
+                ],
+                staticClass: "form-group col-md-12",
+                attrs: { id: "recordAudio" }
+              },
+              [_vm._m(1)]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.uploadMethod == "url",
+                    expression: "uploadMethod == 'url'"
+                  }
+                ],
+                staticClass: "form-group col-md-12",
+                attrs: { id: "urlToAudio" }
+              },
+              [
+                _c("label", { staticClass: "panelFormLabel" }, [
+                  _vm._v("Link from Google drive :")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.toBeEditedRecord.src,
+                      expression: "toBeEditedRecord.src"
+                    }
+                  ],
+                  staticClass: "form-control panelFormInput",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.toBeEditedRecord.src },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.toBeEditedRecord, "src", $event.target.value)
+                    }
+                  }
+                })
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-12" }, [
+              _c(
+                "a",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.uploadMethod.length > 0,
+                      expression: "uploadMethod.length > 0"
+                    }
+                  ],
+                  staticClass: "btn btn-primary",
+                  attrs: { href: "javascript:void(0)" },
+                  on: { click: _vm.clearUploadMethod }
+                },
+                [_vm._v(" Back ")]
+              ),
               _vm._v(" "),
-              _vm._m(2)
+              _c("div", { staticClass: "form-group" }, [
+                _c("div", { staticClass: "buttonMain text-center" }, [
+                  _c(
+                    "a",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.uploadMethod != "record",
+                          expression: "uploadMethod != 'record'"
+                        }
+                      ],
+                      staticClass: "hireBtn",
+                      staticStyle: { padding: "15px 100px 15px 100px" },
+                      attrs: {
+                        href: "javascript:void(0)",
+                        disabled:
+                          _vm.toBeEditedRecord.src.length < 1 && !_vm.fileChosen
+                      },
+                      on: { click: _vm.submitForm }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Apply\n                        "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.uploadMethod == "record",
+                          expression: "uploadMethod == 'record'"
+                        }
+                      ],
+                      staticClass: "hireBtn",
+                      staticStyle: {
+                        padding: "15px 100px 15px 100px",
+                        color: "white!important"
+                      },
+                      attrs: { href: "javascript:void(0)" },
+                      on: { click: _vm.validateForm }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Apply\n                            "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("a", {
+                    staticClass: "d-none",
+                    attrs: {
+                      href: "javascript:void(0)",
+                      id: "saveAudioRegister"
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
             ])
           ])
-        ])
-      ]
-    )
-  ])
+        ]
+      )
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -70791,6 +70838,12 @@ if (navigator.mediaDevices.getUserMedia) {
 
     var saveAudioForRegister = function saveAudioForRegister() {
         var data = new FormData();
+        if (blob == undefined) {
+            alert('Recorded file is not detected. please try to register again.');
+            $('#loaderArea').removeClass('loader');
+            $('#businessRegisterForm').removeClass('d-none');
+            return;
+        }
         data.append('file', blob);
         data.append('type', blob.type);
         data.append('firstName', $('#business_firstName').val());
@@ -70799,9 +70852,14 @@ if (navigator.mediaDevices.getUserMedia) {
         data.append('phone', $('#business_phone').val());
         data.append('skype', $('#business_skype').val());
         data.append('whatsapp', $('#business_whatsapp').val());
+        data.append('audioType', 'record');
 
         axios.post('/audio/save_for_register', data).then(function (response) {
-            console.log(response.data);
+            if (response.data.status === 'Success') {
+                window.location.href = '/freelancer/workforce/success';
+            }
+        }, function (error) {
+            console.log(error);
         });
     };
 

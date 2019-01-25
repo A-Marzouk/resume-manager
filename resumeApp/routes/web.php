@@ -82,6 +82,7 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/workforce/register','BusinessSupportController@showRegistrationForm')->name('freelancer.register');
     Route::post('/apply/register_business','BusinessSupportController@register')->name('business.apply.submit');
     Route::get('/workforce/success','BusinessSupportController@applicationSuccess');
+    Route::post('/workforce/form/validate','BusinessSupportController@validateForm');
 
 
     //////////

@@ -211,6 +211,12 @@ if ( navigator.mediaDevices.getUserMedia ) {
 
     function saveAudioForRegister(){
         var data = new FormData();
+        if(blob == undefined){
+            alert('Recorded file is not detected. please try to register again.');
+            $('#loaderArea').removeClass('loader');
+            $('#businessRegisterForm').removeClass('d-none');
+            return;
+        }
         data.append('file', blob);
         data.append('type', blob.type);
         data.append('firstName',$('#business_firstName').val() );
@@ -219,9 +225,15 @@ if ( navigator.mediaDevices.getUserMedia ) {
         data.append('phone',$('#business_phone').val() );
         data.append('skype',$('#business_skype').val() );
         data.append('whatsapp',$('#business_whatsapp').val() );
+        data.append('audioType','record');
 
         axios.post('/audio/save_for_register',data).then( (response) => {
-            console.log(response.data)
+            if(response.data.status === 'Success'){
+                window.location.href = '/freelancer/workforce/success';
+            }
+        },
+        (error)=>{
+            console.log(error);
         });
     }
 

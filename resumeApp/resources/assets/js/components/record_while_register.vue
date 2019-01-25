@@ -1,6 +1,6 @@
 <template>
-    <div :class="{loader : isLoading}">
-        <form action="/freelancer/workforce/register_business" v-show="!isLoading" method="post" @submit.prevent="submitForm">
+    <div :class="{loader : isLoading}" id="loaderArea">
+        <form action="/freelancer/workforce/register_business" :class="{'d-none' : isLoading}" id="businessRegisterForm" method="post" @submit.prevent="submitForm">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -135,9 +135,11 @@
                                 Apply
                             </a>
 
-                            <a class="hireBtn" style="padding: 15px 100px 15px 100px; color:white!important;" id="saveAudioRegister" v-show="uploadMethod == 'record'">
+                            <a href="javascript:void(0)" class="hireBtn" style="padding: 15px 100px 15px 100px; color:white!important;" @click="validateForm" v-show="uploadMethod == 'record'">
                                 Apply
+                                <!--record-->
                             </a>
+                            <a href="javascript:void(0)" class="d-none" id="saveAudioRegister"></a>
                         </div>
                         <div class="text-center">
                             <div class="smallText">
@@ -190,6 +192,28 @@
                 this.file = this.$refs.file.files[0];
                 this.fileChosen = true;
             },
+            validateForm(){
+                let formData = new FormData();
+                formData.append('firstName', this.freelancerData.firstName);
+                formData.append('lastName', this.freelancerData.lastName);
+                formData.append('email', this.freelancerData.email);
+                formData.append('phone', this.freelancerData.phone);
+                formData.append('whatsapp', this.freelancerData.whatsapp);
+                formData.append('skype', this.freelancerData.skype);
+
+                this.clearErros();
+                this.isLoading = true;
+                axios.post('/freelancer/workforce/form/validate',formData).then((response)=>{
+                    console.log(response.data);
+                    if(response.data.errors){
+                        this.updateErrors(response.data.errors);
+                        this.isLoading = false;
+                    }else{
+                        $('#saveAudioRegister').click();
+                        this.isLoading = true;
+                    }
+                });
+            },
             submitForm(){
                 this.isLoading = true ;
                 let formData = new FormData();
@@ -203,6 +227,10 @@
                 formData.append('phone', this.freelancerData.phone);
                 formData.append('whatsapp', this.freelancerData.whatsapp);
                 formData.append('skype', this.freelancerData.skype);
+                formData.append('audioType', 'uploaded');
+
+                this.clearErros();
+
                 axios.post( '/freelancer/apply/register_business',
                     formData,
                     {
@@ -229,6 +257,16 @@
                 setTimeout(function () {
                     $('#changesSaved').fadeOut();
                 },2000);
+            },
+            clearErros(){
+                this.errors= {
+                    'firstName':'',
+                        'lastName':'',
+                        'phone':'',
+                        'email':'',
+                        'whatsapp':'',
+                        'skype':'',
+                }
             },
             setUploadMethod(method){
                 this.uploadMethod = method;

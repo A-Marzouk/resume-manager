@@ -42,6 +42,11 @@ class BusinessSupportController extends Controller
 
             $record->save();
 
+            $data = $request->all();
+            $data['id']      = $id;
+            $notification = new NotificationsController();
+            $notification->businessSupportApplication($data);
+
             return ['status' => 'Success'];
         }
 
@@ -74,6 +79,11 @@ class BusinessSupportController extends Controller
             // save the record
             $recordSaver = new RecordingsController;
             $recordSaver->addRecord($request,$businessSupport->id);
+            $data = $request->all();
+            $data['id']      = $businessSupport->id;
+            $notification = new NotificationsController();
+            $notification->businessSupportApplication($data);
+
             return 'success';
         }else{
             return $businessSupport->id ;
@@ -109,11 +119,6 @@ class BusinessSupportController extends Controller
 
 
         $businessSupport = User::where('email',$data['email'])->first();
-        $data['id']      = $businessSupport->id;
-        // send notification of registered client :
-        $notification = new NotificationsController();
-        $notification->businessSupportApplication($data);
-
 
         return $businessSupport;
 

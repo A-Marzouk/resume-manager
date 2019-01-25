@@ -7,7 +7,7 @@
         Name : <b>{{$firstName}} {{$lastName}}</b><br/>
     </div>
     <div class="buttonMain col-md-4 offset-4">
-        <a href="#" class="hireBtn btn-block" target="_blank">
+        <a href="{{$recordLink}}" class="hireBtn btn-block" target="_blank">
             Listen to record
         </a>
     </div>

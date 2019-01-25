@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 use App\classes\Telegram;
 use App\Client;
 use App\ClientSearch;
+use App\Recording;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -30,6 +31,13 @@ class NotificationsController extends Controller
     }
 
     public function businessSupportApplication($data){
+        $recording = Recording::where('user_id',$data['id'])->first();
+        if (strpos($recording->src, 'drive.google.com') !== false) {
+            // it is link from google.
+            $data['recordLink'] = $recording->src;
+        }else{
+            $data['recordLink'] = '123workforce.magictimeapps.com'.$recording->src;
+        }
         $emails = [
             '123@123workforce.com'
         ];
@@ -42,6 +50,10 @@ class NotificationsController extends Controller
         $msg      = "New Application has been submitted.\n" ;
         $msg     .= "Name : ". $data['firstName'] . " ". $data['lastName'];
         $msg     .= "\nEmail :". $data['email'];
+        if($recording){
+            $msg     .= "\nSrc : https://123workforce.com". $recording->src;
+
+        }
         $telegram->sendMessage($msg);
     }
 

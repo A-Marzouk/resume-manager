@@ -1,10 +1,10 @@
 <template>
-    <div>
-        <form action="/freelancer/workforce/register_business" method="post" @submit.prevent="submitForm">
+    <div :class="{loader : isLoading}">
+        <form action="/freelancer/workforce/register_business" v-show="!isLoading" method="post" @submit.prevent="submitForm">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="firstName" class="panelFormLabel">First Name *</label>
+                        <label for="firstName" class="panelFormLabel">First name *</label>
                         <input id="firstName" type="text" class="panelFormInput form-control" name="firstName" v-model="freelancerData.firstName" required autofocus>
                         
                         <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="lastName" class="panelFormLabel">Last Name *</label>
+                        <label for="lastName" class="panelFormLabel">Last name *</label>
                         <input id="lastName" type="text" class="panelFormInput form-control " name="lastName" v-model="freelancerData.lastName" required autofocus>
                        
                         <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
@@ -135,10 +135,9 @@
                                 Apply
                             </a>
 
-                            <a class="hireBtn" style="padding: 15px 100px 15px 100px; color:white!important;" id="saveAudio" @click="loadingBtn" v-show="uploadMethod == 'record'">
+                            <a class="hireBtn" style="padding: 15px 100px 15px 100px; color:white!important;" id="saveAudio" v-show="uploadMethod == 'record'">
                                 Apply
                             </a>
-                            <button disabled id="loadingBtn" class="d-none btn btn-primary" style="border: none">Uploading..</button>
                         </div>
                         <div class="text-center">
                             <div class="smallText">
@@ -159,6 +158,7 @@
     export default {
         data(){
             return {
+                isLoading:false,
                 file: '',
                 fileChosen: false,
                 uploadPercentage: 0,
@@ -191,6 +191,7 @@
                 this.fileChosen = true;
             },
             submitForm(){
+                this.isLoading = true ;
                 let formData = new FormData();
                 formData.append('audioFile', this.file);
                 formData.append('src', this.toBeEditedRecord.src);
@@ -216,9 +217,8 @@
                 ).then((response)=>{
                     if(response.data.errors){
                         this.updateErrors(response.data.errors);
-                        console.log(response.data);
+                        this.isLoading = false;
                     }else{
-                        alert('success');
                         window.location.href = '/freelancer/workforce/success';
                     }
                 });
@@ -267,3 +267,28 @@
         }
     }
 </script>
+
+<style>
+    .loader {
+        border: 15px solid lightblue;
+        border-radius: 50%;
+        border-top: 15px solid #3498db;
+        width: 150px;
+        height: 150px;
+        margin-right: 25px;
+        margin-top: 50px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+    }
+
+    /* Safari */
+    @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>

@@ -62152,15 +62152,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             isLoading: false,
             file: '',
+            cv_file: '',
             fileChosen: false,
             uploadPercentage: 0,
             uploadMethod: '',
+            cv_included: false,
             toBeEditedRecord: {
                 'src': ''
             },
@@ -62188,6 +62202,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         handleFileUpload: function handleFileUpload() {
             this.file = this.$refs.file.files[0];
             this.fileChosen = true;
+        },
+        handleCVUpload: function handleCVUpload() {
+            this.cv_file = this.$refs.cv_file.files[0];
         },
         validateForm: function validateForm() {
             var _this = this;
@@ -62223,6 +62240,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.isLoading = true;
             var formData = new FormData();
             formData.append('audioFile', this.file);
+            formData.append('included_cv', this.cv_file);
+            formData.append('cv_included', this.cv_included);
             formData.append('src', this.toBeEditedRecord.src);
             formData.append('title', 'Business support application');
             formData.append('transcription', "");
@@ -62880,29 +62899,101 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-12" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-4" }, [
-                  _c(
-                    "a",
+            _c("div", { staticClass: "col-4" }, [
+              _c(
+                "a",
+                {
+                  directives: [
                     {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.uploadMethod.length > 0,
-                          expression: "uploadMethod.length > 0"
-                        }
-                      ],
-                      staticClass: "btn btn-primary",
-                      attrs: { href: "javascript:void(0)" },
-                      on: { click: _vm.clearUploadMethod }
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.uploadMethod.length > 0,
+                      expression: "uploadMethod.length > 0"
+                    }
+                  ],
+                  staticClass: "btn btn-primary",
+                  attrs: { href: "javascript:void(0)" },
+                  on: { click: _vm.clearUploadMethod }
+                },
+                [_vm._v(" Back ")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-12" }, [
+              _c("hr"),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.cv_included,
+                      expression: "cv_included"
+                    }
+                  ],
+                  attrs: { type: "checkbox", name: "cv_included" },
+                  domProps: {
+                    checked: Array.isArray(_vm.cv_included)
+                      ? _vm._i(_vm.cv_included, null) > -1
+                      : _vm.cv_included
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.cv_included = !_vm.cv_included
                     },
-                    [_vm._v(" Back ")]
-                  )
-                ])
+                    change: function($event) {
+                      var $$a = _vm.cv_included,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.cv_included = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.cv_included = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.cv_included = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(
+                  "\n                     Include resume (PDF)\n\n                "
+                )
               ]),
               _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.cv_included,
+                      expression: "cv_included"
+                    }
+                  ],
+                  staticClass: "form-group"
+                },
+                [
+                  _c("input", {
+                    ref: "cv_file",
+                    attrs: { type: "file", id: "cv", name: "included_cv" },
+                    on: { change: _vm.handleCVUpload }
+                  })
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-12" }, [
               _c("div", { staticClass: "form-group" }, [
                 _c("div", { staticClass: "buttonMain text-center" }, [
                   _c(

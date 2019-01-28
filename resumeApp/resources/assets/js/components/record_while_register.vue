@@ -134,12 +134,24 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-4">
+                    <a href="javascript:void(0)" class="btn btn-primary" @click="clearUploadMethod" v-show="uploadMethod.length > 0"> Back </a>
+                </div>
                 <div class="col-12">
-                    <div class="row">
-                        <div class="col-4">
-                            <a href="javascript:void(0)" class="btn btn-primary" @click="clearUploadMethod" v-show="uploadMethod.length > 0"> Back </a>
-                        </div>
+                    <hr>
+                    <div class="form-group">
+                        <input type="checkbox" @click="cv_included = !cv_included" name="cv_included" v-model="cv_included">
+                         Include resume (PDF)
+
                     </div>
+
+                    <div class="form-group" v-show="cv_included">
+                        <input type="file" id="cv" ref="cv_file" name="included_cv" v-on:change="handleCVUpload"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
                     <div class="form-group">
                         <div class="buttonMain text-center">
                             <a href="javascript:void(0)" style="padding: 15px 100px 15px 100px;" @click="submitForm" class="hireBtn" v-show="uploadMethod != 'record'" v-bind:disabled="toBeEditedRecord.src.length < 1 && !fileChosen">
@@ -173,9 +185,11 @@
             return {
                 isLoading:false,
                 file: '',
+                cv_file:'',
                 fileChosen: false,
                 uploadPercentage: 0,
                 uploadMethod: '',
+                cv_included:false,
                 toBeEditedRecord: {
                     'src': ''
                 },
@@ -202,6 +216,9 @@
             handleFileUpload(){
                 this.file = this.$refs.file.files[0];
                 this.fileChosen = true;
+            },
+            handleCVUpload(){
+                this.cv_file = this.$refs.cv_file.files[0];
             },
             validateForm(){
                 let formData = new FormData();
@@ -233,6 +250,8 @@
                 this.isLoading = true ;
                 let formData = new FormData();
                 formData.append('audioFile', this.file);
+                formData.append('included_cv', this.cv_file);
+                formData.append('cv_included', this.cv_included);
                 formData.append('src', this.toBeEditedRecord.src);
                 formData.append('title', 'Business support application');
                 formData.append('transcription',"");

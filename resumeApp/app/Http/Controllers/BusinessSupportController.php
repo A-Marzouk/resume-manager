@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\classes\Upload;
 use App\Recording;
 use App\User;
 use App\UserData;
@@ -47,6 +48,15 @@ class BusinessSupportController extends Controller
             $notification = new NotificationsController();
             $notification->businessSupportApplication($data);
 
+            // check if cv is uploaded
+            if($request->cv_included){
+                // upload the cv file :
+                $result = Upload::CV('','included_cv',$id.'_'.date(time()));
+                $user = User::where('id',$id)->first();
+                $user->cv_src = $result['path'] ;
+                $user->save();
+            }
+
             return ['status' => 'Success'];
         }
 
@@ -83,6 +93,15 @@ class BusinessSupportController extends Controller
             $data['id']      = $businessSupport->id;
             $notification = new NotificationsController();
             $notification->businessSupportApplication($data);
+
+            // check if cv is uploaded
+            if($request->cv_included){
+                // upload the cv file :
+                $result = Upload::CV('','included_cv',$businessSupport->id.'_'.date(time()));
+                $user = User::where('id',$businessSupport->id)->first();
+                $user->cv_src = $result['path'] ;
+                $user->save();
+            }
 
             return 'success';
         }else{

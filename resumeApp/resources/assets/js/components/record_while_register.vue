@@ -86,10 +86,17 @@
                     <div class="panelFormLabel" style="padding-bottom: 15px;">
                         Please choose uploading method :
                     </div>
-                    <!-- when there is no src and no upload method was chosen we give them to choose.-->
-                    <a href="javascript:void(0)" class="btn btn-primary" @click="setUploadMethod('upload')">Upload audio file</a>
-                    <a href="javascript:void(0)" class="btn btn-primary" @click="setUploadMethod('record')">Record audio</a>
-                    <a href="javascript:void(0)" class="btn btn-primary" @click="setUploadMethod('url')">GDrive URL</a>
+                    <div class="row">
+                        <div class="col-md-4 col-12" style="padding-top:10px;">
+                            <a href="javascript:void(0)" class="btn btn-primary btn-block" @click="setUploadMethod('upload')">Upload audio file</a>
+                        </div>
+                        <div class="col-md-4 col-12" style="padding-top:10px;">
+                            <a href="javascript:void(0)" class="btn btn-primary btn-block" @click="setUploadMethod('record')">Record audio</a>
+                        </div>
+                        <div class="col-md-4 col-12" style="padding-top:10px;">
+                            <a href="javascript:void(0)" class="btn btn-primary btn-block" @click="setUploadMethod('url')">Link</a>
+                        </div>
+                    </div>
                     <br/>
                 </div>
 
@@ -103,8 +110,8 @@
                         </div>
                     </div>
                 </div>
-                <div id="recordAudio" class="form-group col-md-12" v-show="uploadMethod == 'record'">
-                    <div class="recorder_wrapper">
+                <div id="recordAudio" class="form-group" v-show="uploadMethod == 'record'">
+                    <div class="recorder_wrapper recorder_wrapper_phone">
                         <div class="recorder">
                             <div id="recordImg">
                                 <img src="/resumeApp/resources/assets/images/Microphone_1.png" alt="mic" width="30px">
@@ -122,13 +129,30 @@
                 </div>
 
                 <div id="urlToAudio" class="form-group col-md-12" v-show="uploadMethod == 'url'">
-                    <label class="panelFormLabel">Link from Google drive :</label>
+                    <label class="panelFormLabel">Link to your record :</label>
                     <input type="text" class="form-control panelFormInput" v-model="toBeEditedRecord.src">
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
+                <div class="col-4">
                     <a href="javascript:void(0)" class="btn btn-primary" @click="clearUploadMethod" v-show="uploadMethod.length > 0"> Back </a>
+                </div>
+                <div class="col-12">
+                    <hr>
+                    <div class="form-group">
+                        <input type="checkbox" @click="cv_included = !cv_included" name="cv_included" v-model="cv_included">
+                         Include resume (PDF)
+
+                    </div>
+
+                    <div class="form-group" v-show="cv_included">
+                        <input type="file" id="cv" ref="cv_file" name="included_cv" v-on:change="handleCVUpload"/>
+                    </div>
+                    <span id="cv_included_value" class="d-none">{{cv_included}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
                     <div class="form-group">
                         <div class="buttonMain text-center">
                             <a href="javascript:void(0)" style="padding: 15px 100px 15px 100px;" @click="submitForm" class="hireBtn" v-show="uploadMethod != 'record'" v-bind:disabled="toBeEditedRecord.src.length < 1 && !fileChosen">
@@ -162,9 +186,11 @@
             return {
                 isLoading:false,
                 file: '',
+                cv_file:'',
                 fileChosen: false,
                 uploadPercentage: 0,
                 uploadMethod: '',
+                cv_included:false,
                 toBeEditedRecord: {
                     'src': ''
                 },
@@ -192,6 +218,9 @@
                 this.file = this.$refs.file.files[0];
                 this.fileChosen = true;
             },
+            handleCVUpload(){
+                this.cv_file = this.$refs.cv_file.files[0];
+            },
             validateForm(){
                 let formData = new FormData();
                 formData.append('firstName', this.freelancerData.firstName);
@@ -215,9 +244,17 @@
                 });
             },
             submitForm(){
+                if(this.toBeEditedRecord.src.length < 1 &&  this.file.length < 1){
+                    alert('Please upload the required record..');
+                    return;
+                }
                 this.isLoading = true ;
                 let formData = new FormData();
                 formData.append('audioFile', this.file);
+                if(this.cv_file !== ''){
+                    formData.append('included_cv', this.cv_file);
+                }
+                formData.append('cv_included', this.cv_included);
                 formData.append('src', this.toBeEditedRecord.src);
                 formData.append('title', 'Business support application');
                 formData.append('transcription',"");
@@ -328,5 +365,11 @@
     @keyframes spin {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
+    }
+
+    @media only screen and (max-width: 600px){
+        .recorder_wrapper_phone{
+            width:300px;
+        }
     }
 </style>

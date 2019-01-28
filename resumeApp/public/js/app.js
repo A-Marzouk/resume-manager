@@ -61972,7 +61972,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.loader {\n    border: 15px solid lightblue;\n    border-radius: 50%;\n    border-top: 15px solid #3498db;\n    width: 150px;\n    height: 150px;\n    margin-right: 25px;\n    margin-top: 50px;\n    -webkit-animation: spin 2s linear infinite; /* Safari */\n    animation: spin 2s linear infinite;\n}\n\n/* Safari */\n@-webkit-keyframes spin {\n0% { -webkit-transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg);\n}\n}\n@keyframes spin {\n0% { -webkit-transform: rotate(0deg); transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg); transform: rotate(360deg);\n}\n}\n", ""]);
+exports.push([module.i, "\n.loader {\n    border: 15px solid lightblue;\n    border-radius: 50%;\n    border-top: 15px solid #3498db;\n    width: 150px;\n    height: 150px;\n    margin-right: 25px;\n    margin-top: 50px;\n    -webkit-animation: spin 2s linear infinite; /* Safari */\n    animation: spin 2s linear infinite;\n}\n\n/* Safari */\n@-webkit-keyframes spin {\n0% { -webkit-transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg);\n}\n}\n@keyframes spin {\n0% { -webkit-transform: rotate(0deg); transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg); transform: rotate(360deg);\n}\n}\n@media only screen and (max-width: 600px){\n.recorder_wrapper_phone{\n        width:300px;\n}\n}\n", ""]);
 
 // exports
 
@@ -62141,15 +62141,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             isLoading: false,
             file: '',
+            cv_file: '',
             fileChosen: false,
             uploadPercentage: 0,
             uploadMethod: '',
+            cv_included: false,
             toBeEditedRecord: {
                 'src': ''
             },
@@ -62178,6 +62204,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.file = this.$refs.file.files[0];
             this.fileChosen = true;
         },
+        handleCVUpload: function handleCVUpload() {
+            this.cv_file = this.$refs.cv_file.files[0];
+        },
         validateForm: function validateForm() {
             var _this = this;
 
@@ -62205,9 +62234,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         submitForm: function submitForm() {
             var _this2 = this;
 
+            if (this.toBeEditedRecord.src.length < 1 && this.file.length < 1) {
+                alert('Please upload the required record..');
+                return;
+            }
             this.isLoading = true;
             var formData = new FormData();
             formData.append('audioFile', this.file);
+            if (this.cv_file !== '') {
+                formData.append('included_cv', this.cv_file);
+            }
+            formData.append('cv_included', this.cv_included);
             formData.append('src', this.toBeEditedRecord.src);
             formData.append('title', 'Business support application');
             formData.append('transcription', "");
@@ -62680,47 +62717,76 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { href: "javascript:void(0)" },
-                    on: {
-                      click: function($event) {
-                        _vm.setUploadMethod("upload")
-                      }
-                    }
-                  },
-                  [_vm._v("Upload audio file")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { href: "javascript:void(0)" },
-                    on: {
-                      click: function($event) {
-                        _vm.setUploadMethod("record")
-                      }
-                    }
-                  },
-                  [_vm._v("Record audio")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { href: "javascript:void(0)" },
-                    on: {
-                      click: function($event) {
-                        _vm.setUploadMethod("url")
-                      }
-                    }
-                  },
-                  [_vm._v("GDrive URL")]
-                ),
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-md-4 col-12",
+                      staticStyle: { "padding-top": "10px" }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-primary btn-block",
+                          attrs: { href: "javascript:void(0)" },
+                          on: {
+                            click: function($event) {
+                              _vm.setUploadMethod("upload")
+                            }
+                          }
+                        },
+                        [_vm._v("Upload audio file")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-md-4 col-12",
+                      staticStyle: { "padding-top": "10px" }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-primary btn-block",
+                          attrs: { href: "javascript:void(0)" },
+                          on: {
+                            click: function($event) {
+                              _vm.setUploadMethod("record")
+                            }
+                          }
+                        },
+                        [_vm._v("Record audio")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-md-4 col-12",
+                      staticStyle: { "padding-top": "10px" }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-primary btn-block",
+                          attrs: { href: "javascript:void(0)" },
+                          on: {
+                            click: function($event) {
+                              _vm.setUploadMethod("url")
+                            }
+                          }
+                        },
+                        [_vm._v("Link")]
+                      )
+                    ]
+                  )
+                ]),
                 _vm._v(" "),
                 _c("br")
               ]
@@ -62785,7 +62851,7 @@ var render = function() {
                     expression: "uploadMethod == 'record'"
                   }
                 ],
-                staticClass: "form-group col-md-12",
+                staticClass: "form-group",
                 attrs: { id: "recordAudio" }
               },
               [_vm._m(1)]
@@ -62807,7 +62873,7 @@ var render = function() {
               },
               [
                 _c("label", { staticClass: "panelFormLabel" }, [
-                  _vm._v("Link from Google drive :")
+                  _vm._v("Link to your record :")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -62836,7 +62902,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "col-4" }, [
               _c(
                 "a",
                 {
@@ -62853,8 +62919,90 @@ var render = function() {
                   on: { click: _vm.clearUploadMethod }
                 },
                 [_vm._v(" Back ")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-12" }, [
+              _c("hr"),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.cv_included,
+                      expression: "cv_included"
+                    }
+                  ],
+                  attrs: { type: "checkbox", name: "cv_included" },
+                  domProps: {
+                    checked: Array.isArray(_vm.cv_included)
+                      ? _vm._i(_vm.cv_included, null) > -1
+                      : _vm.cv_included
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.cv_included = !_vm.cv_included
+                    },
+                    change: function($event) {
+                      var $$a = _vm.cv_included,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.cv_included = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.cv_included = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.cv_included = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(
+                  "\n                     Include resume (PDF)\n\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.cv_included,
+                      expression: "cv_included"
+                    }
+                  ],
+                  staticClass: "form-group"
+                },
+                [
+                  _c("input", {
+                    ref: "cv_file",
+                    attrs: { type: "file", id: "cv", name: "included_cv" },
+                    on: { change: _vm.handleCVUpload }
+                  })
+                ]
               ),
               _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "d-none", attrs: { id: "cv_included_value" } },
+                [_vm._v(_vm._s(_vm.cv_included))]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-12" }, [
               _c("div", { staticClass: "form-group" }, [
                 _c("div", { staticClass: "buttonMain text-center" }, [
                   _c(
@@ -62945,64 +63093,68 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "recorder_wrapper" }, [
-      _c("div", { staticClass: "recorder" }, [
-        _c("div", { attrs: { id: "recordImg" } }, [
-          _c("img", {
-            attrs: {
-              src: "/resumeApp/resources/assets/images/Microphone_1.png",
-              alt: "mic",
-              width: "30px"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("p", { attrs: { id: "record_status" } }),
-        _vm._v(" "),
-        _c("div", { staticClass: "NoDecor" }, [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-default",
-              attrs: { href: "javascript:void(0)", id: "startRecord" }
-            },
-            [_vm._v("New record")]
-          ),
+    return _c(
+      "div",
+      { staticClass: "recorder_wrapper recorder_wrapper_phone" },
+      [
+        _c("div", { staticClass: "recorder" }, [
+          _c("div", { attrs: { id: "recordImg" } }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/resources/assets/images/Microphone_1.png",
+                alt: "mic",
+                width: "30px"
+              }
+            })
+          ]),
           _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "d-none",
-              staticStyle: { "padding-top": "20px" },
-              attrs: { href: "javascript:void(0)", id: "stopAudio" }
-            },
-            [_vm._v("Stop")]
-          ),
+          _c("p", { attrs: { id: "record_status" } }),
           _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "d-none",
-              attrs: { href: "javascript:void(0)", id: "playAudio" }
-            },
-            [_vm._v("Play")]
-          ),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "d-none",
-              attrs: { href: "javascript:void(0)", id: "downloadAudio" }
-            },
-            [_vm._v("Download")]
-          ),
-          _c("br")
+          _c("div", { staticClass: "NoDecor" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-default",
+                attrs: { href: "javascript:void(0)", id: "startRecord" }
+              },
+              [_vm._v("New record")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "d-none",
+                staticStyle: { "padding-top": "20px" },
+                attrs: { href: "javascript:void(0)", id: "stopAudio" }
+              },
+              [_vm._v("Stop")]
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "d-none",
+                attrs: { href: "javascript:void(0)", id: "playAudio" }
+              },
+              [_vm._v("Play")]
+            ),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "d-none",
+                attrs: { href: "javascript:void(0)", id: "downloadAudio" }
+              },
+              [_vm._v("Download")]
+            ),
+            _c("br")
+          ])
         ])
-      ])
-    ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -70844,9 +70996,15 @@ if (navigator.mediaDevices.getUserMedia) {
             $('#businessRegisterForm').removeClass('d-none');
             return;
         }
+        // get the cv file :
+        var cv = $('#cv').prop('files')[0];
         data.append('file', blob);
         data.append('type', blob.type);
         data.append('firstName', $('#business_firstName').val());
+        data.append('cv_included', $('#cv_included_value').html());
+        if (cv !== undefined) {
+            data.append('included_cv', cv);
+        }
         data.append('lastName', $('#business_lastName').val());
         data.append('email', $('#business_email').val());
         data.append('phone', $('#business_phone').val());

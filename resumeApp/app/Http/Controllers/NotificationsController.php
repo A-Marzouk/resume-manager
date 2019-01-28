@@ -34,7 +34,7 @@ class NotificationsController extends Controller
     public function businessSupportApplication($data){
         $recording = Recording::where('user_id',$data['id'])->first();
         $user      = User::where('id',$data['id'])->first();
-        if (strpos($recording->src, 'resumeapp/') !== false) {
+        if (strpos($recording->src, 'resumeApp/') !== false) {
             // it is our link.
             $data['recordLink'] = '123workforce.magictimeapps.com/'.$recording->src;
         }else{

@@ -35,6 +35,25 @@
                     <a :href="'https://123workforce.com/workforce/invoices/'+invoice.unique_number" target="_blank">https://123workforce.com/workforce/invoices/{{invoice.unique_number}}</a>
                     </b><br/>
                 </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <hr>
+                        <div class="panelFormLabel" style="padding-bottom:10px;">
+                            Change invoice unique identifier :
+                        </div>
+                        <div class="form-group">
+                            <input type="text" @click="editInvoice(invoice.id)" class="form-control" v-model="invoice.unique_number">
+                        </div>
+                        <div :id="invoice.id" class="d-none" style="color: red">
+                            This number is already in use, please use another one.
+                        </div>
+
+                        <div :id="invoice.id+'_updated'" class="d-none" style="color: lightgreen">
+                            Updated.
+                        </div>
+                        <a href="javascript:void(0)" v-show="toBeEditedInvoice.id === invoice.id" class="btn btn-primary" @click="updateInvoiceNumber">Update</a>
+                    </div>
+                </div>
             </invoice-component>
         </transition-group>
 
@@ -70,7 +89,7 @@
                     'service' :'',
                     'notes':'',
                     'time_of_service':'',
-                    'status':''
+                    'status':'',
                 }
             }
         },
@@ -127,6 +146,9 @@
                     }
                 });
                 this.toBeEditedInvoice = editedInvoice;
+                // hide errors
+                $('#'+ editedInvoice.id).addClass('d-none');
+                $('#'+ editedInvoice.id + '_updated').addClass('d-none');
             },
 
             checkMaxInvoices(){
@@ -151,6 +173,21 @@
                     'time_of_service':'',
                     'status':''
                 };
+            },
+
+            updateInvoiceNumber(){
+                let data = {
+                  'invoice_id' : this.toBeEditedInvoice.id,
+                  'newNumber': this.toBeEditedInvoice.unique_number
+                };
+                axios.post('/admin/update_invoice_number',data).then( (response) => {
+                    if(response.data === 'used'){
+                        $('#'+ data.invoice_id).removeClass('d-none');
+                    }else{
+                        $('#'+ data.invoice_id + '_updated').removeClass('d-none');
+                    }
+                    this.clearData();
+                });
             }
         },
 

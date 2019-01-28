@@ -56802,6 +56802,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
@@ -56875,6 +56894,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
             this.toBeEditedInvoice = editedInvoice;
+            // hide errors
+            $('#' + editedInvoice.id).addClass('d-none');
+            $('#' + editedInvoice.id + '_updated').addClass('d-none');
         },
         checkMaxInvoices: function checkMaxInvoices() {
             if (this.invoices.length > 4) {
@@ -56897,6 +56919,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'time_of_service': '',
                 'status': ''
             };
+        },
+        updateInvoiceNumber: function updateInvoiceNumber() {
+            var _this3 = this;
+
+            var data = {
+                'invoice_id': this.toBeEditedInvoice.id,
+                'newNumber': this.toBeEditedInvoice.unique_number
+            };
+            axios.post('/admin/update_invoice_number', data).then(function (response) {
+                if (response.data === 'used') {
+                    $('#' + data.invoice_id).removeClass('d-none');
+                } else {
+                    $('#' + data.invoice_id + '_updated').removeClass('d-none');
+                }
+                _this3.clearData();
+            });
         }
     },
 
@@ -57144,6 +57182,102 @@ var render = function() {
                   ]
                 ),
                 _c("br")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-12 col-md-6" }, [
+                  _c("hr"),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "panelFormLabel",
+                      staticStyle: { "padding-bottom": "10px" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Change invoice unique identifier :\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: invoice.unique_number,
+                          expression: "invoice.unique_number"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text" },
+                      domProps: { value: invoice.unique_number },
+                      on: {
+                        click: function($event) {
+                          _vm.editInvoice(invoice.id)
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            invoice,
+                            "unique_number",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "d-none",
+                      staticStyle: { color: "red" },
+                      attrs: { id: invoice.id }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        This number is already in use, please use another one.\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "d-none",
+                      staticStyle: { color: "lightgreen" },
+                      attrs: { id: invoice.id + "_updated" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Updated.\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.toBeEditedInvoice.id === invoice.id,
+                          expression: "toBeEditedInvoice.id === invoice.id"
+                        }
+                      ],
+                      staticClass: "btn btn-primary",
+                      attrs: { href: "javascript:void(0)" },
+                      on: { click: _vm.updateInvoiceNumber }
+                    },
+                    [_vm._v("Update")]
+                  )
+                ])
               ])
             ]
           )

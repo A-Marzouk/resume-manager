@@ -14,7 +14,7 @@
 
     <div class="buttonMain col-md-4 offset-4">
         <a href="123workforce.magictimeapps.com/admin/{{$id}}" class="hireBtn btn-block" target="_blank">
-            View profile from admin panel
+            View profile
         </a>
     </div>
 

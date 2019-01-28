@@ -39,7 +39,8 @@ class NotificationsController extends Controller
             $data['recordLink'] = '123workforce.magictimeapps.com'.$recording->src;
         }
         $emails = [
-            '123@123workforce.com'
+            '123@123workforce.com',
+            'ahmedmarzouk266@gmail.com'
         ];
         Mail::send('emails.business_supprt_application',$data, function($message) use ($emails)
         {
@@ -51,7 +52,7 @@ class NotificationsController extends Controller
         $msg     .= "Name : ". $data['firstName'] . " ". $data['lastName'];
         $msg     .= "\nEmail :". $data['email'];
         if($recording){
-            $msg     .= "\nSrc : https://123workforce.com". $recording->src;
+            $msg     .= "\nSrc : \n\n". $data['recordLink'];
 
         }
         $telegram->sendMessage($msg);

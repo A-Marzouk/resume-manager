@@ -12,14 +12,16 @@
         <tbody>
         <? $i=1; ?>
         <? foreach ($searches as $search):?>
-        <tr>
-            <th scope="row">
-            {{$i}}
-            <th scope="row">{{$search->name}}</th>
-            <th scope="row">{{App\Client::where('id',$search->client_id)->first()->email}}</th>
-            <td><a href="/search/{{$search->id}}" target="_blank">View</a></td>
-
-        </tr>
+        @if( App\Client::where('id',$search->client_id)->first() != null)
+            <tr>
+                <th scope="row">
+                {{$i}}
+                <th scope="row">{{$search->name}}</th>
+                <th scope="row">{{App\Client::where('id',$search->client_id)->first()->email}}</th>
+                <td><a href="/search/{{$search->id}}" target="_blank">View</a>
+                </td>
+            </tr>
+        @endif
 
         <? $i++;?>
         <? endforeach;?>

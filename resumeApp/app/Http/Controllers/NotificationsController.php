@@ -34,12 +34,13 @@ class NotificationsController extends Controller
     public function businessSupportApplication($data){
         $recording = Recording::where('user_id',$data['id'])->first();
         $user      = User::where('id',$data['id'])->first();
-        if (strpos($recording->src, 'drive.google.com') !== false) {
-            // it is link from google.
-            $data['recordLink'] = $recording->src;
+        if (strpos($recording->src, 'resumeapp/') !== false) {
+            // it is our link.
+            $data['recordLink'] = '123workforce.magictimeapps.com/'.$recording->src;
         }else{
-            $data['recordLink'] = '123workforce.magictimeapps.com'.$recording->src;
+            $data['recordLink'] = $recording->src;
         }
+        $data['cv_src'] = '#';
         if(isset($user->cv_src)){
             $data['cv_src'] = '123workforce.magictimeapps.com/'.$user->cv_src;
         }
@@ -57,7 +58,7 @@ class NotificationsController extends Controller
         $msg     .= "Name : ". $data['firstName'] . " ". $data['lastName'];
         $msg     .= "\nEmail :". $data['email'];
         if($recording){
-            $msg     .= "\n\n Record Src : \n". $data['recordLink'];
+            $msg     .= "\n\nRecord Src : \n". $data['recordLink'];
 
         }
         if(isset($data['cv_src'])){

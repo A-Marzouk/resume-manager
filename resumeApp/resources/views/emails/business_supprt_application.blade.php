@@ -18,13 +18,12 @@
         </a>
     </div>
 
-    @if(isset($cv_src))
-        <div class="buttonMain col-md-4 offset-4">
-            <a href="{{$cv_src}}" class="hireBtn btn-block" target="_blank">
-                Uploaded cv
-            </a>
-        </div>
-    @endif
+    <div class="buttonMain col-md-4 offset-4">
+        <a href="{{$cv_src}}" class="hireBtn btn-block" target="_blank">
+            Uploaded cv
+        </a>
+    </div>
+
     <br/>
     <div class="mailText">
         <br/><br/>

@@ -101,5 +101,19 @@ class InvoicesController extends Controller
         $invoice->delete();
         return 'Invoice deleted';
     }
+
+    public function updateInvoiceNumber(Request $request){
+        $invoiceID = $request->invoice_id;
+        $newNumber = $request->newNumber ;
+        if(Invoice::where('unique_number',$newNumber)->first()){
+            return 'used';
+        }
+        else{
+            $invoice = Invoice::where('id',$invoiceID)->first();
+            $invoice->unique_number = $newNumber;
+            $invoice->save();
+            return 'Updated';
+        }
+    }
     
 }

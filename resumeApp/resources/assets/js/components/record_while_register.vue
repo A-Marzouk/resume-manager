@@ -226,6 +226,10 @@
                 });
             },
             submitForm(){
+                if(this.toBeEditedRecord.src.length < 1 &&  this.file.length < 1){
+                    alert('Please upload the required record..');
+                    return;
+                }
                 this.isLoading = true ;
                 let formData = new FormData();
                 formData.append('audioFile', this.file);

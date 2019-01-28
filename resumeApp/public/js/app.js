@@ -62216,6 +62216,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         submitForm: function submitForm() {
             var _this2 = this;
 
+            if (this.toBeEditedRecord.src.length < 1 && this.file.length < 1) {
+                alert('Please upload the required record..');
+                return;
+            }
             this.isLoading = true;
             var formData = new FormData();
             formData.append('audioFile', this.file);

@@ -148,6 +148,7 @@
                     <div class="form-group" v-show="cv_included">
                         <input type="file" id="cv" ref="cv_file" name="included_cv" v-on:change="handleCVUpload"/>
                     </div>
+                    <span id="cv_included_value" class="d-none">{{cv_included}}</span>
                 </div>
             </div>
             <div class="row">
@@ -250,7 +251,9 @@
                 this.isLoading = true ;
                 let formData = new FormData();
                 formData.append('audioFile', this.file);
-                formData.append('included_cv', this.cv_file);
+                if(this.cv_file !== ''){
+                    formData.append('included_cv', this.cv_file);
+                }
                 formData.append('cv_included', this.cv_included);
                 formData.append('src', this.toBeEditedRecord.src);
                 formData.append('title', 'Business support application');

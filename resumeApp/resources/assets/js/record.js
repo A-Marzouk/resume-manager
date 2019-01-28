@@ -217,9 +217,15 @@ if ( navigator.mediaDevices.getUserMedia ) {
             $('#businessRegisterForm').removeClass('d-none');
             return;
         }
+        // get the cv file :
+        var cv = $('#cv').prop('files')[0];
         data.append('file', blob);
         data.append('type', blob.type);
         data.append('firstName',$('#business_firstName').val() );
+        data.append('cv_included',$('#cv_included_value').html() );
+        if(cv !== undefined){
+            data.append('included_cv',cv);
+        }
         data.append('lastName',$('#business_lastName').val() );
         data.append('email',$('#business_email').val() );
         data.append('phone',$('#business_phone').val() );

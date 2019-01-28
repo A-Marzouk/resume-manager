@@ -62164,6 +62164,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -62240,7 +62241,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.isLoading = true;
             var formData = new FormData();
             formData.append('audioFile', this.file);
-            formData.append('included_cv', this.cv_file);
+            if (this.cv_file !== '') {
+                formData.append('included_cv', this.cv_file);
+            }
             formData.append('cv_included', this.cv_included);
             formData.append('src', this.toBeEditedRecord.src);
             formData.append('title', 'Business support application');
@@ -62988,6 +62991,12 @@ var render = function() {
                     on: { change: _vm.handleCVUpload }
                   })
                 ]
+              ),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "d-none", attrs: { id: "cv_included_value" } },
+                [_vm._v(_vm._s(_vm.cv_included))]
               )
             ])
           ]),
@@ -70987,9 +70996,15 @@ if (navigator.mediaDevices.getUserMedia) {
             $('#businessRegisterForm').removeClass('d-none');
             return;
         }
+        // get the cv file :
+        var cv = $('#cv').prop('files')[0];
         data.append('file', blob);
         data.append('type', blob.type);
         data.append('firstName', $('#business_firstName').val());
+        data.append('cv_included', $('#cv_included_value').html());
+        if (cv !== undefined) {
+            data.append('included_cv', cv);
+        }
         data.append('lastName', $('#business_lastName').val());
         data.append('email', $('#business_email').val());
         data.append('phone', $('#business_phone').val());

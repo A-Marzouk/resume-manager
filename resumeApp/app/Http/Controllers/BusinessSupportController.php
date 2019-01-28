@@ -43,19 +43,22 @@ class BusinessSupportController extends Controller
 
             $record->save();
 
+            // check if cv is uploaded
+            if($request->cv_included == 'true' && isset($request->included_cv)){
+                // upload the cv file :
+                $result = Upload::CV('','included_cv',$id.'_'.date(time()));
+                if($result !== false){
+                    $user = User::where('id',$id)->first();
+                    $user->cv_src = $result['path'] ;
+                    $user->save();
+                }
+            }
+
             $data = $request->all();
             $data['id']      = $id;
             $notification = new NotificationsController();
             $notification->businessSupportApplication($data);
 
-            // check if cv is uploaded
-            if($request->cv_included){
-                // upload the cv file :
-                $result = Upload::CV('','included_cv',$id.'_'.date(time()));
-                $user = User::where('id',$id)->first();
-                $user->cv_src = $result['path'] ;
-                $user->save();
-            }
 
             return ['status' => 'Success'];
         }
@@ -89,19 +92,24 @@ class BusinessSupportController extends Controller
             // save the record
             $recordSaver = new RecordingsController;
             $recordSaver->addRecord($request,$businessSupport->id);
+
+            // check if cv is uploaded
+            if($request->cv_included  && isset($request->included_cv)){
+                // upload the cv file :
+                $result = Upload::CV('','included_cv',$businessSupport->id.'_'.date(time()));
+                if($result !== false) {
+                    $user = User::where('id', $businessSupport->id)->first();
+                    $user->cv_src = $result['path'];
+                    $user->save();
+                }
+            }
+
+
             $data = $request->all();
             $data['id']      = $businessSupport->id;
             $notification = new NotificationsController();
             $notification->businessSupportApplication($data);
 
-            // check if cv is uploaded
-            if($request->cv_included){
-                // upload the cv file :
-                $result = Upload::CV('','included_cv',$businessSupport->id.'_'.date(time()));
-                $user = User::where('id',$businessSupport->id)->first();
-                $user->cv_src = $result['path'] ;
-                $user->save();
-            }
 
             return 'success';
         }else{

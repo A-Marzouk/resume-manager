@@ -11,6 +11,7 @@ use App\classes\Telegram;
 use App\Client;
 use App\ClientSearch;
 use App\Recording;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -32,11 +33,15 @@ class NotificationsController extends Controller
 
     public function businessSupportApplication($data){
         $recording = Recording::where('user_id',$data['id'])->first();
+        $user      = User::where('id',$data['id'])->first();
         if (strpos($recording->src, 'drive.google.com') !== false) {
             // it is link from google.
             $data['recordLink'] = $recording->src;
         }else{
             $data['recordLink'] = '123workforce.magictimeapps.com'.$recording->src;
+        }
+        if(isset($user->cv_src)){
+            $data['cv_src'] = '123workforce.magictimeapps.com/'.$user->cv_src;
         }
         $emails = [
             '123@123workforce.com',
@@ -52,7 +57,11 @@ class NotificationsController extends Controller
         $msg     .= "Name : ". $data['firstName'] . " ". $data['lastName'];
         $msg     .= "\nEmail :". $data['email'];
         if($recording){
-            $msg     .= "\nSrc : \n\n". $data['recordLink'];
+            $msg     .= "\n\n Record Src : \n". $data['recordLink'];
+
+        }
+        if(isset($data['cv_src'])){
+            $msg     .= "\n\nCV : \n". $data['cv_src'];
 
         }
         $telegram->sendMessage($msg);

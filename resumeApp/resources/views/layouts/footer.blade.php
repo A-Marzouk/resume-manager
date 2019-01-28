@@ -29,7 +29,7 @@
         </div>
         <div class="col-md-4 offset-md-7 text-right four">
             <div class="skypeText">
-                <a href="skype:conor_827?call">
+                <a href="skype:live:3cd10e2da1be4354?call">
                     <img src="/resumeApp/resources/views/customTheme/images/skypeLogo.png" alt="skype" width="25px" style="opacity: 1;">
                     <span>Call us on Skype</span>
                 </a>

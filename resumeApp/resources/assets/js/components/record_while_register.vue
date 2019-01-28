@@ -86,10 +86,17 @@
                     <div class="panelFormLabel" style="padding-bottom: 15px;">
                         Please choose uploading method :
                     </div>
-                    <!-- when there is no src and no upload method was chosen we give them to choose.-->
-                    <a href="javascript:void(0)" class="btn btn-primary" @click="setUploadMethod('upload')">Upload audio file</a>
-                    <a href="javascript:void(0)" class="btn btn-primary" @click="setUploadMethod('record')">Record audio</a>
-                    <a href="javascript:void(0)" class="btn btn-primary" @click="setUploadMethod('url')">GDrive URL</a>
+                    <div class="row">
+                        <div class="col-md-4 col-12" style="padding-top:10px;">
+                            <a href="javascript:void(0)" class="btn btn-primary btn-block" @click="setUploadMethod('upload')">Upload audio file</a>
+                        </div>
+                        <div class="col-md-4 col-12" style="padding-top:10px;">
+                            <a href="javascript:void(0)" class="btn btn-primary btn-block" @click="setUploadMethod('record')">Record audio</a>
+                        </div>
+                        <div class="col-md-4 col-12" style="padding-top:10px;">
+                            <a href="javascript:void(0)" class="btn btn-primary btn-block" @click="setUploadMethod('url')">Link</a>
+                        </div>
+                    </div>
                     <br/>
                 </div>
 
@@ -103,8 +110,8 @@
                         </div>
                     </div>
                 </div>
-                <div id="recordAudio" class="form-group col-md-12" v-show="uploadMethod == 'record'">
-                    <div class="recorder_wrapper">
+                <div id="recordAudio" class="form-group" v-show="uploadMethod == 'record'">
+                    <div class="recorder_wrapper recorder_wrapper_phone">
                         <div class="recorder">
                             <div id="recordImg">
                                 <img src="/resumeApp/resources/assets/images/Microphone_1.png" alt="mic" width="30px">
@@ -122,13 +129,17 @@
                 </div>
 
                 <div id="urlToAudio" class="form-group col-md-12" v-show="uploadMethod == 'url'">
-                    <label class="panelFormLabel">Link from Google drive :</label>
+                    <label class="panelFormLabel">Link to your record :</label>
                     <input type="text" class="form-control panelFormInput" v-model="toBeEditedRecord.src">
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <a href="javascript:void(0)" class="btn btn-primary" @click="clearUploadMethod" v-show="uploadMethod.length > 0"> Back </a>
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="javascript:void(0)" class="btn btn-primary" @click="clearUploadMethod" v-show="uploadMethod.length > 0"> Back </a>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="buttonMain text-center">
                             <a href="javascript:void(0)" style="padding: 15px 100px 15px 100px;" @click="submitForm" class="hireBtn" v-show="uploadMethod != 'record'" v-bind:disabled="toBeEditedRecord.src.length < 1 && !fileChosen">
@@ -328,5 +339,11 @@
     @keyframes spin {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
+    }
+
+    @media only screen and (max-width: 600px){
+        .recorder_wrapper_phone{
+            width:300px;
+        }
     }
 </style>

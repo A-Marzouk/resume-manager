@@ -61972,7 +61972,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.loader {\n    border: 15px solid lightblue;\n    border-radius: 50%;\n    border-top: 15px solid #3498db;\n    width: 150px;\n    height: 150px;\n    margin-right: 25px;\n    margin-top: 50px;\n    -webkit-animation: spin 2s linear infinite; /* Safari */\n    animation: spin 2s linear infinite;\n}\n\n/* Safari */\n@-webkit-keyframes spin {\n0% { -webkit-transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg);\n}\n}\n@keyframes spin {\n0% { -webkit-transform: rotate(0deg); transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg); transform: rotate(360deg);\n}\n}\n", ""]);
+exports.push([module.i, "\n.loader {\n    border: 15px solid lightblue;\n    border-radius: 50%;\n    border-top: 15px solid #3498db;\n    width: 150px;\n    height: 150px;\n    margin-right: 25px;\n    margin-top: 50px;\n    -webkit-animation: spin 2s linear infinite; /* Safari */\n    animation: spin 2s linear infinite;\n}\n\n/* Safari */\n@-webkit-keyframes spin {\n0% { -webkit-transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg);\n}\n}\n@keyframes spin {\n0% { -webkit-transform: rotate(0deg); transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg); transform: rotate(360deg);\n}\n}\n@media only screen and (max-width: 600px){\n.recorder_wrapper_phone{\n        width:300px;\n}\n}\n", ""]);
 
 // exports
 
@@ -61983,6 +61983,17 @@ exports.push([module.i, "\n.loader {\n    border: 15px solid lightblue;\n    bor
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -62680,47 +62691,76 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { href: "javascript:void(0)" },
-                    on: {
-                      click: function($event) {
-                        _vm.setUploadMethod("upload")
-                      }
-                    }
-                  },
-                  [_vm._v("Upload audio file")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { href: "javascript:void(0)" },
-                    on: {
-                      click: function($event) {
-                        _vm.setUploadMethod("record")
-                      }
-                    }
-                  },
-                  [_vm._v("Record audio")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { href: "javascript:void(0)" },
-                    on: {
-                      click: function($event) {
-                        _vm.setUploadMethod("url")
-                      }
-                    }
-                  },
-                  [_vm._v("GDrive URL")]
-                ),
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-md-4 col-12",
+                      staticStyle: { "padding-top": "10px" }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-primary btn-block",
+                          attrs: { href: "javascript:void(0)" },
+                          on: {
+                            click: function($event) {
+                              _vm.setUploadMethod("upload")
+                            }
+                          }
+                        },
+                        [_vm._v("Upload audio file")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-md-4 col-12",
+                      staticStyle: { "padding-top": "10px" }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-primary btn-block",
+                          attrs: { href: "javascript:void(0)" },
+                          on: {
+                            click: function($event) {
+                              _vm.setUploadMethod("record")
+                            }
+                          }
+                        },
+                        [_vm._v("Record audio")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-md-4 col-12",
+                      staticStyle: { "padding-top": "10px" }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-primary btn-block",
+                          attrs: { href: "javascript:void(0)" },
+                          on: {
+                            click: function($event) {
+                              _vm.setUploadMethod("url")
+                            }
+                          }
+                        },
+                        [_vm._v("Link")]
+                      )
+                    ]
+                  )
+                ]),
                 _vm._v(" "),
                 _c("br")
               ]
@@ -62785,7 +62825,7 @@ var render = function() {
                     expression: "uploadMethod == 'record'"
                   }
                 ],
-                staticClass: "form-group col-md-12",
+                staticClass: "form-group",
                 attrs: { id: "recordAudio" }
               },
               [_vm._m(1)]
@@ -62807,7 +62847,7 @@ var render = function() {
               },
               [
                 _c("label", { staticClass: "panelFormLabel" }, [
-                  _vm._v("Link from Google drive :")
+                  _vm._v("Link to your record :")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -62837,23 +62877,27 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-12" }, [
-              _c(
-                "a",
-                {
-                  directives: [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-4" }, [
+                  _c(
+                    "a",
                     {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.uploadMethod.length > 0,
-                      expression: "uploadMethod.length > 0"
-                    }
-                  ],
-                  staticClass: "btn btn-primary",
-                  attrs: { href: "javascript:void(0)" },
-                  on: { click: _vm.clearUploadMethod }
-                },
-                [_vm._v(" Back ")]
-              ),
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.uploadMethod.length > 0,
+                          expression: "uploadMethod.length > 0"
+                        }
+                      ],
+                      staticClass: "btn btn-primary",
+                      attrs: { href: "javascript:void(0)" },
+                      on: { click: _vm.clearUploadMethod }
+                    },
+                    [_vm._v(" Back ")]
+                  )
+                ])
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("div", { staticClass: "buttonMain text-center" }, [
@@ -62945,64 +62989,68 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "recorder_wrapper" }, [
-      _c("div", { staticClass: "recorder" }, [
-        _c("div", { attrs: { id: "recordImg" } }, [
-          _c("img", {
-            attrs: {
-              src: "/resumeApp/resources/assets/images/Microphone_1.png",
-              alt: "mic",
-              width: "30px"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("p", { attrs: { id: "record_status" } }),
-        _vm._v(" "),
-        _c("div", { staticClass: "NoDecor" }, [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-default",
-              attrs: { href: "javascript:void(0)", id: "startRecord" }
-            },
-            [_vm._v("New record")]
-          ),
+    return _c(
+      "div",
+      { staticClass: "recorder_wrapper recorder_wrapper_phone" },
+      [
+        _c("div", { staticClass: "recorder" }, [
+          _c("div", { attrs: { id: "recordImg" } }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/resources/assets/images/Microphone_1.png",
+                alt: "mic",
+                width: "30px"
+              }
+            })
+          ]),
           _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "d-none",
-              staticStyle: { "padding-top": "20px" },
-              attrs: { href: "javascript:void(0)", id: "stopAudio" }
-            },
-            [_vm._v("Stop")]
-          ),
+          _c("p", { attrs: { id: "record_status" } }),
           _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "d-none",
-              attrs: { href: "javascript:void(0)", id: "playAudio" }
-            },
-            [_vm._v("Play")]
-          ),
-          _c("br"),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "d-none",
-              attrs: { href: "javascript:void(0)", id: "downloadAudio" }
-            },
-            [_vm._v("Download")]
-          ),
-          _c("br")
+          _c("div", { staticClass: "NoDecor" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-default",
+                attrs: { href: "javascript:void(0)", id: "startRecord" }
+              },
+              [_vm._v("New record")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "d-none",
+                staticStyle: { "padding-top": "20px" },
+                attrs: { href: "javascript:void(0)", id: "stopAudio" }
+              },
+              [_vm._v("Stop")]
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "d-none",
+                attrs: { href: "javascript:void(0)", id: "playAudio" }
+              },
+              [_vm._v("Play")]
+            ),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "d-none",
+                attrs: { href: "javascript:void(0)", id: "downloadAudio" }
+              },
+              [_vm._v("Download")]
+            ),
+            _c("br")
+          ])
         ])
-      ])
-    ])
+      ]
+    )
   },
   function() {
     var _vm = this

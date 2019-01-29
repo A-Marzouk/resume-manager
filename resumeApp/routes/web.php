@@ -180,6 +180,7 @@ Route::post('/admin/client/deleteinvoice/','InvoicesController@deleteInvoice')->
 Route::post('/admin/update_invoice_number','InvoicesController@updateInvoiceNumber')->name('edit.unique.number');
 
     // invoice public link
+Route::get('/invoice/pdf/{unique_number}','InvoicesController@invoiceToPDF')->name('invoice.to.pdf');
 Route::get('/workforce/invoices/{unique_number}','InvoicesController@viewInvoicePublicPage')->name('show.invoice.public.page');
 
 
@@ -192,6 +193,8 @@ Route::post('/freelancer/deleterecord/','RecordingsController@deleteRecord')->na
 Route::get('/freelancer/references','ReferencesController@getReferences')->name('get.references');
 Route::post('/freelancer/addreference/','ReferencesController@addReference')->name('add.reference');
 Route::post('/freelancer/deletereference/','ReferencesController@deleteReference')->name('delete.reference');
+
+
 
 
 // skills

@@ -145,6 +145,9 @@
                     <div class="col-md-8 col-12">
                         <img src="/resumeApp/resources/assets/images/invoice/payment-systems.png" alt="payment" width="100%">
                     </div>
+                    <div class="col-12" style="padding-top: 25px;">
+                        <a href="{{route('invoice.to.pdf',$invoice->unique_number)}}"  target="_blank" class="btn btn-primary">Export as PDF</a>
+                    </div>
                 </div>
             </div>
         </div>

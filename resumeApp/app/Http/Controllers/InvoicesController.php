@@ -11,13 +11,15 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use App\Invoice;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class InvoicesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except('viewInvoicePublicPage');
+        $this->middleware('admin')->except('viewInvoicePublicPage','invoiceToPDF');
     }
 
     public function viewInvoicePublicPage($unique_number){
@@ -114,6 +116,15 @@ class InvoicesController extends Controller
             $invoice->save();
             return 'Updated';
         }
+    }
+
+    public function invoiceToPDF($unique_number){
+        $invoice = Invoice::where('unique_number',$unique_number)->first();
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+        $pdf->loadView('invoice_to_pdf', compact('invoice'));
+        return $pdf->stream();
+
     }
     
 }

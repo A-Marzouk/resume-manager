@@ -56935,6 +56935,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
                 _this3.clearData();
             });
+        },
+        nl2br: function nl2br(str, is_xhtml) {
+            if (typeof str === 'undefined' || str === null) {
+                return '';
+            }
+            var breakTag = is_xhtml || typeof is_xhtml === 'undefined' ? '<br />' : '<br>';
+            return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
         }
     },
 
@@ -57098,7 +57105,12 @@ var render = function() {
               _c(
                 "div",
                 { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
-                [_vm._v("Service provided : " + _vm._s(invoice.service))]
+                [
+                  _vm._v(
+                    "Service provided : " +
+                      _vm._s(_vm.nl2br(invoice.service, false))
+                  )
+                ]
               ),
               _vm._v(" "),
               _c(
@@ -57130,7 +57142,12 @@ var render = function() {
                   ],
                   staticStyle: { color: "#30323D", "font-family": "Roboto" }
                 },
-                [_vm._v("Time : " + _vm._s(invoice.time_of_service))]
+                [
+                  _vm._v(
+                    "Time : " +
+                      _vm._s(_vm.nl2br(invoice.time_of_service, false))
+                  )
+                ]
               ),
               _vm._v("\n            Status : "),
               _c(

@@ -70,9 +70,9 @@
                 </div>
                 <div class="row clientInfo_detail">
                     <div class="col-6 text-left">
-                        {{$invoice->service}}<br/><br>
-                        {{$invoice->time_of_service}}<br/><br>
-                        {{$invoice->client->timeZone}}
+                        {!!nl2br($invoice->service)!!}<br/><br>
+                        {!!nl2br($invoice->time_of_service)!!}<br/><br>
+                        {!!nl2br($invoice->client->timeZone)!!}
                     </div>
                     <div class="col-2">
                         {{$invoice->hours}}

@@ -55,7 +55,7 @@ class CampaignBriefsController extends Controller
             'estimated_duration'=> 'max:191|required',
             'time_zone'=> 'max:191|required',
             'time_needed'=> 'max:191|required',
-            'start_Date'=> 'max:191|required',
+            'start_date'=> 'max:191|required',
             'contract_terms'=> 'max:191|required',
             'hours_per_week'=> 'max:10|required',
             'weekly_rate'=> 'max:10|required',
@@ -69,7 +69,7 @@ class CampaignBriefsController extends Controller
             $cBrief = CampaignBrief::where('id',$request->id)->first();
         }else{
             // add
-            $cBrief = new Invoice;
+            $cBrief = new CampaignBrief;
         }
 
         $cBrief->company_website = $request->company_website ;
@@ -82,13 +82,15 @@ class CampaignBriefsController extends Controller
         $cBrief->estimated_duration = $request->estimated_duration;
         $cBrief->time_zone = $request->time_zone ;
         $cBrief->time_needed = $request->time_needed ;
-        $cBrief->start_Date = $request->start_Date ;
+        $cBrief->start_date = $request->start_date ;
         $cBrief->contract_terms = $request->contract_terms;
         $cBrief->hours_per_week = $request->hours_per_week ;
         $cBrief->weekly_rate = $request->weekly_rate ;
         $cBrief->payment_method = $request->payment_method ;
         $cBrief->campaign_manager = $request->campaign_manager ;
         $cBrief->report_requirement = $request->report_requirement ;
+
+//        return $cBrief;
 
         $cBrief->save();
 

@@ -49,6 +49,11 @@ Vue.component('invoices-list', require('./components/invoices/invoicesListCompon
 Vue.component('invoice-component', require('./components/invoices/invoiceComponent.vue'));
 Vue.component('add-invoice-modal', require('./components/invoices/addInvoiceComponent.vue'));
 
+// campaign briefs
+Vue.component('cbriefs-list', require('./components/campaign_briefs/cBriefsListComponent.vue'));
+Vue.component('cbrief-component', require('./components/campaign_briefs/cBriefComponent.vue'));
+Vue.component('add-cbrief-modal', require('./components/campaign_briefs/addCBriefComponent.vue'));
+
 // recordings
 Vue.component('records-list', require('./components/recordings/recordsListComponent.vue'));
 Vue.component('record-component', require('./components/recordings/recordComponent.vue'));
@@ -133,6 +138,13 @@ if ($("#newChat").length !== 0){
         el:'#newChat'
     });
 }
+
+if ($("#cbriefs").length !== 0){
+    let cbriefs = new Vue({
+        el:'#cbriefs'
+    });
+}
+
 
 
 if ($("#work_overview").length !== 0){

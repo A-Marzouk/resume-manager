@@ -74,21 +74,21 @@
                     <div class="agentName">
                         Name of Agent :  {{$invoice->agentName}}<br/>
                     </div>
-                    <div class="termsText" style="padding-bottom: 30px;">
+                    <div class="termsText" style="padding-bottom: 50px;">
                         Status     : {{$invoice->status}}
                     </div>
                 </div>
             </div>
 
-            <table style="  border-top: 2px lightblue solid;">
+            <table style="  border-top: 2px lightblue solid; padding-bottom: 40px;" >
                 <tr class="clientInfo">
-                    <th>
+                    <th style="width: 370px!important;">
                         CLIENT NAME
                     </th>
-                    <th>
+                    <th style="width: 380px!important;">
                         CLIENT COMPANY
-                    </th>
-                    <th style="text-align: center">
+                    </th >
+                    <th style="width: 380px!important;">
                         CLIENT CONTACT
                     </th>
                 </tr>
@@ -109,25 +109,25 @@
 
             <table style="margin-top: 55px;  border-top: 2px lightblue solid;">
                 <tr class="row clientInfo">
-                    <th class="col-6">
+                    <th class="col-6" style="width: 380px!important;">
                         SERVICE PROVIDED
                     </th>
-                    <th class="col-2">
+                    <th class="col-2" style="width: 370px!important;">
                         NO. OF HRS / WEEK
                     </th>
-                    <th class="col-2">
+                    <th class="col-2" style="width: 185px!important;">
                         RATE / HR
                     </th>
-                    <th class="col-2">
+                    <th class="col-2" style="width: 185px!important;">
                         TOTAL DUE
                     </th>
                 </tr>
 
                 <tr class="row clientInfo_detail">
                     <td class="col-6 text-left">
-                        {{$invoice->service}}<br/><br>
-                        {{$invoice->time_of_service}}<br/><br>
-                        {{$invoice->client->timeZone}}
+                        {!!nl2br($invoice->service)!!}<br/><br>
+                        {!!nl2br($invoice->time_of_service)!!}<br/><br>
+                        {!!nl2br($invoice->client->timeZone)!!}
                     </td>
                     <td class="col-2">
                         {{$invoice->hours}}

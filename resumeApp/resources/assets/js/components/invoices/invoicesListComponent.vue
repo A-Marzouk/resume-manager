@@ -26,9 +26,9 @@
                 Hours :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.hours}}</b><br/>
                 Rate per Hour :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.rate}}</b><br/>
                 Agent :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.agentName}}</b><br/>
-                <div  style="color: #30323D;font-family: Roboto;">Service provided : {{invoice.service}}</div>
+                <div  style="color: #30323D;font-family: Roboto;" >Service provided : {{nl2br(invoice.service,false)}}</div>
                 <div  style="color: #30323D;font-family: Roboto;" v-show="invoice.notes != null">Notes : {{invoice.notes}}</div>
-                <div  style="color: #30323D;font-family: Roboto;" v-show="invoice.time_of_service != null">Time : {{invoice.time_of_service}}</div>
+                <div  style="color: #30323D;font-family: Roboto;" v-show="invoice.time_of_service != null">Time : {{nl2br(invoice.time_of_service,false)}}</div>
                 Status : <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.status}}</b><br/>
                 <div class="NoDecor">
                     Public link : <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
@@ -188,6 +188,13 @@
                     }
                     this.clearData();
                 });
+            },
+            nl2br (str, is_xhtml) {
+                if (typeof str === 'undefined' || str === null) {
+                    return '';
+                }
+                var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+                return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
             }
         },
 

@@ -14347,6 +14347,7 @@ Vue.component('add-invoice-modal', __webpack_require__(97));
 Vue.component('cbriefs-list', __webpack_require__(100));
 Vue.component('cbrief-component', __webpack_require__(105));
 Vue.component('add-cbrief-modal', __webpack_require__(108));
+Vue.component('add-service-modal', __webpack_require__(217));
 
 // recordings
 Vue.component('records-list', __webpack_require__(111));
@@ -58326,6 +58327,71 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -58351,7 +58417,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'weekly_rate': '',
                 'payment_method': '',
                 'campaign_manager': '',
-                'report_requirement': ''
+                'report_requirement': '',
+                services: []
             }
         };
     },
@@ -58413,6 +58480,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else {
                 this.canAdd = true;
             }
+        },
+        deleteService: function deleteService(service) {
+            var _this3 = this;
+
+            if (!confirm('Are you sure you want to delete this service ?')) {
+                return;
+            }
+            axios.post('/admin/workforce/delete_cbrief_service', { serviceID: service.id }).then(function (response) {
+                var cBriefs = _this3.cBriefs;
+                $.each(cBriefs, function (i) {
+                    $.each(cBriefs[i].services, function (j) {
+                        if (cBriefs[i].services[j].id === service.id) {
+                            cBriefs[i].services.splice(j, 1);
+                            return false;
+                        }
+                    });
+                });
+
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+
+                _this3.checkMaxCBriefs();
+            });
         },
         clearData: function clearData() {
             this.toBeEditedCBrief = {
@@ -58542,6 +58635,49 @@ var render = function() {
               _c(
                 "div",
                 {
+                  staticClass: "deleteWorkBtn NoDecor",
+                  staticStyle: { width: "169px", "margin-right": "7px" },
+                  on: {
+                    click: function($event) {
+                      _vm.editCBrief(cBrief.id)
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "javascript:void(0)",
+                        "data-target": "#addServiceModal",
+                        "data-toggle": "modal"
+                      }
+                    },
+                    [
+                      _c("img", {
+                        staticStyle: {
+                          width: "20px",
+                          "padding-right": "7px",
+                          "padding-bottom": "2px",
+                          height: "15px"
+                        },
+                        attrs: {
+                          src:
+                            "/resumeApp/resources/assets/images/add_blue.png",
+                          alt: "edit profile"
+                        }
+                      }),
+                      _vm._v(
+                        "\n                    Add Service\n                "
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
                   staticClass: "pageSubHeading text-left",
                   staticStyle: { "padding-bottom": "15px" }
                 },
@@ -58552,168 +58688,278 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c("table", { staticClass: "table table-bordered" }, [
-                _c("tr", [
-                  _c("th", [_vm._v("Client name")]),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-8" }, [
+                  _c("table", { staticClass: "table table-bordered" }, [
+                    _c("tr", [
+                      _c("th", [_vm._v("Client name")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cBrief.client_name))])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", [_vm._v("Client contact ")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cBrief.client_contact))])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", [_vm._v("Company website")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cBrief.company_website))])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", [_vm._v("Company values")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cBrief.company_values))])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", [_vm._v("Objective")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cBrief.objective))])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", [_vm._v("Email Pitch")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cBrief.email_pitch))])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", [_vm._v("Phone Pitch")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cBrief.phone_pitch))])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", [_vm._v(" Data systems ")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cBrief.data_systems))])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", [_vm._v(" Estimated duration ")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cBrief.estimated_duration))])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", [_vm._v("Time zone ")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cBrief.time_zone))])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", [_vm._v("Time needed ")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cBrief.time_needed))])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", [_vm._v(" Starting date ")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cBrief.start_date))])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", [_vm._v("Contract terms ")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cBrief.contract_terms))])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", [_vm._v("Hours per week ")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cBrief.hours_per_week))])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", [_vm._v(" Weekly rate ")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cBrief.weekly_rate))])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", [_vm._v("Payment method ")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(cBrief.payment_method))])
+                    ])
+                  ]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(cBrief.client_name))])
+                  _c("div", [
+                    _vm._v(
+                      "\n                        Campaign Manager :\n                        "
+                    ),
+                    _c(
+                      "b",
+                      {
+                        staticStyle: {
+                          "font-size": "16px",
+                          color: "#30323D",
+                          "font-family": "Roboto",
+                          "line-height": "19px",
+                          "font-weight": "bold"
+                        }
+                      },
+                      [_vm._v(" " + _vm._s(cBrief.campaign_manager))]
+                    ),
+                    _c("br"),
+                    _vm._v(
+                      "\n                        Report requirement :\n                        "
+                    ),
+                    _c(
+                      "b",
+                      {
+                        staticStyle: {
+                          "font-size": "16px",
+                          color: "#30323D",
+                          "font-family": "Roboto",
+                          "line-height": "19px",
+                          "font-weight": "bold"
+                        }
+                      },
+                      [_vm._v(" " + _vm._s(cBrief.report_requirement))]
+                    ),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "NoDecor" }, [
+                      _vm._v("\n                            Public link : "),
+                      _c(
+                        "b",
+                        {
+                          staticStyle: {
+                            "font-size": "16px",
+                            color: "#30323D",
+                            "font-family": "Roboto",
+                            "line-height": "19px",
+                            "font-weight": "bold"
+                          }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                href:
+                                  "https://123workforce.com/workforce/campaign_briefs/" +
+                                  cBrief.id,
+                                target: "_blank"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "https://123workforce.com/workforce/campaign_briefs/" +
+                                  _vm._s(cBrief.id)
+                              )
+                            ]
+                          )
+                        ]
+                      ),
+                      _c("br")
+                    ])
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("tr", [
-                  _c("th", [_vm._v("Client contact ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(cBrief.client_contact))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", [_vm._v("Company website")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(cBrief.company_website))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", [_vm._v("Company values")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(cBrief.company_values))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", [_vm._v("Objective")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(cBrief.objective))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", [_vm._v("Email Pitch")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(cBrief.email_pitch))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", [_vm._v("Phone Pitch")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(cBrief.phone_pitch))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", [_vm._v(" Data systems ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(cBrief.data_systems))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", [_vm._v(" Estimated duration ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(cBrief.estimated_duration))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", [_vm._v("Time zone ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(cBrief.time_zone))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", [_vm._v("Time needed ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(cBrief.time_needed))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", [_vm._v(" Starting date ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(cBrief.start_date))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", [_vm._v("Contract terms ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(cBrief.contract_terms))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", [_vm._v("Hours per week ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(cBrief.hours_per_week))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", [_vm._v(" Weekly rate ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(cBrief.weekly_rate))])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("th", [_vm._v("Payment method ")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(cBrief.payment_method))])
-                ])
-              ]),
-              _vm._v("\n\n            Campaign Manager :\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.campaign_manager))]
-              ),
-              _c("br"),
-              _vm._v("\n            Report requirement :\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.report_requirement))]
-              ),
-              _c("br"),
-              _vm._v(" "),
-              _c("div", { staticClass: "NoDecor" }, [
-                _vm._v("\n                Public link : "),
                 _c(
-                  "b",
-                  {
-                    staticStyle: {
-                      "font-size": "16px",
-                      color: "#30323D",
-                      "font-family": "Roboto",
-                      "line-height": "19px",
-                      "font-weight": "bold"
-                    }
-                  },
+                  "div",
+                  { staticClass: "col-md-4" },
                   [
                     _c(
-                      "a",
+                      "div",
                       {
-                        attrs: {
-                          href:
-                            "https://123workforce.com/workforce/campaign_briefs/" +
-                            cBrief.id,
-                          target: "_blank"
-                        }
+                        staticClass: "pageSubHeading",
+                        staticStyle: { "padding-bottom": "15px" }
                       },
                       [
                         _vm._v(
-                          "https://123workforce.com/workforce/campaign_briefs/" +
-                            _vm._s(cBrief.id)
+                          "\n                        Campaign brief services. ( " +
+                            _vm._s(cBrief.services.length) +
+                            "# )\n                    "
                         )
                       ]
-                    )
-                  ]
-                ),
-                _c("br")
+                    ),
+                    _vm._v(" "),
+                    _vm._l(cBrief.services, function(service, index) {
+                      return _c("div", { key: index }, [
+                        _c(
+                          "span",
+                          {
+                            staticClass: "deleteWorkBtn NoDecor",
+                            staticStyle: { "margin-bottom": "5px" },
+                            on: {
+                              click: function($event) {
+                                _vm.deleteService(service)
+                              }
+                            }
+                          },
+                          [
+                            _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                              _c("img", {
+                                attrs: {
+                                  src:
+                                    "/resumeApp/resources/assets/images/close_blue.png",
+                                  alt: "edit profile"
+                                }
+                              }),
+                              _vm._v(
+                                "\n                                Del\n                            "
+                              )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("table", { staticClass: "table table-bordered" }, [
+                          _c("tr", [
+                            _c("th", [_vm._v("Service required")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(service.service_required))])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("th", [_vm._v("Hours")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(service.hours))])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("th", [_vm._v("Hourly rate")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(service.hourly_rate) + " USD")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("th", [_vm._v("Language needed")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(service.language))])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("th", [_vm._v("Agent location")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(service.agent_location))])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("th", [_vm._v("No. of agents")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(service.number_of_agents))])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("th", [_vm._v("Agent experience")]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(service.agent_experience))])
+                          ])
+                        ])
+                      ])
+                    })
+                  ],
+                  2
+                )
               ])
             ]
           )
@@ -58759,6 +59005,10 @@ var render = function() {
       _c("add-cbrief-modal", {
         attrs: { toBeEditedCBrief: _vm.toBeEditedCBrief },
         on: { cBriefAdded: _vm.addCBrief }
+      }),
+      _vm._v(" "),
+      _c("add-service-modal", {
+        attrs: { toBeEditedCBrief: _vm.toBeEditedCBrief }
       })
     ],
     1
@@ -73726,6 +73976,592 @@ if (navigator.mediaDevices.getUserMedia) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(218)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(220)
+/* template */
+var __vue_template__ = __webpack_require__(221)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\campaign_briefs\\addServiceComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a315b624", Component.options)
+  } else {
+    hotAPI.reload("data-v-a315b624", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 218 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(219);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("a0888820", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a315b624\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./addServiceComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a315b624\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./addServiceComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 219 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 2s;\n    transition: all 2s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 220 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['toBeEditedCBrief'],
+    data: function data() {
+        return {
+            service: {
+                'id': '',
+                'service_required': '',
+                'hours': '',
+                'hourly_rate': '',
+                'language': '',
+                'agent_location': '',
+                'number_of_agents': '',
+                'agent_experience': '',
+                campaign_brief_id: ''
+            }
+        };
+    },
+
+    methods: {
+        addService: function addService() {
+            this.service.campaign_brief_id = this.toBeEditedCBrief.id;
+            axios.post('/admin/workforce/add_cbrief_service', this.service).then(function (response) {
+                // changes saved :
+                console.log(response.data);
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+            });
+
+            this.toBeEditedCBrief.services.push(this.service);
+            this.clearServiceData();
+            $('#closeServiceModal').click();
+        },
+        clearServiceData: function clearServiceData() {
+            this.service = {
+                'id': '',
+                'service_required': '',
+                'hours': '',
+                'hourly_rate': '',
+                'language': '',
+                'agent_location': '',
+                'number_of_agents': '',
+                'agent_experience': '',
+                campaign_brief_id: ''
+            };
+        }
+    },
+    mounted: function mounted() {}
+});
+
+/***/ }),
+/* 221 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addServiceModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addServiceModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal-body row", attrs: { id: "content" } },
+                [
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "panelFormLabel",
+                        attrs: { for: "service_required" }
+                      },
+                      [_vm._v("Service required :")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.service.service_required,
+                          expression: "service.service_required"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "service_required",
+                        name: "service_required",
+                        required: ""
+                      },
+                      domProps: { value: _vm.service.service_required },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.service,
+                            "service_required",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "panelFormLabel",
+                        attrs: { for: "hourly_rate" }
+                      },
+                      [_vm._v("Hourly rate:")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.service.hourly_rate,
+                          expression: "service.hourly_rate"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        id: "hourly_rate",
+                        name: "hourly_rate",
+                        required: ""
+                      },
+                      domProps: { value: _vm.service.hourly_rate },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.service,
+                            "hourly_rate",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "panelFormLabel",
+                        attrs: { for: "hours" }
+                      },
+                      [_vm._v("Hours:")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.service.hours,
+                          expression: "service.hours"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        id: "hours",
+                        name: "hours",
+                        required: ""
+                      },
+                      domProps: { value: _vm.service.hours },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.service, "hours", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "panelFormLabel",
+                        attrs: { for: "language" }
+                      },
+                      [_vm._v("Language needed :")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.service.language,
+                          expression: "service.language"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "language",
+                        name: "language",
+                        required: ""
+                      },
+                      domProps: { value: _vm.service.language },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.service, "language", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "panelFormLabel",
+                        attrs: { for: "number_of_agents" }
+                      },
+                      [_vm._v("Number of agents:")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.service.number_of_agents,
+                          expression: "service.number_of_agents"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        id: "number_of_agents",
+                        name: "number_of_agents",
+                        required: ""
+                      },
+                      domProps: { value: _vm.service.number_of_agents },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.service,
+                            "number_of_agents",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "panelFormLabel",
+                        attrs: { for: "agent_location" }
+                      },
+                      [_vm._v("Agent location:")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.service.agent_location,
+                          expression: "service.agent_location"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "agent_location",
+                        name: "agent_location",
+                        required: ""
+                      },
+                      domProps: { value: _vm.service.agent_location },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.service,
+                            "agent_location",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-12" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "panelFormLabel",
+                        attrs: { for: "agent_experience" }
+                      },
+                      [_vm._v("Agent experience :")]
+                    ),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.service.agent_experience,
+                          expression: "service.agent_experience"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        rows: "3",
+                        id: "agent_experience",
+                        name: "agent_experience",
+                        required: ""
+                      },
+                      domProps: { value: _vm.service.agent_experience },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.service,
+                            "agent_experience",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { href: "javascript:void(0)" },
+                    on: { click: _vm.addService }
+                  },
+                  [_vm._v("Add")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "text-right", staticStyle: { padding: "15px 10px 0 0" } },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "modal",
+              "aria-label": "Close",
+              id: "closeServiceModal"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        )
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-a315b624", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

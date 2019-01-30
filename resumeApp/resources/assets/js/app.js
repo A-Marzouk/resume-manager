@@ -53,6 +53,7 @@ Vue.component('add-invoice-modal', require('./components/invoices/addInvoiceComp
 Vue.component('cbriefs-list', require('./components/campaign_briefs/cBriefsListComponent.vue'));
 Vue.component('cbrief-component', require('./components/campaign_briefs/cBriefComponent.vue'));
 Vue.component('add-cbrief-modal', require('./components/campaign_briefs/addCBriefComponent.vue'));
+Vue.component('add-service-modal', require('./components/campaign_briefs/addServiceComponent.vue'));
 
 // recordings
 Vue.component('records-list', require('./components/recordings/recordsListComponent.vue'));

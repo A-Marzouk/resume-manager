@@ -19,99 +19,163 @@
                         Edit
                     </a>
                 </span>
+
+                <div class="deleteWorkBtn NoDecor"  @click="editCBrief(cBrief.id)" style="width: 169px;margin-right: 7px;">
+                    <a href="javascript:void(0)" data-target="#addServiceModal"  data-toggle="modal">
+                        <img src="/resumeApp/resources/assets/images/add_blue.png" alt="edit profile" style="width: 20px;
+            padding-right: 7px;
+            padding-bottom: 2px;
+            height: 15px;">
+                        Add Service
+                    </a>
+                </div>
+
+
                 <div class="pageSubHeading text-left" style="padding-bottom:15px;">
                     Campaign Brief details
                 </div>
-                <table class="table table-bordered">
-                    <tr>
-                        <th>Client name</th>
-                        <td>{{cBrief.client_name}}</td>
-                    </tr>
 
-                    <tr>
-                        <th>Client contact </th>
-                        <td>{{cBrief.client_contact}}</td>
-                    </tr>
+                <div class="row">
+                    <div class="col-md-8">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Client name</th>
+                                <td>{{cBrief.client_name}}</td>
+                            </tr>
 
-                    <tr>
-                        <th>Company website</th>
-                        <td>{{cBrief.company_website}}</td>
-                    </tr>
-                     <tr>
-                         <th>Company values</th>
-                        <td>{{cBrief.company_values}}</td>
-                    </tr>
+                            <tr>
+                                <th>Client contact </th>
+                                <td>{{cBrief.client_contact}}</td>
+                            </tr>
 
-                    <tr>
-                        <th>Objective</th>
-                        <td>{{cBrief.objective}}</td>
-                    </tr>
+                            <tr>
+                                <th>Company website</th>
+                                <td>{{cBrief.company_website}}</td>
+                            </tr>
+                            <tr>
+                                <th>Company values</th>
+                                <td>{{cBrief.company_values}}</td>
+                            </tr>
 
-                    <tr>
-                        <th>Email Pitch</th>
-                        <td>{{cBrief.email_pitch}}</td>
-                    </tr>
+                            <tr>
+                                <th>Objective</th>
+                                <td>{{cBrief.objective}}</td>
+                            </tr>
 
-                    <tr>
-                        <th>Phone Pitch</th>
-                        <td>{{cBrief.phone_pitch}}</td>
-                    </tr>
+                            <tr>
+                                <th>Email Pitch</th>
+                                <td>{{cBrief.email_pitch}}</td>
+                            </tr>
 
-                    <tr>
-                        <th> Data systems </th>
-                        <td>{{cBrief.data_systems}}</td>
+                            <tr>
+                                <th>Phone Pitch</th>
+                                <td>{{cBrief.phone_pitch}}</td>
+                            </tr>
 
-                    </tr>
+                            <tr>
+                                <th> Data systems </th>
+                                <td>{{cBrief.data_systems}}</td>
 
-                    <tr>
-                        <th> Estimated duration </th>
-                        <td>{{cBrief.estimated_duration}}</td>
+                            </tr>
 
-                    </tr>
-                    <tr>
-                        <th>Time zone </th>
-                        <td>{{cBrief.time_zone}}</td>
+                            <tr>
+                                <th> Estimated duration </th>
+                                <td>{{cBrief.estimated_duration}}</td>
 
-                    </tr>
-                    <tr>
-                        <th>Time needed </th>
-                        <td>{{cBrief.time_needed}}</td>
-                    </tr>
+                            </tr>
+                            <tr>
+                                <th>Time zone </th>
+                                <td>{{cBrief.time_zone}}</td>
 
-                    <tr>
-                        <th> Starting date </th>
-                        <td>{{cBrief.start_date}}</td>
+                            </tr>
+                            <tr>
+                                <th>Time needed </th>
+                                <td>{{cBrief.time_needed}}</td>
+                            </tr>
 
-                    </tr>
-                    <tr>
-                        <th>Contract terms </th>
-                        <td>{{cBrief.contract_terms}}</td>
+                            <tr>
+                                <th> Starting date </th>
+                                <td>{{cBrief.start_date}}</td>
 
-                    </tr>
-                    <tr>
-                        <th>Hours per week </th>
-                        <td>{{cBrief.hours_per_week}}</td>
-                    </tr>
-                    <tr>
-                        <th> Weekly rate </th>
-                        <td>{{cBrief.weekly_rate}}</td>
+                            </tr>
+                            <tr>
+                                <th>Contract terms </th>
+                                <td>{{cBrief.contract_terms}}</td>
 
-                    </tr>
-                    <tr>
-                        <th>Payment method </th>
-                        <td>{{cBrief.payment_method}}</td>
+                            </tr>
+                            <tr>
+                                <th>Hours per week </th>
+                                <td>{{cBrief.hours_per_week}}</td>
+                            </tr>
+                            <tr>
+                                <th> Weekly rate </th>
+                                <td>{{cBrief.weekly_rate}}</td>
 
-                    </tr>
-                </table>
+                            </tr>
+                            <tr>
+                                <th>Payment method </th>
+                                <td>{{cBrief.payment_method}}</td>
 
-                Campaign Manager :
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.campaign_manager}}</b><br/>
-                Report requirement :
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.report_requirement}}</b><br/>
-                <div class="NoDecor">
-                    Public link : <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
-                    <a :href="'https://123workforce.com/workforce/campaign_briefs/'+cBrief.id" target="_blank">https://123workforce.com/workforce/campaign_briefs/{{cBrief.id}}</a>
-                    </b><br/>
+                            </tr>
+                        </table>
+
+                        <div>
+                            Campaign Manager :
+                            <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.campaign_manager}}</b><br/>
+                            Report requirement :
+                            <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.report_requirement}}</b><br/>
+                            <div class="NoDecor">
+                                Public link : <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
+                                <a :href="'https://123workforce.com/workforce/campaign_briefs/'+cBrief.id" target="_blank">https://123workforce.com/workforce/campaign_briefs/{{cBrief.id}}</a>
+                            </b><br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="pageSubHeading" style="padding-bottom:15px;">
+                            Campaign brief services. ( {{cBrief.services.length}}# )
+                        </div>
+                        <div v-for="(service,index) in cBrief.services" v-bind:key="index">
+                             <span class="deleteWorkBtn NoDecor" @click="deleteService(service)" style="margin-bottom:5px;">
+                                <a href="javascript:void(0)">
+                                    <img src="/resumeApp/resources/assets/images/close_blue.png" alt="edit profile">
+                                    Del
+                                </a>
+                             </span>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Service required</th>
+                                    <td>{{service.service_required}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Hours</th>
+                                    <td>{{service.hours}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Hourly rate</th>
+                                    <td>{{service.hourly_rate}} USD</td>
+                                </tr>
+                                <tr>
+                                    <th>Language needed</th>
+                                    <td>{{service.language}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Agent location</th>
+                                    <td>{{service.agent_location}}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>No. of agents</th>
+                                    <td>{{service.number_of_agents}}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Agent experience</th>
+                                    <td>{{service.agent_experience}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </cbrief-component>
         </transition-group>
@@ -127,6 +191,7 @@
         </span>
         <br/>
         <add-cbrief-modal @cBriefAdded="addCBrief"  :toBeEditedCBrief="toBeEditedCBrief"></add-cbrief-modal>
+        <add-service-modal  :toBeEditedCBrief="toBeEditedCBrief"></add-service-modal>
     </div>
 </template>
 
@@ -155,7 +220,8 @@
                     'weekly_rate': '',
                     'payment_method': '',
                     'campaign_manager': '',
-                    'report_requirement': ''
+                    'report_requirement': '',
+                     services :[]
                 }
             }
         },
@@ -221,7 +287,31 @@
                     this.canAdd = true;
                 }
             },
+            deleteService(service){
+                if(!confirm('Are you sure you want to delete this service ?')){
+                    return;
+                }
+                axios.post('/admin/workforce/delete_cbrief_service',{serviceID:service.id}).then((response)=>{
+                    let cBriefs = this.cBriefs;
+                    $.each(cBriefs, function(i){
+                        $.each(cBriefs[i].services,function (j) {
+                            if(cBriefs[i].services[j].id === service.id) {
+                                cBriefs[i].services.splice(j,1);
+                                return false;
+                            }
+                        });
+                    });
 
+                    // changes saved :
+                    $('#changesSaved').fadeIn('slow');
+                    setTimeout(function () {
+                        $('#changesSaved').fadeOut();
+                    },2000);
+
+                    this.checkMaxCBriefs();
+
+                });
+            },
             clearData(){
                 this. toBeEditedCBrief={
                         'id':'',

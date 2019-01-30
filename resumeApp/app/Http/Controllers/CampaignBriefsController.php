@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\CampaignBrief;
+use App\CampaignService;
 use App\Client;
 use App\Invoice;
 use Barryvdh\DomPDF\PDF;
@@ -40,7 +41,12 @@ class CampaignBriefsController extends Controller
     }
 
     public function getCBriefs(){
-        return CampaignBrief::all();
+        $cBriefs =  CampaignBrief::all();
+        foreach ($cBriefs as &$campaign){
+            $campaign['services']     = $campaign->services;
+        }
+
+        return $cBriefs;
     }
 
     public function addCBrief(Request $request){
@@ -115,6 +121,54 @@ class CampaignBriefsController extends Controller
         $pdf->loadView('campaign_brief.campaign_brief_to_pdf', compact('cBrief'));
         return $pdf->stream();
 
+    }
+
+    public function addServiceToCamp(Request $request){
+        $currCampaign = CampaignBrief::where('id',$request->campaign_brief_id)->first();
+        $request->validate([
+            'service_required'=>'max:191|required',
+            'hours'  =>'max:10|required',
+            'hourly_rate'  =>'max:10|required',
+            'language'  =>'max:191|required',
+            'agent_location'  =>'max:191|required',
+            'number_of_agents'  =>'max:10|required',
+            'agent_experience'  =>'max:1500|required',
+        ]);
+
+        if(isset($request->id)){
+            // edit
+            $shift = CampaignService::where('id',$request->id)->first();
+        }else{
+            // add
+            $service = new CampaignService;
+            $service->campaign_brief_id = $currCampaign->id;
+        }
+
+        $service->service_required = $request->service_required;
+        $service->hours = $request->hours;
+        $service->hourly_rate = $request->hourly_rate;
+        $service->agent_location = $request->agent_location;
+        $service->language = $request->language;
+        $service->number_of_agents = $request->number_of_agents;
+        $service->agent_experience = $request->agent_experience;
+
+        $service->save();
+
+        return ['id'=>$service->id];
+
+    }
+
+    public function deleteCBriefService(Request $request){
+        $service = CampaignService::where('id',$request->serviceID);
+        $service->delete();
+        return 'Service has been deleted';
+    }
+
+    public function getCBriefServices($cBriefID){
+        $cBrief = CampaignService::where('id',$cBriefID)->first();
+        $services = $cBrief->services;
+
+        return $services;
     }
     
 }

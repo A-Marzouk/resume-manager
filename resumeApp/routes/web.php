@@ -195,6 +195,13 @@ Route::get('/workforce/campaign_briefs/{id}','CampaignBriefsController@viewCampa
 Route::post('/admin/workforce/add_cbrief','CampaignBriefsController@addCBrief')->name('add.cBrief');
 Route::post('/admin/workforce/delete_cbrief','CampaignBriefsController@deleteCBrief')->name('delete.cBrief');
 
+// services of brief camp
+Route::post('/admin/workforce/add_cbrief_service','CampaignBriefsController@addServiceToCamp')->name('add.cBrief.service');
+Route::post('/admin/workforce/delete_cbrief_service','CampaignBriefsController@deleteCBriefService')->name('delete.cBrief.service');
+Route::get('/admin/workforce/get_cbrief_services/{cBriefID}','CampaignBriefsController@getCBriefServices')->name('get.cBrief_services');
+
+
+
 // recordings
 Route::get('/freelancer/records','RecordingsController@getRecords')->name('get.records');
 Route::post('/freelancer/addrecord/','RecordingsController@addRecord')->name('add.record');

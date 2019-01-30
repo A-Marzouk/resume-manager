@@ -24,6 +24,10 @@
                                   <input type="text" class="form-control" id="payment_method" name="payment_method" v-model="toBeEditedCBrief.payment_method" required>
                               </div>
                               <div class="form-group col-md-12">
+                                  <label for="client_name" class="panelFormLabel">Client name :</label>
+                                  <input type="text" class="form-control" id="client_name" name="client_name" v-model="toBeEditedCBrief.client_name" required>
+                              </div>
+                              <div class="form-group col-md-12">
                                   <label for="campaign_manager" class="panelFormLabel">Campaign manager:</label>
                                   <input type="text" class="form-control" id="campaign_manager" name="campaign_manager" v-model="toBeEditedCBrief.campaign_manager" required>
                               </div>

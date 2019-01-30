@@ -46,6 +46,7 @@ class CampaignBriefsController extends Controller
     public function addCBrief(Request $request){
         $request->validate([
             'company_website'=> 'max:191|required',
+            'client_name'=> 'max:191|required',
             'company_values'=> 'max:1500|required',
             'client_contact'=> 'max:1500|required',
             'objective'=> 'max:1500|required',
@@ -73,6 +74,7 @@ class CampaignBriefsController extends Controller
         }
 
         $cBrief->company_website = $request->company_website ;
+        $cBrief->client_name = $request->client_name ;
         $cBrief->company_values = $request->company_values ;
         $cBrief->client_contact = $request->client_contact ;
         $cBrief->email_pitch = $request->email_pitch ;

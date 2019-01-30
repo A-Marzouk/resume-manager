@@ -15,7 +15,7 @@ class CampaignBrief extends Model
 {
     protected $table = 'campaign_briefs';
     protected $fillable = [
-        'client_id','company_website','company_values','client_contact'
+        'client_id','client_name','company_website','company_values','client_contact'
         ,'objective','email_pitch','phone_pitch','data_systems'
         ,'estimated_duration','time_zone','time_needed','start_Date'
         ,'contract_terms','hours_per_week','weekly_rate','payment_method'

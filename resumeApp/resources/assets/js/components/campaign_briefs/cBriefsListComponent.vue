@@ -24,6 +24,8 @@
                 </div>
                 Company website :
                 <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.company_website}}</b><br/>
+                Client name :
+                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.client_name}}</b><br/>
                 Company values :
                 <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.company_values}}</b><br/>
                 Client contact :
@@ -87,6 +89,7 @@
                 canAdd:true,
                 toBeEditedCBrief:{
                     'id':'',
+                    'client_name':'',
                     'company_website': '',
                     'company_values': '',
                     'client_contact': '',
@@ -173,6 +176,7 @@
             clearData(){
                 this. toBeEditedCBrief={
                         'id':'',
+                        'client_name':'',
                         'company_website': '',
                         'company_values': '',
                         'client_contact': '',

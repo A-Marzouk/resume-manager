@@ -58275,6 +58275,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -58283,6 +58285,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             canAdd: true,
             toBeEditedCBrief: {
                 'id': '',
+                'client_name': '',
                 'company_website': '',
                 'company_values': '',
                 'client_contact': '',
@@ -58365,6 +58368,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         clearData: function clearData() {
             this.toBeEditedCBrief = {
                 'id': '',
+                'client_name': '',
                 'company_website': '',
                 'company_values': '',
                 'client_contact': '',
@@ -58502,6 +58506,21 @@ var render = function() {
                   }
                 },
                 [_vm._v(" " + _vm._s(cBrief.company_website))]
+              ),
+              _c("br"),
+              _vm._v("\n            Client name :\n            "),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v(" " + _vm._s(cBrief.client_name))]
               ),
               _c("br"),
               _vm._v("\n            Company values :\n            "),
@@ -59156,6 +59175,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedCBrief'],
@@ -59356,6 +59379,48 @@ var render = function() {
                               _vm.$set(
                                 _vm.toBeEditedCBrief,
                                 "payment_method",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "client_name" }
+                          },
+                          [_vm._v("Client name :")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedCBrief.client_name,
+                              expression: "toBeEditedCBrief.client_name"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "client_name",
+                            name: "client_name",
+                            required: ""
+                          },
+                          domProps: { value: _vm.toBeEditedCBrief.client_name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedCBrief,
+                                "client_name",
                                 $event.target.value
                               )
                             }

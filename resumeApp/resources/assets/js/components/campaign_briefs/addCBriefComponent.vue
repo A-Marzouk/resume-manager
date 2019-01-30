@@ -165,6 +165,7 @@
                // post data :
                 axios.post('/admin/workforce/add_cbrief',this.toBeEditedCBrief).then( (response) => {
                     if(this.toBeEditedCBrief.id === ""){
+                        this.toBeEditedCBrief.services = [] ;
                         this.$emit('cBriefAdded',this.toBeEditedCBrief);
                     }
                     // save the education id :

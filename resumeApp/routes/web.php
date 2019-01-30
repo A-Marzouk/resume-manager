@@ -184,6 +184,24 @@ Route::get('/invoice/pdf/{unique_number}','InvoicesController@invoiceToPDF')->na
 Route::get('/workforce/invoices/{unique_number}','InvoicesController@viewInvoicePublicPage')->name('show.invoice.public.page');
 
 
+// campaign briefs:
+
+Route::get('/admin/workforce/get_cbriefs','CampaignBriefsController@getCBriefs')->name('get.cBriefs');
+Route::get('/admin/workforce/campaign_briefs','CampaignBriefsController@viewCBriefsPage')->name('view.cBriefs');
+Route::get('/admin/workforce/campaign_briefs/{client_id}','CampaignBriefsController@getCBriefsByClient')->name('view.cBriefs.client');
+Route::get('/admin/campaign_brief/pdf/{id}','CampaignBriefsController@cBriefToPDF')->name('cBrief.to.pdf');
+Route::get('/workforce/campaign_briefs/{id}','CampaignBriefsController@viewCampaignBriefPublicPage')->name('show.cBrief.public.page');
+
+Route::post('/admin/workforce/add_cbrief','CampaignBriefsController@addCBrief')->name('add.cBrief');
+Route::post('/admin/workforce/delete_cbrief','CampaignBriefsController@deleteCBrief')->name('delete.cBrief');
+
+// services of brief camp
+Route::post('/admin/workforce/add_cbrief_service','CampaignBriefsController@addServiceToCamp')->name('add.cBrief.service');
+Route::post('/admin/workforce/delete_cbrief_service','CampaignBriefsController@deleteCBriefService')->name('delete.cBrief.service');
+Route::get('/admin/workforce/get_cbrief_services/{cBriefID}','CampaignBriefsController@getCBriefServices')->name('get.cBrief_services');
+
+
+
 // recordings
 Route::get('/freelancer/records','RecordingsController@getRecords')->name('get.records');
 Route::post('/freelancer/addrecord/','RecordingsController@addRecord')->name('add.record');

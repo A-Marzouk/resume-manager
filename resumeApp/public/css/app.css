@@ -62,6 +62,47 @@
   margin-top: 15px;
 }
 
+.campaignRow {
+  margin-top: 15px;
+}
+
+.campaignRow .campaignInfo {
+  background-color: #dbedf7;
+  text-align: center;
+  color: #2997c8;
+  padding: 10px 0 10px 0;
+  font-weight: bold;
+  word-break: break-word;
+  border-right: 15px white solid;
+}
+
+.campaignRow .campaignData {
+  background: whitesmoke;
+  text-align: center;
+  color: #939498;
+  padding-top: 6px;
+}
+
+.clientInfo_detail_cBrief {
+  padding-top: 15px;
+  margin-top: 10px;
+  background: whitesmoke;
+}
+
+.clientInfo_detail_cBrief div {
+  text-align: center;
+  color: #939498;
+  padding-bottom: 10px;
+}
+
+.blueLine {
+  background-color: #2997c8;
+  -webkit-transform: scaleY(-1);
+          transform: scaleY(-1);
+  padding: 2px 0 0 0;
+  margin-top: 10px;
+}
+
 .recorder_wrapper {
   width: 100%;
   display: -moz-flex;

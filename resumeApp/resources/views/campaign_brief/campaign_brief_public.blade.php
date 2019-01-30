@@ -88,55 +88,58 @@
                     </div>
                 </div>
 
-                <div class="row clientInfo" style="margin-top: 35px;">
-                    <div class="col-2">
-                        SERVICE REQUIRED
+                @foreach($cBrief->services as $service)
+                    <div class="row clientInfo" style="margin-top: 35px;">
+                        <div class="col-2">
+                            SERVICE REQUIRED
+                        </div>
+                        <div class="col-2">
+                            HOURLY RATE
+                        </div>
+                        <div class="col-1">
+                            NO. OF HOURS
+                        </div>
+                        <div class="col-2">
+                            LANGUAGE NEEDED
+                        </div>
+                        <div class="col-2">
+                            AGENT LOCATION / ACCENT
+                        </div>
+                        <div class="col-1">
+                            NO. OF AGENTS
+                        </div>
+                        <div class="col-2">
+                            AGENT CHARACTER AND EXPERIENCE REQUIREMENT
+                        </div>
                     </div>
-                    <div class="col-2">
-                        HOURLY RATE
-                    </div>
-                    <div class="col-1">
-                        NO. OF HOURS
-                    </div>
-                    <div class="col-2">
-                        LANGUAGE NEEDED
-                    </div>
-                    <div class="col-2">
-                        AGENT LOCATION / ACCENT
-                    </div>
-                    <div class="col-1">
-                        NO. OF AGENTS
-                    </div>
-                    <div class="col-2">
-                        AGENT CHARACTER AND EXPERIENCE REQUIREMENT
-                    </div>
-                </div>
 
-                <div class="blueLine"></div>
+                    <div class="blueLine"></div>
 
-                <div class="row clientInfo_detail_cBrief">
-                    <div class="col-2">
-                        Telemarketing
+                    <div class="row clientInfo_detail_cBrief">
+                        <div class="col-2">
+                            {{$service->service_required}}
+                        </div>
+                        <div class="col-2">
+                            {{$service->hourly_rate}} USD
+                        </div>
+                        <div class="col-1">
+                            {{$service->hours}}
+                        </div>
+                        <div class="col-2">
+                            {{$service->language}}
+                        </div>
+                        <div class="col-2">
+                            {{$service->agent_location}}
+                        </div>
+                        <div class="col-1">
+                            {{$service->number_of_agents}}
+                        </div>
+                        <div class="col-2">
+                            {!! nl2br($service->agent_experience) !!}
+                        </div>
                     </div>
-                    <div class="col-2">
-                        7.5 USD
-                    </div>
-                    <div class="col-1">
-                        10
-                    </div>
-                    <div class="col-2">
-                        English
-                    </div>
-                    <div class="col-2">
-                        Spain
-                    </div>
-                    <div class="col-1">
-                        2
-                    </div>
-                    <div class="col-2">
-                        Friendly <br/> Sociable
-                    </div>
-                </div>
+                @endforeach
+
 
                 <div class="row clientInfo" style="margin-top: 35px;">
                     <div class="col-3">
@@ -206,12 +209,21 @@
                     </div>
                 </div>
 
-
-                <div class="row" style="padding-top:15px; ">
-                    <div class="col-12" style="padding-top: 25px;">
-                        <a href="{{route('cBrief.to.pdf',$cBrief->id)}}"  target="_blank" class="btn btn-primary">Export as PDF</a>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="termsText" style="font-size: 15px;">
+                            <br>
+                            Campaign Manager (for reporting) - <span style="color: grey;">{{$cBrief->campaign_manager}}</span> <br/>
+                            Report Requirement - <span style="color: grey;">{{$cBrief->report_requirement}}</span>
+                        </div>
                     </div>
                 </div>
+
+                {{--<div class="row" style="padding-top:15px; ">--}}
+                    {{--<div class="col-12" style="padding-top: 25px;">--}}
+                        {{--<a href="{{route('cBrief.to.pdf',$cBrief->id)}}"  target="_blank" class="btn btn-primary">Export as PDF</a>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
             </div>
         </div>
     </div>

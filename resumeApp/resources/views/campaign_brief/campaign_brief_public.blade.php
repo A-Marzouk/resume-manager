@@ -58,7 +58,7 @@
                         COMPANY VALUES / DESCRIPTION
                     </div>
                     <div class="col-md-8 campaignData">
-                        {{$cBrief->company_values}}
+                        {!! nl2br($cBrief->company_values) !!}
                     </div>
                 </div>
 
@@ -67,7 +67,7 @@
                         EMAIL PITCH
                     </div>
                     <div class="col-md-8 campaignData">
-                        {{$cBrief->email_pitch}}
+                        {!! nl2br($cBrief->email_pitch) !!}
                     </div>
                 </div>
 
@@ -76,7 +76,7 @@
                         PHONE PITCH
                     </div>
                     <div class="col-md-8 campaignData">
-                        {{$cBrief->phone_pitch}}
+                        {!! nl2br($cBrief->phone_pitch) !!}
                     </div>
                 </div>
                 <div class="row campaignRow">
@@ -84,7 +84,7 @@
                         PHONE / EMAIL / DATA / CRM SYSTEMS
                     </div>
                     <div class="col-md-8 campaignData">
-                        {{$cBrief->data_systems}}
+                        {!! nl2br($cBrief->data_systems) !!}
                     </div>
                 </div>
 

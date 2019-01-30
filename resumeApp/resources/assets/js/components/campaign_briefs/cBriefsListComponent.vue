@@ -19,46 +19,95 @@
                         Edit
                     </a>
                 </span>
-                <div class="pageSubHeading text-left">
+                <div class="pageSubHeading text-left" style="padding-bottom:15px;">
                     Campaign Brief details
                 </div>
-                Company website :
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.company_website}}</b><br/>
-                Client name :
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.client_name}}</b><br/>
-                Company values :
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.company_values}}</b><br/>
-                Client contact :
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.client_contact}}</b><br/>
-                Objective :
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.objective}}</b><br/>
-                Email pitch :
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.email_pitch}}</b><br/>
-                Phone pitch :
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.phone_pitch}}</b><br/>
-                Data systems :
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.data_systems}}</b><br/>
-                Estimated duration:
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.estimated_duration}}</b><br/>
-                Time zone:
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.time_zone}}</b><br/>
-                Time needed :
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.time_needed}}</b><br/>
-                Starting date :
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.start_date}}</b><br/>
-                Contract terms:
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.contract_terms}}</b><br/>
-                Hours per week:
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.hours_per_week}}</b><br/>
-                Weekly rate:
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.weekly_rate}}</b><br/>
-                Payment Method :
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.payment_method}}</b><br/>
-                Campaign Manager:
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Client name</th>
+                        <td>{{cBrief.client_name}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Client contact </th>
+                        <td>{{cBrief.client_contact}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Company website</th>
+                        <td>{{cBrief.company_website}}</td>
+                    </tr>
+                     <tr>
+                         <th>Company values</th>
+                        <td>{{cBrief.company_values}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Objective</th>
+                        <td>{{cBrief.objective}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Email Pitch</th>
+                        <td>{{cBrief.email_pitch}}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Phone Pitch</th>
+                        <td>{{cBrief.phone_pitch}}</td>
+                    </tr>
+
+                    <tr>
+                        <th> Data systems </th>
+                        <td>{{cBrief.data_systems}}</td>
+
+                    </tr>
+
+                    <tr>
+                        <th> Estimated duration </th>
+                        <td>{{cBrief.estimated_duration}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>Time zone </th>
+                        <td>{{cBrief.time_zone}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>Time needed </th>
+                        <td>{{cBrief.time_needed}}</td>
+                    </tr>
+
+                    <tr>
+                        <th> Starting date </th>
+                        <td>{{cBrief.start_date}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>Contract terms </th>
+                        <td>{{cBrief.contract_terms}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>Hours per week </th>
+                        <td>{{cBrief.hours_per_week}}</td>
+                    </tr>
+                    <tr>
+                        <th> Weekly rate </th>
+                        <td>{{cBrief.weekly_rate}}</td>
+
+                    </tr>
+                    <tr>
+                        <th>Payment method </th>
+                        <td>{{cBrief.payment_method}}</td>
+
+                    </tr>
+                </table>
+
+                Campaign Manager :
                 <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.campaign_manager}}</b><br/>
-                Report requirement:
+                Report requirement :
                 <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{cBrief.report_requirement}}</b><br/>
-                <hr>
                 <div class="NoDecor">
                     Public link : <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
                     <a :href="'https://123workforce.com/workforce/campaign_briefs/'+cBrief.id" target="_blank">https://123workforce.com/workforce/campaign_briefs/{{cBrief.id}}</a>

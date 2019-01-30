@@ -58277,6 +58277,55 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -58490,250 +58539,117 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _c("div", { staticClass: "pageSubHeading text-left" }, [
-                _vm._v("\n                Campaign Brief details\n            ")
+              _c(
+                "div",
+                {
+                  staticClass: "pageSubHeading text-left",
+                  staticStyle: { "padding-bottom": "15px" }
+                },
+                [
+                  _vm._v(
+                    "\n                Campaign Brief details\n            "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("table", { staticClass: "table table-bordered" }, [
+                _c("tr", [
+                  _c("th", [_vm._v("Client name")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cBrief.client_name))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Client contact ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cBrief.client_contact))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Company website")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cBrief.company_website))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Company values")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cBrief.company_values))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Objective")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cBrief.objective))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Email Pitch")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cBrief.email_pitch))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Phone Pitch")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cBrief.phone_pitch))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v(" Data systems ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cBrief.data_systems))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v(" Estimated duration ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cBrief.estimated_duration))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Time zone ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cBrief.time_zone))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Time needed ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cBrief.time_needed))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v(" Starting date ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cBrief.start_date))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Contract terms ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cBrief.contract_terms))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Hours per week ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cBrief.hours_per_week))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v(" Weekly rate ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cBrief.weekly_rate))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th", [_vm._v("Payment method ")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(cBrief.payment_method))])
+                ])
               ]),
-              _vm._v("\n            Company website :\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.company_website))]
-              ),
-              _c("br"),
-              _vm._v("\n            Client name :\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.client_name))]
-              ),
-              _c("br"),
-              _vm._v("\n            Company values :\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.company_values))]
-              ),
-              _c("br"),
-              _vm._v("\n            Client contact :\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.client_contact))]
-              ),
-              _c("br"),
-              _vm._v("\n            Objective :\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.objective))]
-              ),
-              _c("br"),
-              _vm._v("\n            Email pitch :\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.email_pitch))]
-              ),
-              _c("br"),
-              _vm._v("\n            Phone pitch :\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.phone_pitch))]
-              ),
-              _c("br"),
-              _vm._v("\n            Data systems :\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.data_systems))]
-              ),
-              _c("br"),
-              _vm._v("\n            Estimated duration:\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.estimated_duration))]
-              ),
-              _c("br"),
-              _vm._v("\n            Time zone:\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.time_zone))]
-              ),
-              _c("br"),
-              _vm._v("\n            Time needed :\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.time_needed))]
-              ),
-              _c("br"),
-              _vm._v("\n            Starting date :\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.start_date))]
-              ),
-              _c("br"),
-              _vm._v("\n            Contract terms:\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.contract_terms))]
-              ),
-              _c("br"),
-              _vm._v("\n            Hours per week:\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.hours_per_week))]
-              ),
-              _c("br"),
-              _vm._v("\n            Weekly rate:\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.weekly_rate))]
-              ),
-              _c("br"),
-              _vm._v("\n            Payment Method :\n            "),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(cBrief.payment_method))]
-              ),
-              _c("br"),
-              _vm._v("\n            Campaign Manager:\n            "),
+              _vm._v("\n\n            Campaign Manager :\n            "),
               _c(
                 "b",
                 {
@@ -58748,7 +58664,7 @@ var render = function() {
                 [_vm._v(" " + _vm._s(cBrief.campaign_manager))]
               ),
               _c("br"),
-              _vm._v("\n            Report requirement:\n            "),
+              _vm._v("\n            Report requirement :\n            "),
               _c(
                 "b",
                 {
@@ -58763,8 +58679,6 @@ var render = function() {
                 [_vm._v(" " + _vm._s(cBrief.report_requirement))]
               ),
               _c("br"),
-              _vm._v(" "),
-              _c("hr"),
               _vm._v(" "),
               _c("div", { staticClass: "NoDecor" }, [
                 _vm._v("\n                Public link : "),

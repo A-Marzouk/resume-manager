@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Agent;
+use App\Recording;
 use App\Skill;
 use Illuminate\Http\Request;
 
@@ -57,11 +58,32 @@ class AgentsController extends Controller
 
     }
 
+    public function addRecordToAgent(Request $request){
+        $record = new Recording;
+        $record->title = $request->title;
+        if($request->src){
+            $record->src = $request->src;
+        }
+        elseif($request->audioFile) {
+            $pathToAudio = Upload::audio($request->audioFile, 'audioFile', '_159'.$currentUser->id.'Record_');
+            if ($pathToAudio) {
+                $record->src = '/'.$pathToAudio;
+            }
+        }
+
+        $record->save();
+    }
+
     public function deleteAgent(Request $request){
         // delete education history
         $agent = Agent::where('id',$request->agentID);
         $agent->delete();
         return 'Agent deleted';
+    }
+
+    public function getAgentRecords($agent_id){
+        $agent = Agent::where('id',$agent_id)->first();
+        return $agent->records;
     }
 
 }

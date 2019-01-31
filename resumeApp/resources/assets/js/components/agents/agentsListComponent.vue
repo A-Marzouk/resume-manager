@@ -1,7 +1,6 @@
 <template>
     <div>
-        <transition-group name="list" class="row">
-            <agent-component v-for="(agent,index) in agents" v-bind:key="index" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
+            <agent-component class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
 
                 <table class="table table-bordered">
                     <thead>
@@ -14,45 +13,41 @@
                             <th scope="col">Experience</th>
                             <th scope="col">Available hours</th>
                             <th scope="col">Location</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td scope="col">{{agent.number}}</td>
-                            <td scope="col">{{agent.name}}</td>
-                            <td scope="col">{{agent.language}}</td>
-                            <td scope="col">Recordings</td>
-                            <td scope="col">{{agent.hourly_rate}}</td>
-                            <td scope="col">{{agent.experience}}</td>
-                            <td scope="col">{{agent.available_hours}}</td>
-                            <td scope="col">{{agent.location}}</td>
-                            <td scope="col">
-                                <span class="deleteWorkBtn NoDecor" @click="deleteAgent(agent)" style=" width: 75px; margin-right:10px;">
-                                    <a href="javascript:void(0)">
-                                        <img src="/resumeApp/resources/assets/images/close_blue.png" alt="edit profile">
-                                        Delete
-                                    </a>
-                                </span>
-                            </td>
-                            <td scope="col">
-                                <span class="deleteWorkBtn NoDecor"  @click="editAgent(agent.id)" style=" width: 75px; margin-right:10px;">
-                    <a href="javascript:void(0)" data-target="#addAgentModal"  data-toggle="modal">
-                        <img src="/resumeApp/resources/assets/images/edit_blue.png" alt="edit profile" style="width: 20px;
-    padding-right: 7px;
-    padding-bottom: 2px;
-    height: 15px;">
-                        Edit
-                    </a>
-                </span>
-                            </td>
+                        <tr v-for="(agent,index) in agents" v-bind:key="index">
+                                <td scope="col">{{agent.number}}</td>
+                                <td scope="col">{{agent.name}}</td>
+                                <td scope="col">{{agent.language}}</td>
+                                <td scope="col">Recordings</td>
+                                <td scope="col">{{agent.hourly_rate}}</td>
+                                <td scope="col">{{agent.experience}}</td>
+                                <td scope="col">{{agent.available_hours}}</td>
+                                <td scope="col">{{agent.location}}</td>
+                                <td scope="col">
+                                    <span class="deleteWorkBtn NoDecor" @click="deleteAgent(agent)" style=" width: 75px; margin-right:10px;">
+                                        <a href="javascript:void(0)">
+                                            <img src="/resumeApp/resources/assets/images/close_blue.png" alt="edit profile">
+                                            Delete
+                                        </a>
+                                    </span>
+                                </td>
+                                <td scope="col">
+                                    <span class="deleteWorkBtn NoDecor"  @click="editAgent(agent.id)" style=" width: 75px; margin-right:10px;">
+                        <a href="javascript:void(0)" data-target="#addAgentModal"  data-toggle="modal">
+                            <img src="/resumeApp/resources/assets/images/edit_blue.png" alt="edit profile" style="width: 20px;
+        padding-right: 7px;
+        padding-bottom: 2px;
+        height: 15px;">
+                            Edit
+                        </a>
+                    </span>
+                                </td>
                         </tr>
                     </tbody>
                 </table>
-            </agent-component>
-        </transition-group>
-
+        </agent-component>
         <span class="deleteWorkBtn NoDecor" v-show="this.canAdd" @click="clearData" style="width:137px">
             <a href="javascript:void(0)" data-toggle="modal" data-target="#addAgentModal">
                 <img src="/resumeApp/resources/assets/images/add_blue.png" alt="edit profile">

@@ -62851,11 +62851,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -62970,169 +62965,147 @@ var render = function() {
     "div",
     [
       _c(
-        "transition-group",
-        { staticClass: "row", attrs: { name: "list" } },
-        _vm._l(_vm.agents, function(agent, index) {
-          return _c(
-            "agent-component",
-            {
-              key: index,
-              staticClass: "list-item workExperience col-12",
-              staticStyle: { margin: "0px 10px 20px" }
-            },
-            [
-              _c("table", { staticClass: "table table-bordered" }, [
-                _c("thead", [
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Language")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [
-                      _vm._v("Recordings")
-                    ]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [
-                      _vm._v("Hourly rate")
-                    ]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [
-                      _vm._v("Experience")
-                    ]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [
-                      _vm._v("Available hours")
-                    ]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("Location")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } })
-                  ])
+        "agent-component",
+        {
+          staticClass: "list-item workExperience col-12",
+          staticStyle: { margin: "0px 10px 20px" }
+        },
+        [
+          _c("table", { staticClass: "table table-bordered" }, [
+            _c("thead", [
+              _c("tr", [
+                _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+                _vm._v(" "),
+                _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+                _vm._v(" "),
+                _c("th", { attrs: { scope: "col" } }, [_vm._v("Language")]),
+                _vm._v(" "),
+                _c("th", { attrs: { scope: "col" } }, [_vm._v("Recordings")]),
+                _vm._v(" "),
+                _c("th", { attrs: { scope: "col" } }, [_vm._v("Hourly rate")]),
+                _vm._v(" "),
+                _c("th", { attrs: { scope: "col" } }, [_vm._v("Experience")]),
+                _vm._v(" "),
+                _c("th", { attrs: { scope: "col" } }, [
+                  _vm._v("Available hours")
                 ]),
                 _vm._v(" "),
-                _c("tbody", [
-                  _c("tr", [
-                    _c("td", { attrs: { scope: "col" } }, [
-                      _vm._v(_vm._s(agent.number))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { scope: "col" } }, [
-                      _vm._v(_vm._s(agent.name))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { scope: "col" } }, [
-                      _vm._v(_vm._s(agent.language))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { scope: "col" } }, [
-                      _vm._v("Recordings")
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { scope: "col" } }, [
-                      _vm._v(_vm._s(agent.hourly_rate))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { scope: "col" } }, [
-                      _vm._v(_vm._s(agent.experience))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { scope: "col" } }, [
-                      _vm._v(_vm._s(agent.available_hours))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { scope: "col" } }, [
-                      _vm._v(_vm._s(agent.location))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { scope: "col" } }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "deleteWorkBtn NoDecor",
-                          staticStyle: {
-                            width: "75px",
-                            "margin-right": "10px"
-                          },
-                          on: {
-                            click: function($event) {
-                              _vm.deleteAgent(agent)
-                            }
+                _c("th", { attrs: { scope: "col" } }, [_vm._v("Location")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.agents, function(agent, index) {
+                return _c("tr", { key: index }, [
+                  _c("td", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(agent.number))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(agent.name))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(agent.language))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { attrs: { scope: "col" } }, [_vm._v("Recordings")]),
+                  _vm._v(" "),
+                  _c("td", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(agent.hourly_rate))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(agent.experience))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(agent.available_hours))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { attrs: { scope: "col" } }, [
+                    _vm._v(_vm._s(agent.location))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { attrs: { scope: "col" } }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "deleteWorkBtn NoDecor",
+                        staticStyle: { width: "75px", "margin-right": "10px" },
+                        on: {
+                          click: function($event) {
+                            _vm.deleteAgent(agent)
                           }
-                        },
-                        [
-                          _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                        }
+                      },
+                      [
+                        _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                          _c("img", {
+                            attrs: {
+                              src:
+                                "/resumeApp/resources/assets/images/close_blue.png",
+                              alt: "edit profile"
+                            }
+                          }),
+                          _vm._v(
+                            "\n                                        Delete\n                                    "
+                          )
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { attrs: { scope: "col" } }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "deleteWorkBtn NoDecor",
+                        staticStyle: { width: "75px", "margin-right": "10px" },
+                        on: {
+                          click: function($event) {
+                            _vm.editAgent(agent.id)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href: "javascript:void(0)",
+                              "data-target": "#addAgentModal",
+                              "data-toggle": "modal"
+                            }
+                          },
+                          [
                             _c("img", {
+                              staticStyle: {
+                                width: "20px",
+                                "padding-right": "7px",
+                                "padding-bottom": "2px",
+                                height: "15px"
+                              },
                               attrs: {
                                 src:
-                                  "/resumeApp/resources/assets/images/close_blue.png",
+                                  "/resumeApp/resources/assets/images/edit_blue.png",
                                 alt: "edit profile"
                               }
                             }),
                             _vm._v(
-                              "\n                                    Delete\n                                "
+                              "\n                        Edit\n                    "
                             )
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { scope: "col" } }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "deleteWorkBtn NoDecor",
-                          staticStyle: {
-                            width: "75px",
-                            "margin-right": "10px"
-                          },
-                          on: {
-                            click: function($event) {
-                              _vm.editAgent(agent.id)
-                            }
-                          }
-                        },
-                        [
-                          _c(
-                            "a",
-                            {
-                              attrs: {
-                                href: "javascript:void(0)",
-                                "data-target": "#addAgentModal",
-                                "data-toggle": "modal"
-                              }
-                            },
-                            [
-                              _c("img", {
-                                staticStyle: {
-                                  width: "20px",
-                                  "padding-right": "7px",
-                                  "padding-bottom": "2px",
-                                  height: "15px"
-                                },
-                                attrs: {
-                                  src:
-                                    "/resumeApp/resources/assets/images/edit_blue.png",
-                                  alt: "edit profile"
-                                }
-                              }),
-                              _vm._v(
-                                "\n                    Edit\n                "
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    ])
+                          ]
+                        )
+                      ]
+                    )
                   ])
                 ])
-              ])
-            ]
-          )
-        })
+              })
+            )
+          ])
+        ]
       ),
       _vm._v(" "),
       _c(

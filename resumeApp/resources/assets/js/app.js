@@ -64,6 +64,7 @@ Vue.component('add-record-modal', require('./components/recordings/addRecordComp
 Vue.component('agents-list', require('./components/agents/agentsListComponent.vue'));
 Vue.component('agent-component', require('./components/agents/agentComponent.vue'));
 Vue.component('add-agent-modal', require('./components/agents/addAgentComponent.vue'));
+Vue.component('add-agent-record-modal', require('./components/agents/addAgentRecordComponent.vue'));
 
 
 // references

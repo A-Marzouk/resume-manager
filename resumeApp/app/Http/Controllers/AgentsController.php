@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Agent;
+use App\classes\Upload;
 use App\Recording;
 use App\Skill;
 use Illuminate\Http\Request;
@@ -23,7 +24,11 @@ class AgentsController extends Controller
 
     public function getAgents(){
        // get current authenticated freelancer :
-        return Agent::all();
+        $agents = Agent::orderBy('number','ASC')->get();
+        foreach ($agents as &$agent){
+            $agent['records'] = $agent->records;
+        }
+        return $agents;
     }
 
     public function addAgent(Request $request){
@@ -61,21 +66,39 @@ class AgentsController extends Controller
     public function addRecordToAgent(Request $request){
         $record = new Recording;
         $record->title = $request->title;
+        $record->agent_id = $request->agent_id;
+
         if($request->src){
             $record->src = $request->src;
         }
         elseif($request->audioFile) {
-            $pathToAudio = Upload::audio($request->audioFile, 'audioFile', '_159'.$currentUser->id.'Record_');
+            $pathToAudio = Upload::audio($request->audioFile, 'audioFile', '_160'.$request->agent_id.'Record_');
             if ($pathToAudio) {
                 $record->src = '/'.$pathToAudio;
             }
         }
 
         $record->save();
+        return $record;
     }
 
+        public function deleteAgentRecord(Request $request){
+            // delete education history
+            $record = Recording::where('id',$request->recordID);
+            // delete the audio file
+            if(strpos($record->first()->src,'drive.google.com') !== false){
+                $record->delete();
+                return 'Record deleted';
+            }
+            if (file_exists(substr($record->first()->src, 1))){
+                unlink(substr($record->first()->src, 1));
+            }
+            $record->delete();
+            return 'Record deleted';
+        }
+
     public function deleteAgent(Request $request){
-        // delete education history
+        // delete agent
         $agent = Agent::where('id',$request->agentID);
         $agent->delete();
         return 'Agent deleted';

@@ -20,7 +20,12 @@
                                 <td scope="col">{{agent.number}}</td>
                                 <td scope="col">{{agent.name}}</td>
                                 <td scope="col">{{agent.language}}</td>
-                                <td scope="col">Recordings</td>
+                                <td scope="col" class="col-md-2">
+                                    <span v-for="(record,index) in agent.records" v-bind:key="index">
+                                        <a :href="getRecordSrc(record)" target="_blank">{{record.title}}</a> --
+                                        <a href="javascript:void(0)" @click="deleteAgentRecord(record.id)">x</a><br/>
+                                    </span>
+                                </td>
                                 <td scope="col">{{agent.hourly_rate}}</td>
                                 <td scope="col">{{agent.experience}}</td>
                                 <td scope="col">{{agent.available_hours}}</td>
@@ -44,6 +49,14 @@
                         </a>
                     </span>
                                 </td>
+                                <td scope="col">
+                                    <span class="deleteWorkBtn NoDecor" @click="editAgent(agent.id)" style=" width: 75px; margin-right:10px;">
+                                        <a href="javascript:void(0)" data-target="#addAgentRecordModal"  data-toggle="modal">
+                                            <img src="/resumeApp/resources/assets/images/add_blue.png" alt="edit profile">
+                                            Record
+                                        </a>
+                                    </span>
+                                </td>
                         </tr>
                     </tbody>
                 </table>
@@ -56,6 +69,7 @@
         </span>
         <br/>
         <add-agent-modal @agentAdded="addAgent" :toBeEditedAgent="toBeEditedAgent"></add-agent-modal>
+        <add-agent-record-modal :toBeEditedAgent="toBeEditedAgent"></add-agent-record-modal>
     </div>
 </template>
 
@@ -73,7 +87,8 @@
                     'hourly_rate' : '',
                     'available_hours' : '',
                     'location' : '',
-                    'experience'  : ''
+                    'experience'  : '',
+                    records:[]
                 }
             }
         },
@@ -84,11 +99,6 @@
                     (response) => {
                         let currAgents =  response.data;
                         $.each(currAgents, function(i){
-                            if(currAgents[i].currently_learning == "0") {
-                                currAgents[i].currently_learning = false;
-                            }else{
-                                currAgents[i].currently_learning = true;
-                            }
                         });
                         this.agents = currAgents;
                         this.checkMaxAgents();
@@ -124,6 +134,30 @@
 
                 });
             },
+            deleteAgentRecord(record_id){
+                if(!confirm('Are you sure you want to delete this record ?')){
+                    return;
+                }
+              axios.post('/workforce/agent/delete_record',{recordID:record_id}).then( response =>{
+                  let agents = this.agents;
+                  $.each(agents, function(i){
+                      $.each(agents[i].records,function (j) {
+                          if(agents[i].records[j].id === record_id) {
+                              agents[i].records.splice(j,1);
+                              return false;
+                          }
+                      });
+                  });
+              });
+            },
+            getRecordSrc(record){
+                if(!record.src.includes('resumeApp/uploads')){
+                    return 'http://'+record.src;
+                }
+                else{
+                    return 'https://123workforce.com' + record.src ;
+                }
+            },
 
             editAgent(agentID){
                 let agents = this.agents;
@@ -154,7 +188,8 @@
                     'hourly_rate' : '',
                     'available_hours' : '',
                     'location' : '',
-                    'experience'  : ''
+                    'experience'  : '',
+                    records:[]
                 };
             }
         },

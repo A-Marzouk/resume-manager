@@ -14358,6 +14358,7 @@ Vue.component('add-record-modal', __webpack_require__(124));
 Vue.component('agents-list', __webpack_require__(127));
 Vue.component('agent-component', __webpack_require__(132));
 Vue.component('add-agent-modal', __webpack_require__(135));
+Vue.component('add-agent-record-modal', __webpack_require__(233));
 
 // references
 Vue.component('references-list', __webpack_require__(138));
@@ -62851,6 +62852,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -62865,7 +62880,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'hourly_rate': '',
                 'available_hours': '',
                 'location': '',
-                'experience': ''
+                'experience': '',
+                records: []
             }
         };
     },
@@ -62877,13 +62893,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/workforce/get_agents').then(function (response) {
                 var currAgents = response.data;
-                $.each(currAgents, function (i) {
-                    if (currAgents[i].currently_learning == "0") {
-                        currAgents[i].currently_learning = false;
-                    } else {
-                        currAgents[i].currently_learning = true;
-                    }
-                });
+                $.each(currAgents, function (i) {});
                 _this.agents = currAgents;
                 _this.checkMaxAgents();
             });
@@ -62916,6 +62926,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.checkMaxAgents();
             });
         },
+        deleteAgentRecord: function deleteAgentRecord(record_id) {
+            var _this3 = this;
+
+            if (!confirm('Are you sure you want to delete this record ?')) {
+                return;
+            }
+            axios.post('/workforce/agent/delete_record', { recordID: record_id }).then(function (response) {
+                var agents = _this3.agents;
+                $.each(agents, function (i) {
+                    $.each(agents[i].records, function (j) {
+                        if (agents[i].records[j].id === record_id) {
+                            agents[i].records.splice(j, 1);
+                            return false;
+                        }
+                    });
+                });
+            });
+        },
+        getRecordSrc: function getRecordSrc(record) {
+            if (!record.src.includes('resumeApp/uploads')) {
+                return 'http://' + record.src;
+            } else {
+                return 'https://123workforce.com' + record.src;
+            }
+        },
         editAgent: function editAgent(agentID) {
             var agents = this.agents;
             var editedAgent = {};
@@ -62943,7 +62978,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'hourly_rate': '',
                 'available_hours': '',
                 'location': '',
-                'experience': ''
+                'experience': '',
+                records: []
             };
         }
     },
@@ -63010,7 +63046,38 @@ var render = function() {
                     _vm._v(_vm._s(agent.language))
                   ]),
                   _vm._v(" "),
-                  _c("td", { attrs: { scope: "col" } }, [_vm._v("Recordings")]),
+                  _c(
+                    "td",
+                    { staticClass: "col-md-2", attrs: { scope: "col" } },
+                    _vm._l(agent.records, function(record, index) {
+                      return _c("span", { key: index }, [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href: _vm.getRecordSrc(record),
+                              target: "_blank"
+                            }
+                          },
+                          [_vm._v(_vm._s(record.title))]
+                        ),
+                        _vm._v(" --\n                                    "),
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "javascript:void(0)" },
+                            on: {
+                              click: function($event) {
+                                _vm.deleteAgentRecord(record.id)
+                              }
+                            }
+                          },
+                          [_vm._v("x")]
+                        ),
+                        _c("br")
+                      ])
+                    })
+                  ),
                   _vm._v(" "),
                   _c("td", { attrs: { scope: "col" } }, [
                     _vm._v(_vm._s(agent.hourly_rate))
@@ -63100,6 +63167,45 @@ var render = function() {
                         )
                       ]
                     )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { attrs: { scope: "col" } }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "deleteWorkBtn NoDecor",
+                        staticStyle: { width: "75px", "margin-right": "10px" },
+                        on: {
+                          click: function($event) {
+                            _vm.editAgent(agent.id)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href: "javascript:void(0)",
+                              "data-target": "#addAgentRecordModal",
+                              "data-toggle": "modal"
+                            }
+                          },
+                          [
+                            _c("img", {
+                              attrs: {
+                                src:
+                                  "/resumeApp/resources/assets/images/add_blue.png",
+                                alt: "edit profile"
+                              }
+                            }),
+                            _vm._v(
+                              "\n                                        Record\n                                    "
+                            )
+                          ]
+                        )
+                      ]
+                    )
                   ])
                 ])
               })
@@ -63131,6 +63237,10 @@ var render = function() {
       _c("add-agent-modal", {
         attrs: { toBeEditedAgent: _vm.toBeEditedAgent },
         on: { agentAdded: _vm.addAgent }
+      }),
+      _vm._v(" "),
+      _c("add-agent-record-modal", {
+        attrs: { toBeEditedAgent: _vm.toBeEditedAgent }
       })
     ],
     1
@@ -75698,6 +75808,504 @@ if (navigator.mediaDevices.getUserMedia) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(234)
+/* template */
+var __vue_template__ = __webpack_require__(235)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\agents\\addAgentRecordComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6f131f1e", Component.options)
+  } else {
+    hotAPI.reload("data-v-6f131f1e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 234 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['toBeEditedAgent'],
+    data: function data() {
+        return {
+            uploadPercentage: 0,
+            uploadMethod: '',
+            file: '',
+            record: {
+                src: '',
+                title: ''
+            }
+        };
+    },
+
+    methods: {
+        setUploadMethod: function setUploadMethod(method) {
+            this.uploadMethod = method;
+        },
+        handleFileUpload: function handleFileUpload() {
+            this.file = this.$refs.file.files[0];
+        },
+        submitForm: function submitForm() {
+            var _this = this;
+
+            if (this.record.src.length < 1 && this.file.length < 1) {
+                alert('Please upload the required record..');
+                return;
+            }
+            var formData = new FormData();
+            formData.append('audioFile', this.file);
+            formData.append('src', this.record.src);
+            formData.append('title', this.record.title);
+            formData.append('agent.id', this.toBeEditedAgent.id);
+
+            axios.post('/workforce/agent/add_record', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                onUploadProgress: function (progressEvent) {
+                    this.uploadPercentage = parseInt(Math.round(progressEvent.loaded * 100 / progressEvent.total));
+                }.bind(this)
+            }).then(function (response) {
+                var newRecord = response.data;
+                _this.toBeEditedAgent.records.push(newRecord);
+            });
+            $('#closeAgentRecordModal').click();
+            this.clearRecordData();
+            // changes saved :
+            $('#changesSaved').fadeIn('slow');
+            setTimeout(function () {
+                $('#changesSaved').fadeOut();
+            }, 2000);
+        },
+        clearRecordData: function clearRecordData() {
+            this.record = {
+                src: '',
+                title: ''
+            };
+        }
+    },
+    mounted: function mounted() {}
+});
+
+/***/ }),
+/* 235 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "addAgentRecordModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addAgentRecordModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "form",
+                  {
+                    attrs: {
+                      action: "/workforce/agent/add_record",
+                      method: "post"
+                    },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.submitForm($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "form-group col-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "title" }
+                          },
+                          [_vm._v(" Title : ")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.record.title,
+                              expression: "record.title"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "title",
+                            type: "text",
+                            name: "title",
+                            required: "",
+                            autofocus: ""
+                          },
+                          domProps: { value: _vm.record.title },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.record, "title", $event.target.value)
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.uploadMethod.length < 1,
+                              expression: "uploadMethod.length < 1"
+                            }
+                          ],
+                          staticClass: "form-group col-md-12"
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "panelFormLabel",
+                              staticStyle: { "padding-bottom": "15px" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    Please choose uploading method :\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "col-md-6 col-12",
+                                staticStyle: { "padding-top": "10px" }
+                              },
+                              [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn btn-primary btn-block",
+                                    attrs: { href: "javascript:void(0)" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.setUploadMethod("upload")
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Upload audio file")]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "col-md-6 col-12",
+                                staticStyle: { "padding-top": "10px" }
+                              },
+                              [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn btn-primary btn-block",
+                                    attrs: { href: "javascript:void(0)" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.setUploadMethod("url")
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Link")]
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("br")
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.uploadMethod == "upload",
+                              expression: "uploadMethod == 'upload'"
+                            }
+                          ],
+                          attrs: { id: "uploadFile" }
+                        },
+                        [
+                          _c("div", { staticClass: "form-group col-md-12" }, [
+                            _c("input", {
+                              ref: "file",
+                              attrs: { type: "file", id: "file" },
+                              on: { change: _vm.handleFileUpload }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c(
+                              "div",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.uploadPercentage > 0,
+                                    expression: "uploadPercentage > 0"
+                                  }
+                                ],
+                                staticClass: "col-md-12"
+                              },
+                              [
+                                _c("progress", {
+                                  staticStyle: {
+                                    width: "300px",
+                                    height: "5px"
+                                  },
+                                  attrs: { max: "100" },
+                                  domProps: { value: _vm.uploadPercentage }
+                                })
+                              ]
+                            )
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.uploadMethod == "url",
+                              expression: "uploadMethod == 'url'"
+                            }
+                          ],
+                          staticClass: "form-group col-md-12",
+                          attrs: { id: "urlToAudio" }
+                        },
+                        [
+                          _c("label", { staticClass: "panelFormLabel" }, [
+                            _vm._v("Link to record :")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.record.src,
+                                expression: "record.src"
+                              }
+                            ],
+                            staticClass: "form-control panelFormInput",
+                            attrs: { type: "text" },
+                            domProps: { value: _vm.record.src },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.record, "src", $event.target.value)
+                              }
+                            }
+                          })
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "text-right", staticStyle: { padding: "15px 10px 0 0" } },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "modal",
+              "aria-label": "Close",
+              id: "closeAgentRecordModal"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Save")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6f131f1e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -220,6 +220,8 @@ Route::get('/workforce/get_agent_records/{agent_id}','AgentsController@getAgentR
 
 Route::post('/workforce/add_agent','AgentsController@addAgent')->name('add.agent');
 Route::post('/workforce/delete_agent','AgentsController@deleteAgent')->name('delete.agent');
+Route::post('/workforce/agent/add_record','AgentsController@addRecordToAgent')->name('add.agent.record');
+Route::post('/workforce/agent/delete_record','AgentsController@deleteAgentRecord')->name('delete.agent.record');
 
 
 

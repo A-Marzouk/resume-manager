@@ -213,6 +213,13 @@ Route::post('/freelancer/addreference/','ReferencesController@addReference')->na
 Route::post('/freelancer/deletereference/','ReferencesController@deleteReference')->name('delete.reference');
 
 
+// agents page:
+Route::get('/workforce/agents','AgentsController@viewAgents')->name('view.agents');
+Route::get('/workforce/get_agents','AgentsController@getAgents')->name('get.agents');
+
+Route::post('/workforce/add_agent','AgentsController@addAgent')->name('add.agent');
+Route::post('/workforce/delete_agent','AgentsController@deleteAgent')->name('delete.agent');
+
 
 
 // skills

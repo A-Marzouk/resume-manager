@@ -60,6 +60,12 @@ Vue.component('records-list', require('./components/recordings/recordsListCompon
 Vue.component('record-component', require('./components/recordings/recordComponent.vue'));
 Vue.component('add-record-modal', require('./components/recordings/addRecordComponent.vue'));
 
+//agents:
+Vue.component('agents-list', require('./components/agents/agentsListComponent.vue'));
+Vue.component('agent-component', require('./components/agents/agentComponent.vue'));
+Vue.component('add-agent-modal', require('./components/agents/addAgentComponent.vue'));
+
+
 // references
 Vue.component('references-list', require('./components/references/referencesListComponent.vue'));
 Vue.component('reference-component', require('./components/references/referenceComponent.vue'));
@@ -114,6 +120,12 @@ if ($("#searchFreelancers").length !== 0){
 if ($("#record_input").length !== 0){
     let record_input = new Vue({
         el:'#record_input'
+    });
+}
+
+if ($("#agents").length !== 0){
+    let agents = new Vue({
+        el:'#agents'
     });
 }
 

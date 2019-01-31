@@ -20,6 +20,12 @@
             <a class="btn btn-block btn-outline-primary" href="{{route('view.campaigns')}}"  style="margin-bottom: 6px;">
                 Campaigns
             </a>
+        </li>
+        <li class="col-md-12">
+            <a class="btn btn-block btn-outline-primary" href="{{route('view.agents')}}"  style="margin-bottom: 6px;">
+                Agents
+            </a>
+        </li>
 
 
         <li class="col-md-12">

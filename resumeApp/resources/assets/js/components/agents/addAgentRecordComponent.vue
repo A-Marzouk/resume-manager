@@ -119,6 +119,7 @@
                     src:'',
                     title:''
                 }
+                this.uploadMethod='';
             }
         },
         mounted(){

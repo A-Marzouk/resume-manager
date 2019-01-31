@@ -76074,6 +76074,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 src: '',
                 title: ''
             };
+            this.uploadMethod = '';
         }
     },
     mounted: function mounted() {}

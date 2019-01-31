@@ -63085,6 +63085,14 @@ var render = function() {
                         _c(
                           "span",
                           {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.admin,
+                                expression: "admin"
+                              }
+                            ],
                             staticClass: "deleteWorkBtn NoDecor",
                             staticStyle: {
                               width: "50px",

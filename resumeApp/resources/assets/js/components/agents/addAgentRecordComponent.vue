@@ -48,6 +48,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
+                                <a href="javascript:void(0)" class="btn btn-primary" @click="clearUploadMethod" v-show="uploadMethod.length > 0"> Back </a>
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </div>
                         </form>
@@ -118,8 +119,14 @@
                 this.record = {
                     src:'',
                     title:''
-                }
-            }
+                };
+                this.file='';
+                this.uploadPercentage = 0;
+                this.uploadMethod='';
+            },
+            clearUploadMethod(){
+                this.uploadMethod = '' ;
+            },
         },
         mounted(){
         }

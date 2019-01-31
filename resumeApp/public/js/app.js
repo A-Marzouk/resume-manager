@@ -76014,6 +76014,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedAgent'],
@@ -76074,6 +76075,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 src: '',
                 title: ''
             };
+            this.file = '';
+            this.uploadPercentage = 0;
+            this.uploadMethod = '';
+        },
+        clearUploadMethod: function clearUploadMethod() {
+            this.uploadMethod = '';
         }
     },
     mounted: function mounted() {}
@@ -76338,7 +76345,34 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(1)
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "a",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.uploadMethod.length > 0,
+                              expression: "uploadMethod.length > 0"
+                            }
+                          ],
+                          staticClass: "btn btn-primary",
+                          attrs: { href: "javascript:void(0)" },
+                          on: { click: _vm.clearUploadMethod }
+                        },
+                        [_vm._v(" Back ")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "submit" }
+                        },
+                        [_vm._v("Save")]
+                      )
+                    ])
                   ]
                 )
               ])
@@ -76373,18 +76407,6 @@ var staticRenderFns = [
         )
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save")]
-      )
-    ])
   }
 ]
 render._withStripped = true

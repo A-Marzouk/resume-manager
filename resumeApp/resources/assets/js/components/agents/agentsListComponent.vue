@@ -23,7 +23,7 @@
                                 <td scope="col">
                                     <span v-for="(record,index) in agent.records" v-bind:key="index">
                                         <a :href="getRecordSrc(record)" target="_blank">{{record.title}}</a>
-                                          <span class="deleteWorkBtn NoDecor" @click="deleteAgentRecord(record.id)" style=" width: 50px; margin-right:10px;">
+                                          <span v-show="admin" class="deleteWorkBtn NoDecor" @click="deleteAgentRecord(record.id)" style=" width: 50px; margin-right:10px;">
                                             <a href="javascript:void(0)">
                                                 <img src="/resumeApp/resources/assets/images/close_blue.png" alt="edit profile">
                                                 Del

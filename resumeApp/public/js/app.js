@@ -62866,12 +62866,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             agents: [],
             canAdd: true,
+            admin: false,
             toBeEditedAgent: {
                 'id': '',
                 'number': '',
@@ -62981,10 +62989,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'experience': '',
                 records: []
             };
+        },
+        isAdmin: function isAdmin() {
+            var _this4 = this;
+
+            axios.get('/workforce/isAdmin').then(function (response) {
+                if (response.data === 'admin') {
+                    _this4.admin = true;
+                } else {
+                    _this4.admin = false;
+                }
+            });
         }
     },
 
     created: function created() {
+        this.isAdmin();
         this.getCurrentAgents();
     }
 });
@@ -63048,7 +63068,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "td",
-                    { staticClass: "col-md-2", attrs: { scope: "col" } },
+                    { attrs: { scope: "col" } },
                     _vm._l(agent.records, function(record, index) {
                       return _c("span", { key: index }, [
                         _c(
@@ -63061,19 +63081,37 @@ var render = function() {
                           },
                           [_vm._v(_vm._s(record.title))]
                         ),
-                        _vm._v(" --\n                                    "),
+                        _vm._v(" "),
                         _c(
-                          "a",
+                          "span",
                           {
-                            attrs: { href: "javascript:void(0)" },
+                            staticClass: "deleteWorkBtn NoDecor",
+                            staticStyle: {
+                              width: "50px",
+                              "margin-right": "10px"
+                            },
                             on: {
                               click: function($event) {
                                 _vm.deleteAgentRecord(record.id)
                               }
                             }
                           },
-                          [_vm._v("x")]
+                          [
+                            _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                              _c("img", {
+                                attrs: {
+                                  src:
+                                    "/resumeApp/resources/assets/images/close_blue.png",
+                                  alt: "edit profile"
+                                }
+                              }),
+                              _vm._v(
+                                "\n                                            Del\n                                        "
+                              )
+                            ])
+                          ]
                         ),
+                        _vm._v(" "),
                         _c("br")
                       ])
                     })
@@ -63095,118 +63133,169 @@ var render = function() {
                     _vm._v(_vm._s(agent.location))
                   ]),
                   _vm._v(" "),
-                  _c("td", { attrs: { scope: "col" } }, [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "deleteWorkBtn NoDecor",
-                        staticStyle: { width: "75px", "margin-right": "10px" },
-                        on: {
-                          click: function($event) {
-                            _vm.deleteAgent(agent)
-                          }
+                  _c(
+                    "td",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.admin,
+                          expression: "admin"
                         }
-                      },
-                      [
-                        _c("a", { attrs: { href: "javascript:void(0)" } }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "/resumeApp/resources/assets/images/close_blue.png",
-                              alt: "edit profile"
+                      ],
+                      attrs: { scope: "col" }
+                    },
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "deleteWorkBtn NoDecor",
+                          staticStyle: {
+                            width: "75px",
+                            "margin-right": "10px"
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.deleteAgent(agent)
                             }
-                          }),
-                          _vm._v(
-                            "\n                                        Delete\n                                    "
+                          }
+                        },
+                        [
+                          _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                            _c("img", {
+                              attrs: {
+                                src:
+                                  "/resumeApp/resources/assets/images/close_blue.png",
+                                alt: "edit profile"
+                              }
+                            }),
+                            _vm._v(
+                              "\n                                            Delete\n                                        "
+                            )
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.admin,
+                          expression: "admin"
+                        }
+                      ],
+                      attrs: { scope: "col" }
+                    },
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "deleteWorkBtn NoDecor",
+                          staticStyle: {
+                            width: "75px",
+                            "margin-right": "10px"
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.editAgent(agent.id)
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                href: "javascript:void(0)",
+                                "data-target": "#addAgentModal",
+                                "data-toggle": "modal"
+                              }
+                            },
+                            [
+                              _c("img", {
+                                staticStyle: {
+                                  width: "20px",
+                                  "padding-right": "7px",
+                                  "padding-bottom": "2px",
+                                  height: "15px"
+                                },
+                                attrs: {
+                                  src:
+                                    "/resumeApp/resources/assets/images/edit_blue.png",
+                                  alt: "edit profile"
+                                }
+                              }),
+                              _vm._v(
+                                "\n                            Edit\n                        "
+                              )
+                            ]
                           )
-                        ])
-                      ]
-                    )
-                  ]),
+                        ]
+                      )
+                    ]
+                  ),
                   _vm._v(" "),
-                  _c("td", { attrs: { scope: "col" } }, [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "deleteWorkBtn NoDecor",
-                        staticStyle: { width: "75px", "margin-right": "10px" },
-                        on: {
-                          click: function($event) {
-                            _vm.editAgent(agent.id)
-                          }
+                  _c(
+                    "td",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.admin,
+                          expression: "admin"
                         }
-                      },
-                      [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              href: "javascript:void(0)",
-                              "data-target": "#addAgentModal",
-                              "data-toggle": "modal"
-                            }
+                      ],
+                      attrs: { scope: "col" }
+                    },
+                    [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "deleteWorkBtn NoDecor",
+                          staticStyle: {
+                            width: "75px",
+                            "margin-right": "10px"
                           },
-                          [
-                            _c("img", {
-                              staticStyle: {
-                                width: "20px",
-                                "padding-right": "7px",
-                                "padding-bottom": "2px",
-                                height: "15px"
-                              },
-                              attrs: {
-                                src:
-                                  "/resumeApp/resources/assets/images/edit_blue.png",
-                                alt: "edit profile"
-                              }
-                            }),
-                            _vm._v(
-                              "\n                        Edit\n                    "
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { attrs: { scope: "col" } }, [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "deleteWorkBtn NoDecor",
-                        staticStyle: { width: "75px", "margin-right": "10px" },
-                        on: {
-                          click: function($event) {
-                            _vm.editAgent(agent.id)
+                          on: {
+                            click: function($event) {
+                              _vm.editAgent(agent.id)
+                            }
                           }
-                        }
-                      },
-                      [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              href: "javascript:void(0)",
-                              "data-target": "#addAgentRecordModal",
-                              "data-toggle": "modal"
-                            }
-                          },
-                          [
-                            _c("img", {
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
                               attrs: {
-                                src:
-                                  "/resumeApp/resources/assets/images/add_blue.png",
-                                alt: "edit profile"
+                                href: "javascript:void(0)",
+                                "data-target": "#addAgentRecordModal",
+                                "data-toggle": "modal"
                               }
-                            }),
-                            _vm._v(
-                              "\n                                        Record\n                                    "
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ])
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  src:
+                                    "/resumeApp/resources/assets/images/add_blue.png",
+                                  alt: "edit profile"
+                                }
+                              }),
+                              _vm._v(
+                                "\n                                        Record\n                                    "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
                 ])
               })
             )
@@ -63221,8 +63310,8 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: this.canAdd,
-              expression: "this.canAdd"
+              value: _vm.admin,
+              expression: "admin"
             }
           ],
           staticClass: "deleteWorkBtn NoDecor",

@@ -20,36 +20,43 @@
                                 <td scope="col">{{agent.number}}</td>
                                 <td scope="col">{{agent.name}}</td>
                                 <td scope="col">{{agent.language}}</td>
-                                <td scope="col" class="col-md-2">
+                                <td scope="col">
                                     <span v-for="(record,index) in agent.records" v-bind:key="index">
-                                        <a :href="getRecordSrc(record)" target="_blank">{{record.title}}</a> --
-                                        <a href="javascript:void(0)" @click="deleteAgentRecord(record.id)">x</a><br/>
+                                        <a :href="getRecordSrc(record)" target="_blank">{{record.title}}</a>
+                                          <span class="deleteWorkBtn NoDecor" @click="deleteAgentRecord(record.id)" style=" width: 50px; margin-right:10px;">
+                                            <a href="javascript:void(0)">
+                                                <img src="/resumeApp/resources/assets/images/close_blue.png" alt="edit profile">
+                                                Del
+                                            </a>
+                                        </span>
+                                      <br/>
                                     </span>
                                 </td>
                                 <td scope="col">{{agent.hourly_rate}}</td>
                                 <td scope="col">{{agent.experience}}</td>
                                 <td scope="col">{{agent.available_hours}}</td>
                                 <td scope="col">{{agent.location}}</td>
-                                <td scope="col">
-                                    <span class="deleteWorkBtn NoDecor" @click="deleteAgent(agent)" style=" width: 75px; margin-right:10px;">
-                                        <a href="javascript:void(0)">
-                                            <img src="/resumeApp/resources/assets/images/close_blue.png" alt="edit profile">
-                                            Delete
-                                        </a>
-                                    </span>
-                                </td>
-                                <td scope="col">
-                                    <span class="deleteWorkBtn NoDecor"  @click="editAgent(agent.id)" style=" width: 75px; margin-right:10px;">
-                        <a href="javascript:void(0)" data-target="#addAgentModal"  data-toggle="modal">
-                            <img src="/resumeApp/resources/assets/images/edit_blue.png" alt="edit profile" style="width: 20px;
-        padding-right: 7px;
-        padding-bottom: 2px;
-        height: 15px;">
-                            Edit
-                        </a>
-                    </span>
-                                </td>
-                                <td scope="col">
+
+                                    <td v-show="admin" scope="col">
+                                        <span class="deleteWorkBtn NoDecor" @click="deleteAgent(agent)" style=" width: 75px; margin-right:10px;">
+                                            <a href="javascript:void(0)">
+                                                <img src="/resumeApp/resources/assets/images/close_blue.png" alt="edit profile">
+                                                Delete
+                                            </a>
+                                        </span>
+                                    </td>
+                                    <td v-show="admin" scope="col">
+                                        <span class="deleteWorkBtn NoDecor"  @click="editAgent(agent.id)" style=" width: 75px; margin-right:10px;">
+                            <a href="javascript:void(0)" data-target="#addAgentModal"  data-toggle="modal">
+                                <img src="/resumeApp/resources/assets/images/edit_blue.png" alt="edit profile" style="width: 20px;
+            padding-right: 7px;
+            padding-bottom: 2px;
+            height: 15px;">
+                                Edit
+                            </a>
+                        </span>
+                                    </td>
+                                    <td v-show="admin" scope="col">
                                     <span class="deleteWorkBtn NoDecor" @click="editAgent(agent.id)" style=" width: 75px; margin-right:10px;">
                                         <a href="javascript:void(0)" data-target="#addAgentRecordModal"  data-toggle="modal">
                                             <img src="/resumeApp/resources/assets/images/add_blue.png" alt="edit profile">
@@ -61,7 +68,7 @@
                     </tbody>
                 </table>
         </agent-component>
-        <span class="deleteWorkBtn NoDecor" v-show="this.canAdd" @click="clearData" style="width:137px">
+        <span v-show="admin" class="deleteWorkBtn NoDecor" @click="clearData" style="width:137px">
             <a href="javascript:void(0)" data-toggle="modal" data-target="#addAgentModal">
                 <img src="/resumeApp/resources/assets/images/add_blue.png" alt="edit profile">
                 Add agent
@@ -79,6 +86,7 @@
             return {
                 agents: [],
                 canAdd:true,
+                admin:false,
                 toBeEditedAgent:{
                     'id':'',
                     'number' : '',
@@ -191,10 +199,21 @@
                     'experience'  : '',
                     records:[]
                 };
+            },
+            isAdmin(){
+                axios.get('/workforce/isAdmin').then( (response)=>{
+                    if(response.data === 'admin'){
+                        this.admin = true;
+                    }
+                    else{
+                        this.admin = false;
+                    }
+                });
             }
         },
 
         created() {
+            this.isAdmin();
             this.getCurrentAgents();
         }
     }

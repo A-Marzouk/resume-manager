@@ -215,6 +215,7 @@ Route::post('/freelancer/deletereference/','ReferencesController@deleteReference
 
 // agents page:
 Route::get('/workforce/agents','AgentsController@viewAgents')->name('view.agents');
+Route::get('/workforce/isAdmin','AgentsController@isAdmin')->name('check.admin');
 Route::get('/workforce/get_agents','AgentsController@getAgents')->name('get.agents');
 Route::get('/workforce/get_agent_records/{agent_id}','AgentsController@getAgentRecords')->name('get.agent.records');
 

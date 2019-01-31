@@ -12,14 +12,25 @@ namespace App\Http\Controllers;
 use App\Agent;
 use App\classes\Upload;
 use App\Recording;
-use App\Skill;
 use Illuminate\Http\Request;
 
 class AgentsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin')->except('viewAgents','isAdmin','getAgents');
+    }
+
     public function viewAgents(){
         $agents = $this->getAgents();
         return view('agents',compact('agents'));
+    }
+
+    public function isAdmin(){
+        if (auth()->user() &&  auth()->user()->admin == 1) {
+            return 'admin';
+        }
+        return 'not-admin';
     }
 
     public function getAgents(){

@@ -12,7 +12,7 @@
                         <form action="/workforce/agent/add_record" method="post" @submit.prevent="submitForm">
                             <div class="row">
                                 <div class="form-group col-12">
-                                    <label for="title" class="panelFormLabel"> Title : </label>
+                                    <label for="title" class="panelFormLabel"> Title : *</label>
                                     <input id="title" type="text" class="form-control" name="title" v-model="record.title" required autofocus>
                                 </div>
 

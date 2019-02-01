@@ -21,16 +21,18 @@
                                 <td scope="col">{{agent.name}}</td>
                                 <td scope="col">{{agent.language}}</td>
                                 <td scope="col">
-                                    <span v-for="(record,index) in agent.records" v-bind:key="index">
+                                    <div v-for="(record,index) in agent.records" v-bind:key="index">
                                         <a :href="getRecordSrc(record)" target="_blank">{{record.title}}</a>
-                                          <span v-show="admin" class="deleteWorkBtn NoDecor" @click="deleteAgentRecord(record.id)" style=" width: 50px; margin-right:10px;">
+                                        <div v-show="admin" class="deleteWorkBtn NoDecor" @click="deleteAgentRecord(record.id)" style=" width: 75px; float: none;">
                                             <a href="javascript:void(0)">
                                                 <img src="/resumeApp/resources/assets/images/close_blue.png" alt="edit profile">
-                                                Del
+                                                Delete
                                             </a>
-                                        </span>
-                                      <br/>
-                                    </span>
+                                        </div>
+                                        <div v-show="index < agent.records.length-1">
+                                            <hr>
+                                        </div>
+                                    </div>
                                 </td>
                                 <td scope="col">{{agent.hourly_rate}}</td>
                                 <td scope="col">{{agent.experience}}</td>

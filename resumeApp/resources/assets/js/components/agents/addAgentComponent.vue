@@ -12,7 +12,7 @@
                         <form action="/freelancer/addeducation/" method="post" @submit.prevent="submitForm">
                           <div class="row">
                               <div class="form-group col-md-6">
-                                  <label for="number" class="panelFormLabel">Order :</label>
+                                  <label for="number" class="panelFormLabel">Order : *</label>
                                   <select name="number" class="form-control" id="number" v-model="toBeEditedAgent.number">
                                       <option v-for="i in (1,200)" :value="i">{{i}}</option>
                                   </select>
@@ -25,25 +25,25 @@
                                   </select>
                               </div>
                               <div class="form-group col-md-6">
-                                  <label for="name" class="panelFormLabel">Name :</label>
+                                  <label for="name" class="panelFormLabel">Name : *</label>
                                   <input type="text" class="form-control" id="name" name="name" v-model="toBeEditedAgent.name" required>
                               </div>
                               <div class="form-group col-md-6">
-                                  <label for="language" class="panelFormLabel">Language :</label>
+                                  <label for="language" class="panelFormLabel">Language : *</label>
                                   <input type="text" class="form-control" id="language" name="language" v-model="toBeEditedAgent.language" required>
                               </div>
                               <div class="form-group col-md-12">
-                                  <label for="location" class="panelFormLabel">Location :</label>
+                                  <label for="location" class="panelFormLabel">Location : *</label>
                                   <input type="text" class="form-control" id="location" name="location" v-model="toBeEditedAgent.location" required>
                               </div>
                               <div class="form-group col-md-12">
-                                    <label for="experience" class="panelFormLabel">Experience :</label>
-                                    <textarea class="form-control" rows="3" id="experience" name="experience" v-model="toBeEditedAgent.experience" required>
+                                    <label for="experience" class="panelFormLabel">Experience :*</label>
+                                    <textarea class="form-control" rows="3" id="experience" name="experience" v-model="toBeEditedAgent.experience">
                                     </textarea>
                               </div>
                               <div class="form-group col-md-12">
                                   <label for="available_hours" class="panelFormLabel">Available hours :</label>
-                                  <textarea class="form-control" rows="3" id="available_hours" name="experience" v-model="toBeEditedAgent.available_hours" required>
+                                  <textarea class="form-control" rows="3" id="available_hours" name="experience" v-model="toBeEditedAgent.available_hours">
                                     </textarea>
                               </div>
                           </div>
@@ -80,8 +80,9 @@
                     setTimeout(function () {
                         $('#changesSaved').fadeOut();
                     },2000);
+
+                    $('#closeAgentModal').click();
                 });
-                $('#closeAgentModal').click();
             },
         },
         mounted(){

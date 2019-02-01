@@ -63613,8 +63613,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 setTimeout(function () {
                     $('#changesSaved').fadeOut();
                 }, 2000);
+
+                $('#closeAgentModal').click();
             });
-            $('#closeAgentModal').click();
         }
     },
     mounted: function mounted() {}
@@ -63673,7 +63674,7 @@ var render = function() {
                             staticClass: "panelFormLabel",
                             attrs: { for: "number" }
                           },
-                          [_vm._v("Order :")]
+                          [_vm._v("Order : *")]
                         ),
                         _vm._v(" "),
                         _c(
@@ -63775,7 +63776,7 @@ var render = function() {
                             staticClass: "panelFormLabel",
                             attrs: { for: "name" }
                           },
-                          [_vm._v("Name :")]
+                          [_vm._v("Name : *")]
                         ),
                         _vm._v(" "),
                         _c("input", {
@@ -63817,7 +63818,7 @@ var render = function() {
                             staticClass: "panelFormLabel",
                             attrs: { for: "language" }
                           },
-                          [_vm._v("Language :")]
+                          [_vm._v("Language : *")]
                         ),
                         _vm._v(" "),
                         _c("input", {
@@ -63859,7 +63860,7 @@ var render = function() {
                             staticClass: "panelFormLabel",
                             attrs: { for: "location" }
                           },
-                          [_vm._v("Location :")]
+                          [_vm._v("Location : *")]
                         ),
                         _vm._v(" "),
                         _c("input", {
@@ -63901,7 +63902,7 @@ var render = function() {
                             staticClass: "panelFormLabel",
                             attrs: { for: "experience" }
                           },
-                          [_vm._v("Experience :")]
+                          [_vm._v("Experience :*")]
                         ),
                         _vm._v(" "),
                         _c("textarea", {
@@ -63917,8 +63918,7 @@ var render = function() {
                           attrs: {
                             rows: "3",
                             id: "experience",
-                            name: "experience",
-                            required: ""
+                            name: "experience"
                           },
                           domProps: { value: _vm.toBeEditedAgent.experience },
                           on: {
@@ -63959,8 +63959,7 @@ var render = function() {
                           attrs: {
                             rows: "3",
                             id: "available_hours",
-                            name: "experience",
-                            required: ""
+                            name: "experience"
                           },
                           domProps: {
                             value: _vm.toBeEditedAgent.available_hours
@@ -64277,7 +64276,7 @@ var render = function() {
                             staticClass: "panelFormLabel",
                             attrs: { for: "title" }
                           },
-                          [_vm._v(" Title : ")]
+                          [_vm._v(" Title : *")]
                         ),
                         _vm._v(" "),
                         _c("input", {

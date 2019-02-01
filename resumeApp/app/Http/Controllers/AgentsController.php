@@ -47,8 +47,8 @@ class AgentsController extends Controller
             'number' => 'max:10|required',
             'name' => 'max:191|required',
             'language' => 'max:191|required',
-            'hourly_rate' => 'max:10|required',
-            'available_hours' => 'max:1500|required',
+            'hourly_rate' => 'max:10',
+            'available_hours' => 'max:1500',
             'location' => 'max:191|required',
             'experience'  => 'max:1500|required'
         ]);

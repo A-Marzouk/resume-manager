@@ -219,11 +219,11 @@
                     </div>
                 </div>
 
-                {{--<div class="row" style="padding-top:15px; ">--}}
-                    {{--<div class="col-12" style="padding-top: 25px;">--}}
-                        {{--<a href="{{route('cBrief.to.pdf',$cBrief->id)}}"  target="_blank" class="btn btn-primary">Export as PDF</a>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+                <div class="row" style="padding-top:15px; ">
+                    <div class="col-12" style="padding-top: 25px;">
+                        <a href="{{route('cBrief.to.pdf',$cBrief->id)}}"  target="_blank" class="btn btn-primary">Export as PDF</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -5,14 +5,14 @@
                 © Copyright 2018 123Workforce.<br/>
                 All Rights Reserved.<br/>
                 <div class="skypeText" style="padding-top: 5px;">
-                    @if(auth()->guard('client')->user())
-                        <a href="{{route('terms')}}" target="_blank">
-                            <span style="opacity: 1;">Terms & Conditions</span>
-                        </a><br/>
-                        <a href="{{route('privacy')}}" target="_blank">
-                            <span style="opacity: 1;">Privacy policy</span>
-                        </a>
-                    @endif
+                    {{--@if(auth()->guard('client')->user())--}}
+                        {{--<a href="{{route('terms')}}" target="_blank">--}}
+                            {{--<span style="opacity: 1;">Terms & Conditions</span>--}}
+                        {{--</a><br/>--}}
+                        {{--<a href="{{route('privacy')}}" target="_blank">--}}
+                            {{--<span style="opacity: 1;">Privacy policy</span>--}}
+                        {{--</a>--}}
+                    {{--@endif--}}
                 </div>
             </div>
         </div>

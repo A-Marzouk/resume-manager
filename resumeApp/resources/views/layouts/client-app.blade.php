@@ -116,7 +116,7 @@
     </a>
 </div>
 
-    @include('layouts.includes.terms')
+    {{--@include('layouts.includes.terms')--}}
     @include('layouts.footer')
 
     {{-- Chat box --}}

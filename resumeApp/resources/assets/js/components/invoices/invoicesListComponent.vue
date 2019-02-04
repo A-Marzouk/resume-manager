@@ -22,6 +22,7 @@
                 <div class="pageSubHeading text-left">
                     Invoice details
                 </div>
+                Client name :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.clientName}}</b><br/>
                 Total amount to pay :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.total_amount}}</b><br/>
                 Hours :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.hours}}</b><br/>
                 Rate per Hour :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.rate}}</b><br/>
@@ -29,10 +30,17 @@
                 <div  style="color: #30323D;font-family: Roboto;" >Service provided : {{nl2br(invoice.service,false)}}</div>
                 <div  style="color: #30323D;font-family: Roboto;" v-show="invoice.notes != null">Notes : {{invoice.notes}}</div>
                 <div  style="color: #30323D;font-family: Roboto;" v-show="invoice.time_of_service != null">Time : {{nl2br(invoice.time_of_service,false)}}</div>
+                Time zone:<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.timeZone}}</b><br/>
                 Status : <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.status}}</b><br/>
                 <div class="NoDecor">
-                    Public link : <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
-                    <a :href="'https://123workforce.com/workforce/invoices/'+invoice.unique_number" target="_blank">https://123workforce.com/workforce/invoices/{{invoice.unique_number}}</a>
+                    Related Campaign Brief : <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
+                    <a :href="'https://123workforce.com/workforce/campaign_briefs/'+invoice.campaign_brief_id" target="_blank">View campaign brief</a>
+                    </b><br/>
+                </div>
+
+                <div class="NoDecor">
+                    Public link :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
+                    <a :href="'https://123workforce.com/workforce/invoices/'+invoice.unique_number" target="_blank"> View invoice</a>
                     </b><br/>
                 </div>
                 <div class="row">
@@ -90,6 +98,8 @@
                     'notes':'',
                     'time_of_service':'',
                     'status':'',
+                    'timeZone':'',
+                    'campaign_brief_id':'',
                 }
             }
         },
@@ -171,7 +181,9 @@
                     'service' :'',
                     'notes':'',
                     'time_of_service':'',
-                    'status':''
+                    'status':'',
+                    'timeZone':'',
+                    'campaign_brief_id':''
                 };
             },
 
@@ -195,7 +207,8 @@
                 }
                 var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
                 return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
-            }
+            },
+
         },
 
         created() {

@@ -56845,6 +56845,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
@@ -56863,7 +56871,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'service': '',
                 'notes': '',
                 'time_of_service': '',
-                'status': ''
+                'status': '',
+                'timeZone': '',
+                'campaign_brief_id': ''
             }
         };
     },
@@ -56941,7 +56951,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'service': '',
                 'notes': '',
                 'time_of_service': '',
-                'status': ''
+                'status': '',
+                'timeZone': '',
+                'campaign_brief_id': ''
             };
         },
         updateInvoiceNumber: function updateInvoiceNumber() {
@@ -57065,6 +57077,21 @@ var render = function() {
               _c("div", { staticClass: "pageSubHeading text-left" }, [
                 _vm._v("\n                Invoice details\n            ")
               ]),
+              _vm._v("\n            Client name :"),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v(" " + _vm._s(invoice.clientName))]
+              ),
+              _c("br"),
               _vm._v("\n            Total amount to pay :"),
               _c(
                 "b",
@@ -57173,6 +57200,21 @@ var render = function() {
                   )
                 ]
               ),
+              _vm._v("\n            Time zone:"),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v(" " + _vm._s(invoice.timeZone))]
+              ),
+              _c("br"),
               _vm._v("\n            Status : "),
               _c(
                 "b",
@@ -57190,7 +57232,38 @@ var render = function() {
               _c("br"),
               _vm._v(" "),
               _c("div", { staticClass: "NoDecor" }, [
-                _vm._v("\n                Public link : "),
+                _vm._v("\n                Related Campaign Brief : "),
+                _c(
+                  "b",
+                  {
+                    staticStyle: {
+                      "font-size": "16px",
+                      color: "#30323D",
+                      "font-family": "Roboto",
+                      "line-height": "19px",
+                      "font-weight": "bold"
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        attrs: {
+                          href:
+                            "https://123workforce.com/workforce/campaign_briefs/" +
+                            invoice.campaign_brief_id,
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("View campaign brief")]
+                    )
+                  ]
+                ),
+                _c("br")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "NoDecor" }, [
+                _vm._v("\n                Public link :"),
                 _c(
                   "b",
                   {
@@ -57213,12 +57286,7 @@ var render = function() {
                           target: "_blank"
                         }
                       },
-                      [
-                        _vm._v(
-                          "https://123workforce.com/workforce/invoices/" +
-                            _vm._s(invoice.unique_number)
-                        )
-                      ]
+                      [_vm._v(" View invoice")]
                     )
                   ]
                 ),
@@ -57609,11 +57677,77 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedInvoice'],
     data: function data() {
-        return {};
+        return {
+            campBriefs: []
+        };
     },
 
     methods: {
@@ -57635,9 +57769,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }, 2000);
             });
             $('#closeInvoiceModal').click();
+        },
+        getCampBriefs: function getCampBriefs() {
+            var _this2 = this;
+
+            axios.get('/admin/workforce/get_cbriefs').then(function (response) {
+                _this2.campBriefs = response.data;
+            });
         }
     },
-    mounted: function mounted() {}
+    mounted: function mounted() {
+        this.getCampBriefs();
+    }
 });
 
 /***/ }),
@@ -58012,9 +58155,670 @@ var render = function() {
                             _vm._v(" "),
                             _c("option", [_vm._v("Paid")]),
                             _vm._v(" "),
-                            _c("option", [_vm._v("Outstanding")])
+                            _c("option", [_vm._v("Unpaid")])
                           ]
                         )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "status" }
+                          },
+                          [_vm._v("Realted campaign brief :")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.toBeEditedInvoice.campaign_brief_id,
+                                expression:
+                                  "toBeEditedInvoice.campaign_brief_id"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { id: "campBrief" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.toBeEditedInvoice,
+                                  "campaign_brief_id",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { disabled: "", value: "" } },
+                              [_vm._v("Please select")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.campBriefs, function(campBrief, index) {
+                              return _c(
+                                "option",
+                                {
+                                  key: index,
+                                  domProps: { value: campBrief.id }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                      " +
+                                      _vm._s(campBrief.company_website) +
+                                      "\n                                  "
+                                  )
+                                ]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "timeZone" }
+                          },
+                          [_vm._v("Time zone")]
+                        ),
+                        _vm._v(" "),
+                        _c("div", {}, [
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.toBeEditedInvoice.timeZone,
+                                  expression: "toBeEditedInvoice.timeZone"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { id: "timeZone", name: "timeZone" },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.toBeEditedInvoice,
+                                    "timeZone",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                { attrs: { value: "", selected: "selected" } },
+                                [_vm._v("Select your timezone")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT -7:00) Mountain Time (US & Canada)"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT -7:00) Mountain Time (US & Canada)"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT -8:00) Pacific Time (US & Canada)"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT -8:00) Pacific Time (US & Canada)"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { attrs: { value: "(GMT -9:00) Alaska" } },
+                                [_vm._v("(GMT -9:00) Alaska")]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "" } }, [
+                                _vm._v("--------------")
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value: "(GMT -12:00) Eniwetok, Kwajalein"
+                                  }
+                                },
+                                [_vm._v("(GMT -12:00) Eniwetok, Kwajalein")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value: "(GMT -11:00) Midway Island, Samoa"
+                                  }
+                                },
+                                [_vm._v("(GMT -11:00) Midway Island, Samoa")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { attrs: { value: "(GMT -10:00) Hawaii" } },
+                                [_vm._v("(GMT -10:00) Hawaii")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { attrs: { value: "(GMT -9:30) Taiohae" } },
+                                [_vm._v("(GMT -9:30) Taiohae")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { attrs: { value: "(GMT -9:00) Alaska" } },
+                                [_vm._v("(GMT -9:00) Alaska")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT -8:00) Pacific Time (US & Canada)"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT -8:00) Pacific Time (US & Canada)"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT -7:00) Mountain Time (US & Canada)"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT -7:00) Mountain Time (US & Canada)"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { attrs: { value: "(GMT -4:30) Caracas" } },
+                                [_vm._v("(GMT -4:30) Caracas")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: { value: "(GMT -3:30) Newfoundland" }
+                                },
+                                [_vm._v("(GMT -3:30) Newfoundland")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT -3:00) Brazil, Buenos Aires, Georgetown"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT -3:00) Brazil, Buenos Aires, Georgetown"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: { value: "(GMT -2:00) Mid-Atlantic" }
+                                },
+                                [_vm._v("(GMT -2:00) Mid-Atlantic")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT -1:00) Azores, Cape Verde Islands"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT -1:00) Azores, Cape Verde Islands"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT +1:00) Brussels, Copenhagen, Madrid, Paris"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT +1:00) Brussels, Copenhagen, Madrid, Paris"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT +2:00) Kaliningrad, South Africa"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT +2:00) Kaliningrad, South Africa"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { attrs: { value: "(GMT +3:30) Tehran" } },
+                                [_vm._v("(GMT +3:30) Tehran")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { attrs: { value: "(GMT +4:30) Kabul" } },
+                                [_vm._v("(GMT +4:30) Kabul")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value: "(GMT +5:45) Kathmandu, Pokhara"
+                                  }
+                                },
+                                [_vm._v("(GMT +5:45) Kathmandu, Pokhara")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value: "(GMT +6:00) Almaty, Dhaka, Colombo"
+                                  }
+                                },
+                                [_vm._v("(GMT +6:00) Almaty, Dhaka, Colombo")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value: "(GMT +6:30) Yangon, Mandalay"
+                                  }
+                                },
+                                [_vm._v("(GMT +6:30) Yangon, Mandalay")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value: "(GMT +7:00) Bangkok, Hanoi, Jakarta"
+                                  }
+                                },
+                                [_vm._v("(GMT +7:00) Bangkok, Hanoi, Jakarta")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { attrs: { value: "(GMT +8:45) Eucla" } },
+                                [_vm._v("(GMT +8:45) Eucla")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value: "(GMT +9:30) Adelaide, Darwin"
+                                  }
+                                },
+                                [_vm._v("(GMT +9:30) Adelaide, Darwin")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value: "(GMT +10:30) Lord Howe Island"
+                                  }
+                                },
+                                [_vm._v("(GMT +10:30) Lord Howe Island")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value: "(GMT +11:30) Norfolk Island"
+                                  }
+                                },
+                                [_vm._v("(GMT +11:30) Norfolk Island")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value:
+                                      "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value: "(GMT +12:45) Chatham Islands"
+                                  }
+                                },
+                                [_vm._v("(GMT +12:45) Chatham Islands")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value: "(GMT +13:00) Apia, Nukualofa"
+                                  }
+                                },
+                                [_vm._v("(GMT +13:00) Apia, Nukualofa")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                {
+                                  attrs: {
+                                    value: "(GMT +14:00) Line Islands, Tokelau"
+                                  }
+                                },
+                                [_vm._v("(GMT +14:00) Line Islands, Tokelau")]
+                              )
+                            ]
+                          )
+                        ])
                       ])
                     ]),
                     _vm._v(" "),

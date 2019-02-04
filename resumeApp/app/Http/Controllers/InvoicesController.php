@@ -35,7 +35,11 @@ class InvoicesController extends Controller
     public function getInvoices($client_id){
        // get current authenticated freelancer :
         $client = Client::where('id',$client_id)->first();
-        return $client->invoices;
+        $invoices = $client->invoices;
+        foreach ($invoices as &$invoice){
+            $invoice['clientName'] = $client->name;
+        }
+        return $invoices;
     }
 
     public function addInvoice(Request $request){
@@ -58,11 +62,16 @@ class InvoicesController extends Controller
             // add
             $invoice = new Invoice;
             $invoice->client_id = $currentClient->id;
+            $invoice->timeZone  = $currentClient->timeZone;
         }
 
         $invoice->total_amount = $request->total_amount;
+        $invoice->campaign_brief_id = $request->campaign_brief_id;
         $invoice->service      = $request->service;
         $invoice->hours        = $request->hours;
+        if(isset($request->timeZone)){
+            $invoice->timeZone        = $request->timeZone;
+        }
         $invoice->rate         = $request->rate;
         $invoice->status       = $request->status;
         $invoice->agentName       = $request->agentName;

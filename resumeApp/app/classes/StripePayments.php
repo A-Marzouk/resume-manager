@@ -11,6 +11,7 @@ namespace App\classes;
 
 use App\Booking;
 use App\Http\Controllers\NotificationsController;
+use App\Invoice;
 use App\User;
 use App\UserData;
 use Dompdf\Exception;
@@ -101,7 +102,7 @@ class StripePayments
         if($request->freelancerName == 'custom_payment'){
             $telegram = new Telegram('-228260999');
             $msg      = "Stripe custom payment has been made.\n" ;
-            $msg     .= "With amount of ".$amountToPay ." USD";
+            $msg     .= "With amount of ".$amountToPay/100 ." USD";
             $msg     .= "\nFrom : " . $request->stripeEmail;
             $msg     .= "\nDescription : " . $request->description;
             $telegram->sendMessage($msg);

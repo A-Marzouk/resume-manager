@@ -100,20 +100,24 @@ class StripePayments
 
 
         if($request->freelancerName == 'custom_payment'){
-            $telegram = new Telegram('-228260999');
-            $msg      = "Stripe custom payment has been made.\n" ;
-            $msg     .= "With amount of ".$amountToPay/100 ." USD";
-            $msg     .= "\nFrom : " . $request->stripeEmail;
-            $msg     .= "\nDescription : " . $request->description;
-            $telegram->sendMessage($msg);
-
             // check if it is an invoice :
             if(isset($request->invoice_id)){
                 $invoice = Invoice::where('id',$request->invoice_id)->first();
                 $invoice->status = 'Paid';
                 $invoice->save();
             }
-            return redirect('/payment')->with('successMessage','Thank you for your payment, we will get in touch with you soon!');
+
+            $telegram = new Telegram('-228260999');
+            $msg      = "Stripe custom payment has been made.\n" ;
+            $msg     .= "With amount of ".$amountToPay/100 ." USD";
+            $msg     .= "\nFrom : " . $request->stripeEmail;
+            $msg     .= "\nDescription : " . $request->description;
+            if(isset($invoice->id)){
+                $msg     .= "\nInvoice number : " . $invoice->unique_number;
+            }
+            $telegram->sendMessage($msg);
+
+            return redirect('/')->with('successMessage','Thank you for your payment, we will get in touch with you soon!');
         }
 
         // create the booking : (user_id,client_id,amount_paid,hours)

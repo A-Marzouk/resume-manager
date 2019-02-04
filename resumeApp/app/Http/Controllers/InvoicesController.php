@@ -83,12 +83,14 @@ class InvoicesController extends Controller
             $firstLetters .= $w[0];
         }
 
-        if($invoice->id < 10){
-            $invoice->unique_number = $firstLetters.'00' . $invoice->id;
-        }elseif ($invoice->id < 100){
-            $invoice->unique_number = $firstLetters.'0' . $invoice->id;
-        }else{
-            $invoice->unique_number = $firstLetters . $invoice->id;
+        if(!isset($request->id)){ // only in new invoices
+            if($invoice->id < 10){
+                $invoice->unique_number = $firstLetters.'00' . $invoice->id;
+            }elseif ($invoice->id < 100){
+                $invoice->unique_number = $firstLetters.'0' . $invoice->id;
+            }else{
+                $invoice->unique_number = $firstLetters . $invoice->id;
+            }
         }
 
         $invoice->save();

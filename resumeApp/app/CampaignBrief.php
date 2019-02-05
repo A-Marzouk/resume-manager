@@ -27,6 +27,10 @@ class CampaignBrief extends Model
         return $this->belongsTo(Client::class);
     }
 
+    public function invoice(){
+        return $this->hasOne(Invoice::class);
+    }
+
     public function services(){
         return $this->hasMany(CampaignService::class,'campaign_brief_id');
     }

@@ -56845,6 +56845,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
@@ -56856,6 +56889,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'id': '',
                 'unique_number': '',
                 'client_id': this.client_id,
+                'user_id': '',
                 'total_amount': '',
                 'agentName': '',
                 'hours': '',
@@ -56863,7 +56897,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'service': '',
                 'notes': '',
                 'time_of_service': '',
-                'status': ''
+                'status': '',
+                'timeZone': '',
+                'currency': '',
+                'year': '',
+                'week': '',
+                'start_time': '',
+                'end_time': '',
+                'weekDate': '',
+                days: ['Mon'],
+                'campaign_brief_id': '',
+                agent: {}
             }
         };
     },
@@ -56875,7 +56919,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/admin/client/invoices/' + this.client_id).then(function (response) {
                 var currInvoices = response.data;
-                $.each(currInvoices, function (i) {});
+                $.each(currInvoices, function (i) {
+                    if (currInvoices[i].days === null) {
+                        currInvoices[i].days = [];
+                    } else {
+                        currInvoices[i].days = currInvoices[i].days.split(',');
+                    }
+                });
                 _this.invoices = currInvoices;
                 _this.checkMaxInvoices();
             });
@@ -56934,6 +56984,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'id': '',
                 'unique_number': '',
                 'client_id': this.client_id,
+                'user_id': '',
                 'total_amount': '',
                 'agentName': '',
                 'hours': '',
@@ -56941,7 +56992,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'service': '',
                 'notes': '',
                 'time_of_service': '',
-                'status': ''
+                'status': '',
+                'timeZone': '',
+                'currency': '',
+                'year': '',
+                'weekDate': '',
+                'week': '',
+                'start_time': '',
+                'end_time': '',
+                days: [],
+                'campaign_brief_id': '',
+                agent: {}
             };
         },
         updateInvoiceNumber: function updateInvoiceNumber() {
@@ -56966,6 +57027,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             var breakTag = is_xhtml || typeof is_xhtml === 'undefined' ? '<br />' : '<br>';
             return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+        },
+        getDateOfISOWeek: function getDateOfISOWeek(w, y) {
+            var simple = new Date(y, 0, 1 + (w - 1) * 7);
+            var dow = simple.getDay();
+            var ISOweekStart = simple;
+            if (dow <= 4) ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);else ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+
+            return this.getDate(ISOweekStart);
+        },
+        getDate: function getDate(date) {
+            var event = new Date(date);
+            var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+            return event.toLocaleDateString('en-EN', options);
         }
     },
 
@@ -57065,7 +57139,7 @@ var render = function() {
               _c("div", { staticClass: "pageSubHeading text-left" }, [
                 _vm._v("\n                Invoice details\n            ")
               ]),
-              _vm._v("\n            Total amount to pay :"),
+              _vm._v("\n            Client name :"),
               _c(
                 "b",
                 {
@@ -57077,23 +57151,34 @@ var render = function() {
                     "font-weight": "bold"
                   }
                 },
-                [_vm._v(" " + _vm._s(invoice.total_amount))]
+                [_vm._v(" " + _vm._s(invoice.clientName))]
               ),
               _c("br"),
-              _vm._v("\n            Hours :"),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(invoice.hours))]
-              ),
+              _vm._v("\n            Agent :\n            "),
+              invoice.agent !== null
+                ? _c(
+                    "b",
+                    {
+                      staticStyle: {
+                        "font-size": "16px",
+                        color: "#30323D",
+                        "font-family": "Roboto",
+                        "line-height": "19px",
+                        "font-weight": "bold"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(invoice.agent.firstName) +
+                          " " +
+                          _vm._s(invoice.agent.lastName) +
+                          "\n            "
+                      )
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
               _c("br"),
               _vm._v("\n            Rate per Hour :"),
               _c(
@@ -57110,7 +57195,7 @@ var render = function() {
                 [_vm._v(" " + _vm._s(invoice.rate))]
               ),
               _c("br"),
-              _vm._v("\n            Agent :"),
+              _vm._v("\n            Total amount to pay :"),
               _c(
                 "b",
                 {
@@ -57122,7 +57207,22 @@ var render = function() {
                     "font-weight": "bold"
                   }
                 },
-                [_vm._v(" " + _vm._s(invoice.agentName))]
+                [_vm._v(" " + _vm._s(invoice.total_amount))]
+              ),
+              _c("br"),
+              _vm._v("\n            Currency :"),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v(" " + _vm._s(invoice.currency))]
               ),
               _c("br"),
               _vm._v(" "),
@@ -57153,6 +57253,23 @@ var render = function() {
                 [_vm._v("Notes : " + _vm._s(invoice.notes))]
               ),
               _vm._v(" "),
+              _c("hr"),
+              _vm._v("\n            Time zone:"),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v(" " + _vm._s(invoice.timeZone))]
+              ),
+              _c("br"),
+              _vm._v(" "),
               _c(
                 "div",
                 {
@@ -57173,6 +57290,131 @@ var render = function() {
                   )
                 ]
               ),
+              _vm._v("\n            Year - Week :"),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v(" " + _vm._s(invoice.week))]
+              ),
+              _vm._v(" "),
+              _c("span", [
+                _vm._v(
+                  "(" +
+                    _vm._s(
+                      _vm.getDateOfISOWeek(
+                        invoice.week.split("-")[1].replace("W", ""),
+                        invoice.week.split("-")[0]
+                      )
+                    ) +
+                    ")"
+                )
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v("\n\n            Hours :"),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v(" " + _vm._s(invoice.hours))]
+              ),
+              _c("br"),
+              _vm._v("\n\n            Working hours :"),
+              _c("br"),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n            Start : " +
+                      _vm._s(invoice.start_time) +
+                      " | End : " +
+                      _vm._s(invoice.end_time) +
+                      " "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v("\n            Days :\n            "),
+              _c(
+                "div",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [
+                  _c(
+                    "b",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: invoice.days.includes("all_days"),
+                          expression: "invoice.days.includes('all_days')"
+                        }
+                      ]
+                    },
+                    [
+                      _vm._v(
+                        "\n                    All days of the week.\n                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !invoice.days.includes("all_days"),
+                          expression: "!invoice.days.includes('all_days')"
+                        }
+                      ]
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(invoice.days.join(" | ")) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("hr"),
               _vm._v("\n            Status : "),
               _c(
                 "b",
@@ -57190,7 +57432,38 @@ var render = function() {
               _c("br"),
               _vm._v(" "),
               _c("div", { staticClass: "NoDecor" }, [
-                _vm._v("\n                Public link : "),
+                _vm._v("\n                Related Campaign Brief : "),
+                _c(
+                  "b",
+                  {
+                    staticStyle: {
+                      "font-size": "16px",
+                      color: "#30323D",
+                      "font-family": "Roboto",
+                      "line-height": "19px",
+                      "font-weight": "bold"
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        attrs: {
+                          href:
+                            "https://123workforce.com/workforce/campaign_briefs/" +
+                            invoice.campaign_brief_id,
+                          target: "_blank"
+                        }
+                      },
+                      [_vm._v("View campaign brief")]
+                    )
+                  ]
+                ),
+                _c("br")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "NoDecor" }, [
+                _vm._v("\n                Public link :"),
                 _c(
                   "b",
                   {
@@ -57213,12 +57486,7 @@ var render = function() {
                           target: "_blank"
                         }
                       },
-                      [
-                        _vm._v(
-                          "https://123workforce.com/workforce/invoices/" +
-                            _vm._s(invoice.unique_number)
-                        )
-                      ]
+                      [_vm._v(" View invoice")]
                     )
                   ]
                 ),
@@ -57609,11 +57877,100 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedInvoice'],
     data: function data() {
-        return {};
+        return {
+            campBriefs: [],
+            agents: [],
+            customDays: false,
+            daysOfWeek: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            testDays: []
+        };
     },
 
     methods: {
@@ -57635,9 +57992,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }, 2000);
             });
             $('#closeInvoiceModal').click();
+        },
+        getCampBriefs: function getCampBriefs() {
+            var _this2 = this;
+
+            axios.get('/admin/workforce/get_cbriefs').then(function (response) {
+                _this2.campBriefs = response.data;
+            });
+        },
+        setWeekDate: function setWeekDate() {
+            this.toBeEditedInvoice.weekDate = this.getDateOfISOWeek(this.toBeEditedInvoice.week.split('-')[1].replace('W', ''), this.toBeEditedInvoice.week.split('-')[0]);
+        },
+        updateAgent: function updateAgent(agent_id) {
+            var _this3 = this;
+
+            $.each(this.agents, function (i) {
+                if (_this3.agents[i].id == agent_id) {
+                    _this3.toBeEditedInvoice.agent = _this3.agents[i];
+                }
+            });
+        },
+        getDateOfISOWeek: function getDateOfISOWeek(w, y) {
+            var simple = new Date(y, 0, 1 + (w - 1) * 7);
+            var dow = simple.getDay();
+            var ISOweekStart = simple;
+            if (dow <= 4) {
+                ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+            } else {
+                ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+            }
+            return this.getDate(ISOweekStart);
+        },
+        getDate: function getDate(date) {
+            var event = new Date(date);
+            var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+            return event.toLocaleDateString('en-EN', options);
+        },
+        getAgents: function getAgents() {
+            var _this4 = this;
+
+            axios.get('/admin/get_users').then(function (response) {
+                _this4.agents = response.data;
+            });
         }
     },
-    mounted: function mounted() {}
+    mounted: function mounted() {
+        this.getCampBriefs();
+        this.getAgents();
+    }
 });
 
 /***/ }),
@@ -57664,7 +58066,7 @@ var render = function() {
       [
         _c(
           "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
               _vm._m(0),
@@ -57683,6 +58085,73 @@ var render = function() {
                   },
                   [
                     _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "user_id" }
+                          },
+                          [_vm._v("Agent :")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.toBeEditedInvoice.user_id,
+                                expression: "toBeEditedInvoice.user_id"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { name: "user_id", id: "user_id" },
+                            on: {
+                              change: [
+                                function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.toBeEditedInvoice,
+                                    "user_id",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                },
+                                function($event) {
+                                  _vm.updateAgent(_vm.toBeEditedInvoice.user_id)
+                                }
+                              ]
+                            }
+                          },
+                          _vm._l(_vm.agents, function(agent, index) {
+                            return _c(
+                              "option",
+                              { key: index, domProps: { value: agent.id } },
+                              [
+                                _vm._v(
+                                  "\n                                      " +
+                                    _vm._s(agent.firstName) +
+                                    " " +
+                                    _vm._s(agent.lastName) +
+                                    "\n                                  "
+                                )
+                              ]
+                            )
+                          })
+                        )
+                      ]),
+                      _vm._v(" "),
                       _c("div", { staticClass: "form-group col-md-6" }, [
                         _c(
                           "label",
@@ -57733,42 +58202,121 @@ var render = function() {
                             staticClass: "panelFormLabel",
                             attrs: { for: "rate" }
                           },
-                          [_vm._v("Rate :")]
+                          [_vm._v("Hourly rate :")]
                         ),
                         _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.toBeEditedInvoice.rate,
-                              expression: "toBeEditedInvoice.rate"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "number",
-                            id: "rate",
-                            name: "rate",
-                            required: ""
-                          },
-                          domProps: { value: _vm.toBeEditedInvoice.rate },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.toBeEditedInvoice.rate,
+                                expression: "toBeEditedInvoice.rate"
                               }
-                              _vm.$set(
-                                _vm.toBeEditedInvoice,
-                                "rate",
-                                $event.target.value
-                              )
+                            ],
+                            staticClass: "form-control",
+                            attrs: { name: "rate", id: "rate" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.toBeEditedInvoice,
+                                  "rate",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
                             }
-                          }
-                        })
+                          },
+                          _vm._l(42, function(index) {
+                            return _c(
+                              "option",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: (index + 7 + 1) / 2 !== 4.5,
+                                    expression: "(index+7+1)/2 !== 4.5"
+                                  }
+                                ],
+                                key: index,
+                                domProps: { value: (index + 7 + 1) / 2 }
+                              },
+                              [_vm._v(_vm._s((index + 7 + 1) / 2))]
+                            )
+                          })
+                        )
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-12" }, [
+                      _c("div", { staticClass: "form-group col-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "currency" }
+                          },
+                          [_vm._v("Currency :")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.toBeEditedInvoice.currency,
+                                expression: "toBeEditedInvoice.currency"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { id: "currency" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.toBeEditedInvoice,
+                                  "currency",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { disabled: "", selected: "" } },
+                              [_vm._v("Please select")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "USD" } }, [
+                              _vm._v(" USD ")
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
                         _vm._m(1),
                         _vm._v(" "),
                         _c("input", {
@@ -57802,48 +58350,6 @@ var render = function() {
                               _vm.$set(
                                 _vm.toBeEditedInvoice,
                                 "total_amount",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-12" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "panelFormLabel",
-                            attrs: { for: "agentName" }
-                          },
-                          [_vm._v("Agent :")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.toBeEditedInvoice.agentName,
-                              expression: "toBeEditedInvoice.agentName"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            id: "agentName",
-                            name: "agentName",
-                            required: ""
-                          },
-                          domProps: { value: _vm.toBeEditedInvoice.agentName },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.toBeEditedInvoice,
-                                "agentName",
                                 $event.target.value
                               )
                             }
@@ -57894,6 +58400,8 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c("hr"),
+                        _vm._v(" "),
                         _vm._m(2),
                         _vm._v(" "),
                         _c("textarea", {
@@ -57930,8 +58438,512 @@ var render = function() {
                         })
                       ]),
                       _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "timeZone" }
+                          },
+                          [_vm._v("Time zone")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.toBeEditedInvoice.timeZone,
+                                expression: "toBeEditedInvoice.timeZone"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { id: "timeZone", name: "timeZone" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.toBeEditedInvoice,
+                                  "timeZone",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "", selected: "selected" } },
+                              [_vm._v("Select your timezone")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
+                                    "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
+                                    "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
+                                    "(GMT -7:00) Mountain Time (US & Canada)"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "(GMT -7:00) Mountain Time (US & Canada)"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
+                                    "(GMT -8:00) Pacific Time (US & Canada)"
+                                }
+                              },
+                              [_vm._v("(GMT -8:00) Pacific Time (US & Canada)")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
+                                    "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
+                                    "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "(GMT +8:45) Eucla" } },
+                              [_vm._v("(GMT +8:45) Eucla")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
+                                    "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "(GMT +9:30) Adelaide, Darwin" }
+                              },
+                              [_vm._v("(GMT +9:30) Adelaide, Darwin")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
+                                    "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value: "(GMT +10:30) Lord Howe Island"
+                                }
+                              },
+                              [_vm._v("(GMT +10:30) Lord Howe Island")]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "invoiceWeek" }
+                          },
+                          [_vm._v("Year - Week :")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedInvoice.week,
+                              expression: "toBeEditedInvoice.week"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "invoiceWeek",
+                            min: "2019-W01",
+                            max: "2020-W52",
+                            type: "week",
+                            name: "week"
+                          },
+                          domProps: { value: _vm.toBeEditedInvoice.week },
+                          on: {
+                            change: _vm.setWeekDate,
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedInvoice,
+                                "week",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.toBeEditedInvoice.week.length > 0
+                          ? _c(
+                              "div",
+                              {
+                                staticClass: "panelFormLabel",
+                                staticStyle: { "padding-top": "3px" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                  " +
+                                    _vm._s(
+                                      _vm.getDateOfISOWeek(
+                                        _vm.toBeEditedInvoice.week
+                                          .split("-")[1]
+                                          .replace("W", ""),
+                                        _vm.toBeEditedInvoice.week.split("-")[0]
+                                      )
+                                    ) +
+                                    "\n                              "
+                                )
+                              ]
+                            )
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "start_time" }
+                          },
+                          [_vm._v("Start:")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedInvoice.start_time,
+                              expression: "toBeEditedInvoice.start_time"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "time",
+                            id: "start_time",
+                            name: "start_time"
+                          },
+                          domProps: { value: _vm.toBeEditedInvoice.start_time },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedInvoice,
+                                "start_time",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "end_time" }
+                          },
+                          [_vm._v("End:")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedInvoice.end_time,
+                              expression: "toBeEditedInvoice.end_time"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "time",
+                            id: "end_time",
+                            name: "start_time"
+                          },
+                          domProps: { value: _vm.toBeEditedInvoice.end_time },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedInvoice,
+                                "end_time",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
                       _c("div", { staticClass: "form-group col-md-12" }, [
-                        _vm._m(3),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { staticClass: "panelFormLabel" }, [
+                            _vm._v("Choose days :")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.toBeEditedInvoice.days.includes(
+                                    "all_days"
+                                  ),
+                                  expression:
+                                    "!toBeEditedInvoice.days.includes('all_days')"
+                                }
+                              ],
+                              staticClass: "row"
+                            },
+                            _vm._l(_vm.daysOfWeek, function(day, index) {
+                              return _c(
+                                "div",
+                                { key: index, staticClass: "col-md-2" },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.toBeEditedInvoice.days,
+                                        expression: "toBeEditedInvoice.days"
+                                      }
+                                    ],
+                                    attrs: { type: "checkbox" },
+                                    domProps: {
+                                      value: day,
+                                      checked: Array.isArray(
+                                        _vm.toBeEditedInvoice.days
+                                      )
+                                        ? _vm._i(
+                                            _vm.toBeEditedInvoice.days,
+                                            day
+                                          ) > -1
+                                        : _vm.toBeEditedInvoice.days
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        var $$a = _vm.toBeEditedInvoice.days,
+                                          $$el = $event.target,
+                                          $$c = $$el.checked ? true : false
+                                        if (Array.isArray($$a)) {
+                                          var $$v = day,
+                                            $$i = _vm._i($$a, $$v)
+                                          if ($$el.checked) {
+                                            $$i < 0 &&
+                                              _vm.$set(
+                                                _vm.toBeEditedInvoice,
+                                                "days",
+                                                $$a.concat([$$v])
+                                              )
+                                          } else {
+                                            $$i > -1 &&
+                                              _vm.$set(
+                                                _vm.toBeEditedInvoice,
+                                                "days",
+                                                $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1))
+                                              )
+                                          }
+                                        } else {
+                                          _vm.$set(
+                                            _vm.toBeEditedInvoice,
+                                            "days",
+                                            $$c
+                                          )
+                                        }
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(
+                                    "\n                                          " +
+                                      _vm._s(day) +
+                                      "\n                                      "
+                                  )
+                                ]
+                              )
+                            })
+                          ),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c("br"),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.toBeEditedInvoice.days,
+                                  expression: "toBeEditedInvoice.days"
+                                }
+                              ],
+                              attrs: { type: "checkbox", value: "all_days" },
+                              domProps: {
+                                checked: _vm.toBeEditedInvoice.days.includes(
+                                  "all_days"
+                                ),
+                                checked: Array.isArray(
+                                  _vm.toBeEditedInvoice.days
+                                )
+                                  ? _vm._i(
+                                      _vm.toBeEditedInvoice.days,
+                                      "all_days"
+                                    ) > -1
+                                  : _vm.toBeEditedInvoice.days
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a = _vm.toBeEditedInvoice.days,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = "all_days",
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        _vm.$set(
+                                          _vm.toBeEditedInvoice,
+                                          "days",
+                                          $$a.concat([$$v])
+                                        )
+                                    } else {
+                                      $$i > -1 &&
+                                        _vm.$set(
+                                          _vm.toBeEditedInvoice,
+                                          "days",
+                                          $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1))
+                                        )
+                                    }
+                                  } else {
+                                    _vm.$set(_vm.toBeEditedInvoice, "days", $$c)
+                                  }
+                                }
+                              }
+                            }),
+                            _vm._v(
+                              "\n                                      All campaign days.\n                                  "
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c("hr"),
+                        _vm._v(" "),
+                        _vm._m(4),
                         _vm._v(" "),
                         _c("textarea", {
                           directives: [
@@ -57960,7 +58972,79 @@ var render = function() {
                         })
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-12" }, [
+                      _c("div", { staticClass: "form-group col-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "status" }
+                          },
+                          [_vm._v("Realted campaign brief :")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.toBeEditedInvoice.campaign_brief_id,
+                                expression:
+                                  "toBeEditedInvoice.campaign_brief_id"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { id: "campBrief" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.toBeEditedInvoice,
+                                  "campaign_brief_id",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { disabled: "", value: "" } },
+                              [_vm._v("Please select")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.campBriefs, function(campBrief, index) {
+                              return _c(
+                                "option",
+                                {
+                                  key: index,
+                                  domProps: { value: campBrief.id }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                      " +
+                                      _vm._s(campBrief.company_website) +
+                                      "\n                                  "
+                                  )
+                                ]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-6" }, [
                         _c(
                           "label",
                           {
@@ -58012,13 +59096,13 @@ var render = function() {
                             _vm._v(" "),
                             _c("option", [_vm._v("Paid")]),
                             _vm._v(" "),
-                            _c("option", [_vm._v("Outstanding")])
+                            _c("option", [_vm._v("Unpaid")])
                           ]
                         )
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(4)
+                    _vm._m(5)
                   ]
                 )
               ])
@@ -58077,6 +59161,18 @@ var staticRenderFns = [
         _vm._v(" :")
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row col-md-12" }, [
+      _c(
+        "label",
+        { staticClass: "panelFormLabel", attrs: { for: "start_time" } },
+        [_c("b", [_vm._v("Working hours :")])]
+      )
+    ])
   },
   function() {
     var _vm = this

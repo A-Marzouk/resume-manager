@@ -35,7 +35,12 @@ class InvoicesController extends Controller
     public function getInvoices($client_id){
        // get current authenticated freelancer :
         $client = Client::where('id',$client_id)->first();
-        return $client->invoices;
+        $invoices = $client->invoices;
+        foreach ($invoices as &$invoice){
+            $invoice['clientName'] = $client->name;
+            $invoice['agent'] = $invoice->user;
+        }
+        return $invoices;
     }
 
     public function addInvoice(Request $request){
@@ -44,8 +49,11 @@ class InvoicesController extends Controller
             'total_amount' => 'max:10|required',
             'service' => 'max:1500|required',
             'agentName' => 'max:191|required',
+            'year' => 'max:191',
+            'currency' => 'max:191',
+            'week' => 'max:191',
             'hours' => 'max:10|required',
-            'rate' => 'max:10|required',
+            'rate' => 'max:191|required',
             'status' => 'max:191|required',
             'time_of_service' => 'max:1500',
             'notes' => 'max:1500',
@@ -58,14 +66,32 @@ class InvoicesController extends Controller
             // add
             $invoice = new Invoice;
             $invoice->client_id = $currentClient->id;
+            $invoice->timeZone  = $currentClient->timeZone;
         }
 
         $invoice->total_amount = $request->total_amount;
+        $invoice->user_id = $request->user_id;
+        $invoice->campaign_brief_id = $request->campaign_brief_id;
         $invoice->service      = $request->service;
+        $invoice->week      = $request->week;
+        $invoice->weekDate      = $request->weekDate;
+        $invoice->year      = $request->year;
+        $invoice->start_time      = $request->start_time;
+        $invoice->end_time        = $request->end_time;
+        if(isset($request->days)){
+            if(in_array('all_days',$request->days)){
+                $invoice->days   = 'all_days';
+            }else{
+                $invoice->days      = implode(',',$request->days);
+            }
+        }
+        $invoice->currency      = $request->currency;
         $invoice->hours        = $request->hours;
+        if(isset($request->timeZone)){
+            $invoice->timeZone        = $request->timeZone;
+        }
         $invoice->rate         = $request->rate;
         $invoice->status       = $request->status;
-        $invoice->agentName       = $request->agentName;
         if(isset($request->notes)){
             $invoice->notes = $request->notes;
         }

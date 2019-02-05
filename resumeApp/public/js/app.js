@@ -56855,6 +56855,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
@@ -56988,6 +56994,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             var breakTag = is_xhtml || typeof is_xhtml === 'undefined' ? '<br />' : '<br>';
             return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+        },
+        getDateOfISOWeek: function getDateOfISOWeek(w, y) {
+            var simple = new Date(y, 0, 1 + (w - 1) * 7);
+            var dow = simple.getDay();
+            var ISOweekStart = simple;
+            if (dow <= 4) ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);else ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+
+            return this.getDate(ISOweekStart);
+        },
+        getDate: function getDate(date) {
+            var event = new Date(date);
+            var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+            return event.toLocaleDateString('en-EN', options);
         }
     },
 
@@ -57102,6 +57121,36 @@ var render = function() {
                 [_vm._v(" " + _vm._s(invoice.clientName))]
               ),
               _c("br"),
+              _vm._v("\n            Agent :"),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v(" " + _vm._s(invoice.agentName))]
+              ),
+              _c("br"),
+              _vm._v("\n            Rate per Hour :"),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v(" " + _vm._s(invoice.rate))]
+              ),
+              _c("br"),
               _vm._v("\n            Total amount to pay :"),
               _c(
                 "b",
@@ -57132,66 +57181,6 @@ var render = function() {
                 [_vm._v(" " + _vm._s(invoice.currency))]
               ),
               _c("br"),
-              _vm._v("\n            Hours :"),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(invoice.hours))]
-              ),
-              _c("br"),
-              _vm._v("\n            Year :"),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(invoice.year))]
-              ),
-              _c("br"),
-              _vm._v("\n            Rate per Hour :"),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(invoice.rate))]
-              ),
-              _c("br"),
-              _vm._v("\n            Agent :"),
-              _c(
-                "b",
-                {
-                  staticStyle: {
-                    "font-size": "16px",
-                    color: "#30323D",
-                    "font-family": "Roboto",
-                    "line-height": "19px",
-                    "font-weight": "bold"
-                  }
-                },
-                [_vm._v(" " + _vm._s(invoice.agentName))]
-              ),
-              _c("br"),
               _vm._v(" "),
               _c(
                 "div",
@@ -57220,6 +57209,23 @@ var render = function() {
                 [_vm._v("Notes : " + _vm._s(invoice.notes))]
               ),
               _vm._v(" "),
+              _c("hr"),
+              _vm._v("\n            Time zone:"),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v(" " + _vm._s(invoice.timeZone))]
+              ),
+              _c("br"),
+              _vm._v(" "),
               _c(
                 "div",
                 {
@@ -57240,7 +57246,7 @@ var render = function() {
                   )
                 ]
               ),
-              _vm._v("\n            Time zone:"),
+              _vm._v("\n            Year - Week :"),
               _c(
                 "b",
                 {
@@ -57252,9 +57258,40 @@ var render = function() {
                     "font-weight": "bold"
                   }
                 },
-                [_vm._v(" " + _vm._s(invoice.timeZone))]
+                [_vm._v(" " + _vm._s(invoice.week))]
+              ),
+              _vm._v(" "),
+              _c("span", [
+                _vm._v(
+                  "(" +
+                    _vm._s(
+                      _vm.getDateOfISOWeek(
+                        invoice.week.split("-")[1].replace("W", ""),
+                        invoice.week.split("-")[0]
+                      )
+                    ) +
+                    ")"
+                )
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v("\n\n            Hours :"),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v(" " + _vm._s(invoice.hours))]
               ),
               _c("br"),
+              _vm._v(" "),
+              _c("hr"),
               _vm._v("\n            Status : "),
               _c(
                 "b",
@@ -57763,7 +57800,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedInvoice'],
@@ -57799,6 +57835,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/admin/workforce/get_cbriefs').then(function (response) {
                 _this2.campBriefs = response.data;
             });
+        },
+        getDateOfISOWeek: function getDateOfISOWeek(w, y) {
+            var simple = new Date(y, 0, 1 + (w - 1) * 7);
+            var dow = simple.getDay();
+            var ISOweekStart = simple;
+            if (dow <= 4) ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);else ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+
+            return this.getDate(ISOweekStart);
+        },
+        getDate: function getDate(date) {
+            var event = new Date(date);
+            var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+            return event.toLocaleDateString('en-EN', options);
         }
     },
     mounted: function mounted() {
@@ -58339,60 +58388,66 @@ var render = function() {
                           "label",
                           {
                             staticClass: "panelFormLabel",
-                            attrs: { for: "year" }
+                            attrs: { for: "invoiceWeek" }
                           },
-                          [_vm._v("Year :")]
+                          [_vm._v("Year - Week :")]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.toBeEditedInvoice.year,
-                                expression: "toBeEditedInvoice.year"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { id: "year" },
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.toBeEditedInvoice,
-                                  "year",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedInvoice.week,
+                              expression: "toBeEditedInvoice.week"
                             }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "invoiceWeek",
+                            min: "2019-W01",
+                            max: "2020-W52",
+                            type: "week",
+                            name: "week"
                           },
-                          [
-                            _c(
-                              "option",
-                              { attrs: { disabled: "", selected: "" } },
-                              [_vm._v("Please select")]
-                            ),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "2019" } }, [
-                              _vm._v(" 2019 ")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "2020" } }, [
-                              _vm._v(" 2020 ")
-                            ])
-                          ]
-                        )
+                          domProps: { value: _vm.toBeEditedInvoice.week },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedInvoice,
+                                "week",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.toBeEditedInvoice.week.length > 0
+                          ? _c(
+                              "div",
+                              {
+                                staticClass: "panelFormLabel",
+                                staticStyle: { "padding-top": "15px" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                  " +
+                                    _vm._s(
+                                      _vm.getDateOfISOWeek(
+                                        _vm.toBeEditedInvoice.week
+                                          .split("-")[1]
+                                          .replace("W", ""),
+                                        _vm.toBeEditedInvoice.week.split("-")[0]
+                                      )
+                                    ) +
+                                    "\n                              "
+                                )
+                              ]
+                            )
+                          : _vm._e()
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group col-6" }, [

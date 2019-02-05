@@ -23,16 +23,22 @@
                     Invoice details
                 </div>
                 Client name :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.clientName}}</b><br/>
+                Agent :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.agentName}}</b><br/>
+                Rate per Hour :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.rate}}</b><br/>
                 Total amount to pay :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.total_amount}}</b><br/>
                 Currency :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.currency}}</b><br/>
-                Hours :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.hours}}</b><br/>
-                Year :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.year}}</b><br/>
-                Rate per Hour :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.rate}}</b><br/>
-                Agent :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.agentName}}</b><br/>
                 <div  style="color: #30323D;font-family: Roboto;" >Service provided : {{nl2br(invoice.service,false)}}</div>
                 <div  style="color: #30323D;font-family: Roboto;" v-show="invoice.notes != null">Notes : {{invoice.notes}}</div>
-                <div  style="color: #30323D;font-family: Roboto;" v-show="invoice.time_of_service != null">Time : {{nl2br(invoice.time_of_service,false)}}</div>
+                <hr>
                 Time zone:<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.timeZone}}</b><br/>
+                <div  style="color: #30323D;font-family: Roboto;" v-show="invoice.time_of_service != null">Time : {{nl2br(invoice.time_of_service,false)}}</div>
+                Year - Week :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.week}}</b>
+                <span>({{getDateOfISOWeek(invoice.week.split('-')[1].replace('W',''),invoice.week.split('-')[0])}})</span>
+                <br/>
+
+                Hours :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.hours}}</b><br/>
+
+                <hr>
                 Status : <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.status}}</b><br/>
                 <div class="NoDecor">
                     Related Campaign Brief : <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
@@ -218,7 +224,22 @@
                 var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
                 return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
             },
+            getDateOfISOWeek(w, y) {
+                var simple = new Date(y, 0, 1 + (w - 1) * 7);
+                var dow = simple.getDay();
+                var ISOweekStart = simple;
+                if (dow <= 4)
+                    ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+                else
+                    ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
 
+                return this.getDate(ISOweekStart);
+            },
+            getDate(date){
+                let event = new Date(date);
+                let options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                return event.toLocaleDateString('en-EN', options);
+            }
         },
 
         created() {

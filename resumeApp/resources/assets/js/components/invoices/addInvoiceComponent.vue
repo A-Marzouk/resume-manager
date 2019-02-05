@@ -75,12 +75,11 @@
                                   </select>
                               </div>
                               <div class="form-group col-6">
-                                  <label for="year" class="panelFormLabel">Year :</label>
-                                  <select  id="year" class="form-control" v-model="toBeEditedInvoice.year">
-                                      <option disabled selected>Please select</option>
-                                      <option value="2019" > 2019 </option>
-                                      <option value="2020" > 2020 </option>
-                                  </select>
+                                  <label for="invoiceWeek" class="panelFormLabel">Year - Week :</label>
+                                  <input id="invoiceWeek" class="form-control" min="2019-W01" max="2020-W52" type="week" name="week" v-model="toBeEditedInvoice.week">
+                                  <div style="padding-top:15px;" class="panelFormLabel" v-if="toBeEditedInvoice.week.length > 0">
+                                      {{getDateOfISOWeek(toBeEditedInvoice.week.split('-')[1].replace('W',''),toBeEditedInvoice.week.split('-')[0])}}
+                                  </div>
                               </div>
                               <div class="form-group col-6">
                                   <label for="timeZone" class="panelFormLabel">Time zone</label>
@@ -141,6 +140,22 @@
                 axios.get('/admin/workforce/get_cbriefs').then( response => {
                     this.campBriefs = response.data;
                 });
+            },
+            getDateOfISOWeek(w, y) {
+                var simple = new Date(y, 0, 1 + (w - 1) * 7);
+                var dow = simple.getDay();
+                var ISOweekStart = simple;
+                if (dow <= 4)
+                    ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+                else
+                    ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+
+                return this.getDate(ISOweekStart);
+            },
+            getDate(date){
+                let event = new Date(date);
+                let options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                return event.toLocaleDateString('en-EN', options);
             }
         },
         mounted(){

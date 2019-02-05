@@ -56865,6 +56865,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
@@ -56889,6 +56902,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'currency': '',
                 'year': '',
                 'week': '',
+                'start_time': '',
+                'end_time': '',
+                days: ['Mon'],
                 'campaign_brief_id': '',
                 agent: {}
             }
@@ -56902,7 +56918,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/admin/client/invoices/' + this.client_id).then(function (response) {
                 var currInvoices = response.data;
-                $.each(currInvoices, function (i) {});
+                $.each(currInvoices, function (i) {
+                    if (currInvoices[i].days === null) {
+                        currInvoices[i].days = [];
+                    } else {
+                        currInvoices[i].days = currInvoices[i].days.split(',');
+                    }
+                });
                 _this.invoices = currInvoices;
                 _this.checkMaxInvoices();
             });
@@ -56974,6 +56996,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'currency': '',
                 'year': '',
                 'week': '',
+                'start_time': '',
+                'end_time': '',
+                days: [],
                 'campaign_brief_id': '',
                 agent: {}
             };
@@ -57307,6 +57332,85 @@ var render = function() {
                 [_vm._v(" " + _vm._s(invoice.hours))]
               ),
               _c("br"),
+              _vm._v("\n\n            Working hours :"),
+              _c("br"),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n            Start : " +
+                      _vm._s(invoice.start_time) +
+                      " | End : " +
+                      _vm._s(invoice.end_time) +
+                      " "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v("\n            Days :\n            "),
+              _c(
+                "div",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [
+                  _c(
+                    "b",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: invoice.days.includes("all_days"),
+                          expression: "invoice.days.includes('all_days')"
+                        }
+                      ]
+                    },
+                    [
+                      _vm._v(
+                        "\n                    All days of the week.\n                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !invoice.days.includes("all_days"),
+                          expression: "!invoice.days.includes('all_days')"
+                        }
+                      ]
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(invoice.days.join(" | ")) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                ]
+              ),
               _vm._v(" "),
               _c("hr"),
               _vm._v("\n            Status : "),
@@ -57827,13 +57931,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedInvoice'],
     data: function data() {
         return {
             campBriefs: [],
-            agents: []
+            agents: [],
+            customDays: false,
+            daysOfWeek: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            testDays: []
         };
     },
 
@@ -58556,10 +58690,251 @@ var render = function() {
                           : _vm._e()
                       ]),
                       _vm._v(" "),
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "start_time" }
+                          },
+                          [_vm._v("Start:")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedInvoice.start_time,
+                              expression: "toBeEditedInvoice.start_time"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "time",
+                            id: "start_time",
+                            name: "start_time"
+                          },
+                          domProps: { value: _vm.toBeEditedInvoice.start_time },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedInvoice,
+                                "start_time",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "end_time" }
+                          },
+                          [_vm._v("End:")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.toBeEditedInvoice.end_time,
+                              expression: "toBeEditedInvoice.end_time"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "time",
+                            id: "end_time",
+                            name: "start_time"
+                          },
+                          domProps: { value: _vm.toBeEditedInvoice.end_time },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.toBeEditedInvoice,
+                                "end_time",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { staticClass: "panelFormLabel" }, [
+                            _vm._v("Choose days :")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: !_vm.toBeEditedInvoice.days.includes(
+                                    "all_days"
+                                  ),
+                                  expression:
+                                    "!toBeEditedInvoice.days.includes('all_days')"
+                                }
+                              ],
+                              staticClass: "row"
+                            },
+                            _vm._l(_vm.daysOfWeek, function(day, index) {
+                              return _c(
+                                "div",
+                                { key: index, staticClass: "col-md-2" },
+                                [
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.toBeEditedInvoice.days,
+                                        expression: "toBeEditedInvoice.days"
+                                      }
+                                    ],
+                                    attrs: { type: "checkbox" },
+                                    domProps: {
+                                      value: day,
+                                      checked: Array.isArray(
+                                        _vm.toBeEditedInvoice.days
+                                      )
+                                        ? _vm._i(
+                                            _vm.toBeEditedInvoice.days,
+                                            day
+                                          ) > -1
+                                        : _vm.toBeEditedInvoice.days
+                                    },
+                                    on: {
+                                      change: function($event) {
+                                        var $$a = _vm.toBeEditedInvoice.days,
+                                          $$el = $event.target,
+                                          $$c = $$el.checked ? true : false
+                                        if (Array.isArray($$a)) {
+                                          var $$v = day,
+                                            $$i = _vm._i($$a, $$v)
+                                          if ($$el.checked) {
+                                            $$i < 0 &&
+                                              _vm.$set(
+                                                _vm.toBeEditedInvoice,
+                                                "days",
+                                                $$a.concat([$$v])
+                                              )
+                                          } else {
+                                            $$i > -1 &&
+                                              _vm.$set(
+                                                _vm.toBeEditedInvoice,
+                                                "days",
+                                                $$a
+                                                  .slice(0, $$i)
+                                                  .concat($$a.slice($$i + 1))
+                                              )
+                                          }
+                                        } else {
+                                          _vm.$set(
+                                            _vm.toBeEditedInvoice,
+                                            "days",
+                                            $$c
+                                          )
+                                        }
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(
+                                    "\n                                          " +
+                                      _vm._s(day) +
+                                      "\n                                      "
+                                  )
+                                ]
+                              )
+                            })
+                          ),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c("br"),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.toBeEditedInvoice.days,
+                                  expression: "toBeEditedInvoice.days"
+                                }
+                              ],
+                              attrs: { type: "checkbox", value: "all_days" },
+                              domProps: {
+                                checked: _vm.toBeEditedInvoice.days.includes(
+                                  "all_days"
+                                ),
+                                checked: Array.isArray(
+                                  _vm.toBeEditedInvoice.days
+                                )
+                                  ? _vm._i(
+                                      _vm.toBeEditedInvoice.days,
+                                      "all_days"
+                                    ) > -1
+                                  : _vm.toBeEditedInvoice.days
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a = _vm.toBeEditedInvoice.days,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = "all_days",
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        _vm.$set(
+                                          _vm.toBeEditedInvoice,
+                                          "days",
+                                          $$a.concat([$$v])
+                                        )
+                                    } else {
+                                      $$i > -1 &&
+                                        _vm.$set(
+                                          _vm.toBeEditedInvoice,
+                                          "days",
+                                          $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1))
+                                        )
+                                    }
+                                  } else {
+                                    _vm.$set(_vm.toBeEditedInvoice, "days", $$c)
+                                  }
+                                }
+                              }
+                            }),
+                            _vm._v(
+                              "\n                                      All campaign days.\n                                  "
+                            )
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
                       _c("div", { staticClass: "form-group col-md-12" }, [
                         _c("hr"),
                         _vm._v(" "),
-                        _vm._m(3),
+                        _vm._m(4),
                         _vm._v(" "),
                         _c("textarea", {
                           directives: [
@@ -58718,7 +59093,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(4)
+                    _vm._m(5)
                   ]
                 )
               ])
@@ -58777,6 +59152,18 @@ var staticRenderFns = [
         _vm._v(" :")
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row col-md-12" }, [
+      _c(
+        "label",
+        { staticClass: "panelFormLabel", attrs: { for: "start_time" } },
+        [_c("b", [_vm._v("Working hours :")])]
+      )
+    ])
   },
   function() {
     var _vm = this

@@ -42,6 +42,19 @@
 
                 Hours :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.hours}}</b><br/>
 
+                Working hours :<br/><b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
+                Start : {{invoice.start_time}} | End : {{invoice.end_time}} </b>
+                <br/>
+                Days :
+                <div style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
+                    <b v-show="invoice.days.includes('all_days')">
+                        All days of the week.
+                    </b>
+                    <b v-show="!invoice.days.includes('all_days')">
+                        {{invoice.days.join(' | ')}}
+                    </b>
+                </div>
+
                 <hr>
                 Status : <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.status}}</b><br/>
                 <div class="NoDecor">
@@ -115,6 +128,9 @@
                     'currency':'',
                     'year':'',
                     'week':'',
+                    'start_time':'',
+                    'end_time':'',
+                     days:['Mon'],
                     'campaign_brief_id':'',
                      agent:{}
                 }
@@ -127,6 +143,11 @@
                     (response) => {
                         let currInvoices =  response.data;
                         $.each(currInvoices, function(i){
+                            if(currInvoices[i].days === null){
+                                currInvoices[i].days = [];
+                            }else{
+                                currInvoices[i].days = currInvoices[i].days.split(',')
+                            }
                         });
                         this.invoices = currInvoices;
                         this.checkMaxInvoices();
@@ -204,6 +225,9 @@
                     'currency':'',
                     'year':'',
                     'week':'',
+                    'start_time':'',
+                    'end_time':'',
+                     days:[],
                     'campaign_brief_id':'',
                     agent:{}
                 };

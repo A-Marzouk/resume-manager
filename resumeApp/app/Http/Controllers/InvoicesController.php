@@ -75,6 +75,15 @@ class InvoicesController extends Controller
         $invoice->service      = $request->service;
         $invoice->week      = $request->week;
         $invoice->year      = $request->year;
+        $invoice->start_time      = $request->start_time;
+        $invoice->end_time        = $request->end_time;
+        if(isset($request->days)){
+            if(in_array('all_days',$request->days)){
+                $invoice->days   = 'all_days';
+            }else{
+                $invoice->days      = implode(',',$request->days);
+            }
+        }
         $invoice->currency      = $request->currency;
         $invoice->hours        = $request->hours;
         if(isset($request->timeZone)){

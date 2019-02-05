@@ -56853,6 +56853,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
@@ -56864,6 +56866,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'id': '',
                 'unique_number': '',
                 'client_id': this.client_id,
+                'user_id': '',
                 'total_amount': '',
                 'agentName': '',
                 'hours': '',
@@ -56873,6 +56876,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'time_of_service': '',
                 'status': '',
                 'timeZone': '',
+                'currency': '',
+                'year': '',
+                'week': '',
                 'campaign_brief_id': ''
             }
         };
@@ -56944,6 +56950,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'id': '',
                 'unique_number': '',
                 'client_id': this.client_id,
+                'user_id': '',
                 'total_amount': '',
                 'agentName': '',
                 'hours': '',
@@ -56953,6 +56960,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'time_of_service': '',
                 'status': '',
                 'timeZone': '',
+                'currency': '',
+                'year': '',
+                'week': '',
                 'campaign_brief_id': ''
             };
         },
@@ -57107,6 +57117,21 @@ var render = function() {
                 [_vm._v(" " + _vm._s(invoice.total_amount))]
               ),
               _c("br"),
+              _vm._v("\n            Currency :"),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v(" " + _vm._s(invoice.currency))]
+              ),
+              _c("br"),
               _vm._v("\n            Hours :"),
               _c(
                 "b",
@@ -57120,6 +57145,21 @@ var render = function() {
                   }
                 },
                 [_vm._v(" " + _vm._s(invoice.hours))]
+              ),
+              _c("br"),
+              _vm._v("\n            Year :"),
+              _c(
+                "b",
+                {
+                  staticStyle: {
+                    "font-size": "16px",
+                    color: "#30323D",
+                    "font-family": "Roboto",
+                    "line-height": "19px",
+                    "font-weight": "bold"
+                  }
+                },
+                [_vm._v(" " + _vm._s(invoice.year))]
               ),
               _c("br"),
               _vm._v("\n            Rate per Hour :"),
@@ -57724,23 +57764,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedInvoice'],
@@ -57807,7 +57830,7 @@ var render = function() {
       [
         _c(
           "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
               _vm._m(0),
@@ -57876,42 +57899,64 @@ var render = function() {
                             staticClass: "panelFormLabel",
                             attrs: { for: "rate" }
                           },
-                          [_vm._v("Rate :")]
+                          [_vm._v("Hourly rate :")]
                         ),
                         _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.toBeEditedInvoice.rate,
-                              expression: "toBeEditedInvoice.rate"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "number",
-                            id: "rate",
-                            name: "rate",
-                            required: ""
-                          },
-                          domProps: { value: _vm.toBeEditedInvoice.rate },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.toBeEditedInvoice.rate,
+                                expression: "toBeEditedInvoice.rate"
                               }
-                              _vm.$set(
-                                _vm.toBeEditedInvoice,
-                                "rate",
-                                $event.target.value
-                              )
+                            ],
+                            staticClass: "form-control",
+                            attrs: { name: "rate", id: "rate" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.toBeEditedInvoice,
+                                  "rate",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
                             }
-                          }
-                        })
+                          },
+                          _vm._l(42, function(index) {
+                            return _c(
+                              "option",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: (index + 7 + 1) / 2 !== 4.5,
+                                    expression: "(index+7+1)/2 !== 4.5"
+                                  }
+                                ],
+                                key: index,
+                                domProps: { value: (index + 7 + 1) / 2 }
+                              },
+                              [_vm._v(_vm._s((index + 7 + 1) / 2))]
+                            )
+                          })
+                        )
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-12" }, [
+                      _c("div", { staticClass: "form-group col-md-6" }, [
                         _vm._m(1),
                         _vm._v(" "),
                         _c("input", {
@@ -57952,7 +57997,7 @@ var render = function() {
                         })
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-12" }, [
+                      _c("div", { staticClass: "form-group col-md-6" }, [
                         _c(
                           "label",
                           {
@@ -57994,7 +58039,7 @@ var render = function() {
                         })
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-12" }, [
+                      _c("div", { staticClass: "form-group col-md-6" }, [
                         _c(
                           "label",
                           {
@@ -58036,7 +58081,7 @@ var render = function() {
                         })
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-12" }, [
+                      _c("div", { staticClass: "form-group col-md-6" }, [
                         _vm._m(2),
                         _vm._v(" "),
                         _c("textarea", {
@@ -58073,7 +58118,7 @@ var render = function() {
                         })
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-12" }, [
+                      _c("div", { staticClass: "form-group col-md-6" }, [
                         _vm._m(3),
                         _vm._v(" "),
                         _c("textarea", {
@@ -58103,7 +58148,7 @@ var render = function() {
                         })
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-12" }, [
+                      _c("div", { staticClass: "form-group col-6" }, [
                         _c(
                           "label",
                           {
@@ -58160,7 +58205,7 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-12" }, [
+                      _c("div", { staticClass: "form-group col-6" }, [
                         _c(
                           "label",
                           {
@@ -58232,7 +58277,125 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-12" }, [
+                      _c("div", { staticClass: "form-group col-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "currency" }
+                          },
+                          [_vm._v("Currency :")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.toBeEditedInvoice.currency,
+                                expression: "toBeEditedInvoice.currency"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { id: "currency" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.toBeEditedInvoice,
+                                  "currency",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { disabled: "", selected: "" } },
+                              [_vm._v("Please select")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "USD" } }, [
+                              _vm._v(" USD ")
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "year" }
+                          },
+                          [_vm._v("Year :")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.toBeEditedInvoice.year,
+                                expression: "toBeEditedInvoice.year"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { id: "year" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.toBeEditedInvoice,
+                                  "year",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { disabled: "", selected: "" } },
+                              [_vm._v("Please select")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "2019" } }, [
+                              _vm._v(" 2019 ")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "2020" } }, [
+                              _vm._v(" 2020 ")
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-6" }, [
                         _c(
                           "label",
                           {
@@ -58242,583 +58405,187 @@ var render = function() {
                           [_vm._v("Time zone")]
                         ),
                         _vm._v(" "),
-                        _c("div", {}, [
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.toBeEditedInvoice.timeZone,
-                                  expression: "toBeEditedInvoice.timeZone"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { id: "timeZone", name: "timeZone" },
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    _vm.toBeEditedInvoice,
-                                    "timeZone",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.toBeEditedInvoice.timeZone,
+                                expression: "toBeEditedInvoice.timeZone"
                               }
-                            },
-                            [
-                              _c(
-                                "option",
-                                { attrs: { value: "", selected: "selected" } },
-                                [_vm._v("Select your timezone")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
-                                  }
-                                },
-                                [
-                                  _vm._v(
+                            ],
+                            staticClass: "form-control",
+                            attrs: { id: "timeZone", name: "timeZone" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.toBeEditedInvoice,
+                                  "timeZone",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { value: "", selected: "selected" } },
+                              [_vm._v("Select your timezone")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
                                     "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT -6:00) Central Time (US & Canada), Mexico City"
-                                  }
-                                },
-                                [
-                                  _vm._v(
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
                                     "(GMT -6:00) Central Time (US & Canada), Mexico City"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT -7:00) Mountain Time (US & Canada)"
-                                  }
-                                },
-                                [
-                                  _vm._v(
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
                                     "(GMT -7:00) Mountain Time (US & Canada)"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT -8:00) Pacific Time (US & Canada)"
-                                  }
-                                },
-                                [
-                                  _vm._v(
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "(GMT -7:00) Mountain Time (US & Canada)"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
                                     "(GMT -8:00) Pacific Time (US & Canada)"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                { attrs: { value: "(GMT -9:00) Alaska" } },
-                                [_vm._v("(GMT -9:00) Alaska")]
-                              ),
-                              _vm._v(" "),
-                              _c("option", { attrs: { value: "" } }, [
-                                _vm._v("--------------")
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value: "(GMT -12:00) Eniwetok, Kwajalein"
-                                  }
-                                },
-                                [_vm._v("(GMT -12:00) Eniwetok, Kwajalein")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value: "(GMT -11:00) Midway Island, Samoa"
-                                  }
-                                },
-                                [_vm._v("(GMT -11:00) Midway Island, Samoa")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                { attrs: { value: "(GMT -10:00) Hawaii" } },
-                                [_vm._v("(GMT -10:00) Hawaii")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                { attrs: { value: "(GMT -9:30) Taiohae" } },
-                                [_vm._v("(GMT -9:30) Taiohae")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                { attrs: { value: "(GMT -9:00) Alaska" } },
-                                [_vm._v("(GMT -9:00) Alaska")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT -8:00) Pacific Time (US & Canada)"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "(GMT -8:00) Pacific Time (US & Canada)"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT -7:00) Mountain Time (US & Canada)"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "(GMT -7:00) Mountain Time (US & Canada)"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT -6:00) Central Time (US & Canada), Mexico City"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "(GMT -6:00) Central Time (US & Canada), Mexico City"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                { attrs: { value: "(GMT -4:30) Caracas" } },
-                                [_vm._v("(GMT -4:30) Caracas")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: { value: "(GMT -3:30) Newfoundland" }
-                                },
-                                [_vm._v("(GMT -3:30) Newfoundland")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT -3:00) Brazil, Buenos Aires, Georgetown"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "(GMT -3:00) Brazil, Buenos Aires, Georgetown"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: { value: "(GMT -2:00) Mid-Atlantic" }
-                                },
-                                [_vm._v("(GMT -2:00) Mid-Atlantic")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT -1:00) Azores, Cape Verde Islands"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "(GMT -1:00) Azores, Cape Verde Islands"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
-                                  }
-                                },
-                                [
-                                  _vm._v(
+                                }
+                              },
+                              [_vm._v("(GMT -8:00) Pacific Time (US & Canada)")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
                                     "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT +1:00) Brussels, Copenhagen, Madrid, Paris"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "(GMT +1:00) Brussels, Copenhagen, Madrid, Paris"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT +2:00) Kaliningrad, South Africa"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "(GMT +2:00) Kaliningrad, South Africa"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                { attrs: { value: "(GMT +3:30) Tehran" } },
-                                [_vm._v("(GMT +3:30) Tehran")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                { attrs: { value: "(GMT +4:30) Kabul" } },
-                                [_vm._v("(GMT +4:30) Kabul")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value: "(GMT +5:45) Kathmandu, Pokhara"
-                                  }
-                                },
-                                [_vm._v("(GMT +5:45) Kathmandu, Pokhara")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value: "(GMT +6:00) Almaty, Dhaka, Colombo"
-                                  }
-                                },
-                                [_vm._v("(GMT +6:00) Almaty, Dhaka, Colombo")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value: "(GMT +6:30) Yangon, Mandalay"
-                                  }
-                                },
-                                [_vm._v("(GMT +6:30) Yangon, Mandalay")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value: "(GMT +7:00) Bangkok, Hanoi, Jakarta"
-                                  }
-                                },
-                                [_vm._v("(GMT +7:00) Bangkok, Hanoi, Jakarta")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
-                                  }
-                                },
-                                [
-                                  _vm._v(
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
                                     "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                { attrs: { value: "(GMT +8:45) Eucla" } },
-                                [_vm._v("(GMT +8:45) Eucla")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
-                                  }
-                                },
-                                [
-                                  _vm._v(
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              { attrs: { value: "(GMT +8:45) Eucla" } },
+                              [_vm._v("(GMT +8:45) Eucla")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
                                     "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value: "(GMT +9:30) Adelaide, Darwin"
-                                  }
-                                },
-                                [_vm._v("(GMT +9:30) Adelaide, Darwin")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
-                                  }
-                                },
-                                [
-                                  _vm._v(
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "(GMT +9:30) Adelaide, Darwin" }
+                              },
+                              [_vm._v("(GMT +9:30) Adelaide, Darwin")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value:
                                     "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value: "(GMT +10:30) Lord Howe Island"
-                                  }
-                                },
-                                [_vm._v("(GMT +10:30) Lord Howe Island")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value: "(GMT +11:30) Norfolk Island"
-                                  }
-                                },
-                                [_vm._v("(GMT +11:30) Norfolk Island")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value:
-                                      "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value: "(GMT +12:45) Chatham Islands"
-                                  }
-                                },
-                                [_vm._v("(GMT +12:45) Chatham Islands")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value: "(GMT +13:00) Apia, Nukualofa"
-                                  }
-                                },
-                                [_vm._v("(GMT +13:00) Apia, Nukualofa")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "option",
-                                {
-                                  attrs: {
-                                    value: "(GMT +14:00) Line Islands, Tokelau"
-                                  }
-                                },
-                                [_vm._v("(GMT +14:00) Line Islands, Tokelau")]
-                              )
-                            ]
-                          )
-                        ])
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value: "(GMT +10:30) Lord Howe Island"
+                                }
+                              },
+                              [_vm._v("(GMT +10:30) Lord Howe Island")]
+                            )
+                          ]
+                        )
                       ])
                     ]),
                     _vm._v(" "),

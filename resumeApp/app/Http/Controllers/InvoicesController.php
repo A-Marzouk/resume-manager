@@ -48,8 +48,11 @@ class InvoicesController extends Controller
             'total_amount' => 'max:10|required',
             'service' => 'max:1500|required',
             'agentName' => 'max:191|required',
+            'year' => 'max:191',
+            'currency' => 'max:191',
+            'week' => 'max:191',
             'hours' => 'max:10|required',
-            'rate' => 'max:10|required',
+            'rate' => 'max:191|required',
             'status' => 'max:191|required',
             'time_of_service' => 'max:1500',
             'notes' => 'max:1500',
@@ -68,6 +71,9 @@ class InvoicesController extends Controller
         $invoice->total_amount = $request->total_amount;
         $invoice->campaign_brief_id = $request->campaign_brief_id;
         $invoice->service      = $request->service;
+        $invoice->week      = $request->week;
+        $invoice->year      = $request->year;
+        $invoice->currency      = $request->currency;
         $invoice->hours        = $request->hours;
         if(isset($request->timeZone)){
             $invoice->timeZone        = $request->timeZone;

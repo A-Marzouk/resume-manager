@@ -24,7 +24,9 @@
                 </div>
                 Client name :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.clientName}}</b><br/>
                 Total amount to pay :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.total_amount}}</b><br/>
+                Currency :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.currency}}</b><br/>
                 Hours :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.hours}}</b><br/>
+                Year :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.year}}</b><br/>
                 Rate per Hour :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.rate}}</b><br/>
                 Agent :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.agentName}}</b><br/>
                 <div  style="color: #30323D;font-family: Roboto;" >Service provided : {{nl2br(invoice.service,false)}}</div>
@@ -90,6 +92,7 @@
                     'id':'',
                     'unique_number':'',
                     'client_id':this.client_id,
+                    'user_id':'',
                     'total_amount' :'',
                     'agentName' :'',
                     'hours':'',
@@ -99,6 +102,9 @@
                     'time_of_service':'',
                     'status':'',
                     'timeZone':'',
+                    'currency':'',
+                    'year':'',
+                    'week':'',
                     'campaign_brief_id':'',
                 }
             }
@@ -174,6 +180,7 @@
                     'id':'',
                     'unique_number':'',
                     'client_id':this.client_id,
+                    'user_id':'',
                     'total_amount' :'',
                     'agentName' :'',
                     'hours':'',
@@ -183,6 +190,9 @@
                     'time_of_service':'',
                     'status':'',
                     'timeZone':'',
+                    'currency':'',
+                    'year':'',
+                    'week':'',
                     'campaign_brief_id':''
                 };
             },

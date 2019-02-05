@@ -15,7 +15,8 @@ class Invoice extends Model
 {
     protected $table = 'invoices';
     protected $fillable = [
-        'total_amount','campaign_brief_id','timeZone','service','hours','rate','notes','time_of_service','status','unique_number'
+        'total_amount','campaign_brief_id','timeZone','service','hours','rate','notes','time_of_service','status','unique_number',
+        'user_id','year','week','currency'
     ];
 
 

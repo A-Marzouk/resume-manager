@@ -80,7 +80,7 @@
                               </div>
                               <div class="form-group col-6">
                                   <label for="invoiceWeek" class="panelFormLabel">Year - Week :</label>
-                                  <input id="invoiceWeek" class="form-control" min="2019-W01" max="2020-W52" type="week" name="week" v-model="toBeEditedInvoice.week">
+                                  <input @change="setWeekDate" id="invoiceWeek" class="form-control" min="2019-W01" max="2020-W52" type="week" name="week" v-model="toBeEditedInvoice.week">
                                   <div style="padding-top:3px;" class="panelFormLabel" v-if="toBeEditedInvoice.week.length > 0">
                                       {{getDateOfISOWeek(toBeEditedInvoice.week.split('-')[1].replace('W',''),toBeEditedInvoice.week.split('-')[0])}}
                                   </div>
@@ -184,6 +184,10 @@
                     this.campBriefs = response.data;
                 });
             },
+            setWeekDate(){
+              this.toBeEditedInvoice.weekDate =
+                  this.getDateOfISOWeek(this.toBeEditedInvoice.week.split('-')[1].replace('W',''),this.toBeEditedInvoice.week.split('-')[0]);
+            },
             updateAgent(agent_id){
                 $.each(this.agents, (i)=>{
                     if(this.agents[i].id == agent_id){
@@ -196,11 +200,11 @@
                 var dow = simple.getDay();
                 var ISOweekStart = simple;
                 if (dow <= 4)
-                    ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+                    {ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);}
                 else
-                    ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
-
+                    {ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());}
                 return this.getDate(ISOweekStart);
+
             },
             getDate(date){
                 let event = new Date(date);

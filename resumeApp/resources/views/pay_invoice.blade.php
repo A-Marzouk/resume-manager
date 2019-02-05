@@ -17,7 +17,10 @@
                         </div>
 
                         <div class="agentName">
-                            Name of Agent :  {{$invoice->agentName}}<br/>
+                            Name of Agent :  {{$invoice->user->firstName}} {{$invoice->user->lastName}}<br/>
+                        </div>
+                        <div class="termsText">
+                            Invoice issue date    : {{$invoice->created_at->format('d.m.Y')}}
                         </div>
                         <div class="termsText">
                             Status     : {{$invoice->status}}
@@ -55,7 +58,53 @@
                 </div>
 
                 <div class="row clientInfo">
-                    <div class="col-6">
+                    <div class="col-4">
+                        Working hours
+                    </div>
+                    <div class="col-4">
+                        Days
+                    </div>
+                    <div class="col-4">
+                        Year - Week
+                    </div>
+                </div>
+
+                <div class="row clientInfo_detail">
+                    <div class="col-4">
+                        <span class="row">
+                            <span class="col-4 text-left">
+                                From:
+                            </span>
+                            <span class="col-6">
+                                {{$invoice->start_time}}
+                            </span>
+                        </span>
+                        <span class="row">
+                            <span class="col-4 text-left">
+                                To:
+                            </span>
+                            <span class="col-6">
+                                {{$invoice->end_time}}
+                            </span>
+                        </span>
+                    </div>
+                    <div class="col-4">
+                        @if($invoice->days == 'all_days')
+                            All days of the week.
+                        @else
+                            {{$invoice->days}}
+                        @endif
+
+                    </div>
+                    <div class="col-4" style="border: none; word-break: break-word;">
+                        {{$invoice->week}}<br/>
+                        {{$invoice->weekDate}}
+                    </div>
+                </div>
+
+
+                <div class="row clientInfo">
+                    <div class="col-4">
                         SERVICE PROVIDED
                     </div>
                     <div class="col-2">
@@ -67,21 +116,27 @@
                     <div class="col-2">
                         TOTAL DUE
                     </div>
+                    <div class="col-2">
+                        CURRENCY
+                    </div>
                 </div>
                 <div class="row clientInfo_detail">
-                    <div class="col-6 text-left">
+                    <div class="col-4 text-left">
                         {!!nl2br($invoice->service)!!}<br/><br>
                         {!!nl2br($invoice->time_of_service)!!}<br/><br>
-                        {!!nl2br($invoice->client->timeZone)!!}
+                        {!!nl2br($invoice->timeZone)!!}
                     </div>
                     <div class="col-2">
                         {{$invoice->hours}}
                     </div>
                     <div class="col-2">
-                        {{$invoice->rate}} USD
+                        {{$invoice->rate}}
+                    </div>
+                    <div class="col-2">
+                        {{$invoice->total_amount}}
                     </div>
                     <div class="col-2" style="border: none;">
-                        {{$invoice->total_amount}}
+                        {{$invoice->currency}}
                     </div>
                 </div>
 
@@ -136,7 +191,12 @@
                     <div class="col-12">
                         <div class="termsText">
                             Terms of payment - Weekly in advance <br/>
-                            Contract - Weekly
+                            Contract - Weekly <br/>
+                            <div class="NoDecor">
+                                <a href="https://123workforce.com/workforce/campaign_briefs/{{$invoice->campaign_brief_id}}" target="_blank">
+                                    View related Campaign Brief
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

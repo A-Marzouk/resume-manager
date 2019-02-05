@@ -74,6 +74,7 @@ class InvoicesController extends Controller
         $invoice->campaign_brief_id = $request->campaign_brief_id;
         $invoice->service      = $request->service;
         $invoice->week      = $request->week;
+        $invoice->weekDate      = $request->weekDate;
         $invoice->year      = $request->year;
         $invoice->start_time      = $request->start_time;
         $invoice->end_time        = $request->end_time;

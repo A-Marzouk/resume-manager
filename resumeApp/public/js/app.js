@@ -56904,6 +56904,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'week': '',
                 'start_time': '',
                 'end_time': '',
+                'weekDate': '',
                 days: ['Mon'],
                 'campaign_brief_id': '',
                 agent: {}
@@ -56995,6 +56996,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'timeZone': '',
                 'currency': '',
                 'year': '',
+                'weekDate': '',
                 'week': '',
                 'start_time': '',
                 'end_time': '',
@@ -57998,6 +58000,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.campBriefs = response.data;
             });
         },
+        setWeekDate: function setWeekDate() {
+            this.toBeEditedInvoice.weekDate = this.getDateOfISOWeek(this.toBeEditedInvoice.week.split('-')[1].replace('W', ''), this.toBeEditedInvoice.week.split('-')[0]);
+        },
         updateAgent: function updateAgent(agent_id) {
             var _this3 = this;
 
@@ -58011,8 +58016,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var simple = new Date(y, 0, 1 + (w - 1) * 7);
             var dow = simple.getDay();
             var ISOweekStart = simple;
-            if (dow <= 4) ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);else ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
-
+            if (dow <= 4) {
+                ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+            } else {
+                ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+            }
             return this.getDate(ISOweekStart);
         },
         getDate: function getDate(date) {
@@ -58652,6 +58660,7 @@ var render = function() {
                           },
                           domProps: { value: _vm.toBeEditedInvoice.week },
                           on: {
+                            change: _vm.setWeekDate,
                             input: function($event) {
                               if ($event.target.composing) {
                                 return

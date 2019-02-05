@@ -130,6 +130,7 @@
                     'week':'',
                     'start_time':'',
                     'end_time':'',
+                    'weekDate':'',
                      days:['Mon'],
                     'campaign_brief_id':'',
                      agent:{}
@@ -224,6 +225,7 @@
                     'timeZone':'',
                     'currency':'',
                     'year':'',
+                    'weekDate':'',
                     'week':'',
                     'start_time':'',
                     'end_time':'',

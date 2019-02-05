@@ -72,7 +72,10 @@
                     </div>
 
                     <div class="agentName">
-                        Name of Agent :  {{$invoice->agentName}}<br/>
+                        Name of Agent :  {{$invoice->user->firstName}} {{$invoice->user->lastName}} <br/>
+                    </div>
+                    <div class="termsText" style="padding-bottom: 50px;">
+                        Invoice issue date    : {{$invoice->created_at->format('d.m.Y')}}
                     </div>
                     <div class="termsText" style="padding-bottom: 50px;">
                         Status     : {{$invoice->status}}
@@ -106,13 +109,44 @@
                 </tr>
             </table>
 
+            <table style="  border-top: 2px lightblue solid; padding-bottom: 40px;" >
+                <tr class="clientInfo">
+                    <th style="width: 370px!important;">
+                        Working hours
+                    </th>
+                    <th style="width: 380px!important;">
+                        Days
+                    </th >
+                    <th style="width: 380px!important;">
+                        Year - Week
+                    </th>
+                </tr>
+                <tr class="row clientInfo_detail">
+                    <td class="col-4">
+                        From: {{$invoice->start_time}} <br/>
+                        To: {{$invoice->end_time}}
+                    </td>
+                    <td class="col-4">
+                        @if($invoice->days == 'all_days')
+                            All days of the week.
+                        @else
+                            {{$invoice->days}}
+                        @endif
+                    </td>
+                    <td style="border: none; word-break: break-word;" class="col-4">
+                        {{$invoice->week}}<br/>
+                        {{$invoice->weekDate}}
+                    </td>
+                </tr>
+            </table>
+
 
             <table style="margin-top: 55px;  border-top: 2px lightblue solid;">
                 <tr class="row clientInfo">
                     <th class="col-6" style="width: 380px!important;">
                         SERVICE PROVIDED
                     </th>
-                    <th class="col-2" style="width: 370px!important;">
+                    <th class="col-2" style="width: 185px!important;">
                         NO. OF HRS / WEEK
                     </th>
                     <th class="col-2" style="width: 185px!important;">
@@ -120,6 +154,9 @@
                     </th>
                     <th class="col-2" style="width: 185px!important;">
                         TOTAL DUE
+                    </th>
+                    <th class="col-2" style="width: 185px!important;">
+                        CURRENCY
                     </th>
                 </tr>
 
@@ -135,8 +172,11 @@
                     <td class="col-2">
                         {{$invoice->rate}} USD
                     </td>
-                    <td class="col-2" style="border: none;">
+                    <td class="col-2" >
                         {{$invoice->total_amount}}
+                    </td>
+                    <td class="col-2" style="border: none;">
+                        {{$invoice->currency}}
                     </td>
                 </tr>
             </table>
@@ -150,6 +190,11 @@
                     <div class="termsText">
                         Terms of payment - Weekly in advance <br/>
                         Contract - Weekly
+                        <div class="NoDecor">
+                            <a href="https://123workforce.com/workforce/campaign_briefs/{{$invoice->campaign_brief_id}}" target="_blank">
+                                View related Campaign Brief
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

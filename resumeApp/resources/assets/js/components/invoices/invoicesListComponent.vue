@@ -37,7 +37,7 @@
                 Time zone:<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.timeZone}}</b><br/>
                 <div  style="color: #30323D;font-family: Roboto;" v-show="invoice.time_of_service != null">Time : {{nl2br(invoice.time_of_service,false)}}</div>
                 Year - Week :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.week}}</b>
-                <span>({{getDateOfISOWeek(invoice.week.split('-')[1].replace('W',''),invoice.week.split('-')[0])}})</span>
+                <span>{{invoice.weekDate}}</span>
                 <br/>
 
                 Hours :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.hours}}</b><br/>

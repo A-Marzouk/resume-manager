@@ -81,8 +81,8 @@
                               <div class="form-group col-6">
                                   <label for="invoiceWeek" class="panelFormLabel">Year - Week :</label>
                                   <input @change="setWeekDate" id="invoiceWeek" class="form-control" min="2019-W01" max="2020-W52" type="week" name="week" v-model="toBeEditedInvoice.week">
-                                  <div style="padding-top:3px;" class="panelFormLabel" v-if="toBeEditedInvoice.week.length > 0">
-                                      {{getDateOfISOWeek(toBeEditedInvoice.week.split('-')[1].replace('W',''),toBeEditedInvoice.week.split('-')[0])}}
+                                  <div style="padding-top:3px;" class="panelFormLabel" v-if="toBeEditedInvoice.week != null">
+                                      {{toBeEditedInvoice.weekDate}}
                                   </div>
                               </div>
                               <div class="row col-md-12">
@@ -185,9 +185,11 @@
                 });
             },
             setWeekDate(){
-              this.toBeEditedInvoice.weekDate =
-                  this.getDateOfISOWeek(this.toBeEditedInvoice.week.split('-')[1].replace('W',''),this.toBeEditedInvoice.week.split('-')[0]);
-            },
+                if(this.toBeEditedInvoice.week !== null){
+                    this.toBeEditedInvoice.weekDate =
+                        this.getDateOfISOWeek(this.toBeEditedInvoice.week.split('-')[1].replace('W',''),this.toBeEditedInvoice.week.split('-')[0]);
+                }
+              },
             updateAgent(agent_id){
                 $.each(this.agents, (i)=>{
                     if(this.agents[i].id == agent_id){

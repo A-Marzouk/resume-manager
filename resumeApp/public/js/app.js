@@ -57305,18 +57305,7 @@ var render = function() {
                 [_vm._v(" " + _vm._s(invoice.week))]
               ),
               _vm._v(" "),
-              _c("span", [
-                _vm._v(
-                  "(" +
-                    _vm._s(
-                      _vm.getDateOfISOWeek(
-                        invoice.week.split("-")[1].replace("W", ""),
-                        invoice.week.split("-")[0]
-                      )
-                    ) +
-                    ")"
-                )
-              ]),
+              _c("span", [_vm._v(_vm._s(invoice.weekDate))]),
               _vm._v(" "),
               _c("br"),
               _vm._v("\n\n            Hours :"),
@@ -58001,7 +57990,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         setWeekDate: function setWeekDate() {
-            this.toBeEditedInvoice.weekDate = this.getDateOfISOWeek(this.toBeEditedInvoice.week.split('-')[1].replace('W', ''), this.toBeEditedInvoice.week.split('-')[0]);
+            if (this.toBeEditedInvoice.week !== null) {
+                this.toBeEditedInvoice.weekDate = this.getDateOfISOWeek(this.toBeEditedInvoice.week.split('-')[1].replace('W', ''), this.toBeEditedInvoice.week.split('-')[0]);
+            }
         },
         updateAgent: function updateAgent(agent_id) {
             var _this3 = this;
@@ -58674,7 +58665,7 @@ var render = function() {
                           }
                         }),
                         _vm._v(" "),
-                        _vm.toBeEditedInvoice.week.length > 0
+                        _vm.toBeEditedInvoice.week != null
                           ? _c(
                               "div",
                               {
@@ -58684,14 +58675,7 @@ var render = function() {
                               [
                                 _vm._v(
                                   "\n                                  " +
-                                    _vm._s(
-                                      _vm.getDateOfISOWeek(
-                                        _vm.toBeEditedInvoice.week
-                                          .split("-")[1]
-                                          .replace("W", ""),
-                                        _vm.toBeEditedInvoice.week.split("-")[0]
-                                      )
-                                    ) +
+                                    _vm._s(_vm.toBeEditedInvoice.weekDate) +
                                     "\n                              "
                                 )
                               ]

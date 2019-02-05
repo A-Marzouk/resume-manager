@@ -16,12 +16,15 @@ class Invoice extends Model
     protected $table = 'invoices';
     protected $fillable = [
         'total_amount','campaign_brief_id','timeZone','service','hours','rate','notes','time_of_service','status','unique_number',
-        'user_id','year','week','currency'
+        'user_id','year','week','currency','start_time','end_time','days'
     ];
 
 
     public function client(){
         return $this->belongsTo(Client::class);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
     public function campaignBrief(){

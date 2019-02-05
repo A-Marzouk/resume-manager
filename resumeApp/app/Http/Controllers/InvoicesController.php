@@ -38,6 +38,7 @@ class InvoicesController extends Controller
         $invoices = $client->invoices;
         foreach ($invoices as &$invoice){
             $invoice['clientName'] = $client->name;
+            $invoice['agent'] = $invoice->user;
         }
         return $invoices;
     }
@@ -69,6 +70,7 @@ class InvoicesController extends Controller
         }
 
         $invoice->total_amount = $request->total_amount;
+        $invoice->user_id = $request->user_id;
         $invoice->campaign_brief_id = $request->campaign_brief_id;
         $invoice->service      = $request->service;
         $invoice->week      = $request->week;
@@ -80,7 +82,6 @@ class InvoicesController extends Controller
         }
         $invoice->rate         = $request->rate;
         $invoice->status       = $request->status;
-        $invoice->agentName       = $request->agentName;
         if(isset($request->notes)){
             $invoice->notes = $request->notes;
         }

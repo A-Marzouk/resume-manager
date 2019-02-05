@@ -11,58 +11,27 @@
                     <div class="modal-body">
                         <form action="/client/addinvoice/" method="post" @submit.prevent="submitForm">
                           <div class="row">
+                              <div class="form-group col-md-12">
+                                  <label for="user_id" class="panelFormLabel">Agent :</label>
+                                  <select @change="updateAgent(toBeEditedInvoice.user_id)" name="user_id" class="form-control" id="user_id" v-model="toBeEditedInvoice.user_id">
+                                      <option v-for="(agent,index) in agents" :key="index" :value="agent.id">
+                                          {{agent.firstName}} {{agent.lastName}}
+                                      </option>
+                                  </select>
+                              </div>
+                              <!-- agent -->
                               <div class="form-group col-md-6">
                                   <label for="hours" class="panelFormLabel">Hours :</label>
                                   <input type="number" class="form-control" autofocus id="hours" name="hours" v-model="toBeEditedInvoice.hours" required>
                               </div>
+                              <!-- hours -->
                               <div class="form-group col-md-6">
                                   <label for="rate" class="panelFormLabel">Hourly rate :</label>
                                   <select name="rate" class="form-control" id="rate" v-model="toBeEditedInvoice.rate">
                                       <option v-for="index in 42" :key="index" :value="(index+7+1)/2" v-show="(index+7+1)/2 !== 4.5">{{(index+7+1)/2}}</option>
                                   </select>
                               </div>
-                              <div class="form-group col-md-6">
-                                  <label for="total_amount" class="panelFormLabel">Total amount <small>(USD)</small> :</label>
-                                  <input type="number" class="form-control" id="total_amount" name="total_amount" :placeholder="'Hours * Rate : '+toBeEditedInvoice.rate * toBeEditedInvoice.hours" v-model="toBeEditedInvoice.total_amount" required>
-                              </div>
 
-                              <div class="form-group col-md-6">
-                                  <label for="agentName" class="panelFormLabel">Agent :</label>
-                                  <input type="text" class="form-control" id="agentName" name="agentName" v-model="toBeEditedInvoice.agentName" required>
-                              </div>
-
-                              <div class="form-group col-md-6">
-                                    <label for="service" class="panelFormLabel">Service :</label>
-                                    <textarea class="form-control" rows="2" id="service" name="service" v-model="toBeEditedInvoice.service" required>
-                                    </textarea>
-                              </div>
-                              <div class="form-group col-md-6">
-                                  <label for="time_of_service" class="panelFormLabel">Time of service <small>(explained)</small> :</label>
-                                  <textarea class="form-control" rows="2" id="time_of_service" name="time_of_service" v-model="toBeEditedInvoice.time_of_service" required>
-                                    </textarea>
-                              </div>
-                              <div class="form-group col-md-6">
-                                  <label for="notes" class="panelFormLabel">Notes <small>(optional)</small> :</label>
-                                  <textarea class="form-control" rows="2" id="notes" name="notes" v-model="toBeEditedInvoice.notes">
-                                    </textarea>
-                              </div>
-                              <div class="form-group col-6">
-                                  <label for="status" class="panelFormLabel">Status :</label>
-                                  <select  id="status" class="form-control" v-model="toBeEditedInvoice.status">
-                                      <option disabled value="">Please select one</option>
-                                      <option>Paid</option>
-                                      <option>Unpaid</option>
-                                  </select>
-                              </div>
-                              <div class="form-group col-6">
-                                  <label for="status" class="panelFormLabel">Realted campaign brief :</label>
-                                  <select  id="campBrief" class="form-control" v-model="toBeEditedInvoice.campaign_brief_id">
-                                      <option disabled value="">Please select</option>
-                                      <option v-for="(campBrief,index) in campBriefs" v-bind:key="index" :value="campBrief.id">
-                                          {{campBrief.company_website}}
-                                      </option>
-                                  </select>
-                              </div>
                               <div class="form-group col-6">
                                   <label for="currency" class="panelFormLabel">Currency :</label>
                                   <select  id="currency" class="form-control" v-model="toBeEditedInvoice.currency">
@@ -74,12 +43,23 @@
                                       <!--<option value="GBP" > GBP </option>-->
                                   </select>
                               </div>
-                              <div class="form-group col-6">
-                                  <label for="invoiceWeek" class="panelFormLabel">Year - Week :</label>
-                                  <input id="invoiceWeek" class="form-control" min="2019-W01" max="2020-W52" type="week" name="week" v-model="toBeEditedInvoice.week">
-                                  <div style="padding-top:15px;" class="panelFormLabel" v-if="toBeEditedInvoice.week.length > 0">
-                                      {{getDateOfISOWeek(toBeEditedInvoice.week.split('-')[1].replace('W',''),toBeEditedInvoice.week.split('-')[0])}}
-                                  </div>
+
+                              <div class="form-group col-md-6">
+                                  <label for="total_amount" class="panelFormLabel">Total amount <small>(USD)</small> :</label>
+                                  <input type="number" class="form-control" id="total_amount" name="total_amount" :placeholder="'Hours * Rate : '+toBeEditedInvoice.rate * toBeEditedInvoice.hours" v-model="toBeEditedInvoice.total_amount" required>
+                              </div>
+                              <div class="form-group col-md-12">
+                                  <label for="service" class="panelFormLabel">Service :</label>
+                                  <textarea class="form-control" rows="2" id="service" name="service" v-model="toBeEditedInvoice.service" required>
+                                    </textarea>
+                              </div>
+                              <!--service-->
+                              <!---------------------- time ----------------------------->
+                              <div class="form-group col-md-12">
+                                  <hr>
+                                  <label for="time_of_service" class="panelFormLabel">Time of service <small>(explained)</small> :</label>
+                                  <textarea class="form-control" rows="2" id="time_of_service" name="time_of_service" v-model="toBeEditedInvoice.time_of_service" required>
+                                  </textarea>
                               </div>
                               <div class="form-group col-6">
                                   <label for="timeZone" class="panelFormLabel">Time zone</label>
@@ -96,6 +76,36 @@
                                       <option value="(GMT +9:30) Adelaide, Darwin">(GMT +9:30) Adelaide, Darwin</option>
                                       <option value="(GMT +10:00) Eastern Australia, Guam, Vladivostok">(GMT +10:00) Eastern Australia, Guam, Vladivostok</option>
                                       <option value="(GMT +10:30) Lord Howe Island">(GMT +10:30) Lord Howe Island</option>
+                                  </select>
+                              </div>
+                              <div class="form-group col-6">
+                                  <label for="invoiceWeek" class="panelFormLabel">Year - Week :</label>
+                                  <input id="invoiceWeek" class="form-control" min="2019-W01" max="2020-W52" type="week" name="week" v-model="toBeEditedInvoice.week">
+                                  <div style="padding-top:3px;" class="panelFormLabel" v-if="toBeEditedInvoice.week.length > 0">
+                                      {{getDateOfISOWeek(toBeEditedInvoice.week.split('-')[1].replace('W',''),toBeEditedInvoice.week.split('-')[0])}}
+                                  </div>
+                              </div>
+                              <div class="form-group col-md-12">
+                                  <hr>
+                                  <label for="notes" class="panelFormLabel">Notes <small>(optional)</small> :</label>
+                                  <textarea class="form-control" rows="2" id="notes" name="notes" v-model="toBeEditedInvoice.notes">
+                                    </textarea>
+                              </div>
+                              <div class="form-group col-6">
+                                  <label for="status" class="panelFormLabel">Realted campaign brief :</label>
+                                  <select  id="campBrief" class="form-control" v-model="toBeEditedInvoice.campaign_brief_id">
+                                      <option disabled value="">Please select</option>
+                                      <option v-for="(campBrief,index) in campBriefs" v-bind:key="index" :value="campBrief.id">
+                                          {{campBrief.company_website}}
+                                      </option>
+                                  </select>
+                              </div>
+                              <div class="form-group col-6">
+                                  <label for="status" class="panelFormLabel">Status :</label>
+                                  <select  id="status" class="form-control" v-model="toBeEditedInvoice.status">
+                                      <option disabled value="">Please select one</option>
+                                      <option>Paid</option>
+                                      <option>Unpaid</option>
                                   </select>
                               </div>
                           </div>
@@ -115,7 +125,8 @@
         props:['toBeEditedInvoice'],
         data(){
             return{
-                campBriefs:[]
+                campBriefs:[],
+                agents:[]
             }
         },
         methods:{
@@ -141,6 +152,13 @@
                     this.campBriefs = response.data;
                 });
             },
+            updateAgent(agent_id){
+                $.each(this.agents, (i)=>{
+                    if(this.agents[i].id == agent_id){
+                        this.toBeEditedInvoice.agent = this.agents[i];
+                    }
+                });
+            },
             getDateOfISOWeek(w, y) {
                 var simple = new Date(y, 0, 1 + (w - 1) * 7);
                 var dow = simple.getDay();
@@ -156,10 +174,16 @@
                 let event = new Date(date);
                 let options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
                 return event.toLocaleDateString('en-EN', options);
+            },
+            getAgents(){
+                axios.get('/admin/get_users').then(response=>{
+                    this.agents = response.data;
+                });
             }
         },
         mounted(){
             this.getCampBriefs();
+            this.getAgents();
         }
     }
 </script>

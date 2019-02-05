@@ -23,7 +23,11 @@
                     Invoice details
                 </div>
                 Client name :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.clientName}}</b><br/>
-                Agent :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.agentName}}</b><br/>
+                Agent :
+                <b v-if="invoice.agent !== null" style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
+                    {{invoice.agent.firstName}} {{invoice.agent.lastName}}
+                </b>
+                <br/>
                 Rate per Hour :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.rate}}</b><br/>
                 Total amount to pay :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.total_amount}}</b><br/>
                 Currency :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.currency}}</b><br/>
@@ -112,6 +116,7 @@
                     'year':'',
                     'week':'',
                     'campaign_brief_id':'',
+                     agent:{}
                 }
             }
         },
@@ -199,7 +204,8 @@
                     'currency':'',
                     'year':'',
                     'week':'',
-                    'campaign_brief_id':''
+                    'campaign_brief_id':'',
+                    agent:{}
                 };
             },
 

@@ -184,6 +184,10 @@ class PaypalController extends Controller
                         $booking->is_paid = true;
                         $booking->save();
                     }
+                    // notification of confirmation.
+                    $notification = new NotificationsController;
+                    $notification->agentHasBeenConfirmed($invoice) ;
+
                 }
 
                 session::forget(['custom_payment','custom_payment_amount','description','invoice_id']);

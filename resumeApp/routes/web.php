@@ -178,6 +178,7 @@ Route::get('/admin/client/invoices/{client_id}','InvoicesController@getInvoices'
 Route::post('/admin/client/addinvoice/','InvoicesController@addInvoice')->name('add.invoice');
 Route::post('/admin/client/deleteinvoice/','InvoicesController@deleteInvoice')->name('delete.invoice');
 Route::post('/admin/update_invoice_number','InvoicesController@updateInvoiceNumber')->name('edit.unique.number');
+Route::post('/admin/send_invoice_email','InvoicesController@sendEmailNotificationToAgent')->name('send.email.agent');
 
     // invoice public link
 Route::get('/invoice/pdf/{unique_number}','InvoicesController@invoiceToPDF')->name('invoice.to.pdf');

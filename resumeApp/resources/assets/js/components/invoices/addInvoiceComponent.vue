@@ -158,7 +158,6 @@
                 daysOfWeek:[
                  'Mon','Tue','Wed','Thu','Fri','Sat','Sun',
                 ],
-                testDays:[]
             }
         },
         methods:{
@@ -168,16 +167,31 @@
                     if(this.toBeEditedInvoice.id === ""){
                         this.$emit('invoiceAdded',this.toBeEditedInvoice);
                     }
+                    let saved = true;
+                    if(typeof response.data.hasErrors !== 'undefined'){
+                        $('#invoiceErrors').removeClass('d-none');
+                        setTimeout(function () {
+                            $('#invoiceErrors').addClass('d-none');
+                        },2000);
+                        saved = false;
+                        console.log(response.data.hasErrors);
+                    }
                     // save the education id :
                     this.toBeEditedInvoice.id = response.data.id;
                     this.toBeEditedInvoice.unique_number = response.data.unique_number;
-                    // changes saved :
-                    $('#changesSaved').fadeIn('slow');
-                    setTimeout(function () {
-                        $('#changesSaved').fadeOut();
-                    },2000);
+                    if(saved){
+                        this.changesSavedNotification();
+                    }
                 });
                 $('#closeInvoiceModal').click();
+            },
+            changesSavedNotification(){
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                },2000);
+
             },
             getCampBriefs(){
                 axios.get('/admin/workforce/get_cbriefs').then( response => {

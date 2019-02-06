@@ -105,6 +105,12 @@ class StripePayments
                 $invoice = Invoice::where('id',$request->invoice_id)->first();
                 $invoice->status = 'Paid';
                 $invoice->save();
+                if($invoice->status === 'Paid' && isset($invoice->booking_id)){
+                    // change booking to status to be paid.
+                    $booking = Booking::where('id',$invoice->booking_id)->first();
+                    $booking->is_paid = true;
+                    $booking->save();
+                }
             }
 
             $telegram = new Telegram('-228260999');

@@ -9,11 +9,13 @@
 namespace App\Http\Controllers;
 
 
+use App\Booking;
 use App\Client;
 use App\Invoice;
 use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Validator;
 
 class InvoicesController extends Controller
 {
@@ -43,27 +45,37 @@ class InvoicesController extends Controller
         return $invoices;
     }
 
-    public function addInvoice(Request $request){
-        $currentClient = Client::where('id',$request->client_id)->first();
-        $request->validate([
+    protected function invoiceValidator(array $data)
+    {
+        return Validator::make($data, [
             'total_amount' => 'max:10|required',
             'service' => 'max:1500|required',
-            'agentName' => 'max:191|required',
             'year' => 'max:191',
             'currency' => 'max:191',
             'week' => 'max:191',
+            'weekDate' => 'max:191',
             'hours' => 'max:10|required',
             'rate' => 'max:191|required',
             'status' => 'max:191|required',
             'time_of_service' => 'max:1500',
             'notes' => 'max:1500',
         ]);
+    }
+
+    public function addInvoice(Request $request){
+        $validator = $this->invoiceValidator($request->all());
+        if ($validator->fails())
+        {
+            return ['hasErrors' => $validator->errors()];
+        }
+
+        $currentClient = Client::where('id',$request->client_id)->first();
 
         if(isset($request->id)){
             // edit
             $invoice = Invoice::where('id',$request->id)->first();
         }else{
-            // add
+            // add new invoice
             $invoice = new Invoice;
             $invoice->client_id = $currentClient->id;
             $invoice->timeZone  = $currentClient->timeZone;
@@ -78,6 +90,7 @@ class InvoicesController extends Controller
         $invoice->year      = $request->year;
         $invoice->start_time      = $request->start_time;
         $invoice->end_time        = $request->end_time;
+
         if(isset($request->days)){
             if(in_array('all_days',$request->days)){
                 $invoice->days   = 'all_days';
@@ -85,6 +98,7 @@ class InvoicesController extends Controller
                 $invoice->days      = implode(',',$request->days);
             }
         }
+
         $invoice->currency      = $request->currency;
         $invoice->hours        = $request->hours;
         if(isset($request->timeZone)){
@@ -104,11 +118,9 @@ class InvoicesController extends Controller
         $clientName = $invoice->client->name;
         $words = explode(" ", $clientName);
         $firstLetters = "";
-
         foreach ($words as $w) {
             $firstLetters .= $w[0];
         }
-
         if(!isset($request->id)){ // only in new invoices
             if($invoice->id < 10){
                 $invoice->unique_number = $firstLetters.'00' . $invoice->id;
@@ -119,10 +131,19 @@ class InvoicesController extends Controller
             }
         }
 
+        if(!isset($request->id)) { // only in new invoices
+            $invoice->booking_id = $this->createTemporaryBooking($invoice);
+        }
+
+        if($invoice->status === 'Paid' && isset($invoice->booking_id)){
+            // change booking to status to be paid.
+            $booking = Booking::where('id',$invoice->booking_id)->first();
+            $booking->is_paid = true;
+            $booking->save();
+        }
+
         $invoice->save();
-
         return ['id'=> $invoice->id , 'unique_number'=>$invoice->unique_number];
-
     }
 
     public function deleteInvoice(Request $request){
@@ -153,6 +174,22 @@ class InvoicesController extends Controller
         $pdf->loadView('invoice_to_pdf', compact('invoice'));
         return $pdf->stream();
 
+    }
+
+    protected function createTemporaryBooking($invoice){
+        $booking = new Booking;
+
+        $booking->client_id = $invoice->client_id;
+        $booking->user_id = $invoice->user_id;
+        $booking->invoice_id = $invoice->id;
+        $booking->hours = $invoice->hours;
+        $booking->amount_paid = $invoice->total_amount;
+        $booking->payment_method = 'PayPal';
+        $booking->is_paid = false;
+
+        $booking->save();
+
+        return $booking->id;
     }
     
 }

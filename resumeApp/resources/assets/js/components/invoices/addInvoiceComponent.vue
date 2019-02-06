@@ -4,7 +4,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="text-right" style="padding: 15px 10px 0 0;">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeInvoiceModal">
+                        <button type="button" @click="clearSendData" class="close" data-dismiss="modal" aria-label="Close" id="closeInvoiceModal">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -18,6 +18,15 @@
                                           {{agent.firstName}} {{agent.lastName}}
                                       </option>
                                   </select>
+                                  <br/>
+                                  <div v-show="sendNotificationToAgent">
+                                      <a href="javascript:void(0)" class="btn btn-primary" @click="sendEmailToAgent">
+                                          Send notification to selected agent.
+                                      </a>
+                                  </div>
+                                  <div class="alert-info" style="padding: 10px;" v-show="sendNotificationToAgentStatus.length > 0">
+                                      {{sendNotificationToAgentStatus}}
+                                  </div>
                               </div>
                               <!-- agent -->
                               <div class="form-group col-md-6">
@@ -158,6 +167,8 @@
                 daysOfWeek:[
                  'Mon','Tue','Wed','Thu','Fri','Sat','Sun',
                 ],
+                sendNotificationToAgent:false,
+                sendNotificationToAgentStatus:''
             }
         },
         methods:{
@@ -185,6 +196,10 @@
                 });
                 $('#closeInvoiceModal').click();
             },
+            clearSendData(){
+                this.sendNotificationToAgent=false;
+                this.sendNotificationToAgentStatus='';
+            },
             changesSavedNotification(){
                 // changes saved :
                 $('#changesSaved').fadeIn('slow');
@@ -210,6 +225,7 @@
                         this.toBeEditedInvoice.agent = this.agents[i];
                     }
                 });
+                this.sendNotificationToAgent = true;
             },
             getDateOfISOWeek(w, y) {
                 var simple = new Date(y, 0, 1 + (w - 1) * 7);
@@ -231,6 +247,19 @@
                 axios.get('/admin/get_users').then(response=>{
                     this.agents = response.data;
                 });
+            },
+            sendEmailToAgent(){
+                axios.post('/admin/send_invoice_email',{invoice:this.toBeEditedInvoice}).then( (response) => {
+                    if(response.data === 'emailSent'){
+                        this.sendNotificationToAgentStatus = 'Email has been sent';
+                    }else{
+                        this.sendNotificationToAgentStatus = 'Error while sending email';
+                    }
+                    this.sendNotificationToAgent = false;
+                    setTimeout(() => {
+                        this.sendNotificationToAgentStatus = '';
+                    },5000);
+                } );
             }
         },
         mounted(){

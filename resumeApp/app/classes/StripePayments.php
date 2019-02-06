@@ -111,6 +111,9 @@ class StripePayments
                     $booking->is_paid = true;
                     $booking->save();
                 }
+                // notification of confirmation.
+                $notification = new NotificationsController;
+                $notification->agentHasBeenConfirmed($invoice) ;
             }
 
             $telegram = new Telegram('-228260999');

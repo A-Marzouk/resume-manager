@@ -57964,6 +57964,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedInvoice'],
@@ -57972,7 +57981,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             campBriefs: [],
             agents: [],
             customDays: false,
-            daysOfWeek: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            daysOfWeek: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            sendNotificationToAgent: false,
+            sendNotificationToAgentStatus: ''
         };
     },
 
@@ -58003,6 +58014,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             $('#closeInvoiceModal').click();
         },
+        clearSendData: function clearSendData() {
+            this.sendNotificationToAgent = false;
+            this.sendNotificationToAgentStatus = '';
+        },
         changesSavedNotification: function changesSavedNotification() {
             // changes saved :
             $('#changesSaved').fadeIn('slow');
@@ -58030,6 +58045,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this3.toBeEditedInvoice.agent = _this3.agents[i];
                 }
             });
+            this.sendNotificationToAgent = true;
         },
         getDateOfISOWeek: function getDateOfISOWeek(w, y) {
             var simple = new Date(y, 0, 1 + (w - 1) * 7);
@@ -58052,6 +58068,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/admin/get_users').then(function (response) {
                 _this4.agents = response.data;
+            });
+        },
+        sendEmailToAgent: function sendEmailToAgent() {
+            var _this5 = this;
+
+            axios.post('/admin/send_invoice_email', { invoice: this.toBeEditedInvoice }).then(function (response) {
+                if (response.data === 'emailSent') {
+                    _this5.sendNotificationToAgentStatus = 'Email has been sent';
+                } else {
+                    _this5.sendNotificationToAgentStatus = 'Error while sending email';
+                }
+                _this5.sendNotificationToAgent = false;
+                setTimeout(function () {
+                    _this5.sendNotificationToAgentStatus = '';
+                }, 5000);
             });
         }
     },
@@ -58088,7 +58119,33 @@ var render = function() {
           { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(0),
+              _c(
+                "div",
+                {
+                  staticClass: "text-right",
+                  staticStyle: { padding: "15px 10px 0 0" }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "close",
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "modal",
+                        "aria-label": "Close",
+                        id: "closeInvoiceModal"
+                      },
+                      on: { click: _vm.clearSendData }
+                    },
+                    [
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("×")
+                      ])
+                    ]
+                  )
+                ]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -58168,6 +58225,62 @@ var render = function() {
                               ]
                             )
                           })
+                        ),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.sendNotificationToAgent,
+                                expression: "sendNotificationToAgent"
+                              }
+                            ]
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-primary",
+                                attrs: { href: "javascript:void(0)" },
+                                on: { click: _vm.sendEmailToAgent }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                      Send notification to selected agent.\n                                  "
+                                )
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value:
+                                  _vm.sendNotificationToAgentStatus.length > 0,
+                                expression:
+                                  "sendNotificationToAgentStatus.length > 0"
+                              }
+                            ],
+                            staticClass: "alert-info",
+                            staticStyle: { padding: "10px" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                  " +
+                                _vm._s(_vm.sendNotificationToAgentStatus) +
+                                "\n                              "
+                            )
+                          ]
                         )
                       ]),
                       _vm._v(" "),
@@ -58336,7 +58449,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group col-md-6" }, [
-                        _vm._m(1),
+                        _vm._m(0),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -58421,7 +58534,7 @@ var render = function() {
                       _c("div", { staticClass: "form-group col-md-12" }, [
                         _c("hr"),
                         _vm._v(" "),
-                        _vm._m(2),
+                        _vm._m(1),
                         _vm._v(" "),
                         _c("textarea", {
                           directives: [
@@ -58711,7 +58824,7 @@ var render = function() {
                           : _vm._e()
                       ]),
                       _vm._v(" "),
-                      _vm._m(3),
+                      _vm._m(2),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group col-md-6" }, [
                         _c(
@@ -58955,7 +59068,7 @@ var render = function() {
                       _c("div", { staticClass: "form-group col-md-12" }, [
                         _c("hr"),
                         _vm._v(" "),
-                        _vm._m(4),
+                        _vm._m(3),
                         _vm._v(" "),
                         _c("textarea", {
                           directives: [
@@ -59114,7 +59227,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(5)
+                    _vm._m(4)
                   ]
                 )
               ])
@@ -59126,30 +59239,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "text-right", staticStyle: { padding: "15px 10px 0 0" } },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "close",
-            attrs: {
-              type: "button",
-              "data-dismiss": "modal",
-              "aria-label": "Close",
-              id: "closeInvoiceModal"
-            }
-          },
-          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-        )
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

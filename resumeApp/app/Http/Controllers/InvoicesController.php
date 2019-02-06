@@ -14,6 +14,7 @@ use App\Invoice;
 use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Validator;
 
 class InvoicesController extends Controller
 {
@@ -43,21 +44,32 @@ class InvoicesController extends Controller
         return $invoices;
     }
 
-    public function addInvoice(Request $request){
-        $currentClient = Client::where('id',$request->client_id)->first();
-        $request->validate([
+    protected function invoiceValidator(array $data)
+    {
+        return Validator::make($data, [
             'total_amount' => 'max:10|required',
             'service' => 'max:1500|required',
             'agentName' => 'max:191|required',
             'year' => 'max:191',
             'currency' => 'max:191',
             'week' => 'max:191',
+            'weekDate' => 'max:191',
             'hours' => 'max:10|required',
             'rate' => 'max:191|required',
             'status' => 'max:191|required',
             'time_of_service' => 'max:1500',
             'notes' => 'max:1500',
         ]);
+    }
+
+    public function addInvoice(Request $request){
+        $validator = $this->invoiceValidator($request->all());
+        if ($validator->fails())
+        {
+            return ['hasErrors' => $validator->errors()];
+        }
+
+        $currentClient = Client::where('id',$request->client_id)->first();
 
         if(isset($request->id)){
             // edit

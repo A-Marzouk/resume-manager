@@ -56878,6 +56878,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
@@ -56907,7 +56910,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'weekDate': '',
                 days: ['Mon'],
                 'campaign_brief_id': '',
-                agent: {}
+                agent: {},
+                errors: []
             }
         };
     },
@@ -57002,7 +57006,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'end_time': '',
                 days: [],
                 'campaign_brief_id': '',
-                agent: {}
+                agent: {},
+                errors: []
             };
         },
         updateInvoiceNumber: function updateInvoiceNumber() {
@@ -57059,6 +57064,16 @@ var render = function() {
   return _c(
     "div",
     [
+      _c(
+        "div",
+        {
+          staticClass: "alert-danger d-none",
+          staticStyle: { padding: "15px" },
+          attrs: { id: "invoiceErrors" }
+        },
+        [_vm._v("\n        Error while saving..\n    ")]
+      ),
+      _vm._v(" "),
       _c(
         "transition-group",
         { staticClass: "row", attrs: { name: "list" } },
@@ -57957,8 +57972,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             campBriefs: [],
             agents: [],
             customDays: false,
-            daysOfWeek: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            testDays: []
+            daysOfWeek: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
         };
     },
 
@@ -57971,16 +57985,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (_this.toBeEditedInvoice.id === "") {
                     _this.$emit('invoiceAdded', _this.toBeEditedInvoice);
                 }
+                var saved = true;
+                if (typeof response.data.hasErrors !== 'undefined') {
+                    $('#invoiceErrors').removeClass('d-none');
+                    setTimeout(function () {
+                        $('#invoiceErrors').addClass('d-none');
+                    }, 2000);
+                    saved = false;
+                }
                 // save the education id :
                 _this.toBeEditedInvoice.id = response.data.id;
                 _this.toBeEditedInvoice.unique_number = response.data.unique_number;
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
+                if (saved) {
+                    _this.changesSavedNotification();
+                }
             });
             $('#closeInvoiceModal').click();
+        },
+        changesSavedNotification: function changesSavedNotification() {
+            // changes saved :
+            $('#changesSaved').fadeIn('slow');
+            setTimeout(function () {
+                $('#changesSaved').fadeOut();
+            }, 2000);
         },
         getCampBriefs: function getCampBriefs() {
             var _this2 = this;

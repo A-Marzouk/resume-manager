@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div class="alert-danger d-none" style="padding: 15px;" id="invoiceErrors">
+            Error while saving..
+        </div>
         <transition-group name="list" class="row">
             <invoice-component v-for="(invoice,index) in invoices" v-bind:key="index" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
 
@@ -133,7 +136,8 @@
                     'weekDate':'',
                      days:['Mon'],
                     'campaign_brief_id':'',
-                     agent:{}
+                     agent:{},
+                     errors:[]
                 }
             }
         },
@@ -231,7 +235,8 @@
                     'end_time':'',
                      days:[],
                     'campaign_brief_id':'',
-                    agent:{}
+                     agent:{},
+                     errors:[]
                 };
             },
 

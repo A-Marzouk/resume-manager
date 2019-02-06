@@ -72,7 +72,7 @@
                     </div>
 
                     <div class="agentName">
-                        Name of Agent :  {{$invoice->user->firstName}} {{$invoice->user->lastName}} <br/>
+                        Name of Agent :  @if(isset($invoice->user->id)){{$invoice->user->firstName}} {{$invoice->user->lastName}} @else {{$invoice->agentName}}@endif<br/>
                     </div>
                     <div class="termsText" style="padding-bottom: 50px;">
                         Invoice issue date    : {{$invoice->created_at->format('d.m.Y')}}

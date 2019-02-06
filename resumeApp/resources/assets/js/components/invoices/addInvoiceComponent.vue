@@ -174,6 +174,7 @@
                             $('#invoiceErrors').addClass('d-none');
                         },2000);
                         saved = false;
+                        console.log(response.data.hasErrors);
                     }
                     // save the education id :
                     this.toBeEditedInvoice.id = response.data.id;

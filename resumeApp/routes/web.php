@@ -186,6 +186,7 @@ Route::get('/workforce/invoices/{unique_number}','InvoicesController@viewInvoice
 
 // bookings calendar:
 Route::get('/admin/bookings/calendar','BookingsController@viewBookingsCalendar')->name('bookings.calendar.page');
+Route::get('/admin/get/bookings','BookingsController@getBookings')->name('get.bookings');
 
 // campaign briefs:
 

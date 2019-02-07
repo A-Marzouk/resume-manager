@@ -78593,10 +78593,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
-        return {};
+        return {
+            bookings: [],
+            year: '',
+            month: ''
+        };
+    },
+
+    methods: {
+        getBookings: function getBookings() {
+            var _this = this;
+
+            axios.get('/admin/get/bookings').then(function (response) {
+                _this.bookings = response.data;
+                var date = new Date(_this.bookings[0].created_at);
+                console.log(date.getMonth());
+                console.log(date.getDate());
+                console.log(date.getFullYear());
+                console.log(_this.bookings[0].created_at);
+            });
+        },
+        filterByYear: function filterByYear(year) {}
     },
     mounted: function mounted() {
-        console.log('Bookings calendar mounted.');
+        this.getBookings();
     }
 });
 

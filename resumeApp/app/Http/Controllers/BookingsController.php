@@ -19,8 +19,12 @@ class BookingsController extends Controller
     }
 
     public function viewBookingsCalendar(){
+        return view('admin.bookings_calendar');
+    }
+
+    public function getBookings(){
         $bookings = Booking::all();
-        return view('admin.bookings_calendar',compact('bookings'));
+        return $bookings;
     }
 
 }

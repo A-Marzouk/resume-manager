@@ -26,4 +26,9 @@ class Shift extends Model
         return $this->belongsTo(Campaign::class);
     }
 
+    public function invoice(){
+        return $this->belongsTo(Invoice::class);
+    }
+
+
 }

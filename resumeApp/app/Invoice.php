@@ -23,9 +23,16 @@ class Invoice extends Model
     public function client(){
         return $this->belongsTo(Client::class);
     }
+
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function shifts(){
+        return $this->hasMany(Shift::class);
+    }
+
+
 
     public function campaignBrief(){
         return $this->belongsTo(CampaignBrief::class);

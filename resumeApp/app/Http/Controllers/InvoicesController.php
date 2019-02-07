@@ -41,6 +41,7 @@ class InvoicesController extends Controller
         foreach ($invoices as &$invoice){
             $invoice['clientName'] = $client->name;
             $invoice['agent'] = $invoice->user;
+            $invoice['shifts'] = $invoice->shifts;
         }
         return $invoices;
     }

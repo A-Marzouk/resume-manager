@@ -37,7 +37,7 @@
                               <div class="form-group col-md-6">
                                   <label for="rate" class="panelFormLabel">Hourly rate :</label>
                                   <select name="rate" class="form-control" id="rate" v-model="toBeEditedInvoice.rate">
-                                      <option v-for="index in 42" :key="index" :value="(index+7+1)/2" v-show="(index+7+1)/2 !== 4.5">{{(index+7+1)/2}}</option>
+                                      <option v-for="index in 42" :key="index" :value="(index+9+1)/2" v-show="(index+7+1)/2 !== 3.5">{{(index+7+1)/2}}</option>
                                   </select>
                               </div>
 
@@ -117,7 +117,7 @@
                                       <div>
                                           <br/>
                                           <input type="checkbox" value="all_days" :checked="toBeEditedInvoice.days.includes('all_days')" v-model="toBeEditedInvoice.days">
-                                          All campaign days.
+                                          All business days.
                                       </div>
                                   </div>
                               </div>
@@ -165,7 +165,7 @@
                 agents:[],
                 customDays:false,
                 daysOfWeek:[
-                 'Mon','Tue','Wed','Thu','Fri','Sat','Sun',
+                 'Mon','Tue','Wed','Thu','Fri'
                 ],
                 sendNotificationToAgent:false,
                 sendNotificationToAgentStatus:''

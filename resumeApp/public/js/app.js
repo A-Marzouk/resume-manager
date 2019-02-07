@@ -58270,6 +58270,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedInvoice'],
@@ -58667,24 +58668,31 @@ var render = function() {
                               }
                             }
                           },
-                          _vm._l(42, function(index) {
-                            return _c(
-                              "option",
-                              {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: (index + 7 + 1) / 2 !== 3.5,
-                                    expression: "(index+7+1)/2 !== 3.5"
-                                  }
-                                ],
-                                key: index,
-                                domProps: { value: (index + 9 + 1) / 2 }
-                              },
-                              [_vm._v(_vm._s((index + 7 + 1) / 2))]
-                            )
-                          })
+                          [
+                            _vm._l(42, function(index) {
+                              return _c(
+                                "option",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: (index + 6 + 1) / 2 !== 3.5,
+                                      expression: "(index+6+1)/2 !== 3.5"
+                                    }
+                                  ],
+                                  key: index,
+                                  domProps: { value: (index + 6 + 1) / 2 }
+                                },
+                                [_vm._v(_vm._s((index + 6 + 1) / 2))]
+                              )
+                            }),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "25" } }, [
+                              _vm._v("25")
+                            ])
+                          ],
+                          2
                         )
                       ]),
                       _vm._v(" "),

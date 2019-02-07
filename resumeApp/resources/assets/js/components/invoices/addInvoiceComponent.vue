@@ -37,7 +37,8 @@
                               <div class="form-group col-md-6">
                                   <label for="rate" class="panelFormLabel">Hourly rate :</label>
                                   <select name="rate" class="form-control" id="rate" v-model="toBeEditedInvoice.rate">
-                                      <option v-for="index in 42" :key="index" :value="(index+9+1)/2" v-show="(index+7+1)/2 !== 3.5">{{(index+7+1)/2}}</option>
+                                      <option v-for="index in 42" :key="index" :value="(index+6+1)/2" v-show="(index+6+1)/2 !== 3.5">{{(index+6+1)/2}}</option>
+                                      <option value="25">25</option>
                                   </select>
                               </div>
 

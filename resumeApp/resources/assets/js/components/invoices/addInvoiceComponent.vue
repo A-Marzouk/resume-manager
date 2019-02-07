@@ -117,7 +117,7 @@
                                       <div>
                                           <br/>
                                           <input type="checkbox" value="all_days" :checked="toBeEditedInvoice.days.includes('all_days')" v-model="toBeEditedInvoice.days">
-                                          All campaign days.
+                                          All business days.
                                       </div>
                                   </div>
                               </div>

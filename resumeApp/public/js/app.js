@@ -59347,7 +59347,7 @@ var render = function() {
                               }
                             }),
                             _vm._v(
-                              "\n                                      All campaign days.\n                                  "
+                              "\n                                      All business days.\n                                  "
                             )
                           ])
                         ])

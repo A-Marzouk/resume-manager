@@ -141,6 +141,46 @@
             </table>
 
 
+            @if(count($invoice->shifts) > 0)
+
+                <div class="termsText">
+                    Custom shifts :
+                </div>
+                @foreach($invoice->shifts as $shift)
+                    <table style="margin-top: 55px;  border-top: 2px lightblue solid;">
+                        <tr class="clientInfo">
+                            <th style="width: 350px!important;">
+                                SHIFT SERVICE
+                            </th>
+                            <th  style="width: 240px!important;">
+                                SHIFT TIME
+                            </th>
+                            <th style="width: 240px!important;">
+                                RATE
+                            </th>
+                            <th  style="width: 300px!important;">
+                                DAYS
+                            </th>
+                        </tr>
+                        <tr class="clientInfo_detail">
+                            <td>
+                                {{$shift->service}}
+                            </td>
+                            <td >
+                                From: {{$shift->start_time}}<br/>
+                                To: {{$shift->end_time}}
+                            </td>
+                            <td >
+                                {{$shift->rate}}
+                            </td>
+                            <td style="border: none; word-break: break-word;">
+                                @if($shift->days === 'all_days') All business days @else {{$shift->days}} @endif
+                            </td>
+                        </tr>
+                    </table>
+                @endforeach
+            @endif
+
             <table style="margin-top: 55px;  border-top: 2px lightblue solid;">
                 <tr class="row clientInfo">
                     <th class="col-6" style="width: 380px!important;">

@@ -94,7 +94,7 @@
                     </div>
                     <div class="col-4">
                         @if($invoice->days == 'all_days')
-                            All days of the week.
+                            All business days.
                         @else
                             {{$invoice->days}}
                         @endif
@@ -105,6 +105,49 @@
                         {{$invoice->weekDate}}
                     </div>
                 </div>
+
+                @if(count($invoice->shifts) > 0)
+                    <div class="termsText">
+                        <div class="blueLine" style="margin-bottom: 10px;background-color: lightblue"></div>
+                        Custom shifts :
+                    </div>
+
+                    @foreach($invoice->shifts as $shift)
+                        <div class="row clientInfo">
+                            <div class="col-3">
+                                SHIFT SERVICE
+                            </div>
+                            <div class="col-3">
+                                SHIFT TIME
+                            </div>
+                            <div class="col-3">
+                                RATE
+                            </div>
+                            <div class="col-3">
+                                DAYS
+                            </div>
+                        </div>
+
+                        <div class="row clientInfo_detail">
+                            <div class="col-3">
+                                {{$shift->service}}
+                            </div>
+                            <div class="col-3 text-left">
+                                From: {{$shift->start_time}}<br/>
+                                To: {{$shift->end_time}}
+                            </div>
+                            <div class="col-3">
+                                {{$shift->rate}}
+                            </div>
+                            <div class="col-3" style="border: none; word-break: break-word;">
+                                @if($shift->days === 'all_days') All business days @else {{$shift->days}} @endif
+                            </div>
+                        </div>
+                    @endforeach
+                    <div class="blueLine" style="margin-bottom: 10px;margin-top: 10px;background-color: lightblue"></div>
+
+                @endif
+
 
 
                 <div class="row clientInfo">

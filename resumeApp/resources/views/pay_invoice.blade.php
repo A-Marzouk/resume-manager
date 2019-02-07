@@ -23,7 +23,11 @@
                             Invoice issue date    : {{$invoice->created_at->format('d.m.Y')}}
                         </div>
                         <div class="termsText">
-                            Status     : {{$invoice->status}}
+                            Status     :
+                            @if($invoice->status === 'Paid') <span style="color:lightgreen; font-size:16px;">Paid</span>
+                            @else
+                                <span style="color:orange; font-size:16px;">Unpaid</span>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-4 offset-md-4 d-none d-md-block">

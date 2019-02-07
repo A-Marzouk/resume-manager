@@ -48,6 +48,7 @@ Vue.component('add-education-modal', require('./components/education/addEducatio
 Vue.component('invoices-list', require('./components/invoices/invoicesListComponent.vue'));
 Vue.component('invoice-component', require('./components/invoices/invoiceComponent.vue'));
 Vue.component('add-invoice-modal', require('./components/invoices/addInvoiceComponent.vue'));
+Vue.component('add-invoice-shift-modal', require('./components/invoices/addInvoiceShiftComponent.vue'));
 
 // campaign briefs
 Vue.component('cbriefs-list', require('./components/campaign_briefs/cBriefsListComponent.vue'));

@@ -1,7 +1,7 @@
 <div role="tabpanel" class="tab-pane active" id="home">
     <div class="container">
         <div class="row">
-            <div class="col-md-10 addDesigner">
+            <div class="col-md-6 addDesigner">
                 <form action="/freelancer/behance/save_user" method="post">
                     {{csrf_field()}}
                     <div class="form-group">
@@ -12,6 +12,13 @@
                         <button type="submit" class="btn-block hireBtn">Add Behance designer</button>
                     </div>
                 </form>
+            </div>
+            <div class="col-md-4 bookingsBox">
+                <div class="centerVertically">
+                    <span class="buttonMain">
+                        <a href="{{route('bookings.calendar.page')}}" class="hireBtn" style="padding-left: 20px; padding-right: 20px;">Bookings calendar</a>
+                    </span>
+                </div>
             </div>
         </div>
         <div class="row">

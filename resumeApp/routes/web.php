@@ -184,6 +184,8 @@ Route::post('/admin/send_invoice_email','InvoicesController@sendEmailNotificatio
 Route::get('/invoice/pdf/{unique_number}','InvoicesController@invoiceToPDF')->name('invoice.to.pdf');
 Route::get('/workforce/invoices/{unique_number}','InvoicesController@viewInvoicePublicPage')->name('show.invoice.public.page');
 
+// bookings calendar:
+Route::get('/admin/bookings/calendar','BookingsController@viewBookingsCalendar')->name('bookings.calendar.page');
 
 // campaign briefs:
 

@@ -22,4 +22,8 @@ class Recording extends Model
     public function freelancer(){
         return $this->belongsTo(User::class);
     }
+
+    public function agent(){
+        return $this->belongsTo(Agent::class);
+    }
 }

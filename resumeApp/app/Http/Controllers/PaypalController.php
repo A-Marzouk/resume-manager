@@ -177,6 +177,17 @@ class PaypalController extends Controller
                     $invoice = Invoice::where('id',session::get('invoice_id'))->first();
                     $invoice->status = 'Paid';
                     $invoice->save();
+                    // change invoice booking status
+                    if($invoice->status === 'Paid' && isset($invoice->booking_id)){
+                        // change booking to status to be paid.
+                        $booking = Booking::where('id',$invoice->booking_id)->first();
+                        $booking->is_paid = true;
+                        $booking->save();
+                    }
+                    // notification of confirmation.
+                    $notification = new NotificationsController;
+                    $notification->agentHasBeenConfirmed($invoice) ;
+
                 }
 
                 session::forget(['custom_payment','custom_payment_amount','description','invoice_id']);

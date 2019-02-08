@@ -10,6 +10,8 @@ namespace App\Http\Controllers;
 use App\classes\Telegram;
 use App\Client;
 use App\ClientSearch;
+use App\Recording;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -28,6 +30,44 @@ class NotificationsController extends Controller
             $message->to($emails)->subject('User has updated resume !');
         });
     }
+
+    public function businessSupportApplication($data){
+        $recording = Recording::where('user_id',$data['id'])->first();
+        $user      = User::where('id',$data['id'])->first();
+        if (strpos($recording->src, 'resumeApp/') !== false) {
+            // it is our link.
+            $data['recordLink'] = '123workforce.magictimeapps.com/'.$recording->src;
+        }else{
+            $data['recordLink'] = $recording->src;
+        }
+        $data['cv_src'] = '#';
+        if(isset($user->cv_src)){
+            $data['cv_src'] = '123workforce.magictimeapps.com/'.$user->cv_src;
+        }
+        $emails = [
+            '123@123workforce.com',
+            'ahmedmarzouk266@gmail.com'
+        ];
+        Mail::send('emails.business_supprt_application',$data, function($message) use ($emails)
+        {
+            $message->to($emails)->subject('New application (Business support) !');
+        });
+
+        $telegram = new Telegram('-228260999');
+        $msg      = "New Application has been submitted.\n" ;
+        $msg     .= "Name : ". $data['firstName'] . " ". $data['lastName'];
+        $msg     .= "\nEmail :". $data['email'];
+        if($recording){
+            $msg     .= "\n\nRecord Src : \n". $data['recordLink'];
+
+        }
+        if(isset($data['cv_src'])){
+            $msg     .= "\n\nCV : \n". $data['cv_src'];
+
+        }
+        $telegram->sendMessage($msg);
+    }
+
 
     public function messageToAdminMail($userMessage){
         $emails = ['AhmedMarzouk266@gmail.com','conor@123workforce.com'];
@@ -198,6 +238,40 @@ class NotificationsController extends Controller
         {
             $message->to($emails)->subject('Invitation to Apply - '.$jobTitle);
         });
+    }
+
+    public function agentHasBeenChosen($invoice){
+        $email = $invoice['agent']['email'];
+        $data  = [
+            'id'=> $invoice['id'],
+            'start_time' => $invoice['start_time'],
+            'end_time'   => $invoice['end_time'],
+            'weekDate'   => $invoice['weekDate'],
+            'clientName'   => Client::where('id',$invoice['client_id'])->first()->name,
+        ];
+
+        Mail::send('emails.invoice_notification_first',$data, function($message) use ($email)
+        {
+            $message->to($email)->subject('You have been provisionally selected to work.');
+        });
+        return 'emailSent';
+    }
+
+    public function agentHasBeenConfirmed($invoice){
+        $email = $invoice->user->email;
+        $data  = [
+            'id'=> $invoice->id,
+            'start_time' => $invoice->start_time,
+            'end_time'   => $invoice->end_time,
+            'weekDate'   => $invoice->weekDate,
+            'clientName'   => Client::where('id',$invoice->client_id)->first()->name,
+        ];
+
+        Mail::send('emails.invoice_notification_confirm',$data, function($message) use ($email)
+        {
+            $message->to($email)->subject('You have been confirmed to work.');
+        });
+        return 'emailSent';
     }
 
 }

@@ -22,6 +22,18 @@
             </a>
         </li>
         <li class="col-md-12">
+            <a class="btn btn-block btn-outline-primary" href="{{route('view.agents')}}"  style="margin-bottom: 6px;">
+                Agents
+            </a>
+        </li>
+
+
+        <li class="col-md-12">
+            <a class="btn btn-block btn-outline-primary" href="{{route('view.cBriefs')}}"  style="margin-bottom: 6px;">
+                Camp Briefs
+            </a>
+        </li>
+        <li class="col-md-12">
             <a class="btn btn-block btn-outline-primary" href="#bookings"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
                 Bookings
             </a>

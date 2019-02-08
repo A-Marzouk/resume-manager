@@ -17,10 +17,17 @@
                         </div>
 
                         <div class="agentName">
-                            Name of Agent :  {{$invoice->agentName}}<br/>
+                            Name of Agent :  @if(isset($invoice->user->id)){{$invoice->user->firstName}} {{$invoice->user->lastName}} @else {{$invoice->agentName}}@endif<br/>
                         </div>
                         <div class="termsText">
-                            Status     : {{$invoice->status}}
+                            Invoice issue date    : {{$invoice->created_at->format('d.m.Y')}}
+                        </div>
+                        <div class="termsText">
+                            Status     :
+                            @if($invoice->status === 'Paid') <span style="color:lightgreen; font-size:16px;">Paid</span>
+                            @else
+                                <span style="color:orange; font-size:16px;">Unpaid</span>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-4 offset-md-4 d-none d-md-block">
@@ -55,7 +62,96 @@
                 </div>
 
                 <div class="row clientInfo">
-                    <div class="col-6">
+                    <div class="col-4">
+                        Working hours
+                    </div>
+                    <div class="col-4">
+                        Days
+                    </div>
+                    <div class="col-4">
+                        Year - Week
+                    </div>
+                </div>
+
+                <div class="row clientInfo_detail">
+                    <div class="col-4">
+                        <span class="row">
+                            <span class="col-4 text-left">
+                                From:
+                            </span>
+                            <span class="col-6">
+                                {{$invoice->start_time}}
+                            </span>
+                        </span>
+                        <span class="row">
+                            <span class="col-4 text-left">
+                                To:
+                            </span>
+                            <span class="col-6">
+                                {{$invoice->end_time}}
+                            </span>
+                        </span>
+                    </div>
+                    <div class="col-4">
+                        @if($invoice->days == 'all_days')
+                            All business days.
+                        @else
+                            {{$invoice->days}}
+                        @endif
+
+                    </div>
+                    <div class="col-4" style="border: none; word-break: break-word;">
+                        {{$invoice->week}}<br/>
+                        {{$invoice->weekDate}}
+                    </div>
+                </div>
+
+                @if(count($invoice->shifts) > 0)
+                    <div class="termsText">
+                        <div class="blueLine" style="margin-bottom: 10px;background-color: lightblue"></div>
+                        Custom shifts :
+                    </div>
+
+                    @foreach($invoice->shifts as $shift)
+                        <div class="row clientInfo">
+                            <div class="col-3">
+                                SHIFT SERVICE
+                            </div>
+                            <div class="col-3">
+                                SHIFT TIME
+                            </div>
+                            <div class="col-3">
+                                RATE
+                            </div>
+                            <div class="col-3">
+                                DAYS
+                            </div>
+                        </div>
+
+                        <div class="row clientInfo_detail">
+                            <div class="col-3">
+                                {{$shift->service}}
+                            </div>
+                            <div class="col-3 text-left">
+                                From: {{$shift->start_time}}<br/>
+                                To: {{$shift->end_time}}
+                            </div>
+                            <div class="col-3">
+                                {{$shift->rate}}
+                            </div>
+                            <div class="col-3" style="border: none; word-break: break-word;">
+                                @if($shift->days === 'all_days') All business days @else {{$shift->days}} @endif
+                            </div>
+                        </div>
+                    @endforeach
+                    <div class="blueLine" style="margin-bottom: 10px;margin-top: 10px;background-color: lightblue"></div>
+
+                @endif
+
+
+
+                <div class="row clientInfo">
+                    <div class="col-4">
                         SERVICE PROVIDED
                     </div>
                     <div class="col-2">
@@ -67,21 +163,27 @@
                     <div class="col-2">
                         TOTAL DUE
                     </div>
+                    <div class="col-2">
+                        CURRENCY
+                    </div>
                 </div>
                 <div class="row clientInfo_detail">
-                    <div class="col-6 text-left">
-                        {{$invoice->service}}<br/><br>
-                        {{$invoice->time_of_service}}<br/><br>
-                        {{$invoice->client->timeZone}}
+                    <div class="col-4 text-left">
+                        {!!nl2br($invoice->service)!!}<br/><br>
+                        {!!nl2br($invoice->time_of_service)!!}<br/><br>
+                        {!!nl2br($invoice->timeZone)!!}
                     </div>
                     <div class="col-2">
                         {{$invoice->hours}}
                     </div>
                     <div class="col-2">
-                        {{$invoice->rate}} USD
+                        {{$invoice->rate}}
+                    </div>
+                    <div class="col-2">
+                        {{$invoice->total_amount}}
                     </div>
                     <div class="col-2" style="border: none;">
-                        {{$invoice->total_amount}}
+                        {{$invoice->currency}}
                     </div>
                 </div>
 
@@ -136,7 +238,12 @@
                     <div class="col-12">
                         <div class="termsText">
                             Terms of payment - Weekly in advance <br/>
-                            Contract - Weekly
+                            Contract - Weekly <br/>
+                            <div class="NoDecor">
+                                <a href="https://123workforce.com/workforce/campaign_briefs/{{$invoice->campaign_brief_id}}" target="_blank">
+                                    View related Campaign Brief
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -144,6 +251,9 @@
                 <div class="row" style="padding-top:15px; ">
                     <div class="col-md-8 col-12">
                         <img src="/resumeApp/resources/assets/images/invoice/payment-systems.png" alt="payment" width="100%">
+                    </div>
+                    <div class="col-12" style="padding-top: 25px;">
+                        <a href="{{route('invoice.to.pdf',$invoice->unique_number)}}"  target="_blank" class="btn btn-primary">Export as PDF</a>
                     </div>
                 </div>
             </div>

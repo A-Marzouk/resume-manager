@@ -9,11 +9,7 @@
             <th scope="col">Link to Resume</th>
             <th scope="col">Hourly / Monthly Rate</th>
             <th scope="col"></th>
-            <th scope="col">Empty Fields</th>
             <th scope="col">Approval</th>
-            <th scope="col">Bookings</th>
-            <th scope="col">Homepage freelancer</th>
-            <th scope="col">Owner's name</th>
         </tr>
         </thead>
         <tbody>
@@ -21,7 +17,14 @@
         <?
         $userData3 = $user->userData ;
         if(!isset($userData3)){
-            continue;
+            if($user->profession == 'businessSupport'){
+                // make for him userdata
+                $userData = new \App\UserData;
+                $userData->user_id = $user->id;
+                $userData->save();
+            }else{
+                continue;
+            }
         }
         ?>
         <? if($user->admin == 1 || $user->firstName === 'Visitor' || $user->profession != 'businessSupport'){ continue;}?>
@@ -39,27 +42,13 @@
             <td>{{$user->userData->salary ?? 0}} / {{ $user->userData->salary_month ?? 0}}</td>
             <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Open form</a>
             </td>
-            <? if($user->isComplete()):?>
-            <td>
-                <span style="color: lawngreen;">Profile Complete</span>
-            </td>
-            <? else:?>
-            <td>
-                <a href="jacascript:void(0)" class="btn btn-outline-info" data-target="#fields{{$user->id}}" data-toggle="collapse">
-                    {{count($user->emptyFields)}}
-                </a>
-
-                <div id="fields{{$user->id}}" class="collapse">
-                    <br/>
-                    <? foreach ($user->emptyFields as $data):?>
-                    <li>{{$data}}</li>
-                    <? endforeach;?>
-                </div>
-            </td>
-            <? endif;?>
             <td id="status{{$user->id}}">
-                @if($user->userData->approved)
-                    <span style="color: lawngreen">Approved</span>
+                @if(isset($user->userData->approved))
+                    @if($user->userData->approved == 1)
+                        <span style="color: lawngreen">Approved</span>
+                    @else
+                        Not approved
+                    @endif
                 @else
                     Not approved
                 @endif
@@ -91,13 +80,6 @@
                     <div class="panelFormLabel NoDecor text-center">
                         Finished bookings : <span id="finishedBookings{{$user->id}}">{{$finishedBookings}}</span>
                     </div>
-                @endif
-            </td>
-            <td>
-                @if($user->userData->home_page_freelancer)
-                    <a href="javascript:void(0)" id="removeFreelancerFromHomePage{{$user->id}}" class="btn btn-default removeFreelancerFromHomePage">Remove</a>
-                @else
-                    <a href="javascript:void(0)" id="addFreelancerToHomePage{{$user->id}}" class="btn btn-default addFreelancerToHomePage">Add</a>
                 @endif
             </td>
             <td class="panelFormLabel text-center">

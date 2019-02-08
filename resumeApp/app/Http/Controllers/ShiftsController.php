@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Campaign;
+use App\Invoice;
 use App\Shift;
 use Illuminate\Http\Request;
 
@@ -22,11 +23,18 @@ class ShiftsController extends Controller
 
 
     public function addShiftToCamp(Request $request){
-        $currCampaign = Campaign::where('id',$request->campaign_id)->first();
+        if(isset($request->campID)){
+            $currCampaign = Campaign::where('id',$request->campID)->first();
+        }
+        if(isset($request->invoiceID)){
+            $currInvoice  = Invoice::where('id',$request->invoiceID)->first();
+        }
         $request->validate([
             'start_time' => 'required',
             'end_time' => 'required',
             'days' => 'max:1500|required',
+            'rate' => 'max:191',
+            'service' => 'max:191|required',
         ]);
 
         if(isset($request->id)){
@@ -35,16 +43,24 @@ class ShiftsController extends Controller
         }else{
             // add
             $shift = new Shift;
-            $shift->campaign_id = $currCampaign->id;
+            if(isset($currInvoice)){
+                $shift->invoice_id = $currInvoice->id;
+            }
+            if(isset($currCampaign)){
+                $shift->campaign_id = $currCampaign->id;
+            }
         }
 
         $shift->start_time = $request->start_time;
         $shift->end_time  = $request->end_time;
-        if(is_array($request->days)){
-            $shift->days       = implode(' | ',$request->days);
-        }
-        else{
-            $shift->days       = $request->days ;
+        $shift->rate  = $request->rate;
+        $shift->service  = $request->service;
+        if(isset($request->days)){
+            if(in_array('all_days',$request->days)){
+                $shift->days   = 'all_days';
+            }else{
+                $shift->days      = implode(',',$request->days);
+            }
         }
 
         $shift->save();

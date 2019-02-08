@@ -5,14 +5,14 @@
                 © Copyright 2018 123Workforce.<br/>
                 All Rights Reserved.<br/>
                 <div class="skypeText" style="padding-top: 5px;">
-                    @if(auth()->guard('client')->user())
-                        <a href="{{route('terms')}}" target="_blank">
-                            <span style="opacity: 1;">Terms & Conditions</span>
-                        </a><br/>
-                        <a href="{{route('privacy')}}" target="_blank">
-                            <span style="opacity: 1;">Privacy policy</span>
-                        </a>
-                    @endif
+                    {{--@if(auth()->guard('client')->user())--}}
+                        {{--<a href="{{route('terms')}}" target="_blank">--}}
+                            {{--<span style="opacity: 1;">Terms & Conditions</span>--}}
+                        {{--</a><br/>--}}
+                        {{--<a href="{{route('privacy')}}" target="_blank">--}}
+                            {{--<span style="opacity: 1;">Privacy policy</span>--}}
+                        {{--</a>--}}
+                    {{--@endif--}}
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
         </div>
         <div class="col-md-4 offset-md-7 text-right four">
             <div class="skypeText">
-                <a href="skype:conor_827?call">
+                <a href="skype:live:3cd10e2da1be4354?call">
                     <img src="/resumeApp/resources/views/customTheme/images/skypeLogo.png" alt="skype" width="25px" style="opacity: 1;">
                     <span>Call us on Skype</span>
                 </a>

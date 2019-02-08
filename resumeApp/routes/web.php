@@ -72,11 +72,20 @@ Route::prefix('freelancer')->group(function (){
         return redirect()->back();
     });
 
-    Route::get('/workforce/register','Auth\RegisterController@showRegistrationForm')->name('freelancer.register');
+//    Route::get('/workforce/register','Auth\RegisterController@showRegistrationForm')->name('freelancer.register');
     Route::post('/register/submit','Auth\RegisterController@register')->name('freelancer.register.submit');
     Route::get('/register/submit',function(){
         return redirect()->back();
     });
+    //////////////
+    // new register for business support  :
+    Route::get('/workforce/register','BusinessSupportController@showRegistrationForm')->name('freelancer.register');
+    Route::post('/apply/register_business','BusinessSupportController@register')->name('business.apply.submit');
+    Route::get('/workforce/success','BusinessSupportController@applicationSuccess');
+    Route::post('/workforce/form/validate','BusinessSupportController@validateForm');
+
+
+    //////////
     Route::get('/delete/{id}','AdminsController@deleteFreelancer')->name('freelancer.delete');
     Route::get('/old_form/','FreelancersController@showOldForm')->name('show.old_form');
     Route::get('/jobs/','FreelancersController@showFreelancerJobs')->name('show.freelancer.jobs');
@@ -168,8 +177,34 @@ Route::get('/admin/client/all_invoices/{client_id}','InvoicesController@viewInvo
 Route::get('/admin/client/invoices/{client_id}','InvoicesController@getInvoices')->name('get.invoices');
 Route::post('/admin/client/addinvoice/','InvoicesController@addInvoice')->name('add.invoice');
 Route::post('/admin/client/deleteinvoice/','InvoicesController@deleteInvoice')->name('delete.invoice');
+Route::post('/admin/update_invoice_number','InvoicesController@updateInvoiceNumber')->name('edit.unique.number');
+Route::post('/admin/send_invoice_email','InvoicesController@sendEmailNotificationToAgent')->name('send.email.agent');
+
     // invoice public link
+Route::get('/invoice/pdf/{unique_number}','InvoicesController@invoiceToPDF')->name('invoice.to.pdf');
 Route::get('/workforce/invoices/{unique_number}','InvoicesController@viewInvoicePublicPage')->name('show.invoice.public.page');
+
+// bookings calendar:
+Route::get('/admin/bookings/calendar','BookingsController@viewBookingsCalendar')->name('bookings.calendar.page');
+Route::get('/admin/get/bookings','BookingsController@getBookings')->name('get.bookings');
+Route::get('/admin/view/booking/{id}','BookingsController@viewSingleBooking')->name('single.booking');
+
+// campaign briefs:
+
+Route::get('/admin/workforce/get_cbriefs','CampaignBriefsController@getCBriefs')->name('get.cBriefs');
+Route::get('/admin/workforce/campaign_briefs','CampaignBriefsController@viewCBriefsPage')->name('view.cBriefs');
+Route::get('/admin/workforce/campaign_briefs/{client_id}','CampaignBriefsController@getCBriefsByClient')->name('view.cBriefs.client');
+Route::get('/admin/campaign_brief/pdf/{id}','CampaignBriefsController@cBriefToPDF')->name('cBrief.to.pdf');
+Route::get('/workforce/campaign_briefs/{id}','CampaignBriefsController@viewCampaignBriefPublicPage')->name('show.cBrief.public.page');
+
+Route::post('/admin/workforce/add_cbrief','CampaignBriefsController@addCBrief')->name('add.cBrief');
+Route::post('/admin/workforce/delete_cbrief','CampaignBriefsController@deleteCBrief')->name('delete.cBrief');
+
+// services of brief camp
+Route::post('/admin/workforce/add_cbrief_service','CampaignBriefsController@addServiceToCamp')->name('add.cBrief.service');
+Route::post('/admin/workforce/delete_cbrief_service','CampaignBriefsController@deleteCBriefService')->name('delete.cBrief.service');
+Route::get('/admin/workforce/get_cbrief_services/{cBriefID}','CampaignBriefsController@getCBriefServices')->name('get.cBrief_services');
+
 
 
 // recordings
@@ -181,6 +216,19 @@ Route::post('/freelancer/deleterecord/','RecordingsController@deleteRecord')->na
 Route::get('/freelancer/references','ReferencesController@getReferences')->name('get.references');
 Route::post('/freelancer/addreference/','ReferencesController@addReference')->name('add.reference');
 Route::post('/freelancer/deletereference/','ReferencesController@deleteReference')->name('delete.reference');
+
+
+// agents page:
+Route::get('/workforce/agents','AgentsController@viewAgents')->name('view.agents');
+Route::get('/workforce/isAdmin','AgentsController@isAdmin')->name('check.admin');
+Route::get('/workforce/get_agents','AgentsController@getAgents')->name('get.agents');
+Route::get('/workforce/get_agent_records/{agent_id}','AgentsController@getAgentRecords')->name('get.agent.records');
+
+Route::post('/workforce/add_agent','AgentsController@addAgent')->name('add.agent');
+Route::post('/workforce/delete_agent','AgentsController@deleteAgent')->name('delete.agent');
+Route::post('/workforce/agent/add_record','AgentsController@addRecordToAgent')->name('add.agent.record');
+Route::post('/workforce/agent/delete_record','AgentsController@deleteAgentRecord')->name('delete.agent.record');
+
 
 
 // skills
@@ -227,6 +275,7 @@ Route::get('/freelancer/owners/show_owner_page/{owner_id}','OwnersController@sho
 // audio record :
 Route::post('/audio/save','UserDataController@saveAudio');
 Route::post('/audio/save_for_chat','UserDataController@saveAudioForChat');
+Route::post('/audio/save_for_register','BusinessSupportController@saveAudioForRegister');
 
 // chat new :
 Route::get('/chat-room','NewChatController@showChatPage')->name('chat-room');

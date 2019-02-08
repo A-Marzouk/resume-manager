@@ -15,6 +15,7 @@
         <tbody>
         <? foreach ($bookings as $booking):?>
         <tr id="selectedRowBooking{{$booking->id}}">
+                @if(App\Client::where('id',$booking->client_id)->first() != null )
             <th scope="row">
                 <?
                 $clientName = 'Visitor' ;
@@ -59,7 +60,7 @@
             <td scope="row">
                 {{$booking->created_at->format('M d, Y') }}
             </td>
-
+                @endif
         </tr>
 
         <? endforeach;?>

@@ -59,10 +59,10 @@
                 <? if($admin || (session()->get('admin') && session()->get('admin') == 'AdminWasHere')):?>
                 <a class="nav-item nav-link customNavLink" href="/admin" style="color:#0290D8;">Admin-area</a>
                 <?else :?>
-                <a class="nav-item nav-link customNavLink" href="#chatOn" id="liveChat" style="color:#0290D8;">
-                    <img src="/resumeApp/resources/views/customTheme/images/textsms_24px.png" alt="chat img" width="16px">
-                    &nbsp; Chat with us!
-                </a>
+                {{--<a class="nav-item nav-link customNavLink" href="#chatOn" id="liveChat" style="color:#0290D8;">--}}
+                    {{--<img src="/resumeApp/resources/views/customTheme/images/textsms_24px.png" alt="chat img" width="16px">--}}
+                    {{--&nbsp; Chat with us!--}}
+                {{--</a>--}}
                 <? endif;?>
             </li>
             <ul class="navbar-nav">
@@ -116,7 +116,7 @@
     </a>
 </div>
 
-    @include('layouts.includes.terms')
+    {{--@include('layouts.includes.terms')--}}
     @include('layouts.footer')
 
     {{-- Chat box --}}

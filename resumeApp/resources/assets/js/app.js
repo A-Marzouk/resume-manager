@@ -48,11 +48,28 @@ Vue.component('add-education-modal', require('./components/education/addEducatio
 Vue.component('invoices-list', require('./components/invoices/invoicesListComponent.vue'));
 Vue.component('invoice-component', require('./components/invoices/invoiceComponent.vue'));
 Vue.component('add-invoice-modal', require('./components/invoices/addInvoiceComponent.vue'));
+Vue.component('add-invoice-shift-modal', require('./components/invoices/addInvoiceShiftComponent.vue'));
+
+// bookings calendar :
+Vue.component('bookings-calendar', require('./components/bookingsCalendarComponent.vue'));
+
+// campaign briefs
+Vue.component('cbriefs-list', require('./components/campaign_briefs/cBriefsListComponent.vue'));
+Vue.component('cbrief-component', require('./components/campaign_briefs/cBriefComponent.vue'));
+Vue.component('add-cbrief-modal', require('./components/campaign_briefs/addCBriefComponent.vue'));
+Vue.component('add-service-modal', require('./components/campaign_briefs/addServiceComponent.vue'));
 
 // recordings
 Vue.component('records-list', require('./components/recordings/recordsListComponent.vue'));
 Vue.component('record-component', require('./components/recordings/recordComponent.vue'));
 Vue.component('add-record-modal', require('./components/recordings/addRecordComponent.vue'));
+
+//agents:
+Vue.component('agents-list', require('./components/agents/agentsListComponent.vue'));
+Vue.component('agent-component', require('./components/agents/agentComponent.vue'));
+Vue.component('add-agent-modal', require('./components/agents/addAgentComponent.vue'));
+Vue.component('add-agent-record-modal', require('./components/agents/addAgentRecordComponent.vue'));
+
 
 // references
 Vue.component('references-list', require('./components/references/referencesListComponent.vue'));
@@ -66,6 +83,10 @@ Vue.component('add-job-modal', require('./components/jobs/addJob.vue'));
 
 // skills
 Vue.component('skills-list', require('./components/skills/skillsComponent.vue'));
+
+// record while register
+Vue.component('record-input', require('./components/record_while_register.vue'));
+
 
 
 // projects
@@ -100,6 +121,26 @@ if ($("#searchFreelancers").length !== 0){
     });
 }
 
+
+if ($("#record_input").length !== 0){
+    let record_input = new Vue({
+        el:'#record_input'
+    });
+}
+
+if ($("#agents").length !== 0){
+    let agents = new Vue({
+        el:'#agents'
+    });
+}
+
+if ($("#bookings_calendar").length !== 0){
+    let bookings_calendar = new Vue({
+        el:'#bookings_calendar'
+    });
+}
+
+
 if ($("#clientJobs").length !== 0){
     let clientJobs = new Vue({
         el:'#clientJobs'
@@ -121,6 +162,13 @@ if ($("#newChat").length !== 0){
         el:'#newChat'
     });
 }
+
+if ($("#cbriefs").length !== 0){
+    let cbriefs = new Vue({
+        el:'#cbriefs'
+    });
+}
+
 
 
 if ($("#work_overview").length !== 0){

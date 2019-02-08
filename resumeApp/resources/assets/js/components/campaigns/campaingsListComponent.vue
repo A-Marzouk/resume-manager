@@ -130,7 +130,7 @@
                     'start_time':'',
                     'end_time'  :'',
                     'days'      :[],
-                    'campaign_id'    :''
+                    'campaign_id':''
                 }
             }
         },
@@ -139,6 +139,15 @@
                 axios.get('/admin/get_camps').then(
                     (response) => {
                         let currCamps =  response.data;
+                        $.each(currCamps, function(i){
+                            $.each(currCamps[i].shifts, function(j){
+                                if(currCamps[i].shifts[j].days === null){
+                                    currCamps[i].shifts[j].days = [];
+                                }else{
+                                    currCamps[i].shifts[j].days = currCamps[i].shifts[j].days.split(',')
+                                }
+                            });
+                        });
                         this.camps = currCamps;
                         this.checkMaxCamps();
                     }

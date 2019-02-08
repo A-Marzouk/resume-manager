@@ -23,8 +23,8 @@ class ShiftsController extends Controller
 
 
     public function addShiftToCamp(Request $request){
-        if(isset($request->campID)){
-            $currCampaign = Campaign::where('id',$request->campID)->first();
+        if(isset($request->campaign_id)){
+            $currCampaign = Campaign::where('id',$request->campaign_id)->first();
         }
         if(isset($request->invoiceID)){
             $currInvoice  = Invoice::where('id',$request->invoiceID)->first();
@@ -34,7 +34,7 @@ class ShiftsController extends Controller
             'end_time' => 'required',
             'days' => 'max:1500|required',
             'rate' => 'max:191',
-            'service' => 'max:191|required',
+            'service' => 'max:191',
         ]);
 
         if(isset($request->id)){
@@ -53,8 +53,12 @@ class ShiftsController extends Controller
 
         $shift->start_time = $request->start_time;
         $shift->end_time  = $request->end_time;
-        $shift->rate  = $request->rate;
-        $shift->service  = $request->service;
+        if(isset($request->rate)){
+            $shift->rate  = $request->rate;
+        }
+        if(isset($request->service)){
+            $shift->service  = $request->service;
+        }
         if(isset($request->days)){
             if(in_array('all_days',$request->days)){
                 $shift->days   = 'all_days';

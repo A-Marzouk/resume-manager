@@ -87,6 +87,8 @@ Vue.component('skills-list', require('./components/skills/skillsComponent.vue'))
 // record while register
 Vue.component('record-input', require('./components/record_while_register.vue'));
 
+// terms bar component
+Vue.component('terms-bar', require('./components/termsBarComponent.vue'));
 
 
 // projects
@@ -125,6 +127,12 @@ if ($("#searchFreelancers").length !== 0){
 if ($("#record_input").length !== 0){
     let record_input = new Vue({
         el:'#record_input'
+    });
+}
+
+if ($("#terms_bar").length !== 0){
+    let terms_bar = new Vue({
+        el:'#terms_bar'
     });
 }
 

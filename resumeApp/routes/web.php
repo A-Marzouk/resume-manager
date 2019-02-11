@@ -55,6 +55,9 @@ Route::prefix('client')->group(function (){
     Route::get('/delete/{id}','AdminsController@deleteClient')->name('client.delete');
 // client profile
     Route::get('/profile/{client_id}','ClientsController@viewProfilePage')->name('client.profile');
+// client agreements :
+    Route::get('/agreement','ClientsController@viewClientAgreement')->name('client.agreement');
+    Route::get('/privacy_policy','ClientsController@viewClientPrivacyPolicy')->name('client.agreement');
 });
 
 Route::prefix('freelancer')->group(function (){

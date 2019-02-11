@@ -244,7 +244,7 @@
                 });
             },
             submitForm(){
-                if(this.toBeEditedRecord.src.length < 1 &&  this.file.length < 1){
+                if(this.toBeEditedRecord.src.replace(/\s/g, "").length < 8 &&  this.file.length < 1){
                     alert('Please upload the required record..');
                     return;
                 }

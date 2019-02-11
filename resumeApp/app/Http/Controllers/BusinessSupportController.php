@@ -18,6 +18,9 @@ class BusinessSupportController extends Controller
     }
 
     public function showRegistrationForm(){
+        if(!auth()->guest()){
+            return redirect('/freelancer');
+        }
         return view('auth.business_support.register');
     }
 

@@ -32,7 +32,7 @@ class RecordingsController extends Controller
         $request->validate([
             'title' => 'max:190',
             'transcription' => 'max:1500',
-            'src' => 'max:190',
+            'src' => 'min:8|max:1500',
         ]);
 
         if(isset($request->id)){

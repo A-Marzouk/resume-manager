@@ -67,7 +67,7 @@ class Upload
         if ($uploadOk == 0) {
             return false;
         } else {
-            $target_file = $target_dir . $newName . basename($_FILES[$name]["name"]);
+            $target_file = $target_dir . $newName .'_'.date(time());
             if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
                 return $target_file;
             } else {

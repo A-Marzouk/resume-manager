@@ -110,5 +110,9 @@
 
    </div>
 
+    <div id="terms_bar">
+        <terms-bar></terms-bar>
+    </div>
+
 
 @endsection

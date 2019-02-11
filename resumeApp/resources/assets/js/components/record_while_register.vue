@@ -256,7 +256,7 @@
                 }
                 formData.append('cv_included', this.cv_included);
                 formData.append('src', this.toBeEditedRecord.src);
-                formData.append('title', 'Business support application');
+                formData.append('title', 'Business support application (uploaded/link)');
                 formData.append('transcription',"");
                 formData.append('firstName', this.freelancerData.firstName);
                 formData.append('lastName', this.freelancerData.lastName);

@@ -16,7 +16,7 @@ class Upload
     public static function audio($src,$name,$newName){
         $target_dir = "resumeApp/uploads/";
         $uploadOk = 1;
-        if ($_FILES[$name]["size"] > 75000000) { // 75 megabyte
+        if ($_FILES[$name]["size"] > 175000000) { // 175 megabyte
             $uploadOk = 0;
         }
         // allowed formats :
@@ -24,7 +24,40 @@ class Upload
             'audio/mid', 'audio/x-aiff', 'audio/x-mpequrl','audio/midi', 'audio/x-mid',
             'audio/x-midi','audio/wav','audio/x-wav','audio/xm','audio/x-aac','audio/basic',
             'audio/flac','audio/mp4','audio/mp3','audio/x-matroska','audio/ogg','audio/s3m','audio/x-ms-wax',
-            'audio/xm','audio/x-m4a'];
+            'audio/xm','audio/x-m4a',
+         'audio/adpcm',
+        'audio/basic',
+        'audio/midi' ,
+        'audio/mp4' ,
+        'audio/mpeg',
+        'audio/ogg',
+        'audio/s3m',
+        'audio/silk',
+        'audio/vnd.dece.audio',
+        'audio/vnd.digital-winds',
+        'audio/vnd.dra',
+        'audio/vnd.dts',
+        'audio/vnd.dts.hd',
+        'audio/vnd.lucent.voice',
+        'audio/vnd.ms-playready.media.pya',
+        'audio/vnd.nuera.ecelp4800' ,
+        'audio/vnd.nuera.ecelp7470' ,
+        'audio/vnd.nuera.ecelp9600' ,
+        'audio/vnd.rip',
+        'audio/webm' ,
+        'audio/x-aac',
+        'audio/x-aiff',
+        'audio/x-caf',
+        'audio/x-flac',
+        'audio/x-matroska',
+        'audio/x-mpegurl',
+        'audio/x-ms-wax',
+        'audio/x-ms-wma',
+        'audio/x-pn-realaudio',
+        'audio/x-pn-realaudio-plugin',
+        'audio/x-wav',
+        'audio/xm',
+        ];
 
         // check file type :
         if(!in_array($_FILES[$name]['type'],$formats)){
@@ -34,7 +67,7 @@ class Upload
         if ($uploadOk == 0) {
             return false;
         } else {
-            $target_file = $target_dir . $newName . basename($_FILES[$name]["name"]);
+            $target_file = $target_dir . $newName .'_'.date(time());
             if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
                 return $target_file;
             } else {

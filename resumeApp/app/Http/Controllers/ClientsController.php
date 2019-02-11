@@ -12,7 +12,7 @@ class ClientsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:client')->except('hasAgreed');
+        $this->middleware('auth:client');
     }
 
     public function index(){
@@ -22,10 +22,7 @@ class ClientsController extends Controller
 
     public function hasAgreed(){
         $currClient = auth()->guard('client')->user();
-        if(!$currClient){
-            return ['terms' =>'NO_USER'];
-        }
-        if($currClient->agree_with_terms){
+        if($currClient->agree_with_terms == true){
             return ['terms' =>'AGREED'];
         }
         return [ 'terms' =>'NOT_AGREED'];
@@ -36,6 +33,25 @@ class ClientsController extends Controller
             $currClient = auth()->guard('client')->user();
             $currClient->agree_with_terms = true;
             $currClient->save();
+        }
+        return 'agreed saved';
+    }
+
+    public function viewClientAgreement(){
+        $client = auth()->guard('client')->user();
+        if($client){
+            return view('client_agreement',compact('client'));
+        }else{
+            redirect('/client');
+        }
+    }
+
+    public function viewClientPrivacyPolicy(){
+        $client = auth()->guard('client')->user();
+        if($client){
+            return view('client_privacy_policy',compact('client'));
+        }else{
+            redirect('/client');
         }
     }
 

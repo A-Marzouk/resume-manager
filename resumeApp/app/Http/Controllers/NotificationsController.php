@@ -57,6 +57,7 @@ class NotificationsController extends Controller
         $msg      = "New Application has been submitted.\n" ;
         $msg     .= "Name : ". $data['firstName'] . " ". $data['lastName'];
         $msg     .= "\nEmail :". $data['email'];
+        $msg     .= "\nTitle :". $recording->title;
         if($recording){
             $msg     .= "\n\nRecord Src : \n". $data['recordLink'];
 

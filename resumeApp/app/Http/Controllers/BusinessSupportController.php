@@ -41,7 +41,7 @@ class BusinessSupportController extends Controller
             $record = new Recording;
             $record->user_id = $id;
             $record->src = '/'.$target_file;
-            $record->title = 'Recorded business application';
+            $record->title = 'Recorded business application (record)';
             $record->transcription = '';
 
             $record->save();

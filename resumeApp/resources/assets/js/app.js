@@ -50,6 +50,9 @@ Vue.component('invoice-component', require('./components/invoices/invoiceCompone
 Vue.component('add-invoice-modal', require('./components/invoices/addInvoiceComponent.vue'));
 Vue.component('add-invoice-shift-modal', require('./components/invoices/addInvoiceShiftComponent.vue'));
 
+// bookings calendar :
+Vue.component('bookings-calendar', require('./components/bookingsCalendarComponent.vue'));
+
 // campaign briefs
 Vue.component('cbriefs-list', require('./components/campaign_briefs/cBriefsListComponent.vue'));
 Vue.component('cbrief-component', require('./components/campaign_briefs/cBriefComponent.vue'));
@@ -128,6 +131,12 @@ if ($("#record_input").length !== 0){
 if ($("#agents").length !== 0){
     let agents = new Vue({
         el:'#agents'
+    });
+}
+
+if ($("#bookings_calendar").length !== 0){
+    let bookings_calendar = new Vue({
+        el:'#bookings_calendar'
     });
 }
 

@@ -66,12 +66,37 @@ class ShiftsController extends Controller
 
         $shift->save();
 
+        // update shift days records :
+        $currentDays = $shift->daysAsRecords;
+        // remove current days to update :
+        if(count($currentDays) > 0){
+            foreach ($currentDays as $day){
+                $day->delete();
+            }
+        }
+
+        foreach ($request->days as $dayDate){
+            $day = new ShiftDay;
+            $day->shift_id = $shift->id;
+            $day->date= $dayDate;
+            $day->save();
+        }
+
         return ['id'=>$shift->id];
 
     }
 
     public function deleteShift(Request $request){
-        $shift = Shift::where('id',$request->shiftID);
+        $shift = Shift::where('id',$request->shiftID)->first();
+        // update shift days records :
+        $currentDays = $shift->daysAsRecords;
+        // remove current days to update :
+        if(count($currentDays) > 0){
+            foreach ($currentDays as $day){
+                $record = ShiftDay::where('id',$day->id)->first();
+                $record->delete();
+            }
+        }
         $shift->delete();
         return 'Shift has been deleted';
     }

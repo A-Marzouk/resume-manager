@@ -69,18 +69,32 @@ class ShiftsController extends Controller
 
         // update shift days records :
         $currentDays = $shift->daysAsRecords;
+        $existingDates = [] ;
         // remove current days to update :
         if(count($currentDays) > 0){
             foreach ($currentDays as $day){
-                $day->delete();
+                $existingDates[] = $day->date;
             }
         }
 
-        foreach ($request->days as $dayDate){
+        foreach ($request->days as $dayDate){ // $request->days is the last needed result.
             $day = new ShiftDay;
             $day->shift_id = $shift->id;
             $day->date= $dayDate;
-            $day->save();
+            if(!in_array($dayDate,$existingDates)){
+                $day->save();
+            }
+        }
+
+        // in case I deleted a day. so now it exists in existing dates but no in request->days. so delete the record.
+        foreach ($existingDates as $existDayDate){
+            if(!in_array($existDayDate, $request->days)){
+                // delete the record
+                $toBeDeletedShiftDay = ShiftDay::where('date',$existDayDate)->first();
+                // deattach all users.
+                $toBeDeletedShiftDay->users()->detach();
+                $toBeDeletedShiftDay->delete();
+            }
         }
 
         return ['id'=>$shift->id];
@@ -95,6 +109,7 @@ class ShiftsController extends Controller
         if(count($currentDays) > 0){
             foreach ($currentDays as $day){
                 $record = ShiftDay::where('id',$day->id)->first();
+                $record->users()->detach();
                 $record->delete();
             }
         }

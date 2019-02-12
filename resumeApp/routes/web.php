@@ -122,6 +122,7 @@ Route::post('/admin/camps/delete_shift','ShiftsController@deleteShift')->name('d
     // activiy logs
 Route::get('/admin/camps/get_camp_logs/{camp_id}','ActivityLogsController@getLogsByCampaignID')->name('get.logs');
 Route::get('/admin/camps/get_camp_members/{camp_id}','ActivityLogsController@getMembersByCampaignID')->name('get.members');
+Route::get('/admin/camps/get_camp_shifts/{camp_id}','ActivityLogsController@getShiftsByCampaignID')->name('get.shifts');
 Route::post('/admin/camps/add_log','ActivityLogsController@addLog')->name('add.log');
 Route::post('/admin/camps/delete_log','ActivityLogsController@deleteActivityLog')->name('delete.log');
 

@@ -106,6 +106,8 @@ Vue.component('update-members-modal', require('./components/campaigns/updateMemb
 Vue.component('add-shift-modal', require('./components/campaigns/addShiftComponent.vue'));
     // campaign activity logs:
 Vue.component('activity-logs', require('./components/campaigns/activityLogsComponent.vue'));
+    // campaign timeTable:
+Vue.component('campaign-timetable', require('./components/campaigns/timeTableComponent.vue'));
 
 
 // search components :
@@ -137,6 +139,12 @@ if ($("#record_input").length !== 0){
 if ($("#activityLog").length !== 0){
     let activityLog = new Vue({
         el:'#activityLog'
+    });
+}
+
+if ($("#timeTable").length !== 0){
+    let timeTable = new Vue({
+        el:'#timeTable'
     });
 }
 

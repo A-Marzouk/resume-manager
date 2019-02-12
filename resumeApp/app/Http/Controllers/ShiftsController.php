@@ -63,7 +63,7 @@ class ShiftsController extends Controller
             if(in_array('all_days',$request->days)){
                 $shift->days   = 'all_days';
             }else{
-                $shift->days      = implode(',',$request->days);
+                $shift->days      = implode('|',$request->days);
             }
         }
 

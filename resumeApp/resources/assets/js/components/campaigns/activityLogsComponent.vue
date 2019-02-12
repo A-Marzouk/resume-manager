@@ -18,7 +18,7 @@
                         <small class="logTime">
                             {{log.created_at}}
                         </small>
-                        <span class="deleteWorkBtn NoDecor" @click="deleteLog(log)" style="width: 15px;border: none;">
+                        <span v-show="log.user_id == user_id" class="deleteWorkBtn NoDecor" @click="deleteLog(log)" style="width: 15px;border: none;">
                             <a href="javascript:void(0)">
                                 <img src="/resumeApp/resources/assets/images/close_blue.png" alt="edit profile">
                             </a>

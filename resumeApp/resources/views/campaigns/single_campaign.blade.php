@@ -100,7 +100,7 @@
 
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="timeTable">
-                    time table
+                    <campaign-timetable campaign_id="{{$campaign->id}}"></campaign-timetable>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="activityLog">
                     <activity-logs campaign_id="{{$campaign->id}}"  @if(auth()->user()) user_id="{{auth()->user()->id}}" @endif></activity-logs>

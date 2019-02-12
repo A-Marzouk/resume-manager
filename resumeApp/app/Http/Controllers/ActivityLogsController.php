@@ -20,6 +20,15 @@ class ActivityLogsController extends Controller
         return $campaign->logs;
     }
 
+    public function getShiftsByCampaignID($camp_id){
+        $campaign = Campaign::where('id',$camp_id)->first();
+        $shifts   = $campaign->shifts;
+        foreach ($shifts as &$shift){
+            $shift['daysArray'] = explode('|',$shift->days) ;
+        }
+        return $shifts;
+    }
+
     public function getMembersByCampaignID($camp_id){
         $campaign = Campaign::where('id',$camp_id)->first();
         $members = $campaign->members ;

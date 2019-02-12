@@ -149,7 +149,7 @@
                                 if(currCamps[i].shifts[j].days === null){
                                     currCamps[i].shifts[j].days = [];
                                 }else{
-                                    currCamps[i].shifts[j].days = currCamps[i].shifts[j].days.split(',')
+                                    currCamps[i].shifts[j].days = currCamps[i].shifts[j].days.split('|')
                                 }
                             });
                         });

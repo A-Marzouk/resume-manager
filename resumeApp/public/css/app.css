@@ -274,6 +274,20 @@
           animation: text_btn 0.3s ease-in-out;
 }
 
+#campaign .mainHeader {
+  background: #218dce;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  padding: 15px 0 15px 0;
+}
+
+#campaign .campaignText {
+  color: #218dce;
+  font-size: 18px;
+  padding-top: 15px;
+}
+
 .oneLineHiddenOverflow {
   white-space: nowrap;
   overflow: hidden;

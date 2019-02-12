@@ -19,11 +19,21 @@ class CampaignsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('admin')->except('viewSingleCampaign');
     }
 
     public function viewCampaigns(){
         return view('admin.campaigns');
+    }
+
+
+    public function viewSingleCampaign($campID){
+        // you need to log in as a user.
+        if(auth()->guard()->guest()){
+            return redirect('/')->with('errorMessage','You need to log in first.');
+        }
+        $campaign = Campaign::where('id',$campID)->first();
+        return view('campaigns.single_campaign',compact('campaign'));
     }
 
     public function getAllClients(){

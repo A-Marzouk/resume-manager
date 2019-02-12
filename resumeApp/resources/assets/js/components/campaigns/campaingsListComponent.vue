@@ -15,6 +15,11 @@
                                 {{camp.client.name}}
                             </a>
                         </div>
+                        <div  style="color: #30323D;font-family: Roboto;" class="NoDecor"><b>Campaign page : </b>
+                            <a :href="'/camps/view/'+camp.id" target="_blank">
+                                View
+                            </a>
+                        </div>
                         <div  v-show="camp.shifts.length < 1" class="font-weight-bold">
                             No shifts in this campaign.
                         </div>

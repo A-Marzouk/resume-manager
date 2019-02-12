@@ -97,12 +97,16 @@ Vue.component('project-detail', require('./components/projects/projectDetailComp
 Vue.component('add-project-modal', require('./components/projects/addProjectComponent.vue'));
 
 
+
 // campaigns
 Vue.component('campaigns-list', require('./components/campaigns/campaingsListComponent.vue'));
 Vue.component('campaign-component', require('./components/campaigns/campaingComponent.vue'));
 Vue.component('add-campaign-modal', require('./components/campaigns/addCampaingComponent.vue'));
 Vue.component('update-members-modal', require('./components/campaigns/updateMembersComponent.vue'));
 Vue.component('add-shift-modal', require('./components/campaigns/addShiftComponent.vue'));
+    // campaign activity logs:
+Vue.component('activity-logs', require('./components/campaigns/activityLogsComponent.vue'));
+
 
 // search components :
 Vue.component('search-freelancers', require('./components/search/searchComponent.vue'));
@@ -127,6 +131,12 @@ if ($("#searchFreelancers").length !== 0){
 if ($("#record_input").length !== 0){
     let record_input = new Vue({
         el:'#record_input'
+    });
+}
+
+if ($("#activityLog").length !== 0){
+    let activityLog = new Vue({
+        el:'#activityLog'
     });
 }
 

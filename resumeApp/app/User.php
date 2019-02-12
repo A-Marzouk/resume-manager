@@ -63,6 +63,11 @@ class User extends Authenticatable
         return $this->hasMany(WorkHistory::class);
     }
 
+    public function activityLogs()
+    {
+        return $this->hasMany(ActivityLog::class);
+    }
+
     public function invoices()
     {
         return $this->hasMany(User::class);

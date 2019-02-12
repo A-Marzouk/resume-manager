@@ -22,6 +22,11 @@ class Shift extends Model
         return $this->belongsToMany(User::class);
     }
 
+    public function daysAsRecords(){
+        return $this->hasMany(ShiftDay::class);
+    }
+
+
     public function campaign(){
         return $this->belongsTo(Campaign::class);
     }

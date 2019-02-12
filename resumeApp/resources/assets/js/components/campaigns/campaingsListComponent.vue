@@ -15,6 +15,11 @@
                                 {{camp.client.name}}
                             </a>
                         </div>
+                        <div  style="color: #30323D;font-family: Roboto;" class="NoDecor"><b>Campaign page : </b>
+                            <a :href="'/camps/view/'+camp.id" target="_blank">
+                                View
+                            </a>
+                        </div>
                         <div  v-show="camp.shifts.length < 1" class="font-weight-bold">
                             No shifts in this campaign.
                         </div>
@@ -40,6 +45,12 @@
                                                 <a href="javascript:void(0)">
                                                     <img src="/resumeApp/resources/assets/images/close_blue.png" alt="edit profile">
                                                     Delete
+                                                </a>
+                                            </span>
+                                            <span class="deleteWorkBtn NoDecor" @click="updateShift(shift)">
+                                                <a href="javascript:void(0)" data-target="#addShiftModal"  data-toggle="modal">
+                                                    <img src="/resumeApp/resources/assets/images/edit_blue.png" alt="edit profile">
+                                                    Edit
                                                 </a>
                                             </span>
                                         </div>
@@ -73,7 +84,7 @@
                                 Update members
                             </a>
                         </div>
-                        <div class="deleteWorkBtn NoDecor"  @click="updateCamp(camp.id)" style="width: 169px;margin-top: 5px;">
+                        <div class="deleteWorkBtn NoDecor"  @click="updateCamp(camp.id);clearShiftData()" style="width: 169px;margin-top: 5px;">
                             <a href="javascript:void(0)" data-target="#addShiftModal"  data-toggle="modal">
                                 <img src="/resumeApp/resources/assets/images/add_blue.png" alt="edit profile" style="width: 20px;
             padding-right: 7px;
@@ -97,7 +108,7 @@
         <br/>
         <add-campaign-modal @campAdded="addCamp" :toBeEditedCamp="toBeEditedCamp"></add-campaign-modal>
         <update-members-modal :toBeEditedCamp="toBeEditedCamp"></update-members-modal>
-        <add-shift-modal :toBeEditedCamp="toBeEditedCamp"></add-shift-modal>
+        <add-shift-modal @shiftAdded="shiftAdded" :toBeEditedCamp="toBeEditedCamp" :toBeEditedShift="toBeEditedShift"></add-shift-modal>
     </div>
 </template>
 
@@ -119,6 +130,13 @@
                     'members':[],
                     'shifts':[]
                 },
+                toBeEditedShift:{
+                    'id'        :'',
+                    'start_time':'',
+                    'end_time'  :'',
+                    'days'      :[],
+                    'campaign_id':''
+                }
             }
         },
         methods: {
@@ -126,6 +144,15 @@
                 axios.get('/admin/get_camps').then(
                     (response) => {
                         let currCamps =  response.data;
+                        $.each(currCamps, function(i){
+                            $.each(currCamps[i].shifts, function(j){
+                                if(currCamps[i].shifts[j].days === null){
+                                    currCamps[i].shifts[j].days = [];
+                                }else{
+                                    currCamps[i].shifts[j].days = currCamps[i].shifts[j].days.split('|')
+                                }
+                            });
+                        });
                         this.camps = currCamps;
                         this.checkMaxCamps();
                     }
@@ -135,6 +162,15 @@
             addCamp(newCamp) {
                 this.camps.push(newCamp);
                 this.checkMaxCamps();
+            },
+
+            shiftAdded(newShift) {
+                let currCamps = this.camps;
+                $.each(currCamps, function(i){
+                    if(currCamps[i].id === newShift.campaign_id){
+                        currCamps[i].shifts.push(newShift);
+                    }
+                });
             },
 
             deleteCamp(camp){
@@ -198,6 +234,17 @@
                 });
                 this.toBeEditedCamp = editedCamp;
             },
+            updateShift(shift){
+                this.updateCamp(shift.campaign_id);
+                let shifts = this.toBeEditedCamp.shifts;
+                let editedShift = {};
+                $.each(shifts, function(i){
+                    if(shifts[i].id === shift.id){
+                        editedShift = shifts[i];
+                    }
+                });
+                this.toBeEditedShift = editedShift;
+            },
 
             checkMaxCamps(){
                 if(this.camps.length > 4){
@@ -220,6 +267,15 @@
                     'members':[],
                     'shifts':[]
                 };
+            },
+            clearShiftData(){
+                this.toBeEditedShift ={
+                    'id'        :'',
+                    'start_time':'',
+                    'end_time'  :'',
+                    'days'      :[],
+                    'campaign_id'    :''
+                }
             },
             getDate(date){
                 let event = new Date(date);

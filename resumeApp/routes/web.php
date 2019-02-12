@@ -115,9 +115,19 @@ Route::post('/admin/camp/members','CampaignsController@getCampMembers')->name('c
 Route::post('/admin/camp/update_members','CampaignsController@addMembersToCamp')->name('add.members.to.camp');
 Route::get('/admin/campaigns','CampaignsController@viewCampaigns')->name('view.campaigns');
 Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
+Route::get('/camps/view/{campID}','CampaignsController@viewSingleCampaign')->name('view.single.campaign');
     // campaign shifts
 Route::post('/admin/camp/add_shift','ShiftsController@addShiftToCamp')->name('add.shift.to.camp');
 Route::post('/admin/camps/delete_shift','ShiftsController@deleteShift')->name('delete.shift');
+    // activiy logs
+Route::get('/admin/camps/get_camp_logs/{camp_id}','ActivityLogsController@getLogsByCampaignID')->name('get.logs');
+Route::get('/admin/camps/get_camp_members/{camp_id}','ActivityLogsController@getMembersByCampaignID')->name('get.members');
+Route::get('/admin/camps/get_camp_shifts/{camp_id}','ActivityLogsController@getShiftsByCampaignID')->name('get.shifts');
+Route::post('/admin/camps/add_log','ActivityLogsController@addLog')->name('add.log');
+Route::post('/admin/camps/delete_log','ActivityLogsController@deleteActivityLog')->name('delete.log');
+Route::post('/admin/camps/add_user_to_day','ShiftsController@addUserToShiftDay')->name('add.user.to.day');
+Route::post('/admin/camps/remove_user_from_day','ShiftsController@removeUserFromShiftDay')->name('remove.user.from.day');
+    // add users to days :
 
 
 // delete users, clients and conversations :

@@ -30,4 +30,12 @@ class Campaign extends Model
         return $this->hasMany(Shift::class);
     }
 
+    public function logs(){
+        return $this->hasMany(ActivityLog::class);
+    }
+
+    public function client(){
+        return $this->belongsTo(Client::class);
+    }
+
 }

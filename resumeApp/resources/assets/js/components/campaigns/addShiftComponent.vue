@@ -11,25 +11,24 @@
                     <div class="modal-body" id="content">
                         <div class="form-group col-md-6">
                             <label for="start_time" class="panelFormLabel">Starts at :</label>
-                            <input type="time" class="form-control" id="start_time" name="start_time" v-model="shift.start_time" required>
+                            <input type="time" class="form-control" id="start_time" name="start_time" v-model="toBeEditedShift.start_time" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="end_time" class="panelFormLabel">Starts at :</label>
-                            <input type="time" class="form-control" id="end_time" name="end_time" v-model="shift.end_time" required>
+                            <input type="time" class="form-control" id="end_time" name="end_time" v-model="toBeEditedShift.end_time" required>
                         </div>
                         <div class="form-group col-md-12">
                             <label class="panelFormLabel">Choose shift days :</label>
                             <div>
-                                <input type="checkbox" value="all_dayes" v-model="shift.days">
+                                <input type="checkbox" value="all_dayes" @click="chooseAllDays">
                                 All campaign days.
                             </div>
-                            <div>
-                                <input type="checkbox" value="" v-model="customDates" @click="customDates = !customDates ">
-                                Custom days.
-                            </div>
                             <div class="row" v-show="customDates">
+                                <div class="panelFormLabel col-md-12">
+                                    Custom dates :
+                                </div><br/>
                                 <div class="col-md-3" v-for="(date,index) in getDates(new Date(toBeEditedCamp.start_date),new Date(toBeEditedCamp.end_date))">
-                                    <input type="checkbox" :value="date" v-bind:key="index" v-model="shift.days">
+                                    <input type="checkbox" :value="date" v-bind:key="index" v-model="toBeEditedShift.days">
                                     {{date}}
                                 </div>
                             </div>
@@ -46,24 +45,25 @@
 
 <script>
     export default {
-        props:['toBeEditedCamp'],
+        props:['toBeEditedCamp','toBeEditedShift'],
         data(){
             return{
-                shift:{
-                    'id'        :'',
-                    'start_time':'',
-                    'end_time'  :'',
-                    'days'      :[],
-                    campID      :''
-                },
                 datesArray:[],
-                customDates:false
+                customDates:true
             }
         },
         methods:{
             addShift(){
-                this.shift.campID = this.toBeEditedCamp.id ;
-                axios.post('/admin/camp/add_shift',this.shift).then( (response) => {
+                this.toBeEditedShift.campaign_id = this.toBeEditedCamp.id ;
+                axios.post('/admin/camp/add_shift',this.toBeEditedShift).then( (response) => {
+                    // assign id to the shift which has been just added
+
+                    if(this.toBeEditedShift.id === ""){
+                        this.$emit('shiftAdded',this.toBeEditedShift);
+                    }
+
+                    this.toBeEditedShift.id = response.data.id ;
+
                     // changes saved :
                     $('#changesSaved').fadeIn('slow');
                     setTimeout(function () {
@@ -71,19 +71,11 @@
                     },2000);
                 });
 
-                this.toBeEditedCamp.shifts.push(this.shift);
-                this.clearShiftData();
                 $('#closeShiftModal').click();
             },
-            clearShiftData(){
-                this.shift={
-                    'id'        :'',
-                    'start_time':'',
-                    'end_time'  :'',
-                    'days'      :[],
-                    campID      :''
-                };
-                this.customDates =false;
+            chooseAllDays(){
+              this.customDates = !this.customDates;
+              this.toBeEditedShift.days = this.getDates(new Date(this.toBeEditedCamp.start_date),new Date(this.toBeEditedCamp.end_date));
             },
             getDates(startDate, stopDate) {
                 let oneDay = 24*3600*1000;

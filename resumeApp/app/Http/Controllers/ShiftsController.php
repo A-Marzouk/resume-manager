@@ -13,6 +13,7 @@ use App\Campaign;
 use App\Invoice;
 use App\Shift;
 use App\ShiftDay;
+use App\User;
 use Illuminate\Http\Request;
 
 class ShiftsController extends Controller
@@ -99,6 +100,21 @@ class ShiftsController extends Controller
         }
         $shift->delete();
         return 'Shift has been deleted';
+    }
+
+    public function addUserToShiftDay(Request $request){
+        $day = ShiftDay::find($request->dayID);
+        if(!$day->users->contains($request->selectedUser)){
+            $day->users()->attach($request->selectedUser);
+            return User::where('id',$request->selectedUser)->first();
+        }
+        return 'user_exists';
+    }
+
+    public function removeUserFromShiftDay(Request $request){
+        $day = ShiftDay::find($request->dayID);
+        $day->users()->detach($request->selectedUser);
+        return 'Users Updated';
     }
 
     public function getShiftMembers(Request $request){

@@ -24,7 +24,11 @@ class ActivityLogsController extends Controller
         $campaign = Campaign::where('id',$camp_id)->first();
         $shifts   = $campaign->shifts;
         foreach ($shifts as &$shift){
-            $shift['daysArray'] = explode('|',$shift->days) ;
+            $days = $shift->daysAsRecords ;
+            foreach ($days as &$day){
+                $day['users'] = $day->users ;
+            }
+            $shift['daysArray'] = $days;
         }
         return $shifts;
     }

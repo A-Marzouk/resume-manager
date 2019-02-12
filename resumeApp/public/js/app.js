@@ -80024,7 +80024,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.memberImg{\n    width: 150px;\n    height: 150px;\n    border-radius: 50%;\n    border: grey 2px solid;\n    margin:5px;\n    padding:3px;\n}\n.memberName{\n    color:#218dce;\n    font: 14px;\n    padding-top: 8px;\n}\n.log{\n    background: white;\n    color: grey;\n    font:12px;\n    display:inline-block;\n    padding: 10px;\n    border: lightgrey solid 1px;\n    border-radius: 5px;\n}\n", ""]);
+exports.push([module.i, "\n.memberImg{\n    width: 150px;\n    height: 150px;\n    border-radius: 50%;\n    border: grey 2px solid;\n    margin:5px;\n    padding:3px;\n}\n.memberName{\n    color:#218dce;\n    font: 14px;\n    padding-top: 8px;\n}\n.log{\n    background: white;\n    color: grey;\n    font:12px;\n    display:inline-block;\n    padding: 10px;\n    border: lightgrey solid 1px;\n    border-radius: 5px;\n    margin: 5px;\n}\n", ""]);
 
 // exports
 
@@ -80063,21 +80063,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['campaign_id'],
     data: function data() {
         return {
             shifts: [],
-            members: []
+            members: [],
+            selectedUser: 'Add agent'
         };
     },
 
     methods: {
-        submitForm: function submitForm() {
+        updateDayAgents: function updateDayAgents(day) {
             // post data :
-            axios.post().then(function (response) {
-
+            var selectedUserID = this.selectedUser.id;
+            this.selectedUser = 'Add agent';
+            axios.post('/admin/camps/add_user_to_day', { dayID: day.id, selectedUser: selectedUserID }).then(function (response) {
+                if (response.data === 'user_exists') {
+                    alert('User Already exists.');
+                    return;
+                }
+                day.users.push(response.data);
                 // changes saved :
                 $('#changesSaved').fadeIn('slow');
                 setTimeout(function () {
@@ -80085,6 +80109,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }, 2000);
             });
         },
+        submitForm: function submitForm() {},
         getCampMembers: function getCampMembers() {
             var _this = this;
 
@@ -80097,6 +80122,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/admin/camps/get_camp_shifts/' + this.campaign_id).then(function (response) {
                 _this2.shifts = response.data;
+            });
+        },
+        deleteDayUser: function deleteDayUser(user, day) {
+            $.each(day.users, function (i) {
+                if (day.users[i].id === user.id) {
+                    day.users.splice(i, 1);
+                    return false;
+                }
+            });
+            axios.post('/admin/camps/remove_user_from_day', { dayID: day.id, selectedUser: user.id }).then(function (response) {
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
             });
         },
         getImageSrc: function getImageSrc(userImage) {
@@ -80149,7 +80189,7 @@ var render = function() {
                       staticStyle: { color: "#218dce" },
                       attrs: { scope: "col" }
                     },
-                    [_vm._v(_vm._s(day))]
+                    [_vm._v(_vm._s(day.date))]
                   )
                 })
               ],
@@ -80174,7 +80214,105 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _vm._l(shift.daysArray, function(day, index) {
-                  return _c("td", { key: index })
+                  return _c(
+                    "td",
+                    { key: index },
+                    [
+                      _vm._l(day.users, function(user, index) {
+                        return _c("div", { key: index, staticClass: "log" }, [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(user.firstName) +
+                              " " +
+                              _vm._s(user.lastName) +
+                              "\n                            "
+                          ),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "deleteWorkBtn NoDecor",
+                              staticStyle: {
+                                padding: "10px",
+                                width: "15px",
+                                border: "none"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.deleteDayUser(user, day)
+                                }
+                              }
+                            },
+                            [_vm._m(0, true)]
+                          )
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _c("hr"),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.selectedUser,
+                                expression: "selectedUser"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            on: {
+                              change: [
+                                function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.selectedUser = $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                },
+                                function($event) {
+                                  _vm.updateDayAgents(day)
+                                }
+                              ]
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { disabled: "", selected: "" } },
+                              [_vm._v("Add agent")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.members, function(member, index) {
+                              return _c(
+                                "option",
+                                { key: index, domProps: { value: member } },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(member.firstName) +
+                                      " " +
+                                      _vm._s(member.lastName) +
+                                      "\n                                "
+                                  )
+                                ]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      ])
+                    ],
+                    2
+                  )
                 })
               ],
               2
@@ -80185,7 +80323,21 @@ var render = function() {
     })
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _c("img", {
+        attrs: {
+          src: "/resumeApp/resources/assets/images/close_blue.png",
+          alt: "edit profile"
+        }
+      })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

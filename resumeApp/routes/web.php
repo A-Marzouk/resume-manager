@@ -125,6 +125,9 @@ Route::get('/admin/camps/get_camp_members/{camp_id}','ActivityLogsController@get
 Route::get('/admin/camps/get_camp_shifts/{camp_id}','ActivityLogsController@getShiftsByCampaignID')->name('get.shifts');
 Route::post('/admin/camps/add_log','ActivityLogsController@addLog')->name('add.log');
 Route::post('/admin/camps/delete_log','ActivityLogsController@deleteActivityLog')->name('delete.log');
+Route::post('/admin/camps/add_user_to_day','ShiftsController@addUserToShiftDay')->name('add.user.to.day');
+Route::post('/admin/camps/remove_user_from_day','ShiftsController@removeUserFromShiftDay')->name('remove.user.from.day');
+    // add users to days :
 
 
 // delete users, clients and conversations :

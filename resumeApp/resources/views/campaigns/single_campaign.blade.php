@@ -1,6 +1,13 @@
 @extends('layouts.client-app')
 
 @section('content')
+    <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
+    <div class="row container">
+        <div class="col-md-3 alert-success alert"  style="margin-left: 15px;">
+            Viewing as admin
+        </div>
+    </div>
+    <? endif;?>
     <div class="container" id="campaign">
         <div class="row mainHeader">
             <div class="col-md-4">
@@ -96,7 +103,7 @@
                     time table
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="activityLog">
-                    <activity-logs campaign_id="{{$campaign->id}}" user_id="{{auth()->user()->id}}"></activity-logs>
+                    <activity-logs campaign_id="{{$campaign->id}}"  @if(auth()->user()) user_id="{{auth()->user()->id}}" @endif></activity-logs>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="faq">
                     faq

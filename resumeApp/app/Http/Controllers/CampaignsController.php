@@ -28,12 +28,41 @@ class CampaignsController extends Controller
 
 
     public function viewSingleCampaign($campID){
-        // you need to log in as a user.
-        if(auth()->guard()->guest()){
-            return redirect('/')->with('errorMessage','You need to log in first.');
+        $campaign      = Campaign::where('id',$campID)->first();
+        $members       = $campaign->members ;
+        $campaignClient        = $campaign->client;
+        $currentUser   = auth()->user();
+        $currentClient = auth()->guard('client')->user();
+
+        if($currentUser->admin == true){
+            return view('campaigns.single_campaign',compact('campaign'));
         }
-        $campaign = Campaign::where('id',$campID)->first();
+
+        if(!$currentUser && !$currentClient){
+            return redirect('/')->with('errorMessage','You need to log in first to view campaign.');
+        }
+
+        if($currentClient){
+           if($campaignClient->id !== $currentClient->id){
+               return redirect('/')->with('errorMessage','Only owner of campaign can view this page.');
+           }
+        }
+
+        $isCampaignUser = false;
+        if($currentUser){
+            foreach ($members as $campaignMember){
+                if($currentUser->id == $campaignMember->id){
+                    $isCampaignUser = true;
+                    break;
+                }
+            }
+        }
+        if(!$isCampaignUser && $currentUser->admin != true){
+            return redirect('/')->with('errorMessage','Only campaign members can view this page.');
+        }
+
         return view('campaigns.single_campaign',compact('campaign'));
+
     }
 
     public function getAllClients(){

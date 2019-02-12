@@ -73145,7 +73145,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'end_date': '',
                 'clientName': '',
                 'members': [],
-                'shifts': []
+                'shifts': [],
+                client: {}
             },
             toBeEditedShift: {
                 'id': '',
@@ -73278,7 +73279,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'end_date': '',
                 'clientName': '',
                 'members': [],
-                'shifts': []
+                'shifts': [],
+                client: {}
             };
         },
         clearShiftData: function clearShiftData() {
@@ -74073,7 +74075,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             // post data :
             axios.post('/admin/camps/add', this.toBeEditedCamp).then(function (response) {
-                //
                 if (_this.toBeEditedCamp.id === "") {
                     _this.$emit('campAdded', _this.toBeEditedCamp);
                 }
@@ -74102,6 +74103,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             $.each(this.clients, function (i) {
                 if (_this3.clients[i].id == client_id) {
                     _this3.toBeEditedCamp.clientName = _this3.clients[i].name;
+                    _this3.toBeEditedCamp.client = _this3.clients[i];
                 }
             });
         }

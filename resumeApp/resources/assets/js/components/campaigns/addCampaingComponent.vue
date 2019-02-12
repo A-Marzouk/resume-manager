@@ -77,7 +77,6 @@
             submitForm(){
                 // post data :
                 axios.post('/admin/camps/add',this.toBeEditedCamp).then( (response) => {
-                    //
                     if(this.toBeEditedCamp.id === ""){
                         this.$emit('campAdded',this.toBeEditedCamp);
                     }
@@ -102,6 +101,7 @@
                 $.each(this.clients,(i) => {
                     if(this.clients[i].id == client_id){
                         this.toBeEditedCamp.clientName = this.clients[i].name;
+                        this.toBeEditedCamp.client = this.clients[i];
                     }
                 });
             },

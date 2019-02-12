@@ -128,7 +128,8 @@
                     'end_date':'',
                     'clientName':'',
                     'members':[],
-                    'shifts':[]
+                    'shifts':[],
+                     client:{}
                 },
                 toBeEditedShift:{
                     'id'        :'',
@@ -265,7 +266,8 @@
                     'end_date':'',
                     'clientName':'',
                     'members':[],
-                    'shifts':[]
+                    'shifts':[],
+                    client:{}
                 };
             },
             clearShiftData(){

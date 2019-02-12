@@ -20,7 +20,7 @@
                         <div class="form-group col-md-12">
                             <label class="panelFormLabel">Choose shift days :</label>
                             <div>
-                                <input type="checkbox" value="all_dayes" @click="customDates = !customDates" v-model="toBeEditedShift.days">
+                                <input type="checkbox" value="all_dayes" @click="chooseAllDays">
                                 All campaign days.
                             </div>
                             <div class="row" v-show="customDates">
@@ -73,7 +73,10 @@
 
                 $('#closeShiftModal').click();
             },
-
+            chooseAllDays(){
+              this.customDates = !this.customDates;
+              this.toBeEditedShift.days = this.getDates(new Date(this.toBeEditedCamp.start_date),new Date(this.toBeEditedCamp.end_date));
+            },
             getDates(startDate, stopDate) {
                 let oneDay = 24*3600*1000;
                 for (var datesArray=[], ms = startDate*1 , last=stopDate*1 ; ms < last ; ms += oneDay){

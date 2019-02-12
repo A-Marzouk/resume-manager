@@ -12,6 +12,7 @@ namespace App\Http\Controllers;
 use App\Campaign;
 use App\Invoice;
 use App\Shift;
+use App\ShiftDay;
 use Illuminate\Http\Request;
 
 class ShiftsController extends Controller
@@ -60,11 +61,7 @@ class ShiftsController extends Controller
             $shift->service  = $request->service;
         }
         if(isset($request->days)){
-            if(in_array('all_days',$request->days)){
-                $shift->days   = 'all_days';
-            }else{
-                $shift->days      = implode('|',$request->days);
-            }
+            $shift->days      = implode('|',$request->days);
         }
 
         $shift->save();

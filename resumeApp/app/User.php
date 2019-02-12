@@ -33,6 +33,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Job::class);
     }
 
+    public function days(){
+        return $this->belongsToMany(ShiftDay::class);
+    }
+
+
     public function campaigns(){
         return $this->belongsToMany(Campaign::class);
     }

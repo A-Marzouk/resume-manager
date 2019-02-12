@@ -75283,6 +75283,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             $('#closeShiftModal').click();
         },
+        chooseAllDays: function chooseAllDays() {
+            this.customDates = !this.customDates;
+            this.toBeEditedShift.days = this.getDates(new Date(this.toBeEditedCamp.start_date), new Date(this.toBeEditedCamp.end_date));
+        },
         getDates: function getDates(startDate, stopDate) {
             var oneDay = 24 * 3600 * 1000;
             for (var datesArray = [], ms = startDate * 1, last = stopDate * 1; ms < last; ms += oneDay) {
@@ -75419,51 +75423,8 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", [
                       _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.toBeEditedShift.days,
-                            expression: "toBeEditedShift.days"
-                          }
-                        ],
                         attrs: { type: "checkbox", value: "all_dayes" },
-                        domProps: {
-                          checked: Array.isArray(_vm.toBeEditedShift.days)
-                            ? _vm._i(_vm.toBeEditedShift.days, "all_dayes") > -1
-                            : _vm.toBeEditedShift.days
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.customDates = !_vm.customDates
-                          },
-                          change: function($event) {
-                            var $$a = _vm.toBeEditedShift.days,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = "all_dayes",
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 &&
-                                  _vm.$set(
-                                    _vm.toBeEditedShift,
-                                    "days",
-                                    $$a.concat([$$v])
-                                  )
-                              } else {
-                                $$i > -1 &&
-                                  _vm.$set(
-                                    _vm.toBeEditedShift,
-                                    "days",
-                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                  )
-                              }
-                            } else {
-                              _vm.$set(_vm.toBeEditedShift, "days", $$c)
-                            }
-                          }
-                        }
+                        on: { click: _vm.chooseAllDays }
                       }),
                       _vm._v(
                         "\n                            All campaign days.\n                        "

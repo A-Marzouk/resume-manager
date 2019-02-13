@@ -70265,6 +70265,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -70285,7 +70289,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'phone': '',
                 'email': '',
                 'whatsapp': '',
-                'skype': ''
+                'skype': '',
+                'audioError': ''
             },
             freelancerData: {
                 'id': '',
@@ -70321,7 +70326,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.clearErros();
             this.isLoading = true;
             axios.post('/freelancer/workforce/form/validate', formData).then(function (response) {
-                console.log(response.data);
                 if (response.data.errors) {
                     _this.updateErrors(response.data.errors);
                     _this.isLoading = false;
@@ -70389,7 +70393,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'phone': '',
                 'email': '',
                 'whatsapp': '',
-                'skype': ''
+                'skype': '',
+                'audioError': ''
             };
         },
         setUploadMethod: function setUploadMethod(method) {
@@ -70420,6 +70425,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             if (responseErrors.whatsapp) {
                 this.errors.whatsapp = responseErrors.whatsapp[0];
+            }
+            if (responseErrors.audioError) {
+                this.errors.audioError = responseErrors.audioError;
             }
         }
     },
@@ -70788,7 +70796,27 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
-            _vm._m(0),
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "col-md-12 text-left panelFormLabel" }, [
+                _vm._v(
+                  "\n                    Please upload / record a short audio recording describing your previous experience in Customer service and\n                    Sales ( Ideal recording length from 1 - 2 minutes ).\n                    "
+                ),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticStyle: {
+                      width: "100%",
+                      "margin-top": ".25rem",
+                      "font-size": "100%",
+                      color: "#dc3545"
+                    }
+                  },
+                  [_c("strong", [_vm._v(_vm._s(_vm.errors.audioError))])]
+                )
+              ])
+            ]),
             _vm._v(" "),
             _c(
               "div",
@@ -70954,7 +70982,7 @@ var render = function() {
                 staticClass: "form-group",
                 attrs: { id: "recordAudio" }
               },
-              [_vm._m(1)]
+              [_vm._m(0)]
             ),
             _vm._v(" "),
             _c(
@@ -71167,7 +71195,7 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _vm._m(2)
+                _vm._m(1)
               ])
             ])
           ])
@@ -71177,18 +71205,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", { staticClass: "col-md-12 text-left panelFormLabel" }, [
-        _vm._v(
-          "\n                    Please upload / record a short audio recording describing your previous experience in Customer service and\n                    Sales ( Ideal recording length from 1 - 2 minutes )\n                "
-        )
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

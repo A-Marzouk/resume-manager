@@ -77,6 +77,73 @@ class Upload
             }
         }
     }
+    public static function checkaAudio($src,$name,$newName){
+        $target_dir = "resumeApp/uploads/";
+        $uploadOk = 1;
+        if ($_FILES[$name]["size"] > 175000000) { // 175 megabyte
+            $uploadOk = 0;
+        }
+        // allowed formats :
+        $formats = ['audio/mpeg', 'audio/x-mpeg','audio/mpeg3', 'audio/x-mpeg-3', 'audio/aiff',
+            'audio/mid', 'audio/x-aiff', 'audio/x-mpequrl','audio/midi', 'audio/x-mid',
+            'audio/x-midi','audio/wav','audio/x-wav','audio/xm','audio/x-aac','audio/basic',
+            'audio/flac','audio/mp4','audio/mp3','audio/x-matroska','audio/ogg','audio/s3m','audio/x-ms-wax',
+            'audio/xm','audio/x-m4a',
+         'audio/adpcm',
+        'audio/basic',
+        'audio/midi' ,
+        'audio/mp4' ,
+        'audio/mpeg',
+        'audio/ogg',
+        'audio/s3m',
+        'audio/silk',
+        'audio/vnd.dece.audio',
+        'audio/vnd.digital-winds',
+        'audio/vnd.dra',
+        'audio/vnd.dts',
+        'audio/vnd.dts.hd',
+        'audio/vnd.lucent.voice',
+        'audio/vnd.ms-playready.media.pya',
+        'audio/vnd.nuera.ecelp4800' ,
+        'audio/vnd.nuera.ecelp7470' ,
+        'audio/vnd.nuera.ecelp9600' ,
+        'audio/vnd.rip',
+        'audio/webm' ,
+        'audio/x-aac',
+        'audio/x-aiff',
+        'audio/x-caf',
+        'audio/x-flac',
+        'audio/x-matroska',
+        'audio/x-mpegurl',
+        'audio/x-ms-wax',
+        'audio/x-ms-wma',
+        'audio/x-pn-realaudio',
+        'audio/x-pn-realaudio-plugin',
+        'audio/x-wav',
+        'audio/xm',
+        ];
+
+        // check file type :
+        if(!in_array($_FILES[$name]['type'],$formats)){
+            $uploadOk = 0 ;
+        }
+
+        if ($uploadOk == 0) {
+            return false;
+        } else {
+            $array = explode('.', $_FILES[$name]['name']);
+            $extension = end($array);
+            $target_file = $target_dir . $newName .'_'.date(time()).'.'.$extension;
+            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
+                if (file_exists($target_file)) {
+                    unlink($target_file);
+                }
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 
     public static function video($src,$name,$newName){
         $target_dir = "resumeApp/uploads/videos/";

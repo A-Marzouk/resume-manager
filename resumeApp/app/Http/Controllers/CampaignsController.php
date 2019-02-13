@@ -34,10 +34,6 @@ class CampaignsController extends Controller
         $currentUser   = auth()->user();
         $currentClient = auth()->guard('client')->user();
 
-        if($currentUser->admin == true){
-            return view('campaigns.single_campaign',compact('campaign'));
-        }
-
         if(!$currentUser && !$currentClient){
             return redirect('/')->with('errorMessage','You need to log in first to view campaign.');
         }
@@ -50,6 +46,10 @@ class CampaignsController extends Controller
 
         $isCampaignUser = false;
         if($currentUser){
+            if($currentUser->admin == true){
+                return view('campaigns.single_campaign',compact('campaign'));
+            }
+
             foreach ($members as $campaignMember){
                 if($currentUser->id == $campaignMember->id){
                     $isCampaignUser = true;

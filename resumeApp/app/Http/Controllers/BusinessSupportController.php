@@ -81,7 +81,7 @@ class BusinessSupportController extends Controller
 
     public function register(Request $request){
         // validate data
-        if($request->audioType == 'uploaded'){
+        if($request->audioType == 'uploaded' && isset($request->audioFile)){
             // validate audio upload.
             $canUpload = Upload::checkaAudio($request->audioFile, 'audioFile', '');
             if(!$canUpload){
@@ -138,7 +138,7 @@ class BusinessSupportController extends Controller
             'email' => 'required|string|email|max:191|unique:users',
             'phone' => 'required|max:191|min:7',
             'whatsapp' => 'max:191',
-            'skype' => 'max:191|alpha_dash|unique:users'
+            'skype' => 'max:191|unique:users'
         ]);
     }
 

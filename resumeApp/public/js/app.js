@@ -53412,6 +53412,27 @@ $('.business_user_status').on('change', function () {
     });
 });
 
+// business support shaded status change :
+
+$('.shaded').on('click', function () {
+    var userID = this.id.replace('selectedRowUser', '');
+    var statusData = {
+        userID: userID
+    };
+
+    axios.post('/admin/business_support/update_shaded_status', statusData).then(function (response) {
+        if (response.data.status === 'updated') {
+
+            $('#selectedRowUser' + userID).css('background', 'whitesmoke');
+            // show changes are saved
+            $('#changesSaved').fadeIn('slow');
+            setTimeout(function () {
+                $('#changesSaved').fadeOut();
+            }, 2000);
+        }
+    });
+});
+
 /***/ }),
 /* 45 */
 /***/ (function(module, exports) {

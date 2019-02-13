@@ -30,7 +30,7 @@
         ?>
         <? if($user->admin == 1 || $user->firstName === 'Visitor' || $user->profession != 'businessSupport'){ continue;}?>
 
-        <tr id="selectedRowUser{{$user->id}}">
+        <tr id="selectedRowUser{{$user->id}}" class="shaded" style="@if($user->is_shaded == 'SHADED') background-color:lightgrey; @endif">
             <th scope="row">
                 <!-- check boxes -->
                 <label class="form-check-label col-md-3 checkBoxContainer checkBoxText">

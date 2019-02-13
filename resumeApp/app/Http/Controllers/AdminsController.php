@@ -42,12 +42,6 @@ class AdminsController extends Controller
             ->orderByRaw("FIELD(status ,'GREEN','ORANGE','RED','NOT_SELECTED','BLUE') ASC")
             ->get();
         foreach ($businessUsers as &$user){
-            if(isset($user->userData->approved)){
-                if( $user->userData->approved == 1){
-                    $user->status = 'GREEN';
-                    $user->save();
-                }
-            }
             if(!isset($user->status)){
                 $user->status = 'NOT_SELECTED';
                 $user->save();

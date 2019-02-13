@@ -383,3 +383,26 @@ $('.business_user_status').on('change',function () {
         }
     );
 });
+
+// business support shaded status change :
+
+$('.shaded').on('click',function () {
+    let userID = this.id.replace('selectedRowUser','');
+    let statusData = {
+        userID : userID,
+    };
+
+    axios.post('/admin/business_support/update_shaded_status',statusData).then(
+        response => {
+            if(response.data.status === 'updated'){
+
+                $('#selectedRowUser'+userID).css('background','whitesmoke');
+                // show changes are saved
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                },2000);
+            }
+        }
+    );
+});

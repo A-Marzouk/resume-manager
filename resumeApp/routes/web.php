@@ -102,7 +102,7 @@ Route::get('/clear-cache', function() {
 
 // admin area :
 Route::get('/admin','AdminsController@welcomePage')->name('admin.dashboard');
-Route::get('/admin/send_mail/approved_users','AdminsController@sendMailApprovedUsers')->name('admin.dashboard');
+//Route::get('/admin/send_mail/approved_users','AdminsController@sendMailApprovedUsers')->name('admin.dashboard');
 Route::get('/admin/client/{client_id}','AdminsController@logInAsClient')->name('logInAsClient');
 
 // view and edit campaigns is only for admin,
@@ -130,6 +130,7 @@ Route::post('/admin/camps/remove_user_from_day','ShiftsController@removeUserFrom
 
     // update status :
 Route::post('/admin/business_support/update_status','BusinessSupportController@updateBusinessUserStatus');
+Route::post('/admin/business_support/update_shaded_status','BusinessSupportController@updateBusinessShadedStatus');
 
 
 

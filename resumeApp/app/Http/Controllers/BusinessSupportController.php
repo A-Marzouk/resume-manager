@@ -177,4 +177,14 @@ class BusinessSupportController extends Controller
 
         return ['status'=>'updated', 'color'=>$status];
     }
+
+    public function updateBusinessShadedStatus(Request $request){
+        $user_id = $request->userID;
+
+        $businessUser = User::where('id',$user_id)->first();
+        $businessUser->is_shaded = 'NOT_SHADED';
+        $businessUser->save();
+
+        return ['status'=>'updated'];
+    }
 }

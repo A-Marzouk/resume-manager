@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-8">
                 <div v-for="(log,index) in logs" v-bind:key="index" style="padding:5px;  display:inline-block;"
-                     v-show = "log.user_id === member.id"
+                     v-show = "log.user_id == member.id"
                 >
                     <div class="log">
                         <b>{{log.log_text}}</b><br/>

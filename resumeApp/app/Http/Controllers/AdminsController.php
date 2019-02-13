@@ -56,6 +56,18 @@ class AdminsController extends Controller
         return $businessUsers;
     }
 
+    public function sendMailApprovedUsers(){
+        $approvedUsers = User::where([
+            'status' => 'GREEN',
+            'profession' => 'businessSupport'
+        ])->get()->toArray();
+
+        $notification = new NotificationsController;
+        $notification->mailApprovedUsers($approvedUsers);
+
+        return 'email Sent';
+    }
+
     public function logInAsUser($user_id){
         // log him out and log in the chosen user in
         Auth::loginUsingId($user_id);

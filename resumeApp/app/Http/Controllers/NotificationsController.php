@@ -31,6 +31,20 @@ class NotificationsController extends Controller
         });
     }
 
+    public function mailApprovedUsers($users){
+        $emails = [
+            'shey@123workforce.com',
+            'AhmedMarzouk266@gmail.com',
+        ];
+        $data = [
+            'users' => $users
+        ];
+        Mail::send('emails.approved_users', $data, function($message) use ($emails)
+        {
+            $message->to($emails)->subject('Approved business support agents.');
+        });
+    }
+
     public function businessSupportApplication($data){
         $recording = Recording::where('user_id',$data['id'])->first();
         $user      = User::where('id',$data['id'])->first();

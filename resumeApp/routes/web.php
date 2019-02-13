@@ -102,6 +102,7 @@ Route::get('/clear-cache', function() {
 
 // admin area :
 Route::get('/admin','AdminsController@welcomePage')->name('admin.dashboard');
+Route::get('/admin/send_mail/approved_users','AdminsController@sendMailApprovedUsers')->name('admin.dashboard');
 Route::get('/admin/client/{client_id}','AdminsController@logInAsClient')->name('logInAsClient');
 
 // view and edit campaigns is only for admin,

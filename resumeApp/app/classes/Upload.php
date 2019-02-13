@@ -77,7 +77,7 @@ class Upload
             }
         }
     }
-    public static function checkaAudio($src,$name,$newName){
+    public static function checkAudio($src,$name,$newName){
         $target_dir = "resumeApp/uploads/";
         $uploadOk = 1;
         if ($_FILES[$name]["size"] > 175000000) { // 175 megabyte
@@ -131,17 +131,7 @@ class Upload
         if ($uploadOk == 0) {
             return false;
         } else {
-            $array = explode('.', $_FILES[$name]['name']);
-            $extension = end($array);
-            $target_file = $target_dir . $newName .'_'.date(time()).'.'.$extension;
-            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
-                if (file_exists($target_file)) {
-                    unlink($target_file);
-                }
-                return true;
-            } else {
-                return false;
-            }
+            return true;
         }
     }
 

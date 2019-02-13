@@ -83,7 +83,7 @@ class BusinessSupportController extends Controller
         // validate data
         if($request->audioType == 'uploaded' && isset($request->audioFile)){
             // validate audio upload.
-            $canUpload = Upload::checkaAudio($request->audioFile, 'audioFile', '');
+            $canUpload = Upload::checkAudio($request->audioFile, 'audioFile', '');
             if(!$canUpload){
                 return ['errors' => [
                     'audioError' => 'Error while uploading audio'

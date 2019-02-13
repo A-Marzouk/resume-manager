@@ -42,7 +42,7 @@ class RecordingsController extends Controller
             // add
             $record = new Recording;
             $record->user_id = $currentUser->id;
-            $record->src = "";
+            $record->src = "Default";
         }
         if(isset($request->title)){
             $record->title = $request->title;
@@ -54,7 +54,8 @@ class RecordingsController extends Controller
         if($request->src){
             $record->src = $request->src;
         }
-        elseif($request->audioFile) {
+
+        if($request->audioFile) {
             $pathToAudio = Upload::audio($request->audioFile, 'audioFile', '_159'.$currentUser->id.'Record_');
             if ($pathToAudio) {
                 $record->src = '/'.$pathToAudio;

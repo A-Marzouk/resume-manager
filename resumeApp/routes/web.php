@@ -87,7 +87,6 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/workforce/success','BusinessSupportController@applicationSuccess');
     Route::post('/workforce/form/validate','BusinessSupportController@validateForm');
 
-
     //////////
     Route::get('/delete/{id}','AdminsController@deleteFreelancer')->name('freelancer.delete');
     Route::get('/old_form/','FreelancersController@showOldForm')->name('show.old_form');
@@ -127,7 +126,10 @@ Route::post('/admin/camps/add_log','ActivityLogsController@addLog')->name('add.l
 Route::post('/admin/camps/delete_log','ActivityLogsController@deleteActivityLog')->name('delete.log');
 Route::post('/admin/camps/add_user_to_day','ShiftsController@addUserToShiftDay')->name('add.user.to.day');
 Route::post('/admin/camps/remove_user_from_day','ShiftsController@removeUserFromShiftDay')->name('remove.user.from.day');
-    // add users to days :
+
+    // update status :
+Route::post('/admin/business_support/update_status','BusinessSupportController@updateBusinessUserStatus');
+
 
 
 // delete users, clients and conversations :

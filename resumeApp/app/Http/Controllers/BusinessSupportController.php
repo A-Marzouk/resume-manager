@@ -158,4 +158,14 @@ class BusinessSupportController extends Controller
         return view('business_application_received');
     }
 
+    public function updateBusinessUserStatus(Request $request){
+        $user_id = $request->userID;
+        $status  = $request->status;
+
+        $businessUser = User::where('id',$user_id)->first();
+        $businessUser->status = $status;
+        $businessUser->save();
+
+        return ['status'=>'updated', 'color'=>$status];
+    }
 }

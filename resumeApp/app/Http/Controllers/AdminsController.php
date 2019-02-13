@@ -25,6 +25,7 @@ class AdminsController extends Controller
         // get list of freelancers :
         session()->put('admin', 'AdminWasHere');
         $data['users'] = User::all();
+        $data['businessSupport'] = $this->getBusinessUsersOrdered();
         $data['clients'] = Client::all();
         $data['conversations'] = Conversation::all();
         $data['searches'] = ClientSearch::all();
@@ -34,6 +35,25 @@ class AdminsController extends Controller
         $admin = User::where('username','admin_workforce')->first();
         Auth::loginUsingId($admin->id);
         return view('admin.usersList', compact('data'));
+    }
+
+    protected function getBusinessUsersOrdered(){
+        $businessUsers = User::where('profession','businessSupport')
+            ->orderByRaw("FIELD(status ,'GREEN','ORANGE','RED','NOT_SELECTED','BLUE') ASC")
+            ->get();
+        foreach ($businessUsers as &$user){
+            if(isset($user->userData->approved)){
+                if( $user->userData->approved == 1){
+                    $user->status = 'GREEN';
+                    $user->save();
+                }
+            }
+            if(!isset($user->status)){
+                $user->status = 'NOT_SELECTED';
+                $user->save();
+            }
+        }
+        return $businessUsers;
     }
 
     public function logInAsUser($user_id){

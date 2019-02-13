@@ -14,7 +14,7 @@
         </tr>
         </thead>
         <tbody>
-        <? foreach ($users as $user):?>
+        <? foreach ($businessSupport as $user):?>
         <?
         $userData3 = $user->userData ;
         if(!isset($userData3)){
@@ -44,7 +44,7 @@
             <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Log in</a>
             </td>
             <td>
-                <select style="border-top: 6px solid {{$user->status}};" name="business_user_status" class="business_user_status form-control" id="business_user_status{{$user->id}}">
+                <select style="border-top: 6px solid @if($user->status == 'NOT_SELECTED') grey @else {{$user->status}} @endif;" name="business_user_status" class="business_user_status form-control" id="business_user_status{{$user->id}}">
                     <option value="not-selected">Not selected</option>
                     <option value="BLUE" @if($user->status=='BLUE') selected @endif style="background-color: blue; color:white;">
                         Blue
@@ -52,7 +52,7 @@
                     <option value="ORANGE" @if($user->status=='ORANGE') selected @endif style="background-color: orange; color:white;">
                         Orange
                     </option>
-                    <option value="GREEN" @if($user->status=='GREEN' || $user->userData->approved == 1 ) selected @endif style="background-color: green; color:white;">
+                    <option value="GREEN" @if($user->status=='GREEN') selected @endif style="background-color: green; color:white;">
                         Green
                     </option>
                     <option value="RED" @if($user->status=='RED') selected @endif style="background-color: red; color:white;">

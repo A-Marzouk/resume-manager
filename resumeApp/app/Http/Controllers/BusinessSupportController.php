@@ -81,6 +81,15 @@ class BusinessSupportController extends Controller
 
     public function register(Request $request){
         // validate data
+        if($request->audioType == 'uploaded'){
+            // validate audio upload.
+            $canUpload = Upload::checkaAudio($request->audioFile, 'audioFile', '');
+            if(!$canUpload){
+                return ['errors' => [
+                    'audioError' => 'Error while uploading audio'
+                ]];
+            }
+        }
         $validator = $this->validator($request->all());
         if ($validator->fails())
         {

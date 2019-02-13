@@ -78,7 +78,11 @@
                 <div class="form-group">
                     <div class="col-md-12 text-left panelFormLabel">
                         Please upload / record a short audio recording describing your previous experience in Customer service and
-                        Sales ( Ideal recording length from 1 - 2 minutes )
+                        Sales ( Ideal recording length from 1 - 2 minutes ).
+                        <br/>
+                        <div style="width:100%;margin-top:.25rem;font-size:100%;color:#dc3545">
+                            <strong>{{ errors.audioError }}</strong>
+                        </div>
                     </div>
                 </div>
 
@@ -201,6 +205,7 @@
                     'email':'',
                     'whatsapp':'',
                     'skype':'',
+                    'audioError':'',
                 },
                 freelancerData:{
                     'id':'',
@@ -233,7 +238,6 @@
                 this.clearErros();
                 this.isLoading = true;
                 axios.post('/freelancer/workforce/form/validate',formData).then((response)=>{
-                    console.log(response.data);
                     if(response.data.errors){
                         this.updateErrors(response.data.errors);
                         this.isLoading = false;
@@ -303,6 +307,7 @@
                         'email':'',
                         'whatsapp':'',
                         'skype':'',
+                        'audioError':'',
                 }
             },
             setUploadMethod(method){
@@ -333,6 +338,9 @@
                 }
                 if(responseErrors.whatsapp){
                    this.errors.whatsapp = responseErrors.whatsapp[0];
+                }
+                if(responseErrors.audioError){
+                   this.errors.audioError = responseErrors.audioError;
                 }
 
             },

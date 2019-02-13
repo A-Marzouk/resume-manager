@@ -39,8 +39,8 @@ class CampaignsController extends Controller
         }
 
         if($currentClient){
-           if($campaignClient->id !== $currentClient->id){
-               return redirect('/')->with('errorMessage','Only owner of campaign can view this page.');
+           if($campaignClient->id == $currentClient->id){
+               return view('campaigns.single_campaign',compact('campaign'));
            }
         }
 

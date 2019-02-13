@@ -53390,6 +53390,28 @@ $('.removeFreelancerFromHomePage').on('click', function () {
     });
 });
 
+// business support status change :
+
+$('.business_user_status').on('change', function () {
+    var userID = this.id.replace('business_user_status', '');
+    var statusData = {
+        userID: userID,
+        status: $('#business_user_status' + userID).val()
+    };
+
+    axios.post('/admin/business_support/update_status', statusData).then(function (response) {
+        if (response.data.status === 'updated') {
+
+            $('#business_user_status' + userID).css('border-top', '6px solid ' + response.data.color);
+            // show changes are saved
+            $('#changesSaved').fadeIn('slow');
+            setTimeout(function () {
+                $('#changesSaved').fadeOut();
+            }, 2000);
+        }
+    });
+});
+
 /***/ }),
 /* 45 */
 /***/ (function(module, exports) {

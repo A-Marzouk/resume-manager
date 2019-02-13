@@ -318,6 +318,21 @@
   line-height: normal;
 }
 
+.circle-blue {
+  padding: 0px 8px 0px 8px;
+  background: blue;
+  border-radius: 50%;
+}
+
+#indicatingLine {
+  -webkit-transform: scaleY(-1);
+          transform: scaleY(-1);
+  padding: 3px 0 0 0;
+  width: 30px;
+  background-color: #30323D;
+  margin-top: 8px;
+}
+
 .freelancerChatBox {
   border: 1px lightgrey solid;
   border-radius: 15px;

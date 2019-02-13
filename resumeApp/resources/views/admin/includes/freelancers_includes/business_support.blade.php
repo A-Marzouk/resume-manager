@@ -9,7 +9,8 @@
             <th scope="col">Link to Resume</th>
             <th scope="col">Hourly / Monthly Rate</th>
             <th scope="col"></th>
-            <th scope="col">Approval</th>
+            <th scope="col" style="width: 120px;">Status</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -40,18 +41,24 @@
             <td>{{$user->firstName}} {{$user->lastName}}</td>
             <td><a href="/{{$user->username}}" target="_blank">Resume</a></td>
             <td>{{$user->userData->salary ?? 0}} / {{ $user->userData->salary_month ?? 0}}</td>
-            <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Open form</a>
+            <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Log in</a>
             </td>
-            <td id="status{{$user->id}}">
-                @if(isset($user->userData->approved))
-                    @if($user->userData->approved == 1)
-                        <span style="color: lawngreen">Approved</span>
-                    @else
-                        Not approved
-                    @endif
-                @else
-                    Not approved
-                @endif
+            <td>
+                <select style="border-top: 6px solid {{$user->status}};" name="business_user_status" class="business_user_status form-control" id="business_user_status{{$user->id}}">
+                    <option value="not-selected">Not selected</option>
+                    <option value="BLUE" @if($user->status=='BLUE') selected @endif style="background-color: blue; color:white;">
+                        Blue
+                    </option>
+                    <option value="ORANGE" @if($user->status=='ORANGE') selected @endif style="background-color: orange; color:white;">
+                        Orange
+                    </option>
+                    <option value="GREEN" @if($user->status=='GREEN' || $user->userData->approved == 1 ) selected @endif style="background-color: green; color:white;">
+                        Green
+                    </option>
+                    <option value="RED" @if($user->status=='RED') selected @endif style="background-color: red; color:white;">
+                        Red
+                    </option>
+                </select>
             </td>
             <td>
                 <? $finishedBookings =  0 ;?>

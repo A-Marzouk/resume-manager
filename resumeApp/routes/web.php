@@ -75,7 +75,6 @@ Route::prefix('freelancer')->group(function (){
         return redirect()->back();
     });
 
-//    Route::get('/workforce/register','Auth\RegisterController@showRegistrationForm')->name('freelancer.register');
     Route::post('/register/submit','Auth\RegisterController@register')->name('freelancer.register.submit');
     Route::get('/register/submit',function(){
         return redirect()->back();
@@ -131,6 +130,7 @@ Route::post('/admin/camps/remove_user_from_day','ShiftsController@removeUserFrom
     // update status :
 Route::post('/admin/business_support/update_status','BusinessSupportController@updateBusinessUserStatus');
 Route::post('/admin/business_support/update_shaded_status','BusinessSupportController@updateBusinessShadedStatus');
+Route::post('/admin/business_support/update_stage','BusinessSupportController@updateBusinessUserStage');
 
 
 
@@ -335,6 +335,7 @@ Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('pa
 //Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('paypal.status');
 
 // public routes :
+Route::get('/apply','BusinessSupportController@showRegistrationForm')->name('freelancer.register');
 Route::get('/','HomeController@welcomePage')->name('welcome');
 Route::get('/jobs/view_post/{job_id}','JobsController@viewSingleJobPost')->name('jobs.view_single');
 Route::get('/search/{search_id}','HomeController@getSearch')->name('public.search');

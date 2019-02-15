@@ -53391,7 +53391,6 @@ $('.removeFreelancerFromHomePage').on('click', function () {
 });
 
 // business support status change :
-
 $('.business_user_status').on('change', function () {
     var userID = this.id.replace('business_user_status', '');
     var statusData = {
@@ -53412,6 +53411,24 @@ $('.business_user_status').on('change', function () {
     });
 });
 
+// business support stage change :
+$('.business_user_stage').on('change', function () {
+    var userID = this.id.replace('business_user_stage', '');
+    var statusData = {
+        userID: userID,
+        stage: $('#business_user_stage' + userID).val()
+    };
+
+    axios.post('/admin/business_support/update_stage', statusData).then(function (response) {
+        if (response.data.status === 'updated') {
+            $('#changesSaved').fadeIn('slow');
+            setTimeout(function () {
+                $('#changesSaved').fadeOut();
+            }, 2000);
+        }
+    });
+});
+
 // business support shaded status change :
 
 $('.shaded').on('click', function () {
@@ -53419,16 +53436,10 @@ $('.shaded').on('click', function () {
     var statusData = {
         userID: userID
     };
-
+    $('#selectedRowUser' + userID).css('background', 'whitesmoke');
     axios.post('/admin/business_support/update_shaded_status', statusData).then(function (response) {
         if (response.data.status === 'updated') {
-
             $('#selectedRowUser' + userID).css('background', 'whitesmoke');
-            // show changes are saved
-            $('#changesSaved').fadeIn('slow');
-            setTimeout(function () {
-                $('#changesSaved').fadeOut();
-            }, 2000);
         }
     });
 });

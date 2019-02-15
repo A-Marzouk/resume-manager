@@ -39,7 +39,7 @@ class AdminsController extends Controller
 
     protected function getBusinessUsersOrdered(){
         $businessUsers = User::where('profession','businessSupport')
-            ->orderByRaw("FIELD(status ,'GREEN','ORANGE','RED','NOT_SELECTED','BLUE') ASC")
+            ->orderByRaw("FIELD(status ,'GREY','ORANGE','GREEN','DARKGREEN','RED','NOT_SELECTED') ASC")
             ->get();
         foreach ($businessUsers as &$user){
             if(!isset($user->status)){

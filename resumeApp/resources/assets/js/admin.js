@@ -361,7 +361,6 @@ $('.removeFreelancerFromHomePage').on('click',function () {
 });
 
 // business support status change :
-
 $('.business_user_status').on('change',function () {
     let userID = this.id.replace('business_user_status','');
     let statusData = {
@@ -384,6 +383,26 @@ $('.business_user_status').on('change',function () {
     );
 });
 
+// business support stage change :
+$('.business_user_stage').on('change',function () {
+    let userID = this.id.replace('business_user_stage','');
+    let statusData = {
+        userID : userID,
+        stage : $('#business_user_stage'+userID).val()
+    };
+
+    axios.post('/admin/business_support/update_stage',statusData).then(
+        response => {
+            if(response.data.status === 'updated'){
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                },2000);
+            }
+        }
+    );
+});
+
 // business support shaded status change :
 
 $('.shaded').on('click',function () {
@@ -391,17 +410,11 @@ $('.shaded').on('click',function () {
     let statusData = {
         userID : userID,
     };
-
+    $('#selectedRowUser'+userID).css('background','whitesmoke');
     axios.post('/admin/business_support/update_shaded_status',statusData).then(
         response => {
             if(response.data.status === 'updated'){
-
                 $('#selectedRowUser'+userID).css('background','whitesmoke');
-                // show changes are saved
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                },2000);
             }
         }
     );

@@ -10,6 +10,7 @@
             <th scope="col">Hourly / Monthly Rate</th>
             <th scope="col"></th>
             <th scope="col" style="width: 120px;">Status</th>
+            <th scope="col" style="width: 120px;">Stage</th>
             <th scope="col"></th>
         </tr>
         </thead>
@@ -48,19 +49,66 @@
                 <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Log in</a>
                 </td>
                 <td>
-                    <select style="border-top: 6px solid @if($user->status == 'NOT_SELECTED') grey @else {{$user->status}} @endif;" name="business_user_status" class="business_user_status form-control" id="business_user_status{{$user->id}}">
+                    <select style="border-top: 6px solid @if($user->status == 'NOT_SELECTED') white @else {{$user->status}} @endif;" name="business_user_status" class="business_user_status form-control" id="business_user_status{{$user->id}}">
                         <option value="not-selected">Not selected</option>
-                        <option value="BLUE" @if($user->status=='BLUE') selected @endif style="background-color: blue; color:white;">
-                            Blue
+                        <option value="GREY" @if($user->status=='GREY') selected @endif style="background-color: grey; color:white;">
+                            New applicant
                         </option>
                         <option value="ORANGE" @if($user->status=='ORANGE') selected @endif style="background-color: orange; color:white;">
-                            Orange
+                            V app. process
                         </option>
                         <option value="GREEN" @if($user->status=='GREEN') selected @endif style="background-color: green; color:white;">
-                            Green
+                            V approved/avail.
+                        </option>
+                        <option value="DARKGREEN" @if($user->status=='DARKGREEN') selected @endif style="background-color: DARKGREEN; color:white;">
+                            V approved/not-avail.
                         </option>
                         <option value="RED" @if($user->status=='RED') selected @endif style="background-color: red; color:white;">
-                            Red
+                            V unapproved
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <select name="business_user_stage" class="business_user_stage form-control" id="business_user_stage{{$user->id}}">
+                        <option value="not-selected">Not selected</option>
+                        <option value="v0.0" @if($user->stage=='v0.0') selected @endif>
+                            v0.0
+                        </option>
+                        <option value="v0.5" @if($user->stage=='v0.5') selected @endif>
+                            v0.5
+                        </option>
+                        <option value="v1.0" @if($user->stage=='v1.0') selected @endif>
+                            v1.0
+                        </option>
+                        <option value="v1.5" @if($user->stage=='v1.5') selected @endif>
+                            v1.5
+                        </option>
+                        <option value="v2.0" @if($user->stage=='v2.0') selected @endif>
+                            v2.0
+                        </option>
+                        <option value="v2.5" @if($user->stage=='v2.5') selected @endif>
+                            v2.5
+                        </option>
+                        <option value="v3.0" @if($user->stage=='v3.0') selected @endif>
+                            v3.0
+                        </option>
+                        <option value="v3.5" @if($user->stage=='v3.5') selected @endif>
+                            v3.5
+                        </option>
+                        <option value="v4.0" @if($user->stage=='v4.0') selected @endif>
+                            v4.0
+                        </option>
+                        <option value="v4.5" @if($user->stage=='v4.5') selected @endif>
+                            v4.5
+                        </option>
+                        <option value="v5.0" @if($user->stage=='v5.0') selected @endif>
+                            v5.0
+                        </option>
+                        <option value="v5.5" @if($user->stage=='v5.5') selected @endif>
+                            v5.5
+                        </option>
+                        <option value="v6.0" @if($user->stage=='v6.0') selected @endif>
+                            v6.0
                         </option>
                     </select>
                 </td>

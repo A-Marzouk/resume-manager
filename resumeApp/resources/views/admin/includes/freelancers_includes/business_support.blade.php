@@ -147,7 +147,7 @@
             </tr>
 
             <div class="modal fade" id="businessSupportInfo{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="businessSupportInfo" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+                <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="text-right" style="padding: 15px 10px 0 0;">
                         <button type="button" @click="clearSendData" class="close" data-dismiss="modal" aria-label="Close">
@@ -184,7 +184,7 @@
                 </div>
             </div>
         </div>
-
+            </div>
         <? endforeach;?>
         </tbody>
     </table>

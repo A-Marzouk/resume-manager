@@ -79188,6 +79188,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -79264,10 +79265,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateOrder: function updateOrder() {
             var _this3 = this;
 
-            this.isLoading = true;
             axios.get('/admin/get/business_support_users').then(function (response) {
                 _this3.businessUsers = response.data;
-                _this3.isLoading = false;
             });
         },
         deleteUsers: function deleteUsers() {
@@ -79537,7 +79536,7 @@ var render = function() {
                             _vm._s(user.userData.salary_month)
                         )
                       ])
-                    : _vm._e(),
+                    : _c("td", [_vm._v("Not set")]),
                   _vm._v(" "),
                   _c("td", [
                     _c(

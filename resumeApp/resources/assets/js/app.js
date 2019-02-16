@@ -118,6 +118,9 @@ Vue.component('freelancers-list', require('./components/search/freelancersListCo
 // chat room:
 Vue.component('new-chat', require('./components/newChat/newChat'));
 
+// chat room:
+Vue.component('business-support-users', require('./components/businessSupportComponent.vue'));
+
 //
 Vue.component('send-emails', require('./components/mails/sendEmailsComponent.vue'));
 Vue.component('send-invitations', require('./components/mails/sendInvitationMail.vue'));
@@ -139,6 +142,11 @@ if ($("#record_input").length !== 0){
 if ($("#activityLog").length !== 0){
     let activityLog = new Vue({
         el:'#activityLog'
+    });
+}
+if ($("#businessSupport").length !== 0){
+    let businessSupport = new Vue({
+        el:'#businessSupport'
     });
 }
 

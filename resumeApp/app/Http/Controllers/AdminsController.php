@@ -37,16 +37,20 @@ class AdminsController extends Controller
         return view('admin.usersList', compact('data'));
     }
 
-    protected function getBusinessUsersOrdered(){
+    public function getBusinessUsersOrdered(){
         $businessUsers = User::where('profession','businessSupport')
-            ->orderByRaw("FIELD(status ,'GREEN','ORANGE','RED','NOT_SELECTED','BLUE') ASC")
+            ->orderByRaw("FIELD(status ,'GREY','ORANGE','GREEN','DARKGREEN','RED','NOT_SELECTED') ASC")
             ->get();
         foreach ($businessUsers as &$user){
             if(!isset($user->status)){
                 $user->status = 'NOT_SELECTED';
                 $user->save();
             }
+            $user['bookings'] = $user->bookings;
+            $user['userData'] = $user->userData;
+            $user['owner']    = $user->owner;
         }
+
         return $businessUsers;
     }
 
@@ -138,12 +142,12 @@ class AdminsController extends Controller
     }
 
     public function deleteMultiple(Request $request){
-        $usersToD         = $request->toBeDeletedUsers ;
-        $clientsToD       = $request->toBeDeletedClients ;
-        $conversationsToD = $request->toBeDeletedConversations ;
-        $bookingsToD      = $request->toBeDeletedBookings ;
-        $ownersToD        = $request->toBeDeletedOwners ;
-        $jobsToD          = $request->toBeDeletedJobs ;
+        $usersToD         = $request->toBeDeletedUsers ?? [];
+        $clientsToD       = $request->toBeDeletedClients ?? [] ;
+        $conversationsToD = $request->toBeDeletedConversations ?? [];
+        $bookingsToD      = $request->toBeDeletedBookings ?? [];
+        $ownersToD        = $request->toBeDeletedOwners ?? [];
+        $jobsToD          = $request->toBeDeletedJobs ?? [];
 
         foreach ($usersToD as $userID){
             User::where('id', $userID)->delete();

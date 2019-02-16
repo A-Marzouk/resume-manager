@@ -178,6 +178,19 @@ class BusinessSupportController extends Controller
         return ['status'=>'updated', 'color'=>$status];
     }
 
+    public function updateBusinessUserStage(Request $request){
+        $user_id = $request->userID;
+        $stage   = $request->stage;
+
+        $businessUser = User::where('id',$user_id)->first();
+        $businessUser->stage = $stage;
+        $businessUser->save();
+
+        // sent related stage email.
+
+        return ['status'=>'updated', 'stage'=>$stage];
+    }
+
     public function updateBusinessShadedStatus(Request $request){
         $user_id = $request->userID;
 

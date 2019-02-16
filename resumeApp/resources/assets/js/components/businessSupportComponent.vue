@@ -1,28 +1,29 @@
 <template>
-    <div :class="{loader : isLoading}" id="loaderArea">
-        <div class="row">
-            <div class="col-12 NoDecor" style="padding-bottom: 15px;">
-                <a href="javascript:void(0)" @click="useFilter = !useFilter" class="btn btn-primary">Filter</a>
+    <div :class="{'loader margin' : isLoading}" id="loaderArea">
+        <div :class="{'d-none' : isLoading}">
+            <div class="row">
+                <div class="col-12 NoDecor" style="padding-bottom: 15px;">
+                    <a href="javascript:void(0)" @click="useFilter = !useFilter" class="btn btn-primary">Filter</a>
+                </div>
+                <label v-show="useFilter" class="form-check-label col-md-2 checkBoxContainer checkBoxText" v-for="(filter,index) in filters" v-bind:key="index">
+                    <input class="form-check-input" :value="filter" type="checkbox" v-model="currentFilter">
+                    <span class="checkmark"></span> {{filter}}
+                </label>
             </div>
-            <label v-show="useFilter" class="form-check-label col-md-2 checkBoxContainer checkBoxText" v-for="(filter,index) in filters" v-bind:key="index">
-                <input class="form-check-input" :value="filter" type="checkbox" v-model="currentFilter">
-                <span class="checkmark"></span> {{filter}}
-            </label>
-        </div>
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Full Name</th>
-                <th scope="col">Link to Resume</th>
-                <th scope="col">Hourly / Monthly Rate</th>
-                <th scope="col"></th>
-                <th scope="col" style="width: 120px;">Status</th>
-                <th scope="col" style="width: 120px;">Stage</th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Link to Resume</th>
+                    <th scope="col">Hourly / Monthly Rate</th>
+                    <th scope="col"></th>
+                    <th scope="col" style="width: 120px;">Status</th>
+                    <th scope="col" style="width: 120px;">Stage</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
                 <tr v-for="(user,index) in businessUsers" v-bind:key="index" v-show="currentFilter.includes(user.status) || !useFilter" :class="{'shaded' : isShaded(user),}" @click="unShadeUser(user)">
                     <th scope="row">
                         <!-- check boxes -->
@@ -156,11 +157,12 @@
                         </div>
                     </div>
                 </tr>
-            </tbody>
-        </table>
-        <a href="javascript:void(0)" @click="deleteUsers" class="float" v-show="selectedUsers.length > 0">
-           Delete
-        </a>
+                </tbody>
+            </table>
+            <a href="javascript:void(0)" @click="deleteUsers" class="float" v-show="selectedUsers.length > 0">
+                Delete
+            </a>
+        </div>
     </div>
 </template>
 <script>
@@ -185,9 +187,11 @@
         },
         methods:{
           getBusinessUsers(){
+              this.isLoading = true;
               axios.get('/admin/get/business_support_users').then(
                   response => {
                       this.businessUsers = response.data;
+                      this.isLoading = false;
                   }
               );
           },
@@ -290,6 +294,28 @@
     }
 </script>
 <style>
+    .loader {
+        border: 15px solid lightblue;
+        border-radius: 50%;
+        border-top: 15px solid #3498db;
+        width: 150px;
+        height: 150px;
+        margin-right: 25px;
+        margin-top: 50px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+    }
+
+    /* Safari */
+    @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
 
     .shaded{
         background: lightgrey;
@@ -324,6 +350,10 @@
         border-radius:10px;
         text-align:center;
         box-shadow: 2px 2px 3px #999;
+    }
+
+    .margin{
+        margin: auto; margin-top: 100px;
     }
 
     .my-float{

@@ -79010,7 +79010,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.shaded{\n    background: lightgrey;\n}\n.selectDefault{\n    border-top: 6px solid white;\n}\n.selectGREY{\n    border-top: 6px solid grey;\n}\n.selectRED{\n    border-top: 6px solid red;\n}\n.selectGREEN{\n    border-top: 6px solid green;\n}\n.selectLIGHTGREEN{\n    border-top: 6px solid lightgreen;\n}\n.selectORANGE{\n    border-top: 6px solid orange;\n}\n.float{\n    position:fixed;\n    width:100px;\n    height:30px;\n    bottom:40px;\n    right:40px;\n    background-color:red;\n    color: #FFF !important;\n    padding:5px;\n    border-radius:10px;\n    text-align:center;\n    -webkit-box-shadow: 2px 2px 3px #999;\n            box-shadow: 2px 2px 3px #999;\n}\n.my-float{\n    margin-top:22px;\n}\n", ""]);
+exports.push([module.i, "\n.loader {\n    border: 15px solid lightblue;\n    border-radius: 50%;\n    border-top: 15px solid #3498db;\n    width: 150px;\n    height: 150px;\n    margin-right: 25px;\n    margin-top: 50px;\n    -webkit-animation: spin 2s linear infinite; /* Safari */\n    animation: spin 2s linear infinite;\n}\n\n/* Safari */\n@-webkit-keyframes spin {\n0% { -webkit-transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg);\n}\n}\n@keyframes spin {\n0% { -webkit-transform: rotate(0deg); transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg); transform: rotate(360deg);\n}\n}\n.shaded{\n    background: lightgrey;\n}\n.selectDefault{\n    border-top: 6px solid white;\n}\n.selectGREY{\n    border-top: 6px solid grey;\n}\n.selectRED{\n    border-top: 6px solid red;\n}\n.selectGREEN{\n    border-top: 6px solid green;\n}\n.selectLIGHTGREEN{\n    border-top: 6px solid lightgreen;\n}\n.selectORANGE{\n    border-top: 6px solid orange;\n}\n.float{\n    position:fixed;\n    width:100px;\n    height:30px;\n    bottom:40px;\n    right:40px;\n    background-color:red;\n    color: #FFF !important;\n    padding:5px;\n    border-radius:10px;\n    text-align:center;\n    -webkit-box-shadow: 2px 2px 3px #999;\n            box-shadow: 2px 2px 3px #999;\n}\n.margin{\n    margin: auto; margin-top: 100px;\n}\n.my-float{\n    margin-top:22px;\n}\n", ""]);
 
 // exports
 
@@ -79021,6 +79021,8 @@ exports.push([module.i, "\n.shaded{\n    background: lightgrey;\n}\n.selectDefau
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -79207,8 +79209,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getBusinessUsers: function getBusinessUsers() {
             var _this = this;
 
+            this.isLoading = true;
             axios.get('/admin/get/business_support_users').then(function (response) {
                 _this.businessUsers = response.data;
+                _this.isLoading = false;
             });
         },
         isShaded: function isShaded(user) {
@@ -79314,741 +79318,748 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { class: { loader: _vm.isLoading }, attrs: { id: "loaderArea" } },
+    { class: { "loader margin": _vm.isLoading }, attrs: { id: "loaderArea" } },
     [
-      _c(
-        "div",
-        { staticClass: "row" },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "col-12 NoDecor",
-              staticStyle: { "padding-bottom": "15px" }
-            },
-            [
-              _c(
-                "a",
+      _c("div", { class: { "d-none": _vm.isLoading } }, [
+        _c(
+          "div",
+          { staticClass: "row" },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "col-12 NoDecor",
+                staticStyle: { "padding-bottom": "15px" }
+              },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { href: "javascript:void(0)" },
+                    on: {
+                      click: function($event) {
+                        _vm.useFilter = !_vm.useFilter
+                      }
+                    }
+                  },
+                  [_vm._v("Filter")]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.filters, function(filter, index) {
+              return _c(
+                "label",
                 {
-                  staticClass: "btn btn-primary",
-                  attrs: { href: "javascript:void(0)" },
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.useFilter,
+                      expression: "useFilter"
+                    }
+                  ],
+                  key: index,
+                  staticClass:
+                    "form-check-label col-md-2 checkBoxContainer checkBoxText"
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.currentFilter,
+                        expression: "currentFilter"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: { type: "checkbox" },
+                    domProps: {
+                      value: filter,
+                      checked: Array.isArray(_vm.currentFilter)
+                        ? _vm._i(_vm.currentFilter, filter) > -1
+                        : _vm.currentFilter
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.currentFilter,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = filter,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 && (_vm.currentFilter = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (_vm.currentFilter = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
+                        } else {
+                          _vm.currentFilter = $$c
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "checkmark" }),
+                  _vm._v(" " + _vm._s(filter) + "\n            ")
+                ]
+              )
+            })
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c("table", { staticClass: "table" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.businessUsers, function(user, index) {
+              return _c(
+                "tr",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value:
+                        _vm.currentFilter.includes(user.status) ||
+                        !_vm.useFilter,
+                      expression:
+                        "currentFilter.includes(user.status) || !useFilter"
+                    }
+                  ],
+                  key: index,
+                  class: { shaded: _vm.isShaded(user) },
                   on: {
                     click: function($event) {
-                      _vm.useFilter = !_vm.useFilter
+                      _vm.unShadeUser(user)
                     }
                   }
                 },
-                [_vm._v("Filter")]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _vm._l(_vm.filters, function(filter, index) {
-            return _c(
-              "label",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.useFilter,
-                    expression: "useFilter"
-                  }
-                ],
-                key: index,
-                staticClass:
-                  "form-check-label col-md-2 checkBoxContainer checkBoxText"
-              },
-              [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.currentFilter,
-                      expression: "currentFilter"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: { type: "checkbox" },
-                  domProps: {
-                    value: filter,
-                    checked: Array.isArray(_vm.currentFilter)
-                      ? _vm._i(_vm.currentFilter, filter) > -1
-                      : _vm.currentFilter
-                  },
-                  on: {
-                    change: function($event) {
-                      var $$a = _vm.currentFilter,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = filter,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 && (_vm.currentFilter = $$a.concat([$$v]))
-                        } else {
-                          $$i > -1 &&
-                            (_vm.currentFilter = $$a
-                              .slice(0, $$i)
-                              .concat($$a.slice($$i + 1)))
+                [
+                  _c("th", { attrs: { scope: "row" } }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass:
+                          "form-check-label col-md-3 checkBoxContainer checkBoxText"
+                      },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.selectedUsers,
+                              expression: "selectedUsers"
+                            }
+                          ],
+                          staticClass: "form-check-input",
+                          attrs: { type: "checkbox" },
+                          domProps: {
+                            value: user.id,
+                            checked: Array.isArray(_vm.selectedUsers)
+                              ? _vm._i(_vm.selectedUsers, user.id) > -1
+                              : _vm.selectedUsers
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$a = _vm.selectedUsers,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = user.id,
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    (_vm.selectedUsers = $$a.concat([$$v]))
+                                } else {
+                                  $$i > -1 &&
+                                    (_vm.selectedUsers = $$a
+                                      .slice(0, $$i)
+                                      .concat($$a.slice($$i + 1)))
+                                }
+                              } else {
+                                _vm.selectedUsers = $$c
+                              }
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "checkmark" })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "NoDecor" }, [
+                    _c(
+                      "a",
+                      {
+                        attrs: {
+                          href: "javascript:void(0)",
+                          "data-target": "#businessSupportInfo" + user.id,
+                          "data-toggle": "modal"
                         }
-                      } else {
-                        _vm.currentFilter = $$c
-                      }
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "checkmark" }),
-                _vm._v(" " + _vm._s(filter) + "\n        ")
-              ]
-            )
-          })
-        ],
-        2
-      ),
-      _vm._v(" "),
-      _c("table", { staticClass: "table" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.businessUsers, function(user, index) {
-            return _c(
-              "tr",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value:
-                      _vm.currentFilter.includes(user.status) || !_vm.useFilter,
-                    expression:
-                      "currentFilter.includes(user.status) || !useFilter"
-                  }
-                ],
-                key: index,
-                class: { shaded: _vm.isShaded(user) },
-                on: {
-                  click: function($event) {
-                    _vm.unShadeUser(user)
-                  }
-                }
-              },
-              [
-                _c("th", { attrs: { scope: "row" } }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass:
-                        "form-check-label col-md-3 checkBoxContainer checkBoxText"
-                    },
-                    [
-                      _c("input", {
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(user.firstName) +
+                            " " +
+                            _vm._s(user.lastName) +
+                            "\n                    "
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "/" + user.username, target: "_blank" }
+                      },
+                      [_vm._v("Resume")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      _vm._s(user.userData.salary) +
+                        " / " +
+                        _vm._s(user.userData.salary_month)
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-primary btn-sm",
+                        attrs: { href: "/admin/" + user.id }
+                      },
+                      [_vm._v("Log in")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "select",
+                      {
                         directives: [
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.selectedUsers,
-                            expression: "selectedUsers"
+                            value: user.status,
+                            expression: "user.status"
                           }
                         ],
-                        staticClass: "form-check-input",
-                        attrs: { type: "checkbox" },
-                        domProps: {
-                          value: user.id,
-                          checked: Array.isArray(_vm.selectedUsers)
-                            ? _vm._i(_vm.selectedUsers, user.id) > -1
-                            : _vm.selectedUsers
-                        },
+                        staticClass: "form-control",
+                        class: _vm.getSelectBackgroundClass(user),
+                        attrs: { name: "business_user_status" },
                         on: {
-                          change: function($event) {
-                            var $$a = _vm.selectedUsers,
-                              $$el = $event.target,
-                              $$c = $$el.checked ? true : false
-                            if (Array.isArray($$a)) {
-                              var $$v = user.id,
-                                $$i = _vm._i($$a, $$v)
-                              if ($$el.checked) {
-                                $$i < 0 &&
-                                  (_vm.selectedUsers = $$a.concat([$$v]))
-                              } else {
-                                $$i > -1 &&
-                                  (_vm.selectedUsers = $$a
-                                    .slice(0, $$i)
-                                    .concat($$a.slice($$i + 1)))
-                              }
-                            } else {
-                              _vm.selectedUsers = $$c
-                            }
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "checkmark" })
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", { staticClass: "NoDecor" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "javascript:void(0)",
-                        "data-target": "#businessSupportInfo" + user.id,
-                        "data-toggle": "modal"
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(user.firstName) +
-                          " " +
-                          _vm._s(user.lastName) +
-                          "\n                    "
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "a",
-                    { attrs: { href: "/" + user.username, target: "_blank" } },
-                    [_vm._v("Resume")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(
-                    _vm._s(user.userData.salary) +
-                      " / " +
-                      _vm._s(user.userData.salary_month)
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-primary btn-sm",
-                      attrs: { href: "/admin/" + user.id }
-                    },
-                    [_vm._v("Log in")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: user.status,
-                          expression: "user.status"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: _vm.getSelectBackgroundClass(user),
-                      attrs: { name: "business_user_status" },
-                      on: {
-                        change: [
-                          function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              user,
-                              "status",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          },
-                          function($event) {
-                            _vm.changeUserStatus(user)
-                          }
-                        ]
-                      }
-                    },
-                    [
-                      _c(
-                        "option",
-                        {
-                          staticStyle: {
-                            "background-color": "grey",
-                            color: "white"
-                          },
-                          attrs: { value: "GREY" },
-                          domProps: { selected: user.status === "GREY" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            New applicant\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          staticStyle: {
-                            "background-color": "orange",
-                            color: "white"
-                          },
-                          attrs: { value: "ORANGE" },
-                          domProps: { selected: user.status === "ORANGE" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            V app. process\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          staticStyle: {
-                            "background-color": "LIGHTGREEN",
-                            color: "white"
-                          },
-                          attrs: { value: "LIGHTGREEN" },
-                          domProps: { selected: user.status === "LIGHTGREEN" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            V approved/avail.\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          staticStyle: {
-                            "background-color": "GREEN",
-                            color: "white"
-                          },
-                          attrs: { value: "GREEN" },
-                          domProps: { selected: user.status === "GREEN" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            V approved/not-avail.\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          staticStyle: {
-                            "background-color": "red",
-                            color: "white"
-                          },
-                          attrs: { value: "RED" },
-                          domProps: { selected: user.status === "RED" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            V unapproved\n                        "
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: user.stage,
-                          expression: "user.stage"
-                        }
-                      ],
-                      staticClass: "business_user_stage form-control",
-                      attrs: { name: "business_user_stage" },
-                      on: {
-                        change: [
-                          function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              user,
-                              "stage",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          },
-                          function($event) {
-                            _vm.changeUserStage(user)
-                          }
-                        ]
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "NOT-SELECTED" } }, [
-                        _vm._v("Not selected")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          attrs: { value: "v0.0" },
-                          domProps: { selected: user.stage === "v0.0" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            v0.0\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          attrs: { value: "v0.5" },
-                          domProps: { selected: user.stage === "v0.5" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            v0.5\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          attrs: { value: "v1.0" },
-                          domProps: { selected: user.stage === "v1.0" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            v1.0\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          attrs: { value: "v1.5" },
-                          domProps: { selected: user.stage === "v1.5" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            v1.5\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          attrs: { value: "v2.0" },
-                          domProps: { selected: user.stage === "v2.0" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            v2.0\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          attrs: { value: "v2.5" },
-                          domProps: { selected: user.stage === "v2.5" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            v2.5\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          attrs: { value: "v3.0" },
-                          domProps: { selected: user.stage === "v3.0" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            v3.0\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          attrs: { value: "v3.5" },
-                          domProps: { selected: user.stage === "v3.5" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            v3.5\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          attrs: { value: "v4.0" },
-                          domProps: { selected: user.stage === "v4.0" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            v4.0\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          attrs: { value: "v4.5" },
-                          domProps: { selected: user.stage === "v4.5" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            v4.5\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          attrs: { value: "v5.0" },
-                          domProps: { selected: user.stage === "v5.0" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            v5.0\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          attrs: { value: "v5.5" },
-                          domProps: { selected: user.stage === "v5.5" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            v5.5\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "option",
-                        {
-                          attrs: { value: "v6.0" },
-                          domProps: { selected: user.stage === "v6.0" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            v6.0\n                        "
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  [
-                    _vm._l(user.bookings, function(booking, index) {
-                      return !booking.canceled
-                        ? _c(
-                            "div",
-                            {
-                              staticClass: "panelFormLabel text-center",
-                              attrs: { id: "bookingStatus" + booking.id }
-                            },
-                            [
-                              _c("div", [
-                                _c("b", [_vm._v(_vm._s(booking.hours))]),
-                                _vm._v(" hours - "),
-                                _c("b", [_vm._v(_vm._s(booking.weeks))]),
-                                _vm._v(" weeks\n                        ")
-                              ]),
-                              _c("br"),
-                              _vm._v(" "),
-                              _c("b", [_vm._v(_vm._s(booking.booking_email))]),
-                              _c("br"),
-                              _vm._v(" "),
-                              _c(
-                                "a",
-                                {
-                                  staticClass:
-                                    "btn btn-sm btn-default releaseBooking",
-                                  attrs: {
-                                    href: "javascript:void(0)",
-                                    id: "addHoursBtn" + booking.id
-                                  }
-                                },
-                                [_vm._v("Add hours back")]
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                user,
+                                "status",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
                               )
-                            ]
-                          )
-                        : _vm._e()
-                    }),
-                    _vm._v(" "),
-                    _c("hr", { attrs: { width: "50%" } })
-                  ],
-                  2
-                ),
-                _vm._v(" "),
-                _c("td", { staticClass: "panelFormLabel text-center" }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(user.owner) +
-                      "\n                "
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "modal fade",
-                    attrs: {
-                      id: "businessSupportInfo" + user.id,
-                      tabindex: "-1",
-                      role: "dialog",
-                      "aria-labelledby": "businessSupportInfo",
-                      "aria-hidden": "true"
-                    }
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "modal-dialog",
-                        attrs: { role: "document" }
+                            },
+                            function($event) {
+                              _vm.changeUserStatus(user)
+                            }
+                          ]
+                        }
                       },
                       [
-                        _c("div", { staticClass: "modal-content" }, [
-                          _vm._m(1, true),
-                          _vm._v(" "),
-                          _vm._m(2, true),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "modal-body" }, [
+                        _c(
+                          "option",
+                          {
+                            staticStyle: {
+                              "background-color": "grey",
+                              color: "white"
+                            },
+                            attrs: { value: "GREY" },
+                            domProps: { selected: user.status === "GREY" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            New applicant\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            staticStyle: {
+                              "background-color": "orange",
+                              color: "white"
+                            },
+                            attrs: { value: "ORANGE" },
+                            domProps: { selected: user.status === "ORANGE" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            V app. process\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            staticStyle: {
+                              "background-color": "LIGHTGREEN",
+                              color: "white"
+                            },
+                            attrs: { value: "LIGHTGREEN" },
+                            domProps: { selected: user.status === "LIGHTGREEN" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            V approved/avail.\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            staticStyle: {
+                              "background-color": "GREEN",
+                              color: "white"
+                            },
+                            attrs: { value: "GREEN" },
+                            domProps: { selected: user.status === "GREEN" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            V approved/not-avail.\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            staticStyle: {
+                              "background-color": "red",
+                              color: "white"
+                            },
+                            attrs: { value: "RED" },
+                            domProps: { selected: user.status === "RED" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            V unapproved\n                        "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: user.stage,
+                            expression: "user.stage"
+                          }
+                        ],
+                        staticClass: "business_user_stage form-control",
+                        attrs: { name: "business_user_stage" },
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                user,
+                                "stage",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                            function($event) {
+                              _vm.changeUserStage(user)
+                            }
+                          ]
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "NOT-SELECTED" } }, [
+                          _vm._v("Not selected")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "v0.0" },
+                            domProps: { selected: user.stage === "v0.0" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            v0.0\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "v0.5" },
+                            domProps: { selected: user.stage === "v0.5" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            v0.5\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "v1.0" },
+                            domProps: { selected: user.stage === "v1.0" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            v1.0\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "v1.5" },
+                            domProps: { selected: user.stage === "v1.5" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            v1.5\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "v2.0" },
+                            domProps: { selected: user.stage === "v2.0" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            v2.0\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "v2.5" },
+                            domProps: { selected: user.stage === "v2.5" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            v2.5\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "v3.0" },
+                            domProps: { selected: user.stage === "v3.0" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            v3.0\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "v3.5" },
+                            domProps: { selected: user.stage === "v3.5" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            v3.5\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "v4.0" },
+                            domProps: { selected: user.stage === "v4.0" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            v4.0\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "v4.5" },
+                            domProps: { selected: user.stage === "v4.5" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            v4.5\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "v5.0" },
+                            domProps: { selected: user.stage === "v5.0" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            v5.0\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "v5.5" },
+                            domProps: { selected: user.stage === "v5.5" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            v5.5\n                        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "v6.0" },
+                            domProps: { selected: user.stage === "v6.0" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            v6.0\n                        "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    [
+                      _vm._l(user.bookings, function(booking, index) {
+                        return !booking.canceled
+                          ? _c(
+                              "div",
+                              {
+                                staticClass: "panelFormLabel text-center",
+                                attrs: { id: "bookingStatus" + booking.id }
+                              },
+                              [
+                                _c("div", [
+                                  _c("b", [_vm._v(_vm._s(booking.hours))]),
+                                  _vm._v(" hours - "),
+                                  _c("b", [_vm._v(_vm._s(booking.weeks))]),
+                                  _vm._v(" weeks\n                        ")
+                                ]),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c("b", [
+                                  _vm._v(_vm._s(booking.booking_email))
+                                ]),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass:
+                                      "btn btn-sm btn-default releaseBooking",
+                                    attrs: {
+                                      href: "javascript:void(0)",
+                                      id: "addHoursBtn" + booking.id
+                                    }
+                                  },
+                                  [_vm._v("Add hours back")]
+                                )
+                              ]
+                            )
+                          : _vm._e()
+                      }),
+                      _vm._v(" "),
+                      _c("hr", { attrs: { width: "50%" } })
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "panelFormLabel text-center" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(user.owner) +
+                        "\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "modal fade",
+                      attrs: {
+                        id: "businessSupportInfo" + user.id,
+                        tabindex: "-1",
+                        role: "dialog",
+                        "aria-labelledby": "businessSupportInfo",
+                        "aria-hidden": "true"
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "modal-dialog",
+                          attrs: { role: "document" }
+                        },
+                        [
+                          _c("div", { staticClass: "modal-content" }, [
+                            _vm._m(1, true),
+                            _vm._v(" "),
+                            _vm._m(2, true),
+                            _vm._v(" "),
                             _c("div", { staticClass: "modal-body" }, [
-                              _c("div", { staticClass: "row" }, [
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _vm._v(" Name :")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _vm._v(
-                                    " " +
-                                      _vm._s(user.firstName) +
+                              _c("div", { staticClass: "modal-body" }, [
+                                _c("div", { staticClass: "row" }, [
+                                  _c("div", { staticClass: "col-md-6" }, [
+                                    _vm._v(" Name :")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col-md-6" }, [
+                                    _vm._v(
                                       " " +
-                                      _vm._s(user.lastName)
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _vm._v(" Email :")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _vm._v(" " + _vm._s(user.email))
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _vm._v(" Phone :")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _vm._v(" " + _vm._s(user.phone))
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _vm._v(" Whatsapp :")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _vm._v(" " + _vm._s(user.whatsapp))
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _vm._v(" Skype:")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _vm._v(" " + _vm._s(user.skype))
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _vm._v(" Signing up date :")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-md-6" }, [
-                                  _vm._v(" " + _vm._s(user.created_at))
+                                        _vm._s(user.firstName) +
+                                        " " +
+                                        _vm._s(user.lastName)
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col-md-6" }, [
+                                    _vm._v(" Email :")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col-md-6" }, [
+                                    _vm._v(" " + _vm._s(user.email))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col-md-6" }, [
+                                    _vm._v(" Phone :")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col-md-6" }, [
+                                    _vm._v(" " + _vm._s(user.phone))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col-md-6" }, [
+                                    _vm._v(" Whatsapp :")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col-md-6" }, [
+                                    _vm._v(" " + _vm._s(user.whatsapp))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col-md-6" }, [
+                                    _vm._v(" Skype:")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col-md-6" }, [
+                                    _vm._v(" " + _vm._s(user.skype))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col-md-6" }, [
+                                    _vm._v(" Signing up date :")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col-md-6" }, [
+                                    _vm._v(" " + _vm._s(user.created_at))
+                                  ])
                                 ])
                               ])
                             ])
                           ])
-                        ])
-                      ]
-                    )
-                  ]
-                )
-              ]
-            )
-          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            })
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.selectedUsers.length > 0,
+                expression: "selectedUsers.length > 0"
+              }
+            ],
+            staticClass: "float",
+            attrs: { href: "javascript:void(0)" },
+            on: { click: _vm.deleteUsers }
+          },
+          [_vm._v("\n            Delete\n        ")]
         )
-      ]),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.selectedUsers.length > 0,
-              expression: "selectedUsers.length > 0"
-            }
-          ],
-          staticClass: "float",
-          attrs: { href: "javascript:void(0)" },
-          on: { click: _vm.deleteUsers }
-        },
-        [_vm._v("\n       Delete\n    ")]
-      )
+      ])
     ]
   )
 }

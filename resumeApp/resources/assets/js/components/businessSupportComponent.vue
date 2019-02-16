@@ -38,7 +38,7 @@
                         </a>
                     </td>
                     <td><a :href="'/'+user.username" target="_blank">Resume</a></td>
-                    <td>{{user.userData.salary}} / {{user.userData.salary_month}}</td>
+                    <td v-if="user.userData !== null">{{user.userData.salary}} / {{user.userData.salary_month}}</td>
                     <td><a class="btn btn-primary btn-sm" :href="'/admin/'+user.id">Log in</a>
                     </td>
                     <td>

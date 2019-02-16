@@ -79529,13 +79529,15 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("td", [
-                    _vm._v(
-                      _vm._s(user.userData.salary) +
-                        " / " +
-                        _vm._s(user.userData.salary_month)
-                    )
-                  ]),
+                  user.userData !== null
+                    ? _c("td", [
+                        _vm._v(
+                          _vm._s(user.userData.salary) +
+                            " / " +
+                            _vm._s(user.userData.salary_month)
+                        )
+                      ])
+                    : _vm._e(),
                   _vm._v(" "),
                   _c("td", [
                     _c(

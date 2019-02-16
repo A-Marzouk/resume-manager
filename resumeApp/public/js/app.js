@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(257);
+module.exports = __webpack_require__(262);
 
 
 /***/ }),
@@ -14407,9 +14407,12 @@ Vue.component('freelancers-list', __webpack_require__(238));
 // chat room:
 Vue.component('new-chat', __webpack_require__(243));
 
+// chat room:
+Vue.component('business-support-users', __webpack_require__(246));
+
 //
-Vue.component('send-emails', __webpack_require__(246));
-Vue.component('send-invitations', __webpack_require__(251));
+Vue.component('send-emails', __webpack_require__(251));
+Vue.component('send-invitations', __webpack_require__(256));
 
 if ($("#searchFreelancers").length !== 0) {
     var searchFreelancers = new Vue({
@@ -14426,6 +14429,11 @@ if ($("#record_input").length !== 0) {
 if ($("#activityLog").length !== 0) {
     var activityLog = new Vue({
         el: '#activityLog'
+    });
+}
+if ($("#businessSupport").length !== 0) {
+    var businessSupport = new Vue({
+        el: '#businessSupport'
     });
 }
 
@@ -14660,7 +14668,7 @@ window.Echo.channel('conversations').listen('UpdateMessageCount', function (e) {
     }
 });
 
-__webpack_require__(256);
+__webpack_require__(261);
 
 /***/ }),
 /* 16 */
@@ -53266,6 +53274,7 @@ $('#disApprove').on('click', function () {
 // release booking hours
 
 $('.releaseBooking').on('click', function () {
+    alert('test');
     var booking_id = this.id.replace('addHoursBtn', '');
     axios.post('admin/releaseBooking', { 'booking_id': booking_id }).then(function (response) {
         $('#bookingStatus' + booking_id).html('Hours added back to freelancer!');
@@ -53387,60 +53396,6 @@ $('.removeFreelancerFromHomePage').on('click', function () {
     axios.post('admin/control_homepage_freelancers', removeData).then(function (response) {
         $('#removeFreelancerFromHomePage' + userID).html('<p>Removed</p>');
         $('#removeFreelancerFromHomePage' + userID).removeAttr('href');
-    });
-});
-
-// business support status change :
-$('.business_user_status').on('change', function () {
-    var userID = this.id.replace('business_user_status', '');
-    var statusData = {
-        userID: userID,
-        status: $('#business_user_status' + userID).val()
-    };
-
-    axios.post('/admin/business_support/update_status', statusData).then(function (response) {
-        if (response.data.status === 'updated') {
-
-            $('#business_user_status' + userID).css('border-top', '6px solid ' + response.data.color);
-            // show changes are saved
-            $('#changesSaved').fadeIn('slow');
-            setTimeout(function () {
-                $('#changesSaved').fadeOut();
-            }, 2000);
-        }
-    });
-});
-
-// business support stage change :
-$('.business_user_stage').on('change', function () {
-    var userID = this.id.replace('business_user_stage', '');
-    var statusData = {
-        userID: userID,
-        stage: $('#business_user_stage' + userID).val()
-    };
-
-    axios.post('/admin/business_support/update_stage', statusData).then(function (response) {
-        if (response.data.status === 'updated') {
-            $('#changesSaved').fadeIn('slow');
-            setTimeout(function () {
-                $('#changesSaved').fadeOut();
-            }, 2000);
-        }
-    });
-});
-
-// business support shaded status change :
-
-$('.shaded').on('click', function () {
-    var userID = this.id.replace('selectedRowUser', '');
-    var statusData = {
-        userID: userID
-    };
-    $('#selectedRowUser' + userID).css('background', 'whitesmoke');
-    axios.post('/admin/business_support/update_shaded_status', statusData).then(function (response) {
-        if (response.data.status === 'updated') {
-            $('#selectedRowUser' + userID).css('background', 'whitesmoke');
-        }
     });
 });
 
@@ -78999,6 +78954,1094 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
+Component.options.__file = "resources\\assets\\js\\components\\businessSupportComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-45477725", Component.options)
+  } else {
+    hotAPI.reload("data-v-45477725", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 247 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(248);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("75894ca0", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-45477725\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./businessSupportComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-45477725\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./businessSupportComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 248 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.shaded{\n    background: lightgrey;\n}\n.selectDefault{\n    border-top: 6px solid white;\n}\n.selectGREY{\n    border-top: 6px solid grey;\n}\n.selectRED{\n    border-top: 6px solid red;\n}\n.selectGREEN{\n    border-top: 6px solid green;\n}\n.selectLIGHTGREEN{\n    border-top: 6px solid lightgreen;\n}\n.selectORANGE{\n    border-top: 6px solid orange;\n}\n.float{\n    position:fixed;\n    width:100px;\n    height:30px;\n    bottom:40px;\n    right:40px;\n    background-color:red;\n    color: #FFF !important;\n    padding:5px;\n    border-radius:10px;\n    text-align:center;\n    -webkit-box-shadow: 2px 2px 3px #999;\n            box-shadow: 2px 2px 3px #999;\n}\n.my-float{\n    margin-top:22px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 249 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            businessUsers: [],
+            currentUser: {
+                status: 'not-selected',
+                stage: 'v0.0'
+            },
+            isLoading: false,
+            selectedUsers: []
+        };
+    },
+
+    methods: {
+        getBusinessUsers: function getBusinessUsers() {
+            var _this = this;
+
+            axios.get('/admin/get/business_support_users').then(function (response) {
+                _this.businessUsers = response.data;
+            });
+        },
+        isShaded: function isShaded(user) {
+            if (user.is_shaded === 'SHADED') {
+                return true;
+            }
+            return false;
+        },
+        getSelectBackgroundClass: function getSelectBackgroundClass(user) {
+            if (user.status === 'NOT-SELECTED') {
+                return 'selectDefault';
+            }
+            return "select" + user.status;
+        },
+        changeUserStatus: function changeUserStatus(user) {
+            var _this2 = this;
+
+            var statusData = {
+                userID: user.id,
+                status: user.status
+            };
+            axios.post('/admin/business_support/update_status', statusData).then(function (response) {
+                if (response.data.status === 'updated') {
+                    // $('#business_user_status'+userID).css('border-top','6px solid '+response.data.color);
+                    // show changes are saved
+                    $('#changesSaved').fadeIn('slow');
+                    setTimeout(function () {
+                        $('#changesSaved').fadeOut();
+                    }, 2000);
+                    _this2.updateOrder();
+                }
+            });
+        },
+        changeUserStage: function changeUserStage(user) {
+            var statusData = {
+                userID: user.id,
+                stage: user.stage
+            };
+
+            axios.post('/admin/business_support/update_stage', statusData).then(function (response) {
+                if (response.data.status === 'updated') {
+                    $('#changesSaved').fadeIn('slow');
+                    setTimeout(function () {
+                        $('#changesSaved').fadeOut();
+                    }, 2000);
+                }
+            });
+        },
+        updateOrder: function updateOrder() {
+            var _this3 = this;
+
+            this.isLoading = true;
+            axios.get('/admin/get/business_support_users').then(function (response) {
+                _this3.businessUsers = response.data;
+                _this3.isLoading = false;
+            });
+        },
+        deleteUsers: function deleteUsers() {
+            var _this4 = this;
+
+            var toBeDeletedData = {
+                toBeDeletedUsers: this.selectedUsers
+            };
+            if (!confirm('Are you sure you want to delete all selected items ?')) {
+                return;
+            }
+            axios.post('admin/delete_multiple', toBeDeletedData).then(function (response) {
+                _this4.updateOrder();
+                _this4.selectedUsers = [];
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+            });
+        },
+        unShadeUser: function unShadeUser(user) {
+            if (user.is_shaded !== 'SHADED') {
+                return;
+            }
+            var userID = user.id;
+            var statusData = {
+                userID: userID
+            };
+            user.is_shaded = 'NOT-SHADED';
+            axios.post('/admin/business_support/update_shaded_status', statusData).then(function (response) {
+                if (response.data.status === 'updated') {}
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.getBusinessUsers();
+    }
+});
+
+/***/ }),
+/* 250 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { class: { loader: _vm.isLoading }, attrs: { id: "loaderArea" } },
+    [
+      _c("table", { staticClass: "table" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.businessUsers, function(user, index) {
+            return _c(
+              "tr",
+              {
+                key: index,
+                class: { shaded: _vm.isShaded(user) },
+                on: {
+                  click: function($event) {
+                    _vm.unShadeUser(user)
+                  }
+                }
+              },
+              [
+                _c("th", { attrs: { scope: "row" } }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass:
+                        "form-check-label col-md-3 checkBoxContainer checkBoxText"
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.selectedUsers,
+                            expression: "selectedUsers"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox" },
+                        domProps: {
+                          value: user.id,
+                          checked: Array.isArray(_vm.selectedUsers)
+                            ? _vm._i(_vm.selectedUsers, user.id) > -1
+                            : _vm.selectedUsers
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.selectedUsers,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = user.id,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  (_vm.selectedUsers = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.selectedUsers = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.selectedUsers = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "checkmark" })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "NoDecor" }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "javascript:void(0)",
+                        "data-target": "#businessSupportInfo" + user.id,
+                        "data-toggle": "modal"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(user.firstName) +
+                          " " +
+                          _vm._s(user.lastName) +
+                          "\n                    "
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    { attrs: { href: "/" + user.username, target: "_blank" } },
+                    [_vm._v("Resume")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    _vm._s(user.userData.salary) +
+                      " / " +
+                      _vm._s(user.userData.salary_month)
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-primary btn-sm",
+                      attrs: { href: "/admin/" + user.id }
+                    },
+                    [_vm._v("Log in")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: user.status,
+                          expression: "user.status"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: _vm.getSelectBackgroundClass(user),
+                      attrs: { name: "business_user_status" },
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              user,
+                              "status",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
+                          function($event) {
+                            _vm.changeUserStatus(user)
+                          }
+                        ]
+                      }
+                    },
+                    [
+                      _c(
+                        "option",
+                        {
+                          staticStyle: {
+                            "background-color": "grey",
+                            color: "white"
+                          },
+                          attrs: { value: "GREY" },
+                          domProps: { selected: user.status === "GREY" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            New applicant\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          staticStyle: {
+                            "background-color": "orange",
+                            color: "white"
+                          },
+                          attrs: { value: "ORANGE" },
+                          domProps: { selected: user.status === "ORANGE" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            V app. process\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          staticStyle: {
+                            "background-color": "green",
+                            color: "white"
+                          },
+                          attrs: { value: "GREEN" },
+                          domProps: { selected: user.status === "GREEN" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            V approved/avail.\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          staticStyle: {
+                            "background-color": "DARKGREEN",
+                            color: "white"
+                          },
+                          attrs: { value: "DARKGREEN" },
+                          domProps: { selected: user.status === "DARKGREEN" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            V approved/not-avail.\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          staticStyle: {
+                            "background-color": "red",
+                            color: "white"
+                          },
+                          attrs: { value: "RED" },
+                          domProps: { selected: user.status === "RED" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            V unapproved\n                        "
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: user.stage,
+                          expression: "user.stage"
+                        }
+                      ],
+                      staticClass: "business_user_stage form-control",
+                      attrs: { name: "business_user_stage" },
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              user,
+                              "stage",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
+                          function($event) {
+                            _vm.changeUserStage(user)
+                          }
+                        ]
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "NOT-SELECTED" } }, [
+                        _vm._v("Not selected")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          attrs: { value: "v0.0" },
+                          domProps: { selected: user.stage === "v0.0" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            v0.0\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          attrs: { value: "v0.5" },
+                          domProps: { selected: user.stage === "v0.5" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            v0.5\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          attrs: { value: "v1.0" },
+                          domProps: { selected: user.stage === "v1.0" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            v1.0\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          attrs: { value: "v1.5" },
+                          domProps: { selected: user.stage === "v1.5" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            v1.5\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          attrs: { value: "v2.0" },
+                          domProps: { selected: user.stage === "v2.0" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            v2.0\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          attrs: { value: "v2.5" },
+                          domProps: { selected: user.stage === "v2.5" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            v2.5\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          attrs: { value: "v3.0" },
+                          domProps: { selected: user.stage === "v3.0" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            v3.0\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          attrs: { value: "v3.5" },
+                          domProps: { selected: user.stage === "v3.5" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            v3.5\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          attrs: { value: "v4.0" },
+                          domProps: { selected: user.stage === "v4.0" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            v4.0\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          attrs: { value: "v4.5" },
+                          domProps: { selected: user.stage === "v4.5" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            v4.5\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          attrs: { value: "v5.0" },
+                          domProps: { selected: user.stage === "v5.0" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            v5.0\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          attrs: { value: "v5.5" },
+                          domProps: { selected: user.stage === "v5.5" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            v5.5\n                        "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "option",
+                        {
+                          attrs: { value: "v6.0" },
+                          domProps: { selected: user.stage === "v6.0" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            v6.0\n                        "
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  [
+                    _vm._l(user.bookings, function(booking, index) {
+                      return !booking.canceled
+                        ? _c(
+                            "div",
+                            {
+                              staticClass: "panelFormLabel text-center",
+                              attrs: { id: "bookingStatus" + booking.id }
+                            },
+                            [
+                              _c("div", [
+                                _c("b", [_vm._v(_vm._s(booking.hours))]),
+                                _vm._v(" hours - "),
+                                _c("b", [_vm._v(_vm._s(booking.weeks))]),
+                                _vm._v(" weeks\n                        ")
+                              ]),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("b", [_vm._v(_vm._s(booking.booking_email))]),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "btn btn-sm btn-default releaseBooking",
+                                  attrs: {
+                                    href: "javascript:void(0)",
+                                    id: "addHoursBtn" + booking.id
+                                  }
+                                },
+                                [_vm._v("Add hours back")]
+                              )
+                            ]
+                          )
+                        : _vm._e()
+                    }),
+                    _vm._v(" "),
+                    _c("hr", { attrs: { width: "50%" } })
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c("td", { staticClass: "panelFormLabel text-center" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(user.owner) +
+                      "\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "modal fade",
+                    attrs: {
+                      id: "businessSupportInfo" + user.id,
+                      tabindex: "-1",
+                      role: "dialog",
+                      "aria-labelledby": "businessSupportInfo",
+                      "aria-hidden": "true"
+                    }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal-dialog",
+                        attrs: { role: "document" }
+                      },
+                      [
+                        _c("div", { staticClass: "modal-content" }, [
+                          _vm._m(1, true),
+                          _vm._v(" "),
+                          _vm._m(2, true),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "modal-body" }, [
+                            _c("div", { staticClass: "modal-body" }, [
+                              _c("div", { staticClass: "row" }, [
+                                _c("div", { staticClass: "col-md-6" }, [
+                                  _vm._v(" Name :")
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-md-6" }, [
+                                  _vm._v(
+                                    " " +
+                                      _vm._s(user.firstName) +
+                                      " " +
+                                      _vm._s(user.lastName)
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-md-6" }, [
+                                  _vm._v(" Email :")
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-md-6" }, [
+                                  _vm._v(" " + _vm._s(user.email))
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-md-6" }, [
+                                  _vm._v(" Phone :")
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-md-6" }, [
+                                  _vm._v(" " + _vm._s(user.phone))
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-md-6" }, [
+                                  _vm._v(" Whatsapp :")
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-md-6" }, [
+                                  _vm._v(" " + _vm._s(user.whatsapp))
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-md-6" }, [
+                                  _vm._v(" Skype:")
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-md-6" }, [
+                                  _vm._v(" " + _vm._s(user.skype))
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-md-6" }, [
+                                  _vm._v(" Signing up date :")
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-md-6" }, [
+                                  _vm._v(" " + _vm._s(user.created_at))
+                                ])
+                              ])
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          })
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.selectedUsers.length > 0,
+              expression: "selectedUsers.length > 0"
+            }
+          ],
+          staticClass: "float",
+          attrs: { href: "javascript:void(0)" },
+          on: { click: _vm.deleteUsers }
+        },
+        [_vm._v("\n       Delete\n    ")]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Full Name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Link to Resume")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("Hourly / Monthly Rate")
+        ]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "120px" }, attrs: { scope: "col" } }, [
+          _vm._v("Status")
+        ]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "120px" }, attrs: { scope: "col" } }, [
+          _vm._v("Stage")
+        ]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "text-right", staticStyle: { padding: "15px 10px 0 0" } },
+      [
+        _c(
+          "button",
+          {
+            staticClass: "close",
+            attrs: {
+              type: "button",
+              "data-dismiss": "modal",
+              "aria-label": "Close"
+            }
+          },
+          [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12 pageSubHeading" }, [
+        _vm._v(
+          "\n                                    Business support agent info\n                                "
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-45477725", module.exports)
+  }
+}
+
+/***/ }),
+/* 251 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(252)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(254)
+/* template */
+var __vue_template__ = __webpack_require__(255)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
 Component.options.__file = "resources\\assets\\js\\components\\mails\\sendEmailsComponent.vue"
 
 /* hot reload */
@@ -79021,13 +80064,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 247 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(248);
+var content = __webpack_require__(253);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -79047,7 +80090,7 @@ if(false) {
 }
 
 /***/ }),
-/* 248 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -79061,7 +80104,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 249 */
+/* 254 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79253,7 +80296,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 250 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -79544,19 +80587,19 @@ if (false) {
 }
 
 /***/ }),
-/* 251 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(252)
+  __webpack_require__(257)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(254)
+var __vue_script__ = __webpack_require__(259)
 /* template */
-var __vue_template__ = __webpack_require__(255)
+var __vue_template__ = __webpack_require__(260)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -79595,13 +80638,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 252 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(253);
+var content = __webpack_require__(258);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -79621,7 +80664,7 @@ if(false) {
 }
 
 /***/ }),
-/* 253 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -79635,7 +80678,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 254 */
+/* 259 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79762,7 +80805,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 255 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -80132,7 +81175,7 @@ if (false) {
 }
 
 /***/ }),
-/* 256 */
+/* 261 */
 /***/ (function(module, exports) {
 
 var status = $('#record_status'),
@@ -80411,7 +81454,7 @@ if (navigator.mediaDevices.getUserMedia) {
 }
 
 /***/ }),
-/* 257 */
+/* 262 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

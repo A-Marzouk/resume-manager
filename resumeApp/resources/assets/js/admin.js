@@ -231,6 +231,7 @@ $('#disApprove').on('click',function () {
 // release booking hours
 
 $('.releaseBooking').on('click',function () {
+    alert('test');
     let booking_id = this.id.replace('addHoursBtn','');
     axios.post('admin/releaseBooking',{'booking_id':booking_id}).then( (response) => {
         $('#bookingStatus' + booking_id).html('Hours added back to freelancer!');
@@ -358,64 +359,4 @@ $('.removeFreelancerFromHomePage').on('click',function () {
         }
     );
 
-});
-
-// business support status change :
-$('.business_user_status').on('change',function () {
-    let userID = this.id.replace('business_user_status','');
-    let statusData = {
-        userID : userID,
-        status : $('#business_user_status'+userID).val()
-    };
-
-    axios.post('/admin/business_support/update_status',statusData).then(
-        response => {
-            if(response.data.status === 'updated'){
-
-                $('#business_user_status'+userID).css('border-top','6px solid '+response.data.color);
-                // show changes are saved
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                },2000);
-            }
-        }
-    );
-});
-
-// business support stage change :
-$('.business_user_stage').on('change',function () {
-    let userID = this.id.replace('business_user_stage','');
-    let statusData = {
-        userID : userID,
-        stage : $('#business_user_stage'+userID).val()
-    };
-
-    axios.post('/admin/business_support/update_stage',statusData).then(
-        response => {
-            if(response.data.status === 'updated'){
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                },2000);
-            }
-        }
-    );
-});
-
-// business support shaded status change :
-
-$('.shaded').on('click',function () {
-    let userID = this.id.replace('selectedRowUser','');
-    let statusData = {
-        userID : userID,
-    };
-    $('#selectedRowUser'+userID).css('background','whitesmoke');
-    axios.post('/admin/business_support/update_shaded_status',statusData).then(
-        response => {
-            if(response.data.status === 'updated'){
-                $('#selectedRowUser'+userID).css('background','whitesmoke');
-            }
-        }
-    );
 });

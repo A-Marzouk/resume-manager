@@ -79177,6 +79177,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -79187,7 +79196,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 stage: 'v0.0'
             },
             isLoading: false,
-            selectedUsers: []
+            selectedUsers: [],
+            currentFilter: ['GREY', 'ORANGE', 'GREEN', 'LIGHTGREEN', 'RED'],
+            filters: ['GREY', 'ORANGE', 'GREEN', 'LIGHTGREEN', 'RED'],
+            useFilter: false
         };
     },
 
@@ -79284,7 +79296,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/admin/business_support/update_shaded_status', statusData).then(function (response) {
                 if (response.data.status === 'updated') {}
             });
-        }
+        },
+        updateFilter: function updateFilter() {}
     },
     mounted: function mounted() {
         this.getBusinessUsers();
@@ -79303,6 +79316,99 @@ var render = function() {
     "div",
     { class: { loader: _vm.isLoading }, attrs: { id: "loaderArea" } },
     [
+      _c(
+        "div",
+        { staticClass: "row" },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "col-12 NoDecor",
+              staticStyle: { "padding-bottom": "15px" }
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { href: "javascript:void(0)" },
+                  on: {
+                    click: function($event) {
+                      _vm.useFilter = !_vm.useFilter
+                    }
+                  }
+                },
+                [_vm._v("Filter")]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.filters, function(filter, index) {
+            return _c(
+              "label",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.useFilter,
+                    expression: "useFilter"
+                  }
+                ],
+                key: index,
+                staticClass:
+                  "form-check-label col-md-2 checkBoxContainer checkBoxText"
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.currentFilter,
+                      expression: "currentFilter"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: { type: "checkbox" },
+                  domProps: {
+                    value: filter,
+                    checked: Array.isArray(_vm.currentFilter)
+                      ? _vm._i(_vm.currentFilter, filter) > -1
+                      : _vm.currentFilter
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.currentFilter,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = filter,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.currentFilter = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.currentFilter = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.currentFilter = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("span", { staticClass: "checkmark" }),
+                _vm._v(" " + _vm._s(filter) + "\n        ")
+              ]
+            )
+          })
+        ],
+        2
+      ),
+      _vm._v(" "),
       _c("table", { staticClass: "table" }, [
         _vm._m(0),
         _vm._v(" "),
@@ -79312,6 +79418,16 @@ var render = function() {
             return _c(
               "tr",
               {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value:
+                      _vm.currentFilter.includes(user.status) || !_vm.useFilter,
+                    expression:
+                      "currentFilter.includes(user.status) || !useFilter"
+                  }
+                ],
                 key: index,
                 class: { shaded: _vm.isShaded(user) },
                 on: {
@@ -79503,11 +79619,11 @@ var render = function() {
                         "option",
                         {
                           staticStyle: {
-                            "background-color": "green",
+                            "background-color": "LIGHTGREEN",
                             color: "white"
                           },
-                          attrs: { value: "GREEN" },
-                          domProps: { selected: user.status === "GREEN" }
+                          attrs: { value: "LIGHTGREEN" },
+                          domProps: { selected: user.status === "LIGHTGREEN" }
                         },
                         [
                           _vm._v(
@@ -79520,11 +79636,11 @@ var render = function() {
                         "option",
                         {
                           staticStyle: {
-                            "background-color": "DARKGREEN",
+                            "background-color": "GREEN",
                             color: "white"
                           },
-                          attrs: { value: "DARKGREEN" },
-                          domProps: { selected: user.status === "DARKGREEN" }
+                          attrs: { value: "GREEN" },
+                          domProps: { selected: user.status === "GREEN" }
                         },
                         [
                           _vm._v(

@@ -133,7 +133,7 @@ Route::post('/admin/business_support/update_shaded_status','BusinessSupportContr
 Route::post('/admin/business_support/update_stage','BusinessSupportController@updateBusinessUserStage');
 
     // business users :
-Route::get('/admin/get/business_support_users','adminsController@getBusinessUsersOrdered');
+Route::get('/admin/get/business_support_users','AdminsController@getBusinessUsersOrdered');
 
 
 // delete users, clients and conversations :

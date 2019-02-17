@@ -52,7 +52,7 @@ if($user){
                 <!-- Right Side Of Navbar -->
                 <li class="navbar-nav chatWithUsText">
                     <? if($admin || (session()->get('admin') && session()->get('admin') == 'AdminWasHere')):?>
-                    <a class="nav-item nav-link customNavLink" href="/admin" style="color:#0290D8;">Admin-area</a>
+                    <a class="nav-item nav-link customNavLink" href="/admin" style="color:#0290D8;">Admin panel</a>
                     <?else :?>
                         {{--<a class="nav-item nav-link customNavLink" href="#chatOn" id="liveChat" style="color:#0290D8;">--}}
                             {{--<img src="/resumeApp/resources/views/customTheme/images/textsms_24px.png" alt="chat img" width="16px">--}}

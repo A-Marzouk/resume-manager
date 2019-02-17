@@ -22,9 +22,7 @@ class FreelancersController extends Controller
     }
 
     public function form(){
-        if(Auth::user()->admin == 1){
-            Auth::user()->token = str_random(16);
-            Auth::user()->save();
+        if(Auth::user()->admin == 1 && Auth::user()->username == 'admin_workforce'){
             return redirect(route('admin.dashboard'));
         }
         $data = $this->getFreelancerData();
@@ -33,9 +31,7 @@ class FreelancersController extends Controller
     }
 
     public function showEditForm(){
-        if(Auth::user()->admin == 1){
-            Auth::user()->token = str_random(16);
-            Auth::user()->save();
+        if(Auth::user()->admin == 1 && Auth::user()->username == 'admin_workforce'){
             return redirect(route('admin.dashboard'));
         }
         $data = $this->getFreelancerData();

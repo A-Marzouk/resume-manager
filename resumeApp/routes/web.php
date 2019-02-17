@@ -113,7 +113,6 @@ Route::post('/admin/camps/add','CampaignsController@addCamp')->name('add.camp');
 Route::post('/admin/camp/members','CampaignsController@getCampMembers')->name('camp.members');
 Route::post('/admin/camp/update_members','CampaignsController@addMembersToCamp')->name('add.members.to.camp');
 Route::get('/admin/campaigns','CampaignsController@viewCampaigns')->name('view.campaigns');
-Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 Route::get('/camps/view/{campID}','CampaignsController@viewSingleCampaign')->name('view.single.campaign');
     // campaign shifts
 Route::post('/admin/camp/add_shift','ShiftsController@addShiftToCamp')->name('add.shift.to.camp');
@@ -205,6 +204,8 @@ Route::get('/workforce/invoices/{unique_number}','InvoicesController@viewInvoice
 
 // bookings calendar:
 Route::get('/admin/bookings/calendar','BookingsController@viewBookingsCalendar')->name('bookings.calendar.page');
+Route::get('/admin/permissions','AdminsController@showPermissionsPage')->name('admin.permissions.page');
+Route::post('/admin/permissions/update','AdminsController@saveAdminPermissions');
 Route::get('/admin/get/bookings','BookingsController@getBookings')->name('get.bookings');
 Route::get('/admin/view/booking/{id}','BookingsController@viewSingleBooking')->name('single.booking');
 
@@ -344,6 +345,7 @@ Route::get('/search/{search_id}','HomeController@getSearch')->name('public.searc
 Route::get('/workforce/terms_and_conditions','HomeController@termsView')->name('terms');
 Route::get('/workforce/privacy_policy','HomeController@privacyView')->name('privacy');
 Route::get('/resume_sample/{username}','HomeController@ResumeSample');
+Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 Route::get('/{username}','HomeController@ResumePage');
 
 

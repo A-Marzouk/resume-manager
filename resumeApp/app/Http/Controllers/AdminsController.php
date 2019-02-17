@@ -32,8 +32,6 @@ class AdminsController extends Controller
         $data['bookings'] = Booking::all();
         $data['owners']   = Affiliate::all();
         $data['jobs']     = Job::all();
-        $admin = User::where('username','admin_workforce')->first();
-        Auth::loginUsingId($admin->id);
         return view('admin.usersList', compact('data'));
     }
 

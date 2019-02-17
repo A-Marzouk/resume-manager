@@ -79231,6 +79231,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -79245,6 +79252,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             selectedUsers: [],
             currentFilter: ['GREY', 'ORANGE', 'GREEN', 'LIGHTGREEN', 'RED'],
             filters: ['GREY', 'ORANGE', 'GREEN', 'LIGHTGREEN', 'RED'],
+            nameFilter: '',
             useFilter: false,
             permissions: ['Freelancers', 'Clients and invoices', 'Campaigns', 'Agents', 'Camp Briefs', 'Bookings', 'Chats', 'Affiliates', 'Jobs', 'Public search links', 'Search Freelancers', 'Send emails']
         };
@@ -79358,6 +79366,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     $('#changesSaved').fadeOut();
                 }, 2000);
             });
+        },
+        filterByName: function filterByName(user, nameFilter) {
+            var userName = (user.firstName + ' ' + user.lastName).toLowerCase();
+            if (userName.includes(nameFilter.toLowerCase()) || nameFilter.length < 1) {
+                return true;
+            }
+            return false;
+        },
+        filterByStatus: function filterByStatus(user, currentFilter) {
+            if (currentFilter.includes(user.status) || !this.useFilter) {
+                return true;
+            }
+            return false;
         }
     },
     mounted: function mounted() {
@@ -79378,33 +79399,33 @@ var render = function() {
     { class: { "loader margin": _vm.isLoading }, attrs: { id: "loaderArea" } },
     [
       _c("div", { class: { "d-none": _vm.isLoading } }, [
-        _c(
-          "div",
-          { staticClass: "row" },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "col-12 NoDecor",
-                staticStyle: { "padding-bottom": "15px" }
-              },
-              [
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { href: "javascript:void(0)" },
-                    on: {
-                      click: function($event) {
-                        _vm.useFilter = !_vm.useFilter
-                      }
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            {
+              staticClass: "col-12 NoDecor",
+              staticStyle: { "padding-bottom": "15px" }
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { href: "javascript:void(0)" },
+                  on: {
+                    click: function($event) {
+                      _vm.useFilter = !_vm.useFilter
                     }
-                  },
-                  [_vm._v("Filter")]
-                )
-              ]
-            ),
-            _vm._v(" "),
+                  }
+                },
+                [_vm._v("Filter")]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-12" },
             _vm._l(_vm.filters, function(filter, index) {
               return _c(
                 "label",
@@ -79463,13 +79484,52 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("span", { staticClass: "checkmark" }),
-                  _vm._v(" " + _vm._s(filter) + "\n            ")
+                  _vm._v(" " + _vm._s(filter) + "\n                ")
                 ]
               )
             })
-          ],
-          2
-        ),
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.useFilter,
+                  expression: "useFilter"
+                }
+              ],
+              staticClass: "row"
+            },
+            [
+              _c("div", { staticClass: "col-12 form-group" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.nameFilter,
+                      expression: "nameFilter"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", placeholder: "Filter by name.." },
+                  domProps: { value: _vm.nameFilter },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.nameFilter = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]
+          )
+        ]),
         _vm._v(" "),
         _c("table", { staticClass: "table" }, [
           _c("thead", [
@@ -79530,10 +79590,11 @@ var render = function() {
                       name: "show",
                       rawName: "v-show",
                       value:
-                        _vm.currentFilter.includes(user.status) ||
+                        (_vm.filterByStatus(user, _vm.currentFilter) &&
+                          _vm.filterByName(user, _vm.nameFilter)) ||
                         !_vm.useFilter,
                       expression:
-                        "currentFilter.includes(user.status) || !useFilter"
+                        " filterByStatus(user,currentFilter) && filterByName(user,nameFilter)|| !useFilter"
                     }
                   ],
                   key: index,

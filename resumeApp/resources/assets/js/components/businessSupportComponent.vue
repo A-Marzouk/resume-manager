@@ -5,10 +5,17 @@
                 <div class="col-12 NoDecor" style="padding-bottom: 15px;">
                     <a href="javascript:void(0)" @click="useFilter = !useFilter" class="btn btn-primary">Filter</a>
                 </div>
-                <label v-show="useFilter" class="form-check-label col-md-2 checkBoxContainer checkBoxText" v-for="(filter,index) in filters" v-bind:key="index">
-                    <input class="form-check-input" :value="filter" type="checkbox" v-model="currentFilter">
-                    <span class="checkmark"></span> {{filter}}
-                </label>
+                <div class="col-12">
+                    <label v-show="useFilter" class="form-check-label col-md-2 checkBoxContainer checkBoxText" v-for="(filter,index) in filters" v-bind:key="index">
+                        <input class="form-check-input" :value="filter" type="checkbox" v-model="currentFilter">
+                        <span class="checkmark"></span> {{filter}}
+                    </label>
+                </div>
+                <div class="row" v-show="useFilter">
+                    <div class="col-12 form-group">
+                        <input type="text" class="form-control" placeholder="Filter by name.." v-model="nameFilter">
+                    </div>
+                </div>
             </div>
             <table class="table">
                 <thead>
@@ -25,7 +32,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="(user,index) in businessUsers" v-bind:key="index" v-show="currentFilter.includes(user.status) || !useFilter" :class="{'shaded' : isShaded(user),}" @click="unShadeUser(user)">
+                <tr v-for="(user,index) in businessUsers" v-bind:key="index" v-show=" filterByStatus(user,currentFilter) && filterByName(user,nameFilter)|| !useFilter" :class="{'shaded' : isShaded(user),}" @click="unShadeUser(user)">
                     <th scope="row">
                         <!-- check boxes -->
                         <label class="form-check-label col-md-3 checkBoxContainer checkBoxText">
@@ -221,6 +228,7 @@
                 filters:[
                     'GREY','ORANGE','GREEN','LIGHTGREEN','RED'
                 ],
+                nameFilter:'',
                 useFilter:false,
                 permissions:[
                     'Freelancers','Clients and invoices','Campaigns','Agents','Camp Briefs','Bookings','Chats',
@@ -342,6 +350,19 @@
                     }
                 );
 
+            },
+            filterByName(user,nameFilter){
+                let userName =  (user.firstName +' '+ user.lastName).toLowerCase();
+                if(userName.includes(nameFilter.toLowerCase()) || nameFilter.length < 1){
+                    return true;
+                }
+                return false;
+            },
+            filterByStatus(user,currentFilter){
+                if(currentFilter.includes(user.status) || !this.useFilter){
+                    return true;
+                }
+                return false;
             }
         },
         mounted(){

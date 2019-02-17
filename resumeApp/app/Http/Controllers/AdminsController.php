@@ -32,6 +32,7 @@ class AdminsController extends Controller
         $data['bookings'] = Booking::all();
         $data['owners']   = Affiliate::all();
         $data['jobs']     = Job::all();
+        $data['permissions'] = explode(',',auth()->user()->permissions);
         return view('admin.usersList', compact('data'));
     }
 
@@ -44,14 +45,32 @@ class AdminsController extends Controller
                 $user->status = 'NOT_SELECTED';
                 $user->save();
             }
-            $user['bookings'] = $user->bookings;
-            $user['userData'] = $user->userData;
-            $user['owner']    = $user->owner;
+            $user['bookings']    = $user->bookings;
+            $user['userData']    = $user->userData;
+            $user['owner']       = $user->owner;
+            $user['permissions'] = explode(',',$user->permissions);
         }
 
-        return $businessUsers;
+        return ['admin' => auth()->user(), 'businessUsers'=> $businessUsers];
     }
 
+    public  function showPermissionsPage(){
+        return view('admin_permissions');
+    }
+
+    public function saveAdminPermissions(Request $request){
+        if(isset($request->userID)){
+            $user = User::where('id',$request->userID)->first();
+        }
+
+        if($user){
+            $user->admin = true;
+            $user->permissions = implode(',',$request->permissions);
+            $user->save();
+        }
+
+        return ['status'=>'Updated'];
+    }
     public function sendMailApprovedUsers(){
         $approvedUsers = User::where([
             'status' => 'GREEN',

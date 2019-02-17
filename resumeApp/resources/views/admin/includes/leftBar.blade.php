@@ -6,68 +6,94 @@
                 Home
             </a>
         </li>
-        <li class="col-md-12">
-            <a class="btn btn-block btn-outline-primary" href="#freelancers"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
-                Freelancers
-            </a>
-        </li>
-        <li class="col-md-12">
-            <a class="btn btn-block btn-outline-primary" href="#clients"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
-                Clients
-            </a>
-        </li>
-        <li class="col-md-12">
-            <a class="btn btn-block btn-outline-primary" href="{{route('view.campaigns')}}"  style="margin-bottom: 6px;">
-                Campaigns
-            </a>
-        </li>
-        <li class="col-md-12">
-            <a class="btn btn-block btn-outline-primary" href="{{route('view.agents')}}"  style="margin-bottom: 6px;">
-                Agents
-            </a>
-        </li>
+        @if(in_array('Freelancers',$permissions))
+            <li class="col-md-12">
+                <a class="btn btn-block btn-outline-primary" href="#freelancers"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
+                    Freelancers
+                </a>
+            </li>
+        @endif
+        @if(in_array('Clients and invoices',$permissions))
+            <li class="col-md-12">
+                <a class="btn btn-block btn-outline-primary" href="#clients"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
+                    Clients
+                </a>
+            </li>
+        @endif
+        @if(in_array('Campaigns',$permissions))
+            <li class="col-md-12">
+                <a class="btn btn-block btn-outline-primary" href="{{route('view.campaigns')}}"  style="margin-bottom: 6px;">
+                    Campaigns
+                </a>
+            </li>
+        @endif
 
+        @if(in_array('Agents',$permissions))
+            <li class="col-md-12">
+                <a class="btn btn-block btn-outline-primary" href="{{route('view.agents')}}"  style="margin-bottom: 6px;">
+                    Agents
+                </a>
+            </li>
+        @endif
 
-        <li class="col-md-12">
-            <a class="btn btn-block btn-outline-primary" href="{{route('view.cBriefs')}}"  style="margin-bottom: 6px;">
-                Camp Briefs
-            </a>
-        </li>
-        <li class="col-md-12">
-            <a class="btn btn-block btn-outline-primary" href="#bookings"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
-                Bookings
-            </a>
-        </li>
-        <li class="col-md-12">
-            <a class="btn btn-block btn-outline-primary" href="#chats"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
-                Chats
-            </a>
-        </li>
-        <li class="col-md-12">
-            <a class="btn btn-block btn-outline-primary" href="#affiliates"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
-                Affiliates
-            </a>
-        </li>
-        <li class="col-md-12">
-            <a class="btn btn-block btn-outline-primary" href="#jobs"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
-                Jobs
-            </a>
-        </li>
-        <li class="col-md-12">
-            <a class="btn btn-block btn-outline-dark" href="#search_links"  style="margin-bottom: 6px;">
-                Public search links
-            </a>
-        </li>
-        <li class="col-md-12">
-            <a class="btn btn-block btn-outline-dark" href="/search"  style="margin-bottom: 6px;">
-                Search Freelancers
-            </a>
-        </li>
-        <li class="col-md-12">
-            <a class="btn btn-block btn-outline-dark" href="/send_emails"  style="margin-bottom: 6px;">
-                Send emails
-            </a>
-        </li>
+        @if(in_array('Camp Briefs',$permissions))
+            <li class="col-md-12">
+                <a class="btn btn-block btn-outline-primary" href="{{route('view.cBriefs')}}"  style="margin-bottom: 6px;">
+                    Camp Briefs
+                </a>
+            </li>
+        @endif
+        @if(in_array('Bookings',$permissions))
+            <li class="col-md-12">
+                <a class="btn btn-block btn-outline-primary" href="#bookings"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
+                    Bookings
+                </a>
+            </li>
+        @endif
+        @if(in_array('Affiliates',$permissions))
+            <li class="col-md-12">
+                <a class="btn btn-block btn-outline-primary" href="#affiliates"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
+                    Affiliates
+                </a>
+            </li>
+        @endif
+        @if(in_array('Chats',$permissions))
+            <li class="col-md-12">
+                <a class="btn btn-block btn-outline-primary" href="#chats"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
+                    Chats
+                </a>
+            </li>
+        @endif
+        @if(in_array('Jobs',$permissions))
+            <li class="col-md-12">
+                <a class="btn btn-block btn-outline-primary" href="#jobs"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
+                    Jobs
+                </a>
+            </li>
+        @endif
+        @if(in_array('Public search links',$permissions))
+            <li class="col-md-12">
+                <a class="btn btn-block btn-outline-dark" href="#search_links"  style="margin-bottom: 6px;">
+                    Public search links
+                </a>
+            </li>
+        @endif
+        @if(in_array('Search Freelancers',$permissions))
+            <li class="col-md-12">
+                <a class="btn btn-block btn-outline-dark" href="/search"  style="margin-bottom: 6px;">
+                    Search Freelancers
+                </a>
+            </li>
+        @endif
+
+        @if(in_array('Send emails',$permissions))
+            <li class="col-md-12">
+                <a class="btn btn-block btn-outline-dark" href="/send_emails"  style="margin-bottom: 6px;">
+                    Send emails
+                </a>
+            </li>
+        @endif
+
 
         <div id="actionBtns" class="d-none">
             <li class="col-md-12" style="margin-top: 25px;">

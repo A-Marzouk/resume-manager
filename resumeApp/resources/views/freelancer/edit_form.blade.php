@@ -11,6 +11,9 @@ $freelancer = auth()->user();
         You are viewing as Admin
     </div>
     <? endif;?>
+    <div id="agent_terms_bar">
+        <agent-terms-bar></agent-terms-bar>
+    </div>
     <div class="container m-auto infoBar container">
         <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
         <div class="col-md-2 offset-md-10">

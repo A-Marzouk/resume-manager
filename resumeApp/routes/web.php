@@ -92,6 +92,13 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/jobs/','FreelancersController@showFreelancerJobs')->name('show.freelancer.jobs');
     Route::post('/jobs/apply','FreelancersController@applyToJob')->name('freelancer.apply.job');
     Route::post('/jobs/leave','FreelancersController@leaveJob')->name('freelancer.leave.job');
+    // freelancer agreements :
+    Route::get('/requirements','FreelancersController@viewAgentRequirements')->name('agent.requirements');
+    Route::get('/contractor_agreement','FreelancersController@viewAgentContractorAgreement')->name('agent.contractor.agreement');
+
+    Route::get('/has_agreed','FreelancersController@hasAgreed');
+    Route::post('/set_terms','FreelancersController@setTerms');
+
 });
 
 Route::get('/clear-cache', function() {

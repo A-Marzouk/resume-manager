@@ -34,6 +34,9 @@ if(!isset($value['id'])){
             </div>
         </div>
     <? endif;?>
+    <div id="agent_terms_bar">
+        <agent-terms-bar></agent-terms-bar>
+    </div>
     <div class="row container">
         <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
         <div class="col-md-2">

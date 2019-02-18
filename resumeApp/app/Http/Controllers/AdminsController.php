@@ -66,6 +66,9 @@ class AdminsController extends Controller
         if($user){
             $user->admin = true;
             $user->permissions = implode(',',$request->permissions);
+            if(empty($user->permissions)){
+                $user->admin = false;
+            }
             $user->save();
         }
 

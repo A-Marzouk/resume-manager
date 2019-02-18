@@ -46,6 +46,11 @@ class FreelancersController extends Controller
 
     public function getFreelancerData () {
         $currFreelancer = auth()->user();
+        if(!isset($currFreelancer->userData)){
+            $userData = new UserData;
+            $userData->user_id = $currFreelancer->id;
+            $userData->save();
+        }
         $data = [
             'name'=> $currFreelancer->userData->name ?? '',
             'birth_date'=>$currFreelancer->userData->birth_date ?? '',

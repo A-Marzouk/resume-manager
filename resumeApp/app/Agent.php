@@ -16,11 +16,15 @@ class Agent extends Model
     protected $table = 'agents';
     protected $fillable = [
         'number','name','language','hourly_rate'
-        ,'available_hours','location','experience'
+        ,'available_hours','location','experience','user_id'
     ];
 
 
     public function records(){
         return $this->hasMany(Recording::class);
+    }
+
+    public function businessUser(){
+        return $this->belongsTo(User::class);
     }
 }

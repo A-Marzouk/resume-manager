@@ -12,6 +12,7 @@ namespace App\Http\Controllers;
 use App\Agent;
 use App\classes\Upload;
 use App\Recording;
+use App\User;
 use Illuminate\Http\Request;
 
 class AgentsController extends Controller
@@ -68,7 +69,22 @@ class AgentsController extends Controller
         $agent->hourly_rate = $request->hourly_rate;
         $agent->available_hours = $request->available_hours;
         $agent->location = $request->location;
+
         $agent->save();
+
+        if(isset($request->user_id)){
+            $agent->user_id = $request->user_id;
+            $user= User::where('id',$request->user_id)->first();
+            $records = $user->recordings;
+            foreach ($records as $rec){
+                $record = new Recording;
+                $record->title = 'Business agent record';
+                $record->agent_id = $agent->id;
+                $record->src = $rec->src;
+                $record->save();
+            }
+        }
+
 
         return ['id'=>$agent->id];
 

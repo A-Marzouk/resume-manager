@@ -159,6 +159,12 @@ class BusinessSupportController extends Controller
 
         $businessSupport = User::where('email',$data['email'])->first();
 
+        if(!isset($businessSupport->userData)){
+            $userData = new UserData;
+            $userData->user_id = $businessSupport->id;
+            $userData->save();
+        }
+
         return $businessSupport;
 
     }

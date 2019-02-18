@@ -243,4 +243,30 @@ class FreelancersController extends Controller
         return ['status'=> 'Left'];
     }
 
+    public function viewAgentRequirements(){
+        return view('agent_requirements');
+    }
+
+    public function viewAgentContractorAgreement(){
+        return view('agent_contractor_agreement');
+    }
+
+
+    public function hasAgreed(){
+        $currUser = auth()->user();
+        if($currUser->has_agreed == true){
+            return ['terms' =>'AGREED'];
+        }
+        return [ 'terms' =>'NOT_AGREED'];
+    }
+
+    public function setTerms(Request $request){
+        if($request->terms == 'AGREED'){
+            $currUser = auth()->user();
+            $currUser->has_Agreed = true;
+            $currUser->save();
+        }
+        return 'agreed saved';
+    }
+
 }

@@ -90,6 +90,9 @@ Vue.component('record-input', require('./components/record_while_register.vue'))
 // terms bar component
 Vue.component('terms-bar', require('./components/termsBarComponent.vue'));
 
+// agent terms bar component
+Vue.component('agent-terms-bar', require('./components/agentTermsBarComponent.vue'));
+
 
 // projects
 Vue.component('projects-list', require('./components/projects/projectsListComponent.vue'));
@@ -159,6 +162,12 @@ if ($("#timeTable").length !== 0){
 if ($("#terms_bar").length !== 0){
     let terms_bar = new Vue({
         el:'#terms_bar'
+    });
+}
+
+if ($("#agent_terms_bar").length !== 0){
+    let agent_terms_bar = new Vue({
+        el:'#agent_terms_bar'
     });
 }
 

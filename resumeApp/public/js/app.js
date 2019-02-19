@@ -79565,7 +79565,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
             axios.post('/admin/business_support/update_status', statusData).then(function (response) {
                 if (response.data.status === 'updated') {
-                    // $('#business_user_status'+userID).css('border-top','6px solid '+response.data.color);
+                    if (response.data.color === 'LIGHTGREEN' || response.data.color === 'GREEN') {
+                        // approved : make a correspondent agent.
+                        // post data :
+                        var agent = {
+                            'user_id': user.id,
+                            'number': 100,
+                            'name': user.firstName + ' ' + user.lastName,
+                            'language': 'NA',
+                            'hourly_rate': '',
+                            'available_hours': '',
+                            'location': 'NA',
+                            'experience': 'NA'
+                        };
+
+                        axios.post('/workforce/add_agent', agent).then(function (response) {
+                            console.log(response.data);
+                        });
+                    }
                     // show changes are saved
                     $('#changesSaved').fadeIn('slow');
                     setTimeout(function () {

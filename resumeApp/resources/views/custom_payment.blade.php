@@ -25,7 +25,7 @@
             <input type="hidden" value="custom_payment" name="freelancerName">
             <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="pk_live_JaqaQq8e8cJYTXSEk9UZoy8k"
+                    data-key="{{env('STRIPE_KEY')}}"
                     data-amount=""
                     data-name="123 Workforce"
                     data-description="Custom payment"

@@ -202,7 +202,7 @@
                             <input type="hidden" value="{{$invoice->id}}" name="invoice_id">
                             <script
                                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                    data-key="pk_live_JaqaQq8e8cJYTXSEk9UZoy8k"
+                                    data-key="{{env('STRIPE_KEY')}}"
                                     data-amount=""
                                     data-name="123 Workforce"
                                     data-description="Custom payment"

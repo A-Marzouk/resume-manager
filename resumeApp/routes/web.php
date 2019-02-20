@@ -176,7 +176,6 @@ Route::post('/','NotificationsController@messageToSales')->name('message.to.sale
 Route::post('/message/freelancer','NotificationsController@messageToFreelancer')->name('message.to.freelancer');
 
 // stripe integration
-Route::get('/stripe/payments','\App\classes\StripePayments@stripeTest');
 Route::post('/stripe/payments/pay','\App\classes\StripePayments@stripePayment');
 Route::get('/stripe/hire','\App\classes\StripePayments@showHirePage');
 Route::post('/stripe/webhocks','\App\classes\StripePayments@webhocks');

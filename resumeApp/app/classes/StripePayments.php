@@ -32,70 +32,22 @@ class StripePayments
 
     public function stripePayment(Request $request){
 
-        $data = $this->getClientData();
         Stripe::setApiKey($this->apiKey);
 
-        $description = "Hire freelancer";
-        if(isset($request->description)){
-            $description = $request->description ;
+        // 3 payments : custom , hire freelancer , invoice.
+        if(!isset($request->paymentInfo)){
+            return redirect('/')->with('errorMessage','Payment info is not enough!');
         }
 
-        $weeks       = intval($request->weeks);
-        $amountToPay = intval($request->amountToPay);
-        $token = $request->stripeToken;
-        if($request->freelancerName == 'custom_payment'){
-            $amountToPay = $amountToPay *100;
+        $paymentInfo = $request->paymentInfo;
+
+        if($paymentInfo == 'custom_payment'){
+            $this->makeStripeCustomPayment($request);
         }
 
-        // creare product
-        $product = \Stripe\Product::create([
-            'name' =>'Freelancer : '.$request->freelancerName,
-            'type' => 'service',
-        ]);
+        return redirect('/')->with('successMessage','Thank you for your order, we will get in touch with you soon!');
 
-
-        // create plan
-        $plan = \Stripe\Plan::create([
-            'product' => $product->id,
-            'nickname' => $description,
-            'interval' => 'week',
-            'currency' => 'usd',
-            'amount' => $amountToPay,
-        ]);
-
-
-        // create customer
-        $currCustomerID = $this->getCurrCustomer($request->stripeEmail);
-
-        if(!($currCustomerID)){
-            $customer = Customer::create(
-                [
-                    "source" => $token,
-                    "description" =>  $data['clientName'],
-                    "email" => $request->stripeEmail
-                ]
-            );
-
-            $currCustomerID = $customer->id;
-        }
-
-        // subscripe the customer to the plan :
-
-        $subscription = \Stripe\Subscription::create([
-            'customer' => $currCustomerID,
-            'items' => [['plan' => $plan->id]],
-        ]);
-
-        // Charge the Customer instead of the card
-//        $this->chargeCustomer($amountToPay,$description,$currCustomerID);
-
-        // send emeail success of payment :
-        $data['email'] = $request->stripeEmail;
-        $data['freelancerName'] = $request->freelancerName;
-        $this->sendMailSuccess($data);
-
-
-        if($request->freelancerName == 'custom_payment'){
+        if($paymentInfo == 'invoice'){
             // check if it is an invoice :
             if(isset($request->invoice_id)){
                 $invoice = Invoice::where('id',$request->invoice_id)->first();
@@ -131,9 +83,64 @@ class StripePayments
         $freelancer = $this->updateHours($request);
         return redirect('/'.$freelancer->username)->with('successMessage','Thank you for your order, we will get in touch with you soon!');
 
+    }
 
+    protected function makeStripeCustomPayment(Request $request){
+        $amountToPay = intval($request->amountToPay) * 100;
+        $customerID = $this->getCustomerID($request);
+        if(isset($request->weeks) && $request->weeks > 0){
+            $subscription_id = $this->makeStripeRecurringCustomPayment($request);
+            $this->createBooking($request , null,$subscription_id);
+        }else{
+            $this->chargeCustomerOnce($amountToPay,$request->description,$customerID);
+        }
 
+        $this->sendNotificationsOfPayment($request);
+    }
 
+    protected function sendNotificationsOfPayment(Request $request){
+        $data['email'] = $request->stripeEmail;
+        $data['freelancerName'] = $request->freelancerName;
+        $clientData = $this->getClientData();
+        $data['clientName'] = $clientData['clientName'];
+        $this->sendMailSuccess($data);
+
+        $telegram = new Telegram('-228260999');
+        $msg      = "Stripe custom payment has been made.\n" ;
+        $msg     .= "With amount of ".$request->amountToPay ." USD";
+        $msg     .= "\nFrom : " . $request->stripeEmail;
+        $msg     .= "\nDescription : " . $request->description;
+        if(isset($request->weeks) && $request->weeks > 0){
+            $msg     .= "\nRecurring payment of : " . $request->weeks . ' weeks';
+        }
+
+        $telegram->sendMessage($msg);
+    }
+    protected function makeStripeRecurringCustomPayment(Request $request){
+        $amountToPay = intval($request->amountToPay) * 100;
+        $customerID  = $this->getCustomerID($request);
+
+        // create product
+        $product = \Stripe\Product::create([
+            'name' =>'123 Workforce service',
+            'type' => 'service',
+        ]);
+
+        // create plan
+        $plan = \Stripe\Plan::create([
+            'product' => $product->id,
+            'nickname' => $request->description,
+            'interval' => 'week',
+            'currency' => 'usd',
+            'amount' => $amountToPay,
+        ]);
+
+        $subscription = \Stripe\Subscription::create([
+            'customer' => $customerID,
+            'items' => [['plan' => $plan->id]],
+        ]);
+
+        return $subscription->id;
     }
 
     public function showHirePage(){
@@ -164,18 +171,30 @@ class StripePayments
         return $data;
     }
 
-    protected function getCurrCustomer($stripeEmail){
+    protected function getCustomerID($request){
+        $data = $this->getClientData();
         $customers = Customer::all(array("limit" => 1000));
         foreach ($customers['data'] as $key => $customer){
-            if($customer->email == $stripeEmail){
-                return $customer->id ;
+            if($customer->email ==  $request->stripeEmail){
+                $customerID = $customer->id ;
             }
         }
+        if(!isset($customerID)){
+            $customer = Customer::create(
+                [
+                    "source" => $request->stripeToken,
+                    "description" =>  $data['clientName'],
+                    "email" => $request->stripeEmail
+                ]
+            );
 
-        return false;
+            $customerID = $customer->id;
+        }
+
+        return $customerID;
     }
 
-    protected function chargeCustomer($amountToPay,$description,$currCustomerID){
+    protected function chargeCustomerOnce($amountToPay,$description,$currCustomerID){
         $charge = Charge::create([
             'amount' => $amountToPay,
             'currency' => 'usd',
@@ -218,35 +237,22 @@ class StripePayments
         return $freelancer;
     }
 
-
     public function webhocks(Request $request){
         Stripe::setApiKey($this->apiKey);
         if($request->type === 'charge.succeeded'){
             // a charge has been made
-            /*
-             * 1- get the customer email
-             * 2- get all not canceled bookings of this email
-             * 3- compare the amount paid and the amount in this booking.
-             * 4- if everything is fine
-             * 5- reduce number of weeks.
-             * 6- if number of weeks == 0 so stop subscription
-             * */
             $data   = $request->data;
             $object = $data['object'];
             $amount = $object['amount'];
             $customerID = $object['source']['customer'];
             $customerEmail = Customer::retrieve($customerID)->email;
-
             $bookings = Booking::where('booking_email',$customerEmail)->get();
-
             foreach ($bookings as $booking){
                 if($booking->canceled || intval($booking->amount_paid) != $amount){
                     continue;
                 }
-
                 $currWeeks = $booking->weeks;
                 $booking->weeks = $currWeeks - 1 ;
-
                 if($currWeeks -1 == 0){
                     // stop subscription
                     $subscription = Subscription::retrieve($booking->subscription_id);
@@ -256,24 +262,26 @@ class StripePayments
                     $telegram = new Telegram('-228260999');
                     $msg  = "A subscription with ID of : " ;
                     $msg .= $subscription->id;
-                    $msg .= "has been ended";
+                    $msg .= "\nhas been ended.";
+                    $msg .= "\nCustomer: ".$subscription->customer;
+                    $msg .= "\nEmail: ".$customerEmail;
                     $telegram->sendMessage($msg);
                 }
+
                 $booking->save();
                 break;
             }
 
-            // web hook telegram message
+            // web hook telegram message if subscription is not canceled.
             $telegram = new Telegram('-228260999');
-            $msg2   = 'A client :('.$customerEmail;
-            $msg2  .= ') has paid for this week, Amount: ';
+            $msg2   = "A client :(".$customerEmail;
+            $msg2  .= ") has paid.\n Amount: ";
             $msg2  .= $amount/100;
-            $msg2  .= '$, weeks left :';
-            if(isset($booking->weeks)){
-                $msg2  .= $currWeeks -1 ;
-            }else{
-                $msg2  .= 'First Payment';
+            if(isset($booking->weeks) && $booking->weeks > 0){
+                $msg2  .= "$,\n weeks left :";
+                $msg2  .= $booking->weeks -1 ;
             }
+
             $telegram->sendMessage($msg2);
 
         }

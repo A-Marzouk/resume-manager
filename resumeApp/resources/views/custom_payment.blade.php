@@ -14,7 +14,6 @@
                 </span>
                 </label>
                 <input type="text" class="form-control panelFormInput" id="amountToPay" name="amountToPay" required>
-
             </div> <!-- amount to pay -->
 
             <div class="form-group col-md-6 offset-md-3">
@@ -22,7 +21,19 @@
                 <textarea class="form-control" rows="3" id="description" name="description" required></textarea>
             </div> <!-- description -->
 
-            <input type="hidden" value="custom_payment" name="freelancerName">
+            <div class="form-group col-md-6 offset-md-3">
+                <label class="form-check-label col-md-12 checkBoxContainer checkBoxText">
+                    <input class="form-check-input" type="checkbox" name="weekly_payment" id="weekly_payment">
+                    <span class="checkmark"></span> Recurring payment
+                </label>
+            </div> <!-- weekly payments -->
+            <div class="form-group col-md-6 offset-md-3">
+                <label for="weeks" class="panelFormLabel">Weeks</label>
+                <input type="number" min="0" max="24" id="weeks" class="form-control" name="weeks">
+            </div>
+
+            <input type="hidden" name="paymentInfo" value="custom_payment">
+
             <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="{{env('STRIPE_KEY')}}"

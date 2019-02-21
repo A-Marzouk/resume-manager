@@ -57197,7 +57197,11 @@ var render = function() {
           staticStyle: { padding: "15px" },
           attrs: { id: "invoiceErrors" }
         },
-        [_vm._v("\n        Error while saving..\n    ")]
+        [
+          _vm._v(
+            "\n        Error while saving, please fill in all required fields.\n    "
+          )
+        ]
       ),
       _vm._v(" "),
       _c(

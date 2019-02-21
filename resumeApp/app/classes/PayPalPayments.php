@@ -33,7 +33,7 @@ class PayPalPayments
             $recurring = true;
         }
         // get new invoice id
-        $invoice_id = PayPalInvoice::count() + 1;
+        $invoice_id = PayPalInvoice::orderBy('created_at', 'desc')->first()->id + 1;
 
         // Get the cart data
         $cart = $this->getCart($recurring, $invoice_id,$request);

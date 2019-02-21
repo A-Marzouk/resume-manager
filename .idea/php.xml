@@ -168,6 +168,8 @@
       <path value="$PROJECT_DIR$/resumeApp/vendor/vinkla/instagram" />
       <path value="$PROJECT_DIR$/resumeApp/vendor/clue/stream-filter" />
       <path value="$PROJECT_DIR$/resumeApp/vendor/paypal/rest-api-sdk-php" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/resumeApp/vendor/srmklive/paypal" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

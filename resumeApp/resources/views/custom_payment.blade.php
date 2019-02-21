@@ -22,8 +22,8 @@
             </div> <!-- description -->
 
             <div class="form-group col-md-6 offset-md-3">
-                <label for="weeks" class="panelFormLabel">Weeks</label>
-                <input type="number" min="0" max="24" id="weeks" class="form-control" name="weeks">
+                <label for="weeks" class="panelFormLabel">Recurring payments <small>(Leave empty for one time payment)</small></label>
+                <input type="number" min="0" max="24" placeholder="Number of weeks.." id="weeks" class="form-control" name="weeks">
             </div>
 
             <input type="hidden" name="paymentInfo" value="custom_payment">

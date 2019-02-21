@@ -57,7 +57,7 @@ class InvoicesController extends Controller
             'weekDate' => 'max:191',
             'hours' => 'max:10|required',
             'rate' => 'max:191|required',
-            'status' => 'max:191|required',
+            'status' => 'max:191',
             'time_of_service' => 'max:1500',
             'notes' => 'max:1500',
         ]);
@@ -122,14 +122,13 @@ class InvoicesController extends Controller
         foreach ($words as $w) {
             $firstLetters .= $w[0];
         }
-        if(!isset($request->id)){ // only in new invoices
-            if($invoice->id < 10){
-                $invoice->unique_number = $firstLetters.'00' . $invoice->id;
-            }elseif ($invoice->id < 100){
-                $invoice->unique_number = $firstLetters.'0' . $invoice->id;
-            }else{
-                $invoice->unique_number = $firstLetters . $invoice->id;
-            }
+        if(!isset($request->id)){ // only in new invoices automate unique numbers
+            $firstNumber  = count(Client::all()) + 1 ; // number of clients + 1
+            $secondNumber = count($invoice->client->invoices); // number of client invoices + 1 (already created)
+            $thirdNumber  = count(Invoice::all()) ; // number of total invoices + 1
+
+            $invoice->unique_number = $this->getNumberZeros($firstNumber). '-' . $this->getNumberZeros($secondNumber)
+                . '-' . $this->getNumberZeros($thirdNumber);
         }
 
         if(!isset($request->id)) { // only in new invoices
@@ -145,6 +144,16 @@ class InvoicesController extends Controller
 
         $invoice->save();
         return ['id'=> $invoice->id , 'unique_number'=>$invoice->unique_number];
+    }
+
+    protected function getNumberZeros($number){
+        if($number < 10){
+            return '00' . $number;
+        }elseif ($number < 100){
+            return '0' . $number;
+        }else{
+            return $number;
+        }
     }
 
     public function deleteInvoice(Request $request){

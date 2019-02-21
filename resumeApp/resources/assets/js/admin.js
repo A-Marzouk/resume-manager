@@ -231,7 +231,6 @@ $('#disApprove').on('click',function () {
 // release booking hours
 
 $('.releaseBooking').on('click',function () {
-    alert('test');
     let booking_id = this.id.replace('addHoursBtn','');
     axios.post('admin/releaseBooking',{'booking_id':booking_id}).then( (response) => {
         $('#bookingStatus' + booking_id).html('Hours added back to freelancer!');

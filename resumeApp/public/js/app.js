@@ -53283,7 +53283,6 @@ $('#disApprove').on('click', function () {
 // release booking hours
 
 $('.releaseBooking').on('click', function () {
-    alert('test');
     var booking_id = this.id.replace('addHoursBtn', '');
     axios.post('admin/releaseBooking', { 'booking_id': booking_id }).then(function (response) {
         $('#bookingStatus' + booking_id).html('Hours added back to freelancer!');
@@ -57198,7 +57197,11 @@ var render = function() {
           staticStyle: { padding: "15px" },
           attrs: { id: "invoiceErrors" }
         },
-        [_vm._v("\n        Error while saving..\n    ")]
+        [
+          _vm._v(
+            "\n        Error while saving, please fill in all required fields.\n    "
+          )
+        ]
       ),
       _vm._v(" "),
       _c(

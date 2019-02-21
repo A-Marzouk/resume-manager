@@ -42,9 +42,10 @@
                                     <input type="hidden" value="{{$freelancer->id}}" name="freelancerID">
                                     <input type="hidden" value="{{$hours}}" name="hours">
                                     <input type="hidden" value="{{$weeks}}" name="weeks">
+                                    <input type="hidden" value="hireFreelancer" name="paymentInfo">
                                     <script
                                             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                            data-key="pk_live_JaqaQq8e8cJYTXSEk9UZoy8k"
+                                            data-key="{{env('STRIPE_KEY')}}"
                                             data-amount="{{$amountToPay}}"
                                             data-name="Hire  {{$freelancer->userData->name}}"
                                             data-description="For {{$hours}}"

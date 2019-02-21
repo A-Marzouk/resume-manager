@@ -14,7 +14,6 @@
                 </span>
                 </label>
                 <input type="text" class="form-control panelFormInput" id="amountToPay" name="amountToPay" required>
-
             </div> <!-- amount to pay -->
 
             <div class="form-group col-md-6 offset-md-3">
@@ -22,10 +21,16 @@
                 <textarea class="form-control" rows="3" id="description" name="description" required></textarea>
             </div> <!-- description -->
 
-            <input type="hidden" value="custom_payment" name="freelancerName">
+            <div class="form-group col-md-6 offset-md-3">
+                <label for="weeks" class="panelFormLabel">Recurring payments <small>(Leave empty for one time payment)</small></label>
+                <input type="number" min="0" max="24" placeholder="Number of weeks.." id="weeks" class="form-control" name="weeks">
+            </div>
+
+            <input type="hidden" name="paymentInfo" value="custom_payment">
+
             <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="pk_live_JaqaQq8e8cJYTXSEk9UZoy8k"
+                    data-key="{{env('STRIPE_KEY')}}"
                     data-amount=""
                     data-name="123 Workforce"
                     data-description="Custom payment"

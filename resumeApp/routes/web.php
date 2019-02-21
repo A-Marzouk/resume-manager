@@ -338,6 +338,12 @@ Route::get('payment/paypal','PaypalController@showForm')->name('show.paypal.form
 Route:: post('payment/paypal/submit','PaypalController@payWithPaypal')->name('submit.paypal.form');
 Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('paypal.status');
 
+// paypal - express checkout routes :
+Route::get('/paypal/pay-form', '\App\classes\PayPalPayments@viewPayPalForm')->name('paypal.express-checkout.form');
+Route::post('/paypal/express-checkout', '\App\classes\PayPalPayments@expressCheckout')->name('paypal.express-checkout');
+Route::get('/paypal/express-checkout-success', '\App\classes\PayPalPayments@expressCheckoutSuccess');
+Route::post('/paypal/notify', '\App\classes\PayPalPayments@notify');
+
 // send payments to our users.
 //Route::get('payment/paypal/send','PaypalController@showSendForm')->name('show.paypal.form');
 //Route:: post('payment/paypal_send/submit','PaypalController@sendPaymentByPayPal')->name('submit.paypal.send.form');

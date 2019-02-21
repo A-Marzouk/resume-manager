@@ -198,8 +198,12 @@
                                 <!-- description -->
                             </div>
 
-                            <input type="hidden" value="custom_payment" name="freelancerName">
+                            <input type="hidden" value="invoice" name="paymentInfo">
                             <input type="hidden" value="{{$invoice->id}}" name="invoice_id">
+                            <div class="form-group col-md-12" style="padding-top: 15px;">
+                                <input type="number" placeholder="Number of weeks.." min="0" max="24" id="weeks" class="form-control" name="weeks">
+                            </div>
+
                             <script
                                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                     data-key="{{env('STRIPE_KEY')}}"

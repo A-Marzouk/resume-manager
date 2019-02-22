@@ -188,63 +188,67 @@
                 </div>
 
                 <div class="row buttonsRow" style="padding: 15px;">
-                    <div class="col-6" style="border-right: 2px solid lightblue;">
-                        <form action="/stripe/payments/pay" method="POST">
-                            {{ csrf_field() }}
-                            <div class="d-none">
-                                <input type="text" value="{{$invoice->total_amount}}" id="amountToPay" name="amountToPay" required>
-                                <!-- amount to pay -->
-                                <input type="text" value="{{$invoice->service}}" id="description" name="description" required>
-                                <!-- description -->
-                            </div>
+                    @if(in_array('stripe',explode(',',$invoice->payment_options)))
+                        <div class="col-6" style="border-right: 2px solid lightblue;">
+                            <form action="/stripe/payments/pay" method="POST">
+                                {{ csrf_field() }}
+                                <div class="d-none">
+                                    <input type="text" value="{{$invoice->total_amount}}" id="amountToPay" name="amountToPay" required>
+                                    <!-- amount to pay -->
+                                    <input type="text" value="{{$invoice->service}}" id="description" name="description" required>
+                                    <!-- description -->
+                                </div>
 
-                            <input type="hidden" value="invoice" name="paymentInfo">
-                            <input type="hidden" value="{{$invoice->id}}" name="invoice_id">
-                            @if(in_array('recurring',explode(',',$invoice->payment_options)))
-                                <div class="form-group col-md-12">
-                                <label for="weeks" class="panelFormLabel">Recurring payments <small><br/>(Leave empty for one time payment)</small></label>
-                                <input type="number" placeholder="Number of weeks.." min="0" max="24" id="weeks" class="panelFormInput form-control" name="weeks">
-                            </div>
-                            @endif
-                            <script
-                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                    data-key="{{env('STRIPE_KEY')}}"
-                                    data-amount=""
-                                    data-name="123 Workforce"
-                                    data-description="Custom payment"
-                                    data-image="/resumeApp/resources/views/customTheme/images/newResume/logo.png"
-                                    data-locale="auto"
-                                    id="customPayment">
-                            </script>
-                            <script>
-                                document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
-                            </script>
-                            <div class="buttonMain whiteBg col-md-8 offset-md-2" style="margin-top: 10%;padding-top: 10px; padding-bottom: 10px;">
-                                <button class="hireBtn btn-block hire" type="submit">Pay via Stripe</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-6">
-                        <form action="{{route('paypal.express-checkout')}}" method="POST">
-                            {{ csrf_field() }}
-                                <input type="hidden" value="{{$invoice->total_amount}}" name="amountToPay" required>
-                                <!-- amount to pay -->
-                                <input type="hidden" value="{{$invoice->service}}"  name="description" required>
-                             <!-- description -->
-                                <input type="hidden" name="custom_payment" value="true" required>
-                                <input type="hidden" name="invoice_id" value="{{$invoice->id}}" required>
-
+                                <input type="hidden" value="invoice" name="paymentInfo">
+                                <input type="hidden" value="{{$invoice->id}}" name="invoice_id">
                                 @if(in_array('recurring',explode(',',$invoice->payment_options)))
                                     <div class="form-group col-md-12">
-                                    <label for="weeks" class="panelFormLabel">Recurring payments <small><br/>(Leave empty for one time payment)</small></label>
-                                    <input type="number" placeholder="Number of weeks.." min="0" max="24" id="weeks" class="panelFormInput form-control" name="weeks">
-                                </div>
+                                        <label for="weeks" class="panelFormLabel">Recurring payments <small><br/>(Leave empty for one time payment)</small></label>
+                                        <input type="number" placeholder="Number of weeks.." min="0" max="24" id="weeks" class="panelFormInput form-control" name="weeks">
+                                    </div>
                                 @endif
-                                <div class="buttonMain whiteBg col-md-8 offset-md-2" style="margin-top: 10%;padding-top: 10px; padding-bottom: 25px;">
-                                    <button class="hireBtn btn-block hire" type="submit">Pay via PayPal</button>
+                                <script
+                                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                        data-key="{{env('STRIPE_KEY')}}"
+                                        data-amount=""
+                                        data-name="123 Workforce"
+                                        data-description="Custom payment"
+                                        data-image="/resumeApp/resources/views/customTheme/images/newResume/logo.png"
+                                        data-locale="auto"
+                                        id="customPayment">
+                                </script>
+                                <script>
+                                    document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+                                </script>
+                                <div class="buttonMain whiteBg col-md-8 offset-md-2" style="margin-top: 10%;padding-top: 10px; padding-bottom: 10px;">
+                                    <button class="hireBtn btn-block hire" type="submit">Pay via Stripe</button>
                                 </div>
-                        </form>
-                    </div>
+                            </form>
+                        </div>
+                    @endif
+                    @if(in_array('paypal',explode(',',$invoice->payment_options)))
+                        <div class="col-6">
+                                <form action="{{route('paypal.express-checkout')}}" method="POST">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" value="{{$invoice->total_amount}}" name="amountToPay" required>
+                                    <!-- amount to pay -->
+                                    <input type="hidden" value="{{$invoice->service}}"  name="description" required>
+                                    <!-- description -->
+                                    <input type="hidden" name="custom_payment" value="true" required>
+                                    <input type="hidden" name="invoice_id" value="{{$invoice->id}}" required>
+
+                                    @if(in_array('recurring',explode(',',$invoice->payment_options)))
+                                        <div class="form-group col-md-12">
+                                            <label for="weeks" class="panelFormLabel">Recurring payments <small><br/>(Leave empty for one time payment)</small></label>
+                                            <input type="number" placeholder="Number of weeks.." min="0" max="24" id="weeks" class="panelFormInput form-control" name="weeks">
+                                        </div>
+                                    @endif
+                                    <div class="buttonMain whiteBg col-md-8 offset-md-2" style="margin-top: 10%;padding-top: 10px; padding-bottom: 25px;">
+                                        <button class="hireBtn btn-block hire" type="submit">Pay via PayPal</button>
+                                    </div>
+                                </form>
+                            </div>
+                    @endif
                 </div>
                 <div class="row">
                     <div class="col-12">

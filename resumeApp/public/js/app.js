@@ -58363,6 +58363,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedInvoice'],
@@ -59637,151 +59647,303 @@ var render = function() {
                           ]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass:
-                              "form-check-label checkBoxContainer checkBoxText"
-                          },
-                          [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.toBeEditedInvoice.payment_options,
-                                  expression:
-                                    "toBeEditedInvoice.payment_options"
-                                }
-                              ],
-                              staticClass: "form-check-input",
-                              attrs: { type: "checkbox", value: "once" },
-                              domProps: {
-                                checked: Array.isArray(
-                                  _vm.toBeEditedInvoice.payment_options
-                                )
-                                  ? _vm._i(
+                        _c("div", { staticClass: "row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "col-md-5 form-check-label checkBoxContainer checkBoxText"
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value:
                                       _vm.toBeEditedInvoice.payment_options,
-                                      "once"
-                                    ) > -1
-                                  : _vm.toBeEditedInvoice.payment_options
-                              },
-                              on: {
-                                change: function($event) {
-                                  var $$a =
-                                      _vm.toBeEditedInvoice.payment_options,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = "once",
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        _vm.$set(
-                                          _vm.toBeEditedInvoice,
-                                          "payment_options",
-                                          $$a.concat([$$v])
-                                        )
+                                    expression:
+                                      "toBeEditedInvoice.payment_options"
+                                  }
+                                ],
+                                staticClass: "form-check-input",
+                                attrs: { type: "checkbox", value: "once" },
+                                domProps: {
+                                  checked: Array.isArray(
+                                    _vm.toBeEditedInvoice.payment_options
+                                  )
+                                    ? _vm._i(
+                                        _vm.toBeEditedInvoice.payment_options,
+                                        "once"
+                                      ) > -1
+                                    : _vm.toBeEditedInvoice.payment_options
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$a =
+                                        _vm.toBeEditedInvoice.payment_options,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = "once",
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          _vm.$set(
+                                            _vm.toBeEditedInvoice,
+                                            "payment_options",
+                                            $$a.concat([$$v])
+                                          )
+                                      } else {
+                                        $$i > -1 &&
+                                          _vm.$set(
+                                            _vm.toBeEditedInvoice,
+                                            "payment_options",
+                                            $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1))
+                                          )
+                                      }
                                     } else {
-                                      $$i > -1 &&
-                                        _vm.$set(
-                                          _vm.toBeEditedInvoice,
-                                          "payment_options",
-                                          $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1))
-                                        )
+                                      _vm.$set(
+                                        _vm.toBeEditedInvoice,
+                                        "payment_options",
+                                        $$c
+                                      )
                                     }
-                                  } else {
-                                    _vm.$set(
-                                      _vm.toBeEditedInvoice,
-                                      "payment_options",
-                                      $$c
-                                    )
                                   }
                                 }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "checkmark" }),
-                            _vm._v(
-                              "One time payment\n                              "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass:
-                              "form-check-label checkBoxContainer checkBoxText"
-                          },
-                          [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.toBeEditedInvoice.payment_options,
-                                  expression:
-                                    "toBeEditedInvoice.payment_options"
-                                }
-                              ],
-                              staticClass: "form-check-input",
-                              attrs: { type: "checkbox", value: "recurring" },
-                              domProps: {
-                                checked: Array.isArray(
-                                  _vm.toBeEditedInvoice.payment_options
-                                )
-                                  ? _vm._i(
+                              }),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "checkmark" }),
+                              _vm._v(
+                                "One time payment\n                                  "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "col-md-5 form-check-label checkBoxContainer checkBoxText"
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value:
                                       _vm.toBeEditedInvoice.payment_options,
-                                      "recurring"
-                                    ) > -1
-                                  : _vm.toBeEditedInvoice.payment_options
-                              },
-                              on: {
-                                change: function($event) {
-                                  var $$a =
-                                      _vm.toBeEditedInvoice.payment_options,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = "recurring",
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        _vm.$set(
-                                          _vm.toBeEditedInvoice,
-                                          "payment_options",
-                                          $$a.concat([$$v])
-                                        )
+                                    expression:
+                                      "toBeEditedInvoice.payment_options"
+                                  }
+                                ],
+                                staticClass: "form-check-input",
+                                attrs: { type: "checkbox", value: "recurring" },
+                                domProps: {
+                                  checked: Array.isArray(
+                                    _vm.toBeEditedInvoice.payment_options
+                                  )
+                                    ? _vm._i(
+                                        _vm.toBeEditedInvoice.payment_options,
+                                        "recurring"
+                                      ) > -1
+                                    : _vm.toBeEditedInvoice.payment_options
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$a =
+                                        _vm.toBeEditedInvoice.payment_options,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = "recurring",
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          _vm.$set(
+                                            _vm.toBeEditedInvoice,
+                                            "payment_options",
+                                            $$a.concat([$$v])
+                                          )
+                                      } else {
+                                        $$i > -1 &&
+                                          _vm.$set(
+                                            _vm.toBeEditedInvoice,
+                                            "payment_options",
+                                            $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1))
+                                          )
+                                      }
                                     } else {
-                                      $$i > -1 &&
-                                        _vm.$set(
-                                          _vm.toBeEditedInvoice,
-                                          "payment_options",
-                                          $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1))
-                                        )
+                                      _vm.$set(
+                                        _vm.toBeEditedInvoice,
+                                        "payment_options",
+                                        $$c
+                                      )
                                     }
-                                  } else {
-                                    _vm.$set(
-                                      _vm.toBeEditedInvoice,
-                                      "payment_options",
-                                      $$c
-                                    )
                                   }
                                 }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "checkmark" }),
-                            _vm._v(
-                              "Recurring payments\n                              "
-                            )
-                          ]
-                        )
+                              }),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "checkmark" }),
+                              _vm._v(
+                                "Recurring payments\n                                  "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "col-md-5 form-check-label checkBoxContainer checkBoxText"
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value:
+                                      _vm.toBeEditedInvoice.payment_options,
+                                    expression:
+                                      "toBeEditedInvoice.payment_options"
+                                  }
+                                ],
+                                staticClass: "form-check-input",
+                                attrs: { type: "checkbox", value: "stripe" },
+                                domProps: {
+                                  checked: Array.isArray(
+                                    _vm.toBeEditedInvoice.payment_options
+                                  )
+                                    ? _vm._i(
+                                        _vm.toBeEditedInvoice.payment_options,
+                                        "stripe"
+                                      ) > -1
+                                    : _vm.toBeEditedInvoice.payment_options
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$a =
+                                        _vm.toBeEditedInvoice.payment_options,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = "stripe",
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          _vm.$set(
+                                            _vm.toBeEditedInvoice,
+                                            "payment_options",
+                                            $$a.concat([$$v])
+                                          )
+                                      } else {
+                                        $$i > -1 &&
+                                          _vm.$set(
+                                            _vm.toBeEditedInvoice,
+                                            "payment_options",
+                                            $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1))
+                                          )
+                                      }
+                                    } else {
+                                      _vm.$set(
+                                        _vm.toBeEditedInvoice,
+                                        "payment_options",
+                                        $$c
+                                      )
+                                    }
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "checkmark" }),
+                              _vm._v(
+                                "Stripe\n                                  "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "col-md-5 form-check-label checkBoxContainer checkBoxText"
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value:
+                                      _vm.toBeEditedInvoice.payment_options,
+                                    expression:
+                                      "toBeEditedInvoice.payment_options"
+                                  }
+                                ],
+                                staticClass: "form-check-input",
+                                attrs: { type: "checkbox", value: "paypal" },
+                                domProps: {
+                                  checked: Array.isArray(
+                                    _vm.toBeEditedInvoice.payment_options
+                                  )
+                                    ? _vm._i(
+                                        _vm.toBeEditedInvoice.payment_options,
+                                        "paypal"
+                                      ) > -1
+                                    : _vm.toBeEditedInvoice.payment_options
+                                },
+                                on: {
+                                  change: function($event) {
+                                    var $$a =
+                                        _vm.toBeEditedInvoice.payment_options,
+                                      $$el = $event.target,
+                                      $$c = $$el.checked ? true : false
+                                    if (Array.isArray($$a)) {
+                                      var $$v = "paypal",
+                                        $$i = _vm._i($$a, $$v)
+                                      if ($$el.checked) {
+                                        $$i < 0 &&
+                                          _vm.$set(
+                                            _vm.toBeEditedInvoice,
+                                            "payment_options",
+                                            $$a.concat([$$v])
+                                          )
+                                      } else {
+                                        $$i > -1 &&
+                                          _vm.$set(
+                                            _vm.toBeEditedInvoice,
+                                            "payment_options",
+                                            $$a
+                                              .slice(0, $$i)
+                                              .concat($$a.slice($$i + 1))
+                                          )
+                                      }
+                                    } else {
+                                      _vm.$set(
+                                        _vm.toBeEditedInvoice,
+                                        "payment_options",
+                                        $$c
+                                      )
+                                    }
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "checkmark" }),
+                              _vm._v(
+                                "PayPal\n                                  "
+                              )
+                            ]
+                          )
+                        ])
                       ])
                     ]),
                     _vm._v(" "),

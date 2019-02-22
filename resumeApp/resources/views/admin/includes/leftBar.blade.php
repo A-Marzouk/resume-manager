@@ -20,6 +20,14 @@
                 </a>
             </li>
         @endif
+
+        @if(in_array('Subscriptions',$permissions))
+            <li class="col-md-12">
+                <a class="btn btn-block btn-outline-primary" href="#subscriptions"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
+                    Subscriptions
+                </a>
+            </li>
+        @endif
         @if(in_array('Campaigns',$permissions))
             <li class="col-md-12">
                 <a class="btn btn-block btn-outline-primary" href="{{route('view.campaigns')}}"  style="margin-bottom: 6px;">

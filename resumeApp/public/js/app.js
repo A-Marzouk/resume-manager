@@ -14383,6 +14383,9 @@ Vue.component('record-input', __webpack_require__(178));
 // terms bar component
 Vue.component('terms-bar', __webpack_require__(183));
 
+// current Subscriptions Componet
+Vue.component('current-subscriptions', __webpack_require__(271));
+
 // agent terms bar component
 Vue.component('agent-terms-bar', __webpack_require__(188));
 
@@ -14426,6 +14429,12 @@ if ($("#searchFreelancers").length !== 0) {
 if ($("#record_input").length !== 0) {
     var record_input = new Vue({
         el: '#record_input'
+    });
+}
+
+if ($("#currentSubscriptions").length !== 0) {
+    var currentSubscriptions = new Vue({
+        el: '#currentSubscriptions'
     });
 }
 
@@ -56981,6 +56990,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
@@ -57012,7 +57023,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'campaign_brief_id': '',
                 agent: {},
                 errors: [],
-                shifts: []
+                shifts: [],
+                payment_options: []
             }
         };
     },
@@ -57029,6 +57041,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         currInvoices[i].days = [];
                     } else {
                         currInvoices[i].days = currInvoices[i].days.split(',');
+                    }
+                    if (currInvoices[i].payment_options === null) {
+                        currInvoices[i].payment_options = [];
+                    } else {
+                        currInvoices[i].payment_options = currInvoices[i].payment_options.split(',');
                     }
                 });
                 _this.invoices = currInvoices;
@@ -57109,7 +57126,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'campaign_brief_id': '',
                 agent: {},
                 errors: [],
-                shifts: []
+                shifts: [],
+                payment_options: []
             };
         },
         updateInvoiceNumber: function updateInvoiceNumber() {
@@ -57611,6 +57629,21 @@ var render = function() {
                       }
                     },
                     [_vm._v(" " + _vm._s(invoice.status))]
+                  ),
+                  _c("br"),
+                  _vm._v("\n                    Payment options : "),
+                  _c(
+                    "b",
+                    {
+                      staticStyle: {
+                        "font-size": "16px",
+                        color: "#30323D",
+                        "font-family": "Roboto",
+                        "line-height": "19px",
+                        "font-weight": "bold"
+                      }
+                    },
+                    [_vm._v("  " + _vm._s(invoice.payment_options.join(" | ")))]
                   ),
                   _c("br"),
                   _vm._v(" "),
@@ -58158,6 +58191,19 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -59573,6 +59619,167 @@ var render = function() {
                             _c("option", [_vm._v("Paid")]),
                             _vm._v(" "),
                             _c("option", [_vm._v("Unpaid")])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-12" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panelFormLabel",
+                            staticStyle: { "padding-bottom": "15px" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                  Payment options\n                              "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass:
+                              "form-check-label checkBoxContainer checkBoxText"
+                          },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.toBeEditedInvoice.payment_options,
+                                  expression:
+                                    "toBeEditedInvoice.payment_options"
+                                }
+                              ],
+                              staticClass: "form-check-input",
+                              attrs: { type: "checkbox", value: "once" },
+                              domProps: {
+                                checked: Array.isArray(
+                                  _vm.toBeEditedInvoice.payment_options
+                                )
+                                  ? _vm._i(
+                                      _vm.toBeEditedInvoice.payment_options,
+                                      "once"
+                                    ) > -1
+                                  : _vm.toBeEditedInvoice.payment_options
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a =
+                                      _vm.toBeEditedInvoice.payment_options,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = "once",
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        _vm.$set(
+                                          _vm.toBeEditedInvoice,
+                                          "payment_options",
+                                          $$a.concat([$$v])
+                                        )
+                                    } else {
+                                      $$i > -1 &&
+                                        _vm.$set(
+                                          _vm.toBeEditedInvoice,
+                                          "payment_options",
+                                          $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1))
+                                        )
+                                    }
+                                  } else {
+                                    _vm.$set(
+                                      _vm.toBeEditedInvoice,
+                                      "payment_options",
+                                      $$c
+                                    )
+                                  }
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "checkmark" }),
+                            _vm._v(
+                              "One time payment\n                              "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass:
+                              "form-check-label checkBoxContainer checkBoxText"
+                          },
+                          [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.toBeEditedInvoice.payment_options,
+                                  expression:
+                                    "toBeEditedInvoice.payment_options"
+                                }
+                              ],
+                              staticClass: "form-check-input",
+                              attrs: { type: "checkbox", value: "recurring" },
+                              domProps: {
+                                checked: Array.isArray(
+                                  _vm.toBeEditedInvoice.payment_options
+                                )
+                                  ? _vm._i(
+                                      _vm.toBeEditedInvoice.payment_options,
+                                      "recurring"
+                                    ) > -1
+                                  : _vm.toBeEditedInvoice.payment_options
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a =
+                                      _vm.toBeEditedInvoice.payment_options,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = "recurring",
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        _vm.$set(
+                                          _vm.toBeEditedInvoice,
+                                          "payment_options",
+                                          $$a.concat([$$v])
+                                        )
+                                    } else {
+                                      $$i > -1 &&
+                                        _vm.$set(
+                                          _vm.toBeEditedInvoice,
+                                          "payment_options",
+                                          $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1))
+                                        )
+                                    }
+                                  } else {
+                                    _vm.$set(
+                                      _vm.toBeEditedInvoice,
+                                      "payment_options",
+                                      $$c
+                                    )
+                                  }
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "checkmark" }),
+                            _vm._v(
+                              "Recurring payments\n                              "
+                            )
                           ]
                         )
                       ])
@@ -79532,7 +79739,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             filters: ['GREY', 'ORANGE', 'GREEN', 'LIGHTGREEN', 'RED'],
             nameFilter: '',
             useFilter: false,
-            permissions: ['Freelancers', 'Clients and invoices', 'Campaigns', 'Agents', 'Camp Briefs', 'Bookings', 'Chats', 'Affiliates', 'Jobs', 'Public search links', 'Search Freelancers', 'Send emails']
+            permissions: ['Freelancers', 'Clients and invoices', 'Campaigns', 'Agents', 'Camp Briefs', 'Bookings', 'Chats', 'Affiliates', 'Jobs', 'Public search links', 'Search Freelancers', 'Send emails', 'Subscriptions']
         };
     },
 
@@ -82226,6 +82433,323 @@ if (navigator.mediaDevices.getUserMedia) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(272)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(274)
+/* template */
+var __vue_template__ = __webpack_require__(275)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\currentSubscriptionsComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-94ae208e", Component.options)
+  } else {
+    hotAPI.reload("data-v-94ae208e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 272 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(273);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("4da8e4e1", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-94ae208e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./currentSubscriptionsComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-94ae208e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./currentSubscriptionsComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 273 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 274 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            paypal_subscriptions: [],
+            stripe_subscriptions: []
+        };
+    },
+
+    methods: {
+        getSubscriptions: function getSubscriptions() {
+            var _this = this;
+
+            axios.get('/admin/get/subscriptions').then(function (response) {
+                _this.paypal_subscriptions = response.data.paypal_subscriptions;
+                _this.stripe_subscriptions = response.data.stripe_subscriptions;
+            });
+        },
+        cancelPayPalSub: function cancelPayPalSub(sub_id) {
+            var _this2 = this;
+
+            axios.post('/paypal/cancel/subscription', { subscription_id: sub_id }).then(function (response) {
+                console.log(response.data);
+                if (response.data.ACK === 'Success') {
+                    var subs = _this2.paypal_subscriptions;
+                    $.each(subs, function (i) {
+                        if (subs[i].recurring_id === sub_id) {
+                            subs[i].payment_status = 'canceled';
+                            return false;
+                        }
+                    });
+                }
+            });
+        }
+    },
+    mounted: function mounted() {
+        this.getSubscriptions();
+    }
+});
+
+/***/ }),
+/* 275 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("table", { staticClass: "table" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        [
+          _vm._l(_vm.paypal_subscriptions, function(subscription, index) {
+            return _c("tr", { key: index }, [
+              _c("td", [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(subscription.id) +
+                    "\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", { attrs: { scope: "row" } }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(subscription.title) +
+                    "\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(subscription.price) +
+                    " USD\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", { attrs: { scope: "row" } }, [
+                _c(
+                  "a",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: subscription.payment_status !== "canceled",
+                        expression: "subscription.payment_status !== 'canceled'"
+                      }
+                    ],
+                    staticClass: "btn btn-dark btn-small ",
+                    attrs: { href: "javascript:void(0)" },
+                    on: {
+                      click: function($event) {
+                        _vm.cancelPayPalSub(subscription.recurring_id)
+                      }
+                    }
+                  },
+                  [_vm._v("Cancel subscription")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: subscription.payment_status === "canceled",
+                        expression: "subscription.payment_status === 'canceled'"
+                      }
+                    ],
+                    staticStyle: { color: "blue" }
+                  },
+                  [_vm._v("Canceled")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v("PayPal")])
+            ])
+          }),
+          _vm._v(" "),
+          _vm._m(1)
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Title")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("amount")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Cancel")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Payment Method")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", { attrs: { scope: "row" } }),
+      _vm._v(" "),
+      _c("td"),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "row" } })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-94ae208e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

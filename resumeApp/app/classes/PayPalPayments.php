@@ -9,7 +9,13 @@
 namespace App\classes;
 
 
+use App\Booking;
+use App\Client;
+use App\Http\Controllers\NotificationsController;
+use App\Invoice;
+use Illuminate\Support\Facades\Session;
 use App\PayPalInvoice;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\ExpressCheckout;
@@ -33,18 +39,25 @@ class PayPalPayments
             $recurring = true;
         }
         // get new invoice id
-        $invoice_id = PayPalInvoice::orderBy('created_at', 'desc')->first()->id + 1;
+        $lastInvoiceRecord = PayPalInvoice::orderBy('created_at', 'desc')->first();
+        if($lastInvoiceRecord){
+            $invoice_id = $lastInvoiceRecord->id + 1;
+        }else{
+            $invoice_id = 1;
+        }
 
         // Get the cart data
         $cart = $this->getCart($recurring, $invoice_id,$request);
 
         // create new invoice
-        $invoice = new PayPalInvoice();
-        $invoice->title = $request->description;
-        $invoice->price = $request->amountToPay;
-        $invoice->weeks = $request->weeks;
-        $invoice->count = 1;
-        $invoice->save();
+        $invoice = $this->createPayPalInvoice($request);
+        if(isset($request->paymentType) && $request->paymentType == 'hireFreelancer') {
+            $booking = $this->createBooking($request);
+        }
+
+        if(isset($request->invoice_id)){
+            session::put('invoice_id',$request->invoice_id);
+        }
 
         // send a request to paypal
         // paypal should respond with an array of data
@@ -94,14 +107,9 @@ class PayPalPayments
             // with name, price and quantity
             'items' => [
                 [
-                    'name' => 'Product 1',
-                    'price' => 10,
+                    'name' => 'One time payment - '. $invoice_id,
+                    'price' => $request['AMT'],
                     'qty' => 1,
-                ],
-                [
-                    'name' => 'Product 2',
-                    'price' => 5,
-                    'qty' => 2,
                 ],
             ],
 
@@ -113,7 +121,7 @@ class PayPalPayments
             'cancel_url' => url('/'),
             // total is calculated by multiplying price with quantity of all cart items and then adding them up
             // in this case total is 20 because Product 1 costs 10 (price 10 * quantity 1) and Product 2 costs 10 (price 5 * quantity 2)
-            'total' => 20,
+            'total' => $request['AMT'],
         ];
     }
 
@@ -121,11 +129,8 @@ class PayPalPayments
 
         // check if payment is recurring
         $recurring = $request->input('recurring', false) ? true : false;
-
         $token = $request->get('token');
-
         $PayerID = $request->get('PayerID');
-
         // initaly we paypal redirects us back with a token
         // but doesn't provice us any additional data
         // so we use getExpressCheckoutDetails($token)
@@ -145,7 +150,7 @@ class PayPalPayments
         $invoice_id = explode('_', $response['INVNUM'])[1];
 
         // get cart data
-        $cart = $this->getCart($recurring, $invoice_id,$request);
+        $cart = $this->getCart($recurring, $invoice_id,$response);
 
         // check if our payment is recurring
         if ($recurring === true) {
@@ -181,9 +186,9 @@ class PayPalPayments
 
         // find invoice by id
         $invoice = PayPalInvoice::find($invoice_id);
-
         // set invoice status
         $invoice->payment_status = $status;
+        $invoice->payer_email    = $response['EMAIL'];
 
         // if payment is recurring lets set a recurring id for latter use
         if ($recurring === true) {
@@ -193,14 +198,24 @@ class PayPalPayments
         // save the invoice
         $invoice->save();
 
+        $booking_id =  Booking::orderBy('created_at', 'desc')->first()->id; // last booking id.
+        $booking = Booking::find($booking_id);
+        $booking->is_paid = true;
+        $booking->save();
         // App\Invoice has a paid attribute that returns true or false based on payment status
         // so if paid is false return with error, else return with success message
         if ($invoice->paid) {
+            $this->sendTelegramNotificationOfPayment($invoice);
+            $this->sendMailNotification($booking);
+            if(session::has('invoice_id')){
+                $this->updateInvoiceStatus();
+            }
             return redirect('/')->with(['code' => 'success', 'successMessage' => 'Payment (' . $invoice->title . ') has been paid successfully!']);
         }
 
         return redirect('/')->with(['code' => 'danger', 'errorMessage' => 'Error processing PayPal payment for Order ' . $invoice->title . '!']);
     }
+
 
     public function notify(Request $request)
     {
@@ -235,5 +250,76 @@ class PayPalPayments
 
         }
 
+    }
+
+    public function sendTelegramNotificationOfPayment($invoice){
+        $telegram = new Telegram('-228260999');
+        $msg      = "PayPal custom payment has been made.\n" ;
+        $msg     .= "With amount of ". $invoice->price . " USD";
+        $msg     .= "\nFrom : ".$invoice->payer_email ;
+        $msg     .= "\nDescription : ".  $invoice->title;
+        if(isset($invoice->recurring_id)){
+            $msg     .= "\n(Recurring payment)";
+        }
+        $telegram->sendMessage($msg);
+    }
+
+    protected function sendMailNotification($booking){
+        // send email successfull
+        $data['email'] = $booking->booking_email;
+        $data['clientName'] = '123 Workforce visitor';
+        if(isset($booking->client_id)){
+            $data['clientName'] = Client::where('id',$booking->client_id)->first()->name;
+        }
+        $data['freelancerName'] = User::where('id',$booking->user_id)->first()->firstName;
+        $notification = new NotificationsController;
+        $notification->clientPaidEmail($data);
+    }
+
+    public function createPayPalInvoice(Request $request){
+        $invoice = new PayPalInvoice();
+        $invoice->title = $request->description;
+        $invoice->price = $request->amountToPay;
+        $invoice->weeks = $request->weeks;
+        $invoice->count = 1;
+        $invoice->save();
+
+        return $invoice;
+    }
+
+    public function createBooking(Request $request){
+        $booking = new Booking;
+        $booking->amount_paid     = $request->amountToPay;
+        $booking->hours           = $request->hours;
+        $booking->weeks           = $request->weeks;
+        $booking->weeks_original  = $request->weeks;
+        $booking->user_id         = $request->freelancerID;
+        $client_id = null ;
+        if(isset($request->client_id)){
+            $client_id = $request->client_id;
+            $booking->booking_email   = Client::where('id',$request->client_id)->first()->email;
+        }
+        $booking->client_id       = $client_id;
+
+        $booking->subscription_id = null ;
+        $booking->payment_method  = 'PayPal' ;
+        $booking->is_paid         = false ;
+        $booking->save();
+
+        return $booking;
+    }
+
+    public function updateInvoiceStatus(){
+        $invoice = Invoice::where('id',session::get('invoice_id'))->first();
+        $invoice->status = 'Paid';
+        $invoice->save();
+        Session::forget('invoice_id');
+        // change invoice booking status
+        if($invoice->status === 'Paid' && isset($invoice->booking_id)){
+            // change booking to status to be paid.
+            $booking = Booking::where('id',$invoice->booking_id)->first();
+            $booking->is_paid = true;
+            $booking->save();
+        }
     }
 }

@@ -76,17 +76,28 @@ class PayPalPayments
         return redirect($response['paypal_link']);
     }
 
-    private function getCart($recurring, $invoice_id, $request)
+    private function getCart($recurring, $invoice_id,$request)
     {
-
+        $description = '';
+        $amount = 0;
+        if(isset($request->description)){
+            $description = $request->description;
+        }else{
+            $description = $request['L_NAME0'];
+        }
+        if (isset($request->amountToPay)){
+            $amount = $request->amountToPay;
+        }else{
+            $amount = $request['AMT'];
+        }
         if ($recurring) {
             return [
                 // if payment is recurring cart needs only one item
                 // with name, price and quantity
                 'items' => [
                     [
-                        'name' => 'Weekly Subscription - ' . $request->description . $invoice_id,
-                        'price' => $request->amountToPay,
+                        'name' => 'Weekly Subscription - ' . $description . $invoice_id,
+                        'price' => $amount,
                         'qty' => 1,
                     ],
                 ],
@@ -98,7 +109,7 @@ class PayPalPayments
                 'invoice_id' => config('paypal.invoice_prefix') . '_' . $invoice_id,
                 'invoice_description' => "Order #". $invoice_id ." Invoice",
                 'cancel_url' => url('/'),
-                'total' => $request->amountToPay, // Total price of the cart
+                'total' => $amount, // Total price of the cart
             ];
         }
 
@@ -107,8 +118,8 @@ class PayPalPayments
             // with name, price and quantity
             'items' => [
                 [
-                    'name' => 'One time payment - '. $invoice_id,
-                    'price' => $request['AMT'],
+                    'name' => 'One time payment - '.$description. $invoice_id,
+                    'price' => $amount,
                     'qty' => 1,
                 ],
             ],
@@ -121,7 +132,7 @@ class PayPalPayments
             'cancel_url' => url('/'),
             // total is calculated by multiplying price with quantity of all cart items and then adding them up
             // in this case total is 20 because Product 1 costs 10 (price 10 * quantity 1) and Product 2 costs 10 (price 5 * quantity 2)
-            'total' => $request['AMT'],
+            'total' => $amount,
         ];
     }
 
@@ -136,7 +147,7 @@ class PayPalPayments
         // so we use getExpressCheckoutDetails($token)
         // to get the payment details
         $response = $this->provider->getExpressCheckoutDetails($token);
-
+        $payer_email = $response['EMAIL'];
         // if response ACK value is not SUCCESS or SUCCESSWITHWARNING
         // we return back with error
         if (!in_array(strtoupper($response['ACK']), ['SUCCESS', 'SUCCESSWITHWARNING'])) {
@@ -188,7 +199,7 @@ class PayPalPayments
         $invoice = PayPalInvoice::find($invoice_id);
         // set invoice status
         $invoice->payment_status = $status;
-        $invoice->payer_email    = $response['EMAIL'];
+        $invoice->payer_email    = $payer_email;
 
         // if payment is recurring lets set a recurring id for latter use
         if ($recurring === true) {

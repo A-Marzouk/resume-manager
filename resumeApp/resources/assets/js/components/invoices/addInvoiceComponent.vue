@@ -149,15 +149,25 @@
                                   <div class="panelFormLabel" style="padding-bottom:15px;">
                                       Payment options
                                   </div>
-                                  <label class="form-check-label checkBoxContainer checkBoxText">
-                                      <input  class="form-check-input" type="checkbox" value="once" v-model="toBeEditedInvoice.payment_options">
-                                      <span class="checkmark"></span>One time payment
-                                  </label>
-                                  <label class="form-check-label checkBoxContainer checkBoxText">
-                                      <input  class="form-check-input" type="checkbox" value="recurring" v-model="toBeEditedInvoice.payment_options">
-                                      <span class="checkmark"></span>Recurring payments
-                                  </label>
-                              </div>
+                                  <div class="row">
+                                      <label class="col-md-5 form-check-label checkBoxContainer checkBoxText">
+                                          <input  class="form-check-input" type="checkbox" value="once" v-model="toBeEditedInvoice.payment_options">
+                                          <span class="checkmark"></span>One time payment
+                                      </label>
+                                      <label class="col-md-5 form-check-label checkBoxContainer checkBoxText">
+                                          <input  class="form-check-input" type="checkbox" value="recurring" v-model="toBeEditedInvoice.payment_options">
+                                          <span class="checkmark"></span>Recurring payments
+                                      </label>
+                                      <label class="col-md-5 form-check-label checkBoxContainer checkBoxText">
+                                          <input  class="form-check-input" type="checkbox" value="stripe" v-model="toBeEditedInvoice.payment_options">
+                                          <span class="checkmark"></span>Stripe
+                                      </label>
+                                      <label class="col-md-5 form-check-label checkBoxContainer checkBoxText">
+                                          <input  class="form-check-input" type="checkbox" value="paypal" v-model="toBeEditedInvoice.payment_options">
+                                          <span class="checkmark"></span>PayPal
+                                      </label>
+                                  </div>
+                               </div>
                           </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Save</button>

@@ -32,6 +32,10 @@ class PayPalPayments
         return view('welcomePaypal');
     }
 
+    public function showForm(){
+        return view('paypalForm');
+    }
+
     public function expressCheckout(Request $request) {
         // check if payment is recurring
         $recurring = false;

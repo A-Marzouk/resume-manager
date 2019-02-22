@@ -344,6 +344,13 @@ Route::post('/paypal/express-checkout', '\App\classes\PayPalPayments@expressChec
 Route::get('/paypal/express-checkout-success', '\App\classes\PayPalPayments@expressCheckoutSuccess');
 Route::post('/paypal/notify', '\App\classes\PayPalPayments@notify');
 
+// subscriptions :
+Route::get('/admin/get/subscriptions', 'AdminsController@getCurrentSubscriptions');
+Route::post('/paypal/cancel/subscription', '\App\classes\PayPalPayments@cancelSubscription');
+Route::post('/stripe/cancel/subscription', '\App\classes\StripePayments@cancelSubscription');
+
+
+
 // send payments to our users.
 //Route::get('payment/paypal/send','PaypalController@showSendForm')->name('show.paypal.form');
 //Route:: post('payment/paypal_send/submit','PaypalController@sendPaymentByPayPal')->name('submit.paypal.send.form');

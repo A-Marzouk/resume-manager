@@ -263,6 +263,17 @@ class PayPalPayments
 
     }
 
+    public function cancelSubscription(Request $request){
+        $subscription_id = $request->subscription_id;
+        $response        = $this->provider->cancelRecurringPaymentsProfile($subscription_id);
+        if($response['ACK'] == 'Success'){
+            $invoice = PayPalInvoice::where('recurring_id',$subscription_id)->first();
+            $invoice->payment_status = 'canceled';
+            $invoice->save();
+        }
+        return $response;
+    }
+
     public function sendTelegramNotificationOfPayment($invoice){
         $telegram = new Telegram('-228260999');
         $msg      = "PayPal custom payment has been made.\n" ;

@@ -82523,7 +82523,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -82540,17 +82540,81 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            subscriptions: []
+            paypal_subscriptions: [],
+            stripe_subscriptions: []
         };
     },
 
-    methods: {},
+    methods: {
+        getSubscriptions: function getSubscriptions() {
+            var _this = this;
+
+            axios.get('/admin/get/subscriptions').then(function (response) {
+                _this.paypal_subscriptions = response.data.paypal_subscriptions;
+                _this.stripe_subscriptions = response.data.stripe_subscriptions;
+            });
+        },
+        cancelPayPalSub: function cancelPayPalSub(sub_id) {
+            var _this2 = this;
+
+            axios.post('/paypal/cancel/subscription', { subscription_id: sub_id }).then(function (response) {
+                console.log(response.data);
+                if (response.data.ACK === 'Success') {
+                    var subs = _this2.paypal_subscriptions;
+                    $.each(subs, function (i) {
+                        if (subs[i].recurring_id === sub_id) {
+                            subs[i].payment_status = 'canceled';
+                            return false;
+                        }
+                    });
+                }
+            });
+        }
+    },
     mounted: function mounted() {
-        console.log('current subscriptions component');
+        this.getSubscriptions();
     }
 });
 
@@ -82562,9 +82626,122 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", [
+    _c("table", { staticClass: "table" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        [
+          _vm._l(_vm.paypal_subscriptions, function(subscription, index) {
+            return _c("tr", { key: index }, [
+              _c("td", [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(subscription.id) +
+                    "\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", { attrs: { scope: "row" } }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(subscription.title) +
+                    "\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(subscription.price) +
+                    " USD\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", { attrs: { scope: "row" } }, [
+                _c(
+                  "a",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: subscription.payment_status !== "canceled",
+                        expression: "subscription.payment_status !== 'canceled'"
+                      }
+                    ],
+                    staticClass: "btn btn-dark btn-small ",
+                    attrs: { href: "javascript:void(0)" },
+                    on: {
+                      click: function($event) {
+                        _vm.cancelPayPalSub(subscription.recurring_id)
+                      }
+                    }
+                  },
+                  [_vm._v("Cancel subscription")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: subscription.payment_status === "canceled",
+                        expression: "subscription.payment_status === 'canceled'"
+                      }
+                    ],
+                    staticStyle: { color: "blue" }
+                  },
+                  [_vm._v("Canceled")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v("PayPal")])
+            ])
+          }),
+          _vm._v(" "),
+          _vm._m(1)
+        ],
+        2
+      )
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Title")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("amount")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Cancel")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Payment Method")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", { attrs: { scope: "row" } }),
+      _vm._v(" "),
+      _c("td"),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "row" } })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

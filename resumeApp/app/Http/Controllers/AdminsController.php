@@ -9,6 +9,7 @@ use App\ClientSearch;
 use App\Conversation;
 use App\Job;
 use App\Owner;
+use App\PayPalInvoice;
 use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
@@ -263,6 +264,16 @@ class AdminsController extends Controller
     public function invitePage($job_id){
         $job = Job::find($job_id);
         return view('admin.invitePage',compact('job'));
+    }
+
+    public function getCurrentSubscriptions(){
+        $paypalSubs = PayPalInvoice::where('recurring_id','!=',null)->get();
+        $stripeSubs = Booking::where('subscription_id','!=',null)->get();
+
+        return [
+            'paypal_subscriptions' => $paypalSubs,
+            'stripe_subscriptions' => $stripeSubs,
+        ];
     }
 
 }

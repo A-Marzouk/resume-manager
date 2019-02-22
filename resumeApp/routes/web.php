@@ -334,9 +334,11 @@ Route::post('affiliate/password/reset', 'Auth\Affiliates\AffiliateResetPasswordC
 
 
 // paypal routes
-Route::get('payment/paypal','PaypalController@showForm')->name('show.paypal.form');
-Route:: post('payment/paypal/submit','PaypalController@payWithPaypal')->name('submit.paypal.form');
-Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('paypal.status');
+//Route::get('payment/paypal','PaypalController@showForm')->name('show.paypal.form');
+//Route:: post('payment/paypal/submit','PaypalController@payWithPaypal')->name('submit.paypal.form');
+//Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('paypal.status');
+
+Route::get('payment/paypal','\App\classes\PayPalPayments@showForm')->name('show.paypal.form');
 
 // paypal - express checkout routes :
 Route::get('/paypal/pay-form', '\App\classes\PayPalPayments@viewPayPalForm')->name('paypal.express-checkout.form');

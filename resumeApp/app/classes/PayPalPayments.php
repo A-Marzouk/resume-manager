@@ -255,7 +255,11 @@ class PayPalPayments
 
                 if($invoice->count == $invoice->weeks){
                     // cancel subscription:
-                    $this->provider->cancelRecurringPaymentsProfile($invoice->recurring_id);
+                    $response = $this->provider->cancelRecurringPaymentsProfile($invoice->recurring_id);
+                    if($response['ACK'] == 'Success'){
+                        $invoice->payment_status = 'canceled';
+                        $invoice->save();
+                    }
                 }
             }
 

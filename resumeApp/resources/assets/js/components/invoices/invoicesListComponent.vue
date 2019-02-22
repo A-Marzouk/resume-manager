@@ -71,6 +71,8 @@
 
                         <hr>
                         Status : <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{invoice.status}}</b><br/>
+                        Payment options : <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">  {{invoice.payment_options.join(' | ')}}</b><br/>
+
                         <div class="NoDecor">
                             Related Campaign Brief : <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
                             <a :href="'https://123workforce.com/workforce/campaign_briefs/'+invoice.campaign_brief_id" target="_blank">View campaign brief</a>
@@ -186,7 +188,8 @@
                     'campaign_brief_id':'',
                      agent:{},
                      errors:[],
-                     shifts:[]
+                     shifts:[],
+                     payment_options:[]
                 }
             }
         },
@@ -201,6 +204,11 @@
                                 currInvoices[i].days = [];
                             }else{
                                 currInvoices[i].days = currInvoices[i].days.split(',')
+                            }
+                            if(currInvoices[i].payment_options === null){
+                                currInvoices[i].payment_options = [];
+                            }else{
+                                currInvoices[i].payment_options = currInvoices[i].payment_options.split(',')
                             }
                         });
                         this.invoices = currInvoices;
@@ -286,7 +294,8 @@
                     'campaign_brief_id':'',
                      agent:{},
                      errors:[],
-                     shifts:[]
+                     shifts:[],
+                     payment_options:[]
                 };
             },
 

@@ -22,6 +22,10 @@
                     @include('admin.includes.freelancers')
                 @endif
 
+                @if(in_array('Subscriptions',$permissions))
+                    @include('admin.includes.subscriptions')
+                @endif
+
                 @if(in_array('Clients and invoices',$permissions))
                     @include('admin.includes.clients')
                 @endif

@@ -200,10 +200,12 @@
 
                             <input type="hidden" value="invoice" name="paymentInfo">
                             <input type="hidden" value="{{$invoice->id}}" name="invoice_id">
-                            <div class="form-group col-md-12">
+                            @if(in_array('recurring',explode(',',$invoice->payment_options)))
+                                <div class="form-group col-md-12">
                                 <label for="weeks" class="panelFormLabel">Recurring payments <small><br/>(Leave empty for one time payment)</small></label>
                                 <input type="number" placeholder="Number of weeks.." min="0" max="24" id="weeks" class="panelFormInput form-control" name="weeks">
                             </div>
+                            @endif
                             <script
                                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                     data-key="{{env('STRIPE_KEY')}}"
@@ -231,10 +233,13 @@
                              <!-- description -->
                                 <input type="hidden" name="custom_payment" value="true" required>
                                 <input type="hidden" name="invoice_id" value="{{$invoice->id}}" required>
-                                <div class="form-group col-md-12">
+
+                                @if(in_array('recurring',explode(',',$invoice->payment_options)))
+                                    <div class="form-group col-md-12">
                                     <label for="weeks" class="panelFormLabel">Recurring payments <small><br/>(Leave empty for one time payment)</small></label>
                                     <input type="number" placeholder="Number of weeks.." min="0" max="24" id="weeks" class="panelFormInput form-control" name="weeks">
                                 </div>
+                                @endif
                                 <div class="buttonMain whiteBg col-md-8 offset-md-2" style="margin-top: 10%;padding-top: 10px; padding-bottom: 25px;">
                                     <button class="hireBtn btn-block hire" type="submit">Pay via PayPal</button>
                                 </div>

@@ -60,6 +60,7 @@ class InvoicesController extends Controller
             'status' => 'max:191',
             'time_of_service' => 'max:1500',
             'notes' => 'max:1500',
+            'payment_options' => 'max:191',
         ]);
     }
 
@@ -98,6 +99,10 @@ class InvoicesController extends Controller
             }else{
                 $invoice->days      = implode(',',$request->days);
             }
+        }
+
+        if(isset($request->payment_options)){
+            $invoice->payment_options      = implode(',',$request->payment_options);
         }
 
         $invoice->currency      = $request->currency;

@@ -145,6 +145,19 @@
                                       <option>Unpaid</option>
                                   </select>
                               </div>
+                              <div class="col-md-12">
+                                  <div class="panelFormLabel" style="padding-bottom:15px;">
+                                      Payment options
+                                  </div>
+                                  <label class="form-check-label checkBoxContainer checkBoxText">
+                                      <input  class="form-check-input" type="checkbox" value="once" v-model="toBeEditedInvoice.payment_options">
+                                      <span class="checkmark"></span>One time payment
+                                  </label>
+                                  <label class="form-check-label checkBoxContainer checkBoxText">
+                                      <input  class="form-check-input" type="checkbox" value="recurring" v-model="toBeEditedInvoice.payment_options">
+                                      <span class="checkmark"></span>Recurring payments
+                                  </label>
+                              </div>
                           </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Save</button>

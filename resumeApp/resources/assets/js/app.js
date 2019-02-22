@@ -90,6 +90,9 @@ Vue.component('record-input', require('./components/record_while_register.vue'))
 // terms bar component
 Vue.component('terms-bar', require('./components/termsBarComponent.vue'));
 
+// current Subscriptions Componet
+Vue.component('current-subscriptions', require('./components/currentSubscriptionsComponent.vue'));
+
 // agent terms bar component
 Vue.component('agent-terms-bar', require('./components/agentTermsBarComponent.vue'));
 
@@ -139,6 +142,12 @@ if ($("#searchFreelancers").length !== 0){
 if ($("#record_input").length !== 0){
     let record_input = new Vue({
         el:'#record_input'
+    });
+}
+
+if ($("#currentSubscriptions").length !== 0){
+    let currentSubscriptions = new Vue({
+        el:'#currentSubscriptions'
     });
 }
 

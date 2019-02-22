@@ -232,7 +232,7 @@
                 useFilter:false,
                 permissions:[
                     'Freelancers','Clients and invoices','Campaigns','Agents','Camp Briefs','Bookings','Chats',
-                    'Affiliates','Jobs','Public search links','Search Freelancers','Send emails'
+                    'Affiliates','Jobs','Public search links','Search Freelancers','Send emails','Subscriptions'
                 ],
             }
         },

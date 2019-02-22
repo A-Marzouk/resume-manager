@@ -80,14 +80,15 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <form action="{{route('submit.paypal.form')}}" method="POST">
+                                <form action="{{route('paypal.express-checkout')}}" method="POST">
                                     {{ csrf_field() }}
 
                                     <input type="hidden" class="form-control panelFormInput" id="amount" name="amountToPay" value="{{(intval($freelancer->userData->salary)+5) * $hours}}" required>
                                     <input type="hidden" value="{{$freelancer->userData->name}}" name="freelancerName">
+                                    <input type="hidden" value="Hire : {{$freelancer->userData->name}}" name="description">
                                     <input type="hidden" value="{{$freelancer->id}}" name="freelancerID">
                                     <input type="hidden" value="{{$hours}}" name="hours">
-                                    <input type="hidden" value="{{$weeks}}" name="weeks">
+                                    <input type="hidden" value="hireFreelancer" name="paymentType">
                                     @if(!auth()->guard('client')->guest())
                                         <input type="hidden" name="client_id" value="{{auth()->guard('client')->user()->id}}">
                                         <input type="hidden" name="client_email" value="{{auth()->guard('client')->user()->email}}">

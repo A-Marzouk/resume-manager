@@ -224,7 +224,7 @@ class StripePayments
 
     protected function createBooking($request,$client_id,$subscription_id){
         $booking = new Booking;
-        $booking->amount_paid     = $request->amountToPay;
+        $booking->amount_paid     = $request->amountToPay * 100;
         $booking->hours           = $request->hours;
         $booking->weeks           = $request->weeks;
         $booking->weeks_original  = $request->weeks;
@@ -271,6 +271,10 @@ class StripePayments
                     $subscription = Subscription::retrieve($booking->subscription_id);
                     $subscription->cancel();
 
+                    $booking = Booking::where('subscription_id',$booking->subscription_id)->first();
+                    $booking->canceled = 'canceled';
+                    $booking->save();
+
                     // web hook telegram message
                     $telegram = new Telegram('-228260999');
                     $msg  = "A subscription with ID of : " ;
@@ -299,6 +303,19 @@ class StripePayments
 
         }
         return new Response('webhock handled', 200);
+    }
+
+    public function cancelSubscription(Request $request){
+        Stripe::setApiKey($this->apiKey);
+        $subscription = Subscription::retrieve($request->subscription_id);
+        $subscription->cancel();
+        // make the booking cancel status as canceled :
+        $booking = Booking::where('subscription_id',$request->subscription_id)->first();
+        $booking->canceled = 'canceled';
+        $booking->save();
+
+        return ['status' => 'canceled'] ;
+
     }
 }
 

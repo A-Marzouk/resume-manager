@@ -57337,7 +57337,7 @@ var render = function() {
                             }
                           }),
                           _vm._v(
-                            "\n                            Add shift\n                        "
+                            "\n                            Add service\n                        "
                           )
                         ]
                       )
@@ -57804,7 +57804,7 @@ var render = function() {
                                     _c("br"),
                                     _vm._v(" "),
                                     _c("b", [_vm._v("Rate : ")]),
-                                    _vm._v(" " + _vm._s(shift.rate)),
+                                    _vm._v(" " + _vm._s(shift.rate) + " USD"),
                                     _c("br"),
                                     _vm._v(" "),
                                     _c("b", [_vm._v("Service : ")]),

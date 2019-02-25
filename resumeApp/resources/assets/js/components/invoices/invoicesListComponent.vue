@@ -29,7 +29,7 @@
             padding-right: 7px;
             padding-bottom: 2px;
             height: 15px;">
-                                Add shift
+                                Add service
                             </a>
                         </span>
 
@@ -102,7 +102,7 @@
                                         <div class="col-md-8">
                                             <b>Starts at :</b>{{shift.start_time}}<br/>
                                             <b>Ends at : </b> {{shift.end_time}}<br/>
-                                            <b>Rate : </b> {{shift.rate}}<br/>
+                                            <b>Rate : </b> {{shift.rate}} USD<br/>
                                             <b>Service : </b> {{shift.service}}<br/>
                                             <b>Shift days : <Br/></b>{{shift.days}}
                                         </div>

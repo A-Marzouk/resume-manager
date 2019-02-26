@@ -72,7 +72,12 @@
                     </div>
 
                     <div class="agentName">
-                        Name of Agent :  @if(isset($invoice->user->id)){{$invoice->user->firstName}} {{$invoice->user->lastName}} @else {{$invoice->agentName}}@endif<br/>
+                        Name of Agents :<br/>
+                        @foreach($invoice->services as $service)
+                            @if(isset($service->user_id))
+                                - {{$service->user->firstName}} {{$service->user->lastName}}
+                            @endif<br/>
+                        @endforeach
                     </div>
                     <div class="termsText" style="padding-bottom: 50px;">
                         Invoice issue date    : {{$invoice->created_at->format('d.m.Y')}}
@@ -109,51 +114,19 @@
                 </tr>
             </table>
 
-            <table style="  border-top: 2px lightblue solid; padding-bottom: 40px;" >
-                <tr class="clientInfo">
-                    <th style="width: 370px!important;">
-                        Working hours
-                    </th>
-                    <th style="width: 380px!important;">
-                        Days
-                    </th >
-                    <th style="width: 380px!important;">
-                        Year - Week
-                    </th>
-                </tr>
-                <tr class="row clientInfo_detail">
-                    <td class="col-4">
-                        From: {{$invoice->start_time}} <br/>
-                        To: {{$invoice->end_time}}
-                    </td>
-                    <td class="col-4">
-                        @if($invoice->days == 'all_days')
-                            All days of the week.
-                        @else
-                            {{$invoice->days}}
-                        @endif
-                    </td>
-                    <td style="border: none; word-break: break-word;" class="col-4">
-                        {{$invoice->week}}<br/>
-                        {{$invoice->weekDate}}
-                    </td>
-                </tr>
-            </table>
-
-
-            @if(count($invoice->shifts) > 0)
+            @if(count($invoice->services) > 0)
 
                 <div class="termsText">
-                    Custom shifts :
+                    Custom services :
                 </div>
-                @foreach($invoice->shifts as $shift)
+                @foreach($invoice->services as $service)
                     <table style="margin-top: 55px;  border-top: 2px lightblue solid;">
                         <tr class="clientInfo">
                             <th style="width: 350px!important;">
-                                SHIFT SERVICE
+                                SERVICE
                             </th>
                             <th  style="width: 240px!important;">
-                                SHIFT TIME
+                               HOURS
                             </th>
                             <th style="width: 240px!important;">
                                 RATE
@@ -164,17 +137,16 @@
                         </tr>
                         <tr class="clientInfo_detail">
                             <td>
-                                {{$shift->service}}
+                                {{$service->title}}
                             </td>
                             <td >
-                                From: {{$shift->start_time}}<br/>
-                                To: {{$shift->end_time}}
+                                {{$service->hours}} hours
                             </td>
                             <td >
-                                {{$shift->rate}}
+                                {{$service->rate}}
                             </td>
                             <td style="border: none; word-break: break-word;">
-                                @if($shift->days === 'all_days') All business days @else {{$shift->days}} @endif
+                                @if($service->days === 'all_days') All business days @else {{$service->days}} @endif
                             </td>
                         </tr>
                     </table>
@@ -184,13 +156,10 @@
             <table style="margin-top: 55px;  border-top: 2px lightblue solid;">
                 <tr class="row clientInfo">
                     <th class="col-6" style="width: 380px!important;">
-                        SERVICE PROVIDED
+                        SERVICES PROVIDED
                     </th>
                     <th class="col-2" style="width: 185px!important;">
                         NO. OF HRS / WEEK
-                    </th>
-                    <th class="col-2" style="width: 185px!important;">
-                        RATE / HR
                     </th>
                     <th class="col-2" style="width: 185px!important;">
                         TOTAL DUE
@@ -202,15 +171,12 @@
 
                 <tr class="row clientInfo_detail">
                     <td class="col-6 text-left">
-                        {!!nl2br($invoice->service)!!}<br/><br>
-                        {!!nl2br($invoice->time_of_service)!!}<br/><br>
-                        {!!nl2br($invoice->client->timeZone)!!}
+                        @foreach($invoice->services as $service)
+                            {{$service->title}}<br/>
+                        @endforeach
                     </td>
                     <td class="col-2">
                         {{$invoice->hours}}
-                    </td>
-                    <td class="col-2">
-                        {{$invoice->rate}} USD
                     </td>
                     <td class="col-2" >
                         {{$invoice->total_amount}}

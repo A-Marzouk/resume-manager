@@ -207,6 +207,7 @@ Route::post('/admin/send_invoice_email','InvoicesController@sendEmailNotificatio
     // invoice public link
 Route::get('/invoice/pdf/{unique_number}','InvoicesController@invoiceToPDF')->name('invoice.to.pdf');
 Route::get('/workforce/invoices/{unique_number}','InvoicesController@viewInvoicePublicPage')->name('show.invoice.public.page');
+Route::get('/workforce/invoices/get_unique_number/{id}','InvoicesController@getInvoiceUniqueNumberByID');
 
 // services
 Route::get('/admin/client/services_view/{client_id}','ServicesController@viewServicesPage')->name('show.services.page');

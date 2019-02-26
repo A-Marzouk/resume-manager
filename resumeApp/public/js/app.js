@@ -56940,69 +56940,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
@@ -57014,27 +56951,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'id': '',
                 'unique_number': '',
                 'client_id': this.client_id,
-                'user_id': '',
                 'total_amount': '',
-                'agentName': '',
                 'hours': '',
                 'rate': '',
-                'service': '',
                 'notes': '',
-                'time_of_service': '',
                 'status': '',
                 'timeZone': '',
                 'currency': '',
-                'year': '',
-                'week': '',
-                'start_time': '',
-                'end_time': '',
-                'weekDate': '',
-                days: ['Mon'],
                 'campaign_brief_id': '',
-                agent: {},
                 errors: [],
-                shifts: [],
+                services: [],
                 payment_options: []
             }
         };
@@ -57048,11 +56974,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/admin/client/invoices/' + this.client_id).then(function (response) {
                 var currInvoices = response.data;
                 $.each(currInvoices, function (i) {
-                    if (currInvoices[i].days === null) {
-                        currInvoices[i].days = [];
-                    } else {
-                        currInvoices[i].days = currInvoices[i].days.split(',');
-                    }
                     if (currInvoices[i].payment_options === null) {
                         currInvoices[i].payment_options = [];
                     } else {
@@ -57117,27 +57038,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'id': '',
                 'unique_number': '',
                 'client_id': this.client_id,
-                'user_id': '',
                 'total_amount': '',
-                'agentName': '',
                 'hours': '',
                 'rate': '',
-                'service': '',
                 'notes': '',
-                'time_of_service': '',
                 'status': '',
                 'timeZone': '',
                 'currency': '',
-                'year': '',
-                'weekDate': '',
-                'week': '',
-                'start_time': '',
-                'end_time': '',
-                days: [],
                 'campaign_brief_id': '',
-                agent: {},
                 errors: [],
-                shifts: [],
+                services: [],
                 payment_options: []
             };
         },
@@ -57176,30 +57086,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var event = new Date(date);
             var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
             return event.toLocaleDateString('en-EN', options);
-        },
-        deleteShift: function deleteShift(shift) {
-            var _this4 = this;
-
-            if (!confirm('Are you sure you want to delete this shift ?')) {
-                return;
-            }
-            axios.post('/admin/camps/delete_shift', { shiftID: shift.id }).then(function (response) {
-                var invoices = _this4.invoices;
-                $.each(invoices, function (i) {
-                    $.each(invoices[i].shifts, function (j) {
-                        if (invoices[i].shifts[j].id === shift.id) {
-                            invoices[i].shifts.splice(j, 1);
-                            return false;
-                        }
-                    });
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-            });
         }
     },
 
@@ -57312,109 +57198,12 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass: "deleteWorkBtn NoDecor",
-                      staticStyle: { width: "125px", "margin-right": "5px" },
-                      on: {
-                        click: function($event) {
-                          _vm.editInvoice(invoice.id)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "a",
-                        {
-                          attrs: {
-                            href: "javascript:void(0)",
-                            "data-target": "#addInvoiceShiftModal",
-                            "data-toggle": "modal"
-                          }
-                        },
-                        [
-                          _c("img", {
-                            staticStyle: {
-                              width: "20px",
-                              "padding-right": "7px",
-                              "padding-bottom": "2px",
-                              height: "15px"
-                            },
-                            attrs: {
-                              src:
-                                "/resumeApp/resources/assets/images/add_blue.png",
-                              alt: "edit profile"
-                            }
-                          }),
-                          _vm._v(
-                            "\n                            Add service\n                        "
-                          )
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
                   _c("div", { staticClass: "pageSubHeading text-left" }, [
                     _vm._v(
                       "\n                        Invoice details\n                    "
                     )
                   ]),
-                  _vm._v("\n                    Client name :"),
-                  _c(
-                    "b",
-                    {
-                      staticStyle: {
-                        "font-size": "16px",
-                        color: "#30323D",
-                        "font-family": "Roboto",
-                        "line-height": "19px",
-                        "font-weight": "bold"
-                      }
-                    },
-                    [_vm._v(" " + _vm._s(invoice.clientName))]
-                  ),
-                  _c("br"),
-                  _vm._v("\n                    Agent :\n                    "),
-                  invoice.agent !== null
-                    ? _c(
-                        "b",
-                        {
-                          staticStyle: {
-                            "font-size": "16px",
-                            color: "#30323D",
-                            "font-family": "Roboto",
-                            "line-height": "19px",
-                            "font-weight": "bold"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(invoice.agent.firstName) +
-                              " " +
-                              _vm._s(invoice.agent.lastName) +
-                              "\n                    "
-                          )
-                        ]
-                      )
-                    : _vm._e(),
                   _vm._v(" "),
-                  _c("br"),
-                  _vm._v("\n                    Rate per Hour :"),
-                  _c(
-                    "b",
-                    {
-                      staticStyle: {
-                        "font-size": "16px",
-                        color: "#30323D",
-                        "font-family": "Roboto",
-                        "line-height": "19px",
-                        "font-weight": "bold"
-                      }
-                    },
-                    [_vm._v(" " + _vm._s(invoice.rate))]
-                  ),
                   _c("br"),
                   _vm._v("\n                    Total amount to pay :"),
                   _c(
@@ -57450,19 +57239,6 @@ var render = function() {
                   _c(
                     "div",
                     {
-                      staticStyle: { color: "#30323D", "font-family": "Roboto" }
-                    },
-                    [
-                      _vm._v(
-                        "Service provided : " +
-                          _vm._s(_vm.nl2br(invoice.service, false))
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
                       directives: [
                         {
                           name: "show",
@@ -57477,61 +57253,7 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c("hr"),
-                  _vm._v("\n                    Time zone:"),
-                  _c(
-                    "b",
-                    {
-                      staticStyle: {
-                        "font-size": "16px",
-                        color: "#30323D",
-                        "font-family": "Roboto",
-                        "line-height": "19px",
-                        "font-weight": "bold"
-                      }
-                    },
-                    [_vm._v(" " + _vm._s(invoice.timeZone))]
-                  ),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: invoice.time_of_service != null,
-                          expression: "invoice.time_of_service != null"
-                        }
-                      ],
-                      staticStyle: { color: "#30323D", "font-family": "Roboto" }
-                    },
-                    [
-                      _vm._v(
-                        "Time : " +
-                          _vm._s(_vm.nl2br(invoice.time_of_service, false))
-                      )
-                    ]
-                  ),
-                  _vm._v("\n                    Year - Week :"),
-                  _c(
-                    "b",
-                    {
-                      staticStyle: {
-                        "font-size": "16px",
-                        color: "#30323D",
-                        "font-family": "Roboto",
-                        "line-height": "19px",
-                        "font-weight": "bold"
-                      }
-                    },
-                    [_vm._v(" " + _vm._s(invoice.week))]
-                  ),
-                  _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(invoice.weekDate))]),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v("\n\n                    Hours :"),
+                  _vm._v("\n                    Hours :"),
                   _c(
                     "b",
                     {
@@ -57546,85 +57268,6 @@ var render = function() {
                     [_vm._v(" " + _vm._s(invoice.hours))]
                   ),
                   _c("br"),
-                  _vm._v("\n\n                    Working hours :"),
-                  _c("br"),
-                  _c(
-                    "b",
-                    {
-                      staticStyle: {
-                        "font-size": "16px",
-                        color: "#30323D",
-                        "font-family": "Roboto",
-                        "line-height": "19px",
-                        "font-weight": "bold"
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n                    Start : " +
-                          _vm._s(invoice.start_time) +
-                          " | End : " +
-                          _vm._s(invoice.end_time) +
-                          " "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v("\n                    Days :\n                    "),
-                  _c(
-                    "div",
-                    {
-                      staticStyle: {
-                        "font-size": "16px",
-                        color: "#30323D",
-                        "font-family": "Roboto",
-                        "line-height": "19px",
-                        "font-weight": "bold"
-                      }
-                    },
-                    [
-                      _c(
-                        "b",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: invoice.days.includes("all_days"),
-                              expression: "invoice.days.includes('all_days')"
-                            }
-                          ]
-                        },
-                        [
-                          _vm._v(
-                            "\n                            All days of the week.\n                        "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "b",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: !invoice.days.includes("all_days"),
-                              expression: "!invoice.days.includes('all_days')"
-                            }
-                          ]
-                        },
-                        [
-                          _vm._v(
-                            "\n                            " +
-                              _vm._s(invoice.days.join(" | ")) +
-                              "\n                        "
-                          )
-                        ]
-                      )
-                    ]
-                  ),
                   _vm._v(" "),
                   _c("hr"),
                   _vm._v("\n                    Status : "),
@@ -57657,39 +57300,6 @@ var render = function() {
                     [_vm._v("  " + _vm._s(invoice.payment_options.join(" | ")))]
                   ),
                   _c("br"),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "NoDecor" }, [
-                    _vm._v(
-                      "\n                        Related Campaign Brief : "
-                    ),
-                    _c(
-                      "b",
-                      {
-                        staticStyle: {
-                          "font-size": "16px",
-                          color: "#30323D",
-                          "font-family": "Roboto",
-                          "line-height": "19px",
-                          "font-weight": "bold"
-                        }
-                      },
-                      [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              href:
-                                "https://123workforce.com/workforce/campaign_briefs/" +
-                                invoice.campaign_brief_id,
-                              target: "_blank"
-                            }
-                          },
-                          [_vm._v("View campaign brief")]
-                        )
-                      ]
-                    ),
-                    _c("br")
-                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "NoDecor" }, [
                     _vm._v("\n                        Public link :"),
@@ -57729,15 +57339,15 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: invoice.shifts.length < 1,
-                          expression: "invoice.shifts.length < 1"
+                          value: invoice.services.length < 1,
+                          expression: "invoice.services.length < 1"
                         }
                       ],
                       staticClass: "font-weight-bold row"
                     },
                     [
                       _vm._v(
-                        "\n                        No shifts in this invoice.\n                    "
+                        "\n                        No services in this invoice.\n                    "
                       )
                     ]
                   ),
@@ -57749,133 +57359,89 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: invoice.shifts.length > 0,
-                          expression: "invoice.shifts.length > 0"
+                          value: invoice.services.length > 0,
+                          expression: "invoice.services.length > 0"
                         }
                       ],
                       staticClass: "row"
                     },
                     [
-                      _c("div", { staticClass: "font-weight-bold" }, [
+                      _c("div", { staticClass: "font-weight-bold col-12" }, [
                         _vm._v(
-                          "\n                            Shifts : (" +
-                            _vm._s(invoice.shifts.length) +
+                          "\n                            Services : (" +
+                            _vm._s(invoice.services.length) +
                             "#)\n                        "
                         )
                       ]),
                       _vm._v(" "),
-                      _c(
-                        "transition-group",
-                        { staticClass: "col-12", attrs: { name: "list" } },
-                        _vm._l(invoice.shifts, function(shift, index) {
-                          return _c(
-                            "div",
-                            {
-                              key: index,
-                              staticClass: "list-item",
-                              staticStyle: {
-                                margin: "5px 0 5px 5px",
-                                padding: "5px 0 5px 5px",
-                                border: "1px solid lightgrey",
-                                "border-radius": "5px"
-                              }
-                            },
-                            [
-                              _c("div", { staticClass: "text-center" }, [
-                                _c(
-                                  "span",
-                                  {
-                                    staticStyle: {
-                                      padding: "10px 0 5px 0",
-                                      "border-bottom": "1px solid lightgrey"
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                        Shift details\n                                    "
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
+                      _vm._l(invoice.services, function(service, index) {
+                        return _c(
+                          "div",
+                          {
+                            key: index,
+                            staticClass: "col-8",
+                            staticStyle: {
+                              margin: "5px 0 5px 5px",
+                              padding: "5px 0 5px 5px",
+                              border: "1px solid lightgrey",
+                              "border-radius": "5px"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "text-center row" }, [
                               _c(
-                                "div",
+                                "span",
                                 {
-                                  staticClass: "row",
-                                  staticStyle: { "padding-top": "10px" }
+                                  staticStyle: {
+                                    padding: "10px 0 5px 0",
+                                    "border-bottom": "1px solid lightgrey"
+                                  }
                                 },
                                 [
-                                  _c("div", { staticClass: "col-md-8" }, [
-                                    _c("b", [_vm._v("Starts at :")]),
-                                    _vm._v(_vm._s(shift.start_time)),
-                                    _c("br"),
-                                    _vm._v(" "),
-                                    _c("b", [_vm._v("Ends at : ")]),
-                                    _vm._v(" " + _vm._s(shift.end_time)),
-                                    _c("br"),
-                                    _vm._v(" "),
-                                    _c("b", [_vm._v("Rate : ")]),
-                                    _vm._v(" " + _vm._s(shift.rate) + " USD"),
-                                    _c("br"),
-                                    _vm._v(" "),
-                                    _c("b", [_vm._v("Service : ")]),
-                                    _vm._v(" " + _vm._s(shift.service)),
-                                    _c("br"),
-                                    _vm._v(" "),
-                                    _c(
-                                      "b",
-                                      [_vm._v("Shift days : "), _c("Br")],
-                                      1
-                                    ),
-                                    _vm._v(
-                                      _vm._s(shift.days) +
-                                        "\n                                    "
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "col-md-4" }, [
-                                    _c(
-                                      "span",
-                                      {
-                                        staticClass: "deleteWorkBtn NoDecor",
-                                        on: {
-                                          click: function($event) {
-                                            _vm.deleteShift(shift)
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "a",
-                                          {
-                                            attrs: {
-                                              href: "javascript:void(0)"
-                                            }
-                                          },
-                                          [
-                                            _c("img", {
-                                              attrs: {
-                                                src:
-                                                  "/resumeApp/resources/assets/images/close_blue.png",
-                                                alt: "edit profile"
-                                              }
-                                            }),
-                                            _vm._v(
-                                              "\n                                        Delete\n                                    "
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ])
+                                  _vm._v(
+                                    "\n                                    Service details\n                                "
+                                  )
                                 ]
                               )
-                            ]
-                          )
-                        })
-                      )
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "row",
+                                staticStyle: { "padding-top": "10px" }
+                              },
+                              [
+                                _c("div", [
+                                  _c("b", [_vm._v("Title :")]),
+                                  _vm._v(_vm._s(service.title)),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("b", [_vm._v("Rate : ")]),
+                                  _vm._v(" " + _vm._s(service.rate) + " USD"),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("b", [_vm._v("Hours : ")]),
+                                  _vm._v(" " + _vm._s(service.hours)),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b",
+                                    [_vm._v("Service days : "), _c("Br")],
+                                    1
+                                  ),
+                                  _vm._v(
+                                    _vm._s(service.days) +
+                                      "\n                                "
+                                  )
+                                ])
+                              ]
+                            )
+                          ]
+                        )
+                      })
                     ],
-                    1
+                    2
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "row" }, [
@@ -57994,66 +57560,12 @@ var render = function() {
           staticClass: "pageSubHeading text-left"
         },
         [_vm._v("\n        Currently this client has no invoices.\n    ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "span",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: this.canAdd,
-              expression: "this.canAdd"
-            }
-          ],
-          staticClass: "deleteWorkBtn NoDecor",
-          staticStyle: { width: "137px" },
-          on: { click: _vm.clearData }
-        },
-        [_vm._m(0)]
-      ),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("add-invoice-modal", {
-        attrs: { toBeEditedInvoice: _vm.toBeEditedInvoice },
-        on: { invoiceAdded: _vm.addInvoice }
-      }),
-      _vm._v(" "),
-      _c("add-invoice-shift-modal", {
-        attrs: { toBeEditedInvoice: _vm.toBeEditedInvoice }
-      })
+      )
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        attrs: {
-          href: "javascript:void(0)",
-          "data-toggle": "modal",
-          "data-target": "#addInvoiceModal"
-        }
-      },
-      [
-        _c("img", {
-          attrs: {
-            src: "/resumeApp/resources/assets/images/add_blue.png",
-            alt: "edit profile"
-          }
-        }),
-        _vm._v("\n            Add Invoice\n        ")
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -60820,12 +60332,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
     data: function data() {
         return {
             services: [],
+            'temp_numb': '',
             selectedServices: [],
             canAdd: true,
             toBeEditedService: {
@@ -60859,6 +60375,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         currServices[i].days = currServices[i].days.split(',');
                     }
                 });
+                console.log(currServices);
                 _this.services = currServices;
                 _this.checkMaxServices();
             });
@@ -61273,6 +60790,14 @@ var render = function() {
                     _c(
                       "label",
                       {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: service.invoice_id === null,
+                            expression: "service.invoice_id === null"
+                          }
+                        ],
                         staticClass:
                           "col-md-5 form-check-label checkBoxContainer checkBoxText",
                         staticStyle: { "margin-top": "15px" }
@@ -61322,6 +60847,26 @@ var render = function() {
                         _c("span", { staticClass: "checkmark" }),
                         _vm._v(
                           "\n                        Add to Invoice\n                    "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: service.invoice_id !== null,
+                            expression: "service.invoice_id !== null"
+                          }
+                        ],
+                        staticStyle: { color: "blue", "padding-top": "15px" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Already added to invoice\n                    "
                         )
                       ]
                     )

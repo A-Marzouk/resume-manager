@@ -111,10 +111,31 @@ class ServicesController extends Controller
             $total_amount += $service['total_price'];
             $total_hours  += $service['hours'];
         }
+
         $invoice = new Invoice;
         $invoice->total_amount = $total_amount;
         $invoice->hours = $total_hours;
+        $invoice->currency = 'USD';
+        $invoice->status = 'Unpaid';
         $invoice->client_id = $services[0]['client_id'];
+        $invoice->save();
+
+
+        $clientName = $invoice->client->name;
+        $words = explode(" ", $clientName);
+        $firstLetters = "";
+        foreach ($words as $w) {
+            $firstLetters .= $w[0];
+        }
+        if(!isset($request->id)){ // only in new invoices automate unique numbers
+            $firstNumber  = count(Client::all()) + 1 ; // number of clients + 1
+            $secondNumber = count($invoice->client->invoices); // number of client invoices + 1 (already created)
+            $thirdNumber  = count(Invoice::all()) ; // number of total invoices + 1
+
+            $invoice->unique_number = $this->getNumberZeros($firstNumber). '-' . $this->getNumberZeros($secondNumber)
+                . '-' . $this->getNumberZeros($thirdNumber);
+        }
+
         $invoice->save();
 
         foreach ($services as $service){
@@ -125,6 +146,16 @@ class ServicesController extends Controller
 
         return $invoice->id;
 
+    }
+
+    protected function getNumberZeros($number){
+        if($number < 10){
+            return '00' . $number;
+        }elseif ($number < 100){
+            return '0' . $number;
+        }else{
+            return $number;
+        }
     }
 
 }

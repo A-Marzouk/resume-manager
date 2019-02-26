@@ -53,11 +53,14 @@
                                 {{service.days.join(' | ')}}
                             </b>
                         </div>
-                        <label class="col-md-5 form-check-label checkBoxContainer checkBoxText" style="margin-top: 15px;">
+                        <label class="col-md-5 form-check-label checkBoxContainer checkBoxText" v-show="service.invoice_id === null" style="margin-top: 15px;">
                             <input  class="form-check-input" type="checkbox" :value="service" v-model="selectedServices" >
                             <span class="checkmark"></span>
                             Add to Invoice
                         </label>
+                        <div v-show="service.invoice_id !== null" style="color: blue; padding-top:15px;">
+                            Already added to invoice
+                        </div>
                     </div>
                 </div>
             </service-component>
@@ -89,6 +92,7 @@
         data() {
             return {
                 services: [],
+                'temp_numb':'',
                 selectedServices:[],
                 canAdd:true,
                 toBeEditedService:{
@@ -113,13 +117,14 @@
                 axios.get('/admin/client/services/'+ this.client_id).then(
                     (response) => {
                         let currServices =  response.data;
-                        $.each(currServices, function(i){
+                        $.each(currServices, (i) => {
                             if(currServices[i].days === null){
                                 currServices[i].days = [];
                             }else{
                                 currServices[i].days = currServices[i].days.split(',')
                             }
                         });
+                        console.log(currServices);
                         this.services = currServices;
                         this.checkMaxServices();
                     }

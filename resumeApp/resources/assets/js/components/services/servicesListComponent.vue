@@ -53,6 +53,11 @@
                                 {{service.days.join(' | ')}}
                             </b>
                         </div>
+                        <label class="col-md-5 form-check-label checkBoxContainer checkBoxText" style="margin-top: 15px;">
+                            <input  class="form-check-input" type="checkbox" :value="service" v-model="selectedServices" >
+                            <span class="checkmark"></span>
+                            Add to Invoice
+                        </label>
                     </div>
                 </div>
             </service-component>
@@ -67,6 +72,12 @@
                 Add Service
             </a>
         </span>
+
+        <span class="NoDecor" v-show="selectedServices.length > 0" @click="generateServicesInvoice" style="width:137px">
+            <a href="javascript:void(0)" class="btn btn-outline-primary">
+                Generate Invoice with selected services.
+            </a>
+        </span>
         <br/>
         <add-invoice-service-modal @serviceAdded="addService"  :toBeEditedService="toBeEditedService"></add-invoice-service-modal>
     </div>
@@ -78,9 +89,11 @@
         data() {
             return {
                 services: [],
+                selectedServices:[],
                 canAdd:true,
                 toBeEditedService:{
                     'id':'',
+                    'invoice_id':'',
                     'title':'',
                     'client_id':this.client_id,
                     'total_price' :'',
@@ -118,6 +131,13 @@
                 this.checkMaxServices();
             },
 
+            generateServicesInvoice(){
+                axios.post('/admin/client/generate_service_invoice',{selectedServices:this.selectedServices}).then(
+                    response => {
+                        console.log(response.data);
+                    }
+                );
+            },
             deleteService(service){
                 if(!confirm('Are you sure you want to delete this service ?')){
                     return;
@@ -165,6 +185,7 @@
             clearData(){
                 this.toBeEditedService={
                     'id':'',
+                    'invoice_id':'',
                     'title':'',
                     'client_id':this.client_id,
                     'total_price' :'',

@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Client;
+use App\Invoice;
 use App\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -95,12 +96,35 @@ class ServicesController extends Controller
         return ['id'=> $service->id];
     }
 
-
     public function deleteService(Request $request){
         // delete service
         $service = Service::where('id',$request->serviceID);
         $service->delete();
         return 'Service deleted';
+    }
+
+    public function generateInvoiceForServices(Request $request){
+        $services = $request->selectedServices ;
+        $total_amount = 0 ;
+        $total_hours  = 0 ;
+        foreach ($services as $service){
+            $total_amount += $service['total_price'];
+            $total_hours  += $service['hours'];
+        }
+        $invoice = new Invoice;
+        $invoice->total_amount = $total_amount;
+        $invoice->hours = $total_hours;
+        $invoice->client_id = $services[0]['client_id'];
+        $invoice->save();
+
+        foreach ($services as $service){
+            $invoiceService = Service::where('id',$service['id'])->first();
+            $invoiceService->invoice_id = $invoice->id;
+            $invoiceService->save();
+        }
+
+        return $invoice->id;
+
     }
 
 }

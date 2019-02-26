@@ -60809,15 +60809,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
     data: function data() {
         return {
             services: [],
+            selectedServices: [],
             canAdd: true,
             toBeEditedService: {
                 'id': '',
+                'invoice_id': '',
                 'title': '',
                 'client_id': this.client_id,
                 'total_price': '',
@@ -60853,6 +60866,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         addService: function addService(newService) {
             this.services.push(newService);
             this.checkMaxServices();
+        },
+        generateServicesInvoice: function generateServicesInvoice() {
+            axios.post('/admin/client/generate_service_invoice', { selectedServices: this.selectedServices }).then(function (response) {
+                console.log(response.data);
+            });
         },
         deleteService: function deleteService(service) {
             var _this2 = this;
@@ -60899,6 +60917,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         clearData: function clearData() {
             this.toBeEditedService = {
                 'id': '',
+                'invoice_id': '',
                 'title': '',
                 'client_id': this.client_id,
                 'total_price': '',
@@ -61249,6 +61268,62 @@ var render = function() {
                           ]
                         )
                       ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass:
+                          "col-md-5 form-check-label checkBoxContainer checkBoxText",
+                        staticStyle: { "margin-top": "15px" }
+                      },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.selectedServices,
+                              expression: "selectedServices"
+                            }
+                          ],
+                          staticClass: "form-check-input",
+                          attrs: { type: "checkbox" },
+                          domProps: {
+                            value: service,
+                            checked: Array.isArray(_vm.selectedServices)
+                              ? _vm._i(_vm.selectedServices, service) > -1
+                              : _vm.selectedServices
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$a = _vm.selectedServices,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = service,
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    (_vm.selectedServices = $$a.concat([$$v]))
+                                } else {
+                                  $$i > -1 &&
+                                    (_vm.selectedServices = $$a
+                                      .slice(0, $$i)
+                                      .concat($$a.slice($$i + 1)))
+                                }
+                              } else {
+                                _vm.selectedServices = $$c
+                              }
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "checkmark" }),
+                        _vm._v(
+                          "\n                        Add to Invoice\n                    "
+                        )
+                      ]
                     )
                   ],
                   1
@@ -61291,6 +61366,37 @@ var render = function() {
           on: { click: _vm.clearData }
         },
         [_vm._m(0)]
+      ),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.selectedServices.length > 0,
+              expression: "selectedServices.length > 0"
+            }
+          ],
+          staticClass: "NoDecor",
+          staticStyle: { width: "137px" },
+          on: { click: _vm.generateServicesInvoice }
+        },
+        [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-outline-primary",
+              attrs: { href: "javascript:void(0)" }
+            },
+            [
+              _vm._v(
+                "\n            Generate Invoice with selected services.\n        "
+              )
+            ]
+          )
+        ]
       ),
       _vm._v(" "),
       _c("br"),

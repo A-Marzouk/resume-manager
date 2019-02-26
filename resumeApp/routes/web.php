@@ -213,6 +213,7 @@ Route::get('/admin/client/services_view/{client_id}','ServicesController@viewSer
 Route::get('/admin/client/services/{client_id}','ServicesController@getServices')->name('get.services');
 Route::post('/admin/client/addservice/','ServicesController@addService')->name('add.service');
 Route::post('/admin/client/deleteservice/','ServicesController@deleteService')->name('delete.service');
+Route::post('/admin/client/generate_service_invoice/','ServicesController@generateInvoiceForServices')->name('generate.service.invoice');
 
 
 // bookings calendar:

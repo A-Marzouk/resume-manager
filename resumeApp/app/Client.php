@@ -59,6 +59,11 @@ class Client extends Authenticatable
         return $this->hasMany(Invoice::class);
     }
 
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
+
 
     public function searches()
     {

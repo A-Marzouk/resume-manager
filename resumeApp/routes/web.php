@@ -208,6 +208,13 @@ Route::post('/admin/send_invoice_email','InvoicesController@sendEmailNotificatio
 Route::get('/invoice/pdf/{unique_number}','InvoicesController@invoiceToPDF')->name('invoice.to.pdf');
 Route::get('/workforce/invoices/{unique_number}','InvoicesController@viewInvoicePublicPage')->name('show.invoice.public.page');
 
+// services
+Route::get('/admin/client/services_view/{client_id}','ServicesController@viewServicesPage')->name('show.services.page');
+Route::get('/admin/client/services/{client_id}','ServicesController@getServices')->name('get.services');
+Route::post('/admin/client/addservice/','ServicesController@addService')->name('add.service');
+Route::post('/admin/client/deleteservice/','ServicesController@deleteService')->name('delete.service');
+
+
 // bookings calendar:
 Route::get('/admin/bookings/calendar','BookingsController@viewBookingsCalendar')->name('bookings.calendar.page');
 Route::get('/admin/permissions','AdminsController@showPermissionsPage')->name('admin.permissions.page');

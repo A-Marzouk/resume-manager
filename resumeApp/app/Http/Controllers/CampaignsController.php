@@ -72,7 +72,11 @@ class CampaignsController extends Controller
     public function getBusinessSupportUsers(){
         $members = User::where('profession','businessSupport')->get();
         foreach ($members as &$member){
-            $member['image'] = $member->userData->photo ;
+            if(isset($member->userData)){
+                $member['image'] = $member->userData->photo ;
+            }else{
+                $member['image'] = '' ;
+            }
         }
         return $members;
     }

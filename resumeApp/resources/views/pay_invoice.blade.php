@@ -17,7 +17,12 @@
                         </div>
 
                         <div class="agentName">
-                            Name of Agent :  @if(isset($invoice->user->id)){{$invoice->user->firstName}} {{$invoice->user->lastName}} @else {{$invoice->agentName}}@endif<br/>
+                            Name of Agents :<br/>
+                            @foreach($invoice->services as $service)
+                                @if(isset($service->user_id))
+                                    - {{$service->user->firstName}} {{$service->user->lastName}}
+                                @endif<br/>
+                            @endforeach
                         </div>
                         <div class="termsText">
                             Invoice issue date    : {{$invoice->created_at->format('d.m.Y')}}
@@ -61,64 +66,20 @@
                     </div>
                 </div>
 
-                <div class="row clientInfo">
-                    <div class="col-4">
-                        Working hours
-                    </div>
-                    <div class="col-4">
-                        Days
-                    </div>
-                    <div class="col-4">
-                        Year - Week
-                    </div>
-                </div>
 
-                <div class="row clientInfo_detail">
-                    <div class="col-4">
-                        <span class="row">
-                            <span class="col-4 text-left">
-                                From:
-                            </span>
-                            <span class="col-6">
-                                {{$invoice->start_time}}
-                            </span>
-                        </span>
-                        <span class="row">
-                            <span class="col-4 text-left">
-                                To:
-                            </span>
-                            <span class="col-6">
-                                {{$invoice->end_time}}
-                            </span>
-                        </span>
-                    </div>
-                    <div class="col-4">
-                        @if($invoice->days == 'all_days')
-                            All business days.
-                        @else
-                            {{$invoice->days}}
-                        @endif
-
-                    </div>
-                    <div class="col-4" style="border: none; word-break: break-word;">
-                        {{$invoice->week}}<br/>
-                        {{$invoice->weekDate}}
-                    </div>
-                </div>
-
-                @if(count($invoice->shifts) > 0)
+                @if(count($invoice->services) > 0)
                     <div class="termsText">
                         <div class="blueLine" style="margin-bottom: 10px;background-color: lightblue"></div>
-                        Custom shifts :
+                        Custom services :
                     </div>
 
-                    @foreach($invoice->shifts as $shift)
+                    @foreach($invoice->services as $service)
                         <div class="row clientInfo">
                             <div class="col-3">
-                                SHIFT SERVICE
+                                SERVICE
                             </div>
                             <div class="col-3">
-                                SHIFT TIME
+                                HOURS
                             </div>
                             <div class="col-3">
                                 RATE
@@ -130,17 +91,16 @@
 
                         <div class="row clientInfo_detail">
                             <div class="col-3">
-                                {{$shift->service}}
+                                {{$service->title}}
                             </div>
                             <div class="col-3 text-left">
-                                From: {{$shift->start_time}}<br/>
-                                To: {{$shift->end_time}}
+                                {{$service->hours}} hours
                             </div>
                             <div class="col-3">
-                                {{$shift->rate}}
+                                {{$service->rate}}
                             </div>
                             <div class="col-3" style="border: none; word-break: break-word;">
-                                @if($shift->days === 'all_days') All business days @else {{$shift->days}} @endif
+                                @if($service->days === 'all_days') All business days @else {{$service->days}} @endif
                             </div>
                         </div>
                     @endforeach
@@ -152,13 +112,10 @@
 
                 <div class="row clientInfo">
                     <div class="col-4">
-                        SERVICE PROVIDED
+                        SERVICES PROVIDED
                     </div>
                     <div class="col-2">
                         NO. OF HRS / WEEK
-                    </div>
-                    <div class="col-2">
-                        RATE / HR
                     </div>
                     <div class="col-2">
                         TOTAL DUE
@@ -169,15 +126,12 @@
                 </div>
                 <div class="row clientInfo_detail">
                     <div class="col-4 text-left">
-                        {!!nl2br($invoice->service)!!}<br/><br>
-                        {!!nl2br($invoice->time_of_service)!!}<br/><br>
-                        {!!nl2br($invoice->timeZone)!!}
+                        @foreach($invoice->services as $service)
+                            {{$service->title}}<br/>
+                        @endforeach
                     </div>
                     <div class="col-2">
                         {{$invoice->hours}}
-                    </div>
-                    <div class="col-2">
-                        {{$invoice->rate}}
                     </div>
                     <div class="col-2">
                         {{$invoice->total_amount}}

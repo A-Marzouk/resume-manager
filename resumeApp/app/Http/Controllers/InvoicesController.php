@@ -29,6 +29,7 @@ class InvoicesController extends Controller
         return view('pay_invoice',compact('invoice'));
     }
 
+
     public function viewInvoicesPage($client_id){
         $client = Client::where('id',$client_id)->first();
         return view('admin.client_invoices',compact('client'));
@@ -41,24 +42,24 @@ class InvoicesController extends Controller
         foreach ($invoices as &$invoice){
             $invoice['clientName'] = $client->name;
             $invoice['agent'] = $invoice->user;
-            $invoice['shifts'] = $invoice->shifts;
+            $services = $invoice->services;
+            $invoice['services'] = $services;
         }
         return $invoices;
+    }
+
+    public function getInvoiceUniqueNumberByID($id){
+        return Invoice::where('id',$id)->first()->unique_number ;
     }
 
     protected function invoiceValidator(array $data)
     {
         return Validator::make($data, [
             'total_amount' => 'max:10|required',
-            'service' => 'max:1500|required',
-            'year' => 'max:191',
             'currency' => 'max:191',
-            'week' => 'max:191',
-            'weekDate' => 'max:191',
             'hours' => 'max:10|required',
             'rate' => 'max:191|required',
             'status' => 'max:191',
-            'time_of_service' => 'max:1500',
             'notes' => 'max:1500',
             'payment_options' => 'max:191',
         ]);
@@ -86,20 +87,6 @@ class InvoicesController extends Controller
         $invoice->total_amount = $request->total_amount;
         $invoice->user_id = $request->user_id;
         $invoice->campaign_brief_id = $request->campaign_brief_id;
-        $invoice->service      = $request->service;
-        $invoice->week      = $request->week;
-        $invoice->weekDate      = $request->weekDate;
-        $invoice->year      = $request->year;
-        $invoice->start_time      = $request->start_time;
-        $invoice->end_time        = $request->end_time;
-
-        if(isset($request->days)){
-            if(in_array('all_days',$request->days)){
-                $invoice->days   = 'all_days';
-            }else{
-                $invoice->days      = implode(',',$request->days);
-            }
-        }
 
         if(isset($request->payment_options)){
             $invoice->payment_options      = implode(',',$request->payment_options);
@@ -110,13 +97,9 @@ class InvoicesController extends Controller
         if(isset($request->timeZone)){
             $invoice->timeZone        = $request->timeZone;
         }
-        $invoice->rate         = $request->rate;
         $invoice->status       = $request->status;
         if(isset($request->notes)){
             $invoice->notes = $request->notes;
-        }
-        if(isset($request->time_of_service)){
-            $invoice->time_of_service = $request->time_of_service;
         }
 
         $invoice->save();

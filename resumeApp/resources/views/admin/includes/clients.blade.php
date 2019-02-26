@@ -9,6 +9,7 @@
             <th scope="col" class="text-center">View details</th>
             <th scope="col" class="text-center">Bookings history</th>
             <th scope="col" class="text-center">Affiliate's name</th>
+            <th scope="col" class="text-center">Services</th>
             <th scope="col" class="text-center">Invoices</th>
         </tr>
         </thead>
@@ -82,6 +83,10 @@
             </td>
             <td class="text-center">
                 <a href="{{route('show.invoices.page',$client->id)}}" class="btn btn-outline-primary">Invoices</a>
+            </td>
+
+            <td class="text-center">
+                <a href="{{route('show.services.page',$client->id)}}" class="btn btn-outline-primary">Services</a>
             </td>
         </tr>
 

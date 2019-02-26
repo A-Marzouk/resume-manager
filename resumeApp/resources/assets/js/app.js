@@ -50,6 +50,11 @@ Vue.component('invoice-component', require('./components/invoices/invoiceCompone
 Vue.component('add-invoice-modal', require('./components/invoices/addInvoiceComponent.vue'));
 Vue.component('add-invoice-shift-modal', require('./components/invoices/addInvoiceShiftComponent.vue'));
 
+// services
+Vue.component('services-list', require('./components/services/servicesListComponent.vue'));
+Vue.component('service-component', require('./components/services/serviceComponent.vue'));
+Vue.component('add-invoice-service-modal', require('./components/services/addServiceComponent.vue'));
+
 // bookings calendar :
 Vue.component('bookings-calendar', require('./components/bookingsCalendarComponent.vue'));
 
@@ -244,6 +249,12 @@ if ($("#freelancer_educations").length !== 0){
 if ($("#client_invoices").length !== 0){
     let client_invoices = new Vue({
         el:'#client_invoices'
+    });
+}
+
+if ($("#client_services").length !== 0){
+    let client_services = new Vue({
+        el:'#client_services'
     });
 }
 

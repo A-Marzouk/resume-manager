@@ -207,6 +207,15 @@ Route::post('/admin/send_invoice_email','InvoicesController@sendEmailNotificatio
     // invoice public link
 Route::get('/invoice/pdf/{unique_number}','InvoicesController@invoiceToPDF')->name('invoice.to.pdf');
 Route::get('/workforce/invoices/{unique_number}','InvoicesController@viewInvoicePublicPage')->name('show.invoice.public.page');
+Route::get('/workforce/invoices/get_unique_number/{id}','InvoicesController@getInvoiceUniqueNumberByID');
+
+// services
+Route::get('/admin/client/services_view/{client_id}','ServicesController@viewServicesPage')->name('show.services.page');
+Route::get('/admin/client/services/{client_id}','ServicesController@getServices')->name('get.services');
+Route::post('/admin/client/addservice/','ServicesController@addService')->name('add.service');
+Route::post('/admin/client/deleteservice/','ServicesController@deleteService')->name('delete.service');
+Route::post('/admin/client/generate_service_invoice/','ServicesController@generateInvoiceForServices')->name('generate.service.invoice');
+
 
 // bookings calendar:
 Route::get('/admin/bookings/calendar','BookingsController@viewBookingsCalendar')->name('bookings.calendar.page');

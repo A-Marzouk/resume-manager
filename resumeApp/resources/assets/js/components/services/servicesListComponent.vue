@@ -58,7 +58,7 @@
                             <span class="checkmark"></span>
                             Add to Invoice
                         </label>
-                        <div v-show="service.invoice_id !== null" style="color: blue; padding-top:15px;">
+                        <div v-show="service.invoice_id !== null " style="color: blue; padding-top:15px;">
                             Already added to invoice
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                 canAdd:true,
                 toBeEditedService:{
                     'id':'',
-                    'invoice_id':'',
+                    'invoice_id':null,
                     'title':'',
                     'client_id':this.client_id,
                     'total_price' :'',
@@ -139,7 +139,18 @@
             generateServicesInvoice(){
                 axios.post('/admin/client/generate_service_invoice',{selectedServices:this.selectedServices}).then(
                     response => {
-                        console.log(response.data);
+                        $.each( this.selectedServices,(i)=>{
+                            this.selectedServices[i].invoice_id = response.data ;
+                        });
+                        this.selectedServices = [];
+                        // changes saved :
+                        $('#changesSaved').fadeIn('slow');
+                        setTimeout(function () {
+                            $('#changesSaved').fadeOut();
+                        },2000);
+
+                        this.checkMaxServices();
+
                     }
                 );
             },
@@ -190,7 +201,7 @@
             clearData(){
                 this.toBeEditedService={
                     'id':'',
-                    'invoice_id':'',
+                    'invoice_id':null,
                     'title':'',
                     'client_id':this.client_id,
                     'total_price' :'',

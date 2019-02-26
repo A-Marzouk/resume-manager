@@ -60346,7 +60346,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             canAdd: true,
             toBeEditedService: {
                 'id': '',
-                'invoice_id': '',
+                'invoice_id': null,
                 'title': '',
                 'client_id': this.client_id,
                 'total_price': '',
@@ -60385,18 +60385,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.checkMaxServices();
         },
         generateServicesInvoice: function generateServicesInvoice() {
+            var _this2 = this;
+
             axios.post('/admin/client/generate_service_invoice', { selectedServices: this.selectedServices }).then(function (response) {
-                console.log(response.data);
+                $.each(_this2.selectedServices, function (i) {
+                    _this2.selectedServices[i].invoice_id = response.data;
+                });
+                _this2.selectedServices = [];
+                // changes saved :
+                $('#changesSaved').fadeIn('slow');
+                setTimeout(function () {
+                    $('#changesSaved').fadeOut();
+                }, 2000);
+
+                _this2.checkMaxServices();
             });
         },
         deleteService: function deleteService(service) {
-            var _this2 = this;
+            var _this3 = this;
 
             if (!confirm('Are you sure you want to delete this service ?')) {
                 return;
             }
             axios.post('/admin/client/deleteservice', { serviceID: service.id }).then(function (response) {
-                var services = _this2.services;
+                var services = _this3.services;
                 $.each(services, function (i) {
                     if (services[i].id === service.id) {
                         services.splice(i, 1);
@@ -60410,7 +60422,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     $('#changesSaved').fadeOut();
                 }, 2000);
 
-                _this2.checkMaxServices();
+                _this3.checkMaxServices();
             });
         },
         editService: function editService(serviceID) {
@@ -60434,7 +60446,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         clearData: function clearData() {
             this.toBeEditedService = {
                 'id': '',
-                'invoice_id': '',
+                'invoice_id': null,
                 'title': '',
                 'client_id': this.client_id,
                 'total_price': '',
@@ -60859,7 +60871,7 @@ var render = function() {
                             name: "show",
                             rawName: "v-show",
                             value: service.invoice_id !== null,
-                            expression: "service.invoice_id !== null"
+                            expression: "service.invoice_id !== null "
                           }
                         ],
                         staticStyle: { color: "blue", "padding-top": "15px" }

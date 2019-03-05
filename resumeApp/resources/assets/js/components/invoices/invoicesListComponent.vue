@@ -91,6 +91,7 @@
         <div class="pageSubHeading text-left" v-show="this.invoices.length < 1">
             Currently this client has no invoices.
         </div>
+        <add-invoice-modal :toBeEditedInvoice="toBeEditedInvoice"></add-invoice-modal>
     </div>
 </template>
 

@@ -147,18 +147,27 @@
                             <form action="/stripe/payments/pay" method="POST">
                                 {{ csrf_field() }}
                                 <div class="d-none">
-                                    <input type="text" value="{{$invoice->total_amount}}" id="amountToPay" name="amountToPay" required>
+                                    <input type="text" value="{{$invoice->total_amount}}" id="amountToPay" name="amountToPay">
                                     <!-- amount to pay -->
-                                    <input type="text" value="{{$invoice->service}}" id="description" name="description" required>
+                                    <input type="text" value="{{$invoice->service}}" id="description" name="description">
                                     <!-- description -->
                                 </div>
 
                                 <input type="hidden" value="invoice" name="paymentInfo">
                                 <input type="hidden" value="{{$invoice->id}}" name="invoice_id">
+                                <input type="hidden" value="{{$invoice->client->id}}" name="client_id">
+                                <input type="hidden" value="{{$invoice->hours}}" name="hours">
                                 @if(in_array('recurring',explode(',',$invoice->payment_options)))
                                     <div class="form-group col-md-12">
                                         <label for="weeks" class="panelFormLabel">Recurring payments <small><br/>(Leave empty for one time payment)</small></label>
-                                        <input type="number" placeholder="Number of weeks.." min="0" max="24" id="weeks" class="panelFormInput form-control" name="weeks">
+                                        <select name="weeks" id="weeks" class="custom-select panelFormInput">
+                                            <option value="" selected disabled>-- Select --</option>
+                                            <option value="1">1 week</option>
+                                            <option value="2">2 weeks</option>
+                                            <option value="3">3 weeks</option>
+                                            <option value="4">4 weeks</option>
+                                            <option value="pay_as_you_go">Pay as you go</option>
+                                        </select>
                                     </div>
                                 @endif
                                 <script

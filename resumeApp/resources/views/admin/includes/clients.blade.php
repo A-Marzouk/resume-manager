@@ -9,13 +9,14 @@
             <th scope="col" class="text-center">View details</th>
             <th scope="col" class="text-center">Bookings history</th>
             <th scope="col" class="text-center">Affiliate's name</th>
-            <th scope="col" class="text-center">Services</th>
             <th scope="col" class="text-center">Invoices</th>
+            <th scope="col" class="text-center">Services</th>
+            <th scope="col" class="text-center">Usage based Subscriptions</th>
         </tr>
         </thead>
         <tbody>
         <? $i=1; ?>
-        <? foreach ($clients as $client):?>
+            <? foreach ($clients as $client):?>
         <tr id="selectedRowClient{{$client->id}}">
             <th scope="row">
                 <!-- check boxes -->
@@ -87,6 +88,10 @@
 
             <td class="text-center">
                 <a href="{{route('show.services.page',$client->id)}}" class="btn btn-outline-primary">Services</a>
+            </td>
+
+            <td class="text-center">
+                <a href="{{route('show.subscriptions.page',$client->id)}}" class="btn btn-outline-primary">Subs</a>
             </td>
         </tr>
 

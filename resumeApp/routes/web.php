@@ -367,9 +367,8 @@ Route::post('/stripe/create/subscription/metered', '\App\classes\StripePayments@
 Route::post('/stripe/create/usage_report/', '\App\classes\StripePayments@makeUsageReport')
     ->name('create.usage.report');
 
-Route::get('/stripe/create/threshold', '\App\classes\StripePayments@makeThresholdValue')
-    ->name('make.threshold.value');
-
+Route::get('/admin/client/subscriptions_view/{client_id}','AdminsCOntroller@viewMeteredSubscriptionsPage')
+    ->name('show.subscriptions.page');
 
 
 // send payments to our users.

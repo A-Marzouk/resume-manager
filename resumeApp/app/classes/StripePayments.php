@@ -355,7 +355,7 @@ class StripePayments
             'customer' => $customerID,
             'items' => [['plan' => $plan->id]],
             'billing_thresholds' => [
-                'amount_gte' => ($amountToPay*100),
+                'amount_gte' => ($amountToPay*100)-1,
                 'reset_billing_cycle_anchor' => true,
             ],
         ]);
@@ -367,6 +367,7 @@ class StripePayments
         $stripeInvoice->client_id = $client_id;
         $stripeInvoice->title = 'Pay as you go plan';
         $stripeInvoice->price = $amountToPay;
+        $stripeInvoice->hours = $request->hours;
         $stripeInvoice->payment_status = 'paid';
         $stripeInvoice->payer_email = $request->stripeEmail;
         $stripeInvoice->count =1;
@@ -391,28 +392,15 @@ class StripePayments
                 "action" => "increment",
             ]);
         }catch (\Exception $exception){
-            return $exception;
+            return redirect()->back()->with('errorMessage','Something went wrong!');
         }
 
-    }
-
-    public function makeThresholdValue(){
-        Stripe::setApiKey($this->apiKey);
-        $subscription_id = 'sub_EdzPBZJooxIy9h' ;
-        return Subscription::update($subscription_id, [
-            'billing_thresholds' => [
-                'amount_gte' => 200000, // 2000 usd
-                'reset_billing_cycle_anchor' => true,
-            ],
-        ]);
-
-
+        return redirect()->back()->with('successMessage','Confirmed, Invoice will be issued for the client in 1 hour');
     }
 
     public function retrieveComingInvoice($customerID){
        return \Stripe\Invoice::upcoming(["customer" => $customerID]);
     }
-
 
 }
 

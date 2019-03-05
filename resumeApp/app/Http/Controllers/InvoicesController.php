@@ -57,8 +57,8 @@ class InvoicesController extends Controller
         return Validator::make($data, [
             'total_amount' => 'max:10|required',
             'currency' => 'max:191',
-            'hours' => 'max:10|required',
-            'rate' => 'max:191|required',
+            'hours' => 'max:10',
+            'rate' => 'max:191',
             'status' => 'max:191',
             'notes' => 'max:1500',
             'payment_options' => 'max:191',

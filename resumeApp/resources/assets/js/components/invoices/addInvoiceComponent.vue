@@ -107,22 +107,6 @@
                                   <input type="time" class="form-control" id="end_time" name="start_time" v-model="toBeEditedInvoice.end_time">
                               </div>
                               <div class="form-group col-md-12">
-                                  <div class="form-group">
-                                      <label class="panelFormLabel">Choose days :</label>
-                                      <div class="row" v-show="!toBeEditedInvoice.days.includes('all_days')">
-                                          <div class="col-md-2" v-for="(day,index) in daysOfWeek" v-bind:key="index">
-                                              <input type="checkbox" :value="day" v-model="toBeEditedInvoice.days">
-                                              {{day}}
-                                          </div>
-                                      </div>
-                                      <div>
-                                          <br/>
-                                          <input type="checkbox" value="all_days" :checked="toBeEditedInvoice.days.includes('all_days')" v-model="toBeEditedInvoice.days">
-                                          All business days.
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="form-group col-md-12">
                                   <hr>
                                   <label for="notes" class="panelFormLabel">Notes <small>(optional)</small> :</label>
                                   <textarea class="form-control" rows="2" id="notes" name="notes" v-model="toBeEditedInvoice.notes">

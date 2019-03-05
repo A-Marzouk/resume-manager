@@ -12,6 +12,7 @@ namespace App\classes;
 use App\Booking;
 use App\Http\Controllers\NotificationsController;
 use App\Invoice;
+use App\StripeInvoice;
 use App\User;
 use App\UserData;
 use Dompdf\Exception;
@@ -19,8 +20,11 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Stripe\Charge;
 use Stripe\Customer;
+use Stripe\Plan;
+use Stripe\Product;
 use Stripe\Stripe;
 use Stripe\Subscription;
+use Stripe\UsageRecord;
 
 class StripePayments
 {
@@ -31,7 +35,11 @@ class StripePayments
     }
 
     public function stripePayment(Request $request){
-
+        if(isset($request->weeks)){
+            if($request->weeks == 'pay_as_you_go'){
+                $this->createMeteredPlan($request);
+            }
+        }
         Stripe::setApiKey($this->apiKey);
 
         // 3 payments : custom , hire freelancer , invoice.
@@ -53,7 +61,7 @@ class StripePayments
         }
         $customerID = $this->getCustomerID($request);
         $subscription_id = '';
-        if(isset($request->weeks) && $request->weeks > 1){
+        if(isset($request->weeks) && $request->weeks > 1 && $request->weeks !== 'pay_as_you_go'){
             $subscription_id = $this->makeStripeRecurringCustomPayment($request);
             $this->createBooking($request , null,$subscription_id);
         }else{
@@ -131,7 +139,8 @@ class StripePayments
         $amountToPay = intval($request->amountToPay) * 100;
         if($request->paymentInfo == 'hireFreelancer'){
             $amountToPay = intval($request->amountToPay);
-        }        $customerID  = $this->getCustomerID($request);
+        }
+        $customerID  = $this->getCustomerID($request);
 
         // create product
         $product = \Stripe\Product::create([
@@ -140,7 +149,7 @@ class StripePayments
         ]);
 
         // create plan
-        $plan = \Stripe\Plan::create([
+        $plan = Plan::create([
             'product' => $product->id,
             'nickname' => $request->description,
             'interval' => 'week',
@@ -148,7 +157,7 @@ class StripePayments
             'amount' => $amountToPay,
         ]);
 
-        $subscription = \Stripe\Subscription::create([
+        $subscription = Subscription::create([
             'customer' => $customerID,
             'items' => [['plan' => $plan->id]],
         ]);
@@ -317,5 +326,93 @@ class StripePayments
         return ['status' => 'canceled'] ;
 
     }
+
+
+    public function createMeteredPlan(Request $request){
+
+        Stripe::setApiKey($this->apiKey);
+
+        $amountToPay = $request->amountToPay ;
+        $customerID  = $this->getCustomerID($request);
+        $client_id   = $request->client_id;
+        $hours       = $request->hours;
+
+        $product = Product::create([
+            'name' =>'123 Workforce service (usage based) ',
+            'type' => 'service',
+        ]);
+
+        $plan = Plan::create([
+            'currency' => 'usd',
+            'interval' => 'month',
+            'product' => $product->id,
+            'nickname' => 'Pay as you go plan',
+            'amount' => ($amountToPay*100)/ $hours, // price for one product
+            'usage_type' => 'metered',
+        ]);
+
+        $subscription = Subscription::create([
+            'customer' => $customerID,
+            'items' => [['plan' => $plan->id]],
+            'billing_thresholds' => [
+                'amount_gte' => ($amountToPay*100),
+                'reset_billing_cycle_anchor' => true,
+            ],
+        ]);
+
+
+        // save invoice stripe
+
+        $stripeInvoice = new StripeInvoice;
+        $stripeInvoice->client_id = $client_id;
+        $stripeInvoice->title = 'Pay as you go plan';
+        $stripeInvoice->price = $amountToPay;
+        $stripeInvoice->payment_status = 'paid';
+        $stripeInvoice->payer_email = $request->stripeEmail;
+        $stripeInvoice->count =1;
+        $stripeInvoice->subscription_id = $subscription->id;
+        $stripeInvoice->subscription_type = 'metered (usage based)';
+        $stripeInvoice->save();
+
+        return $stripeInvoice;
+
+    }
+
+    public function makeUsageReport(Request $request){
+        Stripe::setApiKey($this->apiKey);
+        $quantity        = $request->quantity;
+        $subscription_id = $request->subscription_id ;
+        $id = Subscription::retrieve($subscription_id)->items->data[0]->id;
+        try{
+            UsageRecord::create([
+                "quantity" => $quantity,
+                "timestamp" =>  now()->timestamp,
+                "subscription_item" => $id,
+                "action" => "increment",
+            ]);
+        }catch (\Exception $exception){
+            return $exception;
+        }
+
+    }
+
+    public function makeThresholdValue(){
+        Stripe::setApiKey($this->apiKey);
+        $subscription_id = 'sub_EdzPBZJooxIy9h' ;
+        return Subscription::update($subscription_id, [
+            'billing_thresholds' => [
+                'amount_gte' => 200000, // 2000 usd
+                'reset_billing_cycle_anchor' => true,
+            ],
+        ]);
+
+
+    }
+
+    public function retrieveComingInvoice($customerID){
+       return \Stripe\Invoice::upcoming(["customer" => $customerID]);
+    }
+
+
 }
 

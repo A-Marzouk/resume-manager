@@ -360,6 +360,15 @@ Route::get('/admin/get/subscriptions', 'AdminsController@getCurrentSubscriptions
 Route::post('/paypal/cancel/subscription', '\App\classes\PayPalPayments@cancelSubscription');
 Route::post('/stripe/cancel/subscription', '\App\classes\StripePayments@cancelSubscription');
 
+// metered subscriptions
+Route::post('/stripe/create/subscription/metered', '\App\classes\StripePayments@createMeteredPlan')
+    ->name('create.metered.subscription');
+
+Route::post('/stripe/create/usage_report/', '\App\classes\StripePayments@makeUsageReport')
+    ->name('create.usage.report');
+
+Route::get('/admin/client/subscriptions_view/{client_id}','AdminsCOntroller@viewMeteredSubscriptionsPage')
+    ->name('show.subscriptions.page');
 
 
 // send payments to our users.

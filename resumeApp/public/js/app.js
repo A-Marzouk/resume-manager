@@ -56940,6 +56940,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
@@ -57560,7 +57561,11 @@ var render = function() {
           staticClass: "pageSubHeading text-left"
         },
         [_vm._v("\n        Currently this client has no invoices.\n    ")]
-      )
+      ),
+      _vm._v(" "),
+      _c("add-invoice-modal", {
+        attrs: { toBeEditedInvoice: _vm.toBeEditedInvoice }
+      })
     ],
     1
   )
@@ -57714,22 +57719,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -58836,163 +58825,6 @@ var render = function() {
                             }
                           }
                         })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-12" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", { staticClass: "panelFormLabel" }, [
-                            _vm._v("Choose days :")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: !_vm.toBeEditedInvoice.days.includes(
-                                    "all_days"
-                                  ),
-                                  expression:
-                                    "!toBeEditedInvoice.days.includes('all_days')"
-                                }
-                              ],
-                              staticClass: "row"
-                            },
-                            _vm._l(_vm.daysOfWeek, function(day, index) {
-                              return _c(
-                                "div",
-                                { key: index, staticClass: "col-md-2" },
-                                [
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.toBeEditedInvoice.days,
-                                        expression: "toBeEditedInvoice.days"
-                                      }
-                                    ],
-                                    attrs: { type: "checkbox" },
-                                    domProps: {
-                                      value: day,
-                                      checked: Array.isArray(
-                                        _vm.toBeEditedInvoice.days
-                                      )
-                                        ? _vm._i(
-                                            _vm.toBeEditedInvoice.days,
-                                            day
-                                          ) > -1
-                                        : _vm.toBeEditedInvoice.days
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a = _vm.toBeEditedInvoice.days,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = day,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              _vm.$set(
-                                                _vm.toBeEditedInvoice,
-                                                "days",
-                                                $$a.concat([$$v])
-                                              )
-                                          } else {
-                                            $$i > -1 &&
-                                              _vm.$set(
-                                                _vm.toBeEditedInvoice,
-                                                "days",
-                                                $$a
-                                                  .slice(0, $$i)
-                                                  .concat($$a.slice($$i + 1))
-                                              )
-                                          }
-                                        } else {
-                                          _vm.$set(
-                                            _vm.toBeEditedInvoice,
-                                            "days",
-                                            $$c
-                                          )
-                                        }
-                                      }
-                                    }
-                                  }),
-                                  _vm._v(
-                                    "\n                                          " +
-                                      _vm._s(day) +
-                                      "\n                                      "
-                                  )
-                                ]
-                              )
-                            })
-                          ),
-                          _vm._v(" "),
-                          _c("div", [
-                            _c("br"),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.toBeEditedInvoice.days,
-                                  expression: "toBeEditedInvoice.days"
-                                }
-                              ],
-                              attrs: { type: "checkbox", value: "all_days" },
-                              domProps: {
-                                checked: _vm.toBeEditedInvoice.days.includes(
-                                  "all_days"
-                                ),
-                                checked: Array.isArray(
-                                  _vm.toBeEditedInvoice.days
-                                )
-                                  ? _vm._i(
-                                      _vm.toBeEditedInvoice.days,
-                                      "all_days"
-                                    ) > -1
-                                  : _vm.toBeEditedInvoice.days
-                              },
-                              on: {
-                                change: function($event) {
-                                  var $$a = _vm.toBeEditedInvoice.days,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = "all_days",
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        _vm.$set(
-                                          _vm.toBeEditedInvoice,
-                                          "days",
-                                          $$a.concat([$$v])
-                                        )
-                                    } else {
-                                      $$i > -1 &&
-                                        _vm.$set(
-                                          _vm.toBeEditedInvoice,
-                                          "days",
-                                          $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1))
-                                        )
-                                    }
-                                  } else {
-                                    _vm.$set(_vm.toBeEditedInvoice, "days", $$c)
-                                  }
-                                }
-                              }
-                            }),
-                            _vm._v(
-                              "\n                                      All business days.\n                                  "
-                            )
-                          ])
-                        ])
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group col-md-12" }, [

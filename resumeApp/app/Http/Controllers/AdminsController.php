@@ -10,6 +10,7 @@ use App\Conversation;
 use App\Job;
 use App\Owner;
 use App\PayPalInvoice;
+use App\StripeInvoice;
 use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
@@ -276,4 +277,8 @@ class AdminsController extends Controller
         ];
     }
 
+    public function viewMeteredSubscriptionsPage($client_id){
+        $subs = StripeInvoice::where('client_id',$client_id)->get();
+        return view('admin.client_subs',compact('subs'));
+    }
 }

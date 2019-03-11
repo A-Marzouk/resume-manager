@@ -43,68 +43,19 @@
        ?>
        <div class="row">
            <div class="col-6">
-               <h3 class="pageHeading text-left">Hello {{$client->name}} !</h3>
-           </div>
-       </div>
-       <div class="row">
-           <div class="col-md-12">
-               <? $searches = $client->searches; ?>
+               <h3 class="pageHeading text-left">
+                   Hi {{$client->name}},
+               </h3>
+               <div class="pageSubHeading text-left">
+                   Welcome to 123 Workforce. Here you can manage your campaigns , track payments and search for agents.
 
-               @if( count($searches) > 0)
-                   <b class="pageSubHeading text-left" style="font-size: 14px;">Your saved searches :</b><br/><br/>
-                   <?
-                   $i =0;
-                   foreach ($searches as $search){
-                       if(empty(rtrim($search->freelancers_id,','))){
-                           $searchDelete = \App\ClientSearch::where('id',$search->id);
-                           $searchDelete->delete();
-                           continue;
-                       }
-                       $searchesArr[$i]['name'] = $search->name;
-                       $searchesArr[$i]['id'] = $search->id;
-                       foreach (explode(',',$search->freelancers_id) as $id){
-                           $searchesArr[$i]['freelancers'][] = \App\User::where('id',$id)->first();
-                       }
-                       $i++;
-                   }
-                   ?>
+                   We are currently working on our system and these features will be available as soon as possible. <br/>
+                   <br/>For the moment please send all communication about your account to :
+                   <br/> <a href="mailto:conor@123workforce.com">conor@123workforce.com</a> ( email)
+                   <br/> <a href="skype:conor@123workforce.com">conor@123workforce.com</a>  (Skype id)
 
-                   <table class="table">
-                       <thead class="black white-text">
-                       <tr>
-                       </tr>
-                       </thead>
-                       <tbody>
-
-                       @foreach($searchesArr as $key => $value)
-
-                           <tr id="selectedSearch{{$value['id']}}">
-                               <td class="NoDecor">
-                                   <a class="panelFormLabel" data-toggle="collapse" href="#{{$value['id']}}" role="button" aria-expanded="false" aria-controls="collapseExample" style="margin-bottom: 10px;">
-                                       <b>{{$value['name']}}</b>
-                                   </a>
-                                   <div class="collapse" id="{{$value['id']}}" style="padding-top: 10px; padding-bottom: 12px;">
-                                       <div style="padding-top: 20px; margin-top: 60px;">
-                                           @foreach($value['freelancers'] as $freelancer)
-                                               @include('freelancer_card')
-                                           @endforeach
-                                       </div>
-                                   </div>
-                               </td>
-                               <td>
-                                   <a class="btn panelFormLabel deleteSearch" id="{{$value['id']}}">
-                                       x
-                                   </a>
-                               </td>
-                           </tr>
-                       @endforeach
-
-                       </tbody>
-                   </table>
-
-               @else
-                   <b class="pageSubHeading text-left" style="font-size: 14px;">You don't have any saved searches at the moment</b>
-               @endif
+                   <br/><br/>Thank-you Kindly
+               </div>
            </div>
        </div>
 

@@ -367,7 +367,7 @@ Route::post('/stripe/create/subscription/metered', '\App\classes\StripePayments@
 Route::post('/stripe/create/usage_report/', '\App\classes\StripePayments@makeUsageReport')
     ->name('create.usage.report');
 
-Route::get('/admin/client/subscriptions_view/{client_id}','AdminsCOntroller@viewMeteredSubscriptionsPage')
+Route::get('/admin/client/subscriptions_view/{client_id}','AdminsController@viewMeteredSubscriptionsPage')
     ->name('show.subscriptions.page');
 
 

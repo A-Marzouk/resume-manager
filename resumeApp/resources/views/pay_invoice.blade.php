@@ -143,7 +143,7 @@
 
                 <div class="row buttonsRow" style="padding: 15px;">
                     @if(in_array('stripe',explode(',',$invoice->payment_options)))
-                        <div class="col-6" style="border-right: 2px solid lightblue;">
+                        <div class="col-12">
                             <form action="/stripe/payments/pay" method="POST">
                                 {{ csrf_field() }}
                                 <div class="d-none">
@@ -162,11 +162,11 @@
                                         <label for="weeks" class="panelFormLabel">Recurring payments <small><br/>(Leave empty for one time payment)</small></label>
                                         <select name="weeks" id="weeks" class="custom-select panelFormInput">
                                             <option value="" selected disabled>-- Select --</option>
-                                            <option value="1">1 week</option>
-                                            <option value="2">2 weeks</option>
-                                            <option value="3">3 weeks</option>
-                                            <option value="4">4 weeks</option>
                                             <option value="pay_as_you_go">Pay as you go</option>
+                                            <option value="1">1 week</option>
+                                            @for($i=2;$i<=54;$i++)
+                                                <option value="{{$i}}">{{$i}} weeks</option>
+                                            @endfor
                                         </select>
                                     </div>
                                 @endif
@@ -189,7 +189,7 @@
                             </form>
                         </div>
                     @endif
-                    @if(in_array('paypal',explode(',',$invoice->payment_options)))
+                    @if(in_array('paypal_removed',explode(',',$invoice->payment_options)))
                         <div class="col-6">
                                 <form action="{{route('paypal.express-checkout')}}" method="POST">
                                     {{ csrf_field() }}

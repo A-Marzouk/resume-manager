@@ -32,7 +32,7 @@ class ServicesController extends Controller
         $client = Client::where('id',$client_id)->first();
         $services = $client->services;
         foreach ($services as &$service){
-            $service['agent'] = $service->user;
+            $service['agents'] = $service->agents;
         }
         return $services;
     }
@@ -69,8 +69,13 @@ class ServicesController extends Controller
             $service->client_id = $currentClient->id;
             $service->timeZone  = $currentClient->timeZone;
         }
-        if(isset($request->user_id)){
-            $service->user_id        = $request->user_id;
+        if(isset($request->selectedAgents)){
+            // attach agents to the service
+            foreach ($request->selectedAgents as $agent){
+                // sync with the id's sent.
+                $IDs[] = $agent['id'];
+            }
+            $service->agents()->sync($IDs);
         }
 
         $service->title = $request->title;

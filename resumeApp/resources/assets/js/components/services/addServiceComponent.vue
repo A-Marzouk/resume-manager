@@ -17,15 +17,26 @@
                               </div>
                               <div class="form-group col-md-12">
                                   <label for="user_id" class="panelFormLabel">Agent :</label>
-                                  <select @change="updateAgent(toBeEditedService.user_id)" name="user_id" class="form-control" id="user_id" v-model="toBeEditedService.user_id">
-                                      <option v-for="(agent,index) in agents" :key="index" :value="agent.id">
+                                  <select class="form-control" id="user_id" @change="selectAgent" v-model="currentSelectedAgent">
+                                      <option v-for="(agent,index) in agents" :key="index" :value="agent">
                                           {{agent.firstName}} {{agent.lastName}}
                                       </option>
                                   </select>
                                   <br/>
-                                  <div v-show="sendNotificationToAgent">
+                                  <div class="panelFormLabel" v-show="selectedAgents.length > 0">
+                                      <span style="color: white; background: lightgreen; padding: 5px; margin: 5px;"
+                                            v-for="(agent,index) in selectedAgents" v-bind:key="'a'+index">
+                                          {{agent.firstName}} {{agent.lastName}}
+                                          <a href="javascript:void(0)" @click="removeSelectedAgent(agent.id)">X</a>
+                                      </span>
+                                  </div>
+                                  <span v-if="toBeEditedService.selectedAgents !== undefined" class="d-none">
+                                      {{selectedAgents = toBeEditedService.selectedAgents}}
+                                  </span>
+                                  <br/>
+                                  <div v-show="selectedAgents.length > 0">
                                       <a href="javascript:void(0)" class="btn btn-primary" @click="sendEmailToAgent">
-                                          Send notification to selected agent.
+                                          Send notification to selected agents.
                                       </a>
                                   </div>
                                   <div class="alert-info" style="padding: 10px;" v-show="sendNotificationToAgentStatus.length > 0">
@@ -110,6 +121,8 @@
         data(){
             return{
                 agents:[],
+                selectedAgents:[],
+                currentSelectedAgent:'Select agents',
                 customDays:false,
                 daysOfWeek:[
                  'Mon','Tue','Wed','Thu','Fri'
@@ -119,10 +132,22 @@
             }
         },
         methods:{
+            selectAgent(){
+              this.selectedAgents.push(this.currentSelectedAgent);
+            },
+            removeSelectedAgent(agent_id){
+                let agents = this.selectedAgents;
+                $.each(agents, function(i){
+                    if(agents[i].id === agent_id) {
+                        agents.splice(i,1);
+                        return false;
+                    }
+                });
+            },
             submitForm(){
                // post data :
+                this.toBeEditedService.selectedAgents = this.selectedAgents;
                 axios.post('/admin/client/addservice',this.toBeEditedService).then( (response) => {
-                    console.log(response.data);
                     if(this.toBeEditedService.id === ""){
                         this.$emit('serviceAdded',this.toBeEditedService);
                     }

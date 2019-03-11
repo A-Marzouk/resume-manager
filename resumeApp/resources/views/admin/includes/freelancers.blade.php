@@ -18,7 +18,7 @@
             </a>
         </li>
         <li class="col-md-2">
-            <a class="btn btn-block btn-outline-primary" href="#businessSupport" role="tab" data-toggle="tab">
+            <a class="btn btn-block btn-outline-primary" href="{{route('view.business.support.users')}}">
                 Business support
             </a>
         </li>
@@ -27,7 +27,6 @@
     <div class="tab-content">
         @include('admin.includes.freelancers_includes.designers')
         @include('admin.includes.freelancers_includes.developers')
-        @include('admin.includes.freelancers_includes.business_support')
         @include('admin.includes.freelancers_includes.behance_designers')
     </div>
 </div>

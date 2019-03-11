@@ -38,6 +38,10 @@ class AdminsController extends Controller
         return view('admin.usersList', compact('data'));
     }
 
+    public function viewBusinessSupportUsers(){
+        return view('admin.business_support_users');
+    }
+
     public function getBusinessUsersOrdered(){
         $businessUsers = User::where('profession','businessSupport')
             ->orderByRaw("FIELD(status ,'GREY','ORANGE','GREEN','DARKGREEN','RED','NOT_SELECTED') ASC")

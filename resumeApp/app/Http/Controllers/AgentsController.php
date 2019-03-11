@@ -63,7 +63,11 @@ class AgentsController extends Controller
         }
 
         $agent->name = $request->name;
-        $agent->number = $request->number;
+        if($request->number == '100'){
+            // get the last number and add 1
+            $newNumber = Agent::max('number') + 1;
+        }
+        $agent->number = $newNumber;
         $agent->experience = $request->experience;
         $agent->language = $request->language;
         $agent->hourly_rate = $request->hourly_rate;

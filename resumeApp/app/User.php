@@ -37,6 +37,10 @@ class User extends Authenticatable
         return $this->belongsToMany(ShiftDay::class);
     }
 
+    public function services(){
+        return $this->belongsToMany(ShiftDay::class);
+    }
+
 
     public function campaigns(){
         return $this->belongsToMany(Campaign::class);

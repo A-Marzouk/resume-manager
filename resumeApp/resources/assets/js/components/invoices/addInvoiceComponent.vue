@@ -11,36 +11,11 @@
                     <div class="modal-body">
                         <form action="/client/addinvoice/" method="post" @submit.prevent="submitForm">
                           <div class="row">
-                              <div class="form-group col-md-12">
-                                  <label for="user_id" class="panelFormLabel">Agent :</label>
-                                  <select @change="updateAgent(toBeEditedInvoice.user_id)" name="user_id" class="form-control" id="user_id" v-model="toBeEditedInvoice.user_id">
-                                      <option v-for="(agent,index) in agents" :key="index" :value="agent.id">
-                                          {{agent.firstName}} {{agent.lastName}}
-                                      </option>
-                                  </select>
-                                  <br/>
-                                  <div v-show="sendNotificationToAgent">
-                                      <a href="javascript:void(0)" class="btn btn-primary" @click="sendEmailToAgent">
-                                          Send notification to selected agent.
-                                      </a>
-                                  </div>
-                                  <div class="alert-info" style="padding: 10px;" v-show="sendNotificationToAgentStatus.length > 0">
-                                      {{sendNotificationToAgentStatus}}
-                                  </div>
-                              </div>
-                              <!-- agent -->
                               <div class="form-group col-md-6">
                                   <label for="hours" class="panelFormLabel">Hours :</label>
                                   <input type="number" class="form-control" autofocus id="hours" name="hours" v-model="toBeEditedInvoice.hours" required>
                               </div>
                               <!-- hours -->
-                              <div class="form-group col-md-6">
-                                  <label for="rate" class="panelFormLabel">Hourly rate :</label>
-                                  <select name="rate" class="form-control" id="rate" v-model="toBeEditedInvoice.rate">
-                                      <option v-for="index in 42" :key="index" :value="(index+6+1)/2" v-show="(index+6+1)/2 !== 3.5">{{(index+6+1)/2}}</option>
-                                      <option value="25">25</option>
-                                  </select>
-                              </div>
 
                               <div class="form-group col-6">
                                   <label for="currency" class="panelFormLabel">Currency :</label>

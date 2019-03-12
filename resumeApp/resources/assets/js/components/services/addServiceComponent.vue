@@ -35,12 +35,8 @@
                                   </span>
                                   <br/>
                                   <div v-show="selectedAgents.length > 0">
-                                      <a href="javascript:void(0)" class="btn btn-primary" @click="sendEmailToAgent">
-                                          Send notification to selected agents.
-                                      </a>
-                                  </div>
-                                  <div class="alert-info" style="padding: 10px;" v-show="sendNotificationToAgentStatus.length > 0">
-                                      {{sendNotificationToAgentStatus}}
+                                      <input type="checkbox" v-model="notifyOnSave">
+                                      Notify agents on save
                                   </div>
                               </div>
                               <!-- agent -->
@@ -127,8 +123,7 @@
                 daysOfWeek:[
                  'Mon','Tue','Wed','Thu','Fri'
                 ],
-                sendNotificationToAgent:false,
-                sendNotificationToAgentStatus:''
+                notifyOnSave:false,
             }
         },
         methods:{
@@ -148,7 +143,9 @@
                // post data :
                 this.toBeEditedService.selectedAgents = this.selectedAgents;
                 this.toBeEditedService.agents = this.selectedAgents;
+                this.toBeEditedService.notifyAgents = this.notifyOnSave;
                 axios.post('/admin/client/addservice',this.toBeEditedService).then( (response) => {
+                    console.log(response.data);
                     if(this.toBeEditedService.id === ""){
                         this.$emit('serviceAdded',this.toBeEditedService);
                     }
@@ -170,8 +167,7 @@
                 $('#closeInvoiceModal').click();
             },
             clearSendData(){
-                this.sendNotificationToAgent=false;
-                this.sendNotificationToAgentStatus='';
+
             },
             changesSavedNotification(){
                 // changes saved :
@@ -193,7 +189,6 @@
                         this.toBeEditedService.agent = this.agents[i];
                     }
                 });
-                this.sendNotificationToAgent = true;
             },
             getDateOfISOWeek(w, y) {
                 var simple = new Date(y, 0, 1 + (w - 1) * 7);
@@ -215,19 +210,6 @@
                 axios.get('/admin/get_users').then(response=>{
                     this.agents = response.data;
                 });
-            },
-            sendEmailToAgent(){
-                axios.post('/admin/send_invoice_email',{invoice:this.toBeEditedInvoice}).then( (response) => {
-                    if(response.data === 'emailSent'){
-                        this.sendNotificationToAgentStatus = 'Email has been sent';
-                    }else{
-                        this.sendNotificationToAgentStatus = 'Error while sending email';
-                    }
-                    this.sendNotificationToAgent = false;
-                    setTimeout(() => {
-                        this.sendNotificationToAgentStatus = '';
-                    },5000);
-                } );
             }
         },
         mounted(){

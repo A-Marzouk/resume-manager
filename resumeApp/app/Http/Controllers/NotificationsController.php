@@ -255,19 +255,23 @@ class NotificationsController extends Controller
         });
     }
 
-    public function agentHasBeenChosen($invoice){
-        $email = $invoice['agent']['email'];
+    public function agentHasBeenChosen($service){
+        $agents = $service->agents ;
+        $emails = [];
+        foreach ($agents as $agent){
+            $emails[] = $agent->email ;
+        }
         $data  = [
-            'id'=> $invoice['id'],
-            'start_time' => $invoice['start_time'],
-            'end_time'   => $invoice['end_time'],
-            'weekDate'   => $invoice['weekDate'],
-            'clientName'   => Client::where('id',$invoice['client_id'])->first()->name,
+            'hours' => $service->hours,
+            'title' => $service->title,
+            'weekDate'   => $service->weekDate,
+            'days'   => $service->days,
+            'clientName'   => Client::where('id',$service->client_id)->first()->name,
         ];
 
-        Mail::send('emails.invoice_notification_first',$data, function($message) use ($email)
+        Mail::send('emails.invoice_notification_first',$data, function($message) use ($emails)
         {
-            $message->to($email)->subject('You have been provisionally selected to work.');
+            $message->to($emails)->subject('You have been provisionally selected to work.');
         });
         return 'emailSent';
     }

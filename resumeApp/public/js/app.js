@@ -60878,10 +60878,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedService'],
@@ -60892,8 +60888,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             currentSelectedAgent: 'Select agents',
             customDays: false,
             daysOfWeek: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-            sendNotificationToAgent: false,
-            sendNotificationToAgentStatus: ''
+            notifyOnSave: false
         };
     },
 
@@ -60916,7 +60911,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             // post data :
             this.toBeEditedService.selectedAgents = this.selectedAgents;
             this.toBeEditedService.agents = this.selectedAgents;
+            this.toBeEditedService.notifyAgents = this.notifyOnSave;
             axios.post('/admin/client/addservice', this.toBeEditedService).then(function (response) {
+                console.log(response.data);
                 if (_this.toBeEditedService.id === "") {
                     _this.$emit('serviceAdded', _this.toBeEditedService);
                 }
@@ -60937,10 +60934,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             $('#closeInvoiceModal').click();
         },
-        clearSendData: function clearSendData() {
-            this.sendNotificationToAgent = false;
-            this.sendNotificationToAgentStatus = '';
-        },
+        clearSendData: function clearSendData() {},
         changesSavedNotification: function changesSavedNotification() {
             // changes saved :
             $('#changesSaved').fadeIn('slow');
@@ -60961,7 +60955,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this2.toBeEditedService.agent = _this2.agents[i];
                 }
             });
-            this.sendNotificationToAgent = true;
         },
         getDateOfISOWeek: function getDateOfISOWeek(w, y) {
             var simple = new Date(y, 0, 1 + (w - 1) * 7);
@@ -60984,21 +60977,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/admin/get_users').then(function (response) {
                 _this3.agents = response.data;
-            });
-        },
-        sendEmailToAgent: function sendEmailToAgent() {
-            var _this4 = this;
-
-            axios.post('/admin/send_invoice_email', { invoice: this.toBeEditedInvoice }).then(function (response) {
-                if (response.data === 'emailSent') {
-                    _this4.sendNotificationToAgentStatus = 'Email has been sent';
-                } else {
-                    _this4.sendNotificationToAgentStatus = 'Error while sending email';
-                }
-                _this4.sendNotificationToAgent = false;
-                setTimeout(function () {
-                    _this4.sendNotificationToAgentStatus = '';
-                }, 5000);
             });
         }
     },
@@ -61259,43 +61237,46 @@ var render = function() {
                             ]
                           },
                           [
-                            _c(
-                              "a",
-                              {
-                                staticClass: "btn btn-primary",
-                                attrs: { href: "javascript:void(0)" },
-                                on: { click: _vm.sendEmailToAgent }
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.notifyOnSave,
+                                  expression: "notifyOnSave"
+                                }
+                              ],
+                              attrs: { type: "checkbox" },
+                              domProps: {
+                                checked: Array.isArray(_vm.notifyOnSave)
+                                  ? _vm._i(_vm.notifyOnSave, null) > -1
+                                  : _vm.notifyOnSave
                               },
-                              [
-                                _vm._v(
-                                  "\n                                      Send notification to selected agents.\n                                  "
-                                )
-                              ]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value:
-                                  _vm.sendNotificationToAgentStatus.length > 0,
-                                expression:
-                                  "sendNotificationToAgentStatus.length > 0"
+                              on: {
+                                change: function($event) {
+                                  var $$a = _vm.notifyOnSave,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = null,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        (_vm.notifyOnSave = $$a.concat([$$v]))
+                                    } else {
+                                      $$i > -1 &&
+                                        (_vm.notifyOnSave = $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1)))
+                                    }
+                                  } else {
+                                    _vm.notifyOnSave = $$c
+                                  }
+                                }
                               }
-                            ],
-                            staticClass: "alert-info",
-                            staticStyle: { padding: "10px" }
-                          },
-                          [
+                            }),
                             _vm._v(
-                              "\n                                  " +
-                                _vm._s(_vm.sendNotificationToAgentStatus) +
-                                "\n                              "
+                              "\n                                  Notify agents on save\n                              "
                             )
                           ]
                         )

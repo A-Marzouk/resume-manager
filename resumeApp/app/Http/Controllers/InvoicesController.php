@@ -189,11 +189,4 @@ class InvoicesController extends Controller
 
         return $booking->id;
     }
-
-    public function sendEmailNotificationToAgent(Request $request){
-        $invoice = $request->invoice;
-        $notification = new NotificationsController;
-        return $notification->agentHasBeenChosen($invoice) ;
-    }
-    
 }

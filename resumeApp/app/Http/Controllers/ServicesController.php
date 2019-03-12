@@ -98,8 +98,12 @@ class ServicesController extends Controller
                 $IDs[] = $agent['id'];
             }
             $service->agents()->sync($IDs);
+
+            if($request->notifyAgents){
+               return $this->sendEmailNotificationToAgents($service);
+            }
         }
-        
+
         return ['id'=> $service->id];
     }
 
@@ -164,5 +168,11 @@ class ServicesController extends Controller
             return $number;
         }
     }
+
+    public function sendEmailNotificationToAgents($service){
+        $notification = new NotificationsController;
+        return $notification->agentHasBeenChosen($service) ;
+    }
+
 
 }

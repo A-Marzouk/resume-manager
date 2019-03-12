@@ -19,11 +19,17 @@
                         <div class="agentName">
                             Name of Agents :<br/>
                             @foreach($invoice->services as $service)
-                                @if(isset($service->user_id))
-                                    - {{$service->user->firstName}} {{$service->user->lastName}}
-                                @endif<br/>
+                                @foreach($service->agents as $user)
+                                    <?
+                                     $users[$user->id] = $user->firstName . ' ' .$user->lastName ;
+                                    ?>
+                                @endforeach
+                            @endforeach
+                            @foreach(array_unique($users) as $name)
+                                - {{$name}} <br/>
                             @endforeach
                         </div>
+
                         <div class="termsText">
                             Invoice issue date    : {{$invoice->created_at->format('d.m.Y')}}
                         </div>

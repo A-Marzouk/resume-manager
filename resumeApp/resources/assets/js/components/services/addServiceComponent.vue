@@ -17,19 +17,26 @@
                               </div>
                               <div class="form-group col-md-12">
                                   <label for="user_id" class="panelFormLabel">Agent :</label>
-                                  <select @change="updateAgent(toBeEditedService.user_id)" name="user_id" class="form-control" id="user_id" v-model="toBeEditedService.user_id">
-                                      <option v-for="(agent,index) in agents" :key="index" :value="agent.id">
+                                  <select class="form-control" id="user_id" @change="selectAgent" v-model="currentSelectedAgent">
+                                      <option v-for="(agent,index) in agents" :key="index" :value="agent">
                                           {{agent.firstName}} {{agent.lastName}}
                                       </option>
                                   </select>
                                   <br/>
-                                  <div v-show="sendNotificationToAgent">
-                                      <a href="javascript:void(0)" class="btn btn-primary" @click="sendEmailToAgent">
-                                          Send notification to selected agent.
-                                      </a>
+                                  <div class="panelFormLabel" v-show="selectedAgents.length > 0">
+                                      <span style="color: white; background: lightgreen; padding: 5px; margin: 5px;"
+                                            v-for="(agent,index) in selectedAgents" v-bind:key="'a'+index">
+                                          {{agent.firstName}} {{agent.lastName}}
+                                          <a href="javascript:void(0)" @click="removeSelectedAgent(agent.id)">X</a>
+                                      </span>
                                   </div>
-                                  <div class="alert-info" style="padding: 10px;" v-show="sendNotificationToAgentStatus.length > 0">
-                                      {{sendNotificationToAgentStatus}}
+                                  <span v-if="toBeEditedService.selectedAgents !== undefined" class="d-none">
+                                      {{selectedAgents = toBeEditedService.selectedAgents}}
+                                  </span>
+                                  <br/>
+                                  <div v-show="selectedAgents.length > 0">
+                                      <input type="checkbox" v-model="notifyOnSave">
+                                      Notify agents on save
                                   </div>
                               </div>
                               <!-- agent -->
@@ -110,17 +117,33 @@
         data(){
             return{
                 agents:[],
+                selectedAgents:[],
+                currentSelectedAgent:'Select agents',
                 customDays:false,
                 daysOfWeek:[
                  'Mon','Tue','Wed','Thu','Fri'
                 ],
-                sendNotificationToAgent:false,
-                sendNotificationToAgentStatus:''
+                notifyOnSave:false,
             }
         },
         methods:{
+            selectAgent(){
+              this.selectedAgents.push(this.currentSelectedAgent);
+            },
+            removeSelectedAgent(agent_id){
+                let agents = this.selectedAgents;
+                $.each(agents, function(i){
+                    if(agents[i].id === agent_id) {
+                        agents.splice(i,1);
+                        return false;
+                    }
+                });
+            },
             submitForm(){
                // post data :
+                this.toBeEditedService.selectedAgents = this.selectedAgents;
+                this.toBeEditedService.agents = this.selectedAgents;
+                this.toBeEditedService.notifyAgents = this.notifyOnSave;
                 axios.post('/admin/client/addservice',this.toBeEditedService).then( (response) => {
                     console.log(response.data);
                     if(this.toBeEditedService.id === ""){
@@ -144,8 +167,7 @@
                 $('#closeInvoiceModal').click();
             },
             clearSendData(){
-                this.sendNotificationToAgent=false;
-                this.sendNotificationToAgentStatus='';
+
             },
             changesSavedNotification(){
                 // changes saved :
@@ -167,7 +189,6 @@
                         this.toBeEditedService.agent = this.agents[i];
                     }
                 });
-                this.sendNotificationToAgent = true;
             },
             getDateOfISOWeek(w, y) {
                 var simple = new Date(y, 0, 1 + (w - 1) * 7);
@@ -189,19 +210,6 @@
                 axios.get('/admin/get_users').then(response=>{
                     this.agents = response.data;
                 });
-            },
-            sendEmailToAgent(){
-                axios.post('/admin/send_invoice_email',{invoice:this.toBeEditedInvoice}).then( (response) => {
-                    if(response.data === 'emailSent'){
-                        this.sendNotificationToAgentStatus = 'Email has been sent';
-                    }else{
-                        this.sendNotificationToAgentStatus = 'Error while sending email';
-                    }
-                    this.sendNotificationToAgent = false;
-                    setTimeout(() => {
-                        this.sendNotificationToAgentStatus = '';
-                    },5000);
-                } );
             }
         },
         mounted(){

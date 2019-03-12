@@ -74,6 +74,13 @@ class AgentsController extends Controller
         $agent->available_hours = $request->available_hours;
         $agent->location = $request->location;
 
+        if(isset($request->user_id)){
+            $agent->user_id = $request->user_id ;
+        }
+        $oldAgent = Agent::where('user_id',$request->user_id)->first();
+        if($oldAgent){
+            return ['old_id'=>$oldAgent->id];
+        }
         $agent->save();
 
         if(isset($request->user_id)){

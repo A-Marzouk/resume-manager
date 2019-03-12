@@ -38,7 +38,7 @@ class User extends Authenticatable
     }
 
     public function services(){
-        return $this->belongsToMany(ShiftDay::class);
+        return $this->belongsToMany(Service::class);
     }
 
 

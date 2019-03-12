@@ -9,16 +9,10 @@
         On these dates and times. <br/>
 
         Date : {{$weekDate}}<br/>
-        Time : From: {{$start_time}}  To: {{$end_time}}<br/>
+        Time : {{$hours}} Hours<br/>
+        Days : {{$days}} <br/>
 
-        To view the campaign details please login to the campaign page via this link.
-
-
-        <div class="buttonMain col-md-4 offset-4" style="margin-bottom: 20px;">
-            <a href="123workforce.magictimeapps.com/workforce/campaign_briefs/{{$id}}" class="hireBtn btn-block" target="_blank">
-                View campaign
-            </a>
-        </div>
+        Service : {{$title}}
 
 
     </div>

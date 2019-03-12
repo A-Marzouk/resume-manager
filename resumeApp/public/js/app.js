@@ -59948,6 +59948,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
@@ -59988,7 +59990,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         currServices[i].days = currServices[i].days.split(',');
                     }
                 });
-                console.log(currServices);
                 _this.services = currServices;
                 _this.checkMaxServices();
             });
@@ -60045,6 +60046,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             $.each(services, function (i) {
                 if (services[i].id === serviceID) {
                     editedService = services[i];
+                    editedService.selectedAgents = services[i].agents;
                 }
             });
             this.toBeEditedService = editedService;
@@ -60239,30 +60241,40 @@ var render = function() {
                       ]
                     ),
                     _c("Br"),
-                    _vm._v(
-                      "\n\n                    Agent :\n                    "
-                    ),
-                    service.agent !== null
+                    _vm._v(" "),
+                    service.agents !== undefined
                       ? _c(
-                          "b",
-                          {
-                            staticStyle: {
-                              "font-size": "16px",
-                              color: "#30323D",
-                              "font-family": "Roboto",
-                              "line-height": "19px",
-                              "font-weight": "bold"
-                            }
-                          },
+                          "div",
                           [
                             _vm._v(
-                              "\n                        " +
-                                _vm._s(service.agent.firstName) +
-                                " " +
-                                _vm._s(service.agent.lastName) +
-                                "\n                    "
-                            )
-                          ]
+                              "\n                     Agents :\n\n                        "
+                            ),
+                            _vm._l(service.agents, function(agent, index) {
+                              return _c(
+                                "div",
+                                {
+                                  key: index,
+                                  staticStyle: {
+                                    "font-size": "16px",
+                                    color: "#30323D",
+                                    "font-family": "Roboto",
+                                    "line-height": "19px",
+                                    "font-weight": "bold"
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                            " +
+                                      _vm._s(agent.firstName) +
+                                      " " +
+                                      _vm._s(agent.lastName) +
+                                      "\n                        "
+                                  )
+                                ]
+                              )
+                            })
+                          ],
+                          2
                         )
                       : _vm._e(),
                     _vm._v(" "),
@@ -60859,24 +60871,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedService'],
     data: function data() {
         return {
             agents: [],
+            selectedAgents: [],
+            currentSelectedAgent: 'Select agents',
             customDays: false,
             daysOfWeek: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-            sendNotificationToAgent: false,
-            sendNotificationToAgentStatus: ''
+            notifyOnSave: false
         };
     },
 
     methods: {
+        selectAgent: function selectAgent() {
+            this.selectedAgents.push(this.currentSelectedAgent);
+        },
+        removeSelectedAgent: function removeSelectedAgent(agent_id) {
+            var agents = this.selectedAgents;
+            $.each(agents, function (i) {
+                if (agents[i].id === agent_id) {
+                    agents.splice(i, 1);
+                    return false;
+                }
+            });
+        },
         submitForm: function submitForm() {
             var _this = this;
 
             // post data :
+            this.toBeEditedService.selectedAgents = this.selectedAgents;
+            this.toBeEditedService.agents = this.selectedAgents;
+            this.toBeEditedService.notifyAgents = this.notifyOnSave;
             axios.post('/admin/client/addservice', this.toBeEditedService).then(function (response) {
                 console.log(response.data);
                 if (_this.toBeEditedService.id === "") {
@@ -60899,10 +60934,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             $('#closeInvoiceModal').click();
         },
-        clearSendData: function clearSendData() {
-            this.sendNotificationToAgent = false;
-            this.sendNotificationToAgentStatus = '';
-        },
+        clearSendData: function clearSendData() {},
         changesSavedNotification: function changesSavedNotification() {
             // changes saved :
             $('#changesSaved').fadeIn('slow');
@@ -60923,7 +60955,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this2.toBeEditedService.agent = _this2.agents[i];
                 }
             });
-            this.sendNotificationToAgent = true;
         },
         getDateOfISOWeek: function getDateOfISOWeek(w, y) {
             var simple = new Date(y, 0, 1 + (w - 1) * 7);
@@ -60946,21 +60977,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/admin/get_users').then(function (response) {
                 _this3.agents = response.data;
-            });
-        },
-        sendEmailToAgent: function sendEmailToAgent() {
-            var _this4 = this;
-
-            axios.post('/admin/send_invoice_email', { invoice: this.toBeEditedInvoice }).then(function (response) {
-                if (response.data === 'emailSent') {
-                    _this4.sendNotificationToAgentStatus = 'Email has been sent';
-                } else {
-                    _this4.sendNotificationToAgentStatus = 'Error while sending email';
-                }
-                _this4.sendNotificationToAgent = false;
-                setTimeout(function () {
-                    _this4.sendNotificationToAgentStatus = '';
-                }, 5000);
             });
         }
     },
@@ -61097,12 +61113,12 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.toBeEditedService.user_id,
-                                expression: "toBeEditedService.user_id"
+                                value: _vm.currentSelectedAgent,
+                                expression: "currentSelectedAgent"
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: { name: "user_id", id: "user_id" },
+                            attrs: { id: "user_id" },
                             on: {
                               change: [
                                 function($event) {
@@ -61115,24 +61131,19 @@ var render = function() {
                                         "_value" in o ? o._value : o.value
                                       return val
                                     })
-                                  _vm.$set(
-                                    _vm.toBeEditedService,
-                                    "user_id",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
+                                  _vm.currentSelectedAgent = $event.target
+                                    .multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
                                 },
-                                function($event) {
-                                  _vm.updateAgent(_vm.toBeEditedService.user_id)
-                                }
+                                _vm.selectAgent
                               ]
                             }
                           },
                           _vm._l(_vm.agents, function(agent, index) {
                             return _c(
                               "option",
-                              { key: index, domProps: { value: agent.id } },
+                              { key: index, domProps: { value: agent } },
                               [
                                 _vm._v(
                                   "\n                                      " +
@@ -61155,27 +61166,63 @@ var render = function() {
                               {
                                 name: "show",
                                 rawName: "v-show",
-                                value: _vm.sendNotificationToAgent,
-                                expression: "sendNotificationToAgent"
+                                value: _vm.selectedAgents.length > 0,
+                                expression: "selectedAgents.length > 0"
                               }
-                            ]
+                            ],
+                            staticClass: "panelFormLabel"
                           },
-                          [
-                            _c(
-                              "a",
+                          _vm._l(_vm.selectedAgents, function(agent, index) {
+                            return _c(
+                              "span",
                               {
-                                staticClass: "btn btn-primary",
-                                attrs: { href: "javascript:void(0)" },
-                                on: { click: _vm.sendEmailToAgent }
+                                key: "a" + index,
+                                staticStyle: {
+                                  color: "white",
+                                  background: "lightgreen",
+                                  padding: "5px",
+                                  margin: "5px"
+                                }
                               },
                               [
                                 _vm._v(
-                                  "\n                                      Send notification to selected agent.\n                                  "
+                                  "\n                                      " +
+                                    _vm._s(agent.firstName) +
+                                    " " +
+                                    _vm._s(agent.lastName) +
+                                    "\n                                      "
+                                ),
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "javascript:void(0)" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.removeSelectedAgent(agent.id)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("X")]
                                 )
                               ]
                             )
-                          ]
+                          })
                         ),
+                        _vm._v(" "),
+                        _vm.toBeEditedService.selectedAgents !== undefined
+                          ? _c("span", { staticClass: "d-none" }, [
+                              _vm._v(
+                                "\n                                  " +
+                                  _vm._s(
+                                    (_vm.selectedAgents =
+                                      _vm.toBeEditedService.selectedAgents)
+                                  ) +
+                                  "\n                              "
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("br"),
                         _vm._v(" "),
                         _c(
                           "div",
@@ -61184,20 +61231,52 @@ var render = function() {
                               {
                                 name: "show",
                                 rawName: "v-show",
-                                value:
-                                  _vm.sendNotificationToAgentStatus.length > 0,
-                                expression:
-                                  "sendNotificationToAgentStatus.length > 0"
+                                value: _vm.selectedAgents.length > 0,
+                                expression: "selectedAgents.length > 0"
                               }
-                            ],
-                            staticClass: "alert-info",
-                            staticStyle: { padding: "10px" }
+                            ]
                           },
                           [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.notifyOnSave,
+                                  expression: "notifyOnSave"
+                                }
+                              ],
+                              attrs: { type: "checkbox" },
+                              domProps: {
+                                checked: Array.isArray(_vm.notifyOnSave)
+                                  ? _vm._i(_vm.notifyOnSave, null) > -1
+                                  : _vm.notifyOnSave
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a = _vm.notifyOnSave,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = null,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        (_vm.notifyOnSave = $$a.concat([$$v]))
+                                    } else {
+                                      $$i > -1 &&
+                                        (_vm.notifyOnSave = $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1)))
+                                    }
+                                  } else {
+                                    _vm.notifyOnSave = $$c
+                                  }
+                                }
+                              }
+                            }),
                             _vm._v(
-                              "\n                                  " +
-                                _vm._s(_vm.sendNotificationToAgentStatus) +
-                                "\n                              "
+                              "\n                                  Notify agents on save\n                              "
                             )
                           ]
                         )

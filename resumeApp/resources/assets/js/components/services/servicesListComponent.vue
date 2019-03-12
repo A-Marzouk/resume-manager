@@ -31,11 +31,13 @@
                         <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
                             {{service.title}}
                         </b><Br/>
+                        <div v-if="service.agents !== undefined">
+                         Agents :
 
-                        Agent :
-                        <b v-if="service.agent !== null" style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
-                            {{service.agent.firstName}} {{service.agent.lastName}}
-                        </b>
+                            <div v-for="(agent,index) in service.agents" v-bind:key="index" style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
+                                {{agent.firstName}} {{agent.lastName}}
+                            </div>
+                        </div>
                         <br/>
                         Rate per Hour :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{service.rate}}</b><br/>
                         Total price of service :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; "> {{service.total_price}}</b><br/>
@@ -124,7 +126,6 @@
                                 currServices[i].days = currServices[i].days.split(',')
                             }
                         });
-                        console.log(currServices);
                         this.services = currServices;
                         this.checkMaxServices();
                     }
@@ -185,6 +186,7 @@
                 $.each(services, function(i){
                     if(services[i].id === serviceID){
                         editedService = services[i];
+                        editedService.selectedAgents = services[i].agents;
                     }
                 });
                 this.toBeEditedService = editedService;

@@ -32,7 +32,7 @@ class ServicesController extends Controller
         $client = Client::where('id',$client_id)->first();
         $services = $client->services;
         foreach ($services as &$service){
-            $service['agent'] = $service->user;
+            $service['agents'] = $service->agents;
         }
         return $services;
     }
@@ -69,9 +69,6 @@ class ServicesController extends Controller
             $service->client_id = $currentClient->id;
             $service->timeZone  = $currentClient->timeZone;
         }
-        if(isset($request->user_id)){
-            $service->user_id        = $request->user_id;
-        }
 
         $service->title = $request->title;
         $service->total_price = $request->total_price;
@@ -93,6 +90,20 @@ class ServicesController extends Controller
         $service->rate         = $request->rate;
 
         $service->save();
+
+        if(isset($request->selectedAgents)){
+            // attach agents to the service
+            foreach ($request->selectedAgents as $agent){
+                // sync with the id's sent.
+                $IDs[] = $agent['id'];
+            }
+            $service->agents()->sync($IDs);
+
+            if($request->notifyAgents){
+               return $this->sendEmailNotificationToAgents($service);
+            }
+        }
+
         return ['id'=> $service->id];
     }
 
@@ -157,5 +168,11 @@ class ServicesController extends Controller
             return $number;
         }
     }
+
+    public function sendEmailNotificationToAgents($service){
+        $notification = new NotificationsController;
+        return $notification->agentHasBeenChosen($service) ;
+    }
+
 
 }

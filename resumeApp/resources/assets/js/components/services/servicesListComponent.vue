@@ -31,7 +31,7 @@
                         <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
                             {{service.title}}
                         </b><Br/>
-                        <div v-if="service.agents.length >0">
+                        <div v-if="service.agents !== undefined">
                          Agents :
 
                             <div v-for="(agent,index) in service.agents" v-bind:key="index" style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">

@@ -60242,7 +60242,7 @@ var render = function() {
                     ),
                     _c("Br"),
                     _vm._v(" "),
-                    service.agents.length > 0
+                    service.agents !== undefined
                       ? _c(
                           "div",
                           [
@@ -60915,6 +60915,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             // post data :
             this.toBeEditedService.selectedAgents = this.selectedAgents;
+            this.toBeEditedService.agents = this.selectedAgents;
             axios.post('/admin/client/addservice', this.toBeEditedService).then(function (response) {
                 if (_this.toBeEditedService.id === "") {
                     _this.$emit('serviceAdded', _this.toBeEditedService);

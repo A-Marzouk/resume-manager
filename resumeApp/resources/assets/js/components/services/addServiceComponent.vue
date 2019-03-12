@@ -147,6 +147,7 @@
             submitForm(){
                // post data :
                 this.toBeEditedService.selectedAgents = this.selectedAgents;
+                this.toBeEditedService.agents = this.selectedAgents;
                 axios.post('/admin/client/addservice',this.toBeEditedService).then( (response) => {
                     if(this.toBeEditedService.id === ""){
                         this.$emit('serviceAdded',this.toBeEditedService);

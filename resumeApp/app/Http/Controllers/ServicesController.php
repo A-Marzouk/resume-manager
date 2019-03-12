@@ -69,14 +69,6 @@ class ServicesController extends Controller
             $service->client_id = $currentClient->id;
             $service->timeZone  = $currentClient->timeZone;
         }
-        if(isset($request->selectedAgents)){
-            // attach agents to the service
-            foreach ($request->selectedAgents as $agent){
-                // sync with the id's sent.
-                $IDs[] = $agent['id'];
-            }
-            $service->agents()->sync($IDs);
-        }
 
         $service->title = $request->title;
         $service->total_price = $request->total_price;
@@ -98,6 +90,16 @@ class ServicesController extends Controller
         $service->rate         = $request->rate;
 
         $service->save();
+
+        if(isset($request->selectedAgents)){
+            // attach agents to the service
+            foreach ($request->selectedAgents as $agent){
+                // sync with the id's sent.
+                $IDs[] = $agent['id'];
+            }
+            $service->agents()->sync($IDs);
+        }
+        
         return ['id'=> $service->id];
     }
 

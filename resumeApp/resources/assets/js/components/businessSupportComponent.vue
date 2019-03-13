@@ -17,6 +17,26 @@
                     </div>
                 </div>
             </div>
+            <div class="col-12">
+                <hr>
+            </div>
+            <div class="row NoDecor">
+                <div class="col-8">
+                    <button :disabled="currentPage === 1" @click="getPreviousPage()" class="btn btn-primary">Previous page</button>
+                    <button :disabled="currentPage === lastPage" @click="getNextPage()" class="btn btn-primary">Next page</button>
+                    <br/>
+                    <span class="panelFormLabel" style="margin-top:25px;">Page number : {{currentPage}}</span>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="pageItems" class="panelFormLabel">Number of users per page : ( Total is {{this.totalNumOfUsers}} ) </label>
+                        <input id="pageItems" type="number" class="form-control" min="1" max="totalNumOfUsers" v-model="itemsPerPage" @change="getBusinessUsers()">
+                    </div>
+                </div>
+
+                <br/>
+            </div>
+
             <table class="table">
                 <thead>
                 <tr>
@@ -207,6 +227,26 @@
             <a href="javascript:void(0)" @click="deleteUsers" class="float" v-show="selectedUsers.length > 0">
                 Delete
             </a>
+
+            <div class="col-12">
+                <hr>
+            </div>
+            <div class="row NoDecor">
+                <div class="col-8">
+                    <button :disabled="currentPage === 1" @click="getPreviousPage()" class="btn btn-primary">Previous page</button>
+                    <button :disabled="currentPage === lastPage" @click="getNextPage()" class="btn btn-primary">Next page</button>
+                    <br/>
+                    <span class="panelFormLabel" style="margin-top:25px;">Page number : {{currentPage}}</span>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="pageItems1" class="panelFormLabel">Number of users per page : ( Total is {{this.totalNumOfUsers}} ) </label>
+                        <input id="pageItems1" type="number" class="form-control" min="1" max="totalNumOfUsers" v-model="itemsPerPage" @change="getBusinessUsers()">
+                    </div>
+                </div>
+
+                <br/>
+            </div>
         </div>
     </div>
 </template>
@@ -234,16 +274,23 @@
                     'Freelancers','Clients and invoices','Campaigns','Agents','Camp Briefs','Bookings','Chats',
                     'Affiliates','Jobs','Public search links','Search Freelancers','Send emails','Subscriptions'
                 ],
+                itemsPerPage:15,
+                currentPage:1,
+                lastPage:'',
+                totalNumOfUsers:'',
             }
+
         },
         methods:{
             getBusinessUsers(){
               this.isLoading = true;
-              axios.get('/admin/get/business_support_users').then(
+              axios.get('/admin/get/business_support_users/' + this.itemsPerPage + '?page=' + this.currentPage).then(
                   response => {
-                      this.businessUsers = response.data.businessUsers;
+                      this.businessUsers = response.data.businessUsers.data;
                       this.admin = response.data.admin;
                       this.isLoading = false;
+                      this.lastPage = response.data.businessUsers.last_page;
+                      this.totalNumOfUsers = response.data.businessUsers.total;
                   }
               );
           },
@@ -380,6 +427,18 @@
                     return true;
                 }
                 return false;
+            },
+            getNextPage(){
+                if(this.currentPage < this.lastPage){
+                    this.currentPage++;
+                }
+                this.getBusinessUsers();
+            },
+            getPreviousPage(){
+                if(this.currentPage > 1){
+                    this.currentPage--;
+                }
+                this.getBusinessUsers();
             }
         },
         mounted(){

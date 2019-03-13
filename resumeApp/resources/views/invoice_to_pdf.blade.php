@@ -73,6 +73,7 @@
 
                     <div class="agentName">
                         Name of Agents :<br/>
+                        <? $users = [] ;?>
                         @foreach($invoice->services as $service)
                             @foreach($service->agents as $user)
                                 <?

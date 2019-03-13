@@ -27,7 +27,6 @@ class AdminsController extends Controller
         // get list of freelancers :
         session()->put('admin', 'AdminWasHere');
         $data['users'] = User::all();
-        $data['businessSupport'] = $this->getBusinessUsersOrdered();
         $data['clients'] = Client::all();
         $data['conversations'] = Conversation::all();
         $data['searches'] = ClientSearch::all();
@@ -42,10 +41,10 @@ class AdminsController extends Controller
         return view('admin.business_support_users');
     }
 
-    public function getBusinessUsersOrdered(){
+    public function getBusinessUsersOrdered($items_count){
         $businessUsers = User::where('profession','businessSupport')
             ->orderByRaw("FIELD(status ,'GREY','ORANGE','GREEN','DARKGREEN','RED','NOT_SELECTED') ASC")
-            ->get();
+            ->paginate($items_count);
         foreach ($businessUsers as &$user){
             if(!isset($user->status)){
                 $user->status = 'NOT_SELECTED';

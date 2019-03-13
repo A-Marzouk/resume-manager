@@ -81573,6 +81573,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -81589,7 +81629,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             filters: ['GREY', 'ORANGE', 'GREEN', 'LIGHTGREEN', 'RED'],
             nameFilter: '',
             useFilter: false,
-            permissions: ['Freelancers', 'Clients and invoices', 'Campaigns', 'Agents', 'Camp Briefs', 'Bookings', 'Chats', 'Affiliates', 'Jobs', 'Public search links', 'Search Freelancers', 'Send emails', 'Subscriptions']
+            permissions: ['Freelancers', 'Clients and invoices', 'Campaigns', 'Agents', 'Camp Briefs', 'Bookings', 'Chats', 'Affiliates', 'Jobs', 'Public search links', 'Search Freelancers', 'Send emails', 'Subscriptions'],
+            itemsPerPage: 15,
+            currentPage: 1,
+            lastPage: '',
+            totalNumOfUsers: ''
         };
     },
 
@@ -81598,10 +81642,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             this.isLoading = true;
-            axios.get('/admin/get/business_support_users').then(function (response) {
-                _this.businessUsers = response.data.businessUsers;
+            axios.get('/admin/get/business_support_users/' + this.itemsPerPage + '?page=' + this.currentPage).then(function (response) {
+                _this.businessUsers = response.data.businessUsers.data;
                 _this.admin = response.data.admin;
                 _this.isLoading = false;
+                _this.lastPage = response.data.businessUsers.last_page;
+                _this.totalNumOfUsers = response.data.businessUsers.total;
             });
         },
         isShaded: function isShaded(user) {
@@ -81731,6 +81777,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return true;
             }
             return false;
+        },
+        getNextPage: function getNextPage() {
+            if (this.currentPage < this.lastPage) {
+                this.currentPage++;
+            }
+            this.getBusinessUsers();
+        },
+        getPreviousPage: function getPreviousPage() {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+            }
+            this.getBusinessUsers();
         }
     },
     mounted: function mounted() {
@@ -81881,6 +81939,99 @@ var render = function() {
               ])
             ]
           )
+        ]),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "row NoDecor" }, [
+          _c("div", { staticClass: "col-8" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { disabled: _vm.currentPage === 1 },
+                on: {
+                  click: function($event) {
+                    _vm.getPreviousPage()
+                  }
+                }
+              },
+              [_vm._v("Previous page")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { disabled: _vm.currentPage === _vm.lastPage },
+                on: {
+                  click: function($event) {
+                    _vm.getNextPage()
+                  }
+                }
+              },
+              [_vm._v("Next page")]
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                staticClass: "panelFormLabel",
+                staticStyle: { "margin-top": "25px" }
+              },
+              [_vm._v("Page number : " + _vm._s(_vm.currentPage))]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-4" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                { staticClass: "panelFormLabel", attrs: { for: "pageItems" } },
+                [
+                  _vm._v(
+                    "Number of users per page : ( Total is " +
+                      _vm._s(this.totalNumOfUsers) +
+                      " ) "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.itemsPerPage,
+                    expression: "itemsPerPage"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "pageItems",
+                  type: "number",
+                  min: "1",
+                  max: "totalNumOfUsers"
+                },
+                domProps: { value: _vm.itemsPerPage },
+                on: {
+                  change: function($event) {
+                    _vm.getBusinessUsers()
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.itemsPerPage = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("br")
         ]),
         _vm._v(" "),
         _c("table", { staticClass: "table" }, [
@@ -82518,9 +82669,9 @@ var render = function() {
                         },
                         [
                           _c("div", { staticClass: "modal-content" }, [
-                            _vm._m(0, true),
-                            _vm._v(" "),
                             _vm._m(1, true),
+                            _vm._v(" "),
+                            _vm._m(2, true),
                             _vm._v(" "),
                             _c("div", { staticClass: "modal-body" }, [
                               _c("div", { staticClass: "modal-body" }, [
@@ -82636,7 +82787,7 @@ var render = function() {
                               ]
                             ),
                             _vm._v(" "),
-                            _vm._m(2, true),
+                            _vm._m(3, true),
                             _vm._v(" "),
                             _c("div", { staticClass: "modal-body" }, [
                               _c("div", { staticClass: "modal-body" }, [
@@ -82774,12 +82925,111 @@ var render = function() {
             on: { click: _vm.deleteUsers }
           },
           [_vm._v("\n            Delete\n        ")]
-        )
+        ),
+        _vm._v(" "),
+        _vm._m(4),
+        _vm._v(" "),
+        _c("div", { staticClass: "row NoDecor" }, [
+          _c("div", { staticClass: "col-8" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { disabled: _vm.currentPage === 1 },
+                on: {
+                  click: function($event) {
+                    _vm.getPreviousPage()
+                  }
+                }
+              },
+              [_vm._v("Previous page")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { disabled: _vm.currentPage === _vm.lastPage },
+                on: {
+                  click: function($event) {
+                    _vm.getNextPage()
+                  }
+                }
+              },
+              [_vm._v("Next page")]
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                staticClass: "panelFormLabel",
+                staticStyle: { "margin-top": "25px" }
+              },
+              [_vm._v("Page number : " + _vm._s(_vm.currentPage))]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-4" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                { staticClass: "panelFormLabel", attrs: { for: "pageItems1" } },
+                [
+                  _vm._v(
+                    "Number of users per page : ( Total is " +
+                      _vm._s(this.totalNumOfUsers) +
+                      " ) "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.itemsPerPage,
+                    expression: "itemsPerPage"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "pageItems1",
+                  type: "number",
+                  min: "1",
+                  max: "totalNumOfUsers"
+                },
+                domProps: { value: _vm.itemsPerPage },
+                on: {
+                  change: function($event) {
+                    _vm.getBusinessUsers()
+                  },
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.itemsPerPage = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("br")
+        ])
       ])
     ]
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12" }, [_c("hr")])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -82826,6 +83076,12 @@ var staticRenderFns = [
         )
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12" }, [_c("hr")])
   }
 ]
 render._withStripped = true

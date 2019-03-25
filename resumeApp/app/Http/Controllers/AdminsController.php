@@ -28,7 +28,6 @@ class AdminsController extends Controller
         session()->put('admin', 'AdminWasHere');
         $data['users'] = User::all();
         $data['clients'] = Client::all();
-        $data['conversations'] = Conversation::all();
         $data['searches'] = ClientSearch::all();
         $data['bookings'] = Booking::all();
         $data['owners']   = Affiliate::all();

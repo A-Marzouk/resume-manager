@@ -30,10 +30,6 @@
                     @include('admin.includes.clients')
                 @endif
 
-                @if(in_array('Chats',$permissions))
-                    @include('admin.includes.chats')
-                @endif
-
                 @if(in_array('Freelancers',$permissions))
                     @include('admin.includes.searches')
                 @endif

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>123 Workforce</title>
-    @include('layouts.includes.client_styles')
+    @include('layouts.includes.styles')
 </head>
 <body>
 <?
@@ -127,7 +127,7 @@
     </div>
 
     @include('layouts.includes.modals')
-    @include('layouts.includes.client_scripts')
+    @include('layouts.includes.scripts')
 
 
 </body>

@@ -61411,6 +61411,7 @@ var render = function() {
                           staticClass: "form-control",
                           attrs: {
                             type: "number",
+                            step: "0.01",
                             id: "total_amount",
                             name: "total_price",
                             placeholder:

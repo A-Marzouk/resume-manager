@@ -56,7 +56,7 @@
 
                               <div class="form-group col-md-6">
                                   <label for="total_amount" class="panelFormLabel">Total amount <small>(USD)</small> :</label>
-                                  <input type="number" class="form-control" id="total_amount" name="total_price" :placeholder="'Hours * Rate : '+toBeEditedService.rate * toBeEditedService.hours" v-model="toBeEditedService.total_price" required>
+                                  <input type="number"  step="0.01" class="form-control" id="total_amount" name="total_price" :placeholder="'Hours * Rate : '+toBeEditedService.rate * toBeEditedService.hours" v-model="toBeEditedService.total_price" required>
                               </div>
                               <!---------------------- time ----------------------------->
                               <div class="form-group col-6">

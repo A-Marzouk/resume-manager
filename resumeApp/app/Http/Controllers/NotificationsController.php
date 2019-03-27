@@ -277,7 +277,13 @@ class NotificationsController extends Controller
     }
 
     public function agentHasBeenConfirmed($invoice){
-        $email = $invoice->user->email;
+        $emails =[] ;
+        foreach($invoice->services as $service){
+             foreach($service->agents as $user){
+                 $emails[] =  $user->email;
+             }
+         }
+
         $data  = [
             'id'=> $invoice->id,
             'start_time' => $invoice->start_time,
@@ -286,9 +292,9 @@ class NotificationsController extends Controller
             'clientName'   => Client::where('id',$invoice->client_id)->first()->name,
         ];
 
-        Mail::send('emails.invoice_notification_confirm',$data, function($message) use ($email)
+        Mail::send('emails.invoice_notification_confirm',$data, function($message) use ($emails)
         {
-            $message->to($email)->subject('You have been confirmed to work.');
+            $message->to($emails)->subject('You have been confirmed to work.');
         });
         return 'emailSent';
     }

@@ -71,7 +71,7 @@
                                         <div class="text-left noHoverEffect">
                                             <a class="btn btn-default btn-workExp" id="addProjectText"  @click="openNewImageBrowse">
                                                 <span>
-                                                    <img src="/resumeApp/resources/views/customTheme/images/add_work_img.png" alt="add project"
+                                                    <img src="/resumeApp/public/images/add_work_img.png" alt="add project"
                                                          width="30px">
                                                     Add image
                                                 </span>

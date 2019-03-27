@@ -13,7 +13,7 @@
                 </button>
                 <button type="button" data-toggle="modal" data-target="#addProjectModal" class="close" style="padding:3px 2px 5px 0px; outline: none;" @click="editProject(project.id)">
                 <span aria-hidden="true">
-                    <img src="/resumeApp/resources/views/customTheme/images/edit.png" alt="edit" width="17px">
+                    <img src="/resumeApp/public/images/edit.png" alt="edit" width="17px">
                 </span>
                 </button>
                 <b style="font-size:16px; font-weight:bolder; ">{{project.projectName}}</b><br/>

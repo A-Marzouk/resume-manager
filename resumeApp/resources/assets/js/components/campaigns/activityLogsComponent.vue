@@ -86,7 +86,7 @@
             },
             getImageSrc(userImage){
                 if(!userImage || userImage === null){
-                    return '/resumeApp/resources/views/customTheme/images/user.png';
+                    return '/resumeApp/public/images/user.png';
                 }
 
                 if(userImage.charAt(0) !== 'h'){

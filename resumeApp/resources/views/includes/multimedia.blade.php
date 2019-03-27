@@ -19,7 +19,7 @@
                  }
                  ?>
                  <? if($valid):?>
-                 <span id="tickMarkaudio" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span>
+                 <span id="tickMarkaudio" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span>
                  <? endif;?>
              </label>
 
@@ -112,7 +112,7 @@
      <div class="row">
          <div class="form-group col-md-12">
              <br/>
-             <label for="audio_transcript"  class="panelFormLabel">Audio transcript<span id="tickMarkaudio_transcript" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+             <label for="audio_transcript"  class="panelFormLabel">Audio transcript<span id="tickMarkaudio_transcript" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label>
              <textarea class="form-control" rows="3" name="audio_transcript" id="audio_transcript">{{$audio_transcript}}</textarea>
          </div> <!-- transcript -->
      </div>
@@ -141,7 +141,7 @@
         ?>
         <div class="row">
             <div class="col-md-12">
-                <label class="panelFormLabel">Link from Youtube :</label><span id="tickMarkvideo" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span>
+                <label class="panelFormLabel">Link from Youtube :</label><span id="tickMarkvideo" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span>
                 <input type="text" class="form-control panelFormInput" id="video" name="video"
                        value="{{$video}}"><br/>
                 <div class="text-center col-md-6">

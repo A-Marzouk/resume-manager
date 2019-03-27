@@ -175,7 +175,7 @@ $smallCard = false ;
     <div class="row" style="border-bottom: 1px solid whitesmoke; padding-bottom: 25px;">
         <div class="col-lg-11 col-11 text-left" style="padding: 25px 0 0 20px;">
                  <span>
-                    <img src="/resumeApp/resources/views/customTheme/images/audio_blue.png"
+                    <img src="/resumeApp/public/images/audio_blue.png"
                          alt="" style="padding-right: 14px; width: 34px;">
                     <span class="audioText" style="color: #4E75E8;">Audio & Text Interview</span>
                 </span>
@@ -221,7 +221,7 @@ $smallCard = false ;
     <div class="row" style="border-bottom: 1px solid whitesmoke; padding-bottom: 25px;">
         <div class="col-lg-11 col-11 text-left" style="padding: 25px 0 0 20px;">
                  <span>
-                    <img src="/resumeApp/resources/views/customTheme/images/video_blue.png"
+                    <img src="/resumeApp/public/images/video_blue.png"
                          alt="" style="padding-right: 14px; width: 34px;">
                     <span class="audioText" style="color: #4E75E8;">Video Interview</span>
                 </span>
@@ -277,7 +277,7 @@ $smallCard = false ;
                 <a href="javascript:void(0)" id="{{$freelancer->id}}{{$value['id']}}_open_audio" style="outline: none;" class="openAudio">
                     <div class="cardIconsCon ">
                     <span>
-                        <img src="/resumeApp/resources/views/customTheme/images/audio_blue.png"
+                        <img src="/resumeApp/public/images/audio_blue.png"
                              alt="" style="padding-right: 5px; width: 23px;">
                         <span class="audioText"  style="color: #4E75E8;">Audio & Text</span>
                     </span>
@@ -290,7 +290,7 @@ $smallCard = false ;
                 <a href="javascript:void(0)" id="{{$freelancer->id}}{{$value['id']}}_open_video" style="outline: none;" class="openVideo">
                     <div class="cardIconsCon2  text-center">
             <span>
-                <img src="/resumeApp/resources/views/customTheme/images/video_blue.png"
+                <img src="/resumeApp/public/images/video_blue.png"
                      alt="" style="padding-right: 5px; width: 23px;">
                 <span class="audioText"  style="color: #4E75E8;">Video</span>
             </span>

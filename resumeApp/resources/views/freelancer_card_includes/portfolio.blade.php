@@ -172,7 +172,7 @@
                                                            data-toggle="modal"
                                                            data-target="#works{{$workExample->id}}Modal"
                                                            style="outline: none; margin-left: 16px;">
-                                                            <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                                            <img src="/resumeApp/public/images/newResume/link.png"
                                                                  alt="view work">
                                                         </a>
                                                     </div>
@@ -249,7 +249,7 @@
                                                data-toggle="modal"
                                                data-target="#works{{$workExample->id}}Modal"
                                                style="outline: none; margin-left: 16px;">
-                                                <img src="/resumeApp/resources/views/customTheme/images/newResume/link.png"
+                                                <img src="/resumeApp/public/images/newResume/link.png"
                                                      alt="view work">
                                             </a>
                                         </div>

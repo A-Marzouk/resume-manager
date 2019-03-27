@@ -43,13 +43,13 @@
         <div class="form-group col-md-6 col-lg-4">
             <label for="userName" class="panelFormLabel">Full name <span style="font-size:small;">*</span>
                 <span id="tickMarkname" class="d-none">
-                    <img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;">
+                    <img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;">
                 </span>
             </label>
             <input type="text" style="@if($errors->has('name')) border:1px solid red; @endif" class="form-control panelFormInput" id="fullName" name="name" placeholder="Enter your name.." value="<?if(empty($name)):?>{{$currFreelancer->firstName}} {{$currFreelancer->lastName}}<?else:?>{{$name}}<? endif;?>">
         </div> <!-- Full name -->
         <div class="form-group col-md-6 col-lg-4">
-            <label for="birth_date" class="panelFormLabel">Job title <span style="font-size:small;">*</span> <span id="tickMarkjobTitle" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label for="birth_date" class="panelFormLabel">Job title <span style="font-size:small;">*</span> <span id="tickMarkjobTitle" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label>
             <?
             $developer = [
                 'Full-Stack Developer', 'Front-End Developer', 'PHP Developer',
@@ -78,17 +78,17 @@
         </div> <!-- job title -->
 
         <div class="form-group col-md-6 col-lg-4">
-            <label for="country"  class="panelFormLabel">Country where you live & work <span style="font-size:small;">*</span><span id="tickMarkcountry" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label for="country"  class="panelFormLabel">Country where you live & work <span style="font-size:small;">*</span><span id="tickMarkcountry" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="text" style="@if($errors->has('country')) border:1px solid red; @endif" class="form-control panelFormInput" name="country" value="{{$country}}" id="country">
         </div> <!-- country -->
 
         <div class="form-group col-md-6 col-lg-4">
-            <label for="birth_date"  class="panelFormLabel">City<span style="font-size:small;">*</span><span id="tickMarkcity" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label for="birth_date"  class="panelFormLabel">City<span style="font-size:small;">*</span><span id="tickMarkcity" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="text" style="@if($errors->has('city')) border:1px solid red; @endif" class="form-control panelFormInput" name="city" value="{{$city}}" id="city">
         </div> <!-- city -->
 
         <div class="form-group col-md-6 col-lg-4">
-            <label for="languages"  class="panelFormLabel">Languages you speak <span style="font-size:small;">*</span> <span id="tickMarklanguages" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label for="languages"  class="panelFormLabel">Languages you speak <span style="font-size:small;">*</span> <span id="tickMarklanguages" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="text" style="@if($errors->has('languages')) border:1px solid red; @endif" class="form-control panelFormInput" id="languages" name="languages" value="{{$languages}}">
         </div> <!-- Languages -->
 
@@ -97,17 +97,17 @@
     <hr>
     <div class="row">
         <div class="form-group col-md-6 col-lg-4">
-            <label for="birth_date" class="panelFormLabel">Primary contact Email <span style="font-size:small;">*</span><span id="tickMarkemail" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label for="birth_date" class="panelFormLabel">Primary contact Email <span style="font-size:small;">*</span><span id="tickMarkemail" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="email" style="@if($errors->has('email')) border:1px solid red; @endif" class="form-control panelFormInput" name="email" value="<?if(empty($email)):?>{{$currFreelancer->email}}<?else:?>{{$email}}<? endif;?>">
         </div> <!-- email -->
 
         <div class="form-group col-md-6 col-lg-4">
-            <label for="skype_id"  class="panelFormLabel">Skype ID  <span style="font-size:small;">*</span><span id="tickMarkskype_id" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label for="skype_id"  class="panelFormLabel">Skype ID  <span style="font-size:small;">*</span><span id="tickMarkskype_id" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="text"  style="@if($errors->has('skype_id')) border:1px solid red; @endif" class="form-control panelFormInput" name="skype_id" value="{{$skype_id}}" id="skype_id">
         </div> <!-- skype_id -->
 
         <div class="form-group col-md-6 col-lg-4">
-            <label for="telephone"  class="panelFormLabel">Phone number <span style="font-size:small;">*</span><span id="tickMarktelephone" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label for="telephone"  class="panelFormLabel">Phone number <span style="font-size:small;">*</span><span id="tickMarktelephone" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="text"  style="@if($errors->has('telephone')) border:1px solid red; @endif" class="form-control panelFormInput" name="telephone" value="{{$telephone}}" id="telephone">
         </div> <!-- telephone -->
 
@@ -115,7 +115,7 @@
             <? $socialApps = ['Whatsapp','Viber','Telegram'] ;
             $social_appsCheckBoxes = explode(',',$social_apps);
             ?>
-            <label class="panelFormLabel">Social applications<span id="tickMarksocial_apps" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label class="panelFormLabel">Social applications<span id="tickMarksocial_apps" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label>
             <div class="form-check" style="padding-top: 15px;">
                 @foreach($socialApps as $app)
                     <label class="form-check-label col-md-3 checkBoxContainer checkBoxText">{{$app}}
@@ -131,7 +131,7 @@
     <hr>
     <div class="row">
         <div class="form-group col-md-12">
-            <label for="intro"  class="panelFormLabel">Intro <span id="tickMarkintro" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label for="intro"  class="panelFormLabel">Intro <span id="tickMarkintro" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label>
             <textarea class="form-control" rows="3" name="intro" id="intro">{{$intro}}</textarea>
             <small>30-50 Words</small>
         </div> <!-- intro -->
@@ -150,7 +150,7 @@
     <div class="row">
         <div class="form-group col-md-12">
             <span class="panelFormLabel col-md-4">Choose photo (1024 wide x 1024 height) <span style="font-size:small;">*</span></span>
-            <span id="tickMarkphoto" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;">
+            <span id="tickMarkphoto" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;">
             </span>
             <div class="input-group" style="opacity: 0; height: 3px;">
                 <div class="custom-file">
@@ -158,7 +158,7 @@
                     <label class="custom-file-label" for="">Choose photo</label>
                 </div>
             </div>
-            <? $src = 'resumeApp/resources/views/customTheme/images/add_profile_photo.png';
+            <? $src = '/resumeApp/public/images/add_profile_photo.png';
             if(!empty($photoPath)){
                 $src = $photoPath;
             }

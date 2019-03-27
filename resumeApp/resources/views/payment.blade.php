@@ -21,14 +21,14 @@
                     <div class="paymentOption">
                         <div class="row">
                             <div class="col-md-6 col-12">
-                                <img src="/resumeApp/resources/views/customTheme/images/checked_method.png" alt="" style="padding-bottom: 2px;padding-right: 6px;width: 23px;">
+                                <img src="/resumeApp/public/images/checked_method.png" alt="" style="padding-bottom: 2px;padding-right: 6px;width: 23px;">
                                 <span class="paymentText font-weight-bold">Stripe</span>
                                 <div class="paymentNote NoDecor" style="font-weight: normal; color:#72808E;">
                                     Complete your purchase securely with <a href="https://stripe.com" target="_blank">Stripe</a>.
                                 </div>
                             </div>
                             <div class="col-md-6 col-12 stripeImage">
-                                <img src="/resumeApp/resources/views/customTheme/images/stripe-logo.png" alt="stripe logo" width="90" height="24">
+                                <img src="/resumeApp/public/images/stripe-logo.png" alt="stripe logo" width="90" height="24">
                             </div>
                         </div>
                         <div class="row" style="padding-top:30px;">
@@ -49,7 +49,7 @@
                                             data-amount="{{$amountToPay}}"
                                             data-name="Hire  {{$freelancer->userData->name}}"
                                             data-description="For {{$hours}}"
-                                            data-image="/resumeApp/resources/views/customTheme/images/newResume/logo.png"
+                                            data-image="/resumeApp/public/images/newResume/logo.png"
                                             data-locale="auto">
                                     </script>
                                     <script>
@@ -68,14 +68,14 @@
                     <div class="paymentOption">
                         <div class="row">
                             <div class="col-md-6 col-12">
-                                <img src="/resumeApp/resources/views/customTheme/images/checked_method.png" alt="" style="padding-bottom: 2px;padding-right: 6px;width: 23px;">
+                                <img src="/resumeApp/public/images/checked_method.png" alt="" style="padding-bottom: 2px;padding-right: 6px;width: 23px;">
                                 <span class="paymentText font-weight-bold">PayPal</span>
                                 <div class="paymentNote NoDecor" style="font-weight: normal; color:#72808E;">
                                     Complete your purchase securely with <a href="https://paypal.com" target="_blank">PayPal</a>.
                                 </div>
                             </div>
                             <div class="col-md-6 col-12 stripeImage">
-                                <img src="/resumeApp/resources/views/customTheme/images/paypal-logo.png" alt="paypal logo" width="90" height="42">
+                                <img src="/resumeApp/public/images/paypal-logo.png" alt="paypal logo" width="90" height="42">
                             </div>
                         </div>
                         <div class="row">

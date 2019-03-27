@@ -107,11 +107,11 @@
     });
 
     function handler1() {
-        $('img', this).attr('src','resumeApp/resources/views/customTheme/images/Circle-PNG-HD.png');
+        $('img', this).attr('src','/resumeApp/public/images/Circle-PNG-HD.png');
         $(this).one("click", handler2);
     }
     function handler2() {
-        $('img', this).attr('src','resumeApp/resources/views/customTheme/images/img_143278 (2).png');
+        $('img', this).attr('src','/resumeApp/public/images/img_143278 (2).png');
         $(this).one("click", handler1);
     }
 

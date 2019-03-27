@@ -8,7 +8,7 @@
                         <div class="freelancerChatBox">
                             <div v-show="client_id">
                                 <img v-show="data.freelancer.userData.photo" :src="data.freelancer.userData.photo" alt="img" width="25px" style="border-radius: 50%">
-                                <img v-show="!data.freelancer.userData.photo" src="/resumeApp/resources/views/customTheme/images/no-image-icon-.png" alt="img" width="25px" style="border-radius: 50%">
+                                <img v-show="!data.freelancer.userData.photo" src="/resumeApp/public/images/no-image-icon-.png" alt="img" width="25px" style="border-radius: 50%">
                                  {{data.freelancer.firstName}} {{data.freelancer.lastName}}
                                 <span class="unread" v-show="data.conversation.unread_messages_client> 0"> {{data.conversation.unread_messages_client}} </span>
                             </div>

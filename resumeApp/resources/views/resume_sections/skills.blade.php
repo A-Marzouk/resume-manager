@@ -2,7 +2,7 @@
 <div id="skills" class="skills">
     <div class="row">
         <div class="offset-lg-1 col-lg-5 col-md-6">
-            <img src="resumeApp/resources/views/customTheme/images/newResume/skills.png" alt="aboutImg" width="30px;">
+            <img src="/resumeApp/public/images/newResume/skills.png" alt="aboutImg" width="30px;">
             <span class="aboutText">SKILLS</span>
         </div>
     </div>
@@ -31,7 +31,7 @@
 <div id="about">
     <div class="row">
         <div class="offset-lg-1 col-lg-5 col-md-6">
-            <img src="resumeApp/resources/views/customTheme/images/newResume/more_skills.png" alt="aboutImg" width="30px;">
+            <img src="/resumeApp/public/images/newResume/more_skills.png" alt="aboutImg" width="30px;">
             <span class="aboutText">MORE SKILLS</span>
         </div>
     </div>

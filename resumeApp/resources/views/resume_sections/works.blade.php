@@ -2,7 +2,7 @@
 <div id="work" class="worksSection">
     <div class="firstPart">
         <div class="offset-lg-1 col-lg-5 col-md-6">
-            <img id="workTextImg" src="resumeApp/resources/views/customTheme/images/newResume/works.png" alt="aboutImg" width="30px;">
+            <img id="workTextImg" src="/resumeApp/public/images/newResume/works.png" alt="aboutImg" width="30px;">
             <span class="aboutText" style="color: white;">WORKS</span>
         </div>
         <?
@@ -30,7 +30,7 @@
                                         {{$workExample->projectName}}
                                     </div>
                                     <a class="col-md-2" href="javascript:void(0)" data-toggle="modal" data-target="#works{{$workExample->id}}Modal" style="outline: none;">
-                                        <img src="resumeApp/resources/views/customTheme/images/newResume/link.png" alt="view work">
+                                        <img src="/resumeApp/public/images/newResume/link.png" alt="view work">
                                     </a>
                                 </div>
                             </div>

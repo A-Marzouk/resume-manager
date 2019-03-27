@@ -2,7 +2,7 @@
 <div id="about">
     <div class="row">
         <div class="offset-lg-1 col-lg-5 col-md-6 aboutLeftSideContainer">
-            <img src="resumeApp/resources/views/customTheme/images/newResume/about_me.png" style="padding-bottom: 10px;" alt="aboutImg" width="30px;">
+            <img src="/resumeApp/public/images/newResume/about_me.png" style="padding-bottom: 10px;" alt="aboutImg" width="30px;">
             <span class="aboutText">ABOUT ME</span>
             <div class="aboutText mobile">
                 <div class="aboutSubText info">
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="col-md-6 col-lg-5">
-            <img src="resumeApp/resources/views/customTheme/images/what_i_do.png" style="padding-bottom: 10px;" alt="aboutImg" width="30px;">
+            <img src="/resumeApp/public/images/what_i_do.png" style="padding-bottom: 10px;" alt="aboutImg" width="30px;">
             <span class="aboutText">Technologies I use</span>
             <div class="aboutText mobile">
                 <div class="row">

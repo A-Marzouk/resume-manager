@@ -12,7 +12,7 @@
                 <div class="col-lg-2 col-6 imageCol">
                     <div class="imageContainer" style="padding: 10px;">
                         <?
-                        $defaultSrc = 'resumeApp/resources/views/customTheme/images/add_profile_photo.png';
+                        $defaultSrc = '/resumeApp/public/images/add_profile_photo.png';
 
                         $photoSrc = $freelancer->userData->photo;
                         if(!empty($photoSrc)){
@@ -101,7 +101,7 @@
                             <a href="javascript:void(0)" style="outline: none;" id="browseBtn">
                                 <div class="cardIconsCon  cardIconsCon_edit">
                                     <span>
-                                <img src="/resumeApp/resources/views/customTheme/images/audio_resume_Card.png"
+                                <img src="/resumeApp/public/images/audio_resume_Card.png"
                                      alt="" style="padding-right: 5px; width: 23px;">
                                 <span class="audioText">
                                     Upload Audio
@@ -114,7 +114,7 @@
                             <a href="javascript:void(0)" style="outline: none;" class="" id="browseBtnVideo">
                                 <div class="cardIconsCon2 cardIconsCon2_edit text-center">
                             <span>
-                                <img src="/resumeApp/resources/views/customTheme/images/video_resume_card.png"
+                                <img src="/resumeApp/public/images/video_resume_card.png"
                                      alt="" style="padding-right: 5px; width: 23px;">
                                 <span class="audioText">Upload Video</span>
                             </span>
@@ -128,7 +128,7 @@
                                 <div class="row">
                                     <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
                                         <a href="javascript:void(0)" id="dollarsMinus{{$freelancer->id}}" class="dollarsMinus">
-                                            <img src="/resumeApp/resources/views/customTheme/images/newResume/minus copy 6.png" style="width: 18px; padding-right: 8px;" alt="minus">
+                                            <img src="/resumeApp/public/images/newResume/minus copy 6.png" style="width: 18px; padding-right: 8px;" alt="minus">
                                         </a>
                                     </div>
 
@@ -139,7 +139,7 @@
 
                                     <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
                                         <a href="javascript:void(0)" id="dollarsPlus{{$freelancer->id}}" class="dollarsPlus">
-                                            <img src="/resumeApp/resources/views/customTheme/images/newResume/plus copy 6.png" style="width: 18px; padding-left: 8px;" alt="plus">
+                                            <img src="/resumeApp/public/images/newResume/plus copy 6.png" style="width: 18px; padding-left: 8px;" alt="plus">
                                         </a>
                                     </div>
                                 </div>
@@ -151,7 +151,7 @@
                                 <div class="row">
                                     <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
                                         <a href="javascript:void(0)" id="hoursMinus{{$freelancer->id}}" class="hoursMinus">
-                                            <img src="/resumeApp/resources/views/customTheme/images/newResume/minus copy 6.png" style="width: 18px; padding-right: 8px;" alt="minus">
+                                            <img src="/resumeApp/public/images/newResume/minus copy 6.png" style="width: 18px; padding-right: 8px;" alt="minus">
                                         </a>
                                     </div>
                                     <div class="col-md-8 col-8 textBox">
@@ -162,7 +162,7 @@
                                     </div>
                                     <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
                                         <a href="javascript:void(0)" id="hoursPlus{{$freelancer->id}}" class="hoursPlus">
-                                            <img src="/resumeApp/resources/views/customTheme/images/newResume/plus copy 6.png" style="width: 18px; padding-left: 8px;" alt="plus">
+                                            <img src="/resumeApp/public/images/newResume/plus copy 6.png" style="width: 18px; padding-left: 8px;" alt="plus">
                                         </a>
                                     </div>
                                 </div>

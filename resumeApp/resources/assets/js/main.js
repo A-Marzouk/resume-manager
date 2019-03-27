@@ -318,9 +318,9 @@ $(document).ready(function () {
     $('#photoPreview').hover(function () {
         $(this).css('cursor','pointer');
         srcPreview = $('#photoPreview').attr('src');
-        if(srcPreview !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
+        if(srcPreview !== '/resumeApp/public/images/add_profile_photo.png'){
             $('#photoPreview').fadeTo(500, .1);
-            $('#profileImgBox').css('background', 'url("/resumeApp/resources/views/customTheme/images/deleteimg.png")');
+            $('#profileImgBox').css('background', 'url("/resumeApp/public/images/deleteimg.png")');
             $('#profileImgBox').css('background-repeat','no-repeat');
             $('#profileImgBox').css('background-position','center');
         }
@@ -330,12 +330,12 @@ $(document).ready(function () {
     });
 
     $('#photoPreview').on('click',function () {
-        if(srcPreview !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
+        if(srcPreview !== '/resumeApp/public/images/add_profile_photo.png'){
             // delete photo profile photo
             if(!confirm('Are you sure you want to delete profile photo ?')){
                 return;
             }
-            $('#photoPreview').attr('src','resumeApp/resources/views/customTheme/images/add_profile_photo.png');
+            $('#photoPreview').attr('src','/resumeApp/public/images/add_profile_photo.png');
             $('#photoInput').attr('type','text');
             $('#photoInput').attr('value',10);
             $('#jobTitle').change();
@@ -683,7 +683,7 @@ function getUploadedFilesNames() {
     // works files :
 
     for(let i=0; i<=7;i++){
-        if($('#portfolioImg'+i).attr('src') !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png'){
+        if($('#portfolioImg'+i).attr('src') !== '/resumeApp/public/images/add_profile_photo.png'){
             filesNames.push('works'+i);
         }else{
             emptyFiles.push('works'+i);
@@ -691,7 +691,7 @@ function getUploadedFilesNames() {
     }
 
     // profile photo files :
-    if($('#photoPreview').attr('src') !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png') { //empty
+    if($('#photoPreview').attr('src') !== '/resumeApp/public/images/add_profile_photo.png') { //empty
         filesNames.push('photo');
     }else{
         emptyFiles.push('photo');

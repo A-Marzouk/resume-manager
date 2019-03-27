@@ -54182,9 +54182,9 @@ $(document).ready(function () {
     $('#photoPreview').hover(function () {
         $(this).css('cursor', 'pointer');
         srcPreview = $('#photoPreview').attr('src');
-        if (srcPreview !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png') {
+        if (srcPreview !== '/resumeApp/public/images/add_profile_photo.png') {
             $('#photoPreview').fadeTo(500, .1);
-            $('#profileImgBox').css('background', 'url("/resumeApp/resources/views/customTheme/images/deleteimg.png")');
+            $('#profileImgBox').css('background', 'url("/resumeApp/public/images/deleteimg.png")');
             $('#profileImgBox').css('background-repeat', 'no-repeat');
             $('#profileImgBox').css('background-position', 'center');
         }
@@ -54194,12 +54194,12 @@ $(document).ready(function () {
     });
 
     $('#photoPreview').on('click', function () {
-        if (srcPreview !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png') {
+        if (srcPreview !== '/resumeApp/public/images/add_profile_photo.png') {
             // delete photo profile photo
             if (!confirm('Are you sure you want to delete profile photo ?')) {
                 return;
             }
-            $('#photoPreview').attr('src', 'resumeApp/resources/views/customTheme/images/add_profile_photo.png');
+            $('#photoPreview').attr('src', '/resumeApp/public/images/add_profile_photo.png');
             $('#photoInput').attr('type', 'text');
             $('#photoInput').attr('value', 10);
             $('#jobTitle').change();
@@ -54520,7 +54520,7 @@ function getUploadedFilesNames() {
     // works files :
 
     for (var i = 0; i <= 7; i++) {
-        if ($('#portfolioImg' + i).attr('src') !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png') {
+        if ($('#portfolioImg' + i).attr('src') !== '/resumeApp/public/images/add_profile_photo.png') {
             filesNames.push('works' + i);
         } else {
             emptyFiles.push('works' + i);
@@ -54528,7 +54528,7 @@ function getUploadedFilesNames() {
     }
 
     // profile photo files :
-    if ($('#photoPreview').attr('src') !== 'resumeApp/resources/views/customTheme/images/add_profile_photo.png') {
+    if ($('#photoPreview').attr('src') !== '/resumeApp/public/images/add_profile_photo.png') {
         //empty
         filesNames.push('photo');
     } else {
@@ -75026,8 +75026,7 @@ var render = function() {
                   _c("span", { attrs: { "aria-hidden": "true" } }, [
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/resources/views/customTheme/images/edit.png",
+                        src: "/resumeApp/public/images/edit.png",
                         alt: "edit",
                         width: "17px"
                       }
@@ -76060,7 +76059,7 @@ var staticRenderFns = [
     return _c("span", [
       _c("img", {
         attrs: {
-          src: "/resumeApp/resources/views/customTheme/images/add_work_img.png",
+          src: "/resumeApp/public/images/add_work_img.png",
           alt: "add project",
           width: "30px"
         }
@@ -77921,7 +77920,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         getImageSrc: function getImageSrc(userImage) {
             if (!userImage || userImage === null) {
-                return '/resumeApp/resources/views/customTheme/images/user.png';
+                return '/resumeApp/public/images/user.png';
             }
 
             if (userImage.charAt(0) !== 'h') {
@@ -78942,7 +78941,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         getImageSrc: function getImageSrc(userImage) {
             if (!userImage || userImage === null) {
-                return '/resumeApp/resources/views/customTheme/images/user.png';
+                return '/resumeApp/public/images/user.png';
             }
 
             if (userImage.charAt(0) !== 'h') {
@@ -79384,7 +79383,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         getImageSrc: function getImageSrc(userImage) {
             if (!userImage || userImage === null) {
-                return '/resumeApp/resources/views/customTheme/images/user.png';
+                return '/resumeApp/public/images/user.png';
             }
 
             if (userImage.charAt(0) !== 'h') {
@@ -81367,8 +81366,7 @@ var render = function() {
                         ],
                         staticStyle: { "border-radius": "50%" },
                         attrs: {
-                          src:
-                            "/resumeApp/resources/views/customTheme/images/no-image-icon-.png",
+                          src: "/resumeApp/public/images/no-image-icon-.png",
                           alt: "img",
                           width: "25px"
                         }

@@ -10,7 +10,7 @@
 
     <title>123 Workforce</title>
 
-    <link rel="shortcut icon" href="/resumeApp/resources/views/customTheme/images/logo123.png">
+    <link rel="shortcut icon" href="/resumeApp/public/images/logo123.png">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
@@ -18,7 +18,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="/resumeApp/public/css/app.css" rel="stylesheet">
-    <link href="/resumeApp/resources/views/customTheme/css/main.css" rel="stylesheet" media="screen">
+    <link href="/resumeApp/public/css/main.css" rel="stylesheet" media="screen">
 
 
 </head>
@@ -36,11 +36,11 @@ if($user){
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel fixed-top">
         <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
-            <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
+            <img src="/resumeApp/public/images/newResume/123wf_logo.png" alt="logo">
         </a>
 
         <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="" style="border: none;" data-target="#" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon" style="background-image: url('/resumeApp/resources/views/customTheme/images/newResume/menu.png');"></span>
+            <span class="navbar-toggler-icon" style="background-image: url('/resumeApp/public/images/newResume/menu.png');"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -104,7 +104,7 @@ if($user){
 
 
 <script type="text/javascript" src="/resumeApp/public/js/app.js"></script>
-<script src="/resumeApp/resources/views/customTheme/js/main.js"></script>
+<script src="/resumeApp/public/js/main.js"></script>
 <script>
     $(document).ready(function(){
         $('#navBarToggle').on('click',function () {

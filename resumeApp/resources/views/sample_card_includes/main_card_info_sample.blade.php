@@ -51,7 +51,7 @@
                     <a href="javascript:void(0)" id="{{$freelancer->id}}{{$value['id']}}_open_audio" style="outline: none;" class="openAudio">
                         <div class="cardIconsCon ">
                         <span>
-                            <img src="/resumeApp/resources/views/customTheme/images/audio_resume_Card.png"
+                            <img src="/resumeApp/public/images/audio_resume_Card.png"
                                  alt="" style="padding-right: 5px; width: 23px;">
                             <span class="audioText">Audio & Text</span>
                         </span>
@@ -62,7 +62,7 @@
                     <a href="javascript:void(0)" id="{{$freelancer->id}}{{$value['id']}}_open_video" style="outline: none;" class="openVideo">
                         <div class="cardIconsCon2  text-center">
                         <span>
-                            <img src="/resumeApp/resources/views/customTheme/images/video_resume_card.png"
+                            <img src="/resumeApp/public/images/video_resume_card.png"
                                  alt="" style="padding-right: 5px; width: 23px;">
                             <span class="audioText">Video</span>
                         </span>

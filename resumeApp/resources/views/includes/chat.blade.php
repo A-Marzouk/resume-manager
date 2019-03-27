@@ -3,18 +3,18 @@
         <div class="row">
             <div class="col-2 col-md-1 col-lg-2 chatImage">
                 <span>
-                    <img src="/resumeApp/resources/views/customTheme/images/textsms_24px copy.png" width="16px">
+                    <img src="/resumeApp/public/images/textsms_24px copy.png" width="16px">
                 </span>
             </div>
             <div class="col-10 text">
                 <span id="chatText">Chat with us</span>
-                <a href="javascript:void(0)" id="closeChat"> <img src="/resumeApp/resources/views/customTheme/images/Rectangle.png" width="13px"> </a>
+                <a href="javascript:void(0)" id="closeChat"> <img src="/resumeApp/public/images/Rectangle.png" width="13px"> </a>
             </div>
         </div>
         <div class="secondText btn-block" style="border-bottom: 0.7px solid #EBEDF8;">
             <div class="row">
                 <div style="padding-top: 8px;">
-                    <img src="/resumeApp/resources/views/customTheme/images/logo123.png" width="36px">
+                    <img src="/resumeApp/public/images/logo123.png" width="36px">
                 </div>
                 <div class="">
                     <span style="font-weight:bold;color: #637280;font-family: Roboto;font-size: 12px;">We're Here to Help!</span><br/>

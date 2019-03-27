@@ -58,13 +58,13 @@
     </div> <!-- char skills -->
 
     <div class="form-group col-md-12">
-        <label for="personal_interests" class="panelFormLabel">Outside of work , what are your hobbies and interests?<span id="tickMarkpersonal_interests" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+        <label for="personal_interests" class="panelFormLabel">Outside of work , what are your hobbies and interests?<span id="tickMarkpersonal_interests" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label>
         <textarea class="form-control" rows="3" id="personal_interests" name="personal_interests">{{$personal_interests}}</textarea>
     </div> <!-- interests -->
 
     <div class="form-group col-md-12">
         <label for="professional_attributes" class="panelFormLabel">Please talk in greater detail about your character skills and personal attributes that you have ticked above or other character skills you have.
-            <span id="tickMarkprofessional_attributes" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <span id="tickMarkprofessional_attributes" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label>
         <textarea class="form-control" rows="3" id="professional_attributes" name="professional_attributes">{{$professional_attributes}}</textarea>
     </div> <!-- attributes -->
 

@@ -521,7 +521,7 @@ body {
 .worksSection .firstPart {
   padding-top: 4%;
   padding-bottom: -1%;
-  background: url("/background.svg");
+  background: url("/resumeApp/public/images/background.svg");
   background-repeat: no-repeat;
   background-size: 100% 90%; }
 .worksSection .firstPart #workTextImg {
@@ -739,7 +739,7 @@ body {
   background-color: whitesmoke;
   padding: 3px 0 0 0; }
 #content #mainSection {
-  background: url("/resumeApp/resources/views/customTheme/images/new_theme/rectangle_big.png");
+  background: url("/resumeApp/public/images/new_theme/rectangle_big.png");
   background-position-x: right;
   background-position-y: 2%;
   background-size: 14% 100%;
@@ -920,7 +920,7 @@ body {
     padding-top: 20px !important; } }
 #content #devDesBoxes {
   margin-top: 10px;
-  background: url("/background.svg");
+  background: url("/resumeApp/public/images/background.svg");
   background-size: 100% 100%; }
 @media only screen and (max-width: 991px) {
   #content #devDesBoxes {
@@ -1369,7 +1369,7 @@ body {
 .chat-composer #chatIcon {
   width: 60px;
   height: 45px;
-  background: url(/resumeApp/resources/views/customTheme/images/send-icon.png);
+  background: url(/resumeApp/public/images/send-icon.png);
   background-size: 86px;
   background-position-x: 7px;
   background-repeat: no-repeat;

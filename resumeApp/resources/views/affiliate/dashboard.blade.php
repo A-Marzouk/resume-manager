@@ -21,7 +21,7 @@
                             <input type="file" class="custom-file-input" name="affiliatePhoto" id="affiliatePhotoInput">
                         </div>
                     </div>
-                    <? $src = '/resumeApp/resources/views/customTheme/images/user.png';
+                    <? $src = '/resumeApp/public/images/user.png';
                     if(!empty($affiliate->photo)){
                         $src = $affiliate->photo;
                     }

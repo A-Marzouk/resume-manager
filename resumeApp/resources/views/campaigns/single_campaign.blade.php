@@ -35,7 +35,7 @@
                                     <div class="freelancerItem">
                                         <? $image = $freelancer->userData->photo; ?>
                                         @if(!$image || $image == null)
-                                            <img src="/resumeApp/resources/views/customTheme/images/user.png"
+                                            <img src="/resumeApp/public/images/user.png"
                                                  alt="freelancer" class="slickFreelancerImg">
                                         @else
                                             <img src="/{{$image}}"

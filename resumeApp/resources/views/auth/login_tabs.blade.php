@@ -41,7 +41,7 @@
                         <div class="col-12 text-center NoDecor">
                             <a style="color:#18A6DF;" href="/freelancer">
                                 <div>
-                                    <img src="/resumeApp/resources/views/customTheme/images/user.png" height="100px">
+                                    <img src="/resumeApp/public/images/user.png" height="100px">
                                 </div>
                                 {{auth()->guard()->user()->firstName}}
                             </a>
@@ -111,7 +111,7 @@
                         <div class="col-12 text-center NoDecor">
                             <a style="color:#18A6DF;" href="/client">
                                 <div>
-                                    <img src="/resumeApp/resources/views/customTheme/images/user.png" height="100px">
+                                    <img src="/resumeApp/public/images/user.png" height="100px">
                                 </div>
                                 {{auth()->guard('client')->user()->name}}
                             </a>
@@ -194,7 +194,7 @@
                         <div class="col-12 text-center NoDecor">
                             <a style="color:#18A6DF;" href="/affiliate/dashboard">
                                 <div>
-                                    <img src="/resumeApp/resources/views/customTheme/images/user.png" height="100px">
+                                    <img src="/resumeApp/public/images/user.png" height="100px">
                                 </div>
                                 {{auth()->guard('affiliate')->user()->name}}
                             </a>

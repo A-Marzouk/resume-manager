@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>123 Workforce</title>
-    @include('layouts.includes.client_styles')
+    @include('layouts.includes.styles')
 </head>
 <body>
 <?
@@ -38,10 +38,10 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel fixed-top">
         <a class="navbar-brand col-md-2 col-9" href="{{ url('/') }}">
-            <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo">
+            <img src="/resumeApp/public/images/newResume/123wf_logo.png" alt="logo">
         </a>
         <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" style="border: none;" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon" style="background-image: url('/resumeApp/resources/views/customTheme/images/newResume/menu.png');"></span>
+            <span class="navbar-toggler-icon" style="background-image: url('/resumeApp/public/images/newResume/menu.png');"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -60,7 +60,7 @@
                 <a class="nav-item nav-link customNavLink" href="/admin" style="color:#0290D8;">Admin-area</a>
                 <?else :?>
                 {{--<a class="nav-item nav-link customNavLink" href="#chatOn" id="liveChat" style="color:#0290D8;">--}}
-                    {{--<img src="/resumeApp/resources/views/customTheme/images/textsms_24px.png" alt="chat img" width="16px">--}}
+                    {{--<img src="/resumeApp/public/images/textsms_24px.png" alt="chat img" width="16px">--}}
                     {{--&nbsp; Chat with us!--}}
                 {{--</a>--}}
                 <? endif;?>
@@ -107,7 +107,7 @@
     <a href="javascript:void(0)" class="row" id="chatMin">
         <div class="col-2 col-md-1 col-lg-2 chatImage">
         <span>
-            <img src="/resumeApp/resources/views/customTheme/images/textsms_24px copy.png" width="16px">
+            <img src="/resumeApp/public/images/textsms_24px copy.png" width="16px">
         </span>
         </div>
         <div class="col-10 text">
@@ -127,7 +127,7 @@
     </div>
 
     @include('layouts.includes.modals')
-    @include('layouts.includes.client_scripts')
+    @include('layouts.includes.scripts')
 
 
 </body>

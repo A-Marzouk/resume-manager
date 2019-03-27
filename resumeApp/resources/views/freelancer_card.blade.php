@@ -132,7 +132,7 @@
         <div class="row" style="border-bottom: 1px solid whitesmoke; padding-bottom: 25px;">
             <div class="col-lg-11 col-11 text-left" style="padding: 25px 0 0 20px;">
                  <span>
-                    <img src="/resumeApp/resources/views/customTheme/images/audio_blue.png"
+                    <img src="/resumeApp/public/images/audio_blue.png"
                          alt="" style="padding-right: 14px; width: 34px;">
                     <span class="audioText" style="color: #4E75E8;">Audio & Text Interview</span>
                 </span>
@@ -182,7 +182,7 @@
         <div class="row" style="border-bottom: 1px solid whitesmoke; padding-bottom: 25px;">
             <div class="col-lg-11 col-11 text-left" style="padding: 25px 0 0 20px;">
                  <span>
-                    <img src="/resumeApp/resources/views/customTheme/images/video_blue.png"
+                    <img src="/resumeApp/public/images/video_blue.png"
                          alt="" style="padding-right: 14px; width: 34px;">
                     <span class="audioText" style="color: #4E75E8;">Video Interview</span>
                 </span>
@@ -233,7 +233,7 @@
         <div class="row" style="border-bottom: 1px solid whitesmoke; padding-bottom: 25px;">
                 <div class="col-lg-11 col-11 text-left" style="padding: 25px 0 0 20px;">
                  <span>
-                     <img src="/resumeApp/resources/views/customTheme/images/comment-512.png"
+                     <img src="/resumeApp/public/images/comment-512.png"
                           alt="" style="padding-right: 14px; width: 34px;">
                     <span class="audioText" style="color: #4E75E8;">  References & Testimonials</span>
                 </span>

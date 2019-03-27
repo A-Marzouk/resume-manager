@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-md-6 col-12" style="padding-top: 20px;">
                         <div>
-                            <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo" width="100%">
+                            <img src="/resumeApp/public/images/newResume/123wf_logo.png" alt="logo" width="100%">
                         </div>
                         <div style="padding-top: 20px;">
                             <img src="/resumeApp/resources/assets/images/invoice/camp_brief_word.png" alt="word" width="100%">

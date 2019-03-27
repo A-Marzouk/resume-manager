@@ -83,7 +83,7 @@
     </style>
 </head>
     <div class="mailHeader" style="text-align: center;">
-        <img src="http://123workforce.magictimeapps.com/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" width="170px">
+        <img src="http://123workforce.magictimeapps.com/resumeApp/public/images/newResume/123wf_logo.png" width="170px">
     </div>
     <div class="container mailBody">
         @yield('content')
@@ -93,16 +93,16 @@
         <div class="col-md-4 offset-md-4">
             <div class="footerText" style="text-align: center;">
                 <div class="footerImg">
-                    <img src="http://123workforce.magictimeapps.com/resumeApp/resources/views/customTheme/images/newResume/logo.png" alt="logo">
+                    <img src="http://123workforce.magictimeapps.com/resumeApp/public/images/newResume/logo.png" alt="logo">
                 </div><br/>
                 Please do not reply to this message.  |  Need help? Visit our <a href="http://123workforce.magictimeapps.com">FAQ</a><br/>
                 © 2018 123Workforce | All Rights Reserved<br/><br/>
                 <div style="padding-bottom: 20px;">
                     <a href="https://www.facebook.com/123workforce">
-                        <img src="http://123workforce.magictimeapps.com/resumeApp/resources/views/customTheme/images/newResume/fb.png" alt="fb" width="25px">
+                        <img src="http://123workforce.magictimeapps.com/resumeApp/public/images/newResume/fb.png" alt="fb" width="25px">
                     </a>
                     <a href="https://www.instagram.com/123workforce/">
-                        <img src="http://123workforce.magictimeapps.com/resumeApp/resources/views/customTheme/images/newResume/instagram.png" alt="insta" width="25px">
+                        <img src="http://123workforce.magictimeapps.com/resumeApp/public/images/newResume/instagram.png" alt="insta" width="25px">
                     </a>
                 </div>
             </div>

@@ -18,7 +18,7 @@
         </div>
         <div class="col-md-2 text-center two">
             <div class="footerImg">
-                <img src="/resumeApp/resources/views/customTheme/images/newResume/logo.png" alt="logo">
+                <img src="/resumeApp/public/images/newResume/logo.png" alt="logo">
             </div>
         </div>
         <div class="col-md-4 one text-right">
@@ -30,7 +30,7 @@
         <div class="col-md-4 offset-md-7 text-right four">
             <div class="skypeText">
                 <a href="skype:live:3cd10e2da1be4354?call">
-                    <img src="/resumeApp/resources/views/customTheme/images/skypeLogo.png" alt="skype" width="25px" style="opacity: 1;">
+                    <img src="/resumeApp/public/images/skypeLogo.png" alt="skype" width="25px" style="opacity: 1;">
                     <span>Call us on Skype</span>
                 </a>
             </div><br/>
@@ -65,10 +65,10 @@
                 {{-- end of like button  script --}}
                 <div>
                     <a href="https://www.facebook.com/123workforce">
-                        <img src="/resumeApp/resources/views/customTheme/images/newResume/fb.png" alt="fb" width="25px">
+                        <img src="/resumeApp/public/images/newResume/fb.png" alt="fb" width="25px">
                     </a>
                     <a href="https://www.instagram.com/123workforce/">
-                        <img src="/resumeApp/resources/views/customTheme/images/newResume/instagram.png" alt="insta" width="25px">
+                        <img src="/resumeApp/public/images/newResume/instagram.png" alt="insta" width="25px">
                     </a>
                 </div><br/>
                 {{--<div style="padding-top: 6px;" class="fb-like" data-href="https://123workforce.com/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>--}}

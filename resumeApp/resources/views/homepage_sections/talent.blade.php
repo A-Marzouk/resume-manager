@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="col-md-5 col-lg-6 mapImg">
-            <img src="/resumeApp/resources/views/customTheme/images/new_theme/map_freelancer.png"
+            <img src="/resumeApp/public/images/new_theme/map_freelancer.png"
                  alt="freelancers map" width="100%">
         </div>
     </div>

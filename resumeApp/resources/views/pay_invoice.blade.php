@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-md-4 col-12">
                         <div>
-                            <img src="/resumeApp/resources/views/customTheme/images/newResume/123wf_logo.png" alt="logo" width="100%">
+                            <img src="/resumeApp/public/images/newResume/123wf_logo.png" alt="logo" width="100%">
                         </div>
                         <div style="padding-top: 10px;">
                             <img src="/resumeApp/resources/assets/images/invoice/invoice_word.png" alt="word" width="99%">
@@ -183,7 +183,7 @@
                                         data-amount=""
                                         data-name="123 Workforce"
                                         data-description="Custom payment"
-                                        data-image="/resumeApp/resources/views/customTheme/images/newResume/logo.png"
+                                        data-image="/resumeApp/public/images/newResume/logo.png"
                                         data-locale="auto"
                                         id="customPayment">
                                 </script>

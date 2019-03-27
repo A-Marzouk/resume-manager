@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-lg-10 offset-lg-1 col-12">
             <div>
-                <img src="resumeApp/resources/views/customTheme/images/email.png" width="30px;">
+                <img src="/resumeApp/public/images/email.png" width="30px;">
                 <span class="aboutText">GET IN TOUCH</span>
             </div>
         </div>

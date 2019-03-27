@@ -2,7 +2,7 @@
 <div id="about" class="education">
     <div class="row">
         <div class="offset-lg-1 col-lg-5 col-md-6 educationSection">
-            <img src="resumeApp/resources/views/customTheme/images/newResume/education.png" alt="aboutImg" width="30px;">
+            <img src="/resumeApp/public/images/newResume/education.png" alt="aboutImg" width="30px;">
             <span class="aboutText">EDUCATION</span>
             <div class="aboutText">
                 <? if(!empty($user->eduTitle1)):?>
@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="col-md-6 col-lg-5">
-            <img src="resumeApp/resources/views/customTheme/images/newResume/trainings.png" alt="aboutImg" width="30px;">
+            <img src="/resumeApp/public/images/newResume/trainings.png" alt="aboutImg" width="30px;">
             <span class="aboutText">TRAININGS</span>
             <div class="aboutText">
                 <? if(!empty($user->trnTitle1)):?>

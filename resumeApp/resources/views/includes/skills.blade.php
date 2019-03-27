@@ -15,7 +15,7 @@
             Top 6 Development Skills
             <? endif;?>
 
-            <span id="tickMarkdesign_skills_checkbox" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span>
+            <span id="tickMarkdesign_skills_checkbox" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span>
 
         </label>
         <? $skillsDesigner = [
@@ -97,13 +97,13 @@
 
     <div class="form-group col-md-12">
         <hr>
-        <label for="spec_design_skills" class="panelFormLabel">Please list any other skills that you have, separated by comma <span id="tickMarkdesign_skills" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+        <label for="spec_design_skills" class="panelFormLabel">Please list any other skills that you have, separated by comma <span id="tickMarkdesign_skills" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label>
         <textarea class="form-control" rows="3" id="spec_design_skills" name="design_skills">{{$design_skills}}</textarea>
     </div> <!-- design skills -->
 
     <hr>
     <div class="form-group col-md-12">
-        <label for="design_styles" class="panelFormLabel"> Please talk in greater detail about your specific skills and <? if($profession == 'Developer'):?>Development<?else:?>Design<?endif;?> style <span id="tickMarkdesign_styles" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span></label>
+        <label for="design_styles" class="panelFormLabel"> Please talk in greater detail about your specific skills and <? if($profession == 'Developer'):?>Development<?else:?>Design<?endif;?> style <span id="tickMarkdesign_styles" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label>
         <textarea class="form-control" rows="5" id="design_skills" name="design_styles">{{$design_styles}}</textarea>
         <small class="panelFormLabel">50-200 Words</small>
     </div> <!-- design style -->
@@ -115,7 +115,7 @@
             <?else:?>
                Please tell us what design styles and tools you are interested in for future learning and career development.
             <?endif;?>
-            <span id="tickMarkfuture_plan" class="d-none"><img src="resumeApp/resources/views/customTheme/images/Shape.png" width="15px;" height="12px;"></span>
+            <span id="tickMarkfuture_plan" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span>
             </label>
             <textarea class="form-control" rows="3" id="future_plan" name="future_plan">{{$future_plan}}</textarea>
     </div> <!-- Future plan -->

@@ -1,0 +1,36 @@
+#client_dash {
+
+  .client_navbar{
+    background: white;
+    height: 70px;
+  }
+  .navbar-brand img {
+    margin-left: 34px;
+  }
+
+  .clientName{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    margin-right: 134px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+
+    color: #4A5464;
+  }
+
+  .logoutButton{
+    width: 28px;
+    height: 28px;
+    margin-right: 27px;
+    :hover{
+      background-color: aliceblue;
+    }
+  }
+
+  .clientAvatar{
+    margin-left: 10px;
+  }
+
+}

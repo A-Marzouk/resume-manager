@@ -16,8 +16,8 @@ class ClientsController extends Controller
     }
 
     public function index(){
-        $affiliates = Affiliate::all();
-        return view('client.welcome',compact('affiliates'));
+        $client = auth()->guard('client')->user();
+        return view('client.dashboard',compact('client'));
     }
 
     public function hasAgreed(){

@@ -2,7 +2,6 @@ body {
   background: #f4f4f4 !important;
   overflow-x: hidden;
   width: 100%;
-  margin: 72px 0 0 0 !important;
   font-family: Roboto !important;
 }
 
@@ -3824,5 +3823,39 @@ body {
   letter-spacing: 0.5px;
   line-height: 18px;
   padding-bottom: 9px;
+}
+
+#client_dash .client_navbar {
+  background: white;
+  height: 70px;
+}
+
+#client_dash .navbar-brand img {
+  margin-left: 34px;
+}
+
+#client_dash .clientName {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  margin-right: 134px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  color: #4A5464;
+}
+
+#client_dash .logoutButton {
+  width: 28px;
+  height: 28px;
+  margin-right: 27px;
+}
+
+#client_dash .logoutButton :hover {
+  background-color: aliceblue;
+}
+
+#client_dash .clientAvatar {
+  margin-left: 10px;
 }
 

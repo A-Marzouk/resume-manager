@@ -3830,11 +3830,11 @@ body {
   height: 70px;
 }
 
-#client_dash .navbar-brand img {
+#client_dash .client_navbar .navbar-brand img {
   margin-left: 34px;
 }
 
-#client_dash .clientName {
+#client_dash .client_navbar .clientName {
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
@@ -3845,17 +3845,60 @@ body {
   color: #4A5464;
 }
 
-#client_dash .logoutButton {
+#client_dash .client_navbar .logoutButton {
   width: 28px;
   height: 28px;
   margin-right: 27px;
 }
 
-#client_dash .logoutButton :hover {
+#client_dash .client_navbar .logoutButton :hover {
   background-color: aliceblue;
 }
 
-#client_dash .clientAvatar {
+#client_dash .client_navbar .clientAvatar {
   margin-left: 10px;
+}
+
+#client_dash .client_dashboard_content {
+  max-width: 1366px;
+  margin-top: 20px;
+}
+
+#client_dash .client_dashboard_content .menu-block {
+  width: 230px;
+  height: 65px;
+  margin-bottom: 8px;
+  color: black;
+  background: white;
+  border-radius: 4px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 13px;
+  letter-spacing: -0.1px;
+}
+
+#client_dash .client_dashboard_content .menu-block .menu-block-name {
+  margin: auto;
+}
+
+#client_dash .client_dashboard_content .menu-block img {
+  height: 24px;
+  width: 24px;
+}
+
+#client_dash .client_dashboard_content .menu-block .imageContainer {
+  height: 44px;
+  background: white;
+  width: 44px;
+  margin: 10px;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+#client_dash .client_dashboard_content .menu-block.active {
+  color: #FFFFFF;
+  background: linear-gradient(285.79deg, #F66691 0%, #FC9968 74.54%, #FFBA69 102.21%);
 }
 

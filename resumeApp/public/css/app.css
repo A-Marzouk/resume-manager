@@ -2,6 +2,7 @@ body {
   background: #f4f4f4 !important;
   overflow-x: hidden;
   width: 100%;
+  margin-top: 72px !important;
   font-family: Roboto !important;
 }
 
@@ -3827,7 +3828,7 @@ body {
 
 #client_dash .client_navbar {
   background: white;
-  height: 70px;
+  height: 70px !important;
 }
 
 #client_dash .client_navbar .navbar-brand img {
@@ -3861,7 +3862,7 @@ body {
 
 #client_dash .client_dashboard_content {
   max-width: 1366px;
-  margin-top: 20px;
+  padding-top: 32px;
   margin-left: 34px;
 }
 
@@ -3871,6 +3872,10 @@ body {
   margin-bottom: 8px;
   background: white;
   border-radius: 4px;
+}
+
+#client_dash .client_dashboard_content .menu-block .menu-block-name {
+  margin: auto auto auto 5px;
   font-style: normal;
   font-weight: normal;
   font-size: 13px;
@@ -3878,10 +3883,6 @@ body {
   letter-spacing: -0.1px;
   color: #4A5464;
   font-family: Roboto;
-}
-
-#client_dash .client_dashboard_content .menu-block .menu-block-name {
-  margin: auto auto auto 5px;
 }
 
 #client_dash .client_dashboard_content .menu-block img {
@@ -3898,13 +3899,25 @@ body {
   padding: 10px;
 }
 
+#client_dash .client_dashboard_content .menu-block:hover {
+  cursor: pointer;
+  background: #EEF9FF;
+}
+
+#client_dash .client_dashboard_content .menu-block:hover .imageContainer {
+  background: #CFEEFF;
+}
+
 #client_dash .client_dashboard_content .menu-block.active {
+  background: linear-gradient(285.79deg, #F66691 0%, #FC9968 74.54%, #FFBA69 102.21%);
+}
+
+#client_dash .client_dashboard_content .menu-block.active .menu-block-name {
   color: #FFFFFF;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
   line-height: 13px;
-  background: linear-gradient(285.79deg, #F66691 0%, #FC9968 74.54%, #FFBA69 102.21%);
 }
 
 #client_dash .client_dashboard_content .menu-block.active .imageContainer {

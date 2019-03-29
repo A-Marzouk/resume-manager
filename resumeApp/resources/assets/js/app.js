@@ -30,6 +30,12 @@ require('./main.js');
 Vue.config.devtools = true;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+
+
+Vue.component('client-dashboard', require('./components/client/Dashboard.vue'));
+
+
+
 Vue.component('chat-message', require('./components/chat/chatMessage.vue'));
 Vue.component('chat-log', require('./components/chat/chatLog.vue'));
 Vue.component('chat-composer', require('./components/chat/chatComposer.vue'));
@@ -141,6 +147,12 @@ Vue.component('send-invitations', require('./components/mails/sendInvitationMail
 if ($("#searchFreelancers").length !== 0){
     let searchFreelancers = new Vue({
         el:'#searchFreelancers'
+    });
+}
+
+if ($("#clientDashboardComponent").length !== 0){
+    let clientDashboardComponent = new Vue({
+        el:'#clientDashboardComponent'
     });
 }
 

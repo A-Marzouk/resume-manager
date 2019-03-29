@@ -1,8 +1,7 @@
 #client_dash {
-
     .client_navbar{
       background: white;
-      height: 70px;
+      height: 70px !important;
       .navbar-brand img {
         margin-left: 34px;
       }
@@ -35,26 +34,25 @@
 
   .client_dashboard_content{
     max-width: 1366px;
-    margin-top: 20px;
+    padding-top: 32px;
     margin-left: 34px;
     .menu-block{
-      .menu-block-name{
-        margin: auto auto auto 5px;
-      }
       width: 230px;
       height: 65px;
       margin-bottom: 8px;
       background: white;
       border-radius: 4px;
 
-      font-style: normal;
-      font-weight: normal;
-      font-size: 13px;
-      line-height: 24px;
-      letter-spacing: -0.1px;
-
-      color: #4A5464;
-      font-family: Roboto;
+      .menu-block-name{
+        margin: auto auto auto 5px;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 24px;
+        letter-spacing: -0.1px;
+        color: #4A5464;
+        font-family: Roboto;
+      }
       img{
         height: 24px;
         width: 24px;
@@ -68,14 +66,24 @@
         padding: 10px;
       }
     }
+    .menu-block:hover{
+        cursor: pointer;
+        background: #EEF9FF;
+      .imageContainer{
+        background: #CFEEFF;
+      }
+    }
 
     .menu-block.active{
-      color: #FFFFFF;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 16px;
-      line-height: 13px;
       background: linear-gradient(285.79deg, #F66691 0%, #FC9968 74.54%, #FFBA69 102.21%);
+
+      .menu-block-name{
+        color: #FFFFFF;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 13px;
+      }
       .imageContainer{
         background: white;
       }

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light client_navbar">
+<nav class="navbar navbar-light fixed-top client_navbar">
     <a class="navbar-brand" href="/client">
         <img src="/resumeApp/public/images/client/123logo.png" alt="logout">
     </a>

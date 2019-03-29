@@ -11,7 +11,7 @@
         font-style: normal;
         font-weight: 500;
         font-size: 18px;
-        margin-right: 134px;
+        margin-right: 75px;
         line-height: 20px;
         letter-spacing: 0.2px;
 
@@ -33,9 +33,10 @@
     }
 
   .client_dashboard_content{
-    max-width: 1366px;
+    display: flex;
+    justify-content: center;
     padding-top: 32px;
-    margin-left: 34px;
+
     .menu-block{
       width: 230px;
       height: 65px;
@@ -66,6 +67,7 @@
         padding: 10px;
       }
     }
+
     .menu-block:hover{
         cursor: pointer;
         background: #EEF9FF;
@@ -88,6 +90,281 @@
         background: white;
       }
     }
+
+    .content-block{
+      margin-left:50px;
+
+
+      .content-block-campaign{
+        background: white;
+        box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+        border-radius: 4px;
+        margin-bottom: 8px;
+        width: 938px;
+        height: 138px;
+
+        .upper-bar{
+          height:68px;
+          width: 100%;
+          display:flex;
+          justify-content: space-between;
+          border-bottom: 0.5px solid #E0E1E3;
+
+          .welcomeText{
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: -0.1px;
+            color: #7A828D;
+            margin-top: 27px;
+            margin-left: 34px;
+          }
+
+          .actionText{
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            text-align: right;
+            letter-spacing: -0.1px;
+            color: #05A4F4;
+            margin-top: 27px;
+            margin-right: 34px;
+          }
+        }
+        .bottom-bar{
+          display:flex;
+          justify-content: space-between;
+          width:100%;
+
+          .title{
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 24px;
+            letter-spacing: -0.1px;
+            color: #4A5464;
+            margin-top: 24px;
+            margin-left: 34px;
+          }
+
+          .actionBtn{
+            margin-top: 24px;
+            margin-right: 34px;
+            a:hover {
+              text-decoration: none;
+            }
+            a{
+              padding: 5px 23px 3px 13px;
+              display:block;
+              width: 203px;
+              height: 31px;
+              border-radius: 30px;
+              background: #05A4F4;
+
+              font-family: Roboto;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 12px;
+              line-height: 24px;
+              letter-spacing: -0.1px;
+
+              color: #FFFFFF;
+              img{
+                padding-right: 8px;
+                padding-left: 7px;
+                padding-bottom: 3px;
+              }
+            }
+          }
+
+        }
+      }
+      .content-block-campaign-brief{
+        background: white;
+        box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+        border-radius: 4px;
+        margin-bottom: 8px;
+        width: 938px;
+
+        .upper-bar{
+          display:flex;
+          justify-content:space-between;
+          width:100%;
+          border-bottom: 0.5px solid #E0E1E3;
+          height:68px;
+          .campaignInfo{
+            .title{
+              font-family: Roboto;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 16px;
+              line-height: 24px;
+              letter-spacing: -0.1px;
+              color: #4A5464;
+              margin-left: 34px;
+              margin-top: 16px;
+            }
+            .info{
+              font-family: Roboto;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 10px;
+              margin-left: 34px;
+              line-height: 24px;
+              letter-spacing: -0.1px;
+              color: #7A828D;
+            }
+          }
+          .actionBtn.live{
+            a{
+              color: #27AE60;
+              border: 2px solid #27AE60;
+            }
+          }
+          .actionBtn{
+            margin-top: 24px;
+            margin-right: 34px;
+            display: flex;
+            a:hover {
+              text-decoration: none;
+            }
+            a {
+              //btn
+              background: #FFFFFF;
+              border: 2px solid #F2994A;
+              box-sizing: border-box;
+              border-radius: 40px;
+              padding: 2px 2px 10px 2px;
+              display: block;
+              width: 116px;
+              height: 30px;
+              // text
+              font-family: Roboto;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 12px;
+              line-height: 24px;
+              text-align: center;
+              letter-spacing: -0.1px;
+              color: #F2994A;
+            }
+            .menu-img{
+              img{
+                margin-left: 15px;
+                padding-top: 3px;
+              }
+              img:hover{
+                cursor:pointer;
+              }
+            }
+          }
+        }
+
+        .agent-logs-block{
+          border-bottom: 0.5px solid #E0E1E3;
+
+          .agentInfo{
+            margin-left: 34px;
+            margin-top: 36px;
+            padding-bottom: 20px;
+            img{
+              padding-right: 8px;
+            }
+            .userName{
+              font-family: Roboto;
+              font-style: normal;
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 24px;
+              letter-spacing: -0.1px;
+              color: #4A5464;
+            }
+          }
+
+          .log{
+            display:flex;
+            .log-time{
+              font-family: Roboto;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 12px;
+              margin-top: 22px;
+              line-height: 24px;
+              letter-spacing: -0.1px;
+              color: #FF9B68;
+              margin-left:34px;
+            }
+            .log-text{
+              font-family: Roboto;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 12px;
+              width: 766px;
+              line-height: 18px;
+              letter-spacing: -0.1px;
+              color: #4A5464;
+              background:#EEF9FF;
+              border-radius: 80px;
+              padding: 17px 30px 14px 21px;
+              margin-bottom: 18px;
+              margin-left: 24px;
+            }
+          }
+
+          .showMoreBtn{
+            display: flex;
+            justify-content: flex-end;
+            margin: 26px 34px 34px;
+            a:hover{
+              text-decoration: none;
+            }
+            a{
+              font-family: Roboto;
+              font-style: normal;
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 24px;
+              text-align: center;
+              letter-spacing: -0.1px;
+              color: #05A4F4;
+            }
+          }
+
+
+        }
+
+        .campaign-brief-footer{
+          display: flex;
+          justify-content: flex-end;
+          width:100%;
+          height:39px;
+          box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.05);
+          background: #05A4F4;
+          a:hover{
+            text-decoration: none;
+          }
+          a{
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 24px;
+            text-align: right;
+            letter-spacing: -0.1px;
+            color: #FFFFFF;
+            margin-right: 34px;
+            margin-top:8px;
+          }
+        }
+
+      }
+    }
+
   }
 
 }

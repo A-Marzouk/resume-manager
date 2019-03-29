@@ -3840,7 +3840,7 @@ body {
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
-  margin-right: 134px;
+  margin-right: 75px;
   line-height: 20px;
   letter-spacing: 0.2px;
   color: #4A5464;
@@ -3861,9 +3861,13 @@ body {
 }
 
 #client_dash .client_dashboard_content {
-  max-width: 1366px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding-top: 32px;
-  margin-left: 34px;
 }
 
 #client_dash .client_dashboard_content .menu-block {
@@ -3922,5 +3926,313 @@ body {
 
 #client_dash .client_dashboard_content .menu-block.active .imageContainer {
   background: white;
+}
+
+#client_dash .client_dashboard_content .content-block {
+  margin-left: 50px;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign {
+  background: white;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  width: 938px;
+  height: 138px;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign .upper-bar {
+  height: 68px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 0.5px solid #E0E1E3;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign .upper-bar .welcomeText {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #7A828D;
+  margin-top: 27px;
+  margin-left: 34px;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign .upper-bar .actionText {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: right;
+  letter-spacing: -0.1px;
+  color: #05A4F4;
+  margin-top: 27px;
+  margin-right: 34px;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign .bottom-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign .bottom-bar .title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #4A5464;
+  margin-top: 24px;
+  margin-left: 34px;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn {
+  margin-top: 24px;
+  margin-right: 34px;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a:hover {
+  text-decoration: none;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a {
+  padding: 5px 23px 3px 13px;
+  display: block;
+  width: 203px;
+  height: 31px;
+  border-radius: 30px;
+  background: #05A4F4;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #FFFFFF;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a img {
+  padding-right: 8px;
+  padding-left: 7px;
+  padding-bottom: 3px;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief {
+  background: white;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  width: 938px;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  border-bottom: 0.5px solid #E0E1E3;
+  height: 68px;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignInfo .title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #4A5464;
+  margin-left: 34px;
+  margin-top: 16px;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignInfo .info {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  margin-left: 34px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #7A828D;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn.live a {
+  color: #27AE60;
+  border: 2px solid #27AE60;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn {
+  margin-top: 24px;
+  margin-right: 34px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn a:hover {
+  text-decoration: none;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn a {
+  background: #FFFFFF;
+  border: 2px solid #F2994A;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 40px;
+  padding: 2px 2px 10px 2px;
+  display: block;
+  width: 116px;
+  height: 30px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.1px;
+  color: #F2994A;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn .menu-img img {
+  margin-left: 15px;
+  padding-top: 3px;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn .menu-img img:hover {
+  cursor: pointer;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block {
+  border-bottom: 0.5px solid #E0E1E3;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .agentInfo {
+  margin-left: 34px;
+  margin-top: 36px;
+  padding-bottom: 20px;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .agentInfo img {
+  padding-right: 8px;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .agentInfo .userName {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #4A5464;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-time {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  margin-top: 22px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #FF9B68;
+  margin-left: 34px;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  width: 766px;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  color: #4A5464;
+  background: #EEF9FF;
+  border-radius: 80px;
+  padding: 17px 30px 14px 21px;
+  margin-bottom: 18px;
+  margin-left: 24px;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .showMoreBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin: 26px 34px 34px;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .showMoreBtn a:hover {
+  text-decoration: none;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .showMoreBtn a {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.1px;
+  color: #05A4F4;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+  height: 39px;
+  -webkit-box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.05);
+          box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.05);
+  background: #05A4F4;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer a:hover {
+  text-decoration: none;
+}
+
+#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer a {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: right;
+  letter-spacing: -0.1px;
+  color: #FFFFFF;
+  margin-right: 34px;
+  margin-top: 8px;
 }
 

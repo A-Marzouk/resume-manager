@@ -1,7 +1,58 @@
 <template>
     <div>
+
+        <div class="js-side-nav-container side-nav-container">
+            <div class="js-side-nav side-nav">
+                <a href="javascript:void(0)" class="js-menu-close menu-close"></a>
+                <div class="client_dashboard_content">
+                    <div class="dashboard-side-menu">
+                        <div class="menu-block row" :class="{'active' : activeTab === 'campaign_manager'}" @click="selectTab('campaign_manager')">
+                            <div class="imageContainer">
+                                <img  :src="getMenuBlockIcon('campaign_manager')" alt="icon">
+                            </div>
+                            <div class="menu-block-name">
+                                Campaign manager
+                            </div>
+                        </div>
+                        <div class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
+                            <div class="imageContainer">
+                                <img :src="getMenuBlockIcon('chats')" alt="icon">
+                            </div>
+                            <div class="menu-block-name">
+                                Chats
+                            </div>
+                        </div>
+                        <div class="menu-block row" :class="{'active' : activeTab === 'payments'}" @click="selectTab('payments')">
+                            <div class="imageContainer">
+                                <img :src="getMenuBlockIcon('payments')" alt="icon">
+                            </div>
+                            <div class="menu-block-name">
+                                Payments
+                            </div>
+                        </div>
+                        <div class="menu-block row" :class="{'active' : activeTab === 'agents_database'}" @click="selectTab('agents_database')">
+                            <div class="imageContainer">
+                                <img :src="getMenuBlockIcon('agents_database')"  alt="icon">
+                            </div>
+                            <div class="menu-block-name">
+                                Agents database
+                            </div>
+                        </div>
+                        <div class="menu-block row" :class="{'active' : activeTab === 'my_account'}" @click="selectTab('my_account')">
+                            <div class="imageContainer">
+                                <img :src="getMenuBlockIcon('my_account')" alt="icon">
+                            </div>
+                            <div class="menu-block-name">
+                                My account
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="client_dashboard_content">
-            <div>
+            <div class="dashboard-side-menu hideOnTablet">
                 <div class="menu-block row" :class="{'active' : activeTab === 'campaign_manager'}" @click="selectTab('campaign_manager')">
                     <div class="imageContainer">
                         <img  :src="getMenuBlockIcon('campaign_manager')" alt="icon">

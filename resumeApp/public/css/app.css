@@ -3846,6 +3846,12 @@ body {
   color: #4A5464;
 }
 
+@media (max-width: 992px) {
+  #client_dash .client_navbar .clientName {
+    margin-right: 2px;
+  }
+}
+
 #client_dash .client_navbar .logoutButton {
   width: 28px;
   height: 28px;
@@ -3860,7 +3866,7 @@ body {
   margin-left: 10px;
 }
 
-#client_dash .client_dashboard_content {
+.client_dashboard_content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3870,15 +3876,17 @@ body {
   padding-top: 32px;
 }
 
-#client_dash .client_dashboard_content .menu-block {
+.client_dashboard_content .dashboard-side-menu .menu-block {
   width: 230px;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
   height: 65px;
   margin-bottom: 8px;
   background: white;
   border-radius: 4px;
 }
 
-#client_dash .client_dashboard_content .menu-block .menu-block-name {
+.client_dashboard_content .dashboard-side-menu .menu-block .menu-block-name {
   margin: auto auto auto 5px;
   font-style: normal;
   font-weight: normal;
@@ -3889,12 +3897,12 @@ body {
   font-family: Roboto;
 }
 
-#client_dash .client_dashboard_content .menu-block img {
+.client_dashboard_content .dashboard-side-menu .menu-block img {
   height: 24px;
   width: 24px;
 }
 
-#client_dash .client_dashboard_content .menu-block .imageContainer {
+.client_dashboard_content .dashboard-side-menu .menu-block .imageContainer {
   height: 44px;
   background: aliceblue;
   width: 44px;
@@ -3903,20 +3911,20 @@ body {
   padding: 10px;
 }
 
-#client_dash .client_dashboard_content .menu-block:hover {
+.client_dashboard_content .dashboard-side-menu .menu-block:hover {
   cursor: pointer;
   background: #EEF9FF;
 }
 
-#client_dash .client_dashboard_content .menu-block:hover .imageContainer {
+.client_dashboard_content .dashboard-side-menu .menu-block:hover .imageContainer {
   background: #CFEEFF;
 }
 
-#client_dash .client_dashboard_content .menu-block.active {
+.client_dashboard_content .dashboard-side-menu .menu-block.active {
   background: linear-gradient(285.79deg, #F66691 0%, #FC9968 74.54%, #FFBA69 102.21%);
 }
 
-#client_dash .client_dashboard_content .menu-block.active .menu-block-name {
+.client_dashboard_content .dashboard-side-menu .menu-block.active .menu-block-name {
   color: #FFFFFF;
   font-style: normal;
   font-weight: bold;
@@ -3924,15 +3932,37 @@ body {
   line-height: 13px;
 }
 
-#client_dash .client_dashboard_content .menu-block.active .imageContainer {
+.client_dashboard_content .dashboard-side-menu .menu-block.active .imageContainer {
   background: white;
 }
 
-#client_dash .client_dashboard_content .content-block {
-  margin-left: 50px;
+@media (max-width: 992px) {
+  .client_dashboard_content .hideOnTablet {
+    display: none;
+  }
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign {
+.client_dashboard_content .content-block {
+  margin-left: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (max-width: 992px) {
+  .client_dashboard_content .content-block {
+    margin-left: 0;
+  }
+}
+
+.client_dashboard_content .content-block .content-block-campaign {
   background: white;
   -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
           box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
@@ -3942,7 +3972,13 @@ body {
   height: 138px;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign .upper-bar {
+@media (max-width: 992px) {
+  .client_dashboard_content .content-block .content-block-campaign {
+    width: 734px;
+  }
+}
+
+.client_dashboard_content .content-block .content-block-campaign .upper-bar {
   height: 68px;
   width: 100%;
   display: -webkit-box;
@@ -3954,7 +3990,7 @@ body {
   border-bottom: 0.5px solid #E0E1E3;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign .upper-bar .welcomeText {
+.client_dashboard_content .content-block .content-block-campaign .upper-bar .welcomeText {
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
@@ -3966,7 +4002,7 @@ body {
   margin-left: 34px;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign .upper-bar .actionText {
+.client_dashboard_content .content-block .content-block-campaign .upper-bar .actionText {
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
@@ -3979,7 +4015,7 @@ body {
   margin-right: 34px;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign .bottom-bar {
+.client_dashboard_content .content-block .content-block-campaign .bottom-bar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3989,7 +4025,7 @@ body {
   width: 100%;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign .bottom-bar .title {
+.client_dashboard_content .content-block .content-block-campaign .bottom-bar .title {
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
@@ -4001,16 +4037,16 @@ body {
   margin-left: 34px;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn {
+.client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn {
   margin-top: 24px;
   margin-right: 34px;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a:hover {
+.client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a:hover {
   text-decoration: none;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a {
+.client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a {
   padding: 5px 23px 3px 13px;
   display: block;
   width: 203px;
@@ -4026,13 +4062,13 @@ body {
   color: #FFFFFF;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a img {
+.client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a img {
   padding-right: 8px;
   padding-left: 7px;
   padding-bottom: 3px;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief {
+.client_dashboard_content .content-block .content-block-campaign-brief {
   background: white;
   -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
           box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
@@ -4041,7 +4077,13 @@ body {
   width: 938px;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar {
+@media (max-width: 992px) {
+  .client_dashboard_content .content-block .content-block-campaign-brief {
+    width: 734px;
+  }
+}
+
+.client_dashboard_content .content-block .content-block-campaign-brief .upper-bar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4053,7 +4095,7 @@ body {
   height: 68px;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignInfo .title {
+.client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignInfo .title {
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
@@ -4065,7 +4107,7 @@ body {
   margin-top: 16px;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignInfo .info {
+.client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignInfo .info {
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -4076,12 +4118,12 @@ body {
   color: #7A828D;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn.live a {
+.client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn.live a {
   color: #27AE60;
   border: 2px solid #27AE60;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn {
+.client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn {
   margin-top: 24px;
   margin-right: 34px;
   display: -webkit-box;
@@ -4089,11 +4131,11 @@ body {
   display: flex;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn a:hover {
+.client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn a:hover {
   text-decoration: none;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn a {
+.client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn a {
   background: #FFFFFF;
   border: 2px solid #F2994A;
   -webkit-box-sizing: border-box;
@@ -4113,30 +4155,30 @@ body {
   color: #F2994A;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn .menu-img img {
+.client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn .menu-img img {
   margin-left: 15px;
   padding-top: 3px;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn .menu-img img:hover {
+.client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn .menu-img img:hover {
   cursor: pointer;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block {
+.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block {
   border-bottom: 0.5px solid #E0E1E3;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .agentInfo {
+.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .agentInfo {
   margin-left: 34px;
   margin-top: 36px;
   padding-bottom: 20px;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .agentInfo img {
+.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .agentInfo img {
   padding-right: 8px;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .agentInfo .userName {
+.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .agentInfo .userName {
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
@@ -4146,13 +4188,13 @@ body {
   color: #4A5464;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log {
+.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-time {
+.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-time {
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
@@ -4164,7 +4206,13 @@ body {
   margin-left: 34px;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-text {
+@media (max-width: 992px) {
+  .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-time {
+    margin-top: 30px;
+  }
+}
+
+.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-text {
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -4180,7 +4228,13 @@ body {
   margin-left: 24px;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .showMoreBtn {
+@media (max-width: 992px) {
+  .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-text {
+    width: 560px;
+  }
+}
+
+.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .showMoreBtn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4190,11 +4244,11 @@ body {
   margin: 26px 34px 34px;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .showMoreBtn a:hover {
+.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .showMoreBtn a:hover {
   text-decoration: none;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .showMoreBtn a {
+.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .showMoreBtn a {
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
@@ -4205,7 +4259,7 @@ body {
   color: #05A4F4;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer {
+.client_dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4221,11 +4275,11 @@ body {
   border-bottom-right-radius: 4px;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer a:hover {
+.client_dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer a:hover {
   text-decoration: none;
 }
 
-#client_dash .client_dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer a {
+.client_dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer a {
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
@@ -4236,5 +4290,101 @@ body {
   color: #FFFFFF;
   margin-right: 34px;
   margin-top: 8px;
+}
+
+@media (min-width: 992px) {
+  .menu-open {
+    display: none;
+  }
+}
+
+.menu-open i {
+  color: #4A5464;
+  font-size: 36px;
+  padding-left: 10px;
+}
+
+.menu-close i {
+  color: black;
+  font-size: 36px;
+  padding: 10px;
+}
+
+.side-nav {
+  margin-top: 70px;
+  position: relative;
+  -webkit-transition: -webkit-transform .35s ease-out;
+  transition: -webkit-transform .35s ease-out;
+  transition: transform .35s ease-out;
+  transition: transform .35s ease-out, -webkit-transform .35s ease-out;
+  background: white;
+  height: 100%;
+  width: 280px;
+  max-width: 400px;
+  -webkit-box-shadow: 0 5px 6px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 6px 4px rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateX(-102%);
+          transform: translateX(-102%);
+  will-change: transform;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.side-nav-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.side-nav-container:before {
+  -webkit-transition: opacity 0.3s cubic-bezier(0, 0, 0.3, 1);
+  transition: opacity 0.3s cubic-bezier(0, 0, 0.3, 1);
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+  will-change: opacity;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.side-nav-animatable .side-nav {
+  -webkit-transition: -webkit-transform 0.33s cubic-bexier(0, 0, 0.3, 0.1);
+  transition: -webkit-transform 0.33s cubic-bexier(0, 0, 0.3, 0.1);
+  transition: transform 0.33s cubic-bexier(0, 0, 0.3, 0.1);
+  transition: transform 0.33s cubic-bexier(0, 0, 0.3, 0.1), -webkit-transform 0.33s cubic-bexier(0, 0, 0.3, 0.1);
+}
+
+.side-nav-animatable.side-nav-visible .side-nav {
+  -webkit-transition: -webkit-transform 0.33s cubic-bezier(0, 0, 0.3, 1);
+  transition: -webkit-transform 0.33s cubic-bezier(0, 0, 0.3, 1);
+  transition: transform 0.33s cubic-bezier(0, 0, 0.3, 1);
+  transition: transform 0.33s cubic-bezier(0, 0, 0.3, 1), -webkit-transform 0.33s cubic-bezier(0, 0, 0.3, 1);
+}
+
+.side-nav-visible {
+  pointer-events: auto;
+}
+
+.side-nav-visible .side-nav {
+  -webkit-transform: none;
+          transform: none;
+}
+
+.side-nav-visible:before {
+  opacity: 1;
 }
 

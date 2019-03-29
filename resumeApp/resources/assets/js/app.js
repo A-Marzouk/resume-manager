@@ -436,3 +436,4 @@ window.Echo.channel('conversations')
 
 
 require('./record.js');
+require('./side_nav.js');

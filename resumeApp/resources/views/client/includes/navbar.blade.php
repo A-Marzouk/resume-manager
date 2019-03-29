@@ -1,4 +1,9 @@
 <nav class="navbar navbar-light fixed-top client_navbar">
+
+    <a href="#0" class="js-menu-open menu-open">
+        <img src="/resumeApp/public/images/client/Group.png" alt="menu">
+    </a>
+
     <a class="navbar-brand" href="/client">
         <img src="/resumeApp/public/images/client/123logo.png" alt="logout">
     </a>

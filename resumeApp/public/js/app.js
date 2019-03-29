@@ -14708,6 +14708,7 @@ window.Echo.channel('conversations').listen('UpdateMessageCount', function (e) {
 });
 
 __webpack_require__(286);
+__webpack_require__(291);
 
 /***/ }),
 /* 16 */
@@ -55142,6 +55143,57 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client'],
@@ -55174,8 +55226,163 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c("div", { staticClass: "js-side-nav-container side-nav-container" }, [
+      _c("div", { staticClass: "js-side-nav side-nav" }, [
+        _c("a", {
+          staticClass: "js-menu-close menu-close",
+          attrs: { href: "javascript:void(0)" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "client_dashboard_content" }, [
+          _c("div", { staticClass: "dashboard-side-menu" }, [
+            _c(
+              "div",
+              {
+                staticClass: "menu-block row",
+                class: { active: _vm.activeTab === "campaign_manager" },
+                on: {
+                  click: function($event) {
+                    _vm.selectTab("campaign_manager")
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "imageContainer" }, [
+                  _c("img", {
+                    attrs: {
+                      src: _vm.getMenuBlockIcon("campaign_manager"),
+                      alt: "icon"
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "menu-block-name" }, [
+                  _vm._v(
+                    "\n                            Campaign manager\n                        "
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "menu-block row",
+                class: { active: _vm.activeTab === "chats" },
+                on: {
+                  click: function($event) {
+                    _vm.selectTab("chats")
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "imageContainer" }, [
+                  _c("img", {
+                    attrs: { src: _vm.getMenuBlockIcon("chats"), alt: "icon" }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "menu-block-name" }, [
+                  _vm._v(
+                    "\n                            Chats\n                        "
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "menu-block row",
+                class: { active: _vm.activeTab === "payments" },
+                on: {
+                  click: function($event) {
+                    _vm.selectTab("payments")
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "imageContainer" }, [
+                  _c("img", {
+                    attrs: {
+                      src: _vm.getMenuBlockIcon("payments"),
+                      alt: "icon"
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "menu-block-name" }, [
+                  _vm._v(
+                    "\n                            Payments\n                        "
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "menu-block row",
+                class: { active: _vm.activeTab === "agents_database" },
+                on: {
+                  click: function($event) {
+                    _vm.selectTab("agents_database")
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "imageContainer" }, [
+                  _c("img", {
+                    attrs: {
+                      src: _vm.getMenuBlockIcon("agents_database"),
+                      alt: "icon"
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "menu-block-name" }, [
+                  _vm._v(
+                    "\n                            Agents database\n                        "
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "menu-block row",
+                class: { active: _vm.activeTab === "my_account" },
+                on: {
+                  click: function($event) {
+                    _vm.selectTab("my_account")
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "imageContainer" }, [
+                  _c("img", {
+                    attrs: {
+                      src: _vm.getMenuBlockIcon("my_account"),
+                      alt: "icon"
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "menu-block-name" }, [
+                  _vm._v(
+                    "\n                            My account\n                        "
+                  )
+                ])
+              ]
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
     _c("div", { staticClass: "client_dashboard_content" }, [
-      _c("div", [
+      _c("div", { staticClass: "dashboard-side-menu hideOnTablet" }, [
         _c(
           "div",
           {
@@ -86261,6 +86468,77 @@ if (navigator.mediaDevices.getUserMedia) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var SideNav = function () {
+    function SideNav() {
+        _classCallCheck(this, SideNav);
+
+        this.sideNavEl = document.querySelector('.js-side-nav');
+        this.sideNavContainerEl = document.querySelector('.js-side-nav-container');
+        this.showButtonEl = document.querySelector('.js-menu-open');
+        this.closeButtonEl = document.querySelector('.js-menu-close');
+
+        this.openSideNav = this.openSideNav.bind(this);
+        this.closeSideNav = this.closeSideNav.bind(this);
+        this.blockClicks = this.blockClicks.bind(this);
+        this.onTransitionEnd = this.onTransitionEnd.bind(this);
+
+        this.addEventListeners();
+    }
+
+    _createClass(SideNav, [{
+        key: 'addEventListeners',
+        value: function addEventListeners() {
+            this.showButtonEl.addEventListener('click', this.openSideNav);
+            this.closeButtonEl.addEventListener('click', this.closeSideNav);
+            this.sideNavEl.addEventListener('click', this.blockClicks);
+            this.sideNavContainerEl.addEventListener('click', this.closeSideNav);
+        }
+    }, {
+        key: 'blockClicks',
+        value: function blockClicks(evt) {
+            evt.stopPropagation();
+        }
+    }, {
+        key: 'onTransitionEnd',
+        value: function onTransitionEnd(evt) {
+            this.sideNavContainerEl.classList.remove('side-nav-animatable');
+            this.sideNavContainerEl.removeEventListener('transitionend', this.onTransitionEnd);
+        }
+    }, {
+        key: 'openSideNav',
+        value: function openSideNav() {
+            this.sideNavContainerEl.classList.add('side-nav-animatable');
+            this.sideNavContainerEl.classList.add('side-nav-visible');
+            this.sideNavContainerEl.addEventListener('transitionend', this.onTransitionEnd);
+        }
+    }, {
+        key: 'closeSideNav',
+        value: function closeSideNav() {
+            this.sideNavContainerEl.classList.add('side-nav-animatable');
+            this.sideNavContainerEl.classList.remove('side-nav-visible');
+            this.sideNavContainerEl.addEventListener('transitionend', this.onTransitionEnd);
+        }
+    }]);
+
+    return SideNav;
+}();
+
+new SideNav();
 
 /***/ })
 /******/ ]);

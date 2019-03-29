@@ -11,6 +11,38 @@
                             Campaign manager
                         </div>
                     </div>
+                    <div class="menu-block row">
+                        <div class="imageContainer">
+                            <img src="/resumeApp/public/images/client/menu_icons/chats.png" alt="icon">
+                        </div>
+                        <div class="menu-block-name">
+                            Chats
+                        </div>
+                    </div>
+                    <div class="menu-block row">
+                        <div class="imageContainer">
+                            <img src="/resumeApp/public/images/client/menu_icons/payments.png" alt="icon">
+                        </div>
+                        <div class="menu-block-name">
+                            Payments
+                        </div>
+                    </div>
+                    <div class="menu-block row">
+                        <div class="imageContainer">
+                            <img src="/resumeApp/public/images/client/menu_icons/agents.png" alt="icon">
+                        </div>
+                        <div class="menu-block-name">
+                            Agents database
+                        </div>
+                    </div>
+                    <div class="menu-block row">
+                        <div class="imageContainer">
+                            <img src="/resumeApp/public/images/client/menu_icons/account.png" alt="icon">
+                        </div>
+                        <div class="menu-block-name">
+                            My account
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-8">
 

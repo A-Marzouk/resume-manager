@@ -3835,6 +3835,12 @@ body {
   margin-left: 34px;
 }
 
+@media (max-width: 425px) {
+  #client_dash .client_navbar .navbar-brand img {
+    margin-left: 0;
+  }
+}
+
 #client_dash .client_navbar .clientName {
   font-family: Roboto;
   font-style: normal;
@@ -3849,6 +3855,12 @@ body {
 @media (max-width: 992px) {
   #client_dash .client_navbar .clientName {
     margin-right: 2px;
+  }
+}
+
+@media (max-width: 425px) {
+  #client_dash .client_navbar .clientName {
+    display: none;
   }
 }
 
@@ -3873,7 +3885,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-top: 32px;
+  padding-top: 28px;
 }
 
 .client_dashboard_content .dashboard-side-menu .menu-block {
@@ -4333,6 +4345,72 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+.side-nav .clientInfo-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin-top: 30px;
+  padding-bottom: 25px;
+  padding-left: 25px;
+  border-bottom: 0.5px solid #E0E1E3;
+}
+
+@media (min-width: 426px) {
+  .side-nav .clientInfo-bar {
+    display: none;
+  }
+}
+
+.side-nav .clientInfo-bar .clientName {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  color: #4A5464;
+}
+
+.side-nav .clientInfo-bar .clientAvatar {
+  margin-right: 12px;
+  margin-top: 6px;
+}
+
+.side-nav .logoutBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-top: 28px;
+  padding-top: 16px;
+  padding-left: 30px;
+  border-top: 0.5px solid #E0E1E3;
+}
+
+@media (min-width: 426px) {
+  .side-nav .logoutBtn {
+    display: none;
+  }
+}
+
+.side-nav .logoutBtn a:hover {
+  text-decoration: none;
+}
+
+.side-nav .logoutBtn a {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.1px;
+  color: #05A4F4;
 }
 
 .side-nav-container {

@@ -33,6 +33,61 @@
 
   display: flex;
   flex-direction: column;
+
+  .clientInfo-bar{
+    // only on phone :
+    @media (min-width:426px) {
+      display:none;
+    }
+    display: flex;
+    width: 100%;
+    margin-top: 30px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+    border-bottom: 0.5px solid #E0E1E3;
+
+    .clientName{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 20px;
+      letter-spacing: 0.2px;
+      color: #4A5464;
+    }
+    .clientAvatar{
+      margin-right: 12px;
+      margin-top: 6px;
+    }
+  }
+
+  .logoutBtn{
+    // only on phone :
+    @media (min-width:426px) {
+      display:none;
+    }
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 28px;
+    padding-top: 16px;
+    padding-left: 30px;
+    border-top: 0.5px solid #E0E1E3;
+    a:hover{
+      text-decoration: none;
+    }
+    a{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      text-align: center;
+      letter-spacing: -0.1px;
+      color: #05A4F4;
+
+    }
+
+  }
 }
 
 .side-nav-container {

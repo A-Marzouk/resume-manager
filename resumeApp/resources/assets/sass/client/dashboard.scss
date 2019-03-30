@@ -4,6 +4,9 @@
       height: 70px !important;
       .navbar-brand img {
         margin-left: 34px;
+        @media (max-width:425px) {
+          margin-left: 0;
+        }
       }
 
       .clientName{
@@ -17,6 +20,9 @@
         color: #4A5464;
         @media (max-width:992px) {
           margin-right: 2px;
+        }
+        @media (max-width:425px) {
+          display:none;
         }
       }
 
@@ -38,7 +44,7 @@
 .client_dashboard_content{
   display: flex;
   justify-content: center;
-  padding-top: 32px;
+  padding-top: 28px;
   .dashboard-side-menu{
     .menu-block{
       width: 230px;

@@ -4,6 +4,15 @@
         <div class="js-side-nav-container side-nav-container">
             <div class="js-side-nav side-nav">
                 <a href="javascript:void(0)" class="js-menu-close menu-close"></a>
+                <div class="clientInfo-bar">
+                    <div class="clientAvatar">
+                        <img src="/resumeApp/public/images/client/dummy.png" alt="logout">
+                    </div>
+                    <div class="clientName">
+                        Welcome,<br/>
+                        Ahmed R. Marzouk
+                    </div>
+                </div>
                 <div class="client_dashboard_content">
                     <div class="dashboard-side-menu">
                         <div class="menu-block row" :class="{'active' : activeTab === 'campaign_manager'}" @click="selectTab('campaign_manager')">
@@ -47,6 +56,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="logoutBtn">
+                    <a href="#">
+                        LOG OUT
+                    </a>
                 </div>
             </div>
         </div>

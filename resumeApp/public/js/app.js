@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(287);
+module.exports = __webpack_require__(288);
 
 
 /***/ }),
@@ -14708,7 +14708,7 @@ window.Echo.channel('conversations').listen('UpdateMessageCount', function (e) {
 });
 
 __webpack_require__(286);
-__webpack_require__(291);
+__webpack_require__(287);
 
 /***/ }),
 /* 16 */
@@ -55194,6 +55194,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client'],
@@ -55232,6 +55247,8 @@ var render = function() {
           staticClass: "js-menu-close menu-close",
           attrs: { href: "javascript:void(0)" }
         }),
+        _vm._v(" "),
+        _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "client_dashboard_content" }, [
           _c("div", { staticClass: "dashboard-side-menu" }, [
@@ -55377,7 +55394,9 @@ var render = function() {
               ]
             )
           ])
-        ])
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
       ])
     ]),
     _vm._v(" "),
@@ -55510,11 +55529,42 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _vm._m(2)
     ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "clientInfo-bar" }, [
+      _c("div", { staticClass: "clientAvatar" }, [
+        _c("img", {
+          attrs: {
+            src: "/resumeApp/public/images/client/dummy.png",
+            alt: "logout"
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "clientName" }, [
+        _vm._v("\n                    Welcome,"),
+        _c("br"),
+        _vm._v("\n                    Ahmed R. Marzouk\n                ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "logoutBtn" }, [
+      _c("a", { attrs: { href: "#" } }, [
+        _vm._v("\n                    LOG OUT\n                ")
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -86465,15 +86515,6 @@ if (navigator.mediaDevices.getUserMedia) {
 
 /***/ }),
 /* 287 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 288 */,
-/* 289 */,
-/* 290 */,
-/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -86539,6 +86580,12 @@ var SideNav = function () {
 }();
 
 new SideNav();
+
+/***/ }),
+/* 288 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

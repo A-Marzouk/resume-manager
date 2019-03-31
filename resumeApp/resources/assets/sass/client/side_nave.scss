@@ -1,5 +1,5 @@
 .menu-open {
-  @media (min-width:992px) {
+  @media (min-width:1240px) {
       display:none;
   }
   i {
@@ -116,6 +116,7 @@
 }
 
 .side-nav-animatable {
+  z-index: 2;
   .side-nav {
     transition: transform .33s cubic-bexier(0,0,.3,.1);
   }
@@ -127,6 +128,7 @@
 
 .side-nav-visible {
   pointer-events: auto;
+  z-index: 2;
 
   .side-nav {
     transform: none;

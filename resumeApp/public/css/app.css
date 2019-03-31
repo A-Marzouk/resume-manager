@@ -3852,7 +3852,7 @@ body {
   color: #4A5464;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1240px) {
   #client_dash .client_navbar .clientName {
     margin-right: 2px;
   }
@@ -3948,7 +3948,7 @@ body {
   background: white;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1240px) {
   .client_dashboard_content .hideOnTablet {
     display: none;
   }
@@ -3966,11 +3966,22 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  z-index: 1;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1240px) {
   .client_dashboard_content .content-block {
     margin-left: 0;
+  }
+}
+
+@media (max-width: 425px) {
+  .client_dashboard_content .content-block {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 
@@ -3984,9 +3995,15 @@ body {
   height: 138px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1240px) {
   .client_dashboard_content .content-block .content-block-campaign {
     width: 734px;
+  }
+}
+
+@media (max-width: 425px) {
+  .client_dashboard_content .content-block .content-block-campaign {
+    width: 100%;
   }
 }
 
@@ -4014,6 +4031,15 @@ body {
   margin-left: 34px;
 }
 
+@media (max-width: 425px) {
+  .client_dashboard_content .content-block .content-block-campaign .upper-bar .welcomeText {
+    font-size: 11px;
+    line-height: 16px;
+    margin-top: 17px;
+    margin-left: 9px;
+  }
+}
+
 .client_dashboard_content .content-block .content-block-campaign .upper-bar .actionText {
   font-family: Roboto;
   font-style: normal;
@@ -4025,6 +4051,15 @@ body {
   color: #05A4F4;
   margin-top: 27px;
   margin-right: 34px;
+}
+
+@media (max-width: 425px) {
+  .client_dashboard_content .content-block .content-block-campaign .upper-bar .actionText {
+    font-size: 11px;
+    line-height: 15px;
+    margin-top: 17px;
+    margin-right: 15px;
+  }
 }
 
 .client_dashboard_content .content-block .content-block-campaign .bottom-bar {
@@ -4049,9 +4084,34 @@ body {
   margin-left: 34px;
 }
 
+@media (max-width: 425px) {
+  .client_dashboard_content .content-block .content-block-campaign .bottom-bar .title {
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 35px;
+    margin-left: 11px;
+  }
+}
+
+@media (max-width: 370px) {
+  .client_dashboard_content .content-block .content-block-campaign .bottom-bar .title {
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 25px;
+    margin-left: 11px;
+  }
+}
+
 .client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn {
   margin-top: 24px;
   margin-right: 34px;
+}
+
+@media (max-width: 425px) {
+  .client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn {
+    margin-top: 24px;
+    margin-right: 6px;
+  }
 }
 
 .client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a:hover {
@@ -4074,6 +4134,14 @@ body {
   color: #FFFFFF;
 }
 
+@media (max-width: 425px) {
+  .client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a {
+    width: 190px;
+    height: 31px;
+    font-size: 11px;
+  }
+}
+
 .client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a img {
   padding-right: 8px;
   padding-left: 7px;
@@ -4089,9 +4157,15 @@ body {
   width: 938px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1240px) {
   .client_dashboard_content .content-block .content-block-campaign-brief {
     width: 734px;
+  }
+}
+
+@media (max-width: 425px) {
+  .client_dashboard_content .content-block .content-block-campaign-brief {
+    width: 100%;
   }
 }
 
@@ -4119,6 +4193,12 @@ body {
   margin-top: 16px;
 }
 
+@media (max-width: 425px) {
+  .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignInfo .title {
+    margin-left: 10px;
+  }
+}
+
 .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignInfo .info {
   font-family: Roboto;
   font-style: normal;
@@ -4128,6 +4208,19 @@ body {
   line-height: 24px;
   letter-spacing: -0.1px;
   color: #7A828D;
+}
+
+@media (max-width: 425px) {
+  .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignInfo .info {
+    margin-left: 10px;
+    line-height: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignInfo .info.hideOnXS {
+    display: none;
+  }
 }
 
 .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn.live a {
@@ -4141,6 +4234,12 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+@media (max-width: 425px) {
+  .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn {
+    margin-right: 5px;
+  }
 }
 
 .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn a:hover {
@@ -4190,6 +4289,12 @@ body {
   padding-right: 8px;
 }
 
+@media (max-width: 425px) {
+  .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .agentInfo {
+    margin-left: 10px;
+  }
+}
+
 .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .agentInfo .userName {
   font-family: Roboto;
   font-style: normal;
@@ -4218,9 +4323,15 @@ body {
   margin-left: 34px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1240px) {
   .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-time {
     margin-top: 30px;
+  }
+}
+
+@media (max-width: 425px) {
+  .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-time {
+    margin-left: 10px;
   }
 }
 
@@ -4240,9 +4351,17 @@ body {
   margin-left: 24px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1240px) {
   .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-text {
     width: 560px;
+  }
+}
+
+@media (max-width: 425px) {
+  .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-text {
+    border-radius: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 
@@ -4304,7 +4423,7 @@ body {
   margin-top: 8px;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1240px) {
   .menu-open {
     display: none;
   }
@@ -4439,6 +4558,10 @@ body {
   pointer-events: none;
 }
 
+.side-nav-animatable {
+  z-index: 2;
+}
+
 .side-nav-animatable .side-nav {
   -webkit-transition: -webkit-transform 0.33s cubic-bexier(0, 0, 0.3, 0.1);
   transition: -webkit-transform 0.33s cubic-bexier(0, 0, 0.3, 0.1);
@@ -4455,6 +4578,7 @@ body {
 
 .side-nav-visible {
   pointer-events: auto;
+  z-index: 2;
 }
 
 .side-nav-visible .side-nav {

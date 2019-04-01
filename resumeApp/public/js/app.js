@@ -86809,7 +86809,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -86820,6 +86820,17 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", 
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -86855,7 +86866,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
+    return _c("div", { attrs: { id: "campaign_activity" } }, [
       _c(
         "nav",
         { staticClass: "navbar navbar-light fixed-top client_navbar" },
@@ -86870,7 +86881,21 @@ var staticRenderFns = [
             _vm._v(" NAME OF THE CAMPAIGN\n        ")
           ])
         ]
-      )
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "campaign-info-bar" }, [
+        _c("div", { staticClass: "campaign-info-tab active firstTab" }, [
+          _vm._v("\n            ACTIVITY\n        ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "campaign-info-tab" }, [
+          _vm._v("\n            CAMPAIGN TEAM\n        ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "campaign-info-tab" }, [
+          _vm._v("\n            CAMPAIGN BRIEF\n        ")
+        ])
+      ])
     ])
   }
 ]

@@ -12,9 +12,7 @@
 </head>
 <body id="client_dash">
 
-    @include('client.includes.navbar')
-
-        @yield('content')
+    @yield('content')
 
     @include('layouts.footer')
     @include('layouts.includes.scripts')

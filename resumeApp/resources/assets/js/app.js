@@ -31,8 +31,9 @@ Vue.config.devtools = true;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-
+// client components
 Vue.component('client-dashboard', require('./components/client/Dashboard.vue'));
+Vue.component('campaign-activity', require('./components/client/campaign_activity.vue'));
 
 
 
@@ -153,6 +154,12 @@ if ($("#searchFreelancers").length !== 0){
 if ($("#clientDashboardComponent").length !== 0){
     let clientDashboardComponent = new Vue({
         el:'#clientDashboardComponent'
+    });
+}
+
+if ($("#campaignActivityComponent").length !== 0){
+    let campaignActivityComponent = new Vue({
+        el:'#campaignActivityComponent'
     });
 }
 

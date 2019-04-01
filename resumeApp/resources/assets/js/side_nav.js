@@ -2,6 +2,9 @@
 
 class SideNav {
     constructor () {
+        if ($("#sideNav").length === 0){
+            return;
+        }
         this.sideNavEl = document.querySelector('.js-side-nav');
         this.sideNavContainerEl = document.querySelector('.js-side-nav-container');
         this.showButtonEl = document.querySelector('.js-menu-open');

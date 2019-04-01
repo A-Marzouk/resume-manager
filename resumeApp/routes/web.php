@@ -28,6 +28,8 @@ Route::prefix('client')->group(function (){
         return redirect()->back();
     });
     Route::get('/','ClientsController@index')->name('client.dashboard');
+    Route::get('/campaign','ClientsController@campaignActivity')->name('campaign.activity');
+
     Route::get('/has_agreed','ClientsController@hasAgreed');
     Route::post('/set_terms','ClientsController@setTerms');
     Route::get('/register','Auth\ClientRegisterController@showRegistrationForm')->name('client.register');

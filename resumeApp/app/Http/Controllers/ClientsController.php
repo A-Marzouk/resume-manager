@@ -20,6 +20,10 @@ class ClientsController extends Controller
         return view('client.dashboard',compact('client'));
     }
 
+    public function campaignActivity(){
+        return view('client.campaign_activity');
+    }
+
     public function hasAgreed(){
         $currClient = auth()->guard('client')->user();
         if($currClient->agree_with_terms == true){

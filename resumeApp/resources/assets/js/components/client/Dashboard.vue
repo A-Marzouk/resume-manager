@@ -137,7 +137,7 @@
                                 Name of the campaign
                             </div>
                             <div class="info hideOnXS">
-                                2 agents currently working on the campaign
+                                2 agents on the campaign
                             </div>
                         </div>
                         <div class="actionBtn">

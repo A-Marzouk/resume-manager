@@ -55617,7 +55617,7 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("div", { staticClass: "info hideOnXS" }, [
               _vm._v(
-                "\n                            2 agents currently working on the campaign\n                        "
+                "\n                            2 agents on the campaign\n                        "
               )
             ])
           ]),

@@ -35,12 +35,20 @@ class SideNav {
         this.sideNavContainerEl.classList.add('side-nav-animatable');
         this.sideNavContainerEl.classList.add('side-nav-visible');
         this.sideNavContainerEl.addEventListener('transitionend', this.onTransitionEnd);
+
+        // change the open icon to close icon
+        $('#menu-open-icon').addClass('d-none');
+        $('#menu-close-icon').removeClass('d-none');
     }
 
     closeSideNav() {
         this.sideNavContainerEl.classList.add('side-nav-animatable');
         this.sideNavContainerEl.classList.remove('side-nav-visible');
         this.sideNavContainerEl.addEventListener('transitionend', this.onTransitionEnd);
+
+        // change the open icon to close icon
+        $('#menu-close-icon').addClass('d-none');
+        $('#menu-open-icon').removeClass('d-none');
     }
 }
 

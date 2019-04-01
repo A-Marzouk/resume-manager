@@ -1,7 +1,11 @@
 <nav class="navbar navbar-light fixed-top client_navbar">
 
-    <a href="#0" class="js-menu-open menu-open">
+    <a href="#0" class="js-menu-open menu-open" id="menu-open-icon">
         <img src="/resumeApp/public/images/client/Group.png" alt="menu">
+    </a>
+
+    <a href="#0" class="js-menu-close d-none" id="menu-close-icon">
+        <img src="/resumeApp/public/images/client/close.png" alt="menu">
     </a>
 
     <a class="navbar-brand" href="/client">

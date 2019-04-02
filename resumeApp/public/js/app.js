@@ -56177,7 +56177,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56221,6 +56221,114 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -56402,7 +56510,9 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(1)
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2)
   ])
 }
 var staticRenderFns = [
@@ -56415,13 +56525,15 @@ var staticRenderFns = [
       { staticClass: "navbar navbar-light fixed-top client_navbar" },
       [
         _c("div", { staticClass: "backBtn" }, [
-          _c("img", {
-            attrs: {
-              src: "/resumeApp/public/images/client/arrow_back.png",
-              alt: "back-icon"
-            }
-          }),
-          _vm._v(" NAME OF THE CAMPAIGN\n        ")
+          _c("a", { attrs: { href: "/client" } }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/arrow_back.png",
+                alt: "back-icon"
+              }
+            })
+          ]),
+          _vm._v("\n            NAME OF THE CAMPAIGN\n        ")
         ])
       ]
     )
@@ -56563,6 +56675,66 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "content-block" }, [
           _c("div", { staticClass: "content-block-campaign-activity" }, [
+            _c("div", { staticClass: "team-bar-tablet" }, [
+              _c("div", { staticClass: "team-info" }, [
+                _c("div", { staticClass: "team-name" }, [
+                  _vm._v(
+                    "\n                            TEAM\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "actionBtn" }, [
+                  _vm._v(
+                    "\n                            GO TO TEAM CHAT\n                        "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "lineDivide tablet-bar" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "agent-bar" }, [
+                _c("div", { staticClass: "team-member tablet-bar" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "/resumeApp/public/images/client/dummy.png",
+                      alt: "member image"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "team-member-info" }, [
+                    _c("div", { staticClass: "member-name" }, [
+                      _vm._v(
+                        "\n                                    Z. Ibrahimovic\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "job-title" }, [
+                      _vm._v(
+                        "\n                                    Animation\n                                "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "actionBtn",
+                    attrs: {
+                      href: "javascript:void(0)",
+                      "data-toggle": "modal",
+                      "data-target": "#select-agent-modal"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                            CHOOSE AGENT\n                        "
+                    )
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
             _c("div", { staticClass: "data-logs" }, [
               _c("div", { staticClass: "date-picker-bar" }, [
                 _c("img", {
@@ -56606,7 +56778,159 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("div", { staticClass: "document-text" }, [
                 _vm._v("\n                        Document link: "),
-                _c("span", [_vm._v("No link has been added yet.")])
+                _c("span", [_vm._v("No links.")])
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "modal", attrs: { id: "select-agent-modal" } },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content agent-modal-content" }, [
+            _c("div", { staticClass: "select-agent-modal-header" }, [
+              _c("div", { staticClass: "title text-lay" }, [
+                _vm._v(
+                  "\n                        CHOOSE TEAM MEMBER\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("×")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "lineDivide" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "dashboard-side-menu" }, [
+                _c("div", { staticClass: "team-member" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "/resumeApp/public/images/client/dummy.png",
+                      alt: "member image"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "team-member-info" }, [
+                    _c("div", { staticClass: "member-name manager" }, [
+                      _vm._v(
+                        "\n                                    Louis Snyderberg\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "job-title" }, [
+                      _vm._v(
+                        "\n                                    Team manager\n                                "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "team-member" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "/resumeApp/public/images/client/dummy.png",
+                      alt: "member image"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "team-member-info" }, [
+                    _c("div", { staticClass: "member-name" }, [
+                      _vm._v(
+                        "\n                                    Mohamed Salah\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "job-title" }, [
+                      _vm._v(
+                        "\n                                    Egyptian king\n                                "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "team-member" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "/resumeApp/public/images/client/dummy.png",
+                      alt: "member image"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "team-member-info" }, [
+                    _c("div", { staticClass: "member-name" }, [
+                      _vm._v(
+                        "\n                                    Lionel Messi\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "job-title" }, [
+                      _vm._v(
+                        "\n                                    Artist\n                                "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "team-member" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "/resumeApp/public/images/client/dummy.png",
+                      alt: "member image"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "team-member-info" }, [
+                    _c("div", { staticClass: "member-name" }, [
+                      _vm._v(
+                        "\n                                    Zlatan Ibrahimovic\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "job-title" }, [
+                      _vm._v(
+                        "\n                                    Animation\n                                "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "team-member" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "/resumeApp/public/images/client/dummy.png",
+                      alt: "member image"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "team-member-info" }, [
+                    _c("div", { staticClass: "member-name" }, [
+                      _vm._v(
+                        "\n                                    Louis Snyderberg\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "job-title" }, [
+                      _vm._v(
+                        "\n                                    Animation\n                                "
+                      )
+                    ])
+                  ])
+                ])
               ])
             ])
           ])

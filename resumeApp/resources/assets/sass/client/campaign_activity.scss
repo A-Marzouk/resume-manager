@@ -12,6 +12,11 @@
     justify-content: left;
     align-items: center;
     box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+    @media (max-width:1240px) {
+      justify-content: space-evenly;
+      overflow-x: scroll;
+      display: -webkit-box;
+    }
     .campaign-info-tab{
       font-family: Roboto;
       font-style: normal;
@@ -25,13 +30,21 @@
       margin-top: 6px;
       cursor: pointer;
       opacity: 0.8;
+      @media (max-width:1240px) {
+        margin-right: 0;
+        font-size: 16px;
+      }
     }
     .campaign-info-tab.active{
       font-weight: bold;
       border-bottom: 3px solid white;
+      opacity: 1;
     }
     .campaign-info-tab.firstTab{
       margin-left: 84px;
+      @media (max-width:1240px) {
+        margin-left: 0;
+      }
     }
   }
 }
@@ -45,8 +58,12 @@
   margin-top: 4px;
   letter-spacing: -0.1px;
   color: #4A5464;
-  img{
+  a{
     margin: 0px 30px 2px 25px;
+  }
+
+  @media (max-width:1240px) {
+    font-size: 16px;
   }
 }
 
@@ -90,44 +107,16 @@
 
     }
 
-    .team-member{
-      display: flex;
-      justify-content: flex-start;
-      margin-bottom: 30px;
-      img{
-        margin-left: 12px;
-        margin-right: 19px;
-        height: 35px;
-        width: 35px;
-        margin-top: 5px;
-      }
-      .team-member-info{
-        .member-name{
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: 500;
-          font-size: 16px;
-          color: #4A5464;
-          padding-bottom: 5px;
-        }
-        .member-name.manager{
-          color: #05A4F4;
-        }
-        .job-title{
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: normal;
-          font-size: 12px;
-          color: #7A828D;
-        }
-      }
-    }
   }
+
 
   .content-block{
     flex-direction: row;
     background: none;
     .content-block-campaign-activity{
+      @media (max-width:1240px) {
+
+      }
       margin-bottom: 0;
       width: 791px;
       .data-logs{
@@ -160,6 +149,11 @@
             display: flex;
             justify-content: center;
             margin-top: 40px;
+            img{
+              @media (max-width:425px) {
+                width: 100%;
+              }
+            }
           }
         }
       }
@@ -173,12 +167,13 @@
         display:flex;
         justify-content: flex-start;
         align-items: center;
+        img{
+          margin-left: 19px;
+          margin-right: 5px;
+          margin-bottom: 4px;
+          height: 24px;
+        }
         .document-text{
-          img{
-            height: 24px;
-            margin-left: 30px;
-            margin-right: 12px;
-          }
           font-family: Roboto;
           font-style: normal;
           font-weight: 500;
@@ -192,15 +187,151 @@
           }
         }
       }
+
+      .team-bar-tablet{
+        height: 130px;
+        margin-bottom: 16px;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+        border-radius: 4px;
+        .team-info{
+          height:60px;
+          display:flex;
+          justify-content: space-between;
+          align-items: center;
+          .team-name{
+            font-family: Roboto;
+            margin-left: 12px;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            color: #4A5464;
+          }
+          .actionBtn{
+            font-family: Roboto;
+            margin-right: 12px;
+            cursor: pointer;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+            text-align: right;
+            letter-spacing: -0.1px;
+            color: #05A4F4;
+          }
+        }
+        .agent-bar{
+          height: 70px;
+          display:flex;
+          justify-content: space-between;
+          align-items: center;
+          .actionBtn{
+            font-family: Roboto;
+            margin-right: 12px;
+            cursor: pointer;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+            text-align: right;
+            letter-spacing: -0.1px;
+            color: #05A4F4;
+          }
+        }
+
+        @media (min-width:1240px) {
+          display: none;
+        }
+      }
     }
   }
+}
 
-  .lineDivide{
-    width: 95%;
-    margin-left: 2.5%;
-    height: 1px;
-    background: rgba(188, 191, 198, 0.44);
-    margin-bottom:20px;
+#select-agent-modal{
+  .select-agent-modal-header{
+    height: 68px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title{
+      margin-left: 28px;
+    }
+    button{
+      margin-right: 28px;
+      margin-bottom: 2px;
+    }
+  }
+  .agent-modal-content{
+    max-width: 447px !important;
   }
 
+  .modal-dialog{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+.text-lay{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #4A5464;
+}
+
+.lineDivide{
+  width: 95%;
+  margin-left: 2.5%;
+  height: 1px;
+  background: rgba(188, 191, 198, 0.44);
+  margin-bottom:20px;
+}
+
+.lineDivide.tablet-bar{
+  margin-bottom: 0;
+}
+
+.team-member{
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+  img{
+    margin-left: 12px;
+    margin-right: 19px;
+    height: 35px;
+    width: 35px;
+    margin-top: 5px;
+  }
+  .team-member-info{
+    .member-name{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      color: #4A5464;
+      padding-bottom: 5px;
+    }
+    .member-name.manager{
+      color: #05A4F4;
+    }
+    .job-title{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      color: #7A828D;
+    }
+  }
+}
+.team-member.tablet-bar{
+  margin-bottom: 0;
+  .member-name{
+    font-size: 14px;
+  }
+  .job-title{
+    font-size: 10px;
+  }
 }

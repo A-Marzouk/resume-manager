@@ -4614,6 +4614,16 @@ body {
           box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
 }
 
+@media (max-width: 1240px) {
+  #campaign_activity .campaign-info-bar {
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    overflow-x: scroll;
+    display: -webkit-box;
+  }
+}
+
 #campaign_activity .campaign-info-bar .campaign-info-tab {
   font-family: Roboto;
   font-style: normal;
@@ -4629,13 +4639,27 @@ body {
   opacity: 0.8;
 }
 
+@media (max-width: 1240px) {
+  #campaign_activity .campaign-info-bar .campaign-info-tab {
+    margin-right: 0;
+    font-size: 16px;
+  }
+}
+
 #campaign_activity .campaign-info-bar .campaign-info-tab.active {
   font-weight: bold;
   border-bottom: 3px solid white;
+  opacity: 1;
 }
 
 #campaign_activity .campaign-info-bar .campaign-info-tab.firstTab {
   margin-left: 84px;
+}
+
+@media (max-width: 1240px) {
+  #campaign_activity .campaign-info-bar .campaign-info-tab.firstTab {
+    margin-left: 0;
+  }
 }
 
 .backBtn {
@@ -4649,8 +4673,14 @@ body {
   color: #4A5464;
 }
 
-.backBtn img {
+.backBtn a {
   margin: 0px 30px 2px 25px;
+}
+
+@media (max-width: 1240px) {
+  .backBtn {
+    font-size: 16px;
+  }
 }
 
 .client_dashboard_content.campaign_activity .dashboard-side-menu {
@@ -4697,45 +4727,6 @@ body {
   text-align: right;
   letter-spacing: -0.1px;
   color: #05A4F4;
-}
-
-.client_dashboard_content.campaign_activity .dashboard-side-menu .team-member {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  margin-bottom: 30px;
-}
-
-.client_dashboard_content.campaign_activity .dashboard-side-menu .team-member img {
-  margin-left: 12px;
-  margin-right: 19px;
-  height: 35px;
-  width: 35px;
-  margin-top: 5px;
-}
-
-.client_dashboard_content.campaign_activity .dashboard-side-menu .team-member .team-member-info .member-name {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  color: #4A5464;
-  padding-bottom: 5px;
-}
-
-.client_dashboard_content.campaign_activity .dashboard-side-menu .team-member .team-member-info .member-name.manager {
-  color: #05A4F4;
-}
-
-.client_dashboard_content.campaign_activity .dashboard-side-menu .team-member .team-member-info .job-title {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  color: #7A828D;
 }
 
 .client_dashboard_content.campaign_activity .content-block {
@@ -4798,6 +4789,12 @@ body {
   margin-top: 40px;
 }
 
+@media (max-width: 425px) {
+  .client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .member-logs .empty-state-image img {
+    width: 100%;
+  }
+}
+
 .client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar {
   height: 76px;
   margin-top: 16px;
@@ -4816,6 +4813,13 @@ body {
           align-items: center;
 }
 
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar img {
+  margin-left: 19px;
+  margin-right: 5px;
+  margin-bottom: 4px;
+  height: 24px;
+}
+
 .client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar .document-text {
   font-family: Roboto;
   font-style: normal;
@@ -4826,22 +4830,192 @@ body {
   color: #4A5464;
 }
 
-.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar .document-text img {
-  height: 24px;
-  margin-left: 30px;
-  margin-right: 12px;
-}
-
 .client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar .document-text span {
   font-weight: normal;
   margin-left: 5px;
 }
 
-.client_dashboard_content.campaign_activity .lineDivide {
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .team-bar-tablet {
+  height: 130px;
+  margin-bottom: 16px;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+}
+
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .team-bar-tablet .team-info {
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .team-bar-tablet .team-info .team-name {
+  font-family: Roboto;
+  margin-left: 12px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #4A5464;
+}
+
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .team-bar-tablet .team-info .actionBtn {
+  font-family: Roboto;
+  margin-right: 12px;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: right;
+  letter-spacing: -0.1px;
+  color: #05A4F4;
+}
+
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .team-bar-tablet .agent-bar {
+  height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .team-bar-tablet .agent-bar .actionBtn {
+  font-family: Roboto;
+  margin-right: 12px;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: right;
+  letter-spacing: -0.1px;
+  color: #05A4F4;
+}
+
+@media (min-width: 1240px) {
+  .client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .team-bar-tablet {
+    display: none;
+  }
+}
+
+#select-agent-modal .select-agent-modal-header {
+  height: 68px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#select-agent-modal .select-agent-modal-header .title {
+  margin-left: 28px;
+}
+
+#select-agent-modal .select-agent-modal-header button {
+  margin-right: 28px;
+  margin-bottom: 2px;
+}
+
+#select-agent-modal .agent-modal-content {
+  max-width: 447px !important;
+}
+
+#select-agent-modal .modal-dialog {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.text-lay {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #4A5464;
+}
+
+.lineDivide {
   width: 95%;
   margin-left: 2.5%;
   height: 1px;
   background: rgba(188, 191, 198, 0.44);
   margin-bottom: 20px;
+}
+
+.lineDivide.tablet-bar {
+  margin-bottom: 0;
+}
+
+.team-member {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 30px;
+}
+
+.team-member img {
+  margin-left: 12px;
+  margin-right: 19px;
+  height: 35px;
+  width: 35px;
+  margin-top: 5px;
+}
+
+.team-member .team-member-info .member-name {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #4A5464;
+  padding-bottom: 5px;
+}
+
+.team-member .team-member-info .member-name.manager {
+  color: #05A4F4;
+}
+
+.team-member .team-member-info .job-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  color: #7A828D;
+}
+
+.team-member.tablet-bar {
+  margin-bottom: 0;
+}
+
+.team-member.tablet-bar .member-name {
+  font-size: 14px;
+}
+
+.team-member.tablet-bar .job-title {
+  font-size: 10px;
 }
 

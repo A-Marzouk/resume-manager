@@ -23,6 +23,8 @@
       border-bottom: 3px solid transparent;
       padding: 11px 14px;
       margin-top: 6px;
+      cursor: pointer;
+      opacity: 0.8;
     }
     .campaign-info-tab.active{
       font-weight: bold;
@@ -40,10 +42,165 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  margin-bottom: 4px;
+  margin-top: 4px;
   letter-spacing: -0.1px;
   color: #4A5464;
   img{
     margin: 0px 30px 2px 25px;
   }
+}
+
+.client_dashboard_content.campaign_activity{
+  .dashboard-side-menu{
+    background: white;
+    width: 339px;
+    height:600px;
+    box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+    border-radius: 4px;
+
+    .team-list-header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width:100%;
+      height:78px;
+
+      .teamName{
+        font-family: Roboto;
+        margin-left: 12px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #4A5464;
+      }
+
+      .teamChat{
+        font-family: Roboto;
+        margin-right: 12px;
+        cursor: pointer;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        text-align: right;
+        letter-spacing: -0.1px;
+        color: #05A4F4;
+      }
+
+    }
+
+    .team-member{
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 30px;
+      img{
+        margin-left: 12px;
+        margin-right: 19px;
+        height: 35px;
+        width: 35px;
+        margin-top: 5px;
+      }
+      .team-member-info{
+        .member-name{
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          color: #4A5464;
+          padding-bottom: 5px;
+        }
+        .member-name.manager{
+          color: #05A4F4;
+        }
+        .job-title{
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 12px;
+          color: #7A828D;
+        }
+      }
+    }
+  }
+
+  .content-block{
+    flex-direction: row;
+    background: none;
+    .content-block-campaign-activity{
+      margin-bottom: 0;
+      width: 791px;
+      .data-logs{
+        height: 506px;
+        background: white;
+        box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+        border-radius: 4px;
+        .date-picker-bar{
+          height: 78px;
+          background:white;
+          display:flex;
+          justify-content: flex-end;
+          align-items: center;
+          img{
+            margin-right:18px;
+          }
+        }
+        .member-logs{
+          .empty-state-text{
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: -0.1px;
+            color: #7A828D;
+            margin-left: 51px;
+          }
+          .empty-state-image{
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+          }
+        }
+      }
+
+      .documents-bar{
+        height: 76px;
+        margin-top: 16px;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+        border-radius: 4px;
+        display:flex;
+        justify-content: flex-start;
+        align-items: center;
+        .document-text{
+          img{
+            height: 24px;
+            margin-left: 30px;
+            margin-right: 12px;
+          }
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: -0.1px;
+          color: #4A5464;
+          span{
+            font-weight: normal;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .lineDivide{
+    width: 95%;
+    margin-left: 2.5%;
+    height: 1px;
+    background: rgba(188, 191, 198, 0.44);
+    margin-bottom:20px;
+  }
+
 }

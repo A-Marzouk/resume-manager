@@ -4625,6 +4625,8 @@ body {
   border-bottom: 3px solid transparent;
   padding: 11px 14px;
   margin-top: 6px;
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 #campaign_activity .campaign-info-bar .campaign-info-tab.active {
@@ -4642,12 +4644,204 @@ body {
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  margin-bottom: 4px;
+  margin-top: 4px;
   letter-spacing: -0.1px;
   color: #4A5464;
 }
 
 .backBtn img {
   margin: 0px 30px 2px 25px;
+}
+
+.client_dashboard_content.campaign_activity .dashboard-side-menu {
+  background: white;
+  width: 339px;
+  height: 600px;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+}
+
+.client_dashboard_content.campaign_activity .dashboard-side-menu .team-list-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 78px;
+}
+
+.client_dashboard_content.campaign_activity .dashboard-side-menu .team-list-header .teamName {
+  font-family: Roboto;
+  margin-left: 12px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #4A5464;
+}
+
+.client_dashboard_content.campaign_activity .dashboard-side-menu .team-list-header .teamChat {
+  font-family: Roboto;
+  margin-right: 12px;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: right;
+  letter-spacing: -0.1px;
+  color: #05A4F4;
+}
+
+.client_dashboard_content.campaign_activity .dashboard-side-menu .team-member {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 30px;
+}
+
+.client_dashboard_content.campaign_activity .dashboard-side-menu .team-member img {
+  margin-left: 12px;
+  margin-right: 19px;
+  height: 35px;
+  width: 35px;
+  margin-top: 5px;
+}
+
+.client_dashboard_content.campaign_activity .dashboard-side-menu .team-member .team-member-info .member-name {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #4A5464;
+  padding-bottom: 5px;
+}
+
+.client_dashboard_content.campaign_activity .dashboard-side-menu .team-member .team-member-info .member-name.manager {
+  color: #05A4F4;
+}
+
+.client_dashboard_content.campaign_activity .dashboard-side-menu .team-member .team-member-info .job-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  color: #7A828D;
+}
+
+.client_dashboard_content.campaign_activity .content-block {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background: none;
+}
+
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity {
+  margin-bottom: 0;
+  width: 791px;
+}
+
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs {
+  height: 506px;
+  background: white;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+}
+
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar {
+  height: 78px;
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar img {
+  margin-right: 18px;
+}
+
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .member-logs .empty-state-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #7A828D;
+  margin-left: 51px;
+}
+
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .member-logs .empty-state-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 40px;
+}
+
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar {
+  height: 76px;
+  margin-top: 16px;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar .document-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #4A5464;
+}
+
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar .document-text img {
+  height: 24px;
+  margin-left: 30px;
+  margin-right: 12px;
+}
+
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar .document-text span {
+  font-weight: normal;
+  margin-left: 5px;
+}
+
+.client_dashboard_content.campaign_activity .lineDivide {
+  width: 95%;
+  margin-left: 2.5%;
+  height: 1px;
+  background: rgba(188, 191, 198, 0.44);
+  margin-bottom: 20px;
 }
 

@@ -134,7 +134,7 @@
             margin-right:18px;
           }
         }
-        .member-logs{
+        .member-logs-empty{
           .empty-state-text{
             font-family: Roboto;
             font-style: normal;
@@ -333,5 +333,26 @@
   }
   .job-title{
     font-size: 10px;
+  }
+}
+
+.member-logs{
+  overflow-y: auto;
+  height: 407px;
+  .agent-logs-block{
+    .log{
+      .log-text{
+        margin-right:25px;
+        width: 100%;
+      }
+    }
+    .showMoreBtn{
+      margin: 0px 34px 16px;
+    }
+    .showMoreBtn.disabled{
+       a{
+         color:#B6B6B6;
+       }
+    }
   }
 }

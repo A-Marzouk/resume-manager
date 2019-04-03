@@ -4276,122 +4276,6 @@ body {
   cursor: pointer;
 }
 
-.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block {
-  border-bottom: 0.5px solid #E0E1E3;
-}
-
-.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .agentInfo {
-  margin-left: 34px;
-  margin-top: 36px;
-  padding-bottom: 20px;
-}
-
-.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .agentInfo img {
-  padding-right: 8px;
-}
-
-@media (max-width: 768px) {
-  .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .agentInfo {
-    margin-left: 10px;
-  }
-}
-
-.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .agentInfo .userName {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.1px;
-  color: #4A5464;
-}
-
-.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-time {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  width: 80px;
-  font-size: 12px;
-  margin-top: 22px;
-  line-height: 24px;
-  letter-spacing: -0.1px;
-  color: #FF9B68;
-  margin-left: 34px;
-}
-
-@media (max-width: 1240px) {
-  .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-time {
-    margin-top: 30px;
-  }
-}
-
-@media (max-width: 768px) {
-  .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-time {
-    margin-left: 10px;
-  }
-}
-
-.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-text {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  width: 766px;
-  line-height: 18px;
-  letter-spacing: -0.1px;
-  color: #4A5464;
-  background: #EEF9FF;
-  border-radius: 80px;
-  padding: 17px 30px 14px 21px;
-  margin-bottom: 18px;
-  margin-left: 24px;
-}
-
-@media (max-width: 1240px) {
-  .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-text {
-    width: 560px;
-  }
-}
-
-@media (max-width: 768px) {
-  .client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .log .log-text {
-    border-radius: 30px;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-}
-
-.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .showMoreBtn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  margin: 26px 34px 34px;
-}
-
-.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .showMoreBtn a:hover {
-  text-decoration: none;
-}
-
-.client_dashboard_content .content-block .content-block-campaign-brief .agent-logs-block .showMoreBtn a {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  text-align: center;
-  letter-spacing: -0.1px;
-  color: #05A4F4;
-}
-
 .client_dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4423,6 +4307,122 @@ body {
   color: #FFFFFF;
   margin-right: 34px;
   margin-top: 8px;
+}
+
+.agent-logs-block {
+  border-bottom: 0.5px solid #E0E1E3;
+}
+
+.agent-logs-block .agentInfo {
+  margin-left: 34px;
+  margin-top: 36px;
+  padding-bottom: 20px;
+}
+
+.agent-logs-block .agentInfo img {
+  padding-right: 8px;
+}
+
+@media (max-width: 768px) {
+  .agent-logs-block .agentInfo {
+    margin-left: 10px;
+  }
+}
+
+.agent-logs-block .agentInfo .userName {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #4A5464;
+}
+
+.agent-logs-block .log {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.agent-logs-block .log .log-time {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  width: 80px;
+  font-size: 12px;
+  margin-top: 22px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #FF9B68;
+  margin-left: 34px;
+}
+
+@media (max-width: 1240px) {
+  .agent-logs-block .log .log-time {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .agent-logs-block .log .log-time {
+    margin-left: 10px;
+  }
+}
+
+.agent-logs-block .log .log-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  width: 766px;
+  line-height: 18px;
+  letter-spacing: -0.1px;
+  color: #4A5464;
+  background: #EEF9FF;
+  border-radius: 80px;
+  padding: 17px 30px 14px 21px;
+  margin-bottom: 18px;
+  margin-left: 24px;
+}
+
+@media (max-width: 1240px) {
+  .agent-logs-block .log .log-text {
+    width: 560px;
+  }
+}
+
+@media (max-width: 768px) {
+  .agent-logs-block .log .log-text {
+    border-radius: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+.agent-logs-block .showMoreBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin: 26px 34px 34px;
+}
+
+.agent-logs-block .showMoreBtn a:hover {
+  text-decoration: none;
+}
+
+.agent-logs-block .showMoreBtn a {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.1px;
+  color: #05A4F4;
 }
 
 @media (min-width: 1240px) {
@@ -4768,7 +4768,7 @@ body {
   margin-right: 18px;
 }
 
-.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .member-logs .empty-state-text {
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .member-logs-empty .empty-state-text {
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -4779,7 +4779,7 @@ body {
   margin-left: 51px;
 }
 
-.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .member-logs .empty-state-image {
+.client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .member-logs-empty .empty-state-image {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4790,7 +4790,7 @@ body {
 }
 
 @media (max-width: 425px) {
-  .client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .member-logs .empty-state-image img {
+  .client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .member-logs-empty .empty-state-image img {
     width: 100%;
   }
 }
@@ -5017,5 +5017,23 @@ body {
 
 .team-member.tablet-bar .job-title {
   font-size: 10px;
+}
+
+.member-logs {
+  overflow-y: auto;
+  height: 407px;
+}
+
+.member-logs .agent-logs-block .log .log-text {
+  margin-right: 25px;
+  width: 100%;
+}
+
+.member-logs .agent-logs-block .showMoreBtn {
+  margin: 0px 34px 16px;
+}
+
+.member-logs .agent-logs-block .showMoreBtn.disabled a {
+  color: #B6B6B6;
 }
 

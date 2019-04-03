@@ -20,6 +20,7 @@
             </div>
         </div>
 
+
         <div class="client_dashboard_content campaign_activity">
             <div class="dashboard-side-menu hideOnTablet">
                 <div class="team-list-header">
@@ -121,12 +122,81 @@
                             <img src="/resumeApp/public/images/client/campaign_activity/pick_date.png" alt="pick date">
                         </div>
                         <div class="lineDivide"></div>
-                        <div class="member-logs">
+                        <div class="member-logs-empty" v-show="!hasLogs">
                             <div class="empty-state-text">
-                                Sorry, no entries for today yet
+                                Sorry, no entries for today yet  -
+                                <a href="javascript:void(0)" @click="hasLogs = !hasLogs" class="text"> SHOW DEMO LOGS</a>
                             </div>
                             <div class="empty-state-image">
                                 <img src="/resumeApp/public/images/client/campaign_activity/empty_state.png" alt="empty state">
+                            </div>
+                        </div>
+                        <div class="member-logs" v-show="hasLogs">
+                            <div class="agent-logs-block">
+                                <div class="log">
+                                    <div class="log-time">
+                                        9 am - 10 am
+                                    </div>
+                                    <div class="log-text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    </div>
+                                </div>
+                                <div class="showMoreBtn">
+                                    <a href="#">SHOW RECORDINGS</a>
+                                </div>
+                                <div class="lineDivide"></div>
+                                <div class="log">
+                                    <div class="log-time">
+                                        10 am - 11 am
+                                    </div>
+                                    <div class="log-text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    </div>
+                                </div>
+                                <div class="showMoreBtn disabled">
+                                    <a href="#">SHOW RECORDINGS</a>
+                                </div>
+                                <div class="lineDivide"></div>
+                                <div class="log">
+                                    <div class="log-time">
+                                        9 am - 10 am
+                                    </div>
+                                    <div class="log-text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    </div>
+                                </div>
+                                <div class="showMoreBtn">
+                                    <a href="#">SHOW RECORDINGS</a>
+                                </div>
+                                <div class="lineDivide"></div>
+                                <div class="log">
+                                    <div class="log-time">
+                                        9 am - 10 am
+                                    </div>
+                                    <div class="log-text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    </div>
+                                </div>
+                                <div class="showMoreBtn">
+                                    <a href="#">SHOW RECORDINGS</a>
+                                </div>
+                                <div class="lineDivide"></div>
+                                <div class="log">
+                                    <div class="log-time">
+                                        11 am - 12 am
+                                    </div>
+                                    <div class="log-text">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    </div>
+                                </div>
+                                <div class="showMoreBtn disabled">
+                                    <a href="#">SHOW RECORDINGS</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -224,12 +294,13 @@
     export default {
         data(){
             return{
-                activeTab : 'activity'
+                activeTab : 'activity',
+                hasLogs:false
             }
         },
 
         mounted(){
-            console.log('campaign activity component mounted!')
+
         }
     }
 </script>

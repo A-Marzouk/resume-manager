@@ -294,11 +294,19 @@
         </div>
         <div class="modal" id="pick-date-modal">
             <div class="modal-dialog">
-                <div class="modal-content agent-modal-content">
+                <div class="modal-content agent-modal-content date-picker">
                     <!-- Modal body -->
                     <div class="modal-body">
                         <div id="datepicker"></div>
                         <input type="hidden" name="selected-date-value" id="selected-date-value" @change="dateChanged">
+                        <div class="date-picker-modal-footer">
+                            <a href="javascriot:void(0)" class="cancelBtn">
+                                CANCEL
+                            </a>
+                            <a href="javascriot:void(0)" class="applyBtn selected-date">
+                                APPLY
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

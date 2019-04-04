@@ -356,3 +356,136 @@
     }
   }
 }
+.agent-modal-content.date-picker{
+  width: 406px;
+  @media (max-width:400px) {
+    width: 100%;
+  }
+  margin: auto;
+  .modal-body{
+    .ui-datepicker .ui-datepicker-header{
+      background: white;
+      border: none;
+    }
+
+    .ui-widget.ui-widget-content{
+      border: none;
+      margin: auto;
+    }
+  }
+
+  .ui-state-default, .ui-widget-content .ui-state-default{
+    border: none;
+  }
+  .ui-state-default, .ui-widget-content .ui-state-default :hover{
+    border: none;
+  }
+  .ui-state-active, .ui-widget-content .ui-state-active{
+    border: 1px solid #05A4F4;
+    background: #05A4F4;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+    color: #ffffff;
+  }
+  .ui-state-default{
+    border: none;
+    background: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    color: #3F4654;
+  }
+  .ui-datepicker-current-day{
+    width: 30px;
+    height: 30px;
+  }
+  .ui-datepicker td,.ui-datepicker-week-end.ui-datepicker-current-day,td{
+    width: 30px;
+    height: 30px;
+  }
+  .ui-datepicker-title{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #4A5464;
+    padding-bottom: 20px;
+  }
+  .ui-datepicker th{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    letter-spacing: 0.6px;
+    color: #787879;
+  }
+  .ui-widget-header .ui-icon{
+
+  }
+
+  .date-picker-modal-footer{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    margin-top:20px;
+    height:65px;
+    a:hover{
+      text-decoration:none;
+    }
+    .cancelBtn{
+      width:86px;
+      height:26px;
+      background:white;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #05A4F4;
+      border:1.5px solid #05A4F4;
+      border-radius: 2px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .applyBtn.selected-date{
+      width:86px;
+      height:26px;
+      background:#05A4F4;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      text-transform: uppercase;
+      color: white;
+      border-radius: 2px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin: 0;
+    }
+  }
+
+}

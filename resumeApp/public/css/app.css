@@ -5037,3 +5037,179 @@ body {
   color: #B6B6B6;
 }
 
+.agent-modal-content.date-picker {
+  width: 406px;
+  margin: auto;
+}
+
+@media (max-width: 400px) {
+  .agent-modal-content.date-picker {
+    width: 100%;
+  }
+}
+
+.agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-header {
+  background: white;
+  border: none;
+}
+
+.agent-modal-content.date-picker .modal-body .ui-widget.ui-widget-content {
+  border: none;
+  margin: auto;
+}
+
+.agent-modal-content.date-picker .ui-state-default,
+.agent-modal-content.date-picker .ui-widget-content .ui-state-default {
+  border: none;
+}
+
+.agent-modal-content.date-picker .ui-state-default,
+.agent-modal-content.date-picker .ui-widget-content .ui-state-default :hover {
+  border: none;
+}
+
+.agent-modal-content.date-picker .ui-state-active,
+.agent-modal-content.date-picker .ui-widget-content .ui-state-active {
+  border: 1px solid #05A4F4;
+  background: #05A4F4;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+.agent-modal-content.date-picker .ui-state-default {
+  border: none;
+  background: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: normal;
+  font-family: Roboto;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  color: #3F4654;
+}
+
+.agent-modal-content.date-picker .ui-datepicker-current-day {
+  width: 30px;
+  height: 30px;
+}
+
+.agent-modal-content.date-picker .ui-datepicker td,
+.agent-modal-content.date-picker .ui-datepicker-week-end.ui-datepicker-current-day,
+.agent-modal-content.date-picker td {
+  width: 30px;
+  height: 30px;
+}
+
+.agent-modal-content.date-picker .ui-datepicker-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #4A5464;
+  padding-bottom: 20px;
+}
+
+.agent-modal-content.date-picker .ui-datepicker th {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  letter-spacing: 0.6px;
+  color: #787879;
+}
+
+.agent-modal-content.date-picker .date-picker-modal-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 20px;
+  height: 65px;
+}
+
+.agent-modal-content.date-picker .date-picker-modal-footer a:hover {
+  text-decoration: none;
+}
+
+.agent-modal-content.date-picker .date-picker-modal-footer .cancelBtn {
+  width: 86px;
+  height: 26px;
+  background: white;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #05A4F4;
+  border: 1.5px solid #05A4F4;
+  border-radius: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.agent-modal-content.date-picker .date-picker-modal-footer .applyBtn.selected-date {
+  width: 86px;
+  height: 26px;
+  background: #05A4F4;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  border-radius: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+}
+

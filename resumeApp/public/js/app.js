@@ -56177,7 +56177,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56513,13 +56513,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             activeTab: 'activity',
-            hasLogs: false
+            hasLogs: false,
+            selectedDate: ''
         };
+    },
+
+    methods: {
+        dateChanged: function dateChanged() {
+            this.selectedDate = $('#selected-date-value').val();
+        }
     },
     mounted: function mounted() {}
 });
@@ -56587,7 +56610,17 @@ var render = function() {
           _vm._m(2),
           _vm._v(" "),
           _c("div", { staticClass: "data-logs" }, [
-            _vm._m(3),
+            _c("div", { staticClass: "date-picker-bar" }, [
+              _c("div", [
+                _vm._v(
+                  "\n                            " +
+                    _vm._s(_vm.selectedDate) +
+                    "\n                        "
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(3)
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "lineDivide" }),
             _vm._v(" "),
@@ -56650,7 +56683,26 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(7)
+    _vm._m(7),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal", attrs: { id: "pick-date-modal" } }, [
+      _c("div", { staticClass: "modal-dialog" }, [
+        _c("div", { staticClass: "modal-content agent-modal-content" }, [
+          _c("div", { staticClass: "modal-body" }, [
+            _c("div", { attrs: { id: "datepicker" } }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: {
+                type: "hidden",
+                name: "selected-date-value",
+                id: "selected-date-value"
+              },
+              on: { change: _vm.dateChanged }
+            })
+          ])
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -56869,15 +56921,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "date-picker-bar" }, [
-      _c("img", {
+    return _c(
+      "a",
+      {
         attrs: {
-          src:
-            "/resumeApp/public/images/client/campaign_activity/pick_date.png",
-          alt: "pick date"
+          href: "javascript:void(0)",
+          "data-toggle": "modal",
+          "data-target": "#pick-date-modal"
         }
-      })
-    ])
+      },
+      [
+        _c("img", {
+          attrs: {
+            src:
+              "/resumeApp/public/images/client/campaign_activity/pick_date.png",
+            alt: "pick date"
+          }
+        })
+      ]
+    )
   },
   function() {
     var _vm = this

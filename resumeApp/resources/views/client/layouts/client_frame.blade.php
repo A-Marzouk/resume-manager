@@ -8,6 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>123 Workforce</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     @include('layouts.includes.styles')
 </head>
 <body id="client_dash">

@@ -7,6 +7,18 @@
         src="https://code.jquery.com/jquery-migrate-3.0.1.min.js"
         integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4="
         crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $( function() {
+        $( "#datepicker" ).datepicker({
+            onSelect: function(dateText, inst) {
+                $("input[name='selected-date-value']").val(dateText);
+                const dateChanged = new CustomEvent('change');
+                document.getElementById('selected-date-value').dispatchEvent(dateChanged);
+            }
+        });
+    } );
+</script>
 {{-- slick scripts --}}
 <script type="text/javascript" src="/resumeApp/public/js/slick-master/slick/slick.min.js"></script>
 <script>

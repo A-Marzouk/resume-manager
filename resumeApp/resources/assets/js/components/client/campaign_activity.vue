@@ -119,7 +119,12 @@
                     </div>
                     <div class="data-logs">
                         <div class="date-picker-bar">
-                            <img src="/resumeApp/public/images/client/campaign_activity/pick_date.png" alt="pick date">
+                            <div>
+                                {{selectedDate}}
+                            </div>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#pick-date-modal" >
+                                <img src="/resumeApp/public/images/client/campaign_activity/pick_date.png" alt="pick date">
+                            </a>
                         </div>
                         <div class="lineDivide"></div>
                         <div class="member-logs-empty" v-show="!hasLogs">
@@ -287,6 +292,17 @@
                 </div>
             </div>
         </div>
+        <div class="modal" id="pick-date-modal">
+            <div class="modal-dialog">
+                <div class="modal-content agent-modal-content">
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div id="datepicker"></div>
+                        <input type="hidden" name="selected-date-value" id="selected-date-value" @change="dateChanged">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -295,10 +311,15 @@
         data(){
             return{
                 activeTab : 'activity',
-                hasLogs:false
+                hasLogs:false,
+                selectedDate:''
             }
         },
-
+        methods:{
+            dateChanged(){
+                this.selectedDate = $('#selected-date-value').val();
+            }
+        },
         mounted(){
 
         }

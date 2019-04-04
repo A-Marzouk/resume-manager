@@ -4833,6 +4833,7 @@ body {
 .client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar .document-text span {
   font-weight: normal;
   margin-left: 5px;
+  color: #7A828D;
 }
 
 .client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .team-bar-tablet {
@@ -4975,7 +4976,7 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .team-member img {
@@ -5039,6 +5040,7 @@ body {
 
 .agent-modal-content.date-picker {
   width: 406px;
+  height: 449px;
   margin: auto;
 }
 
@@ -5051,11 +5053,55 @@ body {
 .agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-header {
   background: white;
   border: none;
+  width: 282px;
+}
+
+@media (max-width: 400px) {
+  .agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-header {
+    width: 100%;
+  }
+}
+
+.agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-next span {
+  background-position: 0px -3px !important;
+  background-image: url(http://local.123workforce.me/resumeApp/public/images/client/campaign_activity/right.png);
+}
+
+.agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-prev span {
+  background-position: 0px -3px !important;
+  background-image: url(http://local.123workforce.me/resumeApp/public/images/client/campaign_activity/left.png);
+}
+
+.agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-next,
+.agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-prev {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .agent-modal-content.date-picker .modal-body .ui-widget.ui-widget-content {
   border: none;
   margin: auto;
+  padding-left: 44px;
+  padding-top: 25px;
+  width: 100%;
+}
+
+@media (max-width: 400px) {
+  .agent-modal-content.date-picker .modal-body .ui-widget.ui-widget-content {
+    padding-left: 0;
+  }
+}
+
+.agent-modal-content.date-picker .ui-datepicker table {
+  width: 290px;
+  height: 270px;
+}
+
+@media (max-width: 400px) {
+  .agent-modal-content.date-picker .ui-datepicker table {
+    width: 100%;
+  }
 }
 
 .agent-modal-content.date-picker .ui-state-default,
@@ -5155,7 +5201,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 20px;
+  margin-top: 0px;
   height: 65px;
 }
 

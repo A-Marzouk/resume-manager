@@ -184,6 +184,7 @@
           span{
             font-weight: normal;
             margin-left: 5px;
+            color: #7A828D;
           }
         }
       }
@@ -297,7 +298,7 @@
 .team-member{
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   img{
     margin-left: 12px;
     margin-right: 19px;
@@ -358,6 +359,7 @@
 }
 .agent-modal-content.date-picker{
   width: 406px;
+  height: 449px;
   @media (max-width:400px) {
     width: 100%;
   }
@@ -366,14 +368,44 @@
     .ui-datepicker .ui-datepicker-header{
       background: white;
       border: none;
+      width: 282px;
+      @media (max-width:400px) {
+        width: 100%;
+      }
     }
 
+    .ui-datepicker .ui-datepicker-next span{
+      background-position: 0px -3px !important;
+      background-image: url(http://local.123workforce.me/resumeApp/public/images/client/campaign_activity/right.png);
+    }
+    .ui-datepicker .ui-datepicker-prev span{
+      background-position: 0px -3px !important;
+      background-image: url(http://local.123workforce.me/resumeApp/public/images/client/campaign_activity/left.png);
+
+    }
+    .ui-datepicker .ui-datepicker-next,.ui-datepicker .ui-datepicker-prev{
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
     .ui-widget.ui-widget-content{
       border: none;
       margin: auto;
+      padding-left: 44px;
+      padding-top: 25px;
+      width: 100%;
+      @media (max-width:400px) {
+        padding-left: 0;
+      }
     }
   }
-
+  .ui-datepicker table{
+    width:290px;
+    height:270px;
+    @media (max-width:400px) {
+      width: 100%;
+    }
+  }
   .ui-state-default, .ui-widget-content .ui-state-default{
     border: none;
   }
@@ -445,7 +477,7 @@
     display:flex;
     justify-content:space-around;
     align-items:center;
-    margin-top:20px;
+    margin-top:0px;
     height:65px;
     a:hover{
       text-decoration:none;

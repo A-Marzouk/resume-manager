@@ -56177,7 +56177,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56537,19 +56537,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             activeTab: 'activity',
             hasLogs: false,
-            selectedDate: ''
+            selectedDate: '',
+            appliedDate: ''
         };
     },
 
     methods: {
         dateChanged: function dateChanged() {
             this.selectedDate = $('#selected-date-value').val();
+        },
+        applySelectedDate: function applySelectedDate() {
+            this.appliedDate = this.selectedDate;
+            $('#close-modal').click();
+        },
+        cancelDatePicking: function cancelDatePicking() {
+            $('#close-modal').click();
         }
     },
     mounted: function mounted() {}
@@ -56619,13 +56628,25 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "data-logs" }, [
             _c("div", { staticClass: "date-picker-bar" }, [
-              _c("div", [
-                _vm._v(
-                  "\n                            " +
-                    _vm._s(_vm.selectedDate) +
-                    "\n                        "
-                )
-              ]),
+              _c(
+                "div",
+                {
+                  staticStyle: {
+                    "margin-right": "20px",
+                    padding: "6px",
+                    border: "1px solid lightgray",
+                    "border-radius": "5px",
+                    color: "lightblue"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.appliedDate) +
+                      "\n                        "
+                  )
+                ]
+              ),
               _vm._v(" "),
               _vm._m(3)
             ]),
@@ -56699,6 +56720,19 @@ var render = function() {
           "div",
           { staticClass: "modal-content agent-modal-content date-picker" },
           [
+            _c(
+              "button",
+              {
+                staticClass: "close d-none",
+                attrs: {
+                  type: "button",
+                  id: "close-modal",
+                  "data-dismiss": "modal"
+                }
+              },
+              [_vm._v("×")]
+            ),
+            _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
               _c("div", { attrs: { id: "datepicker" } }),
               _vm._v(" "),
@@ -56711,7 +56745,35 @@ var render = function() {
                 on: { change: _vm.dateChanged }
               }),
               _vm._v(" "),
-              _vm._m(8)
+              _c("div", { staticClass: "date-picker-modal-footer" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "cancelBtn",
+                    attrs: { href: "javascriot:void(0)" },
+                    on: { click: _vm.cancelDatePicking }
+                  },
+                  [
+                    _vm._v(
+                      "\n                            CANCEL\n                        "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "applyBtn selected-date",
+                    attrs: { href: "javascriot:void(0)" },
+                    on: { click: _vm.applySelectedDate }
+                  },
+                  [
+                    _vm._v(
+                      "\n                            APPLY\n                        "
+                    )
+                  ]
+                )
+              ])
             ])
           ]
         )
@@ -57242,35 +57304,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "date-picker-modal-footer" }, [
-      _c(
-        "a",
-        { staticClass: "cancelBtn", attrs: { href: "javascriot:void(0)" } },
-        [
-          _vm._v(
-            "\n                            CANCEL\n                        "
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "applyBtn selected-date",
-          attrs: { href: "javascriot:void(0)" }
-        },
-        [
-          _vm._v(
-            "\n                            APPLY\n                        "
-          )
-        ]
-      )
-    ])
   }
 ]
 render._withStripped = true

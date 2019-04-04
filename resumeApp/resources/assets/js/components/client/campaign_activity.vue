@@ -119,8 +119,8 @@
                     </div>
                     <div class="data-logs">
                         <div class="date-picker-bar">
-                            <div>
-                                {{selectedDate}}
+                            <div style="margin-right:20px; padding:6px; border:1px solid lightgray; border-radius:5px; color:lightblue;">
+                                {{appliedDate}}
                             </div>
                             <a href="javascript:void(0)" data-toggle="modal" data-target="#pick-date-modal" >
                                 <img src="/resumeApp/public/images/client/campaign_activity/pick_date.png" alt="pick date">
@@ -296,14 +296,15 @@
             <div class="modal-dialog">
                 <div class="modal-content agent-modal-content date-picker">
                     <!-- Modal body -->
+                    <button type="button" id="close-modal" class="close d-none" data-dismiss="modal">&times;</button>
                     <div class="modal-body">
                         <div id="datepicker"></div>
                         <input type="hidden" name="selected-date-value" id="selected-date-value" @change="dateChanged">
                         <div class="date-picker-modal-footer">
-                            <a href="javascriot:void(0)" class="cancelBtn">
+                            <a href="javascriot:void(0)" class="cancelBtn" @click="cancelDatePicking">
                                 CANCEL
                             </a>
-                            <a href="javascriot:void(0)" class="applyBtn selected-date">
+                            <a href="javascriot:void(0)" class="applyBtn selected-date" @click="applySelectedDate">
                                 APPLY
                             </a>
                         </div>
@@ -320,12 +321,20 @@
             return{
                 activeTab : 'activity',
                 hasLogs:false,
-                selectedDate:''
+                selectedDate:'',
+                appliedDate:''
             }
         },
         methods:{
             dateChanged(){
                 this.selectedDate = $('#selected-date-value').val();
+            },
+            applySelectedDate(){
+                this.appliedDate =  this.selectedDate;
+                $('#close-modal').click();
+            },
+            cancelDatePicking(){
+                $('#close-modal').click();
             }
         },
         mounted(){

@@ -14,13 +14,19 @@
                     </a>
                 </span>
 
-                        <span class="deleteWorkBtn NoDecor"  @click="editInvoice(invoice.id)" style=" width: 75px; margin-right:5px;">
+                <span class="deleteWorkBtn NoDecor"  @click="editInvoice(invoice.id)" style=" width: 75px; margin-right:5px;">
                     <a href="javascript:void(0)" data-target="#addInvoiceModal"  data-toggle="modal">
                         <img src="/resumeApp/resources/assets/images/edit_blue.png" alt="edit profile" style="width: 20px;
     padding-right: 7px;
     padding-bottom: 2px;
     height: 15px;">
                         Edit
+                    </a>
+                </span>
+
+                 <span class="deleteWorkBtn NoDecor"  @click="duplicateInvoice(invoice.id)" style=" width: 75px; margin-right:5px;">
+                    <a href="javascript:void(0)">
+                        Duplicate
                     </a>
                 </span>
                         <div class="pageSubHeading text-left">
@@ -116,7 +122,8 @@
                     'campaign_brief_id':'',
                      errors:[],
                      services:[],
-                     payment_options:[]
+                     payment_options:[],
+                     duplicate : false
                 }
             }
         },
@@ -247,6 +254,23 @@
                 let options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
                 return event.toLocaleDateString('en-EN', options);
             },
+            duplicateInvoice(invoice_id){
+                if(!confirm('Are you sure you want to duplicate this invoice ?')){
+                    return;
+                }
+
+                axios.get('/admin/client/duplicate_invoice/'+invoice_id).then( (response) =>{
+                    console.log(response.data)
+                    let invoice = response.data;
+                    if(invoice.payment_options === null){
+                        invoice.payment_options = [];
+                    }else{
+                        invoice.payment_options = invoice.payment_options.split(',')
+                    }
+                    invoice.services = [] ;
+                    this.invoices.push(invoice);
+                });
+            }
         },
 
         created() {

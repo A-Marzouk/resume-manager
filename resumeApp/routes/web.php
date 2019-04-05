@@ -198,6 +198,7 @@ Route::post('/freelancer/deleteeducation/','EducationHistoryController@deleteEdu
 
 // invoices
 Route::get('/admin/client/all_invoices/{client_id}','InvoicesController@viewInvoicesPage')->name('show.invoices.page');
+Route::get('/admin/client/duplicate_invoice/{invoice_id}','InvoicesController@duplicateInvoice');
 
 Route::get('/admin/client/invoices/{client_id}','InvoicesController@getInvoices')->name('get.invoices');
 Route::post('/admin/client/addinvoice/','InvoicesController@addInvoice')->name('add.invoice');

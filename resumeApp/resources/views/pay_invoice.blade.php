@@ -136,6 +136,9 @@
                         @foreach($invoice->services as $service)
                             {{$service->title}}<br/>
                         @endforeach
+                        @if(count($invoice->services) == 0)
+                            {{$invoice->service}}
+                        @endif
                     </div>
                     <div class="col-2">
                         {{$invoice->hours}}

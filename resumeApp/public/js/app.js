@@ -57749,6 +57749,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
@@ -57770,7 +57776,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'campaign_brief_id': '',
                 errors: [],
                 services: [],
-                payment_options: []
+                payment_options: [],
+                duplicate: false
             }
         };
     },
@@ -57895,6 +57902,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var event = new Date(date);
             var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
             return event.toLocaleDateString('en-EN', options);
+        },
+        duplicateInvoice: function duplicateInvoice(invoice_id) {
+            var _this4 = this;
+
+            if (!confirm('Are you sure you want to duplicate this invoice ?')) {
+                return;
+            }
+
+            axios.get('/admin/client/duplicate_invoice/' + invoice_id).then(function (response) {
+                console.log(response.data);
+                var invoice = response.data;
+                if (invoice.payment_options === null) {
+                    invoice.payment_options = [];
+                } else {
+                    invoice.payment_options = invoice.payment_options.split(',');
+                }
+                invoice.services = [];
+                _this4.invoices.push(invoice);
+            });
         }
     },
 
@@ -58004,6 +58030,26 @@ var render = function() {
                           _vm._v("\n                    Edit\n                ")
                         ]
                       )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "deleteWorkBtn NoDecor",
+                      staticStyle: { width: "75px", "margin-right": "5px" },
+                      on: {
+                        click: function($event) {
+                          _vm.duplicateInvoice(invoice.id)
+                        }
+                      }
+                    },
+                    [
+                      _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                        _vm._v(
+                          "\n                    Duplicate\n                "
+                        )
+                      ])
                     ]
                   ),
                   _vm._v(" "),
@@ -58664,10 +58710,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedInvoice'],
@@ -58688,6 +58730,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             // post data :
             axios.post('/admin/client/addinvoice', this.toBeEditedInvoice).then(function (response) {
+                console.log(response.data);
                 if (_this.toBeEditedInvoice.id === "") {
                     _this.$emit('invoiceAdded', _this.toBeEditedInvoice);
                 }

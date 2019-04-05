@@ -22,10 +22,6 @@
                                   <select  id="currency" class="form-control" v-model="toBeEditedInvoice.currency">
                                       <option disabled selected>Please select</option>
                                       <option value="USD" > USD </option>
-                                      <!--<option value="CAD" > CAD </option>-->
-                                      <!--<option value="AUD" > AUD </option>-->
-                                      <!--<option value="NZD" > NZD </option>-->
-                                      <!--<option value="GBP" > GBP </option>-->
                                   </select>
                               </div>
 
@@ -158,6 +154,7 @@
             submitForm(){
                // post data :
                 axios.post('/admin/client/addinvoice',this.toBeEditedInvoice).then( (response) => {
+                    console.log(response.data);
                     if(this.toBeEditedInvoice.id === ""){
                         this.$emit('invoiceAdded',this.toBeEditedInvoice);
                     }

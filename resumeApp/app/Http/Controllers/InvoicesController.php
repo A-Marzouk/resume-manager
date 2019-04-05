@@ -168,7 +168,8 @@ class InvoicesController extends Controller
         $invoice = Invoice::where('id',$invoice_id)->first();
 
         $newInvoice   = $invoice->replicate();
-        $newInvoice->services   = $invoice->services;
+
+
 
         $firstNumber  = count(Client::all()) + 1 ; // number of clients + 1
         $secondNumber = count($invoice->client->invoices); // number of client invoices + 1 (already created)
@@ -179,6 +180,12 @@ class InvoicesController extends Controller
         $newInvoice->status = 'Unpaid';
 
         $newInvoice->save();
+
+        foreach($invoice->services as $service){
+            $newService = $service->replicate();
+            $newService->invoice_id = $newInvoice->id ;
+            $newService->save();
+        }
 
         return $newInvoice;
     }

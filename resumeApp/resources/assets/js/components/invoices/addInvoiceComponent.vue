@@ -154,7 +154,6 @@
             submitForm(){
                // post data :
                 axios.post('/admin/client/addinvoice',this.toBeEditedInvoice).then( (response) => {
-                    console.log(response.data);
                     if(this.toBeEditedInvoice.id === ""){
                         this.$emit('invoiceAdded',this.toBeEditedInvoice);
                     }

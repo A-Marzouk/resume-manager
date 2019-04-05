@@ -175,7 +175,7 @@ class InvoicesController extends Controller
 
         $newInvoice->unique_number = $this->getNumberZeros($firstNumber). '-' . $this->getNumberZeros($secondNumber)
             . '-' . $this->getNumberZeros($thirdNumber);
-
+        $newInvoice->status = 'Unpaid';
 
         $newInvoice->save();
 

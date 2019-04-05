@@ -58730,7 +58730,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             // post data :
             axios.post('/admin/client/addinvoice', this.toBeEditedInvoice).then(function (response) {
-                console.log(response.data);
                 if (_this.toBeEditedInvoice.id === "") {
                     _this.$emit('invoiceAdded', _this.toBeEditedInvoice);
                 }

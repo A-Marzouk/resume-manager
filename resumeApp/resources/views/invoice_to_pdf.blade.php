@@ -73,6 +73,9 @@
 
                     <div class="agentName">
                         Name of Agents :<br/>
+                        @if(isset($invoice->user))
+                            {{$invoice->user->firstName}} {{$invoice->user->lastName}}
+                        @endif
                         <? $users = [] ;?>
                         @foreach($invoice->services as $service)
                             @foreach($service->agents as $user)

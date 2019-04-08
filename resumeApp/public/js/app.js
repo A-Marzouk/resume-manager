@@ -57755,6 +57755,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['client_id'],
@@ -57762,6 +57772,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             invoices: [],
             canAdd: true,
+            selectedAgent: {},
             toBeEditedInvoice: {
                 'id': '',
                 'unique_number': '',
@@ -58401,6 +58412,8 @@ var render = function() {
         })
       ),
       _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
       _c(
         "div",
         {
@@ -58418,13 +58431,54 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("add-invoice-modal", {
-        attrs: { toBeEditedInvoice: _vm.toBeEditedInvoice }
+        attrs: { toBeEditedInvoice: _vm.toBeEditedInvoice },
+        on: { invoiceAdded: _vm.addInvoice }
       })
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "span",
+      {
+        staticClass: "deleteWorkBtn NoDecor",
+        staticStyle: { width: "150px", "margin-right": "5px" }
+      },
+      [
+        _c(
+          "a",
+          {
+            attrs: {
+              href: "javascript:void(0)",
+              "data-target": "#addInvoiceModal",
+              "data-toggle": "modal"
+            }
+          },
+          [
+            _c("img", {
+              staticStyle: {
+                width: "20px",
+                "padding-right": "7px",
+                "padding-bottom": "2px",
+                height: "15px"
+              },
+              attrs: {
+                src: "/resumeApp/resources/assets/images/add_blue.png",
+                alt: "edit profile"
+              }
+            }),
+            _vm._v("\n                    Create invoice\n                ")
+          ]
+        )
+      ]
+    )
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -58573,6 +58627,16 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -58898,6 +58962,73 @@ var render = function() {
                   },
                   [
                     _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "user_id" }
+                          },
+                          [_vm._v("Agent :")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.toBeEditedInvoice.user_id,
+                                expression: "toBeEditedInvoice.user_id"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { id: "user_id" },
+                            on: {
+                              change: [
+                                function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.toBeEditedInvoice,
+                                    "user_id",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                },
+                                function($event) {
+                                  _vm.updateAgent(_vm.agent.id)
+                                }
+                              ]
+                            }
+                          },
+                          _vm._l(_vm.agents, function(agent, index) {
+                            return _c(
+                              "option",
+                              { key: index, domProps: { value: agent.id } },
+                              [
+                                _vm._v(
+                                  "\n                                      " +
+                                    _vm._s(agent.firstName) +
+                                    " " +
+                                    _vm._s(agent.lastName) +
+                                    "\n                                  "
+                                )
+                              ]
+                            )
+                          })
+                        )
+                      ]),
+                      _vm._v(" "),
                       _c("div", { staticClass: "form-group col-md-6" }, [
                         _c(
                           "label",

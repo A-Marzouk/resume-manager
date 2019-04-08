@@ -85,7 +85,7 @@ class InvoicesController extends Controller
         }
 
         $invoice->total_amount = $request->total_amount;
-//        $invoice->user_id = $request->user_id;
+        $invoice->user_id = $request->user_id;
         $invoice->campaign_brief_id = $request->campaign_brief_id;
 
         if(isset($request->payment_options)){

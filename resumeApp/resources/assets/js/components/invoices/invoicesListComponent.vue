@@ -94,10 +94,20 @@
             </invoice-component>
         </transition-group>
 
+        <span class="deleteWorkBtn NoDecor" style=" width: 150px; margin-right:5px;">
+                    <a href="javascript:void(0)" data-target="#addInvoiceModal"  data-toggle="modal">
+                        <img src="/resumeApp/resources/assets/images/add_blue.png" alt="edit profile" style="width: 20px;
+    padding-right: 7px;
+    padding-bottom: 2px;
+    height: 15px;">
+                        Create invoice
+                    </a>
+                </span>
+
         <div class="pageSubHeading text-left" v-show="this.invoices.length < 1">
             Currently this client has no invoices.
         </div>
-        <add-invoice-modal :toBeEditedInvoice="toBeEditedInvoice"></add-invoice-modal>
+        <add-invoice-modal @invoiceAdded="addInvoice" :toBeEditedInvoice="toBeEditedInvoice"></add-invoice-modal>
     </div>
 </template>
 
@@ -108,6 +118,7 @@
             return {
                 invoices: [],
                 canAdd:true,
+                selectedAgent:{},
                 toBeEditedInvoice:{
                     'id':'',
                     'unique_number':'',

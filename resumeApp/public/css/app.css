@@ -5562,8 +5562,8 @@ body {
   color: #4A5464;
 }
 
-.campaign_brief_content .campaign-info-content .faq-content .faq-question,
-.campaign_brief_content .campaign-info-content .faq-content .faq-answer {
+.campaign_brief_content .campaign-info-content .faq-content .faq-question-input,
+.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5573,13 +5573,13 @@ body {
   margin-top: 36px;
 }
 
-.campaign_brief_content .campaign-info-content .faq-content .faq-question img,
-.campaign_brief_content .campaign-info-content .faq-content .faq-answer img {
+.campaign_brief_content .campaign-info-content .faq-content .faq-question-input img,
+.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input img {
   margin-right: 38px;
 }
 
-.campaign_brief_content .campaign-info-content .faq-content .faq-question .faq-input,
-.campaign_brief_content .campaign-info-content .faq-content .faq-answer .faq-input {
+.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input,
+.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5589,16 +5589,20 @@ body {
   width: 100%;
 }
 
-.campaign_brief_content .campaign-info-content .faq-content .faq-question .faq-input input,
-.campaign_brief_content .campaign-info-content .faq-content .faq-answer .faq-input input {
+.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input input,
+.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input textarea,
+.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input input,
+.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input textarea {
   width: 100%;
   border: none;
   border-bottom: 1px solid #7A828D;
   height: 56px;
 }
 
-.campaign_brief_content .campaign-info-content .faq-content .faq-question .faq-input input:focus,
-.campaign_brief_content .campaign-info-content .faq-content .faq-answer .faq-input input:focus {
+.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input input:focus,
+.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input textarea:focus,
+.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input input:focus,
+.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input textarea:focus {
   border-color: inherit;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -5606,8 +5610,8 @@ body {
   outline: none;
 }
 
-.campaign_brief_content .campaign-info-content .faq-content .faq-question .faq-input img,
-.campaign_brief_content .campaign-info-content .faq-content .faq-answer .faq-input img {
+.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input img,
+.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input img {
   margin-left: -62px;
   cursor: pointer;
 }
@@ -5652,5 +5656,135 @@ body {
 .campaign_brief_content .campaign-info-content .faq-content .faq-add-btn.active a {
   color: #fff;
   background: #05A4F4;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list {
+  margin-top: 37px;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question {
+  margin-top: 7px;
+  padding-bottom: 45px;
+  padding-top: 54px;
+  border-bottom: 1px solid rgba(188, 191, 198, 0.44);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question .faq-numbering {
+  margin-right: 36px;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question .faq-numbering span {
+  width: 36px;
+  height: 36px;
+  background: #FFA368;
+  color: white;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question .faq-item .faq-item-question {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #4A5464;
+  margin-bottom: 20px;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question .faq-item .faq-item-answer {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: #4A5464;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question .faq-item .faq-item-answer .question-edit-state {
+  width: 100%;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question .faq-edit {
+  margin-left: 15px;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question:last-child,
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state:last-child {
+  border: none;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state {
+  padding-bottom: 45px;
+  padding-top: 54px;
+  border-bottom: 1px solid rgba(188, 191, 198, 0.44);
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state .edit-heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state .edit-heading .faq-numbering {
+  margin-right: 36px;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state .edit-heading .faq-numbering span {
+  width: 36px;
+  height: 36px;
+  background: #FFA368;
+  color: white;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state .edit-heading .edit-title {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #4A5464;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state .edit-heading .edit-action-btns a:hover {
+  text-decoration: none;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state .edit-heading .edit-action-btns a {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.1px;
+  color: #05A4F4;
+  margin-left: 70px;
 }
 

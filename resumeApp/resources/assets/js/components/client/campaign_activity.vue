@@ -398,17 +398,17 @@
                         <div class="faq-title">
                             In this section you can add frequently asked questions and answers to them.
                         </div>
-                        <div class="faq-question">
+                        <div class="faq-question-input">
                             <img src="/resumeApp/public/images/client/campaign_activity/faq.png" alt="faq icon">
                             <div class="faq-input">
                                 <input type="text" name="faq" placeholder="Write a frequently asked question" v-model="newFAQ.question">
                                 <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="newFAQ.question.length > 0" @click="newFAQ.question = ''">
                             </div>
                         </div>
-                        <div class="faq-answer">
+                        <div class="faq-answer-input">
                             <img src="/resumeApp/public/images/client/campaign_activity/answer.png" alt="faq icon">
                             <div class="faq-input">
-                                <input type="text" name="faq-answer" placeholder="Add an answer to the question" v-model="newFAQ.answer">
+                                <textarea rows="2" name="faq-answer" placeholder="Add an answer to the question" v-model="newFAQ.answer"></textarea>
                                 <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="newFAQ.answer.length > 0" @click="newFAQ.answer = ''">
                             </div>
                         </div>
@@ -416,6 +416,56 @@
                             <a href="#">
                                 ADD FAQ
                             </a>
+                        </div>
+
+                        <div class="faq-questions-list">
+                            <div v-for="(faq,index) in faqs" v-bind:key="index">
+                                <div v-show="!faq.beingEdited" class="faq-question">
+                                    <div class="faq-numbering">
+                                        <span>{{index+1}}</span>
+                                    </div>
+                                    <div class="faq-item">
+                                        <div class="faq-item-question">
+                                                {{faq.question}}
+                                        </div>
+                                        <div class="faq-item-answer">
+                                                {{faq.answer}}
+                                        </div>
+                                    </div>
+                                    <div class="faq-edit">
+                                        <img src="/resumeApp/public/images/client/campaign_activity/edit.png"
+                                             alt="edit icon" @click="faq.beingEdited = true">
+                                    </div>
+                                </div>
+                                <div v-show="faq.beingEdited" class="faq-edit-state">
+                                    <div class="edit-heading">
+                                        <div class="faq-numbering">
+                                            <span>{{index+1}}</span>
+                                        </div>
+                                        <div class="edit-title">
+                                            Edit the question and the answer :
+                                        </div>
+                                        <div class="edit-action-btns" >
+                                            <a href="javascript:void(0)" @click="faq.beingEdited = false">CANCEL</a>
+                                            <a href="javascript:void(0)" @click="faq.beingEdited = false">SAVE</a>
+                                        </div>
+                                    </div>
+                                    <div class="faq-question-input">
+                                            <img src="/resumeApp/public/images/client/campaign_activity/faq.png" alt="faq icon">
+                                            <div class="faq-input">
+                                                <input type="text" name="faq" placeholder="Write a frequently asked question" v-model="faq.question">
+                                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="faq.question.length > 0" @click="faq.question = ''">
+                                            </div>
+                                        </div>
+                                    <div class="faq-answer-input">
+                                            <img src="/resumeApp/public/images/client/campaign_activity/answer.png" alt="faq icon">
+                                            <div class="faq-input">
+                                                <textarea name="faq-answer" rows="2" placeholder="Add an answer to the question" v-model="faq.answer"></textarea>
+                                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="faq.answer.length > 0" @click="faq.answer = ''">
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div v-show="activeBriefTab === 'PROCESS_FLOW'">
@@ -539,6 +589,49 @@
     export default {
         data(){
             return{
+                faqs:[
+                    {
+                        id:1,
+                        beingEdited:false,
+                        question:'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit,' +
+                        ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+                        answer:'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
+                        ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' +
+                        ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' +
+                        ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+                    },
+                    {
+                        id:2,
+                        beingEdited:false,
+                        question:'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit,' +
+                        ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+                        answer:'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
+                        ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' +
+                        ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' +
+                        ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+                    },
+                   {
+                       id:3,
+                       beingEdited:false,
+                        question:'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit,' +
+                        ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+                        answer:'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
+                        ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' +
+                        ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' +
+                        ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+                    },
+                    {
+                        id:4,
+                        beingEdited:false, 
+                        question:'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit,' +
+                        ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+                        answer:'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
+                        ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' +
+                        ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' +
+                        ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+                    },
+
+                ],
                 activeTab : 'activity',
                 activeBriefTab : 'FAQ',
                 hasLogs:false,

@@ -1,0 +1,128 @@
+
+.campaign_team_content{
+  display: flex;
+  justify-content: center;
+  padding-top: 28px;
+  .campaign_team{
+    width: 1164px;
+    background-color: #fff;
+    box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+    border-radius: 4px;
+    .campaign-team-header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 70px 100px 30px 100px;
+      .select-list{
+        margin-bottom: 0;
+
+        .form-group{
+          .form-control:focus {
+            border-color: inherit;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+          }
+
+          .form-control{
+            .custom-option{
+              background: white!important;
+            }
+          }
+
+          select{
+            background: #EEF9FF;
+            border-radius: 4px 4px 0 0;
+            width: 400px;
+            height: 56px;
+            border-left: none;
+            border-top: none;
+            border-right: none;
+            border-bottom: 1px solid #7A828D;
+          }
+        }
+      }
+      .actionBtn{
+        @media (max-width:768px) {
+          margin-top: 24px;
+          margin-right: 6px;
+        }
+
+        a:hover {
+          text-decoration: none;
+        }
+        a{
+          @media (max-width:768px) {
+            width: 190px;
+            height: 31px;
+            font-size: 11px;
+          }
+
+          padding: 4px 23px 3px 13px;
+          display:block;
+          width: 175px;
+          height: 31px;
+          border-radius: 30px;
+          background: #05A4F4;
+
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 12px;
+          line-height: 24px;
+          letter-spacing: -0.1px;
+          color: #FFFFFF;
+
+
+          img{
+            padding-right: 8px;
+            padding-left: 7px;
+            padding-bottom: 3px;
+          }
+        }
+      }
+    }
+
+    .campaign-team-list{
+      padding: 0px 100px 30px 100px;
+      .lineDivide{
+        width:100%;
+        margin-left:0;
+      }
+      .campaign-team-row{
+        display: flex;
+        justify-content:flex-start;
+        align-items: center;
+        height:80px;
+        border-top:1px solid rgba(188, 191, 198, 0.44);
+        .team-member {
+          flex: 2;
+          margin-bottom: 0;
+          img{
+            margin-left: 0;
+          }
+        }
+        .team-member-action{
+          flex:3;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          .chat-action-btn{
+
+          }
+          .change-status-btn{
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+            text-align: right;
+            letter-spacing: -0.1px;
+            color: #05A4F4;
+            margin-left: 45px;
+          }
+        }
+      }
+
+    }
+  }
+}

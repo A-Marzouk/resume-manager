@@ -56177,7 +56177,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56538,11 +56538,194 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             activeTab: 'activity',
+            activeBriefTab: 'FAQ',
             hasLogs: false,
             selectedDate: '',
             appliedDate: ''
@@ -56559,6 +56742,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         cancelDatePicking: function cancelDatePicking() {
             $('#close-modal').click();
+        },
+        chooseTab: function chooseTab(tab_name) {
+            this.activeTab = tab_name;
+        },
+        chooseBriefTab: function chooseBriefTab(tab_name) {
+            this.activeBriefTab = tab_name;
         }
     },
     mounted: function mounted() {}
@@ -56583,7 +56772,7 @@ var render = function() {
           class: { active: _vm.activeTab === "activity" },
           on: {
             click: function($event) {
-              _vm.activeTab = "activity"
+              _vm.chooseTab("activity")
             }
           }
         },
@@ -56597,7 +56786,7 @@ var render = function() {
           class: { active: _vm.activeTab === "campaign_team" },
           on: {
             click: function($event) {
-              _vm.activeTab = "campaign_team"
+              _vm.chooseTab("campaign_team")
             }
           }
         },
@@ -56611,7 +56800,7 @@ var render = function() {
           class: { active: _vm.activeTab === "campaign_brief" },
           on: {
             click: function($event) {
-              _vm.activeTab = "campaign_brief"
+              _vm.chooseTab("campaign_brief")
             }
           }
         },
@@ -56619,100 +56808,226 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "client_dashboard_content campaign_activity" }, [
-      _vm._m(1),
-      _vm._v(" "),
-      _c("div", { staticClass: "content-block" }, [
-        _c("div", { staticClass: "content-block-campaign-activity" }, [
-          _vm._m(2),
-          _vm._v(" "),
-          _c("div", { staticClass: "data-logs" }, [
-            _c("div", { staticClass: "date-picker-bar" }, [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.activeTab === "activity",
+            expression: "activeTab === 'activity'"
+          }
+        ],
+        staticClass: "client_dashboard_content campaign_activity"
+      },
+      [
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "content-block" }, [
+          _c("div", { staticClass: "content-block-campaign-activity" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "data-logs" }, [
+              _c("div", { staticClass: "date-picker-bar" }, [
+                _c(
+                  "div",
+                  {
+                    staticStyle: {
+                      "margin-right": "20px",
+                      padding: "6px",
+                      border: "1px solid lightgray",
+                      "border-radius": "5px",
+                      color: "lightblue"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.appliedDate) +
+                        "\n                        "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(3)
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "lineDivide" }),
+              _vm._v(" "),
               _c(
                 "div",
                 {
-                  staticStyle: {
-                    "margin-right": "20px",
-                    padding: "6px",
-                    border: "1px solid lightgray",
-                    "border-radius": "5px",
-                    color: "lightblue"
-                  }
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.hasLogs,
+                      expression: "!hasLogs"
+                    }
+                  ],
+                  staticClass: "member-logs-empty"
                 },
                 [
-                  _vm._v(
-                    "\n                            " +
-                      _vm._s(_vm.appliedDate) +
-                      "\n                        "
-                  )
+                  _c("div", { staticClass: "empty-state-text" }, [
+                    _vm._v(
+                      "\n                            Sorry, no entries for today yet  -\n                            "
+                    ),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "text",
+                        attrs: { href: "javascript:void(0)" },
+                        on: {
+                          click: function($event) {
+                            _vm.hasLogs = !_vm.hasLogs
+                          }
+                        }
+                      },
+                      [_vm._v(" SHOW DEMO LOGS")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(4)
                 ]
               ),
               _vm._v(" "),
-              _vm._m(3)
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.hasLogs,
+                      expression: "hasLogs"
+                    }
+                  ],
+                  staticClass: "member-logs"
+                },
+                [_vm._m(5)]
+              )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "lineDivide" }),
-            _vm._v(" "),
+            _vm._m(6)
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.activeTab === "campaign_team",
+            expression: "activeTab === 'campaign_team'"
+          }
+        ],
+        staticClass: "campaign_team_content"
+      },
+      [_vm._m(7)]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.activeTab === "campaign_brief",
+            expression: "activeTab === 'campaign_brief'"
+          }
+        ],
+        staticClass: "campaign_brief_content"
+      },
+      [
+        _vm._m(8),
+        _vm._v(" "),
+        _c("div", { staticClass: "campaign_brief_tabs" }, [
+          _c("div", { staticClass: "campaign-info-bar" }, [
             _c(
               "div",
               {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.hasLogs,
-                    expression: "!hasLogs"
+                staticClass: "campaign-info-tab firstTab",
+                class: { active: _vm.activeBriefTab === "FAQ" },
+                on: {
+                  click: function($event) {
+                    _vm.chooseBriefTab("FAQ")
                   }
-                ],
-                staticClass: "member-logs-empty"
+                }
               },
-              [
-                _c("div", { staticClass: "empty-state-text" }, [
-                  _vm._v(
-                    "\n                            Sorry, no entries for today yet  -\n                            "
-                  ),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "text",
-                      attrs: { href: "javascript:void(0)" },
-                      on: {
-                        click: function($event) {
-                          _vm.hasLogs = !_vm.hasLogs
-                        }
-                      }
-                    },
-                    [_vm._v(" SHOW DEMO LOGS")]
-                  )
-                ]),
-                _vm._v(" "),
-                _vm._m(4)
-              ]
+              [_vm._v("\n                    FAQ\n                ")]
             ),
             _vm._v(" "),
             _c(
               "div",
               {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.hasLogs,
-                    expression: "hasLogs"
+                staticClass: "campaign-info-tab",
+                class: { active: _vm.activeBriefTab === "PROCESS_FLOW" },
+                on: {
+                  click: function($event) {
+                    _vm.chooseBriefTab("PROCESS_FLOW")
                   }
-                ],
-                staticClass: "member-logs"
+                }
               },
-              [_vm._m(5)]
+              [_vm._v("\n                    PROCESS FLOW\n                ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "campaign-info-tab",
+                class: { active: _vm.activeBriefTab === "FILES" },
+                on: {
+                  click: function($event) {
+                    _vm.chooseBriefTab("FILES")
+                  }
+                }
+              },
+              [_vm._v("\n                    FILES\n                ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "campaign-info-tab",
+                class: { active: _vm.activeBriefTab === "VOICE_SCRIPTS" },
+                on: {
+                  click: function($event) {
+                    _vm.chooseBriefTab("VOICE_SCRIPTS")
+                  }
+                }
+              },
+              [_vm._v("\n                    VOICE SCRIPTS\n                ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "campaign-info-tab",
+                class: { active: _vm.activeBriefTab === "EMAIL_TEMPS" },
+                on: {
+                  click: function($event) {
+                    _vm.chooseBriefTab("EMAIL_TEMPS")
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                    E-MAIL TEMPLATES\n                "
+                )
+              ]
             )
-          ]),
-          _vm._v(" "),
-          _vm._m(6)
+          ])
         ])
-      ])
-    ]),
+      ]
+    ),
     _vm._v(" "),
-    _vm._m(7),
+    _vm._m(9),
     _vm._v(" "),
     _c("div", { staticClass: "modal", attrs: { id: "pick-date-modal" } }, [
       _c("div", { staticClass: "modal-dialog" }, [
@@ -57150,6 +57465,319 @@ var staticRenderFns = [
       _c("div", { staticClass: "document-text" }, [
         _vm._v("\n                        Document link: "),
         _c("span", [_vm._v("No links.")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "campaign_team" }, [
+      _c("div", { staticClass: "campaign-team-header" }, [
+        _c("div", { staticClass: "select-list" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "select",
+              {
+                staticClass: "form-control",
+                attrs: { id: "exampleFormControlSelect1" }
+              },
+              [
+                _c(
+                  "option",
+                  {
+                    staticClass: "custom-option",
+                    staticStyle: { height: "40px" }
+                  },
+                  [_vm._v("Show active team")]
+                ),
+                _vm._v(" "),
+                _c("option", { staticClass: "custom-option" }, [
+                  _vm._v("Show backup agents")
+                ]),
+                _vm._v(" "),
+                _c("option", { staticClass: "custom-option" }, [
+                  _vm._v("Show past agents")
+                ])
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "actionBtn" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/plus.png",
+                alt: "plus sign"
+              }
+            }),
+            _vm._v("ADD NEW AGENT\n                    ")
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "campaign-team-list" }, [
+        _c("div", { staticClass: "campaign-team-row" }, [
+          _c("div", { staticClass: "team-member" }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/dummy.png",
+                alt: "member image"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "team-member-info" }, [
+              _c("div", { staticClass: "member-name" }, [
+                _vm._v(
+                  "\n                                Louis Snyderberg\n                            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "job-title" }, [
+                _vm._v(
+                  "\n                                Team manager\n                            "
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "team-member-action" }, [
+            _c("div", { staticClass: "chat-action-btn" }, [
+              _c("img", {
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/send_message.png",
+                  alt: "chat icon"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "change-status-btn" }, [
+              _vm._v(
+                "\n                            REMOVE\n                        "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "change-status-btn" }, [
+              _vm._v(
+                "\n                            MAKE BACKUP\n                        "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "campaign-team-row" }, [
+          _c("div", { staticClass: "team-member" }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/dummy.png",
+                alt: "member image"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "team-member-info" }, [
+              _c("div", { staticClass: "member-name" }, [
+                _vm._v(
+                  "\n                                Louis Snyderberg\n                            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "job-title" }, [
+                _vm._v(
+                  "\n                                Team manager\n                            "
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "team-member-action" }, [
+            _c("div", { staticClass: "chat-action-btn" }, [
+              _c("img", {
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/send_message.png",
+                  alt: "chat icon"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "change-status-btn" }, [
+              _vm._v(
+                "\n                            REMOVE\n                        "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "change-status-btn" }, [
+              _vm._v(
+                "\n                            MAKE BACKUP\n                        "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "campaign-team-row" }, [
+          _c("div", { staticClass: "team-member" }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/dummy.png",
+                alt: "member image"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "team-member-info" }, [
+              _c("div", { staticClass: "member-name" }, [
+                _vm._v(
+                  "\n                                Louis Snyderberg\n                            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "job-title" }, [
+                _vm._v(
+                  "\n                                Team manager\n                            "
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "team-member-action" }, [
+            _c("div", { staticClass: "chat-action-btn" }, [
+              _c("img", {
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/send_message.png",
+                  alt: "chat icon"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "change-status-btn" }, [
+              _vm._v(
+                "\n                            REMOVE\n                        "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "change-status-btn" }, [
+              _vm._v(
+                "\n                            MAKE BACKUP\n                        "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "campaign-team-row" }, [
+          _c("div", { staticClass: "team-member" }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/dummy.png",
+                alt: "member image"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "team-member-info" }, [
+              _c("div", { staticClass: "member-name" }, [
+                _vm._v(
+                  "\n                                Louis Snyderberg\n                            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "job-title" }, [
+                _vm._v(
+                  "\n                                Team manager\n                            "
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "team-member-action" }, [
+            _c("div", { staticClass: "chat-action-btn" }, [
+              _c("img", {
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/send_message.png",
+                  alt: "chat icon"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "change-status-btn" }, [
+              _vm._v(
+                "\n                            REMOVE\n                        "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "change-status-btn" }, [
+              _vm._v(
+                "\n                            MAKE BACKUP\n                        "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "campaign-team-row" }, [
+          _c("div", { staticClass: "team-member" }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/dummy.png",
+                alt: "member image"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "team-member-info" }, [
+              _c("div", { staticClass: "member-name" }, [
+                _vm._v(
+                  "\n                                Louis Snyderberg\n                            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "job-title" }, [
+                _vm._v(
+                  "\n                                Team manager\n                            "
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "team-member-action" }, [
+            _c("div", { staticClass: "chat-action-btn" }, [
+              _c("img", {
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/send_message.png",
+                  alt: "chat icon"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "change-status-btn" }, [
+              _vm._v(
+                "\n                            REMOVE\n                        "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "change-status-btn" }, [
+              _vm._v(
+                "\n                            MAKE BACKUP\n                        "
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "campaign_desc" }, [
+      _c("div", { staticClass: "title" }, [
+        _vm._v("\n                PROJECT DESCRIPTION\n            ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "desc" }, [
+        _vm._v(
+          "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n            "
+        )
       ])
     ])
   },

@@ -9,19 +9,19 @@
             </div>
         </nav>
         <div class="campaign-info-bar">
-            <div class="campaign-info-tab firstTab" :class="{active : activeTab === 'activity'}" @click="activeTab  = 'activity' ">
+            <div class="campaign-info-tab firstTab" :class="{active : activeTab === 'activity'}" @click="chooseTab('activity')">
                 ACTIVITY
             </div>
-            <div class="campaign-info-tab" :class="{active : activeTab === 'campaign_team'}" @click="activeTab  = 'campaign_team' ">
+            <div class="campaign-info-tab" :class="{active : activeTab === 'campaign_team'}" @click="chooseTab('campaign_team')">
                 CAMPAIGN TEAM
             </div>
-            <div class="campaign-info-tab" :class="{active : activeTab === 'campaign_brief'}" @click="activeTab  = 'campaign_brief' ">
+            <div class="campaign-info-tab" :class="{active : activeTab === 'campaign_brief'}" @click="chooseTab('campaign_brief')">
                 CAMPAIGN BRIEF
             </div>
         </div>
 
 
-        <div class="client_dashboard_content campaign_activity">
+        <div class="client_dashboard_content campaign_activity" v-show="activeTab === 'activity'">
             <div class="dashboard-side-menu hideOnTablet">
                 <div class="team-list-header">
                     <div class="teamName">
@@ -214,6 +214,188 @@
                 </div>
             </div>
         </div>
+
+        <div class="campaign_team_content" v-show="activeTab === 'campaign_team'">
+            <div class="campaign_team">
+                <div class="campaign-team-header">
+                    <div class="select-list">
+                        <div class="form-group">
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option class="custom-option" style="height:40px;">Show active team</option>
+                                <option class="custom-option">Show backup agents</option>
+                                <option class="custom-option">Show past agents</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="actionBtn">
+                        <a href="#">
+                            <img src="/resumeApp/public/images/client/plus.png" alt="plus sign">ADD NEW AGENT
+                        </a>
+                    </div>
+                </div>
+                <div class="campaign-team-list">
+                    <div class="campaign-team-row">
+                        <div class="team-member">
+                            <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+                            <div class="team-member-info">
+                                <div class="member-name">
+                                    Louis Snyderberg
+                                </div>
+                                <div class="job-title">
+                                    Team manager
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member-action">
+                            <div class="chat-action-btn">
+                                <img src="/resumeApp/public/images/client/campaign_activity/send_message.png"
+                                     alt="chat icon">
+                            </div>
+                            <div class="change-status-btn">
+                                REMOVE
+                            </div>
+                            <div class="change-status-btn">
+                                MAKE BACKUP
+                            </div>
+                        </div>
+                    </div>
+                    <div class="campaign-team-row">
+                        <div class="team-member">
+                            <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+                            <div class="team-member-info">
+                                <div class="member-name">
+                                    Louis Snyderberg
+                                </div>
+                                <div class="job-title">
+                                    Team manager
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member-action">
+                            <div class="chat-action-btn">
+                                <img src="/resumeApp/public/images/client/campaign_activity/send_message.png"
+                                     alt="chat icon">
+                            </div>
+                            <div class="change-status-btn">
+                                REMOVE
+                            </div>
+                            <div class="change-status-btn">
+                                MAKE BACKUP
+                            </div>
+                        </div>
+                    </div>
+                    <div class="campaign-team-row">
+                        <div class="team-member">
+                            <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+                            <div class="team-member-info">
+                                <div class="member-name">
+                                    Louis Snyderberg
+                                </div>
+                                <div class="job-title">
+                                    Team manager
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member-action">
+                            <div class="chat-action-btn">
+                                <img src="/resumeApp/public/images/client/campaign_activity/send_message.png"
+                                     alt="chat icon">
+                            </div>
+                            <div class="change-status-btn">
+                                REMOVE
+                            </div>
+                            <div class="change-status-btn">
+                                MAKE BACKUP
+                            </div>
+                        </div>
+                    </div>
+                    <div class="campaign-team-row">
+                        <div class="team-member">
+                            <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+                            <div class="team-member-info">
+                                <div class="member-name">
+                                    Louis Snyderberg
+                                </div>
+                                <div class="job-title">
+                                    Team manager
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member-action">
+                            <div class="chat-action-btn">
+                                <img src="/resumeApp/public/images/client/campaign_activity/send_message.png"
+                                     alt="chat icon">
+                            </div>
+                            <div class="change-status-btn">
+                                REMOVE
+                            </div>
+                            <div class="change-status-btn">
+                                MAKE BACKUP
+                            </div>
+                        </div>
+                    </div>
+                    <div class="campaign-team-row">
+                        <div class="team-member">
+                            <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+                            <div class="team-member-info">
+                                <div class="member-name">
+                                    Louis Snyderberg
+                                </div>
+                                <div class="job-title">
+                                    Team manager
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member-action">
+                            <div class="chat-action-btn">
+                                <img src="/resumeApp/public/images/client/campaign_activity/send_message.png"
+                                     alt="chat icon">
+                            </div>
+                            <div class="change-status-btn">
+                                REMOVE
+                            </div>
+                            <div class="change-status-btn">
+                                MAKE BACKUP
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="campaign_brief_content" v-show="activeTab === 'campaign_brief'">
+            <div class="campaign_desc">
+                <div class="title">
+                    PROJECT DESCRIPTION
+                </div>
+                <div class="desc">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </div>
+           </div>
+
+            <div class="campaign_brief_tabs">
+                <div class="campaign-info-bar">
+                    <div class="campaign-info-tab firstTab" :class="{active : activeBriefTab === 'FAQ'}" @click="chooseBriefTab('FAQ')">
+                        FAQ
+                    </div>
+                    <div class="campaign-info-tab" :class="{active : activeBriefTab === 'PROCESS_FLOW'}" @click="chooseBriefTab('PROCESS_FLOW')">
+                        PROCESS FLOW
+                    </div>
+                    <div class="campaign-info-tab" :class="{active : activeBriefTab === 'FILES'}" @click="chooseBriefTab('FILES')">
+                        FILES
+                    </div>
+                    <div class="campaign-info-tab" :class="{active : activeBriefTab === 'VOICE_SCRIPTS'}" @click="chooseBriefTab('VOICE_SCRIPTS')">
+                        VOICE SCRIPTS
+                    </div>
+                    <div class="campaign-info-tab" :class="{active : activeBriefTab === 'EMAIL_TEMPS'}" @click="chooseBriefTab('EMAIL_TEMPS')">
+                        E-MAIL TEMPLATES
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Agent select modal -->
         <div class="modal" id="select-agent-modal">
             <div class="modal-dialog">
@@ -320,6 +502,7 @@
         data(){
             return{
                 activeTab : 'activity',
+                activeBriefTab : 'FAQ',
                 hasLogs:false,
                 selectedDate:'',
                 appliedDate:''
@@ -335,6 +518,12 @@
             },
             cancelDatePicking(){
                 $('#close-modal').click();
+            },
+            chooseTab(tab_name){
+                this.activeTab = tab_name ;
+            },
+            chooseBriefTab(tab_name){
+                this.activeBriefTab = tab_name ;
             }
         },
         mounted(){

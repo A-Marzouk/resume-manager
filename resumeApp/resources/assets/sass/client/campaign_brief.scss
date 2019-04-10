@@ -1,0 +1,89 @@
+.campaign_brief_content {
+  display: flex;
+  padding-top: 28px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .campaign_desc{
+    width: 1164px;
+    height: 181px;
+    background-color: #fff;
+    box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    font-family: Roboto;
+    flex-direction: column;
+    font-style: normal;
+    padding-left: 60px;
+    .title{
+      max-width: 1041px;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 24px;
+      color: #4A5464;
+      padding-bottom: 17px;
+    }
+    .desc{
+      max-width: 1041px;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 24px;
+      color: #4A5464;
+    }
+  }
+
+  .campaign_brief_tabs{
+    margin-top: 28px;
+    width: 1164px;
+    min-height:450px ;
+    background-color: #fff;
+    box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+    border-radius: 4px;
+
+    .campaign-info-bar{
+      height: 56px;
+      width: 100%;
+      margin-top: -16px;
+      background: #05A4F4;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+      @media (max-width:1240px) {
+        justify-content: space-evenly;
+        overflow-x: scroll;
+        display: -webkit-box;
+      }
+      .campaign-info-tab{
+        font-family: Roboto;
+        font-style: normal;
+        margin-right: 80px !important;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 24px;
+        color: #FFFFFF;
+        border-bottom: 3px solid transparent;
+        padding: 11px 14px;
+        margin-top: 6px;
+        cursor: pointer;
+        opacity: 0.8;
+        @media (max-width:1240px) {
+          margin-right: 0;
+          font-size: 16px;
+        }
+      }
+      .campaign-info-tab.active{
+        font-weight: bold;
+        border-bottom: 3px solid white;
+        opacity: 1;
+      }
+      .campaign-info-tab.firstTab{
+        margin-left: 25px !important;
+        @media (max-width:1240px) {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

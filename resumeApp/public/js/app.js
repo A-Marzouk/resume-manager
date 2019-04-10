@@ -56177,7 +56177,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56720,6 +56720,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -56728,7 +56766,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             activeBriefTab: 'FAQ',
             hasLogs: false,
             selectedDate: '',
-            appliedDate: ''
+            appliedDate: '',
+            newFAQ: {
+                question: '',
+                answer: ''
+            }
         };
     },
 
@@ -57022,6 +57064,209 @@ var render = function() {
                 )
               ]
             )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "campaign-info-content" }, [
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.activeBriefTab === "FAQ",
+                    expression: "activeBriefTab === 'FAQ'"
+                  }
+                ],
+                staticClass: "faq-content"
+              },
+              [
+                _c("div", { staticClass: "faq-title" }, [
+                  _vm._v(
+                    "\n                        In this section you can add frequently asked questions and answers to them.\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "faq-question" }, [
+                  _c("img", {
+                    attrs: {
+                      src:
+                        "/resumeApp/public/images/client/campaign_activity/faq.png",
+                      alt: "faq icon"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.newFAQ.question,
+                          expression: "newFAQ.question"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Write a frequently asked question"
+                      },
+                      domProps: { value: _vm.newFAQ.question },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.newFAQ, "question", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.newFAQ.question.length > 0,
+                          expression: "newFAQ.question.length > 0"
+                        }
+                      ],
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.newFAQ.question = ""
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "faq-answer" }, [
+                  _c("img", {
+                    attrs: {
+                      src:
+                        "/resumeApp/public/images/client/campaign_activity/answer.png",
+                      alt: "faq icon"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.newFAQ.answer,
+                          expression: "newFAQ.answer"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "faq-answer",
+                        placeholder: "Add an answer to the question"
+                      },
+                      domProps: { value: _vm.newFAQ.answer },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.newFAQ, "answer", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.newFAQ.answer.length > 0,
+                          expression: "newFAQ.answer.length > 0"
+                        }
+                      ],
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.newFAQ.answer = ""
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-add-btn",
+                    class: {
+                      active:
+                        _vm.newFAQ.question.length > 7 &&
+                        _vm.newFAQ.answer.length > 7
+                    }
+                  },
+                  [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v(
+                        "\n                            ADD FAQ\n                        "
+                      )
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.activeBriefTab === "PROCESS_FLOW",
+                  expression: "activeBriefTab === 'PROCESS_FLOW'"
+                }
+              ]
+            }),
+            _vm._v(" "),
+            _c("div", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.activeBriefTab === "FILES",
+                  expression: "activeBriefTab === 'FILES'"
+                }
+              ]
+            }),
+            _vm._v(" "),
+            _c("div", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.activeBriefTab === "VOICE_SCRIPTS",
+                  expression: "activeBriefTab === 'VOICE_SCRIPTS'"
+                }
+              ]
+            }),
+            _vm._v(" "),
+            _c("div", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.activeBriefTab === "EMAIL_TEMPS",
+                  expression: "activeBriefTab === 'EMAIL_TEMPS'"
+                }
+              ]
+            })
           ])
         ])
       ]

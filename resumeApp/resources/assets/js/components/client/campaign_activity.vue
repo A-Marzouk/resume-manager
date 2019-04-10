@@ -393,6 +393,44 @@
                         E-MAIL TEMPLATES
                     </div>
                 </div>
+                <div class="campaign-info-content">
+                    <div class="faq-content" v-show="activeBriefTab === 'FAQ'">
+                        <div class="faq-title">
+                            In this section you can add frequently asked questions and answers to them.
+                        </div>
+                        <div class="faq-question">
+                            <img src="/resumeApp/public/images/client/campaign_activity/faq.png" alt="faq icon">
+                            <div class="faq-input">
+                                <input type="text" name="faq" placeholder="Write a frequently asked question" v-model="newFAQ.question">
+                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="newFAQ.question.length > 0" @click="newFAQ.question = ''">
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <img src="/resumeApp/public/images/client/campaign_activity/answer.png" alt="faq icon">
+                            <div class="faq-input">
+                                <input type="text" name="faq-answer" placeholder="Add an answer to the question" v-model="newFAQ.answer">
+                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="newFAQ.answer.length > 0" @click="newFAQ.answer = ''">
+                            </div>
+                        </div>
+                        <div class="faq-add-btn" :class="{ active : newFAQ.question.length > 7 && newFAQ.answer.length > 7 }">
+                            <a href="#">
+                                ADD FAQ
+                            </a>
+                        </div>
+                    </div>
+                    <div v-show="activeBriefTab === 'PROCESS_FLOW'">
+
+                    </div>
+                    <div v-show="activeBriefTab === 'FILES'">
+
+                    </div>
+                    <div v-show="activeBriefTab === 'VOICE_SCRIPTS'">
+
+                    </div>
+                    <div v-show="activeBriefTab === 'EMAIL_TEMPS'">
+
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -505,7 +543,11 @@
                 activeBriefTab : 'FAQ',
                 hasLogs:false,
                 selectedDate:'',
-                appliedDate:''
+                appliedDate:'',
+                newFAQ:{
+                    question:'',
+                    answer:''
+                }
             }
         },
         methods:{
@@ -524,7 +566,7 @@
             },
             chooseBriefTab(tab_name){
                 this.activeBriefTab = tab_name ;
-            }
+            },
         },
         mounted(){
 

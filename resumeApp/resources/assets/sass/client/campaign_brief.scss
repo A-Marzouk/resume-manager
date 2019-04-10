@@ -44,12 +44,14 @@
     .campaign-info-bar{
       height: 56px;
       width: 100%;
-      margin-top: -16px;
       background: #05A4F4;
       display: flex;
       justify-content: left;
       align-items: center;
       box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius:4px ;
       @media (max-width:1240px) {
         justify-content: space-evenly;
         overflow-x: scroll;
@@ -82,6 +84,80 @@
         margin-left: 25px !important;
         @media (max-width:1240px) {
           margin-left: 0;
+        }
+      }
+    }
+  }
+
+  .campaign-info-content{
+    .faq-content{
+      padding:36px 34px 36px 65px;
+      .faq-title{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: normal;
+        color: #4A5464;
+      }
+      .faq-question,.faq-answer{
+        display: flex;
+        align-items:center ;
+        margin-top: 36px;
+        img{
+          margin-right:38px
+        }
+        .faq-input{
+          display: flex;
+          align-items: center;
+          width: 100%;
+          input{
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #7A828D;
+            height: 56px;
+          }
+          input:focus {
+            border-color: inherit;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            border-bottom: 1px solid #05A4F4;
+            outline: none;
+          }
+          img{
+            margin-left: -62px;
+            cursor: pointer;
+          }
+        }
+      }
+      .faq-add-btn{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 36px;
+        a{
+          height:48px;
+          width: 104px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 16px;
+          text-transform: uppercase;
+          color: #A1A7AF;
+          background: #E4E4E4;
+          border-radius: 2px;
+        }
+        a:hover{
+          text-decoration : none ;
+        }
+      }
+      .faq-add-btn.active{
+        a{
+          color: #fff;
+          background: #05A4F4;
         }
       }
     }

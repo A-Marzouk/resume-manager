@@ -408,7 +408,7 @@
                         <div class="faq-answer-input">
                             <img src="/resumeApp/public/images/client/campaign_activity/answer.png" alt="faq icon">
                             <div class="faq-input">
-                                <textarea rows="2" name="faq-answer" placeholder="Add an answer to the question" v-model="newFAQ.answer"></textarea>
+                                <textarea rows="1" name="faq-answer" placeholder="Add an answer to the question" v-model="newFAQ.answer"></textarea>
                                 <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="newFAQ.answer.length > 0" @click="newFAQ.answer = ''">
                             </div>
                         </div>
@@ -419,7 +419,36 @@
                         </div>
 
                         <div class="faq-questions-list">
-                            <div v-for="(faq,index) in faqs" v-bind:key="index">
+                            <div v-for="(faq,index) in faqs" v-bind:key="index" class="question-container">
+                                <div v-show="faq.beingEdited" class="faq-edit-state">
+                                    <div class="edit-heading">
+                                        <div class="faq-numbering">
+                                            <span>{{index+1}}</span>
+                                        </div>
+                                        <div class="edit-title">
+                                            Edit the question and the answer :
+                                        </div>
+                                        <div class="edit-action-btns" >
+                                            <a href="javascript:void(0)" @click="deleteFAQ(faq.id)">DELETE</a>
+                                            <a href="javascript:void(0)" @click="cancelEditFAQ(faq.id)">CANCEL</a>
+                                            <a href="javascript:void(0)" @click="saveFAQ(faq.id)">SAVE</a>
+                                        </div>
+                                    </div>
+                                    <div class="faq-question-input">
+                                        <img src="/resumeApp/public/images/client/campaign_activity/faq.png" alt="faq icon">
+                                        <div class="faq-input">
+                                            <input type="text" name="faq" placeholder="Write a frequently asked question" v-model="currentlyEditedQuestion.question">
+                                            <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="currentlyEditedQuestion.question.length > 0" @click="currentlyEditedQuestion.question = ''">
+                                        </div>
+                                    </div>
+                                    <div class="faq-answer-input">
+                                        <img src="/resumeApp/public/images/client/campaign_activity/answer.png" alt="faq icon">
+                                        <div class="faq-input">
+                                            <textarea name="faq-answer" rows="2" placeholder="Add an answer to the question" v-model="currentlyEditedQuestion.answer"></textarea>
+                                            <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="currentlyEditedQuestion.answer.length > 0" @click="faq.answer = ''">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div v-show="!faq.beingEdited" class="faq-question">
                                     <div class="faq-numbering">
                                         <span>{{index+1}}</span>
@@ -434,35 +463,7 @@
                                     </div>
                                     <div class="faq-edit">
                                         <img src="/resumeApp/public/images/client/campaign_activity/edit.png"
-                                             alt="edit icon" @click="faq.beingEdited = true">
-                                    </div>
-                                </div>
-                                <div v-show="faq.beingEdited" class="faq-edit-state">
-                                    <div class="edit-heading">
-                                        <div class="faq-numbering">
-                                            <span>{{index+1}}</span>
-                                        </div>
-                                        <div class="edit-title">
-                                            Edit the question and the answer :
-                                        </div>
-                                        <div class="edit-action-btns" >
-                                            <a href="javascript:void(0)" @click="faq.beingEdited = false">CANCEL</a>
-                                            <a href="javascript:void(0)" @click="faq.beingEdited = false">SAVE</a>
-                                        </div>
-                                    </div>
-                                    <div class="faq-question-input">
-                                            <img src="/resumeApp/public/images/client/campaign_activity/faq.png" alt="faq icon">
-                                            <div class="faq-input">
-                                                <input type="text" name="faq" placeholder="Write a frequently asked question" v-model="faq.question">
-                                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="faq.question.length > 0" @click="faq.question = ''">
-                                            </div>
-                                        </div>
-                                    <div class="faq-answer-input">
-                                            <img src="/resumeApp/public/images/client/campaign_activity/answer.png" alt="faq icon">
-                                            <div class="faq-input">
-                                                <textarea name="faq-answer" rows="2" placeholder="Add an answer to the question" v-model="faq.answer"></textarea>
-                                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="faq.answer.length > 0" @click="faq.answer = ''">
-                                            </div>
+                                             alt="edit icon" @click="editFAQ(faq.id)">
                                     </div>
                                 </div>
                             </div>
@@ -640,6 +641,11 @@
                 newFAQ:{
                     question:'',
                     answer:''
+                },
+                currentlyEditedQuestion:{
+                    beingEdited:false,
+                    question:'',
+                    answer:''
                 }
             }
         },
@@ -660,6 +666,48 @@
             chooseBriefTab(tab_name){
                 this.activeBriefTab = tab_name ;
             },
+            editFAQ(faq_id){
+                let faqs = this.faqs;
+                $.each(faqs, (i)=> {
+                    faqs[i].beingEdited = false;
+                    if(faqs[i].id === faq_id) {
+                       faqs[i].beingEdited = true;
+                       this.currentlyEditedQuestion.beingEdited =  true ;
+                       this.currentlyEditedQuestion.question =  faqs[i].question ;
+                       this.currentlyEditedQuestion.answer =  faqs[i].answer ;
+                    }
+                });
+            },
+            cancelEditFAQ(faq_id){
+                let faqs = this.faqs;
+                $.each(faqs, (i)=> {
+                    if(faqs[i].id === faq_id) {
+                        faqs[i].beingEdited = false;
+                        this.currentlyEditedQuestion.beingEdited = false ;
+                        this.currentlyEditedQuestion.question = '' ;
+                        this.currentlyEditedQuestion.answer   = '' ;
+                    }
+                });
+            },
+            saveFAQ(faq_id){
+                let faqs = this.faqs;
+                $.each(faqs, (i)=> {
+                    if(faqs[i].id === faq_id) {
+                        faqs[i].beingEdited = false;
+                        faqs[i].question    = this.currentlyEditedQuestion.question ;
+                        faqs[i].answer      = this.currentlyEditedQuestion.answer  ;
+                    }
+                });
+            },
+            deleteFAQ(faq_id){
+                let faqs = this.faqs;
+                $.each(faqs, function(i){
+                    if(faqs[i].id === faq_id) {
+                        faqs.splice(i,1);
+                        return false;
+                    }
+                });
+            }
         },
         mounted(){
 

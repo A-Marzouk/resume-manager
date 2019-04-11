@@ -5662,11 +5662,14 @@ body {
   margin-top: 37px;
 }
 
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .question-container {
+  border-bottom: 1px solid rgba(188, 191, 198, 0.44);
+}
+
 .campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question {
   margin-top: 7px;
   padding-bottom: 45px;
   padding-top: 54px;
-  border-bottom: 1px solid rgba(188, 191, 198, 0.44);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5722,15 +5725,13 @@ body {
   cursor: pointer;
 }
 
-.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question:last-child,
-.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state:last-child {
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .question-container:last-child {
   border: none;
 }
 
 .campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state {
   padding-bottom: 45px;
   padding-top: 54px;
-  border-bottom: 1px solid rgba(188, 191, 198, 0.44);
 }
 
 .campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state .edit-heading {

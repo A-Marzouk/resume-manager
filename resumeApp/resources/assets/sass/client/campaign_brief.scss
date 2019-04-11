@@ -163,11 +163,13 @@
 
       .faq-questions-list{
         margin-top:37px;
+        .question-container{
+          border-bottom: 1px solid rgba(188, 191, 198, 0.44);
+        }
         .faq-question{
           margin-top: 7px;
           padding-bottom: 45px;
           padding-top: 54px;
-          border-bottom: 1px solid rgba(188, 191, 198, 0.44);
           display: flex;
           .faq-numbering{
             margin-right: 36px;
@@ -213,14 +215,13 @@
           }
 
         }
-        .faq-question:last-child,.faq-edit-state:last-child{
+        .question-container:last-child{
           border:none;
         }
 
         .faq-edit-state{
           padding-bottom: 45px;
           padding-top: 54px;
-          border-bottom: 1px solid rgba(188, 191, 198, 0.44);
           .edit-heading{
              display: flex;
             .faq-numbering{

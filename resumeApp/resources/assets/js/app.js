@@ -37,8 +37,28 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 
 // client components
 Vue.component('client-dashboard', require('./components/client/Dashboard.vue'));
-Vue.component('campaign-activity', require('./components/client/campaign_activity.vue'));
+Vue.component('campaign-main', require('./components/client/campaignMainComponent.vue'));
+    // campaign-activity inside components :
+    import CampaignActivity from './components/client/campaignComponents/CampaignActivity.vue';
+    import CampaignTeam from './components/client/campaignComponents/CampaignTeam.vue';
+    import CampaignBrief from './components/client/campaignComponents/CampaignBrief.vue';
 
+if ($("#campaignMainComponent").length !== 0){
+    const routes = [
+        { path: '/:campaign-team', component: CampaignTeam },
+        { path: '/:campaign-brief', component: CampaignBrief },
+        { path: '/', component: CampaignActivity }
+    ];
+
+    const router = new VueRouter({
+        routes,
+    });
+
+    let campaignMainComponent = new Vue({
+        router,
+        el:'#campaignMainComponent'
+    });
+}
 
 
 Vue.component('chat-message', require('./components/chat/chatMessage.vue'));
@@ -161,11 +181,6 @@ if ($("#clientDashboardComponent").length !== 0){
     });
 }
 
-if ($("#campaignActivityComponent").length !== 0){
-    let campaignActivityComponent = new Vue({
-        el:'#campaignActivityComponent'
-    });
-}
 
 
 if ($("#record_input").length !== 0){

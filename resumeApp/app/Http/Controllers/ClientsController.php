@@ -21,7 +21,7 @@ class ClientsController extends Controller
     }
 
     public function campaignActivity(){
-        return view('client.campaign_activity');
+        return view('client.campaign_main');
     }
 
     public function hasAgreed(){

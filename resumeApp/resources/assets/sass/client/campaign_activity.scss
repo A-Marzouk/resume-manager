@@ -4,6 +4,9 @@
   }
 
   .campaign-info-bar{
+    a:hover{
+      text-decoration: none;
+    }
     height: 56px;
     width: 100%;
     margin-top: -16px;

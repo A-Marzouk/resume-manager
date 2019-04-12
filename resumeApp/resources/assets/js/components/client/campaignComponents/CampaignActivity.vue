@@ -101,7 +101,7 @@
                             <div style="margin-right:20px; padding:6px; border:1px solid lightgray; border-radius:5px; color:lightblue;">
                                 {{appliedDate}}
                             </div>
-                            <a href="javascript:void(0)" data-toggle="modal" data-target="#pick-date-modal" >
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#pick-date-modal" @click.once="setDatePicker" >
                                 <img src="/resumeApp/public/images/client/campaign_activity/pick_date.png" alt="pick date">
                             </a>
                         </div>
@@ -315,6 +315,15 @@
             cancelDatePicking(){
                 $('#close-modal').click();
             },
+            setDatePicker(){
+                $( "#datepicker" ).datepicker({
+                    onSelect: function(dateText, inst) {
+                        $("input[name='selected-date-value']").val(dateText);
+                        const dateChanged = new CustomEvent('change');
+                        document.getElementById('selected-date-value').dispatchEvent(dateChanged);
+                    }
+                });
+            }
         },
         mounted() {
         }

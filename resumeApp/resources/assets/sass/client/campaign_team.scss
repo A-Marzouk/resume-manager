@@ -4,6 +4,9 @@
   justify-content: center;
   padding-top: 28px;
   .campaign_team{
+    @media (max-width:1240px) {
+      width:96%;
+    }
     width: 1164px;
     background-color: #fff;
     box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
@@ -13,6 +16,9 @@
       justify-content: space-between;
       align-items: center;
       padding: 70px 100px 30px 100px;
+      @media (max-width:1240px) {
+        padding: 70px 18px 30px 18px;
+      }
       .select-list{
         margin-bottom: 0;
 
@@ -38,6 +44,9 @@
             border-top: none;
             border-right: none;
             border-bottom: 1px solid #7A828D;
+            @media (max-width:1240px) {
+              width: 326px;
+            }
           }
         }
       }
@@ -84,6 +93,9 @@
 
     .campaign-team-list{
       padding: 0px 100px 30px 100px;
+      @media (max-width:1240px) {
+        padding: 0px 38px 30px 38px;
+      }
       .lineDivide{
         width:100%;
         margin-left:0;

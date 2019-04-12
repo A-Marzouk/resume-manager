@@ -99,14 +99,24 @@
                                 </div>
                                 <div class="faq-edit">
                                     <img src="/resumeApp/public/images/client/campaign_activity/edit.png"
-                                         alt="edit icon" @click="editFAQ(faq.id)">
+                                         alt="edit icon" @click="editFAQ(faq.id)" v-if="currentlyEditedQuestion.beingEdited === false">
+                                    <img src="/resumeApp/public/images/client/campaign_activity/edit grey.png"
+                                         alt="edit icon" v-if="currentlyEditedQuestion.beingEdited === true" class="faq-edit-disabled">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div v-show="activeBriefTab === 'PROCESS_FLOW'">
-
+                <div class="process-flow-content" v-show="activeBriefTab === 'PROCESS_FLOW'">
+                    <div class="process-flow-heading">
+                        <div class="process-flow-text">
+                            This section is empty. To fiil it please click the edit <img src="/resumeApp/public/images/client/campaign_activity/edit grey.png" alt="edit grey icon"> button.
+                            <br>
+                            In this section you can...short description.
+                        </div>
+                        <img src="/resumeApp/public/images/client/campaign_activity/edit.png" alt="edit icon">
+                    </div>
+                    <img src="/resumeApp/public/images/client/campaign_activity/Illustrations_026_Campaign_brief_flow_empty.png" alt="empty-state">
                 </div>
                 <div v-show="activeBriefTab === 'FILES'">
 
@@ -215,6 +225,7 @@
                         faqs[i].beingEdited = false;
                         faqs[i].question    = this.currentlyEditedQuestion.question ;
                         faqs[i].answer      = this.currentlyEditedQuestion.answer  ;
+                        this.currentlyEditedQuestion.beingEdited = false ;
                     }
                 });
             },

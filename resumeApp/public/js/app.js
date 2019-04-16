@@ -60870,6 +60870,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -61542,7 +61550,13 @@ var render = function() {
                 ],
                 staticClass: "edit-state"
               },
-              [_vm._m(2)]
+              [
+                _vm._m(2),
+                _vm._v(" "),
+                _c("div", { staticClass: "toolbar", attrs: { id: "toolbar" } }),
+                _vm._v(" "),
+                _c("div", { staticClass: "editor", attrs: { id: "editor" } })
+              ]
             )
           ]
         ),

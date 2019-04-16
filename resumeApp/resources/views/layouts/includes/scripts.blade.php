@@ -8,6 +8,7 @@
         integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4="
         crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
 <script>
     $( function() {
         $( "#datepicker" ).datepicker({
@@ -18,6 +19,22 @@
             }
         });
     } );
+
+    var quill = new Quill('#editor', {
+        modules: {
+            toolbar: [
+                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                ['blockquote'],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                [{ 'align': [] }],
+
+            ]
+        },
+        placeholder: 'Write your description here...',
+        theme: 'snow'  // or 'bubble'
+    });
+
 </script>
 {{-- slick scripts --}}
 <script type="text/javascript" src="/resumeApp/public/js/slick-master/slick/slick.min.js"></script>

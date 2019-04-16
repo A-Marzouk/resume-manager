@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/resumeApp/public/js/slick-master/slick/slick.css"/>
 <link rel="stylesheet" type="text/css" href="/resumeApp/public/js/slick-master/slick/slick-theme.css"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <style>
     {{-- styles for slick slider only --}}
     .slickSlide{

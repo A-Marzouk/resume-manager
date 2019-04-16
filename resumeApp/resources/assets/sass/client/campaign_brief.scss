@@ -319,6 +319,7 @@
 
       .edit-state{
         .edit-state-heading{
+          margin-bottom:34px;
           display: flex;
           justify-content: space-between;
           .heading-text{
@@ -346,7 +347,19 @@
             }
           }
         }
+
+        .editor{
+          margin-top: 10px;
+          border:none !important;
+          background: rgba(149, 204, 255, 0.05);
+          min-height: 300px ;
+        }
       }
     }
   }
+}
+
+.ql-toolbar.ql-snow{
+  border:none !important;
+  background: rgba(149, 204, 255, 0.05);
 }

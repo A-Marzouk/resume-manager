@@ -5894,6 +5894,7 @@ body {
 }
 
 .campaign_brief_content .campaign-info-content .process-flow-content .edit-state .edit-state-heading {
+  margin-bottom: 34px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5925,5 +5926,17 @@ body {
   letter-spacing: -0.1px;
   color: #05A4F4;
   margin-left: 70px;
+}
+
+.campaign_brief_content .campaign-info-content .process-flow-content .edit-state .editor {
+  margin-top: 10px;
+  border: none !important;
+  background: rgba(149, 204, 255, 0.05);
+  min-height: 300px;
+}
+
+.ql-toolbar.ql-snow {
+  border: none !important;
+  background: rgba(149, 204, 255, 0.05);
 }
 

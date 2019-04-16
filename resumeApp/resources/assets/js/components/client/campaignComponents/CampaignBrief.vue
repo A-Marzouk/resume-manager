@@ -129,11 +129,19 @@
                                 <a href="javascript:void(0)">CANCEL</a>
                                 <a href="javascript:void(0)">SAVE</a>
                             </div>
+                        </div>
 
+                        <div id="toolbar" class="toolbar">
 
                         </div>
+                        <!-- Create the editor container -->
+                        <div id="editor" class="editor">
+
+                        </div>
+
                     </div>
                 </div>
+
                 <div v-show="activeBriefTab === 'FILES'">
 
                 </div>

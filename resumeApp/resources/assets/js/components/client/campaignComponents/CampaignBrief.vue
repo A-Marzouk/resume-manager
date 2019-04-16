@@ -108,15 +108,31 @@
                     </div>
                 </div>
                 <div class="process-flow-content" v-show="activeBriefTab === 'PROCESS_FLOW'">
-                    <div class="process-flow-heading">
-                        <div class="process-flow-text">
-                            This section is empty. To fiil it please click the edit <img src="/resumeApp/public/images/client/campaign_activity/edit grey.png" alt="edit grey icon"> button.
-                            <br>
-                            In this section you can...short description.
+                    <div class="empty-state" v-show="process_flow_em === true">
+                        <div class="process-flow-heading">
+                            <div class="process-flow-text">
+                                This section is empty. To fiil it please click the edit <img src="/resumeApp/public/images/client/campaign_activity/edit grey.png" alt="edit grey icon"> button.
+                                <br>
+                                In this section you can...short description.
+                            </div>
+                            <img src="/resumeApp/public/images/client/campaign_activity/edit.png" alt="edit icon">
                         </div>
-                        <img src="/resumeApp/public/images/client/campaign_activity/edit.png" alt="edit icon">
+                        <img src="/resumeApp/public/images/client/campaign_activity/Illustrations_026_Campaign_brief_flow_empty.png" alt="empty-state">
                     </div>
-                    <img src="/resumeApp/public/images/client/campaign_activity/Illustrations_026_Campaign_brief_flow_empty.png" alt="empty-state">
+
+                    <div class="edit-state"  v-show="process_flow_em === false">
+                        <div class="edit-state-heading">
+                            <div class="heading-text">
+                                Enter the description of the process flow:
+                            </div>
+                            <div class="edit-state-action">
+                                <a href="javascript:void(0)">CANCEL</a>
+                                <a href="javascript:void(0)">SAVE</a>
+                            </div>
+
+
+                        </div>
+                    </div>
                 </div>
                 <div v-show="activeBriefTab === 'FILES'">
 
@@ -188,7 +204,8 @@
                   beingEdited:false,
                   question:'',
                   answer:''
-              }
+              },
+              process_flow_em:false
           }
         },
         methods:{

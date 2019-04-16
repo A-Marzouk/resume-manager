@@ -29,7 +29,6 @@ Route::prefix('client')->group(function (){
     });
     Route::get('/','ClientsController@index')->name('client.dashboard');
     Route::get('/campaign','ClientsController@campaignActivity')->name('campaign.main');
-    Route::get('/campaign/add-agent','ClientsController@showAddAgentPage')->name('campaign.add.agent');
 
     Route::get('/has_agreed','ClientsController@hasAgreed');
     Route::post('/set_terms','ClientsController@setTerms');

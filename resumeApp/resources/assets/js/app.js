@@ -38,7 +38,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 // client components
 Vue.component('client-dashboard', require('./components/client/Dashboard.vue'));
 Vue.component('campaign-main', require('./components/client/CampaignMainComponent.vue'));
-Vue.component('add-agent-component', require('./components/client/AddAgentComponent.vue'));
     // campaign-activity inside components :
     import CampaignActivity from './components/client/campaignComponents/CampaignActivity.vue';
     import CampaignTeam from './components/client/campaignComponents/CampaignTeam.vue';

@@ -126,6 +126,7 @@
                                 Enter the description of the process flow:
                             </div>
                             <div class="edit-state-action">
+                                <a href="javascript:void(0)">DELETE</a>
                                 <a href="javascript:void(0)">CANCEL</a>
                                 <a href="javascript:void(0)">SAVE</a>
                             </div>
@@ -142,14 +143,59 @@
                     </div>
                 </div>
 
-                <div v-show="activeBriefTab === 'FILES'">
-
+                <div class="files-tab-content" v-show="activeBriefTab === 'FILES'">
+                    <div class="files-tab-heading">
+                        In this section you can add documents important to your agents and campaign
+                    </div>
+                    <div class="files-tab-upload-area">
+                        <div class="upload-box">
+                            <div class="upload-box-heading">
+                                Drag or Drop documents you want to upload <br/>or
+                            </div>
+                            <a href="#" class="upload-btn">
+                                CHOOSE A FILE
+                            </a>
+                            <div class="upload-notes">
+                                Maximum allowed size is 45 MB
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div v-show="activeBriefTab === 'VOICE_SCRIPTS'">
-
+                <div class="voice-scripts-content" v-show="activeBriefTab === 'VOICE_SCRIPTS'">
+                    <div class="files-tab-heading">
+                        In this section you can add documents with voice scripts
+                    </div>
+                    <div class="files-tab-upload-area">
+                        <div class="upload-box">
+                            <div class="upload-box-heading">
+                                Drag or Drop documents you want to upload <br/>or
+                            </div>
+                            <a href="#" class="upload-btn">
+                                CHOOSE A FILE
+                            </a>
+                            <div class="upload-notes">
+                                Maximum allowed size is 45 MB
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div v-show="activeBriefTab === 'EMAIL_TEMPS'">
-
+                <div class="email-templates-tab-content" v-show="activeBriefTab === 'EMAIL_TEMPS'">
+                    <div class="files-tab-heading">
+                        In this section you can add e-mail templates
+                    </div>
+                    <div class="files-tab-upload-area">
+                        <div class="upload-box">
+                            <div class="upload-box-heading">
+                                Drag or Drop documents you want to upload <br/>or
+                            </div>
+                            <a href="#" class="upload-btn">
+                                CHOOSE A FILE
+                            </a>
+                            <div class="upload-notes">
+                                Maximum allowed size is 45 MB
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

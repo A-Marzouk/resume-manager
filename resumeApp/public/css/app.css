@@ -5964,6 +5964,124 @@ body {
   min-height: 300px;
 }
 
+.campaign_brief_content .campaign-info-content .files-tab-content .files-tab-heading,
+.campaign_brief_content .campaign-info-content .voice-scripts-content .files-tab-heading,
+.campaign_brief_content .campaign-info-content .email-templates-tab-content .files-tab-heading {
+  padding: 36px 0 36px 65px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #4A5464;
+}
+
+@media (max-width: 1240px) {
+  .campaign_brief_content .campaign-info-content .files-tab-content .files-tab-heading,
+  .campaign_brief_content .campaign-info-content .voice-scripts-content .files-tab-heading,
+  .campaign_brief_content .campaign-info-content .email-templates-tab-content .files-tab-heading {
+    padding: 36px 0px 36px 18px;
+  }
+}
+
+.campaign_brief_content .campaign-info-content .files-tab-content .files-tab-upload-area,
+.campaign_brief_content .campaign-info-content .voice-scripts-content .files-tab-upload-area,
+.campaign_brief_content .campaign-info-content .email-templates-tab-content .files-tab-upload-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 56px;
+}
+
+.campaign_brief_content .campaign-info-content .files-tab-content .files-tab-upload-area .upload-box,
+.campaign_brief_content .campaign-info-content .voice-scripts-content .files-tab-upload-area .upload-box,
+.campaign_brief_content .campaign-info-content .email-templates-tab-content .files-tab-upload-area .upload-box {
+  width: 384px;
+  height: 222px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background: #F2FBFF;
+  border: 1px dashed #05A4F4;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.campaign_brief_content .campaign-info-content .files-tab-content .files-tab-upload-area .upload-box a,
+.campaign_brief_content .campaign-info-content .voice-scripts-content .files-tab-upload-area .upload-box a,
+.campaign_brief_content .campaign-info-content .email-templates-tab-content .files-tab-upload-area .upload-box a {
+  text-decoration: none;
+}
+
+.campaign_brief_content .campaign-info-content .files-tab-content .files-tab-upload-area .upload-box .upload-box-heading,
+.campaign_brief_content .campaign-info-content .voice-scripts-content .files-tab-upload-area .upload-box .upload-box-heading,
+.campaign_brief_content .campaign-info-content .email-templates-tab-content .files-tab-upload-area .upload-box .upload-box-heading {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.1px;
+  color: #4A5464;
+  margin-top: 29.15px;
+}
+
+.campaign_brief_content .campaign-info-content .files-tab-content .files-tab-upload-area .upload-box .upload-btn,
+.campaign_brief_content .campaign-info-content .voice-scripts-content .files-tab-upload-area .upload-box .upload-btn,
+.campaign_brief_content .campaign-info-content .email-templates-tab-content .files-tab-upload-area .upload-box .upload-btn {
+  width: 178px;
+  height: 48px;
+  margin-top: 22.43px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: #FFA368;
+  border-radius: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.campaign_brief_content .campaign-info-content .files-tab-content .files-tab-upload-area .upload-box .upload-notes,
+.campaign_brief_content .campaign-info-content .voice-scripts-content .files-tab-upload-area .upload-box .upload-notes,
+.campaign_brief_content .campaign-info-content .email-templates-tab-content .files-tab-upload-area .upload-box .upload-notes {
+  margin-top: 29.87px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.1px;
+  color: #7A828D;
+  opacity: 0.75;
+}
+
 .ql-toolbar.ql-snow {
   border: none !important;
   background: rgba(149, 204, 255, 0.05);

@@ -60878,6 +60878,52 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -61576,38 +61622,77 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _c("div", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.activeBriefTab === "FILES",
-              expression: "activeBriefTab === 'FILES'"
-            }
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.activeBriefTab === "FILES",
+                expression: "activeBriefTab === 'FILES'"
+              }
+            ],
+            staticClass: "files-tab-content"
+          },
+          [
+            _c("div", { staticClass: "files-tab-heading" }, [
+              _vm._v(
+                "\n                    In this section you can add documents important to your agents and campaign\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(3)
           ]
-        }),
+        ),
         _vm._v(" "),
-        _c("div", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.activeBriefTab === "VOICE_SCRIPTS",
-              expression: "activeBriefTab === 'VOICE_SCRIPTS'"
-            }
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.activeBriefTab === "VOICE_SCRIPTS",
+                expression: "activeBriefTab === 'VOICE_SCRIPTS'"
+              }
+            ],
+            staticClass: "voice-scripts-content"
+          },
+          [
+            _c("div", { staticClass: "files-tab-heading" }, [
+              _vm._v(
+                "\n                    In this section you can add documents with voice scripts\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(4)
           ]
-        }),
+        ),
         _vm._v(" "),
-        _c("div", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.activeBriefTab === "EMAIL_TEMPS",
-              expression: "activeBriefTab === 'EMAIL_TEMPS'"
-            }
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.activeBriefTab === "EMAIL_TEMPS",
+                expression: "activeBriefTab === 'EMAIL_TEMPS'"
+              }
+            ],
+            staticClass: "email-templates-tab-content"
+          },
+          [
+            _c("div", { staticClass: "files-tab-heading" }, [
+              _vm._v(
+                "\n                    In this section you can add e-mail templates\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(5)
           ]
-        })
+        )
       ])
     ])
   ])
@@ -61672,9 +61757,95 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "edit-state-action" }, [
+        _c("a", { attrs: { href: "javascript:void(0)" } }, [_vm._v("DELETE")]),
+        _vm._v(" "),
         _c("a", { attrs: { href: "javascript:void(0)" } }, [_vm._v("CANCEL")]),
         _vm._v(" "),
         _c("a", { attrs: { href: "javascript:void(0)" } }, [_vm._v("SAVE")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "files-tab-upload-area" }, [
+      _c("div", { staticClass: "upload-box" }, [
+        _c("div", { staticClass: "upload-box-heading" }, [
+          _vm._v(
+            "\n                            Drag or Drop documents you want to upload "
+          ),
+          _c("br"),
+          _vm._v("or\n                        ")
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "upload-btn", attrs: { href: "#" } }, [
+          _vm._v(
+            "\n                            CHOOSE A FILE\n                        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "upload-notes" }, [
+          _vm._v(
+            "\n                            Maximum allowed size is 45 MB\n                        "
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "files-tab-upload-area" }, [
+      _c("div", { staticClass: "upload-box" }, [
+        _c("div", { staticClass: "upload-box-heading" }, [
+          _vm._v(
+            "\n                            Drag or Drop documents you want to upload "
+          ),
+          _c("br"),
+          _vm._v("or\n                        ")
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "upload-btn", attrs: { href: "#" } }, [
+          _vm._v(
+            "\n                            CHOOSE A FILE\n                        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "upload-notes" }, [
+          _vm._v(
+            "\n                            Maximum allowed size is 45 MB\n                        "
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "files-tab-upload-area" }, [
+      _c("div", { staticClass: "upload-box" }, [
+        _c("div", { staticClass: "upload-box-heading" }, [
+          _vm._v(
+            "\n                            Drag or Drop documents you want to upload "
+          ),
+          _c("br"),
+          _vm._v("or\n                        ")
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "upload-btn", attrs: { href: "#" } }, [
+          _vm._v(
+            "\n                            CHOOSE A FILE\n                        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "upload-notes" }, [
+          _vm._v(
+            "\n                            Maximum allowed size is 45 MB\n                        "
+          )
+        ])
       ])
     ])
   }

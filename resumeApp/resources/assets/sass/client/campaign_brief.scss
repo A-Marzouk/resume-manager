@@ -377,6 +377,86 @@
         }
       }
     }
+
+    .files-tab-content,.voice-scripts-content,.email-templates-tab-content {
+      .files-tab-heading {
+        padding: 36px 0 36px 65px;
+        @media (max-width: 1240px) {
+          padding: 36px 0px 36px 18px;
+        }
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -0.1px;
+        color: #4A5464;
+      }
+
+      .files-tab-upload-area{
+        display: flex;justify-content: center;
+        margin-bottom: 56px;
+       .upload-box{
+         width: 384px;
+         height: 222px;
+         margin-left:10px;
+         margin-right:10px;
+         background: #F2FBFF;
+         border: 1px dashed #05A4F4;
+         box-sizing: border-box;
+         border-radius: 4px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         a{
+           text-decoration: none;
+         }
+         .upload-box-heading{
+           font-family: Roboto;
+           font-style: normal;
+           font-weight: normal;
+           font-size: 16px;
+           line-height: 24px;
+           text-align: center;
+           letter-spacing: -0.1px;
+           color: #4A5464;
+           margin-top: 29.15px;
+         }
+         .upload-btn{
+           width:178px;
+           height:48px;
+           margin-top: 22.43px;
+           font-family: Roboto;
+           font-style: normal;
+           font-weight: 500;
+           font-size: 14px;
+           line-height: 16px;
+           text-transform: uppercase;
+           color: #FFFFFF;
+           background: #FFA368;
+           border-radius: 2px;
+           display:flex;
+           align-items:center;
+           justify-content:center;
+         }
+
+         .upload-notes{
+           margin-top: 29.87px;
+           font-family: Roboto;
+           font-style: normal;
+           font-weight: normal;
+           font-size: 13px;
+           line-height: 24px;
+           text-align: center;
+           letter-spacing: -0.1px;
+           color: #7A828D;
+           opacity: 0.75;
+         }
+
+       }
+      }
+    }
+
   }
 }
 

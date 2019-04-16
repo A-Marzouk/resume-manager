@@ -8,7 +8,13 @@
     @media (max-width:1240px) {
       padding-left:19px;
       width:96%;
+      height: auto;
     }
+
+    @media (max-width:425px) {
+      padding-left:0;
+    }
+
     width: 1164px;
     height: 181px;
     background-color: #fff;
@@ -27,6 +33,13 @@
       line-height: 24px;
       color: #4A5464;
       padding-bottom: 17px;
+
+      @media (max-width:1240px) {
+        padding-top: 22px;
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
     }
     .desc{
       max-width: 1041px;
@@ -34,6 +47,11 @@
       font-size: 14px;
       line-height: 24px;
       color: #4A5464;
+      @media (max-width:1240px) {
+        padding-left: 18px;
+        padding-right: 18px;
+        padding-bottom: 17px;
+      }
     }
   }
 
@@ -70,13 +88,13 @@
         line-height: 24px;
         color: #FFFFFF;
         border-bottom: 3px solid transparent;
-        padding: 11px 14px !important;
+        padding: 12px 14px !important;
         margin-top: 6px;
         cursor: pointer;
         opacity: 0.8;
         @media (max-width:1240px) {
           margin-right: 0;
-          padding: 11px 14px;
+          padding: 12px 14px;
           white-space: normal;
         }
       }
@@ -283,6 +301,9 @@
     }
     .process-flow-content{
       padding:36px 34px 36px 65px;
+      @media (max-width:1240px) {
+        padding:36px 18px 36px 18px;
+      }
       .empty-state{
         display: flex;
         flex-direction: column;

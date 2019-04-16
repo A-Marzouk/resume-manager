@@ -4634,7 +4634,7 @@ body {
   line-height: 24px;
   color: #FFFFFF;
   border-bottom: 3px solid transparent;
-  padding: 11px 14px;
+  padding: 12px 14px;
   margin-top: 6px;
   cursor: pointer;
   opacity: 0.8;
@@ -4643,7 +4643,7 @@ body {
 @media (max-width: 1240px) {
   #campaign_activity .campaign-info-bar .campaign-info-tab {
     margin-right: 0;
-    padding: 11px 14px;
+    padding: 12px 14px;
     white-space: nowrap;
   }
 }
@@ -5486,6 +5486,13 @@ body {
   .campaign_brief_content .campaign_desc {
     padding-left: 19px;
     width: 96%;
+    height: auto;
+  }
+}
+
+@media (max-width: 425px) {
+  .campaign_brief_content .campaign_desc {
+    padding-left: 0;
   }
 }
 
@@ -5498,12 +5505,28 @@ body {
   padding-bottom: 17px;
 }
 
+@media (max-width: 1240px) {
+  .campaign_brief_content .campaign_desc .title {
+    padding-top: 22px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
 .campaign_brief_content .campaign_desc .desc {
   max-width: 1041px;
   font-weight: normal;
   font-size: 14px;
   line-height: 24px;
   color: #4A5464;
+}
+
+@media (max-width: 1240px) {
+  .campaign_brief_content .campaign_desc .desc {
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-bottom: 17px;
+  }
 }
 
 .campaign_brief_content .campaign_brief_tabs {
@@ -5554,7 +5577,7 @@ body {
   line-height: 24px;
   color: #FFFFFF;
   border-bottom: 3px solid transparent;
-  padding: 11px 14px !important;
+  padding: 12px 14px !important;
   margin-top: 6px;
   cursor: pointer;
   opacity: 0.8;
@@ -5563,7 +5586,7 @@ body {
 @media (max-width: 1240px) {
   .campaign_brief_content .campaign_brief_tabs .campaign-info-bar .campaign-info-tab {
     margin-right: 0;
-    padding: 11px 14px;
+    padding: 12px 14px;
     white-space: normal;
   }
 }
@@ -5840,6 +5863,12 @@ body {
 
 .campaign_brief_content .campaign-info-content .process-flow-content {
   padding: 36px 34px 36px 65px;
+}
+
+@media (max-width: 1240px) {
+  .campaign_brief_content .campaign-info-content .process-flow-content {
+    padding: 36px 18px 36px 18px;
+  }
 }
 
 .campaign_brief_content .campaign-info-content .process-flow-content .empty-state {

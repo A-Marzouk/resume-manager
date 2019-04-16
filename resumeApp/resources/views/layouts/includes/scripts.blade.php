@@ -20,21 +20,6 @@
         });
     } );
 
-    var quill = new Quill('#editor', {
-        modules: {
-            toolbar: [
-                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-                ['blockquote'],
-                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                [{ 'align': [] }],
-
-            ]
-        },
-        placeholder: 'Write your description here...',
-        theme: 'snow'  // or 'bubble'
-    });
-
 </script>
 {{-- slick scripts --}}
 <script type="text/javascript" src="/resumeApp/public/js/slick-master/slick/slick.min.js"></script>

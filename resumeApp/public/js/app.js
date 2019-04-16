@@ -60913,13 +60913,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 question: '',
                 answer: ''
             },
-            process_flow_em: false
+            process_flow_em: false,
+            is_text_editor_set: false
         };
     },
 
     methods: {
         chooseBriefTab: function chooseBriefTab(tab_name) {
             this.activeBriefTab = tab_name;
+            if (tab_name === 'PROCESS_FLOW' && !this.is_text_editor_set) {
+                this.setTextEditor();
+            }
         },
         editFAQ: function editFAQ(faq_id) {
             var _this = this;
@@ -60969,6 +60973,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return false;
                 }
             });
+        },
+        setTextEditor: function setTextEditor() {
+            var quill = new Quill('#editor', {
+                modules: {
+                    toolbar: [[{ 'header': [1, 2, 3, 4, 5, 6, false] }], ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+                    ['blockquote'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], [{ 'align': [] }]]
+                },
+                placeholder: 'Write your description here...',
+                theme: 'snow' // or 'bubble'
+            });
+            this.is_text_editor_set = true;
         }
     },
     mounted: function mounted() {}

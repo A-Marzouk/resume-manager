@@ -14342,6 +14342,7 @@ Vue.component('example-component', __webpack_require__(50));
 // client components
 Vue.component('client-dashboard', __webpack_require__(53));
 Vue.component('campaign-main', __webpack_require__(56));
+Vue.component('campaign-archives', __webpack_require__(307));
 // campaign-activity inside components :
 
 
@@ -14364,6 +14365,13 @@ if ($("#addAgentComponent").length !== 0) {
 
     var addAgentComponent = new Vue({
         el: '#addAgentComponent'
+    });
+}
+
+if ($("#campaignArchives").length !== 0) {
+
+    var campaignArchives = new Vue({
+        el: '#campaignArchives'
     });
 }
 
@@ -58409,11 +58417,18 @@ var staticRenderFns = [
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "actionText" }, [
-            _vm._v(
-              "\n                        GO TO ARCHIVE OF CAMPAIGNS\n                    "
-            )
-          ])
+          _c(
+            "a",
+            {
+              staticClass: "actionText",
+              attrs: { href: "/client/campaigns-archive" }
+            },
+            [
+              _vm._v(
+                "\n                        GO TO ARCHIVE OF CAMPAIGNS\n                    "
+              )
+            ]
+          )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "bottom-bar" }, [
@@ -92454,6 +92469,466 @@ new SideNav();
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 304 */,
+/* 305 */,
+/* 306 */,
+/* 307 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(308)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(310)
+/* template */
+var __vue_template__ = __webpack_require__(311)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-3834adaa"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\client\\CampaignArchives.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3834adaa", Component.options)
+  } else {
+    hotAPI.reload("data-v-3834adaa", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 308 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(309);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("3180d35e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3834adaa\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignArchives.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3834adaa\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignArchives.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 309 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 310 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "CampaignArchives"
+});
+
+/***/ }),
+/* 311 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "campaign-archives" }, [
+      _c(
+        "nav",
+        { staticClass: "navbar navbar-light fixed-top client_navbar" },
+        [
+          _c("div", { staticClass: "backBtn" }, [
+            _c("a", { attrs: { href: "/client" } }, [
+              _c("img", {
+                attrs: {
+                  src: "/resumeApp/public/images/client/arrow_back.png",
+                  alt: "back-icon"
+                }
+              })
+            ]),
+            _vm._v("\n            ARCHIVE OF CAMPAIGNS\n        ")
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "archive-content-box" }, [
+        _c("div", { staticClass: "archive-heading" }, [
+          _c("img", {
+            attrs: {
+              src:
+                "/resumeApp/public/images/client/campaign_archives/search.png",
+              alt: "search icon"
+            }
+          }),
+          _vm._v("\n            YOUR PAST CAMPAIGNS\n        ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "archive-list" }, [
+          _c("div", { staticClass: "campaign-item" }, [
+            _c("div", { staticClass: "right" }, [
+              _c("div", { staticClass: "name-of-campaign" }, [
+                _c("a", { attrs: { href: "/client/campaign" } }, [
+                  _vm._v(
+                    "\n                            Name of the campaign long name of the campaign\n                        "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "campaign-notes" }, [
+                _vm._v(
+                  "\n                        2 agents worked on the campaign\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "left" }, [
+              _c("div", { staticClass: "date" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "/resumeApp/public/images/client/campaign_archives/date.png",
+                    alt: "date icon"
+                  }
+                }),
+                _vm._v(
+                  "\n                        4.09.18 - 4.01.19\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "amount" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "/resumeApp/public/images/client/campaign_archives/amount.png",
+                    alt: "amount icon"
+                  }
+                }),
+                _vm._v(
+                  "\n                        $ 8,500\n                    "
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "campaign-item" }, [
+            _c("div", { staticClass: "right" }, [
+              _c("div", { staticClass: "name-of-campaign" }, [
+                _c("a", { attrs: { href: "/client/campaign" } }, [
+                  _vm._v(
+                    "\n                            Name of the campaign long name of the campaign\n                        "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "campaign-notes" }, [
+                _vm._v(
+                  "\n                        2 agents worked on the campaign\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "left" }, [
+              _c("div", { staticClass: "date" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "/resumeApp/public/images/client/campaign_archives/date.png",
+                    alt: "date icon"
+                  }
+                }),
+                _vm._v(
+                  "\n                        4.09.18 - 4.01.19\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "amount" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "/resumeApp/public/images/client/campaign_archives/amount.png",
+                    alt: "amount icon"
+                  }
+                }),
+                _vm._v(
+                  "\n                        $ 8,500\n                    "
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "campaign-item" }, [
+            _c("div", { staticClass: "right" }, [
+              _c("div", { staticClass: "name-of-campaign" }, [
+                _c("a", { attrs: { href: "/client/campaign" } }, [
+                  _vm._v(
+                    "\n                            Name of the campaign long name of the campaign\n                        "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "campaign-notes" }, [
+                _vm._v(
+                  "\n                        2 agents worked on the campaign\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "left" }, [
+              _c("div", { staticClass: "date" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "/resumeApp/public/images/client/campaign_archives/date.png",
+                    alt: "date icon"
+                  }
+                }),
+                _vm._v(
+                  "\n                        4.09.18 - 4.01.19\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "amount" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "/resumeApp/public/images/client/campaign_archives/amount.png",
+                    alt: "amount icon"
+                  }
+                }),
+                _vm._v(
+                  "\n                        $ 8,500\n                    "
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "campaign-item" }, [
+            _c("div", { staticClass: "right" }, [
+              _c("div", { staticClass: "name-of-campaign" }, [
+                _c("a", { attrs: { href: "/client/campaign" } }, [
+                  _vm._v(
+                    "\n                            Name of the campaign long name of the campaign\n                        "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "campaign-notes" }, [
+                _vm._v(
+                  "\n                        2 agents worked on the campaign\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "left" }, [
+              _c("div", { staticClass: "date" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "/resumeApp/public/images/client/campaign_archives/date.png",
+                    alt: "date icon"
+                  }
+                }),
+                _vm._v(
+                  "\n                        4.09.18 - 4.01.19\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "amount" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "/resumeApp/public/images/client/campaign_archives/amount.png",
+                    alt: "amount icon"
+                  }
+                }),
+                _vm._v(
+                  "\n                        $ 8,500\n                    "
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3834adaa", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

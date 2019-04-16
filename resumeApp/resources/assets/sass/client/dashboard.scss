@@ -186,6 +186,9 @@
             width: 180px;
           }
         }
+        .actionText:hover{
+          text-decoration: none;
+        }
       }
       .bottom-bar{
         display:flex;

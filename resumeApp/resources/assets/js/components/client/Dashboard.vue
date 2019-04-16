@@ -145,9 +145,9 @@
                         <div class="welcomeText">
                             Hello Mr. Marzouk!  You have 8 active campaigns.
                         </div>
-                        <div class="actionText">
+                        <a href="/client/campaigns-archive" class="actionText">
                             GO TO ARCHIVE OF CAMPAIGNS
-                        </div>
+                        </a>
                     </div>
                     <div class="bottom-bar">
                         <div class="title">

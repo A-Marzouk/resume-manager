@@ -28,6 +28,10 @@ class ClientsController extends Controller
         return view('client.add_agent_view');
 
     }
+    public function campaignArchives(){
+        return view('client.campaign_archives');
+
+    }
 
     public function hasAgreed(){
         $currClient = auth()->guard('client')->user();

@@ -38,6 +38,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 // client components
 Vue.component('client-dashboard', require('./components/client/Dashboard.vue'));
 Vue.component('campaign-main', require('./components/client/CampaignMainComponent.vue'));
+Vue.component('campaign-archives', require('./components/client/CampaignArchives.vue'));
     // campaign-activity inside components :
     import CampaignActivity from './components/client/campaignComponents/CampaignActivity.vue';
     import CampaignTeam from './components/client/campaignComponents/CampaignTeam.vue';
@@ -64,6 +65,13 @@ if ($("#addAgentComponent").length !== 0){
 
     let addAgentComponent = new Vue({
         el:'#addAgentComponent'
+    });
+}
+
+if ($("#campaignArchives").length !== 0){
+
+    let campaignArchives = new Vue({
+        el:'#campaignArchives'
     });
 }
 

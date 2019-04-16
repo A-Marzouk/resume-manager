@@ -4063,6 +4063,10 @@ body {
   }
 }
 
+.client_dashboard_content .content-block .content-block-campaign .upper-bar .actionText:hover {
+  text-decoration: none;
+}
+
 .client_dashboard_content .content-block .content-block-campaign .bottom-bar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4593,7 +4597,7 @@ body {
 }
 
 #campaign_activity .client_navbar {
-  height: 56px !important;
+  height: 70px !important;
 }
 
 #campaign_activity .campaign-info-bar {
@@ -6085,5 +6089,152 @@ body {
 .ql-toolbar.ql-snow {
   border: none !important;
   background: rgba(149, 204, 255, 0.05);
+}
+
+.campaign-archives {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.campaign-archives .archive-content-box {
+  margin-top: 32px;
+  width: 1165px;
+  height: auto;
+  padding: 32px 93px 63px 114px;
+  background: white;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+}
+
+@media (max-width: 1240px) {
+  .campaign-archives .archive-content-box {
+    width: 96%;
+    padding: 32px 40px 63px 40px;
+  }
+}
+
+@media (max-width: 430px) {
+  .campaign-archives .archive-content-box {
+    padding: 20px 12px 40px 12px;
+  }
+
+  .campaign-archives .archive-content-box .archive-heading {
+    font-size: 16px;
+  }
+}
+
+.campaign-archives .archive-content-box .archive-heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(188, 191, 198, 0.44);
+  white-space: nowrap;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #4A5464;
+}
+
+.campaign-archives .archive-content-box .archive-heading img {
+  margin-right: 20px;
+}
+
+@media (max-width: 430px) {
+  .campaign-archives .archive-content-box .archive-heading {
+    font-size: 16px;
+  }
+
+  .campaign-archives .archive-content-box .archive-heading img {
+    width: 30px;
+    height: 30px;
+    margin-right: 12px;
+  }
+}
+
+.campaign-archives .archive-content-box .archive-list .campaign-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-top: 33px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(188, 191, 198, 0.44);
+}
+
+.campaign-archives .archive-content-box .archive-list .campaign-item .right {
+  padding-right: 10px;
+}
+
+.campaign-archives .archive-content-box .archive-list .campaign-item .right .name-of-campaign {
+  margin-bottom: 24px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #05A4F4;
+}
+
+.campaign-archives .archive-content-box .archive-list .campaign-item .right .name-of-campaign a:hover {
+  text-decoration: none;
+}
+
+.campaign-archives .archive-content-box .archive-list .campaign-item .right .name-of-campaign a {
+  color: #05A4F4;
+}
+
+.campaign-archives .archive-content-box .archive-list .campaign-item .right .campaign-notes {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #7A828D;
+}
+
+.campaign-archives .archive-content-box .archive-list .campaign-item .left .date,
+.campaign-archives .archive-content-box .archive-list .campaign-item .left .amount {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 24px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFA368;
+}
+
+.campaign-archives .archive-content-box .archive-list .campaign-item .left .date img,
+.campaign-archives .archive-content-box .archive-list .campaign-item .left .amount img {
+  margin-right: 20px;
+}
+
+.campaign-archives .archive-content-box .archive-list .campaign-item:last-child {
+  border-bottom: none;
 }
 

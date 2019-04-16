@@ -27,9 +27,12 @@ Route::prefix('client')->group(function (){
     Route::get('/login/submit',function(){
         return redirect()->back();
     });
+
+    // front-end routes :
     Route::get('/','ClientsController@index')->name('client.dashboard');
     Route::get('/campaign','ClientsController@campaignActivity')->name('campaign.main');
-
+    Route::get('/campaigns-archive','ClientsController@campaignArchives')->name('campaign.archives');
+//////////////////
     Route::get('/has_agreed','ClientsController@hasAgreed');
     Route::post('/set_terms','ClientsController@setTerms');
     Route::get('/register','Auth\ClientRegisterController@showRegistrationForm')->name('client.register');

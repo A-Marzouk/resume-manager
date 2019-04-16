@@ -4607,7 +4607,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: -16px;
+  margin-top: -3px;
   -webkit-box-pack: left;
       -ms-flex-pack: left;
           justify-content: left;

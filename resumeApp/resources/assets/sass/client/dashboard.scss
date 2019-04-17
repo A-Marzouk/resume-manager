@@ -4,7 +4,7 @@
       height: 70px !important;
       .navbar-brand img {
         margin-left: 34px;
-        @media (max-width:768px) {
+        @media (max-width:745px) {
           margin-left: 0;
         }
       }
@@ -21,7 +21,7 @@
         @media (max-width:1240px) {
           margin-right: 2px;
         }
-        @media (max-width:768px) {
+        @media (max-width:745px) {
           display:none;
         }
       }
@@ -118,7 +118,7 @@
     @media (max-width:1240px) {
       margin-left:0;
     }
-    @media (max-width:768px) {
+    @media (max-width:745px) {
       // col-12
       position: relative;
       width: 100%;
@@ -136,7 +136,7 @@
       @media (max-width:1240px) {
         width: 734px;
       }
-      @media (max-width:768px) {
+      @media (max-width:745px) {
         width: 100%;
       }
 
@@ -158,7 +158,7 @@
           margin-top: 27px;
           margin-left: 34px;
 
-          @media (max-width:768px) {
+          @media (max-width:745px) {
             font-size: 11px;
             line-height: 16px;
             margin-top: 17px;
@@ -178,7 +178,7 @@
           color: #05A4F4;
           margin-top: 27px;
           margin-right: 34px;
-          @media (max-width:768px) {
+          @media (max-width:745px) {
             font-size: 11px;
             line-height: 15px;
             margin-top: 17px;
@@ -206,7 +206,7 @@
           margin-top: 24px;
           margin-left: 34px;
 
-          @media (max-width:768px) {
+          @media (max-width:745px) {
             font-size: 12px;
             line-height: 14px;
             margin-top: 35px;
@@ -224,7 +224,7 @@
         .actionBtn{
           margin-top: 24px;
           margin-right: 34px;
-          @media (max-width:768px) {
+          @media (max-width:745px) {
             margin-top: 24px;
             margin-right: 6px;
           }
@@ -233,7 +233,7 @@
             text-decoration: none;
           }
           a{
-            @media (max-width:768px) {
+            @media (max-width:745px) {
               width: 190px;
               height: 31px;
               font-size: 11px;
@@ -274,7 +274,7 @@
       @media (max-width:1240px) {
         width: 734px;
       }
-      @media (max-width:768px) {
+      @media (max-width:745px) {
         width: 100%;
       }
       .upper-bar{
@@ -294,7 +294,7 @@
             color: #4A5464;
             margin-left: 34px;
             margin-top: 16px;
-            @media (max-width:768px) {
+            @media (max-width:745px) {
               margin-left: 10px;
             }
           }
@@ -307,7 +307,7 @@
             line-height: 24px;
             letter-spacing: -0.1px;
             color: #7A828D;
-            @media (max-width:768px) {
+            @media (max-width:745px) {
               margin-left: 10px;
               line-height: 16px;
             }
@@ -328,7 +328,7 @@
           margin-top: 24px;
           margin-right: 34px;
           display: flex;
-          @media (max-width:768px) {
+          @media (max-width:745px) {
             margin-right: 5px;
           }
           a:hover {
@@ -407,7 +407,7 @@
     img{
       padding-right: 8px;
     }
-    @media (max-width:768px) {
+    @media (max-width:745px) {
       margin-left: 10px;
     }
     .userName{
@@ -437,7 +437,7 @@
       @media (max-width:1240px) {
         margin-top: 30px;
       }
-      @media (max-width:768px) {
+      @media (max-width:745px) {
         margin-left: 10px;
       }
     }
@@ -458,7 +458,7 @@
       @media (max-width:1240px) {
         width: 560px;
       }
-      @media (max-width:768px) {
+      @media (max-width:745px) {
         border-radius: 30px;
         margin-left: 10px;
         margin-right: 10px;

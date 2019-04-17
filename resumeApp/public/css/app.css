@@ -3835,7 +3835,7 @@ body {
   margin-left: 34px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   #client_dash .client_navbar .navbar-brand img {
     margin-left: 0;
   }
@@ -3858,7 +3858,7 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   #client_dash .client_navbar .clientName {
     display: none;
   }
@@ -3975,7 +3975,7 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   .client_dashboard_content .content-block {
     position: relative;
     width: 100%;
@@ -4001,7 +4001,7 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   .client_dashboard_content .content-block .content-block-campaign {
     width: 100%;
   }
@@ -4031,7 +4031,7 @@ body {
   margin-left: 34px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   .client_dashboard_content .content-block .content-block-campaign .upper-bar .welcomeText {
     font-size: 11px;
     line-height: 16px;
@@ -4053,7 +4053,7 @@ body {
   margin-right: 34px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   .client_dashboard_content .content-block .content-block-campaign .upper-bar .actionText {
     font-size: 11px;
     line-height: 15px;
@@ -4089,7 +4089,7 @@ body {
   margin-left: 34px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   .client_dashboard_content .content-block .content-block-campaign .bottom-bar .title {
     font-size: 12px;
     line-height: 14px;
@@ -4112,7 +4112,7 @@ body {
   margin-right: 34px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   .client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn {
     margin-top: 24px;
     margin-right: 6px;
@@ -4139,7 +4139,7 @@ body {
   color: #FFFFFF;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   .client_dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a {
     width: 190px;
     height: 31px;
@@ -4168,7 +4168,7 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   .client_dashboard_content .content-block .content-block-campaign-brief {
     width: 100%;
   }
@@ -4198,7 +4198,7 @@ body {
   margin-top: 16px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignInfo .title {
     margin-left: 10px;
   }
@@ -4215,7 +4215,7 @@ body {
   color: #7A828D;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignInfo .info {
     margin-left: 10px;
     line-height: 16px;
@@ -4241,7 +4241,7 @@ body {
   display: flex;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn {
     margin-right: 5px;
   }
@@ -4327,7 +4327,7 @@ body {
   padding-right: 8px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   .agent-logs-block .agentInfo {
     margin-left: 10px;
   }
@@ -4368,7 +4368,7 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   .agent-logs-block .log .log-time {
     margin-left: 10px;
   }
@@ -4396,7 +4396,7 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 745px) {
   .agent-logs-block .log .log-text {
     border-radius: 30px;
     margin-left: 10px;

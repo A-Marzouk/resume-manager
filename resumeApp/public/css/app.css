@@ -3888,6 +3888,10 @@ body {
   padding-top: 28px;
 }
 
+.client_dashboard_content .dashboard-side-menu .menu-block:hover {
+  text-decoration: none;
+}
+
 .client_dashboard_content .dashboard-side-menu .menu-block {
   width: 230px;
   -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
@@ -3963,14 +3967,13 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   z-index: 1;
+  width: 938px;
 }
 
 @media (max-width: 1240px) {
   .client_dashboard_content .content-block {
+    width: 734px;
     margin-left: 0;
   }
 }
@@ -3991,20 +3994,7 @@ body {
           box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
   border-radius: 4px;
   margin-bottom: 8px;
-  width: 938px;
   height: 138px;
-}
-
-@media (max-width: 1240px) {
-  .client_dashboard_content .content-block .content-block-campaign {
-    width: 734px;
-  }
-}
-
-@media (max-width: 745px) {
-  .client_dashboard_content .content-block .content-block-campaign {
-    width: 100%;
-  }
 }
 
 .client_dashboard_content .content-block .content-block-campaign .upper-bar {
@@ -4159,19 +4149,6 @@ body {
           box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
   border-radius: 4px;
   margin-bottom: 8px;
-  width: 938px;
-}
-
-@media (max-width: 1240px) {
-  .client_dashboard_content .content-block .content-block-campaign-brief {
-    width: 734px;
-  }
-}
-
-@media (max-width: 745px) {
-  .client_dashboard_content .content-block .content-block-campaign-brief {
-    width: 100%;
-  }
 }
 
 .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar {
@@ -6236,5 +6213,201 @@ body {
 
 .campaign-archives .archive-content-box .archive-list .campaign-item:last-child {
   border-bottom: none;
+}
+
+.payments .subscriptions {
+  background: white;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+}
+
+.payments .subscriptions .subs-heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-bottom: 24px;
+  padding-top: 34px;
+  margin-left: 24px;
+  margin-right: 24px;
+  border-bottom: 1px solid rgba(188, 191, 198, 0.44);
+}
+
+.payments .subscriptions .subs-heading .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.payments .subscriptions .subs-heading .left img {
+  margin-right: 20px;
+}
+
+.payments .subscriptions .subs-heading .left span {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #4A5464;
+}
+
+.payments .subscriptions .subs-heading .right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.1px;
+  color: #05A4F4;
+}
+
+.payments .invoices {
+  background: white;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+  margin-top: 15px;
+}
+
+.payments .invoices .invoices-heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 24px;
+  padding-top: 34px;
+  margin-left: 24px;
+  margin-right: 24px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #4A5464;
+}
+
+.payments .invoices .invoices-heading img {
+  margin-right: 20px;
+}
+
+.payments .invoices .invoices-table {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.payments .invoices .invoices-table table {
+  width: 100%;
+}
+
+.payments .invoices .invoices-table table thead tr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #3EA3D7;
+  border-radius: 4px;
+  height: 38px;
+}
+
+.payments .invoices .invoices-table table thead tr th {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.payments .subscriptions .subs-empty-state,
+.payments .invoices .subs-empty-state {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.payments .subscriptions .subs-empty-state .subs-e-s-text,
+.payments .invoices .subs-empty-state .subs-e-s-text {
+  padding-top: 67px;
+  padding-bottom: 148px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.1px;
+  color: #4A5464;
+  opacity: 0.8;
+}
+
+.payments .subscriptions .subs-empty-state .subs-e-s-action,
+.payments .invoices .subs-empty-state .subs-e-s-action {
+  padding-bottom: 68px;
+}
+
+.payments .subscriptions .subs-empty-state .subs-e-s-action a:hover,
+.payments .invoices .subs-empty-state .subs-e-s-action a:hover {
+  text-decoration: none;
+}
+
+.payments .subscriptions .subs-empty-state .subs-e-s-action a,
+.payments .invoices .subs-empty-state .subs-e-s-action a {
+  width: 249px;
+  height: 36px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #05A4F4;
+  border: 2px solid #05A4F4;
+  border-radius: 40px;
 }
 

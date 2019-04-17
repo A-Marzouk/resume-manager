@@ -44,6 +44,11 @@ Vue.component('campaign-archives', require('./components/client/CampaignArchives
     import CampaignTeam from './components/client/campaignComponents/CampaignTeam.vue';
     import CampaignBrief from './components/client/campaignComponents/CampaignBrief.vue';
 
+    // dashboard inside components
+    import CampaignManager from './components/client/dashboardComponents/CampaignManager.vue';
+    import Payments from './components/client/dashboardComponents/Payments.vue';
+
+
 if ($("#campaignMainComponent").length !== 0){
     const routes = [
         { path: '/:campaign-team', component: CampaignTeam },
@@ -58,6 +63,25 @@ if ($("#campaignMainComponent").length !== 0){
     let campaignMainComponent = new Vue({
         router,
         el:'#campaignMainComponent'
+    });
+}
+
+
+if ($("#clientDashboardComponent").length !== 0){
+
+    const routes = [
+        { path: '/:payments', component: Payments },
+        { path: '/', component: CampaignManager }
+    ];
+
+    const router = new VueRouter({
+        routes,
+    });
+
+
+    let clientDashboardComponent = new Vue({
+        router,
+        el:'#clientDashboardComponent'
     });
 }
 
@@ -190,11 +214,6 @@ if ($("#searchFreelancers").length !== 0){
     });
 }
 
-if ($("#clientDashboardComponent").length !== 0){
-    let clientDashboardComponent = new Vue({
-        el:'#clientDashboardComponent'
-    });
-}
 
 
 

@@ -1,0 +1,146 @@
+.payments{
+  .subscriptions{
+    background: white;
+    box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+    border-radius: 4px;
+
+    .subs-heading{
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 24px;
+      padding-top: 34px;
+      margin-left:24px;
+      margin-right: 24px;
+      border-bottom: 1px solid rgba(188, 191, 198, 0.44);
+      .left{
+        display:flex;
+        align-items:center;
+        img{
+          margin-right:20px;
+        }
+        span{
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 16px;
+          text-transform: uppercase;
+          color: #4A5464;
+        }
+      }
+      .right{
+        display:flex;
+        align-items:center;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        text-align: center;
+        letter-spacing: -0.1px;
+        color: #05A4F4;
+      }
+    }
+
+  }
+
+  .invoices{
+    background: white;
+    box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+    border-radius: 4px;
+    margin-top: 15px;
+    .invoices-heading {
+      display: flex;
+      justify-content: flex-start;
+      align-items:center;
+      padding-bottom: 24px;
+      padding-top: 34px;
+      margin-left: 24px;
+      margin-right: 24px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 16px;
+      text-transform: uppercase;
+      color: #4A5464;
+      img {
+        margin-right: 20px;
+      }
+
+    }
+
+    .invoices-table{
+      margin-left: 24px;
+      margin-right: 24px;
+      table{
+        width: 100%;
+        thead{
+          tr{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            background: #3EA3D7;
+            border-radius:4px ;
+            height:  38px;
+            th{
+              font-family: Roboto;
+              font-style: normal;
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 16px;
+              text-transform: uppercase;
+              color: #FFFFFF;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .subscriptions,.invoices{
+    .subs-empty-state{
+      display:flex;
+      justify-content:center;
+      flex-direction: column;
+      align-items: center;
+      .subs-e-s-text{
+        padding-top: 67px;
+        padding-bottom:148px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 24px;
+        text-align: center;
+        letter-spacing: -0.1px;
+        color: #4A5464;
+        opacity: 0.8;
+      }
+      .subs-e-s-action{
+        padding-bottom: 68px;
+        a:hover{
+          text-decoration: none;
+        }
+        a{
+          width: 249px;
+          height: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 24px;
+          letter-spacing: -0.1px;
+          color: #05A4F4;
+          border: 2px solid #05A4F4;
+          border-radius: 40px;
+        }
+      }
+    }
+  }
+
+}

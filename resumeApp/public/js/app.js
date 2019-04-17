@@ -14302,6 +14302,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_client_campaignComponents_CampaignTeam_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_client_campaignComponents_CampaignTeam_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_client_campaignComponents_CampaignBrief_vue__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_client_campaignComponents_CampaignBrief_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_client_campaignComponents_CampaignBrief_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue__ = __webpack_require__(312);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_Payments_vue__ = __webpack_require__(317);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_Payments_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_Payments_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -14348,6 +14352,10 @@ Vue.component('campaign-archives', __webpack_require__(62));
 
 
 
+// dashboard inside components
+
+
+
 if ($("#campaignMainComponent").length !== 0) {
     var routes = [{ path: '/:campaign-team', component: __WEBPACK_IMPORTED_MODULE_2__components_client_campaignComponents_CampaignTeam_vue___default.a }, { path: '/:campaign-brief', component: __WEBPACK_IMPORTED_MODULE_3__components_client_campaignComponents_CampaignBrief_vue___default.a }, { path: '/', component: __WEBPACK_IMPORTED_MODULE_1__components_client_campaignComponents_CampaignActivity_vue___default.a }];
 
@@ -14358,6 +14366,20 @@ if ($("#campaignMainComponent").length !== 0) {
     var campaignMainComponent = new Vue({
         router: router,
         el: '#campaignMainComponent'
+    });
+}
+
+if ($("#clientDashboardComponent").length !== 0) {
+
+    var _routes = [{ path: '/:payments', component: __WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_Payments_vue___default.a }, { path: '/', component: __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue___default.a }];
+
+    var _router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+        routes: _routes
+    });
+
+    var clientDashboardComponent = new Vue({
+        router: _router,
+        el: '#clientDashboardComponent'
     });
 }
 
@@ -14479,12 +14501,6 @@ Vue.component('send-invitations', __webpack_require__(301));
 if ($("#searchFreelancers").length !== 0) {
     var searchFreelancers = new Vue({
         el: '#searchFreelancers'
-    });
-}
-
-if ($("#clientDashboardComponent").length !== 0) {
-    var clientDashboardComponent = new Vue({
-        el: '#clientDashboardComponent'
     });
 }
 
@@ -57736,240 +57752,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            activeTab: 'campaign_manager',
-            clientName: ''
+            activeTab: 'campaign_manager'
         };
     },
 
@@ -57982,9 +57769,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return '/resumeApp/public/images/client/menu_icons/active/' + tabName + '.png';
             }
             return '/resumeApp/public/images/client/menu_icons/inactive/' + tabName + '.png';
+        },
+        setActiveTab: function setActiveTab() {
+            this.activeTab = this.$route.path.replace('/', '');
+            if (this.activeTab === '') {
+                this.activeTab = 'campaign_manager';
+            }
         }
     },
-    mounted: function mounted() {}
+    mounted: function mounted() {
+        this.setActiveTab();
+    }
 });
 
 /***/ }),
@@ -58002,155 +57797,162 @@ var render = function() {
       _c("div", { staticClass: "js-side-nav side-nav" }, [
         _c("a", {
           staticClass: "js-menu-close menu-close",
-          attrs: { href: "javascript:void(0)" }
+          attrs: { href: "javascript:void(0)", id: "close-menu" }
         }),
         _vm._v(" "),
         _vm._m(1),
         _vm._v(" "),
         _c("div", { staticClass: "client_dashboard_content" }, [
-          _c("div", { staticClass: "dashboard-side-menu" }, [
-            _c(
-              "div",
-              {
-                staticClass: "menu-block row",
-                class: { active: _vm.activeTab === "campaign_manager" },
-                on: {
-                  click: function($event) {
-                    _vm.selectTab("campaign_manager")
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "imageContainer" }, [
-                  _c("img", {
-                    attrs: {
-                      src: _vm.getMenuBlockIcon("campaign_manager"),
-                      alt: "icon"
+          _c(
+            "div",
+            { staticClass: "dashboard-side-menu" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "menu-block row",
+                  class: { active: _vm.activeTab === "campaign_manager" },
+                  attrs: { to: "/" },
+                  nativeOn: {
+                    click: function($event) {
+                      _vm.selectTab("campaign_manager")
                     }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "menu-block-name" }, [
-                  _vm._v(
-                    "\n                            Campaign manager\n                        "
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "menu-block row",
-                class: { active: _vm.activeTab === "chats" },
-                on: {
-                  click: function($event) {
-                    _vm.selectTab("chats")
                   }
-                }
-              },
-              [
-                _c("div", { staticClass: "imageContainer" }, [
-                  _c("img", {
-                    attrs: { src: _vm.getMenuBlockIcon("chats"), alt: "icon" }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "menu-block-name" }, [
-                  _vm._v(
-                    "\n                            Chats\n                        "
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "menu-block row",
-                class: { active: _vm.activeTab === "payments" },
-                on: {
-                  click: function($event) {
-                    _vm.selectTab("payments")
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "imageContainer" }, [
-                  _c("img", {
-                    attrs: {
-                      src: _vm.getMenuBlockIcon("payments"),
-                      alt: "icon"
+                },
+                [
+                  _c("div", { staticClass: "imageContainer" }, [
+                    _c("img", {
+                      attrs: {
+                        src: _vm.getMenuBlockIcon("campaign_manager"),
+                        alt: "icon"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "menu-block-name" }, [
+                    _vm._v(
+                      "\n                            Campaign manager\n                        "
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "menu-block row",
+                  class: { active: _vm.activeTab === "chats" },
+                  on: {
+                    click: function($event) {
+                      _vm.selectTab("chats")
                     }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "menu-block-name" }, [
-                  _vm._v(
-                    "\n                            Payments\n                        "
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "menu-block row",
-                class: { active: _vm.activeTab === "agents_database" },
-                on: {
-                  click: function($event) {
-                    _vm.selectTab("agents_database")
                   }
-                }
-              },
-              [
-                _c("div", { staticClass: "imageContainer" }, [
-                  _c("img", {
-                    attrs: {
-                      src: _vm.getMenuBlockIcon("agents_database"),
-                      alt: "icon"
+                },
+                [
+                  _c("div", { staticClass: "imageContainer" }, [
+                    _c("img", {
+                      attrs: { src: _vm.getMenuBlockIcon("chats"), alt: "icon" }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "menu-block-name" }, [
+                    _vm._v(
+                      "\n                            Chats\n                        "
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "menu-block row",
+                  class: { active: _vm.activeTab === "payments" },
+                  attrs: { to: "/payments" },
+                  nativeOn: {
+                    click: function($event) {
+                      _vm.selectTab("payments")
                     }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "menu-block-name" }, [
-                  _vm._v(
-                    "\n                            Agents database\n                        "
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "menu-block row",
-                class: { active: _vm.activeTab === "my_account" },
-                on: {
-                  click: function($event) {
-                    _vm.selectTab("my_account")
                   }
-                }
-              },
-              [
-                _c("div", { staticClass: "imageContainer" }, [
-                  _c("img", {
-                    attrs: {
-                      src: _vm.getMenuBlockIcon("my_account"),
-                      alt: "icon"
+                },
+                [
+                  _c("div", { staticClass: "imageContainer" }, [
+                    _c("img", {
+                      attrs: {
+                        src: _vm.getMenuBlockIcon("payments"),
+                        alt: "icon"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "menu-block-name" }, [
+                    _vm._v(
+                      "\n                            Payments\n                        "
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "menu-block row",
+                  class: { active: _vm.activeTab === "agents_database" },
+                  on: {
+                    click: function($event) {
+                      _vm.selectTab("agents_database")
                     }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "menu-block-name" }, [
-                  _vm._v(
-                    "\n                            My account\n                        "
-                  )
-                ])
-              ]
-            )
-          ])
+                  }
+                },
+                [
+                  _c("div", { staticClass: "imageContainer" }, [
+                    _c("img", {
+                      attrs: {
+                        src: _vm.getMenuBlockIcon("agents_database"),
+                        alt: "icon"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "menu-block-name" }, [
+                    _vm._v(
+                      "\n                            Agents database\n                        "
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "menu-block row",
+                  class: { active: _vm.activeTab === "my_account" },
+                  on: {
+                    click: function($event) {
+                      _vm.selectTab("my_account")
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "imageContainer" }, [
+                    _c("img", {
+                      attrs: {
+                        src: _vm.getMenuBlockIcon("my_account"),
+                        alt: "icon"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "menu-block-name" }, [
+                    _vm._v(
+                      "\n                            My account\n                        "
+                    )
+                  ])
+                ]
+              )
+            ],
+            1
+          )
         ]),
         _vm._v(" "),
         _vm._m(2)
@@ -58158,135 +57960,154 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "client_dashboard_content" }, [
-      _c("div", { staticClass: "dashboard-side-menu hideOnTablet" }, [
-        _c(
-          "div",
-          {
-            staticClass: "menu-block row",
-            class: { active: _vm.activeTab === "campaign_manager" },
-            on: {
-              click: function($event) {
-                _vm.selectTab("campaign_manager")
-              }
-            }
-          },
-          [
-            _c("div", { staticClass: "imageContainer" }, [
-              _c("img", {
-                attrs: {
-                  src: _vm.getMenuBlockIcon("campaign_manager"),
-                  alt: "icon"
+      _c(
+        "div",
+        { staticClass: "dashboard-side-menu hideOnTablet" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "menu-block row",
+              class: { active: _vm.activeTab === "campaign_manager" },
+              attrs: { to: "/" },
+              nativeOn: {
+                click: function($event) {
+                  _vm.selectTab("campaign_manager")
                 }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "menu-block-name" }, [
-              _vm._v("\n                    Campaign manager\n                ")
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "menu-block row",
-            class: { active: _vm.activeTab === "chats" },
-            on: {
-              click: function($event) {
-                _vm.selectTab("chats")
               }
-            }
-          },
-          [
-            _c("div", { staticClass: "imageContainer" }, [
-              _c("img", {
-                attrs: { src: _vm.getMenuBlockIcon("chats"), alt: "icon" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "menu-block-name" }, [
-              _vm._v("\n                    Chats\n                ")
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "menu-block row",
-            class: { active: _vm.activeTab === "payments" },
-            on: {
-              click: function($event) {
-                _vm.selectTab("payments")
-              }
-            }
-          },
-          [
-            _c("div", { staticClass: "imageContainer" }, [
-              _c("img", {
-                attrs: { src: _vm.getMenuBlockIcon("payments"), alt: "icon" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "menu-block-name" }, [
-              _vm._v("\n                    Payments\n                ")
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "menu-block row",
-            class: { active: _vm.activeTab === "agents_database" },
-            on: {
-              click: function($event) {
-                _vm.selectTab("agents_database")
-              }
-            }
-          },
-          [
-            _c("div", { staticClass: "imageContainer" }, [
-              _c("img", {
-                attrs: {
-                  src: _vm.getMenuBlockIcon("agents_database"),
-                  alt: "icon"
+            },
+            [
+              _c("div", { staticClass: "imageContainer" }, [
+                _c("img", {
+                  attrs: {
+                    src: _vm.getMenuBlockIcon("campaign_manager"),
+                    alt: "icon"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "menu-block-name" }, [
+                _vm._v(
+                  "\n                    Campaign manager\n                "
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "menu-block row",
+              class: { active: _vm.activeTab === "chats" },
+              on: {
+                click: function($event) {
+                  _vm.selectTab("chats")
                 }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "menu-block-name" }, [
-              _vm._v("\n                    Agents database\n                ")
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "menu-block row",
-            class: { active: _vm.activeTab === "my_account" },
-            on: {
-              click: function($event) {
-                _vm.selectTab("my_account")
               }
-            }
-          },
-          [
-            _c("div", { staticClass: "imageContainer" }, [
-              _c("img", {
-                attrs: { src: _vm.getMenuBlockIcon("my_account"), alt: "icon" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "menu-block-name" }, [
-              _vm._v("\n                    My account\n                ")
-            ])
-          ]
-        )
-      ]),
+            },
+            [
+              _c("div", { staticClass: "imageContainer" }, [
+                _c("img", {
+                  attrs: { src: _vm.getMenuBlockIcon("chats"), alt: "icon" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "menu-block-name" }, [
+                _vm._v("\n                    Chats\n                ")
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            {
+              staticClass: "menu-block row",
+              class: { active: _vm.activeTab === "payments" },
+              attrs: { to: "/payments" },
+              nativeOn: {
+                click: function($event) {
+                  _vm.selectTab("payments")
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "imageContainer" }, [
+                _c("img", {
+                  attrs: { src: _vm.getMenuBlockIcon("payments"), alt: "icon" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "menu-block-name" }, [
+                _vm._v("\n                    Payments\n                ")
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "menu-block row",
+              class: { active: _vm.activeTab === "agents_database" },
+              on: {
+                click: function($event) {
+                  _vm.selectTab("agents_database")
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "imageContainer" }, [
+                _c("img", {
+                  attrs: {
+                    src: _vm.getMenuBlockIcon("agents_database"),
+                    alt: "icon"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "menu-block-name" }, [
+                _vm._v(
+                  "\n                    Agents database\n                "
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "menu-block row",
+              class: { active: _vm.activeTab === "my_account" },
+              on: {
+                click: function($event) {
+                  _vm.selectTab("my_account")
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "imageContainer" }, [
+                _c("img", {
+                  attrs: {
+                    src: _vm.getMenuBlockIcon("my_account"),
+                    alt: "icon"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "menu-block-name" }, [
+                _vm._v("\n                    My account\n                ")
+              ])
+            ]
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
-      _vm._m(3)
+      _c(
+        "div",
+        { staticClass: "content-block" },
+        [_c("keep-alive", [_c("router-view")], 1)],
+        1
+      )
     ])
   ])
 }
@@ -58306,7 +58127,7 @@ var staticRenderFns = [
           "a",
           {
             staticClass: "js-menu-open menu-open",
-            attrs: { href: "#0", id: "menu-open-icon" }
+            attrs: { href: "javascript:void(0)", id: "menu-open-icon" }
           },
           [
             _c("img", {
@@ -58322,7 +58143,7 @@ var staticRenderFns = [
           "a",
           {
             staticClass: "js-menu-close d-none",
-            attrs: { href: "#0", id: "menu-close-icon" }
+            attrs: { href: "javascript:void(0)" }
           },
           [
             _c("img", {
@@ -58401,407 +58222,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "logoutBtn" }, [
       _c("a", { attrs: { href: "#" } }, [
         _vm._v("\n                    LOG OUT\n                ")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content-block" }, [
-      _c("div", { staticClass: "content-block-campaign" }, [
-        _c("div", { staticClass: "upper-bar" }, [
-          _c("div", { staticClass: "welcomeText" }, [
-            _vm._v(
-              "\n                        Hello Mr. Marzouk!  You have 8 active campaigns.\n                    "
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "actionText",
-              attrs: { href: "/client/campaigns-archive" }
-            },
-            [
-              _vm._v(
-                "\n                        GO TO ARCHIVE OF CAMPAIGNS\n                    "
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "bottom-bar" }, [
-          _c("div", { staticClass: "title" }, [
-            _vm._v(
-              "\n                        MY ACTIVE CAMPAIGNS\n                    "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "actionBtn" }, [
-            _c("a", { attrs: { href: "#" } }, [
-              _c("img", {
-                attrs: {
-                  src: "/resumeApp/public/images/client/plus.png",
-                  alt: "plus sign"
-                }
-              }),
-              _vm._v("CREATE NEW CAMPAIGN\n                        ")
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content-block-campaign-brief" }, [
-        _c("div", { staticClass: "upper-bar" }, [
-          _c("div", { staticClass: "campaignInfo" }, [
-            _c("div", { staticClass: "title" }, [
-              _vm._v(
-                "\n                            Name of the campaign\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "info hideOnXS" }, [
-              _vm._v(
-                "\n                            2 agents on the campaign\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "actionBtn" }, [
-            _c("a", { attrs: { href: "#" } }, [
-              _vm._v(
-                "\n                            ACTIVE\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "menu-img" }, [
-              _c("img", {
-                attrs: {
-                  src: "/resumeApp/public/images/client/more_vert_24px.png",
-                  alt: "menu"
-                }
-              })
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "agent-logs-block" }, [
-          _c("div", { staticClass: "agentInfo" }, [
-            _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/dummy.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "userName" }, [
-              _vm._v(
-                "\n                            Mohamed Salah\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v(
-                "\n                            9 am - 10 am\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "log-text" }, [
-              _vm._v(
-                "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v(
-                "\n                            10 am - 11 am\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "log-text" }, [
-              _vm._v(
-                "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v(
-                "\n                            11 am - 12 am\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "log-text" }, [
-              _vm._v(
-                "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "showMoreBtn" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "agent-logs-block" }, [
-          _c("div", { staticClass: "agentInfo" }, [
-            _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/dummy.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "userName" }, [
-              _vm._v(
-                "\n                            Lionel Messi\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v(
-                "\n                            9 am - 10 am\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "log-text" }, [
-              _vm._v(
-                "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v(
-                "\n                            10 am - 11 am\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "log-text" }, [
-              _vm._v(
-                "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v(
-                "\n                            11 am - 12 am\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "log-text" }, [
-              _vm._v(
-                "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "showMoreBtn" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "campaign-brief-footer" }, [
-          _c("a", { attrs: { href: "/client/campaign" } }, [
-            _vm._v(
-              "\n                        GO TO CAMPAIGN\n                    "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content-block-campaign-brief" }, [
-        _c("div", { staticClass: "upper-bar" }, [
-          _c("div", { staticClass: "campaignInfo" }, [
-            _c("div", { staticClass: "title" }, [
-              _vm._v(
-                "\n                            Name of the campaign\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "info" }, [
-              _vm._v(
-                "\n                            2 agents currently working on the campaign\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "actionBtn live" }, [
-            _c("a", { attrs: { href: "#" } }, [
-              _vm._v(
-                "\n                            LIVE\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "menu-img" }, [
-              _c("img", {
-                attrs: {
-                  src: "/resumeApp/public/images/client/more_vert_24px.png",
-                  alt: "menu"
-                }
-              })
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "agent-logs-block" }, [
-          _c("div", { staticClass: "agentInfo" }, [
-            _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/dummy.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "userName" }, [
-              _vm._v(
-                "\n                            Mohamed Salah\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v(
-                "\n                            9 am - 10 am\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "log-text" }, [
-              _vm._v(
-                "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v(
-                "\n                            10 am - 11 am\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "log-text" }, [
-              _vm._v(
-                "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v(
-                "\n                            11 am - 12 am\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "log-text" }, [
-              _vm._v(
-                "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v(
-                "\n                            11 am - 12 am\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "log-text" }, [
-              _vm._v(
-                "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "showMoreBtn" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW LESS")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "agent-logs-block" }, [
-          _c("div", { staticClass: "agentInfo" }, [
-            _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/dummy.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "userName" }, [
-              _vm._v(
-                "\n                            Lionel Messi\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v(
-                "\n                            9 am - 10 am\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "log-text" }, [
-              _vm._v(
-                "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v(
-                "\n                            10 am - 11 am\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "log-text" }, [
-              _vm._v(
-                "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v(
-                "\n                            11 am - 12 am\n                        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "log-text" }, [
-              _vm._v(
-                "\n                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "showMoreBtn" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "campaign-brief-footer" }, [
-          _c("a", { attrs: { href: "/client/campaign" } }, [
-            _vm._v(
-              "\n                        GO TO CAMPAIGN\n                    "
-            )
-          ])
-        ])
       ])
     ])
   }
@@ -92926,6 +92346,1065 @@ new SideNav();
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(313)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(315)
+/* template */
+var __vue_template__ = __webpack_require__(316)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-34373751"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\client\\dashboardComponents\\CampaignManager.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-34373751", Component.options)
+  } else {
+    hotAPI.reload("data-v-34373751", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 313 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(314);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("22a1a114", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-34373751\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignManager.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-34373751\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignManager.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 314 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 315 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {};
+  },
+
+  methods: {}
+});
+
+/***/ }),
+/* 316 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "content-block-campaign" }, [
+        _c("div", { staticClass: "upper-bar" }, [
+          _c("div", { staticClass: "welcomeText" }, [
+            _vm._v(
+              "\n                Hello Mr. Marzouk!  You have 8 active campaigns.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "actionText",
+              attrs: { href: "/client/campaigns-archive" }
+            },
+            [
+              _vm._v(
+                "\n                GO TO ARCHIVE OF CAMPAIGNS\n            "
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "bottom-bar" }, [
+          _c("div", { staticClass: "title" }, [
+            _vm._v("\n                MY ACTIVE CAMPAIGNS\n            ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "actionBtn" }, [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", {
+                attrs: {
+                  src: "/resumeApp/public/images/client/plus.png",
+                  alt: "plus sign"
+                }
+              }),
+              _vm._v("CREATE NEW CAMPAIGN\n                ")
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content-block-campaign-brief" }, [
+        _c("div", { staticClass: "upper-bar" }, [
+          _c("div", { staticClass: "campaignInfo" }, [
+            _c("div", { staticClass: "title" }, [
+              _vm._v(
+                "\n                    Name of the campaign\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "info hideOnXS" }, [
+              _vm._v(
+                "\n                    2 agents on the campaign\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "actionBtn" }, [
+            _c("a", { attrs: { href: "#" } }, [
+              _vm._v("\n                    ACTIVE\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "menu-img" }, [
+              _c("img", {
+                attrs: {
+                  src: "/resumeApp/public/images/client/more_vert_24px.png",
+                  alt: "menu"
+                }
+              })
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "agent-logs-block" }, [
+          _c("div", { staticClass: "agentInfo" }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/dummy.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "userName" }, [
+              _vm._v(
+                "\n                            Mohamed Salah\n                        "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    9 am - 10 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "log-text" }, [
+              _vm._v(
+                "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    10 am - 11 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "log-text" }, [
+              _vm._v(
+                "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    11 am - 12 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "log-text" }, [
+              _vm._v(
+                "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "showMoreBtn" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "agent-logs-block" }, [
+          _c("div", { staticClass: "agentInfo" }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/dummy.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "userName" }, [
+              _vm._v(
+                "\n                            Lionel Messi\n                        "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    9 am - 10 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "log-text" }, [
+              _vm._v(
+                "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    10 am - 11 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "log-text" }, [
+              _vm._v(
+                "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    11 am - 12 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "log-text" }, [
+              _vm._v(
+                "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "showMoreBtn" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "campaign-brief-footer" }, [
+          _c("a", { attrs: { href: "/client/campaign" } }, [
+            _vm._v("\n                GO TO CAMPAIGN\n            ")
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content-block-campaign-brief" }, [
+        _c("div", { staticClass: "upper-bar" }, [
+          _c("div", { staticClass: "campaignInfo" }, [
+            _c("div", { staticClass: "title" }, [
+              _vm._v(
+                "\n                    Name of the campaign\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "info" }, [
+              _vm._v(
+                "\n                    2 agents currently working on the campaign\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "actionBtn live" }, [
+            _c("a", { attrs: { href: "#" } }, [
+              _vm._v("\n                    LIVE\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "menu-img" }, [
+              _c("img", {
+                attrs: {
+                  src: "/resumeApp/public/images/client/more_vert_24px.png",
+                  alt: "menu"
+                }
+              })
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "agent-logs-block" }, [
+          _c("div", { staticClass: "agentInfo" }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/dummy.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "userName" }, [
+              _vm._v(
+                "\n                            Mohamed Salah\n                        "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    9 am - 10 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "log-text" }, [
+              _vm._v(
+                "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    10 am - 11 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "log-text" }, [
+              _vm._v(
+                "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    11 am - 12 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "log-text" }, [
+              _vm._v(
+                "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    11 am - 12 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "log-text" }, [
+              _vm._v(
+                "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "showMoreBtn" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW LESS")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "agent-logs-block" }, [
+          _c("div", { staticClass: "agentInfo" }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/dummy.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "userName" }, [
+              _vm._v(
+                "\n                            Lionel Messi\n                        "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    9 am - 10 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "log-text" }, [
+              _vm._v(
+                "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    10 am - 11 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "log-text" }, [
+              _vm._v(
+                "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    11 am - 12 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "log-text" }, [
+              _vm._v(
+                "\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "showMoreBtn" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "campaign-brief-footer" }, [
+          _c("a", { attrs: { href: "/client/campaign" } }, [
+            _vm._v("\n                GO TO CAMPAIGN\n            ")
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-34373751", module.exports)
+  }
+}
+
+/***/ }),
+/* 317 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(318)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(320)
+/* template */
+var __vue_template__ = __webpack_require__(321)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-69608809"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\client\\dashboardComponents\\Payments.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-69608809", Component.options)
+  } else {
+    hotAPI.reload("data-v-69608809", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 318 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(319);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("0e30eb66", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-69608809\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Payments.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-69608809\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Payments.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 319 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 320 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            payments_empty_state: true
+        };
+    }
+});
+
+/***/ }),
+/* 321 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "payments" }, [
+    _c("div", { staticClass: "subscriptions" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.payments_empty_state,
+              expression: "payments_empty_state"
+            }
+          ],
+          staticClass: "subs-empty-state"
+        },
+        [
+          _c("div", { staticClass: "subs-e-s-text" }, [
+            _vm._v("\n                There are no subs yet.\n            ")
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.payments_empty_state,
+              expression: "!payments_empty_state"
+            }
+          ]
+        },
+        [_vm._v("\n            not empty\n        ")]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "invoices" }, [
+      _vm._m(2),
+      _vm._v(" "),
+      _vm._m(3),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.payments_empty_state,
+              expression: "payments_empty_state"
+            }
+          ],
+          staticClass: "subs-empty-state"
+        },
+        [
+          _c("div", { staticClass: "subs-e-s-text" }, [
+            _vm._v("\n                There are no invoices yet.\n            ")
+          ])
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "subs-heading" }, [
+      _c("div", { staticClass: "left" }, [
+        _c("img", {
+          attrs: {
+            src: "/resumeApp/public/images/client/plan.png",
+            alt: "subs icon"
+          }
+        }),
+        _vm._v(" "),
+        _c("span", [
+          _vm._v("\n                    YOUR SUBSCRIPTIONS\n                ")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "right" }, [
+        _vm._v("\n                SUBSCRIPTION RECORD\n            ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "subs-e-s-action" }, [
+      _c("a", { attrs: { href: "javascript:void(0)" } }, [
+        _vm._v(
+          "\n                    SET UP YOUR SUBSCRIPTION PLAN\n                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "invoices-heading" }, [
+      _c("img", {
+        attrs: {
+          src: "/resumeApp/public/images/client/plan.png",
+          alt: "invoices icon"
+        }
+      }),
+      _vm._v("\n            YOUR INVOICES\n        ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "invoices-table" }, [
+      _c("table", [
+        _c("thead", [
+          _c("tr", [
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("INVOICE NUMBER")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("SERVICE PROVIDED")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("TOTAL DUE")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("PAYMENT STATUS")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("EXPORT")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tbody")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-69608809", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

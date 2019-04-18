@@ -339,7 +339,9 @@
     }
 
     .table{
-      overflow-x: scroll !important;
+      @media (max-width:650px) {
+        overflow-x: scroll !important;
+      }
     }
     .invoices-export-btn{
       padding-bottom:26px;

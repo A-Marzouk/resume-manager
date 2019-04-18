@@ -34,6 +34,7 @@ require('./main.js');
 Vue.config.devtools = true;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('add-agent-component', require('./components/client/AddAgentComponent.vue'));
 
 // client components
 Vue.component('client-dashboard', require('./components/client/Dashboard.vue'));
@@ -89,6 +90,13 @@ if ($("#addAgentComponent").length !== 0){
 
     let addAgentComponent = new Vue({
         el:'#addAgentComponent'
+    });
+}
+
+if ($("#addAgent").length !== 0){
+
+    let addAgent = new Vue({
+        el:'#addAgent'
     });
 }
 

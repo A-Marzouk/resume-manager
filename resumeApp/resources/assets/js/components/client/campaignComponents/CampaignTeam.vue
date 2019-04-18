@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="actionBtn">
-                    <a href="#">
+                    <a href="/client/campaign/add-agent">
                         <img src="/resumeApp/public/images/client/plus.png" alt="plus sign">ADD NEW AGENT
                     </a>
                 </div>

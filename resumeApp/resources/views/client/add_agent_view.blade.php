@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div id="addAgentComponent">
+    <div id="addAgent">
         <add-agent-component></add-agent-component>
     </div>
 

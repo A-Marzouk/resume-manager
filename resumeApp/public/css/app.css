@@ -4718,6 +4718,7 @@ body {
       -ms-flex-direction: row;
           flex-direction: row;
   background: none;
+  width: auto;
 }
 
 .client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity {
@@ -6236,6 +6237,22 @@ body {
   border-bottom: 1px solid rgba(188, 191, 198, 0.44);
 }
 
+@media (max-width: 1240px) {
+  .payments .subscriptions .subs-heading {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .payments .subscriptions .subs-heading {
+    padding-top: 34px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .payments .subscriptions .subs-heading .left {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6259,6 +6276,17 @@ body {
   color: #4A5464;
 }
 
+@media (max-width: 650px) {
+  .payments .subscriptions .subs-heading .left span {
+    font-size: 16px;
+  }
+
+  .payments .subscriptions .subs-heading .left span img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
 .payments .subscriptions .subs-heading .right {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6276,12 +6304,234 @@ body {
   color: #05A4F4;
 }
 
+@media (max-width: 1240px) {
+  .payments .subscriptions .subs-heading .right {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    padding-top: 45px;
+  }
+
+  .payments .subscriptions .subs-heading .right span {
+    margin-right: 18px;
+  }
+}
+
+@media (max-width: 650px) {
+  .payments .subscriptions .subs-heading .right {
+    padding-top: 20px;
+  }
+
+  .payments .subscriptions .subs-heading .right span {
+    margin-right: 4px;
+  }
+}
+
+.payments .subscriptions .subs-heading .right a {
+  height: 36px;
+  width: 271px;
+  margin-right: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px solid #05A4F4;
+  border-radius: 40px;
+  color: inherit;
+}
+
+@media (max-width: 1240px) {
+  .payments .subscriptions .subs-heading .right a {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 650px) {
+  .payments .subscriptions .subs-heading .right a {
+    font-size: 14px;
+    width: 257px;
+  }
+}
+
+.payments .subscriptions .subs-heading .right a img {
+  margin-right: 12px;
+}
+
+.payments .subscriptions .subs-heading .right a:hover {
+  text-decoration: none;
+}
+
+.payments .subscriptions .subs-list {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.payments .subscriptions .subs-list .sub-item .next-billing-date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  font-family: Roboto;
+  font-style: normal;
+  line-height: 24px;
+  padding-top: 20px;
+  padding-bottom: 18px;
+  font-size: 12px;
+  color: lightgray;
+}
+
+.payments .subscriptions .subs-list .sub-item .next-billing-date .date {
+  font-weight: 500;
+  font-size: 14px;
+  color: #FFA368;
+  margin-right: 5px;
+}
+
+.payments .subscriptions .subs-list .sub-item .sub-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-right: -16px;
+}
+
+@media (max-width: 650px) {
+  .payments .subscriptions .subs-list .sub-item .sub-info {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.payments .subscriptions .subs-list .sub-item .sub-info .sub-info-box {
+  width: 210px;
+  height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  border: 1px solid #E2E3E6;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  margin-right: 16px;
+}
+
+.payments .subscriptions .subs-list .sub-item .sub-info .sub-info-box img {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.payments .subscriptions .subs-list .sub-item .sub-info .sub-info-box .right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.payments .subscriptions .subs-list .sub-item .sub-info .sub-info-box .right .sub-info-box-heading {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 24px;
+  color: #FFA368;
+}
+
+.payments .subscriptions .subs-list .sub-item .sub-info .sub-info-box .right .sub-info-box-note {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 24px;
+  color: #4A5464;
+  opacity: 0.7;
+}
+
+.payments .subscriptions .subs-list .sub-item .sub-action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 20px 0 28px 0;
+}
+
+@media (max-width: 650px) {
+  .payments .subscriptions .subs-list .sub-item .sub-action {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.payments .subscriptions .subs-list .sub-item .sub-action a {
+  width: 226px;
+  height: 48px;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #05A4F4;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.payments .subscriptions .subs-list .sub-item .sub-action a:hover {
+  text-decoration: none;
+}
+
 .payments .invoices {
   background: white;
   -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
           box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
   border-radius: 4px;
   margin-top: 15px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .payments .invoices .invoices-heading {
@@ -6296,8 +6546,6 @@ body {
           align-items: center;
   padding-bottom: 24px;
   padding-top: 34px;
-  margin-left: 24px;
-  margin-right: 24px;
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
@@ -6311,25 +6559,11 @@ body {
   margin-right: 20px;
 }
 
-.payments .invoices .invoices-table {
-  margin-left: 24px;
-  margin-right: 24px;
-}
-
 .payments .invoices .invoices-table table {
   width: 100%;
 }
 
 .payments .invoices .invoices-table table thead tr {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   background: #3EA3D7;
   border-radius: 4px;
   height: 38px;
@@ -6343,6 +6577,158 @@ body {
   line-height: 16px;
   text-transform: uppercase;
   color: #FFFFFF;
+  border: none;
+  white-space: nowrap;
+}
+
+.payments .invoices .invoices-table table thead tr th:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.payments .invoices .invoices-table table thead tr th:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.payments .invoices .invoices-table table tbody tr {
+  height: 70px;
+}
+
+.payments .invoices .invoices-table table tbody tr td {
+  padding-top: 25px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #4A5464;
+}
+
+.payments .invoices .invoices-table table tbody tr td .invoice-view {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: -4px;
+}
+
+.payments .invoices .invoices-table table tbody tr td .invoice-number {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.payments .invoices .invoices-table table tbody tr td .invoice-service {
+  line-height: 13px;
+  letter-spacing: -0.1px;
+  color: #4A5464;
+}
+
+.payments .invoices .invoices-table table tbody tr td .invoice-amount {
+  font-weight: 500;
+}
+
+.payments .invoices .invoices-table table tbody tr td .payment-btn a:hover {
+  text-decoration: none;
+}
+
+.payments .invoices .invoices-table table tbody tr td .payment-btn a {
+  width: 116px;
+  height: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #FFFFFF;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 40px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.1px;
+}
+
+.payments .invoices .invoices-table table tbody tr td .due a {
+  border: 2px solid #F56F6F;
+  color: #F56F6F;
+}
+
+.payments .invoices .invoices-table table tbody tr td .upcoming a {
+  border: 2px solid #FFA368;
+  color: #FFA368;
+}
+
+.payments .invoices .invoices-table table tbody tr td .paid a {
+  border: 2px solid #27AE60;
+  color: #27AE60;
+}
+
+.payments .invoices .invoices-table table tbody tr td .export-icon img {
+  margin-left: 10px;
+}
+
+.payments .invoices .table {
+  overflow-x: scroll !important;
+}
+
+.payments .invoices .invoices-export-btn {
+  padding-bottom: 26px;
+  padding-top: 26px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.payments .invoices .invoices-export-btn a:hover {
+  text-decoration: none;
+}
+
+.payments .invoices .invoices-export-btn a {
+  width: 183px;
+  height: 36px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.1px;
+  color: #05A4F4;
+  border: 2px solid #05A4F4;
+  border-radius: 2px;
 }
 
 .payments .subscriptions .subs-empty-state,

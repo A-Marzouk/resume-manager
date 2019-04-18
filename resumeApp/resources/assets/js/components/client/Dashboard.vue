@@ -139,13 +139,11 @@
                     </div>
                 </div>
             </div>
-
             <div class="content-block">
                 <keep-alive>
                     <router-view></router-view>
                 </keep-alive>
             </div>
-
         </div>
     </div>
 </template>

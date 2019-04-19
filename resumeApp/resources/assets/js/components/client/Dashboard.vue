@@ -77,14 +77,14 @@
                                 Agents database
                             </div>
                         </div>
-                        <div class="menu-block row" :class="{'active' : activeTab === 'my_account'}" @click="selectTab('my_account')">
+                        <router-link to="/my-account" class="menu-block row" :class="{'active' : activeTab === 'my-account'}" @click.native="selectTab('my-account')">
                             <div class="imageContainer">
-                                <img :src="getMenuBlockIcon('my_account')" alt="icon">
+                                <img :src="getMenuBlockIcon('my-account')" alt="icon">
                             </div>
                             <div class="menu-block-name">
                                 My account
                             </div>
-                        </div>
+                        </router-link>
                     </div>
                 </div>
 
@@ -130,14 +130,14 @@
                         Agents database
                     </div>
                 </div>
-                <div class="menu-block row" :class="{'active' : activeTab === 'my_account'}" @click="selectTab('my_account')">
+                <router-link to="/my-account" class="menu-block row" :class="{'active' : activeTab === 'my-account'}" @click.native="selectTab('my-account')">
                     <div class="imageContainer">
-                        <img :src="getMenuBlockIcon('my_account')" alt="icon">
+                        <img :src="getMenuBlockIcon('my-account')" alt="icon">
                     </div>
                     <div class="menu-block-name">
                         My account
                     </div>
-                </div>
+                </router-link>
             </div>
             <div class="content-block">
                 <keep-alive>

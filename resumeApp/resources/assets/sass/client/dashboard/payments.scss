@@ -27,21 +27,21 @@
           margin-right:20px;
         }
         span{
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: 500;
-          font-size: 20px;
-          line-height: 16px;
-          text-transform: uppercase;
-          color: #4A5464;
-          @media (max-width:650px) {
-            font-size: 16px;
-            img{
-              width: 30px;
-              height: 30px;
-            }
-          }
-        }
+           font-family: Roboto;
+           font-style: normal;
+           font-weight: 500;
+           font-size: 20px;
+           line-height: 16px;
+           text-transform: uppercase;
+           color: #4A5464;
+           @media (max-width:650px) {
+             font-size: 16px;
+             img{
+               width: 30px;
+               height: 30px;
+             }
+           }
+         }
       }
       .right{
         @media (max-width:1240px) {

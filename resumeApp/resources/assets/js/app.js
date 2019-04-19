@@ -48,6 +48,7 @@ Vue.component('campaign-archives', require('./components/client/CampaignArchives
     // dashboard inside components
     import CampaignManager from './components/client/dashboardComponents/CampaignManager.vue';
     import Payments from './components/client/dashboardComponents/Payments.vue';
+    import MyAccount from './components/client/dashboardComponents/MyAccount.vue';
 
 
 if ($("#campaignMainComponent").length !== 0){
@@ -71,6 +72,7 @@ if ($("#campaignMainComponent").length !== 0){
 if ($("#clientDashboardComponent").length !== 0){
 
     const routes = [
+        { path: '/:my-account', component: MyAccount },
         { path: '/:payments', component: Payments },
         { path: '/', component: CampaignManager }
     ];

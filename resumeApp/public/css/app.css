@@ -4383,18 +4383,54 @@ body {
 }
 
 .agent-logs-block .log .log-text {
+  width: 766px;
+  background: #EEF9FF;
+  border-radius: 80px;
+  height: 60px;
+  margin-bottom: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.agent-logs-block .log .log-text .log-text-content {
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
-  width: 766px;
   line-height: 18px;
   letter-spacing: -0.1px;
   color: #4A5464;
-  background: #EEF9FF;
-  border-radius: 80px;
-  padding: 17px 30px 14px 21px;
-  margin-bottom: 18px;
+}
+
+.agent-logs-block .log .log-text .agent-initials {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 24px;
+  text-align: right;
+  letter-spacing: 0.7px;
+  color: #FFFFFF;
+  padding: 7px;
+  width: 24px;
+  height: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 12px;
+  margin-right: 12px;
+  border-radius: 50%;
+  background: #FFBC58;
 }
 
 @media (max-width: 1240px) {

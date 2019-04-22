@@ -450,18 +450,44 @@
       }
     }
     .log-text{
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 12px;
       width: 766px;
-      line-height: 18px;
-      letter-spacing: -0.1px;
-      color: #4A5464;
       background:#EEF9FF;
       border-radius:  80px;
-      padding: 17px 30px 14px 21px;
+      height:60px;
       margin-bottom: 18px;
+      display:flex;
+      align-items:center;
+      .log-text-content{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 18px;
+        letter-spacing: -0.1px;
+        color: #4A5464;
+      }
+      .agent-initials{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 24px;
+        text-align: right;
+        letter-spacing: 0.7px;
+        color: #FFFFFF;
+        padding:7px;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left:12px;
+        margin-right:12px;
+        border-radius: 50%;
+        background: #FFBC58;
+
+      }
+
       @media (max-width:1240px) {
         width: 640px;
       }

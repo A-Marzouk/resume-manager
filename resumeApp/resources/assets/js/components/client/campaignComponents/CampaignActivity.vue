@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="d-flex justify-content-center">
         <div class="client_dashboard_content campaign_activity">
             <div class="dashboard-side-menu hideOnTablet">
                 <div class="team-list-header">

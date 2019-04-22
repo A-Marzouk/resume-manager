@@ -27,7 +27,7 @@ if($user){
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel fixed-top">
             <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
-                <img src="/resumeApp/public/images/newResume/123wf_logo.png" alt="logo">
+                <img src="/resumeApp/public/images/client/logo_123.png" alt="logo">
             </a>
 
             <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="" style="border: none;" data-target="#" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

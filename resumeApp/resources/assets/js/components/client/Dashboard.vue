@@ -11,7 +11,7 @@
             </a>
 
             <a class="navbar-brand" href="/client">
-                <img src="/resumeApp/public/images/client/123logo.png" alt="logout">
+                <img src="/resumeApp/public/images/client/logo_123.png" alt="logout" style="width: 177px;">
             </a>
             <div class="form-inline my-2 my-lg-0">
 

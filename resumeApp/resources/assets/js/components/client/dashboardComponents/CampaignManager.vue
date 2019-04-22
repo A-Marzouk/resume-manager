@@ -34,6 +34,9 @@
                     <a href="#">
                         ACTIVE
                     </a>
+                    <a href="#" class="statistics-btn">
+                        GO TO STATISTICS
+                    </a>
                     <div class="menu-img">
                         <img src="/resumeApp/public/images/client/more_vert_24px.png" alt="menu">
                     </div>
@@ -48,7 +51,7 @@
                 </div>
                 <div class="log">
                     <div class="log-time">
-                        9 am - 10 am
+                        9.15 am
                     </div>
                     <div class="log-text">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -57,7 +60,7 @@
                 </div>
                 <div class="log">
                     <div class="log-time">
-                        10 am - 11 am
+                        9.15 am
                     </div>
                     <div class="log-text">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -66,7 +69,7 @@
                 </div>
                 <div class="log">
                     <div class="log-time">
-                        11 am - 12 am
+                        9.15 am
                     </div>
                     <div class="log-text">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -86,7 +89,7 @@
                 </div>
                 <div class="log">
                     <div class="log-time">
-                        9 am - 10 am
+                        9.15 am
                     </div>
                     <div class="log-text">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -95,7 +98,7 @@
                 </div>
                 <div class="log">
                     <div class="log-time">
-                        10 am - 11 am
+                        9.15 am
                     </div>
                     <div class="log-text">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -104,7 +107,7 @@
                 </div>
                 <div class="log">
                     <div class="log-time">
-                        11 am - 12 am
+                        9.15 am
                     </div>
                     <div class="log-text">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -135,6 +138,9 @@
                 <div class="actionBtn live">
                     <a href="#">
                         LIVE
+                    </a>
+                    <a href="#" class="statistics-btn">
+                        GO TO STATISTICS
                     </a>
                     <div class="menu-img">
                         <img src="/resumeApp/public/images/client/more_vert_24px.png" alt="menu">

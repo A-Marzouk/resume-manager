@@ -3828,7 +3828,7 @@ body {
 
 #client_dash .client_navbar {
   background: white;
-  height: 70px !important;
+  height: 56px !important;
 }
 
 #client_dash .client_navbar .navbar-brand img {
@@ -3885,7 +3885,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-top: 28px;
+  padding-top: 20px;
 }
 
 .client_dashboard_content .dashboard-side-menu .menu-block:hover {
@@ -3993,7 +3993,7 @@ body {
   -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
           box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
   border-radius: 4px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   height: 138px;
 }
 
@@ -4211,11 +4211,13 @@ body {
 }
 
 .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn {
-  margin-top: 24px;
   margin-right: 34px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 @media (max-width: 745px) {
@@ -4234,8 +4236,15 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 40px;
-  padding: 2px 2px 10px 2px;
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 116px;
   height: 30px;
   font-family: Roboto;
@@ -4248,8 +4257,30 @@ body {
   color: #F2994A;
 }
 
+.client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn a.statistics-btn {
+  width: 145px;
+  height: 36px;
+  margin-left: 69px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #05A4F4;
+  border: 2px solid #05A4F4;
+  border-radius: 2px;
+}
+
 .client_dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn .menu-img img {
-  margin-left: 15px;
+  margin-left: 20px;
   padding-top: 3px;
 }
 
@@ -4300,14 +4331,14 @@ body {
   padding-bottom: 20px;
 }
 
-.agent-logs-block .agentInfo img {
-  padding-right: 8px;
+@media (max-width: 1240px) {
+  .agent-logs-block .agentInfo {
+    margin-left: 16px;
+  }
 }
 
-@media (max-width: 745px) {
-  .agent-logs-block .agentInfo {
-    margin-left: 10px;
-  }
+.agent-logs-block .agentInfo img {
+  padding-right: 8px;
 }
 
 .agent-logs-block .agentInfo .userName {
@@ -4330,7 +4361,7 @@ body {
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
-  width: 80px;
+  width: 69px;
   font-size: 12px;
   margin-top: 22px;
   line-height: 24px;
@@ -4345,9 +4376,9 @@ body {
   }
 }
 
-@media (max-width: 745px) {
+@media (max-width: 1240px) {
   .agent-logs-block .log .log-time {
-    margin-left: 10px;
+    margin-left: 16px;
   }
 }
 
@@ -4364,12 +4395,11 @@ body {
   border-radius: 80px;
   padding: 17px 30px 14px 21px;
   margin-bottom: 18px;
-  margin-left: 24px;
 }
 
 @media (max-width: 1240px) {
   .agent-logs-block .log .log-text {
-    width: 560px;
+    width: 640px;
   }
 }
 
@@ -4650,7 +4680,7 @@ body {
 }
 
 #campaign_activity .client_navbar {
-  height: 70px !important;
+  height: 56px !important;
 }
 
 #campaign_activity .campaign-info-bar {
@@ -4660,7 +4690,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: -3px;
+  margin-top: -16px;
   -webkit-box-pack: left;
       -ms-flex-pack: left;
           justify-content: left;
@@ -4742,6 +4772,12 @@ body {
   }
 }
 
+@media (max-width: 1240px) {
+  .client_dashboard_content.campaign_activity {
+    width: 100%;
+  }
+}
+
 .client_dashboard_content.campaign_activity .dashboard-side-menu {
   background: white;
   width: 339px;
@@ -4797,9 +4833,27 @@ body {
   width: auto;
 }
 
+@media (max-width: 1240px) {
+  .client_dashboard_content.campaign_activity .content-block {
+    width: 96%;
+  }
+}
+
+@media (max-width: 425px) {
+  .client_dashboard_content.campaign_activity .content-block {
+    width: 100%;
+  }
+}
+
 .client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity {
   margin-bottom: 0;
   width: 791px;
+}
+
+@media (max-width: 1240px) {
+  .client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity {
+    width: 100%;
+  }
 }
 
 .client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs {
@@ -4874,7 +4928,7 @@ body {
 }
 
 .client_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar img {
-  margin-left: 19px;
+  margin-left: 24px;
   margin-right: 5px;
   margin-bottom: 4px;
   height: 24px;

@@ -1,6 +1,6 @@
 #campaign_activity{
   .client_navbar{
-    height:70px !important;
+    height:56px !important;
   }
 
   .campaign-info-bar{
@@ -8,7 +8,7 @@
     width: 100%;
     background: #05A4F4;
     display: flex;
-    margin-top:-3px;
+    margin-top: -16px;
     justify-content: left;
     align-items: center;
     box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
@@ -73,6 +73,9 @@
 }
 
 .client_dashboard_content.campaign_activity{
+  @media (max-width:1240px) {
+    width: 100%;
+  }
   .dashboard-side-menu{
     background: white;
     width: 339px;
@@ -119,12 +122,18 @@
     flex-direction: row;
     background: none;
     width: auto;
+    @media (max-width:1240px) {
+      width: 96%;
+    }
+    @media (max-width:425px) {
+      width: 100%;
+    }
     .content-block-campaign-activity{
-      @media (max-width:1240px) {
-
-      }
       margin-bottom: 0;
       width: 791px;
+      @media (max-width:1240px) {
+        width: 100%;
+      }
       .data-logs{
         height: 506px;
         background: white;
@@ -174,7 +183,7 @@
         justify-content: flex-start;
         align-items: center;
         img{
-          margin-left: 19px;
+          margin-left: 24px;
           margin-right: 5px;
           margin-bottom: 4px;
           height: 24px;

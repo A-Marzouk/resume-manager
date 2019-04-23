@@ -119,11 +119,16 @@
                             <div class="agent-logs-block">
                                 <div class="log">
                                     <div class="log-time">
-                                        9 am - 10 am
+                                        9.15 am
                                     </div>
                                     <div class="log-text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        <span class="agent-initials">
+                                            CB
+                                        </span>
+                                        <span class="log-text-content">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="showMoreBtn">
@@ -132,11 +137,16 @@
                                 <div class="lineDivide"></div>
                                 <div class="log">
                                     <div class="log-time">
-                                        10 am - 11 am
+                                        9.15 am
                                     </div>
                                     <div class="log-text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        <span class="agent-initials">
+                                            CB
+                                        </span>
+                                        <span class="log-text-content">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="showMoreBtn disabled">
@@ -145,11 +155,16 @@
                                 <div class="lineDivide"></div>
                                 <div class="log">
                                     <div class="log-time">
-                                        9 am - 10 am
+                                        9.15 am
                                     </div>
                                     <div class="log-text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        <span class="agent-initials">
+                                            CB
+                                        </span>
+                                        <span class="log-text-content">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="showMoreBtn">
@@ -158,11 +173,16 @@
                                 <div class="lineDivide"></div>
                                 <div class="log">
                                     <div class="log-time">
-                                        9 am - 10 am
+                                        9.15 am
                                     </div>
                                     <div class="log-text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        <span class="agent-initials">
+                                            CB
+                                        </span>
+                                        <span class="log-text-content">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="showMoreBtn">
@@ -171,11 +191,16 @@
                                 <div class="lineDivide"></div>
                                 <div class="log">
                                     <div class="log-time">
-                                        11 am - 12 am
+                                        9.15 am
                                     </div>
                                     <div class="log-text">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        <span class="agent-initials">
+                                            CB
+                                        </span>
+                                        <span class="log-text-content">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="showMoreBtn disabled">

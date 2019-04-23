@@ -60542,6 +60542,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -60982,14 +61007,22 @@ var staticRenderFns = [
       _c("div", { staticClass: "log" }, [
         _c("div", { staticClass: "log-time" }, [
           _vm._v(
-            "\n                                    9 am - 10 am\n                                "
+            "\n                                    9.15 am\n                                "
           )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "log-text" }, [
-          _vm._v(
-            "\n                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                "
-          )
+          _c("span", { staticClass: "agent-initials" }, [
+            _vm._v(
+              "\n                                        CB\n                                    "
+            )
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "log-text-content" }, [
+            _vm._v(
+              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
+            )
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -61002,14 +61035,22 @@ var staticRenderFns = [
       _c("div", { staticClass: "log" }, [
         _c("div", { staticClass: "log-time" }, [
           _vm._v(
-            "\n                                    10 am - 11 am\n                                "
+            "\n                                    9.15 am\n                                "
           )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "log-text" }, [
-          _vm._v(
-            "\n                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                "
-          )
+          _c("span", { staticClass: "agent-initials" }, [
+            _vm._v(
+              "\n                                        CB\n                                    "
+            )
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "log-text-content" }, [
+            _vm._v(
+              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
+            )
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -61022,14 +61063,22 @@ var staticRenderFns = [
       _c("div", { staticClass: "log" }, [
         _c("div", { staticClass: "log-time" }, [
           _vm._v(
-            "\n                                    9 am - 10 am\n                                "
+            "\n                                    9.15 am\n                                "
           )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "log-text" }, [
-          _vm._v(
-            "\n                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                "
-          )
+          _c("span", { staticClass: "agent-initials" }, [
+            _vm._v(
+              "\n                                        CB\n                                    "
+            )
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "log-text-content" }, [
+            _vm._v(
+              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
+            )
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -61042,14 +61091,22 @@ var staticRenderFns = [
       _c("div", { staticClass: "log" }, [
         _c("div", { staticClass: "log-time" }, [
           _vm._v(
-            "\n                                    9 am - 10 am\n                                "
+            "\n                                    9.15 am\n                                "
           )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "log-text" }, [
-          _vm._v(
-            "\n                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                "
-          )
+          _c("span", { staticClass: "agent-initials" }, [
+            _vm._v(
+              "\n                                        CB\n                                    "
+            )
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "log-text-content" }, [
+            _vm._v(
+              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
+            )
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -61062,14 +61119,22 @@ var staticRenderFns = [
       _c("div", { staticClass: "log" }, [
         _c("div", { staticClass: "log-time" }, [
           _vm._v(
-            "\n                                    11 am - 12 am\n                                "
+            "\n                                    9.15 am\n                                "
           )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "log-text" }, [
-          _vm._v(
-            "\n                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                "
-          )
+          _c("span", { staticClass: "agent-initials" }, [
+            _vm._v(
+              "\n                                        CB\n                                    "
+            )
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "log-text-content" }, [
+            _vm._v(
+              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
+            )
+          ])
         ])
       ]),
       _vm._v(" "),

@@ -5774,60 +5774,6 @@ body {
   color: #4A5464;
 }
 
-.campaign_brief_content .campaign-info-content .faq-content .faq-question-input,
-.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-top: 36px;
-}
-
-.campaign_brief_content .campaign-info-content .faq-content .faq-question-input img,
-.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input img {
-  margin-right: 38px;
-}
-
-.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input,
-.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-}
-
-.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input input,
-.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input textarea,
-.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input input,
-.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input textarea {
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid #7A828D;
-  height: 56px;
-}
-
-.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input input:focus,
-.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input textarea:focus,
-.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input input:focus,
-.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input textarea:focus {
-  border-color: inherit;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  border-bottom: 1px solid #05A4F4;
-  outline: none;
-}
-
-.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input img,
-.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input img {
-  margin-left: -62px;
-  cursor: pointer;
-}
-
 .campaign_brief_content .campaign-info-content .faq-content .faq-add-btn {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6094,6 +6040,60 @@ body {
 .ql-toolbar.ql-snow {
   border: none !important;
   background: rgba(149, 204, 255, 0.05);
+}
+
+.faq-question-input,
+.faq-answer-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 36px;
+}
+
+.faq-question-input img,
+.faq-answer-input img {
+  margin-right: 38px;
+}
+
+.faq-question-input .faq-input,
+.faq-answer-input .faq-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.faq-question-input .faq-input input,
+.faq-question-input .faq-input textarea,
+.faq-answer-input .faq-input input,
+.faq-answer-input .faq-input textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #7A828D;
+  height: 56px;
+}
+
+.faq-question-input .faq-input input:focus,
+.faq-question-input .faq-input textarea:focus,
+.faq-answer-input .faq-input input:focus,
+.faq-answer-input .faq-input textarea:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 1px solid #05A4F4;
+  outline: none;
+}
+
+.faq-question-input .faq-input img,
+.faq-answer-input .faq-input img {
+  margin-left: -62px;
+  cursor: pointer;
 }
 
 .faq-questions-list {
@@ -7154,5 +7154,62 @@ body {
 .faqs-wrapper .faq-questions-list .faq-question .faq-numbering span {
   width: 24px;
   height: 24px;
+}
+
+.account-info-edit.dashboard-box {
+  max-width: 1164px;
+  width: 100%;
+  padding-left: 113px;
+  padding-right: 113px;
+}
+
+.account-info-edit-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.account-info-edit-heading {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.faq-question-input.account-edit-input {
+  width: 400px;
+}
+
+.account-edit-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.account-edit-section .account-edit-section-heading {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #3EA3D7;
+  margin-top: 40px;
+}
+
+.account-edit-section-inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 

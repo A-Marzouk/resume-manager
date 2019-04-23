@@ -132,3 +132,45 @@
     }
   }
 }
+
+// my account edit scss :
+
+.account-info-edit.dashboard-box{
+  max-width: 1164px;
+  width: 100%;
+  padding-left: 113px;
+  padding-right: 113px;
+}
+
+.account-info-edit-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+.account-info-edit-heading{
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.faq-question-input.account-edit-input{
+  width:400px;
+}
+.account-edit-section{
+  display: flex;
+  flex-direction: column;
+  .account-edit-section-heading{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #3EA3D7;
+    margin-top: 40px;
+  }
+}
+.account-edit-section-inputs{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

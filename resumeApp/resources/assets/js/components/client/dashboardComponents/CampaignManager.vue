@@ -34,9 +34,6 @@
                     <a href="#">
                         ACTIVE
                     </a>
-                    <a href="#" class="statistics-btn">
-                        GO TO STATISTICS
-                    </a>
                     <div class="menu-img">
                         <img src="/resumeApp/public/images/client/more_vert_24px.png" alt="menu">
                     </div>
@@ -168,9 +165,6 @@
                 <div class="actionBtn live">
                     <a href="#">
                         LIVE
-                    </a>
-                    <a href="#" class="statistics-btn">
-                        GO TO STATISTICS
                     </a>
                     <div class="menu-img">
                         <img src="/resumeApp/public/images/client/more_vert_24px.png" alt="menu">

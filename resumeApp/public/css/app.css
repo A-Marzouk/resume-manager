@@ -4386,11 +4386,13 @@ body {
   width: 766px;
   background: #EEF9FF;
   border-radius: 80px;
-  height: 60px;
   margin-bottom: 18px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 8px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

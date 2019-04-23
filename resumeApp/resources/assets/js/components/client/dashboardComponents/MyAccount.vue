@@ -9,7 +9,7 @@
                     </span>
                 </div>
                 <div class="right no-decoration">
-                    <a href="#" class="normal-link">
+                    <a href="/client/account/edit" class="normal-link">
                         EDIT
                     </a>
                 </div>
@@ -101,6 +101,29 @@
                     </span>
                 </div>
             </div>
+
+            <div class="faqs-wrapper">
+                <div class="faq-questions-list">
+                    <div v-for="(faq,index) in faqs" v-bind:key="index" class="question-container">
+                        <div class="faq-question">
+                        <div class="faq-numbering">
+                            <span>{{index+1}}</span>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-item-question">
+                                {{faq.question}}
+                            </div>
+                            <div class="faq-item-answer" v-show="faq.opened">
+                                {{faq.answer}}
+                            </div>
+                        </div>
+                        <div class="faq-edit">
+                            <img src="/resumeApp/public/images/client/my_account/dropdown.png" :id="'toggleIcon_'+faq.id" alt="toggle icon" @click="toggleAnswer(faq.id)">
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -109,11 +132,66 @@
     export default {
         data(){
             return{
+                faqs:[
+                    {
+                        id:1,
+                        opened:false,
+                        question:'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit,' +
+                            ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+                        answer:'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
+                            ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' +
+                            ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' +
+                            ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+                    },
+                    {
+                        id:2,
+                        opened:false,
+                        question:'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit,' +
+                            ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+                        answer:'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
+                            ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' +
+                            ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' +
+                            ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+                    },
+                    {
+                        id:3,
+                        opened:false,
+                        question:'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit,' +
+                            ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+                        answer:'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
+                            ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' +
+                            ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' +
+                            ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+                    },
+                    {
+                        id:4,
+                        opened:false,
+                        question:'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit,' +
+                            ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+                        answer:'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
+                            ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' +
+                            ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' +
+                            ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+                    },
 
+                ],
             }
         },
         methods:{
+            toggleAnswer(faq_id){
+                let faqs = this.faqs;
+                $.each(faqs, function(i){
+                    if(faqs[i].id === faq_id) {
+                        faqs[i].opened = !faqs[i].opened ;
+                        if(faqs[i].opened){
+                            $('#toggleIcon_'+faq_id).css('transform','rotate(180deg)');
+                        }else{
+                            $('#toggleIcon_'+faq_id).css('transform','rotate(0deg)');
+                        }
+                    }
 
+                });
+            }
         },
         mounted(){
 

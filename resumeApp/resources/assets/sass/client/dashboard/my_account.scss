@@ -118,3 +118,17 @@
 .agreement:first-child{
   border-bottom: 1px solid #E2E3E6;
 }
+
+.faqs-wrapper{
+  padding:30px 32px 34px 26px;
+  .faq-questions-list{
+    margin-top: 0;
+  }
+  .faq-questions-list .faq-question .faq-numbering {
+    margin-top: 10px;
+    span{
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

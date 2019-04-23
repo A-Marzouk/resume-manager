@@ -1,13 +1,13 @@
 <template>
     <div>
-        <div class="headerStyle">
-            <div class="justify-align-center">
-                <a href="#">
-                    <img src="/resumeApp/public/images/client/add_agent/ic/ic_arrow_back_app_bar.png" alt="" class="header-icon">
+        <nav class="navbar navbar-light fixed-top client_navbar">
+            <div class="backBtn">
+                <a href="/client">
+                    <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
                 </a>
-                ADD NEW AGENT
+                ARCHIVE OF CAMPAIGNS
             </div>
-        </div>
+        </nav>
 
         <div class="form-main-grid main-grid">
             <div class="row">
@@ -24,7 +24,7 @@
                 </div>
             </div>
 
-            <form>
+            <form class="add-agent-form">
                 <div class="form-row">
                     <div class="col-sm-12 col-md-12 col-lg-6">
                         <div class="form-row">

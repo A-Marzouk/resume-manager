@@ -57626,6 +57626,182 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "test"
@@ -57639,9 +57815,400 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    this is a test component\n")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "nav",
+        { staticClass: "navbar navbar-light fixed-top client_navbar" },
+        [
+          _c("div", { staticClass: "backBtn" }, [
+            _c("a", { attrs: { href: "/client" } }, [
+              _c("img", {
+                attrs: {
+                  src: "/resumeApp/public/images/client/arrow_back.png",
+                  alt: "back-icon"
+                }
+              })
+            ]),
+            _vm._v("\n            ARCHIVE OF CAMPAIGNS\n        ")
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-main-grid main-grid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12 col-sm-12 col-md-12 header-text" }, [
+            _c("img", {
+              staticClass: "icon-margin small-image",
+              attrs: {
+                src:
+                  "/resumeApp/public/images/client/add_agent/ic/search_40px.png",
+                alt: ""
+              }
+            }),
+            _vm._v(
+              "\n                ENTER THE PARAMETERS OF SEARCH\n            "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-sm-12" }, [_c("hr")])
+        ]),
+        _vm._v(" "),
+        _c("form", { staticClass: "add-agent-form" }, [
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-6" }, [
+              _c("div", { staticClass: "form-row" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "col-sm-12 col-md-12 col-lg-11 input_divider"
+                  },
+                  [
+                    _c("label", [_vm._v("Enter primary job title")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control form-control-sm borderinput",
+                      attrs: { type: "text", placeholder: "e.g. Telesale" }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "col-sm-12 col-md-12 col-lg-11 input_divider"
+                  },
+                  [
+                    _c("label", [_vm._v("Enter sector experience")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control form-control-sm borderinput",
+                      attrs: {
+                        type: "text",
+                        placeholder: "PARAMETERS OF SEARCH"
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "col-sm-12 col-md-12 col-lg-11 input_divider"
+                  },
+                  [
+                    _c("label", [
+                      _vm._v("Enter technologies/ frameworks/software")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control form-control-sm borderinput",
+                      attrs: {
+                        type: "text",
+                        placeholder: "you can enter several "
+                      }
+                    })
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-6" }, [
+              _c("div", { staticClass: "form-row" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-sm-12 col-md-12 col-lg-11 form-group input_divider"
+                  },
+                  [
+                    _c("label", { attrs: { for: "inState" } }, [
+                      _vm._v("Choose voice character (for sales-agents)")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control form-control-MD",
+                        attrs: { id: "inState" }
+                      },
+                      [
+                        _c("option", { attrs: { selected: "", value: "" } }, [
+                          _vm._v("Voice chapter 1 type")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "" } }, [_vm._v("...")])
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "col-sm-12 col-md-12 col-lg-11 input_divider"
+                  },
+                  [
+                    _c("label", [_vm._v("Specify available hours per week")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control form-control-sm borderinput",
+                      attrs: { type: "text", placeholder: "25" }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-12 col-md-12 col-lg-12 " }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", {}, [
+                      _c("div", { staticClass: "col-sm-12 input_divider" }, [
+                        _c("label", [_vm._v("Choose languages")]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-1 radio-grid" }, [
+                            _c("div", { staticClass: "radio-button" }, [
+                              _c("input", {
+                                staticClass: "sr-only",
+                                attrs: {
+                                  type: "radio",
+                                  name: "language",
+                                  id: "english"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("label", { attrs: { for: "english" } }, [
+                                _c("img", {
+                                  attrs: {
+                                    src:
+                                      "/resumeApp/public/images/client/add_agent/language/english_icon.png",
+                                    alt: "english"
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", {}, [
+                                _c("label", { attrs: { for: "english" } }, [
+                                  _vm._v("english")
+                                ])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", [
+                              _c("input", {
+                                staticClass: "sr-only",
+                                attrs: {
+                                  type: "radio",
+                                  name: "language",
+                                  id: "spanish"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("label", { attrs: { for: "spanish" } }, [
+                                _c("img", {
+                                  attrs: {
+                                    src:
+                                      "/resumeApp/public/images/client/add_agent/language/spanish_icon.png",
+                                    alt: "english"
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", {}, [
+                                _c("label", { attrs: { for: "spanish" } }, [
+                                  _vm._v("spanish")
+                                ])
+                              ])
+                            ])
+                          ])
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-1",
+                        staticStyle: { "max-width": "55% !important" }
+                      },
+                      [
+                        _c("div", { staticClass: "col-sm-12 input_divider" }, [
+                          _c("label", [_vm._v("Choose gender")]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col-1 radio-grid" }, [
+                              _c("div", { staticClass: "radio-button" }, [
+                                _c("input", {
+                                  staticClass: "sr-only",
+                                  attrs: {
+                                    type: "radio",
+                                    name: "gender",
+                                    id: "male"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("label", { attrs: { for: "male" } }, [
+                                  _c("img", {
+                                    attrs: {
+                                      src:
+                                        "/resumeApp/public/images/client/add_agent/gender/male_icon.png",
+                                      alt: "male"
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c("div", {}, [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "icon-lable",
+                                      attrs: { for: "male" }
+                                    },
+                                    [_vm._v("male")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "radio-button" }, [
+                                _c("input", {
+                                  staticClass: "sr-only",
+                                  attrs: {
+                                    type: "radio",
+                                    name: "gender",
+                                    id: "female"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("label", { attrs: { for: "female" } }, [
+                                  _c("img", {
+                                    attrs: {
+                                      src:
+                                        "/resumeApp/public/images/client/add_agent/gender/female_icon.png",
+                                      alt: "female"
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c("div", {}, [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "icon-lable",
+                                      attrs: { for: "female" }
+                                    },
+                                    [_vm._v("female")]
+                                  )
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", {}, [
+                                _c("input", {
+                                  staticClass: "sr-only",
+                                  attrs: {
+                                    type: "radio",
+                                    name: "gender",
+                                    id: "both"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("label", { attrs: { for: "both" } }, [
+                                  _c("img", {
+                                    attrs: {
+                                      src:
+                                        "/resumeApp/public/images/client/add_agent/gender/both_gender_icon.png",
+                                      alt: "both"
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c("div", {}, [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "icon-lable",
+                                      attrs: { for: "both" }
+                                    },
+                                    [_vm._v("both")]
+                                  )
+                                ])
+                              ])
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "container" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-12" }, [_c("hr")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-12" }, [
+              _c("div", { staticClass: "form-row" }, [
+                _c("div", { staticClass: "container" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-12 col-sm-6 col-md-8 right-side" },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-left",
+                            attrs: { type: "button" }
+                          },
+                          [_vm._v("VIEW SAVED SEARCH")]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-12 col-sm-6 col-md-4" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-12 center-content" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-right-top",
+                              attrs: { type: "button" }
+                            },
+                            [_vm._v("SEARCH FOR AGENTES")]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-12 center-content" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-right-bottom",
+                              attrs: { type: "button" }
+                            },
+                            [_vm._v("SAVE THIS SEARCH")]
+                          )
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

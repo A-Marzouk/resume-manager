@@ -4547,7 +4547,7 @@ body {
 }
 
 .no-decoration a:hover {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 @media (min-width: 1240px) {
@@ -4802,6 +4802,12 @@ body {
 
 .backBtn a {
   margin: 0px 30px 2px 25px;
+}
+
+@media (max-width: 600px) {
+  .backBtn a {
+    margin-left: 0;
+  }
 }
 
 @media (max-width: 1240px) {
@@ -6049,10 +6055,36 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-top: 36px;
+}
+
+.faq-question-input .faq-input-label,
+.faq-answer-input .faq-input-label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #4A5464;
+}
+
+.faq-question-input .sub-label,
+.faq-answer-input .sub-label {
+  font-size: 16px;
+  color: #7A828D;
+  padding-bottom: 15px;
+  padding-right: 38px;
+}
+
+@media (max-width: 768px) {
+  .faq-question-input .sub-label,
+  .faq-answer-input .sub-label {
+    font-size: 13px;
+  }
 }
 
 .faq-question-input img,
@@ -7419,6 +7451,20 @@ input[type="radio"]:checked + label {
   padding-right: 113px;
 }
 
+@media (max-width: 1240px) {
+  .account-info-edit.dashboard-box {
+    padding-left: 38px;
+    padding-right: 38px;
+  }
+}
+
+@media (max-width: 425px) {
+  .account-info-edit.dashboard-box {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
 .account-info-edit-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7428,14 +7474,44 @@ input[type="radio"]:checked + label {
           justify-content: center;
 }
 
+@media (max-width: 1240px) {
+  .account-info-edit-wrapper {
+    width: 738px;
+  }
+}
+
+@media (max-width: 768px) {
+  .account-info-edit-wrapper {
+    width: 96%;
+  }
+}
+
 .account-info-edit-heading {
   width: 100%;
   margin-left: 0;
   margin-right: 0;
 }
 
-.faq-question-input.account-edit-input {
+.faq-question-input.account-edit-input .faq-input {
   width: 400px;
+}
+
+@media (max-width: 1240px) {
+  .faq-question-input.account-edit-input .faq-input {
+    width: 307px;
+  }
+}
+
+@media (max-width: 600px) {
+  .faq-question-input.account-edit-input .faq-input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .faq-question-input.account-edit-input {
+    width: 100%;
+  }
 }
 
 .account-edit-section {
@@ -7446,6 +7522,7 @@ input[type="radio"]:checked + label {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding-bottom: 38px;
 }
 
 .account-edit-section .account-edit-section-heading {
@@ -7458,6 +7535,21 @@ input[type="radio"]:checked + label {
   margin-top: 40px;
 }
 
+.account-edit-section .faq-question-input .faq-input img,
+.account-edit-section .faq-answer-input .faq-input img {
+  margin-left: -34px;
+}
+
+.account-edit-section .faq-question-input img,
+.account-edit-section .faq-answer-input img {
+  margin-right: 0;
+}
+
+.sub-section {
+  border-top: 1px solid rgba(188, 191, 198, 0.44);
+  border-bottom: 1px solid rgba(188, 191, 198, 0.44);
+}
+
 .account-edit-section-inputs {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7467,5 +7559,46 @@ input[type="radio"]:checked + label {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .account-edit-section-inputs {
+    width: 100%;
+  }
+}
+
+.account-edit-section-edit-btn {
+  margin-top: 44px;
+  margin-bottom: 26px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.account-edit-section-edit-btn a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #A1A7AF;
+  border-radius: 2px;
+  width: 158px;
+  height: 48px;
+  background: #E4E4E4;
 }
 

@@ -328,8 +328,25 @@
 
 .faq-question-input,.faq-answer-input{
   display: flex;
-  align-items:center ;
+  flex-direction: column;
   margin-top: 36px;
+  .faq-input-label{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #4A5464;
+  }
+  .sub-label{
+    font-size: 16px;
+    color: #7A828D;
+    padding-bottom: 15px;
+    padding-right: 38px;
+    @media (max-width:768px) {
+      font-size: 13px;
+    }
+  }
   img{
     margin-right:38px
   }

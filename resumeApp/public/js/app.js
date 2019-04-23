@@ -59732,7 +59732,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59850,10 +59850,92 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
-        return {};
+        return {
+            client: {
+                name: 'Ahmed Marzouk',
+                agency: 'The best agency',
+                contact: ' 0044203700685',
+                timeZone: '(GMT - 5:00) Eastern time (US & Canada), Bogota, Lima',
+                emailDept: 'email1234567890@gmail.com',
+                email: 'test@gmail.com'
+            }
+        };
     },
 
     methods: {}
@@ -59874,310 +59956,509 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "account-info-edit-wrapper" }, [
-      _c(
-        "nav",
-        { staticClass: "navbar navbar-light fixed-top client_navbar" },
-        [
-          _c("div", { staticClass: "backBtn" }, [
-            _c("a", { attrs: { href: "/client#/my-account" } }, [
-              _c("img", {
-                attrs: {
-                  src: "/resumeApp/public/images/client/arrow_back.png",
-                  alt: "back-icon"
-                }
-              })
-            ]),
-            _vm._v("\n            ACCOUNT INFORMATION\n        ")
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "account-info-edit dashboard-box" }, [
+    return _c("div", { staticClass: "d-flex justify-content-center" }, [
+      _c("div", { staticClass: "account-info-edit-wrapper" }, [
         _c(
-          "div",
-          { staticClass: "account-info-edit-heading dashboard-box-heading" },
+          "nav",
+          { staticClass: "navbar navbar-light fixed-top client_navbar" },
           [
-            _c("div", { staticClass: "left" }, [
-              _c("img", {
-                attrs: {
-                  src:
-                    "/resumeApp/public/images/client/my_account/info_40px.png",
-                  alt: "info icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("span", [
-                _vm._v(
-                  "\n                    EDIT ACCOUNT INFORMATION\n                "
-                )
-              ])
+            _c("div", { staticClass: "backBtn" }, [
+              _c("a", { attrs: { href: "/client#/my-account" } }, [
+                _c("img", {
+                  attrs: {
+                    src: "/resumeApp/public/images/client/arrow_back.png",
+                    alt: "back-icon"
+                  }
+                })
+              ]),
+              _vm._v("\n                ACCOUNT INFORMATION\n            ")
             ])
           ]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "account-edit-section" }, [
-          _c("div", { staticClass: "account-edit-section-heading" }, [
-            _vm._v("\n                BASIC INFORMATION\n            ")
+        _c("div", { staticClass: "account-info-edit dashboard-box" }, [
+          _c(
+            "div",
+            { staticClass: "account-info-edit-heading dashboard-box-heading" },
+            [
+              _c("div", { staticClass: "left" }, [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "/resumeApp/public/images/client/my_account/info_40px.png",
+                    alt: "info icon"
+                  }
+                }),
+                _vm._v(" "),
+                _c("span", [
+                  _vm._v(
+                    "\n                    EDIT ACCOUNT INFORMATION\n                "
+                  )
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "account-edit-section" }, [
+            _c("div", { staticClass: "account-edit-section-heading" }, [
+              _vm._v(
+                "\n                    BASIC INFORMATION\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "account-edit-section-inputs" }, [
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Enter your agency name\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Enter your ..."
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      }
+                    })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Enter name of contact person\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Enter your ..."
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      }
+                    })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Enter contact phone\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Enter your ..."
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      }
+                    })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Select your time zone\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Enter your ..."
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      }
+                    })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Enter main e-mail address\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Enter your ..."
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      }
+                    })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Email address of accounts dept\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Enter your ..."
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      }
+                    })
+                  ])
+                ]
+              )
+            ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "account-edit-section-inputs" }, [
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("div", { staticClass: "faq-input" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "text",
-                      name: "faq",
-                      placeholder: "Write a frequently asked question"
-                    }
-                  }),
+          _c(
+            "div",
+            {
+              staticClass:
+                "account-edit-section flex-row flex-wrap justify-content-between sub-section"
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                        Enter your company website\n                    "
+                    )
+                  ]),
                   _vm._v(" "),
-                  _c("img", {
-                    attrs: {
-                      src:
-                        "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                      alt: "delete icon"
-                    }
-                  })
-                ])
-              ]
-            ),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Enter your ..."
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      }
+                    })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                        Enter your Skype ID\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Enter your ..."
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      }
+                    })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                        Enter second contact person\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Enter your ..."
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      }
+                    })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                        Enter second contact phone\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Enter your ..."
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      }
+                    })
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "account-edit-section" }, [
+            _c("div", { staticClass: "account-edit-section-heading" }, [
+              _vm._v(
+                "\n                    PREFERRED CONTACT\n                "
+              )
+            ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("div", { staticClass: "faq-input" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "text",
-                      name: "faq",
-                      placeholder: "Write a frequently asked question"
-                    }
-                  }),
+            _c("div", { staticClass: "account-edit-section-inputs flex" }, [
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Choose your preferred contact\n                        "
+                    )
+                  ]),
                   _vm._v(" "),
-                  _c("img", {
-                    attrs: {
-                      src:
-                        "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                      alt: "delete icon"
-                    }
-                  })
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("div", { staticClass: "faq-input" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "text",
-                      name: "faq",
-                      placeholder: "Write a frequently asked question"
-                    }
-                  }),
+                  _c("div", { staticClass: "faq-input-label sub-label" }, [
+                    _vm._v(
+                      "\n                            Please state here the preferred way that you would like to communicate with your agent.\n                        "
+                    )
+                  ]),
                   _vm._v(" "),
-                  _c("img", {
-                    attrs: {
-                      src:
-                        "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                      alt: "delete icon"
-                    }
-                  })
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("div", { staticClass: "faq-input" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "text",
-                      name: "faq",
-                      placeholder: "Write a frequently asked question"
-                    }
-                  }),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Enter your ..."
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      }
+                    })
+                  ]),
                   _vm._v(" "),
-                  _c("img", {
-                    attrs: {
-                      src:
-                        "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                      alt: "delete icon"
-                    }
-                  })
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("div", { staticClass: "faq-input" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "text",
-                      name: "faq",
-                      placeholder: "Write a frequently asked question"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("img", {
-                    attrs: {
-                      src:
-                        "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                      alt: "delete icon"
-                    }
-                  })
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("div", { staticClass: "faq-input" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "text",
-                      name: "faq",
-                      placeholder: "Write a frequently asked question"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("img", {
-                    attrs: {
-                      src:
-                        "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                      alt: "delete icon"
-                    }
-                  })
-                ])
-              ]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "account-edit-section" }, [
-          _c("div", { staticClass: "account-edit-section-heading" }, [
-            _vm._v("\n                PREFERRED CONTACT\n            ")
+                  _c("div", { staticClass: "faq-input mt-4" }, [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Enter your ..."
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      }
+                    })
+                  ])
+                ]
+              )
+            ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "account-edit-section-inputs flex" }, [
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("div", { staticClass: "faq-input" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "text",
-                      name: "faq",
-                      placeholder: "Write a frequently asked question"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("img", {
-                    attrs: {
-                      src:
-                        "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                      alt: "delete icon"
-                    }
-                  })
-                ])
-              ]
-            ),
+          _c("div", { staticClass: "account-edit-section sub-section" }, [
+            _c("div", { staticClass: "account-edit-section-heading" }, [
+              _vm._v("\n                    PASSWORD\n                ")
+            ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("div", { staticClass: "faq-input" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "text",
-                      name: "faq",
-                      placeholder: "Write a frequently asked question"
-                    }
-                  }),
+            _c("div", { staticClass: "account-edit-section-inputs" }, [
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Write a new password\n                        "
+                    )
+                  ]),
                   _vm._v(" "),
-                  _c("img", {
-                    attrs: {
-                      src:
-                        "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                      alt: "delete icon"
-                    }
-                  })
-                ])
-              ]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "account-edit-section" }, [
-          _c("div", { staticClass: "account-edit-section-heading" }, [
-            _vm._v("\n                PASSWORD\n            ")
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Enter your ..."
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      }
+                    })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Repeat your new password\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Enter your ..."
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      }
+                    })
+                  ])
+                ]
+              )
+            ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "account-edit-section-inputs" }, [
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("div", { staticClass: "faq-input" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "text",
-                      name: "faq",
-                      placeholder: "Write a frequently asked question"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("img", {
-                    attrs: {
-                      src:
-                        "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                      alt: "delete icon"
-                    }
-                  })
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("div", { staticClass: "faq-input" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "text",
-                      name: "faq",
-                      placeholder: "Write a frequently asked question"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("img", {
-                    attrs: {
-                      src:
-                        "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                      alt: "delete icon"
-                    }
-                  })
-                ])
-              ]
-            )
-          ])
+          _c(
+            "div",
+            { staticClass: "account-edit-section-edit-btn no-decoration" },
+            [
+              _c("a", { attrs: { href: "#" } }, [
+                _vm._v("\n                    APPLY EDITS\n                ")
+              ])
+            ]
+          )
         ])
       ])
     ])

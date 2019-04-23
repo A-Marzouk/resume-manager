@@ -140,11 +140,27 @@
   width: 100%;
   padding-left: 113px;
   padding-right: 113px;
+  @media (max-width:1240px) {
+    padding-left: 38px;
+    padding-right: 38px;
+  }
+
+  @media (max-width:425px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
 }
 
 .account-info-edit-wrapper{
   display: flex;
   justify-content: center;
+  @media (max-width:1240px) {
+    width: 738px;
+  }
+  @media (max-width:768px) {
+    width: 96%;
+  }
 }
 
 .account-info-edit-heading{
@@ -154,11 +170,23 @@
 }
 
 .faq-question-input.account-edit-input{
-  width:400px;
+  .faq-input{
+    width:400px;
+    @media (max-width:1240px) {
+      width:307px;
+    }
+    @media (max-width:600px) {
+      width:100%;
+    }
+  }
+  @media (max-width:600px) {
+    width:100%;
+  }
 }
 .account-edit-section{
   display: flex;
   flex-direction: column;
+  padding-bottom: 38px;
   .account-edit-section-heading{
     font-family: Roboto;
     font-style: normal;
@@ -168,9 +196,51 @@
     color: #3EA3D7;
     margin-top: 40px;
   }
+
+  .faq-question-input .faq-input img, .faq-answer-input .faq-input img {
+    margin-left: -34px;
+  }
+
+  .faq-question-input img, .faq-answer-input img {
+    margin-right: 0;
+  }
+}
+.sub-section{
+  border-top: 1px solid  rgba(188, 191, 198, 0.44);
+  border-bottom: 1px solid rgba(188, 191, 198, 0.44);
 }
 .account-edit-section-inputs{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  @media (max-width:600px) {
+    width:100%;
+  }
 }
+
+
+.account-edit-section-edit-btn{
+  margin-top: 44px;
+  margin-bottom: 26px;
+  display: flex;
+  justify-content: flex-end;
+  a{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #A1A7AF;
+    border-radius: 2px;
+    width:158px;
+    height:48px;
+    background: #E4E4E4;
+  }
+}
+

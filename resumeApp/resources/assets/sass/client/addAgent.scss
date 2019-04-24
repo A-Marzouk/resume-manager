@@ -4,8 +4,16 @@ $top: 32px;
 $primary: #FFA368;
 $secondary: #05A4F4;
 
+body {
+  background: #eff0f2;
+  color: #4A5464;
+  font-family: Roboto, serif;
+  font-style: normal;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+}
 
-.add-agent-form{
+form {
   margin-left: 15px !important;
 }
 
@@ -16,7 +24,7 @@ $secondary: #05A4F4;
 }
 
 .headerStyle {
-  box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
   background: $whiteBackground;
 }
 
@@ -27,8 +35,25 @@ $secondary: #05A4F4;
 .main-grid {
   padding: $top 114px 18px 114px !important;
   background: $whiteBackground;
-  box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
   border-radius: 4px;
+}
+
+.invisiable-div {
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #05A4F4;
+  background: #FFFFFF;
+  box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+}
+
+.search-icon-margin {
+  margin: 20px;
 }
 
 .header-text {
@@ -36,12 +61,16 @@ $secondary: #05A4F4;
 }
 
 .form-main-grid{
-  margin: $top 101px 88px;
+  margin: $top 101px 0;
+}
+
+.search-main-grid {
+  margin: 16px 101px 0;
 }
 
 .input_divider{
   margin: $top 0 $top!important;
-  font-family: Roboto;
+  font-family: Roboto, serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -55,19 +84,20 @@ $secondary: #05A4F4;
 }
 
 .radio-grid {
-  display: flex;font-family: Roboto;
+  display: flex;
+  font-family: Roboto, serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: normal;
   text-align: center;
-  padding-left: 0px !important;
+  padding-left: 0 !important;
 }
 
 .borderinput {
-  border: 0px !important;
+  border: 0 !important;
   border-bottom: 1px solid #7A828D !important;
-  border-radius: 4px 4px 0px 0px !important;
+  border-radius: 4px 4px 0 0 !important;
   background: #fbfbfb !important;
   padding: 8px 6.43px 8px 22.14px !important;
   font-size: 14px!important;
@@ -81,7 +111,6 @@ $secondary: #05A4F4;
   background: $whiteBackground;
   color:#b6b6b6;
   font-weight: 500;
-  font-size: 12px;
   line-height: 24px;
   text-align: center;
   letter-spacing: -0.1px;
@@ -98,7 +127,9 @@ $secondary: #05A4F4;
 .right-side {
   text-align: right;
 }
-
+.play-icon {
+  margin-right: 15px;
+}
 .center-content {
   display: flex;
   justify-content: center;
@@ -121,16 +152,27 @@ $secondary: #05A4F4;
   font-size: 0.75rem;
   background: $whiteBackground;
   font-weight: 500;
-  font-size: 12px;
   line-height: 24px;
   text-align: center;
-  letter-spacing: -0.1px;
+  letter-spacing: -0.1px !important;
+  padding-left: 0 !important;
+  width: 234px !important;
+}
+
+.btn-footer {
+  border:1px solid $secondary !important;
+  color: $secondary;
+  background-color: transparent;
+}
+
+.refresh-icon {
+  padding-right: 12px;
 }
 
 select {
   border: none !important;
   border-bottom: 1px solid #7A828D !important;
-  border-radius: 0px !important;
+  border-radius: 0 !important;
 }
 
 input:focus, textarea:focus, button:focus, select:focus {
@@ -154,6 +196,66 @@ input[type="radio"]:checked + label {
 .icon-margin {
   margin-right: 20px;
 }
+.primaryjob-icon {
+  padding-right: 17px;
+}
+.big-font {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.avator {
+  margin-right: 33px;
+  border-radius: 50%;
+}
+
+.btn-margin {
+  padding-left: 89px;
+}
+
+.btn-space {
+  margin: 20px 0;
+}
+
+.btn-primar {
+  background-color: $secondary;
+  border: none;
+  color: $whiteBackground;
+}
+
+.btn-primar:hover {
+  background-color: $secondary;
+  // border: none;
+}
+.btn-primar:active {
+  background-color: $secondary!important;
+  border: none;
+}
+.btn-responsive {
+  display: block;
+  width: 208px ;
+  white-space: normal !important;
+  word-wrap: break-word;
+}
+
+.visible-add-agent {
+  visibility: visible;
+}
+
+.invisible-add-agent {
+  visibility: hidden;
+}
+.invisiblty {
+  visibility: hidden;
+}
+
+.btn-radius {
+  font-size: 14px!important;
+  line-height: 24px!important;
+  border-radius: 40px !important;
+}
+
+
 
 @media screen and (max-width: 1270px) {
   .main-grid {
@@ -161,7 +263,11 @@ input[type="radio"]:checked + label {
   }
 
   .form-main-grid {
-    margin: $top 39px 88px;
+    margin: $top 39px 0;
+  }
+
+  .search-main-grid {
+    margin: 16px 39px 0;
   }
 }
 @media screen and (max-width: 992px) {
@@ -170,10 +276,24 @@ input[type="radio"]:checked + label {
     margin-right: 6px;
   }
 
+  .search-main-grid {
+    margin: 16px 6px 0;
+  }
+
   .main-grid {
     padding: 22px 262px 18px 72px;
   }
+
+  .avator {
+    margin-right: 23px;
+  }
+
+  .btn-margin {
+    padding-left: 87px;
+  }
 }
+
+
 
 @media screen and (min-width: 1440px) {
   .select-margin {
@@ -184,6 +304,10 @@ input[type="radio"]:checked + label {
 @media screen and (max-width: 575px) {
   .formHeader {
     font-size: 1rem;
+  }
+
+  .search-icon-margin  {
+    margin: 15px 9px 15px 15px;
   }
 
   .right-side {
@@ -199,17 +323,24 @@ input[type="radio"]:checked + label {
     height: 30px;
   }
 
-  .visible {
+  .visiblty {
     visibility: hidden!important;
-    margin-top: -24px;
+    display: none;
+    // margin-top: -24px;
   }
 
-  .invisible {
+  .agent-desc-row {
+    margin-top: 43px;
+  }
+
+  .primaryjob-icon {
+    padding-right: 17px;
+  }
+
+  .invisiblty {
     visibility: visible!important;
   }
-  .invisible-part-top {
-    margin-top: -100px;
-  }
+
 
   .icon-margin {
     margin-right: 10px;
@@ -219,12 +350,28 @@ input[type="radio"]:checked + label {
     font-size: 16px;
   }
 
+  .avator {
+    margin-right: 15.8px;
+  }
+
+  .btn-margin {
+    padding-left: 0;
+  }
+
+  .btn-responsive {
+    // display: block;
+    width: 109px !important;
+    white-space: normal !important;
+    word-wrap: break-word;
+    font-size: 11px!important;
+  }
+
 }
 
 @media screen and (min-width: 575px) {
-  .invisable-part-bottom {
-    margin-top: -125px;
-  }
+  // .invisable-part-bottom {
+  //   margin-top: -85px;
+  // }
 
 }
 
@@ -232,4 +379,14 @@ input[type="radio"]:checked + label {
   .main-grid {
     padding: 22px 20px 10px 16px;
   }
+
+  .invisible-add-agent {
+    visibility: visible;
+  }
+
+  .visible-add-agent {
+    visibility: hidden;
+    display: none
+  }
 }
+

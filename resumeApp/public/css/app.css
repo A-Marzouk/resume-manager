@@ -4386,13 +4386,11 @@ body {
   width: 766px;
   background: #EEF9FF;
   border-radius: 80px;
+  height: 60px;
   margin-bottom: 18px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-right: 8px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -4569,7 +4567,7 @@ body {
 }
 
 .side-nav {
-  margin-top: 56px;
+  margin-top: 70px;
   position: relative;
   -webkit-transition: -webkit-transform .35s ease-out;
   transition: -webkit-transform .35s ease-out;
@@ -5776,6 +5774,60 @@ body {
   color: #4A5464;
 }
 
+.campaign_brief_content .campaign-info-content .faq-content .faq-question-input,
+.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 36px;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-question-input img,
+.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input img {
+  margin-right: 38px;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input,
+.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input input,
+.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input textarea,
+.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input input,
+.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #7A828D;
+  height: 56px;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input input:focus,
+.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input textarea:focus,
+.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input input:focus,
+.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input textarea:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 1px solid #05A4F4;
+  outline: none;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-question-input .faq-input img,
+.campaign_brief_content .campaign-info-content .faq-content .faq-answer-input .faq-input img {
+  margin-left: -62px;
+  cursor: pointer;
+}
+
 .campaign_brief_content .campaign-info-content .faq-content .faq-add-btn {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5816,6 +5868,145 @@ body {
 .campaign_brief_content .campaign-info-content .faq-content .faq-add-btn.active a {
   color: #fff;
   background: #05A4F4;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list {
+  margin-top: 37px;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .question-container {
+  border-bottom: 1px solid rgba(188, 191, 198, 0.44);
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question {
+  margin-top: 7px;
+  padding-bottom: 45px;
+  padding-top: 54px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question .faq-numbering {
+  margin-right: 36px;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question .faq-numbering span {
+  width: 36px;
+  height: 36px;
+  background: #FFA368;
+  color: white;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question .faq-item .faq-item-question {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #4A5464;
+  margin-bottom: 20px;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question .faq-item .faq-item-answer {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  color: #4A5464;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question .faq-item .faq-item-answer .question-edit-state {
+  width: 100%;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question .faq-edit {
+  margin-left: 15px;
+  margin-top: 4px;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question .faq-edit img {
+  cursor: pointer;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-question .faq-edit .faq-edit-disabled {
+  cursor: auto;
+  opacity: .5;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .question-container:last-child {
+  border: none;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state {
+  padding-bottom: 45px;
+  padding-top: 54px;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state .edit-heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state .edit-heading .faq-numbering {
+  margin-right: 36px;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state .edit-heading .faq-numbering span {
+  width: 36px;
+  height: 36px;
+  background: #FFA368;
+  color: white;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state .edit-heading .edit-title {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #4A5464;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state .edit-heading .edit-action-btns a:hover {
+  text-decoration: none;
+}
+
+.campaign_brief_content .campaign-info-content .faq-content .faq-questions-list .faq-edit-state .edit-heading .edit-action-btns a {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.1px;
+  color: #05A4F4;
+  margin-left: 70px;
 }
 
 .campaign_brief_content .campaign-info-content .process-flow-content {
@@ -6044,199 +6235,6 @@ body {
   background: rgba(149, 204, 255, 0.05);
 }
 
-.faq-question-input,
-.faq-answer-input {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-top: 36px;
-}
-
-.faq-question-input img,
-.faq-answer-input img {
-  margin-right: 38px;
-}
-
-.faq-question-input .faq-input,
-.faq-answer-input .faq-input {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-}
-
-.faq-question-input .faq-input input,
-.faq-question-input .faq-input textarea,
-.faq-answer-input .faq-input input,
-.faq-answer-input .faq-input textarea {
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid #7A828D;
-  height: 56px;
-}
-
-.faq-question-input .faq-input input:focus,
-.faq-question-input .faq-input textarea:focus,
-.faq-answer-input .faq-input input:focus,
-.faq-answer-input .faq-input textarea:focus {
-  border-color: inherit;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  border-bottom: 1px solid #05A4F4;
-  outline: none;
-}
-
-.faq-question-input .faq-input img,
-.faq-answer-input .faq-input img {
-  margin-left: -62px;
-  cursor: pointer;
-}
-
-.faq-questions-list {
-  margin-top: 37px;
-}
-
-.faq-questions-list .question-container {
-  border-bottom: 1px solid rgba(188, 191, 198, 0.44);
-}
-
-.faq-questions-list .faq-question {
-  margin-top: 7px;
-  padding-bottom: 45px;
-  padding-top: 54px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.faq-questions-list .faq-question .faq-numbering {
-  margin-right: 36px;
-}
-
-.faq-questions-list .faq-question .faq-numbering span {
-  width: 36px;
-  height: 36px;
-  background: #FFA368;
-  color: white;
-  border-radius: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.faq-questions-list .faq-question .faq-item .faq-item-question {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  color: #4A5464;
-  margin-bottom: 20px;
-}
-
-.faq-questions-list .faq-question .faq-item .faq-item-answer {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 24px;
-  color: #4A5464;
-}
-
-.faq-questions-list .faq-question .faq-item .faq-item-answer .question-edit-state {
-  width: 100%;
-}
-
-.faq-questions-list .faq-question .faq-edit {
-  margin-left: 15px;
-  margin-top: 4px;
-}
-
-.faq-questions-list .faq-question .faq-edit img {
-  cursor: pointer;
-}
-
-.faq-questions-list .faq-question .faq-edit .faq-edit-disabled {
-  cursor: auto;
-  opacity: .5;
-}
-
-.faq-questions-list .question-container:last-child {
-  border: none;
-}
-
-.faq-questions-list .faq-edit-state {
-  padding-bottom: 45px;
-  padding-top: 54px;
-}
-
-.faq-questions-list .faq-edit-state .edit-heading {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.faq-questions-list .faq-edit-state .edit-heading .faq-numbering {
-  margin-right: 36px;
-}
-
-.faq-questions-list .faq-edit-state .edit-heading .faq-numbering span {
-  width: 36px;
-  height: 36px;
-  background: #FFA368;
-  color: white;
-  border-radius: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.faq-questions-list .faq-edit-state .edit-heading .edit-title {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  color: #4A5464;
-}
-
-.faq-questions-list .faq-edit-state .edit-heading .edit-action-btns a:hover {
-  text-decoration: none;
-}
-
-.faq-questions-list .faq-edit-state .edit-heading .edit-action-btns a {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
-  text-align: center;
-  letter-spacing: -0.1px;
-  color: #05A4F4;
-  margin-left: 70px;
-}
-
 .campaign-archives {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6384,7 +6382,16 @@ body {
   border-bottom: none;
 }
 
-.add-agent-form {
+body {
+  background: #eff0f2;
+  color: #4A5464;
+  font-family: Roboto;
+  font-style: normal;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+}
+
+form {
   margin-left: 15px !important;
 }
 
@@ -6412,12 +6419,34 @@ body {
   border-radius: 4px;
 }
 
+.invisiable-div {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #05A4F4;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+}
+
+.search-icon-margin {
+  margin: 20px;
+}
+
 .header-text {
   font-size: 1.25rem;
 }
 
 .form-main-grid {
-  margin: 32px 101px 88px;
+  margin: 32px 101px 0;
+}
+
+.search-main-grid {
+  margin: 16px 101px 0;
 }
 
 .input_divider {
@@ -6481,6 +6510,10 @@ body {
   text-align: right;
 }
 
+.play-icon {
+  margin-right: 15px;
+}
+
 .center-content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6522,7 +6555,19 @@ body {
   font-size: 12px;
   line-height: 24px;
   text-align: center;
-  letter-spacing: -0.1px;
+  letter-spacing: -0.1px !important;
+  padding-left: 0 !important;
+  width: 234px !important;
+}
+
+.btn-footer {
+  border: 1px solid #05A4F4 !important;
+  color: #05A4F4;
+  background-color: transparent;
+}
+
+.refresh-icon {
+  padding-right: 12px;
 }
 
 select {
@@ -6559,13 +6604,79 @@ input[type="radio"]:checked + label {
   margin-right: 20px;
 }
 
+.primaryjob-icon {
+  padding-right: 17px;
+}
+
+.big-font {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.avator {
+  margin-right: 33px;
+  border-radius: 50%;
+}
+
+.btn-margin {
+  padding-left: 89px;
+}
+
+.btn-space {
+  margin: 20px 0;
+}
+
+.btn-primar {
+  background-color: #05A4F4;
+  border: none;
+  color: #fff;
+}
+
+.btn-primar:hover {
+  background-color: #05A4F4;
+}
+
+.btn-primar:active {
+  background-color: #05A4F4 !important;
+  border: none;
+}
+
+.btn-responsive {
+  display: block;
+  width: 208px;
+  white-space: normal !important;
+  word-wrap: break-word;
+}
+
+.visible-add-agent {
+  visibility: visible;
+}
+
+.invisible-add-agent {
+  visibility: hidden;
+}
+
+.invisiblty {
+  visibility: hidden;
+}
+
+.btn-radius {
+  font-size: 14px !important;
+  line-height: 24px !important;
+  border-radius: 40px !important;
+}
+
 @media screen and (max-width: 1270px) {
   .main-grid {
     padding: 21px 60px 18px 40px !important;
   }
 
   .form-main-grid {
-    margin: 32px 39px 88px;
+    margin: 32px 39px 0px;
+  }
+
+  .search-main-grid {
+    margin: 16px 39px 0;
   }
 }
 
@@ -6575,8 +6686,20 @@ input[type="radio"]:checked + label {
     margin-right: 6px;
   }
 
+  .search-main-grid {
+    margin: 16px 6px 0;
+  }
+
   .main-grid {
     padding: 22px 262px 18px 72px;
+  }
+
+  .avator {
+    margin-right: 23px;
+  }
+
+  .btn-margin {
+    padding-left: 87px;
   }
 }
 
@@ -6589,6 +6712,10 @@ input[type="radio"]:checked + label {
 @media screen and (max-width: 575px) {
   .formHeader {
     font-size: 1rem;
+  }
+
+  .search-icon-margin {
+    margin: 15px 9px 15px 15px;
   }
 
   .right-side {
@@ -6604,17 +6731,21 @@ input[type="radio"]:checked + label {
     height: 30px;
   }
 
-  .visible {
+  .visiblty {
     visibility: hidden !important;
-    margin-top: -24px;
+    display: none;
   }
 
-  .invisible {
+  .agent-desc-row {
+    margin-top: 43px;
+  }
+
+  .primaryjob-icon {
+    padding-right: 17px;
+  }
+
+  .invisiblty {
     visibility: visible !important;
-  }
-
-  .invisible-part-top {
-    margin-top: -100px;
   }
 
   .icon-margin {
@@ -6624,17 +6755,35 @@ input[type="radio"]:checked + label {
   .header-text {
     font-size: 16px;
   }
-}
 
-@media screen and (min-width: 575px) {
-  .invisable-part-bottom {
-    margin-top: -125px;
+  .avator {
+    margin-right: 15.8px;
+  }
+
+  .btn-margin {
+    padding-left: 0;
+  }
+
+  .btn-responsive {
+    width: 109px !important;
+    white-space: normal !important;
+    word-wrap: break-word;
+    font-size: 11px !important;
   }
 }
 
 @media screen and (max-width: 772px) {
   .main-grid {
     padding: 22px 20px 10px 16px;
+  }
+
+  .invisible-add-agent {
+    visibility: visible;
+  }
+
+  .visible-add-agent {
+    visibility: hidden;
+    display: none;
   }
 }
 
@@ -7393,79 +7542,5 @@ input[type="radio"]:checked + label {
 
 .agreement:first-child {
   border-bottom: 1px solid #E2E3E6;
-}
-
-.faqs-wrapper {
-  padding: 30px 32px 34px 26px;
-}
-
-.faqs-wrapper .faq-questions-list {
-  margin-top: 0;
-}
-
-.faqs-wrapper .faq-questions-list .faq-question .faq-numbering {
-  margin-top: 10px;
-}
-
-.faqs-wrapper .faq-questions-list .faq-question .faq-numbering span {
-  width: 24px;
-  height: 24px;
-}
-
-.account-info-edit.dashboard-box {
-  max-width: 1164px;
-  width: 100%;
-  padding-left: 113px;
-  padding-right: 113px;
-}
-
-.account-info-edit-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.account-info-edit-heading {
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.faq-question-input.account-edit-input {
-  width: 400px;
-}
-
-.account-edit-section {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.account-edit-section .account-edit-section-heading {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 24px;
-  color: #3EA3D7;
-  margin-top: 40px;
-}
-
-.account-edit-section-inputs {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
 }
 

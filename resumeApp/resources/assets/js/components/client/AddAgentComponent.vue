@@ -8,7 +8,8 @@
                 ARCHIVE OF CAMPAIGNS
             </div>
         </nav>
-
+        <div class="visible-add-agent">
+            <!-- visibale in laptop -->
         <div class="form-main-grid main-grid">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 header-text">
@@ -518,10 +519,7 @@
 
     </div>
 
-    </div>
-    </div>
-    </div>
-    </div>
+
 </template>
 
 <script>
@@ -529,4 +527,3 @@
         name: "test"
     }
 </script>
-

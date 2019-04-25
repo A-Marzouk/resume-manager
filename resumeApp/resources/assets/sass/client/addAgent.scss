@@ -376,6 +376,7 @@ input[type="radio"]:checked + label {
 
   .invisible-add-agent {
     visibility: visible;
+    display: block;
   }
 
   .visible-add-agent {

@@ -41,6 +41,8 @@ Vue.component('client-dashboard', require('./components/client/Dashboard.vue'));
 Vue.component('campaign-main', require('./components/client/CampaignMainComponent.vue'));
 Vue.component('campaign-archives', require('./components/client/CampaignArchives.vue'));
 Vue.component('account-info-edit', require('./components/client/dashboardComponents/my_account/MyAccountEdit.vue'));
+Vue.component('service-agreement',require('./components/client/dashboardComponents/my_account/ServiceAgreement.vue'));
+
     // campaign-activity inside components :
     import CampaignActivity from './components/client/campaignComponents/CampaignActivity.vue';
     import CampaignTeam from './components/client/campaignComponents/CampaignTeam.vue';
@@ -95,6 +97,14 @@ if ($("#addAgentComponent").length !== 0){
         el:'#addAgentComponent'
     });
 }
+
+if ($("#serviceAgreement").length !== 0){
+
+    let serviceAgreement = new Vue({
+        el:'#serviceAgreement'
+    });
+}
+
 
 if ($("#addAgent").length !== 0){
 

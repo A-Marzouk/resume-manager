@@ -34,6 +34,8 @@ Route::prefix('client')->group(function (){
     Route::get('/campaigns-archive','ClientsController@campaignArchives')->name('campaign.archives');
     Route::get('/campaign/add-agent','ClientsController@campaignAddAgent')->name('campaign.add.agent');
     Route::get('/account/edit','ClientsController@viewAccountEditPage')->name('account.edi');
+    // service agreement route
+    Route::get('/account/service-agreement','ClientsController@viewClientServiceAgreement')->name('service.agreement');
 //////////////////
     Route::get('/has_agreed','ClientsController@hasAgreed');
     Route::post('/set_terms','ClientsController@setTerms');

@@ -6427,8 +6427,8 @@ body {
 }
 
 .headerStyle {
-  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
-          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  -webkit-box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
   background: #fff;
 }
 
@@ -6439,9 +6439,27 @@ body {
 .main-grid {
   padding: 32px 114px 18px 114px !important;
   background: #fff;
-  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
-          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  -webkit-box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
   border-radius: 4px;
+}
+
+.invisiable-div {
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #05A4F4;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+}
+
+.search-icon-margin {
+  margin: 20px;
 }
 
 .header-text {
@@ -6449,12 +6467,16 @@ body {
 }
 
 .form-main-grid {
-  margin: 32px 101px 88px;
+  margin: 32px 101px 0;
+}
+
+.search-main-grid {
+  margin: 16px 101px 0;
 }
 
 .input_divider {
   margin: 32px 0 32px !important;
-  font-family: Roboto;
+  font-family: Roboto, serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -6471,19 +6493,19 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-family: Roboto;
+  font-family: Roboto, serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: normal;
   text-align: center;
-  padding-left: 0px !important;
+  padding-left: 0 !important;
 }
 
 .borderinput {
-  border: 0px !important;
+  border: 0 !important;
   border-bottom: 1px solid #7A828D !important;
-  border-radius: 4px 4px 0px 0px !important;
+  border-radius: 4px 4px 0 0 !important;
   background: #fbfbfb !important;
   padding: 8px 6.43px 8px 22.14px !important;
   font-size: 14px !important;
@@ -6496,7 +6518,6 @@ body {
   background: #fff;
   color: #b6b6b6;
   font-weight: 500;
-  font-size: 12px;
   line-height: 24px;
   text-align: center;
   letter-spacing: -0.1px;
@@ -6511,6 +6532,10 @@ body {
 
 .right-side {
   text-align: right;
+}
+
+.play-icon {
+  margin-right: 15px;
 }
 
 .center-content {
@@ -6551,16 +6576,27 @@ body {
   font-size: 0.75rem;
   background: #fff;
   font-weight: 500;
-  font-size: 12px;
   line-height: 24px;
   text-align: center;
-  letter-spacing: -0.1px;
+  letter-spacing: -0.1px !important;
+  padding-left: 0 !important;
+  width: 234px !important;
+}
+
+.btn-footer {
+  border: 1px solid #05A4F4 !important;
+  color: #05A4F4;
+  background-color: transparent;
+}
+
+.refresh-icon {
+  padding-right: 12px;
 }
 
 select {
   border: none !important;
   border-bottom: 1px solid #7A828D !important;
-  border-radius: 0px !important;
+  border-radius: 0 !important;
 }
 
 input:focus,
@@ -6591,13 +6627,81 @@ input[type="radio"]:checked + label {
   margin-right: 20px;
 }
 
+.primaryjob-icon {
+  padding-right: 17px;
+}
+
+.big-font {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.avator {
+  margin-right: 33px;
+  border-radius: 50%;
+}
+
+.btn-margin {
+  padding-left: 89px;
+}
+
+.btn-space {
+  margin: 20px 0;
+}
+
+.btn-primar {
+  background-color: #05A4F4;
+  border: none;
+  color: #fff;
+}
+
+.btn-primar:hover {
+  background-color: #05A4F4;
+}
+
+.btn-primar:active {
+  background-color: #05A4F4 !important;
+  border: none;
+}
+
+.btn-responsive {
+  display: block;
+  width: 208px;
+  white-space: normal !important;
+  word-wrap: break-word;
+}
+
+.visible-add-agent {
+  visibility: visible;
+}
+
+.invisible-add-agent {
+  visibility: hidden;
+  display: none;
+}
+
+.invisiblty {
+  visibility: hidden;
+  display: none;
+}
+
+.btn-radius {
+  font-size: 14px !important;
+  line-height: 24px !important;
+  border-radius: 40px !important;
+}
+
 @media screen and (max-width: 1270px) {
   .main-grid {
     padding: 21px 60px 18px 40px !important;
   }
 
   .form-main-grid {
-    margin: 32px 39px 88px;
+    margin: 32px 39px 0;
+  }
+
+  .search-main-grid {
+    margin: 16px 39px 0;
   }
 }
 
@@ -6607,8 +6711,20 @@ input[type="radio"]:checked + label {
     margin-right: 6px;
   }
 
+  .search-main-grid {
+    margin: 16px 6px 0;
+  }
+
   .main-grid {
     padding: 22px 262px 18px 72px;
+  }
+
+  .avator {
+    margin-right: 23px;
+  }
+
+  .btn-margin {
+    padding-left: 87px;
   }
 }
 
@@ -6621,6 +6737,10 @@ input[type="radio"]:checked + label {
 @media screen and (max-width: 575px) {
   .formHeader {
     font-size: 1rem;
+  }
+
+  .search-icon-margin {
+    margin: 15px 9px 15px 15px;
   }
 
   .right-side {
@@ -6636,17 +6756,21 @@ input[type="radio"]:checked + label {
     height: 30px;
   }
 
-  .visible {
+  .visiblty {
     visibility: hidden !important;
-    margin-top: -24px;
+    display: none;
   }
 
-  .invisible {
+  .agent-desc-row {
+    margin-top: 43px;
+  }
+
+  .primaryjob-icon {
+    padding-right: 17px;
+  }
+
+  .invisiblty {
     visibility: visible !important;
-  }
-
-  .invisible-part-top {
-    margin-top: -100px;
   }
 
   .icon-margin {
@@ -6656,17 +6780,36 @@ input[type="radio"]:checked + label {
   .header-text {
     font-size: 16px;
   }
-}
 
-@media screen and (min-width: 575px) {
-  .invisable-part-bottom {
-    margin-top: -125px;
+  .avator {
+    margin-right: 15.8px;
+  }
+
+  .btn-margin {
+    padding-left: 0;
+  }
+
+  .btn-responsive {
+    width: 109px !important;
+    white-space: normal !important;
+    word-wrap: break-word;
+    font-size: 11px !important;
   }
 }
 
 @media screen and (max-width: 772px) {
   .main-grid {
     padding: 22px 20px 10px 16px;
+  }
+
+  .invisible-add-agent {
+    visibility: visible;
+    display: block;
+  }
+
+  .visible-add-agent {
+    visibility: hidden;
+    display: none;
   }
 }
 

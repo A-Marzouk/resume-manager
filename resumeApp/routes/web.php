@@ -34,8 +34,13 @@ Route::prefix('client')->group(function (){
     Route::get('/campaigns-archive','ClientsController@campaignArchives')->name('campaign.archives');
     Route::get('/campaign/add-agent','ClientsController@campaignAddAgent')->name('campaign.add.agent');
     Route::get('/account/edit','ClientsController@viewAccountEditPage')->name('account.edi');
+
+    // paymentShowInvoice
+    Route::get('/payments/payment-show-invoice','ClientsController@viewClientPaymentShowInvice')->name('payment.show.invoice');
+
     // service agreement route
     Route::get('/account/service-agreement','ClientsController@viewClientServiceAgreement')->name('service.agreement');
+
 //////////////////
     Route::get('/has_agreed','ClientsController@hasAgreed');
     Route::post('/set_terms','ClientsController@setTerms');
@@ -395,5 +400,3 @@ Route::get('/workforce/privacy_policy','HomeController@privacyView')->name('priv
 Route::get('/resume_sample/{username}','HomeController@ResumeSample');
 Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 Route::get('/{username}','HomeController@ResumePage');
-
-

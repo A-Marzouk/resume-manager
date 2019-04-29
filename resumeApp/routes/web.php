@@ -36,6 +36,9 @@ Route::prefix('client')->group(function (){
     Route::get('/account/edit','ClientsController@viewAccountEditPage')->name('account.edi');
     // service agreement route
     Route::get('/account/service-agreement','ClientsController@viewClientServiceAgreement')->name('service.agreement');
+    // paymentShowInvoice
+    Route::get('/payments/payment-show-invoice','ClientsController@viewClientPaymentShowInvice')->name('payment.show.invoice');
+
 //////////////////
     Route::get('/has_agreed','ClientsController@hasAgreed');
     Route::post('/set_terms','ClientsController@setTerms');

@@ -1,0 +1,159 @@
+.invoice-date {
+  font-size: 14px;
+  line-height: 24px;/* or 171% */
+  color: #7A828D;
+  padding: 24px 0;
+}
+
+.invoice-info-client {
+  padding-top: 24px;
+  margin-top: 24px;
+  border-top: 1px solid rgba(188, 191, 198, 0.44);
+}
+
+.invoice-info-icon {
+  margin-right: 10px;
+  padding: 13px 0;
+}
+
+.invoice-info-title {
+  font-weight: 500;
+  padding-right: 5px;
+}
+
+
+.close-button {
+  padding-bottom: 0!important;
+  border-bottom: none!important;
+
+}
+
+.client-info {
+  font-size: 16px;
+  line-height: 24px;/* or 150% */
+  letter-spacing: -0.1px;
+  color: #4A5464;
+}
+.invoice-outstand {
+  background: #FFFFFF;
+  border: 2px solid #F56F6F;
+  box-sizing: border-box;
+  border-radius: 40px;
+  color: #F56F6F;
+  font-size : 12px;
+  padding: 7px 16px;
+  margin-left: 15px;
+}
+
+.invoice-download {
+  color: #29ABE2;
+  font-size: 14px;
+}
+
+.invoice-style {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 30px;
+  color: #29ABE2;
+}
+
+.invoice-body {
+  padding: 0 62px 64px 69px;
+}
+
+.invioce-top-text {
+  font-size: 18px;
+  line-height: 30px;
+  text-transform: uppercase;
+  color: #4A5464;
+  margin-bottom: 33px;
+  margin-top: 55px;
+}
+
+.invioce-title {
+  border-top: 1px solid rgba(188, 191, 198, 0.44);
+  border-bottom: 1px solid rgba(188, 191, 198, 0.44);
+  padding-top: 27px;
+  padding-bottom: 27px;
+  font-size: 18px;
+  line-height: 13px;/* or 72% */
+  letter-spacing: -0.1px;
+  color: #4A5464;
+}
+
+.modal-logo {
+  margin-right: 200px;
+  width: 257px;
+  height: 68px;
+  background-image: url('/resumeApp/public/IMG/client/payments/icon/123logo.png');
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .invoice-body {
+    padding: 0 56px 60px 43px;
+  }
+  .invioce-download {
+    font-size: 12px;
+  }
+  .invioce-title {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    font-size: 16px;
+  }
+  .modal-width{
+    max-width: 90% !important;
+  }
+  .invoice-outstand {
+    margin-left: 13px;
+  }
+
+  .modal-logo {
+    margin-right: 0;
+  }
+
+
+}
+
+@media only screen and (max-width: 575px) {
+  .invoice-body {
+    padding: 0 33px 26px 16px;
+  }
+  .invioce-title {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 7px;
+  }
+  .invoice-download {
+    font-size: 5.5px;
+  }
+  .invoice-style {
+    font-size: 18px;
+  }
+  .invoice-outstand {
+    border: 1px solid #F56F6F;
+    font-size : 5px;
+    padding: 3px 7px;
+  }
+
+  .modal-width{
+    max-width: 97% !important;
+  }
+
+  .invioce-top-text {
+    font-size: 8px;
+    line-height: 14px;
+  }
+
+  .modal-logo {
+    background-image: url('/resumeApp/public/IMG/client/payments/icon/123logo_sm.png');
+
+    width: 111px;
+    height: 30px;
+  }
+
+  .invoice-date {
+    font-size: 6px;
+    line-height: 10px
+  }
+}

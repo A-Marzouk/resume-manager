@@ -202,8 +202,8 @@
                             </form>
                         </div>
                     @endif
-                    @if(in_array('paypal_removed',explode(',',$invoice->payment_options)))
-                        <div class="col-6">
+                    @if(in_array('paypal',explode(',',$invoice->payment_options)))
+                        <div class="col-12">
                                 <form action="{{route('paypal.express-checkout')}}" method="POST">
                                     {{ csrf_field() }}
                                     <input type="hidden" value="{{$invoice->total_amount}}" name="amountToPay" required>
@@ -212,8 +212,8 @@
                                     <!-- description -->
                                     <input type="hidden" name="custom_payment" value="true" required>
                                     <input type="hidden" name="invoice_id" value="{{$invoice->id}}" required>
-
-                                    @if(in_array('recurring',explode(',',$invoice->payment_options)))
+                                    {{--to make the paypal recurring back - remove the word _removed--}}
+                                    @if(in_array('recurring_removed',explode(',',$invoice->payment_options)))
                                         <div class="form-group col-md-12">
                                             <label for="weeks" class="panelFormLabel">Recurring payments <small><br/>(Leave empty for one time payment)</small></label>
                                             <input type="number" placeholder="Number of weeks.." min="0" max="24" id="weeks" class="panelFormInput form-control" name="weeks">

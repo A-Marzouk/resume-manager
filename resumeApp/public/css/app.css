@@ -6226,6 +6226,9 @@ body {
 .faq-question-input img,
 .faq-answer-input img {
   margin-right: 38px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .faq-question-input .faq-input,

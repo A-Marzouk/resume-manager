@@ -63,9 +63,10 @@ class AgentsController extends Controller
         }
 
         $agent->name = $request->name;
+        $newNumber = $request->number;
         if($request->number == '100'){
             // get the last number and add 1
-            $newNumber = Agent::max('number') + 1;
+            $newNumber = count(Agent::all()) + 1;
         }
         $agent->number = $newNumber;
         $agent->experience = $request->experience;
@@ -77,11 +78,12 @@ class AgentsController extends Controller
         if(isset($request->user_id)){
             $agent->user_id = $request->user_id ;
         }
-        $oldAgent = Agent::where('user_id',$request->user_id)->first();
-        if($oldAgent){
-            return ['old_id'=>$oldAgent->id];
-        }
+
         $agent->save();
+
+
+
+        // get user recordings to agents :
 
         if(isset($request->user_id)){
             $agent->user_id = $request->user_id;

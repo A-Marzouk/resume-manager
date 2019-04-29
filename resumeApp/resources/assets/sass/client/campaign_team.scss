@@ -14,6 +14,9 @@
     .campaign-team-header{
       display: flex;
       justify-content: space-between;
+      @media (max-width:600px) {
+        justify-content: center;
+      }
       align-items: center;
       padding: 70px 100px 30px 100px;
       @media (max-width:1240px) {
@@ -47,29 +50,35 @@
             @media (max-width:1240px) {
               width: 326px;
             }
+
+            @media (max-width:425px) {
+              width: 286px;
+            }
           }
         }
       }
       .actionBtn{
-        @media (max-width:768px) {
+        @media (max-width:600px) {
           margin-top: 24px;
           margin-right: 6px;
+          display: none;
         }
 
         a:hover {
           text-decoration: none;
         }
         a{
-          @media (max-width:768px) {
+          @media (max-width:1024px) {
             width: 190px;
-            height: 31px;
+            height: 36px;
             font-size: 11px;
           }
 
-          padding: 4px 23px 3px 13px;
-          display:block;
+          display:flex;
+          justify-content: center;
+          align-items: center;
           width: 175px;
-          height: 31px;
+          height: 36px;
           border-radius: 30px;
           background: #05A4F4;
 
@@ -81,11 +90,10 @@
           letter-spacing: -0.1px;
           color: #FFFFFF;
 
-
           img{
-            padding-right: 8px;
-            padding-left: 7px;
-            padding-bottom: 3px;
+            margin-right: 8px;
+            width: 16px;
+            height: 16px;
           }
         }
       }
@@ -102,39 +110,130 @@
       }
       .campaign-team-row{
         display: flex;
-        justify-content:flex-start;
+        flex-wrap: wrap;
+        justify-content:space-between;
         align-items: center;
         height:80px;
+        @media (max-width:600px) {
+          height:auto;
+        }
         border-top:1px solid rgba(188, 191, 198, 0.44);
         .team-member {
-          flex: 2;
           margin-bottom: 0;
+          @media (max-width:600px) {
+            padding-top: 20px;
+          }
           img{
             margin-left: 0;
+            margin-right: 8px;
           }
         }
-        .team-member-action{
-          flex:3;
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
-          .chat-action-btn{
+        .change-status-btn{
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 24px;
+          text-align: right;
+          letter-spacing: -0.1px;
+          color: #05A4F4;
+          margin-left: 45px;
+          @media (max-width:600px) {
+            margin-left: 0;
+            padding-top: 32px;
+            padding-bottom: 28px;
+          }
+        }
 
-          }
-          .change-status-btn{
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 24px;
-            text-align: right;
-            letter-spacing: -0.1px;
-            color: #05A4F4;
-            margin-left: 45px;
-          }
-        }
       }
 
     }
+  }
+}
+
+.campaign-team-modal{
+  border-radius: 4px;
+  padding:32px 33px 22px 33px !important;
+}
+
+.modal-question{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #4A5464;
+  mix-blend-mode: normal;
+  opacity: 0.9;
+}
+
+.modal-answer{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;/* identical to box height, or 133% */
+  color: #4A5464;
+  mix-blend-mode: normal;
+  opacity: 0.9;
+  margin-top:20px;
+}
+
+.modal-btn-wrapper{
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  @media (max-width:400px) {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
+.button-base{
+  a{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.blue-button-a{
+  a{
+   width: 183px;
+   height: 26px;
+   color: #FFFFFF;
+   background-color:#05A4F4;
+    @media (max-width:400px) {
+      margin-top: 25px;
+    }
+  }
+  a:hover{
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.white-button-a{
+  a{
+     width: 86px;
+     height: 26px;
+     color: #05A4F4;
+     background-color:#FFFFFF;
+     border:1px solid #05A4F4;
+     margin-right:38px;
+      @media (max-width:400px) {
+        margin-right:0;
+      }
+  }
+  a:hover{
+    text-decoration: none;
+    color: #05A4F4;
   }
 }

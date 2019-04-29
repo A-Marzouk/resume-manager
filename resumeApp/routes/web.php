@@ -38,8 +38,6 @@ Route::prefix('client')->group(function (){
     // paymentShowInvoice
     Route::get('/payments/payment-show-invoice','ClientsController@viewClientPaymentShowInvice')->name('payment.show.invoice');
 
-    // service agreement route
-    Route::get('/account/service-agreement','ClientsController@viewClientServiceAgreement')->name('service.agreement');
 
 //////////////////
     Route::get('/has_agreed','ClientsController@hasAgreed');

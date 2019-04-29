@@ -41,7 +41,6 @@ Vue.component('client-dashboard', require('./components/client/Dashboard.vue'));
 Vue.component('campaign-main', require('./components/client/CampaignMainComponent.vue'));
 Vue.component('campaign-archives', require('./components/client/CampaignArchives.vue'));
 Vue.component('account-info-edit', require('./components/client/dashboardComponents/my_account/MyAccountEdit.vue'));
-Vue.component('service-agreement',require('./components/client/dashboardComponents/my_account/ServiceAgreement.vue'));
 //payment show in voice
 Vue.component('payment-show-invoice',require('./components/client/dashboardComponents/payments/PaymentShowInvoice.vue'));
 
@@ -101,12 +100,6 @@ if ($("#addAgentComponent").length !== 0){
     });
 }
 
-if ($("#serviceAgreement").length !== 0){
-
-    let serviceAgreement = new Vue({
-        el:'#serviceAgreement'
-    });
-}
 
 if ($("#paymentShowInvoice").length !== 0){
 

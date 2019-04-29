@@ -24,15 +24,9 @@ class ClientsController extends Controller
         return view('client.campaign_main');
     }
 
-
     public function viewAccountEditPage(){
         return view('client.my_account.account_information_edition');
     }
-
-    public function viewClientServiceAgreement(){
-        return view('client.my_account.service_agreement') ;
-    }
-
 
     public function viewClientPaymentShowInvice(){
         return view('client.payments.payment_show_invoice') ;

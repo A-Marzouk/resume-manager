@@ -102,7 +102,7 @@
             </div>
             <div class="bluechecked d-flex align-items-center">
                 <input type="checkbox" class="chechbox-blue" vlaue="" id="" name=""/>
-                <lable for="checkbox" class="agreement-text"> I agree with the privacy agreemen</lable>
+                <label for="checkbox" class="agreement-text"> I agree with the privacy agreemen</label>
             </div>
 
             <div class="col-12 col-md-8 col-lg-6 agreement-segniture">

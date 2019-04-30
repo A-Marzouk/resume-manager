@@ -8162,3 +8162,84 @@ input[type="radio"]:checked + label {
   margin-bottom: 22px;
 }
 
+.payment-pay-text {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.payment-button {
+  padding: 16px 25px;
+  width: 158px;
+}
+
+.export-invoice-icon {
+  margin: 0;
+}
+
+.payment-pay-date {
+  font-size: 14px;
+  line-height: 24px;
+  /* or 171% */
+  letter-spacing: -0.1px;
+  margin: 24px 0;
+  color: #7A828D;
+}
+
+.pay-top-text {
+  font-size: 18px;
+  line-height: 30px;
+  text-transform: uppercase;
+  color: #4A5464;
+  margin-bottom: 33px;
+  margin-top: 55px;
+}
+
+.responsive-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.pay-icons {
+  margin-right: 10px;
+  padding: 0;
+}
+
+.payment-pay-title {
+  font-weight: 500;
+}
+
+.display-content-block {
+  display: contents;
+}
+
+@media only screen and (max-width: 1200px) {
+  .responsive-title {
+    display: block !important;
+  }
+
+  .export-invoice {
+    margin: 10px 0;
+  }
+}
+
+@media only screen and (max-width: 557px) {
+  .payment-pay-text {
+    font-size: 13px;
+  }
+
+  .display-content-block {
+    display: block;
+  }
+
+  .pay-icons {
+    margin-right: 10px;
+    padding: 6px 0;
+  }
+
+  .pay-top-text {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+

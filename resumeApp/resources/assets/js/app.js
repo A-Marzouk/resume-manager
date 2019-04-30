@@ -44,8 +44,8 @@ Vue.component('account-info-edit', require('./components/client/dashboardCompone
 Vue.component('service-agreement',require('./components/client/dashboardComponents/my_account/ServiceAgreement.vue'));
 
 Vue.component('payment-show-invoice',require('./components/client/dashboardComponents/payments/PaymentShowInvoice.vue'));
-
-
+// payment pay
+Vue.component('payment-pay',require('./components/client/dashboardComponents/payments/PaymentPay.vue'));
     // campaign-activity inside components :
     import CampaignActivity from './components/client/campaignComponents/CampaignActivity.vue';
     import CampaignTeam from './components/client/campaignComponents/CampaignTeam.vue';
@@ -115,6 +115,12 @@ if ($("#paymentShowInvoice").length !== 0){
     });
 }
 
+if ($("#paymentPay").length !== 0){
+
+    let paymentPay = new Vue({
+        el:'#paymentPay'
+    });
+}
 
 if ($("#addAgent").length !== 0){
 

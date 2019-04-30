@@ -38,6 +38,7 @@ Route::prefix('client')->group(function (){
     Route::get('/account/service-agreement','ClientsController@viewClientServiceAgreement')->name('service.agreement');
     // paymentShowInvoice
     Route::get('/payments/payment-show-invoice','ClientsController@viewClientPaymentShowInvice')->name('payment.show.invoice');
+    Route::get('/payments/payment-pay','ClientsController@viewClientPaymentPay')->name('payment.pay');
 
 //////////////////
     Route::get('/has_agreed','ClientsController@hasAgreed');

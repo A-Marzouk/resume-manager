@@ -36,6 +36,10 @@ class ClientsController extends Controller
      public function viewClientPaymentShowInvice(){
          return view('client.payments.payment_show_invoice') ;
      }
+     
+    public function viewClientPaymentPay(){
+        return view('client.payments.payment_pay') ;
+    }
 
     public function showAddAgentPage(){
         return view('client.add_agent_view');

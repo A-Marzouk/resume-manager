@@ -107,14 +107,14 @@
                     <div class="col-md-12 freelancerBox">
                         <a <? if(!$isClient): ?> href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter" <? else:?> href="/client" <? endif;?> class="itemLink">
                             <div class="freelancerItem">
-                                <img src="/resumeApp/public/images/freelancers/Evgeny.jpg"
-                                     alt="freelancer" class="slickFreelancerImg">
+                                <img src="/resumeApp/public/images/freelancers/Ryan_Icasas.jpg"
+                                     alt="freelancer" class="slickFreelancerImg" style="filter: grayscale(100%);">
                                 <div class="freelancerData">
                                     <div class="freelancerName">
-                                        Evgeny
+                                        Ryan Icasas
                                     </div>
                                     <div class="freelancerJob">
-                                        Inside Sales
+                                        Sales Agent
                                     </div>
                                 </div>
                             </div>

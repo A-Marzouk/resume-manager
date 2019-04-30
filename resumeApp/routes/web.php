@@ -36,7 +36,7 @@ Route::prefix('client')->group(function (){
     Route::get('/account/edit','ClientsController@viewAccountEditPage')->name('account.edi');
     // service agreement route
     Route::get('/account/service-agreement','ClientsController@viewClientServiceAgreement')->name('service.agreement');
-    Route::get('/payments/payment-pay','ClientsController@viewClientPaymentPay')->name('payment.pay');
+    Route::get('/payments/pay','ClientsController@viewClientPaymentPay')->name('payment.pay');
     // privacy agreement route
     Route::get('/account/privacy-agreement','ClientsController@viewClientPrivacyAgreement')->name('privacy.agreement');
      // update subscription plan route

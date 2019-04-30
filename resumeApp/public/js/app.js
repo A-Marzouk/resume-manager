@@ -14352,6 +14352,8 @@ Vue.component('campaign-main', __webpack_require__(59));
 Vue.component('campaign-archives', __webpack_require__(65));
 Vue.component('account-info-edit', __webpack_require__(70));
 Vue.component('service-agreement', __webpack_require__(75));
+// payment pay
+Vue.component('payment-pay', __webpack_require__(352));
 Vue.component('privacy-agreement', __webpack_require__(342));
 Vue.component('update-sub-plan', __webpack_require__(347));
 
@@ -14423,6 +14425,13 @@ if ($("#paymentShowInvoice").length !== 0) {
 
     var paymentShowInvoice = new Vue({
         el: '#paymentShowInvoice'
+    });
+}
+
+if ($("#paymentPay").length !== 0) {
+
+    var paymentPay = new Vue({
+        el: '#paymentPay'
     });
 }
 
@@ -66404,7 +66413,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -66415,7 +66424,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -67103,7 +67111,7 @@ var staticRenderFns = [
             _c("td", [
               _c("div", { staticClass: "invoice-number" }, [
                 _vm._v(
-                  "\n                            059-044-038\n                        "
+                  "\n                                059-044-038\n                            "
                 )
               ])
             ]),
@@ -67111,7 +67119,7 @@ var staticRenderFns = [
             _c("td", [
               _c("div", { staticClass: "invoice-service" }, [
                 _vm._v(
-                  "\n                            Other services\n                        "
+                  "\n                                Other services\n                            "
                 )
               ])
             ]),
@@ -67119,14 +67127,16 @@ var staticRenderFns = [
             _c("td", [
               _c("div", { staticClass: "invoice-amount" }, [
                 _vm._v(
-                  "\n                            $ 3,500\n                        "
+                  "\n                                $ 3,500\n                            "
                 )
               ])
             ]),
             _vm._v(" "),
             _c("td", { staticStyle: { display: "inline-block" } }, [
               _c("div", { staticClass: "payment-btn due" }, [
-                _c("a", { attrs: { href: "#" } }, [_vm._v("DUE")])
+                _c("a", { attrs: { href: "/client/payments/pay" } }, [
+                  _vm._v("DUE")
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -99048,7 +99058,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -99059,6 +99069,117 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -99238,7 +99359,7 @@ var staticRenderFns = [
         { staticClass: "navbar navbar-light fixed-top client_navbar" },
         [
           _c("div", { staticClass: "backBtn" }, [
-            _c("a", { attrs: { href: "/client" } }, [
+            _c("a", { attrs: { href: "/client#/payments" } }, [
               _c("img", {
                 attrs: {
                   src: "/resumeApp/public/images/client/arrow_back.png",
@@ -99490,7 +99611,8 @@ var staticRenderFns = [
                       _c(
                         "div",
                         {
-                          staticClass: "faq-question-input sub-edit-input  mt-3"
+                          staticClass:
+                            "faq-question-input sub-edit-input  mt-3 d-flex flex-lg-row flex-column align-items-center"
                         },
                         [
                           _c("div", { staticClass: "faq-input" }, [
@@ -99511,6 +99633,107 @@ var staticRenderFns = [
                                 ])
                               ]
                             )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "mt-3",
+                              staticStyle: { "margin-left": "99px" }
+                            },
+                            [
+                              _c("input", {
+                                attrs: { type: "checkbox", name: "no-end-date" }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                { staticClass: "weeks-number-heading ml-1" },
+                                [_vm._v(" no end date ")]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "weeks-number-note" }, [
+                  _vm._v(
+                    "\n                            Campaign period: 4.04.19   —   4.01.20\n                        "
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "new-sub-plan pt-5" }, [
+              _c("div", { staticClass: "weeks-number" }, [
+                _c("div", { staticClass: "sub-agent-numbering pb-3" }, [
+                  _vm._v(
+                    "\n                            Agent № 1\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex justify-content-start align-items-center"
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "mr-3",
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/payments/time.png",
+                        alt: "week icon"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "weeks-number-heading" }, [
+                      _vm._v(
+                        "\n                               Number of working hours per week\n                            "
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "week-input" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "account-edit-section-inputs d-flex align-items-center"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "faq-question-input sub-edit-input  mt-3 d-flex flex-row align-items-center"
+                        },
+                        [
+                          _c("div", { staticClass: "faq-input" }, [
+                            _c(
+                              "select",
+                              { attrs: { name: "weeks", id: "hours" } },
+                              [
+                                _c("option", { attrs: { value: "2" } }, [
+                                  _vm._v("15 hours")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "4" } }, [
+                                  _vm._v("20 hours")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "6" } }, [
+                                  _vm._v("25 hours")
+                                ])
+                              ]
+                            )
                           ])
                         ]
                       )
@@ -99522,13 +99745,653 @@ var staticRenderFns = [
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "sub-action" }, [
+            _c("div", { staticClass: "new-sub-plan pt-5" }, [
+              _c("div", { staticClass: "weeks-number" }, [
+                _c("div", { staticClass: "sub-agent-numbering pb-3" }, [
+                  _vm._v(
+                    "\n                            Agent № 2\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex justify-content-start align-items-center"
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "mr-3",
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/payments/time.png",
+                        alt: "week icon"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "weeks-number-heading" }, [
+                      _vm._v(
+                        "\n                               Number of working hours per week\n                            "
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "week-input" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "account-edit-section-inputs d-flex align-items-center"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "faq-question-input sub-edit-input  mt-3 d-flex flex-row align-items-center"
+                        },
+                        [
+                          _c("div", { staticClass: "faq-input" }, [
+                            _c(
+                              "select",
+                              { attrs: { name: "weeks", id: "hours2" } },
+                              [
+                                _c("option", { attrs: { value: "2" } }, [
+                                  _vm._v("15 hours")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "4" } }, [
+                                  _vm._v("20 hours")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "6" } }, [
+                                  _vm._v("25 hours")
+                                ])
+                              ]
+                            )
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "button-base white-button-a pt-4 w-100 d-flex justify-content-center"
+              },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "border-0 m-0",
+                    staticStyle: { width: "auto" },
+                    attrs: { href: "#" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        ADD ANOTHER AGENT\n                    "
+                    )
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "new-sub-plan pt-5" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "d-flex justify-content-start align-items-center"
+                },
+                [
+                  _c("img", {
+                    staticClass: "mr-3",
+                    attrs: {
+                      src:
+                        "/resumeApp/public/images/client/payments/manager.png",
+                      alt: "week icon"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "weeks-number-heading" }, [
+                    _vm._v(
+                      "\n                           Manager of your campaign\n                        "
+                    )
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "blue-text",
+                staticStyle: { "margin-left": "2.7rem" }
+              },
+              [_vm._v("\n                    Conor Marjoram\n                ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "button-base white-button-a pt-4 w-100 d-flex justify-content-center"
+              },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "m-0",
+                    staticStyle: { width: "158px", height: "36px" },
+                    attrs: {
+                      href: "javascript:void(0)",
+                      "data-toggle": "modal",
+                      "data-target": "#remove-manager-modal"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        REMOVE MANAGER\n                    "
+                    )
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "sub-action pt-5" }, [
               _c("a", { attrs: { href: "#" } }, [
                 _vm._v(
                   "\n                        CONTINUE\n                    "
                 )
               ])
             ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "remove-manager-modal",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "remove-manager-modal",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "modal-dialog", attrs: { role: "document" } },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "modal-content border-0",
+                  staticStyle: { "margin-top": "30%" }
+                },
+                [
+                  _c("div", { staticClass: "modal-body campaign-team-modal" }, [
+                    _c("div", { staticClass: "modal-question" }, [
+                      _vm._v(
+                        "\n                        Are you sure you want to remove the manager ?\n                    "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-btn-wrapper" }, [
+                      _c("div", { staticClass: "button-base white-button-a" }, [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href: "javascript:void(0)",
+                              "data-dismiss": "modal"
+                            }
+                          },
+                          [_vm._v("CANCEL")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "button-base blue-button-a" }, [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href: "javascript:void(0)",
+                              "data-dismiss": "modal"
+                            }
+                          },
+                          [_vm._v("REMOVE THE MANAGER")]
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            ]
+          )
+        ]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-72e18dad", module.exports)
+  }
+}
+
+/***/ }),
+/* 352 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(353)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\client\\dashboardComponents\\payments\\PaymentPay.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3e142fe5", Component.options)
+  } else {
+    hotAPI.reload("data-v-3e142fe5", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 353 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "nav",
+        { staticClass: "navbar navbar-light fixed-top client_navbar" },
+        [
+          _c("div", { staticClass: "backBtn" }, [
+            _c("a", { attrs: { href: "/client#/payments" } }, [
+              _c("img", {
+                attrs: {
+                  src: "/resumeApp/public/images/client/arrow_back.png",
+                  alt: "back-icon"
+                }
+              })
+            ]),
+            _vm._v("\n            059-004-038 INVOICE DETAILS\n        ")
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "main-grid search-main-grid" }, [
+        _c("div", { staticClass: "invoice-body" }, [
+          _c(
+            "div",
+            {
+              staticClass: "d-flex justify-content-between align-items-center"
+            },
+            [
+              _c("div", { staticClass: "invoice-style" }, [
+                _vm._v(" INVOICE ")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-logo" })
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "pay-top-text" }, [
+          _vm._v("\n            123 Workforce\n            "),
+          _c("br"),
+          _vm._v(
+            "\n            5th floor Portview House Thorn Castle st Dublin Ireland\n            "
+          ),
+          _c("br"),
+          _vm._v("\n            00442037000685\n            "),
+          _c("br"),
+          _vm._v("\n            info@123workforce.com\n        ")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "row justify-content-between align-items-baseline invioce-title payment-pay-text "
+          },
+          [
+            _c("div", { staticClass: "col-6" }, [
+              _c(
+                "div",
+                { staticClass: "row justify-content-between responsive-title" },
+                [
+                  _c("div", {}, [_vm._v("№ 059-004-038")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "export-invoice" }, [
+                    _vm._v("other services")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "export-invoice" }, [_vm._v("$400")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-6" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "row justify-content-between align-content-between align-items-center responsive-title"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "invoice-outstand",
+                      staticStyle: {
+                        padding: "7px 16px!important",
+                        display: "inline",
+                        "margin-left": "0"
+                      }
+                    },
+                    [_vm._v("outstand")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "export-invoice" }, [
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/payments/export_invoice.png"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "invoice-download export-invoice payment-pay-text"
+                    },
+                    [_vm._v("copy invioce link")]
+                  )
+                ]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "payment-pay-date" }, [
+          _vm._v("\n            Invoice issue date: 26.03.2019\n        ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "payment-pay-text" }, [
+          _c("div", { staticStyle: { "font-weight": "500" } }, [
+            _vm._v("Client info:")
+          ]),
+          _vm._v(" "),
+          _c("div", [_vm._v("Name: Kim Coe")]),
+          _vm._v(" "),
+          _c("div", [_vm._v("Company: Urban HQ LTD")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex" }, [
+            _c("div", [
+              _vm._v("\n                    Contact:\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticStyle: { width: "200px", "margin-left": "3px" } },
+              [_vm._v("  +447711228204\n                kim@urbanhqgroup.com ")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "payment-pay-text invoice-info-client d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-centert"
+          },
+          [
+            _c("img", {
+              staticClass: "pay-icons",
+              attrs: {
+                src: "/resumeApp/public/images/client/payments/people_24px.png"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "div",
+                { staticClass: "display-content-block payment-pay-title" },
+                [
+                  _vm._v(
+                    "\n                    Name of agents:\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "display-content-block" }, [
+                _vm._v(
+                  "\n                    Analiza Belleza, Cheska Ramos\n                "
+                )
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center",
+            staticStyle: { "margin-top": "30px" }
+          },
+          [
+            _c("img", {
+              staticClass: "pay-icons",
+              attrs: {
+                src:
+                  "/resumeApp/public/images/client/payments/assignment_turned_in_24px.png"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "div",
+                { staticClass: "display-content-block payment-pay-title" },
+                [
+                  _vm._v(
+                    "\n                    Services provided:\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "display-content-block" }, [
+                _vm._v(
+                  "\n                    Appointment setting & Campaign Managemens\n                "
+                )
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center",
+            staticStyle: { "margin-top": "30px" }
+          },
+          [
+            _c("img", {
+              staticClass: "pay-icons",
+              attrs: {
+                src:
+                  "/resumeApp/public/images/client/payments/watch_later_24px.png"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "div",
+                { staticClass: "display-content-block payment-pay-title" },
+                [_vm._v("\n                    Hours:\n                ")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "display-content-block" }, [
+                _vm._v("\n                    45 per week\n                ")
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center",
+            staticStyle: { "margin-top": "30px" }
+          },
+          [
+            _c("img", {
+              staticClass: "pay-icons",
+              attrs: {
+                src:
+                  "/resumeApp/public/images/client/payments/date_range_24px.png"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "div",
+                { staticClass: "display-content-block payment-pay-title" },
+                [_vm._v("\n                    Date:\n                ")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "display-content-block" }, [
+                _vm._v(
+                  "\n                    Mon, Tue, Wed, Sat\n                "
+                )
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center",
+            staticStyle: { "margin-top": "30px" }
+          },
+          [
+            _c("img", {
+              staticClass: "pay-icons",
+              attrs: {
+                src: "/resumeApp/public/images/client/payments/Subtract.png"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "div",
+                { staticClass: "display-content-block payment-pay-title" },
+                [_vm._v("\n                    Rate:\n                ")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "display-content-block" }, [
+                _vm._v("\n                    $ 10\n                ")
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center",
+            staticStyle: { "margin-top": "30px" }
+          },
+          [
+            _c("img", {
+              staticClass: "pay-icons",
+              attrs: {
+                src:
+                  "/resumeApp/public/images/client/payments/account_balance_wallet_24px.png"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "div",
+                { staticClass: "display-content-block payment-pay-title" },
+                [_vm._v("\n                    Total due:\n                ")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "display-content-block" }, [
+                _vm._v("\n                    $ 450\n                ")
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex justify-content-end" }, [
+          _c("button", { staticClass: "agreement-button payment-button" }, [
+            _vm._v("GO TO PAYMENT")
           ])
         ])
       ])
@@ -99540,7 +100403,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-72e18dad", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-3e142fe5", module.exports)
   }
 }
 

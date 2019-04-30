@@ -145,32 +145,32 @@
                                     <img src="/resumeApp/public/images/client/payments/show_invoice.png" alt="show invoice icon">
                                 </a>
                             </td>
-                        <td>
-                            <div class="invoice-number">
-                                059-044-038
-                            </div>
-                        </td>
-                        <td>
-                            <div class="invoice-service">
-                                Other services
-                            </div>
-                        </td>
-                        <td>
-                            <div class="invoice-amount">
-                                $ 3,500
-                            </div>
-                        </td>
-                        <td style="display:inline-block">
-                            <div  class="payment-btn due">
-                                <a href="#">DUE</a>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="export-icon">
-                                <img src="/resumeApp/public/images/client/payments/export_invoice.png" alt="export icon">
-                            </div>
-                        </td>
-                    </tr>
+                            <td>
+                                <div class="invoice-number">
+                                    059-044-038
+                                </div>
+                            </td>
+                            <td>
+                                <div class="invoice-service">
+                                    Other services
+                                </div>
+                            </td>
+                            <td>
+                                <div class="invoice-amount">
+                                    $ 3,500
+                                </div>
+                            </td>
+                            <td style="display:inline-block">
+                                <div  class="payment-btn due">
+                                    <a href="/client/payments/pay">DUE</a>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="export-icon">
+                                    <img src="/resumeApp/public/images/client/payments/export_invoice.png" alt="export icon">
+                                </div>
+                            </td>
+                        </tr>
                         <tr>
                             <td>
                                 <a class="invoice-view" data-toggle="modal" data-target="#view-invoice" href="javascript:void(0)">
@@ -267,7 +267,6 @@
                                 </div>
                             </td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>

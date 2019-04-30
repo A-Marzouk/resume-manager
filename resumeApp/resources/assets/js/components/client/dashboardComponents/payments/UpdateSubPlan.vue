@@ -2,7 +2,7 @@
     <div>
         <nav class="navbar navbar-light fixed-top client_navbar">
             <div class="backBtn">
-                <a href="/client">
+                <a href="/client#/payments">
                     <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
                 </a>
                 SUBSCRIPTION PLAN UPDATE
@@ -119,12 +119,78 @@
                             </div>
                             <div class="week-input">
                                 <div class="account-edit-section-inputs d-flex align-items-center">
-                                    <div class="faq-question-input sub-edit-input  mt-3">
+                                    <div class="faq-question-input sub-edit-input  mt-3 d-flex flex-lg-row flex-column align-items-center">
                                         <div class="faq-input">
                                             <select name="weeks" id="weeks">
                                                 <option value="2">2 weeks</option>
                                                 <option value="4">4 weeks</option>
                                                 <option value="6">6 weeks</option>
+                                            </select>
+                                        </div>
+                                        <div class="mt-3" style="margin-left:99px;">
+                                            <input type="checkbox" name="no-end-date"/>
+                                            <span class="weeks-number-heading ml-1"> no end date </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                            <div class="weeks-number-note">
+                                Campaign period: 4.04.19   —   4.01.20
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="new-sub-plan pt-5">
+                        <div class="weeks-number">
+                            <div class="sub-agent-numbering pb-3">
+                                Agent № 1
+                            </div>
+                            <div class="d-flex justify-content-start align-items-center">
+                                <img src="/resumeApp/public/images/client/payments/time.png" alt="week icon" class="mr-3">
+                                <div class="weeks-number-heading">
+                                   Number of working hours per week
+                                </div>
+                            </div>
+                            <div class="week-input">
+                                <div class="account-edit-section-inputs d-flex align-items-center">
+                                    <div class="faq-question-input sub-edit-input  mt-3 d-flex flex-row align-items-center">
+                                        <div class="faq-input">
+                                            <select name="weeks" id="hours">
+                                                <option value="2">15 hours</option>
+                                                <option value="4">20 hours</option>
+                                                <option value="6">25 hours</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="new-sub-plan pt-5">
+                        <div class="weeks-number">
+                            <div class="sub-agent-numbering pb-3">
+                                Agent № 2
+                            </div>
+                            <div class="d-flex justify-content-start align-items-center">
+                                <img src="/resumeApp/public/images/client/payments/time.png" alt="week icon" class="mr-3">
+                                <div class="weeks-number-heading">
+                                   Number of working hours per week
+                                </div>
+                            </div>
+                            <div class="week-input">
+                                <div class="account-edit-section-inputs d-flex align-items-center">
+                                    <div class="faq-question-input sub-edit-input  mt-3 d-flex flex-row align-items-center">
+                                        <div class="faq-input">
+                                            <select name="weeks" id="hours2">
+                                                <option value="2">15 hours</option>
+                                                <option value="4">20 hours</option>
+                                                <option value="6">25 hours</option>
                                             </select>
                                         </div>
                                     </div>
@@ -136,7 +202,30 @@
                         </div>
                     </div>
 
-                    <div class="sub-action">
+                    <div class="button-base white-button-a pt-4 w-100 d-flex justify-content-center">
+                        <a href="#" class="border-0 m-0" style="width:auto">
+                            ADD ANOTHER AGENT
+                        </a>
+                    </div>
+
+                    <div class="new-sub-plan pt-5">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <img src="/resumeApp/public/images/client/payments/manager.png" alt="week icon" class="mr-3">
+                            <div class="weeks-number-heading">
+                               Manager of your campaign
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blue-text" style="margin-left: 2.7rem;">
+                        Conor Marjoram
+                    </div>
+                    <div class="button-base white-button-a pt-4 w-100 d-flex justify-content-center">
+                        <a href="javascript:void(0)" style="width:158px; height:36px;" class="m-0" data-toggle="modal" data-target="#remove-manager-modal">
+                            REMOVE MANAGER
+                        </a>
+                    </div>
+
+                    <div class="sub-action pt-5">
                         <a href="#">
                             CONTINUE
                         </a>
@@ -144,6 +233,28 @@
 
                 </div>
 
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="remove-manager-modal" tabindex="-1" role="dialog" aria-labelledby="remove-manager-modal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content border-0" style="margin-top: 30%;">
+                    <div class="modal-body campaign-team-modal">
+                        <div class="modal-question">
+                            Are you sure you want to remove the manager ?
+                        </div>
+
+                        <div class="modal-btn-wrapper">
+                            <div class="button-base white-button-a">
+                                <a href="javascript:void(0)" data-dismiss="modal">CANCEL</a>
+                            </div>
+                            <div class="button-base blue-button-a">
+                                <a href="javascript:void(0)" data-dismiss="modal">REMOVE THE MANAGER</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

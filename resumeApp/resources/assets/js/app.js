@@ -42,6 +42,8 @@ Vue.component('campaign-main', require('./components/client/CampaignMainComponen
 Vue.component('campaign-archives', require('./components/client/CampaignArchives.vue'));
 Vue.component('account-info-edit', require('./components/client/dashboardComponents/my_account/MyAccountEdit.vue'));
 Vue.component('service-agreement',require('./components/client/dashboardComponents/my_account/ServiceAgreement.vue'));
+// payment pay
+Vue.component('payment-pay',require('./components/client/dashboardComponents/payments/PaymentPay.vue'));
 Vue.component('privacy-agreement',require('./components/client/dashboardComponents/my_account/PrivacyAgreement.vue'));
 Vue.component('update-sub-plan',require('./components/client/dashboardComponents/payments/UpdateSubPlan.vue'));
 
@@ -127,6 +129,12 @@ if ($("#paymentShowInvoice").length !== 0){
     });
 }
 
+if ($("#paymentPay").length !== 0){
+
+    let paymentPay = new Vue({
+        el:'#paymentPay'
+    });
+}
 
 if ($("#addAgent").length !== 0){
 

@@ -70,7 +70,7 @@
                            </div>
                        </div>
                         <div class="left no-decoration">
-                            <a href="#">
+                            <a href="/client/account/service-agreement">
                                 COMPLETE AGREEMENT
                             </a>
                         </div>
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         <div class="left no-decoration">
-                            <a href="#">
+                            <a href="/client/account/service-agreement">
                                 COMPLETE AGREEMENT
                             </a>
                         </div>

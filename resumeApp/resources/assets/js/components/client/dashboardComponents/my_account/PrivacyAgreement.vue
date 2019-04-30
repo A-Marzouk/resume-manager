@@ -12,7 +12,7 @@
         <div class="form-main-grid main-grid">
             <div class="col-12 col-sm-12 col-md-12 header-text">
                 <img src="/resumeApp/public/images/client/my_account/contract_40px.png" alt=""  class="icon-margin small-image">
-                SERVICE AGREEMENT
+                PRIVACY AGREEMENT
             </div>
             <hr/>
 

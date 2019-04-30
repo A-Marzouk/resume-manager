@@ -42,10 +42,11 @@ Vue.component('campaign-main', require('./components/client/CampaignMainComponen
 Vue.component('campaign-archives', require('./components/client/CampaignArchives.vue'));
 Vue.component('account-info-edit', require('./components/client/dashboardComponents/my_account/MyAccountEdit.vue'));
 Vue.component('service-agreement',require('./components/client/dashboardComponents/my_account/ServiceAgreement.vue'));
-
-Vue.component('payment-show-invoice',require('./components/client/dashboardComponents/payments/PaymentShowInvoice.vue'));
 // payment pay
 Vue.component('payment-pay',require('./components/client/dashboardComponents/payments/PaymentPay.vue'));
+Vue.component('privacy-agreement',require('./components/client/dashboardComponents/my_account/PrivacyAgreement.vue'));
+Vue.component('update-sub-plan',require('./components/client/dashboardComponents/payments/UpdateSubPlan.vue'));
+
     // campaign-activity inside components :
     import CampaignActivity from './components/client/campaignComponents/CampaignActivity.vue';
     import CampaignTeam from './components/client/campaignComponents/CampaignTeam.vue';
@@ -105,6 +106,19 @@ if ($("#serviceAgreement").length !== 0){
 
     let serviceAgreement = new Vue({
         el:'#serviceAgreement'
+    });
+}
+if ($("#updateSubPlan").length !== 0){
+
+    let updateSubPlan = new Vue({
+        el:'#updateSubPlan'
+    });
+}
+
+if ($("#privacyAgreement").length !== 0){
+
+    let privacyAgreement = new Vue({
+        el:'#privacyAgreement'
     });
 }
 

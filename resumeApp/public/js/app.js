@@ -60176,7 +60176,7 @@ var staticRenderFns = [
                     staticClass: "invoice-info-icon",
                     attrs: {
                       src:
-                        "/resumeApp/public/IMG/client/payments/icon/people_24px.png"
+                        "/resumeApp/public/images/client/payments/people_24px.png"
                     }
                   }),
                   _vm._v(" "),
@@ -60193,7 +60193,7 @@ var staticRenderFns = [
                     staticClass: "invoice-info-icon",
                     attrs: {
                       src:
-                        "/resumeApp/public/IMG/client/payments/icon/assignment_turned_in_24px.png"
+                        "/resumeApp/public/images/client/payments/assignment_turned_in_24px.png"
                     }
                   }),
                   _vm._v(" "),
@@ -60210,7 +60210,7 @@ var staticRenderFns = [
                     staticClass: "invoice-info-icon",
                     attrs: {
                       src:
-                        "/resumeApp/public/IMG/client/payments/icon/account_balance_wallet_24px.png"
+                        "/resumeApp/public/images/client/payments/account_balance_wallet_24px.png"
                     }
                   }),
                   _vm._v(" "),
@@ -60227,7 +60227,7 @@ var staticRenderFns = [
                     staticClass: "invoice-info-icon",
                     attrs: {
                       src:
-                        "/resumeApp/public/IMG/client/payments/icon/watch_later_24px.png"
+                        "/resumeApp/public/images/client/payments/watch_later_24px.png"
                     }
                   }),
                   _vm._v(" "),
@@ -60244,7 +60244,7 @@ var staticRenderFns = [
                     staticClass: "invoice-info-icon",
                     attrs: {
                       src:
-                        "/resumeApp/public/IMG/client/payments/icon/Subtract.png"
+                        "/resumeApp/public/images/client/payments/Subtract.png"
                     }
                   }),
                   _vm._v(" "),
@@ -60261,7 +60261,7 @@ var staticRenderFns = [
                     staticClass: "invoice-info-icon",
                     attrs: {
                       src:
-                        "/resumeApp/public/IMG/client/payments/icon/account_balance_wallet_24px.png"
+                        "/resumeApp/public/images/client/payments/account_balance_wallet_24px.png"
                     }
                   }),
                   _vm._v(" "),
@@ -60658,7 +60658,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -60780,9 +60780,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "CampaignArchives"
+    data: function data() {
+        return {
+            empty_state: true
+        };
+    }
 });
 
 /***/ }),
@@ -60793,230 +60808,290 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "campaign-archives" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "archive-content-box" }, [
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.empty_state,
+              expression: "!empty_state"
+            }
+          ]
+        },
+        [_vm._m(1), _vm._v(" "), _vm._m(2)]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.empty_state,
+              expression: "empty_state"
+            }
+          ],
+          staticClass: "archive-empty-state"
+        },
+        [
+          _c("div", { staticClass: "archive-empty-state-header" }, [
+            _vm._v(
+              "\n                You Archive of campaigns is empty\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(3)
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "campaign-archives" }, [
-      _c(
-        "nav",
-        { staticClass: "navbar navbar-light fixed-top client_navbar" },
-        [
-          _c("div", { staticClass: "backBtn" }, [
-            _c("a", { attrs: { href: "/client" } }, [
-              _c("img", {
-                attrs: {
-                  src: "/resumeApp/public/images/client/arrow_back.png",
-                  alt: "back-icon"
-                }
-              })
-            ]),
-            _vm._v("\n            ARCHIVE OF CAMPAIGNS\n        ")
+    return _c(
+      "nav",
+      { staticClass: "navbar navbar-light fixed-top client_navbar" },
+      [
+        _c("div", { staticClass: "backBtn" }, [
+          _c("a", { attrs: { href: "/client" } }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/arrow_back.png",
+                alt: "back-icon"
+              }
+            })
+          ]),
+          _vm._v("\n            ARCHIVE OF CAMPAIGNS\n        ")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "archive-heading" }, [
+      _c("img", {
+        attrs: {
+          src: "/resumeApp/public/images/client/campaign_archives/search.png",
+          alt: "search icon"
+        }
+      }),
+      _vm._v("\n                YOUR PAST CAMPAIGNS\n            ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "archive-list" }, [
+      _c("div", { staticClass: "campaign-item" }, [
+        _c("div", { staticClass: "right" }, [
+          _c("div", { staticClass: "name-of-campaign" }, [
+            _c("a", { attrs: { href: "/client/campaign" } }, [
+              _vm._v(
+                "\n                                Name of the campaign long name of the campaign\n                            "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "campaign-notes" }, [
+            _vm._v(
+              "\n                            2 agents worked on the campaign\n                        "
+            )
           ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "archive-content-box" }, [
-        _c("div", { staticClass: "archive-heading" }, [
-          _c("img", {
-            attrs: {
-              src:
-                "/resumeApp/public/images/client/campaign_archives/search.png",
-              alt: "search icon"
-            }
-          }),
-          _vm._v("\n            YOUR PAST CAMPAIGNS\n        ")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "archive-list" }, [
-          _c("div", { staticClass: "campaign-item" }, [
-            _c("div", { staticClass: "right" }, [
-              _c("div", { staticClass: "name-of-campaign" }, [
-                _c("a", { attrs: { href: "/client/campaign" } }, [
-                  _vm._v(
-                    "\n                            Name of the campaign long name of the campaign\n                        "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "campaign-notes" }, [
-                _vm._v(
-                  "\n                        2 agents worked on the campaign\n                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "left" }, [
-              _c("div", { staticClass: "date" }, [
-                _c("img", {
-                  attrs: {
-                    src:
-                      "/resumeApp/public/images/client/campaign_archives/date.png",
-                    alt: "date icon"
-                  }
-                }),
-                _vm._v(
-                  "\n                        4.09.18 - 4.01.19\n                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "amount" }, [
-                _c("img", {
-                  attrs: {
-                    src:
-                      "/resumeApp/public/images/client/campaign_archives/amount.png",
-                    alt: "amount icon"
-                  }
-                }),
-                _vm._v(
-                  "\n                        $ 8,500\n                    "
-                )
-              ])
+        _c("div", { staticClass: "left" }, [
+          _c("div", { staticClass: "date" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "/resumeApp/public/images/client/campaign_archives/date.png",
+                alt: "date icon"
+              }
+            }),
+            _vm._v(
+              "\n                            4.09.18 - 4.01.19\n                        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "amount" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "/resumeApp/public/images/client/campaign_archives/amount.png",
+                alt: "amount icon"
+              }
+            }),
+            _vm._v(
+              "\n                            $ 8,500\n                        "
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "campaign-item" }, [
+        _c("div", { staticClass: "right" }, [
+          _c("div", { staticClass: "name-of-campaign" }, [
+            _c("a", { attrs: { href: "/client/campaign" } }, [
+              _vm._v(
+                "\n                                Name of the campaign long name of the campaign\n                            "
+              )
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "campaign-item" }, [
-            _c("div", { staticClass: "right" }, [
-              _c("div", { staticClass: "name-of-campaign" }, [
-                _c("a", { attrs: { href: "/client/campaign" } }, [
-                  _vm._v(
-                    "\n                            Name of the campaign long name of the campaign\n                        "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "campaign-notes" }, [
-                _vm._v(
-                  "\n                        2 agents worked on the campaign\n                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "left" }, [
-              _c("div", { staticClass: "date" }, [
-                _c("img", {
-                  attrs: {
-                    src:
-                      "/resumeApp/public/images/client/campaign_archives/date.png",
-                    alt: "date icon"
-                  }
-                }),
-                _vm._v(
-                  "\n                        4.09.18 - 4.01.19\n                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "amount" }, [
-                _c("img", {
-                  attrs: {
-                    src:
-                      "/resumeApp/public/images/client/campaign_archives/amount.png",
-                    alt: "amount icon"
-                  }
-                }),
-                _vm._v(
-                  "\n                        $ 8,500\n                    "
-                )
-              ])
+          _c("div", { staticClass: "campaign-notes" }, [
+            _vm._v(
+              "\n                            2 agents worked on the campaign\n                        "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "left" }, [
+          _c("div", { staticClass: "date" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "/resumeApp/public/images/client/campaign_archives/date.png",
+                alt: "date icon"
+              }
+            }),
+            _vm._v(
+              "\n                            4.09.18 - 4.01.19\n                        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "amount" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "/resumeApp/public/images/client/campaign_archives/amount.png",
+                alt: "amount icon"
+              }
+            }),
+            _vm._v(
+              "\n                            $ 8,500\n                        "
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "campaign-item" }, [
+        _c("div", { staticClass: "right" }, [
+          _c("div", { staticClass: "name-of-campaign" }, [
+            _c("a", { attrs: { href: "/client/campaign" } }, [
+              _vm._v(
+                "\n                                Name of the campaign long name of the campaign\n                            "
+              )
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "campaign-item" }, [
-            _c("div", { staticClass: "right" }, [
-              _c("div", { staticClass: "name-of-campaign" }, [
-                _c("a", { attrs: { href: "/client/campaign" } }, [
-                  _vm._v(
-                    "\n                            Name of the campaign long name of the campaign\n                        "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "campaign-notes" }, [
-                _vm._v(
-                  "\n                        2 agents worked on the campaign\n                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "left" }, [
-              _c("div", { staticClass: "date" }, [
-                _c("img", {
-                  attrs: {
-                    src:
-                      "/resumeApp/public/images/client/campaign_archives/date.png",
-                    alt: "date icon"
-                  }
-                }),
-                _vm._v(
-                  "\n                        4.09.18 - 4.01.19\n                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "amount" }, [
-                _c("img", {
-                  attrs: {
-                    src:
-                      "/resumeApp/public/images/client/campaign_archives/amount.png",
-                    alt: "amount icon"
-                  }
-                }),
-                _vm._v(
-                  "\n                        $ 8,500\n                    "
-                )
-              ])
+          _c("div", { staticClass: "campaign-notes" }, [
+            _vm._v(
+              "\n                            2 agents worked on the campaign\n                        "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "left" }, [
+          _c("div", { staticClass: "date" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "/resumeApp/public/images/client/campaign_archives/date.png",
+                alt: "date icon"
+              }
+            }),
+            _vm._v(
+              "\n                            4.09.18 - 4.01.19\n                        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "amount" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "/resumeApp/public/images/client/campaign_archives/amount.png",
+                alt: "amount icon"
+              }
+            }),
+            _vm._v(
+              "\n                            $ 8,500\n                        "
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "campaign-item" }, [
+        _c("div", { staticClass: "right" }, [
+          _c("div", { staticClass: "name-of-campaign" }, [
+            _c("a", { attrs: { href: "/client/campaign" } }, [
+              _vm._v(
+                "\n                                Name of the campaign long name of the campaign\n                            "
+              )
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "campaign-item" }, [
-            _c("div", { staticClass: "right" }, [
-              _c("div", { staticClass: "name-of-campaign" }, [
-                _c("a", { attrs: { href: "/client/campaign" } }, [
-                  _vm._v(
-                    "\n                            Name of the campaign long name of the campaign\n                        "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "campaign-notes" }, [
-                _vm._v(
-                  "\n                        2 agents worked on the campaign\n                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "left" }, [
-              _c("div", { staticClass: "date" }, [
-                _c("img", {
-                  attrs: {
-                    src:
-                      "/resumeApp/public/images/client/campaign_archives/date.png",
-                    alt: "date icon"
-                  }
-                }),
-                _vm._v(
-                  "\n                        4.09.18 - 4.01.19\n                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "amount" }, [
-                _c("img", {
-                  attrs: {
-                    src:
-                      "/resumeApp/public/images/client/campaign_archives/amount.png",
-                    alt: "amount icon"
-                  }
-                }),
-                _vm._v(
-                  "\n                        $ 8,500\n                    "
-                )
-              ])
-            ])
+          _c("div", { staticClass: "campaign-notes" }, [
+            _vm._v(
+              "\n                            2 agents worked on the campaign\n                        "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "left" }, [
+          _c("div", { staticClass: "date" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "/resumeApp/public/images/client/campaign_archives/date.png",
+                alt: "date icon"
+              }
+            }),
+            _vm._v(
+              "\n                            4.09.18 - 4.01.19\n                        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "amount" }, [
+            _c("img", {
+              attrs: {
+                src:
+                  "/resumeApp/public/images/client/campaign_archives/amount.png",
+                alt: "amount icon"
+              }
+            }),
+            _vm._v(
+              "\n                            $ 8,500\n                        "
+            )
           ])
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "archive-empty-state-img-wrapper" }, [
+      _c("img", {
+        attrs: {
+          src:
+            "/resumeApp/public/images/client/campaign_archives/archive_emty_state.png",
+          alt: "emty state photo"
+        }
+      })
     ])
   }
 ]

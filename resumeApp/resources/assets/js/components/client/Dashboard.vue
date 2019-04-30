@@ -200,36 +200,36 @@
 
                         <div class="client-info invoice-info-client">
                             <div class="d-flex align-items-center">
-                                <img src="/resumeApp/public/IMG/client/payments/icon/people_24px.png" class="invoice-info-icon"/>
+                                <img src="/resumeApp/public/images/client/payments/people_24px.png" class="invoice-info-icon"/>
                                 <span class="invoice-info-title"> Name of agents: </span> Analiza Belleza, Cheska Ramos
                             </div>
 
                             <div class="d-flex align-items-center">
-                                <img src="/resumeApp/public/IMG/client/payments/icon/assignment_turned_in_24px.png" class="invoice-info-icon"/>
+                                <img src="/resumeApp/public/images/client/payments/assignment_turned_in_24px.png" class="invoice-info-icon"/>
                                 <span class="invoice-info-title"> Name of agents: </span>
                                 Analiza Belleza, Cheska Ramos
                             </div>
 
                             <div class="d-flex align-items-center">
-                                <img src="/resumeApp/public/IMG/client/payments/icon/account_balance_wallet_24px.png" class="invoice-info-icon"/>
+                                <img src="/resumeApp/public/images/client/payments/account_balance_wallet_24px.png" class="invoice-info-icon"/>
                                 <span class="invoice-info-title"> Name of agents: </span>
                                 Analiza Belleza, Cheska Ramos
                             </div>
 
                             <div class="d-flex align-items-center">
-                                <img src="/resumeApp/public/IMG/client/payments/icon/watch_later_24px.png" class="invoice-info-icon"/>
+                                <img src="/resumeApp/public/images/client/payments/watch_later_24px.png" class="invoice-info-icon"/>
                                 <span class="invoice-info-title"> Name of agents: </span>
                                 Analiza Belleza, Cheska Ramos
                             </div>
 
                             <div class="d-flex align-items-center">
-                                <img src="/resumeApp/public/IMG/client/payments/icon/Subtract.png" class="invoice-info-icon"/>
+                                <img src="/resumeApp/public/images/client/payments/Subtract.png" class="invoice-info-icon"/>
                                 <span class="invoice-info-title"> Name of agents: </span>
                                 Analiza Belleza, Cheska Ramos
                             </div>
 
                             <div class="d-flex align-items-center">
-                                <img src="/resumeApp/public/IMG/client/payments/icon/account_balance_wallet_24px.png" class="invoice-info-icon"/>
+                                <img src="/resumeApp/public/images/client/payments/account_balance_wallet_24px.png" class="invoice-info-icon"/>
                                 <span class="invoice-info-title"> Name of agents: </span>
                                 Analiza Belleza, Cheska Ramos
                             </div>

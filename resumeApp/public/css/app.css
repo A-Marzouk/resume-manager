@@ -6555,6 +6555,36 @@ body {
   border-bottom: none;
 }
 
+.archive-empty-state div.archive-empty-state-header {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+  letter-spacing: -0.1px;
+  color: #7A828D;
+  margin-bottom: 58px;
+}
+
+.archive-empty-state div.archive-empty-state-img-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .archive-empty-state div.archive-empty-state-img-wrapper img {
+    width: 96%;
+    height: 100%;
+    margin-bottom: 100px;
+  }
+}
+
 .add-agent-form {
   margin-left: 15px !important;
 }
@@ -7974,7 +8004,7 @@ input[type="radio"]:checked + label {
   margin-right: 200px;
   width: 257px;
   height: 68px;
-  background-image: url("/resumeApp/public/IMG/client/payments/icon/123logo.png");
+  background-image: url("/resumeApp/public/images/client/payments/123logo.png");
 }
 
 @media only screen and (max-width: 1200px) {
@@ -8040,7 +8070,7 @@ input[type="radio"]:checked + label {
   }
 
   .modal-logo {
-    background-image: url("/resumeApp/public/IMG/client/payments/icon/123logo_sm.png");
+    background-image: url("/resumeApp/public/images/client/payments/123logo_sm.png");
     width: 111px;
     height: 30px;
   }

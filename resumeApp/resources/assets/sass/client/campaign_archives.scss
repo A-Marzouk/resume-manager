@@ -113,3 +113,28 @@
     }
   }
 }
+
+.archive-empty-state{
+  div.archive-empty-state-header{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;/* identical to box height, or 150% */
+    letter-spacing: -0.1px;
+    color: #7A828D;
+    margin-bottom:58px;
+  }
+  div.archive-empty-state-img-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    img{
+      @media (max-width:600px) {
+        width:96%;
+        height: 100%;
+        margin-bottom: 100px;
+      }
+    }
+  }
+}

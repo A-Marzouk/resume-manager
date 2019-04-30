@@ -81,7 +81,7 @@ Route::prefix('freelancer')->group(function (){
     // Route::get('/','FreelancersController@showEditForm')->name('show.edit_form');
 
     // frontend routes
-    Route::get('/','FreelancersController@index')->name('client.dashboard');
+    Route::get('/','FreelancersController@index')->name('freelancer.dashboard');
 
     Route::post('/store','UserDataController@store')->name('freelancer.data.store');
     Route::get('/store',function(){

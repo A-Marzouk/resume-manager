@@ -157,6 +157,27 @@ if ($("#account_info_edit").length !== 0){
     });
 }
 
+// Freelancer components
+Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'));
+
+if ($("#freelancerDashboardComponent").length !== 0){
+
+    const routes = [
+        { path: '/:my-account', component: MyAccount },
+        { path: '/', component: CampaignManager }
+    ];
+
+    const router = new VueRouter({
+        routes,
+    });
+
+
+    let freelancerDashboardComponent = new Vue({
+        router,
+        el:'#freelancerDashboardComponent'
+    });
+}
+
 
 Vue.component('chat-message', require('./components/chat/chatMessage.vue'));
 Vue.component('chat-log', require('./components/chat/chatLog.vue'));

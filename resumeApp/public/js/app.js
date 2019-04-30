@@ -14456,6 +14456,23 @@ if ($("#account_info_edit").length !== 0) {
     });
 }
 
+// Freelancer components
+Vue.component('freelancer-dashboard', __webpack_require__(355));
+
+if ($("#freelancerDashboardComponent").length !== 0) {
+
+    var _routes2 = [{ path: '/:my-account', component: __WEBPACK_IMPORTED_MODULE_6__components_client_dashboardComponents_MyAccount_vue___default.a }, { path: '/', component: __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue___default.a }];
+
+    var _router2 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+        routes: _routes2
+    });
+
+    var freelancerDashboardComponent = new Vue({
+        router: _router2,
+        el: '#freelancerDashboardComponent'
+    });
+}
+
 Vue.component('chat-message', __webpack_require__(116));
 Vue.component('chat-log', __webpack_require__(121));
 Vue.component('chat-composer', __webpack_require__(126));
@@ -100401,6 +100418,841 @@ new SideNav();
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 349 */,
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */,
+/* 355 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(357)
+/* template */
+var __vue_template__ = __webpack_require__(356)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\freelancer\\Dashboard.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-71515c9c", Component.options)
+  } else {
+    hotAPI.reload("data-v-71515c9c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 356 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "js-side-nav-container side-nav-container" }, [
+      _c("div", { staticClass: "js-side-nav side-nav" }, [
+        _c("a", {
+          staticClass: "js-menu-close menu-close",
+          attrs: { href: "javascript:void(0)", id: "close-menu" }
+        }),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "freelancer_dashboard_content" }, [
+          _c(
+            "div",
+            { staticClass: "dashboard-side-menu" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "menu-block row",
+                  class: { active: _vm.activeTab === "campaign_manager" },
+                  attrs: { to: "/" },
+                  nativeOn: {
+                    click: function($event) {
+                      _vm.selectTab("campaign_manager")
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "imageContainer" }, [
+                    _c("img", {
+                      attrs: {
+                        src: _vm.getMenuBlockIcon("campaign_manager"),
+                        alt: "icon"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "menu-block-name" }, [
+                    _vm._v(
+                      "\n                            Campaign manager\n                        "
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "menu-block row",
+                  class: { active: _vm.activeTab === "my-account" },
+                  attrs: { to: "/my-account" },
+                  nativeOn: {
+                    click: function($event) {
+                      _vm.selectTab("my-account")
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "imageContainer" }, [
+                    _c("img", {
+                      attrs: {
+                        src: _vm.getMenuBlockIcon("my-account"),
+                        alt: "icon"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "menu-block-name" }, [
+                    _vm._v(
+                      "\n                            My account\n                        "
+                    )
+                  ])
+                ]
+              )
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _vm._m(2)
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "freelancer_dashboard_content" }, [
+      _c(
+        "div",
+        { staticClass: "dashboard-side-menu hideOnTablet" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "menu-block row",
+              class: { active: _vm.activeTab === "campaign_manager" },
+              attrs: { to: "/" },
+              nativeOn: {
+                click: function($event) {
+                  _vm.selectTab("campaign_manager")
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "imageContainer" }, [
+                _c("img", {
+                  attrs: {
+                    src: _vm.getMenuBlockIcon("campaign_manager"),
+                    alt: "icon"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "menu-block-name" }, [
+                _vm._v(
+                  "\n                    Campaign manager\n                "
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            {
+              staticClass: "menu-block row",
+              class: { active: _vm.activeTab === "my-account" },
+              attrs: { to: "/my-account" },
+              nativeOn: {
+                click: function($event) {
+                  _vm.selectTab("my-account")
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "imageContainer" }, [
+                _c("img", {
+                  attrs: {
+                    src: _vm.getMenuBlockIcon("my-account"),
+                    alt: "icon"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "menu-block-name" }, [
+                _vm._v("\n                    My account\n                ")
+              ])
+            ]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "content-block" },
+        [_c("keep-alive", [_c("router-view")], 1)],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _vm._m(3)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "nav",
+      {
+        staticClass: "navbar navbar-light fixed-top freelancer_navbar",
+        attrs: { id: "sideNav" }
+      },
+      [
+        _c(
+          "a",
+          {
+            staticClass: "js-menu-open menu-open",
+            attrs: { href: "javascript:void(0)", id: "menu-open-icon" }
+          },
+          [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/Group.png",
+                alt: "menu"
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "js-menu-close d-none",
+            attrs: { href: "javascript:void(0)" }
+          },
+          [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/close.png",
+                alt: "menu"
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          { staticClass: "navbar-brand", attrs: { href: "/freelancer" } },
+          [
+            _c("img", {
+              staticStyle: { width: "177px" },
+              attrs: {
+                src: "/resumeApp/public/images/client/logo_123.png",
+                alt: "logout"
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-inline my-2 my-lg-0" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-inline my-2 my-lg-0 freelancerName" }, [
+          _c("div", { staticClass: "logoutButton" }, [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", {
+                attrs: {
+                  src: "/resumeApp/public/images/client/log_out.png",
+                  alt: "logout"
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _vm._v("\n                Ahmed R. Marzouk\n            ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "freelancerAvatar" }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/dummy.png",
+                alt: "logout"
+              }
+            })
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "freelancerInfo-bar" }, [
+      _c("div", { staticClass: "freelancerAvatar" }, [
+        _c("img", {
+          attrs: {
+            src: "/resumeApp/public/images/client/dummy.png",
+            alt: "logout"
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "freelancerName" }, [
+        _vm._v("\n                    Welcome,"),
+        _c("br"),
+        _vm._v("\n                    Ahmed R. Marzouk\n                ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "logoutBtn" }, [
+      _c("a", { attrs: { href: "#" } }, [
+        _vm._v("\n                    LOG OUT\n                ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: { id: "view-invoice", role: "dialog" }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-lg modal-width" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header close-button" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [
+                  _c("img", {
+                    attrs: { src: "/resumeApp/public/images/client/close.png" }
+                  })
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "invoice-body" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex justify-content-between align-items-center"
+                },
+                [
+                  _c("div", { staticClass: "invoice-style" }, [
+                    _vm._v(" INVOICE ")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-logo" })
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "invioce-top-text" }, [
+                _vm._v(
+                  "\n                        123 Workforce\n                        "
+                ),
+                _c("br"),
+                _vm._v(
+                  "\n                        5th floor Portview House Thorn Castle st Dublin Ireland\n                        "
+                ),
+                _c("br"),
+                _vm._v(
+                  "\n                        00442037000685\n                        "
+                ),
+                _c("br"),
+                _vm._v(
+                  "\n                        info@123workforce.com\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex justify-content-between align-items-center invioce-title"
+                },
+                [
+                  _c("div", [_vm._v("№ 059-004-038")]),
+                  _vm._v(" "),
+                  _c("div", [_vm._v(" other services")]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "d-flex justify-content-between align-items-center"
+                    },
+                    [
+                      _vm._v(" $400  "),
+                      _c("span", { staticClass: "invoice-outstand" }, [
+                        _vm._v(" outstand")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "invoice-download" }, [
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/payments/export_invoice.png"
+                      }
+                    }),
+                    _vm._v("   copy invioce link ")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "invoice-date" }, [
+                _vm._v(
+                  "\n                        Invoice issue date:\n                        "
+                ),
+                _c("br"),
+                _vm._v(" 26.03.2019\n                    ")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "freelancer-info" }, [
+                _c("div", { staticStyle: { "font-weight": "500" } }, [
+                  _vm._v("Freelancer info:")
+                ]),
+                _vm._v(" "),
+                _c("div", [_vm._v("Name: Kim Coe")]),
+                _vm._v(" "),
+                _c("div", [_vm._v("Company: Urban HQ LTD")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex" }, [
+                  _c("div", [
+                    _vm._v(
+                      "\n                                Contact:\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticStyle: { width: "200px", "margin-left": "3px" } },
+                    [
+                      _vm._v(
+                        "  +447711228204\n                                kim@urbanhqgroup.com "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "freelancer-info invoice-info-freelancer" },
+                [
+                  _c("div", { staticClass: "d-flex align-items-center" }, [
+                    _c("img", {
+                      staticClass: "invoice-info-icon",
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/payments/people_24px.png"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "invoice-info-title" }, [
+                      _vm._v(" Name of agents: ")
+                    ]),
+                    _vm._v(
+                      " Analiza Belleza, Cheska Ramos\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "d-flex align-items-center" }, [
+                    _c("img", {
+                      staticClass: "invoice-info-icon",
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/payments/assignment_turned_in_24px.png"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "invoice-info-title" }, [
+                      _vm._v(" Name of agents: ")
+                    ]),
+                    _vm._v(
+                      "\n                            Analiza Belleza, Cheska Ramos\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "d-flex align-items-center" }, [
+                    _c("img", {
+                      staticClass: "invoice-info-icon",
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/payments/account_balance_wallet_24px.png"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "invoice-info-title" }, [
+                      _vm._v(" Name of agents: ")
+                    ]),
+                    _vm._v(
+                      "\n                            Analiza Belleza, Cheska Ramos\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "d-flex align-items-center" }, [
+                    _c("img", {
+                      staticClass: "invoice-info-icon",
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/payments/watch_later_24px.png"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "invoice-info-title" }, [
+                      _vm._v(" Name of agents: ")
+                    ]),
+                    _vm._v(
+                      "\n                            Analiza Belleza, Cheska Ramos\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "d-flex align-items-center" }, [
+                    _c("img", {
+                      staticClass: "invoice-info-icon",
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/payments/Subtract.png"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "invoice-info-title" }, [
+                      _vm._v(" Name of agents: ")
+                    ]),
+                    _vm._v(
+                      "\n                            Analiza Belleza, Cheska Ramos\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "d-flex align-items-center" }, [
+                    _c("img", {
+                      staticClass: "invoice-info-icon",
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/payments/account_balance_wallet_24px.png"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "invoice-info-title" }, [
+                      _vm._v(" Name of agents: ")
+                    ]),
+                    _vm._v(
+                      "\n                            Analiza Belleza, Cheska Ramos\n                        "
+                    )
+                  ])
+                ]
+              )
+            ])
+          ])
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-71515c9c", module.exports)
+  }
+}
+
+/***/ }),
+/* 357 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            activeTab: 'campaign_manager'
+        };
+    },
+
+    methods: {
+        selectTab: function selectTab(tabName) {
+            this.activeTab = tabName;
+        },
+        getMenuBlockIcon: function getMenuBlockIcon(tabName) {
+            if (this.activeTab === tabName) {
+                return '/resumeApp/public/images/client/menu_icons/active/' + tabName + '.png';
+            }
+            return '/resumeApp/public/images/client/menu_icons/inactive/' + tabName + '.png';
+        },
+        setActiveTab: function setActiveTab() {
+            this.activeTab = this.$route.path.replace('/', '');
+            if (this.activeTab === '') {
+                this.activeTab = 'campaign_manager';
+            }
+        }
+    },
+    mounted: function mounted() {
+        this.setActiveTab();
+    }
+});
 
 /***/ })
 /******/ ]);

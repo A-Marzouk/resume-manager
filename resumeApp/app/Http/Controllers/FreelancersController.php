@@ -21,6 +21,11 @@ class FreelancersController extends Controller
         $this->middleware('auth');
     }
 
+    public function index(){
+        $client = auth()->guard('client')->user();
+        return view('freelancer.dashboard',compact('client'));
+    }
+
     public function form(){
         if(Auth::user()->admin == 1 && Auth::user()->username == 'admin_workforce'){
             return redirect(route('admin.dashboard'));

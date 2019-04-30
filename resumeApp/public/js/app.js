@@ -14352,8 +14352,7 @@ Vue.component('campaign-main', __webpack_require__(59));
 Vue.component('campaign-archives', __webpack_require__(65));
 Vue.component('account-info-edit', __webpack_require__(70));
 Vue.component('service-agreement', __webpack_require__(75));
-
-Vue.component('payment-show-invoice', __webpack_require__(80));
+Vue.component('privacy-agreement', __webpack_require__(342));
 
 // campaign-activity inside components :
 
@@ -14403,6 +14402,13 @@ if ($("#serviceAgreement").length !== 0) {
 
     var serviceAgreement = new Vue({
         el: '#serviceAgreement'
+    });
+}
+
+if ($("#privacyAgreement").length !== 0) {
+
+    var privacyAgreement = new Vue({
+        el: '#privacyAgreement'
     });
 }
 
@@ -59453,6 +59459,104 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -59811,7 +59915,9 @@ var render = function() {
         [_c("keep-alive", [_c("router-view")], 1)],
         1
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _vm._m(3)
   ])
 }
 var staticRenderFns = [
@@ -59928,6 +60034,250 @@ var staticRenderFns = [
         _vm._v("\n                    LOG OUT\n                ")
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: { id: "view-invoice", role: "dialog" }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-lg modal-width" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header close-button" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [
+                  _c("img", {
+                    attrs: { src: "/resumeApp/public/images/client/close.png" }
+                  })
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "invoice-body" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex justify-content-between align-items-center"
+                },
+                [
+                  _c("div", { staticClass: "invoice-style" }, [
+                    _vm._v(" INVOICE ")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-logo" })
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "invioce-top-text" }, [
+                _vm._v(
+                  "\n                        123 Workforce\n                        "
+                ),
+                _c("br"),
+                _vm._v(
+                  "\n                        5th floor Portview House Thorn Castle st Dublin Ireland\n                        "
+                ),
+                _c("br"),
+                _vm._v(
+                  "\n                        00442037000685\n                        "
+                ),
+                _c("br"),
+                _vm._v(
+                  "\n                        info@123workforce.com\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex justify-content-between align-items-center invioce-title"
+                },
+                [
+                  _c("div", [_vm._v("№ 059-004-038")]),
+                  _vm._v(" "),
+                  _c("div", [_vm._v(" other services")]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "d-flex justify-content-between align-items-center"
+                    },
+                    [
+                      _vm._v(" $400  "),
+                      _c("span", { staticClass: "invoice-outstand" }, [
+                        _vm._v(" outstand")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "invoice-download" }, [
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/payments/export_invoice.png"
+                      }
+                    }),
+                    _vm._v("   copy invioce link ")
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "invoice-date" }, [
+                _vm._v(
+                  "\n                        Invoice issue date:\n                        "
+                ),
+                _c("br"),
+                _vm._v(" 26.03.2019\n                    ")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "client-info" }, [
+                _c("div", { staticStyle: { "font-weight": "500" } }, [
+                  _vm._v("Client info:")
+                ]),
+                _vm._v(" "),
+                _c("div", [_vm._v("Name: Kim Coe")]),
+                _vm._v(" "),
+                _c("div", [_vm._v("Company: Urban HQ LTD")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex" }, [
+                  _c("div", [
+                    _vm._v(
+                      "\n                                Contact:\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticStyle: { width: "200px", "margin-left": "3px" } },
+                    [
+                      _vm._v(
+                        "  +447711228204\n                                kim@urbanhqgroup.com "
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "client-info invoice-info-client" }, [
+                _c("div", { staticClass: "d-flex align-items-center" }, [
+                  _c("img", {
+                    staticClass: "invoice-info-icon",
+                    attrs: {
+                      src:
+                        "/resumeApp/public/IMG/client/payments/icon/people_24px.png"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "invoice-info-title" }, [
+                    _vm._v(" Name of agents: ")
+                  ]),
+                  _vm._v(
+                    " Analiza Belleza, Cheska Ramos\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex align-items-center" }, [
+                  _c("img", {
+                    staticClass: "invoice-info-icon",
+                    attrs: {
+                      src:
+                        "/resumeApp/public/IMG/client/payments/icon/assignment_turned_in_24px.png"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "invoice-info-title" }, [
+                    _vm._v(" Name of agents: ")
+                  ]),
+                  _vm._v(
+                    "\n                            Analiza Belleza, Cheska Ramos\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex align-items-center" }, [
+                  _c("img", {
+                    staticClass: "invoice-info-icon",
+                    attrs: {
+                      src:
+                        "/resumeApp/public/IMG/client/payments/icon/account_balance_wallet_24px.png"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "invoice-info-title" }, [
+                    _vm._v(" Name of agents: ")
+                  ]),
+                  _vm._v(
+                    "\n                            Analiza Belleza, Cheska Ramos\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex align-items-center" }, [
+                  _c("img", {
+                    staticClass: "invoice-info-icon",
+                    attrs: {
+                      src:
+                        "/resumeApp/public/IMG/client/payments/icon/watch_later_24px.png"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "invoice-info-title" }, [
+                    _vm._v(" Name of agents: ")
+                  ]),
+                  _vm._v(
+                    "\n                            Analiza Belleza, Cheska Ramos\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex align-items-center" }, [
+                  _c("img", {
+                    staticClass: "invoice-info-icon",
+                    attrs: {
+                      src:
+                        "/resumeApp/public/IMG/client/payments/icon/Subtract.png"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "invoice-info-title" }, [
+                    _vm._v(" Name of agents: ")
+                  ]),
+                  _vm._v(
+                    "\n                            Analiza Belleza, Cheska Ramos\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex align-items-center" }, [
+                  _c("img", {
+                    staticClass: "invoice-info-icon",
+                    attrs: {
+                      src:
+                        "/resumeApp/public/IMG/client/payments/icon/account_balance_wallet_24px.png"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "invoice-info-title" }, [
+                    _vm._v(" Name of agents: ")
+                  ]),
+                  _vm._v(
+                    "\n                            Analiza Belleza, Cheska Ramos\n                        "
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -61778,7 +62128,7 @@ var staticRenderFns = [
               alt: ""
             }
           }),
-          _vm._v("\n            ENTER THE PARAMETERS OF SEARCH\n        ")
+          _vm._v("\n            SERVICE AGREEMENT\n        ")
         ]),
         _vm._v(" "),
         _c("hr"),
@@ -61921,327 +62271,8 @@ if (false) {
 }
 
 /***/ }),
-/* 80 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = null
-/* template */
-var __vue_template__ = __webpack_require__(81)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\client\\dashboardComponents\\payments\\PaymentShowInvoice.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-be5500a6", Component.options)
-  } else {
-    hotAPI.reload("data-v-be5500a6", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-lg",
-          staticStyle: { background: "transparent" },
-          attrs: {
-            type: "button",
-            "data-toggle": "modal",
-            "data-target": "#myModal"
-          }
-        },
-        [
-          _c("img", {
-            attrs: {
-              src: "/resumeApp/public/images/client/payments/show_invoice.png"
-            }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "modal fade", attrs: { id: "myModal", role: "dialog" } },
-        [
-          _c("div", { staticClass: "modal-dialog modal-lg modal-width" }, [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header close-button" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "close",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [
-                    _c("img", {
-                      attrs: {
-                        src: "/resumeApp/public/images/client/close.png"
-                      }
-                    })
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "invoice-body" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "d-flex justify-content-between align-items-center"
-                  },
-                  [
-                    _c("div", { staticClass: "invoice-style" }, [
-                      _vm._v(" INVOICE ")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "modal-logo" })
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "invioce-top-text" }, [
-                  _vm._v("\n            123 Workforce\n            "),
-                  _c("br"),
-                  _vm._v(
-                    "\n            5th floor Portview House Thorn Castle st Dublin Ireland\n            "
-                  ),
-                  _c("br"),
-                  _vm._v("\n            00442037000685\n            "),
-                  _c("br"),
-                  _vm._v("\n            info@123workforce.com\n          ")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "d-flex justify-content-between align-items-center invioce-title"
-                  },
-                  [
-                    _c("div", [_vm._v("№ 059-004-038")]),
-                    _vm._v(" "),
-                    _c("div", [_vm._v(" other services")]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "d-flex justify-content-between align-items-center"
-                      },
-                      [
-                        _vm._v(" $400  "),
-                        _c("span", { staticClass: "invoice-outstand" }, [
-                          _vm._v(" outstand")
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "invoice-download" }, [
-                      _c("img", {
-                        attrs: {
-                          src:
-                            "/resumeApp/public/images/client/payments/export_invoice.png"
-                        }
-                      }),
-                      _vm._v("   copy invioce link ")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "invoice-date" }, [
-                  _vm._v("\n            Invoice issue date:\n            "),
-                  _c("br"),
-                  _vm._v(" 26.03.2019\n          ")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "client-info" }, [
-                  _c("div", { staticStyle: { "font-weight": "500" } }, [
-                    _vm._v("Client info:")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [_vm._v("Name: Kim Coe")]),
-                  _vm._v(" "),
-                  _c("div", [_vm._v("Company: Urban HQ LTD")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "d-flex" }, [
-                    _c("div", [
-                      _vm._v("\n                Contact:\n              ")
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticStyle: { width: "200px", "margin-left": "3px" } },
-                      [
-                        _vm._v(
-                          "  +447711228204\n                kim@urbanhqgroup.com "
-                        )
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "client-info invoice-info-client" }, [
-                  _c("div", { staticClass: "d-flex align-items-center" }, [
-                    _c("img", {
-                      staticClass: "invoice-info-icon",
-                      attrs: {
-                        src:
-                          "/resumeApp/public/IMG/client/payments/icon/people_24px.png"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "invoice-info-title" }, [
-                      _vm._v(" Name of agents: ")
-                    ]),
-                    _vm._v(" Analiza Belleza, Cheska Ramos\n                ")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "d-flex align-items-center" }, [
-                    _c("img", {
-                      staticClass: "invoice-info-icon",
-                      attrs: {
-                        src:
-                          "/resumeApp/public/IMG/client/payments/icon/assignment_turned_in_24px.png"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "invoice-info-title" }, [
-                      _vm._v(" Name of agents: ")
-                    ]),
-                    _vm._v(
-                      "\n                  Analiza Belleza, Cheska Ramos\n                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "d-flex align-items-center" }, [
-                    _c("img", {
-                      staticClass: "invoice-info-icon",
-                      attrs: {
-                        src:
-                          "/resumeApp/public/IMG/client/payments/icon/account_balance_wallet_24px.png"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "invoice-info-title" }, [
-                      _vm._v(" Name of agents: ")
-                    ]),
-                    _vm._v(
-                      "\n                  Analiza Belleza, Cheska Ramos\n                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "d-flex align-items-center" }, [
-                    _c("img", {
-                      staticClass: "invoice-info-icon",
-                      attrs: {
-                        src:
-                          "/resumeApp/public/IMG/client/payments/icon/watch_later_24px.png"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "invoice-info-title" }, [
-                      _vm._v(" Name of agents: ")
-                    ]),
-                    _vm._v(
-                      "\n                  Analiza Belleza, Cheska Ramos\n                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "d-flex align-items-center" }, [
-                    _c("img", {
-                      staticClass: "invoice-info-icon",
-                      attrs: {
-                        src:
-                          "/resumeApp/public/IMG/client/payments/icon/Subtract.png"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "invoice-info-title" }, [
-                      _vm._v(" Name of agents: ")
-                    ]),
-                    _vm._v(
-                      "\n                  Analiza Belleza, Cheska Ramos\n                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "d-flex align-items-center" }, [
-                    _c("img", {
-                      staticClass: "invoice-info-icon",
-                      attrs: {
-                        src:
-                          "/resumeApp/public/IMG/client/payments/icon/account_balance_wallet_24px.png"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "invoice-info-title" }, [
-                      _vm._v(" Name of agents: ")
-                    ]),
-                    _vm._v(
-                      "\n                  Analiza Belleza, Cheska Ramos\n                "
-                    )
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ]
-      )
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-be5500a6", module.exports)
-  }
-}
-
-/***/ }),
+/* 80 */,
+/* 81 */,
 /* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -66967,15 +66998,26 @@ var staticRenderFns = [
         _c("tbody", [
           _c("tr", [
             _c("td", [
-              _c("div", { staticClass: "invoice-view" }, [
-                _c("img", {
+              _c(
+                "a",
+                {
+                  staticClass: "invoice-view",
                   attrs: {
-                    src:
-                      "/resumeApp/public/images/client/payments/show_invoice.png",
-                    alt: "show invoice icon"
+                    "data-toggle": "modal",
+                    "data-target": "#view-invoice",
+                    href: "javascript:void(0)"
                   }
-                })
-              ])
+                },
+                [
+                  _c("img", {
+                    attrs: {
+                      src:
+                        "/resumeApp/public/images/client/payments/show_invoice.png",
+                      alt: "show invoice icon"
+                    }
+                  })
+                ]
+              )
             ]),
             _vm._v(" "),
             _c("td", [
@@ -67023,15 +67065,26 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("tr", [
             _c("td", [
-              _c("div", { staticClass: "invoice-view" }, [
-                _c("img", {
+              _c(
+                "a",
+                {
+                  staticClass: "invoice-view",
                   attrs: {
-                    src:
-                      "/resumeApp/public/images/client/payments/show_invoice.png",
-                    alt: "show invoice icon"
+                    "data-toggle": "modal",
+                    "data-target": "#view-invoice",
+                    href: "javascript:void(0)"
                   }
-                })
-              ])
+                },
+                [
+                  _c("img", {
+                    attrs: {
+                      src:
+                        "/resumeApp/public/images/client/payments/show_invoice.png",
+                      alt: "show invoice icon"
+                    }
+                  })
+                ]
+              )
             ]),
             _vm._v(" "),
             _c("td", [
@@ -67079,15 +67132,26 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("tr", [
             _c("td", [
-              _c("div", { staticClass: "invoice-view" }, [
-                _c("img", {
+              _c(
+                "a",
+                {
+                  staticClass: "invoice-view",
                   attrs: {
-                    src:
-                      "/resumeApp/public/images/client/payments/show_invoice.png",
-                    alt: "show invoice icon"
+                    "data-toggle": "modal",
+                    "data-target": "#view-invoice",
+                    href: "javascript:void(0)"
                   }
-                })
-              ])
+                },
+                [
+                  _c("img", {
+                    attrs: {
+                      src:
+                        "/resumeApp/public/images/client/payments/show_invoice.png",
+                      alt: "show invoice icon"
+                    }
+                  })
+                ]
+              )
             ]),
             _vm._v(" "),
             _c("td", [
@@ -67135,15 +67199,26 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("tr", [
             _c("td", [
-              _c("div", { staticClass: "invoice-view" }, [
-                _c("img", {
+              _c(
+                "a",
+                {
+                  staticClass: "invoice-view",
                   attrs: {
-                    src:
-                      "/resumeApp/public/images/client/payments/show_invoice.png",
-                    alt: "show invoice icon"
+                    "data-toggle": "modal",
+                    "data-target": "#view-invoice",
+                    href: "javascript:void(0)"
                   }
-                })
-              ])
+                },
+                [
+                  _c("img", {
+                    attrs: {
+                      src:
+                        "/resumeApp/public/images/client/payments/show_invoice.png",
+                      alt: "show invoice icon"
+                    }
+                  })
+                ]
+              )
             ]),
             _vm._v(" "),
             _c("td", [
@@ -67719,11 +67794,15 @@ var staticRenderFns = [
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "left no-decoration" }, [
-              _c("a", { attrs: { href: "#" } }, [
-                _vm._v(
-                  "\n                            COMPLETE AGREEMENT\n                        "
-                )
-              ])
+              _c(
+                "a",
+                { attrs: { href: "/client/account/service-agreement" } },
+                [
+                  _vm._v(
+                    "\n                            COMPLETE AGREEMENT\n                        "
+                  )
+                ]
+              )
             ])
           ]),
           _vm._v(" "),
@@ -67744,11 +67823,15 @@ var staticRenderFns = [
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "left no-decoration" }, [
-              _c("a", { attrs: { href: "#" } }, [
-                _vm._v(
-                  "\n                            COMPLETE AGREEMENT\n                        "
-                )
-              ])
+              _c(
+                "a",
+                { attrs: { href: "/client/account/service-agreement" } },
+                [
+                  _vm._v(
+                    "\n                            COMPLETE AGREEMENT\n                        "
+                  )
+                ]
+              )
             ])
           ])
         ])
@@ -98381,6 +98464,423 @@ new SideNav();
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(343)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(345)
+/* template */
+var __vue_template__ = __webpack_require__(346)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-c904c410"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\client\\dashboardComponents\\my_account\\PrivacyAgreement.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c904c410", Component.options)
+  } else {
+    hotAPI.reload("data-v-c904c410", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 343 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(344);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("15db5ef4", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c904c410\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PrivacyAgreement.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c904c410\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PrivacyAgreement.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 344 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 345 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 346 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "nav",
+        { staticClass: "navbar navbar-light fixed-top client_navbar" },
+        [
+          _c("div", { staticClass: "backBtn" }, [
+            _c("a", { attrs: { href: "/client" } }, [
+              _c("img", {
+                attrs: {
+                  src: "/resumeApp/public/images/client/arrow_back.png",
+                  alt: "back-icon"
+                }
+              })
+            ]),
+            _vm._v("\n            ACCOUNT INFORMATION EDITION\n        ")
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-main-grid main-grid" }, [
+        _c("div", { staticClass: "col-12 col-sm-12 col-md-12 header-text" }, [
+          _c("img", {
+            staticClass: "icon-margin small-image",
+            attrs: {
+              src:
+                "/resumeApp/public/images/client/my_account/contract_40px.png",
+              alt: ""
+            }
+          }),
+          _vm._v("\n            PRIVACY AGREEMENT\n        ")
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "agreement-main" }, [
+          _c("div", { staticClass: "agreement-text agreement-margin" }, [
+            _vm._v("\n                THIS AGREEMENT\n                "),
+            _c("span", { staticStyle: { "font-weight": "bold" } }, [
+              _vm._v("(THE ”AGREEMENT”)")
+            ]),
+            _vm._v(" IS MADE ON\n                "),
+            _c("span", { staticStyle: { "font-weight": "bold" } }, [
+              _vm._v("“DATE”")
+            ]),
+            _vm._v(" BY AND BETWEEN THE\n                "),
+            _c("span", { staticStyle: { "font-weight": "bold" } }, [
+              _vm._v("“CLIENT”")
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(
+              "\n                AND THE “____”. IN CONSIDERATION OF THE MUTUAL AGREEMENT MADE HEREIN, BOTH PARTIES AGREE AS FOLLOWS:\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n                work\n            ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n                CONFIDENTIALITY\n            ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n                proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing\n                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim\n                id est laborum.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n                COMPENSATION\n            ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n                proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing\n                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim\n                id est laborum.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n                COMPENSATION\n            ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n                CLIENT APPROVAL\n            ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n                CANCELLATION\n            ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-tex agreement-main-text" }, [
+            _vm._v(
+              "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n                ACCEPTANCE OF TERMS\n            ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n            "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "bluechecked d-flex align-items-center" }, [
+          _c("input", {
+            staticClass: "chechbox-blue",
+            attrs: { type: "checkbox", vlaue: "", id: "", name: "" }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            { staticClass: "agreement-text", attrs: { for: "checkbox" } },
+            [_vm._v(" I agree with the privacy agreemen")]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-12 col-md-8 col-lg-6 agreement-segniture" },
+          [
+            _c("div", { staticClass: "blue-part" }, [
+              _vm._v("\n                YOUR SIGNATURE\n            ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "agreement-text signiture-main-text" }, [
+              _vm._v("\n                Name surname\n            ")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex justify-content-end" }, [
+          _c("button", { staticClass: "agreement-button" }, [_vm._v("SIGN")])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c904c410", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

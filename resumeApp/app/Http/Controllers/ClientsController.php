@@ -33,6 +33,10 @@ class ClientsController extends Controller
         return view('client.my_account.service_agreement') ;
     }
 
+    public function viewClientPrivacyAgreement(){
+        return view('client.my_account.privacy_agreement') ;
+    }
+
      public function viewClientPaymentShowInvice(){
          return view('client.payments.payment_show_invoice') ;
      }

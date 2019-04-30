@@ -36,8 +36,8 @@ Route::prefix('client')->group(function (){
     Route::get('/account/edit','ClientsController@viewAccountEditPage')->name('account.edi');
     // service agreement route
     Route::get('/account/service-agreement','ClientsController@viewClientServiceAgreement')->name('service.agreement');
-    // paymentShowInvoice
-    Route::get('/payments/payment-show-invoice','ClientsController@viewClientPaymentShowInvice')->name('payment.show.invoice');
+    // privacy agreement route
+    Route::get('/account/privacy-agreement','ClientsController@viewClientPrivacyAgreement')->name('privacy.agreement');
 
 //////////////////
     Route::get('/has_agreed','ClientsController@hasAgreed');
@@ -51,7 +51,6 @@ Route::prefix('client')->group(function (){
 
 //client jobs :
     Route::get('/jobs','ClientsController@viewJobsPage')->name('client.jobs');
-
     Route::get('/get_jobs','ClientsController@getJobs')->name('get.jobs');
     Route::post('/jobs/delete','ClientsController@deleteJob');
     Route::post('/jobs/add/','JobsController@addJobPost')->name('add.job');

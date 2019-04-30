@@ -141,9 +141,9 @@
                     <tbody>
                         <tr>
                             <td>
-                                <div class="invoice-view">
+                                <a class="invoice-view" data-toggle="modal" data-target="#view-invoice" href="javascript:void(0)">
                                     <img src="/resumeApp/public/images/client/payments/show_invoice.png" alt="show invoice icon">
-                                </div>
+                                </a>
                             </td>
                         <td>
                             <div class="invoice-number">
@@ -173,9 +173,9 @@
                     </tr>
                         <tr>
                             <td>
-                                <div class="invoice-view">
+                                <a class="invoice-view" data-toggle="modal" data-target="#view-invoice" href="javascript:void(0)">
                                     <img src="/resumeApp/public/images/client/payments/show_invoice.png" alt="show invoice icon">
-                                </div>
+                                </a>
                             </td>
                             <td>
                                 <div class="invoice-number">
@@ -205,9 +205,9 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="invoice-view">
+                                <a class="invoice-view" data-toggle="modal" data-target="#view-invoice" href="javascript:void(0)">
                                     <img src="/resumeApp/public/images/client/payments/show_invoice.png" alt="show invoice icon">
-                                </div>
+                                </a>
                             </td>
                             <td>
                                 <div class="invoice-number">
@@ -237,9 +237,9 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="invoice-view">
+                                <a class="invoice-view" data-toggle="modal" data-target="#view-invoice" href="javascript:void(0)">
                                     <img src="/resumeApp/public/images/client/payments/show_invoice.png" alt="show invoice icon">
-                                </div>
+                                </a>
                             </td>
                             <td>
                                 <div class="invoice-number">

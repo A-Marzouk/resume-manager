@@ -113,7 +113,7 @@
                         </div>
                     </div>
                     <div class="sub-action">
-                        <a href="javascript:void(0)">
+                        <a href="/client/payments/sub-update">
                             UPDATE SUBSCRIPTION PLAN
                         </a>
                     </div>

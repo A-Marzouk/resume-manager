@@ -1,0 +1,43 @@
+.update-sub-plan{
+  display: flex;
+  justify-content: center;
+  padding-top: 28px;
+  .subscriptions {
+    padding-left:79px;
+    padding-right:79px;
+    @media (max-width: 1240px) {
+      width: 96%;
+      padding-left:25px;
+      padding-right:25px;
+    }
+    .subs-heading {
+      @media (max-width: 1240px) {
+        padding-top: 20px;
+      }
+      margin:0;
+    }
+    .subs-list{
+      margin:0;
+    }
+    width: 1096px;
+    background-color: #fff;
+    box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+    border-radius: 4px;
+  }
+
+  .sub-action{
+    a{
+      width: 158px;
+    }
+  }
+}
+
+.blue-text{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;/* or 150% */
+  letter-spacing: -0.1px;
+  color: #3EA0D7;
+}

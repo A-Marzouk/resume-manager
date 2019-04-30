@@ -6244,8 +6244,10 @@ body {
 
 .faq-question-input .faq-input input,
 .faq-question-input .faq-input textarea,
+.faq-question-input .faq-input select,
 .faq-answer-input .faq-input input,
-.faq-answer-input .faq-input textarea {
+.faq-answer-input .faq-input textarea,
+.faq-answer-input .faq-input select {
   width: 100%;
   border: none;
   border-bottom: 1px solid #7A828D;
@@ -6254,8 +6256,10 @@ body {
 
 .faq-question-input .faq-input input:focus,
 .faq-question-input .faq-input textarea:focus,
+.faq-question-input .faq-input select:focus,
 .faq-answer-input .faq-input input:focus,
-.faq-answer-input .faq-input textarea:focus {
+.faq-answer-input .faq-input textarea:focus,
+.faq-answer-input .faq-input select:focus {
   border-color: inherit;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -7969,6 +7973,32 @@ input[type="radio"]:checked + label {
   /* or 150% */
   letter-spacing: -0.1px;
   color: #3EA0D7;
+}
+
+.faq-question-input.sub-edit-input .faq-input {
+  width: 234px;
+}
+
+@media (max-width: 600px) {
+  .faq-question-input.sub-edit-input .faq-input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .faq-question-input.sub-edit-input {
+    width: 100%;
+  }
+}
+
+.weeks-number-heading {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  /* or 133% */
+  color: #4A5464;
 }
 
 .invoice-date {

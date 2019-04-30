@@ -62310,14 +62310,12 @@ var staticRenderFns = [
         _c("div", { staticClass: "bluechecked d-flex align-items-center" }, [
           _c("input", {
             staticClass: "chechbox-blue",
-            attrs: { type: "checkbox", vlaue: "", id: "", name: "" }
+            attrs: { type: "checkbox" }
           }),
           _vm._v(" "),
-          _c(
-            "label",
-            { staticClass: "agreement-text", attrs: { for: "checkbox" } },
-            [_vm._v(" I agree with the privacy agreemen")]
-          )
+          _c("label", { staticClass: "agreement-text" }, [
+            _vm._v(" I agree with the privacy agreemen")
+          ])
         ]),
         _vm._v(" "),
         _c(
@@ -99050,7 +99048,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -99061,6 +99059,33 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -99426,6 +99451,75 @@ var staticRenderFns = [
               _vm._v(
                 "\n                    NEW SUBSCRIPTION PLAN\n                "
               )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "new-sub-plan" }, [
+              _c("div", { staticClass: "weeks-number" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex justify-content-start align-items-center"
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "mr-3",
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/payments/week.png",
+                        alt: "week icon"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "weeks-number-heading" }, [
+                      _vm._v(
+                        "\n                                Total number of weeks\n                            "
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "week-input" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "account-edit-section-inputs d-flex align-items-center"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "faq-question-input sub-edit-input  mt-3"
+                        },
+                        [
+                          _c("div", { staticClass: "faq-input" }, [
+                            _c(
+                              "select",
+                              { attrs: { name: "weeks", id: "weeks" } },
+                              [
+                                _c("option", { attrs: { value: "2" } }, [
+                                  _vm._v("2 weeks")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "4" } }, [
+                                  _vm._v("4 weeks")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "6" } }, [
+                                  _vm._v("6 weeks")
+                                ])
+                              ]
+                            )
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div")
+                ])
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "sub-action" }, [

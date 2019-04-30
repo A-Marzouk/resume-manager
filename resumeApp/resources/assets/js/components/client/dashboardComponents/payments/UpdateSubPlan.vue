@@ -109,6 +109,33 @@
                         NEW SUBSCRIPTION PLAN
                     </div>
 
+                    <div class="new-sub-plan">
+                        <div class="weeks-number">
+                            <div class="d-flex justify-content-start align-items-center">
+                                <img src="/resumeApp/public/images/client/payments/week.png" alt="week icon" class="mr-3">
+                                <div class="weeks-number-heading">
+                                    Total number of weeks
+                                </div>
+                            </div>
+                            <div class="week-input">
+                                <div class="account-edit-section-inputs d-flex align-items-center">
+                                    <div class="faq-question-input sub-edit-input  mt-3">
+                                        <div class="faq-input">
+                                            <select name="weeks" id="weeks">
+                                                <option value="2">2 weeks</option>
+                                                <option value="4">4 weeks</option>
+                                                <option value="6">6 weeks</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="sub-action">
                         <a href="#">
                             CONTINUE

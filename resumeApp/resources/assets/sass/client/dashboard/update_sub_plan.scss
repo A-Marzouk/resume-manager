@@ -41,3 +41,26 @@
   letter-spacing: -0.1px;
   color: #3EA0D7;
 }
+
+.faq-question-input.sub-edit-input{
+  .faq-input{
+    width:234px;
+    @media (max-width:600px) {
+      width:100%;
+    }
+  }
+  @media (max-width:600px) {
+    width:100%;
+  }
+}
+
+.weeks-number-heading{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;/* or 133% */
+  color: #4A5464;
+}
+
+

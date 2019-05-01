@@ -7925,7 +7925,6 @@ input[type="radio"]:checked + label {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-top: 28px;
 }
 
 .update-sub-plan .subscriptions {

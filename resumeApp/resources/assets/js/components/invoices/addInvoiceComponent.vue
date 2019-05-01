@@ -11,10 +11,20 @@
                     <div class="modal-body">
                         <form action="/client/addinvoice/" method="post" @submit.prevent="submitForm">
                           <div class="row">
+                              <div class="form-group col-md-12">
+                                  <label for="user_id" class="panelFormLabel">Agent :</label>
+                                  <select class="form-control" id="user_id" v-model="toBeEditedInvoice.user_id" @change="updateAgent(agent.id)">
+                                      <option v-for="(agent,index) in agents" :key="index" :value="agent.id">
+                                          {{agent.firstName}} {{agent.lastName}}
+                                      </option>
+                                  </select>
+                              </div>
+
                               <div class="form-group col-md-6">
                                   <label for="hours" class="panelFormLabel">Hours :</label>
                                   <input type="number" class="form-control" autofocus id="hours" name="hours" v-model="toBeEditedInvoice.hours" required>
                               </div>
+
                               <!-- hours -->
 
                               <div class="form-group col-6">
@@ -22,10 +32,6 @@
                                   <select  id="currency" class="form-control" v-model="toBeEditedInvoice.currency">
                                       <option disabled selected>Please select</option>
                                       <option value="USD" > USD </option>
-                                      <!--<option value="CAD" > CAD </option>-->
-                                      <!--<option value="AUD" > AUD </option>-->
-                                      <!--<option value="NZD" > NZD </option>-->
-                                      <!--<option value="GBP" > GBP </option>-->
                                   </select>
                               </div>
 

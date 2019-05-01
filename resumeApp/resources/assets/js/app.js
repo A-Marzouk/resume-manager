@@ -44,6 +44,7 @@ Vue.component('account-info-edit', require('./components/client/dashboardCompone
 Vue.component('service-agreement',require('./components/client/dashboardComponents/my_account/ServiceAgreement.vue'));
 // payment pay
 Vue.component('payment-pay',require('./components/client/dashboardComponents/payments/PaymentPay.vue'));
+Vue.component('sub-set-up',require('./components/client/dashboardComponents/payments/SubSetUp.vue'));
 Vue.component('privacy-agreement',require('./components/client/dashboardComponents/my_account/PrivacyAgreement.vue'));
 Vue.component('update-sub-plan',require('./components/client/dashboardComponents/payments/UpdateSubPlan.vue'));
 
@@ -133,6 +134,13 @@ if ($("#paymentPay").length !== 0){
 
     let paymentPay = new Vue({
         el:'#paymentPay'
+    });
+}
+
+if ($("#subSetUp").length !== 0){
+
+    let subSetUp = new Vue({
+        el:'#subSetUp'
     });
 }
 

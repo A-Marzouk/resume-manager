@@ -58656,7 +58656,7 @@ var staticRenderFns = [
                       staticClass: "avator",
                       attrs: {
                         src:
-                          "/resumeApp/public/images/client/add_agent/search_result/ic/user/Без названия.png",
+                          "/resumeApp/public/images/client/add_agent/search_result/ic/user/user123.png",
                         alt: "user"
                       }
                     }),
@@ -58858,7 +58858,7 @@ var staticRenderFns = [
                       staticClass: "avator",
                       attrs: {
                         src:
-                          "/resumeApp/public/images/client/add_agent/search_result/ic/user/Без названия.png",
+                          "/resumeApp/public/images/client/add_agent/search_result/ic/user/user123.png",
                         alt: "user"
                       }
                     }),
@@ -59060,7 +59060,7 @@ var staticRenderFns = [
                       staticClass: "avator",
                       attrs: {
                         src:
-                          "/resumeApp/public/images/client/add_agent/search_result/ic/user/Без названия.png",
+                          "/resumeApp/public/images/client/add_agent/search_result/ic/user/user123.png",
                         alt: "user"
                       }
                     }),

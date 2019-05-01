@@ -298,11 +298,22 @@
                 </a>
             </div>
         </div>
+
+        <addEntry></addEntry>
+        <addDocument></addDocument>
+        
     </div>
 </template>
 
 <script>
+    import addEntry from './addEntry'
+    import addDocument from './addDocument'
+
     export default {
+        components: {
+            addEntry,
+            addDocument
+        },
         data(){
           return{
 

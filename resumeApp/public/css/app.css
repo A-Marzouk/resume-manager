@@ -9105,6 +9105,122 @@ input[type="radio"]:checked + label {
   text-decoration: none !important;
 }
 
+.type-entry-block,
+.add-document-block {
+  background: white;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+  margin-bottom: 16px;
+  padding: 15px 30px;
+}
+
+.type-entry-block .upper-bar,
+.add-document-block .upper-bar {
+  height: 50px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.type-entry-block .entry-input-block,
+.type-entry-block .document-input-block,
+.add-document-block .entry-input-block,
+.add-document-block .document-input-block {
+  width: 100%;
+  position: relative;
+}
+
+.type-entry-block .entry-input-block .entry-input,
+.type-entry-block .document-input-block .entry-input,
+.add-document-block .entry-input-block .entry-input,
+.add-document-block .document-input-block .entry-input {
+  width: 100%;
+  background: #FBFBFB;
+  border: 0;
+  border-bottom: 2px solid rgba(179, 183, 186, 0.7);
+  padding: 10px 10px 10px 60px;
+}
+
+.type-entry-block .entry-input-block .document-input,
+.type-entry-block .document-input-block .document-input,
+.add-document-block .entry-input-block .document-input,
+.add-document-block .document-input-block .document-input {
+  width: 100%;
+  background: #FBFBFB;
+  border: 0;
+  border-bottom: 2px solid rgba(179, 183, 186, 0.7);
+  padding: 10px 10px 10px 30px;
+}
+
+.type-entry-block .entry-input-block .entry-comment,
+.type-entry-block .document-input-block .entry-comment,
+.add-document-block .entry-input-block .entry-comment,
+.add-document-block .document-input-block .entry-comment {
+  width: 100%;
+  color: rgba(179, 183, 186, 0.5);
+  padding: 10px 0;
+}
+
+.type-entry-block .entry-input-block .add-recording-action,
+.type-entry-block .document-input-block .add-recording-action,
+.add-document-block .entry-input-block .add-recording-action,
+.add-document-block .document-input-block .add-recording-action {
+  width: 100%;
+  text-align: right;
+  margin-bottom: 30px;
+}
+
+.type-entry-block .entry-input-block .add-recording-action a,
+.type-entry-block .document-input-block .add-recording-action a,
+.add-document-block .entry-input-block .add-recording-action a,
+.add-document-block .document-input-block .add-recording-action a {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.1px;
+}
+
+.type-entry-block .entry-input-block .add-recording-action a:hover,
+.type-entry-block .document-input-block .add-recording-action a:hover,
+.add-document-block .entry-input-block .add-recording-action a:hover,
+.add-document-block .document-input-block .add-recording-action a:hover {
+  text-decoration: none;
+}
+
+.type-entry-block .entry-input-block .btn-container,
+.type-entry-block .document-input-block .btn-container,
+.add-document-block .entry-input-block .btn-container,
+.add-document-block .document-input-block .btn-container {
+  margin-top: 30px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.type-entry-block .entry-input-block .btn-container .btn,
+.type-entry-block .document-input-block .btn-container .btn,
+.add-document-block .entry-input-block .btn-container .btn,
+.add-document-block .document-input-block .btn-container .btn {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 10px 25px;
+}
+
 #campaign_activity .freelancer_navbar {
   height: 56px !important;
 }

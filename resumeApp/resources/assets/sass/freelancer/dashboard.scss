@@ -263,6 +263,7 @@
 
       }
     }
+    
     .content-block-campaign-brief{
       background: white;
       box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
@@ -581,5 +582,87 @@
 .no-decoration{
   a:hover{
     text-decoration: none !important;
+  }
+}
+
+.type-entry-block,
+.add-document-block {
+  background: white;
+  box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+  margin-bottom: 16px;
+  // padding-right: 15px;
+  // padding-left: 15px;
+  padding: 15px 30px;
+
+  .upper-bar {
+    height: 50px;
+    width: 100%;
+    display:flex;
+    align-items: center;
+  }
+
+  .entry-input-block,
+  .document-input-block {
+    width: 100%;
+    position: relative;
+
+    .entry-input {
+      width: 100%;
+      background: #FBFBFB;
+      border: 0;
+      border-bottom: 2px solid rgba(179, 183, 186, 0.7);
+      padding: 10px 10px 10px 60px;
+    }
+
+    .document-input {
+      width: 100%;
+      background: #FBFBFB;
+      border: 0;
+      border-bottom: 2px solid rgba(179, 183, 186, 0.7);
+      padding: 10px 10px 10px 30px;
+    }
+
+    .entry-comment {
+      width: 100%;
+      color: rgba(179, 183, 186, 0.5);
+      padding: 10px 0;
+    }
+
+    .add-recording-action {
+      width: 100%;
+      text-align: right;
+      margin-bottom: 30px;
+
+      a {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        text-align: center;
+        letter-spacing: -0.1px;
+        
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    } 
+
+    .btn-container {
+      margin-top: 30px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+
+      .btn {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        padding: 10px 25px;
+      }
+    }
   }
 }

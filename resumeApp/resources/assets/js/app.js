@@ -47,6 +47,7 @@ Vue.component('payment-pay',require('./components/client/dashboardComponents/pay
 Vue.component('sub-set-up',require('./components/client/dashboardComponents/payments/SubSetUp.vue'));
 Vue.component('privacy-agreement',require('./components/client/dashboardComponents/my_account/PrivacyAgreement.vue'));
 Vue.component('update-sub-plan',require('./components/client/dashboardComponents/payments/UpdateSubPlan.vue'));
+Vue.component('client-register',require('./components/client/ClientRegister.vue'));
 
     // campaign-activity inside components :
     import CampaignActivity from './components/client/campaignComponents/CampaignActivity.vue';
@@ -102,6 +103,14 @@ if ($("#addAgentComponent").length !== 0){
         el:'#addAgentComponent'
     });
 }
+
+if ($("#clientRegister").length !== 0){
+
+    let clientRegister = new Vue({
+        el:'#clientRegister'
+    });
+}
+
 
 if ($("#serviceAgreement").length !== 0){
 

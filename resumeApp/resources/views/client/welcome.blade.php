@@ -59,7 +59,17 @@
            </div>
        </div>
 
+       <div class="row pt-5">
+           <div class="col-12">
+               <div id="faq_list">
+                   <faq-list></faq-list>
+               </div>
+           </div>
+       </div>
+
    </div>
+
+
 
     <div id="terms_bar">
         <terms-bar></terms-bar>

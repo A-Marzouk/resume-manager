@@ -94,22 +94,41 @@ class InvoicesController extends Controller
 
         $invoice->currency      = $request->currency;
         $invoice->hours        = $request->hours;
+
         if(isset($request->timeZone)){
             $invoice->timeZone        = $request->timeZone;
         }
+        if(isset($request->week)){
+            $invoice->week        = $request->week;
+        }
+        if(isset($request->weekDate)){
+            $invoice->weekDate        = $request->weekDate;
+        }
+        if(isset($request->start_time)){
+            $invoice->start_time        = $request->start_time;
+        }
+
+        if(isset($request->end_time)){
+            $invoice->end_time        = $request->end_time;
+        }
+
+        if(isset($request->service)){
+            $invoice->service        = $request->service;
+        }
+
+        if(isset($request->time_of_service)){
+            $invoice->time_of_service        = $request->time_of_service;
+        }
+
+
         $invoice->status       = $request->status;
         if(isset($request->notes)){
             $invoice->notes = $request->notes;
         }
 
+
         $invoice->save();
 
-        $clientName = $invoice->client->name;
-        $words = explode(" ", $clientName);
-        $firstLetters = "";
-        foreach ($words as $w) {
-            $firstLetters .= $w[0];
-        }
         if(!isset($request->id)){ // only in new invoices automate unique numbers
             $firstNumber  = count(Client::all()) + 1 ; // number of clients + 1
             $secondNumber = count($invoice->client->invoices); // number of client invoices + 1 (already created)
@@ -142,6 +161,33 @@ class InvoicesController extends Controller
         }else{
             return $number;
         }
+    }
+
+    public function duplicateInvoice($invoice_id){
+        // Retrieve the first task
+        $invoice = Invoice::where('id',$invoice_id)->first();
+
+        $newInvoice   = $invoice->replicate();
+
+
+
+        $firstNumber  = count(Client::all()) + 1 ; // number of clients + 1
+        $secondNumber = count($invoice->client->invoices); // number of client invoices + 1 (already created)
+        $thirdNumber  = count(Invoice::all()) ; // number of total invoices + 1
+
+        $newInvoice->unique_number = $this->getNumberZeros($firstNumber). '-' . $this->getNumberZeros($secondNumber)
+            . '-' . $this->getNumberZeros($thirdNumber);
+        $newInvoice->status = 'Unpaid';
+
+        $newInvoice->save();
+
+        foreach($invoice->services as $service){
+            $newService = $service->replicate();
+            $newService->invoice_id = $newInvoice->id ;
+            $newService->save();
+        }
+
+        return $newInvoice;
     }
 
     public function deleteInvoice(Request $request){

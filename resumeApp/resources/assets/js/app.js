@@ -170,6 +170,9 @@ Vue.component('chat-message', require('./components/chat/chatMessage.vue'));
 Vue.component('chat-log', require('./components/chat/chatLog.vue'));
 Vue.component('chat-composer', require('./components/chat/chatComposer.vue'));
 
+
+Vue.component('faq-list', require('./components/FaqsComponent.vue'));
+
 // works
 Vue.component('works-list', require('./components/work/worksListComponent.vue'));
 Vue.component('work-history', require('./components/work/workHistoryComponent.vue'));
@@ -286,6 +289,12 @@ if ($("#searchFreelancers").length !== 0){
 if ($("#record_input").length !== 0){
     let record_input = new Vue({
         el:'#record_input'
+    });
+}
+
+if ($("#faq_list").length !== 0){
+    let faq_list = new Vue({
+        el:'#faq_list'
     });
 }
 

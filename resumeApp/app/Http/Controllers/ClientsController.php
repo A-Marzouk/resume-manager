@@ -44,7 +44,11 @@ class ClientsController extends Controller
      public function viewClientPaymentShowInvice(){
          return view('client.payments.payment_show_invoice') ;
      }
-     
+
+      public function viewClientSubSetUp(){
+         return view('client.payments.sub_set_up') ;
+      }
+
     public function viewClientPaymentPay(){
         return view('client.payments.payment_pay') ;
     }

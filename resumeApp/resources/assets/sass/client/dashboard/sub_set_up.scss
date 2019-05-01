@@ -1,0 +1,103 @@
+.blue-button{
+  padding: 11px 34px;
+  outline: #05A4F4;
+  border:2px solid #05A4F4;
+  box-sizing: border-box;
+  background: transparent;
+  border-radius: 2px;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  color: #05A4F4;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  margin-left: 415px;
+}
+
+.check-margin {
+  margin-right: 415px;
+}
+
+.check-width {
+  background: #FBFBFB;
+  border-radius: 4px 4px 0 0 !important;
+  margin-top: 25px;
+  display: block !important;
+  width: 234px!important;
+}
+.button-size {
+  width: auto;
+  height:auto;
+  padding: 16px 24px;
+}
+
+.sub-text {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;/* or 133% */
+  letter-spacing: -0.1px;
+  margin: 24px 0 40px;
+}
+
+.blue-color {
+  color: #3EA3D7;
+}
+
+.orange-color {
+  color: #FFA368;
+}
+
+.text {
+  font-size: 18px;
+  line-height: 24px;/* or 133% */
+
+  color: #4A5464;
+}
+
+.grey-text {
+  font-size: 14px;
+  line-height: 24px;/* or 171% */
+  color: #818893;
+margin: 20px 0;
+}
+
+@media only screen and (max-width: 1200px) {
+  .blue-button {
+    margin-left: 365px;
+  }
+
+  .check-margin {
+    margin-right: 362px;
+  }
+}
+
+@media only screen and (max-width: 690px){
+  .blue-button {
+    margin-left: 112px;
+    padding: 11px;
+  }
+
+  .sub-text {
+    font-size: 16px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+
+  .check-margin {
+    margin-right: 0;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .grey-text {
+    margin: -75px 0 80px;
+  }
+  .check-position {
+    margin-top: 65px;
+    margin-left: -15px;
+  }
+
+
+}

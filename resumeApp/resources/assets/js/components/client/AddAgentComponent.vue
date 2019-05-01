@@ -202,7 +202,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 d-flex align-items-center">
 
-                        <img src="/resumeApp/public/images/client/add_agent/search_result/ic/user/Без названия.png" alt="user" class="avator">
+                        <img src="/resumeApp/public/images/client/add_agent/search_result/ic/user/user123.png" alt="user" class="avator">
                         <div class="">
                             <div class="big-font">
                                 Jason Morgenstern
@@ -303,7 +303,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 d-flex align-items-center">
 
-                        <img src="/resumeApp/public/images/client/add_agent/search_result/ic/user/Без названия.png" alt="user" class="avator">
+                        <img src="/resumeApp/public/images/client/add_agent/search_result/ic/user/user123.png" alt="user" class="avator">
                         <div class="">
                             <div class="big-font">
                                 Jason Morgenstern
@@ -408,7 +408,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 d-flex align-items-center">
 
-                        <img src="/resumeApp/public/images/client/add_agent/search_result/ic/user/Без названия.png" alt="user" class="avator">
+                        <img src="/resumeApp/public/images/client/add_agent/search_result/ic/user/user123.png" alt="user" class="avator">
                         <div class="">
                             <div class="big-font">
                                 Jason Morgenstern

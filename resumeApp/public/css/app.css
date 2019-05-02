@@ -6615,6 +6615,7 @@ body {
   -webkit-box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
           box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
   border-radius: 4px;
+  width: 1164px;
 }
 
 .invisiable-div {
@@ -6867,6 +6868,7 @@ input[type="radio"]:checked + label {
 @media screen and (max-width: 1270px) {
   .main-grid {
     padding: 21px 60px 18px 40px !important;
+    width: 735px;
   }
 
   .form-main-grid {
@@ -6922,6 +6924,7 @@ input[type="radio"]:checked + label {
 
   .main-grid {
     padding: 22px 20px 10px 16px !important;
+    width: 298px;
   }
 
   .small-image {
@@ -8287,7 +8290,7 @@ input[type="radio"]:checked + label {
 }
 
 .invoice-body {
-  padding: 0 62px 64px 69px;
+  padding: 0 62px 64px 0;
 }
 
 .invioce-top-text {
@@ -8401,7 +8404,7 @@ input[type="radio"]:checked + label {
 }
 
 .agreement-margin {
-  padding: 90px 0 40px;
+  padding: 32px 0 40px;
   text-transform: uppercase;
   line-height: 30px;
 }
@@ -8429,6 +8432,7 @@ input[type="radio"]:checked + label {
   border-radius: 4px;
   padding-left: 24px;
   padding-right: 24px;
+  margin-top: 32px;
 }
 
 .chechbox-blue {
@@ -8489,8 +8493,6 @@ input[type="radio"]:checked + label {
 }
 
 .agreement-button {
-  width: 98px;
-  height: 51px;
   background: #05A4F4;
   border-radius: 2px;
   font-weight: 500;
@@ -8499,8 +8501,9 @@ input[type="radio"]:checked + label {
   text-align: center;
   color: #fff;
   border: none;
-  margin-top: 22px;
-  margin-bottom: 22px;
+  padding: 16px 25px;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 
 .payment-pay-text {

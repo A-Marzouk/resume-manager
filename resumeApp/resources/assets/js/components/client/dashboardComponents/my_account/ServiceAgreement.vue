@@ -2,16 +2,16 @@
     <div>
         <nav class="navbar navbar-light fixed-top client_navbar">
             <div class="backBtn">
-                <a href="/client">
+                <a href="#">
                     <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
                 </a>
                 ACCOUNT INFORMATION EDITION
             </div>
         </nav>
-
-        <div class="form-main-grid main-grid">
-            <div class="col-12 col-sm-12 col-md-12 header-text">
-                <img src="/resumeApp/public/images/client/my_account/contract_40px.png" alt=""  class="icon-margin small-image">
+    <div class="d-flex justify-content-center">
+        <div class="main-grid">
+            <div class="header-text">
+                <img src="/resumeApp/public/images/client/my_account/contract_40px.svg" alt=""  class="icon-margin small-image">
                 SERVICE AGREEMENT
             </div>
             <hr/>
@@ -77,7 +77,7 @@
                     CLIENT APPROVAL
                 </div>
                 <div class="agreement-text agreement-main-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
                     dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                 </div>
@@ -86,52 +86,40 @@
                     CANCELLATION
                 </div>
                 <div class="agreement-tex agreement-main-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                   dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                 </div>
 
                 <div class="blue-part">
                     ACCEPTANCE OF TERMS
                 </div>
                 <div class="agreement-text agreement-main-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                  dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                 </div>
             </div>
-            <div class="bluechecked d-flex align-items-center">
-                <input type="checkbox" class="chechbox-blue"/>
-                <label class="agreement-text"> I agree with the privacy agreemen</label>
-            </div>
+           <div class="bluechecked d-flex align-items-center">
+               <input type="checkbox" class="chechbox-blue"/>
+               <label class="agreement-text" style="margin-bottom: 0;"> I agree with the privacy agreemen</label>
+           </div>
 
             <div class="col-12 col-md-8 col-lg-6 agreement-segniture">
-                <div class="blue-part">
-                    YOUR SIGNATURE
-                </div>
-                <div class="agreement-text signiture-main-text">
-                    Name surname
-                </div>
+               <div class="blue-part">
+                        YOUR SIGNATURE
+                   </div>
+                   <div class="agreement-text signiture-main-text">
+                       Name surname
+                   </div>
+               </div>
+
+               <hr/>
+               <div class="d-flex justify-content-end">
+                    <button class="agreement-button">SIGN</button>
+               </div>
             </div>
-
-            <hr/>
-            <div class="d-flex justify-content-end">
-                <button class="agreement-button">SIGN</button>
-            </div>
-
-
-
-
         </div>
     </div>
 </template>
 
-<script>
-    export default {
-
-    }
-</script>
-
-<style scoped>
-
-</style>

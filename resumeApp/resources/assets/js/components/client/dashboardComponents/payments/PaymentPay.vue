@@ -9,7 +9,7 @@
             </div>
         </nav>
         <!--navbar  -->
-
+    <div class="d-flex justify-content-center">
         <div class="main-grid search-main-grid">
             <div class="invoice-body">
                 <div class="d-flex justify-content-between align-items-center">

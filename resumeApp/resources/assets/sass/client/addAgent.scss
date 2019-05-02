@@ -28,6 +28,7 @@ $secondary: #05A4F4;
   background: $whiteBackground;
   box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
   border-radius: 4px;
+  width: 1164px;
 }
 
 .invisiable-div {
@@ -253,6 +254,7 @@ input[type="radio"]:checked + label {
 @media screen and (max-width: 1270px) {
   .main-grid {
     padding: 21px 60px 18px 40px !important;
+    width: 735px;
   }
 
   .form-main-grid {
@@ -309,6 +311,7 @@ input[type="radio"]:checked + label {
 
   .main-grid {
     padding: 22px 20px 10px 16px !important;
+    width: 298px;
   }
 
   .small-image {

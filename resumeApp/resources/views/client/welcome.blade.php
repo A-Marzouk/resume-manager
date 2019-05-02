@@ -51,15 +51,25 @@
 
                    We are currently working on our system and these features will be available as soon as possible. <br/>
                    <br/>For the moment please send all communication about your account to :
-                   <br/> <a href="mailto:conor@123workforce.com">conor@123workforce.com</a> ( email)
-                   <br/> <a href="skype:conor@123workforce.com">conor@123workforce.com</a>  (Skype id)
+                   <br/> <a href="mailto:cheska@123workforce.com">cheska@123workforce.com</a> ( email)
+                   <br/> <a href="skype:cheska@123workforce.com">cheska@123workforce.com</a>  (Skype id)
 
                    <br/><br/>Thank-you Kindly
                </div>
            </div>
        </div>
 
+       <div class="row pt-5">
+           <div class="col-12">
+               <div id="faq_list">
+                   <faq-list></faq-list>
+               </div>
+           </div>
+       </div>
+
    </div>
+
+
 
     <div id="terms_bar">
         <terms-bar></terms-bar>

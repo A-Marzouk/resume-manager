@@ -38,6 +38,8 @@ Route::prefix('client')->group(function (){
     Route::get('/account/service-agreement','ClientsController@viewClientServiceAgreement')->name('service.agreement');
     Route::get('/payments/pay','ClientsController@viewClientPaymentPay')->name('payment.pay');
      Route::get('/payments/manager-calculation','ClientsController@viewClientManagerCalculation')->name('manager.calculation');
+    //sub set up router
+    Route::get('/payments/sub-set-up','ClientsController@viewClientSubSetUp')->name('payment.sub');
     // privacy agreement route
     Route::get('/account/privacy-agreement','ClientsController@viewClientPrivacyAgreement')->name('privacy.agreement');
      // update subscription plan route

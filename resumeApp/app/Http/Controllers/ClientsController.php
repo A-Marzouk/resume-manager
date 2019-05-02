@@ -24,7 +24,6 @@ class ClientsController extends Controller
         return view('client.campaign_main');
     }
 
-
     public function viewAccountEditPage(){
         return view('client.my_account.account_information_edition');
     }

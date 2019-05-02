@@ -6252,6 +6252,7 @@ body {
   border: none;
   border-bottom: 1px solid #7A828D;
   height: 56px;
+  padding-left: 22px;
 }
 
 .faq-question-input .faq-input input:focus,
@@ -6271,6 +6272,15 @@ body {
 .faq-answer-input .faq-input img {
   margin-left: -62px;
   cursor: pointer;
+}
+
+.faq-question-input .faq-input.error-input input,
+.faq-question-input .faq-input.error-input textarea,
+.faq-question-input .faq-input.error-input select,
+.faq-answer-input .faq-input.error-input input,
+.faq-answer-input .faq-input.error-input textarea,
+.faq-answer-input .faq-input.error-input select {
+  border-bottom: 1px solid #F56F6F;
 }
 
 .faq-questions-list {
@@ -8118,11 +8128,45 @@ input[type="radio"]:checked + label {
   line-height: 16px;
   text-align: center;
   text-transform: uppercase;
-  color: #A1A7AF;
+  color: #fff;
   border-radius: 2px;
   width: 158px;
   height: 48px;
+  background: #05A4F4;
+}
+
+.account-edit-section-edit-btn a:hover {
+  color: #fff;
+}
+
+.account-edit-section-edit-btn.disabled-btn a {
+  color: #A1A7AF;
   background: #E4E4E4;
+}
+
+.account-edit-section-edit-btn.disabled-btn a:hover {
+  color: #A1A7AF;
+  cursor: not-allowed;
+}
+
+.base-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  color: #4A5464;
+}
+
+.base-link {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+  /* identical to box height, or 133% */
+  color: #05A4F4;
 }
 
 .update-sub-plan {

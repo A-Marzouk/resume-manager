@@ -1,0 +1,69 @@
+.manager-blue-text{
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;/* or 150% */
+  letter-spacing: -0.1px;
+  color: #3EA3D7;
+  margin: 25px 0 35px;
+}
+
+.blue-label {
+  color: #3EA3D7;
+  filter:grayscale(0);
+  opacity: .4;
+  font-size: 14px;
+}
+
+.manager-text {
+  font-size: 16px;
+  line-height: 27px;/* or 169% */
+  letter-spacing: -0.1px;
+  color: #4A5464;
+}
+.label{
+  color: #4A5464;
+  opacity: 0.4;
+  filter: grayscale(100%);
+  font-size: 16px;
+}
+
+.able {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid;
+}
+.able:focus {
+  outline: none;
+}
+.blue-button {
+  width: auto;
+  height: auto;
+  padding: 16px 25px;
+  background: #05A4F4;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+@media only screen and (max-width: 486px) {
+  .label_sm {
+    margin-top: 20px;
+  }
+  .manager-blue-text {
+    font-size: 16px;
+  }
+  .manager-text{
+    font-size: 14px;
+  }
+  
+}
+
+.red {
+  color: black;
+}
+.blue[type=checkbox]:checked ~ .red {
+  color: red;
+}

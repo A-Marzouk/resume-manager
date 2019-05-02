@@ -9278,7 +9278,9 @@ input[type="radio"]:checked + label {
 .add-document-block .entry-input-block .status-default,
 .add-document-block .document-input-block .status-default {
   background: white;
-  border: 2px solid rgba(179, 183, 186, 0.7);
+  border: 1px solid #4A5464;
+  color: #4A5464;
+  text-decoration: none;
 }
 
 .type-entry-block .entry-input-block .email-request,
@@ -9287,6 +9289,8 @@ input[type="radio"]:checked + label {
 .add-document-block .document-input-block .email-request {
   background: #3EBD74;
   border: 2px solid #3EBD74;
+  color: white;
+  text-decoration: none;
 }
 
 .type-entry-block .entry-input-block .call-back,
@@ -9295,6 +9299,8 @@ input[type="radio"]:checked + label {
 .add-document-block .document-input-block .call-back {
   background: #FFBC58;
   border: 2px solid #FFBC58;
+  color: white;
+  text-decoration: none;
 }
 
 .type-entry-block .entry-input-block .not-interested,
@@ -9303,6 +9309,8 @@ input[type="radio"]:checked + label {
 .add-document-block .document-input-block .not-interested {
   background: #F56F6F;
   border: 2px solid #F56F6F;
+  color: white;
+  text-decoration: none;
 }
 
 .type-entry-block .entry-input-block .recording-status,

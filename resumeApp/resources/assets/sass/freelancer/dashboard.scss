@@ -691,22 +691,30 @@
 
     .status-default {
       background: white;
-      border: 2px solid rgba(179, 183, 186, 0.7);
+      border: 1px solid #4A5464;
+      color: #4A5464;
+      text-decoration: none;
     }
 
     .email-request {
       background: $green;
       border: 2px solid $green;
+      color: white;
+      text-decoration: none;
     }
 
     .call-back {
       background: $yellow;
       border: 2px solid $yellow;
+      color: white;
+      text-decoration: none;
     }
 
     .not-interested {
       background: $red;
       border: 2px solid $red;
+      color: white;
+      text-decoration: none;
     }
 
     .recording-status {

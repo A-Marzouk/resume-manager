@@ -14354,6 +14354,7 @@ Vue.component('account-info-edit', __webpack_require__(70));
 Vue.component('service-agreement', __webpack_require__(75));
 // payment pay
 Vue.component('payment-pay', __webpack_require__(80));
+Vue.component('manager-calculation', __webpack_require__(364));
 Vue.component('sub-set-up', __webpack_require__(82));
 Vue.component('privacy-agreement', __webpack_require__(84));
 Vue.component('update-sub-plan', __webpack_require__(89));
@@ -14400,6 +14401,13 @@ if ($("#addAgentComponent").length !== 0) {
 
     var addAgentComponent = new Vue({
         el: '#addAgentComponent'
+    });
+}
+
+if ($("#managerCalculation").length !== 0) {
+
+    var managerCalculation = new Vue({
+        el: '#managerCalculation'
     });
 }
 
@@ -102950,6 +102958,396 @@ new SideNav();
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 361 */,
+/* 362 */,
+/* 363 */,
+/* 364 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(365)
+/* template */
+var __vue_template__ = __webpack_require__(366)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\client\\dashboardComponents\\payments\\ManagerCalculation.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-52b1a002", Component.options)
+  } else {
+    hotAPI.reload("data-v-52b1a002", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 365 */
+/***/ (function(module, exports) {
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+$(document).ready(function () {
+
+    $(":checkbox[class=chechbox-blue]").on("change", function () {
+        $("input[class = " + $(this).attr("value") + "]").prop("disabled", !$(this).prop("checked"));
+        var red = document.getElementById('red').checked;
+        console.log(red);
+        if (red == true) {
+            $('label[for=red]').css({ opacity: 1 });
+        } else {
+            $('label[for=red]').css({ opacity: 0.4 });
+        }
+    });
+});
+
+/***/ }),
+/* 366 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "nav",
+        { staticClass: "navbar navbar-light fixed-top client_navbar" },
+        [
+          _c("div", { staticClass: "backBtn" }, [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", {
+                attrs: {
+                  src: "/resumeApp/public/images/client/arrow_back.png",
+                  alt: "back-icon"
+                }
+              })
+            ]),
+            _vm._v(
+              "\n            FINISH YOUR SUBSCRIPTION PLAN UPDATE\n        "
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "container " }, [
+        _c("div", { staticClass: "row justify-content-center" }, [
+          _c(
+            "div",
+            { staticClass: "col-12 col-md-11 col-lg-10 main-grid header-text" },
+            [
+              _c("div", { staticClass: "header-text" }, [
+                _c("img", {
+                  staticClass: "icon-margin small-image",
+                  attrs: {
+                    src: "/resumeApp/public/images/client/plan.png",
+                    alt: ""
+                  }
+                }),
+                _vm._v("\n                    SUBSCRIPTION PLAN UPDATE")
+              ]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("div", { staticClass: "manager-blue-text" }, [
+                _vm._v(
+                  "\n                    CAMPAIGN MANAGER\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "manager-text" }, [
+                _vm._v(
+                  "We recommend that you add a campaign manager to communicate with you about your campaign. Managers are experienced agents that will be effective at optimizing your campaign to achieve the best results"
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "manager-text",
+                  staticStyle: { margin: "25px 0" }
+                },
+                [
+                  _vm._v(
+                    " We recommend 4 hours of campaign management time based upon your subscription of 40 hours per week."
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", [
+                _c("input", {
+                  staticClass: "able",
+                  attrs: {
+                    type: "text",
+                    name: "new",
+                    id: "quantity",
+                    disabled: ""
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  { staticClass: "label label_sm", attrs: { for: "red" } },
+                  [_vm._v("= 10% of your subscription ")]
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "label",
+                    staticStyle: {
+                      display: "inline-block",
+                      margin: "25px 0 0"
+                    },
+                    attrs: { for: "red" }
+                  },
+                  [
+                    _vm._v(
+                      " If you wish to proceed with adding a campaign manager your manager will be"
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  { staticClass: "blue-label", attrs: { for: "red" } },
+                  [_vm._v("Conor Marjoram")]
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "d-flex align-items-center",
+                  staticStyle: { "margin-bottom": "20px", "margin-top": "20px" }
+                },
+                [
+                  _c("input", {
+                    staticClass: "chechbox-blue",
+                    attrs: {
+                      type: "checkbox",
+                      name: "new",
+                      id: "red",
+                      value: "able"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "manager-text",
+                      staticStyle: { margin: "0" }
+                    },
+                    [_vm._v(" I agree with the privacy agreemen")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex justify-content-lg-start align-items-baseline"
+                },
+                [
+                  _c("img", {
+                    staticStyle: {
+                      "margin-right": "10px",
+                      position: "relative",
+                      top: "10px"
+                    },
+                    attrs: {
+                      src: "/resumeApp/public/images/client/payments/amount.png"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "manager-blue-text d-flex align-items-center",
+                        staticStyle: { "margin-top": "5px" }
+                      },
+                      [
+                        _vm._v(
+                          "\n\n                    WEEKLY RATE CALCULATION\n                "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "manager-text" }, [
+                      _vm._v("40 agent hours "),
+                      _c(
+                        "span",
+                        { staticStyle: { color: "#FFA368", margin: "0 7px" } },
+                        [_vm._v("$400")]
+                      ),
+                      _vm._v(" + 10% (4 manager hours "),
+                      _c(
+                        "span",
+                        { staticStyle: { color: "#FFA368", margin: "0 7px" } },
+                        [_vm._v(" $ 40")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "manager-blue-text d-flex align-items-center"
+                      },
+                      [
+                        _vm._v(
+                          "\n                    TOTAL WEEKLY AMOUNT\n                "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "manager-text",
+                        staticStyle: {
+                          color: "#FFA368",
+                          margin: "-15px 7px 7px"
+                        }
+                      },
+                      [_vm._v("$400")]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex justify-content-end" }, [
+                _c("button", { staticClass: "blue-button" }, [
+                  _vm._v("FINISH PAYMENT")
+                ])
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-52b1a002", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

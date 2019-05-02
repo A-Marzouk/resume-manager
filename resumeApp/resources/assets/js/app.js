@@ -46,6 +46,7 @@ Vue.component('service-agreement',require('./components/client/dashboardComponen
 Vue.component('payment-pay',require('./components/client/dashboardComponents/payments/PaymentPay.vue'));
 Vue.component('privacy-agreement',require('./components/client/dashboardComponents/my_account/PrivacyAgreement.vue'));
 Vue.component('update-sub-plan',require('./components/client/dashboardComponents/payments/UpdateSubPlan.vue'));
+Vue.component('manager-calculation',require('./components/client/dashboardComponents/payments/ManagerCalCulation.vue'));
 
     // campaign-activity inside components :
     import CampaignActivity from './components/client/campaignComponents/CampaignActivity.vue';
@@ -133,6 +134,13 @@ if ($("#paymentPay").length !== 0){
 
     let paymentPay = new Vue({
         el:'#paymentPay'
+    });
+}
+
+if ($("#managerCalculation").length !== 0){
+
+    let managerCalculation = new Vue({
+        el:'#managerCalculation'
     });
 }
 

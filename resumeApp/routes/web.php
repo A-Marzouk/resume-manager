@@ -29,7 +29,7 @@ Route::prefix('client')->group(function (){
     });
 
     // front-end routes :
-    Route::get('/','ClientsController@index')->name('client.dashboard');
+    Route::get('/{any?}','ClientsController@index')->name('client.dashboard');
     Route::get('/campaign','ClientsController@campaignActivity')->name('campaign.main');
     Route::get('/campaigns-archive','ClientsController@campaignArchives')->name('campaign.archives');
     Route::get('/campaign/add-agent','ClientsController@campaignAddAgent')->name('campaign.add.agent');

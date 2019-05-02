@@ -14387,9 +14387,10 @@ if ($("#campaignMainComponent").length !== 0) {
 
 if ($("#clientDashboardComponent").length !== 0) {
 
-    var _routes = [{ path: '/:my-account', component: __WEBPACK_IMPORTED_MODULE_6__components_client_dashboardComponents_MyAccount_vue___default.a }, { path: '/:payments', component: __WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_Payments_vue___default.a }, { path: '/', component: __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue___default.a }];
+    var _routes = [{ path: '/client/my-account', component: __WEBPACK_IMPORTED_MODULE_6__components_client_dashboardComponents_MyAccount_vue___default.a }, { path: '/client/payments', component: __WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_Payments_vue___default.a }, { path: '/client', component: __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue___default.a }, { path: '/client/*', component: __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue___default.a }];
 
     var _router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+        mode: 'history',
         routes: _routes
     });
 
@@ -59630,7 +59631,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            activeTab: 'campaign_manager'
+            activeTab: 'campaign-manager'
         };
     },
 
@@ -59645,9 +59646,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return '/resumeApp/public/images/client/menu_icons/inactive/' + tabName + '.png';
         },
         setActiveTab: function setActiveTab() {
-            this.activeTab = this.$route.path.replace('/', '');
-            if (this.activeTab === '') {
-                this.activeTab = 'campaign_manager';
+            var tabs = ['campaign-manager', 'payments', 'my-account'];
+
+            this.activeTab = this.$route.path.replace('/client/', '');
+            if (!tabs.includes(this.activeTab)) {
+                this.activeTab = 'campaign-manager';
             }
         }
     },
@@ -59685,11 +59688,11 @@ var render = function() {
                 "router-link",
                 {
                   staticClass: "menu-block row",
-                  class: { active: _vm.activeTab === "campaign_manager" },
-                  attrs: { to: "/" },
+                  class: { active: _vm.activeTab === "campaign-manager" },
+                  attrs: { to: "/client/campaign-manager" },
                   nativeOn: {
                     click: function($event) {
-                      _vm.selectTab("campaign_manager")
+                      _vm.selectTab("campaign-manager")
                     }
                   }
                 },
@@ -59697,7 +59700,7 @@ var render = function() {
                   _c("div", { staticClass: "imageContainer" }, [
                     _c("img", {
                       attrs: {
-                        src: _vm.getMenuBlockIcon("campaign_manager"),
+                        src: _vm.getMenuBlockIcon("campaign-manager"),
                         alt: "icon"
                       }
                     })
@@ -59742,7 +59745,7 @@ var render = function() {
                 {
                   staticClass: "menu-block row",
                   class: { active: _vm.activeTab === "payments" },
-                  attrs: { to: "/payments" },
+                  attrs: { to: "/client/payments" },
                   nativeOn: {
                     click: function($event) {
                       _vm.selectTab("payments")
@@ -59801,7 +59804,7 @@ var render = function() {
                 {
                   staticClass: "menu-block row",
                   class: { active: _vm.activeTab === "my-account" },
-                  attrs: { to: "/my-account" },
+                  attrs: { to: "/client/my-account" },
                   nativeOn: {
                     click: function($event) {
                       _vm.selectTab("my-account")
@@ -59843,11 +59846,11 @@ var render = function() {
             "router-link",
             {
               staticClass: "menu-block row",
-              class: { active: _vm.activeTab === "campaign_manager" },
-              attrs: { to: "/" },
+              class: { active: _vm.activeTab === "campaign-manager" },
+              attrs: { to: "/client/campaign-manager" },
               nativeOn: {
                 click: function($event) {
-                  _vm.selectTab("campaign_manager")
+                  _vm.selectTab("campaign-manager")
                 }
               }
             },
@@ -59855,7 +59858,7 @@ var render = function() {
               _c("div", { staticClass: "imageContainer" }, [
                 _c("img", {
                   attrs: {
-                    src: _vm.getMenuBlockIcon("campaign_manager"),
+                    src: _vm.getMenuBlockIcon("campaign-manager"),
                     alt: "icon"
                   }
                 })
@@ -59898,7 +59901,7 @@ var render = function() {
             {
               staticClass: "menu-block row",
               class: { active: _vm.activeTab === "payments" },
-              attrs: { to: "/payments" },
+              attrs: { to: "/client/payments" },
               nativeOn: {
                 click: function($event) {
                   _vm.selectTab("payments")
@@ -59952,7 +59955,7 @@ var render = function() {
             {
               staticClass: "menu-block row",
               class: { active: _vm.activeTab === "my-account" },
-              attrs: { to: "/my-account" },
+              attrs: { to: "/client/my-account" },
               nativeOn: {
                 click: function($event) {
                   _vm.selectTab("my-account")

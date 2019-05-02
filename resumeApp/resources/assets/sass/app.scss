@@ -1,21 +1,13 @@
 
 // Variables
 @import "variables";
-
 @import "main";
-
 @import "invoice";
-
 @import "campaign_brief";
-
 @import "recorder";
-
 @import "campaign_page";
-
 @import "admin";
-
 @import "chat";
-
 @import "affiliates_styles";
 
 @import "client/dashboard";
@@ -25,8 +17,6 @@
 @import "client/campaign_brief";
 @import "client/campaign_archives";
 @import "client/addAgent";
-@import "faq";
-
 
 @import "client/dashboard/payments";
 @import "client/dashboard/my_account";
@@ -35,5 +25,6 @@
 @import "client/dashboard/payment_show_invoice";
 @import "client/dashboard/service_agreement";
 @import "client/dashboard/payment_pay";
+@import "client/dashboard/manager_calculation";
 @import "client/dashboard/sub_set_up";
 

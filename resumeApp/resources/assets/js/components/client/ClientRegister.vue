@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex justify-content-center flex-column">
+    <div class="d-flex justify-content-center flex-column align-items-center">
         <div class="account-info-edit-wrapper">
             <nav class="navbar navbar-light fixed-top client_navbar">
                 <div class="backBtn">

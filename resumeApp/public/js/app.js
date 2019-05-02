@@ -65043,7 +65043,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "d-flex justify-content-center flex-column" },
+    {
+      staticClass:
+        "d-flex justify-content-center flex-column align-items-center"
+    },
     [
       _c("div", { staticClass: "account-info-edit-wrapper" }, [
         _vm._m(0),

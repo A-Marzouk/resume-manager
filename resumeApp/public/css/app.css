@@ -6274,6 +6274,15 @@ body {
   cursor: pointer;
 }
 
+.faq-question-input .faq-input.error-input input,
+.faq-question-input .faq-input.error-input textarea,
+.faq-question-input .faq-input.error-input select,
+.faq-answer-input .faq-input.error-input input,
+.faq-answer-input .faq-input.error-input textarea,
+.faq-answer-input .faq-input.error-input select {
+  border-bottom: 1px solid #F56F6F;
+}
+
 .faq-questions-list {
   margin-top: 37px;
 }
@@ -8116,11 +8125,25 @@ input[type="radio"]:checked + label {
   line-height: 16px;
   text-align: center;
   text-transform: uppercase;
-  color: #A1A7AF;
+  color: #fff;
   border-radius: 2px;
   width: 158px;
   height: 48px;
+  background: #05A4F4;
+}
+
+.account-edit-section-edit-btn a:hover {
+  color: #fff;
+}
+
+.account-edit-section-edit-btn.disabled-btn a {
+  color: #A1A7AF;
   background: #E4E4E4;
+}
+
+.account-edit-section-edit-btn.disabled-btn a:hover {
+  color: #A1A7AF;
+  cursor: not-allowed;
 }
 
 .base-text {

@@ -29,35 +29,48 @@
                             <label class="faq-input-label">
                                 Enter your agency name
                             </label>
-                            <div class="faq-input">
-                                <input type="text" name="agency" placeholder="Enter your agency name" >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
+                            <div class="faq-input" :class="{ 'error-input' : errors.agency}">
+                                <input type="text" name="agency" placeholder="Enter your agency name" v-model="formData.agency">
+                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+                                     alt="delete icon"
+                                     v-show="formData.agency.length > 0"
+                                     @click="clearInput('agency')"
+                                >
+                            </div>
+                            <div class="error" v-if="errors.agency">
+                                {{errors.agency[0]}}
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
                                 Enter name of contact person
                             </label>
-                            <div class="faq-input">
-                                <input type="text" name="name" placeholder="Enter your name" >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
+                            <div class="faq-input"  :class="{ 'error-input' : errors.name}">
+                                <input type="text" name="name" placeholder="Enter your name" v-model="formData.name">
+                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('name')" alt="delete icon" v-show="formData.name.length > 0">
+                            </div>
+                            <div class="error" v-if="errors.name">
+                                {{errors.name[0]}}
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
                                 Enter contact phone
                             </label>
-                            <div class="faq-input">
-                                <input type="text" name="phone" placeholder="Enter your phone" >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
+                            <div class="faq-input" :class="{ 'error-input' : errors.phone}">
+                                <input type="text" name="phone" placeholder="Enter your phone" v-model="formData.phone">
+                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('phone')" alt="delete icon" v-show="formData.phone.length > 0">
+                            </div>
+                            <div class="error" v-if="errors.phone">
+                                {{errors.phone[0]}}
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
                                 Select your time zone
                             </label>
-                            <div class="faq-input">
-                                <select class="form-control" id="timeZone" name="timeZone" style="height: 50px;">
+                            <div class="faq-input"  :class="{ 'error-input' : errors.timeZone}">
+                                <select class="form-control" id="timeZone" name="timeZone" style="height: 50px;" v-model="formData.timeZone">
                                     <option value="" selected="selected">Select your timezone</option>
                                     <option value="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima">(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima</option>
                                     <option value="(GMT -6:00) Central Time (US & Canada), Mexico City">(GMT -6:00) Central Time (US & Canada), Mexico City</option>
@@ -107,23 +120,36 @@
                                     <option value="(GMT +14:00) Line Islands, Tokelau">(GMT +14:00) Line Islands, Tokelau</option>
                                 </select>
                             </div>
+                            <div class="error" v-if="errors.timeZone">
+                                {{errors.timeZone[0]}}
+                            </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
                                 Enter main e-mail address
                             </label>
-                            <div class="faq-input">
-                                <input type="text" name="email" placeholder="Enter your email" >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
+                            <div class="faq-input"  :class="{ 'error-input' : errors.email}">
+                                <input type="text" name="email" placeholder="Enter your email" v-model="formData.email">
+                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('email')" alt="delete icon" v-show="formData.email.length > 0">
+                            </div>
+                            <div class="error" v-if="errors.email">
+                                {{errors.email[0]}}
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
                                 Email address of accounts dept
                             </label>
-                            <div class="faq-input">
-                                <input type="text" name="emailDept" placeholder="Enter your email dept" >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
+                            <div class="faq-input"  :class="{ 'error-input' : errors.emailDept}">
+                                <input type="text" name="emailDept" placeholder="Enter your email dept" v-model="formData.emailDept">
+                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+                                     alt="delete icon"
+                                     v-show="formData.emailDept.length > 0"
+                                     @click="clearInput('emailDept')"
+                                >
+                            </div>
+                            <div class="error" v-if="errors.emailDept">
+                                {{errors.emailDept[0]}}
                             </div>
                         </div>
                     </div>
@@ -137,9 +163,15 @@
                             <label class="faq-input-label">
                                 Write a new password
                             </label>
-                            <div class="faq-input">
-                                <input type="password" name="password" placeholder="Enter your password" >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
+                            <div class="faq-input"  :class="{ 'error-input' : errors.password}">
+                                <input type="password" name="password" placeholder="Enter your password" v-model="formData.password">
+                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+                                     alt="delete icon"
+                                     v-show="formData.password.length > 0"
+                                     @click="clearInput('password')">
+                            </div>
+                            <div class="error" v-if="errors.password">
+                                {{errors.password[0]}}
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
@@ -147,14 +179,20 @@
                                 Repeat your new password
                             </label>
                             <div class="faq-input">
-                                <input type="password" name="password_confirmation" placeholder="Enter your password confirmation" >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
+                                <input type="password" name="password_confirmation" placeholder="Enter your password confirmation" v-model="formData.password_confirmation">
+                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+                                     alt="delete icon"
+                                     v-show="formData.password_confirmation.length > 0"
+                                     @click="clearInput('password_confirmation')">
+                            </div>
+                            <div class="error" v-if="errors.password_confirmation">
+                                {{errors.password_confirmation[0]}}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="account-edit-section-edit-btn no-decoration">
-                    <a href="#">
+                <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}" id="submitBtnWrapper">
+                    <a href="javascript:void(0)" @click="submitForm">
                         REGISTER
                     </a>
                 </div>
@@ -169,10 +207,66 @@
 
 <script>
     export default {
-        name: "ClientRegister"
+        data(){
+            return{
+                formData:{
+                    name:'',
+                    email:'',
+                    agency:'',
+                    emailDept:'',
+                    phone:'',
+                    timeZone:'',
+                    password:'',
+                    password_confirmation:''
+                },
+                canSubmit: false,
+                errors:[]
+            }
+        },
+        methods:{
+            submitForm(){
+                if($('#submitBtnWrapper').hasClass('disabled-btn')){
+                    return ;
+                }
+                this.canSubmit = false;
+                axios.post('/client/register/submit',this.formData).then( (response) => {
+                    if(response.data.status === 'success'){
+                        // redirect to client dashboard
+                        window.location.href = '/client';
+                    }
+                    this.errors = response.data.errors;
+                });
+            },
+            clearInput(inputName){
+                this.formData[inputName] = '' ;
+            },
+        },
+        watch: {
+            formData: {
+                handler(){
+                    // check if all formData values are filled
+                    let values = Object.values(this.formData);
+                    let isAll_filled = true;
+                    for (const value of values) {
+                        if (value.length < 1) {
+                            isAll_filled = false;
+                        }
+                    }
+                    this.canSubmit = isAll_filled ;
+                },
+                deep: true
+            }
+        }
     }
 </script>
 
 <style scoped>
-
+    .error{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 30px;/* identical to box height, or 187% */
+        color: #F56F6F;
+    }
 </style>

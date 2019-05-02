@@ -25,21 +25,10 @@ class ClientRegisterController extends Controller
     public function showRegistrationForm(Request $request)
     {
         if(isset($request->ownerCode)){
-            $ownerCode = $request->ownerCode;
-            $affiliate = Affiliate::where('code',$request->ownerCode)->first();
-            if(!$affiliate){
-                return redirect('client/register')->with('errorMessage','Wrong affiliate code');
-            }
-            // new click on the affiliate link
-            if(!Session::get('AffiliateLinkClient')){ // if not clicked
-                $click = new AffiliateClick;
-                $click->affiliate_id = $affiliate->id;
-                $click->client = 1;
-                $click->save();
-            }
-            Session::put('AffiliateLinkClient','clicked'); // clicked once
+            $this->affiliate($request->ownerCode) ;
         }
-        return view('auth.client-register',compact('ownerCode'));
+
+        return view('auth.client-register');
     }
 
     public function register(Request $request){
@@ -47,7 +36,10 @@ class ClientRegisterController extends Controller
         $validator = $this->validator($request->all());
         if ($validator->fails())
         {
-            return redirect('/client/register')->withErrors($validator)->withInput();
+            return [
+                'status' => 'failure',
+                'errors' => $validator->errors()
+            ];
         }
 
         // register a client
@@ -55,7 +47,7 @@ class ClientRegisterController extends Controller
         // log the client in :
         Auth::guard('client')->login($client);
 
-        return redirect(route('client.dashboard'));
+        return ['status' => 'success'];
     }
 
     protected function validator(array $data)
@@ -65,7 +57,7 @@ class ClientRegisterController extends Controller
             'agency' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:clients',
             'emailDept' => 'required|string|email|max:255|unique:clients',
-            'phone' => 'required|min:11|numeric',
+            'phone' => 'required|min:7|numeric',
             'timeZone' => 'required',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -103,5 +95,22 @@ class ClientRegisterController extends Controller
 
         return $client;
 
+    }
+
+    protected function affiliate($ownerCode){
+        $affiliate = Affiliate::where('code',$ownerCode)->first();
+        if(!$affiliate){
+            return redirect('client/register')->with('errorMessage','Wrong affiliate code');
+        }
+        // new click on the affiliate link
+        if(!Session::get('AffiliateLinkClient')){ // if not clicked
+            $click = new AffiliateClick;
+            $click->affiliate_id = $affiliate->id;
+            $click->client = 1;
+            $click->save();
+        }
+        Session::put('AffiliateLinkClient','clicked'); // clicked once
+
+        return view('auth.client-register',compact('ownerCode'));
     }
 }

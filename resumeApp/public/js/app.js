@@ -64727,7 +64727,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.error[data-v-d16f04d0]{\n    font-family: Roboto;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 16px;\n    line-height: 30px;/* identical to box height, or 187% */\n    color: #F56F6F;\n}\n", ""]);
 
 // exports
 
@@ -64907,9 +64907,122 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "ClientRegister"
+    data: function data() {
+        return {
+            formData: {
+                name: '',
+                email: '',
+                agency: '',
+                emailDept: '',
+                phone: '',
+                timeZone: '',
+                password: '',
+                password_confirmation: ''
+            },
+            canSubmit: false,
+            errors: []
+        };
+    },
+
+    methods: {
+        submitForm: function submitForm() {
+            var _this = this;
+
+            if ($('#submitBtnWrapper').hasClass('disabled-btn')) {
+                return;
+            }
+            this.canSubmit = false;
+            axios.post('/client/register/submit', this.formData).then(function (response) {
+                if (response.data.status === 'success') {
+                    // redirect to client dashboard
+                    window.location.href = '/client';
+                }
+                _this.errors = response.data.errors;
+            });
+        },
+        clearInput: function clearInput(inputName) {
+            this.formData[inputName] = '';
+        }
+    },
+    watch: {
+        formData: {
+            handler: function handler() {
+                // check if all formData values are filled
+                var values = Object.values(this.formData);
+                var isAll_filled = true;
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var value = _step.value;
+
+                        if (value.length < 1) {
+                            isAll_filled = false;
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+
+                this.canSubmit = isAll_filled;
+            },
+
+            deep: true
+        }
+    }
 });
 
 /***/ }),
@@ -64920,176 +65033,309 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "d-flex justify-content-center flex-column" },
-      [
-        _c("div", { staticClass: "account-info-edit-wrapper" }, [
-          _c(
-            "nav",
-            { staticClass: "navbar navbar-light fixed-top client_navbar" },
-            [
-              _c("div", { staticClass: "backBtn" }, [
-                _c("a", { attrs: { href: "/" } }, [
-                  _c("img", {
-                    attrs: {
-                      src: "/resumeApp/public/images/client/arrow_back.png",
-                      alt: "back-icon"
-                    }
-                  })
-                ]),
-                _vm._v("\n                BECOME A CLIENT\n            ")
-              ])
-            ]
-          ),
+  return _c(
+    "div",
+    { staticClass: "d-flex justify-content-center flex-column" },
+    [
+      _c("div", { staticClass: "account-info-edit-wrapper" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "account-info-edit dashboard-box" }, [
+          _vm._m(1),
           _vm._v(" "),
-          _c("div", { staticClass: "account-info-edit dashboard-box" }, [
-            _c(
-              "div",
-              {
-                staticClass: "account-info-edit-heading dashboard-box-heading"
-              },
-              [
-                _c("div", { staticClass: "left" }, [
-                  _c("img", {
-                    attrs: {
-                      src:
-                        "/resumeApp/public/images/client/my_account/info_40px.png",
-                      alt: "info icon"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", [
-                    _vm._v(
-                      "\n                    FILL IN THE INFORMATION TO BECOME A CLIENT\n                "
-                    )
-                  ])
-                ])
-              ]
-            ),
+          _c("div", { staticClass: "account-edit-section" }, [
+            _c("div", { staticClass: "account-edit-section-heading" }, [
+              _vm._v(
+                "\n                    BASIC INFORMATION\n                "
+              )
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "account-edit-section" }, [
-              _c("div", { staticClass: "account-edit-section-heading" }, [
-                _vm._v(
-                  "\n                    BASIC INFORMATION\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "account-edit-section-inputs" }, [
-                _c(
-                  "div",
-                  { staticClass: "faq-question-input account-edit-input" },
-                  [
-                    _c("label", { staticClass: "faq-input-label" }, [
-                      _vm._v(
-                        "\n                            Enter your agency name\n                        "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "faq-input" }, [
+            _c("div", { staticClass: "account-edit-section-inputs" }, [
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Enter your agency name\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.agency }
+                    },
+                    [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.formData.agency,
+                            expression: "formData.agency"
+                          }
+                        ],
                         attrs: {
                           type: "text",
                           name: "agency",
                           placeholder: "Enter your agency name"
+                        },
+                        domProps: { value: _vm.formData.agency },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.formData,
+                              "agency",
+                              $event.target.value
+                            )
+                          }
                         }
                       }),
                       _vm._v(" "),
                       _c("img", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.formData.agency.length > 0,
+                            expression: "formData.agency.length > 0"
+                          }
+                        ],
                         attrs: {
                           src:
                             "/resumeApp/public/images/client/campaign_activity/close_black.png",
                           alt: "delete icon"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.clearInput("agency")
+                          }
                         }
                       })
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "faq-question-input account-edit-input" },
-                  [
-                    _c("label", { staticClass: "faq-input-label" }, [
-                      _vm._v(
-                        "\n                            Enter name of contact person\n                        "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "faq-input" }, [
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.errors.agency
+                    ? _c("div", { staticClass: "error" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.agency[0]) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Enter name of contact person\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.name }
+                    },
+                    [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.formData.name,
+                            expression: "formData.name"
+                          }
+                        ],
                         attrs: {
                           type: "text",
                           name: "name",
                           placeholder: "Enter your name"
+                        },
+                        domProps: { value: _vm.formData.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.formData, "name", $event.target.value)
+                          }
                         }
                       }),
                       _vm._v(" "),
                       _c("img", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.formData.name.length > 0,
+                            expression: "formData.name.length > 0"
+                          }
+                        ],
                         attrs: {
                           src:
                             "/resumeApp/public/images/client/campaign_activity/close_black.png",
                           alt: "delete icon"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.clearInput("name")
+                          }
                         }
                       })
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "faq-question-input account-edit-input" },
-                  [
-                    _c("label", { staticClass: "faq-input-label" }, [
-                      _vm._v(
-                        "\n                            Enter contact phone\n                        "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "faq-input" }, [
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.errors.name
+                    ? _c("div", { staticClass: "error" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.name[0]) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Enter contact phone\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.phone }
+                    },
+                    [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.formData.phone,
+                            expression: "formData.phone"
+                          }
+                        ],
                         attrs: {
                           type: "text",
                           name: "phone",
                           placeholder: "Enter your phone"
+                        },
+                        domProps: { value: _vm.formData.phone },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.formData, "phone", $event.target.value)
+                          }
                         }
                       }),
                       _vm._v(" "),
                       _c("img", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.formData.phone.length > 0,
+                            expression: "formData.phone.length > 0"
+                          }
+                        ],
                         attrs: {
                           src:
                             "/resumeApp/public/images/client/campaign_activity/close_black.png",
                           alt: "delete icon"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.clearInput("phone")
+                          }
                         }
                       })
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "faq-question-input account-edit-input" },
-                  [
-                    _c("label", { staticClass: "faq-input-label" }, [
-                      _vm._v(
-                        "\n                            Select your time zone\n                        "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "faq-input" }, [
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.errors.phone
+                    ? _c("div", { staticClass: "error" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.phone[0]) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Select your time zone\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.timeZone }
+                    },
+                    [
                       _c(
                         "select",
                         {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formData.timeZone,
+                              expression: "formData.timeZone"
+                            }
+                          ],
                           staticClass: "form-control",
                           staticStyle: { height: "50px" },
-                          attrs: { id: "timeZone", name: "timeZone" }
+                          attrs: { id: "timeZone", name: "timeZone" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.formData,
+                                "timeZone",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
                         },
                         [
                           _c(
@@ -65582,165 +65828,433 @@ var staticRenderFns = [
                           )
                         ]
                       )
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "faq-question-input account-edit-input" },
-                  [
-                    _c("label", { staticClass: "faq-input-label" }, [
-                      _vm._v(
-                        "\n                            Enter main e-mail address\n                        "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "faq-input" }, [
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.errors.timeZone
+                    ? _c("div", { staticClass: "error" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.timeZone[0]) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Enter main e-mail address\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.email }
+                    },
+                    [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.formData.email,
+                            expression: "formData.email"
+                          }
+                        ],
                         attrs: {
                           type: "text",
                           name: "email",
                           placeholder: "Enter your email"
+                        },
+                        domProps: { value: _vm.formData.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.formData, "email", $event.target.value)
+                          }
                         }
                       }),
                       _vm._v(" "),
                       _c("img", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.formData.email.length > 0,
+                            expression: "formData.email.length > 0"
+                          }
+                        ],
                         attrs: {
                           src:
                             "/resumeApp/public/images/client/campaign_activity/close_black.png",
                           alt: "delete icon"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.clearInput("email")
+                          }
                         }
                       })
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "faq-question-input account-edit-input" },
-                  [
-                    _c("label", { staticClass: "faq-input-label" }, [
-                      _vm._v(
-                        "\n                            Email address of accounts dept\n                        "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "faq-input" }, [
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.errors.email
+                    ? _c("div", { staticClass: "error" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.email[0]) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Email address of accounts dept\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.emailDept }
+                    },
+                    [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.formData.emailDept,
+                            expression: "formData.emailDept"
+                          }
+                        ],
                         attrs: {
                           type: "text",
                           name: "emailDept",
                           placeholder: "Enter your email dept"
+                        },
+                        domProps: { value: _vm.formData.emailDept },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.formData,
+                              "emailDept",
+                              $event.target.value
+                            )
+                          }
                         }
                       }),
                       _vm._v(" "),
                       _c("img", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.formData.emailDept.length > 0,
+                            expression: "formData.emailDept.length > 0"
+                          }
+                        ],
                         attrs: {
                           src:
                             "/resumeApp/public/images/client/campaign_activity/close_black.png",
                           alt: "delete icon"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.clearInput("emailDept")
+                          }
                         }
                       })
-                    ])
-                  ]
-                )
-              ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.errors.emailDept
+                    ? _c("div", { staticClass: "error" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.emailDept[0]) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "account-edit-section sub-section" }, [
+            _c("div", { staticClass: "account-edit-section-heading" }, [
+              _vm._v("\n                    PASSWORD\n                ")
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "account-edit-section sub-section" }, [
-              _c("div", { staticClass: "account-edit-section-heading" }, [
-                _vm._v("\n                    PASSWORD\n                ")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "account-edit-section-inputs" }, [
-                _c(
-                  "div",
-                  { staticClass: "faq-question-input account-edit-input" },
-                  [
-                    _c("label", { staticClass: "faq-input-label" }, [
-                      _vm._v(
-                        "\n                            Write a new password\n                        "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "faq-input" }, [
+            _c("div", { staticClass: "account-edit-section-inputs" }, [
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Write a new password\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.password }
+                    },
+                    [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.formData.password,
+                            expression: "formData.password"
+                          }
+                        ],
                         attrs: {
                           type: "password",
                           name: "password",
                           placeholder: "Enter your password"
+                        },
+                        domProps: { value: _vm.formData.password },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.formData,
+                              "password",
+                              $event.target.value
+                            )
+                          }
                         }
                       }),
                       _vm._v(" "),
                       _c("img", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.formData.password.length > 0,
+                            expression: "formData.password.length > 0"
+                          }
+                        ],
                         attrs: {
                           src:
                             "/resumeApp/public/images/client/campaign_activity/close_black.png",
                           alt: "delete icon"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.clearInput("password")
+                          }
                         }
                       })
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "faq-question-input account-edit-input" },
-                  [
-                    _c("label", { staticClass: "faq-input-label" }, [
-                      _vm._v(
-                        "\n                            Repeat your new password\n                        "
-                      )
-                    ]),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.errors.password
+                    ? _c("div", { staticClass: "error" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.password[0]) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Repeat your new password\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.password_confirmation,
+                          expression: "formData.password_confirmation"
+                        }
+                      ],
+                      attrs: {
+                        type: "password",
+                        name: "password_confirmation",
+                        placeholder: "Enter your password confirmation"
+                      },
+                      domProps: { value: _vm.formData.password_confirmation },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "password_confirmation",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
                     _vm._v(" "),
-                    _c("div", { staticClass: "faq-input" }, [
-                      _c("input", {
-                        attrs: {
-                          type: "password",
-                          name: "password_confirmation",
-                          placeholder: "Enter your password confirmation"
+                    _c("img", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.formData.password_confirmation.length > 0,
+                          expression:
+                            "formData.password_confirmation.length > 0"
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("img", {
-                        attrs: {
-                          src:
-                            "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                          alt: "delete icon"
+                      ],
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.clearInput("password_confirmation")
                         }
-                      })
-                    ])
-                  ]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "account-edit-section-edit-btn no-decoration" },
-              [
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v("\n                    REGISTER\n                ")
-                ])
-              ]
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _vm.errors.password_confirmation
+                    ? _c("div", { staticClass: "error" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.password_confirmation[0]) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "account-edit-section-edit-btn no-decoration",
+              class: { "disabled-btn": !_vm.canSubmit },
+              attrs: { id: "submitBtnWrapper" }
+            },
+            [
+              _c(
+                "a",
+                {
+                  attrs: { href: "javascript:void(0)" },
+                  on: { click: _vm.submitForm }
+                },
+                [_vm._v("\n                    REGISTER\n                ")]
+              )
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(2)
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "nav",
+      { staticClass: "navbar navbar-light fixed-top client_navbar" },
+      [
+        _c("div", { staticClass: "backBtn" }, [
+          _c("a", { attrs: { href: "/" } }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/arrow_back.png",
+                alt: "back-icon"
+              }
+            })
+          ]),
+          _vm._v("\n                BECOME A CLIENT\n            ")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "account-info-edit-heading dashboard-box-heading" },
+      [
+        _c("div", { staticClass: "left" }, [
+          _c("img", {
+            attrs: {
+              src: "/resumeApp/public/images/client/my_account/info_40px.png",
+              alt: "info icon"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", [
+            _vm._v(
+              "\n                    FILL IN THE INFORMATION TO BECOME A CLIENT\n                "
             )
           ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "pt-3 no-decoration d-flex justify-content-center base-text align-items-center"
-          },
-          [
-            _vm._v("\n        Already have an account ? "),
-            _c("a", { staticClass: "ml-2 base-link", attrs: { href: "#" } }, [
-              _vm._v(" LOG IN ")
-            ])
-          ]
-        )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "pt-3 no-decoration d-flex justify-content-center base-text align-items-center"
+      },
+      [
+        _vm._v("\n        Already have an account ? "),
+        _c("a", { staticClass: "ml-2 base-link", attrs: { href: "#" } }, [
+          _vm._v(" LOG IN ")
+        ])
       ]
     )
   }

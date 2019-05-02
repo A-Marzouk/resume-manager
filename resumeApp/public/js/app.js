@@ -71217,8 +71217,17 @@ var render = function() {
           ),
           _vm._v(" "),
           _c(
-            "span",
-            { staticClass: "recording-status icon", class: _vm.selectedStatus },
+            "a",
+            {
+              staticClass: "recording-status icon",
+              class: _vm.selectedStatus,
+              attrs: { href: "javascript:;" },
+              on: {
+                click: function($event) {
+                  _vm.showStatusList = !_vm.showStatusList
+                }
+              }
+            },
             [_vm._v("S")]
           ),
           _vm._v(" "),

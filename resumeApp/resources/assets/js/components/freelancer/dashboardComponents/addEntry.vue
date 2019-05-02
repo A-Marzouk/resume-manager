@@ -24,7 +24,7 @@
               <span class="icon-name">Not<br>interested</span>
             </div>
           </div>
-          <span class="recording-status icon" v-bind:class="selectedStatus">S</span>
+          <a href="javascript:;" v-on:click="showStatusList = !showStatusList" class="recording-status icon" v-bind:class="selectedStatus">S</a>
           <textarea class="entry-input" placeholder="Type your entry here" v-model="entry"></textarea>
         </div>
         <div class="entry-comment">

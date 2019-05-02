@@ -9176,6 +9176,7 @@ input[type="radio"]:checked + label {
 .type-entry-block .document-input-block .status-list,
 .add-document-block .entry-input-block .status-list,
 .add-document-block .document-input-block .status-list {
+  opacity: 0;
   -webkit-transition: .5s;
   transition: .5s;
   position: relative;
@@ -9212,12 +9213,22 @@ input[type="radio"]:checked + label {
   border-color: white transparent transparent transparent;
   position: absolute;
   z-index: 20;
+  opacity: 0;
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 .type-entry-block .entry-input-block .status-list.show,
 .type-entry-block .document-input-block .status-list.show,
 .add-document-block .entry-input-block .status-list.show,
 .add-document-block .document-input-block .status-list.show {
+  opacity: 1;
+}
+
+.type-entry-block .entry-input-block .status-list.show::after,
+.type-entry-block .document-input-block .status-list.show::after,
+.add-document-block .entry-input-block .status-list.show::after,
+.add-document-block .document-input-block .status-list.show::after {
   opacity: 1;
 }
 

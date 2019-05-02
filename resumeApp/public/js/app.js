@@ -70342,7 +70342,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "form-inline my-2 my-lg-0 freelancerName" }, [
           _c("div", { staticClass: "logoutButton" }, [
-            _c("a", { attrs: { href: "#" } }, [
+            _c("a", { attrs: { href: "logout" } }, [
               _c("img", {
                 attrs: {
                   src: "/resumeApp/public/images/client/log_out.png",

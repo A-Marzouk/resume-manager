@@ -18,7 +18,7 @@
             </div>
             <div class="form-inline my-2 my-lg-0 freelancerName">
                 <div class="logoutButton">
-                    <a href="#">
+                    <a href="logout">
                         <img src="/resumeApp/public/images/client/log_out.png" alt="logout">
                     </a>
                 </div>

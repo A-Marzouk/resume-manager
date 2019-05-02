@@ -27,7 +27,7 @@ class FreelancersController extends Controller
     }
 
     public function campaignArchives(){
-        return view('client.campaign_archives');
+        return view('freelancer.campaign_archives');
     }
 
     public function form(){

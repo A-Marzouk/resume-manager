@@ -132,12 +132,6 @@ class ServicesController extends Controller
         $invoice->save();
 
 
-        $clientName = $invoice->client->name;
-        $words = explode(" ", $clientName);
-        $firstLetters = "";
-        foreach ($words as $w) {
-            $firstLetters .= $w[0];
-        }
         if(!isset($request->id)){ // only in new invoices automate unique numbers
             $firstNumber  = count(Client::all()) + 1 ; // number of clients + 1
             $secondNumber = count($invoice->client->invoices); // number of client invoices + 1 (already created)

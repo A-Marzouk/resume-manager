@@ -73,6 +73,9 @@
 
                     <div class="agentName">
                         Name of Agents :<br/>
+                        @if(isset($invoice->user))
+                            {{$invoice->user->firstName}} {{$invoice->user->lastName}}
+                        @endif
                         <? $users = [] ;?>
                         @foreach($invoice->services as $service)
                             @foreach($service->agents as $user)
@@ -182,6 +185,9 @@
                         @foreach($invoice->services as $service)
                             {{$service->title}}<br/>
                         @endforeach
+                        @if(count($invoice->services) == 0)
+                            {{$invoice->service}}
+                        @endif
                     </td>
                     <td class="col-2">
                         {{$invoice->hours}}

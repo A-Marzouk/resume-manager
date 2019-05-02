@@ -44,8 +44,11 @@ Vue.component('account-info-edit', require('./components/client/dashboardCompone
 Vue.component('service-agreement',require('./components/client/dashboardComponents/my_account/ServiceAgreement.vue'));
 // payment pay
 Vue.component('payment-pay',require('./components/client/dashboardComponents/payments/PaymentPay.vue'));
+Vue.component('manager-calculation',require('./components/client/dashboardComponents/payments/ManagerCalculation.vue'));
+Vue.component('sub-set-up',require('./components/client/dashboardComponents/payments/SubSetUp.vue'));
 Vue.component('privacy-agreement',require('./components/client/dashboardComponents/my_account/PrivacyAgreement.vue'));
 Vue.component('update-sub-plan',require('./components/client/dashboardComponents/payments/UpdateSubPlan.vue'));
+Vue.component('client-register',require('./components/client/ClientRegister.vue'));
 
     // campaign-activity inside components :
     import CampaignActivity from './components/client/campaignComponents/CampaignActivity.vue';
@@ -102,6 +105,21 @@ if ($("#addAgentComponent").length !== 0){
     });
 }
 
+if ($("#managerCalculation").length !== 0){
+
+    let managerCalculation = new Vue({
+        el:'#managerCalculation'
+    });
+}
+
+if ($("#clientRegister").length !== 0){
+
+    let clientRegister = new Vue({
+        el:'#clientRegister'
+    });
+}
+
+
 if ($("#serviceAgreement").length !== 0){
 
     let serviceAgreement = new Vue({
@@ -133,6 +151,13 @@ if ($("#paymentPay").length !== 0){
 
     let paymentPay = new Vue({
         el:'#paymentPay'
+    });
+}
+
+if ($("#subSetUp").length !== 0){
+
+    let subSetUp = new Vue({
+        el:'#subSetUp'
     });
 }
 
@@ -184,6 +209,9 @@ if ($("#freelancerDashboardComponent").length !== 0){
 Vue.component('chat-message', require('./components/chat/chatMessage.vue'));
 Vue.component('chat-log', require('./components/chat/chatLog.vue'));
 Vue.component('chat-composer', require('./components/chat/chatComposer.vue'));
+
+
+Vue.component('faq-list', require('./components/FaqsComponent.vue'));
 
 // works
 Vue.component('works-list', require('./components/work/worksListComponent.vue'));
@@ -301,6 +329,12 @@ if ($("#searchFreelancers").length !== 0){
 if ($("#record_input").length !== 0){
     let record_input = new Vue({
         el:'#record_input'
+    });
+}
+
+if ($("#faq_list").length !== 0){
+    let faq_list = new Vue({
+        el:'#faq_list'
     });
 }
 

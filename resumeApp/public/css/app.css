@@ -9281,10 +9281,10 @@ input[type="radio"]:checked + label {
   border: 2px solid rgba(179, 183, 186, 0.7);
 }
 
-.type-entry-block .entry-input-block .email-requested,
-.type-entry-block .document-input-block .email-requested,
-.add-document-block .entry-input-block .email-requested,
-.add-document-block .document-input-block .email-requested {
+.type-entry-block .entry-input-block .email-request,
+.type-entry-block .document-input-block .email-request,
+.add-document-block .entry-input-block .email-request,
+.add-document-block .document-input-block .email-request {
   background: #3EBD74;
   border: 2px solid #3EBD74;
 }

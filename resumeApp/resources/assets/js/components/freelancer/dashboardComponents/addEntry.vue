@@ -12,19 +12,19 @@
               v-bind:class="{ show: showStatusList }"
           >
             <div class="status-component">
-              <a href="javascript:;" class="icon email-requested">ER</a>
+              <a v-on:click="selectedStatus = 'email-request'" href="javascript:;" class="icon email-request">ER</a>
               <span class="icon-name">E-mail<br>request</span>
             </div>
             <div class="status-component">
-              <a href="javascript:;" class="icon call-back">CB</a>
+              <a v-on:click="selectedStatus = 'call-back'" href="javascript:;" class="icon call-back">CB</a>
               <span class="icon-name">Call back</span>
             </div>
             <div class="status-component">
-              <a href="javascript:;" class="icon not-interested">NI</a>
+              <a v-on:click="selectedStatus = 'not-interested'" href="javascript:;" class="icon not-interested">NI</a>
               <span class="icon-name">Not<br>interested</span>
             </div>
           </div>
-          <a href="javascript:;" v-on:click="showStatusList = !showStatusList" class="recording-status icon" v-bind:class="selectedStatus">S</a>
+          <a href="javascript:;" v-on:click="showStatusList = !showStatusList" class="recording-status icon" v-bind:class="selectedStatus">{{ printStatus() }}</a>
           <textarea class="entry-input" placeholder="Type your entry here" v-model="entry"></textarea>
         </div>
         <div class="entry-comment">
@@ -55,7 +55,13 @@
       return {
         entry: '',
         showStatusList: false,
-        selectedStatus: 'status-default'
+        selectedStatus: 'status-default',
+      }
+    },
+    methods: {
+      printStatus: function () {
+        let splittedStatusName = this.selectedStatus.split('-')
+        return this.selectedStatus !== 'status-default' ? splittedStatusName[0].charAt(0).toUpperCase() + splittedStatusName[1].charAt(0).toUpperCase() : 'S'
       }
     }
   }

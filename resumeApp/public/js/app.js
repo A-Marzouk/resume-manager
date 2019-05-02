@@ -71193,6 +71193,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       showStatusList: false,
       selectedStatus: 'status-default'
     };
+  },
+
+  methods: {
+    printStatus: function printStatus() {
+      var splittedStatusName = this.selectedStatus.split('-');
+      return this.selectedStatus !== 'status-default' ? splittedStatusName[0].charAt(0).toUpperCase() + splittedStatusName[1].charAt(0).toUpperCase() : 'S';
+    }
   }
 });
 
@@ -71213,7 +71220,61 @@ var render = function() {
           _c(
             "div",
             { staticClass: "status-list", class: { show: _vm.showStatusList } },
-            [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3)]
+            [
+              _c("div", { staticClass: "status-component" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "icon email-request",
+                    attrs: { href: "javascript:;" },
+                    on: {
+                      click: function($event) {
+                        _vm.selectedStatus = "email-request"
+                      }
+                    }
+                  },
+                  [_vm._v("ER")]
+                ),
+                _vm._v(" "),
+                _vm._m(1)
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "status-component" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "icon call-back",
+                    attrs: { href: "javascript:;" },
+                    on: {
+                      click: function($event) {
+                        _vm.selectedStatus = "call-back"
+                      }
+                    }
+                  },
+                  [_vm._v("CB")]
+                ),
+                _vm._v(" "),
+                _c("span", { staticClass: "icon-name" }, [_vm._v("Call back")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "status-component" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "icon not-interested",
+                    attrs: { href: "javascript:;" },
+                    on: {
+                      click: function($event) {
+                        _vm.selectedStatus = "not-interested"
+                      }
+                    }
+                  },
+                  [_vm._v("NI")]
+                ),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
+            ]
           ),
           _vm._v(" "),
           _c(
@@ -71228,7 +71289,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("S")]
+            [_vm._v(_vm._s(_vm.printStatus()))]
           ),
           _vm._v(" "),
           _c("textarea", {
@@ -71260,7 +71321,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm._m(4),
+        _vm._m(3),
         _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
@@ -71310,53 +71371,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "status-component" }, [
-      _c(
-        "a",
-        {
-          staticClass: "icon email-requested",
-          attrs: { href: "javascript:;" }
-        },
-        [_vm._v("ER")]
-      ),
-      _vm._v(" "),
-      _c("span", { staticClass: "icon-name" }, [
-        _vm._v("E-mail"),
-        _c("br"),
-        _vm._v("request")
-      ])
+    return _c("span", { staticClass: "icon-name" }, [
+      _vm._v("E-mail"),
+      _c("br"),
+      _vm._v("request")
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "status-component" }, [
-      _c(
-        "a",
-        { staticClass: "icon call-back", attrs: { href: "javascript:;" } },
-        [_vm._v("CB")]
-      ),
-      _vm._v(" "),
-      _c("span", { staticClass: "icon-name" }, [_vm._v("Call back")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "status-component" }, [
-      _c(
-        "a",
-        { staticClass: "icon not-interested", attrs: { href: "javascript:;" } },
-        [_vm._v("NI")]
-      ),
-      _vm._v(" "),
-      _c("span", { staticClass: "icon-name" }, [
-        _vm._v("Not"),
-        _c("br"),
-        _vm._v("interested")
-      ])
+    return _c("span", { staticClass: "icon-name" }, [
+      _vm._v("Not"),
+      _c("br"),
+      _vm._v("interested")
     ])
   },
   function() {

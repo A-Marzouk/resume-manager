@@ -5,7 +5,7 @@
                 <div class="welcomeText">
                     Hello Mr. Marzouk!  You have 8 active campaigns.
                 </div>
-                <a href="/client/campaigns-archive" class="actionText">
+                <a href="/freelancer/campaigns-archive" class="actionText">
                     GO TO ARCHIVE OF CAMPAIGNS
                 </a>
             </div>

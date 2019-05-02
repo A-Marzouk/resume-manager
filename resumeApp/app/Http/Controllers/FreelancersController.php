@@ -26,6 +26,10 @@ class FreelancersController extends Controller
         return view('freelancer.dashboard',compact('client'));
     }
 
+    public function campaignArchives(){
+        return view('client.campaign_archives');
+    }
+
     public function form(){
         if(Auth::user()->admin == 1 && Auth::user()->username == 'admin_workforce'){
             return redirect(route('admin.dashboard'));

@@ -71543,7 +71543,7 @@ var staticRenderFns = [
           "a",
           {
             staticClass: "actionText",
-            attrs: { href: "/client/campaigns-archive" }
+            attrs: { href: "/freelancer/campaigns-archive" }
           },
           [_vm._v("\n                GO TO ARCHIVE OF CAMPAIGNS\n            ")]
         )

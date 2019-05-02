@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <div id="campaignArchives">
-        <campaign-archives></campaign-archives>
+    <div id="freelancerCampaignArchives">
+        <freelancer-campaign-archives></freelancer-campaign-archives>
     </div>
 
 @endsection

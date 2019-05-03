@@ -24904,7 +24904,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            hasLogs: false,
+            hasLogs: true,
             selectedDate: '',
             appliedDate: ''
         };

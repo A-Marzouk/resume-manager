@@ -325,7 +325,7 @@
         },
         data(){
           return{
-              hasLogs:false,
+              hasLogs: true,
               selectedDate:'',
               appliedDate:'',
           }

@@ -5,12 +5,12 @@
                 <a href="#">
                     <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
                 </a>
-                FINISH YOUR SUBSCRIPTION PLAN UPDATE
+                SUBSCRIPTION PLAN UPDATE
             </div>
         </nav>
         <!--navbar-->
-
-        <div class="form-main-grid main-grid">
+        <div class="d-flex justify-content-center">
+        <div class="main-grid">
             <div class="header-text">
                 <img src="/resumeApp/public/images/client/plan.png" alt=""  class="icon-margin small-image">
                 SUBSCRIPTION PLAN UPDATE
@@ -22,7 +22,7 @@
             </div>
 
             <div class="text d-flex align-items-center">
-                <img src="/resumeApp/public/images/client/payments/week.png" style="margin-right: 20px;"/>
+                <img src="/resumeApp/public/images/client/payments/date_range_24px.svg" style="margin-right: 20px;"/>
                 Total number of weeks
             </div>
 
@@ -34,20 +34,18 @@
                 </select>
 
                 <div class="col-12 col-sm-4 col-md-6 col-lg-8 d-flex align-items-center check-position" style="display: block;">
-                    <input type="checkbox" class="chechbox-blue" title=""/>
+                    <input type="checkbox" class="chechbox-blue" onclick="" id="checked"/>
                     <label class="agreement-text" style="margin-bottom: 0;"> no end date</label>
                 </div>
             </div>
-                <div class="grey-text">Campaign period: 4.04.19 — 4.01.20</div>
-
-
+                <div class="grey-text" id="text">Campaign period: 4.04.19 — 4.01.20</div>
 
             <hr/>
             <div class="sub-text orange-color">
                 Agent № 1
             </div>
             <div class="text d-flex align-items-center">
-                <img src="/resumeApp/public/images/client/payments/time.png" style="margin-right: 20px;"/>
+                <img src="/resumeApp/public/images/client/payments/watch_later_24px.svg" style="margin-right: 20px;"/>
                 Total number of weeks
             </div>
             <select id="Setset" class="form-control form-control-MD  check-width">
@@ -56,15 +54,34 @@
             </select>
 
 
-            <div class="">
+            <div class="d-flex justify-content-center">
                 <button class="blue-button">ADD OTHER AGENT</button>
             </div>
 
             <hr/>
 
             <div class="d-flex justify-content-end">
-                <button class="agreement-button button-size">COUNTINU</button>
+                <button class="agreement-button button-size">CONTINUE</button>
             </div>
+        </div>
         </div>
     </div>
 </template>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+    $(":checkbox[class=chechbox-blue]").on("change",function(){
+        var red = document.getElementById('checked').checked;
+        var text = document.getElementById('text');
+        console.log(red);
+        if (red == true) {
+            $(text).css({visibility: 'hidden'});
+        }
+        else {
+            $(text).css({visibility: 'visible'});
+        }
+
+    })
+
+})
+</script>

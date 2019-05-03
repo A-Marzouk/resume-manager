@@ -2,7 +2,7 @@
     <div>
         <nav class="navbar navbar-light fixed-top client_navbar">
             <div class="backBtn">
-                <a href="#">
+                <a href="/client">
                     <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
                 </a>
                 ACCOUNT INFORMATION EDITION

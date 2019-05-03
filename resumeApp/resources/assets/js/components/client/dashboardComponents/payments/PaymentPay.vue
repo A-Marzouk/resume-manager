@@ -31,16 +31,19 @@
             <div class="row justify-content-between align-items-baseline invioce-title payment-pay-text ">
                 <div class="col-6">
                     <div class="row justify-content-between responsive-title">
-                        <div class="">№ 059-004-038</div>
+                        <div class="" style="font-weight: 500;">№ 059-004-038</div>
                         <div class="export-invoice">other services</div>
-                        <div class="export-invoice">$400</div>
+                        <div class="export-invoice" style="font-weight: 500;">$400</div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="row justify-content-between align-content-between align-items-center responsive-title">
-                        <div class="invoice-outstand" style="padding: 7px 16px!important; display: inline; margin-left:0;">outstand</div>
-                        <div class="export-invoice"><img src="/resumeApp/public/images/client/payments/export_invoice.png"/></div>
-                        <div class="invoice-download export-invoice payment-pay-text">copy invioce link</div>
+                        <div class="invoice-outstand" style="padding: 4px 16px!important; display: inline; margin-left:0; line-height: 24px;">outstand</div>
+                        <div class="justify-content-end mobile-display">
+                            <div class="export-invoice" style="margin-right: 43px;"><img src="/resumeApp/public/images/client/payments/export_invoice.png"/></div>
+                            <div class="invoice-download export-invoice payment-pay-text">copy invioce link</div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -54,8 +57,8 @@
 
             <div class="payment-pay-text">
                 <div style=" font-weight: 500;">Client info:</div>
-                <div>Name: Kim Coe</div>
-                <div>Company: Urban HQ LTD</div>
+                <div style="margin:22px 0 18px;">Name: Kim Coe</div>
+                <div style="margin:18px 0;">Company: Urban HQ LTD</div>
                 <div class="d-flex">
                     <div >
                         Contact:

@@ -11,7 +11,6 @@
   color: #05A4F4;
   margin-top: 22px;
   margin-bottom: 22px;
-  margin-left: 415px;
 }
 
 .check-margin {
@@ -45,6 +44,7 @@
 
 .orange-color {
   color: #FFA368;
+  margin-top: 40px;
 }
 
 .text {
@@ -62,9 +62,6 @@ margin: 20px 0;
 }
 
 @media only screen and (max-width: 1200px) {
-  .blue-button {
-    margin-left: 365px;
-  }
 
   .check-margin {
     margin-right: 362px;
@@ -73,7 +70,6 @@ margin: 20px 0;
 
 @media only screen and (max-width: 690px){
   .blue-button {
-    margin-left: 112px;
     padding: 11px;
   }
 
@@ -97,6 +93,9 @@ margin: 20px 0;
   .check-position {
     margin-top: 65px;
     margin-left: -15px;
+  }
+  .orange-color {
+    margin-top: 24px;
   }
 
 

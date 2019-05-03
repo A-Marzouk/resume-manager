@@ -42,10 +42,10 @@
   -moz-appearance: none;
   appearance: none;
   outline: 0;
-  background: lightgray;
+  background: #DADADA;
   height: 18px;
   width: 18px;
-  border: 1px solid white;
+  border: 1px solid #4A5464;
   margin-right: 15px;
 }
 
@@ -54,6 +54,7 @@
 }
 .chechbox-blue:checked {
   background: #05A4F4;
+  border: none;
 }
 
 .chechbox-blue:hover {

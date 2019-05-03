@@ -9721,9 +9721,14 @@ input[type="radio"]:checked + label {
   text-align: center;
   width: 50px;
   height: 100%;
+  color: black;
 }
 
-.freelancer_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .date-item.active {
+.freelancer_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .date-item:hover {
+  text-decoration: none;
+}
+
+.freelancer_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week.active {
   border-bottom: 1.5px solid #218dce;
 }
 

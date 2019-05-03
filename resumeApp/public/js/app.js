@@ -25003,11 +25003,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      days: []
+      activeDay: 10
     };
   },
 
@@ -25059,18 +25064,34 @@ var render = function() {
           { staticClass: "days-container" },
           _vm._l(17, function(n) {
             return _c(
-              "div",
-              { key: n, staticClass: "date-item", class: { active: n === 10 } },
+              "a",
+              {
+                key: n,
+                staticClass: "date-item",
+                class: { active: n === _vm.activeDay },
+                attrs: { href: "javascript:;" },
+                on: {
+                  click: function($event) {
+                    _vm.activeDay = n
+                  }
+                }
+              },
               [
                 _c(
                   "div",
-                  { staticClass: "day-number", class: { active: n === 10 } },
+                  {
+                    staticClass: "day-number",
+                    class: { active: n === _vm.activeDay }
+                  },
                   [_vm._v(_vm._s(n))]
                 ),
                 _vm._v(" "),
                 _c(
                   "div",
-                  { staticClass: "day-of-week", class: { active: n === 10 } },
+                  {
+                    staticClass: "day-of-week",
+                    class: { active: n === _vm.activeDay }
+                  },
                   [_vm._v(_vm._s(_vm.dayOfWeek(n)))]
                 )
               ]

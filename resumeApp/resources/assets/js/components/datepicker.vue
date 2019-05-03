@@ -3,10 +3,15 @@
     <div class="date-picker-bar">
       <span class="date-control-left"><</span>
       <div class="days-container">
-        <div class="date-item" v-for="n in 17" :key="n" :class="{active: n === 10}">
-          <div class="day-number" :class="{active: n === 10}">{{ n }}</div>
-          <div class="day-of-week" :class="{active: n === 10}">{{ dayOfWeek(n) }}</div>
-        </div>
+        <a href="javascript:;"
+          class="date-item"
+          v-for="n in 17" :key="n"
+          :class="{active: n === activeDay}"
+          v-on:click="activeDay = n"
+        >
+          <div class="day-number" :class="{active: n === activeDay}">{{ n }}</div>
+          <div class="day-of-week" :class="{active: n === activeDay}">{{ dayOfWeek(n) }}</div>
+        </a>
       </div>
       <span class="date-control-right">></span>
       <slot></slot>
@@ -18,7 +23,7 @@
 export default {
   data () {
     return {
-      days: []
+      activeDay: 10
     }
   },
   methods: {

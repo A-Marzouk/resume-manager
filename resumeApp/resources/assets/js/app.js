@@ -82,10 +82,11 @@ if ($("#campaignMainComponent").length !== 0){
 if ($("#clientDashboardComponent").length !== 0){
 
     const routes = [
-        { path: '/client/my-account', component: MyAccount },
-        { path: '/client/payments', component: Payments },
+        { path: '/client/dashboard/my-account', component: MyAccount },
+        { path: '/client/dashboard/payments', component: Payments },
         { path: '/client', component: CampaignManager },
-        { path: '/client/*', component: CampaignManager }
+        { path: '/client/dashboard', component: CampaignManager },
+        { path: '/client/dashboard/*', component: CampaignManager }
     ];
 
     const router = new VueRouter({

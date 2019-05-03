@@ -3,7 +3,7 @@
         <div class="account-info-edit-wrapper">
             <nav class="navbar navbar-light fixed-top client_navbar">
                 <div class="backBtn">
-                    <a href="/client#/my-account">
+                    <a href="/client/dashboard/my-account">
                         <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
                     </a>
                     ACCOUNT INFORMATION

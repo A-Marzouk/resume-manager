@@ -14387,7 +14387,7 @@ if ($("#campaignMainComponent").length !== 0) {
 
 if ($("#clientDashboardComponent").length !== 0) {
 
-    var _routes = [{ path: '/client/my-account', component: __WEBPACK_IMPORTED_MODULE_6__components_client_dashboardComponents_MyAccount_vue___default.a }, { path: '/client/payments', component: __WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_Payments_vue___default.a }, { path: '/client', component: __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue___default.a }, { path: '/client/*', component: __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue___default.a }];
+    var _routes = [{ path: '/client/dashboard/my-account', component: __WEBPACK_IMPORTED_MODULE_6__components_client_dashboardComponents_MyAccount_vue___default.a }, { path: '/client/dashboard/payments', component: __WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_Payments_vue___default.a }, { path: '/client', component: __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue___default.a }, { path: '/client/dashboard', component: __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue___default.a }, { path: '/client/dashboard/*', component: __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue___default.a }];
 
     var _router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
         mode: 'history',
@@ -58264,7 +58264,7 @@ var staticRenderFns = [
         { staticClass: "navbar navbar-light fixed-top client_navbar" },
         [
           _c("div", { staticClass: "backBtn" }, [
-            _c("a", { attrs: { href: "/client" } }, [
+            _c("a", { attrs: { href: "/client/dashboard" } }, [
               _c("img", {
                 attrs: {
                   src: "/resumeApp/public/images/client/arrow_back.png",
@@ -59648,7 +59648,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         setActiveTab: function setActiveTab() {
             var tabs = ['campaign-manager', 'payments', 'my-account'];
 
-            this.activeTab = this.$route.path.replace('/client/', '');
+            this.activeTab = this.$route.path.replace('/client/dashboard/', '');
             if (!tabs.includes(this.activeTab)) {
                 this.activeTab = 'campaign-manager';
             }
@@ -59689,7 +59689,7 @@ var render = function() {
                 {
                   staticClass: "menu-block row",
                   class: { active: _vm.activeTab === "campaign-manager" },
-                  attrs: { to: "/client/campaign-manager" },
+                  attrs: { to: "/client/dashboard/campaign-manager" },
                   nativeOn: {
                     click: function($event) {
                       _vm.selectTab("campaign-manager")
@@ -59745,7 +59745,7 @@ var render = function() {
                 {
                   staticClass: "menu-block row",
                   class: { active: _vm.activeTab === "payments" },
-                  attrs: { to: "/client/payments" },
+                  attrs: { to: "/client/dashboard/payments" },
                   nativeOn: {
                     click: function($event) {
                       _vm.selectTab("payments")
@@ -59804,7 +59804,7 @@ var render = function() {
                 {
                   staticClass: "menu-block row",
                   class: { active: _vm.activeTab === "my-account" },
-                  attrs: { to: "/client/my-account" },
+                  attrs: { to: "/client/dashboard/my-account" },
                   nativeOn: {
                     click: function($event) {
                       _vm.selectTab("my-account")
@@ -59847,7 +59847,7 @@ var render = function() {
             {
               staticClass: "menu-block row",
               class: { active: _vm.activeTab === "campaign-manager" },
-              attrs: { to: "/client/campaign-manager" },
+              attrs: { to: "/client/dashboard/campaign-manager" },
               nativeOn: {
                 click: function($event) {
                   _vm.selectTab("campaign-manager")
@@ -59901,7 +59901,7 @@ var render = function() {
             {
               staticClass: "menu-block row",
               class: { active: _vm.activeTab === "payments" },
-              attrs: { to: "/client/payments" },
+              attrs: { to: "/client/dashboard/payments" },
               nativeOn: {
                 click: function($event) {
                   _vm.selectTab("payments")
@@ -59955,7 +59955,7 @@ var render = function() {
             {
               staticClass: "menu-block row",
               class: { active: _vm.activeTab === "my-account" },
-              attrs: { to: "/client/my-account" },
+              attrs: { to: "/client/dashboard/my-account" },
               nativeOn: {
                 click: function($event) {
                   _vm.selectTab("my-account")
@@ -60621,7 +60621,7 @@ var staticRenderFns = [
       { staticClass: "navbar navbar-light fixed-top client_navbar" },
       [
         _c("div", { staticClass: "backBtn" }, [
-          _c("a", { attrs: { href: "/client" } }, [
+          _c("a", { attrs: { href: "/client/dashboard" } }, [
             _c("img", {
               attrs: {
                 src: "/resumeApp/public/images/client/arrow_back.png",
@@ -60935,7 +60935,7 @@ var staticRenderFns = [
       { staticClass: "navbar navbar-light fixed-top client_navbar" },
       [
         _c("div", { staticClass: "backBtn" }, [
-          _c("a", { attrs: { href: "/client" } }, [
+          _c("a", { attrs: { href: "/client/dashboard" } }, [
             _c("img", {
               attrs: {
                 src: "/resumeApp/public/images/client/arrow_back.png",
@@ -61493,7 +61493,7 @@ var staticRenderFns = [
           { staticClass: "navbar navbar-light fixed-top client_navbar" },
           [
             _c("div", { staticClass: "backBtn" }, [
-              _c("a", { attrs: { href: "/client#/my-account" } }, [
+              _c("a", { attrs: { href: "/client/dashboard/my-account" } }, [
                 _c("img", {
                   attrs: {
                     src: "/resumeApp/public/images/client/arrow_back.png",
@@ -62252,7 +62252,7 @@ var staticRenderFns = [
         { staticClass: "navbar navbar-light fixed-top client_navbar" },
         [
           _c("div", { staticClass: "backBtn" }, [
-            _c("a", { attrs: { href: "/client" } }, [
+            _c("a", { attrs: { href: "/client/dashboard" } }, [
               _c("img", {
                 attrs: {
                   src: "/resumeApp/public/images/client/arrow_back.png",
@@ -62483,7 +62483,7 @@ var staticRenderFns = [
         { staticClass: "navbar navbar-light fixed-top client_navbar" },
         [
           _c("div", { staticClass: "backBtn" }, [
-            _c("a", { attrs: { href: "/client#/payments" } }, [
+            _c("a", { attrs: { href: "/client/dashboard/payments" } }, [
               _c("img", {
                 attrs: {
                   src: "/resumeApp/public/images/client/arrow_back.png",
@@ -63675,7 +63675,7 @@ var staticRenderFns = [
         { staticClass: "navbar navbar-light fixed-top client_navbar" },
         [
           _c("div", { staticClass: "backBtn" }, [
-            _c("a", { attrs: { href: "/client" } }, [
+            _c("a", { attrs: { href: "/client/dashboard" } }, [
               _c("img", {
                 attrs: {
                   src: "/resumeApp/public/images/client/arrow_back.png",
@@ -64405,7 +64405,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "/client#/payments" } }, [
+    return _c("a", { attrs: { href: "/client/dashboard/payments" } }, [
       _c("img", {
         attrs: {
           src: "/resumeApp/public/images/client/arrow_back.png",

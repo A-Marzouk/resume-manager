@@ -30,6 +30,7 @@ Route::prefix('client')->group(function (){
 
     // front-end routes :
     Route::get('/','ClientsController@index')->name('client.dashboard');
+    Route::get('/dashboard/{any?}','ClientsController@index')->name('client.dashboard.campaing-manager');
     Route::get('/campaign','ClientsController@campaignActivity')->name('campaign.main');
     Route::get('/campaigns-archive','ClientsController@campaignArchives')->name('campaign.archives');
     Route::get('/campaign/add-agent','ClientsController@campaignAddAgent')->name('campaign.add.agent');
@@ -37,15 +38,15 @@ Route::prefix('client')->group(function (){
     // service agreement route
     Route::get('/account/service-agreement','ClientsController@viewClientServiceAgreement')->name('service.agreement');
     Route::get('/payments/pay','ClientsController@viewClientPaymentPay')->name('payment.pay');
-     Route::get('/payments/manager-calculation','ClientsController@viewClientManagerCalculation')->name('manager.calculation');
+    Route::get('/payments/manager-calculation','ClientsController@viewClientManagerCalculation')->name('manager.calculation');
     //sub set up router
     Route::get('/payments/sub-set-up','ClientsController@viewClientSubSetUp')->name('payment.sub');
     // privacy agreement route
     Route::get('/account/privacy-agreement','ClientsController@viewClientPrivacyAgreement')->name('privacy.agreement');
-     // update subscription plan route
+    // update subscription plan route
     Route::get('/payments/sub-update','ClientsController@viewUpdateSubPlan')->name('privacy.agreement');
 
-//////////////////
+    //////////////////
     Route::get('/has_agreed','ClientsController@hasAgreed');
     Route::post('/set_terms','ClientsController@setTerms');
     Route::get('/register','Auth\ClientRegisterController@showRegistrationForm')->name('client.register');
@@ -80,8 +81,12 @@ Route::prefix('client')->group(function (){
 Route::prefix('freelancer')->group(function (){
     Route::get('/login','Auth\LoginController@showLoginForm')->name('freelancer.login');
     Route::get('/logout','Auth\LoginController@logout')->name('freelancer.logout');
-    Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard');
-    Route::get('/','FreelancersController@showEditForm')->name('show.edit_form');
+    Route::get('/campaigns-archive','FreelancersController@campaignArchives')->name('freelancer.campaign.archives');
+    // Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard'); 
+    // Route::get('/','FreelancersController@showEditForm')->name('show.edit_form');
+
+    // frontend routes
+    Route::get('/','FreelancersController@index')->name('freelancer.dashboard');
 
     Route::post('/store','UserDataController@store')->name('freelancer.data.store');
     Route::get('/store',function(){

@@ -1,0 +1,582 @@
+#campaign_activity{
+  .freelancer_navbar{
+    height:56px !important;
+  }
+
+  .campaign-info-bar{
+    height: 56px;
+    width: 100%;
+    background: #05A4F4;
+    display: flex;
+    margin-top: -16px;
+    justify-content: left;
+    align-items: center;
+    box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius:4px ;
+    a:hover{
+      text-decoration: none;
+    }
+    @media (max-width:1240px) {
+      overflow-x: scroll;
+    }
+    .campaign-info-tab{
+      font-family: Roboto;
+      font-style: normal;
+      margin-right: 80px !important;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 24px;
+      color: #FFFFFF;
+      border-bottom: 3px solid transparent;
+      padding: 12px 14px ;
+      margin-top: 6px;
+      cursor: pointer;
+      opacity: 0.8;
+      @media (max-width:1240px) {
+        margin-right: 0;
+        padding: 12px 14px;
+        white-space: nowrap;
+      }
+    }
+    .campaign-info-tab.active{
+      font-weight: bold;
+      border-bottom: 3px solid white;
+      opacity: 1;
+    }
+    .campaign-info-tab.firstTab{
+      margin-left: 25px !important;
+      @media (max-width:1240px) {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.backBtn{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  margin-top: 4px;
+  letter-spacing: -0.1px;
+  color: #4A5464;
+  a{
+    margin: 0px 30px 2px 25px;
+    @media (max-width:600px) {
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width:1240px) {
+    font-size: 16px;
+  }
+}
+
+.freelancer_dashboard_content.campaign_activity{
+  width: 100%;
+  @media (max-width:1240px) {
+    width: 100%;
+  }
+  .dashboard-side-menu{
+    background: white;
+    width: 339px;
+    height:600px;
+    box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+    border-radius: 4px;
+
+    .team-list-header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width:100%;
+      height:78px;
+
+      .teamName{
+        font-family: Roboto;
+        margin-left: 12px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #4A5464;
+      }
+
+      .teamChat{
+        font-family: Roboto;
+        margin-right: 12px;
+        cursor: pointer;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        text-align: right;
+        letter-spacing: -0.1px;
+        color: #05A4F4;
+      }
+
+    }
+
+  }
+
+  .content-block{
+    flex-direction: row;
+    background: none;
+    width: auto;
+    @media (max-width:1240px) {
+      width: 96%;
+    }
+    @media (max-width:425px) {
+      width: 100%;
+    }
+    .content-block-campaign-activity{
+      margin-bottom: 0;
+      width: 1200px;
+      @media (max-width:1240px) {
+        width: 100%;
+      }
+      .data-logs{
+        height: 506px;
+        background: white;
+        box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+        border-radius: 4px;
+        .date-picker-bar{
+          height: 78px;
+          padding: 0 20px;
+          background:white;
+          display:flex;
+          justify-content: space-around;
+          align-items: center;
+          img{
+            margin-right:18px;
+          }
+
+          .days-container {
+            width: 75%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+
+            .date-item {
+              padding: 15px 10px;
+              text-align: center;
+              width: 50px;
+              height: 100%;
+              color: black;
+
+              &:hover {
+                text-decoration: none;
+              }
+            }
+
+            .day-of-week.active {
+              border-bottom: 1.5px solid $l-blue;
+            }
+
+            .day-number,
+            .day-of-week {
+              margin: 0 auto;
+              text-align: center;
+
+              &.active {
+                color: $l-blue
+              }
+            }
+
+          }
+          .date-control-right,
+          .date-control-left {
+            // Replace this controls with images
+            font-size: 2rem;
+          }
+        }
+        .member-logs-empty{
+          .empty-state-text{
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: -0.1px;
+            color: #7A828D;
+            margin-left: 51px;
+          }
+          .empty-state-image{
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            img{
+              @media (max-width:425px) {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+
+      .documents-bar{
+        height: 76px;
+        margin-top: 16px;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+        border-radius: 4px;
+        display:flex;
+        justify-content: flex-start;
+        align-items: center;
+        img{
+          margin-left: 24px;
+          margin-right: 5px;
+          margin-bottom: 4px;
+          height: 24px;
+        }
+        .document-text{
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: -0.1px;
+          color: #4A5464;
+          span{
+            font-weight: normal;
+            margin-left: 5px;
+            color: #7A828D;
+          }
+        }
+      }
+
+      .team-bar-tablet{
+        height: 130px;
+        margin-bottom: 16px;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+        border-radius: 4px;
+        .team-info{
+          height:60px;
+          display:flex;
+          justify-content: space-between;
+          align-items: center;
+          .team-name{
+            font-family: Roboto;
+            margin-left: 12px;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            color: #4A5464;
+          }
+          .actionBtn{
+            font-family: Roboto;
+            margin-right: 12px;
+            cursor: pointer;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+            text-align: right;
+            letter-spacing: -0.1px;
+            color: #05A4F4;
+          }
+        }
+        .agent-bar{
+          height: 70px;
+          display:flex;
+          justify-content: space-between;
+          align-items: center;
+          .actionBtn{
+            font-family: Roboto;
+            margin-right: 12px;
+            cursor: pointer;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+            text-align: right;
+            letter-spacing: -0.1px;
+            color: #05A4F4;
+          }
+        }
+
+        @media (min-width:1240px) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+#select-agent-modal{
+  .select-agent-modal-header{
+    height: 68px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title{
+      margin-left: 28px;
+    }
+    button{
+      margin-right: 28px;
+      margin-bottom: 2px;
+    }
+  }
+  .agent-modal-content{
+    max-width: 447px !important;
+  }
+
+  .modal-dialog{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+.text-lay{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #4A5464;
+}
+
+.lineDivide{
+  width: 95%;
+  margin-left: 2.5%;
+  height: 1px;
+  background: rgba(188, 191, 198, 0.44);
+  margin-bottom:20px;
+}
+
+.lineDivide.tablet-bar{
+  margin-bottom: 0;
+}
+
+.team-member{
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  img{
+    margin-left: 12px;
+    margin-right: 19px;
+    height: 35px;
+    width: 35px;
+    margin-top: 5px;
+  }
+  .team-member-info{
+    .member-name{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      color: #4A5464;
+      padding-bottom: 5px;
+    }
+    .member-name.manager{
+      color: #05A4F4;
+    }
+    .job-title{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      color: #7A828D;
+    }
+  }
+}
+.team-member.tablet-bar{
+  margin-bottom: 0;
+  .member-name{
+    font-size: 14px;
+  }
+  .job-title{
+    font-size: 10px;
+  }
+}
+
+.member-logs{
+  overflow-y: auto;
+  height: 407px;
+  .agent-logs-block{
+    .log{
+      .log-text{
+        margin-right:25px;
+        width: 100%;
+      }
+    }
+    .showMoreBtn{
+      margin: 0px 34px 16px;
+    }
+    .showMoreBtn.disabled{
+       a{
+         color:#B6B6B6;
+       }
+    }
+  }
+}
+.agent-modal-content.date-picker{
+  width: 406px;
+  height: 449px;
+  @media (max-width:400px) {
+    width: 100%;
+  }
+  margin: auto;
+  .modal-body{
+    .ui-datepicker .ui-datepicker-header{
+      background: white;
+      border: none;
+      width: 282px;
+      @media (max-width:400px) {
+        width: 100%;
+      }
+    }
+
+    .ui-datepicker .ui-datepicker-next span{
+      background-position: 0px -3px !important;
+      background-image: url(http://local.123workforce.me/resumeApp/public/images/freelancer/campaign_activity/right.png);
+    }
+    .ui-datepicker .ui-datepicker-prev span{
+      background-position: 0px -3px !important;
+      background-image: url(http://local.123workforce.me/resumeApp/public/images/freelancer/campaign_activity/left.png);
+
+    }
+    .ui-datepicker .ui-datepicker-next,.ui-datepicker .ui-datepicker-prev{
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .ui-widget.ui-widget-content{
+      border: none;
+      margin: auto;
+      padding-left: 44px;
+      padding-top: 25px;
+      width: 100%;
+      @media (max-width:400px) {
+        padding-left: 0;
+      }
+    }
+  }
+  .ui-datepicker table{
+    width:290px;
+    height:270px;
+    @media (max-width:400px) {
+      width: 100%;
+    }
+  }
+  .ui-state-default, .ui-widget-content .ui-state-default{
+    border: none;
+  }
+  .ui-state-default, .ui-widget-content .ui-state-default :hover{
+    border: none;
+  }
+  .ui-state-active, .ui-widget-content .ui-state-active{
+    border: 1px solid #05A4F4;
+    background: #05A4F4;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+    color: #ffffff;
+  }
+  .ui-state-default{
+    border: none;
+    background: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    color: #3F4654;
+  }
+  .ui-datepicker-current-day{
+    width: 30px;
+    height: 30px;
+  }
+  .ui-datepicker td,.ui-datepicker-week-end.ui-datepicker-current-day,td{
+    width: 30px;
+    height: 30px;
+  }
+  .ui-datepicker-title{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #4A5464;
+    padding-bottom: 20px;
+  }
+  .ui-datepicker th{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    letter-spacing: 0.6px;
+    color: #787879;
+  }
+  .ui-widget-header .ui-icon{
+
+  }
+
+  .date-picker-modal-footer{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    margin-top:0px;
+    height:65px;
+    a:hover{
+      text-decoration:none;
+    }
+    .cancelBtn{
+      width:86px;
+      height:26px;
+      background:white;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #05A4F4;
+      border:1.5px solid #05A4F4;
+      border-radius: 2px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .applyBtn.selected-date{
+      width:86px;
+      height:26px;
+      background:#05A4F4;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      text-transform: uppercase;
+      color: white;
+      border-radius: 2px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin: 0;
+    }
+  }
+
+}

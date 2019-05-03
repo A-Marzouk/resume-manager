@@ -24,7 +24,6 @@ class ClientsController extends Controller
         return view('client.campaign_main');
     }
 
-
     public function viewAccountEditPage(){
         return view('client.my_account.account_information_edition');
     }
@@ -63,7 +62,6 @@ class ClientsController extends Controller
     }
     public function campaignArchives(){
         return view('client.campaign_archives');
-
     }
 
     public function campaignAddAgent(){

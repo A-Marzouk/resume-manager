@@ -44,6 +44,7 @@ Vue.component('account-info-edit', require('./components/client/dashboardCompone
 Vue.component('service-agreement',require('./components/client/dashboardComponents/my_account/ServiceAgreement.vue'));
 // payment pay
 Vue.component('payment-pay',require('./components/client/dashboardComponents/payments/PaymentPay.vue'));
+Vue.component('manager-calculation',require('./components/client/dashboardComponents/payments/ManagerCalculation.vue'));
 Vue.component('sub-set-up',require('./components/client/dashboardComponents/payments/SubSetUp.vue'));
 Vue.component('privacy-agreement',require('./components/client/dashboardComponents/my_account/PrivacyAgreement.vue'));
 Vue.component('update-sub-plan',require('./components/client/dashboardComponents/payments/UpdateSubPlan.vue'));
@@ -81,12 +82,15 @@ if ($("#campaignMainComponent").length !== 0){
 if ($("#clientDashboardComponent").length !== 0){
 
     const routes = [
-        { path: '/:my-account', component: MyAccount },
-        { path: '/:payments', component: Payments },
-        { path: '/', component: CampaignManager }
+        { path: '/client/dashboard/my-account', component: MyAccount },
+        { path: '/client/dashboard/payments', component: Payments },
+        { path: '/client', component: CampaignManager },
+        { path: '/client/dashboard', component: CampaignManager },
+        { path: '/client/dashboard/*', component: CampaignManager }
     ];
 
     const router = new VueRouter({
+        mode:'history',
         routes,
     });
 
@@ -101,6 +105,13 @@ if ($("#addAgentComponent").length !== 0){
 
     let addAgentComponent = new Vue({
         el:'#addAgentComponent'
+    });
+}
+
+if ($("#managerCalculation").length !== 0){
+
+    let managerCalculation = new Vue({
+        el:'#managerCalculation'
     });
 }
 
@@ -171,6 +182,29 @@ if ($("#account_info_edit").length !== 0){
 
     let account_info_edit = new Vue({
         el:'#account_info_edit'
+    });
+}
+
+// Freelancer components
+Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'));
+
+import CampaignManagerFreelancer from './components/freelancer/dashboardComponents/CampaignManager.vue';
+
+if ($("#freelancerDashboardComponent").length !== 0){
+
+    const routes = [
+        { path: '/:my-account', component: MyAccount },
+        { path: '/', component: CampaignManagerFreelancer }
+    ];
+
+    const router = new VueRouter({
+        routes,
+    });
+
+
+    let freelancerDashboardComponent = new Vue({
+        router,
+        el:'#freelancerDashboardComponent'
     });
 }
 

@@ -10,6 +10,8 @@
 @import "chat";
 @import "affiliates_styles";
 
+// Components
+
 @import "client/dashboard";
 @import "client/side_nave";
 @import "client/campaign_activity";
@@ -25,6 +27,15 @@
 @import "client/dashboard/payment_show_invoice";
 @import "client/dashboard/service_agreement";
 @import "client/dashboard/payment_pay";
+
+@import "freelancer/dashboard";
+// @import "freelancer/side_nave";
+@import "freelancer/campaign_activity";
+@import "freelancer/campaign_team";
+@import "freelancer/campaign_brief";
+@import "freelancer/campaign_archives";
+
+@import "freelancer/dashboard/my_account";
 @import "client/dashboard/manager_calculation";
 @import "client/dashboard/sub_set_up";
 

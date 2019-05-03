@@ -1,14 +1,8 @@
 <template>
     <div>
         <nav class="navbar navbar-light fixed-top client_navbar">
-            <div class="backBtn" v-show="status === 'update'">
+            <div class="backBtn">
                 <a href="/client/dashboard/payments">
-                    <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
-                </a>
-                SUBSCRIPTION PLAN UPDATE
-            </div>
-            <div class="backBtn" v-show="status === 'finish'">
-                <a href="javascript:void(0)" @click="status='update'">
                     <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
                 </a>
                 SUBSCRIPTION PLAN UPDATE
@@ -24,7 +18,7 @@
                     </span>
                     </div>
                 </div>
-                <div v-show="status==='update'" class="subs-list">
+                <div class="subs-list">
                     <div class="blue-text pt-4 pb-4">
                         CURRENT SUBSCRIPTION PLAN
                     </div>
@@ -232,41 +226,13 @@
                     </div>
 
                     <div class="sub-action pt-5">
-                        <a href="#"  @click="status='finish'">
+                        <a href="#">
                             CONTINUE
                         </a>
                     </div>
 
                 </div>
-                <div v-show="status==='finish'">
-                    <div class="d-flex pt-3">
-                        <div class="mr-2">
-                            <img src="/resumeApp/public/images/client/payments/amount.png" class="mr-2" alt="amount icon">
-                        </div>
-                        <div>
-                            <div class="blue-text">
-                                WEEKLY RATE CALCULATIONS:
-                            </div>
-                            <div class="pt-2">
-                                40 agent hours <span class="sub-agent-numbering ml-1"> $ 400</span>
-                            </div>
-                            <div class="blue-text pt-3">
-                                TOTAL WEEKLY AMOUNT:
-                            </div>
-                            <div class="sub-agent-numbering pt-2">
-                                $ 400
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-100 d-flex justify-content-end">
-                        <div class="lineDiv"></div>
-                        <div class="sub-action pt-5">
-                            <a href="#">
-                                FINISH PAYMENT
-                            </a>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
 
@@ -298,7 +264,7 @@
     export default {
         data(){
             return{
-                status : 'update' // or finish
+
             }
         }
     }

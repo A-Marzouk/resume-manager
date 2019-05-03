@@ -14310,6 +14310,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_client_dashboardComponents_MyAccount_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_client_dashboardComponents_MyAccount_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_freelancer_dashboardComponents_CampaignManager_vue__ = __webpack_require__(129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_freelancer_dashboardComponents_CampaignManager_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_freelancer_dashboardComponents_CampaignManager_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_freelancer_campaignComponents_CampaignActivity_vue__ = __webpack_require__(390);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_freelancer_campaignComponents_CampaignActivity_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_freelancer_campaignComponents_CampaignActivity_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -14325,6 +14327,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 // dashboard inside components
+
 
 
 
@@ -14374,7 +14377,7 @@ Vue.component('privacy-agreement', __webpack_require__(87));
 Vue.component('update-sub-plan', __webpack_require__(92));
 Vue.component('client-register', __webpack_require__(97));
 
-if ($("#campaignMainComponent").length !== 0) {
+if ($('#campaignMainComponent').length !== 0) {
   var routes = [{ path: '/:campaign-team', component: __WEBPACK_IMPORTED_MODULE_2__components_client_campaignComponents_CampaignTeam_vue___default.a }, { path: '/:campaign-brief', component: __WEBPACK_IMPORTED_MODULE_3__components_client_campaignComponents_CampaignBrief_vue___default.a }, { path: '/', component: __WEBPACK_IMPORTED_MODULE_1__components_client_campaignComponents_CampaignActivity_vue___default.a }];
 
   var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
@@ -14387,9 +14390,10 @@ if ($("#campaignMainComponent").length !== 0) {
   });
 }
 
-if ($("#clientDashboardComponent").length !== 0) {
-
-  var _routes = [{ path: '/client/my-account', component: __WEBPACK_IMPORTED_MODULE_6__components_client_dashboardComponents_MyAccount_vue___default.a }, { path: '/client/payments', component: __WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_Payments_vue___default.a }, { path: '/client', component: __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue___default.a }];
+if ($('#clientDashboardComponent').length !== 0) {
+  var _routes = [{ path: '/client/my-account', component: __WEBPACK_IMPORTED_MODULE_6__components_client_dashboardComponents_MyAccount_vue___default.a }, { path: '/client/payments', component: __WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_Payments_vue___default.a }, { path: '/client', component: __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue___default.a
+    // { path: '/client/*', component: CampaignManager }
+  }];
 
   var _router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     mode: 'history',
@@ -14402,84 +14406,72 @@ if ($("#clientDashboardComponent").length !== 0) {
   });
 }
 
-if ($("#addAgentComponent").length !== 0) {
-
+if ($('#addAgentComponent').length !== 0) {
   var addAgentComponent = new Vue({
     el: '#addAgentComponent'
   });
 }
 
-if ($("#managerCalculation").length !== 0) {
-
+if ($('#managerCalculation').length !== 0) {
   var managerCalculation = new Vue({
     el: '#managerCalculation'
   });
 }
 
-if ($("#clientRegister").length !== 0) {
-
+if ($('#clientRegister').length !== 0) {
   var clientRegister = new Vue({
     el: '#clientRegister'
   });
 }
 
-if ($("#serviceAgreement").length !== 0) {
-
+if ($('#serviceAgreement').length !== 0) {
   var serviceAgreement = new Vue({
     el: '#serviceAgreement'
   });
 }
-if ($("#updateSubPlan").length !== 0) {
-
+if ($('#updateSubPlan').length !== 0) {
   var updateSubPlan = new Vue({
     el: '#updateSubPlan'
   });
 }
 
-if ($("#privacyAgreement").length !== 0) {
-
+if ($('#privacyAgreement').length !== 0) {
   var privacyAgreement = new Vue({
     el: '#privacyAgreement'
   });
 }
 
-if ($("#paymentShowInvoice").length !== 0) {
-
+if ($('#paymentShowInvoice').length !== 0) {
   var paymentShowInvoice = new Vue({
     el: '#paymentShowInvoice'
   });
 }
 
-if ($("#paymentPay").length !== 0) {
-
+if ($('#paymentPay').length !== 0) {
   var paymentPay = new Vue({
     el: '#paymentPay'
   });
 }
 
-if ($("#subSetUp").length !== 0) {
-
+if ($('#subSetUp').length !== 0) {
   var subSetUp = new Vue({
     el: '#subSetUp'
   });
 }
 
-if ($("#addAgent").length !== 0) {
-
+if ($('#addAgent').length !== 0) {
   var addAgent = new Vue({
     el: '#addAgent'
   });
 }
 
-if ($("#campaignArchives").length !== 0) {
-
+if ($('#campaignArchives').length !== 0) {
   var campaignArchives = new Vue({
     el: '#campaignArchives'
   });
 }
 
-if ($("#account_info_edit").length !== 0) {
-
+if ($('#account_info_edit').length !== 0) {
   var account_info_edit = new Vue({
     el: '#account_info_edit'
   });
@@ -14488,12 +14480,14 @@ if ($("#account_info_edit").length !== 0) {
 // Freelancer components
 Vue.component('freelancer-dashboard', __webpack_require__(126));
 Vue.component('freelancer-campaign-archives', __webpack_require__(380));
+Vue.component('freelancer-campaign-main', __webpack_require__(385));
 
 if ($('#freelancerDashboardComponent').length !== 0) {
-  var _routes2 = [{ path: '/:my-account', component: __WEBPACK_IMPORTED_MODULE_6__components_client_dashboardComponents_MyAccount_vue___default.a }, { path: '/', component: __WEBPACK_IMPORTED_MODULE_7__components_freelancer_dashboardComponents_CampaignManager_vue___default.a }];
+  var _routes2 = [{ path: '/freelancer/:my-account', component: __WEBPACK_IMPORTED_MODULE_6__components_client_dashboardComponents_MyAccount_vue___default.a }, { path: '/freelancer', component: __WEBPACK_IMPORTED_MODULE_7__components_freelancer_dashboardComponents_CampaignManager_vue___default.a }];
 
   var _router2 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-    routes: _routes2
+    routes: _routes2,
+    mode: 'history'
   });
 
   var freelancerDashboardComponent = new Vue({
@@ -14503,8 +14497,22 @@ if ($('#freelancerDashboardComponent').length !== 0) {
 }
 
 if ($('#freelancerCampaignArchives').length !== 0) {
-  var _campaignArchives = new Vue({
+  var freelancerCampaignArchives = new Vue({
     el: '#freelancerCampaignArchives'
+  });
+}
+
+if ($('#freelancerCampaignMainComponent').length !== 0) {
+  var _routes3 = [{ path: '/freelancer/campaign-team', component: __WEBPACK_IMPORTED_MODULE_2__components_client_campaignComponents_CampaignTeam_vue___default.a }, { path: '/freelancer/campaign-brief', component: __WEBPACK_IMPORTED_MODULE_3__components_client_campaignComponents_CampaignBrief_vue___default.a }, { path: '/freelancer/campaign', component: __WEBPACK_IMPORTED_MODULE_8__components_freelancer_campaignComponents_CampaignActivity_vue___default.a }];
+
+  var _router3 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+    routes: _routes3,
+    mode: 'history'
+  });
+
+  var freelancerCampaignMainComponent = new Vue({
+    router: _router3,
+    el: '#freelancerCampaignMainComponent'
   });
 }
 
@@ -14549,7 +14557,7 @@ Vue.component('records-list', __webpack_require__(229));
 Vue.component('record-component', __webpack_require__(234));
 Vue.component('add-record-modal', __webpack_require__(237));
 
-//agents:
+// agents:
 Vue.component('agents-list', __webpack_require__(240));
 Vue.component('agent-component', __webpack_require__(245));
 Vue.component('add-agent-modal', __webpack_require__(248));
@@ -14784,7 +14792,7 @@ if ($('#VueChat').length !== 0) {
             firstName: ''
           }
         });
-        //scroll down :
+        // scroll down :
         if ($('#chatBox').length) {
           $('#messagesBox').animate({ scrollTop: $('#messagesBox')[0].scrollHeight }, 'slow');
         }
@@ -14856,7 +14864,7 @@ if ($('#VueChat').length !== 0) {
             setTimeout(function () {
               $('#messagesBox').animate({ scrollTop: $('#messagesBox')[0].scrollHeight }, 'slow');
             }, 1000);
-            //2 seconds and return it back
+            // 2 seconds and return it back
             setTimeout(function () {
               $('#chatText').html('Chat with us');
             }, 4000);
@@ -105611,13 +105619,560 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
 /* 383 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            empty_state: false
+        };
+    }
+});
+
+/***/ }),
+/* 384 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "campaign-archives" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "archive-content-box" }, [
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.empty_state,
+              expression: "!empty_state"
+            }
+          ]
+        },
+        [_vm._m(1), _vm._v(" "), _vm._m(2)]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.empty_state,
+              expression: "empty_state"
+            }
+          ],
+          staticClass: "archive-empty-state"
+        },
+        [
+          _c("div", { staticClass: "archive-empty-state-header" }, [
+            _vm._v(
+              "\n                You Archive of campaigns is empty\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(3)
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "nav",
+      { staticClass: "navbar navbar-light fixed-top freelancer_navbar" },
+      [
+        _c("div", { staticClass: "backBtn" }, [
+          _c("a", { attrs: { href: "/freelancer" } }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/arrow_back.png",
+                alt: "back-icon"
+              }
+            })
+          ]),
+          _vm._v("\n            ARCHIVE OF CAMPAIGNS\n        ")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "archive-heading" }, [
+      _c("img", {
+        attrs: {
+          src: "/resumeApp/public/images/client/campaign_archives/search.png",
+          alt: "search icon"
+        }
+      }),
+      _vm._v("\n                YOUR PAST CAMPAIGNS\n            ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "archive-list" }, [
+      _c("div", { staticClass: "campaign-item" }, [
+        _c("div", { staticClass: "name-of-campaign" }, [
+          _c("a", { attrs: { href: "/freelancer/campaign" } }, [
+            _vm._v(
+              "\n                            Name of the campaign long name of the campaign\n                        "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "date" }, [
+          _c("img", {
+            attrs: {
+              src: "/resumeApp/public/images/client/campaign_archives/date.png",
+              alt: "date icon"
+            }
+          }),
+          _vm._v(
+            "\n                        4.09.18 - 4.01.19\n                    "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "amount" }, [
+          _c("img", {
+            attrs: {
+              src:
+                "/resumeApp/public/images/client/campaign_archives/amount.png",
+              alt: "amount icon"
+            }
+          }),
+          _vm._v("\n                        $ 8,500\n                    ")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "campaign-item" }, [
+        _c("div", { staticClass: "name-of-campaign" }, [
+          _c("a", { attrs: { href: "/freelancer/campaign" } }, [
+            _vm._v(
+              "\n                            Name of the campaign long name of the campaign\n                        "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "date" }, [
+          _c("img", {
+            attrs: {
+              src: "/resumeApp/public/images/client/campaign_archives/date.png",
+              alt: "date icon"
+            }
+          }),
+          _vm._v(
+            "\n                        4.09.18 - 4.01.19\n                    "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "amount" }, [
+          _c("img", {
+            attrs: {
+              src:
+                "/resumeApp/public/images/client/campaign_archives/amount.png",
+              alt: "amount icon"
+            }
+          }),
+          _vm._v("\n                        $ 8,500\n                    ")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "archive-empty-state-img-wrapper" }, [
+      _c("img", {
+        attrs: {
+          src:
+            "/resumeApp/public/images/client/campaign_archives/archive_emty_state.png",
+          alt: "emty state photo"
+        }
+      })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-343065f3", module.exports)
+  }
+}
+
+/***/ }),
+/* 385 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(386)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(388)
+/* template */
+var __vue_template__ = __webpack_require__(389)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-70510e32"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\freelancer\\CampaignMainComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-70510e32", Component.options)
+  } else {
+    hotAPI.reload("data-v-70510e32", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 386 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(387);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("f7a35df6", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-70510e32\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignMainComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-70510e32\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignMainComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 387 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 388 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            activeTab: ''
+        };
+    },
+
+    methods: {
+        setActiveTab: function setActiveTab() {
+            this.activeTab = this.$route.path.replace('/', '');
+        }
+    },
+    mounted: function mounted() {
+        this.setActiveTab();
+    }
+});
+
+/***/ }),
+/* 389 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "campaign_activity" } },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "campaign-info-bar" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "campaign-info-tab firstTab",
+              class: { active: _vm.activeTab === "" },
+              attrs: { to: "/freelancer/campaign" },
+              nativeOn: {
+                click: function($event) {
+                  _vm.activeTab = ""
+                }
+              }
+            },
+            [_vm._v("\n            ACTIVITY\n        ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            {
+              staticClass: "campaign-info-tab",
+              class: { active: _vm.activeTab === "campaign-brief" },
+              attrs: { to: "/freelancer/campaign-brief" },
+              nativeOn: {
+                click: function($event) {
+                  _vm.activeTab = "campaign-brief"
+                }
+              }
+            },
+            [_vm._v("\n            CAMPAIGN BRIEF\n        ")]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("keep-alive", [_c("router-view")], 1)
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "nav",
+      { staticClass: "navbar navbar-light fixed-top client_navbar" },
+      [
+        _c("div", { staticClass: "backBtn" }, [
+          _c("a", { attrs: { href: "/client" } }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/arrow_back.png",
+                alt: "back-icon"
+              }
+            })
+          ]),
+          _vm._v("\n            NAME OF THE CAMPAIGN\n        ")
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-70510e32", module.exports)
+  }
+}
+
+/***/ }),
+/* 390 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(391)
+/* template */
+var __vue_template__ = __webpack_require__(392)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\freelancer\\campaignComponents\\CampaignActivity.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8a5c8f1a", Component.options)
+  } else {
+    hotAPI.reload("data-v-8a5c8f1a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 391 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -105744,65 +106299,431 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            empty_state: true
+            hasLogs: false,
+            selectedDate: '',
+            appliedDate: ''
         };
-    }
+    },
+
+    methods: {
+        dateChanged: function dateChanged() {
+            this.selectedDate = $('#selected-date-value').val();
+        },
+        applySelectedDate: function applySelectedDate() {
+            this.appliedDate = this.selectedDate;
+            $('#close-modal').click();
+        },
+        cancelDatePicking: function cancelDatePicking() {
+            $('#close-modal').click();
+        },
+        setDatePicker: function setDatePicker() {
+            $("#datepicker").datepicker({
+                onSelect: function onSelect(dateText, inst) {
+                    $("input[name='selected-date-value']").val(dateText);
+                    var dateChanged = new CustomEvent('change');
+                    document.getElementById('selected-date-value').dispatchEvent(dateChanged);
+                }
+            });
+        }
+    },
+    mounted: function mounted() {}
 });
 
 /***/ }),
-/* 384 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "campaign-archives" }, [
-    _vm._m(0),
+  return _c("div", { staticClass: "d-flex justify-content-center" }, [
+    _c(
+      "div",
+      { staticClass: "freelancer_dashboard_content campaign_activity" },
+      [
+        _c("div", { staticClass: "content-block" }, [
+          _c("div", { staticClass: "content-block-campaign-activity" }, [
+            _c("div", { staticClass: "data-logs" }, [
+              _c("div", { staticClass: "date-picker-bar" }, [
+                _c(
+                  "div",
+                  {
+                    staticStyle: {
+                      "margin-right": "20px",
+                      padding: "6px",
+                      border: "1px solid lightgray",
+                      "border-radius": "5px",
+                      color: "lightblue"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.appliedDate) +
+                        "\n                        "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href: "javascript:void(0)",
+                      "data-toggle": "modal",
+                      "data-target": "#pick-date-modal"
+                    },
+                    on: {
+                      "~click": function($event) {
+                        return _vm.setDatePicker($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/pick_date.png",
+                        alt: "pick date"
+                      }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "lineDivide" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.hasLogs,
+                      expression: "!hasLogs"
+                    }
+                  ],
+                  staticClass: "member-logs-empty"
+                },
+                [
+                  _c("div", { staticClass: "empty-state-text" }, [
+                    _vm._v(
+                      "\n                            Sorry, no entries for today yet  -\n                            "
+                    ),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "text",
+                        attrs: { href: "javascript:void(0)" },
+                        on: {
+                          click: function($event) {
+                            _vm.hasLogs = !_vm.hasLogs
+                          }
+                        }
+                      },
+                      [_vm._v(" SHOW DEMO LOGS")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.hasLogs,
+                      expression: "hasLogs"
+                    }
+                  ],
+                  staticClass: "member-logs"
+                },
+                [_vm._m(1)]
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(2)
+          ])
+        ])
+      ]
+    ),
     _vm._v(" "),
-    _c("div", { staticClass: "archive-content-box" }, [
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: !_vm.empty_state,
-              expression: "!empty_state"
-            }
+    _vm._m(3),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal", attrs: { id: "pick-date-modal" } }, [
+      _c("div", { staticClass: "modal-dialog" }, [
+        _c(
+          "div",
+          { staticClass: "modal-content agent-modal-content date-picker" },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "close d-none",
+                attrs: {
+                  type: "button",
+                  id: "close-modal",
+                  "data-dismiss": "modal"
+                }
+              },
+              [_vm._v("×")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { attrs: { id: "datepicker" } }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: {
+                  type: "hidden",
+                  name: "selected-date-value",
+                  id: "selected-date-value"
+                },
+                on: { change: _vm.dateChanged }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "date-picker-modal-footer" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "cancelBtn",
+                    attrs: { href: "javascriot:void(0)" },
+                    on: { click: _vm.cancelDatePicking }
+                  },
+                  [
+                    _vm._v(
+                      "\n                            CANCEL\n                        "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "applyBtn selected-date",
+                    attrs: { href: "javascriot:void(0)" },
+                    on: { click: _vm.applySelectedDate }
+                  },
+                  [
+                    _vm._v(
+                      "\n                            APPLY\n                        "
+                    )
+                  ]
+                )
+              ])
+            ])
           ]
-        },
-        [_vm._m(1), _vm._v(" "), _vm._m(2)]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.empty_state,
-              expression: "empty_state"
-            }
-          ],
-          staticClass: "archive-empty-state"
-        },
-        [
-          _c("div", { staticClass: "archive-empty-state-header" }, [
-            _vm._v(
-              "\n                You Archive of campaigns is empty\n            "
-            )
-          ]),
-          _vm._v(" "),
-          _vm._m(3)
-        ]
-      )
+        )
+      ])
     ])
   ])
 }
@@ -105811,226 +106732,157 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "nav",
-      { staticClass: "navbar navbar-light fixed-top freelancer_navbar" },
-      [
-        _c("div", { staticClass: "backBtn" }, [
-          _c("a", { attrs: { href: "/freelancer" } }, [
-            _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/freelancer/arrow_back.png",
-                alt: "back-icon"
-              }
-            })
-          ]),
-          _vm._v("\n            ARCHIVE OF CAMPAIGNS\n        ")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "archive-heading" }, [
+    return _c("div", { staticClass: "empty-state-image" }, [
       _c("img", {
         attrs: {
           src:
-            "/resumeApp/public/images/freelancer/campaign_archives/search.png",
-          alt: "search icon"
+            "/resumeApp/public/images/client/campaign_activity/empty_state.png",
+          alt: "empty state"
         }
-      }),
-      _vm._v("\n                YOUR PAST CAMPAIGNS\n            ")
+      })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "archive-list" }, [
-      _c("div", { staticClass: "campaign-item" }, [
-        _c("div", { staticClass: "right" }, [
-          _c("div", { staticClass: "name-of-campaign" }, [
-            _c("a", { attrs: { href: "/freelancer/campaign" } }, [
-              _vm._v(
-                "\n                                Name of the campaign long name of the campaign\n                            "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "campaign-notes" }, [
-            _vm._v(
-              "\n                            2 agents worked on the campaign\n                        "
-            )
-          ])
+    return _c("div", { staticClass: "agent-logs-block" }, [
+      _c("div", { staticClass: "log" }, [
+        _c("div", { staticClass: "log-time" }, [
+          _vm._v(
+            "\n                                    9.15 am\n                                "
+          )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "left" }, [
-          _c("div", { staticClass: "date" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "/resumeApp/public/images/freelancer/campaign_archives/date.png",
-                alt: "date icon"
-              }
-            }),
+        _c("div", { staticClass: "log-text" }, [
+          _c("span", { staticClass: "agent-initials" }, [
             _vm._v(
-              "\n                            4.09.18 - 4.01.19\n                        "
+              "\n                                        CB\n                                    "
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "amount" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "/resumeApp/public/images/freelancer/campaign_archives/amount.png",
-                alt: "amount icon"
-              }
-            }),
+          _c("span", { staticClass: "log-text-content" }, [
             _vm._v(
-              "\n                            $ 8,500\n                        "
+              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
             )
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "campaign-item" }, [
-        _c("div", { staticClass: "right" }, [
-          _c("div", { staticClass: "name-of-campaign" }, [
-            _c("a", { attrs: { href: "/freelancer/campaign" } }, [
-              _vm._v(
-                "\n                                Name of the campaign long name of the campaign\n                            "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "campaign-notes" }, [
-            _vm._v(
-              "\n                            2 agents worked on the campaign\n                        "
-            )
-          ])
+      _c("div", { staticClass: "showMoreBtn" }, [
+        _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW RECORDINGS")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "lineDivide" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "log" }, [
+        _c("div", { staticClass: "log-time" }, [
+          _vm._v(
+            "\n                                    9.15 am\n                                "
+          )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "left" }, [
-          _c("div", { staticClass: "date" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "/resumeApp/public/images/freelancer/campaign_archives/date.png",
-                alt: "date icon"
-              }
-            }),
+        _c("div", { staticClass: "log-text" }, [
+          _c("span", { staticClass: "agent-initials" }, [
             _vm._v(
-              "\n                            4.09.18 - 4.01.19\n                        "
+              "\n                                        CB\n                                    "
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "amount" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "/resumeApp/public/images/freelancer/campaign_archives/amount.png",
-                alt: "amount icon"
-              }
-            }),
+          _c("span", { staticClass: "log-text-content" }, [
             _vm._v(
-              "\n                            $ 8,500\n                        "
+              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
             )
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "campaign-item" }, [
-        _c("div", { staticClass: "right" }, [
-          _c("div", { staticClass: "name-of-campaign" }, [
-            _c("a", { attrs: { href: "/freelancer/campaign" } }, [
-              _vm._v(
-                "\n                                Name of the campaign long name of the campaign\n                            "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "campaign-notes" }, [
-            _vm._v(
-              "\n                            2 agents worked on the campaign\n                        "
-            )
-          ])
+      _c("div", { staticClass: "showMoreBtn disabled" }, [
+        _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW RECORDINGS")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "lineDivide" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "log" }, [
+        _c("div", { staticClass: "log-time" }, [
+          _vm._v(
+            "\n                                    9.15 am\n                                "
+          )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "left" }, [
-          _c("div", { staticClass: "date" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "/resumeApp/public/images/freelancer/campaign_archives/date.png",
-                alt: "date icon"
-              }
-            }),
+        _c("div", { staticClass: "log-text" }, [
+          _c("span", { staticClass: "agent-initials" }, [
             _vm._v(
-              "\n                            4.09.18 - 4.01.19\n                        "
+              "\n                                        CB\n                                    "
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "amount" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "/resumeApp/public/images/freelancer/campaign_archives/amount.png",
-                alt: "amount icon"
-              }
-            }),
+          _c("span", { staticClass: "log-text-content" }, [
             _vm._v(
-              "\n                            $ 8,500\n                        "
+              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
             )
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "campaign-item" }, [
-        _c("div", { staticClass: "right" }, [
-          _c("div", { staticClass: "name-of-campaign" }, [
-            _c("a", { attrs: { href: "/freelancer/campaign" } }, [
-              _vm._v(
-                "\n                                Name of the campaign long name of the campaign\n                            "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "campaign-notes" }, [
-            _vm._v(
-              "\n                            2 agents worked on the campaign\n                        "
-            )
-          ])
+      _c("div", { staticClass: "showMoreBtn" }, [
+        _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW RECORDINGS")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "lineDivide" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "log" }, [
+        _c("div", { staticClass: "log-time" }, [
+          _vm._v(
+            "\n                                    9.15 am\n                                "
+          )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "left" }, [
-          _c("div", { staticClass: "date" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "/resumeApp/public/images/freelancer/campaign_archives/date.png",
-                alt: "date icon"
-              }
-            }),
+        _c("div", { staticClass: "log-text" }, [
+          _c("span", { staticClass: "agent-initials" }, [
             _vm._v(
-              "\n                            4.09.18 - 4.01.19\n                        "
+              "\n                                        CB\n                                    "
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "amount" }, [
-            _c("img", {
-              attrs: {
-                src:
-                  "/resumeApp/public/images/freelancer/campaign_archives/amount.png",
-                alt: "amount icon"
-              }
-            }),
+          _c("span", { staticClass: "log-text-content" }, [
             _vm._v(
-              "\n                            $ 8,500\n                        "
+              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
             )
           ])
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "showMoreBtn" }, [
+        _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW RECORDINGS")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "lineDivide" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "log" }, [
+        _c("div", { staticClass: "log-time" }, [
+          _vm._v(
+            "\n                                    9.15 am\n                                "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "log-text" }, [
+          _c("span", { staticClass: "agent-initials" }, [
+            _vm._v(
+              "\n                                        CB\n                                    "
+            )
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "log-text-content" }, [
+            _vm._v(
+              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "showMoreBtn disabled" }, [
+        _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW RECORDINGS")])
       ])
     ])
   },
@@ -106038,15 +106890,171 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "archive-empty-state-img-wrapper" }, [
+    return _c("div", { staticClass: "documents-bar" }, [
       _c("img", {
         attrs: {
-          src:
-            "/resumeApp/public/images/freelancer/campaign_archives/archive_emty_state.png",
-          alt: "emty state photo"
+          src: "/resumeApp/public/images/client/campaign_activity/document.png",
+          alt: "document"
         }
-      })
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "document-text" }, [
+        _vm._v("\n                        Document link: "),
+        _c("span", [_vm._v("No links.")])
+      ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "modal", attrs: { id: "select-agent-modal" } },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content agent-modal-content" }, [
+            _c("div", { staticClass: "select-agent-modal-header" }, [
+              _c("div", { staticClass: "title text-lay" }, [
+                _vm._v(
+                  "\n                        CHOOSE TEAM MEMBER\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("×")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "lineDivide" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "dashboard-side-menu" }, [
+                _c("div", { staticClass: "team-member" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "/resumeApp/public/images/client/dummy.png",
+                      alt: "member image"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "team-member-info" }, [
+                    _c("div", { staticClass: "member-name manager" }, [
+                      _vm._v(
+                        "\n                                    Louis Snyderberg\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "job-title" }, [
+                      _vm._v(
+                        "\n                                    Team manager\n                                "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "team-member" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "/resumeApp/public/images/client/dummy.png",
+                      alt: "member image"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "team-member-info" }, [
+                    _c("div", { staticClass: "member-name" }, [
+                      _vm._v(
+                        "\n                                    Mohamed Salah\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "job-title" }, [
+                      _vm._v(
+                        "\n                                    Egyptian king\n                                "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "team-member" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "/resumeApp/public/images/client/dummy.png",
+                      alt: "member image"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "team-member-info" }, [
+                    _c("div", { staticClass: "member-name" }, [
+                      _vm._v(
+                        "\n                                    Lionel Messi\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "job-title" }, [
+                      _vm._v(
+                        "\n                                    Artist\n                                "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "team-member" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "/resumeApp/public/images/client/dummy.png",
+                      alt: "member image"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "team-member-info" }, [
+                    _c("div", { staticClass: "member-name" }, [
+                      _vm._v(
+                        "\n                                    Zlatan Ibrahimovic\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "job-title" }, [
+                      _vm._v(
+                        "\n                                    Animation\n                                "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "team-member" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "/resumeApp/public/images/client/dummy.png",
+                      alt: "member image"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "team-member-info" }, [
+                    _c("div", { staticClass: "member-name" }, [
+                      _vm._v(
+                        "\n                                    Louis Snyderberg\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "job-title" }, [
+                      _vm._v(
+                        "\n                                    Animation\n                                "
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -106054,7 +107062,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-343065f3", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-8a5c8f1a", module.exports)
   }
 }
 

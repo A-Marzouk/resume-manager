@@ -56,54 +56,51 @@
     .archive-list{
       .campaign-item{
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         padding-top: 33px;
         padding-bottom: 5px;
         border-bottom: 1px solid rgba(188, 191, 198, 0.44);
-        .right{
-          padding-right: 10px;
-          .name-of-campaign{
-            margin-bottom: 24px;
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 18px;
-            line-height: 24px;
-            letter-spacing: -0.1px;
+        
+        .name-of-campaign{
+          margin-bottom: 24px;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 24px;
+          letter-spacing: -0.1px;
+          color: #05A4F4;
+          a:hover{
+            text-decoration: none;
+          }
+          a{
             color: #05A4F4;
-            a:hover{
-              text-decoration: none;
-            }
-            a{
-              color: #05A4F4;
-            }
           }
-          .campaign-notes{
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 24px;
-            letter-spacing: -0.1px;
-            color: #7A828D;
-          }
-
         }
-        .left{
-          .date,.amount{
-            display: flex;
-            align-items: center;
+        .campaign-notes{
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 24px;
+          letter-spacing: -0.1px;
+          color: #7A828D;
+        }
 
-            margin-bottom: 24px;
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 16px;
-            line-height: 24px;
-            color: #FFA368;
-            img{
-              margin-right: 20px;
-            }
+        .date,.amount{
+          display: flex;
+          align-items: center;
+
+          margin-bottom: 24px;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 16px;
+          line-height: 24px;
+          color: #FFA368;
+          img{
+            margin-right: 20px;
           }
         }
       }

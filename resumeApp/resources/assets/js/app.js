@@ -5,37 +5,38 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import VueRouter from 'vue-router';
+import VueRouter from 'vue-router'
 
     // campaign-activity inside components :
-    import CampaignActivity from './components/client/campaignComponents/CampaignActivity.vue';
-    import CampaignTeam from './components/client/campaignComponents/CampaignTeam.vue';
-    import CampaignBrief from './components/client/campaignComponents/CampaignBrief.vue';
+    import CampaignActivity from './components/client/campaignComponents/CampaignActivity.vue'
+    import CampaignTeam from './components/client/campaignComponents/CampaignTeam.vue'
+    import CampaignBrief from './components/client/campaignComponents/CampaignBrief.vue'
 
     // dashboard inside components
-    import CampaignManager from './components/client/dashboardComponents/CampaignManager.vue';
-    import Payments from './components/client/dashboardComponents/Payments.vue';
-    import MyAccount from './components/client/dashboardComponents/MyAccount.vue';
+    import CampaignManager from './components/client/dashboardComponents/CampaignManager.vue'
+    import Payments from './components/client/dashboardComponents/Payments.vue'
+    import MyAccount from './components/client/dashboardComponents/MyAccount.vue'
 
-import CampaignManagerFreelancer from './components/freelancer/dashboardComponents/CampaignManager.vue';
+import CampaignManagerFreelancer from './components/freelancer/dashboardComponents/CampaignManager.vue'
+import CampaignActivityFreelancer from './components/freelancer/campaignComponents/CampaignActivity.vue'
 
-require('./bootstrap');
+require('./bootstrap')
 
-window.Vue = require('vue');
+window.Vue = require('vue')
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+})
 
-require('./admin.js');
-require('./freelancer_card.js');
-require('./affiliates.js');
-require('./freelancer.js');
-require('./main.js');
+require('./admin.js')
+require('./freelancer_card.js')
+require('./affiliates.js')
+require('./freelancer.js')
+require('./main.js')
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -43,180 +44,183 @@ require('./main.js');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.config.devtools = true;
+Vue.config.devtools = true
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('add-agent-component', require('./components/client/AddAgentComponent.vue'));
+Vue.component('example-component', require('./components/ExampleComponent.vue'))
+Vue.component('add-agent-component', require('./components/client/AddAgentComponent.vue'))
 
 // client components
-Vue.component('client-dashboard', require('./components/client/Dashboard.vue'));
-Vue.component('campaign-main', require('./components/client/CampaignMainComponent.vue'));
-Vue.component('campaign-archives', require('./components/client/CampaignArchives.vue'));
-Vue.component('account-info-edit', require('./components/client/dashboardComponents/my_account/MyAccountEdit.vue'));
-Vue.component('service-agreement',require('./components/client/dashboardComponents/my_account/ServiceAgreement.vue'));
+Vue.component('client-dashboard', require('./components/client/Dashboard.vue'))
+Vue.component('campaign-main', require('./components/client/CampaignMainComponent.vue'))
+Vue.component('campaign-archives', require('./components/client/CampaignArchives.vue'))
+Vue.component('account-info-edit', require('./components/client/dashboardComponents/my_account/MyAccountEdit.vue'))
+Vue.component('service-agreement', require('./components/client/dashboardComponents/my_account/ServiceAgreement.vue'))
 // payment pay
-Vue.component('payment-pay',require('./components/client/dashboardComponents/payments/PaymentPay.vue'));
-Vue.component('manager-calculation',require('./components/client/dashboardComponents/payments/ManagerCalculation.vue'));
-Vue.component('sub-set-up',require('./components/client/dashboardComponents/payments/SubSetUp.vue'));
-Vue.component('privacy-agreement',require('./components/client/dashboardComponents/my_account/PrivacyAgreement.vue'));
-Vue.component('update-sub-plan',require('./components/client/dashboardComponents/payments/UpdateSubPlan.vue'));
-Vue.component('client-register',require('./components/client/ClientRegister.vue'));
+Vue.component('payment-pay', require('./components/client/dashboardComponents/payments/PaymentPay.vue'))
+Vue.component('manager-calculation', require('./components/client/dashboardComponents/payments/ManagerCalculation.vue'))
+Vue.component('sub-set-up', require('./components/client/dashboardComponents/payments/SubSetUp.vue'))
+Vue.component('privacy-agreement', require('./components/client/dashboardComponents/my_account/PrivacyAgreement.vue'))
+Vue.component('update-sub-plan', require('./components/client/dashboardComponents/payments/UpdateSubPlan.vue'))
+Vue.component('client-register', require('./components/client/ClientRegister.vue'))
 
 
-if ($("#campaignMainComponent").length !== 0){
-    const routes = [
-        { path: '/:campaign-team', component: CampaignTeam },
-        { path: '/:campaign-brief', component: CampaignBrief },
-        { path: '/', component: CampaignActivity }
-    ];
-
-    const router = new VueRouter({
-        routes,
-    });
-
-    let campaignMainComponent = new Vue({
-        router,
-        el:'#campaignMainComponent'
-    });
-}
-
-
-if ($("#clientDashboardComponent").length !== 0){
-
-    const routes = [
-        { path: '/client/my-account', component: MyAccount },
-        { path: '/client/payments', component: Payments },
-        { path: '/client', component: CampaignManager },
-        // { path: '/client/*', component: CampaignManager }
-    ];
-
-    const router = new VueRouter({
-        mode:'history',
-        routes,
-    });
-
-
-    let clientDashboardComponent = new Vue({
-        router,
-        el:'#clientDashboardComponent'
-    });
-}
-
-if ($("#addAgentComponent").length !== 0){
-
-    let addAgentComponent = new Vue({
-        el:'#addAgentComponent'
-    });
-}
-
-if ($("#managerCalculation").length !== 0){
-
-    let managerCalculation = new Vue({
-        el:'#managerCalculation'
-    });
-}
-
-if ($("#clientRegister").length !== 0){
-
-    let clientRegister = new Vue({
-        el:'#clientRegister'
-    });
-}
-
-
-if ($("#serviceAgreement").length !== 0){
-
-    let serviceAgreement = new Vue({
-        el:'#serviceAgreement'
-    });
-}
-if ($("#updateSubPlan").length !== 0){
-
-    let updateSubPlan = new Vue({
-        el:'#updateSubPlan'
-    });
-}
-
-if ($("#privacyAgreement").length !== 0){
-
-    let privacyAgreement = new Vue({
-        el:'#privacyAgreement'
-    });
-}
-
-if ($("#paymentShowInvoice").length !== 0){
-
-    let paymentShowInvoice = new Vue({
-        el:'#paymentShowInvoice'
-    });
-}
-
-if ($("#paymentPay").length !== 0){
-
-    let paymentPay = new Vue({
-        el:'#paymentPay'
-    });
-}
-
-if ($("#subSetUp").length !== 0){
-
-    let subSetUp = new Vue({
-        el:'#subSetUp'
-    });
-}
-
-if ($("#addAgent").length !== 0){
-
-    let addAgent = new Vue({
-        el:'#addAgent'
-    });
-}
-
-if ($("#campaignArchives").length !== 0){
-
-    let campaignArchives = new Vue({
-        el:'#campaignArchives'
-    });
-}
-
-if ($("#account_info_edit").length !== 0){
-
-    let account_info_edit = new Vue({
-        el:'#account_info_edit'
-    });
-}
-
-// Freelancer components
-Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'));
-Vue.component('freelancer-campaign-archives', require('./components/freelancer/CampaignArchives.vue'));
-
-if ($('#freelancerDashboardComponent').length !== 0) {
+if ($('#campaignMainComponent').length !== 0) {
   const routes = [
-    { path: '/:my-account', component: MyAccount },
-    { path: '/', component: CampaignManagerFreelancer }
+    { path: '/:campaign-team', component: CampaignTeam },
+    { path: '/:campaign-brief', component: CampaignBrief },
+    { path: '/', component: CampaignActivity }
   ]
 
     const router = new VueRouter({
     routes
   })
 
+    let campaignMainComponent = new Vue({
+    router,
+    el: '#campaignMainComponent'
+  })
+}
 
-    let freelancerDashboardComponent = new Vue({
+if ($('#clientDashboardComponent').length !== 0) {
+  const routes = [
+    { path: '/client/my-account', component: MyAccount },
+    { path: '/client/payments', component: Payments },
+    { path: '/client', component: CampaignManager }
+    // { path: '/client/*', component: CampaignManager }
+  ]
+
+    const router = new VueRouter({
+    mode: 'history',
+    routes
+  })
+
+
+    let clientDashboardComponent = new Vue({
+    router,
+    el: '#clientDashboardComponent'
+  })
+}
+
+if ($('#addAgentComponent').length !== 0) {
+  let addAgentComponent = new Vue({
+    el: '#addAgentComponent'
+  })
+}
+
+if ($('#managerCalculation').length !== 0) {
+  let managerCalculation = new Vue({
+    el: '#managerCalculation'
+  })
+}
+
+if ($('#clientRegister').length !== 0) {
+  let clientRegister = new Vue({
+    el: '#clientRegister'
+  })
+}
+
+if ($('#serviceAgreement').length !== 0) {
+  let serviceAgreement = new Vue({
+    el: '#serviceAgreement'
+  })
+}
+if ($('#updateSubPlan').length !== 0) {
+  let updateSubPlan = new Vue({
+    el: '#updateSubPlan'
+  })
+}
+
+if ($('#privacyAgreement').length !== 0) {
+  let privacyAgreement = new Vue({
+    el: '#privacyAgreement'
+  })
+}
+
+if ($('#paymentShowInvoice').length !== 0) {
+  let paymentShowInvoice = new Vue({
+    el: '#paymentShowInvoice'
+  })
+}
+
+if ($('#paymentPay').length !== 0) {
+  let paymentPay = new Vue({
+    el: '#paymentPay'
+  })
+}
+
+if ($('#subSetUp').length !== 0) {
+  let subSetUp = new Vue({
+    el: '#subSetUp'
+  })
+}
+
+if ($('#addAgent').length !== 0) {
+  let addAgent = new Vue({
+    el: '#addAgent'
+  })
+}
+
+if ($('#campaignArchives').length !== 0) {
+  let campaignArchives = new Vue({
+    el: '#campaignArchives'
+  })
+}
+
+if ($('#account_info_edit').length !== 0) {
+  let account_info_edit = new Vue({
+    el: '#account_info_edit'
+  })
+}
+
+// Freelancer components
+Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'))
+Vue.component('freelancer-campaign-archives', require('./components/freelancer/CampaignArchives.vue'))
+Vue.component('freelancer-campaign-main', require('./components/freelancer/CampaignMainComponent.vue'))
+
+if ($('#freelancerDashboardComponent').length !== 0) {
+  const routes = [
+    { path: '/freelancer/:my-account', component: MyAccount },
+    { path: '/freelancer', component: CampaignManagerFreelancer }
+  ]
+
+  const router = new VueRouter({
+    routes,
+    mode: 'history'
+  })
+
+  let freelancerDashboardComponent = new Vue({
     router,
     el: '#freelancerDashboardComponent'
   })
 }
 
 if ($('#freelancerCampaignArchives').length !== 0) {
-  let campaignArchives = new Vue({
+  let freelancerCampaignArchives = new Vue({
     el: '#freelancerCampaignArchives'
+  })
+}
+
+if ($('#freelancerCampaignMainComponent').length !== 0) {
+  const routes = [
+    { path: '/freelancer/campaign-team', component: CampaignTeam },
+    { path: '/freelancer/campaign-brief', component: CampaignBrief },
+    { path: '/freelancer/campaign', component: CampaignActivityFreelancer }
+  ]
+
+  const router = new VueRouter({
+    routes,
+    mode: 'history'
+  })
+
+  let freelancerCampaignMainComponent = new Vue({
+    router,
+    el: '#freelancerCampaignMainComponent'
   })
 }
 
 Vue.component('chat-message', require('./components/chat/chatMessage.vue'))
 Vue.component('chat-log', require('./components/chat/chatLog.vue'))
 Vue.component('chat-composer', require('./components/chat/chatComposer.vue'))
-
 
 Vue.component('faq-list', require('./components/FaqsComponent.vue'))
 
@@ -229,7 +233,6 @@ Vue.component('add-work-modal', require('./components/work/addWorkComponent.vue'
 Vue.component('educations-list', require('./components/education/educationListComponent.vue'))
 Vue.component('education-history', require('./components/education/educationHistoryComponent.vue'))
 Vue.component('add-education-modal', require('./components/education/addEducationComponent.vue'))
-
 
 // invoices
 Vue.component('invoices-list', require('./components/invoices/invoicesListComponent.vue'))
@@ -256,12 +259,11 @@ Vue.component('records-list', require('./components/recordings/recordsListCompon
 Vue.component('record-component', require('./components/recordings/recordComponent.vue'))
 Vue.component('add-record-modal', require('./components/recordings/addRecordComponent.vue'))
 
-//agents:
+// agents:
 Vue.component('agents-list', require('./components/agents/agentsListComponent.vue'))
 Vue.component('agent-component', require('./components/agents/agentComponent.vue'))
 Vue.component('add-agent-modal', require('./components/agents/addAgentComponent.vue'))
 Vue.component('add-agent-record-modal', require('./components/agents/addAgentRecordComponent.vue'))
-
 
 // references
 Vue.component('references-list', require('./components/references/referencesListComponent.vue'))
@@ -288,13 +290,10 @@ Vue.component('current-subscriptions', require('./components/currentSubscription
 // agent terms bar component
 Vue.component('agent-terms-bar', require('./components/agentTermsBarComponent.vue'))
 
-
 // projects
 Vue.component('projects-list', require('./components/projects/projectsListComponent.vue'))
 Vue.component('project-detail', require('./components/projects/projectDetailComponent.vue'))
 Vue.component('add-project-modal', require('./components/projects/addProjectComponent.vue'))
-
-
 
 // campaigns
 Vue.component('campaigns-list', require('./components/campaigns/campaingsListComponent.vue'))
@@ -302,11 +301,10 @@ Vue.component('campaign-component', require('./components/campaigns/campaingComp
 Vue.component('add-campaign-modal', require('./components/campaigns/addCampaingComponent.vue'))
 Vue.component('update-members-modal', require('./components/campaigns/updateMembersComponent.vue'))
 Vue.component('add-shift-modal', require('./components/campaigns/addShiftComponent.vue'))
-    // campaign activity logs:
+// campaign activity logs:
 Vue.component('activity-logs', require('./components/campaigns/activityLogsComponent.vue'))
-    // campaign timeTable:
+// campaign timeTable:
 Vue.component('campaign-timetable', require('./components/campaigns/timeTableComponent.vue'))
-
 
 // search components :
 Vue.component('search-freelancers', require('./components/search/searchComponent.vue'))
@@ -322,7 +320,6 @@ Vue.component('business-support-users', require('./components/businessSupportCom
 //
 Vue.component('send-emails', require('./components/mails/sendEmailsComponent.vue'))
 Vue.component('send-invitations', require('./components/mails/sendInvitationMail.vue'))
-
 
 if ($('#searchFreelancers').length !== 0) {
   let searchFreelancers = new Vue({
@@ -497,31 +494,31 @@ if ($('#VueChat').length !== 0) {
             firstName: ''
           }
         })
-                //scroll down :
-                if ($('#chatBox').length) {
+        // scroll down :
+        if ($('#chatBox').length) {
           $('#messagesBox').animate({ scrollTop: $('#messagesBox')[0].scrollHeight }, 'slow')
-                }
+        }
         if ($('#chatLogs').length && this.currentUser.admin == 1) {
           setTimeout(function () {
             $('html,body').animate({ scrollTop: $('#sendMessage').offset().top }, 'slow')
-                    }, 2000)
-                }
+          }, 2000)
+        }
         // save to DB and so on.
         axios.post('/messages', message)
-            }
+      }
     },
     created () {
       var pageUrl = window.location.pathname
-            var partsOfUrl = pageUrl.split('/')
-            var conversationID = partsOfUrl[partsOfUrl.length - 1]
-            if (isNaN(conversationID)) {
+      var partsOfUrl = pageUrl.split('/')
+      var conversationID = partsOfUrl[partsOfUrl.length - 1]
+      if (isNaN(conversationID)) {
         conversationID = ''
-            }
+      }
       axios.get('/messages/' + conversationID).then(response => {
         this.messages = response.data
-            })
+      })
 
-            Echo.channel('talkToSales')
+      Echo.channel('talkToSales')
         .listen('MessagePosted', (e) => {
           // handle event here
           // console.log(e.message);
@@ -532,58 +529,56 @@ if ($('#VueChat').length !== 0) {
           // });
 
           var pageUrl = window.location.pathname
-                    var partsOfUrl = pageUrl.split('/')
-                    var conversationID = partsOfUrl[partsOfUrl.length - 1]
-                    if (isNaN(conversationID)) {
+          var partsOfUrl = pageUrl.split('/')
+          var conversationID = partsOfUrl[partsOfUrl.length - 1]
+          if (isNaN(conversationID)) {
             conversationID = ''
-                    }
+          }
           axios.get('/messages/' + conversationID).then(response => {
             this.messages = response.data
-                    })
+          })
 
-                    axios.get('/chat/get-conv-id/').then(response => {
+          axios.get('/chat/get-conv-id/').then(response => {
             this.currentConvId = response.data.conversationId
-                        this.currentUser = response.data.user
-                    })
+            this.currentUser = response.data.user
+          })
 
-                    // scroll down : only if message is to this conversation.
-                    if (this.currentConvId == e.message.conversation_id) {
+          // scroll down : only if message is to this conversation.
+          if (this.currentConvId == e.message.conversation_id) {
             if ($('#chatLogs').length) {
               setTimeout(function () {
                 $('html,body').animate({ scrollTop: $('#sendMessage').offset().top }, 'slow')
-                            }, 2000)
-                        }
+              }, 2000)
+            }
             // play sound :
             var chatAudio = document.getElementById('chatAudio')
 
-                        // if user is not admin and message is from admin
-                        if (this.currentUser.admin != 1 && e.message.user_id == 2) {
+            // if user is not admin and message is from admin
+            if (this.currentUser.admin != 1 && e.message.user_id == 2) {
               chatAudio.play()
-                            // open the chat if it is closed.
-                            if ($('#chatBox').css('opacity') == 0) {
+              // open the chat if it is closed.
+              if ($('#chatBox').css('opacity') == 0) {
                 $('#liveChat').click()
-                            }
+              }
               // write the head is new message
               $('#chatText').html('New message !')
-                            setTimeout(function () {
+              setTimeout(function () {
                 $('#messagesBox').animate({ scrollTop: $('#messagesBox')[0].scrollHeight }, 'slow')
-                            }, 1000)
-                            //2 seconds and return it back
-                            setTimeout(function () {
+              }, 1000)
+              // 2 seconds and return it back
+              setTimeout(function () {
                 $('#chatText').html('Chat with us')
-                            }, 4000)
-                        }
+              }, 4000)
+            }
 
             // if message is to admin !
             if (this.currentUser.admin == 1 && e.message.user_id != 2) {
               chatAudio.play()
-                        }
+            }
           }
         })
     }
   })
-
-
 }
 
 // update Messaging unread messages :
@@ -593,17 +588,16 @@ window.Echo.channel('conversations')
       // sent from user  : update client unread messages
       axios.get('/chat-room/getUnreadMessagesClient/' + e.currClient_id).then((response) => {
         let countClient = response.data.unread_messages_client
-                $('#MessagingClient' + e.currClient_id).html(countClient)
-            })
-        } else if (e.message.client_id) {
+        $('#MessagingClient' + e.currClient_id).html(countClient)
+      })
+    } else if (e.message.client_id) {
       // sent from client  : update user unread messages
       axios.get('/chat-room/getUnreadMessagesUser/' + e.currFreelancer_id).then((response) => {
         let countClient = response.data.unread_messages_freelancer
-                $('#MessagingFreelancer' + e.currFreelancer_id).html(countClient)
-            })
-        }
+        $('#MessagingFreelancer' + e.currFreelancer_id).html(countClient)
+      })
+    }
   })
-
 
 require('./record.js')
 require('./side_nav.js')

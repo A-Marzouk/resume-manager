@@ -76,6 +76,7 @@
 }
 
 .freelancer_dashboard_content.campaign_activity{
+  width: 100%;
   @media (max-width:1240px) {
     width: 100%;
   }
@@ -133,7 +134,7 @@
     }
     .content-block-campaign-activity{
       margin-bottom: 0;
-      width: 791px;
+      width: 1200px;
       @media (max-width:1240px) {
         width: 100%;
       }

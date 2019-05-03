@@ -9688,13 +9688,13 @@ input[type="radio"]:checked + label {
 
 .freelancer_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar {
   height: 78px;
+  padding: 0 20px;
   background: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -9702,6 +9702,45 @@ input[type="radio"]:checked + label {
 
 .freelancer_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar img {
   margin-right: 18px;
+}
+
+.freelancer_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container {
+  width: 75%;
+  height: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.freelancer_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .date-item {
+  padding: 15px 10px;
+  text-align: center;
+  width: 50px;
+  height: 100%;
+}
+
+.freelancer_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .date-item.active {
+  border-bottom: 1.5px solid #218dce;
+}
+
+.freelancer_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-number,
+.freelancer_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.freelancer_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-number.active,
+.freelancer_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week.active {
+  color: #218dce;
+}
+
+.freelancer_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .date-control-right,
+.freelancer_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .date-control-left {
+  font-size: 2rem;
 }
 
 .freelancer_dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .member-logs-empty .empty-state-text {

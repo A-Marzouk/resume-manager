@@ -97,14 +97,11 @@
                         </div>
                     </div> -->
                     <div class="data-logs">
-                        <div class="date-picker-bar">
-                            <div style="margin-right:20px; padding:6px; border:1px solid lightgray; border-radius:5px; color:lightblue;">
-                                {{appliedDate}}
-                            </div>
+                        <datepicker>
                             <a href="javascript:void(0)" data-toggle="modal" data-target="#pick-date-modal" @click.once="setDatePicker" >
                                 <img src="/resumeApp/public/images/client/campaign_activity/pick_date.png" alt="pick date">
                             </a>
-                        </div>
+                        </datepicker>
                         <div class="lineDivide"></div>
                         <div class="member-logs-empty" v-show="!hasLogs">
                             <div class="empty-state-text">
@@ -321,7 +318,11 @@
 </template>
 
 <script>
+    import DatePicker from '../../datepicker.vue'
     export default {
+        components: {
+            'datepicker': DatePicker
+        },
         data(){
           return{
               hasLogs:false,

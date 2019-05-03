@@ -121,7 +121,6 @@
 
   }
 
-
   .content-block{
     flex-direction: row;
     background: none;
@@ -145,12 +144,48 @@
         border-radius: 4px;
         .date-picker-bar{
           height: 78px;
+          padding: 0 20px;
           background:white;
           display:flex;
-          justify-content: flex-end;
+          justify-content: space-around;
           align-items: center;
           img{
             margin-right:18px;
+          }
+
+          .days-container {
+            width: 75%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+
+            .date-item {
+              padding: 15px 10px;
+              text-align: center;
+              width: 50px;
+              height: 100%;
+
+              &.active {
+                border-bottom: 1.5px solid $l-blue;
+              }
+            }
+
+            .day-number,
+            .day-of-week {
+              margin: 0 auto;
+              text-align: center;
+
+              &.active {
+                color: $l-blue
+              }
+            }
+
+          }
+          .date-control-right,
+          .date-control-left {
+            // Replace this controls with images
+            font-size: 2rem;
           }
         }
         .member-logs-empty{

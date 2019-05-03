@@ -74,7 +74,7 @@
 
         <div class="freelancer_dashboard_content">
             <div class="dashboard-side-menu hideOnTablet">
-                <router-link to="/" class="menu-block row" :class="{'active' : activeTab === 'campaign_manager'}" @click.native="selectTab('campaign_manager')">
+                <router-link to="/freelancer" class="menu-block row" :class="{'active' : activeTab === 'campaign_manager'}" @click.native="selectTab('campaign_manager')">
                     <div class="imageContainer">
                         <img  :src="getMenuBlockIcon('campaign_manager')" alt="icon">
                     </div>
@@ -82,7 +82,7 @@
                         Campaign manager
                     </div>
                 </router-link>
-                <router-link to="/my-account" class="menu-block row" :class="{'active' : activeTab === 'my-account'}" @click.native="selectTab('my-account')">
+                <router-link to="/freelancer/my-account" class="menu-block row" :class="{'active' : activeTab === 'my-account'}" @click.native="selectTab('my-account')">
                     <div class="imageContainer">
                         <img :src="getMenuBlockIcon('my-account')" alt="icon">
                     </div>

@@ -189,16 +189,18 @@ if ($("#account_info_edit").length !== 0){
 Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'));
 
 import CampaignManagerFreelancer from './components/freelancer/dashboardComponents/CampaignManager.vue';
+import FreelancerMyAccount from './components/freelancer/dashboardComponents/MyAccount.vue';
 
 if ($("#freelancerDashboardComponent").length !== 0){
 
     const routes = [
-        { path: '/:my-account', component: MyAccount },
-        { path: '/', component: CampaignManagerFreelancer }
+        { path: '/freelancer/my-account', component: FreelancerMyAccount },
+        { path: '/freelancer', component: CampaignManagerFreelancer }
     ];
 
     const router = new VueRouter({
         routes,
+        mode: 'history'
     });
 
 

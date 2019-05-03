@@ -51,6 +51,63 @@
             </div>
         </div>
 
+        <div class="professional-info dashboard-box">
+            <div class="account-info-heading dashboard-box-heading">
+                <div class="left">
+                    <!-- Replace here with the professional info icon -->
+                    <img src="/resumeApp/public/images/client/my_account/contract_40px.png" alt="info icon">
+                    <span>
+                        PROFESSIONAL INFORMATION
+                    </span>
+                </div>
+                <div class="right no-decoration">
+                    <a href="/client/account/edit" class="normal-link">
+                        EDIT
+                    </a>
+                </div>
+            </div>
+            <div class="account-info-content-wrapper">
+                <div class="account-info-content">
+                    <div class="primary-job-title info">
+                        <img class="" src="" alt="job icon">
+                        <div class="info-content">
+                            <b>Primary job title: </b>Telemarketing
+                        </div>
+                    </div>
+                    <div class="sector-experience info">
+                        <img class="" src="" alt="job icon">
+                        <div class="info-content">
+                            <b>Sector experience: </b>Real state, Investment, insurance
+                        </div>
+                    </div>
+                    <div class="software info">
+                        <img class="" src="" alt="job icon">
+                        <div class="info-content">
+                            <b>Technologies, software: </b>Microsoft Excel
+                        </div>
+                    </div>
+                    <div class="hours info">
+                        <img class="" src="" alt="job icon">
+                        <div class="info-content">
+                            <b>N. hours per week: </b>30 - 40 hours
+                        </div>
+                    </div>
+                    <div class="voice-character info">
+                        <img class="" src="" alt="job icon">
+                        <div class="info-content">
+                            <b>Voice character: </b>Friendly
+                        </div>
+                    </div>
+                    <div class="languages info">
+                        <img class="" src="" alt="job icon">
+                        <div class="info-content">
+                            <b>Languages: </b>English
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="contracts dashboard-box">
             <div class="account-info-heading dashboard-box-heading">
                 <div class="left">

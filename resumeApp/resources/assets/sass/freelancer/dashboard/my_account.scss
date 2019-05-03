@@ -69,8 +69,22 @@
   }
 }
 
-.contracts,.faqs{
+.contracts,.faqs, .professional-info {
   margin-top: 18px;
+}
+
+.professional-info {
+  .info {
+    margin: 15px 0;
+
+    .info-content {
+      display: inline-block;
+    }
+
+    img {
+      margin-right: 20px;
+    }
+  }
 }
 
 .agreement{

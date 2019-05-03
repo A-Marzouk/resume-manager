@@ -7,7 +7,7 @@
 }
 
 .agreement-margin {
-  padding: 90px 0 40px;
+  padding: 32px 0 40px;
   text-transform: uppercase;
   line-height: 30px;
 }
@@ -34,6 +34,7 @@
   border-radius: 4px;
   padding-left: 24px;
   padding-right: 24px;
+  margin-top: 32px;
 }
 .chechbox-blue {
   cursor: pointer;
@@ -41,10 +42,10 @@
   -moz-appearance: none;
   appearance: none;
   outline: 0;
-  background: lightgray;
+  background: #DADADA;
   height: 18px;
   width: 18px;
-  border: 1px solid white;
+  border: 1px solid #4A5464;
   margin-right: 15px;
 }
 
@@ -53,6 +54,7 @@
 }
 .chechbox-blue:checked {
   background: #05A4F4;
+  border: none;
 }
 
 .chechbox-blue:hover {
@@ -89,8 +91,6 @@
 }
 
 .agreement-button {
-  width: 98px;
-  height: 51px;
   background: #05A4F4;
   border-radius: 2px;
   font-weight: 500;
@@ -99,6 +99,7 @@
   text-align: center;
   color: #fff;
   border: none;
-  margin-top: 22px;
-  margin-bottom: 22px;
+  padding: 16px 25px;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }

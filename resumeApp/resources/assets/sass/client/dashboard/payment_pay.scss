@@ -1,6 +1,6 @@
 .payment-pay-text {
   font-size: 16px;
-  line-height: 24px;
+  line-height: 28px;
 }
 .payment-button{
   padding: 16px 25px;
@@ -9,13 +9,14 @@
 .export-invoice-icon {
   margin: 0;
 }
-
+.mobile-display {
+  display: flex!important;
+}
 .payment-pay-date {
   font-size: 14px;
   line-height: 24px;/* or 171% */
   letter-spacing: -0.1px;
   margin: 24px 0;
-
   color: #7A828D;
 }
 
@@ -52,13 +53,18 @@
   .export-invoice {
     margin: 10px 0;
   }
+  .mobile-display {
+    display: block!important;
+  }
 }
 
 @media only screen and (max-width: 557px) {
   .payment-pay-text {
     font-size: 13px;
   }
-
+.mobile-display {
+  display: block!important;
+}
 
   .display-content-block {
     display:block;

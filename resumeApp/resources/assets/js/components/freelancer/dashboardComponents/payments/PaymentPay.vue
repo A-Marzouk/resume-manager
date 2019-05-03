@@ -2,7 +2,7 @@
     <div >
         <nav class="navbar navbar-light fixed-top client_navbar">
             <div class="backBtn">
-                <a href="/client#/payments">
+                <a href="/client/dashboard/payments">
                     <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
                 </a>
                 059-004-038 INVOICE DETAILS

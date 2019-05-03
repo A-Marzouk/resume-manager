@@ -29,6 +29,8 @@ Route::prefix('client')->group(function (){
     });
 
     // front-end routes :
+    Route::get('/','ClientsController@index')->name('client.dashboard');
+    Route::get('/dashboard/{any?}','ClientsController@index')->name('client.dashboard.campaing-manager');
     Route::get('/campaign','ClientsController@campaignActivity')->name('campaign.main');
     Route::get('/campaigns-archive','ClientsController@campaignArchives')->name('campaign.archives');
     Route::get('/campaign/add-agent','ClientsController@campaignAddAgent')->name('campaign.add.agent');
@@ -43,7 +45,7 @@ Route::prefix('client')->group(function (){
     Route::get('/account/privacy-agreement','ClientsController@viewClientPrivacyAgreement')->name('privacy.agreement');
     // update subscription plan route
     Route::get('/payments/sub-update','ClientsController@viewUpdateSubPlan')->name('privacy.agreement');
-    
+
     //////////////////
     Route::get('/has_agreed','ClientsController@hasAgreed');
     Route::post('/set_terms','ClientsController@setTerms');
@@ -52,37 +54,33 @@ Route::prefix('client')->group(function (){
     Route::get('/register/submit',function(){
         return redirect()->back();
     });
-    
-    
-    //client jobs :
+
+
+//client jobs :
     Route::get('/jobs','ClientsController@viewJobsPage')->name('client.jobs');
     Route::get('/get_jobs','ClientsController@getJobs')->name('get.jobs');
     Route::post('/jobs/delete','ClientsController@deleteJob');
     Route::post('/jobs/add/','JobsController@addJobPost')->name('add.job');
     Route::post('/jobs/delete','JobsController@deleteJobPost')->name('delete.job');
     Route::post('/jobs/applied_freelancers','JobsController@appliedFreelancers')->name('job.freelancers');
-    
-    //Password reset routes for client
+
+//Password reset routes for client
     Route::get('/password/reset', 'Auth\ClientForgotPasswordController@showLinkRequestForm')->name('client.password.reset');
     Route::post('/password/email', 'Auth\ClientForgotPasswordController@sendResetLinkEmail');
     Route::get('/password/reset/{token}', 'Auth\ClientResetPasswordController@showResetForm');
     Route::post('/password/reset', 'Auth\ClientResetPasswordController@reset');
-    // delete a client
+// delete a client
     Route::get('/delete/{id}','AdminsController@deleteClient')->name('client.delete');
-    // client profile
+// client profile
     Route::get('/profile/{client_id}','ClientsController@viewProfilePage')->name('client.profile');
-    // client agreements :
+// client agreements :
     Route::get('/agreement','ClientsController@viewClientAgreement')->name('client.agreement');
     Route::get('/privacy_policy','ClientsController@viewClientPrivacyPolicy')->name('client.agreement');
-    
-    // Default redirect to dashboard
-    Route::get('/{any?}','ClientsController@index')->name('client.dashboard');
 });
 
 Route::prefix('freelancer')->group(function (){
     Route::get('/login','Auth\LoginController@showLoginForm')->name('freelancer.login');
     Route::get('/logout','Auth\LoginController@logout')->name('freelancer.logout');
-    Route::get('/campaign','FreelancersController@campaignActivity')->name('freelancer.campaign.main');
     Route::get('/campaigns-archive','FreelancersController@campaignArchives')->name('freelancer.campaign.archives');
     // Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard'); 
     // Route::get('/','FreelancersController@showEditForm')->name('show.edit_form');

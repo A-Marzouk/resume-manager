@@ -43,10 +43,10 @@ Route::prefix('client')->group(function (){
     Route::get('/payments/sub-set-up','ClientsController@viewClientSubSetUp')->name('payment.sub');
     // privacy agreement route
     Route::get('/account/privacy-agreement','ClientsController@viewClientPrivacyAgreement')->name('privacy.agreement');
-     // update subscription plan route
+    // update subscription plan route
     Route::get('/payments/sub-update','ClientsController@viewUpdateSubPlan')->name('privacy.agreement');
 
-//////////////////
+    //////////////////
     Route::get('/has_agreed','ClientsController@hasAgreed');
     Route::post('/set_terms','ClientsController@setTerms');
     Route::get('/register','Auth\ClientRegisterController@showRegistrationForm')->name('client.register');

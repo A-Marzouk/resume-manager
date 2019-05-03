@@ -62,7 +62,6 @@ class ClientsController extends Controller
     }
     public function campaignArchives(){
         return view('client.campaign_archives');
-
     }
 
     public function campaignAddAgent(){

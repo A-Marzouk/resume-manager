@@ -52,6 +52,10 @@ class ClientsController extends Controller
         return view('client.payments.payment_pay') ;
     }
 
+    public function viewClientCampaignAgents(){
+    return view('client.campaign_agents');
+    }
+
     public function viewClientManagerCalculation(){
         return view('client.payments.manager_calculation') ;
     }
@@ -60,6 +64,7 @@ class ClientsController extends Controller
         return view('client.add_agent_view');
 
     }
+
     public function campaignArchives(){
         return view('client.campaign_archives');
     }

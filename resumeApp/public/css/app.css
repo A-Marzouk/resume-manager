@@ -987,7 +987,7 @@ body {
 }
 
 .clientForm .rememberText {
-  color: #697786;
+  color: black;
   font-family: Roboto;
   font-size: 14px;
   font-weight: bold;
@@ -7987,12 +7987,12 @@ select:focus {
   color: #fff;
 }
 
-.account-edit-section-edit-btn.disabled-btn a {
+.disabled-btn a {
   color: #A1A7AF;
   background: #E4E4E4;
 }
 
-.account-edit-section-edit-btn.disabled-btn a:hover {
+.disabled-btn a:hover {
   color: #A1A7AF;
   cursor: not-allowed;
 }
@@ -8492,6 +8492,29 @@ select:focus {
     font-size: 14px;
     line-height: 24px;
   }
+}
+
+.login-modal-content {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px !important;
+  border: none !important;
+  width: 644px !important;
+  padding: 20px 52px 52px 52px;
+}
+
+@media only screen and (max-width: 644px) {
+  .login-modal-content {
+    width: 100% !important;
+    padding: 12px 12px 40px 12px;
+  }
+}
+
+.login-modal-dialog {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-left: 17px;
 }
 
 #freelancer_dash .freelancer_navbar {
@@ -11793,41 +11816,6 @@ select:focus {
   .account-edit-section-inputs {
     width: 100%;
   }
-}
-
-.account-edit-section-edit-btn {
-  margin-top: 44px;
-  margin-bottom: 26px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-.account-edit-section-edit-btn a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #A1A7AF;
-  border-radius: 2px;
-  width: 158px;
-  height: 48px;
-  background: #E4E4E4;
 }
 
 .manager-blue-text {

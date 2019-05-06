@@ -202,36 +202,52 @@ if ($("#account_info_edit").length !== 0){
 }
 
 // Freelancer components
-Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'));
-Vue.component('freelancer-campaign-archives', require('./components/freelancer/CampaignArchives.vue'));
-
-import FreelancerMyAccount from './components/freelancer/dashboardComponents/MyAccount.vue';
+import FreelancerCampaignActivity from './components/freelancer/campaignComponents/CampaignActivity.vue';
 import FreelancerCampaignManager from './components/freelancer/dashboardComponents/CampaignManager.vue';
 
-if ($("#freelancerDashboardComponent").length !== 0){
+Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'))
+Vue.component('freelancer-campaign-archives', require('./components/freelancer/CampaignArchives.vue'))
+Vue.component('freelancer-campaign-main', require('./components/freelancer/CampaignMainComponent.vue'))
 
-    const routes = [
-        { path: '/freelancer/my-account', component: FreelancerMyAccount },
-        { path: '/freelancer', component: FreelancerCampaignManager }
-    ];
+if ($('#freelancerDashboardComponent').length !== 0) {
+  const routes = [
+    { path: '/freelancer/:my-account', component: MyAccount },
+    { path: '/freelancer', component: FreelancerCampaignManager }
+  ]
 
-    const router = new VueRouter({
-        routes,
-        mode: 'history'
-    });
+  const router = new VueRouter({
+    routes,
+    mode: 'history'
+  })
 
-
-    let freelancerDashboardComponent = new Vue({
-        router,
-        el:'#freelancerDashboardComponent'
-    });
+  let freelancerDashboardComponent = new Vue({
+    router,
+    el: '#freelancerDashboardComponent'
+  })
 }
 
-if ($("#freelancerCampaignArchives").length !== 0){
+if ($('#freelancerCampaignArchives').length !== 0) {
+  let freelancerCampaignArchives = new Vue({
+    el: '#freelancerCampaignArchives'
+  })
+}
 
-    let campaignArchives = new Vue({
-        el:'#freelancerCampaignArchives'
-    });
+if ($('#freelancerCampaignMainComponent').length !== 0) {
+  const routes = [
+    { path: '/freelancer/campaign-team', component: CampaignTeam },
+    { path: '/freelancer/campaign-brief', component: CampaignBrief },
+    { path: '/freelancer/campaign', component: FreelancerCampaignActivity }
+  ]
+
+  const router = new VueRouter({
+    routes,
+    mode: 'history'
+  })
+
+  let freelancerCampaignMainComponent = new Vue({
+    router,
+    el: '#freelancerCampaignMainComponent'
+  })
 }
 
 Vue.component('chat-message', require('./components/chat/chatMessage.vue'));

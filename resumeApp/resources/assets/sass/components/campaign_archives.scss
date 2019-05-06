@@ -60,7 +60,7 @@
         padding-top: 33px;
         padding-bottom: 5px;
         border-bottom: 1px solid rgba(188, 191, 198, 0.44);
-        .right{
+        .left{
           padding-right: 10px;
           .name-of-campaign{
             margin-bottom: 24px;
@@ -88,12 +88,10 @@
             color: #7A828D;
           }
 
-        }
-        .left{
           .date,.amount{
             display: flex;
             align-items: center;
-
+  
             margin-bottom: 24px;
             font-family: Roboto;
             font-style: normal;

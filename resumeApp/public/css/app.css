@@ -6853,11 +6853,11 @@ body {
   border-bottom: 1px solid rgba(188, 191, 198, 0.44);
 }
 
-.campaign-archives .archive-content-box .archive-list .campaign-item .right {
+.campaign-archives .archive-content-box .archive-list .campaign-item .left {
   padding-right: 10px;
 }
 
-.campaign-archives .archive-content-box .archive-list .campaign-item .right .name-of-campaign {
+.campaign-archives .archive-content-box .archive-list .campaign-item .left .name-of-campaign {
   margin-bottom: 24px;
   font-family: Roboto;
   font-style: normal;
@@ -6868,15 +6868,15 @@ body {
   color: #05A4F4;
 }
 
-.campaign-archives .archive-content-box .archive-list .campaign-item .right .name-of-campaign a:hover {
+.campaign-archives .archive-content-box .archive-list .campaign-item .left .name-of-campaign a:hover {
   text-decoration: none;
 }
 
-.campaign-archives .archive-content-box .archive-list .campaign-item .right .name-of-campaign a {
+.campaign-archives .archive-content-box .archive-list .campaign-item .left .name-of-campaign a {
   color: #05A4F4;
 }
 
-.campaign-archives .archive-content-box .archive-list .campaign-item .right .campaign-notes {
+.campaign-archives .archive-content-box .archive-list .campaign-item .left .campaign-notes {
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;

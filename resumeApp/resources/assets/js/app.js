@@ -110,6 +110,13 @@ if ($("#addAgentComponent").length !== 0){
     });
 }
 
+if ($("#campaignAgent").length !== 0){
+
+    let campaignAgent = new Vue({
+        el:'#campaignAgent'
+    });
+}
+
 if ($("#managerCalculation").length !== 0){
 
     let managerCalculation = new Vue({

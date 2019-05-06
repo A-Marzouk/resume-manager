@@ -293,14 +293,14 @@
             </div>
 
             <div class="campaign-brief-footer">
-                <a href="/client/campaign">
+                <a :href="rootLink()">
                     GO TO CAMPAIGN
                 </a>
             </div>
         </div>
 
-        <addEntry></addEntry>
-        <addDocument></addDocument>
+        <addEntry v-if="rootLink()"></addEntry>
+        <addDocument v-if="rootLink()"></addDocument>
         
     </div>
 </template>
@@ -320,7 +320,9 @@
           }
         },
         methods:{
-
+            rootLink () {
+                console.log(this.$route.path)
+            }
         }
     }
 </script>

@@ -3,8 +3,7 @@
   display: flex;
   justify-content: center;
   padding-top:47px;
-  padding-bottom:28px;
-  
+  padding-bootom:28px ;
   .account-info-content{
     padding:26px 34px 26px 34px;
     width: 644px;
@@ -70,22 +69,8 @@
   }
 }
 
-.contracts,.faqs, .professional-info {
+.contracts,.faqs{
   margin-top: 18px;
-}
-
-.professional-info {
-  .info {
-    margin: 15px 0;
-
-    .info-content {
-      display: inline-block;
-    }
-
-    img {
-      margin-right: 20px;
-    }
-  }
 }
 
 .agreement{
@@ -232,4 +217,62 @@
   @media (max-width:600px) {
     width:100%;
   }
+}
+
+
+.account-edit-section-edit-btn{
+  margin-top: 44px;
+  margin-bottom: 26px;
+  display: flex;
+  justify-content: flex-end;
+  a{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 2px;
+    width:158px;
+    height:48px;
+    background: #05A4F4;
+  }
+  a:hover{
+    color: #fff;
+  }
+}
+.disabled-btn{
+  a{
+    color: #A1A7AF;
+    background: #E4E4E4;
+  }
+  a:hover{
+    color: #A1A7AF;
+    cursor: not-allowed;
+  }
+}
+
+.base-text{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    color: #4A5464;
+}
+
+.base-link{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;/* identical to box height, or 133% */
+  color: #05A4F4;
 }

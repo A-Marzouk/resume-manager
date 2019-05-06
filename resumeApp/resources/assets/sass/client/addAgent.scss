@@ -28,7 +28,7 @@ $secondary: #05A4F4;
   background: $whiteBackground;
   box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
   border-radius: 4px;
-  width: 1164px;
+  width: 1165px;
 }
 
 .invisiable-div {
@@ -284,7 +284,7 @@ input:focus, textarea:focus, button:focus, select:focus {
 @media screen and (max-width: 1270px) {
   .main-grid {
     padding: 21px 60px 18px 40px !important;
-    width: 876px;
+    width: 96%;
   }
 
   .form-main-grid {
@@ -302,9 +302,9 @@ input:focus, textarea:focus, button:focus, select:focus {
     margin-left: 6px;
     margin-right: 6px;
   }
-.responsive-grid {
-  display: block
-}
+  .responsive-grid {
+    display:flex;
+  }
   .info-grid {
     margin-left: 0;
     margin-top: 30px;
@@ -350,6 +350,9 @@ input:focus, textarea:focus, button:focus, select:focus {
     margin: 15px 9px 15px 15px;
   }
 
+  .responsive-grid {
+    display:block;
+  }
 
   .right-side {
     text-align: center;
@@ -357,7 +360,7 @@ input:focus, textarea:focus, button:focus, select:focus {
 
   .main-grid {
     padding: 22px 20px 10px 16px !important;
-    width: 298px;
+    width: 96%;
   }
 
   .small-image {
@@ -412,7 +415,7 @@ input:focus, textarea:focus, button:focus, select:focus {
 @media screen and (max-width: 772px) {
   .main-grid {
     padding: 22px 20px 10px 16px;
-    width: 735px;
+    width: 96%;
   }
 
   .invisible-add-agent {

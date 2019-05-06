@@ -45,7 +45,8 @@ Route::prefix('client')->group(function (){
     Route::get('/account/privacy-agreement','ClientsController@viewClientPrivacyAgreement')->name('privacy.agreement');
     // update subscription plan route
     Route::get('/payments/sub-update','ClientsController@viewUpdateSubPlan')->name('privacy.agreement');
-
+    //campaign agents
+    Route::get('/payments/campaign-agents','ClientsController@viewClientCampaignAgents')->name('campaign.agents');
     //////////////////
     Route::get('/has_agreed','ClientsController@hasAgreed');
     Route::post('/set_terms','ClientsController@setTerms');

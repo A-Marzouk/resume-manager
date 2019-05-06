@@ -14409,6 +14409,13 @@ if ($("#addAgentComponent").length !== 0) {
     });
 }
 
+if ($("#loginComponent").length !== 0) {
+
+    var loginComponent = new Vue({
+        el: '#loginComponent'
+    });
+}
+
 if ($("#campaignAgent").length !== 0) {
 
     var campaignAgent = new Vue({

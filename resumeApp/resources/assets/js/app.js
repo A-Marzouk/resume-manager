@@ -110,6 +110,13 @@ if ($("#addAgentComponent").length !== 0){
     });
 }
 
+if ($("#loginComponent").length !== 0){
+
+    let loginComponent = new Vue({
+        el:'#loginComponent'
+    });
+}
+
 if ($("#campaignAgent").length !== 0){
 
     let campaignAgent = new Vue({

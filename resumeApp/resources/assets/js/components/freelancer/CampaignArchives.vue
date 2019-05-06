@@ -19,7 +19,7 @@
                     <div class="campaign-item">
                         <div class="left">
                             <div class="name-of-campaign">
-                                <a href="/client/campaign">
+                                <a href="/freelancer/campaign">
                                     Name of the campaign long name of the campaign
                                 </a>
                             </div>
@@ -36,7 +36,7 @@
                     <div class="campaign-item">
                         <div class="left">
                             <div class="name-of-campaign">
-                                <a href="/client/campaign">
+                                <a href="/freelancer/campaign">
                                     Name of the campaign long name of the campaign
                                 </a>
                             </div>
@@ -53,7 +53,7 @@
                     <div class="campaign-item">
                         <div class="left">
                             <div class="name-of-campaign">
-                                <a href="/client/campaign">
+                                <a href="/freelancer/campaign">
                                     Name of the campaign long name of the campaign
                                 </a>
                             </div>

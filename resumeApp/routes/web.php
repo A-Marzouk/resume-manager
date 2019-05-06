@@ -83,6 +83,7 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/login','Auth\LoginController@showLoginForm')->name('freelancer.login');
     Route::get('/logout','Auth\LoginController@logout')->name('freelancer.logout');
     Route::get('/campaigns-archive','FreelancersController@campaignArchives')->name('freelancer.campaign.archives');
+    Route::get('/campaign','FreelancersController@campaignActivity')->name('freelancer.campaign.main');
     // Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard'); 
     // Route::get('/','FreelancersController@showEditForm')->name('show.edit_form');
 

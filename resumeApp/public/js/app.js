@@ -74233,7 +74233,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "campaign-item" }, [
         _c("div", { staticClass: "left" }, [
           _c("div", { staticClass: "name-of-campaign" }, [
-            _c("a", { attrs: { href: "/client/campaign" } }, [
+            _c("a", { attrs: { href: "/freelancer/campaign" } }, [
               _vm._v(
                 "\n                                Name of the campaign long name of the campaign\n                            "
               )
@@ -74271,7 +74271,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "campaign-item" }, [
         _c("div", { staticClass: "left" }, [
           _c("div", { staticClass: "name-of-campaign" }, [
-            _c("a", { attrs: { href: "/client/campaign" } }, [
+            _c("a", { attrs: { href: "/freelancer/campaign" } }, [
               _vm._v(
                 "\n                                Name of the campaign long name of the campaign\n                            "
               )
@@ -74309,7 +74309,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "campaign-item" }, [
         _c("div", { staticClass: "left" }, [
           _c("div", { staticClass: "name-of-campaign" }, [
-            _c("a", { attrs: { href: "/client/campaign" } }, [
+            _c("a", { attrs: { href: "/freelancer/campaign" } }, [
               _vm._v(
                 "\n                                Name of the campaign long name of the campaign\n                            "
               )

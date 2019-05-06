@@ -987,7 +987,7 @@ body {
 }
 
 .clientForm .rememberText {
-  color: #697786;
+  color: black;
   font-family: Roboto;
   font-size: 14px;
   font-weight: bold;
@@ -6625,7 +6625,7 @@ body {
   -webkit-box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
           box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
   border-radius: 4px;
-  width: 1165px;
+  width: 1164px;
 }
 
 .invisiable-div {
@@ -6906,7 +6906,7 @@ select:focus {
 @media screen and (max-width: 1270px) {
   .main-grid {
     padding: 21px 60px 18px 40px !important;
-    width: 96%;
+    width: 876px;
   }
 
   .form-main-grid {
@@ -6929,9 +6929,7 @@ select:focus {
   }
 
   .responsive-grid {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+    display: block;
   }
 
   .info-grid {
@@ -6980,17 +6978,13 @@ select:focus {
     margin: 15px 9px 15px 15px;
   }
 
-  .responsive-grid {
-    display: block;
-  }
-
   .right-side {
     text-align: center;
   }
 
   .main-grid {
     padding: 22px 20px 10px 16px !important;
-    width: 96%;
+    width: 298px;
   }
 
   .small-image {
@@ -7037,7 +7031,7 @@ select:focus {
 @media screen and (max-width: 772px) {
   .main-grid {
     padding: 22px 20px 10px 16px;
-    width: 96%;
+    width: 735px;
   }
 
   .invisible-add-agent {
@@ -7987,12 +7981,12 @@ select:focus {
   color: #fff;
 }
 
-.account-edit-section-edit-btn.disabled-btn a {
+.disabled-btn a {
   color: #A1A7AF;
   background: #E4E4E4;
 }
 
-.account-edit-section-edit-btn.disabled-btn a:hover {
+.disabled-btn a:hover {
   color: #A1A7AF;
   cursor: not-allowed;
 }
@@ -8492,6 +8486,29 @@ select:focus {
     font-size: 14px;
     line-height: 24px;
   }
+}
+
+.login-modal-content {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px !important;
+  border: none !important;
+  width: 644px !important;
+  padding: 20px 52px 52px 52px;
+}
+
+@media only screen and (max-width: 644px) {
+  .login-modal-content {
+    width: 100% !important;
+    padding: 12px 12px 40px 12px;
+  }
+}
+
+.login-modal-dialog {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-left: 17px;
 }
 
 #freelancer_dash .freelancer_navbar {
@@ -11795,41 +11812,6 @@ select:focus {
   }
 }
 
-.account-edit-section-edit-btn {
-  margin-top: 44px;
-  margin-bottom: 26px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-.account-edit-section-edit-btn a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #A1A7AF;
-  border-radius: 2px;
-  width: 158px;
-  height: 48px;
-  background: #E4E4E4;
-}
-
 .manager-blue-text {
   font-weight: 500;
   font-size: 18px;
@@ -12013,24 +11995,5 @@ select:focus {
   .orange-color {
     margin-top: 24px;
   }
-}
-
-.campaign-blue-text {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 24px;
-  /* or 133% */
-  letter-spacing: -0.1px;
-  color: #3EA3D7;
-  margin: 26px 0;
-}
-
-.campaign-text {
-  font-size: 16px;
-  line-height: 27px;
-  /* or 169% */
-  letter-spacing: -0.1px;
-  color: #4A5464;
-  margin-bottom: 10px;
 }
 

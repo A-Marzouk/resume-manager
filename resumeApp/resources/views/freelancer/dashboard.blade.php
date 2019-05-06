@@ -2,6 +2,6 @@
 
 @section('content')
    <div id="freelancerDashboardComponent">
-      <freelancer-dashboard></freelancer-dashboard>
+      <dashboard></dashboard>
    </div>
 @endsection

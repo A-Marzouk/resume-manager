@@ -112,7 +112,7 @@
                 </div>
                 <div class="archive-empty-state-img-wrapper">
                     <img src="/resumeApp/public/images/client/campaign_archives/archive_emty_state.png"
-                         alt="empty state photo">
+                         alt="emty state photo">
                 </div>
 
             </div>

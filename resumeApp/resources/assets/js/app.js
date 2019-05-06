@@ -37,7 +37,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('add-agent-component', require('./components/client/AddAgentComponent.vue'));
 
 // client components
-Vue.component('client-dashboard', require('./components/client/Dashboard.vue'));
+Vue.component('dashboard', require('./components/dashboard/Dashboard.vue'));
 Vue.component('campaign-main', require('./components/client/CampaignMainComponent.vue'));
 Vue.component('campaign-archives', require('./components/client/CampaignArchives.vue'));
 Vue.component('account-info-edit', require('./components/client/dashboardComponents/my_account/MyAccountEdit.vue'));
@@ -51,12 +51,12 @@ Vue.component('update-sub-plan',require('./components/client/dashboardComponents
 Vue.component('client-register',require('./components/client/ClientRegister.vue'));
 
     // campaign-activity inside components :
-    import CampaignActivity from './components/client/campaignComponents/CampaignActivity.vue';
-    import CampaignTeam from './components/client/campaignComponents/CampaignTeam.vue';
-    import CampaignBrief from './components/client/campaignComponents/CampaignBrief.vue';
+    import CampaignActivity from './components/dashboard/campaignComponents/CampaignActivity.vue';
+    import CampaignTeam from './components/dashboard/campaignComponents/CampaignTeam.vue';
+    import CampaignBrief from './components/dashboard/campaignComponents/CampaignBrief.vue';
 
     // dashboard inside components
-    import CampaignManager from './components/client/dashboardComponents/CampaignManager.vue';
+    import CampaignManager from './components/dashboard/dashboardComponents/CampaignManager.vue';
     import Payments from './components/client/dashboardComponents/Payments.vue';
     import MyAccount from './components/client/dashboardComponents/MyAccount.vue';
 
@@ -186,8 +186,6 @@ if ($("#account_info_edit").length !== 0){
 }
 
 // Freelancer components
-Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'));
-
 import CampaignManagerFreelancer from './components/freelancer/dashboardComponents/CampaignManager.vue';
 import FreelancerMyAccount from './components/freelancer/dashboardComponents/MyAccount.vue';
 

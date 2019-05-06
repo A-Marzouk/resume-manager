@@ -34,7 +34,7 @@
   display: flex;
   flex-direction: column;
 
-  .clientInfo-bar{
+  .info-bar{
     // only on phone :
     @media (min-width:426px) {
       display:none;
@@ -46,7 +46,7 @@
     padding-left: 25px;
     border-bottom: 0.5px solid #E0E1E3;
 
-    .clientName{
+    .name{
       font-family: Roboto;
       font-style: normal;
       font-weight: 500;
@@ -55,7 +55,7 @@
       letter-spacing: 0.2px;
       color: #4A5464;
     }
-    .clientAvatar{
+    .avatar{
       margin-right: 12px;
       margin-top: 6px;
     }

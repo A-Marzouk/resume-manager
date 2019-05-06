@@ -11,13 +11,13 @@
 @import "affiliates_styles";
 
 // Components
+@import "components/dashboard";
+@import "components/side_nave";
+@import "components/campaign_activity";
+@import "components/campaign_team";
+@import "components/campaign_brief";
+@import "components/campaign_archives";
 
-@import "client/dashboard";
-@import "client/side_nave";
-@import "client/campaign_activity";
-@import "client/campaign_team";
-@import "client/campaign_brief";
-@import "client/campaign_archives";
 @import "client/addAgent";
 
 @import "client/dashboard/payments";

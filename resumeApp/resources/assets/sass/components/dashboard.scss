@@ -1,5 +1,5 @@
-#client_dash {
-  .client_navbar{
+.dashboard {
+  .dashboard_navbar{
       background: white;
       height: 56px !important;
       .navbar-brand img {
@@ -9,7 +9,7 @@
         }
       }
 
-      .clientName{
+      .dashboardName{
         font-family: Roboto;
         font-style: normal;
         font-weight: 500;
@@ -35,13 +35,13 @@
         }
       }
 
-      .clientAvatar{
+      .dashboardAvatar{
         margin-left: 10px;
       }
     }
 }
 
-.client_dashboard_content{
+.dashboard_dashboard_content{
   display: flex;
   justify-content: center;
   padding-top: 20px;

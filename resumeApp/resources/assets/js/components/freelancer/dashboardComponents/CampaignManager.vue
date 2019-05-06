@@ -293,7 +293,7 @@
             </div>
 
             <div class="campaign-brief-footer">
-                <a href="/client/campaign">
+                <a :href="rootLink">
                     GO TO CAMPAIGN
                 </a>
             </div>
@@ -316,11 +316,13 @@
         },
         data(){
           return{
-
+              rootLink: this.$route.path
           }
         },
         methods:{
-
+            rootLinkTo (link) {
+                return this.$route.path + '/' + link
+            }
         }
     }
 </script>

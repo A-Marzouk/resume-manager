@@ -45,7 +45,7 @@
                 </div>
                 <div class="dashboard_content">
                     <div class="dashboard-side-menu">
-                        <router-link :to="rootLinkTo('campaign-manager')" class="menu-block row" :class="{'active' : activeTab === 'campaign-manager'}" @click.native="selectTab('campaign-manager')">
+                        <router-link :to="rootURL" class="menu-block row" :class="{'active' : activeTab === 'campaign-manager'}" @click.native="selectTab('campaign-manager')">
                             <div class="imageContainer">
                                 <img  :src="getMenuBlockIcon('campaign-manager')" alt="icon">
                             </div>
@@ -98,7 +98,7 @@
 
         <div class="dashboard_content">
             <div class="dashboard-side-menu hideOnTablet">
-                <router-link :to="rootLinkTo('campaign-manager')" class="menu-block row" :class="{'active' : activeTab === 'campaign-manager'}" @click.native="selectTab('campaign-manager')">
+                <router-link :to="rootURL" class="menu-block row" :class="{'active' : activeTab === 'campaign-manager'}" @click.native="selectTab('campaign-manager')">
                     <div class="imageContainer">
                         <img  :src="getMenuBlockIcon('campaign-manager')" alt="icon">
                     </div>
@@ -106,30 +106,6 @@
                         Campaign manager
                     </div>
                 </router-link>
-                <div v-if="rootURL !== '/freelancer'" class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
-                    <div class="imageContainer">
-                        <img :src="getMenuBlockIcon('chats')" alt="icon">
-                    </div>
-                    <div class="menu-block-name">
-                        Chats
-                    </div>
-                </div>
-                <router-link v-if="rootURL !== '/freelancer'" :to="rootLinkTo('payments')" class="menu-block row" :class="{'active' : activeTab === 'payments'}" @click.native="selectTab('payments')">
-                    <div class="imageContainer">
-                        <img :src="getMenuBlockIcon('payments')" alt="icon">
-                    </div>
-                    <div class="menu-block-name">
-                        Payments
-                    </div>
-                </router-link>
-                <div v-if="rootURL !== '/freelancer'" class="menu-block row" :class="{'active' : activeTab === 'agents_database'}" @click="selectTab('agents_database')">
-                    <div class="imageContainer">
-                        <img :src="getMenuBlockIcon('agents_database')"  alt="icon">
-                    </div>
-                    <div class="menu-block-name">
-                        Agents database
-                    </div>
-                </div>
                 <router-link :to="rootLinkTo('my-account')" class="menu-block row" :class="{'active' : activeTab === 'my-account'}" @click.native="selectTab('my-account')">
                     <div class="imageContainer">
                         <img :src="getMenuBlockIcon('my-account')" alt="icon">
@@ -251,7 +227,6 @@
         data(){
             return{
                 activeTab: 'campaign_manager',
-                // freelancer or client
                 rootURL: this.$route.path
             }
         },

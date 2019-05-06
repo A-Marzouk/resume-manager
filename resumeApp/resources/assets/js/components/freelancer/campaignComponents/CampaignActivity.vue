@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex justify-content-center">
-        <div class="freelancer_dashboard_content campaign_activity">
-            <!-- <div class="dashboard-side-menu hideOnTablet">
+        <div class="client_dashboard_content campaign_activity">
+            <div class="dashboard-side-menu hideOnTablet">
                 <div class="team-list-header">
                     <div class="teamName">
                         TEAM
@@ -12,7 +12,7 @@
                 </div>
                 <div class="lineDivide"></div>
                 <div class="team-member">
-                    <img src="/resumeApp/public/images/freelancer/dummy.png" alt="member image">
+                    <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
                     <div class="team-member-info">
                         <div class="member-name manager">
                             Louis Snyderberg
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="/resumeApp/public/images/freelancer/dummy.png" alt="member image">
+                    <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
                     <div class="team-member-info">
                         <div class="member-name">
                             Mohamed Salah
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="/resumeApp/public/images/freelancer/dummy.png" alt="member image">
+                    <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
                     <div class="team-member-info">
                         <div class="member-name">
                             Lionel Messi
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="/resumeApp/public/images/freelancer/dummy.png" alt="member image">
+                    <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
                     <div class="team-member-info">
                         <div class="member-name">
                             Zlatan Ibrahimovic
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="/resumeApp/public/images/freelancer/dummy.png" alt="member image">
+                    <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
                     <div class="team-member-info">
                         <div class="member-name">
                             Louis Snyderberg
@@ -66,10 +66,10 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
             <div class="content-block">
                 <div class="content-block-campaign-activity">
-                    <!-- <div class="team-bar-tablet">
+                    <div class="team-bar-tablet">
                         <div class="team-info">
                             <div class="team-name">
                                 TEAM
@@ -81,7 +81,7 @@
                         <div class="lineDivide tablet-bar"></div>
                         <div class="agent-bar">
                             <div class="team-member tablet-bar">
-                                <img src="/resumeApp/public/images/freelancer/dummy.png" alt="member image">
+                                <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
                                 <div class="team-member-info">
                                     <div class="member-name">
                                         Z. Ibrahimovic
@@ -95,13 +95,16 @@
                                 CHOOSE AGENT
                             </a>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="data-logs">
-                        <datepicker>
+                        <div class="date-picker-bar">
+                            <div style="margin-right:20px; padding:6px; border:1px solid lightgray; border-radius:5px; color:lightblue;">
+                                {{appliedDate}}
+                            </div>
                             <a href="javascript:void(0)" data-toggle="modal" data-target="#pick-date-modal" @click.once="setDatePicker" >
-                                <img src="/resumeApp/public/images/freelancer/campaign_activity/pick_date.png" alt="pick date">
+                                <img src="/resumeApp/public/images/client/campaign_activity/pick_date.png" alt="pick date">
                             </a>
-                        </datepicker>
+                        </div>
                         <div class="lineDivide"></div>
                         <div class="member-logs-empty" v-show="!hasLogs">
                             <div class="empty-state-text">
@@ -109,7 +112,7 @@
                                 <a href="javascript:void(0)" @click="hasLogs = !hasLogs" class="text"> SHOW DEMO LOGS</a>
                             </div>
                             <div class="empty-state-image">
-                                <img src="/resumeApp/public/images/freelancer/campaign_activity/empty_state.png" alt="empty state">
+                                <img src="/resumeApp/public/images/client/campaign_activity/empty_state.png" alt="empty state">
                             </div>
                         </div>
                         <div class="member-logs" v-show="hasLogs">
@@ -207,7 +210,7 @@
                         </div>
                     </div>
                     <div class="documents-bar">
-                        <img src="/resumeApp/public/images/freelancer/campaign_activity/document.png" alt="document">
+                        <img src="/resumeApp/public/images/client/campaign_activity/document.png" alt="document">
                         <div class="document-text">
                             Document link: <span>No links.</span>
                         </div>
@@ -234,7 +237,7 @@
                     <div class="modal-body">
                         <div class="dashboard-side-menu">
                             <div class="team-member">
-                                <img src="/resumeApp/public/images/freelancer/dummy.png" alt="member image">
+                                <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
                                 <div class="team-member-info">
                                     <div class="member-name manager">
                                         Louis Snyderberg
@@ -245,7 +248,7 @@
                                 </div>
                             </div>
                             <div class="team-member">
-                                <img src="/resumeApp/public/images/freelancer/dummy.png" alt="member image">
+                                <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
                                 <div class="team-member-info">
                                     <div class="member-name">
                                         Mohamed Salah
@@ -256,7 +259,7 @@
                                 </div>
                             </div>
                             <div class="team-member">
-                                <img src="/resumeApp/public/images/freelancer/dummy.png" alt="member image">
+                                <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
                                 <div class="team-member-info">
                                     <div class="member-name">
                                         Lionel Messi
@@ -267,7 +270,7 @@
                                 </div>
                             </div>
                             <div class="team-member">
-                                <img src="/resumeApp/public/images/freelancer/dummy.png" alt="member image">
+                                <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
                                 <div class="team-member-info">
                                     <div class="member-name">
                                         Zlatan Ibrahimovic
@@ -278,7 +281,7 @@
                                 </div>
                             </div>
                             <div class="team-member">
-                                <img src="/resumeApp/public/images/freelancer/dummy.png" alt="member image">
+                                <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
                                 <div class="team-member-info">
                                     <div class="member-name">
                                         Louis Snyderberg
@@ -318,14 +321,10 @@
 </template>
 
 <script>
-    import DatePicker from '../../datepicker.vue'
     export default {
-        components: {
-            'datepicker': DatePicker
-        },
         data(){
           return{
-              hasLogs: true,
+              hasLogs:false,
               selectedDate:'',
               appliedDate:'',
           }

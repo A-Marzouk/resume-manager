@@ -37,7 +37,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('add-agent-component', require('./components/client/AddAgentComponent.vue'));
 
 // client components
-Vue.component('dashboard', require('./components/dashboard/Dashboard.vue'));
+Vue.component('client-dashboard', require('./components/client/Dashboard.vue'));
 Vue.component('campaign-main', require('./components/client/CampaignMainComponent.vue'));
 Vue.component('campaign-archives', require('./components/client/CampaignArchives.vue'));
 Vue.component('account-info-edit', require('./components/client/dashboardComponents/my_account/MyAccountEdit.vue'));
@@ -53,12 +53,12 @@ Vue.component('login-component',require('./components/main/LoginComponent.vue'))
 Vue.component('campaign-agents',require('./components/client/campaignComponents/CampaignAgents.vue'));
 
     // campaign-activity inside components :
-    import CampaignActivity from './components/dashboard/campaignComponents/CampaignActivity.vue';
-    import CampaignTeam from './components/dashboard/campaignComponents/CampaignTeam.vue';
-    import CampaignBrief from './components/dashboard/campaignComponents/CampaignBrief.vue';
+    import CampaignActivity from './components/client/campaignComponents/CampaignActivity.vue';
+    import CampaignTeam from './components/client/campaignComponents/CampaignTeam.vue';
+    import CampaignBrief from './components/client/campaignComponents/CampaignBrief.vue';
 
     // dashboard inside components
-    import CampaignManager from './components/dashboard/dashboardComponents/CampaignManager.vue';
+    import CampaignManager from './components/client/dashboardComponents/CampaignManager.vue';
     import Payments from './components/client/dashboardComponents/Payments.vue';
     import MyAccount from './components/client/dashboardComponents/MyAccount.vue';
 
@@ -202,14 +202,17 @@ if ($("#account_info_edit").length !== 0){
 }
 
 // Freelancer components
-import CampaignManagerFreelancer from './components/freelancer/dashboardComponents/CampaignManager.vue';
+Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'));
+Vue.component('freelancer-campaign-archives', require('./components/freelancer/CampaignArchives.vue'));
+
 import FreelancerMyAccount from './components/freelancer/dashboardComponents/MyAccount.vue';
+import FreelancerCampaignManager from './components/freelancer/dashboardComponents/CampaignManager.vue';
 
 if ($("#freelancerDashboardComponent").length !== 0){
 
     const routes = [
         { path: '/freelancer/my-account', component: FreelancerMyAccount },
-        { path: '/freelancer', component: CampaignManagerFreelancer }
+        { path: '/freelancer', component: FreelancerCampaignManager }
     ];
 
     const router = new VueRouter({
@@ -224,6 +227,12 @@ if ($("#freelancerDashboardComponent").length !== 0){
     });
 }
 
+if ($("#freelancerCampaignArchives").length !== 0){
+
+    let campaignArchives = new Vue({
+        el:'#freelancerCampaignArchives'
+    });
+}
 
 Vue.component('chat-message', require('./components/chat/chatMessage.vue'));
 Vue.component('chat-log', require('./components/chat/chatLog.vue'));

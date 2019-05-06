@@ -6620,11 +6620,12 @@ body {
 }
 
 .main-grid {
-  padding: 32px 114px 18px 114px !important;
+  padding: 32px 114px 20px 114px !important;
   background: #fff;
   -webkit-box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
           box-shadow: 0 2px 18px rgba(179, 183, 186, 0.57);
   border-radius: 4px;
+  width: 1164px;
 }
 
 .invisiable-div {
@@ -6642,11 +6643,12 @@ body {
 }
 
 .search-icon-margin {
-  margin: 20px;
+  margin-top: 16px;
 }
 
 .header-text {
   font-size: 1.25rem;
+  font-family: Roboto;
 }
 
 .form-main-grid {
@@ -6690,14 +6692,17 @@ body {
   border-bottom: 1px solid #7A828D !important;
   border-radius: 4px 4px 0 0 !important;
   background: #fbfbfb !important;
-  padding: 8px 6.43px 8px 22.14px !important;
+  padding: 18px 6px 14px 22.14px !important;
   font-size: 14px !important;
   display: inline-block !important;
   max-width: 1164px !important;
+  height: 56px;
+  margin-top: 14px;
 }
 
 .btn-right-bottom {
-  font-size: 0.75rem;
+  font-family: Roboto;
+  font-size: 0.75rem !important;
   background: #fff;
   color: #b6b6b6;
   font-weight: 500;
@@ -6707,10 +6712,12 @@ body {
 }
 
 .btn-right-top {
+  font-family: Roboto;
   font-size: 14px;
   color: #A1A7AF;
   border-radius: 2px;
   background: #e4e4e4;
+  margin-bottom: 17px;
 }
 
 .right-side {
@@ -6731,6 +6738,10 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.form-control {
+  padding: .375rem 1.25rem !important;
 }
 
 .top-content {
@@ -6756,7 +6767,8 @@ body {
 
 .btn-left {
   color: #05A4F4;
-  font-size: 0.75rem;
+  font-family: Roboto;
+  font-size: 0.75rem !important;
   background: #fff;
   font-weight: 500;
   line-height: 24px;
@@ -6766,20 +6778,32 @@ body {
   width: 234px !important;
 }
 
+.responsive-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .btn-footer {
   border: 1px solid #05A4F4 !important;
   color: #05A4F4;
   background-color: transparent;
+  width: 151px;
+  height: 36px;
+  font-size: 14px !important;
+  padding: 0;
 }
 
 .refresh-icon {
   padding-right: 12px;
 }
 
-select {
+.select {
   border: none !important;
   border-bottom: 1px solid #7A828D !important;
   border-radius: 0 !important;
+  height: 56px !important;
+  margin-top: 14px;
 }
 
 input:focus,
@@ -6790,20 +6814,16 @@ select:focus {
   box-shadow: none !important;
 }
 
-label {
-  cursor: pointer;
-  -webkit-filter: grayscale(100%);
-          filter: grayscale(100%);
+.info-grid {
+  margin-left: 101px;
 }
 
-label:hover {
-  -webkit-filter: grayscale(0);
-          filter: grayscale(0);
-}
-
-input[type="radio"]:checked + label {
-  -webkit-filter: grayscale(0);
-          filter: grayscale(0);
+.form-icon {
+  width: 46px;
+  height: 40px;
+  margin-top: 14px;
+  background-size: cover !important;
+  background-position: center !important;
 }
 
 .icon-margin {
@@ -6817,10 +6837,13 @@ input[type="radio"]:checked + label {
 .big-font {
   font-size: 20px;
   font-weight: 500;
+  line-height: 24px;
+  margin-bottom: 22px;
+  letter-spacing: -0.1px;
+  color: #4a5464;
 }
 
 .avator {
-  margin-right: 33px;
   border-radius: 50%;
 }
 
@@ -6836,6 +6859,8 @@ input[type="radio"]:checked + label {
   background-color: #05A4F4;
   border: none;
   color: #fff;
+  font-weight: bold;
+  margin: 40px 0 28px;
 }
 
 .btn-primar:hover {
@@ -6850,6 +6875,7 @@ input[type="radio"]:checked + label {
 .btn-responsive {
   display: block;
   width: 208px;
+  height: 36px;
   white-space: normal !important;
   word-wrap: break-word;
 }
@@ -6864,8 +6890,11 @@ input[type="radio"]:checked + label {
 }
 
 .invisiblty {
-  visibility: hidden;
   display: none;
+}
+
+.visiblty {
+  display: block;
 }
 
 .btn-radius {
@@ -6877,14 +6906,19 @@ input[type="radio"]:checked + label {
 @media screen and (max-width: 1270px) {
   .main-grid {
     padding: 21px 60px 18px 40px !important;
+    width: 876px;
   }
 
   .form-main-grid {
     margin: 32px 39px 0;
   }
 
+  .info-grid {
+    margin-left: 65px;
+  }
+
   .search-main-grid {
-    margin: 16px 39px 0;
+    margin-top: 20px;
   }
 }
 
@@ -6894,8 +6928,13 @@ input[type="radio"]:checked + label {
     margin-right: 6px;
   }
 
-  .search-main-grid {
-    margin: 16px 6px 0;
+  .responsive-grid {
+    display: block;
+  }
+
+  .info-grid {
+    margin-left: 0;
+    margin-top: 30px;
   }
 
   .main-grid {
@@ -6909,6 +6948,19 @@ input[type="radio"]:checked + label {
   .btn-margin {
     padding-left: 87px;
   }
+}
+
+.location {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: roboto;
+  /* align-content: center; */
+  font-size: 16px;
+  line-height: 24px;
+  color: #4a5464;
+  letter-spacing: -0.1px;
+  /* align-items: center; */
 }
 
 @media screen and (min-width: 1440px) {
@@ -6932,6 +6984,7 @@ input[type="radio"]:checked + label {
 
   .main-grid {
     padding: 22px 20px 10px 16px !important;
+    width: 298px;
   }
 
   .small-image {
@@ -6940,7 +6993,6 @@ input[type="radio"]:checked + label {
   }
 
   .visiblty {
-    visibility: hidden !important;
     display: none;
   }
 
@@ -6953,7 +7005,7 @@ input[type="radio"]:checked + label {
   }
 
   .invisiblty {
-    visibility: visible !important;
+    display: block;
   }
 
   .icon-margin {
@@ -6962,10 +7014,6 @@ input[type="radio"]:checked + label {
 
   .header-text {
     font-size: 16px;
-  }
-
-  .avator {
-    margin-right: 15.8px;
   }
 
   .btn-margin {
@@ -6983,6 +7031,7 @@ input[type="radio"]:checked + label {
 @media screen and (max-width: 772px) {
   .main-grid {
     padding: 22px 20px 10px 16px;
+    width: 735px;
   }
 
   .invisible-add-agent {
@@ -8127,7 +8176,7 @@ input[type="radio"]:checked + label {
 }
 
 .invoice-body {
-  padding: 0 62px 64px 69px;
+  padding: 0 62px 64px 0;
 }
 
 .invioce-top-text {
@@ -8241,7 +8290,7 @@ input[type="radio"]:checked + label {
 }
 
 .agreement-margin {
-  padding: 90px 0 40px;
+  padding: 32px 0 40px;
   text-transform: uppercase;
   line-height: 30px;
 }
@@ -8269,6 +8318,7 @@ input[type="radio"]:checked + label {
   border-radius: 4px;
   padding-left: 24px;
   padding-right: 24px;
+  margin-top: 32px;
 }
 
 .chechbox-blue {
@@ -8277,10 +8327,10 @@ input[type="radio"]:checked + label {
   -moz-appearance: none;
   appearance: none;
   outline: 0;
-  background: lightgray;
+  background: #DADADA;
   height: 18px;
   width: 18px;
-  border: 1px solid white;
+  border: 1px solid #4A5464;
   margin-right: 15px;
 }
 
@@ -8290,6 +8340,7 @@ input[type="radio"]:checked + label {
 
 .chechbox-blue:checked {
   background: #05A4F4;
+  border: none;
 }
 
 .chechbox-blue:hover {
@@ -8329,8 +8380,6 @@ input[type="radio"]:checked + label {
 }
 
 .agreement-button {
-  width: 98px;
-  height: 51px;
   background: #05A4F4;
   border-radius: 2px;
   font-weight: 500;
@@ -8339,13 +8388,14 @@ input[type="radio"]:checked + label {
   text-align: center;
   color: #fff;
   border: none;
-  margin-top: 22px;
-  margin-bottom: 22px;
+  padding: 16px 25px;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 
 .payment-pay-text {
   font-size: 16px;
-  line-height: 24px;
+  line-height: 28px;
 }
 
 .payment-button {
@@ -8355,6 +8405,12 @@ input[type="radio"]:checked + label {
 
 .export-invoice-icon {
   margin: 0;
+}
+
+.mobile-display {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
 }
 
 .payment-pay-date {
@@ -8402,11 +8458,19 @@ input[type="radio"]:checked + label {
   .export-invoice {
     margin: 10px 0;
   }
+
+  .mobile-display {
+    display: block !important;
+  }
 }
 
 @media only screen and (max-width: 557px) {
   .payment-pay-text {
     font-size: 13px;
+  }
+
+  .mobile-display {
+    display: block !important;
   }
 
   .display-content-block {
@@ -11853,7 +11917,6 @@ input[type="radio"]:checked + label {
   color: #05A4F4;
   margin-top: 22px;
   margin-bottom: 22px;
-  margin-left: 415px;
 }
 
 .check-margin {
@@ -11889,6 +11952,7 @@ input[type="radio"]:checked + label {
 
 .orange-color {
   color: #FFA368;
+  margin-top: 40px;
 }
 
 .text {
@@ -11907,10 +11971,6 @@ input[type="radio"]:checked + label {
 }
 
 @media only screen and (max-width: 1200px) {
-  .blue-button {
-    margin-left: 365px;
-  }
-
   .check-margin {
     margin-right: 362px;
   }
@@ -11918,7 +11978,6 @@ input[type="radio"]:checked + label {
 
 @media only screen and (max-width: 690px) {
   .blue-button {
-    margin-left: 112px;
     padding: 11px;
   }
 
@@ -11943,6 +12002,10 @@ input[type="radio"]:checked + label {
   .check-position {
     margin-top: 65px;
     margin-left: -15px;
+  }
+
+  .orange-color {
+    margin-top: 24px;
   }
 }
 

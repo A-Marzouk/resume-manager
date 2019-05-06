@@ -14361,6 +14361,7 @@ Vue.component('sub-set-up', __webpack_require__(82));
 Vue.component('privacy-agreement', __webpack_require__(85));
 Vue.component('update-sub-plan', __webpack_require__(90));
 Vue.component('client-register', __webpack_require__(95));
+Vue.component('login-component', __webpack_require__(378));
 
 // campaign-activity inside components :
 
@@ -14404,6 +14405,13 @@ if ($("#addAgentComponent").length !== 0) {
 
     var addAgentComponent = new Vue({
         el: '#addAgentComponent'
+    });
+}
+
+if ($("#loginComponent").length !== 0) {
+
+    var loginComponent = new Vue({
+        el: '#loginComponent'
     });
 }
 
@@ -105305,6 +105313,573 @@ new SideNav();
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 375 */,
+/* 376 */,
+/* 377 */,
+/* 378 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(379)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(381)
+/* template */
+var __vue_template__ = __webpack_require__(382)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-d7363ba0"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\main\\LoginComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d7363ba0", Component.options)
+  } else {
+    hotAPI.reload("data-v-d7363ba0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 379 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(380);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("db7c4c90", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d7363ba0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LoginComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d7363ba0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LoginComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 380 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.error[data-v-d7363ba0]{\n    font-family: Roboto;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 16px;\n    line-height: 30px;/* identical to box height, or 187% */\n    color: #F56F6F;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 381 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            formData: {
+                email: '',
+                password: '',
+                remember: false
+            },
+            canSubmit: false,
+            errors: []
+        };
+    },
+
+    methods: {
+        submitForm: function submitForm() {
+            var _this = this;
+
+            if ($('#submitBtnWrapper').hasClass('disabled-btn')) {
+                return;
+            }
+            this.canSubmit = false;
+            axios.post('/client/login/submit', this.formData).then(function (response) {
+                if (response.data.status === 'success') {
+                    // redirect to client dashboard
+                    window.location.href = '/client';
+                }
+                _this.errors = response.data.errors;
+            });
+        },
+        clearInput: function clearInput(inputName) {
+            this.formData[inputName] = '';
+        }
+    },
+    watch: {
+        formData: {
+            handler: function handler() {
+                // check if all formData values are filled
+                var values = Object.values(this.formData);
+                var isAll_filled = true;
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var value = _step.value;
+
+                        if (value.length < 1) {
+                            isAll_filled = false;
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+
+                this.canSubmit = isAll_filled;
+            },
+
+            deep: true
+        }
+    }
+});
+
+/***/ }),
+/* 382 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "flex-column" }, [
+    _c("div", { staticClass: "account-info-edit" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "account-edit-section",
+          staticStyle: { "padding-bottom": "0" }
+        },
+        [
+          _c("div", { staticClass: "account-edit-section-inputs" }, [
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                        Enter your e-mail address\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.email }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.email,
+                          expression: "formData.email"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "email",
+                        placeholder: "Enter your email"
+                      },
+                      domProps: { value: _vm.formData.email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.formData, "email", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.formData.email.length > 0,
+                          expression: "formData.email.length > 0"
+                        }
+                      ],
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.clearInput("email")
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.errors.email
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.email[0]) +
+                          "\n                    "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "account-edit-section-inputs" }, [
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                        Enter your password\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.password }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.password,
+                          expression: "formData.password"
+                        }
+                      ],
+                      attrs: {
+                        type: "password",
+                        name: "password",
+                        placeholder: "Enter your password"
+                      },
+                      domProps: { value: _vm.formData.password },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "password",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.formData.password.length > 0,
+                          expression: "formData.password.length > 0"
+                        }
+                      ],
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.clearInput("password")
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.errors.password
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.errors.password[0]) +
+                          "\n                    "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "form-group",
+              staticStyle: { "margin-top": "36px" }
+            },
+            [
+              _c("div", { staticClass: "checkbox" }, [
+                _c("label", { staticClass: "checkBoxText checkBoxContainer" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.remember,
+                        expression: "formData.remember"
+                      }
+                    ],
+                    attrs: { type: "checkbox", name: "remember" },
+                    domProps: {
+                      checked: Array.isArray(_vm.formData.remember)
+                        ? _vm._i(_vm.formData.remember, null) > -1
+                        : _vm.formData.remember
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.formData.remember,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = null,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(
+                                _vm.formData,
+                                "remember",
+                                $$a.concat([$$v])
+                              )
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.formData,
+                                "remember",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(_vm.formData, "remember", $$c)
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "rememberText" }, [
+                    _vm._v("Remember Me")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "checkmark" })
+                ])
+              ])
+            ]
+          )
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "account-edit-section-edit-btn no-decoration mt-0",
+        class: { "disabled-btn": !_vm.canSubmit },
+        attrs: { id: "submitBtnWrapper" }
+      },
+      [
+        _c(
+          "a",
+          {
+            attrs: { href: "javascript:void(0)" },
+            on: { click: _vm.submitForm }
+          },
+          [_vm._v("\n            LOG IN\n        ")]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _vm._m(1)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "account-info-edit-heading dashboard-box-heading" },
+      [
+        _c("div", { staticClass: "left" }, [
+          _c("img", {
+            attrs: {
+              src: "/resumeApp/public/images/client/my_account/info_40px.png",
+              alt: "info icon"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", [_vm._v("\n                    LOG IN\n                ")])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "pt-3 no-decoration d-flex justify-content-center base-text align-items-center"
+      },
+      [
+        _vm._v("\n        Don't have an account ? "),
+        _c("a", { staticClass: "ml-2 base-link", attrs: { href: "#" } }, [
+          _vm._v(" REGISTER ")
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d7363ba0", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

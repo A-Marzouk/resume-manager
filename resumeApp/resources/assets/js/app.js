@@ -50,6 +50,7 @@ Vue.component('privacy-agreement',require('./components/client/dashboardComponen
 Vue.component('update-sub-plan',require('./components/client/dashboardComponents/payments/UpdateSubPlan.vue'));
 Vue.component('client-register',require('./components/client/ClientRegister.vue'));
 Vue.component('login-component',require('./components/main/LoginComponent.vue'));
+Vue.component('campaign-agents',require('./components/client/campaignComponents/CampaignAgents.vue'));
 
     // campaign-activity inside components :
     import CampaignActivity from './components/client/campaignComponents/CampaignActivity.vue';
@@ -106,13 +107,6 @@ if ($("#addAgentComponent").length !== 0){
 
     let addAgentComponent = new Vue({
         el:'#addAgentComponent'
-    });
-}
-
-if ($("#loginComponent").length !== 0){
-
-    let loginComponent = new Vue({
-        el:'#loginComponent'
     });
 }
 

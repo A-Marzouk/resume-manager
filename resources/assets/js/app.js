@@ -206,11 +206,19 @@ import FreelancerCampaignActivity from './components/freelancer/campaignComponen
 import FreelancerCampaignManager from './components/freelancer/dashboardComponents/CampaignManager.vue';
 import FreelancerMyAccount from './components/freelancer/dashboardComponents/MyAccount.vue';
 
+Vue.component('freelancer-register', require('./components/freelancer/FreelancerRegister.vue'))
 Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'))
 Vue.component('freelancer-campaign-archives', require('./components/freelancer/CampaignArchives.vue'))
 Vue.component('freelancer-campaign-main', require('./components/freelancer/CampaignMainComponent.vue'))
 Vue.component('freelancer-account-info-edit', require('./components/freelancer/dashboardComponents/my_account/MyAccountEdit.vue'));
 Vue.component('freelancer-professional-info-edit', require('./components/freelancer/dashboardComponents/my_account/ProfessionalInfoEdit.vue'));
+
+if ($("#freelancerRegister").length !== 0){
+
+    let freelancerRegister = new Vue({
+        el:'#freelancerRegister'
+    });
+}
 
 if ($('#freelancerDashboardComponent').length !== 0) {
   const routes = [

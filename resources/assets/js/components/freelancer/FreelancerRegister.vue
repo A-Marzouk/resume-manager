@@ -1,12 +1,12 @@
 <template>
     <div class="d-flex justify-content-center flex-column align-items-center">
         <div class="account-info-edit-wrapper">
-            <nav class="navbar navbar-light fixed-top client_navbar">
+            <nav class="navbar navbar-light fixed-top dashboard_navbar">
                 <div class="backBtn">
                     <a href="/">
                         <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
                     </a>
-                    BECOME A CLIENT
+                    BECOME AN AGENT
                 </div>
             </nav>
 
@@ -15,7 +15,7 @@
                     <div class="left">
                         <img src="/resumeApp/public/images/client/my_account/info_40px.png" alt="info icon">
                         <span>
-                        FILL IN THE INFORMATION TO BECOME A CLIENT
+                        FILL IN THE INFORMATION TO BECOME AN AGENT
                     </span>
                     </div>
                 </div>

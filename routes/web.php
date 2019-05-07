@@ -101,7 +101,7 @@ Route::prefix('freelancer')->group(function (){
         return redirect()->back();
     });
     
-    Route::get('/register', 'Auth\ClientRegisterController@showRegistrationForm')->name('freelancer.register');
+    Route::get('/register', 'Auth\FreelancerRegisterController@showRegistrationForm')->name('freelancer.register');
     Route::post('/register/submit','Auth\RegisterController@register')->name('freelancer.register.submit');
     Route::get('/register/submit',function(){
         return redirect()->back();

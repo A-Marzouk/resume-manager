@@ -92,7 +92,7 @@
                 axios.post('/client/login/submit',this.formData).then( (response) => {
                     if(response.data.status === 'success'){
                         // redirect to client dashboard
-                        window.location.href = '/client';
+                        window.location.href =response.data.redirect ;
                     }
                     this.errors = response.data.errors;
                 });

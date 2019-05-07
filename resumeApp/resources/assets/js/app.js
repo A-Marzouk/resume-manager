@@ -204,6 +204,7 @@ if ($("#account_info_edit").length !== 0){
 // Freelancer components
 import FreelancerCampaignActivity from './components/freelancer/campaignComponents/CampaignActivity.vue';
 import FreelancerCampaignManager from './components/freelancer/dashboardComponents/CampaignManager.vue';
+import FreelancerMyAccount from './components/freelancer/dashboardComponents/MyAccount.vue';
 
 Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'))
 Vue.component('freelancer-campaign-archives', require('./components/freelancer/CampaignArchives.vue'))
@@ -211,7 +212,7 @@ Vue.component('freelancer-campaign-main', require('./components/freelancer/Campa
 
 if ($('#freelancerDashboardComponent').length !== 0) {
   const routes = [
-    { path: '/freelancer/:my-account', component: MyAccount },
+    { path: '/freelancer/:my-account', component: FreelancerMyAccount },
     { path: '/freelancer', component: FreelancerCampaignManager }
   ]
 

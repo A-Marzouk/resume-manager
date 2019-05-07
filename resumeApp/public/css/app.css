@@ -7002,8 +7002,12 @@ body {
 
 .account-info-content-wrapper .account-info-content .acc-info-content-heading .acc-info-timezone {
   font-family: Roboto;
-  color: #4A5464;
-  font-weight: 500;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: right;
+  color: #7A828D;
 }
 
 .account-info-content-wrapper .account-info-content .acc-info-content-item {
@@ -7315,6 +7319,8 @@ body {
 .header-text {
   font-size: 1.25rem;
   font-family: Roboto;
+  color: #4A5464;
+  font-weight: 500;
 }
 
 .form-main-grid {

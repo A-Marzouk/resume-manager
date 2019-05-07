@@ -18,11 +18,11 @@ class FreelancersController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     public function index(){
-        $client = auth()->guard('client')->user();
+        // $client = auth()->guard('client')->user();
         return view('freelancer.dashboard',compact('client'));
     }
 

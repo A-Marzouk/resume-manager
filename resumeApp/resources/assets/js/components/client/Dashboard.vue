@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="navbar navbar-light fixed-top client_navbar" id="sideNav">
+        <nav class="navbar navbar-light fixed-top dashboard_navbar" id="sideNav">
 
             <a href="javascript:void(0)" class="js-menu-open menu-open" id="menu-open-icon">
                 <img src="/resumeApp/public/images/client/Group.png" alt="menu">
@@ -16,7 +16,7 @@
             <div class="form-inline my-2 my-lg-0">
 
             </div>
-            <div class="form-inline my-2 my-lg-0 clientName">
+            <div class="form-inline my-2 my-lg-0 name">
                 <div class="logoutButton">
                     <a href="#">
                         <img src="/resumeApp/public/images/client/log_out.png" alt="logout">
@@ -25,7 +25,7 @@
                 <div>
                     Ahmed R. Marzouk
                 </div>
-                <div class="clientAvatar">
+                <div class="avatar">
                     <img src="/resumeApp/public/images/client/dummy.png" alt="logout">
                 </div>
             </div>
@@ -34,16 +34,16 @@
         <div class="js-side-nav-container side-nav-container">
             <div class="js-side-nav side-nav">
                 <a href="javascript:void(0)" class="js-menu-close menu-close" id="close-menu"></a>
-                <div class="clientInfo-bar">
-                    <div class="clientAvatar">
+                <div class="info-bar">
+                    <div class="avatar">
                         <img src="/resumeApp/public/images/client/dummy.png" alt="logout">
                     </div>
-                    <div class="clientName">
+                    <div class="name">
                         Welcome,<br/>
                         Ahmed R. Marzouk
                     </div>
                 </div>
-                <div class="client_dashboard_content">
+                <div class="dashboard_content">
                     <div class="dashboard-side-menu">
                         <router-link to="/client/dashboard/campaign-manager" class="menu-block row" :class="{'active' : activeTab === 'campaign-manager'}" @click.native="selectTab('campaign-manager')">
                             <div class="imageContainer">
@@ -96,7 +96,7 @@
             </div>
         </div>
 
-        <div class="client_dashboard_content">
+        <div class="dashboard_dashboard_content">
             <div class="dashboard-side-menu hideOnTablet">
                 <router-link to="/client/dashboard/campaign-manager" class="menu-block row" :class="{'active' : activeTab === 'campaign-manager'}" @click.native="selectTab('campaign-manager')">
                     <div class="imageContainer">

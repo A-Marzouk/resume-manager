@@ -1,7 +1,7 @@
 <div id="about" class="education">
     <div class="row">
         <div class="offset-lg-1 col-lg-5 col-md-6 educationSection">
-            <img src="/resumeApp/public/images/newResume/what_i_do.png" style="padding-bottom: 10px;" alt="aboutImg" width="30px;">
+            <img src="/images/newResume/what_i_do.png" style="padding-bottom: 10px;" alt="aboutImg" width="30px;">
             <span class="aboutText">WORK OVERVIEW</span>
             <?php
                 $works = $user1->worksHistory;

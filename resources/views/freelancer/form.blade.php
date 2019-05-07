@@ -70,7 +70,7 @@ if(!isset($value['id'])){
                 </div>
                 <div class="editBtn NoDecor">
                     <a href="{{route('show.edit_form')}}">
-                        <img src="/resumeApp/resources/assets/images/edit_profile.png" alt="edit profile">
+                        <img src="/images/edit_profile.png" alt="edit profile">
                         Edit profile
                     </a>
                 </div>

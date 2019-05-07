@@ -34,7 +34,7 @@
                     data-amount=""
                     data-name="123 Workforce"
                     data-description="Custom payment"
-                    data-image="/resumeApp/public/images/newResume/logo.png"
+                    data-image="/images/newResume/logo.png"
                     data-locale="auto"
                     id="customPayment">
             </script>

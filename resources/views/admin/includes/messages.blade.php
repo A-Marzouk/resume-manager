@@ -35,6 +35,6 @@
 
 {{-- chat audio message --}}
 <audio id="chatAudio" class="d-none">
-    <source src="/resumeApp/public/sounds/slow-spring-board.mp3" type="audio/ogg">
+    <source src="/sounds/slow-spring-board.mp3" type="audio/ogg">
     Your browser does not support the audio element.
 </audio>

@@ -2,7 +2,7 @@
 <div id="audio">
     <div class="row">
         <div class="col-md-5 offset-md-1 audioHeading">
-            <img src="/resumeApp/public/images/newResume/audio.png" alt="audio">
+            <img src="/images/newResume/audio.png" alt="audio">
             <span class="quoteText">
                 Audio Introduction
             </span>

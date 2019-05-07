@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <div class="form-group col-md-12">
-            <label style="border-bottom:1px lightgray solid ; padding: 2px;" class="panelFormLabel">Current available hours per week <span style="font-size:small;">*</span> <span id="tickMarkavailableHours" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span>
+            <label style="border-bottom:1px lightgray solid ; padding: 2px;" class="panelFormLabel">Current available hours per week <span style="font-size:small;">*</span> <span id="tickMarkavailableHours" class="d-none"><img src="/images/Shape.png" width="15px;" height="12px;"></span>
             </label>
 
             <select class="form-control col-md-4 hoursOptions" style="height: 50px;" name="availableHours" id="availableHours{{$currFreelancer->id}}">
@@ -23,12 +23,12 @@
 
     <div class="row">
         <div class="form-group col-md-6 col-lg-4">
-            <label for="salary" class="panelFormLabel">Exp. Salary per hour (USD / hour) <span style="font-size:small;">*</span> <span id="tickMarksalary" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label><br/>
+            <label for="salary" class="panelFormLabel">Exp. Salary per hour (USD / hour) <span style="font-size:small;">*</span> <span id="tickMarksalary" class="d-none"><img src="/images/Shape.png" width="15px;" height="12px;"></span></label><br/>
             <input type="text"  style="@if($errors->has('salary')) border:1px solid red; @endif" class="form-control panelFormInput d-inline-block" id="salary{{$currFreelancer->id}}" name="salary" value="<? if(!empty($salary)){echo $salary;}else{echo '';}?>">
         </div>  <!-- Salary  -->
 
         <div class="form-group col-md-6 col-lg-4">
-            <label for="salary_month"  class="panelFormLabel">Exp. salary for Full time work (USD / Monthly) <span style="font-size:small;">*</span> <span id="tickMarksalary_month" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label>
+            <label for="salary_month"  class="panelFormLabel">Exp. salary for Full time work (USD / Monthly) <span style="font-size:small;">*</span> <span id="tickMarksalary_month" class="d-none"><img src="/images/Shape.png" width="15px;" height="12px;"></span></label>
             <input type="text" class="form-control panelFormInput" placeholder="" id="salary_month" name="salary_month" value="{{$salary_month}}">
 
         </div> <!-- monthly payment -->
@@ -47,7 +47,7 @@
     <div class="row">
         <div class="form-group col-md-12">
             <hr>
-            <label for="timeZone" class="panelFormLabel">Time zone</label><span id="tickMarktimeZone" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span>
+            <label for="timeZone" class="panelFormLabel">Time zone</label><span id="tickMarktimeZone" class="d-none"><img src="/images/Shape.png" width="15px;" height="12px;"></span>
             <div class="">
                 <select class="form-control col-md-4" style="height: 50px;" id="timeZone" name="timeZone">
                     <option value="" selected="selected">Select your timezone</option>
@@ -134,7 +134,7 @@
             }
             ?>
             <div class="row">
-                <div class="col-md-2" style="padding-top: 15px; 	color: #697786; font-family: Roboto;	font-size: 14px;">
+                <div class="col-md-2" style="padding-top: 15px;     color: #697786; font-family: Roboto;    font-size: 14px;">
                     <b>{{$day}}</b>
                 </div>
                 <div class="input-group col-md-4" style="margin: 2px;">
@@ -165,7 +165,7 @@
             <hr>
             <div class="panelFormLabel">
                 If you are currently employed / have ongoing projects and will be available for work in the future please select a date in the future that you will be free , if you are currently available please select todays date.
-                <label for="freeDate" class="panelFormLabel"><span id="tickMarkfreeDate" class="d-none"><img src="/resumeApp/public/images/Shape.png" width="15px;" height="12px;"></span></label>
+                <label for="freeDate" class="panelFormLabel"><span id="tickMarkfreeDate" class="d-none"><img src="/images/Shape.png" width="15px;" height="12px;"></span></label>
             </div>
             <input type="date" class="form-control panelFormInput" name="freeDate" value="<? if(!empty($freeDate)){ echo $freeDate;} else {echo date('Y-m-d');} ?>">
         </div>

@@ -172,7 +172,7 @@
                                                            data-toggle="modal"
                                                            data-target="#works{{$workExample->id}}Modal"
                                                            style="outline: none; margin-left: 16px;">
-                                                            <img src="/resumeApp/public/images/newResume/link.png"
+                                                            <img src="/images/newResume/link.png"
                                                                  alt="view work">
                                                         </a>
                                                     </div>
@@ -194,7 +194,7 @@
                 <div class=" col-12 text-center NoDecor">
                     <a href="javascript:void(0)" id="prevSlide{{$freelancer->id}}{{$value['id']}}"  data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}" data-slide-to="{{$numberOfSlides}}" role="button" data-slide="prev" class="cardLabel_interviews noScroll prevSlide"
                        style="color:#697786;">
-                        <img src="/resumeApp/resources/assets/images/left_arrow.png"
+                        <img src="/images/left_arrow.png"
                              alt="prev" width="15px">
                     </a>
 
@@ -202,7 +202,7 @@
 
                     <a href="javascript:void(0)" id="nextSlide{{$freelancer->id}}{{$value['id']}}" data-target="#portfolioCarousel{{$freelancer->id}}{{$value['id']}}" data-slide-to="{{$numberOfSlides}}" role="button" data-slide="next" class="cardLabel_interviews noScroll nextSlide"
                        style="color:#697786;">
-                        <img src="/resumeApp/resources/assets/images/right_arrow.png"
+                        <img src="/images/right_arrow.png"
                              alt="next" width="15px">
                     </a>
                 </div>
@@ -249,7 +249,7 @@
                                                data-toggle="modal"
                                                data-target="#works{{$workExample->id}}Modal"
                                                style="outline: none; margin-left: 16px;">
-                                                <img src="/resumeApp/public/images/newResume/link.png"
+                                                <img src="/images/newResume/link.png"
                                                      alt="view work">
                                             </a>
                                         </div>

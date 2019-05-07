@@ -1,14 +1,14 @@
 {{-- faveicon --}}
-<link rel="shortcut icon" href="/resumeApp/public/images/logo123.png">
+<link rel="shortcut icon" href="/images/logo123.png">
 
 <!-- Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 <!-- Styles -->
-<link href="/resumeApp/public/css/app.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/resumeApp/public/js/slick-master/slick/slick.css"/>
-<link rel="stylesheet" type="text/css" href="/resumeApp/public/js/slick-master/slick/slick-theme.css"/>
+<link href="/css/app.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/js/slick-master/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="/js/slick-master/slick/slick-theme.css"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <style>

@@ -11,7 +11,7 @@
                     $photoSrc = '/' . $photoSrc;
                 }
             }else{
-                $photoSrc = '/resumeApp/public/images/user.png';
+                $photoSrc = '/images/user.png';
             }
             ?>
             <img src="{{$photoSrc}}" alt="freelancer" class="freelancerImg"
@@ -53,7 +53,7 @@
                 <a href="javascript:void(0)" id="{{$freelancer->id}}{{$value['id']}}_open_audio" style="outline: none;" class="openAudio">
                     <div class="cardIconsCon ">
                         <span>
-                            <img src="/resumeApp/public/images/audio_resume_Card.png"
+                            <img src="/images/audio_resume_Card.png"
                                  alt="" style="padding-right: 5px; width: 23px;">
                             <span class="audioText">Audio & Text</span>
                         </span>
@@ -64,7 +64,7 @@
                 <a href="javascript:void(0)" id="{{$freelancer->id}}{{$value['id']}}_open_video" style="outline: none;" class="openVideo">
                     <div class="cardIconsCon2  text-center">
                         <span>
-                            <img src="/resumeApp/public/images/video_resume_card.png"
+                            <img src="/images/video_resume_card.png"
                                  alt="" style="padding-right: 5px; width: 23px;">
                             <span class="audioText">Video</span>
                         </span>

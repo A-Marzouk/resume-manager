@@ -1,4 +1,4 @@
-<script type="text/javascript" src="/resumeApp/public/js/app.js"></script>
+<script type="text/javascript" src="/js/app.js"></script>
 <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -22,7 +22,7 @@
 
 </script>
 {{-- slick scripts --}}
-<script type="text/javascript" src="/resumeApp/public/js/slick-master/slick/slick.min.js"></script>
+<script type="text/javascript" src="/js/slick-master/slick/slick.min.js"></script>
 <script>
     $(document).ready(function(){
         $('.slickSlide').slick({
@@ -121,11 +121,11 @@
     });
 
     function handler1() {
-        $('img', this).attr('src','/resumeApp/public/images/Circle-PNG-HD.png');
+        $('img', this).attr('src','/images/Circle-PNG-HD.png');
         $(this).one("click", handler2);
     }
     function handler2() {
-        $('img', this).attr('src','/resumeApp/public/images/img_143278 (2).png');
+        $('img', this).attr('src','/images/img_143278 (2).png');
         $(this).one("click", handler1);
     }
 

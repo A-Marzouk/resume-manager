@@ -27,11 +27,11 @@ if($user){
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel fixed-top">
             <a class="navbar-brand col-md-3 col-9" href="{{ url('/') }}">
-                <img src="/resumeApp/public/images/client/logo_123.png" alt="logo">
+                <img src="/images/client/logo_123.png" alt="logo">
             </a>
 
             <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="" style="border: none;" data-target="#" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon" style="background-image: url('/resumeApp/public/images/newResume/menu.png');"></span>
+                <span class="navbar-toggler-icon" style="background-image: url('/images/newResume/menu.png');"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -87,7 +87,7 @@ if($user){
             @yield('content')
         </main>
         <audio id="chatAudio" class="d-none">
-            <source src="/resumeApp/public/sounds/slow-spring-board.mp3" type="audio/ogg">
+            <source src="/sounds/slow-spring-board.mp3" type="audio/ogg">
             Your browser does not support the audio element.
         </audio>
 
@@ -116,7 +116,7 @@ if($user){
             @include('includes.chat')
         <? endif;?>
     </div>
-<script type="text/javascript" src="/resumeApp/public/js/app.js"></script>
+<script type="text/javascript" src="/js/app.js"></script>
 <script>
         $(document).ready(function(){
             if ($("#sendMessage").length ){

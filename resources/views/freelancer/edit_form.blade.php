@@ -65,13 +65,13 @@ $freelancer = auth()->user();
                 </div>
                 {{--<div class="editBtn NoDecor" style="width: 97px;">--}}
                     {{--<a href="{{route('show.new_form')}}">--}}
-                        {{--<img src="/resumeApp/resources/assets/images/close_24px.png" alt="edit profile">--}}
+                        {{--<img src="/images/close_24px.png" alt="edit profile">--}}
                         {{--Discard--}}
                     {{--</a>--}}
                 {{--</div>--}}
                 <div class="editBtn NoDecor" style="margin-left: 10px;">
                     <a href="{{route('freelancer.dashboard')}}">
-                        <img src="/resumeApp/resources/assets/images/check_24px.png" alt="edit profile">
+                        <img src="/images/check_24px.png" alt="edit profile">
                         Finish editing
                     </a>
                 </div>

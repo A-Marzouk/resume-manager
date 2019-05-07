@@ -56757,805 +56757,804 @@ $('.cancelApplyBtn').on('click', function () {
 
 $(document).ready(function () {
 
-    /////////////////////////   Freelancer form scripts ////////////////////////
-    // overall scripts ( used in all sections )
-    // cursor pointer on hover :
-    $('.cursorPointerOnHover').hover(function () {
-        $(this).css('cursor', 'pointer');
+  /////////////////////////   Freelancer form scripts ////////////////////////
+  // overall scripts ( used in all sections )
+  // cursor pointer on hover :
+  $('.cursorPointerOnHover').hover(function () {
+    $(this).css('cursor', 'pointer');
+  });
+  // client page : delete search
+  $('.deleteSearch').click(function () {
+    if (!confirm('Are you sure you want to delete this search ?')) {
+      return;
+    }
+    var search_id = this.id;
+    var deleteData = {
+      'search_id': search_id
+    };
+    axios.post('/search_delete', deleteData).then(function (response) {
+      // hide the deleted column slowly :
+      $('#selectedSearch' + search_id).fadeOut(2000);
+
+      // changes are saved on - off
+      $('#changesSaved').fadeIn('slow');
+      setTimeout(function () {
+        $('#changesSaved').fadeOut();
+      }, 2000);
     });
-    // client page : delete search
-    $('.deleteSearch').click(function () {
-        if (!confirm('Are you sure you want to delete this search ?')) {
-            return;
-        }
-        var search_id = this.id;
-        var deleteData = {
-            'search_id': search_id
-        };
-        axios.post('/search_delete', deleteData).then(function (response) {
-            // hide the deleted column slowly :
-            $('#selectedSearch' + search_id).fadeOut(2000);
+  });
 
-            // changes are saved on - off
-            $('#changesSaved').fadeIn('slow');
-            setTimeout(function () {
-                $('#changesSaved').fadeOut();
-            }, 2000);
-        });
-    });
-
-    // client page : delete search without realoding the page :
+  // client page : delete search without realoding the page :
 
 
-    // public search page : delete freelancer search without realoding the page :
-    $('.deleteFreelancerSearch').on('click', function () {
-        if (!confirm('Are you sure you want to delete this freelancer from search ?')) {
-            return;
-        }
-
-        var id = this.id;
-        var idArr = id.split('_');
-        var freelancer_id = idArr[0];
-        var search_id = idArr[1];
-        var deleteData = {
-            freelancer_id: freelancer_id,
-            search_id: search_id
-        };
-        axios.post('/search_delete_freelancer', deleteData).then(function (response) {
-            console.log(response.data);
-
-            // hide the deleted column slowly :
-            $('#selectedFreelancerSearch' + freelancer_id).fadeOut(2000);
-
-            // changes are saved on - off
-            $('#changesSaved').fadeIn('slow');
-            setTimeout(function () {
-                $('#changesSaved').fadeOut();
-            }, 2000);
-        });
-    });
-    // indicators for each section :
-    // we need to get if any section is completed.
-    highlightCompletedSecs();
-
-    // hiding changes saved :
-    $('#changesSaved').removeClass('d-none');
-    $('#changesSaved').hide();
-
-    // hide success message
-    if ($('#successMessage').length !== 0) {
-        setTimeout(function () {
-            $('#successMessage').fadeOut('slow');
-        }, 4000);
+  // public search page : delete freelancer search without realoding the page :
+  $('.deleteFreelancerSearch').on('click', function () {
+    if (!confirm('Are you sure you want to delete this freelancer from search ?')) {
+      return;
     }
 
-    // chat on typing change send button :
-    $('#sendMessage').on('keyup', function () {
-        var chatIcon = $('#chatIcon');
-        if ($('#sendMessage').val()) {
-            chatIcon.css({
-                'background-position-x': '-39px',
-                'pointer-events': 'auto',
-                'cursor': 'pointer'
-            });
-        } else {
-            chatIcon.css({
-                'background-position-x': '7px',
-                'pointer-events': 'none',
-                'cursor': 'default'
-            });
-        }
-    });
+    var id = this.id;
+    var idArr = id.split('_');
+    var freelancer_id = idArr[0];
+    var search_id = idArr[1];
+    var deleteData = {
+      freelancer_id: freelancer_id,
+      search_id: search_id };
+    axios.post('/search_delete_freelancer', deleteData).then(function (response) {
+      console.log(response.data);
 
+      // hide the deleted column slowly :
+      $('#selectedFreelancerSearch' + freelancer_id).fadeOut(2000);
+
+      // changes are saved on - off
+      $('#changesSaved').fadeIn('slow');
+      setTimeout(function () {
+        $('#changesSaved').fadeOut();
+      }, 2000);
+    });
+  });
+  // indicators for each section :
+  // we need to get if any section is completed.
+  highlightCompletedSecs();
+
+  // hiding changes saved :
+  $('#changesSaved').removeClass('d-none');
+  $('#changesSaved').hide();
+
+  // hide success message
+  if ($('#successMessage').length !== 0) {
+    setTimeout(function () {
+      $('#successMessage').fadeOut('slow');
+    }, 4000);
+  }
+
+  // chat on typing change send button :
+  $('#sendMessage').on('keyup', function () {
     var chatIcon = $('#chatIcon');
-    chatIcon.on('click', function () {
-        $(this).css({
-            'background-position-x': '7px',
-            'pointer-events': 'none',
-            'cursor': 'default'
-        });
-    });
+    if ($('#sendMessage').val()) {
+      chatIcon.css({
+        'background-position-x': '-39px',
+        'pointer-events': 'auto',
+        'cursor': 'pointer'
+      });
+    } else {
+      chatIcon.css({
+        'background-position-x': '7px',
+        'pointer-events': 'none',
+        'cursor': 'default'
+      });
+    }
+  });
 
-    // add tick mark when data is filled :
-    $(':input').blur(function () {
-        if (this.type != 'checkbox') {
-            if ($(this).val()) {
-                $('#tickMark' + this.name).removeClass('d-none');
-            } else {
-                $('#tickMark' + this.name).addClass('d-none');
-            }
-        }
+  var chatIcon = $('#chatIcon');
+  chatIcon.on('click', function () {
+    $(this).css({
+      'background-position-x': '7px',
+      'pointer-events': 'none',
+      'cursor': 'default'
     });
+  });
 
-    $(':input').blur();
+  // add tick mark when data is filled :
+  $(':input').blur(function () {
+    if (this.type != 'checkbox') {
+      if ($(this).val()) {
+        $('#tickMark' + this.name).removeClass('d-none');
+      } else {
+        $('#tickMark' + this.name).addClass('d-none');
+      }
+    }
+  });
 
-    // handeling hashes all over the Freelancer form page :
-    //     $(function(){
-    //         var hash = window.location.hash;
-    //         hash && $('ul.nav a[href="' + hash + '"]').tab('show');
-    //
-    //         $('.nav-tabs a').click(function (e) {
-    //             $(this).tab('show');
-    //             var scrollmem = $('body').scrollTop() || $('html').scrollTop();
-    //             window.location.hash = this.hash;
-    //             $('html,body').scrollTop(scrollmem);
-    //         });
-    //     });
+  $(':input').blur();
 
-    var heading = $('#tabMainHeading');
+  // handeling hashes all over the Freelancer form page :
+  //     $(function(){
+  //         var hash = window.location.hash;
+  //         hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+  //
+  //         $('.nav-tabs a').click(function (e) {
+  //             $(this).tab('show');
+  //             var scrollmem = $('body').scrollTop() || $('html').scrollTop();
+  //             window.location.hash = this.hash;
+  //             $('html,body').scrollTop(scrollmem);
+  //         });
+  //     });
 
-    // clicking on different taps change the main heading !
-    $('#tap1,#tap1phone').on('click', function () {
-        heading.html('1.Overview and personal info');
-    });
-    $('#tap2,#tap2phone').on('click', function () {
-        heading.html('2.Availability and payment');
-    });
-    $('#tap3,#tap3phone').on('click', function () {
-        heading.html('3.Multimedia (Audio / Video)');
-    });
-    $('#tap4,#tap4phone').on('click', function () {
-        heading.html('4.Career overview (Education / Training)');
-    });
-    $('#tap5,#tap5phone').on('click', function () {
-        heading.html('5.Portfolio');
-    });
-    $('#tap6,#tap6phone').on('click', function () {
-        heading.html('6.Professional skills');
-    });
-    $('#tap7,#tap7phone').on('click', function () {
-        heading.html('7.Personal attributes');
-    });
+  var heading = $('#tabMainHeading');
 
-    // keep the heading when page is loaded :
+  // clicking on different taps change the main heading !
+  $('#tap1,#tap1phone').on('click', function () {
+    heading.html('1.Overview and personal info');
+  });
+  $('#tap2,#tap2phone').on('click', function () {
+    heading.html('2.Availability and payment');
+  });
+  $('#tap3,#tap3phone').on('click', function () {
+    heading.html('3.Multimedia (Audio / Video)');
+  });
+  $('#tap4,#tap4phone').on('click', function () {
+    heading.html('4.Career overview (Education / Training)');
+  });
+  $('#tap5,#tap5phone').on('click', function () {
+    heading.html('5.Portfolio');
+  });
+  $('#tap6,#tap6phone').on('click', function () {
+    heading.html('6.Professional skills');
+  });
+  $('#tap7,#tap7phone').on('click', function () {
+    heading.html('7.Personal attributes');
+  });
+
+  // keep the heading when page is loaded :
+  checkHash();
+
+  // change taps on click :
+  $('.nextBtn').click(function (e) {
+    var href = $(this).attr("href");
+    e.preventDefault();
+    $('#mytabs a[href="' + href + '"]').tab('show');
+    window.location.hash = href;
     checkHash();
+    $('html, body').animate({ scrollTop: $('#tabMainHeading').position().top }, 'slow');
+  });
 
-    // change taps on click :
-    $('.nextBtn').click(function (e) {
-        var href = $(this).attr("href");
-        e.preventDefault();
-        $('#mytabs a[href="' + href + '"]').tab('show');
-        window.location.hash = href;
-        checkHash();
-        $('html, body').animate({ scrollTop: $('#tabMainHeading').position().top }, 'slow');
-    });
+  // save to data base when any data changes !
+  $(function () {
+    $('.freelancerForm :input').on('change', function (e) {
+      e.preventDefault();
+      // if inputs from Job form ( do not submit here )
+      var dontSaveFields = ['job_title', 'job_description', 'company', 'date_from', 'date_to', 'currently_working', 'projectName', 'link', 'mainImage', 'projectDesc', 'isActive'];
+      if (dontSaveFields.includes(this.id)) {
+        return;
+      }
+      var form = document.getElementsByClassName('freelancerForm')[0];
 
-    // save to data base when any data changes !
-    $(function () {
-        $('.freelancerForm :input').on('change', function (e) {
-            e.preventDefault();
-            // if inputs from Job form ( do not submit here )
-            var dontSaveFields = ['job_title', 'job_description', 'company', 'date_from', 'date_to', 'currently_working', 'projectName', 'link', 'mainImage', 'projectDesc', 'isActive'];
-            if (dontSaveFields.includes(this.id)) {
-                return;
-            }
-            var form = document.getElementsByClassName('freelancerForm')[0];
+      // disable all empty files
 
-            // disable all empty files
-
-            var files = document.querySelectorAll(".freelancerForm input[type=file]");
-            var ios = iOS();
-            if (ios) {
-                files.forEach(function (file) {
-                    var fileInput = $('#' + file.id);
-                    if (fileInput.get(0).files.length === 0) {
-                        fileInput.attr('disabled', true);
-                    }
-                });
-            }
-
-            $.ajax({
-                type: 'post',
-                url: '/freelancer/store',
-                data: new FormData(form),
-                contentType: false,
-                cache: false,
-                processData: false,
-                beforeSend: function beforeSend() {},
-                xhr: function xhr() {
-                    var xhr = new window.XMLHttpRequest();
-                    xhr.upload.addEventListener("progress", function (evt) {
-                        if (evt.lengthComputable) {
-                            var percentComplete = evt.loaded / evt.total;
-                            //Do something with upload progress here
-                            if ($('#audioFile').val()) {
-                                $('#loadingText').removeClass('d-none');
-                                $('#spanTextAudio').text('Uploading audio..');
-                                $('#progressAudio').html(parseInt(percentComplete * 100) + ' %');
-                                if (percentComplete == 1) {
-                                    // success
-                                    $('#loadingText').html('Success.');
-                                    setTimeout(function () {
-                                        $('#loadingText').fadeOut(500).addClass('d-none');
-                                        location.reload();
-                                    }, 2500);
-                                }
-                            }
-                            if ($('#video_file').val()) {
-                                $('#loadingTextVideo').removeClass('d-none');
-                                $('#spanTextVideo').text('Uploading video..');
-                                $('#progress').html(parseInt(percentComplete * 100) + ' %');
-                                if (percentComplete == 1) {
-                                    // success
-                                    $('#loadingTextVideo').html('Success.');
-                                    setTimeout(function () {
-                                        $('#loadingTextVideo').addClass('d-none');
-                                    }, 2500);
-                                }
-                            }
-                        }
-                    }, false);
-
-                    xhr.addEventListener("progress", function (evt) {
-                        if (evt.lengthComputable) {
-                            var percentComplete = evt.loaded / evt.total;
-                            //Do something with download progress
-                        }
-                    }, false);
-
-                    return xhr;
-                },
-                success: function success() {
-                    if ($('#video_file').val()) {
-                        // load the video
-                        $('#videoFileFrame')[0].load();
-                    }
-
-                    // changes are saved on - off
-                    $('#changesSaved').fadeIn('slow');
-                    setTimeout(function () {
-                        $('#changesSaved').fadeOut();
-                    }, 2000);
-
-                    highlightCompletedSecs();
-                }
-            });
-
-            if (ios) {
-                // after the request enable them again !
-                var disabledFiles = document.querySelectorAll(".freelancerForm input[type=file]");
-                disabledFiles.forEach(function (file) {
-                    var fileInput = $('#' + file.id);
-                    fileInput.attr('disabled', false);
-                });
-            }
+      var files = document.querySelectorAll(".freelancerForm input[type=file]");
+      var ios = iOS();
+      if (ios) {
+        files.forEach(function (file) {
+          var fileInput = $('#' + file.id);
+          if (fileInput.get(0).files.length === 0) {
+            fileInput.attr('disabled', true);
+          }
         });
-    });
+      }
 
-    // importing data from behance :
-    $('#behanceDataForm').on('submit', function (e) {
-        e.preventDefault();
-        var behanceLink = $('#behanceLink').val();
-        var behanceUsername = getBehanceUsername(behanceLink);
-        if (behanceUsername !== false) {
-            getBehanceData(behanceUsername);
-        }
-    });
-
-    // hours selection :
-
-    $('.hoursOptions').on('change', function () {
-        var freelancerID = this.id.replace('availableHours', '');
-        var weeklySalaryID = 'weeklySalary' + freelancerID;
-        var weeklySalaryText = 'For ' + this.value + ' hours per week, you will be paid ' + this.value * $('#salary' + freelancerID).val() + ' USD';
-        $('#' + weeklySalaryID).fadeOut(1000);
-        $('#' + weeklySalaryID).html(weeklySalaryText);
-        setTimeout(function () {
-            $('#' + weeklySalaryID).fadeIn(1000);
-        }, 1000);
-    });
-
-    // 1- overview ( section one )
-    // profile photo scripts
-
-    $("#photoInput").change(function () {
-        readURL(this, '#photoPreview');
-        readURL(this, '#photoPreview_card');
-        $('#imageUploadSave').removeClass('d-none');
-    });
-
-    $('#addPhoto_card').on('click', function () {
-        $("#photoInput").click();
-    });
-
-    var srcPreview = '';
-    $('#photoPreview').hover(function () {
-        $(this).css('cursor', 'pointer');
-        srcPreview = $('#photoPreview').attr('src');
-        if (srcPreview !== '/resumeApp/public/images/add_profile_photo.png') {
-            $('#photoPreview').fadeTo(500, .1);
-            $('#profileImgBox').css('background', 'url("/resumeApp/public/images/deleteimg.png")');
-            $('#profileImgBox').css('background-repeat', 'no-repeat');
-            $('#profileImgBox').css('background-position', 'center');
-        }
-    }, function () {
-        $('#photoPreview').fadeTo(500, 1);
-        $('#profileImgBox').css('background', '');
-    });
-
-    $('#photoPreview').on('click', function () {
-        if (srcPreview !== '/resumeApp/public/images/add_profile_photo.png') {
-            // delete photo profile photo
-            if (!confirm('Are you sure you want to delete profile photo ?')) {
-                return;
+      $.ajax({
+        type: 'post',
+        url: '/freelancer/store',
+        data: new FormData(form),
+        contentType: false,
+        cache: false,
+        processData: false,
+        beforeSend: function beforeSend() {},
+        xhr: function xhr() {
+          var xhr = new window.XMLHttpRequest();
+          xhr.upload.addEventListener("progress", function (evt) {
+            if (evt.lengthComputable) {
+              var percentComplete = evt.loaded / evt.total;
+              //Do something with upload progress here
+              if ($('#audioFile').val()) {
+                $('#loadingText').removeClass('d-none');
+                $('#spanTextAudio').text('Uploading audio..');
+                $('#progressAudio').html(parseInt(percentComplete * 100) + ' %');
+                if (percentComplete == 1) {
+                  // success
+                  $('#loadingText').html('Success.');
+                  setTimeout(function () {
+                    $('#loadingText').fadeOut(500).addClass('d-none');
+                    location.reload();
+                  }, 2500);
+                }
+              }
+              if ($('#video_file').val()) {
+                $('#loadingTextVideo').removeClass('d-none');
+                $('#spanTextVideo').text('Uploading video..');
+                $('#progress').html(parseInt(percentComplete * 100) + ' %');
+                if (percentComplete == 1) {
+                  // success
+                  $('#loadingTextVideo').html('Success.');
+                  setTimeout(function () {
+                    $('#loadingTextVideo').addClass('d-none');
+                  }, 2500);
+                }
+              }
             }
-            $('#photoPreview').attr('src', '/resumeApp/public/images/add_profile_photo.png');
-            $('#photoInput').attr('type', 'text');
-            $('#photoInput').attr('value', 10);
-            $('#jobTitle').change();
-            $('#photoInput').attr('type', 'file');
-        } else {
-            $('#photoInput').click();
+          }, false);
+
+          xhr.addEventListener("progress", function (evt) {
+            if (evt.lengthComputable) {
+              var percentComplete = evt.loaded / evt.total;
+              //Do something with download progress
+            }
+          }, false);
+
+          return xhr;
+        },
+        success: function success() {
+          if ($('#video_file').val()) {
+            // load the video
+            $('#videoFileFrame')[0].load();
+          }
+
+          // changes are saved on - off
+          $('#changesSaved').fadeIn('slow');
+          setTimeout(function () {
+            $('#changesSaved').fadeOut();
+          }, 2000);
+
+          highlightCompletedSecs();
         }
-    });
+      });
 
-    uploadByDrop('#photoPreview', 'photo');
-
-    // profile photo end
-
-    // 2- payment (section two)
-    // calculator :
-    $("[id*=To]").on('change', function () {
-        var totalHours = calculateTotalHours();
-        if (totalHours <= 0) {
-            $('#totalHours').html('Please choose correct hours');
-        } else {
-            $('#totalHours').html(totalHours + ' Hours');
-        }
+      if (ios) {
+        // after the request enable them again !
+        var disabledFiles = document.querySelectorAll(".freelancerForm input[type=file]");
+        disabledFiles.forEach(function (file) {
+          var fileInput = $('#' + file.id);
+          fileInput.attr('disabled', false);
+        });
+      }
     });
+  });
 
-    $("[id*=From]").on('change', function () {
-        var totalHours = calculateTotalHours();
-        if (totalHours <= 0) {
-            $('#totalHours').html('Please choose correct hours');
-        } else {
-            $('#totalHours').html(totalHours + ' Hours');
-        }
-    });
-    // end calculator
+  // importing data from behance :
+  $('#behanceDataForm').on('submit', function (e) {
+    e.preventDefault();
+    var behanceLink = $('#behanceLink').val();
+    var behanceUsername = getBehanceUsername(behanceLink);
+    if (behanceUsername !== false) {
+      getBehanceData(behanceUsername);
+    }
+  });
 
-    // 3- Multimedia :
-    // audio files :
-    // delete Audio :
-    $('#deleteAudio').on('click', function (e) {
-        if (!confirm('are you sure you want to delete this Audio file ?')) {
-            return;
-        }
-        $('#audioFile').attr('type', 'text');
-        $('#audioFile').attr('value', 0);
-        $('#jobTitle').change();
-        $('#audioFile').attr('type', 'file');
-        $('#audioText').val('Upload audio');
-        // change the src of the Audio
-        $('#audioIntroForm').attr('src', '');
-        $('#audioIntro')[0].load();
-    });
-    // when a link to google drive is added :
-    $('#audio_intro').on('change', function () {
-        $('#audioIntroForm').attr('src', $(this).val());
-        $('#loadingText').removeClass('d-none');
-        setTimeout(function () {
-            location.reload();
-        }, 3000);
-    });
+  // hours selection :
 
-    // show audio file name :
-    $('#audioFile').change(function (e) {
-        var fileName = e.target.files[0].name;
-        $('#audioText').val(fileName);
-        // change the src of the Audio
-        $('#audioIntroForm').attr('src', 'resumeApp/uploads/' + fileName);
-        $('#loadingText').removeClass('d-none');
-        $('#spanTextAudio').text('Audio will be uploaded on save.');
-    });
+  $('.hoursOptions').on('change', function () {
+    var freelancerID = this.id.replace('availableHours', '');
+    var weeklySalaryID = 'weeklySalary' + freelancerID;
+    var weeklySalaryText = 'For ' + this.value + ' hours per week, you will be paid ' + this.value * $('#salary' + freelancerID).val() + ' USD';
+    $('#' + weeklySalaryID).fadeOut(1000);
+    $('#' + weeklySalaryID).html(weeklySalaryText);
+    setTimeout(function () {
+      $('#' + weeklySalaryID).fadeIn(1000);
+    }, 1000);
+  });
 
-    // click on browse btn:
-    $('#browseBtn').on('click', function () {
-        $('#audioFile').click();
-    });
+  // 1- overview ( section one )
+  // profile photo scripts
 
-    // video files :
-    // link to video :
-    $('#video').on('change', function () {
-        var videoID = getSecondPart($(this).val());
-        var videoSrc = 'https://www.youtube.com/embed/' + videoID;
-        $('#videoFrame').attr('src', videoSrc);
-    });
+  $("#photoInput").change(function () {
+    readURL(this, '#photoPreview');
+    readURL(this, '#photoPreview_card');
+    $('#imageUploadSave').removeClass('d-none');
+  });
 
-    // show video name when upload :
-    $('#video_file').change(function (e) {
-        var fileName = e.target.files[0].name;
-        $('#videoText').val(fileName);
-        // change the src of the video
-        $('#videoFileFrame').attr('src', 'resumeApp/uploads/videos/' + fileName);
-        $('#loadingTextVideo').removeClass('d-none');
-        $('#spanTextVideo').text('Video will be uploaded on save.');
-    });
+  $('#addPhoto_card').on('click', function () {
+    $("#photoInput").click();
+  });
 
-    // browse for video :
-    $('#browseBtnVideo').on('click', function () {
-        $('#video_file').click();
-    });
+  var srcPreview = '';
+  $('#photoPreview').hover(function () {
+    $(this).css('cursor', 'pointer');
+    srcPreview = $('#photoPreview').attr('src');
+    if (srcPreview !== '/images/add_profile_photo.png') {
+      $('#photoPreview').fadeTo(500, .1);
+      $('#profileImgBox').css('background', 'url("/images/deleteimg.png")');
+      $('#profileImgBox').css('background-repeat', 'no-repeat');
+      $('#profileImgBox').css('background-position', 'center');
+    }
+  }, function () {
+    $('#photoPreview').fadeTo(500, 1);
+    $('#profileImgBox').css('background', '');
+  });
 
-    // delete video :
-    $('#deleteVideo').on('click', function (e) {
-        if (!confirm('Are you sure you want to delete this video ?')) {
-            return;
-        }
-        $('#video_file').attr('type', 'text');
-        $('#video_file').attr('value', 0);
-        $('#jobTitle').change();
-        $('#video_file').attr('type', 'file');
-        $('#videoText').val('Upload video');
-        // change the src of the video
-        $('#videoFileFrame').attr('src', '');
-    });
+  $('#photoPreview').on('click', function () {
+    if (srcPreview !== '/images/add_profile_photo.png') {
+      // delete photo profile photo
+      if (!confirm('Are you sure you want to delete profile photo ?')) {
+        return;
+      }
+      $('#photoPreview').attr('src', '/images/add_profile_photo.png');
+      $('#photoInput').attr('type', 'text');
+      $('#photoInput').attr('value', 10);
+      $('#jobTitle').change();
+      $('#photoInput').attr('type', 'file');
+    } else {
+      $('#photoInput').click();
+    }
+  });
+
+  uploadByDrop('#photoPreview', 'photo');
+
+  // profile photo end
+
+  // 2- payment (section two)
+  // calculator :
+  $("[id*=To]").on('change', function () {
+    var totalHours = calculateTotalHours();
+    if (totalHours <= 0) {
+      $('#totalHours').html('Please choose correct hours');
+    } else {
+      $('#totalHours').html(totalHours + ' Hours');
+    }
+  });
+
+  $("[id*=From]").on('change', function () {
+    var totalHours = calculateTotalHours();
+    if (totalHours <= 0) {
+      $('#totalHours').html('Please choose correct hours');
+    } else {
+      $('#totalHours').html(totalHours + ' Hours');
+    }
+  });
+  // end calculator
+
+  // 3- Multimedia :
+  // audio files :
+  // delete Audio :
+  $('#deleteAudio').on('click', function (e) {
+    if (!confirm('are you sure you want to delete this Audio file ?')) {
+      return;
+    }
+    $('#audioFile').attr('type', 'text');
+    $('#audioFile').attr('value', 0);
+    $('#jobTitle').change();
+    $('#audioFile').attr('type', 'file');
+    $('#audioText').val('Upload audio');
+    // change the src of the Audio
+    $('#audioIntroForm').attr('src', '');
+    $('#audioIntro')[0].load();
+  });
+  // when a link to google drive is added :
+  $('#audio_intro').on('change', function () {
+    $('#audioIntroForm').attr('src', $(this).val());
+    $('#loadingText').removeClass('d-none');
+    setTimeout(function () {
+      location.reload();
+    }, 3000);
+  });
+
+  // show audio file name :
+  $('#audioFile').change(function (e) {
+    var fileName = e.target.files[0].name;
+    $('#audioText').val(fileName);
+    // change the src of the Audio
+    $('#audioIntroForm').attr('src', 'resumeApp/uploads/' + fileName);
+    $('#loadingText').removeClass('d-none');
+    $('#spanTextAudio').text('Audio will be uploaded on save.');
+  });
+
+  // click on browse btn:
+  $('#browseBtn').on('click', function () {
+    $('#audioFile').click();
+  });
+
+  // video files :
+  // link to video :
+  $('#video').on('change', function () {
+    var videoID = getSecondPart($(this).val());
+    var videoSrc = 'https://www.youtube.com/embed/' + videoID;
+    $('#videoFrame').attr('src', videoSrc);
+  });
+
+  // show video name when upload :
+  $('#video_file').change(function (e) {
+    var fileName = e.target.files[0].name;
+    $('#videoText').val(fileName);
+    // change the src of the video
+    $('#videoFileFrame').attr('src', 'resumeApp/uploads/videos/' + fileName);
+    $('#loadingTextVideo').removeClass('d-none');
+    $('#spanTextVideo').text('Video will be uploaded on save.');
+  });
+
+  // browse for video :
+  $('#browseBtnVideo').on('click', function () {
+    $('#video_file').click();
+  });
+
+  // delete video :
+  $('#deleteVideo').on('click', function (e) {
+    if (!confirm('Are you sure you want to delete this video ?')) {
+      return;
+    }
+    $('#video_file').attr('type', 'text');
+    $('#video_file').attr('value', 0);
+    $('#jobTitle').change();
+    $('#video_file').attr('type', 'file');
+    $('#videoText').val('Upload video');
+    // change the src of the video
+    $('#videoFileFrame').attr('src', '');
+  });
 });
 
 /////////// functions ///////////////
 function readURL(input, imgID) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
 
-        reader.onload = function (e) {
-            $(imgID).attr('src', e.target.result);
-        };
+    reader.onload = function (e) {
+      $(imgID).attr('src', e.target.result);
+    };
 
-        reader.readAsDataURL(input.files[0]);
-    }
+    reader.readAsDataURL(input.files[0]);
+  }
 }
 
 function iOS() {
 
-    var iDevices = ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'];
+  var iDevices = ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'];
 
-    if (!!navigator.platform) {
-        while (iDevices.length) {
-            if (navigator.platform === iDevices.pop()) {
-                return true;
-            }
-        }
+  if (!!navigator.platform) {
+    while (iDevices.length) {
+      if (navigator.platform === iDevices.pop()) {
+        return true;
+      }
     }
+  }
 
-    return false;
+  return false;
 }
 
 function checkHash() {
-    var heading = $('#tabMainHeading');
-    var hash = window.location.hash;
-    switch (hash) {
-        case '#overview':
-            heading.html('1.Overview and personal info');
-            break;
-        case '#pay':
-            heading.html('2.Availability and payment');
-            break;
-        case '#multimedia':
-            heading.html('3.Multimedia (Audio / Video)');
-            break;
-        case '#career':
-            heading.html('4.Career overview (Education / Training)');
-            break;
-        case '#portfolio':
-            heading.html('5.Portfolio');
-            break;
-        case '#skills':
-            heading.html('6.Professional skills');
-            break;
-        case '#attributes':
-            heading.html('7.Personal attributes');
-            break;
-        default:
-            heading.html('1.Overview and personal info');
-    }
+  var heading = $('#tabMainHeading');
+  var hash = window.location.hash;
+  switch (hash) {
+    case '#overview':
+      heading.html('1.Overview and personal info');
+      break;
+    case '#pay':
+      heading.html('2.Availability and payment');
+      break;
+    case '#multimedia':
+      heading.html('3.Multimedia (Audio / Video)');
+      break;
+    case '#career':
+      heading.html('4.Career overview (Education / Training)');
+      break;
+    case '#portfolio':
+      heading.html('5.Portfolio');
+      break;
+    case '#skills':
+      heading.html('6.Professional skills');
+      break;
+    case '#attributes':
+      heading.html('7.Personal attributes');
+      break;
+    default:
+      heading.html('1.Overview and personal info');
+  }
 }
 
 function calculateTotalHours() {
-    calculateDayHours();
-    var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  calculateDayHours();
+  var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-    var totalHours = 0;
+  var totalHours = 0;
 
-    days.forEach(function (day) {
-        totalHours += calculateDayHours(day);
-    });
+  days.forEach(function (day) {
+    totalHours += calculateDayHours(day);
+  });
 
-    return totalHours;
+  return totalHours;
 }
 
 function calculateDayHours(day) {
-    var totalHoursDay = (parseInt($('#' + day + 'To').val()) || 0) - (parseInt($('#' + day + 'From').val()) || 0);
-    if (totalHoursDay < 0) {
-        totalHoursDay = 24 + totalHoursDay;
-        // works from 9 AM to 1 AM so he works 1-9 = -8 hours which means 24 - 8 = 16 hours.
-    }
-    return totalHoursDay;
+  var totalHoursDay = (parseInt($('#' + day + 'To').val()) || 0) - (parseInt($('#' + day + 'From').val()) || 0);
+  if (totalHoursDay < 0) {
+    totalHoursDay = 24 + totalHoursDay;
+    // works from 9 AM to 1 AM so he works 1-9 = -8 hours which means 24 - 8 = 16 hours.
+  }
+  return totalHoursDay;
 }
 
 function getSecondPart(str) {
-    if (str.includes('=')) {
-        var videoId = str.split('=')[1].substring(0, 11);
-        return videoId;
-    }
+  if (str.includes('=')) {
+    var videoId = str.split('=')[1].substring(0, 11);
+    return videoId;
+  }
 }
 
 function uploadByDrop(elementID, elementName) {
-    $(elementID).on({
-        'dragover dragenter': function dragoverDragenter(e) {
-            e.preventDefault();
-            e.stopPropagation();
-        },
-        'drop': function drop(e) {
-            //our code will go here
-            e.preventDefault();
-            e.stopPropagation();
-            readURL(e.originalEvent.dataTransfer, elementID);
-            // save to the data base :
-            var form = document.getElementsByClassName('freelancerForm')[0];
-            var formData = new FormData(form);
-            // Attach file
-            formData.append(elementName, e.originalEvent.dataTransfer.files[0]);
+  $(elementID).on({
+    'dragover dragenter': function dragoverDragenter(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    },
+    'drop': function drop(e) {
+      //our code will go here
+      e.preventDefault();
+      e.stopPropagation();
+      readURL(e.originalEvent.dataTransfer, elementID);
+      // save to the data base :
+      var form = document.getElementsByClassName('freelancerForm')[0];
+      var formData = new FormData(form);
+      // Attach file
+      formData.append(elementName, e.originalEvent.dataTransfer.files[0]);
 
-            $.ajax({
-                type: 'POST',
-                url: '/freelancer/store',
-                data: formData,
-                contentType: false,
-                cache: false,
-                processData: false,
-                success: function success() {
-                    // changes are saved on - off
-                    $('#changesSaved').fadeIn('slow');
-                    setTimeout(function () {
-                        $('#changesSaved').fadeOut();
-                    }, 2000);
+      $.ajax({
+        type: 'POST',
+        url: '/freelancer/store',
+        data: formData,
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function success() {
+          // changes are saved on - off
+          $('#changesSaved').fadeIn('slow');
+          setTimeout(function () {
+            $('#changesSaved').fadeOut();
+          }, 2000);
 
-                    highlightCompletedSecs();
-                }
-            });
+          highlightCompletedSecs();
         }
-    });
+      });
+    }
+  });
 }
 
 function highlightCompletedSecs() {
-    // array for sections :
-    var sections = {
-        overview: ['name', 'city', 'jobTitle', 'email', 'languages', 'intro', 'photo', 'skype_id', 'telephone', 'social_apps'],
-        pay: ['salary', 'availableHours', 'freeDate', 'availableHours', 'currency', 'timeZone', 'salary_month'],
-        multimedia: ['audio', 'audioFile', 'video', 'video_file'],
-        career: ['careerObjective', 'eduTitle1', 'eduTitle2', 'eduTitle3', 'eduYear1', 'eduYear2', 'eduYear3', 'eduDesc1', 'eduDesc2', 'eduDesc3', 'trnTitle1', 'trnTitle2', 'trnTitle3', 'trnYear1', 'trnYear2', 'trnYear3', 'trnDesc1', 'trnDesc2', 'trnDesc3'],
-        portfolio: ['works0', 'works1', 'works2', 'works3', 'works4', 'works5', 'works6', 'works7', 'workDesc0', 'workDesc1', 'workDesc2', 'workDesc3', 'workDesc4', 'workDesc5', 'workDesc6', 'workDesc7', 'githubLink', 'stackoverflowLink', 'behanceLink', 'instagramLink', 'dribbleLink', 'personalSite'],
-        skills: ['primarySkills', 'design_skills_checkbox', 'primarySkills', 'design_styles'],
-        attributes: ['personal_interests', 'professional_attributes', 'charSkills']
-    };
+  // array for sections :
+  var sections = {
+    overview: ['name', 'city', 'jobTitle', 'email', 'languages', 'intro', 'photo', 'skype_id', 'telephone', 'social_apps'],
+    pay: ['salary', 'availableHours', 'freeDate', 'availableHours', 'currency', 'timeZone', 'salary_month'],
+    multimedia: ['audio', 'audioFile', 'video', 'video_file'],
+    career: ['careerObjective', 'eduTitle1', 'eduTitle2', 'eduTitle3', 'eduYear1', 'eduYear2', 'eduYear3', 'eduDesc1', 'eduDesc2', 'eduDesc3', 'trnTitle1', 'trnTitle2', 'trnTitle3', 'trnYear1', 'trnYear2', 'trnYear3', 'trnDesc1', 'trnDesc2', 'trnDesc3'],
+    portfolio: ['works0', 'works1', 'works2', 'works3', 'works4', 'works5', 'works6', 'works7', 'workDesc0', 'workDesc1', 'workDesc2', 'workDesc3', 'workDesc4', 'workDesc5', 'workDesc6', 'workDesc7', 'githubLink', 'stackoverflowLink', 'behanceLink', 'instagramLink', 'dribbleLink', 'personalSite'],
+    skills: ['primarySkills', 'design_skills_checkbox', 'primarySkills', 'design_styles'],
+    attributes: ['personal_interests', 'professional_attributes', 'charSkills']
+  };
 
-    var emptyInputs = $('.freelancerForm :input').filter(function () {
-        return $(this).val() == "";
-    });
+  var emptyInputs = $('.freelancerForm :input').filter(function () {
+    return $(this).val() == "";
+  });
 
-    var completedSections = {
-        overview: true,
-        pay: true,
-        multimedia: true,
-        portfolio: true,
-        skills: true,
-        career: true,
-        attributes: true
-    };
+  var completedSections = {
+    overview: true,
+    pay: true,
+    multimedia: true,
+    portfolio: true,
+    skills: true,
+    career: true,
+    attributes: true
+  };
 
-    var emptyInputsName = [];
+  var emptyInputsName = [];
 
-    for (var i = 0; i < emptyInputs.length; i++) {
-        emptyInputsName.push(emptyInputs[i].name);
+  for (var i = 0; i < emptyInputs.length; i++) {
+    emptyInputsName.push(emptyInputs[i].name);
+  }
+
+  // remove uploaded files from the empty fileds file :
+  var uploadedFilesNames = getUploadedFilesNames()[0];
+  uploadedFilesNames.forEach(function (fileName) {
+    var index = emptyInputsName.indexOf(fileName);
+    if (index > -1) {
+      emptyInputsName.splice(index, 1);
     }
+  });
 
-    // remove uploaded files from the empty fileds file :
-    var uploadedFilesNames = getUploadedFilesNames()[0];
-    uploadedFilesNames.forEach(function (fileName) {
-        var index = emptyInputsName.indexOf(fileName);
-        if (index > -1) {
-            emptyInputsName.splice(index, 1);
-        }
+  var emptyFilesNames = getUploadedFilesNames()[1];
+  emptyFilesNames.forEach(function (fileName) {
+    emptyInputsName.push(fileName);
+  });
+
+  // check if overview is completed :
+  emptyInputsName.forEach(function (emptyInput) {
+    var sectionsNames = Object.keys(sections);
+    sectionsNames.forEach(function (sectionName) {
+      if (sections[sectionName].includes(emptyInput)) {
+        completedSections[sectionName] = false;
+      }
     });
+  });
 
-    var emptyFilesNames = getUploadedFilesNames()[1];
-    emptyFilesNames.forEach(function (fileName) {
-        emptyInputsName.push(fileName);
-    });
+  var completedSectionsArr = Object.entries(completedSections); // example : ['pay','true']
 
-    // check if overview is completed :
-    emptyInputsName.forEach(function (emptyInput) {
-        var sectionsNames = Object.keys(sections);
-        sectionsNames.forEach(function (sectionName) {
-            if (sections[sectionName].includes(emptyInput)) {
-                completedSections[sectionName] = false;
-            }
-        });
-    });
-
-    var completedSectionsArr = Object.entries(completedSections); // example : ['pay','true']
-
-    // add styles to completed sections :
-    for (var _i = 0; _i < completedSectionsArr.length; _i++) {
-        if (completedSectionsArr[_i][1]) {
-            $("a[href='#" + completedSectionsArr[_i][0] + "']").css('border-bottom-color', 'lawngreen');
-            // if they have class active : remove circle effects
-            $("a[href='#" + completedSectionsArr[_i][0] + "'] .tabCircle").css('color', 'lawngreen');
-            $("a[href='#" + completedSectionsArr[_i][0] + "'] .tabCircle").css('background', 'none');
-        } else {
-            $("a[href='#" + completedSectionsArr[_i][0] + "']").css('border-bottom-color', 'lightgray');
-            $("a[href='#" + completedSectionsArr[_i][0] + "'] .tabCircle").css('color', 'gray');
-            if (!$("a[href='#" + completedSectionsArr[_i][0] + "']").hasClass('active')) {
-                $("a[href='#" + completedSectionsArr[_i][0] + "'] .tabCircle").css('background', 'none');
-            }
-        }
+  // add styles to completed sections :
+  for (var _i = 0; _i < completedSectionsArr.length; _i++) {
+    if (completedSectionsArr[_i][1]) {
+      $("a[href='#" + completedSectionsArr[_i][0] + "']").css('border-bottom-color', 'lawngreen');
+      // if they have class active : remove circle effects
+      $("a[href='#" + completedSectionsArr[_i][0] + "'] .tabCircle").css('color', 'lawngreen');
+      $("a[href='#" + completedSectionsArr[_i][0] + "'] .tabCircle").css('background', 'none');
+    } else {
+      $("a[href='#" + completedSectionsArr[_i][0] + "']").css('border-bottom-color', 'lightgray');
+      $("a[href='#" + completedSectionsArr[_i][0] + "'] .tabCircle").css('color', 'gray');
+      if (!$("a[href='#" + completedSectionsArr[_i][0] + "']").hasClass('active')) {
+        $("a[href='#" + completedSectionsArr[_i][0] + "'] .tabCircle").css('background', 'none');
+      }
     }
+  }
 }
 
 function getUploadedFilesNames() {
-    var filesNames = [];
+  var filesNames = [];
 
-    var emptyFiles = [];
+  var emptyFiles = [];
 
-    // works files :
+  // works files :
 
-    for (var i = 0; i <= 7; i++) {
-        if ($('#portfolioImg' + i).attr('src') !== '/resumeApp/public/images/add_profile_photo.png') {
-            filesNames.push('works' + i);
-        } else {
-            emptyFiles.push('works' + i);
-        }
-    }
-
-    // profile photo files :
-    if ($('#photoPreview').attr('src') !== '/resumeApp/public/images/add_profile_photo.png') {
-        //empty
-        filesNames.push('photo');
+  for (var i = 0; i <= 7; i++) {
+    if ($('#portfolioImg' + i).attr('src') !== '/images/add_profile_photo.png') {
+      filesNames.push('works' + i);
     } else {
-        emptyFiles.push('photo');
+      emptyFiles.push('works' + i);
     }
+  }
 
-    // audiofile :
-    if ($('#audioIntroForm').attr('src') !== '') {
-        //empty
-        filesNames.push('audioFile');
-    } else {
-        emptyFiles.push('audioFile');
-    }
+  // profile photo files :
+  if ($('#photoPreview').attr('src') !== '/images/add_profile_photo.png') {
+    //empty
+    filesNames.push('photo');
+  } else {
+    emptyFiles.push('photo');
+  }
 
-    // video file :
-    if ($('#videoFileFrame').attr('src') !== '') {
-        //empty
-        filesNames.push('video_file');
-    } else {
-        emptyFiles.push('video_file');
-    }
+  // audiofile :
+  if ($('#audioIntroForm').attr('src') !== '') {
+    //empty
+    filesNames.push('audioFile');
+  } else {
+    emptyFiles.push('audioFile');
+  }
 
-    var files = [filesNames, emptyFiles];
+  // video file :
+  if ($('#videoFileFrame').attr('src') !== '') {
+    //empty
+    filesNames.push('video_file');
+  } else {
+    emptyFiles.push('video_file');
+  }
 
-    return files;
+  var files = [filesNames, emptyFiles];
+
+  return files;
 }
 
 function getBehanceData(behanceUsername) {
-    // set behance link :
-    $('#behanceLinkInput').val("https://www.behance.net/" + behanceUsername);
+  // set behance link :
+  $('#behanceLinkInput').val("https://www.behance.net/" + behanceUsername);
 
-    $('#behanceLinkWait').removeClass('d-none');
-    $('#behanceLinkError').addClass('d-none');
-    // hdie import button
-    $('#importBtn').addClass('d-none');
+  $('#behanceLinkWait').removeClass('d-none');
+  $('#behanceLinkError').addClass('d-none');
+  // hdie import button
+  $('#importBtn').addClass('d-none');
 
-    axios.get('/freelancer/behance/' + behanceUsername).then(function (response) {
-        var behanceData = response.data;
-        if (behanceData !== false) {
-            $('#fullName').val(behanceData.display_name);
-            $('#city').val(behanceData.city);
-            $('#intro').val(behanceData.sections['About Me']);
-            saveBehanceData(behanceData.images, behanceData.fields);
-            $('#spec_design_skills').val(behanceData.fields.join(', '));
-            // change the modal html :
-            $('#modalBody').html(' <div class="label" style="padding: 20px;"><p class="label-success panelFormLabel">Thank you, your data has been successfully imported</p></div>');
-            // close modal :
-            setTimeout(function () {
-                $('#closeBehanceModal').click();
-                location.reload();
-            }, 2000);
+  axios.get('/freelancer/behance/' + behanceUsername).then(function (response) {
+    var behanceData = response.data;
+    if (behanceData !== false) {
+      $('#fullName').val(behanceData.display_name);
+      $('#city').val(behanceData.city);
+      $('#intro').val(behanceData.sections['About Me']);
+      saveBehanceData(behanceData.images, behanceData.fields);
+      $('#spec_design_skills').val(behanceData.fields.join(', '));
+      // change the modal html :
+      $('#modalBody').html(' <div class="label" style="padding: 20px;"><p class="label-success panelFormLabel">Thank you, your data has been successfully imported</p></div>');
+      // close modal :
+      setTimeout(function () {
+        $('#closeBehanceModal').click();
+        location.reload();
+      }, 2000);
 
-            loadProjects(behanceData.projects);
+      loadProjects(behanceData.projects);
 
-            if (behanceData.has_social_links) {
-                loadSocialLinks(behanceData.social_links);
-            }
+      if (behanceData.has_social_links) {
+        loadSocialLinks(behanceData.social_links);
+      }
 
-            // save to database :
-            $('#jobTitle').change();
-        } else {
-            // error
-            $('#behanceLinkError').removeClass('d-none');
-            $('#behanceLinkWait').addClass('d-none');
-            $('#importBtn').removeClass('d-none');
-        }
-    }).catch(function (error) {
-        $('#behanceLinkError').removeClass('d-none');
-        $('#behanceLinkWait').addClass('d-none');
-        $('#importBtn').removeClass('d-none');
-    });
+      // save to database :
+      $('#jobTitle').change();
+    } else {
+      // error
+      $('#behanceLinkError').removeClass('d-none');
+      $('#behanceLinkWait').addClass('d-none');
+      $('#importBtn').removeClass('d-none');
+    }
+  }).catch(function (error) {
+    $('#behanceLinkError').removeClass('d-none');
+    $('#behanceLinkWait').addClass('d-none');
+    $('#importBtn').removeClass('d-none');
+  });
 }
 
 function saveBehanceData(images, fields) {
-    var behanceImg = images[Object.keys(images)[Object.keys(images).length - 1]];
-    $('#photoPreview').attr('src', behanceImg);
-    axios.post('/freelancer/behance/save_img', {
-        img: behanceImg,
-        design_skills: fields
-    });
+  var behanceImg = images[Object.keys(images)[Object.keys(images).length - 1]];
+  $('#photoPreview').attr('src', behanceImg);
+  axios.post('/freelancer/behance/save_img', {
+    img: behanceImg,
+    design_skills: fields
+  });
 }
 
 function getBehanceUsername(behanceLink) {
-    if (!behanceLink.includes('behance.net/')) {
-        $('#behanceLinkError').removeClass('d-none');
-        return false;
-    }
-    var linkArr = behanceLink.split('/');
-    return linkArr[linkArr.length - 1];
+  if (!behanceLink.includes('behance.net/')) {
+    $('#behanceLinkError').removeClass('d-none');
+    return false;
+  }
+  var linkArr = behanceLink.split('/');
+  return linkArr[linkArr.length - 1];
 }
 
 function loadProjects(projects) {
-    var i = 0;
-    projects.forEach(function (project) {
-        $('#portfolioImg' + i).attr('src', project.covers.original);
-        $('#workDesc' + i).val(project.name);
-        i++;
-    });
+  var i = 0;
+  projects.forEach(function (project) {
+    $('#portfolioImg' + i).attr('src', project.covers.original);
+    $('#workDesc' + i).val(project.name);
+    i++;
+  });
 }
 
 function loadSocialLinks(socialLinks) {
-    socialLinks.forEach(function (link) {
-        if (link.isInstagram) {
-            $('#instagramLink').val(link.url);
-        } else if (link.isDribbble) {
-            $('#dribbleLink').val(link.url);
-        }
-    });
+  socialLinks.forEach(function (link) {
+    if (link.isInstagram) {
+      $('#instagramLink').val(link.url);
+    } else if (link.isDribbble) {
+      $('#dribbleLink').val(link.url);
+    }
+  });
 }
 
 // sending emails :
 
 
 (function ($) {
-    "use strict";
+  "use strict";
 
-    $(document).ready(function () {
-        $(".button-def, .serv a").click(function (event) {
-            event.preventDefault(event);
-            $('html, body').stop().animate({
-                scrollTop: $(".client-form").offset().top
-            }, 1500);
-        });
-        $('#contact-form').submit(function () {
-            function completeAll() {
-                $('#contact-form').html('<h2 class="secondSectionHeading">Thank you for contacting us</h2>');
-            }
-            var formData = new FormData($(this)[0]);
-            $.ajax({
-                url: "https://formspree.io/conor@123workforce.com",
-                type: "POST",
-                async: false,
-                data: formData,
-                dataType: "json",
-                success: function success(e) {
-                    completeAll();
-                },
-                error: function error(xhr, ajaxOptions, thrownError) {
-                    console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-                },
-                cache: false,
-                contentType: false,
-                processData: false
-            });
-            return false;
-        });
+  $(document).ready(function () {
+    $(".button-def, .serv a").click(function (event) {
+      event.preventDefault(event);
+      $('html, body').stop().animate({
+        scrollTop: $(".client-form").offset().top
+      }, 1500);
     });
+    $('#contact-form').submit(function () {
+      function completeAll() {
+        $('#contact-form').html('<h2 class="secondSectionHeading">Thank you for contacting us</h2>');
+      }
+      var formData = new FormData($(this)[0]);
+      $.ajax({
+        url: "https://formspree.io/conor@123workforce.com",
+        type: "POST",
+        async: false,
+        data: formData,
+        dataType: "json",
+        success: function success(e) {
+          completeAll();
+        },
+        error: function error(xhr, ajaxOptions, thrownError) {
+          console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+      });
+      return false;
+    });
+  });
 })(jQuery);
 
 /***/ }),
@@ -58124,53 +58123,89 @@ module.exports = Component.exports
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 $(document).ready(function () {
 
-    $(":radio[class=sr-only]").on("change", function () {
-        var female = document.getElementById('female').checked;
-        var both = document.getElementById('both').checked;
-        var male = document.getElementById('male').checked;
-        var female_gender = document.getElementById('female-gender');
-        var bothed_gender = document.getElementById('both-gender');
-        var man_gender = document.getElementById('male-gender');
-        console.log(female);
-        console.log(both);
-        console.log(male);
-        if (female == true) {
-            $(female_gender).css({ backgroundImage: 'url("/resumeApp/public/images/client/add_agent/femaleselected.jpg")' });
-            $(bothed_gender).css({ backgroundImage: 'url("/resumeApp/public/images/client/add_agent/gender/both_gender_icon.png")' });
-            $(man_gender).css({ backgroundImage: 'url("/resumeApp/public/images/client/add_agent/male.jpg")' });
-        } else if (both == true) {
-            $(bothed_gender).css({ backgroundImage: 'url("/resumeApp/public/images/client/add_agent/bothselected.jpg")' });
-            $(female_gender).css({ backgroundImage: 'url("/resumeApp/public/images/client/add_agent/female.jpg")', width: 46, height: 40, backgroundPosition: 'center',
-                backgroundSize: 'cover' });
-            $(man_gender).css({ backgroundImage: 'url("/resumeApp/public/images/client/add_agent/male.jpg")' });
-        } else if (male == true) {
-            $(man_gender).css({ backgroundImage: 'url("/resumeApp/public/images/client/add_agent/maleselected.jpg")', width: 46, height: 40, backgroundPosition: 'center',
-                backgroundSize: 'cover' });
-            $(female_gender).css({ backgroundImage: 'url("/resumeApp/public/images/client/add_agent/female.jpg")', width: 46, height: 40, backgroundPosition: 'center', backgroundSize: 'cover' });
-            $(bothed_gender).css({ backgroundImage: 'url("/resumeApp/public/images/client/add_agent/gender/both_gender_icon.png")' });
-        } else {
-            $(female_gender).css({ backgroundImage: 'url("/resumeApp/public/images/client/add_agent/female.jpg")', width: 46, height: 40, backgroundPosition: 'center', backgroundSize: 'cover' });
-            $(bothed_gender).css({ backgroundImage: 'url("/resumeApp/public/images/client/add_agent/gender/both_gender_icon.png")' });
-            $(man_gender).css({ backgroundImage: 'url("/resumeApp/public/images/client/add_agent/male.jpg")' });
-        }
+  $(":radio[class=sr-only]").on("change", function () {
+    var female = document.getElementById('female').checked;
+    var both = document.getElementById('both').checked;
+    var male = document.getElementById('male').checked;
+    var female_gender = document.getElementById('female-gender');
+    var bothed_gender = document.getElementById('both-gender');
+    var man_gender = document.getElementById('male-gender');
+    console.log(female);
+    console.log(both);
+    console.log(male);
+    if (female == true) {
+      $(female_gender).css({ backgroundImage: 'url("/images/client/add_agent/femaleselected.jpg")' });
+      $(bothed_gender).css({ backgroundImage: 'url("/images/client/add_agent/gender/both_gender_icon.png")' });
+      $(man_gender).css({ backgroundImage: 'url("/images/client/add_agent/male.jpg")' });
+    } else if (both == true) {
+      $(bothed_gender).css({ backgroundImage: 'url("/images/client/add_agent/bothselected.jpg")' });
+      $(female_gender).css({
+        backgroundImage: 'url("/images/client/add_agent/female.jpg")',
+        width: 46,
+        height: 40,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover'
+      });
+      $(man_gender).css({ backgroundImage: 'url("/images/client/add_agent/male.jpg")' });
+    } else if (male == true) {
+      $(man_gender).css({
+        backgroundImage: 'url("/images/client/add_agent/maleselected.jpg")',
+        width: 46,
+        height: 40,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover'
+      });
+      $(female_gender).css({ backgroundImage: 'url("/images/client/add_agent/female.jpg")', width: 46, height: 40, backgroundPosition: 'center', backgroundSize: 'cover' });
+      $(bothed_gender).css({ backgroundImage: 'url("/images/client/add_agent/gender/both_gender_icon.png")' });
+    } else {
+      $(female_gender).css({ backgroundImage: 'url("/images/client/add_agent/female.jpg")', width: 46, height: 40, backgroundPosition: 'center', backgroundSize: 'cover' });
+      $(bothed_gender).css({ backgroundImage: 'url("/images/client/add_agent/gender/both_gender_icon.png")' });
+      $(man_gender).css({ backgroundImage: 'url("/images/client/add_agent/male.jpg")' });
+    }
 
-        var english = document.getElementById('english').checked;
-        var spanish = document.getElementById('spanish').checked;
-        var english_label = document.getElementById('english_label');
-        var spanish_label = document.getElementById('spanish_label');
-        console.log(english);
-        console.log(spanish);
-        if (english == true) {
-            $(english_label).css({ backgroundImage: 'url("/resumeApp/public/images/client/add_agent/englishselected.jpg")' });
-            $(spanish_label).css({ backgroundImage: 'url("/resumeApp/public/images/client/add_agent/spanish.jpg")' });
-        } else if (spanish == true) {
-            $(english_label).css({ backgroundImage: 'url("/resumeApp/public/images/client/add_agent/english.jpg")' });
-            $(spanish_label).css({ backgroundImage: 'url("/resumeApp/public/images/client/add_agent/spanishselected.jpg")' });
-        }
-    });
+    var english = document.getElementById('english').checked;
+    var spanish = document.getElementById('spanish').checked;
+    var english_label = document.getElementById('english_label');
+    var spanish_label = document.getElementById('spanish_label');
+    console.log(english);
+    console.log(spanish);
+    if (english == true) {
+      $(english_label).css({ backgroundImage: 'url("/images/client/add_agent/englishselected.jpg")' });
+      $(spanish_label).css({ backgroundImage: 'url("/images/client/add_agent/spanish.jpg")' });
+    } else if (spanish == true) {
+      $(english_label).css({ backgroundImage: 'url("/images/client/add_agent/english.jpg")' });
+      $(spanish_label).css({ backgroundImage: 'url("/images/client/add_agent/spanishselected.jpg")' });
+    }
+  });
 });
 
 /***/ }),
@@ -58197,12 +58232,12 @@ var staticRenderFns = [
             _c("a", { attrs: { href: "/client/dashboard" } }, [
               _c("img", {
                 attrs: {
-                  src: "/resumeApp/public/images/client/arrow_back.png",
+                  src: "/images/client/arrow_back.png",
                   alt: "back-icon"
                 }
               })
             ]),
-            _vm._v("\n                ADD NEW AGEN\n            ")
+            _vm._v("\n      ADD NEW AGEN\n    ")
           ])
         ]
       ),
@@ -58213,13 +58248,12 @@ var staticRenderFns = [
             _c("img", {
               staticClass: "icon-margin small-image",
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/add_agent/ic/search_40px.svg",
+                src: "/images/client/add_agent/ic/search_40px.svg",
                 alt: ""
               }
             }),
             _vm._v(
-              "\n                    ENTER THE PARAMETERS OF SEARCH\n                "
+              "\n                  ENTER THE PARAMETERS OF SEARCH\n              "
             )
           ]),
           _vm._v(" "),
@@ -58353,7 +58387,7 @@ var staticRenderFns = [
                                   staticClass: "form-icon",
                                   staticStyle: {
                                     background:
-                                      "url(/resumeApp/public/images/client/add_agent/english.jpg)"
+                                      "url(/images/client/add_agent/english.jpg)"
                                   },
                                   attrs: { for: "english", id: "english_label" }
                                 }),
@@ -58379,7 +58413,7 @@ var staticRenderFns = [
                                   staticClass: "form-icon",
                                   staticStyle: {
                                     background:
-                                      "url(/resumeApp/public/images/client/add_agent/spanish.jpg)"
+                                      "url(/images/client/add_agent/spanish.jpg)"
                                   },
                                   attrs: { for: "spanish", id: "spanish_label" }
                                 }),
@@ -58424,7 +58458,7 @@ var staticRenderFns = [
                                       staticClass: "form-icon",
                                       staticStyle: {
                                         "background-image":
-                                          "url(/resumeApp/public/images/client/add_agent/male.jpg)"
+                                          "url(/images/client/add_agent/male.jpg)"
                                       },
                                       attrs: { for: "male", id: "male-gender" }
                                     }),
@@ -58455,7 +58489,7 @@ var staticRenderFns = [
                                       staticClass: "form-icon",
                                       staticStyle: {
                                         "background-image":
-                                          "url(/resumeApp/public/images/client/add_agent/female.jpg)"
+                                          "url(/images/client/add_agent/female.jpg)"
                                       },
                                       attrs: {
                                         for: "female",
@@ -58489,7 +58523,7 @@ var staticRenderFns = [
                                       staticClass: "form-icon",
                                       staticStyle: {
                                         "background-image":
-                                          "url(/resumeApp/public/images/client/add_agent/gender/both_gender_icon.png)"
+                                          "url(/images/client/add_agent/gender/both_gender_icon.png)"
                                       },
                                       attrs: { for: "both", id: "both-gender" }
                                     }),
@@ -58600,12 +58634,11 @@ var staticRenderFns = [
             _c("img", {
               staticClass: "icon-margin small-image",
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/add_agent/ic/search_results_40px.png",
+                src: "/images/client/add_agent/ic/search_results_40px.png",
                 alt: "search"
               }
             }),
-            _vm._v("\n            SEARCH RESULTS\n        ")
+            _vm._v("\n          SEARCH RESULTS\n      ")
           ]),
           _vm._v(" "),
           _c("hr"),
@@ -58623,7 +58656,7 @@ var staticRenderFns = [
                     staticClass: "avator",
                     attrs: {
                       src:
-                        "/resumeApp/public/images/client/add_agent/search_result/ic/user/user123.png"
+                        "/images/client/add_agent/search_result/ic/user/user123.png"
                     }
                   })
                 ]),
@@ -58637,11 +58670,11 @@ var staticRenderFns = [
                     _c("img", {
                       attrs: {
                         src:
-                          "/resumeApp/public/images/client/add_agent/search_result/icon/maps/place_24px.png"
+                          "/images/client/add_agent/search_result/icon/maps/place_24px.png"
                       }
                     }),
                     _vm._v(
-                      "\n                        Dublin, Ireland\n                    "
+                      "\n                      Dublin, Ireland\n                  "
                     )
                   ]),
                   _vm._v(" "),
@@ -58669,11 +58702,11 @@ var staticRenderFns = [
                             staticStyle: { "margin-right": "15px" },
                             attrs: {
                               src:
-                                "/resumeApp/public/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                                "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
                             }
                           }),
                           _vm._v(
-                            "\n                                LISTEN TO THE RECORD\n                            "
+                            "\n                              LISTEN TO THE RECORD\n                          "
                           )
                         ]
                       )
@@ -58688,12 +58721,10 @@ var staticRenderFns = [
                     staticClass: "primaryjob-icon",
                     attrs: {
                       src:
-                        "/resumeApp/public/images/client/add_agent/search_result/ic/primary_job_name.png"
+                        "/images/client/add_agent/search_result/ic/primary_job_name.png"
                     }
                   }),
-                  _vm._v(
-                    "\n                    Telemarketing\n                "
-                  )
+                  _vm._v("\n                  Telemarketing\n              ")
                 ]),
                 _vm._v(" "),
                 _c(
@@ -58710,7 +58741,7 @@ var staticRenderFns = [
                       _vm._v("Sector experience: ")
                     ]),
                     _vm._v(
-                      " Real estate, Investement, Insurance\n                "
+                      " Real estate, Investement, Insurance\n                    "
                     )
                   ]
                 ),
@@ -58719,21 +58750,21 @@ var staticRenderFns = [
                   _c("span", { staticStyle: { "font-weight": "500" } }, [
                     _vm._v("Technologies, software: ")
                   ]),
-                  _vm._v(" Microsoft Excel\n                ")
+                  _vm._v(" Microsoft Excel\n                    ")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticStyle: { margin: "20px 0" } }, [
                   _c("span", { staticStyle: { "font-weight": "500" } }, [
                     _vm._v("Languages: ")
                   ]),
-                  _vm._v("English, Spanish\n                ")
+                  _vm._v("English, Spanish\n                    ")
                 ]),
                 _vm._v(" "),
                 _c("div", [
                   _c("span", { staticStyle: { "font-weight": "500" } }, [
                     _vm._v("No. hours per week: ")
                   ]),
-                  _vm._v("30-40 hours\n                ")
+                  _vm._v("30-40 hours\n                    ")
                 ])
               ]),
               _vm._v(" "),
@@ -58758,11 +58789,11 @@ var staticRenderFns = [
                             staticStyle: { "margin-right": "15px" },
                             attrs: {
                               src:
-                                "/resumeApp/public/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                                "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
                             }
                           }),
                           _vm._v(
-                            "\n                            LISTEN TO THE RECORD\n                        "
+                            "\n                          LISTEN TO THE RECORD\n                      "
                           )
                         ]
                       )
@@ -58799,7 +58830,7 @@ var staticRenderFns = [
                     staticClass: "avator",
                     attrs: {
                       src:
-                        "/resumeApp/public/images/client/add_agent/search_result/ic/user/user123.png"
+                        "/images/client/add_agent/search_result/ic/user/user123.png"
                     }
                   })
                 ]),
@@ -58813,11 +58844,11 @@ var staticRenderFns = [
                     _c("img", {
                       attrs: {
                         src:
-                          "/resumeApp/public/images/client/add_agent/search_result/icon/maps/place_24px.png"
+                          "/images/client/add_agent/search_result/icon/maps/place_24px.png"
                       }
                     }),
                     _vm._v(
-                      "\n                        Dublin, Ireland\n                    "
+                      "\n                      Dublin, Ireland\n                  "
                     )
                   ]),
                   _vm._v(" "),
@@ -58845,11 +58876,11 @@ var staticRenderFns = [
                             staticStyle: { "margin-right": "15px" },
                             attrs: {
                               src:
-                                "/resumeApp/public/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                                "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
                             }
                           }),
                           _vm._v(
-                            "\n                                LISTEN TO THE RECORD\n                            "
+                            "\n                              LISTEN TO THE RECORD\n                          "
                           )
                         ]
                       )
@@ -58864,12 +58895,10 @@ var staticRenderFns = [
                     staticClass: "primaryjob-icon",
                     attrs: {
                       src:
-                        "/resumeApp/public/images/client/add_agent/search_result/ic/primary_job_name.png"
+                        "/images/client/add_agent/search_result/ic/primary_job_name.png"
                     }
                   }),
-                  _vm._v(
-                    "\n                    Telemarketing\n                "
-                  )
+                  _vm._v("\n                  Telemarketing\n              ")
                 ]),
                 _vm._v(" "),
                 _c(
@@ -58886,7 +58915,7 @@ var staticRenderFns = [
                       _vm._v("Sector experience: ")
                     ]),
                     _vm._v(
-                      " Real estate, Investement, Insurance\n                "
+                      " Real estate, Investement, Insurance\n                          "
                     )
                   ]
                 ),
@@ -58895,21 +58924,21 @@ var staticRenderFns = [
                   _c("span", { staticStyle: { "font-weight": "500" } }, [
                     _vm._v("Technologies, software: ")
                   ]),
-                  _vm._v(" Microsoft Excel\n                ")
+                  _vm._v(" Microsoft Excel\n                          ")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticStyle: { margin: "20px 0" } }, [
                   _c("span", { staticStyle: { "font-weight": "500" } }, [
                     _vm._v("Languages: ")
                   ]),
-                  _vm._v("English, Spanish\n                ")
+                  _vm._v("English, Spanish\n                          ")
                 ]),
                 _vm._v(" "),
                 _c("div", [
                   _c("span", { staticStyle: { "font-weight": "500" } }, [
                     _vm._v("No. hours per week: ")
                   ]),
-                  _vm._v("30-40 hours\n                ")
+                  _vm._v("30-40 hours\n                          ")
                 ])
               ]),
               _vm._v(" "),
@@ -58934,11 +58963,11 @@ var staticRenderFns = [
                             staticStyle: { "margin-right": "15px" },
                             attrs: {
                               src:
-                                "/resumeApp/public/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                                "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
                             }
                           }),
                           _vm._v(
-                            "\n                            LISTEN TO THE RECORD\n                        "
+                            "\n                          LISTEN TO THE RECORD\n                      "
                           )
                         ]
                       )
@@ -58975,7 +59004,7 @@ var staticRenderFns = [
                     staticClass: "avator",
                     attrs: {
                       src:
-                        "/resumeApp/public/images/client/add_agent/search_result/ic/user/user123.png"
+                        "/images/client/add_agent/search_result/ic/user/user123.png"
                     }
                   })
                 ]),
@@ -58989,11 +59018,11 @@ var staticRenderFns = [
                     _c("img", {
                       attrs: {
                         src:
-                          "/resumeApp/public/images/client/add_agent/search_result/icon/maps/place_24px.png"
+                          "/images/client/add_agent/search_result/icon/maps/place_24px.png"
                       }
                     }),
                     _vm._v(
-                      "\n                        Dublin, Ireland\n                    "
+                      "\n                      Dublin, Ireland\n                  "
                     )
                   ]),
                   _vm._v(" "),
@@ -59021,11 +59050,11 @@ var staticRenderFns = [
                             staticStyle: { "margin-right": "15px" },
                             attrs: {
                               src:
-                                "/resumeApp/public/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                                "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
                             }
                           }),
                           _vm._v(
-                            "\n                                LISTEN TO THE RECORD\n                            "
+                            "\n                              LISTEN TO THE RECORD\n                          "
                           )
                         ]
                       )
@@ -59040,12 +59069,10 @@ var staticRenderFns = [
                     staticClass: "primaryjob-icon",
                     attrs: {
                       src:
-                        "/resumeApp/public/images/client/add_agent/search_result/ic/primary_job_name.png"
+                        "/images/client/add_agent/search_result/ic/primary_job_name.png"
                     }
                   }),
-                  _vm._v(
-                    "\n                    Telemarketing\n                "
-                  )
+                  _vm._v("\n                  Telemarketing\n              ")
                 ]),
                 _vm._v(" "),
                 _c(
@@ -59062,7 +59089,7 @@ var staticRenderFns = [
                       _vm._v("Sector experience: ")
                     ]),
                     _vm._v(
-                      " Real estate, Investement, Insurance\n                "
+                      " Real estate, Investement, Insurance\n                                "
                     )
                   ]
                 ),
@@ -59071,21 +59098,21 @@ var staticRenderFns = [
                   _c("span", { staticStyle: { "font-weight": "500" } }, [
                     _vm._v("Technologies, software: ")
                   ]),
-                  _vm._v(" Microsoft Excel\n                ")
+                  _vm._v(" Microsoft Excel\n                                ")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticStyle: { margin: "20px 0" } }, [
                   _c("span", { staticStyle: { "font-weight": "500" } }, [
                     _vm._v("Languages: ")
                   ]),
-                  _vm._v("English, Spanish\n                ")
+                  _vm._v("English, Spanish\n                                ")
                 ]),
                 _vm._v(" "),
                 _c("div", [
                   _c("span", { staticStyle: { "font-weight": "500" } }, [
                     _vm._v("No. hours per week: ")
                   ]),
-                  _vm._v("30-40 hours\n                ")
+                  _vm._v("30-40 hours\n                                ")
                 ])
               ]),
               _vm._v(" "),
@@ -59110,11 +59137,11 @@ var staticRenderFns = [
                             staticStyle: { "margin-right": "15px" },
                             attrs: {
                               src:
-                                "/resumeApp/public/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                                "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
                             }
                           }),
                           _vm._v(
-                            "\n                            LISTEN TO THE RECORD\n                        "
+                            "\n                          LISTEN TO THE RECORD\n                      "
                           )
                         ]
                       )
@@ -59150,11 +59177,11 @@ var staticRenderFns = [
                   staticClass: "refresh-icon",
                   attrs: {
                     src:
-                      "/resumeApp/public/images/client/add_agent/search_result/btn/refresh-arrow.png",
+                      "/images/client/add_agent/search_result/btn/refresh-arrow.png",
                     alt: ""
                   }
                 }),
-                _vm._v("\n                LOAD MORE\n            ")
+                _vm._v("\n              LOAD MORE\n          ")
               ]
             )
           ])
@@ -59472,36 +59499,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            activeTab: 'campaign-manager'
-        };
-    },
+  data: function data() {
+    return {
+      activeTab: 'campaign-manager'
+    };
+  },
 
-    methods: {
-        selectTab: function selectTab(tabName) {
-            this.activeTab = tabName;
-        },
-        getMenuBlockIcon: function getMenuBlockIcon(tabName) {
-            if (this.activeTab === tabName) {
-                return '/resumeApp/public/images/client/menu_icons/active/' + tabName + '.png';
-            }
-            return '/resumeApp/public/images/client/menu_icons/inactive/' + tabName + '.png';
-        },
-        setActiveTab: function setActiveTab() {
-            var tabs = ['campaign-manager', 'payments', 'my-account'];
-
-            this.activeTab = this.$route.path.replace('/client/dashboard/', '');
-            if (!tabs.includes(this.activeTab)) {
-                this.activeTab = 'campaign-manager';
-            }
-        }
+  methods: {
+    selectTab: function selectTab(tabName) {
+      this.activeTab = tabName;
     },
-    mounted: function mounted() {
-        this.setActiveTab();
+    getMenuBlockIcon: function getMenuBlockIcon(tabName) {
+      if (this.activeTab === tabName) {
+        return '/images/client/menu_icons/active/' + tabName + '.png';
+      }
+      return '/images/client/menu_icons/inactive/' + tabName + '.png';
+    },
+    setActiveTab: function setActiveTab() {
+      var tabs = ['campaign-manager', 'payments', 'my-account'];
+
+      this.activeTab = this.$route.path.replace('/client/dashboard/', '');
+      if (!tabs.includes(this.activeTab)) {
+        this.activeTab = 'campaign-manager';
+      }
     }
+  },
+  mounted: function mounted() {
+    this.setActiveTab();
+  }
 });
 
 /***/ }),
@@ -59553,7 +59589,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "menu-block-name" }, [
                     _vm._v(
-                      "\n                            Campaign manager\n                        "
+                      "\n                  Campaign manager\n                "
                     )
                   ])
                 ]
@@ -59578,9 +59614,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "menu-block-name" }, [
-                    _vm._v(
-                      "\n                            Chats\n                        "
-                    )
+                    _vm._v("\n                  Chats\n                ")
                   ])
                 ]
               ),
@@ -59608,9 +59642,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "menu-block-name" }, [
-                    _vm._v(
-                      "\n                            Payments\n                        "
-                    )
+                    _vm._v("\n                    Payments\n                  ")
                   ])
                 ]
               ),
@@ -59638,7 +59670,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "menu-block-name" }, [
                     _vm._v(
-                      "\n                            Agents database\n                        "
+                      "\n                    Agents database\n                  "
                     )
                   ])
                 ]
@@ -59668,7 +59700,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "menu-block-name" }, [
                     _vm._v(
-                      "\n                            My account\n                        "
+                      "\n                      My account\n                    "
                     )
                   ])
                 ]
@@ -59710,9 +59742,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "menu-block-name" }, [
-                _vm._v(
-                  "\n                    Campaign manager\n                "
-                )
+                _vm._v("\n                  Campaign manager\n                ")
               ])
             ]
           ),
@@ -59736,7 +59766,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "menu-block-name" }, [
-                _vm._v("\n                    Chats\n                ")
+                _vm._v("\n                  Chats\n                ")
               ])
             ]
           ),
@@ -59761,7 +59791,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "menu-block-name" }, [
-                _vm._v("\n                    Payments\n                ")
+                _vm._v("\n                    Payments\n                  ")
               ])
             ]
           ),
@@ -59789,7 +59819,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "menu-block-name" }, [
                 _vm._v(
-                  "\n                    Agents database\n                "
+                  "\n                    Agents database\n                  "
                 )
               ])
             ]
@@ -59818,7 +59848,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "menu-block-name" }, [
-                _vm._v("\n                    My account\n                ")
+                _vm._v(
+                  "\n                      My account\n                    "
+                )
               ])
             ]
           )
@@ -59857,10 +59889,7 @@ var staticRenderFns = [
           },
           [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/Group.png",
-                alt: "menu"
-              }
+              attrs: { src: "/images/client/Group.png", alt: "menu" }
             })
           ]
         ),
@@ -59873,10 +59902,7 @@ var staticRenderFns = [
           },
           [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/close.png",
-                alt: "menu"
-              }
+              attrs: { src: "/images/client/close.png", alt: "menu" }
             })
           ]
         ),
@@ -59884,10 +59910,7 @@ var staticRenderFns = [
         _c("a", { staticClass: "navbar-brand", attrs: { href: "/client" } }, [
           _c("img", {
             staticStyle: { width: "177px" },
-            attrs: {
-              src: "/resumeApp/public/images/client/logo_123.png",
-              alt: "logout"
-            }
+            attrs: { src: "/images/client/logo_123.png", alt: "logout" }
           })
         ]),
         _vm._v(" "),
@@ -59897,24 +59920,16 @@ var staticRenderFns = [
           _c("div", { staticClass: "logoutButton" }, [
             _c("a", { attrs: { href: "#" } }, [
               _c("img", {
-                attrs: {
-                  src: "/resumeApp/public/images/client/log_out.png",
-                  alt: "logout"
-                }
+                attrs: { src: "/images/client/log_out.png", alt: "logout" }
               })
             ])
           ]),
           _vm._v(" "),
-          _c("div", [
-            _vm._v("\n                Ahmed R. Marzouk\n            ")
-          ]),
+          _c("div", [_vm._v("\n        Ahmed R. Marzouk\n      ")]),
           _vm._v(" "),
           _c("div", { staticClass: "clientAvatar" }, [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/dummy.png",
-                alt: "logout"
-              }
+              attrs: { src: "/images/client/dummy.png", alt: "logout" }
             })
           ])
         ])
@@ -59927,18 +59942,13 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "clientInfo-bar" }, [
       _c("div", { staticClass: "clientAvatar" }, [
-        _c("img", {
-          attrs: {
-            src: "/resumeApp/public/images/client/dummy.png",
-            alt: "logout"
-          }
-        })
+        _c("img", { attrs: { src: "/images/client/dummy.png", alt: "logout" } })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "clientName" }, [
-        _vm._v("\n                    Welcome,"),
+        _vm._v("\n            Welcome,"),
         _c("br"),
-        _vm._v("\n                    Ahmed R. Marzouk\n                ")
+        _vm._v("\n            Ahmed R. Marzouk\n          ")
       ])
     ])
   },
@@ -59948,7 +59958,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "logoutBtn" }, [
       _c("a", { attrs: { href: "#" } }, [
-        _vm._v("\n                    LOG OUT\n                ")
+        _vm._v("\n                      LOG OUT\n                  ")
       ])
     ])
   },
@@ -59972,11 +59982,7 @@ var staticRenderFns = [
                   staticClass: "close",
                   attrs: { type: "button", "data-dismiss": "modal" }
                 },
-                [
-                  _c("img", {
-                    attrs: { src: "/resumeApp/public/images/client/close.png" }
-                  })
-                ]
+                [_c("img", { attrs: { src: "/images/client/close.png" } })]
               )
             ]),
             _vm._v(" "),
@@ -59998,19 +60004,19 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("div", { staticClass: "invioce-top-text" }, [
                 _vm._v(
-                  "\n                        123 Workforce\n                        "
+                  "\n                      123 Workforce\n                      "
                 ),
                 _c("br"),
                 _vm._v(
-                  "\n                        5th floor Portview House Thorn Castle st Dublin Ireland\n                        "
+                  "\n                      5th floor Portview House Thorn Castle st Dublin Ireland\n                      "
                 ),
                 _c("br"),
                 _vm._v(
-                  "\n                        00442037000685\n                        "
+                  "\n                      00442037000685\n                      "
                 ),
                 _c("br"),
                 _vm._v(
-                  "\n                        info@123workforce.com\n                    "
+                  "\n                      info@123workforce.com\n                    "
                 )
               ]),
               _vm._v(" "),
@@ -60032,7 +60038,7 @@ var staticRenderFns = [
                         "d-flex justify-content-between align-items-center"
                     },
                     [
-                      _vm._v(" $400  "),
+                      _vm._v(" $400 "),
                       _c("span", { staticClass: "invoice-outstand" }, [
                         _vm._v(" outstand")
                       ])
@@ -60042,8 +60048,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "invoice-download" }, [
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/payments/export_invoice.png"
+                        src: "/images/client/payments/export_invoice.png"
                       }
                     }),
                     _vm._v("   copy invioce link ")
@@ -60056,7 +60061,7 @@ var staticRenderFns = [
                   "\n                        Invoice issue date:\n                        "
                 ),
                 _c("br"),
-                _vm._v(" 26.03.2019\n                    ")
+                _vm._v(" 26.03.2019\n                      ")
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "client-info" }, [
@@ -60071,7 +60076,7 @@ var staticRenderFns = [
                 _c("div", { staticClass: "d-flex" }, [
                   _c("div", [
                     _vm._v(
-                      "\n                                Contact:\n                            "
+                      "\n                            Contact:\n                          "
                     )
                   ]),
                   _vm._v(" "),
@@ -60080,7 +60085,7 @@ var staticRenderFns = [
                     { staticStyle: { width: "200px", "margin-left": "3px" } },
                     [
                       _vm._v(
-                        "  +447711228204\n                                kim@urbanhqgroup.com "
+                        " +447711228204\n                            kim@urbanhqgroup.com "
                       )
                     ]
                   )
@@ -60091,10 +60096,7 @@ var staticRenderFns = [
                 _c("div", { staticClass: "d-flex align-items-center" }, [
                   _c("img", {
                     staticClass: "invoice-info-icon",
-                    attrs: {
-                      src:
-                        "/resumeApp/public/images/client/payments/people_24px.png"
-                    }
+                    attrs: { src: "/images/client/payments/people_24px.png" }
                   }),
                   _vm._v(" "),
                   _c("span", { staticClass: "invoice-info-title" }, [
@@ -60110,7 +60112,7 @@ var staticRenderFns = [
                     staticClass: "invoice-info-icon",
                     attrs: {
                       src:
-                        "/resumeApp/public/images/client/payments/assignment_turned_in_24px.png"
+                        "/images/client/payments/assignment_turned_in_24px.png"
                     }
                   }),
                   _vm._v(" "),
@@ -60118,7 +60120,7 @@ var staticRenderFns = [
                     _vm._v(" Name of agents: ")
                   ]),
                   _vm._v(
-                    "\n                            Analiza Belleza, Cheska Ramos\n                        "
+                    "\n                          Analiza Belleza, Cheska Ramos\n                        "
                   )
                 ]),
                 _vm._v(" "),
@@ -60127,7 +60129,7 @@ var staticRenderFns = [
                     staticClass: "invoice-info-icon",
                     attrs: {
                       src:
-                        "/resumeApp/public/images/client/payments/account_balance_wallet_24px.png"
+                        "/images/client/payments/account_balance_wallet_24px.png"
                     }
                   }),
                   _vm._v(" "),
@@ -60135,7 +60137,37 @@ var staticRenderFns = [
                     _vm._v(" Name of agents: ")
                   ]),
                   _vm._v(
-                    "\n                            Analiza Belleza, Cheska Ramos\n                        "
+                    "\n                          Analiza Belleza, Cheska Ramos\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex align-items-center" }, [
+                  _c("img", {
+                    staticClass: "invoice-info-icon",
+                    attrs: {
+                      src: "/images/client/payments/watch_later_24px.png"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "invoice-info-title" }, [
+                    _vm._v(" Name of agents: ")
+                  ]),
+                  _vm._v(
+                    "\n                          Analiza Belleza, Cheska Ramos\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex align-items-center" }, [
+                  _c("img", {
+                    staticClass: "invoice-info-icon",
+                    attrs: { src: "/images/client/payments/Subtract.png" }
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "invoice-info-title" }, [
+                    _vm._v(" Name of agents: ")
+                  ]),
+                  _vm._v(
+                    "\n                          Analiza Belleza, Cheska Ramos\n                        "
                   )
                 ]),
                 _vm._v(" "),
@@ -60144,7 +60176,7 @@ var staticRenderFns = [
                     staticClass: "invoice-info-icon",
                     attrs: {
                       src:
-                        "/resumeApp/public/images/client/payments/watch_later_24px.png"
+                        "/images/client/payments/account_balance_wallet_24px.png"
                     }
                   }),
                   _vm._v(" "),
@@ -60152,41 +60184,7 @@ var staticRenderFns = [
                     _vm._v(" Name of agents: ")
                   ]),
                   _vm._v(
-                    "\n                            Analiza Belleza, Cheska Ramos\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "d-flex align-items-center" }, [
-                  _c("img", {
-                    staticClass: "invoice-info-icon",
-                    attrs: {
-                      src:
-                        "/resumeApp/public/images/client/payments/Subtract.png"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "invoice-info-title" }, [
-                    _vm._v(" Name of agents: ")
-                  ]),
-                  _vm._v(
-                    "\n                            Analiza Belleza, Cheska Ramos\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "d-flex align-items-center" }, [
-                  _c("img", {
-                    staticClass: "invoice-info-icon",
-                    attrs: {
-                      src:
-                        "/resumeApp/public/images/client/payments/account_balance_wallet_24px.png"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "invoice-info-title" }, [
-                    _vm._v(" Name of agents: ")
-                  ]),
-                  _vm._v(
-                    "\n                            Analiza Belleza, Cheska Ramos\n                        "
+                    "\n                          Analiza Belleza, Cheska Ramos\n                        "
                   )
                 ])
               ])
@@ -60292,7 +60290,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -60367,22 +60365,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            activeTab: ''
-        };
-    },
+  data: function data() {
+    return {
+      activeTab: ''
+    };
+  },
 
-    methods: {
-        setActiveTab: function setActiveTab() {
-            this.activeTab = this.$route.path.replace('/', '');
-        }
-    },
-    mounted: function mounted() {
-        this.setActiveTab();
+  methods: {
+    setActiveTab: function setActiveTab() {
+      this.activeTab = this.$route.path.replace('/', '');
     }
+  },
+  mounted: function mounted() {
+    this.setActiveTab();
+  }
 });
 
 /***/ }),
@@ -60415,7 +60418,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("\n            ACTIVITY\n        ")]
+            [_vm._v("\n      ACTIVITY\n    ")]
           ),
           _vm._v(" "),
           _c(
@@ -60430,7 +60433,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("\n            CAMPAIGN TEAM\n        ")]
+            [_vm._v("\n      CAMPAIGN TEAM\n    ")]
           ),
           _vm._v(" "),
           _c(
@@ -60445,7 +60448,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("\n            CAMPAIGN BRIEF\n        ")]
+            [_vm._v("\n      CAMPAIGN BRIEF\n    ")]
           )
         ],
         1
@@ -60468,13 +60471,10 @@ var staticRenderFns = [
         _c("div", { staticClass: "backBtn" }, [
           _c("a", { attrs: { href: "/client/dashboard" } }, [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/arrow_back.png",
-                alt: "back-icon"
-              }
+              attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
             })
           ]),
-          _vm._v("\n            NAME OF THE CAMPAIGN\n        ")
+          _vm._v("\n      NAME OF THE CAMPAIGN\n    ")
         ])
       ]
     )
@@ -60575,7 +60575,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -60706,15 +60706,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            empty_state: true
-        };
-    }
+  data: function data() {
+    return {
+      empty_state: true
+    };
+  }
 });
 
 /***/ }),
@@ -60760,7 +60758,7 @@ var render = function() {
         [
           _c("div", { staticClass: "archive-empty-state-header" }, [
             _vm._v(
-              "\n                You Archive of campaigns is empty\n            "
+              "\n                          You Archive of campaigns is empty\n                        "
             )
           ]),
           _vm._v(" "),
@@ -60782,13 +60780,10 @@ var staticRenderFns = [
         _c("div", { staticClass: "backBtn" }, [
           _c("a", { attrs: { href: "/client/dashboard" } }, [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/arrow_back.png",
-                alt: "back-icon"
-              }
+              attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
             })
           ]),
-          _vm._v("\n            ARCHIVE OF CAMPAIGNS\n        ")
+          _vm._v("\n      ARCHIVE OF CAMPAIGNS\n    ")
         ])
       ]
     )
@@ -60800,11 +60795,11 @@ var staticRenderFns = [
     return _c("div", { staticClass: "archive-heading" }, [
       _c("img", {
         attrs: {
-          src: "/resumeApp/public/images/client/campaign_archives/search.png",
+          src: "/images/client/campaign_archives/search.png",
           alt: "search icon"
         }
       }),
-      _vm._v("\n                YOUR PAST CAMPAIGNS\n            ")
+      _vm._v("\n                  YOUR PAST CAMPAIGNS\n              ")
     ])
   },
   function() {
@@ -60817,14 +60812,14 @@ var staticRenderFns = [
           _c("div", { staticClass: "name-of-campaign" }, [
             _c("a", { attrs: { href: "/client/campaign" } }, [
               _vm._v(
-                "\n                                Name of the campaign long name of the campaign\n                            "
+                "\n                                  Name of the campaign long name of the campaign\n                              "
               )
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "campaign-notes" }, [
             _vm._v(
-              "\n                            2 agents worked on the campaign\n                        "
+              "\n                2 agents worked on the campaign\n              "
             )
           ])
         ]),
@@ -60833,26 +60828,24 @@ var staticRenderFns = [
           _c("div", { staticClass: "date" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/date.png",
+                src: "/images/client/campaign_archives/date.png",
                 alt: "date icon"
               }
             }),
             _vm._v(
-              "\n                            4.09.18 - 4.01.19\n                        "
+              "\n                              4.09.18 - 4.01.19\n                          "
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "amount" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/amount.png",
+                src: "/images/client/campaign_archives/amount.png",
                 alt: "amount icon"
               }
             }),
             _vm._v(
-              "\n                            $ 8,500\n                        "
+              "\n                              $ 8,500\n                          "
             )
           ])
         ])
@@ -60863,14 +60856,14 @@ var staticRenderFns = [
           _c("div", { staticClass: "name-of-campaign" }, [
             _c("a", { attrs: { href: "/client/campaign" } }, [
               _vm._v(
-                "\n                                Name of the campaign long name of the campaign\n                            "
+                "\n                                  Name of the campaign long name of the campaign\n                              "
               )
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "campaign-notes" }, [
             _vm._v(
-              "\n                            2 agents worked on the campaign\n                        "
+              "\n                    2 agents worked on the campaign\n                  "
             )
           ])
         ]),
@@ -60879,26 +60872,24 @@ var staticRenderFns = [
           _c("div", { staticClass: "date" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/date.png",
+                src: "/images/client/campaign_archives/date.png",
                 alt: "date icon"
               }
             }),
             _vm._v(
-              "\n                            4.09.18 - 4.01.19\n                        "
+              "\n                              4.09.18 - 4.01.19\n                          "
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "amount" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/amount.png",
+                src: "/images/client/campaign_archives/amount.png",
                 alt: "amount icon"
               }
             }),
             _vm._v(
-              "\n                            $ 8,500\n                        "
+              "\n                              $ 8,500\n                          "
             )
           ])
         ])
@@ -60909,14 +60900,14 @@ var staticRenderFns = [
           _c("div", { staticClass: "name-of-campaign" }, [
             _c("a", { attrs: { href: "/client/campaign" } }, [
               _vm._v(
-                "\n                                Name of the campaign long name of the campaign\n                            "
+                "\n                                  Name of the campaign long name of the campaign\n                              "
               )
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "campaign-notes" }, [
             _vm._v(
-              "\n                            2 agents worked on the campaign\n                        "
+              "\n                        2 agents worked on the campaign\n                      "
             )
           ])
         ]),
@@ -60925,26 +60916,24 @@ var staticRenderFns = [
           _c("div", { staticClass: "date" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/date.png",
+                src: "/images/client/campaign_archives/date.png",
                 alt: "date icon"
               }
             }),
             _vm._v(
-              "\n                            4.09.18 - 4.01.19\n                        "
+              "\n                              4.09.18 - 4.01.19\n                          "
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "amount" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/amount.png",
+                src: "/images/client/campaign_archives/amount.png",
                 alt: "amount icon"
               }
             }),
             _vm._v(
-              "\n                            $ 8,500\n                        "
+              "\n                              $ 8,500\n                          "
             )
           ])
         ])
@@ -60955,14 +60944,14 @@ var staticRenderFns = [
           _c("div", { staticClass: "name-of-campaign" }, [
             _c("a", { attrs: { href: "/client/campaign" } }, [
               _vm._v(
-                "\n                                Name of the campaign long name of the campaign\n                            "
+                "\n                                  Name of the campaign long name of the campaign\n                              "
               )
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "campaign-notes" }, [
             _vm._v(
-              "\n                            2 agents worked on the campaign\n                        "
+              "\n                            2 agents worked on the campaign\n                          "
             )
           ])
         ]),
@@ -60971,26 +60960,24 @@ var staticRenderFns = [
           _c("div", { staticClass: "date" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/date.png",
+                src: "/images/client/campaign_archives/date.png",
                 alt: "date icon"
               }
             }),
             _vm._v(
-              "\n                            4.09.18 - 4.01.19\n                        "
+              "\n                              4.09.18 - 4.01.19\n                          "
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "amount" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/amount.png",
+                src: "/images/client/campaign_archives/amount.png",
                 alt: "amount icon"
               }
             }),
             _vm._v(
-              "\n                            $ 8,500\n                        "
+              "\n                              $ 8,500\n                          "
             )
           ])
         ])
@@ -61004,8 +60991,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "archive-empty-state-img-wrapper" }, [
       _c("img", {
         attrs: {
-          src:
-            "/resumeApp/public/images/client/campaign_archives/archive_emty_state.png",
+          src: "/images/client/campaign_archives/archive_emty_state.png",
           alt: "emty state photo"
         }
       })
@@ -61107,7 +61093,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -61298,22 +61284,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            client: {
-                name: 'Ahmed Marzouk',
-                agency: 'The best agency',
-                contact: ' 0044203700685',
-                timeZone: '(GMT - 5:00) Eastern time (US & Canada), Bogota, Lima',
-                emailDept: 'email1234567890@gmail.com',
-                email: 'test@gmail.com'
-            }
-        };
-    },
+  data: function data() {
+    return {
+      client: {
+        name: 'Ahmed Marzouk',
+        agency: 'The best agency',
+        contact: ' 0044203700685',
+        timeZone: '(GMT - 5:00) Eastern time (US & Canada), Bogota, Lima',
+        emailDept: 'email1234567890@gmail.com',
+        email: 'test@gmail.com'
+      }
+    };
+  },
 
-    methods: {}
+  methods: {}
 });
 
 /***/ }),
@@ -61341,12 +61351,12 @@ var staticRenderFns = [
               _c("a", { attrs: { href: "/client/dashboard/my-account" } }, [
                 _c("img", {
                   attrs: {
-                    src: "/resumeApp/public/images/client/arrow_back.png",
+                    src: "/images/client/arrow_back.png",
                     alt: "back-icon"
                   }
                 })
               ]),
-              _vm._v("\n                ACCOUNT INFORMATION\n            ")
+              _vm._v("\n        ACCOUNT INFORMATION\n      ")
             ])
           ]
         ),
@@ -61359,15 +61369,14 @@ var staticRenderFns = [
               _c("div", { staticClass: "left" }, [
                 _c("img", {
                   attrs: {
-                    src:
-                      "/resumeApp/public/images/client/my_account/info_40px.png",
+                    src: "/images/client/my_account/info_40px.png",
                     alt: "info icon"
                   }
                 }),
                 _vm._v(" "),
                 _c("span", [
                   _vm._v(
-                    "\n                    EDIT ACCOUNT INFORMATION\n                "
+                    "\n                      EDIT ACCOUNT INFORMATION\n                  "
                   )
                 ])
               ])
@@ -61376,9 +61385,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "account-edit-section" }, [
             _c("div", { staticClass: "account-edit-section-heading" }, [
-              _vm._v(
-                "\n                    BASIC INFORMATION\n                "
-              )
+              _vm._v("\n          BASIC INFORMATION\n        ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "account-edit-section-inputs" }, [
@@ -61388,7 +61395,7 @@ var staticRenderFns = [
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Enter your agency name\n                        "
+                      "\n              Enter your agency name\n            "
                     )
                   ]),
                   _vm._v(" "),
@@ -61403,8 +61410,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -61418,7 +61424,7 @@ var staticRenderFns = [
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Enter name of contact person\n                        "
+                      "\n                Enter name of contact person\n              "
                     )
                   ]),
                   _vm._v(" "),
@@ -61433,8 +61439,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -61448,7 +61453,7 @@ var staticRenderFns = [
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Enter contact phone\n                        "
+                      "\n                  Enter contact phone\n                "
                     )
                   ]),
                   _vm._v(" "),
@@ -61463,8 +61468,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -61478,7 +61482,7 @@ var staticRenderFns = [
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Select your time zone\n                        "
+                      "\n                    Select your time zone\n                  "
                     )
                   ]),
                   _vm._v(" "),
@@ -61493,8 +61497,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -61508,7 +61511,7 @@ var staticRenderFns = [
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Enter main e-mail address\n                        "
+                      "\n                      Enter main e-mail address\n                    "
                     )
                   ]),
                   _vm._v(" "),
@@ -61523,8 +61526,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -61538,7 +61540,7 @@ var staticRenderFns = [
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Email address of accounts dept\n                        "
+                      "\n                        Email address of accounts dept\n                      "
                     )
                   ]),
                   _vm._v(" "),
@@ -61553,8 +61555,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -61577,7 +61578,7 @@ var staticRenderFns = [
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                        Enter your company website\n                    "
+                      "\n                        Enter your company website\n                      "
                     )
                   ]),
                   _vm._v(" "),
@@ -61592,8 +61593,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -61607,7 +61607,7 @@ var staticRenderFns = [
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                        Enter your Skype ID\n                    "
+                      "\n                          Enter your Skype ID\n                        "
                     )
                   ]),
                   _vm._v(" "),
@@ -61622,8 +61622,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -61637,7 +61636,7 @@ var staticRenderFns = [
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                        Enter second contact person\n                    "
+                      "\n                            Enter second contact person\n                          "
                     )
                   ]),
                   _vm._v(" "),
@@ -61652,8 +61651,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -61667,7 +61665,7 @@ var staticRenderFns = [
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                        Enter second contact phone\n                    "
+                      "\n                              Enter second contact phone\n                            "
                     )
                   ]),
                   _vm._v(" "),
@@ -61682,8 +61680,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -61696,7 +61693,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "account-edit-section" }, [
             _c("div", { staticClass: "account-edit-section-heading" }, [
               _vm._v(
-                "\n                    PREFERRED CONTACT\n                "
+                "\n                              PREFERRED CONTACT\n                            "
               )
             ]),
             _vm._v(" "),
@@ -61707,13 +61704,13 @@ var staticRenderFns = [
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Choose your preferred contact\n                        "
+                      "\n                                  Choose your preferred contact\n                                "
                     )
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "faq-input-label sub-label" }, [
                     _vm._v(
-                      "\n                            Please state here the preferred way that you would like to communicate with your agent.\n                        "
+                      "\n                                  Please state here the preferred way that you would like to communicate with your agent.\n                                "
                     )
                   ]),
                   _vm._v(" "),
@@ -61728,8 +61725,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -61746,8 +61742,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -61759,7 +61754,9 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "account-edit-section sub-section" }, [
             _c("div", { staticClass: "account-edit-section-heading" }, [
-              _vm._v("\n                    PASSWORD\n                ")
+              _vm._v(
+                "\n                                  PASSWORD\n                                "
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "account-edit-section-inputs" }, [
@@ -61769,7 +61766,7 @@ var staticRenderFns = [
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Write a new password\n                        "
+                      "\n                                      Write a new password\n                                    "
                     )
                   ]),
                   _vm._v(" "),
@@ -61784,8 +61781,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -61799,7 +61795,7 @@ var staticRenderFns = [
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Repeat your new password\n                        "
+                      "\n                                        Repeat your new password\n                                      "
                     )
                   ]),
                   _vm._v(" "),
@@ -61814,8 +61810,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -61830,7 +61825,9 @@ var staticRenderFns = [
             { staticClass: "account-edit-section-edit-btn no-decoration" },
             [
               _c("a", { attrs: { href: "#" } }, [
-                _vm._v("\n                    APPLY EDITS\n                ")
+                _vm._v(
+                  "\n                      APPLY EDITS\n                  "
+                )
               ])
             ]
           )
@@ -61919,12 +61916,12 @@ var staticRenderFns = [
             _c("a", { attrs: { href: "/client/dashboard" } }, [
               _c("img", {
                 attrs: {
-                  src: "/resumeApp/public/images/client/arrow_back.png",
+                  src: "/images/client/arrow_back.png",
                   alt: "back-icon"
                 }
               })
             ]),
-            _vm._v("\n            ACCOUNT INFORMATION EDITION\n        ")
+            _vm._v("\n      ACCOUNT INFORMATION EDITION\n    ")
           ])
         ]
       ),
@@ -61935,104 +61932,103 @@ var staticRenderFns = [
             _c("img", {
               staticClass: "icon-margin small-image",
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/my_account/contract_40px.svg",
+                src: "/images/client/my_account/contract_40px.svg",
                 alt: ""
               }
             }),
-            _vm._v("\n            SERVICE AGREEMENT\n        ")
+            _vm._v("\n              SERVICE AGREEMENT\n          ")
           ]),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
           _c("div", { staticClass: "agreement-main" }, [
             _c("div", { staticClass: "agreement-text agreement-margin" }, [
-              _vm._v("\n                THIS AGREEMENT\n                "),
+              _vm._v("\n            THIS AGREEMENT\n            "),
               _c("span", { staticStyle: { "font-weight": "bold" } }, [
                 _vm._v("(THE ”AGREEMENT”)")
               ]),
-              _vm._v(" IS MADE ON\n                "),
+              _vm._v(" IS MADE ON\n            "),
               _c("span", { staticStyle: { "font-weight": "bold" } }, [
                 _vm._v("“DATE”")
               ]),
-              _vm._v(" BY AND BETWEEN THE\n                "),
+              _vm._v(" BY AND BETWEEN THE\n            "),
               _c("span", { staticStyle: { "font-weight": "bold" } }, [
                 _vm._v("“CLIENT”")
               ]),
               _vm._v(" "),
               _c("br"),
               _vm._v(
-                "\n                AND THE “____”. IN CONSIDERATION OF THE MUTUAL AGREEMENT MADE HEREIN, BOTH PARTIES AGREE AS FOLLOWS:\n            "
+                "\n            AND THE “____”. IN CONSIDERATION OF THE MUTUAL AGREEMENT MADE HEREIN, BOTH PARTIES AGREE AS FOLLOWS:\n          "
               )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "blue-part" }, [
-              _vm._v("\n                work\n            ")
+              _vm._v("\n            work\n          ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "agreement-text agreement-main-text" }, [
               _vm._v(
-                "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n            "
+                "\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n          "
               )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "blue-part" }, [
-              _vm._v("\n                CONFIDENTIALITY\n            ")
+              _vm._v("\n            CONFIDENTIALITY\n          ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "agreement-text agreement-main-text" }, [
               _vm._v(
-                "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n                proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing\n                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim\n                id est laborum.\n            "
+                "\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n            proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing\n            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim\n            id est laborum.\n          "
               )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "blue-part" }, [
-              _vm._v("\n                COMPENSATION\n            ")
+              _vm._v("\n            COMPENSATION\n          ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "agreement-text agreement-main-text" }, [
               _vm._v(
-                "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n                proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing\n                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim\n                id est laborum.\n            "
+                "\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n            proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing\n            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim\n            id est laborum.\n          "
               )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "blue-part" }, [
-              _vm._v("\n                COMPENSATION\n            ")
+              _vm._v("\n            COMPENSATION\n          ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "agreement-text agreement-main-text" }, [
               _vm._v(
-                "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n            "
+                "\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n          "
               )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "blue-part" }, [
-              _vm._v("\n                CLIENT APPROVAL\n            ")
+              _vm._v("\n            CLIENT APPROVAL\n          ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "agreement-text agreement-main-text" }, [
               _vm._v(
-                "\n               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n            "
+                "\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n          "
               )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "blue-part" }, [
-              _vm._v("\n                CANCELLATION\n            ")
+              _vm._v("\n            CANCELLATION\n          ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "agreement-tex agreement-main-text" }, [
               _vm._v(
-                "\n               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n               dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n            "
+                "\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n          "
               )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "blue-part" }, [
-              _vm._v("\n                ACCEPTANCE OF TERMS\n            ")
+              _vm._v("\n            ACCEPTANCE OF TERMS\n          ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "agreement-text agreement-main-text" }, [
               _vm._v(
-                "\n              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n            "
+                "\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n          "
               )
             ])
           ]),
@@ -62058,11 +62054,11 @@ var staticRenderFns = [
             { staticClass: "col-12 col-md-8 col-lg-6 agreement-segniture" },
             [
               _c("div", { staticClass: "blue-part" }, [
-                _vm._v("\n                    YOUR SIGNATURE\n               ")
+                _vm._v("\n            YOUR SIGNATURE\n          ")
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "agreement-text signiture-main-text" }, [
-                _vm._v("\n                   Name surname\n               ")
+                _vm._v("\n            Name surname\n          ")
               ])
             ]
           ),
@@ -62157,12 +62153,12 @@ var staticRenderFns = [
             _c("a", { attrs: { href: "/client/dashboard/payments" } }, [
               _c("img", {
                 attrs: {
-                  src: "/resumeApp/public/images/client/arrow_back.png",
+                  src: "/images/client/arrow_back.png",
                   alt: "back-icon"
                 }
               })
             ]),
-            _vm._v("\n            059-004-038 INVOICE DETAILS\n        ")
+            _vm._v("\n      059-004-038 INVOICE DETAILS\n    ")
           ])
         ]
       ),
@@ -62186,15 +62182,15 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "pay-top-text" }, [
-            _vm._v("\n            123 Workforce\n            "),
+            _vm._v("\n        123 Workforce\n        "),
             _c("br"),
             _vm._v(
-              "\n            5th floor Portview House Thorn Castle st Dublin Ireland\n            "
+              "\n        5th floor Portview House Thorn Castle st Dublin Ireland\n        "
             ),
             _c("br"),
-            _vm._v("\n            00442037000685\n            "),
+            _vm._v("\n        00442037000685\n        "),
             _c("br"),
-            _vm._v("\n            info@123workforce.com\n        ")
+            _vm._v("\n        info@123workforce.com\n      ")
           ]),
           _vm._v(" "),
           _c(
@@ -62267,7 +62263,7 @@ var staticRenderFns = [
                             _c("img", {
                               attrs: {
                                 src:
-                                  "/resumeApp/public/images/client/payments/export_invoice.png"
+                                  "/images/client/payments/export_invoice.png"
                               }
                             })
                           ]
@@ -62290,7 +62286,7 @@ var staticRenderFns = [
           ),
           _vm._v(" "),
           _c("div", { staticClass: "payment-pay-date" }, [
-            _vm._v("\n            Invoice issue date: 26.03.2019\n        ")
+            _vm._v("\n          Invoice issue date: 26.03.2019\n        ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "payment-pay-text" }, [
@@ -62307,18 +62303,12 @@ var staticRenderFns = [
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "d-flex" }, [
-              _c("div", [
-                _vm._v("\n                    Contact:\n                ")
-              ]),
+              _c("div", [_vm._v("\n              Contact:\n            ")]),
               _vm._v(" "),
               _c(
                 "div",
                 { staticStyle: { width: "200px", "margin-left": "3px" } },
-                [
-                  _vm._v(
-                    "  +447711228204\n                kim@urbanhqgroup.com "
-                  )
-                ]
+                [_vm._v(" +447711228204\n              kim@urbanhqgroup.com ")]
               )
             ])
           ]),
@@ -62332,26 +62322,19 @@ var staticRenderFns = [
             [
               _c("img", {
                 staticClass: "pay-icons",
-                attrs: {
-                  src:
-                    "/resumeApp/public/images/client/payments/people_24px.png"
-                }
+                attrs: { src: "/images/client/payments/people_24px.png" }
               }),
               _vm._v(" "),
               _c("div", [
                 _c(
                   "div",
                   { staticClass: "display-content-block payment-pay-title" },
-                  [
-                    _vm._v(
-                      "\n                    Name of agents:\n                "
-                    )
-                  ]
+                  [_vm._v("\n              Name of agents:\n            ")]
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "display-content-block" }, [
                   _vm._v(
-                    "\n                    Analiza Belleza, Cheska Ramos\n                "
+                    "\n              Analiza Belleza, Cheska Ramos\n            "
                   )
                 ])
               ])
@@ -62369,8 +62352,7 @@ var staticRenderFns = [
               _c("img", {
                 staticClass: "pay-icons",
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/payments/assignment_turned_in_24px.png"
+                  src: "/images/client/payments/assignment_turned_in_24px.png"
                 }
               }),
               _vm._v(" "),
@@ -62378,16 +62360,12 @@ var staticRenderFns = [
                 _c(
                   "div",
                   { staticClass: "display-content-block payment-pay-title" },
-                  [
-                    _vm._v(
-                      "\n                    Services provided:\n                "
-                    )
-                  ]
+                  [_vm._v("\n              Services provided:\n            ")]
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "display-content-block" }, [
                   _vm._v(
-                    "\n                    Appointment setting & Campaign Managemens\n                "
+                    "\n              Appointment setting & Campaign Managemens\n            "
                   )
                 ])
               ])
@@ -62404,21 +62382,72 @@ var staticRenderFns = [
             [
               _c("img", {
                 staticClass: "pay-icons",
-                attrs: {
-                  src:
-                    "/resumeApp/public/images/client/payments/watch_later_24px.png"
-                }
+                attrs: { src: "/images/client/payments/watch_later_24px.png" }
               }),
               _vm._v(" "),
               _c("div", [
                 _c(
                   "div",
                   { staticClass: "display-content-block payment-pay-title" },
-                  [_vm._v("\n                    Hours:\n                ")]
+                  [_vm._v("\n              Hours:\n            ")]
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "display-content-block" }, [
-                  _vm._v("\n                    45 per week\n                ")
+                  _vm._v("\n              45 per week\n            ")
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center",
+              staticStyle: { "margin-top": "30px" }
+            },
+            [
+              _c("img", {
+                staticClass: "pay-icons",
+                attrs: { src: "/images/client/payments/date_range_24px.png" }
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _c(
+                  "div",
+                  { staticClass: "display-content-block payment-pay-title" },
+                  [_vm._v("\n              Date:\n            ")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "display-content-block" }, [
+                  _vm._v("\n              Mon, Tue, Wed, Sat\n            ")
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center",
+              staticStyle: { "margin-top": "30px" }
+            },
+            [
+              _c("img", {
+                staticClass: "pay-icons",
+                attrs: { src: "/images/client/payments/Subtract.png" }
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _c(
+                  "div",
+                  { staticClass: "display-content-block payment-pay-title" },
+                  [_vm._v("\n              Rate:\n            ")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "display-content-block" }, [
+                  _vm._v("\n              $ 10\n            ")
                 ])
               ])
             ]
@@ -62435,8 +62464,7 @@ var staticRenderFns = [
               _c("img", {
                 staticClass: "pay-icons",
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/payments/date_range_24px.png"
+                  src: "/images/client/payments/account_balance_wallet_24px.png"
                 }
               }),
               _vm._v(" "),
@@ -62444,72 +62472,11 @@ var staticRenderFns = [
                 _c(
                   "div",
                   { staticClass: "display-content-block payment-pay-title" },
-                  [_vm._v("\n                    Date:\n                ")]
+                  [_vm._v("\n              Total due:\n            ")]
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "display-content-block" }, [
-                  _vm._v(
-                    "\n                    Mon, Tue, Wed, Sat\n                "
-                  )
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center",
-              staticStyle: { "margin-top": "30px" }
-            },
-            [
-              _c("img", {
-                staticClass: "pay-icons",
-                attrs: {
-                  src: "/resumeApp/public/images/client/payments/Subtract.png"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c(
-                  "div",
-                  { staticClass: "display-content-block payment-pay-title" },
-                  [_vm._v("\n                    Rate:\n                ")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "display-content-block" }, [
-                  _vm._v("\n                    $ 10\n                ")
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center",
-              staticStyle: { "margin-top": "30px" }
-            },
-            [
-              _c("img", {
-                staticClass: "pay-icons",
-                attrs: {
-                  src:
-                    "/resumeApp/public/images/client/payments/account_balance_wallet_24px.png"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c(
-                  "div",
-                  { staticClass: "display-content-block payment-pay-title" },
-                  [_vm._v("\n                    Total due:\n                ")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "display-content-block" }, [
-                  _vm._v("\n                    $ 450\n                ")
+                  _vm._v("\n              $ 450\n            ")
                 ])
               ])
             ]
@@ -62656,19 +62623,25 @@ module.exports = Component.exports
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 $(document).ready(function () {
 
-    $(":checkbox[class=chechbox-blue]").on("change", function () {
-        $("input[class = " + $(this).attr("value") + "]").prop("disabled", !$(this).prop("checked"));
-        var red = document.getElementById('red').checked;
-        console.log(red);
-        if (red == true) {
-            $('label[for=red]').css({ opacity: 1 });
-        } else {
-            $('label[for=red]').css({ opacity: 0.4 });
-        }
-    });
+  $(":checkbox[class=chechbox-blue]").on("change", function () {
+    $("input[class = " + $(this).attr("value") + "]").prop("disabled", !$(this).prop("checked"));
+    var red = document.getElementById('red').checked;
+    console.log(red);
+    if (red == true) {
+      $('label[for=red]').css({ opacity: 1 });
+    } else {
+      $('label[for=red]').css({ opacity: 0.4 });
+    }
+  });
 });
 
 /***/ }),
@@ -62695,14 +62668,12 @@ var staticRenderFns = [
             _c("a", { attrs: { href: "#" } }, [
               _c("img", {
                 attrs: {
-                  src: "/resumeApp/public/images/client/arrow_back.png",
+                  src: "/images/client/arrow_back.png",
                   alt: "back-icon"
                 }
               })
             ]),
-            _vm._v(
-              "\n            FINISH YOUR SUBSCRIPTION PLAN UPDATE\n        "
-            )
+            _vm._v("\n      FINISH YOUR SUBSCRIPTION PLAN UPDATE\n    ")
           ])
         ]
       ),
@@ -62716,20 +62687,15 @@ var staticRenderFns = [
               _c("div", { staticClass: "header-text" }, [
                 _c("img", {
                   staticClass: "icon-margin small-image",
-                  attrs: {
-                    src: "/resumeApp/public/images/client/plan.png",
-                    alt: ""
-                  }
+                  attrs: { src: "/images/client/plan.png", alt: "" }
                 }),
-                _vm._v("\n                    SUBSCRIPTION PLAN UPDATE")
+                _vm._v("\n                     SUBSCRIPTION PLAN UPDATE")
               ]),
               _vm._v(" "),
               _c("hr"),
               _vm._v(" "),
               _c("div", { staticClass: "manager-blue-text" }, [
-                _vm._v(
-                  "\n                    CAMPAIGN MANAGER\n                "
-                )
+                _vm._v("\n            CAMPAIGN MANAGER\n          ")
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "manager-text" }, [
@@ -62837,9 +62803,7 @@ var staticRenderFns = [
                       position: "relative",
                       top: "10px"
                     },
-                    attrs: {
-                      src: "/resumeApp/public/images/client/payments/amount.png"
-                    }
+                    attrs: { src: "/images/client/payments/amount.png" }
                   }),
                   _vm._v(" "),
                   _c("div", [
@@ -62852,7 +62816,7 @@ var staticRenderFns = [
                       },
                       [
                         _vm._v(
-                          "\n\n                    WEEKLY RATE CALCULATION\n                "
+                          "\n                WEEKLY RATE CALCULATION\n              "
                         )
                       ]
                     ),
@@ -62880,7 +62844,7 @@ var staticRenderFns = [
                       },
                       [
                         _vm._v(
-                          "\n                    TOTAL WEEKLY AMOUNT\n                "
+                          "\n                TOTAL WEEKLY AMOUNT\n              "
                         )
                       ]
                     ),
@@ -63043,19 +63007,20 @@ module.exports = Component.exports
 //
 //
 //
+//
 
 $(document).ready(function () {
 
-    $(":checkbox[class=chechbox-blue]").on("change", function () {
-        var red = document.getElementById('checked').checked;
-        var text = document.getElementById('text');
-        console.log(red);
-        if (red == true) {
-            $(text).css({ visibility: 'hidden' });
-        } else {
-            $(text).css({ visibility: 'visible' });
-        }
-    });
+  $(":checkbox[class=chechbox-blue]").on("change", function () {
+    var red = document.getElementById('checked').checked;
+    var text = document.getElementById('text');
+    console.log(red);
+    if (red == true) {
+      $(text).css({ visibility: 'hidden' });
+    } else {
+      $(text).css({ visibility: 'visible' });
+    }
+  });
 });
 
 /***/ }),
@@ -63082,12 +63047,12 @@ var staticRenderFns = [
             _c("a", { attrs: { href: "#" } }, [
               _c("img", {
                 attrs: {
-                  src: "/resumeApp/public/images/client/arrow_back.png",
+                  src: "/images/client/arrow_back.png",
                   alt: "back-icon"
                 }
               })
             ]),
-            _vm._v("\n            SUBSCRIPTION PLAN UPDATE\n        ")
+            _vm._v("\n      SUBSCRIPTION PLAN UPDATE\n    ")
           ])
         ]
       ),
@@ -63097,29 +63062,23 @@ var staticRenderFns = [
           _c("div", { staticClass: "header-text" }, [
             _c("img", {
               staticClass: "icon-margin small-image",
-              attrs: {
-                src: "/resumeApp/public/images/client/plan.png",
-                alt: ""
-              }
+              attrs: { src: "/images/client/plan.png", alt: "" }
             }),
-            _vm._v("\n            SUBSCRIPTION PLAN UPDATE\n        ")
+            _vm._v("\n              SUBSCRIPTION PLAN UPDATE\n          ")
           ]),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
           _c("div", { staticClass: "sub-text blue-color" }, [
-            _vm._v("\n            SET UP YOUR SUBSCRIPTION PLAN\n        ")
+            _vm._v("\n          SET UP YOUR SUBSCRIPTION PLAN\n        ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "text d-flex align-items-center" }, [
             _c("img", {
               staticStyle: { "margin-right": "20px" },
-              attrs: {
-                src:
-                  "/resumeApp/public/images/client/payments/date_range_24px.svg"
-              }
+              attrs: { src: "/images/client/payments/date_range_24px.svg" }
             }),
-            _vm._v("\n            Total number of weeks\n        ")
+            _vm._v("\n              Total number of weeks\n          ")
           ]),
           _vm._v(" "),
           _c(
@@ -63176,18 +63135,15 @@ var staticRenderFns = [
           _c("hr"),
           _vm._v(" "),
           _c("div", { staticClass: "sub-text orange-color" }, [
-            _vm._v("\n            Agent № 1\n        ")
+            _vm._v("\n            Agent № 1\n          ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "text d-flex align-items-center" }, [
             _c("img", {
               staticStyle: { "margin-right": "20px" },
-              attrs: {
-                src:
-                  "/resumeApp/public/images/client/payments/watch_later_24px.svg"
-              }
+              attrs: { src: "/images/client/payments/watch_later_24px.svg" }
             }),
-            _vm._v("\n            Total number of weeks\n        ")
+            _vm._v("\n              Total number of weeks\n          ")
           ]),
           _vm._v(" "),
           _c(
@@ -63318,7 +63274,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -63329,17 +63285,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -63484,12 +63429,12 @@ var staticRenderFns = [
             _c("a", { attrs: { href: "/client/dashboard" } }, [
               _c("img", {
                 attrs: {
-                  src: "/resumeApp/public/images/client/arrow_back.png",
+                  src: "/images/client/arrow_back.png",
                   alt: "back-icon"
                 }
               })
             ]),
-            _vm._v("\n            ACCOUNT INFORMATION EDITION\n        ")
+            _vm._v("\n      ACCOUNT INFORMATION EDITION\n    ")
           ])
         ]
       ),
@@ -63499,104 +63444,103 @@ var staticRenderFns = [
           _c("img", {
             staticClass: "icon-margin small-image",
             attrs: {
-              src:
-                "/resumeApp/public/images/client/my_account/contract_40px.png",
+              src: "/images/client/my_account/contract_40px.png",
               alt: ""
             }
           }),
-          _vm._v("\n            PRIVACY AGREEMENT\n        ")
+          _vm._v("\n              PRIVACY AGREEMENT\n          ")
         ]),
         _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
         _c("div", { staticClass: "agreement-main" }, [
           _c("div", { staticClass: "agreement-text agreement-margin" }, [
-            _vm._v("\n                THIS AGREEMENT\n                "),
+            _vm._v("\n          THIS AGREEMENT\n          "),
             _c("span", { staticStyle: { "font-weight": "bold" } }, [
               _vm._v("(THE ”AGREEMENT”)")
             ]),
-            _vm._v(" IS MADE ON\n                "),
+            _vm._v(" IS MADE ON\n          "),
             _c("span", { staticStyle: { "font-weight": "bold" } }, [
               _vm._v("“DATE”")
             ]),
-            _vm._v(" BY AND BETWEEN THE\n                "),
+            _vm._v(" BY AND BETWEEN THE\n          "),
             _c("span", { staticStyle: { "font-weight": "bold" } }, [
               _vm._v("“CLIENT”")
             ]),
             _vm._v(" "),
             _c("br"),
             _vm._v(
-              "\n                AND THE “____”. IN CONSIDERATION OF THE MUTUAL AGREEMENT MADE HEREIN, BOTH PARTIES AGREE AS FOLLOWS:\n            "
+              "\n          AND THE “____”. IN CONSIDERATION OF THE MUTUAL AGREEMENT MADE HEREIN, BOTH PARTIES AGREE AS FOLLOWS:\n        "
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "blue-part" }, [
-            _vm._v("\n                work\n            ")
+            _vm._v("\n          work\n        ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "agreement-text agreement-main-text" }, [
             _vm._v(
-              "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n            "
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n        "
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "blue-part" }, [
-            _vm._v("\n                CONFIDENTIALITY\n            ")
+            _vm._v("\n          CONFIDENTIALITY\n        ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "agreement-text agreement-main-text" }, [
             _vm._v(
-              "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n                proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing\n                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim\n                id est laborum.\n            "
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n          proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing\n          elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim\n          id est laborum.\n        "
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "blue-part" }, [
-            _vm._v("\n                COMPENSATION\n            ")
+            _vm._v("\n          COMPENSATION\n        ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "agreement-text agreement-main-text" }, [
             _vm._v(
-              "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n                proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing\n                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim\n                id est laborum.\n            "
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n          proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing\n          elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim\n          id est laborum.\n        "
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "blue-part" }, [
-            _vm._v("\n                COMPENSATION\n            ")
+            _vm._v("\n          COMPENSATION\n        ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "agreement-text agreement-main-text" }, [
             _vm._v(
-              "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n            "
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n        "
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "blue-part" }, [
-            _vm._v("\n                CLIENT APPROVAL\n            ")
+            _vm._v("\n          CLIENT APPROVAL\n        ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "agreement-text agreement-main-text" }, [
             _vm._v(
-              "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n            "
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n        "
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "blue-part" }, [
-            _vm._v("\n                CANCELLATION\n            ")
+            _vm._v("\n          CANCELLATION\n        ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "agreement-tex agreement-main-text" }, [
             _vm._v(
-              "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n            "
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n        "
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "blue-part" }, [
-            _vm._v("\n                ACCEPTANCE OF TERMS\n            ")
+            _vm._v("\n          ACCEPTANCE OF TERMS\n        ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "agreement-text agreement-main-text" }, [
             _vm._v(
-              "\n                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n            "
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n        "
             )
           ])
         ]),
@@ -63619,11 +63563,11 @@ var staticRenderFns = [
           { staticClass: "col-12 col-md-8 col-lg-6 agreement-segniture" },
           [
             _c("div", { staticClass: "blue-part" }, [
-              _vm._v("\n                YOUR SIGNATURE\n            ")
+              _vm._v("\n          YOUR SIGNATURE\n        ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "agreement-text signiture-main-text" }, [
-              _vm._v("\n                Name surname\n            ")
+              _vm._v("\n          Name surname\n        ")
             ])
           ]
         ),
@@ -64039,13 +63983,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            status: 'update' // or finish
-        };
-    }
+  data: function data() {
+    return {
+      status: 'update' // or finish
+    };
+  }
 });
 
 /***/ }),
@@ -64071,7 +64017,7 @@ var render = function() {
           ],
           staticClass: "backBtn"
         },
-        [_vm._m(0), _vm._v("\n            SUBSCRIPTION PLAN UPDATE\n        ")]
+        [_vm._m(0), _vm._v("\n      SUBSCRIPTION PLAN UPDATE\n    ")]
       ),
       _vm._v(" "),
       _c(
@@ -64101,13 +64047,13 @@ var render = function() {
             [
               _c("img", {
                 attrs: {
-                  src: "/resumeApp/public/images/client/arrow_back.png",
+                  src: "/images/client/arrow_back.png",
                   alt: "back-icon"
                 }
               })
             ]
           ),
-          _vm._v("\n            SUBSCRIPTION PLAN UPDATE\n        ")
+          _vm._v("\n      SUBSCRIPTION PLAN UPDATE\n    ")
         ]
       )
     ]),
@@ -64131,17 +64077,13 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "blue-text pt-4 pb-4" }, [
-              _vm._v(
-                "\n                    CURRENT SUBSCRIPTION PLAN\n                "
-              )
+              _vm._v("\n          CURRENT SUBSCRIPTION PLAN\n        ")
             ]),
             _vm._v(" "),
             _vm._m(2),
             _vm._v(" "),
             _c("div", { staticClass: "blue-text pt-4 pb-4" }, [
-              _vm._v(
-                "\n                    NEW SUBSCRIPTION PLAN\n                "
-              )
+              _vm._v("\n          NEW SUBSCRIPTION PLAN\n        ")
             ]),
             _vm._v(" "),
             _vm._m(3),
@@ -64160,7 +64102,7 @@ var render = function() {
                 staticClass: "blue-text",
                 staticStyle: { "margin-left": "2.7rem" }
               },
-              [_vm._v("\n                    Conor Marjoram\n                ")]
+              [_vm._v("\n          Conor Marjoram\n        ")]
             ),
             _vm._v(" "),
             _vm._m(8),
@@ -64178,7 +64120,7 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n                        CONTINUE\n                    "
+                    "\n                          CONTINUE\n                      "
                   )
                 ]
               )
@@ -64213,10 +64155,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "/client/dashboard/payments" } }, [
       _c("img", {
-        attrs: {
-          src: "/resumeApp/public/images/client/arrow_back.png",
-          alt: "back-icon"
-        }
+        attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
       })
     ])
   },
@@ -64228,14 +64167,14 @@ var staticRenderFns = [
       _c("div", { staticClass: "left" }, [
         _c("img", {
           attrs: {
-            src: "/resumeApp/public/images/client/payments/agents_40px.png",
+            src: "/images/client/payments/agents_40px.png",
             alt: "subs icon"
           }
         }),
         _vm._v(" "),
         _c("span", [
           _vm._v(
-            "\n                    SUBSCRIPTION PLAN UPDATE\n                "
+            "\n                      SUBSCRIPTION PLAN UPDATE\n                  "
           )
         ])
       ])
@@ -64249,22 +64188,71 @@ var staticRenderFns = [
       _c("div", { staticClass: "sub-info" }, [
         _c("div", { staticClass: "sub-info-box" }, [
           _c("img", {
+            attrs: { src: "/images/client/payments/time.png", alt: "time icon" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "right" }, [
+            _c("div", { staticClass: "sub-info-box-heading" }, [
+              _vm._v("\n                  60 HOURS\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "sub-info-box-note" }, [
+              _vm._v("\n                  per week\n                ")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "sub-info-box" }, [
+          _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/payments/time.png",
+              src: "/images/client/payments/amount.png",
               alt: "time icon"
             }
           }),
           _vm._v(" "),
           _c("div", { staticClass: "right" }, [
             _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                    60 HOURS\n                                "
-              )
+              _vm._v("\n                  $ 600\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "sub-info-box-note" }, [
+              _vm._v("\n                  weekly amount\n                ")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "sub-info-box" }, [
+          _c("img", {
+            attrs: { src: "/images/client/payments/week.png", alt: "time icon" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "right" }, [
+            _c("div", { staticClass: "sub-info-box-heading" }, [
+              _vm._v("\n                  14 WEEKS\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "sub-info-box-note" }, [
+              _vm._v("\n                  10 used / 4 left\n                ")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "sub-info-box" }, [
+          _c("img", {
+            attrs: {
+              src: "/images/client/payments/period.png",
+              alt: "time icon"
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "right" }, [
+            _c("div", { staticClass: "sub-info-box-heading" }, [
+              _vm._v("\n                  4.04.19 - 4.01.20\n                ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "sub-info-box-note" }, [
               _vm._v(
-                "\n                                    per week\n                                "
+                "\n                  start date - finish date\n                "
               )
             ])
           ])
@@ -64273,21 +64261,37 @@ var staticRenderFns = [
         _c("div", { staticClass: "sub-info-box" }, [
           _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/payments/amount.png",
+              src: "/images/client/payments/number_agents.png",
               alt: "time icon"
             }
           }),
           _vm._v(" "),
           _c("div", { staticClass: "right" }, [
             _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                    $ 600\n                                "
-              )
+              _vm._v("\n                  4 AGENTS\n                ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "sub-info-box-note" }, [
               _vm._v(
-                "\n                                    weekly amount\n                                "
+                "\n                  working on campaign\n                "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "sub-info-box" }, [
+          _c("img", {
+            attrs: { src: "/images/client/payments/rate.png", alt: "time icon" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "right" }, [
+            _c("div", { staticClass: "sub-info-box-heading" }, [
+              _vm._v("\n                  $ 10\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "sub-info-box-note" }, [
+              _vm._v(
+                "\n                  agent's hourly rate\n                "
               )
             ])
           ])
@@ -64296,114 +64300,18 @@ var staticRenderFns = [
         _c("div", { staticClass: "sub-info-box" }, [
           _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/payments/week.png",
+              src: "/images/client/payments/manager.png",
               alt: "time icon"
             }
           }),
           _vm._v(" "),
           _c("div", { staticClass: "right" }, [
             _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                    14 WEEKS\n                                "
-              )
+              _vm._v("\n                  CONOR MARJORAM\n                ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                                    10 used / 4 left\n                                "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "sub-info-box" }, [
-          _c("img", {
-            attrs: {
-              src: "/resumeApp/public/images/client/payments/period.png",
-              alt: "time icon"
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "right" }, [
-            _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                    4.04.19 - 4.01.20\n                                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                                    start date - finish date\n                                "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "sub-info-box" }, [
-          _c("img", {
-            attrs: {
-              src: "/resumeApp/public/images/client/payments/number_agents.png",
-              alt: "time icon"
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "right" }, [
-            _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                    4 AGENTS\n                                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                                    working on campaign\n                                "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "sub-info-box" }, [
-          _c("img", {
-            attrs: {
-              src: "/resumeApp/public/images/client/payments/rate.png",
-              alt: "time icon"
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "right" }, [
-            _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                    $ 10\n                                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                                    agent's hourly rate\n                                "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "sub-info-box" }, [
-          _c("img", {
-            attrs: {
-              src: "/resumeApp/public/images/client/payments/manager.png",
-              alt: "time icon"
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "right" }, [
-            _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                    CONOR MARJORAM\n                                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                                    your manager\n                                "
-              )
+              _vm._v("\n                  your manager\n                ")
             ])
           ])
         ])
@@ -64423,15 +64331,13 @@ var staticRenderFns = [
             _c("img", {
               staticClass: "mr-3",
               attrs: {
-                src: "/resumeApp/public/images/client/payments/week.png",
+                src: "/images/client/payments/week.png",
                 alt: "week icon"
               }
             }),
             _vm._v(" "),
             _c("div", { staticClass: "weeks-number-heading" }, [
-              _vm._v(
-                "\n                                Total number of weeks\n                            "
-              )
+              _vm._v("\n                Total number of weeks\n              ")
             ])
           ]
         ),
@@ -64493,7 +64399,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "weeks-number-note" }, [
           _vm._v(
-            "\n                            Campaign period: 4.04.19   —   4.01.20\n                        "
+            "\n              Campaign period: 4.04.19 — 4.01.20\n            "
           )
         ])
       ])
@@ -64506,9 +64412,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "new-sub-plan pt-5" }, [
       _c("div", { staticClass: "weeks-number" }, [
         _c("div", { staticClass: "sub-agent-numbering pb-3" }, [
-          _vm._v(
-            "\n                            Agent № 1\n                        "
-          )
+          _vm._v("\n              Agent № 1\n            ")
         ]),
         _vm._v(" "),
         _c(
@@ -64518,14 +64422,14 @@ var staticRenderFns = [
             _c("img", {
               staticClass: "mr-3",
               attrs: {
-                src: "/resumeApp/public/images/client/payments/time.png",
+                src: "/images/client/payments/time.png",
                 alt: "week icon"
               }
             }),
             _vm._v(" "),
             _c("div", { staticClass: "weeks-number-heading" }, [
               _vm._v(
-                "\n                               Number of working hours per week\n                            "
+                "\n                Number of working hours per week\n              "
               )
             ])
           ]
@@ -64578,9 +64482,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "new-sub-plan pt-5" }, [
       _c("div", { staticClass: "weeks-number" }, [
         _c("div", { staticClass: "sub-agent-numbering pb-3" }, [
-          _vm._v(
-            "\n                            Agent № 2\n                        "
-          )
+          _vm._v("\n              Agent № 2\n            ")
         ]),
         _vm._v(" "),
         _c(
@@ -64590,14 +64492,14 @@ var staticRenderFns = [
             _c("img", {
               staticClass: "mr-3",
               attrs: {
-                src: "/resumeApp/public/images/client/payments/time.png",
+                src: "/images/client/payments/time.png",
                 alt: "week icon"
               }
             }),
             _vm._v(" "),
             _c("div", { staticClass: "weeks-number-heading" }, [
               _vm._v(
-                "\n                               Number of working hours per week\n                            "
+                "\n                Number of working hours per week\n              "
               )
             ])
           ]
@@ -64663,7 +64565,7 @@ var staticRenderFns = [
           },
           [
             _vm._v(
-              "\n                        ADD ANOTHER AGENT\n                    "
+              "\n                          ADD ANOTHER AGENT\n                      "
             )
           ]
         )
@@ -64682,15 +64584,13 @@ var staticRenderFns = [
           _c("img", {
             staticClass: "mr-3",
             attrs: {
-              src: "/resumeApp/public/images/client/payments/manager.png",
+              src: "/images/client/payments/manager.png",
               alt: "week icon"
             }
           }),
           _vm._v(" "),
           _c("div", { staticClass: "weeks-number-heading" }, [
-            _vm._v(
-              "\n                           Manager of your campaign\n                        "
-            )
+            _vm._v("\n              Manager of your campaign\n            ")
           ])
         ]
       )
@@ -64720,7 +64620,7 @@ var staticRenderFns = [
           },
           [
             _vm._v(
-              "\n                        REMOVE MANAGER\n                    "
+              "\n                          REMOVE MANAGER\n                      "
             )
           ]
         )
@@ -64736,7 +64636,7 @@ var staticRenderFns = [
         _c("img", {
           staticClass: "mr-2",
           attrs: {
-            src: "/resumeApp/public/images/client/payments/amount.png",
+            src: "/images/client/payments/amount.png",
             alt: "amount icon"
           }
         })
@@ -64744,28 +64644,22 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", [
         _c("div", { staticClass: "blue-text" }, [
-          _vm._v(
-            "\n                            WEEKLY RATE CALCULATIONS:\n                        "
-          )
+          _vm._v("\n                WEEKLY RATE CALCULATIONS:\n              ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "pt-2" }, [
-          _vm._v("\n                            40 agent hours "),
+          _vm._v("\n                40 agent hours "),
           _c("span", { staticClass: "sub-agent-numbering ml-1" }, [
             _vm._v(" $ 400")
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "blue-text pt-3" }, [
-          _vm._v(
-            "\n                            TOTAL WEEKLY AMOUNT:\n                        "
-          )
+          _vm._v("\n                TOTAL WEEKLY AMOUNT:\n              ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "sub-agent-numbering pt-2" }, [
-          _vm._v(
-            "\n                            $ 400\n                        "
-          )
+          _vm._v("\n                $ 400\n              ")
         ])
       ])
     ])
@@ -64780,7 +64674,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "sub-action pt-5" }, [
         _c("a", { attrs: { href: "#" } }, [
           _vm._v(
-            "\n                            FINISH PAYMENT\n                        "
+            "\n                              FINISH PAYMENT\n                          "
           )
         ])
       ])
@@ -64817,7 +64711,7 @@ var staticRenderFns = [
                 _c("div", { staticClass: "modal-body campaign-team-modal" }, [
                   _c("div", { staticClass: "modal-question" }, [
                     _vm._v(
-                      "\n                        Are you sure you want to remove the manager ?\n                    "
+                      "\n              Are you sure you want to remove the manager ?\n            "
                     )
                   ]),
                   _vm._v(" "),
@@ -64952,7 +64846,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.error[data-v-9c35182a]{\n    font-family: Roboto;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 16px;\n    line-height: 30px;/* identical to box height, or 187% */\n    color: #F56F6F;\n}\n", ""]);
+exports.push([module.i, "\n.error[data-v-9c35182a] {\n  font-family: Roboto;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 30px;\n  /* identical to box height, or 187% */\n  color: #F56F6F;\n}\n", ""]);
 
 // exports
 
@@ -65170,84 +65064,123 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            formData: {
-                name: '',
-                email: '',
-                agency: '',
-                emailDept: '',
-                phone: '',
-                timeZone: '',
-                password: '',
-                password_confirmation: ''
-            },
-            canSubmit: false,
-            errors: []
-        };
-    },
+  data: function data() {
+    return {
+      formData: {
+        name: '',
+        email: '',
+        agency: '',
+        emailDept: '',
+        phone: '',
+        timeZone: '',
+        password: '',
+        password_confirmation: ''
+      },
+      canSubmit: false,
+      errors: []
+    };
+  },
 
-    methods: {
-        submitForm: function submitForm() {
-            var _this = this;
+  methods: {
+    submitForm: function submitForm() {
+      var _this = this;
 
-            if ($('#submitBtnWrapper').hasClass('disabled-btn')) {
-                return;
-            }
-            this.canSubmit = false;
-            axios.post('/client/register/submit', this.formData).then(function (response) {
-                if (response.data.status === 'success') {
-                    // redirect to client dashboard
-                    window.location.href = '/client';
-                }
-                _this.errors = response.data.errors;
-            });
-        },
-        clearInput: function clearInput(inputName) {
-            this.formData[inputName] = '';
+      if ($('#submitBtnWrapper').hasClass('disabled-btn')) {
+        return;
+      }
+      this.canSubmit = false;
+      axios.post('/client/register/submit', this.formData).then(function (response) {
+        if (response.data.status === 'success') {
+          // redirect to client dashboard
+          window.location.href = '/client';
         }
+        _this.errors = response.data.errors;
+      });
     },
-    watch: {
-        formData: {
-            handler: function handler() {
-                // check if all formData values are filled
-                var values = Object.values(this.formData);
-                var isAll_filled = true;
-                var _iteratorNormalCompletion = true;
-                var _didIteratorError = false;
-                var _iteratorError = undefined;
-
-                try {
-                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                        var value = _step.value;
-
-                        if (value.length < 1) {
-                            isAll_filled = false;
-                        }
-                    }
-                } catch (err) {
-                    _didIteratorError = true;
-                    _iteratorError = err;
-                } finally {
-                    try {
-                        if (!_iteratorNormalCompletion && _iterator.return) {
-                            _iterator.return();
-                        }
-                    } finally {
-                        if (_didIteratorError) {
-                            throw _iteratorError;
-                        }
-                    }
-                }
-
-                this.canSubmit = isAll_filled;
-            },
-
-            deep: true
-        }
+    clearInput: function clearInput(inputName) {
+      this.formData[inputName] = '';
     }
+  },
+  watch: {
+    formData: {
+      handler: function handler() {
+        // check if all formData values are filled
+        var values = Object.values(this.formData);
+        var isAll_filled = true;
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var value = _step.value;
+
+            if (value.length < 1) {
+              isAll_filled = false;
+            }
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+
+        this.canSubmit = isAll_filled;
+      },
+
+      deep: true
+    }
+  }
 });
 
 /***/ }),
@@ -65273,9 +65206,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "account-edit-section" }, [
             _c("div", { staticClass: "account-edit-section-heading" }, [
-              _vm._v(
-                "\n                    BASIC INFORMATION\n                "
-              )
+              _vm._v("\n          BASIC INFORMATION\n        ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "account-edit-section-inputs" }, [
@@ -65285,7 +65216,7 @@ var render = function() {
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Enter your agency name\n                        "
+                      "\n              Enter your agency name\n            "
                     )
                   ]),
                   _vm._v(" "),
@@ -65336,7 +65267,7 @@ var render = function() {
                         ],
                         attrs: {
                           src:
-                            "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                            "/images/client/campaign_activity/close_black.png",
                           alt: "delete icon"
                         },
                         on: {
@@ -65351,9 +65282,9 @@ var render = function() {
                   _vm.errors.agency
                     ? _c("div", { staticClass: "error" }, [
                         _vm._v(
-                          "\n                            " +
+                          "\n                " +
                             _vm._s(_vm.errors.agency[0]) +
-                            "\n                        "
+                            "\n              "
                         )
                       ])
                     : _vm._e()
@@ -65366,7 +65297,7 @@ var render = function() {
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Enter name of contact person\n                        "
+                      "\n                Enter name of contact person\n              "
                     )
                   ]),
                   _vm._v(" "),
@@ -65413,7 +65344,7 @@ var render = function() {
                         ],
                         attrs: {
                           src:
-                            "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                            "/images/client/campaign_activity/close_black.png",
                           alt: "delete icon"
                         },
                         on: {
@@ -65428,9 +65359,9 @@ var render = function() {
                   _vm.errors.name
                     ? _c("div", { staticClass: "error" }, [
                         _vm._v(
-                          "\n                            " +
+                          "\n                  " +
                             _vm._s(_vm.errors.name[0]) +
-                            "\n                        "
+                            "\n                "
                         )
                       ])
                     : _vm._e()
@@ -65443,7 +65374,7 @@ var render = function() {
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Enter contact phone\n                        "
+                      "\n                  Enter contact phone\n                "
                     )
                   ]),
                   _vm._v(" "),
@@ -65490,7 +65421,7 @@ var render = function() {
                         ],
                         attrs: {
                           src:
-                            "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                            "/images/client/campaign_activity/close_black.png",
                           alt: "delete icon"
                         },
                         on: {
@@ -65505,9 +65436,9 @@ var render = function() {
                   _vm.errors.phone
                     ? _c("div", { staticClass: "error" }, [
                         _vm._v(
-                          "\n                            " +
+                          "\n                    " +
                             _vm._s(_vm.errors.phone[0]) +
-                            "\n                        "
+                            "\n                  "
                         )
                       ])
                     : _vm._e()
@@ -65520,7 +65451,7 @@ var render = function() {
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Select your time zone\n                        "
+                      "\n                    Select your time zone\n                  "
                     )
                   ]),
                   _vm._v(" "),
@@ -66062,9 +65993,9 @@ var render = function() {
                   _vm.errors.timeZone
                     ? _c("div", { staticClass: "error" }, [
                         _vm._v(
-                          "\n                            " +
+                          "\n                    " +
                             _vm._s(_vm.errors.timeZone[0]) +
-                            "\n                        "
+                            "\n                  "
                         )
                       ])
                     : _vm._e()
@@ -66077,7 +66008,7 @@ var render = function() {
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Enter main e-mail address\n                        "
+                      "\n                    Enter main e-mail address\n                  "
                     )
                   ]),
                   _vm._v(" "),
@@ -66124,7 +66055,7 @@ var render = function() {
                         ],
                         attrs: {
                           src:
-                            "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                            "/images/client/campaign_activity/close_black.png",
                           alt: "delete icon"
                         },
                         on: {
@@ -66139,9 +66070,9 @@ var render = function() {
                   _vm.errors.email
                     ? _c("div", { staticClass: "error" }, [
                         _vm._v(
-                          "\n                            " +
+                          "\n                      " +
                             _vm._s(_vm.errors.email[0]) +
-                            "\n                        "
+                            "\n                    "
                         )
                       ])
                     : _vm._e()
@@ -66154,7 +66085,7 @@ var render = function() {
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Email address of accounts dept\n                        "
+                      "\n                      Email address of accounts dept\n                    "
                     )
                   ]),
                   _vm._v(" "),
@@ -66205,7 +66136,7 @@ var render = function() {
                         ],
                         attrs: {
                           src:
-                            "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                            "/images/client/campaign_activity/close_black.png",
                           alt: "delete icon"
                         },
                         on: {
@@ -66220,9 +66151,9 @@ var render = function() {
                   _vm.errors.emailDept
                     ? _c("div", { staticClass: "error" }, [
                         _vm._v(
-                          "\n                            " +
+                          "\n                        " +
                             _vm._s(_vm.errors.emailDept[0]) +
-                            "\n                        "
+                            "\n                      "
                         )
                       ])
                     : _vm._e()
@@ -66233,7 +66164,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "account-edit-section sub-section" }, [
             _c("div", { staticClass: "account-edit-section-heading" }, [
-              _vm._v("\n                    PASSWORD\n                ")
+              _vm._v("\n                    PASSWORD\n                  ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "account-edit-section-inputs" }, [
@@ -66243,7 +66174,7 @@ var render = function() {
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Write a new password\n                        "
+                      "\n                        Write a new password\n                      "
                     )
                   ]),
                   _vm._v(" "),
@@ -66294,7 +66225,7 @@ var render = function() {
                         ],
                         attrs: {
                           src:
-                            "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                            "/images/client/campaign_activity/close_black.png",
                           alt: "delete icon"
                         },
                         on: {
@@ -66309,7 +66240,7 @@ var render = function() {
                   _vm.errors.password
                     ? _c("div", { staticClass: "error" }, [
                         _vm._v(
-                          "\n                            " +
+                          "\n                          " +
                             _vm._s(_vm.errors.password[0]) +
                             "\n                        "
                         )
@@ -66324,7 +66255,7 @@ var render = function() {
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Repeat your new password\n                        "
+                      "\n                          Repeat your new password\n                        "
                     )
                   ]),
                   _vm._v(" "),
@@ -66369,8 +66300,7 @@ var render = function() {
                         }
                       ],
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       },
                       on: {
@@ -66386,7 +66316,7 @@ var render = function() {
                         _vm._v(
                           "\n                            " +
                             _vm._s(_vm.errors.password_confirmation[0]) +
-                            "\n                        "
+                            "\n                          "
                         )
                       ])
                     : _vm._e()
@@ -66409,7 +66339,7 @@ var render = function() {
                   attrs: { href: "javascript:void(0)" },
                   on: { click: _vm.submitForm }
                 },
-                [_vm._v("\n                    REGISTER\n                ")]
+                [_vm._v("\n                      REGISTER\n                  ")]
               )
             ]
           )
@@ -66432,13 +66362,10 @@ var staticRenderFns = [
         _c("div", { staticClass: "backBtn" }, [
           _c("a", { attrs: { href: "/" } }, [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/arrow_back.png",
-                alt: "back-icon"
-              }
+              attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
             })
           ]),
-          _vm._v("\n                BECOME A CLIENT\n            ")
+          _vm._v("\n        BECOME A CLIENT\n      ")
         ])
       ]
     )
@@ -66454,14 +66381,14 @@ var staticRenderFns = [
         _c("div", { staticClass: "left" }, [
           _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/my_account/info_40px.png",
+              src: "/images/client/my_account/info_40px.png",
               alt: "info icon"
             }
           }),
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n                    FILL IN THE INFORMATION TO BECOME A CLIENT\n                "
+              "\n                      FILL IN THE INFORMATION TO BECOME A CLIENT\n                  "
             )
           ])
         ])
@@ -66479,7 +66406,7 @@ var staticRenderFns = [
           "pt-3 no-decoration d-flex justify-content-center base-text align-items-center"
       },
       [
-        _vm._v("\n        Already have an account ? "),
+        _vm._v("\n                  Already have an account ? "),
         _c("a", { staticClass: "ml-2 base-link", attrs: { href: "#" } }, [
           _vm._v(" LOG IN ")
         ])
@@ -66582,7 +66509,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.error[data-v-796baefa]{\n    font-family: Roboto;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 16px;\n    line-height: 30px;/* identical to box height, or 187% */\n    color: #F56F6F;\n}\n", ""]);
+exports.push([module.i, "\n.error[data-v-796baefa] {\n  font-family: Roboto;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 30px;\n  /* identical to box height, or 187% */\n  color: #F56F6F;\n}\n", ""]);
 
 // exports
 
@@ -66665,79 +66592,87 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            formData: {
-                email: '',
-                password: '',
-                remember: false
-            },
-            canSubmit: false,
-            errors: []
-        };
-    },
+  data: function data() {
+    return {
+      formData: {
+        email: '',
+        password: '',
+        remember: false
+      },
+      canSubmit: false,
+      errors: []
+    };
+  },
 
-    methods: {
-        submitForm: function submitForm() {
-            var _this = this;
+  methods: {
+    submitForm: function submitForm() {
+      var _this = this;
 
-            if ($('#submitBtnWrapper').hasClass('disabled-btn')) {
-                return;
-            }
-            this.canSubmit = false;
-            axios.post('/client/login/submit', this.formData).then(function (response) {
-                if (response.data.status === 'success') {
-                    // redirect to client dashboard
-                    window.location.href = '/client';
-                }
-                _this.errors = response.data.errors;
-            });
-        },
-        clearInput: function clearInput(inputName) {
-            this.formData[inputName] = '';
+      if ($('#submitBtnWrapper').hasClass('disabled-btn')) {
+        return;
+      }
+      this.canSubmit = false;
+      axios.post('/client/login/submit', this.formData).then(function (response) {
+        if (response.data.status === 'success') {
+          // redirect to client dashboard
+          window.location.href = '/client';
         }
+        _this.errors = response.data.errors;
+      });
     },
-    watch: {
-        formData: {
-            handler: function handler() {
-                // check if all formData values are filled
-                var values = Object.values(this.formData);
-                var isAll_filled = true;
-                var _iteratorNormalCompletion = true;
-                var _didIteratorError = false;
-                var _iteratorError = undefined;
-
-                try {
-                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                        var value = _step.value;
-
-                        if (value.length < 1) {
-                            isAll_filled = false;
-                        }
-                    }
-                } catch (err) {
-                    _didIteratorError = true;
-                    _iteratorError = err;
-                } finally {
-                    try {
-                        if (!_iteratorNormalCompletion && _iterator.return) {
-                            _iterator.return();
-                        }
-                    } finally {
-                        if (_didIteratorError) {
-                            throw _iteratorError;
-                        }
-                    }
-                }
-
-                this.canSubmit = isAll_filled;
-            },
-
-            deep: true
-        }
+    clearInput: function clearInput(inputName) {
+      this.formData[inputName] = '';
     }
+  },
+  watch: {
+    formData: {
+      handler: function handler() {
+        // check if all formData values are filled
+        var values = Object.values(this.formData);
+        var isAll_filled = true;
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var value = _step.value;
+
+            if (value.length < 1) {
+              isAll_filled = false;
+            }
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+
+        this.canSubmit = isAll_filled;
+      },
+
+      deep: true
+    }
+  }
 });
 
 /***/ }),
@@ -66765,9 +66700,7 @@ var render = function() {
               { staticClass: "faq-question-input account-edit-input" },
               [
                 _c("label", { staticClass: "faq-input-label" }, [
-                  _vm._v(
-                    "\n                        Enter your e-mail address\n                    "
-                  )
+                  _vm._v("\n            Enter your e-mail address\n          ")
                 ]),
                 _vm._v(" "),
                 _c(
@@ -66812,8 +66745,7 @@ var render = function() {
                         }
                       ],
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       },
                       on: {
@@ -66828,9 +66760,9 @@ var render = function() {
                 _vm.errors.email
                   ? _c("div", { staticClass: "error" }, [
                       _vm._v(
-                        "\n                        " +
+                        "\n              " +
                           _vm._s(_vm.errors.email[0]) +
-                          "\n                    "
+                          "\n            "
                       )
                     ])
                   : _vm._e()
@@ -66844,9 +66776,7 @@ var render = function() {
               { staticClass: "faq-question-input account-edit-input" },
               [
                 _c("label", { staticClass: "faq-input-label" }, [
-                  _vm._v(
-                    "\n                        Enter your password\n                    "
-                  )
+                  _vm._v("\n              Enter your password\n            ")
                 ]),
                 _vm._v(" "),
                 _c(
@@ -66895,8 +66825,7 @@ var render = function() {
                         }
                       ],
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       },
                       on: {
@@ -66911,9 +66840,9 @@ var render = function() {
                 _vm.errors.password
                   ? _c("div", { staticClass: "error" }, [
                       _vm._v(
-                        "\n                        " +
+                        "\n                " +
                           _vm._s(_vm.errors.password[0]) +
-                          "\n                    "
+                          "\n              "
                       )
                     ])
                   : _vm._e()
@@ -67002,7 +66931,7 @@ var render = function() {
             attrs: { href: "javascript:void(0)" },
             on: { click: _vm.submitForm }
           },
-          [_vm._v("\n            LOG IN\n        ")]
+          [_vm._v("\n              LOG IN\n          ")]
         )
       ]
     ),
@@ -67022,12 +66951,14 @@ var staticRenderFns = [
         _c("div", { staticClass: "left" }, [
           _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/my_account/info_40px.png",
+              src: "/images/client/my_account/info_40px.png",
               alt: "info icon"
             }
           }),
           _vm._v(" "),
-          _c("span", [_vm._v("\n                    LOG IN\n                ")])
+          _c("span", [
+            _vm._v("\n                      LOG IN\n                  ")
+          ])
         ])
       ]
     )
@@ -67131,12 +67062,12 @@ var staticRenderFns = [
             _c("a", { attrs: { href: "/client/dashboard" } }, [
               _c("img", {
                 attrs: {
-                  src: "/resumeApp/public/images/client/arrow_back.png",
+                  src: "/images/client/arrow_back.png",
                   alt: "back-icon"
                 }
               })
             ]),
-            _vm._v("\n            YOUR CAMPAIGN AGENTS\n        ")
+            _vm._v("\n      YOUR CAMPAIGN AGENTS\n    ")
           ])
         ]
       ),
@@ -67146,23 +67077,20 @@ var staticRenderFns = [
           _c("div", { staticClass: "header-text" }, [
             _c("img", {
               staticClass: "icon-margin small-image",
-              attrs: {
-                src: "/resumeApp/public/images/client/payments/agents_40px.svg",
-                alt: ""
-              }
+              attrs: { src: "/images/client/payments/agents_40px.svg", alt: "" }
             }),
-            _vm._v("\n                YOUR CAMPAIGN AGENTS\n            ")
+            _vm._v("\n                  YOUR CAMPAIGN AGENTS\n              ")
           ]),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
           _c("div", { staticClass: "campaign-blue-text" }, [
-            _vm._v("\n                YOUR CAMPAIGN AGENTS\n            ")
+            _vm._v("\n          YOUR CAMPAIGN AGENTS\n        ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "campaign-text" }, [
             _vm._v(
-              "\n                Selected agent for your campaign is Jason Morgenstern. To change your selected agent please search our agent database.\n            "
+              "\n          Selected agent for your campaign is Jason Morgenstern. To change your selected agent please search our agent database.\n        "
             )
           ]),
           _vm._v(" "),
@@ -67181,7 +67109,7 @@ var staticRenderFns = [
                     staticClass: "avator",
                     attrs: {
                       src:
-                        "/resumeApp/public/images/client/add_agent/search_result/ic/user/user123.png"
+                        "/images/client/add_agent/search_result/ic/user/user123.png"
                     }
                   })
                 ]),
@@ -67195,11 +67123,11 @@ var staticRenderFns = [
                     _c("img", {
                       attrs: {
                         src:
-                          "/resumeApp/public/images/client/add_agent/search_result/icon/maps/place_24px.png"
+                          "/images/client/add_agent/search_result/icon/maps/place_24px.png"
                       }
                     }),
                     _vm._v(
-                      "\n                            Dublin, Ireland\n                        "
+                      "\n                              Dublin, Ireland\n                          "
                     )
                   ]),
                   _vm._v(" "),
@@ -67227,11 +67155,11 @@ var staticRenderFns = [
                             staticStyle: { "margin-right": "15px" },
                             attrs: {
                               src:
-                                "/resumeApp/public/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                                "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
                             }
                           }),
                           _vm._v(
-                            "\n                                    LISTEN TO THE RECORD\n                                "
+                            "\n                                      LISTEN TO THE RECORD\n                                  "
                           )
                         ]
                       )
@@ -67246,11 +67174,11 @@ var staticRenderFns = [
                     staticClass: "primaryjob-icon",
                     attrs: {
                       src:
-                        "/resumeApp/public/images/client/add_agent/search_result/ic/primary_job_name.png"
+                        "/images/client/add_agent/search_result/ic/primary_job_name.png"
                     }
                   }),
                   _vm._v(
-                    "\n                        Telemarketing\n                    "
+                    "\n                          Telemarketing\n                      "
                   )
                 ]),
                 _vm._v(" "),
@@ -67268,7 +67196,7 @@ var staticRenderFns = [
                       _vm._v("Sector experience: ")
                     ]),
                     _vm._v(
-                      " Real estate, Investement, Insurance\n                    "
+                      " Real estate, Investement, Insurance\n                  "
                     )
                   ]
                 ),
@@ -67277,21 +67205,21 @@ var staticRenderFns = [
                   _c("span", { staticStyle: { "font-weight": "500" } }, [
                     _vm._v("Technologies, software: ")
                   ]),
-                  _vm._v(" Microsoft Excel\n                    ")
+                  _vm._v(" Microsoft Excel\n                  ")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticStyle: { margin: "20px 0" } }, [
                   _c("span", { staticStyle: { "font-weight": "500" } }, [
                     _vm._v("Languages: ")
                   ]),
-                  _vm._v("English, Spanish\n                    ")
+                  _vm._v("English, Spanish\n                  ")
                 ]),
                 _vm._v(" "),
                 _c("div", [
                   _c("span", { staticStyle: { "font-weight": "500" } }, [
                     _vm._v("No. hours per week: ")
                   ]),
-                  _vm._v("30-40 hours\n                    ")
+                  _vm._v("30-40 hours\n                  ")
                 ])
               ]),
               _vm._v(" "),
@@ -67316,11 +67244,11 @@ var staticRenderFns = [
                             staticStyle: { "margin-right": "15px" },
                             attrs: {
                               src:
-                                "/resumeApp/public/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                                "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
                             }
                           }),
                           _vm._v(
-                            "\n                                LISTEN TO THE RECORD\n                            "
+                            "\n                                  LISTEN TO THE RECORD\n                              "
                           )
                         ]
                       )
@@ -67738,38 +67666,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            hasLogs: false,
-            selectedDate: '',
-            appliedDate: ''
-        };
-    },
+  data: function data() {
+    return {
+      hasLogs: false,
+      selectedDate: '',
+      appliedDate: ''
+    };
+  },
 
-    methods: {
-        dateChanged: function dateChanged() {
-            this.selectedDate = $('#selected-date-value').val();
-        },
-        applySelectedDate: function applySelectedDate() {
-            this.appliedDate = this.selectedDate;
-            $('#close-modal').click();
-        },
-        cancelDatePicking: function cancelDatePicking() {
-            $('#close-modal').click();
-        },
-        setDatePicker: function setDatePicker() {
-            $("#datepicker").datepicker({
-                onSelect: function onSelect(dateText, inst) {
-                    $("input[name='selected-date-value']").val(dateText);
-                    var dateChanged = new CustomEvent('change');
-                    document.getElementById('selected-date-value').dispatchEvent(dateChanged);
-                }
-            });
-        }
+  methods: {
+    dateChanged: function dateChanged() {
+      this.selectedDate = $('#selected-date-value').val();
     },
-    mounted: function mounted() {}
+    applySelectedDate: function applySelectedDate() {
+      this.appliedDate = this.selectedDate;
+      $('#close-modal').click();
+    },
+    cancelDatePicking: function cancelDatePicking() {
+      $('#close-modal').click();
+    },
+    setDatePicker: function setDatePicker() {
+      $("#datepicker").datepicker({
+        onSelect: function onSelect(dateText, inst) {
+          $("input[name='selected-date-value']").val(dateText);
+          var dateChanged = new CustomEvent('change');
+          document.getElementById('selected-date-value').dispatchEvent(dateChanged);
+        }
+      });
+    }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -67803,9 +67738,9 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n                            " +
+                    "\n              " +
                       _vm._s(_vm.appliedDate) +
-                      "\n                        "
+                      "\n            "
                   )
                 ]
               ),
@@ -67827,8 +67762,7 @@ var render = function() {
                 [
                   _c("img", {
                     attrs: {
-                      src:
-                        "/resumeApp/public/images/client/campaign_activity/pick_date.png",
+                      src: "/images/client/campaign_activity/pick_date.png",
                       alt: "pick date"
                     }
                   })
@@ -67854,7 +67788,7 @@ var render = function() {
               [
                 _c("div", { staticClass: "empty-state-text" }, [
                   _vm._v(
-                    "\n                            Sorry, no entries for today yet  -\n                            "
+                    "\n              Sorry, no entries for today yet -\n              "
                   ),
                   _c(
                     "a",
@@ -67940,7 +67874,7 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n                            CANCEL\n                        "
+                      "\n                              CANCEL\n                          "
                     )
                   ]
                 ),
@@ -67954,7 +67888,7 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n                            APPLY\n                        "
+                      "\n                              APPLY\n                          "
                     )
                   ]
                 )
@@ -67974,11 +67908,11 @@ var staticRenderFns = [
     return _c("div", { staticClass: "dashboard-side-menu hideOnTablet" }, [
       _c("div", { staticClass: "team-list-header" }, [
         _c("div", { staticClass: "teamName" }, [
-          _vm._v("\n                    TEAM\n                ")
+          _vm._v("\n          TEAM\n        ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "teamChat" }, [
-          _vm._v("\n                    GO TO TEAM CHAT\n                ")
+          _vm._v("\n          GO TO TEAM CHAT\n        ")
         ])
       ]),
       _vm._v(" "),
@@ -67986,109 +67920,80 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "team-member" }, [
         _c("img", {
-          attrs: {
-            src: "/resumeApp/public/images/client/dummy.png",
-            alt: "member image"
-          }
+          attrs: { src: "/images/client/dummy.png", alt: "member image" }
         }),
         _vm._v(" "),
         _c("div", { staticClass: "team-member-info" }, [
           _c("div", { staticClass: "member-name manager" }, [
-            _vm._v(
-              "\n                        Louis Snyderberg\n                    "
-            )
+            _vm._v("\n            Louis Snyderberg\n          ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "job-title" }, [
-            _vm._v(
-              "\n                        Team manager\n                    "
-            )
+            _vm._v("\n            Team manager\n          ")
           ])
         ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "team-member" }, [
         _c("img", {
-          attrs: {
-            src: "/resumeApp/public/images/client/dummy.png",
-            alt: "member image"
-          }
+          attrs: { src: "/images/client/dummy.png", alt: "member image" }
         }),
         _vm._v(" "),
         _c("div", { staticClass: "team-member-info" }, [
           _c("div", { staticClass: "member-name" }, [
-            _vm._v(
-              "\n                        Mohamed Salah\n                    "
-            )
+            _vm._v("\n            Mohamed Salah\n          ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "job-title" }, [
-            _vm._v(
-              "\n                        Egyptian king\n                    "
-            )
+            _vm._v("\n            Egyptian king\n          ")
           ])
         ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "team-member" }, [
         _c("img", {
-          attrs: {
-            src: "/resumeApp/public/images/client/dummy.png",
-            alt: "member image"
-          }
+          attrs: { src: "/images/client/dummy.png", alt: "member image" }
         }),
         _vm._v(" "),
         _c("div", { staticClass: "team-member-info" }, [
           _c("div", { staticClass: "member-name" }, [
-            _vm._v(
-              "\n                        Lionel Messi\n                    "
-            )
+            _vm._v("\n            Lionel Messi\n          ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "job-title" }, [
-            _vm._v("\n                        Artist\n                    ")
+            _vm._v("\n            Artist\n          ")
           ])
         ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "team-member" }, [
         _c("img", {
-          attrs: {
-            src: "/resumeApp/public/images/client/dummy.png",
-            alt: "member image"
-          }
+          attrs: { src: "/images/client/dummy.png", alt: "member image" }
         }),
         _vm._v(" "),
         _c("div", { staticClass: "team-member-info" }, [
           _c("div", { staticClass: "member-name" }, [
-            _vm._v(
-              "\n                        Zlatan Ibrahimovic\n                    "
-            )
+            _vm._v("\n            Zlatan Ibrahimovic\n          ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "job-title" }, [
-            _vm._v("\n                        Animation\n                    ")
+            _vm._v("\n            Animation\n          ")
           ])
         ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "team-member" }, [
         _c("img", {
-          attrs: {
-            src: "/resumeApp/public/images/client/dummy.png",
-            alt: "member image"
-          }
+          attrs: { src: "/images/client/dummy.png", alt: "member image" }
         }),
         _vm._v(" "),
         _c("div", { staticClass: "team-member-info" }, [
           _c("div", { staticClass: "member-name" }, [
-            _vm._v(
-              "\n                        Louis Snyderberg\n                    "
-            )
+            _vm._v("\n            Louis Snyderberg\n          ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "job-title" }, [
-            _vm._v("\n                        Animation\n                    ")
+            _vm._v("\n            Animation\n          ")
           ])
         ])
       ])
@@ -68101,13 +68006,11 @@ var staticRenderFns = [
     return _c("div", { staticClass: "team-bar-tablet" }, [
       _c("div", { staticClass: "team-info" }, [
         _c("div", { staticClass: "team-name" }, [
-          _vm._v("\n                            TEAM\n                        ")
+          _vm._v("\n              TEAM\n            ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "actionBtn" }, [
-          _vm._v(
-            "\n                            GO TO TEAM CHAT\n                        "
-          )
+          _vm._v("\n              GO TO TEAM CHAT\n            ")
         ])
       ]),
       _vm._v(" "),
@@ -68116,23 +68019,16 @@ var staticRenderFns = [
       _c("div", { staticClass: "agent-bar" }, [
         _c("div", { staticClass: "team-member tablet-bar" }, [
           _c("img", {
-            attrs: {
-              src: "/resumeApp/public/images/client/dummy.png",
-              alt: "member image"
-            }
+            attrs: { src: "/images/client/dummy.png", alt: "member image" }
           }),
           _vm._v(" "),
           _c("div", { staticClass: "team-member-info" }, [
             _c("div", { staticClass: "member-name" }, [
-              _vm._v(
-                "\n                                    Z. Ibrahimovic\n                                "
-              )
+              _vm._v("\n                  Z. Ibrahimovic\n                ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "job-title" }, [
-              _vm._v(
-                "\n                                    Animation\n                                "
-              )
+              _vm._v("\n                  Animation\n                ")
             ])
           ])
         ]),
@@ -68149,7 +68045,7 @@ var staticRenderFns = [
           },
           [
             _vm._v(
-              "\n                            CHOOSE AGENT\n                        "
+              "\n                              CHOOSE AGENT\n                          "
             )
           ]
         )
@@ -68163,8 +68059,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "empty-state-image" }, [
       _c("img", {
         attrs: {
-          src:
-            "/resumeApp/public/images/client/campaign_activity/empty_state.png",
+          src: "/images/client/campaign_activity/empty_state.png",
           alt: "empty state"
         }
       })
@@ -68177,21 +68072,19 @@ var staticRenderFns = [
     return _c("div", { staticClass: "agent-logs-block" }, [
       _c("div", { staticClass: "log" }, [
         _c("div", { staticClass: "log-time" }, [
-          _vm._v(
-            "\n                                    9.15 am\n                                "
-          )
+          _vm._v("\n                    9.15 am\n                  ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "log-text" }, [
           _c("span", { staticClass: "agent-initials" }, [
             _vm._v(
-              "\n                                        CB\n                                    "
+              "\n                                          CB\n                                      "
             )
           ]),
           _vm._v(" "),
           _c("span", { staticClass: "log-text-content" }, [
             _vm._v(
-              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
+              "\n                                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                      "
             )
           ])
         ])
@@ -68205,21 +68098,19 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "log" }, [
         _c("div", { staticClass: "log-time" }, [
-          _vm._v(
-            "\n                                    9.15 am\n                                "
-          )
+          _vm._v("\n                    9.15 am\n                  ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "log-text" }, [
           _c("span", { staticClass: "agent-initials" }, [
             _vm._v(
-              "\n                                        CB\n                                    "
+              "\n                                          CB\n                                      "
             )
           ]),
           _vm._v(" "),
           _c("span", { staticClass: "log-text-content" }, [
             _vm._v(
-              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
+              "\n                                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                      "
             )
           ])
         ])
@@ -68233,21 +68124,19 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "log" }, [
         _c("div", { staticClass: "log-time" }, [
-          _vm._v(
-            "\n                                    9.15 am\n                                "
-          )
+          _vm._v("\n                    9.15 am\n                  ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "log-text" }, [
           _c("span", { staticClass: "agent-initials" }, [
             _vm._v(
-              "\n                                        CB\n                                    "
+              "\n                                          CB\n                                      "
             )
           ]),
           _vm._v(" "),
           _c("span", { staticClass: "log-text-content" }, [
             _vm._v(
-              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
+              "\n                                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                      "
             )
           ])
         ])
@@ -68261,21 +68150,19 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "log" }, [
         _c("div", { staticClass: "log-time" }, [
-          _vm._v(
-            "\n                                    9.15 am\n                                "
-          )
+          _vm._v("\n                    9.15 am\n                  ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "log-text" }, [
           _c("span", { staticClass: "agent-initials" }, [
             _vm._v(
-              "\n                                        CB\n                                    "
+              "\n                                          CB\n                                      "
             )
           ]),
           _vm._v(" "),
           _c("span", { staticClass: "log-text-content" }, [
             _vm._v(
-              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
+              "\n                                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                      "
             )
           ])
         ])
@@ -68289,21 +68176,19 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "log" }, [
         _c("div", { staticClass: "log-time" }, [
-          _vm._v(
-            "\n                                    9.15 am\n                                "
-          )
+          _vm._v("\n                    9.15 am\n                  ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "log-text" }, [
           _c("span", { staticClass: "agent-initials" }, [
             _vm._v(
-              "\n                                        CB\n                                    "
+              "\n                                          CB\n                                      "
             )
           ]),
           _vm._v(" "),
           _c("span", { staticClass: "log-text-content" }, [
             _vm._v(
-              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
+              "\n                                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                      "
             )
           ])
         ])
@@ -68321,13 +68206,13 @@ var staticRenderFns = [
     return _c("div", { staticClass: "documents-bar" }, [
       _c("img", {
         attrs: {
-          src: "/resumeApp/public/images/client/campaign_activity/document.png",
+          src: "/images/client/campaign_activity/document.png",
           alt: "document"
         }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "document-text" }, [
-        _vm._v("\n                        Document link: "),
+        _vm._v("\n              Document link: "),
         _c("span", [_vm._v("No links.")])
       ])
     ])
@@ -68344,9 +68229,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "modal-content agent-modal-content" }, [
             _c("div", { staticClass: "select-agent-modal-header" }, [
               _c("div", { staticClass: "title text-lay" }, [
-                _vm._v(
-                  "\n                        CHOOSE TEAM MEMBER\n                    "
-                )
+                _vm._v("\n              CHOOSE TEAM MEMBER\n            ")
               ]),
               _vm._v(" "),
               _c(
@@ -68366,7 +68249,7 @@ var staticRenderFns = [
                 _c("div", { staticClass: "team-member" }, [
                   _c("img", {
                     attrs: {
-                      src: "/resumeApp/public/images/client/dummy.png",
+                      src: "/images/client/dummy.png",
                       alt: "member image"
                     }
                   }),
@@ -68374,13 +68257,13 @@ var staticRenderFns = [
                   _c("div", { staticClass: "team-member-info" }, [
                     _c("div", { staticClass: "member-name manager" }, [
                       _vm._v(
-                        "\n                                    Louis Snyderberg\n                                "
+                        "\n                    Louis Snyderberg\n                  "
                       )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "job-title" }, [
                       _vm._v(
-                        "\n                                    Team manager\n                                "
+                        "\n                    Team manager\n                  "
                       )
                     ])
                   ])
@@ -68389,7 +68272,7 @@ var staticRenderFns = [
                 _c("div", { staticClass: "team-member" }, [
                   _c("img", {
                     attrs: {
-                      src: "/resumeApp/public/images/client/dummy.png",
+                      src: "/images/client/dummy.png",
                       alt: "member image"
                     }
                   }),
@@ -68397,13 +68280,13 @@ var staticRenderFns = [
                   _c("div", { staticClass: "team-member-info" }, [
                     _c("div", { staticClass: "member-name" }, [
                       _vm._v(
-                        "\n                                    Mohamed Salah\n                                "
+                        "\n                    Mohamed Salah\n                  "
                       )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "job-title" }, [
                       _vm._v(
-                        "\n                                    Egyptian king\n                                "
+                        "\n                    Egyptian king\n                  "
                       )
                     ])
                   ])
@@ -68412,7 +68295,7 @@ var staticRenderFns = [
                 _c("div", { staticClass: "team-member" }, [
                   _c("img", {
                     attrs: {
-                      src: "/resumeApp/public/images/client/dummy.png",
+                      src: "/images/client/dummy.png",
                       alt: "member image"
                     }
                   }),
@@ -68420,13 +68303,34 @@ var staticRenderFns = [
                   _c("div", { staticClass: "team-member-info" }, [
                     _c("div", { staticClass: "member-name" }, [
                       _vm._v(
-                        "\n                                    Lionel Messi\n                                "
+                        "\n                    Lionel Messi\n                  "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "job-title" }, [
+                      _vm._v("\n                    Artist\n                  ")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "team-member" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "/images/client/dummy.png",
+                      alt: "member image"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "team-member-info" }, [
+                    _c("div", { staticClass: "member-name" }, [
+                      _vm._v(
+                        "\n                    Zlatan Ibrahimovic\n                  "
                       )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "job-title" }, [
                       _vm._v(
-                        "\n                                    Artist\n                                "
+                        "\n                    Animation\n                  "
                       )
                     ])
                   ])
@@ -68435,7 +68339,7 @@ var staticRenderFns = [
                 _c("div", { staticClass: "team-member" }, [
                   _c("img", {
                     attrs: {
-                      src: "/resumeApp/public/images/client/dummy.png",
+                      src: "/images/client/dummy.png",
                       alt: "member image"
                     }
                   }),
@@ -68443,36 +68347,13 @@ var staticRenderFns = [
                   _c("div", { staticClass: "team-member-info" }, [
                     _c("div", { staticClass: "member-name" }, [
                       _vm._v(
-                        "\n                                    Zlatan Ibrahimovic\n                                "
+                        "\n                    Louis Snyderberg\n                  "
                       )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "job-title" }, [
                       _vm._v(
-                        "\n                                    Animation\n                                "
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "team-member" }, [
-                  _c("img", {
-                    attrs: {
-                      src: "/resumeApp/public/images/client/dummy.png",
-                      alt: "member image"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "team-member-info" }, [
-                    _c("div", { staticClass: "member-name" }, [
-                      _vm._v(
-                        "\n                                    Louis Snyderberg\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "job-title" }, [
-                      _vm._v(
-                        "\n                                    Animation\n                                "
+                        "\n                    Animation\n                  "
                       )
                     ])
                   ])
@@ -68735,9 +68616,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {}
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -68791,12 +68684,9 @@ var staticRenderFns = [
           _c("div", { staticClass: "actionBtn" }, [
             _c("a", { attrs: { href: "/client/campaign/add-agent" } }, [
               _c("img", {
-                attrs: {
-                  src: "/resumeApp/public/images/client/plus.png",
-                  alt: "plus sign"
-                }
+                attrs: { src: "/images/client/plus.png", alt: "plus sign" }
               }),
-              _vm._v("ADD NEW AGENT\n                ")
+              _vm._v("ADD NEW AGENT\n                  ")
             ])
           ])
         ]),
@@ -68805,23 +68695,16 @@ var staticRenderFns = [
           _c("div", { staticClass: "campaign-team-row no-decoration" }, [
             _c("div", { staticClass: "team-member" }, [
               _c("img", {
-                attrs: {
-                  src: "/resumeApp/public/images/client/dummy.png",
-                  alt: "member image"
-                }
+                attrs: { src: "/images/client/dummy.png", alt: "member image" }
               }),
               _vm._v(" "),
               _c("div", { staticClass: "team-member-info" }, [
                 _c("div", { staticClass: "member-name" }, [
-                  _vm._v(
-                    "\n                            Louis Snyderberg\n                        "
-                  )
+                  _vm._v("\n              Louis Snyderberg\n            ")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "job-title" }, [
-                  _vm._v(
-                    "\n                            Team manager\n                        "
-                  )
+                  _vm._v("\n              Team manager\n            ")
                 ])
               ])
             ]),
@@ -68829,8 +68712,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "chat-action-btn" }, [
               _c("img", {
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/send_message.png",
+                  src: "/images/client/campaign_activity/send_message.png",
                   alt: "chat icon"
                 }
               })
@@ -68846,7 +68728,7 @@ var staticRenderFns = [
                   "data-target": "#remove-modal"
                 }
               },
-              [_vm._v("\n                    REMOVE\n                ")]
+              [_vm._v("\n                      REMOVE\n                  ")]
             ),
             _vm._v(" "),
             _c(
@@ -68859,30 +68741,27 @@ var staticRenderFns = [
                   "data-target": "#backup-modal"
                 }
               },
-              [_vm._v("\n                    MAKE BACKUP\n                ")]
+              [
+                _vm._v(
+                  "\n                      MAKE BACKUP\n                  "
+                )
+              ]
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "campaign-team-row" }, [
             _c("div", { staticClass: "team-member" }, [
               _c("img", {
-                attrs: {
-                  src: "/resumeApp/public/images/client/dummy.png",
-                  alt: "member image"
-                }
+                attrs: { src: "/images/client/dummy.png", alt: "member image" }
               }),
               _vm._v(" "),
               _c("div", { staticClass: "team-member-info" }, [
                 _c("div", { staticClass: "member-name" }, [
-                  _vm._v(
-                    "\n                            Louis Snyderberg\n                        "
-                  )
+                  _vm._v("\n                Louis Snyderberg\n              ")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "job-title" }, [
-                  _vm._v(
-                    "\n                            Team manager\n                        "
-                  )
+                  _vm._v("\n                Team manager\n              ")
                 ])
               ])
             ]),
@@ -68890,8 +68769,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "chat-action-btn" }, [
               _c("img", {
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/send_message.png",
+                  src: "/images/client/campaign_activity/send_message.png",
                   alt: "chat icon"
                 }
               })
@@ -68907,7 +68785,7 @@ var staticRenderFns = [
                   "data-target": "#remove-modal"
                 }
               },
-              [_vm._v("\n                    REMOVE\n                ")]
+              [_vm._v("\n                      REMOVE\n                  ")]
             ),
             _vm._v(" "),
             _c(
@@ -68920,30 +68798,29 @@ var staticRenderFns = [
                   "data-target": "#backup-modal"
                 }
               },
-              [_vm._v("\n                    MAKE BACKUP\n                ")]
+              [
+                _vm._v(
+                  "\n                      MAKE BACKUP\n                  "
+                )
+              ]
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "campaign-team-row" }, [
             _c("div", { staticClass: "team-member" }, [
               _c("img", {
-                attrs: {
-                  src: "/resumeApp/public/images/client/dummy.png",
-                  alt: "member image"
-                }
+                attrs: { src: "/images/client/dummy.png", alt: "member image" }
               }),
               _vm._v(" "),
               _c("div", { staticClass: "team-member-info" }, [
                 _c("div", { staticClass: "member-name" }, [
                   _vm._v(
-                    "\n                            Louis Snyderberg\n                        "
+                    "\n                  Louis Snyderberg\n                "
                   )
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "job-title" }, [
-                  _vm._v(
-                    "\n                            Team manager\n                        "
-                  )
+                  _vm._v("\n                  Team manager\n                ")
                 ])
               ])
             ]),
@@ -68951,8 +68828,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "chat-action-btn" }, [
               _c("img", {
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/send_message.png",
+                  src: "/images/client/campaign_activity/send_message.png",
                   alt: "chat icon"
                 }
               })
@@ -68968,7 +68844,7 @@ var staticRenderFns = [
                   "data-target": "#remove-modal"
                 }
               },
-              [_vm._v("\n                    REMOVE\n                ")]
+              [_vm._v("\n                      REMOVE\n                  ")]
             ),
             _vm._v(" "),
             _c(
@@ -68981,29 +68857,30 @@ var staticRenderFns = [
                   "data-target": "#backup-modal"
                 }
               },
-              [_vm._v("\n                    MAKE BACKUP\n                ")]
+              [
+                _vm._v(
+                  "\n                      MAKE BACKUP\n                  "
+                )
+              ]
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "campaign-team-row" }, [
             _c("div", { staticClass: "team-member" }, [
               _c("img", {
-                attrs: {
-                  src: "/resumeApp/public/images/client/dummy.png",
-                  alt: "member image"
-                }
+                attrs: { src: "/images/client/dummy.png", alt: "member image" }
               }),
               _vm._v(" "),
               _c("div", { staticClass: "team-member-info" }, [
                 _c("div", { staticClass: "member-name" }, [
                   _vm._v(
-                    "\n                            Louis Snyderberg\n                        "
+                    "\n                    Louis Snyderberg\n                  "
                   )
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "job-title" }, [
                   _vm._v(
-                    "\n                            Team manager\n                        "
+                    "\n                    Team manager\n                  "
                   )
                 ])
               ])
@@ -69012,8 +68889,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "chat-action-btn" }, [
               _c("img", {
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/send_message.png",
+                  src: "/images/client/campaign_activity/send_message.png",
                   alt: "chat icon"
                 }
               })
@@ -69029,7 +68905,7 @@ var staticRenderFns = [
                   "data-target": "#remove-modal"
                 }
               },
-              [_vm._v("\n                    REMOVE\n                ")]
+              [_vm._v("\n                      REMOVE\n                  ")]
             ),
             _vm._v(" "),
             _c(
@@ -69042,29 +68918,30 @@ var staticRenderFns = [
                   "data-target": "#backup-modal"
                 }
               },
-              [_vm._v("\n                    MAKE BACKUP\n                ")]
+              [
+                _vm._v(
+                  "\n                      MAKE BACKUP\n                  "
+                )
+              ]
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "campaign-team-row" }, [
             _c("div", { staticClass: "team-member" }, [
               _c("img", {
-                attrs: {
-                  src: "/resumeApp/public/images/client/dummy.png",
-                  alt: "member image"
-                }
+                attrs: { src: "/images/client/dummy.png", alt: "member image" }
               }),
               _vm._v(" "),
               _c("div", { staticClass: "team-member-info" }, [
                 _c("div", { staticClass: "member-name" }, [
                   _vm._v(
-                    "\n                            Louis Snyderberg\n                        "
+                    "\n                      Louis Snyderberg\n                    "
                   )
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "job-title" }, [
                   _vm._v(
-                    "\n                            Team manager\n                        "
+                    "\n                      Team manager\n                    "
                   )
                 ])
               ])
@@ -69073,8 +68950,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "chat-action-btn" }, [
               _c("img", {
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/send_message.png",
+                  src: "/images/client/campaign_activity/send_message.png",
                   alt: "chat icon"
                 }
               })
@@ -69090,7 +68966,7 @@ var staticRenderFns = [
                   "data-target": "#remove-modal"
                 }
               },
-              [_vm._v("\n                    REMOVE\n                ")]
+              [_vm._v("\n                      REMOVE\n                  ")]
             ),
             _vm._v(" "),
             _c(
@@ -69103,7 +68979,11 @@ var staticRenderFns = [
                   "data-target": "#backup-modal"
                 }
               },
-              [_vm._v("\n                    MAKE BACKUP\n                ")]
+              [
+                _vm._v(
+                  "\n                      MAKE BACKUP\n                  "
+                )
+              ]
             )
           ])
         ])
@@ -69136,13 +69016,13 @@ var staticRenderFns = [
                   _c("div", { staticClass: "modal-body campaign-team-modal" }, [
                     _c("div", { staticClass: "modal-question" }, [
                       _vm._v(
-                        "\n                        Are you sure you want to remove the agent ?\n                    "
+                        "\n                      Are you sure you want to remove the agent ?\n                    "
                       )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-answer" }, [
                       _vm._v(
-                        "\n                        Agent will be in the list of Past agents from this moment.\n                    "
+                        "\n                      Agent will be in the list of Past agents from this moment.\n                    "
                       )
                     ]),
                     _vm._v(" "),
@@ -69208,13 +69088,13 @@ var staticRenderFns = [
                   _c("div", { staticClass: "modal-body campaign-team-modal" }, [
                     _c("div", { staticClass: "modal-question" }, [
                       _vm._v(
-                        "\n                        Are you sure you want to make agent back up?\n                    "
+                        "\n                      Are you sure you want to make agent back up?\n                    "
                       )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-answer" }, [
                       _vm._v(
-                        "\n                        Agent will be in the list of back up agents from this moment.\n                    "
+                        "\n                      Agent will be in the list of back up agents from this moment.\n                    "
                       )
                     ]),
                     _vm._v(" "),
@@ -69521,115 +69401,142 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            faqs: [{
-                id: 1,
-                beingEdited: false,
-                question: 'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-                answer: 'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-            }, {
-                id: 2,
-                beingEdited: false,
-                question: 'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-                answer: 'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-            }, {
-                id: 3,
-                beingEdited: false,
-                question: 'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-                answer: 'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-            }, {
-                id: 4,
-                beingEdited: false,
-                question: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-                answer: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-            }],
-            activeBriefTab: 'FAQ',
-            newFAQ: {
-                question: '',
-                answer: ''
-            },
-            currentlyEditedQuestion: {
-                beingEdited: false,
-                question: '',
-                answer: ''
-            },
-            process_flow_em: false,
-            is_text_editor_set: false
-        };
+  data: function data() {
+    return {
+      faqs: [{
+        id: 1,
+        beingEdited: false,
+        question: 'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+        answer: 'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      }, {
+        id: 2,
+        beingEdited: false,
+        question: 'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+        answer: 'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      }, {
+        id: 3,
+        beingEdited: false,
+        question: 'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+        answer: 'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      }, {
+        id: 4,
+        beingEdited: false,
+        question: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+        answer: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      }],
+      activeBriefTab: 'FAQ',
+      newFAQ: {
+        question: '',
+        answer: ''
+      },
+      currentlyEditedQuestion: {
+        beingEdited: false,
+        question: '',
+        answer: ''
+      },
+      process_flow_em: false,
+      is_text_editor_set: false
+    };
+  },
+
+  methods: {
+    chooseBriefTab: function chooseBriefTab(tab_name) {
+      this.activeBriefTab = tab_name;
+      if (tab_name === 'PROCESS_FLOW' && !this.is_text_editor_set) {
+        this.setTextEditor();
+      }
     },
+    editFAQ: function editFAQ(faq_id) {
+      var _this = this;
 
-    methods: {
-        chooseBriefTab: function chooseBriefTab(tab_name) {
-            this.activeBriefTab = tab_name;
-            if (tab_name === 'PROCESS_FLOW' && !this.is_text_editor_set) {
-                this.setTextEditor();
-            }
-        },
-        editFAQ: function editFAQ(faq_id) {
-            var _this = this;
-
-            var faqs = this.faqs;
-            $.each(faqs, function (i) {
-                faqs[i].beingEdited = false;
-                if (faqs[i].id === faq_id) {
-                    faqs[i].beingEdited = true;
-                    _this.currentlyEditedQuestion.beingEdited = true;
-                    _this.currentlyEditedQuestion.question = faqs[i].question;
-                    _this.currentlyEditedQuestion.answer = faqs[i].answer;
-                }
-            });
-        },
-        cancelEditFAQ: function cancelEditFAQ(faq_id) {
-            var _this2 = this;
-
-            var faqs = this.faqs;
-            $.each(faqs, function (i) {
-                if (faqs[i].id === faq_id) {
-                    faqs[i].beingEdited = false;
-                    _this2.currentlyEditedQuestion.beingEdited = false;
-                    _this2.currentlyEditedQuestion.question = '';
-                    _this2.currentlyEditedQuestion.answer = '';
-                }
-            });
-        },
-        saveFAQ: function saveFAQ(faq_id) {
-            var _this3 = this;
-
-            var faqs = this.faqs;
-            $.each(faqs, function (i) {
-                if (faqs[i].id === faq_id) {
-                    faqs[i].beingEdited = false;
-                    faqs[i].question = _this3.currentlyEditedQuestion.question;
-                    faqs[i].answer = _this3.currentlyEditedQuestion.answer;
-                    _this3.currentlyEditedQuestion.beingEdited = false;
-                }
-            });
-        },
-        deleteFAQ: function deleteFAQ(faq_id) {
-            var faqs = this.faqs;
-            $.each(faqs, function (i) {
-                if (faqs[i].id === faq_id) {
-                    faqs.splice(i, 1);
-                    return false;
-                }
-            });
-        },
-        setTextEditor: function setTextEditor() {
-            var quill = new Quill('#editor', {
-                modules: {
-                    toolbar: [[{ 'header': [1, 2, 3, 4, 5, 6, false] }], ['bold', 'italic', 'underline', 'strike'], // toggled buttons
-                    ['blockquote'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], [{ 'align': [] }]]
-                },
-                placeholder: 'Write your description here...',
-                theme: 'snow' // or 'bubble'
-            });
-            this.is_text_editor_set = true;
+      var faqs = this.faqs;
+      $.each(faqs, function (i) {
+        faqs[i].beingEdited = false;
+        if (faqs[i].id === faq_id) {
+          faqs[i].beingEdited = true;
+          _this.currentlyEditedQuestion.beingEdited = true;
+          _this.currentlyEditedQuestion.question = faqs[i].question;
+          _this.currentlyEditedQuestion.answer = faqs[i].answer;
         }
+      });
     },
-    mounted: function mounted() {}
+    cancelEditFAQ: function cancelEditFAQ(faq_id) {
+      var _this2 = this;
+
+      var faqs = this.faqs;
+      $.each(faqs, function (i) {
+        if (faqs[i].id === faq_id) {
+          faqs[i].beingEdited = false;
+          _this2.currentlyEditedQuestion.beingEdited = false;
+          _this2.currentlyEditedQuestion.question = '';
+          _this2.currentlyEditedQuestion.answer = '';
+        }
+      });
+    },
+    saveFAQ: function saveFAQ(faq_id) {
+      var _this3 = this;
+
+      var faqs = this.faqs;
+      $.each(faqs, function (i) {
+        if (faqs[i].id === faq_id) {
+          faqs[i].beingEdited = false;
+          faqs[i].question = _this3.currentlyEditedQuestion.question;
+          faqs[i].answer = _this3.currentlyEditedQuestion.answer;
+          _this3.currentlyEditedQuestion.beingEdited = false;
+        }
+      });
+    },
+    deleteFAQ: function deleteFAQ(faq_id) {
+      var faqs = this.faqs;
+      $.each(faqs, function (i) {
+        if (faqs[i].id === faq_id) {
+          faqs.splice(i, 1);
+          return false;
+        }
+      });
+    },
+    setTextEditor: function setTextEditor() {
+      var quill = new Quill('#editor', {
+        modules: {
+          toolbar: [[{ 'header': [1, 2, 3, 4, 5, 6, false] }], ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+          ['blockquote'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], [{ 'align': [] }]]
+        },
+        placeholder: 'Write your description here...',
+        theme: 'snow' // or 'bubble'
+      });
+      this.is_text_editor_set = true;
+    }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -69656,7 +69563,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n                FAQ\n            ")]
+          [_vm._v("\n        FAQ\n      ")]
         ),
         _vm._v(" "),
         _c(
@@ -69670,7 +69577,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n                PROCESS FLOW\n            ")]
+          [_vm._v("\n        PROCESS FLOW\n      ")]
         ),
         _vm._v(" "),
         _c(
@@ -69684,7 +69591,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n                FILES\n            ")]
+          [_vm._v("\n        FILES\n      ")]
         ),
         _vm._v(" "),
         _c(
@@ -69698,7 +69605,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n                VOICE SCRIPTS\n            ")]
+          [_vm._v("\n        VOICE SCRIPTS\n      ")]
         ),
         _vm._v(" "),
         _c(
@@ -69712,7 +69619,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n                E-MAIL TEMPLATES\n            ")]
+          [_vm._v("\n        E-MAIL TEMPLATES\n      ")]
         )
       ]),
       _vm._v(" "),
@@ -69733,15 +69640,14 @@ var render = function() {
           [
             _c("div", { staticClass: "faq-title" }, [
               _vm._v(
-                "\n                    In this section you can add frequently asked questions and answers to them.\n                "
+                "\n          In this section you can add frequently asked questions and answers to them.\n        "
               )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "faq-question-input" }, [
               _c("img", {
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/faq.png",
+                  src: "/images/client/campaign_activity/faq.png",
                   alt: "faq icon"
                 }
               }),
@@ -69782,8 +69688,7 @@ var render = function() {
                     }
                   ],
                   attrs: {
-                    src:
-                      "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                    src: "/images/client/campaign_activity/close_black.png",
                     alt: "delete icon"
                   },
                   on: {
@@ -69798,8 +69703,7 @@ var render = function() {
             _c("div", { staticClass: "faq-answer-input" }, [
               _c("img", {
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/answer.png",
+                  src: "/images/client/campaign_activity/answer.png",
                   alt: "faq icon"
                 }
               }),
@@ -69840,8 +69744,7 @@ var render = function() {
                     }
                   ],
                   attrs: {
-                    src:
-                      "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                    src: "/images/client/campaign_activity/close_black.png",
                     alt: "delete icon"
                   },
                   on: {
@@ -69866,7 +69769,7 @@ var render = function() {
               [
                 _c("a", { attrs: { href: "#" } }, [
                   _vm._v(
-                    "\n                        ADD FAQ\n                    "
+                    "\n                          ADD FAQ\n                      "
                   )
                 ])
               ]
@@ -69901,7 +69804,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("div", { staticClass: "edit-title" }, [
                             _vm._v(
-                              "\n                                    Edit the question and the answer :\n                                "
+                              "\n                      Edit the question and the answer :\n                    "
                             )
                           ]),
                           _vm._v(" "),
@@ -69950,8 +69853,7 @@ var render = function() {
                         _c("div", { staticClass: "faq-question-input" }, [
                           _c("img", {
                             attrs: {
-                              src:
-                                "/resumeApp/public/images/client/campaign_activity/faq.png",
+                              src: "/images/client/campaign_activity/faq.png",
                               alt: "faq icon"
                             }
                           }),
@@ -70002,7 +69904,7 @@ var render = function() {
                               ],
                               attrs: {
                                 src:
-                                  "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                                  "/images/client/campaign_activity/close_black.png",
                                 alt: "delete icon"
                               },
                               on: {
@@ -70018,7 +69920,7 @@ var render = function() {
                           _c("img", {
                             attrs: {
                               src:
-                                "/resumeApp/public/images/client/campaign_activity/answer.png",
+                                "/images/client/campaign_activity/answer.png",
                               alt: "faq icon"
                             }
                           }),
@@ -70069,7 +69971,7 @@ var render = function() {
                               ],
                               attrs: {
                                 src:
-                                  "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                                  "/images/client/campaign_activity/close_black.png",
                                 alt: "delete icon"
                               },
                               on: {
@@ -70104,17 +70006,17 @@ var render = function() {
                         _c("div", { staticClass: "faq-item" }, [
                           _c("div", { staticClass: "faq-item-question" }, [
                             _vm._v(
-                              "\n                                    " +
+                              "\n                          " +
                                 _vm._s(faq.question) +
-                                "\n                                "
+                                "\n                        "
                             )
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "faq-item-answer" }, [
                             _vm._v(
-                              "\n                                    " +
+                              "\n                          " +
                                 _vm._s(faq.answer) +
-                                "\n                                "
+                                "\n                        "
                             )
                           ])
                         ]),
@@ -70124,7 +70026,7 @@ var render = function() {
                             ? _c("img", {
                                 attrs: {
                                   src:
-                                    "/resumeApp/public/images/client/campaign_activity/edit.png",
+                                    "/images/client/campaign_activity/edit.png",
                                   alt: "edit icon"
                                 },
                                 on: {
@@ -70140,7 +70042,7 @@ var render = function() {
                                 staticClass: "faq-edit-disabled",
                                 attrs: {
                                   src:
-                                    "/resumeApp/public/images/client/campaign_activity/edit grey.png",
+                                    "/images/client/campaign_activity/edit grey.png",
                                   alt: "edit icon"
                                 }
                               })
@@ -70188,7 +70090,7 @@ var render = function() {
                 _c("img", {
                   attrs: {
                     src:
-                      "/resumeApp/public/images/client/campaign_activity/Illustrations_026_Campaign_brief_flow_empty.png",
+                      "/images/client/campaign_activity/Illustrations_026_Campaign_brief_flow_empty.png",
                     alt: "empty-state"
                   }
                 })
@@ -70235,7 +70137,7 @@ var render = function() {
           [
             _c("div", { staticClass: "files-tab-heading" }, [
               _vm._v(
-                "\n                    In this section you can add documents important to your agents and campaign\n                "
+                "\n                        In this section you can add documents important to your agents and campaign\n                      "
               )
             ]),
             _vm._v(" "),
@@ -70259,7 +70161,7 @@ var render = function() {
           [
             _c("div", { staticClass: "files-tab-heading" }, [
               _vm._v(
-                "\n                    In this section you can add documents with voice scripts\n                "
+                "\n                        In this section you can add documents with voice scripts\n                      "
               )
             ]),
             _vm._v(" "),
@@ -70283,7 +70185,7 @@ var render = function() {
           [
             _c("div", { staticClass: "files-tab-heading" }, [
               _vm._v(
-                "\n                    In this section you can add e-mail templates\n                "
+                "\n                        In this section you can add e-mail templates\n                      "
               )
             ]),
             _vm._v(" "),
@@ -70301,12 +70203,12 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "campaign_desc" }, [
       _c("div", { staticClass: "title" }, [
-        _vm._v("\n            PROJECT DESCRIPTION\n        ")
+        _vm._v("\n      PROJECT DESCRIPTION\n    ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "desc" }, [
         _vm._v(
-          "\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n        "
+          "\n      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n    "
         )
       ])
     ])
@@ -70318,25 +70220,24 @@ var staticRenderFns = [
     return _c("div", { staticClass: "process-flow-heading" }, [
       _c("div", { staticClass: "process-flow-text" }, [
         _vm._v(
-          "\n                            This section is empty. To fiil it please click the edit "
+          "\n                        This section is empty. To fiil it please click the edit "
         ),
         _c("img", {
           attrs: {
-            src:
-              "/resumeApp/public/images/client/campaign_activity/edit grey.png",
+            src: "/images/client/campaign_activity/edit grey.png",
             alt: "edit grey icon"
           }
         }),
-        _vm._v(" button.\n                            "),
+        _vm._v(" button.\n                        "),
         _c("br"),
         _vm._v(
-          "\n                            In this section you can...short description.\n                        "
+          "\n                        In this section you can...short description.\n                      "
         )
       ]),
       _vm._v(" "),
       _c("img", {
         attrs: {
-          src: "/resumeApp/public/images/client/campaign_activity/edit.png",
+          src: "/images/client/campaign_activity/edit.png",
           alt: "edit icon"
         }
       })
@@ -70349,7 +70250,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "edit-state-heading" }, [
       _c("div", { staticClass: "heading-text" }, [
         _vm._v(
-          "\n                            Enter the description of the process flow:\n                        "
+          "\n                            Enter the description of the process flow:\n                          "
         )
       ]),
       _vm._v(" "),
@@ -70373,18 +70274,18 @@ var staticRenderFns = [
             "\n                            Drag or Drop documents you want to upload "
           ),
           _c("br"),
-          _vm._v("or\n                        ")
+          _vm._v("or\n                          ")
         ]),
         _vm._v(" "),
         _c("a", { staticClass: "upload-btn", attrs: { href: "#" } }, [
           _vm._v(
-            "\n                            CHOOSE A FILE\n                        "
+            "\n                              CHOOSE A FILE\n                          "
           )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "upload-notes" }, [
           _vm._v(
-            "\n                            Maximum allowed size is 45 MB\n                        "
+            "\n                            Maximum allowed size is 45 MB\n                          "
           )
         ])
       ])
@@ -70401,18 +70302,18 @@ var staticRenderFns = [
             "\n                            Drag or Drop documents you want to upload "
           ),
           _c("br"),
-          _vm._v("or\n                        ")
+          _vm._v("or\n                          ")
         ]),
         _vm._v(" "),
         _c("a", { staticClass: "upload-btn", attrs: { href: "#" } }, [
           _vm._v(
-            "\n                            CHOOSE A FILE\n                        "
+            "\n                              CHOOSE A FILE\n                          "
           )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "upload-notes" }, [
           _vm._v(
-            "\n                            Maximum allowed size is 45 MB\n                        "
+            "\n                            Maximum allowed size is 45 MB\n                          "
           )
         ])
       ])
@@ -70429,18 +70330,18 @@ var staticRenderFns = [
             "\n                            Drag or Drop documents you want to upload "
           ),
           _c("br"),
-          _vm._v("or\n                        ")
+          _vm._v("or\n                          ")
         ]),
         _vm._v(" "),
         _c("a", { staticClass: "upload-btn", attrs: { href: "#" } }, [
           _vm._v(
-            "\n                            CHOOSE A FILE\n                        "
+            "\n                              CHOOSE A FILE\n                          "
           )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "upload-notes" }, [
           _vm._v(
-            "\n                            Maximum allowed size is 45 MB\n                        "
+            "\n                            Maximum allowed size is 45 MB\n                          "
           )
         ])
       ])
@@ -70542,7 +70443,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -70553,9 +70454,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
 //
 //
 //
@@ -70885,7 +70783,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "upper-bar" }, [
           _c("div", { staticClass: "welcomeText" }, [
             _vm._v(
-              "\n                Hello Mr. Marzouk!  You have 8 active campaigns.\n            "
+              "\n        Hello Mr. Marzouk! You have 8 active campaigns.\n      "
             )
           ]),
           _vm._v(" "),
@@ -70897,7 +70795,7 @@ var staticRenderFns = [
             },
             [
               _vm._v(
-                "\n                GO TO ARCHIVE OF CAMPAIGNS\n            "
+                "\n                  GO TO ARCHIVE OF CAMPAIGNS\n              "
               )
             ]
           )
@@ -70905,18 +70803,15 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "bottom-bar" }, [
           _c("div", { staticClass: "title" }, [
-            _vm._v("\n                MY ACTIVE CAMPAIGNS\n            ")
+            _vm._v("\n        MY ACTIVE CAMPAIGNS\n      ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "actionBtn" }, [
             _c("a", { attrs: { href: "#" } }, [
               _c("img", {
-                attrs: {
-                  src: "/resumeApp/public/images/client/plus.png",
-                  alt: "plus sign"
-                }
+                attrs: { src: "/images/client/plus.png", alt: "plus sign" }
               }),
-              _vm._v("CREATE NEW CAMPAIGN\n                ")
+              _vm._v("CREATE NEW CAMPAIGN\n                  ")
             ])
           ])
         ])
@@ -70926,29 +70821,22 @@ var staticRenderFns = [
         _c("div", { staticClass: "upper-bar" }, [
           _c("div", { staticClass: "campaignInfo" }, [
             _c("div", { staticClass: "title" }, [
-              _vm._v(
-                "\n                    Name of the campaign\n                "
-              )
+              _vm._v("\n          Name of the campaign\n        ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "info hideOnXS" }, [
-              _vm._v(
-                "\n                    2 agents on the campaign\n                "
-              )
+              _vm._v("\n          2 agents on the campaign\n        ")
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "actionBtn" }, [
             _c("a", { attrs: { href: "#" } }, [
-              _vm._v("\n                    ACTIVE\n                ")
+              _vm._v("\n                      ACTIVE\n                  ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "menu-img" }, [
               _c("img", {
-                attrs: {
-                  src: "/resumeApp/public/images/client/more_vert_24px.png",
-                  alt: "menu"
-                }
+                attrs: { src: "/images/client/more_vert_24px.png", alt: "menu" }
               })
             ])
           ])
@@ -70956,33 +70844,28 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "agent-logs-block" }, [
           _c("div", { staticClass: "agentInfo" }, [
-            _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/dummy.png",
-                alt: ""
-              }
-            }),
+            _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
             _vm._v(" "),
             _c("span", { staticClass: "userName" }, [
               _vm._v(
-                "\n                            Mohamed Salah\n                        "
+                "\n                              Mohamed Salah\n                          "
               )
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log" }, [
             _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    9.15 am\n                ")
+              _vm._v("\n            9.15 am\n          ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "log-text" }, [
               _c("span", { staticClass: "agent-initials" }, [
-                _vm._v("\n                        CB\n                    ")
+                _vm._v("\n                          CB\n                      ")
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "log-text-content" }, [
                 _vm._v(
-                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
                 )
               ])
             ])
@@ -70990,17 +70873,17 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "log" }, [
             _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    9.15 am\n                ")
+              _vm._v("\n            9.15 am\n          ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "log-text" }, [
               _c("span", { staticClass: "agent-initials" }, [
-                _vm._v("\n                        CB\n                    ")
+                _vm._v("\n                          CB\n                      ")
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "log-text-content" }, [
                 _vm._v(
-                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
                 )
               ])
             ])
@@ -71008,17 +70891,17 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "log" }, [
             _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    9.15 am\n                ")
+              _vm._v("\n            9.15 am\n          ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "log-text" }, [
               _c("span", { staticClass: "agent-initials" }, [
-                _vm._v("\n                        CB\n                    ")
+                _vm._v("\n                          CB\n                      ")
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "log-text-content" }, [
                 _vm._v(
-                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
                 )
               ])
             ])
@@ -71031,33 +70914,28 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "agent-logs-block" }, [
           _c("div", { staticClass: "agentInfo" }, [
-            _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/dummy.png",
-                alt: ""
-              }
-            }),
+            _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
             _vm._v(" "),
             _c("span", { staticClass: "userName" }, [
               _vm._v(
-                "\n                            Lionel Messi\n                        "
+                "\n                              Lionel Messi\n                          "
               )
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log" }, [
             _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    9.15 am\n                ")
+              _vm._v("\n            9.15 am\n          ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "log-text" }, [
               _c("span", { staticClass: "agent-initials" }, [
-                _vm._v("\n                        CB\n                    ")
+                _vm._v("\n                          CB\n                      ")
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "log-text-content" }, [
                 _vm._v(
-                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
                 )
               ])
             ])
@@ -71065,17 +70943,17 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "log" }, [
             _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    9.15 am\n                ")
+              _vm._v("\n            9.15 am\n          ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "log-text" }, [
               _c("span", { staticClass: "agent-initials" }, [
-                _vm._v("\n                        CB\n                    ")
+                _vm._v("\n                          CB\n                      ")
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "log-text-content" }, [
                 _vm._v(
-                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
                 )
               ])
             ])
@@ -71083,17 +70961,17 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "log" }, [
             _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    9.15 am\n                ")
+              _vm._v("\n            9.15 am\n          ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "log-text" }, [
               _c("span", { staticClass: "agent-initials" }, [
-                _vm._v("\n                        CB\n                    ")
+                _vm._v("\n                          CB\n                      ")
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "log-text-content" }, [
                 _vm._v(
-                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
                 )
               ])
             ])
@@ -71106,7 +70984,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "campaign-brief-footer" }, [
           _c("a", { attrs: { href: "/client/campaign" } }, [
-            _vm._v("\n                GO TO CAMPAIGN\n            ")
+            _vm._v("\n                  GO TO CAMPAIGN\n              ")
           ])
         ])
       ]),
@@ -71115,29 +70993,24 @@ var staticRenderFns = [
         _c("div", { staticClass: "upper-bar" }, [
           _c("div", { staticClass: "campaignInfo" }, [
             _c("div", { staticClass: "title" }, [
-              _vm._v(
-                "\n                    Name of the campaign\n                "
-              )
+              _vm._v("\n            Name of the campaign\n          ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "info" }, [
               _vm._v(
-                "\n                    2 agents currently working on the campaign\n                "
+                "\n            2 agents currently working on the campaign\n          "
               )
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "actionBtn live" }, [
             _c("a", { attrs: { href: "#" } }, [
-              _vm._v("\n                    LIVE\n                ")
+              _vm._v("\n                      LIVE\n                  ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "menu-img" }, [
               _c("img", {
-                attrs: {
-                  src: "/resumeApp/public/images/client/more_vert_24px.png",
-                  alt: "menu"
-                }
+                attrs: { src: "/images/client/more_vert_24px.png", alt: "menu" }
               })
             ])
           ])
@@ -71145,33 +71018,28 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "agent-logs-block" }, [
           _c("div", { staticClass: "agentInfo" }, [
-            _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/dummy.png",
-                alt: ""
-              }
-            }),
+            _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
             _vm._v(" "),
             _c("span", { staticClass: "userName" }, [
               _vm._v(
-                "\n                            Mohamed Salah\n                        "
+                "\n                              Mohamed Salah\n                          "
               )
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log" }, [
             _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    9 am - 10 am\n                ")
+              _vm._v("\n              9 am - 10 am\n            ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "log-text" }, [
               _c("span", { staticClass: "agent-initials" }, [
-                _vm._v("\n                        CB\n                    ")
+                _vm._v("\n                          CB\n                      ")
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "log-text-content" }, [
                 _vm._v(
-                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
                 )
               ])
             ])
@@ -71179,17 +71047,17 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "log" }, [
             _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    10 am - 11 am\n                ")
+              _vm._v("\n              10 am - 11 am\n            ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "log-text" }, [
               _c("span", { staticClass: "agent-initials" }, [
-                _vm._v("\n                        CB\n                    ")
+                _vm._v("\n                          CB\n                      ")
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "log-text-content" }, [
                 _vm._v(
-                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
                 )
               ])
             ])
@@ -71197,17 +71065,17 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "log" }, [
             _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    11 am - 12 am\n                ")
+              _vm._v("\n              11 am - 12 am\n            ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "log-text" }, [
               _c("span", { staticClass: "agent-initials" }, [
-                _vm._v("\n                        CB\n                    ")
+                _vm._v("\n                          CB\n                      ")
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "log-text-content" }, [
                 _vm._v(
-                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
                 )
               ])
             ])
@@ -71215,17 +71083,17 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "log" }, [
             _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    11 am - 12 am\n                ")
+              _vm._v("\n              11 am - 12 am\n            ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "log-text" }, [
               _c("span", { staticClass: "agent-initials" }, [
-                _vm._v("\n                        CB\n                    ")
+                _vm._v("\n                          CB\n                      ")
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "log-text-content" }, [
                 _vm._v(
-                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
                 )
               ])
             ])
@@ -71238,33 +71106,28 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "agent-logs-block" }, [
           _c("div", { staticClass: "agentInfo" }, [
-            _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/dummy.png",
-                alt: ""
-              }
-            }),
+            _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
             _vm._v(" "),
             _c("span", { staticClass: "userName" }, [
               _vm._v(
-                "\n                            Lionel Messi\n                        "
+                "\n                              Lionel Messi\n                          "
               )
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log" }, [
             _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    9 am - 10 am\n                ")
+              _vm._v("\n              9 am - 10 am\n            ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "log-text" }, [
               _c("span", { staticClass: "agent-initials" }, [
-                _vm._v("\n                        CB\n                    ")
+                _vm._v("\n                          CB\n                      ")
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "log-text-content" }, [
                 _vm._v(
-                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
                 )
               ])
             ])
@@ -71272,17 +71135,17 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "log" }, [
             _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    10 am - 11 am\n                ")
+              _vm._v("\n              10 am - 11 am\n            ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "log-text" }, [
               _c("span", { staticClass: "agent-initials" }, [
-                _vm._v("\n                        CB\n                    ")
+                _vm._v("\n                          CB\n                      ")
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "log-text-content" }, [
                 _vm._v(
-                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
                 )
               ])
             ])
@@ -71290,17 +71153,17 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "log" }, [
             _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    11 am - 12 am\n                ")
+              _vm._v("\n              11 am - 12 am\n            ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "log-text" }, [
               _c("span", { staticClass: "agent-initials" }, [
-                _vm._v("\n                        CB\n                    ")
+                _vm._v("\n                          CB\n                      ")
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "log-text-content" }, [
                 _vm._v(
-                  "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
                 )
               ])
             ])
@@ -71313,7 +71176,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "campaign-brief-footer" }, [
           _c("a", { attrs: { href: "/client/campaign" } }, [
-            _vm._v("\n                GO TO CAMPAIGN\n            ")
+            _vm._v("\n                  GO TO CAMPAIGN\n              ")
           ])
         ])
       ])
@@ -71415,7 +71278,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -71712,13 +71575,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            payments_empty_state: false
-        };
-    }
+  data: function data() {
+    return {
+      payments_empty_state: false
+    };
+  }
 });
 
 /***/ }),
@@ -71751,19 +71615,19 @@ var render = function() {
             [
               _c("img", {
                 attrs: {
-                  src: "/resumeApp/public/images/client/payments/add.png",
+                  src: "/images/client/payments/add.png",
                   alt: "add icon"
                 }
               }),
               _vm._v(
-                "\n                    ADD NEW SUBSCRIPTION PLAN\n                "
+                "\n                      ADD NEW SUBSCRIPTION PLAN\n                  "
               )
             ]
           ),
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n                    SUBSCRIPTION RECORD\n                "
+              "\n                      SUBSCRIPTION RECORD\n                  "
             )
           ])
         ])
@@ -71784,7 +71648,7 @@ var render = function() {
         },
         [
           _c("div", { staticClass: "subs-e-s-text" }, [
-            _vm._v("\n                There are no subs yet.\n            ")
+            _vm._v("\n        There are no subs yet.\n      ")
           ]),
           _vm._v(" "),
           _vm._m(1)
@@ -71830,7 +71694,7 @@ var render = function() {
         },
         [
           _c("div", { staticClass: "subs-e-s-text" }, [
-            _vm._v("\n                There are no invoices yet.\n            ")
+            _vm._v("\n          There are no invoices yet.\n        ")
           ])
         ]
       )
@@ -71844,14 +71708,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "left" }, [
       _c("img", {
-        attrs: {
-          src: "/resumeApp/public/images/client/plan.png",
-          alt: "subs icon"
-        }
+        attrs: { src: "/images/client/plan.png", alt: "subs icon" }
       }),
       _vm._v(" "),
       _c("span", [
-        _vm._v("\n                    YOUR SUBSCRIPTIONS\n                ")
+        _vm._v("\n                      YOUR SUBSCRIPTIONS\n                  ")
       ])
     ])
   },
@@ -71862,7 +71723,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "subs-e-s-action" }, [
       _c("a", { attrs: { href: "javascript:void(0)" } }, [
         _vm._v(
-          "\n                    SET UP YOUR SUBSCRIPTION PLAN\n                "
+          "\n                      SET UP YOUR SUBSCRIPTION PLAN\n                  "
         )
       ])
     ])
@@ -71874,28 +71735,77 @@ var staticRenderFns = [
     return _c("div", { staticClass: "sub-item" }, [
       _c("div", { staticClass: "next-billing-date" }, [
         _c("span", { staticClass: "date" }, [_vm._v(" 22.04.19 ")]),
-        _vm._v(" next billing date\n                ")
+        _vm._v(" next billing date\n        ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "sub-info" }, [
         _c("div", { staticClass: "sub-info-box" }, [
           _c("img", {
+            attrs: { src: "/images/client/payments/time.png", alt: "time icon" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "right" }, [
+            _c("div", { staticClass: "sub-info-box-heading" }, [
+              _vm._v("\n                60 HOURS\n              ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "sub-info-box-note" }, [
+              _vm._v("\n                per week\n              ")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "sub-info-box" }, [
+          _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/payments/time.png",
+              src: "/images/client/payments/amount.png",
               alt: "time icon"
             }
           }),
           _vm._v(" "),
           _c("div", { staticClass: "right" }, [
             _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                60 HOURS\n                            "
-              )
+              _vm._v("\n                $ 600\n              ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "sub-info-box-note" }, [
+              _vm._v("\n                weekly amount\n              ")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "sub-info-box" }, [
+          _c("img", {
+            attrs: { src: "/images/client/payments/week.png", alt: "time icon" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "right" }, [
+            _c("div", { staticClass: "sub-info-box-heading" }, [
+              _vm._v("\n                14 WEEKS\n              ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "sub-info-box-note" }, [
+              _vm._v("\n                10 used / 4 left\n              ")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "sub-info-box" }, [
+          _c("img", {
+            attrs: {
+              src: "/images/client/payments/period.png",
+              alt: "time icon"
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "right" }, [
+            _c("div", { staticClass: "sub-info-box-heading" }, [
+              _vm._v("\n                4.04.19 - 4.01.20\n              ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "sub-info-box-note" }, [
               _vm._v(
-                "\n                                per week\n                            "
+                "\n                start date - finish date\n              "
               )
             ])
           ])
@@ -71904,22 +71814,34 @@ var staticRenderFns = [
         _c("div", { staticClass: "sub-info-box" }, [
           _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/payments/amount.png",
+              src: "/images/client/payments/number_agents.png",
               alt: "time icon"
             }
           }),
           _vm._v(" "),
           _c("div", { staticClass: "right" }, [
             _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                $ 600\n                            "
-              )
+              _vm._v("\n                4 AGENTS\n              ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                                weekly amount\n                            "
-              )
+              _vm._v("\n                working on campaign\n              ")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "sub-info-box" }, [
+          _c("img", {
+            attrs: { src: "/images/client/payments/rate.png", alt: "time icon" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "right" }, [
+            _c("div", { staticClass: "sub-info-box-heading" }, [
+              _vm._v("\n                $ 10\n              ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "sub-info-box-note" }, [
+              _vm._v("\n                agent's hourly rate\n              ")
             ])
           ])
         ]),
@@ -71927,114 +71849,18 @@ var staticRenderFns = [
         _c("div", { staticClass: "sub-info-box" }, [
           _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/payments/week.png",
+              src: "/images/client/payments/manager.png",
               alt: "time icon"
             }
           }),
           _vm._v(" "),
           _c("div", { staticClass: "right" }, [
             _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                               14 WEEKS\n                            "
-              )
+              _vm._v("\n                CONOR MARJORAM\n              ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                               10 used / 4 left\n                            "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "sub-info-box" }, [
-          _c("img", {
-            attrs: {
-              src: "/resumeApp/public/images/client/payments/period.png",
-              alt: "time icon"
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "right" }, [
-            _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                               4.04.19 - 4.01.20\n                            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                               start date - finish date\n                            "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "sub-info-box" }, [
-          _c("img", {
-            attrs: {
-              src: "/resumeApp/public/images/client/payments/number_agents.png",
-              alt: "time icon"
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "right" }, [
-            _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                4 AGENTS\n                            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                                working on campaign\n                            "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "sub-info-box" }, [
-          _c("img", {
-            attrs: {
-              src: "/resumeApp/public/images/client/payments/rate.png",
-              alt: "time icon"
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "right" }, [
-            _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                $ 10\n                            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                                agent's hourly rate\n                            "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "sub-info-box" }, [
-          _c("img", {
-            attrs: {
-              src: "/resumeApp/public/images/client/payments/manager.png",
-              alt: "time icon"
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "right" }, [
-            _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                               CONOR MARJORAM\n                            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                                your manager\n                            "
-              )
+              _vm._v("\n                your manager\n              ")
             ])
           ])
         ])
@@ -72043,7 +71869,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "sub-action" }, [
         _c("a", { attrs: { href: "/client/payments/sub-update" } }, [
           _vm._v(
-            "\n                        UPDATE SUBSCRIPTION PLAN\n                    "
+            "\n                          UPDATE SUBSCRIPTION PLAN\n                      "
           )
         ])
       ])
@@ -72056,11 +71882,11 @@ var staticRenderFns = [
     return _c("div", { staticClass: "invoices-heading" }, [
       _c("img", {
         attrs: {
-          src: "/resumeApp/public/images/client/payments/invoices_40px.png",
+          src: "/images/client/payments/invoices_40px.png",
           alt: "invoices icon"
         }
       }),
-      _vm._v("\n            YOUR INVOICES\n        ")
+      _vm._v("\n              YOUR INVOICES\n          ")
     ])
   },
   function() {
@@ -72101,8 +71927,7 @@ var staticRenderFns = [
                 [
                   _c("img", {
                     attrs: {
-                      src:
-                        "/resumeApp/public/images/client/payments/show_invoice.png",
+                      src: "/images/client/payments/show_invoice.png",
                       alt: "show invoice icon"
                     }
                   })
@@ -72112,25 +71937,19 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-number" }, [
-                _vm._v(
-                  "\n                                059-044-038\n                            "
-                )
+                _vm._v("\n                  059-044-038\n                ")
               ])
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-service" }, [
-                _vm._v(
-                  "\n                                Other services\n                            "
-                )
+                _vm._v("\n                  Other services\n                ")
               ])
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount" }, [
-                _vm._v(
-                  "\n                                $ 3,500\n                            "
-                )
+                _vm._v("\n                  $ 3,500\n                ")
               ])
             ]),
             _vm._v(" "),
@@ -72146,8 +71965,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "export-icon" }, [
                 _c("img", {
                   attrs: {
-                    src:
-                      "/resumeApp/public/images/client/payments/export_invoice.png",
+                    src: "/images/client/payments/export_invoice.png",
                     alt: "export icon"
                   }
                 })
@@ -72170,8 +71988,7 @@ var staticRenderFns = [
                 [
                   _c("img", {
                     attrs: {
-                      src:
-                        "/resumeApp/public/images/client/payments/show_invoice.png",
+                      src: "/images/client/payments/show_invoice.png",
                       alt: "show invoice icon"
                     }
                   })
@@ -72181,25 +71998,19 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-number" }, [
-                _vm._v(
-                  "\n                                059-044-038\n                            "
-                )
+                _vm._v("\n                  059-044-038\n                ")
               ])
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-service" }, [
-                _vm._v(
-                  "\n                                Other services\n                            "
-                )
+                _vm._v("\n                  Other services\n                ")
               ])
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount" }, [
-                _vm._v(
-                  "\n                                $ 3,500\n                            "
-                )
+                _vm._v("\n                  $ 3,500\n                ")
               ])
             ]),
             _vm._v(" "),
@@ -72213,8 +72024,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "export-icon" }, [
                 _c("img", {
                   attrs: {
-                    src:
-                      "/resumeApp/public/images/client/payments/export_invoice.png",
+                    src: "/images/client/payments/export_invoice.png",
                     alt: "export icon"
                   }
                 })
@@ -72237,8 +72047,7 @@ var staticRenderFns = [
                 [
                   _c("img", {
                     attrs: {
-                      src:
-                        "/resumeApp/public/images/client/payments/show_invoice.png",
+                      src: "/images/client/payments/show_invoice.png",
                       alt: "show invoice icon"
                     }
                   })
@@ -72248,25 +72057,19 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-number" }, [
-                _vm._v(
-                  "\n                                059-044-038\n                            "
-                )
+                _vm._v("\n                  059-044-038\n                ")
               ])
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-service" }, [
-                _vm._v(
-                  "\n                                Other services\n                            "
-                )
+                _vm._v("\n                  Other services\n                ")
               ])
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount" }, [
-                _vm._v(
-                  "\n                                $ 3,500\n                            "
-                )
+                _vm._v("\n                  $ 3,500\n                ")
               ])
             ]),
             _vm._v(" "),
@@ -72280,8 +72083,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "export-icon" }, [
                 _c("img", {
                   attrs: {
-                    src:
-                      "/resumeApp/public/images/client/payments/export_invoice.png",
+                    src: "/images/client/payments/export_invoice.png",
                     alt: "export icon"
                   }
                 })
@@ -72304,8 +72106,7 @@ var staticRenderFns = [
                 [
                   _c("img", {
                     attrs: {
-                      src:
-                        "/resumeApp/public/images/client/payments/show_invoice.png",
+                      src: "/images/client/payments/show_invoice.png",
                       alt: "show invoice icon"
                     }
                   })
@@ -72315,25 +72116,19 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-number" }, [
-                _vm._v(
-                  "\n                                059-044-038\n                            "
-                )
+                _vm._v("\n                  059-044-038\n                ")
               ])
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-service" }, [
-                _vm._v(
-                  "\n                                Other services\n                            "
-                )
+                _vm._v("\n                  Other services\n                ")
               ])
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount" }, [
-                _vm._v(
-                  "\n                                $ 3,500\n                            "
-                )
+                _vm._v("\n                  $ 3,500\n                ")
               ])
             ]),
             _vm._v(" "),
@@ -72347,8 +72142,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "export-icon" }, [
                 _c("img", {
                   attrs: {
-                    src:
-                      "/resumeApp/public/images/client/payments/export_invoice.png",
+                    src: "/images/client/payments/export_invoice.png",
                     alt: "export icon"
                   }
                 })
@@ -72365,7 +72159,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "invoices-export-btn" }, [
       _c("a", { attrs: { href: "#" } }, [
-        _vm._v("\n                EXPORT ALL INVOICES\n            ")
+        _vm._v("\n                  EXPORT ALL INVOICES\n              ")
       ])
     ])
   }
@@ -72465,7 +72259,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -72604,52 +72398,50 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            faqs: [{
-                id: 1,
-                opened: false,
-                question: 'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-                answer: 'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-            }, {
-                id: 2,
-                opened: false,
-                question: 'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-                answer: 'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-            }, {
-                id: 3,
-                opened: false,
-                question: 'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-                answer: 'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-            }, {
-                id: 4,
-                opened: false,
-                question: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-                answer: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-            }]
-        };
-    },
+  data: function data() {
+    return {
+      faqs: [{
+        id: 1,
+        opened: false,
+        question: 'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+        answer: 'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      }, {
+        id: 2,
+        opened: false,
+        question: 'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+        answer: 'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      }, {
+        id: 3,
+        opened: false,
+        question: 'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+        answer: 'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      }, {
+        id: 4,
+        opened: false,
+        question: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+        answer: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      }]
+    };
+  },
 
-    methods: {
-        toggleAnswer: function toggleAnswer(faq_id) {
-            var faqs = this.faqs;
-            $.each(faqs, function (i) {
-                if (faqs[i].id === faq_id) {
-                    faqs[i].opened = !faqs[i].opened;
-                    if (faqs[i].opened) {
-                        $('#toggleIcon_' + faq_id).css('transform', 'rotate(180deg)');
-                    } else {
-                        $('#toggleIcon_' + faq_id).css('transform', 'rotate(0deg)');
-                    }
-                }
-            });
+  methods: {
+    toggleAnswer: function toggleAnswer(faq_id) {
+      var faqs = this.faqs;
+      $.each(faqs, function (i) {
+        if (faqs[i].id === faq_id) {
+          faqs[i].opened = !faqs[i].opened;
+          if (faqs[i].opened) {
+            $('#toggleIcon_' + faq_id).css('transform', 'rotate(180deg)');
+          } else {
+            $('#toggleIcon_' + faq_id).css('transform', 'rotate(0deg)');
+          }
         }
-    },
-    mounted: function mounted() {}
+      });
+    }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -72685,9 +72477,9 @@ var render = function() {
                   _c("div", { staticClass: "faq-item" }, [
                     _c("div", { staticClass: "faq-item-question" }, [
                       _vm._v(
-                        "\n                            " +
+                        "\n                " +
                           _vm._s(faq.question) +
-                          "\n                        "
+                          "\n              "
                       )
                     ]),
                     _vm._v(" "),
@@ -72706,9 +72498,9 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                            " +
+                          "\n                " +
                             _vm._s(faq.answer) +
-                            "\n                        "
+                            "\n              "
                         )
                       ]
                     )
@@ -72717,8 +72509,7 @@ var render = function() {
                   _c("div", { staticClass: "faq-edit" }, [
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/my_account/dropdown.png",
+                        src: "/images/client/my_account/dropdown.png",
                         id: "toggleIcon_" + faq.id,
                         alt: "toggle icon"
                       },
@@ -72748,14 +72539,14 @@ var staticRenderFns = [
         _c("div", { staticClass: "left" }, [
           _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/my_account/info_40px.png",
+              src: "/images/client/my_account/info_40px.png",
               alt: "info icon"
             }
           }),
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n                    YOUR ACCOUNT INFORMATION\n                "
+              "\n                      YOUR ACCOUNT INFORMATION\n                  "
             )
           ])
         ]),
@@ -72767,7 +72558,7 @@ var staticRenderFns = [
               staticClass: "normal-link",
               attrs: { href: "/client/account/edit" }
             },
-            [_vm._v("\n                    EDIT\n                ")]
+            [_vm._v("\n                      EDIT\n                  ")]
           )
         ])
       ]),
@@ -72778,67 +72569,60 @@ var staticRenderFns = [
             _c("div", { staticClass: "acc-info-item" }, [
               _c("img", {
                 attrs: {
-                  src: "/resumeApp/public/images/client/my_account/name.png",
+                  src: "/images/client/my_account/name.png",
                   alt: "name icon"
                 }
               }),
               _vm._v(" "),
               _c("span", [
                 _vm._v(
-                  "\n                            Edward Norton\n                        "
+                  "\n                              Edward Norton\n                          "
                 )
               ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "acc-info-timezone" }, [
-              _vm._v("\n                        GMT -8\n                    ")
+              _vm._v("\n            GMT -8\n          ")
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "acc-info-content-item" }, [
             _c("img", {
               attrs: {
-                src: "/resumeApp/public/images/client/my_account/agency.png",
+                src: "/images/client/my_account/agency.png",
                 alt: "agency icon"
               }
             }),
             _vm._v(" "),
             _c("div", [
-              _vm._v(
-                "\n                        Black and White - agency\n                    "
-              )
+              _vm._v("\n            Black and White - agency\n          ")
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "acc-info-content-item" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/my_account/phone_number.png",
+                src: "/images/client/my_account/phone_number.png",
                 alt: "phone icon"
               }
             }),
             _vm._v(" "),
-            _c("div", [
-              _vm._v(
-                "\n                        00442037000685\n                    "
-              )
-            ])
+            _c("div", [_vm._v("\n            00442037000685\n          ")])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "acc-info-content-item" }, [
             _c("img", {
               attrs: {
-                src: "/resumeApp/public/images/client/my_account/email.png",
+                src: "/images/client/my_account/email.png",
                 alt: "email icon"
               }
             }),
             _vm._v(" "),
             _c("div", [
-              _vm._v("\n                        email@gmail.com"),
+              _vm._v("\n            email@gmail.com"),
               _c("br"),
               _vm._v(
-                "\n                        email123456656@gmail.com (account dept)\n                    "
+                "\n            email123456656@gmail.com (account dept)\n          "
               )
             ])
           ])
@@ -72855,14 +72639,13 @@ var staticRenderFns = [
         _c("div", { staticClass: "left" }, [
           _c("img", {
             attrs: {
-              src:
-                "/resumeApp/public/images/client/my_account/contract_40px.png",
+              src: "/images/client/my_account/contract_40px.png",
               alt: "info icon"
             }
           }),
           _vm._v(" "),
           _c("span", [
-            _vm._v("\n                    CONTRACTS\n                ")
+            _vm._v("\n                      CONTRACTS\n                  ")
           ])
         ])
       ]),
@@ -72873,15 +72656,13 @@ var staticRenderFns = [
             _c("div", { staticClass: "right" }, [
               _c("img", {
                 attrs: {
-                  src: "/resumeApp/public/images/client/my_account/privacy.png",
+                  src: "/images/client/my_account/privacy.png",
                   alt: "privacy icon"
                 }
               }),
               _vm._v(" "),
               _c("div", [
-                _vm._v(
-                  "\n                           Privacy agreement\n                       "
-                )
+                _vm._v("\n              Privacy agreement\n            ")
               ])
             ]),
             _vm._v(" "),
@@ -72891,7 +72672,7 @@ var staticRenderFns = [
                 { attrs: { href: "/client/account/service-agreement" } },
                 [
                   _vm._v(
-                    "\n                            COMPLETE AGREEMENT\n                        "
+                    "\n                              COMPLETE AGREEMENT\n                          "
                   )
                 ]
               )
@@ -72902,15 +72683,13 @@ var staticRenderFns = [
             _c("div", { staticClass: "right" }, [
               _c("img", {
                 attrs: {
-                  src: "/resumeApp/public/images/client/my_account/service.png",
+                  src: "/images/client/my_account/service.png",
                   alt: "service icon"
                 }
               }),
               _vm._v(" "),
               _c("div", [
-                _vm._v(
-                  "\n                            Service agreement\n                        "
-                )
+                _vm._v("\n              Service agreement\n            ")
               ])
             ]),
             _vm._v(" "),
@@ -72920,7 +72699,7 @@ var staticRenderFns = [
                 { attrs: { href: "/client/account/service-agreement" } },
                 [
                   _vm._v(
-                    "\n                            COMPLETE AGREEMENT\n                        "
+                    "\n                              COMPLETE AGREEMENT\n                          "
                   )
                 ]
               )
@@ -72941,12 +72720,14 @@ var staticRenderFns = [
         _c("div", { staticClass: "left" }, [
           _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/my_account/faq_40px.png",
+              src: "/images/client/my_account/faq_40px.png",
               alt: "info icon"
             }
           }),
           _vm._v(" "),
-          _c("span", [_vm._v("\n                    FAQ\n                ")])
+          _c("span", [
+            _vm._v("\n                      FAQ\n                  ")
+          ])
         ])
       ]
     )
@@ -73208,40 +72989,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            activeTab: 'campaign_manager'
-        };
-    },
+  data: function data() {
+    return {
+      activeTab: 'campaign_manager'
+    };
+  },
 
-    methods: {
-        selectTab: function selectTab(tabName) {
-            this.activeTab = tabName;
-        },
-        getMenuBlockIcon: function getMenuBlockIcon(tabName) {
-            if (this.activeTab === tabName) {
-                return '/resumeApp/public/images/client/menu_icons/active/' + tabName + '.png';
-            }
-            return '/resumeApp/public/images/client/menu_icons/inactive/' + tabName + '.png';
-        },
-        setActiveTab: function setActiveTab() {
-            this.activeTab = this.$route.path.replace('/', '');
-            if (this.activeTab === '') {
-                this.activeTab = 'campaign_manager';
-            }
-        }
+  methods: {
+    selectTab: function selectTab(tabName) {
+      this.activeTab = tabName;
     },
-    mounted: function mounted() {
-        this.setActiveTab();
+    getMenuBlockIcon: function getMenuBlockIcon(tabName) {
+      if (this.activeTab === tabName) {
+        return '/images/client/menu_icons/active/' + tabName + '.png';
+      }
+      return '/images/client/menu_icons/inactive/' + tabName + '.png';
+    },
+    setActiveTab: function setActiveTab() {
+      this.activeTab = this.$route.path.replace('/', '');
+      if (this.activeTab === '') {
+        this.activeTab = 'campaign_manager';
+      }
     }
+  },
+  mounted: function mounted() {
+    this.setActiveTab();
+  }
 });
 
 /***/ }),
@@ -73293,7 +73068,7 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "menu-block-name" }, [
                     _vm._v(
-                      "\n                            Campaign manager\n                        "
+                      "\n                  Campaign manager\n                "
                     )
                   ])
                 ]
@@ -73322,9 +73097,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "menu-block-name" }, [
-                    _vm._v(
-                      "\n                            My account\n                        "
-                    )
+                    _vm._v("\n                  My account\n                ")
                   ])
                 ]
               )
@@ -73365,9 +73138,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "menu-block-name" }, [
-                _vm._v(
-                  "\n                    Campaign manager\n                "
-                )
+                _vm._v("\n              Campaign manager\n            ")
               ])
             ]
           ),
@@ -73395,7 +73166,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "menu-block-name" }, [
-                _vm._v("\n                    My account\n                ")
+                _vm._v("\n              My account\n            ")
               ])
             ]
           )
@@ -73434,10 +73205,7 @@ var staticRenderFns = [
           },
           [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/Group.png",
-                alt: "menu"
-              }
+              attrs: { src: "/images/client/Group.png", alt: "menu" }
             })
           ]
         ),
@@ -73450,10 +73218,7 @@ var staticRenderFns = [
           },
           [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/close.png",
-                alt: "menu"
-              }
+              attrs: { src: "/images/client/close.png", alt: "menu" }
             })
           ]
         ),
@@ -73464,10 +73229,7 @@ var staticRenderFns = [
           [
             _c("img", {
               staticStyle: { width: "177px" },
-              attrs: {
-                src: "/resumeApp/public/images/client/logo_123.png",
-                alt: "logout"
-              }
+              attrs: { src: "/images/client/logo_123.png", alt: "logout" }
             })
           ]
         ),
@@ -73478,24 +73240,16 @@ var staticRenderFns = [
           _c("div", { staticClass: "logoutButton" }, [
             _c("a", { attrs: { href: "logout" } }, [
               _c("img", {
-                attrs: {
-                  src: "/resumeApp/public/images/client/log_out.png",
-                  alt: "logout"
-                }
+                attrs: { src: "/images/client/log_out.png", alt: "logout" }
               })
             ])
           ]),
           _vm._v(" "),
-          _c("div", [
-            _vm._v("\n                Ahmed R. Marzouk\n            ")
-          ]),
+          _c("div", [_vm._v("\n        Ahmed R. Marzouk\n      ")]),
           _vm._v(" "),
           _c("div", { staticClass: "freelancerAvatar" }, [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/dummy.png",
-                alt: "logout"
-              }
+              attrs: { src: "/images/client/dummy.png", alt: "logout" }
             })
           ])
         ])
@@ -73508,18 +73262,13 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "freelancerInfo-bar" }, [
       _c("div", { staticClass: "freelancerAvatar" }, [
-        _c("img", {
-          attrs: {
-            src: "/resumeApp/public/images/client/dummy.png",
-            alt: "logout"
-          }
-        })
+        _c("img", { attrs: { src: "/images/client/dummy.png", alt: "logout" } })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "freelancerName" }, [
-        _vm._v("\n                    Welcome,"),
+        _vm._v("\n            Welcome,"),
         _c("br"),
-        _vm._v("\n                    Ahmed R. Marzouk\n                ")
+        _vm._v("\n            Ahmed R. Marzouk\n          ")
       ])
     ])
   },
@@ -73529,7 +73278,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "logoutBtn" }, [
       _c("a", { attrs: { href: "#" } }, [
-        _vm._v("\n                    LOG OUT\n                ")
+        _vm._v("\n                      LOG OUT\n                  ")
       ])
     ])
   },
@@ -73553,11 +73302,7 @@ var staticRenderFns = [
                   staticClass: "close",
                   attrs: { type: "button", "data-dismiss": "modal" }
                 },
-                [
-                  _c("img", {
-                    attrs: { src: "/resumeApp/public/images/client/close.png" }
-                  })
-                ]
+                [_c("img", { attrs: { src: "/images/client/close.png" } })]
               )
             ]),
             _vm._v(" "),
@@ -73578,21 +73323,15 @@ var staticRenderFns = [
               ),
               _vm._v(" "),
               _c("div", { staticClass: "invioce-top-text" }, [
-                _vm._v(
-                  "\n                        123 Workforce\n                        "
-                ),
+                _vm._v("\n              123 Workforce\n              "),
                 _c("br"),
                 _vm._v(
-                  "\n                        5th floor Portview House Thorn Castle st Dublin Ireland\n                        "
+                  "\n              5th floor Portview House Thorn Castle st Dublin Ireland\n              "
                 ),
                 _c("br"),
-                _vm._v(
-                  "\n                        00442037000685\n                        "
-                ),
+                _vm._v("\n              00442037000685\n              "),
                 _c("br"),
-                _vm._v(
-                  "\n                        info@123workforce.com\n                    "
-                )
+                _vm._v("\n              info@123workforce.com\n            ")
               ]),
               _vm._v(" "),
               _c(
@@ -73613,7 +73352,7 @@ var staticRenderFns = [
                         "d-flex justify-content-between align-items-center"
                     },
                     [
-                      _vm._v(" $400  "),
+                      _vm._v(" $400 "),
                       _c("span", { staticClass: "invoice-outstand" }, [
                         _vm._v(" outstand")
                       ])
@@ -73623,8 +73362,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "invoice-download" }, [
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/payments/export_invoice.png"
+                        src: "/images/client/payments/export_invoice.png"
                       }
                     }),
                     _vm._v("   copy invioce link ")
@@ -73634,10 +73372,10 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("div", { staticClass: "invoice-date" }, [
                 _vm._v(
-                  "\n                        Invoice issue date:\n                        "
+                  "\n                Invoice issue date:\n                "
                 ),
                 _c("br"),
-                _vm._v(" 26.03.2019\n                    ")
+                _vm._v(" 26.03.2019\n              ")
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "freelancer-info" }, [
@@ -73651,9 +73389,7 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("div", { staticClass: "d-flex" }, [
                   _c("div", [
-                    _vm._v(
-                      "\n                                Contact:\n                            "
-                    )
+                    _vm._v("\n                    Contact:\n                  ")
                   ]),
                   _vm._v(" "),
                   _c(
@@ -73661,7 +73397,7 @@ var staticRenderFns = [
                     { staticStyle: { width: "200px", "margin-left": "3px" } },
                     [
                       _vm._v(
-                        "  +447711228204\n                                kim@urbanhqgroup.com "
+                        " +447711228204\n                    kim@urbanhqgroup.com "
                       )
                     ]
                   )
@@ -73675,9 +73411,21 @@ var staticRenderFns = [
                   _c("div", { staticClass: "d-flex align-items-center" }, [
                     _c("img", {
                       staticClass: "invoice-info-icon",
+                      attrs: { src: "/images/client/payments/people_24px.png" }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "invoice-info-title" }, [
+                      _vm._v(" Name of agents: ")
+                    ]),
+                    _vm._v(" Analiza Belleza, Cheska Ramos\n                ")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "d-flex align-items-center" }, [
+                    _c("img", {
+                      staticClass: "invoice-info-icon",
                       attrs: {
                         src:
-                          "/resumeApp/public/images/client/payments/people_24px.png"
+                          "/images/client/payments/assignment_turned_in_24px.png"
                       }
                     }),
                     _vm._v(" "),
@@ -73685,7 +73433,7 @@ var staticRenderFns = [
                       _vm._v(" Name of agents: ")
                     ]),
                     _vm._v(
-                      " Analiza Belleza, Cheska Ramos\n                        "
+                      "\n                  Analiza Belleza, Cheska Ramos\n                "
                     )
                   ]),
                   _vm._v(" "),
@@ -73694,7 +73442,7 @@ var staticRenderFns = [
                       staticClass: "invoice-info-icon",
                       attrs: {
                         src:
-                          "/resumeApp/public/images/client/payments/assignment_turned_in_24px.png"
+                          "/images/client/payments/account_balance_wallet_24px.png"
                       }
                     }),
                     _vm._v(" "),
@@ -73702,7 +73450,37 @@ var staticRenderFns = [
                       _vm._v(" Name of agents: ")
                     ]),
                     _vm._v(
-                      "\n                            Analiza Belleza, Cheska Ramos\n                        "
+                      "\n                  Analiza Belleza, Cheska Ramos\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "d-flex align-items-center" }, [
+                    _c("img", {
+                      staticClass: "invoice-info-icon",
+                      attrs: {
+                        src: "/images/client/payments/watch_later_24px.png"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "invoice-info-title" }, [
+                      _vm._v(" Name of agents: ")
+                    ]),
+                    _vm._v(
+                      "\n                  Analiza Belleza, Cheska Ramos\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "d-flex align-items-center" }, [
+                    _c("img", {
+                      staticClass: "invoice-info-icon",
+                      attrs: { src: "/images/client/payments/Subtract.png" }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "invoice-info-title" }, [
+                      _vm._v(" Name of agents: ")
+                    ]),
+                    _vm._v(
+                      "\n                  Analiza Belleza, Cheska Ramos\n                "
                     )
                   ]),
                   _vm._v(" "),
@@ -73711,7 +73489,7 @@ var staticRenderFns = [
                       staticClass: "invoice-info-icon",
                       attrs: {
                         src:
-                          "/resumeApp/public/images/client/payments/account_balance_wallet_24px.png"
+                          "/images/client/payments/account_balance_wallet_24px.png"
                       }
                     }),
                     _vm._v(" "),
@@ -73719,58 +73497,7 @@ var staticRenderFns = [
                       _vm._v(" Name of agents: ")
                     ]),
                     _vm._v(
-                      "\n                            Analiza Belleza, Cheska Ramos\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "d-flex align-items-center" }, [
-                    _c("img", {
-                      staticClass: "invoice-info-icon",
-                      attrs: {
-                        src:
-                          "/resumeApp/public/images/client/payments/watch_later_24px.png"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "invoice-info-title" }, [
-                      _vm._v(" Name of agents: ")
-                    ]),
-                    _vm._v(
-                      "\n                            Analiza Belleza, Cheska Ramos\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "d-flex align-items-center" }, [
-                    _c("img", {
-                      staticClass: "invoice-info-icon",
-                      attrs: {
-                        src:
-                          "/resumeApp/public/images/client/payments/Subtract.png"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "invoice-info-title" }, [
-                      _vm._v(" Name of agents: ")
-                    ]),
-                    _vm._v(
-                      "\n                            Analiza Belleza, Cheska Ramos\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "d-flex align-items-center" }, [
-                    _c("img", {
-                      staticClass: "invoice-info-icon",
-                      attrs: {
-                        src:
-                          "/resumeApp/public/images/client/payments/account_balance_wallet_24px.png"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "invoice-info-title" }, [
-                      _vm._v(" Name of agents: ")
-                    ]),
-                    _vm._v(
-                      "\n                            Analiza Belleza, Cheska Ramos\n                        "
+                      "\n                  Analiza Belleza, Cheska Ramos\n                "
                     )
                   ])
                 ]
@@ -73877,7 +73604,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -74194,25 +73921,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        addEntry: __WEBPACK_IMPORTED_MODULE_0__addEntry___default.a,
-        addDocument: __WEBPACK_IMPORTED_MODULE_1__addDocument___default.a
-    },
-    data: function data() {
-        return {};
-    },
+  components: {
+    addEntry: __WEBPACK_IMPORTED_MODULE_0__addEntry___default.a,
+    addDocument: __WEBPACK_IMPORTED_MODULE_1__addDocument___default.a
+  },
+  data: function data() {
+    return {};
+  },
 
-    methods: {}
+  methods: {}
 });
 
 /***/ }),
@@ -74669,7 +74391,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "upper-bar" }, [
         _c("div", { staticClass: "welcomeText" }, [
           _vm._v(
-            "\n                Hello Mr. Marzouk!  You have 8 active campaigns.\n            "
+            "\n        Hello Mr. Marzouk! You have 8 active campaigns.\n      "
           )
         ]),
         _vm._v(" "),
@@ -74679,24 +74401,25 @@ var staticRenderFns = [
             staticClass: "actionText",
             attrs: { href: "/freelancer/campaigns-archive" }
           },
-          [_vm._v("\n                GO TO ARCHIVE OF CAMPAIGNS\n            ")]
+          [
+            _vm._v(
+              "\n                  GO TO ARCHIVE OF CAMPAIGNS\n              "
+            )
+          ]
         )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "bottom-bar" }, [
         _c("div", { staticClass: "title" }, [
-          _vm._v("\n                MY ACTIVE CAMPAIGNS\n            ")
+          _vm._v("\n        MY ACTIVE CAMPAIGNS\n      ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "actionBtn" }, [
           _c("a", { attrs: { href: "#" } }, [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/plus.png",
-                alt: "plus sign"
-              }
+              attrs: { src: "/images/client/plus.png", alt: "plus sign" }
             }),
-            _vm._v("CREATE NEW CAMPAIGN\n                ")
+            _vm._v("CREATE NEW CAMPAIGN\n                  ")
           ])
         ])
       ])
@@ -74710,29 +74433,22 @@ var staticRenderFns = [
       _c("div", { staticClass: "upper-bar" }, [
         _c("div", { staticClass: "campaignInfo" }, [
           _c("div", { staticClass: "title" }, [
-            _vm._v(
-              "\n                    Name of the campaign\n                "
-            )
+            _vm._v("\n          Name of the campaign\n        ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "info hideOnXS" }, [
-            _vm._v(
-              "\n                    2 agents on the campaign\n                "
-            )
+            _vm._v("\n          2 agents on the campaign\n        ")
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "actionBtn" }, [
           _c("a", { attrs: { href: "#" } }, [
-            _vm._v("\n                    ACTIVE\n                ")
+            _vm._v("\n                      ACTIVE\n                  ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "menu-img" }, [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/more_vert_24px.png",
-                alt: "menu"
-              }
+              attrs: { src: "/images/client/more_vert_24px.png", alt: "menu" }
             })
           ])
         ])
@@ -74740,30 +74456,28 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "agent-logs-block" }, [
         _c("div", { staticClass: "agentInfo" }, [
-          _c("img", {
-            attrs: { src: "/resumeApp/public/images/client/dummy.png", alt: "" }
-          }),
+          _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
           _vm._v(" "),
           _c("span", { staticClass: "userName" }, [
             _vm._v(
-              "\n                            Mohamed Salah\n                        "
+              "\n                              Mohamed Salah\n                          "
             )
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "log" }, [
           _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    9.15 am\n                ")
+            _vm._v("\n            9.15 am\n          ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log-text" }, [
             _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
+              _vm._v("\n                          CB\n                      ")
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "log-text-content" }, [
               _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
               )
             ])
           ])
@@ -74771,17 +74485,17 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "log" }, [
           _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    9.15 am\n                ")
+            _vm._v("\n            9.15 am\n          ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log-text" }, [
             _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
+              _vm._v("\n                          CB\n                      ")
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "log-text-content" }, [
               _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
               )
             ])
           ])
@@ -74789,17 +74503,17 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "log" }, [
           _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    9.15 am\n                ")
+            _vm._v("\n            9.15 am\n          ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log-text" }, [
             _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
+              _vm._v("\n                          CB\n                      ")
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "log-text-content" }, [
               _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
               )
             ])
           ])
@@ -74812,30 +74526,28 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "agent-logs-block" }, [
         _c("div", { staticClass: "agentInfo" }, [
-          _c("img", {
-            attrs: { src: "/resumeApp/public/images/client/dummy.png", alt: "" }
-          }),
+          _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
           _vm._v(" "),
           _c("span", { staticClass: "userName" }, [
             _vm._v(
-              "\n                            Lionel Messi\n                        "
+              "\n                              Lionel Messi\n                          "
             )
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "log" }, [
           _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    9.15 am\n                ")
+            _vm._v("\n            9.15 am\n          ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log-text" }, [
             _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
+              _vm._v("\n                          CB\n                      ")
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "log-text-content" }, [
               _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
               )
             ])
           ])
@@ -74843,17 +74555,17 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "log" }, [
           _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    9.15 am\n                ")
+            _vm._v("\n            9.15 am\n          ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log-text" }, [
             _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
+              _vm._v("\n                          CB\n                      ")
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "log-text-content" }, [
               _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
               )
             ])
           ])
@@ -74861,17 +74573,17 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "log" }, [
           _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    9.15 am\n                ")
+            _vm._v("\n            9.15 am\n          ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log-text" }, [
             _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
+              _vm._v("\n                          CB\n                      ")
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "log-text-content" }, [
               _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
               )
             ])
           ])
@@ -74884,7 +74596,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "campaign-brief-footer" }, [
         _c("a", { attrs: { href: "/client/campaign" } }, [
-          _vm._v("\n                GO TO CAMPAIGN\n            ")
+          _vm._v("\n                  GO TO CAMPAIGN\n              ")
         ])
       ])
     ])
@@ -74897,29 +74609,24 @@ var staticRenderFns = [
       _c("div", { staticClass: "upper-bar" }, [
         _c("div", { staticClass: "campaignInfo" }, [
           _c("div", { staticClass: "title" }, [
-            _vm._v(
-              "\n                    Name of the campaign\n                "
-            )
+            _vm._v("\n            Name of the campaign\n          ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "info" }, [
             _vm._v(
-              "\n                    2 agents currently working on the campaign\n                "
+              "\n            2 agents currently working on the campaign\n          "
             )
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "actionBtn live" }, [
           _c("a", { attrs: { href: "#" } }, [
-            _vm._v("\n                    LIVE\n                ")
+            _vm._v("\n                      LIVE\n                  ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "menu-img" }, [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/more_vert_24px.png",
-                alt: "menu"
-              }
+              attrs: { src: "/images/client/more_vert_24px.png", alt: "menu" }
             })
           ])
         ])
@@ -74927,30 +74634,28 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "agent-logs-block" }, [
         _c("div", { staticClass: "agentInfo" }, [
-          _c("img", {
-            attrs: { src: "/resumeApp/public/images/client/dummy.png", alt: "" }
-          }),
+          _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
           _vm._v(" "),
           _c("span", { staticClass: "userName" }, [
             _vm._v(
-              "\n                            Mohamed Salah\n                        "
+              "\n                              Mohamed Salah\n                          "
             )
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "log" }, [
           _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    9 am - 10 am\n                ")
+            _vm._v("\n              9 am - 10 am\n            ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log-text" }, [
             _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
+              _vm._v("\n                          CB\n                      ")
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "log-text-content" }, [
               _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
               )
             ])
           ])
@@ -74958,17 +74663,17 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "log" }, [
           _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    10 am - 11 am\n                ")
+            _vm._v("\n              10 am - 11 am\n            ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log-text" }, [
             _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
+              _vm._v("\n                          CB\n                      ")
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "log-text-content" }, [
               _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
               )
             ])
           ])
@@ -74976,17 +74681,17 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "log" }, [
           _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    11 am - 12 am\n                ")
+            _vm._v("\n              11 am - 12 am\n            ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log-text" }, [
             _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
+              _vm._v("\n                          CB\n                      ")
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "log-text-content" }, [
               _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
               )
             ])
           ])
@@ -74994,17 +74699,17 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "log" }, [
           _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    11 am - 12 am\n                ")
+            _vm._v("\n              11 am - 12 am\n            ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log-text" }, [
             _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
+              _vm._v("\n                          CB\n                      ")
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "log-text-content" }, [
               _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
               )
             ])
           ])
@@ -75017,30 +74722,28 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "agent-logs-block" }, [
         _c("div", { staticClass: "agentInfo" }, [
-          _c("img", {
-            attrs: { src: "/resumeApp/public/images/client/dummy.png", alt: "" }
-          }),
+          _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
           _vm._v(" "),
           _c("span", { staticClass: "userName" }, [
             _vm._v(
-              "\n                            Lionel Messi\n                        "
+              "\n                              Lionel Messi\n                          "
             )
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "log" }, [
           _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    9 am - 10 am\n                ")
+            _vm._v("\n              9 am - 10 am\n            ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log-text" }, [
             _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
+              _vm._v("\n                          CB\n                      ")
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "log-text-content" }, [
               _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
               )
             ])
           ])
@@ -75048,17 +74751,17 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "log" }, [
           _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    10 am - 11 am\n                ")
+            _vm._v("\n              10 am - 11 am\n            ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log-text" }, [
             _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
+              _vm._v("\n                          CB\n                      ")
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "log-text-content" }, [
               _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
               )
             ])
           ])
@@ -75066,17 +74769,17 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "log" }, [
           _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    11 am - 12 am\n                ")
+            _vm._v("\n              11 am - 12 am\n            ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "log-text" }, [
             _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
+              _vm._v("\n                          CB\n                      ")
             ]),
             _vm._v(" "),
             _c("span", { staticClass: "log-text-content" }, [
               _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                "\n                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                      "
               )
             ])
           ])
@@ -75089,7 +74792,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "campaign-brief-footer" }, [
         _c("a", { attrs: { href: "/client/campaign" } }, [
-          _vm._v("\n                GO TO CAMPAIGN\n            ")
+          _vm._v("\n                  GO TO CAMPAIGN\n              ")
         ])
       ])
     ])
@@ -75773,7 +75476,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.pre-formatted[data-v-0c1bbcb9] {\n    white-space: pre-line;\n}\n", ""]);
+exports.push([module.i, "\n.pre-formatted[data-v-0c1bbcb9] {\n  white-space: pre-line;\n}\n", ""]);
 
 // exports
 
@@ -75820,70 +75523,73 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            faqs: [{
-                id: 1,
-                opened: false,
-                question: 'How do payments and invoicing work, How much do you charge ? Can i get discounts?',
-                answer: 'Payment can be made via credit card - Visa / Mastercard/ American Express or via paypal. Subscription payments and invoices can be managed and viewed via the Payments tab in the clients dashboard (currently under construction)\n' + 'Subscription Payments are weekly and required in advance.\n' + 'Recurring subscription payment will be setup for any campaign that will run beyond 1 week.\n' + '- the minimum engagement is 10 hours per week , the minimum number of weeks is 1 week. There is no maximum number of agents - we can provide full sales teams to work full time or part time.\n' + 'We offer 1 flat rate hourly price at weekly subscriptions from 10 hours to 40 hours per week / agent\n' + '\n' + 'USD 11.00\n' + 'GBP 8.50\n' + 'Euro 10.00\n' + 'CAD 15.00\n' + 'NZD 16.50\n' + 'AUD 15.50\n' + 'SGD 15.00\n' + '\n' + 'Any training hours are charged.\n' + '\n' + 'Discounts ;\n' + 'Startups and Charities access 10 percent discount\n' + '\n' + 'Discounts are available for teams/ multiple agents\n' + 'Weekly subscriptions of 100 + hours  (  5  % Discount)\n' + 'Weekly subscriptions of 200 + hours  ( 10 % Discount)\n' + 'Weekly subscriptions of 400 + hours  ( 20 % Discount)\n' + 'Weekly subscriptions of 800 + hours  ( 30 % Discount)'
-            }, {
-                id: 2,
-                opened: false,
-                question: 'Where are your agents based? what is their background? What is their accents?',
-                answer: 'agents are either office based in Cebu / Manila or remote based in surrounding cities with home office setups. ' + ' With 123 Workforce you can easily access highly effective, top performing sales agents.' + ' Our agents are excellent communicators, highly driven and passionate about selling. They are professionals in their field with many years of sales experience. ' + 'All agents have neutral attractive and engaging voices with slight american sounding accent.'
-            }, {
-                id: 3,
-                opened: false,
-                question: 'How do i hire an agent and get started?',
-                answer: 'Once you register as a client, you can view all available agents via the agent tab.(currently under construction) .   Alternatively we can recommend the best available agent, so all you need to do is select your payment subscription and we will assign you the best agent for your campaign.' + ' You would begin by training your agent or sales team about your business and campaign goals'
-            }, {
-                id: 4,
-                opened: false,
-                question: 'Can you show me some examples of recordings ?',
-                answer: 'Sure, once you register as a client , you can view all agents in the agents tab of your dashboard (currently under construction)  and be able to listen to previous recordings.'
-            }, {
-                id: 5,
-                opened: false,
-                question: 'What Sectors do you have experience in working with?',
-                answer: 'We work for a variety of business sectors to include ; Call Centres / Real Estate Investors / Saas Companies / Home improvement companies / Recruitment Agencies / Charities / Insurance / Financial Investing'
-            }, {
-                id: 6,
-                opened: false,
-                question: 'What are all the services you provide?',
-                answer: 'We provide Telesales / Telemarketing / Appointment Setting / Cold Calling  / Lead Verification / B2B Sales / Recruiters / Collection agents'
-            }, {
-                id: 7,
-                opened: false,
-                question: 'How can i see reports about my campaign?',
-                answer: 'In the Client dashboard, (currently under construction)  there is a campaign manager tab, where you can view the daily activity log with statistics about your agent’s performance and progress.'
-            }, {
-                id: 8,
-                opened: false,
-                question: 'Can i refer a friend or other business / do you have an affiliate program?',
-                answer: 'Yes if you refer a friend that has an active subscription, we would offer  10 percent referral payout fee to the subscriptions total value. This can be applied as a discount to your subscription if active or as a cash pay out.'
-            }]
-        };
-    },
+  data: function data() {
+    return {
+      faqs: [{
+        id: 1,
+        opened: false,
+        question: 'How do payments and invoicing work, How much do you charge ? Can i get discounts?',
+        answer: 'Payment can be made via credit card - Visa / Mastercard/ American Express or via paypal. Subscription payments and invoices can be managed and viewed via the Payments tab in the clients dashboard (currently under construction)\n' + 'Subscription Payments are weekly and required in advance.\n' + 'Recurring subscription payment will be setup for any campaign that will run beyond 1 week.\n' + '- the minimum engagement is 10 hours per week , the minimum number of weeks is 1 week. There is no maximum number of agents - we can provide full sales teams to work full time or part time.\n' + 'We offer 1 flat rate hourly price at weekly subscriptions from 10 hours to 40 hours per week / agent\n' + '\n' + 'USD 11.00\n' + 'GBP 8.50\n' + 'Euro 10.00\n' + 'CAD 15.00\n' + 'NZD 16.50\n' + 'AUD 15.50\n' + 'SGD 15.00\n' + '\n' + 'Any training hours are charged.\n' + '\n' + 'Discounts ;\n' + 'Startups and Charities access 10 percent discount\n' + '\n' + 'Discounts are available for teams/ multiple agents\n' + 'Weekly subscriptions of 100 + hours  (  5  % Discount)\n' + 'Weekly subscriptions of 200 + hours  ( 10 % Discount)\n' + 'Weekly subscriptions of 400 + hours  ( 20 % Discount)\n' + 'Weekly subscriptions of 800 + hours  ( 30 % Discount)'
+      }, {
+        id: 2,
+        opened: false,
+        question: 'Where are your agents based? what is their background? What is their accents?',
+        answer: 'agents are either office based in Cebu / Manila or remote based in surrounding cities with home office setups. ' + ' With 123 Workforce you can easily access highly effective, top performing sales agents.' + ' Our agents are excellent communicators, highly driven and passionate about selling. They are professionals in their field with many years of sales experience. ' + 'All agents have neutral attractive and engaging voices with slight american sounding accent.'
+      }, {
+        id: 3,
+        opened: false,
+        question: 'How do i hire an agent and get started?',
+        answer: 'Once you register as a client, you can view all available agents via the agent tab.(currently under construction) .   Alternatively we can recommend the best available agent, so all you need to do is select your payment subscription and we will assign you the best agent for your campaign.' + ' You would begin by training your agent or sales team about your business and campaign goals'
+      }, {
+        id: 4,
+        opened: false,
+        question: 'Can you show me some examples of recordings ?',
+        answer: 'Sure, once you register as a client , you can view all agents in the agents tab of your dashboard (currently under construction)  and be able to listen to previous recordings.'
+      }, {
+        id: 5,
+        opened: false,
+        question: 'What Sectors do you have experience in working with?',
+        answer: 'We work for a variety of business sectors to include ; Call Centres / Real Estate Investors / Saas Companies / Home improvement companies / Recruitment Agencies / Charities / Insurance / Financial Investing'
+      }, {
+        id: 6,
+        opened: false,
+        question: 'What are all the services you provide?',
+        answer: 'We provide Telesales / Telemarketing / Appointment Setting / Cold Calling  / Lead Verification / B2B Sales / Recruiters / Collection agents'
+      }, {
+        id: 7,
+        opened: false,
+        question: 'How can i see reports about my campaign?',
+        answer: 'In the Client dashboard, (currently under construction)  there is a campaign manager tab, where you can view the daily activity log with statistics about your agent’s performance and progress.'
+      }, {
+        id: 8,
+        opened: false,
+        question: 'Can i refer a friend or other business / do you have an affiliate program?',
+        answer: 'Yes if you refer a friend that has an active subscription, we would offer  10 percent referral payout fee to the subscriptions total value. This can be applied as a discount to your subscription if active or as a cash pay out.'
+      }]
+    };
+  },
 
-    methods: {
-        toggleAnswer: function toggleAnswer(faq_id) {
-            var faqs = this.faqs;
-            $.each(faqs, function (i) {
-                if (faqs[i].id === faq_id) {
-                    faqs[i].opened = !faqs[i].opened;
-                    if (faqs[i].opened) {
-                        $('#toggleIcon_' + faq_id).css('transform', 'rotate(180deg)');
-                    } else {
-                        $('#toggleIcon_' + faq_id).css('transform', 'rotate(0deg)');
-                    }
-                }
-            });
+  methods: {
+    toggleAnswer: function toggleAnswer(faq_id) {
+      var faqs = this.faqs;
+      $.each(faqs, function (i) {
+        if (faqs[i].id === faq_id) {
+          faqs[i].opened = !faqs[i].opened;
+          if (faqs[i].opened) {
+            $('#toggleIcon_' + faq_id).css('transform', 'rotate(180deg)');
+          } else {
+            $('#toggleIcon_' + faq_id).css('transform', 'rotate(0deg)');
+          }
         }
-    },
-    mounted: function mounted() {}
+      });
+    }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -75920,9 +75626,9 @@ var render = function() {
                     [
                       _c("div", { staticClass: "faq-item-question" }, [
                         _vm._v(
-                          "\n                            " +
+                          "\n              " +
                             _vm._s(faq.question) +
-                            "\n                        "
+                            "\n            "
                         )
                       ]),
                       _vm._v(" "),
@@ -75951,7 +75657,7 @@ var render = function() {
                   _c("div", { staticClass: "faq-edit" }, [
                     _c("img", {
                       attrs: {
-                        src: "/resumeApp/public/images/faq/dropdown.png",
+                        src: "/images/faq/dropdown.png",
                         id: "toggleIcon_" + faq.id,
                         alt: "toggle icon"
                       },
@@ -75982,13 +75688,12 @@ var staticRenderFns = [
       [
         _c("div", { staticClass: "left" }, [
           _c("img", {
-            attrs: {
-              src: "/resumeApp/public/images/faq/faq_40px.png",
-              alt: "info icon"
-            }
+            attrs: { src: "/images/faq/faq_40px.png", alt: "info icon" }
           }),
           _vm._v(" "),
-          _c("span", [_vm._v("\n                    FAQ\n                ")])
+          _c("span", [
+            _vm._v("\n                      FAQ\n                  ")
+          ])
         ])
       ]
     )
@@ -76089,7 +75794,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+exports.push([module.i, "\n.list-item {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active,\n.list-leave-active {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter,\n.list-leave-to\n\n/* .list-leave-active below version 2.1.8 */\n  {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n", ""]);
 
 // exports
 
@@ -76140,104 +75845,107 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            works: [],
-            canAdd: true,
-            toBeEditedWork: {
-                'id': '',
-                'job_title': '',
-                'job_description': '',
-                'company': '',
-                'date_from': '',
-                'date_to': '',
-                'currently_working': ''
-            }
-        };
+  data: function data() {
+    return {
+      works: [],
+      canAdd: true,
+      toBeEditedWork: {
+        'id': '',
+        'job_title': '',
+        'job_description': '',
+        'company': '',
+        'date_from': '',
+        'date_to': '',
+        'currently_working': ''
+      }
+    };
+  },
+
+
+  methods: {
+    getCurrentWorks: function getCurrentWorks() {
+      var _this = this;
+
+      axios.get('/freelancer/workshistory').then(function (response) {
+        var currWorks = response.data;
+        $.each(currWorks, function (i) {
+          if (currWorks[i].currently_working == "0") {
+            currWorks[i].currently_working = false;
+          } else {
+            currWorks[i].currently_working = true;
+          }
+        });
+        _this.works = currWorks;
+        _this.checkMaxWorks();
+      });
     },
+    addWorkHistory: function addWorkHistory(newWork) {
+      this.works.push(newWork);
+      this.checkMaxWorks();
+    },
+    deleteWork: function deleteWork(work) {
+      var _this2 = this;
 
+      if (!confirm('Are you sure you want to delete this work experience ?')) {
+        return;
+      }
+      axios.post('/freelancer/deletework', { workHistoryID: work.id }).then(function (response) {
+        var works = _this2.works;
+        $.each(works, function (i) {
+          if (works[i].id === work.id) {
+            works.splice(i, 1);
+            return false;
+          }
+        });
 
-    methods: {
-        getCurrentWorks: function getCurrentWorks() {
-            var _this = this;
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
 
-            axios.get('/freelancer/workshistory').then(function (response) {
-                var currWorks = response.data;
-                $.each(currWorks, function (i) {
-                    if (currWorks[i].currently_working == "0") {
-                        currWorks[i].currently_working = false;
-                    } else {
-                        currWorks[i].currently_working = true;
-                    }
-                });
-                _this.works = currWorks;
-                _this.checkMaxWorks();
-            });
-        },
-        addWorkHistory: function addWorkHistory(newWork) {
-            this.works.push(newWork);
-            this.checkMaxWorks();
-        },
-        deleteWork: function deleteWork(work) {
-            var _this2 = this;
+        _this2.checkMaxWorks();
+      });
+    },
+    editWork: function editWork(workID) {
+      var works = this.works;
+      var editedWork = {};
 
-            if (!confirm('Are you sure you want to delete this work experience ?')) {
-                return;
-            }
-            axios.post('/freelancer/deletework', { workHistoryID: work.id }).then(function (response) {
-                var works = _this2.works;
-                $.each(works, function (i) {
-                    if (works[i].id === work.id) {
-                        works.splice(i, 1);
-                        return false;
-                    }
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-
-                _this2.checkMaxWorks();
-            });
-        },
-        editWork: function editWork(workID) {
-            var works = this.works;
-            var editedWork = {};
-
-            $.each(works, function (i) {
-                if (works[i].id === workID) {
-                    editedWork = works[i];
-                }
-            });
-            this.toBeEditedWork = editedWork;
-        },
-        checkMaxWorks: function checkMaxWorks() {
-            if (this.works.length > 4) {
-                this.canAdd = false;
-            } else {
-                this.canAdd = true;
-            }
-        },
-        clearData: function clearData() {
-            this.toBeEditedWork = {
-                'id': '',
-                'job_title': '',
-                'job_description': '',
-                'company': '',
-                'date_from': '',
-                'date_to': '',
-                'currently_working': ''
-            };
+      $.each(works, function (i) {
+        if (works[i].id === workID) {
+          editedWork = works[i];
         }
+      });
+      this.toBeEditedWork = editedWork;
     },
-
-    created: function created() {
-        this.getCurrentWorks();
+    checkMaxWorks: function checkMaxWorks() {
+      if (this.works.length > 4) {
+        this.canAdd = false;
+      } else {
+        this.canAdd = true;
+      }
+    },
+    clearData: function clearData() {
+      this.toBeEditedWork = {
+        'id': '',
+        'job_title': '',
+        'job_description': '',
+        'company': '',
+        'date_from': '',
+        'date_to': '',
+        'currently_working': ''
+      };
     }
+  },
+
+  created: function created() {
+    this.getCurrentWorks();
+  }
 });
 
 /***/ }),
@@ -76277,12 +75985,11 @@ var render = function() {
                   _c("a", { attrs: { href: "javascript:void(0)" } }, [
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/resources/assets/images/close_blue.png",
+                        src: "/images/close_blue.png",
                         alt: "edit profile"
                       }
                     }),
-                    _vm._v("\n                    Delete\n                ")
+                    _vm._v("\n                      Delete\n                  ")
                   ])
                 ]
               ),
@@ -76317,12 +76024,11 @@ var render = function() {
                           height: "15px"
                         },
                         attrs: {
-                          src:
-                            "/resumeApp/resources/assets/images/edit_blue.png",
+                          src: "/images/edit_blue.png",
                           alt: "edit profile"
                         }
                       }),
-                      _vm._v("\n                    Edit\n                ")
+                      _vm._v("\n                      Edit\n                  ")
                     ]
                   )
                 ]
@@ -76342,13 +76048,9 @@ var render = function() {
                 [_vm._v(_vm._s(work.job_title))]
               ),
               _c("br"),
-              _vm._v("\n            " + _vm._s(work.company)),
+              _vm._v("\n      " + _vm._s(work.company)),
               _c("br"),
-              _vm._v(
-                "\n            Start :" +
-                  _vm._s(work.date_from) +
-                  "\n            "
-              ),
+              _vm._v("\n      Start :" + _vm._s(work.date_from) + "\n      "),
               _c(
                 "span",
                 {
@@ -76438,12 +76140,9 @@ var staticRenderFns = [
       },
       [
         _c("img", {
-          attrs: {
-            src: "/resumeApp/resources/assets/images/add_blue.png",
-            alt: "edit profile"
-          }
+          attrs: { src: "/images/add_blue.png", alt: "edit profile" }
         }),
-        _vm._v("\n            Add work\n        ")
+        _vm._v("\n              Add work\n          ")
       ]
     )
   }
@@ -77177,7 +76876,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+exports.push([module.i, "\n.list-item {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active,\n.list-leave-active {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter,\n.list-leave-to\n\n/* .list-leave-active below version 2.1.8 */\n  {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n", ""]);
 
 // exports
 
@@ -77231,100 +76930,100 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            educations: [],
-            canAdd: true,
-            toBeEditedEducation: {
-                'id': '',
-                'school_title': '',
-                'description': '',
-                'date_from': '',
-                'date_to': '',
-                'currently_learning': ''
-            }
-        };
+  data: function data() {
+    return {
+      educations: [],
+      canAdd: true,
+      toBeEditedEducation: {
+        'id': '',
+        'school_title': '',
+        'description': '',
+        'date_from': '',
+        'date_to': '',
+        'currently_learning': ''
+      }
+    };
+  },
+
+
+  methods: {
+    getCurrentEducations: function getCurrentEducations() {
+      var _this = this;
+
+      axios.get('/freelancer/educationshistory').then(function (response) {
+        var currEducations = response.data;
+        $.each(currEducations, function (i) {
+          if (currEducations[i].currently_learning == "0") {
+            currEducations[i].currently_learning = false;
+          } else {
+            currEducations[i].currently_learning = true;
+          }
+        });
+        _this.educations = currEducations;
+        _this.checkMaxEducations();
+      });
     },
+    addEducationHistory: function addEducationHistory(newEducation) {
+      this.educations.push(newEducation);
+      this.checkMaxEducations();
+    },
+    deleteEducation: function deleteEducation(education) {
+      var _this2 = this;
 
+      if (!confirm('Are you sure you want to delete this education history ?')) {
+        return;
+      }
+      axios.post('/freelancer/deleteeducation', { educationHistoryID: education.id }).then(function (response) {
+        var educations = _this2.educations;
+        $.each(educations, function (i) {
+          if (educations[i].id === education.id) {
+            educations.splice(i, 1);
+            return false;
+          }
+        });
 
-    methods: {
-        getCurrentEducations: function getCurrentEducations() {
-            var _this = this;
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
 
-            axios.get('/freelancer/educationshistory').then(function (response) {
-                var currEducations = response.data;
-                $.each(currEducations, function (i) {
-                    if (currEducations[i].currently_learning == "0") {
-                        currEducations[i].currently_learning = false;
-                    } else {
-                        currEducations[i].currently_learning = true;
-                    }
-                });
-                _this.educations = currEducations;
-                _this.checkMaxEducations();
-            });
-        },
-        addEducationHistory: function addEducationHistory(newEducation) {
-            this.educations.push(newEducation);
-            this.checkMaxEducations();
-        },
-        deleteEducation: function deleteEducation(education) {
-            var _this2 = this;
+        _this2.checkMaxEducations();
+      });
+    },
+    editEducation: function editEducation(educationID) {
+      var educations = this.educations;
+      var editedEducation = {};
 
-            if (!confirm('Are you sure you want to delete this education history ?')) {
-                return;
-            }
-            axios.post('/freelancer/deleteeducation', { educationHistoryID: education.id }).then(function (response) {
-                var educations = _this2.educations;
-                $.each(educations, function (i) {
-                    if (educations[i].id === education.id) {
-                        educations.splice(i, 1);
-                        return false;
-                    }
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-
-                _this2.checkMaxEducations();
-            });
-        },
-        editEducation: function editEducation(educationID) {
-            var educations = this.educations;
-            var editedEducation = {};
-
-            $.each(educations, function (i) {
-                if (educations[i].id === educationID) {
-                    editedEducation = educations[i];
-                }
-            });
-            this.toBeEditedEducation = editedEducation;
-        },
-        checkMaxEducations: function checkMaxEducations() {
-            if (this.educations.length > 4) {
-                this.canAdd = false;
-            } else {
-                this.canAdd = true;
-            }
-        },
-        clearData: function clearData() {
-            this.toBeEditedEducation = {
-                'id': '',
-                'school_title': '',
-                'description': '',
-                'date_from': '',
-                'date_to': '',
-                'currently_learning': ''
-            };
+      $.each(educations, function (i) {
+        if (educations[i].id === educationID) {
+          editedEducation = educations[i];
         }
+      });
+      this.toBeEditedEducation = editedEducation;
     },
-
-    created: function created() {
-        this.getCurrentEducations();
+    checkMaxEducations: function checkMaxEducations() {
+      if (this.educations.length > 4) {
+        this.canAdd = false;
+      } else {
+        this.canAdd = true;
+      }
+    },
+    clearData: function clearData() {
+      this.toBeEditedEducation = {
+        'id': '',
+        'school_title': '',
+        'description': '',
+        'date_from': '',
+        'date_to': '',
+        'currently_learning': ''
+      };
     }
+  },
+
+  created: function created() {
+    this.getCurrentEducations();
+  }
 });
 
 /***/ }),
@@ -77364,12 +77063,11 @@ var render = function() {
                   _c("a", { attrs: { href: "javascript:void(0)" } }, [
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/resources/assets/images/close_blue.png",
+                        src: "/images/close_blue.png",
                         alt: "edit profile"
                       }
                     }),
-                    _vm._v("\n                    Delete\n                ")
+                    _vm._v("\n                      Delete\n                  ")
                   ])
                 ]
               ),
@@ -77404,12 +77102,11 @@ var render = function() {
                           height: "15px"
                         },
                         attrs: {
-                          src:
-                            "/resumeApp/resources/assets/images/edit_blue.png",
+                          src: "/images/edit_blue.png",
                           alt: "edit profile"
                         }
                       }),
-                      _vm._v("\n                    Edit\n                ")
+                      _vm._v("\n                      Edit\n                  ")
                     ]
                   )
                 ]
@@ -77430,9 +77127,7 @@ var render = function() {
               ),
               _c("br"),
               _vm._v(
-                "\n            Start :" +
-                  _vm._s(education.date_from) +
-                  "\n            "
+                "\n      Start :" + _vm._s(education.date_from) + "\n      "
               ),
               _c(
                 "span",
@@ -77522,12 +77217,9 @@ var staticRenderFns = [
       },
       [
         _c("img", {
-          attrs: {
-            src: "/resumeApp/resources/assets/images/add_blue.png",
-            alt: "edit profile"
-          }
+          attrs: { src: "/images/add_blue.png", alt: "edit profile" }
         }),
-        _vm._v("\n            Add education\n        ")
+        _vm._v("\n              Add education\n          ")
       ]
     )
   }
@@ -78231,7 +77923,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+exports.push([module.i, "\n.list-item {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active,\n.list-leave-active {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter,\n.list-leave-to\n\n/* .list-leave-active below version 2.1.8 */\n  {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n", ""]);
 
 // exports
 
@@ -78355,179 +78047,195 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['client_id'],
-    data: function data() {
-        return {
-            invoices: [],
-            canAdd: true,
-            selectedAgent: {},
-            toBeEditedInvoice: {
-                'id': '',
-                'unique_number': '',
-                'client_id': this.client_id,
-                'total_amount': '',
-                'hours': '',
-                'rate': '',
-                'notes': '',
-                'status': '',
-                'timeZone': '',
-                'currency': '',
-                'campaign_brief_id': '',
-                errors: [],
-                services: [],
-                payment_options: [],
-                duplicate: false
-            }
-        };
+  props: ['client_id'],
+  data: function data() {
+    return {
+      invoices: [],
+      canAdd: true,
+      selectedAgent: {},
+      toBeEditedInvoice: {
+        'id': '',
+        'unique_number': '',
+        'client_id': this.client_id,
+        'total_amount': '',
+        'hours': '',
+        'rate': '',
+        'notes': '',
+        'status': '',
+        'timeZone': '',
+        'currency': '',
+        'campaign_brief_id': '',
+        errors: [],
+        services: [],
+        payment_options: [],
+        duplicate: false
+      }
+    };
+  },
+
+
+  methods: {
+    getCurrentInvoices: function getCurrentInvoices() {
+      var _this = this;
+
+      axios.get('/admin/client/invoices/' + this.client_id).then(function (response) {
+        var currInvoices = response.data;
+        $.each(currInvoices, function (i) {
+          if (currInvoices[i].payment_options === null) {
+            currInvoices[i].payment_options = [];
+          } else {
+            currInvoices[i].payment_options = currInvoices[i].payment_options.split(',');
+          }
+        });
+        _this.invoices = currInvoices;
+        _this.checkMaxInvoices();
+      });
     },
+    addInvoice: function addInvoice(newInvoice) {
+      this.invoices.push(newInvoice);
+      this.checkMaxInvoices();
+    },
+    deleteInvoice: function deleteInvoice(invoice) {
+      var _this2 = this;
 
+      if (!confirm('Are you sure you want to delete this invoice ?')) {
+        return;
+      }
+      axios.post('/admin/client/deleteinvoice', { invoiceID: invoice.id }).then(function (response) {
+        var invoices = _this2.invoices;
+        $.each(invoices, function (i) {
+          if (invoices[i].id === invoice.id) {
+            invoices.splice(i, 1);
+            return false;
+          }
+        });
 
-    methods: {
-        getCurrentInvoices: function getCurrentInvoices() {
-            var _this = this;
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
 
-            axios.get('/admin/client/invoices/' + this.client_id).then(function (response) {
-                var currInvoices = response.data;
-                $.each(currInvoices, function (i) {
-                    if (currInvoices[i].payment_options === null) {
-                        currInvoices[i].payment_options = [];
-                    } else {
-                        currInvoices[i].payment_options = currInvoices[i].payment_options.split(',');
-                    }
-                });
-                _this.invoices = currInvoices;
-                _this.checkMaxInvoices();
-            });
-        },
-        addInvoice: function addInvoice(newInvoice) {
-            this.invoices.push(newInvoice);
-            this.checkMaxInvoices();
-        },
-        deleteInvoice: function deleteInvoice(invoice) {
-            var _this2 = this;
+        _this2.checkMaxInvoices();
+      });
+    },
+    editInvoice: function editInvoice(invoiceID) {
+      var invoices = this.invoices;
+      var editedInvoice = {};
 
-            if (!confirm('Are you sure you want to delete this invoice ?')) {
-                return;
-            }
-            axios.post('/admin/client/deleteinvoice', { invoiceID: invoice.id }).then(function (response) {
-                var invoices = _this2.invoices;
-                $.each(invoices, function (i) {
-                    if (invoices[i].id === invoice.id) {
-                        invoices.splice(i, 1);
-                        return false;
-                    }
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-
-                _this2.checkMaxInvoices();
-            });
-        },
-        editInvoice: function editInvoice(invoiceID) {
-            var invoices = this.invoices;
-            var editedInvoice = {};
-
-            $.each(invoices, function (i) {
-                if (invoices[i].id === invoiceID) {
-                    editedInvoice = invoices[i];
-                }
-            });
-            this.toBeEditedInvoice = editedInvoice;
-            // hide errors
-            $('#' + editedInvoice.id).addClass('d-none');
-            $('#' + editedInvoice.id + '_updated').addClass('d-none');
-        },
-        checkMaxInvoices: function checkMaxInvoices() {
-            if (this.invoices.length > 4) {
-                this.canAdd = false;
-            } else {
-                this.canAdd = true;
-            }
-        },
-        clearData: function clearData() {
-            this.toBeEditedInvoice = {
-                'id': '',
-                'unique_number': '',
-                'client_id': this.client_id,
-                'total_amount': '',
-                'hours': '',
-                'rate': '',
-                'notes': '',
-                'status': '',
-                'timeZone': '',
-                'currency': '',
-                'campaign_brief_id': '',
-                errors: [],
-                services: [],
-                payment_options: []
-            };
-        },
-        updateInvoiceNumber: function updateInvoiceNumber() {
-            var _this3 = this;
-
-            var data = {
-                'invoice_id': this.toBeEditedInvoice.id,
-                'newNumber': this.toBeEditedInvoice.unique_number
-            };
-            axios.post('/admin/update_invoice_number', data).then(function (response) {
-                if (response.data === 'used') {
-                    $('#' + data.invoice_id).removeClass('d-none');
-                } else {
-                    $('#' + data.invoice_id + '_updated').removeClass('d-none');
-                }
-                _this3.clearData();
-            });
-        },
-        nl2br: function nl2br(str, is_xhtml) {
-            if (typeof str === 'undefined' || str === null) {
-                return '';
-            }
-            var breakTag = is_xhtml || typeof is_xhtml === 'undefined' ? '<br />' : '<br>';
-            return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
-        },
-        getDateOfISOWeek: function getDateOfISOWeek(w, y) {
-            var simple = new Date(y, 0, 1 + (w - 1) * 7);
-            var dow = simple.getDay();
-            var ISOweekStart = simple;
-            if (dow <= 4) ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);else ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
-
-            return this.getDate(ISOweekStart);
-        },
-        getDate: function getDate(date) {
-            var event = new Date(date);
-            var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
-            return event.toLocaleDateString('en-EN', options);
-        },
-        duplicateInvoice: function duplicateInvoice(invoice_id) {
-            var _this4 = this;
-
-            if (!confirm('Are you sure you want to duplicate this invoice ?')) {
-                return;
-            }
-
-            axios.get('/admin/client/duplicate_invoice/' + invoice_id).then(function (response) {
-                console.log(response.data);
-                var invoice = response.data;
-                if (invoice.payment_options === null) {
-                    invoice.payment_options = [];
-                } else {
-                    invoice.payment_options = invoice.payment_options.split(',');
-                }
-                invoice.services = [];
-                _this4.invoices.push(invoice);
-            });
+      $.each(invoices, function (i) {
+        if (invoices[i].id === invoiceID) {
+          editedInvoice = invoices[i];
         }
+      });
+      this.toBeEditedInvoice = editedInvoice;
+      // hide errors
+      $('#' + editedInvoice.id).addClass('d-none');
+      $('#' + editedInvoice.id + '_updated').addClass('d-none');
     },
+    checkMaxInvoices: function checkMaxInvoices() {
+      if (this.invoices.length > 4) {
+        this.canAdd = false;
+      } else {
+        this.canAdd = true;
+      }
+    },
+    clearData: function clearData() {
+      this.toBeEditedInvoice = {
+        'id': '',
+        'unique_number': '',
+        'client_id': this.client_id,
+        'total_amount': '',
+        'hours': '',
+        'rate': '',
+        'notes': '',
+        'status': '',
+        'timeZone': '',
+        'currency': '',
+        'campaign_brief_id': '',
+        errors: [],
+        services: [],
+        payment_options: []
+      };
+    },
+    updateInvoiceNumber: function updateInvoiceNumber() {
+      var _this3 = this;
 
-    created: function created() {
-        this.getCurrentInvoices();
+      var data = {
+        'invoice_id': this.toBeEditedInvoice.id,
+        'newNumber': this.toBeEditedInvoice.unique_number
+      };
+      axios.post('/admin/update_invoice_number', data).then(function (response) {
+        if (response.data === 'used') {
+          $('#' + data.invoice_id).removeClass('d-none');
+        } else {
+          $('#' + data.invoice_id + '_updated').removeClass('d-none');
+        }
+        _this3.clearData();
+      });
+    },
+    nl2br: function nl2br(str, is_xhtml) {
+      if (typeof str === 'undefined' || str === null) {
+        return '';
+      }
+      var breakTag = is_xhtml || typeof is_xhtml === 'undefined' ? '<br />' : '<br>';
+      return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+    },
+    getDateOfISOWeek: function getDateOfISOWeek(w, y) {
+      var simple = new Date(y, 0, 1 + (w - 1) * 7);
+      var dow = simple.getDay();
+      var ISOweekStart = simple;
+      if (dow <= 4) ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);else ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+
+      return this.getDate(ISOweekStart);
+    },
+    getDate: function getDate(date) {
+      var event = new Date(date);
+      var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+      return event.toLocaleDateString('en-EN', options);
+    },
+    duplicateInvoice: function duplicateInvoice(invoice_id) {
+      var _this4 = this;
+
+      if (!confirm('Are you sure you want to duplicate this invoice ?')) {
+        return;
+      }
+
+      axios.get('/admin/client/duplicate_invoice/' + invoice_id).then(function (response) {
+        console.log(response.data);
+        var invoice = response.data;
+        if (invoice.payment_options === null) {
+          invoice.payment_options = [];
+        } else {
+          invoice.payment_options = invoice.payment_options.split(',');
+        }
+        invoice.services = [];
+        _this4.invoices.push(invoice);
+      });
     }
+  },
+
+  created: function created() {
+    this.getCurrentInvoices();
+  }
 });
 
 /***/ }),
@@ -78550,7 +78258,7 @@ var render = function() {
         },
         [
           _vm._v(
-            "\n        Error while saving, please fill in all required fields.\n    "
+            "\n    Error while saving, please fill in all required fields.\n  "
           )
         ]
       ),
@@ -78583,12 +78291,13 @@ var render = function() {
                       _c("a", { attrs: { href: "javascript:void(0)" } }, [
                         _c("img", {
                           attrs: {
-                            src:
-                              "/resumeApp/resources/assets/images/close_blue.png",
+                            src: "/images/close_blue.png",
                             alt: "edit profile"
                           }
                         }),
-                        _vm._v("\n                    Delete\n                ")
+                        _vm._v(
+                          "\n                      Delete\n                  "
+                        )
                       ])
                     ]
                   ),
@@ -78623,12 +78332,13 @@ var render = function() {
                               height: "15px"
                             },
                             attrs: {
-                              src:
-                                "/resumeApp/resources/assets/images/edit_blue.png",
+                              src: "/images/edit_blue.png",
                               alt: "edit profile"
                             }
                           }),
-                          _vm._v("\n                    Edit\n                ")
+                          _vm._v(
+                            "\n                      Edit\n                  "
+                          )
                         ]
                       )
                     ]
@@ -78648,20 +78358,18 @@ var render = function() {
                     [
                       _c("a", { attrs: { href: "javascript:void(0)" } }, [
                         _vm._v(
-                          "\n                    Duplicate\n                "
+                          "\n                      Duplicate\n                  "
                         )
                       ])
                     ]
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "pageSubHeading text-left" }, [
-                    _vm._v(
-                      "\n                        Invoice details\n                    "
-                    )
+                    _vm._v("\n            Invoice details\n          ")
                   ]),
                   _vm._v(" "),
                   _c("br"),
-                  _vm._v("\n                    Total amount to pay :"),
+                  _vm._v("\n          Total amount to pay :"),
                   _c(
                     "b",
                     {
@@ -78676,7 +78384,7 @@ var render = function() {
                     [_vm._v(" " + _vm._s(invoice.total_amount))]
                   ),
                   _c("br"),
-                  _vm._v("\n                    Currency :"),
+                  _vm._v("\n          Currency :"),
                   _c(
                     "b",
                     {
@@ -78709,7 +78417,7 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c("hr"),
-                  _vm._v("\n                    Hours :"),
+                  _vm._v("\n          Hours :"),
                   _c(
                     "b",
                     {
@@ -78726,7 +78434,7 @@ var render = function() {
                   _c("br"),
                   _vm._v(" "),
                   _c("hr"),
-                  _vm._v("\n                    Status : "),
+                  _vm._v("\n          Status : "),
                   _c(
                     "b",
                     {
@@ -78741,7 +78449,7 @@ var render = function() {
                     [_vm._v(" " + _vm._s(invoice.status))]
                   ),
                   _c("br"),
-                  _vm._v("\n                    Payment options : "),
+                  _vm._v("\n          Payment options : "),
                   _c(
                     "b",
                     {
@@ -78758,7 +78466,7 @@ var render = function() {
                   _c("br"),
                   _vm._v(" "),
                   _c("div", { staticClass: "NoDecor" }, [
-                    _vm._v("\n                        Public link :"),
+                    _vm._v("\n            Public link :"),
                     _c(
                       "b",
                       {
@@ -78803,7 +78511,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                        No services in this invoice.\n                    "
+                        "\n            No services in this invoice.\n          "
                       )
                     ]
                   ),
@@ -78824,9 +78532,9 @@ var render = function() {
                     [
                       _c("div", { staticClass: "font-weight-bold col-12" }, [
                         _vm._v(
-                          "\n                            Services : (" +
+                          "\n              Services : (" +
                             _vm._s(invoice.services.length) +
-                            "#)\n                        "
+                            "#)\n            "
                         )
                       ]),
                       _vm._v(" "),
@@ -78855,7 +78563,7 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                                    Service details\n                                "
+                                    "\n                                      Service details\n                                  "
                                   )
                                 ]
                               )
@@ -78887,8 +78595,7 @@ var render = function() {
                                     1
                                   ),
                                   _vm._v(
-                                    _vm._s(service.days) +
-                                      "\n                                "
+                                    _vm._s(service.days) + "\n                "
                                   )
                                 ])
                               ]
@@ -78912,7 +78619,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                                Change invoice unique identifier :\n                            "
+                            "\n                Change invoice unique identifier :\n              "
                           )
                         ]
                       ),
@@ -78957,7 +78664,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                                This number is already in use, please use another one.\n                            "
+                            "\n                This number is already in use, please use another one.\n              "
                           )
                         ]
                       ),
@@ -78969,11 +78676,7 @@ var render = function() {
                           staticStyle: { color: "lightgreen" },
                           attrs: { id: invoice.id + "_updated" }
                         },
-                        [
-                          _vm._v(
-                            "\n                                Updated.\n                            "
-                          )
-                        ]
+                        [_vm._v("\n                Updated.\n              ")]
                       ),
                       _vm._v(" "),
                       _c(
@@ -79017,7 +78720,7 @@ var render = function() {
           ],
           staticClass: "pageSubHeading text-left"
         },
-        [_vm._v("\n        Currently this client has no invoices.\n    ")]
+        [_vm._v("\n    Currently this client has no invoices.\n  ")]
       ),
       _vm._v(" "),
       _c("add-invoice-modal", {
@@ -79057,12 +78760,9 @@ var staticRenderFns = [
                 "padding-bottom": "2px",
                 height: "15px"
               },
-              attrs: {
-                src: "/resumeApp/resources/assets/images/add_blue.png",
-                alt: "edit profile"
-              }
+              attrs: { src: "/images/add_blue.png", alt: "edit profile" }
             }),
-            _vm._v("\n                    Create invoice\n                ")
+            _vm._v("\n                      Create invoice\n                  ")
           ]
         )
       ]
@@ -81420,7 +81120,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+exports.push([module.i, "\n.list-item {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active,\n.list-leave-active {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter,\n.list-leave-to\n\n/* .list-leave-active below version 2.1.8 */\n  {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n", ""]);
 
 // exports
 
@@ -81521,155 +81221,165 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['client_id'],
-    data: function data() {
-        return {
-            services: [],
-            'temp_numb': '',
-            selectedServices: [],
-            canAdd: true,
-            toBeEditedService: {
-                'id': '',
-                'invoice_id': null,
-                'title': '',
-                'client_id': this.client_id,
-                'total_price': '',
-                'hours': '',
-                'rate': '',
-                'timeZone': '',
-                'week': '',
-                'weekDate': '',
-                days: ['Mon'],
-                errors: []
-            }
-        };
+  props: ['client_id'],
+  data: function data() {
+    return {
+      services: [],
+      'temp_numb': '',
+      selectedServices: [],
+      canAdd: true,
+      toBeEditedService: {
+        'id': '',
+        'invoice_id': null,
+        'title': '',
+        'client_id': this.client_id,
+        'total_price': '',
+        'hours': '',
+        'rate': '',
+        'timeZone': '',
+        'week': '',
+        'weekDate': '',
+        days: ['Mon'],
+        errors: []
+      }
+    };
+  },
+
+
+  methods: {
+    getCurrentServices: function getCurrentServices() {
+      var _this = this;
+
+      axios.get('/admin/client/services/' + this.client_id).then(function (response) {
+        var currServices = response.data;
+        $.each(currServices, function (i) {
+          if (currServices[i].days === null) {
+            currServices[i].days = [];
+          } else {
+            currServices[i].days = currServices[i].days.split(',');
+          }
+        });
+        _this.services = currServices;
+        _this.checkMaxServices();
+      });
     },
+    addService: function addService(newService) {
+      this.services.push(newService);
+      this.checkMaxServices();
+    },
+    generateServicesInvoice: function generateServicesInvoice() {
+      var _this2 = this;
 
+      axios.post('/admin/client/generate_service_invoice', { selectedServices: this.selectedServices }).then(function (response) {
+        $.each(_this2.selectedServices, function (i) {
+          _this2.selectedServices[i].invoice_id = response.data;
+        });
+        _this2.selectedServices = [];
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
 
-    methods: {
-        getCurrentServices: function getCurrentServices() {
-            var _this = this;
+        _this2.checkMaxServices();
+      });
+    },
+    deleteService: function deleteService(service) {
+      var _this3 = this;
 
-            axios.get('/admin/client/services/' + this.client_id).then(function (response) {
-                var currServices = response.data;
-                $.each(currServices, function (i) {
-                    if (currServices[i].days === null) {
-                        currServices[i].days = [];
-                    } else {
-                        currServices[i].days = currServices[i].days.split(',');
-                    }
-                });
-                _this.services = currServices;
-                _this.checkMaxServices();
-            });
-        },
-        addService: function addService(newService) {
-            this.services.push(newService);
-            this.checkMaxServices();
-        },
-        generateServicesInvoice: function generateServicesInvoice() {
-            var _this2 = this;
+      if (!confirm('Are you sure you want to delete this service ?')) {
+        return;
+      }
+      axios.post('/admin/client/deleteservice', { serviceID: service.id }).then(function (response) {
+        var services = _this3.services;
+        $.each(services, function (i) {
+          if (services[i].id === service.id) {
+            services.splice(i, 1);
+            return false;
+          }
+        });
 
-            axios.post('/admin/client/generate_service_invoice', { selectedServices: this.selectedServices }).then(function (response) {
-                $.each(_this2.selectedServices, function (i) {
-                    _this2.selectedServices[i].invoice_id = response.data;
-                });
-                _this2.selectedServices = [];
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
 
-                _this2.checkMaxServices();
-            });
-        },
-        deleteService: function deleteService(service) {
-            var _this3 = this;
+        _this3.checkMaxServices();
+      });
+    },
+    editService: function editService(serviceID) {
+      var services = this.services;
+      var editedService = {};
 
-            if (!confirm('Are you sure you want to delete this service ?')) {
-                return;
-            }
-            axios.post('/admin/client/deleteservice', { serviceID: service.id }).then(function (response) {
-                var services = _this3.services;
-                $.each(services, function (i) {
-                    if (services[i].id === service.id) {
-                        services.splice(i, 1);
-                        return false;
-                    }
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-
-                _this3.checkMaxServices();
-            });
-        },
-        editService: function editService(serviceID) {
-            var services = this.services;
-            var editedService = {};
-
-            $.each(services, function (i) {
-                if (services[i].id === serviceID) {
-                    editedService = services[i];
-                    editedService.selectedAgents = services[i].agents;
-                }
-            });
-            this.toBeEditedService = editedService;
-        },
-        checkMaxServices: function checkMaxServices() {
-            if (this.services.length > 4) {
-                this.canAdd = false;
-            } else {
-                this.canAdd = true;
-            }
-        },
-        clearData: function clearData() {
-            this.toBeEditedService = {
-                'id': '',
-                'invoice_id': null,
-                'title': '',
-                'client_id': this.client_id,
-                'total_price': '',
-                'hours': '',
-                'rate': '',
-                'timeZone': '',
-                'week': '',
-                'weekDate': '',
-                days: ['Mon'],
-                errors: []
-            };
-        },
-        nl2br: function nl2br(str, is_xhtml) {
-            if (typeof str === 'undefined' || str === null) {
-                return '';
-            }
-            var breakTag = is_xhtml || typeof is_xhtml === 'undefined' ? '<br />' : '<br>';
-            return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
-        },
-        getDateOfISOWeek: function getDateOfISOWeek(w, y) {
-            var simple = new Date(y, 0, 1 + (w - 1) * 7);
-            var dow = simple.getDay();
-            var ISOweekStart = simple;
-            if (dow <= 4) ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);else ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
-
-            return this.getDate(ISOweekStart);
-        },
-        getDate: function getDate(date) {
-            var event = new Date(date);
-            var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
-            return event.toLocaleDateString('en-EN', options);
+      $.each(services, function (i) {
+        if (services[i].id === serviceID) {
+          editedService = services[i];
+          editedService.selectedAgents = services[i].agents;
         }
+      });
+      this.toBeEditedService = editedService;
     },
+    checkMaxServices: function checkMaxServices() {
+      if (this.services.length > 4) {
+        this.canAdd = false;
+      } else {
+        this.canAdd = true;
+      }
+    },
+    clearData: function clearData() {
+      this.toBeEditedService = {
+        'id': '',
+        'invoice_id': null,
+        'title': '',
+        'client_id': this.client_id,
+        'total_price': '',
+        'hours': '',
+        'rate': '',
+        'timeZone': '',
+        'week': '',
+        'weekDate': '',
+        days: ['Mon'],
+        errors: []
+      };
+    },
+    nl2br: function nl2br(str, is_xhtml) {
+      if (typeof str === 'undefined' || str === null) {
+        return '';
+      }
+      var breakTag = is_xhtml || typeof is_xhtml === 'undefined' ? '<br />' : '<br>';
+      return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+    },
+    getDateOfISOWeek: function getDateOfISOWeek(w, y) {
+      var simple = new Date(y, 0, 1 + (w - 1) * 7);
+      var dow = simple.getDay();
+      var ISOweekStart = simple;
+      if (dow <= 4) ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);else ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
 
-    created: function created() {
-        this.getCurrentServices();
+      return this.getDate(ISOweekStart);
+    },
+    getDate: function getDate(date) {
+      var event = new Date(date);
+      var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+      return event.toLocaleDateString('en-EN', options);
     }
+  },
+
+  created: function created() {
+    this.getCurrentServices();
+  }
 });
 
 /***/ }),
@@ -81692,7 +81402,7 @@ var render = function() {
         },
         [
           _vm._v(
-            "\n        Error while saving, please fill in all required fields.\n    "
+            "\n    Error while saving, please fill in all required fields.\n  "
           )
         ]
       ),
@@ -81728,13 +81438,12 @@ var render = function() {
                         _c("a", { attrs: { href: "javascript:void(0)" } }, [
                           _c("img", {
                             attrs: {
-                              src:
-                                "/resumeApp/resources/assets/images/close_blue.png",
+                              src: "/images/close_blue.png",
                               alt: "edit profile"
                             }
                           }),
                           _vm._v(
-                            "\n                            Delete\n                        "
+                            "\n                              Delete\n                          "
                           )
                         ])
                       ]
@@ -81770,13 +81479,12 @@ var render = function() {
                                 height: "15px"
                               },
                               attrs: {
-                                src:
-                                  "/resumeApp/resources/assets/images/edit_blue.png",
+                                src: "/images/edit_blue.png",
                                 alt: "edit profile"
                               }
                             }),
                             _vm._v(
-                              "\n                            Edit\n                        "
+                              "\n                              Edit\n                          "
                             )
                           ]
                         )
@@ -81784,14 +81492,10 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _c("div", { staticClass: "pageSubHeading text-left" }, [
-                      _vm._v(
-                        "\n                        Service details\n                    "
-                      )
+                      _vm._v("\n            Service details\n          ")
                     ]),
                     _c("br"),
-                    _vm._v(
-                      "\n\n                    Title :\n                    "
-                    ),
+                    _vm._v("\n          Title :\n          "),
                     _c(
                       "b",
                       {
@@ -81805,9 +81509,9 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                        " +
+                          "\n                          " +
                             _vm._s(service.title) +
-                            "\n                    "
+                            "\n                      "
                         )
                       ]
                     ),
@@ -81817,9 +81521,7 @@ var render = function() {
                       ? _c(
                           "div",
                           [
-                            _vm._v(
-                              "\n                     Agents :\n\n                        "
-                            ),
+                            _vm._v("\n            Agents :\n            "),
                             _vm._l(service.agents, function(agent, index) {
                               return _c(
                                 "div",
@@ -81835,11 +81537,11 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                            " +
+                                    "\n              " +
                                       _vm._s(agent.firstName) +
                                       " " +
                                       _vm._s(agent.lastName) +
-                                      "\n                        "
+                                      "\n            "
                                   )
                                 ]
                               )
@@ -81850,7 +81552,7 @@ var render = function() {
                       : _vm._e(),
                     _vm._v(" "),
                     _c("br"),
-                    _vm._v("\n                    Rate per Hour :"),
+                    _vm._v("\n          Rate per Hour :"),
                     _c(
                       "b",
                       {
@@ -81865,7 +81567,7 @@ var render = function() {
                       [_vm._v(" " + _vm._s(service.rate))]
                     ),
                     _c("br"),
-                    _vm._v("\n                    Total price of service :"),
+                    _vm._v("\n          Total price of service :"),
                     _c(
                       "b",
                       {
@@ -81880,7 +81582,7 @@ var render = function() {
                       [_vm._v(" " + _vm._s(service.total_price))]
                     ),
                     _c("br"),
-                    _vm._v("\n                    Time zone:"),
+                    _vm._v("\n          Time zone:"),
                     _c(
                       "b",
                       {
@@ -81895,7 +81597,7 @@ var render = function() {
                       [_vm._v(" " + _vm._s(service.timeZone))]
                     ),
                     _c("br"),
-                    _vm._v("\n                    Year - Week :"),
+                    _vm._v("\n          Year - Week :"),
                     _c(
                       "b",
                       {
@@ -81913,7 +81615,7 @@ var render = function() {
                     _c("span", [_vm._v(_vm._s(service.weekDate))]),
                     _vm._v(" "),
                     _c("br"),
-                    _vm._v("\n                    Hours :"),
+                    _vm._v("\n          Hours :"),
                     _c(
                       "b",
                       {
@@ -81967,7 +81669,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                            All days of the week.\n                        "
+                              "\n                              All days of the week.\n                          "
                             )
                           ]
                         ),
@@ -81986,9 +81688,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                            " +
+                              "\n                              " +
                                 _vm._s(service.days.join(" | ")) +
-                                "\n                        "
+                                "\n                          "
                             )
                           ]
                         )
@@ -82053,9 +81755,7 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c("span", { staticClass: "checkmark" }),
-                        _vm._v(
-                          "\n                        Add to Invoice\n                    "
-                        )
+                        _vm._v("\n            Add to Invoice\n          ")
                       ]
                     ),
                     _vm._v(" "),
@@ -82074,7 +81774,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                        Already added to invoice\n                    "
+                          "\n            Already added to invoice\n          "
                         )
                       ]
                     )
@@ -82100,7 +81800,7 @@ var render = function() {
           ],
           staticClass: "pageSubHeading text-left"
         },
-        [_vm._v("\n        Currently this client has no services.\n    ")]
+        [_vm._v("\n    Currently this client has no services.\n  ")]
       ),
       _vm._v(" "),
       _c(
@@ -82145,7 +81845,7 @@ var render = function() {
             },
             [
               _vm._v(
-                "\n            Generate Invoice with selected services.\n        "
+                "\n              Generate Invoice with selected services.\n          "
               )
             ]
           )
@@ -82178,12 +81878,9 @@ var staticRenderFns = [
       },
       [
         _c("img", {
-          attrs: {
-            src: "/resumeApp/resources/assets/images/add_blue.png",
-            alt: "edit profile"
-          }
+          attrs: { src: "/images/add_blue.png", alt: "edit profile" }
         }),
-        _vm._v("\n            Add Service\n        ")
+        _vm._v("\n              Add Service\n          ")
       ]
     )
   }
@@ -83551,7 +83248,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.monthBox{\n    margin: 10px;\n}\n.dayBox{\n   margin:5px;\n}\n", ""]);
+exports.push([module.i, "\n.monthBox {\n  margin: 10px;\n}\n.dayBox {\n  margin: 5px;\n}\n", ""]);
 
 // exports
 
@@ -83648,100 +83345,113 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            bookings: [],
-            months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            years: [2018, 2019, 2020],
-            year: '',
-            month: '',
-            view: 'years',
-            currentYearBookings: [],
-            currentMonthBookings: []
-        };
+  data: function data() {
+    return {
+      bookings: [],
+      months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      years: [2018, 2019, 2020],
+      year: '',
+      month: '',
+      view: 'years',
+      currentYearBookings: [],
+      currentMonthBookings: []
+    };
+  },
+
+  methods: {
+    testing: function testing() {
+      return 'hi';
     },
+    setView: function setView(view) {
+      this.view = view;
+    },
+    getBookings: function getBookings() {
+      var _this = this;
 
-    methods: {
-        testing: function testing() {
-            return 'hi';
-        },
-        setView: function setView(view) {
-            this.view = view;
-        },
-        getBookings: function getBookings() {
-            var _this = this;
+      axios.get('/admin/get/bookings').then(function (response) {
+        _this.bookings = response.data;
+      });
+    },
+    filterBookingsByYear: function filterBookingsByYear(year) {
+      var _this2 = this;
 
-            axios.get('/admin/get/bookings').then(function (response) {
-                _this.bookings = response.data;
-            });
-        },
-        filterBookingsByYear: function filterBookingsByYear(year) {
-            var _this2 = this;
-
-            this.year = year;
-            this.view = 'months';
-            var yearFilteredBookings = [];
-            $.each(this.bookings, function (i) {
-                var date = new Date(_this2.bookings[i].created_at);
-                if (date.getFullYear() === year) {
-                    yearFilteredBookings.push(_this2.bookings[i]);
-                }
-            });
-            this.currentYearBookings = yearFilteredBookings;
-        },
-        filterBookingsByMonth: function filterBookingsByMonth(month) {
-            var _this3 = this;
-
-            this.month = month;
-            this.view = 'days';
-            var filteredBookings = [];
-            $.each(this.bookings, function (i) {
-                var date = new Date(_this3.bookings[i].created_at);
-                if (date.getMonth() + 1 === month && date.getFullYear() === _this3.year) {
-                    filteredBookings.push(_this3.bookings[i]);
-                }
-            });
-            this.currentMonthBookings = filteredBookings;
-        },
-        getMonthBookings: function getMonthBookings(monthNumber) {
-            var _this4 = this;
-
-            var filteredBookings = [];
-            $.each(this.currentYearBookings, function (i) {
-                var date = new Date(_this4.currentYearBookings[i].created_at);
-                if (date.getMonth() + 1 === monthNumber && date.getFullYear() === _this4.year) {
-                    filteredBookings.push(_this4.currentYearBookings[i]);
-                }
-            });
-
-            return filteredBookings.length;
-        },
-        getDayBookings: function getDayBookings(dayNumber) {
-            var _this5 = this;
-
-            var filteredBookings = [];
-            $.each(this.currentMonthBookings, function (i) {
-                var date = new Date(_this5.currentMonthBookings[i].created_at);
-                if (date.getDate() === dayNumber && date.getMonth() + 1 === _this5.month && date.getFullYear() === _this5.year) {
-                    filteredBookings.push(_this5.currentMonthBookings[i]);
-                }
-            });
-
-            return filteredBookings;
-        },
-        filterYear: function filterYear(booking, year) {
-            var date = new Date(booking.created_at);
-            if (date.getFullYear() === year) {
-                return true;
-            }
-            return false;
+      this.year = year;
+      this.view = 'months';
+      var yearFilteredBookings = [];
+      $.each(this.bookings, function (i) {
+        var date = new Date(_this2.bookings[i].created_at);
+        if (date.getFullYear() === year) {
+          yearFilteredBookings.push(_this2.bookings[i]);
         }
+      });
+      this.currentYearBookings = yearFilteredBookings;
     },
-    mounted: function mounted() {
-        this.getBookings();
+    filterBookingsByMonth: function filterBookingsByMonth(month) {
+      var _this3 = this;
+
+      this.month = month;
+      this.view = 'days';
+      var filteredBookings = [];
+      $.each(this.bookings, function (i) {
+        var date = new Date(_this3.bookings[i].created_at);
+        if (date.getMonth() + 1 === month && date.getFullYear() === _this3.year) {
+          filteredBookings.push(_this3.bookings[i]);
+        }
+      });
+      this.currentMonthBookings = filteredBookings;
+    },
+    getMonthBookings: function getMonthBookings(monthNumber) {
+      var _this4 = this;
+
+      var filteredBookings = [];
+      $.each(this.currentYearBookings, function (i) {
+        var date = new Date(_this4.currentYearBookings[i].created_at);
+        if (date.getMonth() + 1 === monthNumber && date.getFullYear() === _this4.year) {
+          filteredBookings.push(_this4.currentYearBookings[i]);
+        }
+      });
+
+      return filteredBookings.length;
+    },
+    getDayBookings: function getDayBookings(dayNumber) {
+      var _this5 = this;
+
+      var filteredBookings = [];
+      $.each(this.currentMonthBookings, function (i) {
+        var date = new Date(_this5.currentMonthBookings[i].created_at);
+        if (date.getDate() === dayNumber && date.getMonth() + 1 === _this5.month && date.getFullYear() === _this5.year) {
+          filteredBookings.push(_this5.currentMonthBookings[i]);
+        }
+      });
+
+      return filteredBookings;
+    },
+    filterYear: function filterYear(booking, year) {
+      var date = new Date(booking.created_at);
+      if (date.getFullYear() === year) {
+        return true;
+      }
+      return false;
     }
+  },
+  mounted: function mounted() {
+    this.getBookings();
+  }
 });
 
 /***/ }),
@@ -83756,7 +83466,7 @@ var render = function() {
     _c(
       "div",
       { staticClass: "pageHeading", staticStyle: { "margin-top": "5px" } },
-      [_vm._v("\n        Bookings Calendar\n    ")]
+      [_vm._v("\n    Bookings Calendar\n  ")]
     ),
     _vm._v(" "),
     _vm._m(0),
@@ -83790,7 +83500,9 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n                    " + _vm._s(year) + "\n                "
+                  "\n                      " +
+                    _vm._s(year) +
+                    "\n                  "
                 )
               ]
             )
@@ -83816,15 +83528,15 @@ var render = function() {
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-12" }, [
             _c("div", { staticClass: "pageSubHeading" }, [
-              _vm._v("\n                   in "),
+              _vm._v("\n          in "),
               _c("span", { staticStyle: { color: "blue" } }, [
                 _vm._v(_vm._s(_vm.year))
               ]),
-              _vm._v(" there are\n                    "),
+              _vm._v(" there are\n          "),
               _c("span", { staticStyle: { color: "blue" } }, [
                 _vm._v(_vm._s(_vm.currentYearBookings.length))
               ]),
-              _vm._v(" Bookings.\n                ")
+              _vm._v(" Bookings.\n        ")
             ])
           ])
         ]),
@@ -83869,12 +83581,12 @@ var render = function() {
                     }
                   },
                   [
-                    _vm._v("\n                        " + _vm._s(month)),
+                    _vm._v("\n            " + _vm._s(month)),
                     _c("br"),
                     _vm._v(
-                      "\n                        # " +
+                      "\n            # " +
                         _vm._s(_vm.getMonthBookings(index + 1)) +
-                        " Bookings\n                    "
+                        " Bookings\n          "
                     )
                   ]
                 )
@@ -83900,9 +83612,7 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "pageSubHeading" }, [
-          _vm._v(
-            "\n            Month number : #" + _vm._s(_vm.month) + "\n        "
-          )
+          _vm._v("\n      Month number : #" + _vm._s(_vm.month) + "\n    ")
         ]),
         _vm._v(" "),
         _c(
@@ -83941,7 +83651,7 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n                        " +
+                      "\n                " +
                         _vm._s(index) +
                         "/" +
                         _vm._s(_vm.month) +
@@ -83951,7 +83661,7 @@ var render = function() {
                     ),
                     _c("br"),
                     _vm._v(
-                      "\n                        # " +
+                      "\n                # " +
                         _vm._s(_vm.getDayBookings(index).length) +
                         " bookings "
                     ),
@@ -83972,9 +83682,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                " +
+                              "\n                                  " +
                                 _vm._s(index + 1) +
-                                ". Booking   \n                                "
+                                ". Booking   \n                                  "
                             ),
                             _c(
                               "span",
@@ -83992,8 +83702,7 @@ var render = function() {
                               [
                                 _c("img", {
                                   attrs: {
-                                    src:
-                                      "/resumeApp/resources/assets/images/red_circle.png",
+                                    src: "/images/red_circle.png",
                                     alt: "red",
                                     height: "6",
                                     width: "6"
@@ -84018,8 +83727,7 @@ var render = function() {
                               [
                                 _c("img", {
                                   attrs: {
-                                    src:
-                                      "/resumeApp/resources/assets/images/green_circle.png",
+                                    src: "/images/green_circle.png",
                                     alt: "red",
                                     height: "6",
                                     width: "6"
@@ -84057,10 +83765,10 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-2" }, [
-        _vm._v("\n                Paid :\n                "),
+        _vm._v("\n        Paid :\n        "),
         _c("img", {
           attrs: {
-            src: "/resumeApp/resources/assets/images/green_circle.png",
+            src: "/images/green_circle.png",
             alt: "red",
             height: "6",
             width: "6"
@@ -84069,10 +83777,10 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-6" }, [
-        _vm._v("\n                Unpaid :\n                "),
+        _vm._v("\n          Unpaid :\n          "),
         _c("img", {
           attrs: {
-            src: "/resumeApp/resources/assets/images/red_circle.png",
+            src: "/images/red_circle.png",
             alt: "red",
             height: "6",
             width: "6"
@@ -84177,7 +83885,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+exports.push([module.i, "\n.list-item {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active,\n.list-leave-active {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter,\n.list-leave-to\n\n/* .list-leave-active below version 2.1.8 */\n  {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n", ""]);
 
 // exports
 
@@ -84370,171 +84078,156 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            cBriefs: [],
-            canAdd: true,
-            toBeEditedCBrief: {
-                'id': '',
-                'client_name': '',
-                'company_website': '',
-                'company_values': '',
-                'client_contact': '',
-                'objective': '',
-                'email_pitch': '',
-                'phone_pitch': '',
-                'data_systems': '',
-                'estimated_duration': '',
-                'time_zone': '',
-                'time_needed': '',
-                'start_date': '',
-                'contract_terms': '',
-                'hours_per_week': '',
-                'weekly_rate': '',
-                'payment_method': '',
-                'campaign_manager': '',
-                'report_requirement': '',
-                services: []
-            }
-        };
+  data: function data() {
+    return {
+      cBriefs: [],
+      canAdd: true,
+      toBeEditedCBrief: {
+        'id': '',
+        'client_name': '',
+        'company_website': '',
+        'company_values': '',
+        'client_contact': '',
+        'objective': '',
+        'email_pitch': '',
+        'phone_pitch': '',
+        'data_systems': '',
+        'estimated_duration': '',
+        'time_zone': '',
+        'time_needed': '',
+        'start_date': '',
+        'contract_terms': '',
+        'hours_per_week': '',
+        'weekly_rate': '',
+        'payment_method': '',
+        'campaign_manager': '',
+        'report_requirement': '',
+        services: []
+      }
+    };
+  },
+
+
+  methods: {
+    getCurrentCBriefs: function getCurrentCBriefs() {
+      var _this = this;
+
+      axios.get('/admin/workforce/get_cbriefs').then(function (response) {
+        var currCBriefs = response.data;
+        $.each(currCBriefs, function (i) {});
+        _this.cBriefs = currCBriefs;
+        _this.checkMaxCBriefs();
+      });
     },
+    addCBrief: function addCBrief(newCBrief) {
+      this.cBriefs.push(newCBrief);
+      this.checkMaxCBriefs();
+    },
+    deleteCBrief: function deleteCBrief(cBrief) {
+      var _this2 = this;
 
+      if (!confirm('Are you sure you want to delete this campaign brief ?')) {
+        return;
+      }
+      axios.post('/admin/workforce/delete_cbrief', { cBriefID: cBrief.id }).then(function (response) {
+        var cBriefs = _this2.cBriefs;
+        $.each(cBriefs, function (i) {
+          if (cBriefs[i].id === cBrief.id) {
+            cBriefs.splice(i, 1);
+            return false;
+          }
+        });
 
-    methods: {
-        getCurrentCBriefs: function getCurrentCBriefs() {
-            var _this = this;
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
 
-            axios.get('/admin/workforce/get_cbriefs').then(function (response) {
-                var currCBriefs = response.data;
-                $.each(currCBriefs, function (i) {});
-                _this.cBriefs = currCBriefs;
-                _this.checkMaxCBriefs();
-            });
-        },
-        addCBrief: function addCBrief(newCBrief) {
-            this.cBriefs.push(newCBrief);
-            this.checkMaxCBriefs();
-        },
-        deleteCBrief: function deleteCBrief(cBrief) {
-            var _this2 = this;
+        _this2.checkMaxCBriefs();
+      });
+    },
+    editCBrief: function editCBrief(cBriefID) {
+      var cBriefs = this.cBriefs;
+      var editedCBrief = {};
 
-            if (!confirm('Are you sure you want to delete this campaign brief ?')) {
-                return;
-            }
-            axios.post('/admin/workforce/delete_cbrief', { cBriefID: cBrief.id }).then(function (response) {
-                var cBriefs = _this2.cBriefs;
-                $.each(cBriefs, function (i) {
-                    if (cBriefs[i].id === cBrief.id) {
-                        cBriefs.splice(i, 1);
-                        return false;
-                    }
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-
-                _this2.checkMaxCBriefs();
-            });
-        },
-        editCBrief: function editCBrief(cBriefID) {
-            var cBriefs = this.cBriefs;
-            var editedCBrief = {};
-
-            $.each(cBriefs, function (i) {
-                if (cBriefs[i].id === cBriefID) {
-                    editedCBrief = cBriefs[i];
-                }
-            });
-            this.toBeEditedCBrief = editedCBrief;
-        },
-        checkMaxCBriefs: function checkMaxCBriefs() {
-            if (this.cBriefs.length > 4) {
-                this.canAdd = false;
-            } else {
-                this.canAdd = true;
-            }
-        },
-        deleteService: function deleteService(service) {
-            var _this3 = this;
-
-            if (!confirm('Are you sure you want to delete this service ?')) {
-                return;
-            }
-            axios.post('/admin/workforce/delete_cbrief_service', { serviceID: service.id }).then(function (response) {
-                var cBriefs = _this3.cBriefs;
-                $.each(cBriefs, function (i) {
-                    $.each(cBriefs[i].services, function (j) {
-                        if (cBriefs[i].services[j].id === service.id) {
-                            cBriefs[i].services.splice(j, 1);
-                            return false;
-                        }
-                    });
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-
-                _this3.checkMaxCBriefs();
-            });
-        },
-        clearData: function clearData() {
-            this.toBeEditedCBrief = {
-                'id': '',
-                'client_name': '',
-                'company_website': '',
-                'company_values': '',
-                'client_contact': '',
-                'objective': '',
-                'email_pitch': '',
-                'phone_pitch': '',
-                'data_systems': '',
-                'estimated_duration': '',
-                'time_zone': '',
-                'time_needed': '',
-                'start_date': '',
-                'contract_terms': '',
-                'hours_per_week': '',
-                'weekly_rate': '',
-                'payment_method': '',
-                'campaign_manager': '',
-                'report_requirement': ''
-            };
-        },
-        nl2br: function nl2br(str, is_xhtml) {
-            if (typeof str === 'undefined' || str === null) {
-                return '';
-            }
-            var breakTag = is_xhtml || typeof is_xhtml === 'undefined' ? '<br />' : '<br>';
-            return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+      $.each(cBriefs, function (i) {
+        if (cBriefs[i].id === cBriefID) {
+          editedCBrief = cBriefs[i];
         }
+      });
+      this.toBeEditedCBrief = editedCBrief;
     },
+    checkMaxCBriefs: function checkMaxCBriefs() {
+      if (this.cBriefs.length > 4) {
+        this.canAdd = false;
+      } else {
+        this.canAdd = true;
+      }
+    },
+    deleteService: function deleteService(service) {
+      var _this3 = this;
 
-    created: function created() {
-        this.getCurrentCBriefs();
+      if (!confirm('Are you sure you want to delete this service ?')) {
+        return;
+      }
+      axios.post('/admin/workforce/delete_cbrief_service', { serviceID: service.id }).then(function (response) {
+        var cBriefs = _this3.cBriefs;
+        $.each(cBriefs, function (i) {
+          $.each(cBriefs[i].services, function (j) {
+            if (cBriefs[i].services[j].id === service.id) {
+              cBriefs[i].services.splice(j, 1);
+              return false;
+            }
+          });
+        });
+
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
+
+        _this3.checkMaxCBriefs();
+      });
+    },
+    clearData: function clearData() {
+      this.toBeEditedCBrief = {
+        'id': '',
+        'client_name': '',
+        'company_website': '',
+        'company_values': '',
+        'client_contact': '',
+        'objective': '',
+        'email_pitch': '',
+        'phone_pitch': '',
+        'data_systems': '',
+        'estimated_duration': '',
+        'time_zone': '',
+        'time_needed': '',
+        'start_date': '',
+        'contract_terms': '',
+        'hours_per_week': '',
+        'weekly_rate': '',
+        'payment_method': '',
+        'campaign_manager': '',
+        'report_requirement': ''
+      };
+    },
+    nl2br: function nl2br(str, is_xhtml) {
+      if (typeof str === 'undefined' || str === null) {
+        return '';
+      }
+      var breakTag = is_xhtml || typeof is_xhtml === 'undefined' ? '<br />' : '<br>';
+      return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
     }
+  },
+
+  created: function created() {
+    this.getCurrentCBriefs();
+  }
 });
 
 /***/ }),
@@ -84574,12 +84267,11 @@ var render = function() {
                   _c("a", { attrs: { href: "javascript:void(0)" } }, [
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/resources/assets/images/close_blue.png",
+                        src: "/images/close_blue.png",
                         alt: "edit profile"
                       }
                     }),
-                    _vm._v("\n                    Delete\n                ")
+                    _vm._v("\n                      Delete\n                  ")
                   ])
                 ]
               ),
@@ -84614,12 +84306,11 @@ var render = function() {
                           height: "15px"
                         },
                         attrs: {
-                          src:
-                            "/resumeApp/resources/assets/images/edit_blue.png",
+                          src: "/images/edit_blue.png",
                           alt: "edit profile"
                         }
                       }),
-                      _vm._v("\n                    Edit\n                ")
+                      _vm._v("\n                      Edit\n                  ")
                     ]
                   )
                 ]
@@ -84655,13 +84346,12 @@ var render = function() {
                           height: "15px"
                         },
                         attrs: {
-                          src:
-                            "/resumeApp/resources/assets/images/add_blue.png",
+                          src: "/images/add_blue.png",
                           alt: "edit profile"
                         }
                       }),
                       _vm._v(
-                        "\n                    Add Service\n                "
+                        "\n                      Add Service\n                  "
                       )
                     ]
                   )
@@ -84674,11 +84364,7 @@ var render = function() {
                   staticClass: "pageSubHeading text-left",
                   staticStyle: { "padding-bottom": "15px" }
                 },
-                [
-                  _vm._v(
-                    "\n                Campaign Brief details\n            "
-                  )
-                ]
+                [_vm._v("\n        Campaign Brief details\n      ")]
               ),
               _vm._v(" "),
               _c("div", { staticClass: "row" }, [
@@ -84782,9 +84468,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", [
-                    _vm._v(
-                      "\n                        Campaign Manager :\n                        "
-                    ),
+                    _vm._v("\n            Campaign Manager :\n            "),
                     _c(
                       "b",
                       {
@@ -84799,9 +84483,7 @@ var render = function() {
                       [_vm._v(" " + _vm._s(cBrief.campaign_manager))]
                     ),
                     _c("br"),
-                    _vm._v(
-                      "\n                        Report requirement :\n                        "
-                    ),
+                    _vm._v("\n            Report requirement :\n            "),
                     _c(
                       "b",
                       {
@@ -84818,7 +84500,7 @@ var render = function() {
                     _c("br"),
                     _vm._v(" "),
                     _c("div", { staticClass: "NoDecor" }, [
-                      _vm._v("\n                            Public link : "),
+                      _vm._v("\n              Public link : "),
                       _c(
                         "b",
                         {
@@ -84867,9 +84549,9 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                        Campaign brief services. ( " +
+                          "\n            Campaign brief services. ( " +
                             _vm._s(cBrief.services.length) +
-                            "# )\n                    "
+                            "# )\n          "
                         )
                       ]
                     ),
@@ -84891,13 +84573,12 @@ var render = function() {
                             _c("a", { attrs: { href: "javascript:void(0)" } }, [
                               _c("img", {
                                 attrs: {
-                                  src:
-                                    "/resumeApp/resources/assets/images/close_blue.png",
+                                  src: "/images/close_blue.png",
                                   alt: "edit profile"
                                 }
                               }),
                               _vm._v(
-                                "\n                                Del\n                            "
+                                "\n                                  Del\n                              "
                               )
                             ])
                           ]
@@ -84972,7 +84653,7 @@ var render = function() {
           ],
           staticClass: "pageSubHeading text-left"
         },
-        [_vm._v("\n        Currently there are no campaign briefs.\n    ")]
+        [_vm._v("\n    Currently there are no campaign briefs.\n  ")]
       ),
       _vm._v(" "),
       _c(
@@ -85023,12 +84704,9 @@ var staticRenderFns = [
       },
       [
         _c("img", {
-          attrs: {
-            src: "/resumeApp/resources/assets/images/add_blue.png",
-            alt: "edit profile"
-          }
+          attrs: { src: "/images/add_blue.png", alt: "edit profile" }
         }),
-        _vm._v("\n            Add new brief\n        ")
+        _vm._v("\n              Add new brief\n          ")
       ]
     )
   }
@@ -87466,7 +87144,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+exports.push([module.i, "\n.list-item {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active,\n.list-leave-active {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter,\n.list-leave-to\n\n/* .list-leave-active below version 2.1.8 */\n  {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n", ""]);
 
 // exports
 
@@ -87523,112 +87201,118 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            records: [],
-            canAdd: true,
-            toBeEditedRecord: {
-                'id': '',
-                'title': '',
-                'transcription': '',
-                'src': ''
-            }
-        };
+  data: function data() {
+    return {
+      records: [],
+      canAdd: true,
+      toBeEditedRecord: {
+        'id': '',
+        'title': '',
+        'transcription': '',
+        'src': ''
+      }
+    };
+  },
+
+
+  methods: {
+    getCurrentRecords: function getCurrentRecords() {
+      var _this = this;
+
+      axios.get('/freelancer/records').then(function (response) {
+        var currRecords = response.data;
+        $.each(currRecords, function (i) {});
+        _this.records = currRecords;
+        _this.checkMaxRecords();
+      });
     },
+    addRecord: function addRecord(newRecord) {
+      this.records.push(newRecord);
+      this.checkMaxRecords();
+    },
+    deleteRecord: function deleteRecord(record) {
+      var _this2 = this;
 
+      if (!confirm('Are you sure you want to delete this record?')) {
+        return;
+      }
+      axios.post('/freelancer/deleterecord', { recordID: record.id }).then(function (response) {
+        var records = _this2.records;
+        $.each(records, function (i) {
+          if (records[i].id === record.id) {
+            records.splice(i, 1);
+            return false;
+          }
+        });
 
-    methods: {
-        getCurrentRecords: function getCurrentRecords() {
-            var _this = this;
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
 
-            axios.get('/freelancer/records').then(function (response) {
-                var currRecords = response.data;
-                $.each(currRecords, function (i) {});
-                _this.records = currRecords;
-                _this.checkMaxRecords();
-            });
-        },
-        addRecord: function addRecord(newRecord) {
-            this.records.push(newRecord);
-            this.checkMaxRecords();
-        },
-        deleteRecord: function deleteRecord(record) {
-            var _this2 = this;
+        _this2.checkMaxRecords();
+      });
+    },
+    editRecord: function editRecord(recordID) {
+      var records = this.records;
+      var editedRecord = {};
 
-            if (!confirm('Are you sure you want to delete this record?')) {
-                return;
-            }
-            axios.post('/freelancer/deleterecord', { recordID: record.id }).then(function (response) {
-                var records = _this2.records;
-                $.each(records, function (i) {
-                    if (records[i].id === record.id) {
-                        records.splice(i, 1);
-                        return false;
-                    }
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-
-                _this2.checkMaxRecords();
-            });
-        },
-        editRecord: function editRecord(recordID) {
-            var records = this.records;
-            var editedRecord = {};
-
-            $.each(records, function (i) {
-                if (records[i].id === recordID) {
-                    editedRecord = records[i];
-                }
-            });
-            this.toBeEditedRecord = editedRecord;
-        },
-        checkMaxRecords: function checkMaxRecords() {
-            if (this.records.length > 4) {
-                this.canAdd = false;
-            } else {
-                this.canAdd = true;
-            }
-        },
-        clearData: function clearData() {
-            this.toBeEditedRecord = {
-                'id': '',
-                'title': '',
-                'transcription': '',
-                'src': ''
-            };
-            this.uploadMethod = '';
-            this.uploadPercentage = 0;
-            this.fileChosen = false;
-            this.file = '';
-        },
-        getRecordSrc: function getRecordSrc(source) {
-            if (source.includes('drive.google.com')) {
-                var fileID = '';
-                var arrayOfSource = source.split('/');
-                $.each(arrayOfSource, function (i) {
-                    if (arrayOfSource[i].length > 20) {
-                        fileID = arrayOfSource[i];
-                    }
-                });
-
-                var gDriveSrc = "https://drive.google.com/uc?export=download&id=" + fileID + "&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
-                return gDriveSrc;
-            } else {
-                return source;
-            }
+      $.each(records, function (i) {
+        if (records[i].id === recordID) {
+          editedRecord = records[i];
         }
+      });
+      this.toBeEditedRecord = editedRecord;
     },
+    checkMaxRecords: function checkMaxRecords() {
+      if (this.records.length > 4) {
+        this.canAdd = false;
+      } else {
+        this.canAdd = true;
+      }
+    },
+    clearData: function clearData() {
+      this.toBeEditedRecord = {
+        'id': '',
+        'title': '',
+        'transcription': '',
+        'src': ''
+      };
+      this.uploadMethod = '';
+      this.uploadPercentage = 0;
+      this.fileChosen = false;
+      this.file = '';
+    },
+    getRecordSrc: function getRecordSrc(source) {
+      if (source.includes('drive.google.com')) {
+        var fileID = '';
+        var arrayOfSource = source.split('/');
+        $.each(arrayOfSource, function (i) {
+          if (arrayOfSource[i].length > 20) {
+            fileID = arrayOfSource[i];
+          }
+        });
 
-    created: function created() {
-        this.getCurrentRecords();
+        var gDriveSrc = "https://drive.google.com/uc?export=download&id=" + fileID + "&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
+        return gDriveSrc;
+      } else {
+        return source;
+      }
     }
+  },
+
+  created: function created() {
+    this.getCurrentRecords();
+  }
 });
 
 /***/ }),
@@ -87668,12 +87352,11 @@ var render = function() {
                   _c("a", { attrs: { href: "javascript:void(0)" } }, [
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/resources/assets/images/close_blue.png",
+                        src: "/images/close_blue.png",
                         alt: "edit profile"
                       }
                     }),
-                    _vm._v("\n                    Delete\n                ")
+                    _vm._v("\n                      Delete\n                  ")
                   ])
                 ]
               ),
@@ -87708,12 +87391,11 @@ var render = function() {
                           height: "15px"
                         },
                         attrs: {
-                          src:
-                            "/resumeApp/resources/assets/images/edit_blue.png",
+                          src: "/images/edit_blue.png",
                           alt: "edit profile"
                         }
                       }),
-                      _vm._v("\n                    Edit\n                ")
+                      _vm._v("\n                      Edit\n                  ")
                     ]
                   )
                 ]
@@ -87771,7 +87453,7 @@ var render = function() {
                           attrs: { src: _vm.getRecordSrc(record.src) }
                         }),
                         _vm._v(
-                          "\n                        Your browser does not support the audio element.\n                    "
+                          "\n            Your browser does not support the audio element.\n          "
                         )
                       ]
                     )
@@ -87827,12 +87509,9 @@ var staticRenderFns = [
       },
       [
         _c("img", {
-          attrs: {
-            src: "/resumeApp/resources/assets/images/add_blue.png",
-            alt: "edit profile"
-          }
+          attrs: { src: "/images/add_blue.png", alt: "edit profile" }
         }),
-        _vm._v("\n            Add record\n        ")
+        _vm._v("\n              Add record\n          ")
       ]
     )
   }
@@ -88077,72 +87756,110 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['toBeEditedRecord'],
-    data: function data() {
-        return {
-            file: '',
-            fileChosen: false,
-            uploadPercentage: 0,
-            uploadMethod: ''
-        };
+  props: ['toBeEditedRecord'],
+  data: function data() {
+    return {
+      file: '',
+      fileChosen: false,
+      uploadPercentage: 0,
+      uploadMethod: ''
+    };
+  },
+
+  methods: {
+    handleFileUpload: function handleFileUpload() {
+      this.file = this.$refs.file.files[0];
+      this.fileChosen = true;
     },
+    submitForm: function submitForm() {
+      var _this = this;
 
-    methods: {
-        handleFileUpload: function handleFileUpload() {
-            this.file = this.$refs.file.files[0];
-            this.fileChosen = true;
+      var formData = new FormData();
+      formData.append('audioFile', this.file);
+      formData.append('title', this.toBeEditedRecord.title);
+      formData.append('src', this.toBeEditedRecord.src);
+      formData.append('transcription', this.toBeEditedRecord.transcription);
+      formData.append('id', this.toBeEditedRecord.id);
+      axios.post('/freelancer/addrecord', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        submitForm: function submitForm() {
-            var _this = this;
-
-            var formData = new FormData();
-            formData.append('audioFile', this.file);
-            formData.append('title', this.toBeEditedRecord.title);
-            formData.append('src', this.toBeEditedRecord.src);
-            formData.append('transcription', this.toBeEditedRecord.transcription);
-            formData.append('id', this.toBeEditedRecord.id);
-            axios.post('/freelancer/addrecord', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                onUploadProgress: function (progressEvent) {
-                    this.uploadPercentage = parseInt(Math.round(progressEvent.loaded * 100 / progressEvent.total));
-                }.bind(this)
-            }).then(function (response) {
-                if (_this.toBeEditedRecord.id === "") {
-                    _this.$emit('recordAdded', _this.toBeEditedRecord);
-                }
-                _this.toBeEditedRecord.src = response.data.recordSrc;
-                // save the record id :
-                _this.toBeEditedRecord.id = response.data.id;
-                _this.changesSaved();
-                $('#closeRecordModal').click();
-                _this.uploadPercentage = 0;
-                _this.uploadMethod = '';
-            });
-        },
-        changesSaved: function changesSaved() {
-            // changes saved :
-            $('#changesSaved').fadeIn('slow');
-            setTimeout(function () {
-                $('#changesSaved').fadeOut();
-            }, 2000);
-        },
-        setUploadMethod: function setUploadMethod(method) {
-            this.uploadMethod = method;
-        },
-        clearUploadMethod: function clearUploadMethod() {
-            this.uploadMethod = '';
-        },
-        loadingBtn: function loadingBtn() {
-            $('#loadingBtn').removeClass('d-none');
-            $('#saveAudio').addClass('d-none');
+        onUploadProgress: function (progressEvent) {
+          this.uploadPercentage = parseInt(Math.round(progressEvent.loaded * 100 / progressEvent.total));
+        }.bind(this)
+      }).then(function (response) {
+        if (_this.toBeEditedRecord.id === "") {
+          _this.$emit('recordAdded', _this.toBeEditedRecord);
         }
+        _this.toBeEditedRecord.src = response.data.recordSrc;
+        // save the record id :
+        _this.toBeEditedRecord.id = response.data.id;
+        _this.changesSaved();
+        $('#closeRecordModal').click();
+        _this.uploadPercentage = 0;
+        _this.uploadMethod = '';
+      });
     },
-    mounted: function mounted() {}
+    changesSaved: function changesSaved() {
+      // changes saved :
+      $('#changesSaved').fadeIn('slow');
+      setTimeout(function () {
+        $('#changesSaved').fadeOut();
+      }, 2000);
+    },
+    setUploadMethod: function setUploadMethod(method) {
+      this.uploadMethod = method;
+    },
+    clearUploadMethod: function clearUploadMethod() {
+      this.uploadMethod = '';
+    },
+    loadingBtn: function loadingBtn() {
+      $('#loadingBtn').removeClass('d-none');
+      $('#saveAudio').addClass('d-none');
+    }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -88290,14 +88007,14 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                              Current uploaded Audio : " +
+                            "\n                Current uploaded Audio : " +
                               _vm._s(
                                 _vm.toBeEditedRecord.src.replace(
                                   "/resumeApp/uploads/",
                                   ""
                                 )
                               ) +
-                              ".\n                              "
+                              ".\n                "
                           ),
                           _c("br"),
                           _c("br")
@@ -88329,7 +88046,7 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                                  Please choose uploading method :\n                              "
+                                "\n                  Please choose uploading method :\n                "
                               )
                             ]
                           ),
@@ -88582,9 +88299,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
       _c("div", { staticClass: "pageSubHeading text-left" }, [
-        _vm._v(
-          "\n                        Add \\ Edit a record\n                    "
-        )
+        _vm._v("\n            Add \\ Edit a record\n          ")
       ]),
       _vm._v(" "),
       _c(
@@ -88611,7 +88326,7 @@ var staticRenderFns = [
         _c("div", { attrs: { id: "recordImg" } }, [
           _c("img", {
             attrs: {
-              src: "/resumeApp/resources/assets/images/Microphone_1.png",
+              src: "/images/Microphone_1.png",
               alt: "mic",
               width: "30px"
             }
@@ -88761,7 +88476,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+exports.push([module.i, "\n.list-item {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active,\n.list-leave-active {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter,\n.list-leave-to\n\n/* .list-leave-active below version 2.1.8 */\n  {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n", ""]);
 
 // exports
 
@@ -88856,140 +88571,147 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            agents: [],
-            canAdd: true,
-            admin: false,
-            toBeEditedAgent: {
-                'id': '',
-                'number': '',
-                'name': '',
-                'language': '',
-                'hourly_rate': '',
-                'available_hours': '',
-                'location': '',
-                'experience': '',
-                records: []
-            }
-        };
+  data: function data() {
+    return {
+      agents: [],
+      canAdd: true,
+      admin: false,
+      toBeEditedAgent: {
+        'id': '',
+        'number': '',
+        'name': '',
+        'language': '',
+        'hourly_rate': '',
+        'available_hours': '',
+        'location': '',
+        'experience': '',
+        records: []
+      }
+    };
+  },
+
+
+  methods: {
+    getCurrentAgents: function getCurrentAgents() {
+      var _this = this;
+
+      axios.get('/workforce/get_agents').then(function (response) {
+        var currAgents = response.data;
+        $.each(currAgents, function (i) {});
+        _this.agents = currAgents;
+        _this.checkMaxAgents();
+      });
     },
+    addAgent: function addAgent(newAgent) {
+      this.agents.push(newAgent);
+      this.checkMaxAgents();
+    },
+    deleteAgent: function deleteAgent(agent) {
+      var _this2 = this;
 
+      if (!confirm('Are you sure you want to delete this agent ?')) {
+        return;
+      }
+      axios.post('/workforce/delete_agent', { agentID: agent.id }).then(function (response) {
+        var agents = _this2.agents;
+        $.each(agents, function (i) {
+          if (agents[i].id === agent.id) {
+            agents.splice(i, 1);
+            return false;
+          }
+        });
 
-    methods: {
-        getCurrentAgents: function getCurrentAgents() {
-            var _this = this;
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
 
-            axios.get('/workforce/get_agents').then(function (response) {
-                var currAgents = response.data;
-                $.each(currAgents, function (i) {});
-                _this.agents = currAgents;
-                _this.checkMaxAgents();
-            });
-        },
-        addAgent: function addAgent(newAgent) {
-            this.agents.push(newAgent);
-            this.checkMaxAgents();
-        },
-        deleteAgent: function deleteAgent(agent) {
-            var _this2 = this;
+        _this2.checkMaxAgents();
+      });
+    },
+    deleteAgentRecord: function deleteAgentRecord(record_id) {
+      var _this3 = this;
 
-            if (!confirm('Are you sure you want to delete this agent ?')) {
-                return;
+      if (!confirm('Are you sure you want to delete this record ?')) {
+        return;
+      }
+      axios.post('/workforce/agent/delete_record', { recordID: record_id }).then(function (response) {
+        var agents = _this3.agents;
+        $.each(agents, function (i) {
+          $.each(agents[i].records, function (j) {
+            if (agents[i].records[j].id === record_id) {
+              agents[i].records.splice(j, 1);
+              return false;
             }
-            axios.post('/workforce/delete_agent', { agentID: agent.id }).then(function (response) {
-                var agents = _this2.agents;
-                $.each(agents, function (i) {
-                    if (agents[i].id === agent.id) {
-                        agents.splice(i, 1);
-                        return false;
-                    }
-                });
+          });
+        });
+      });
+    },
+    getRecordSrc: function getRecordSrc(record) {
+      if (!record.src.includes('resumeApp/uploads')) {
+        return 'http://' + record.src;
+      } else {
+        return 'https://123workforce.com' + record.src;
+      }
+    },
+    editAgent: function editAgent(agentID) {
+      var agents = this.agents;
+      var editedAgent = {};
 
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-
-                _this2.checkMaxAgents();
-            });
-        },
-        deleteAgentRecord: function deleteAgentRecord(record_id) {
-            var _this3 = this;
-
-            if (!confirm('Are you sure you want to delete this record ?')) {
-                return;
-            }
-            axios.post('/workforce/agent/delete_record', { recordID: record_id }).then(function (response) {
-                var agents = _this3.agents;
-                $.each(agents, function (i) {
-                    $.each(agents[i].records, function (j) {
-                        if (agents[i].records[j].id === record_id) {
-                            agents[i].records.splice(j, 1);
-                            return false;
-                        }
-                    });
-                });
-            });
-        },
-        getRecordSrc: function getRecordSrc(record) {
-            if (!record.src.includes('resumeApp/uploads')) {
-                return 'http://' + record.src;
-            } else {
-                return 'https://123workforce.com' + record.src;
-            }
-        },
-        editAgent: function editAgent(agentID) {
-            var agents = this.agents;
-            var editedAgent = {};
-
-            $.each(agents, function (i) {
-                if (agents[i].id === agentID) {
-                    editedAgent = agents[i];
-                }
-            });
-            this.toBeEditedAgent = editedAgent;
-        },
-        checkMaxAgents: function checkMaxAgents() {
-            if (this.agents.length > 4) {
-                this.canAdd = false;
-            } else {
-                this.canAdd = true;
-            }
-        },
-        clearData: function clearData() {
-            this.toBeEditedAgent = {
-                'id': '',
-                'number': '',
-                'name': '',
-                'language': '',
-                'hourly_rate': '',
-                'available_hours': '',
-                'location': '',
-                'experience': '',
-                records: []
-            };
-        },
-        isAdmin: function isAdmin() {
-            var _this4 = this;
-
-            axios.get('/workforce/isAdmin').then(function (response) {
-                if (response.data === 'admin') {
-                    _this4.admin = true;
-                } else {
-                    _this4.admin = false;
-                }
-            });
+      $.each(agents, function (i) {
+        if (agents[i].id === agentID) {
+          editedAgent = agents[i];
         }
+      });
+      this.toBeEditedAgent = editedAgent;
     },
+    checkMaxAgents: function checkMaxAgents() {
+      if (this.agents.length > 4) {
+        this.canAdd = false;
+      } else {
+        this.canAdd = true;
+      }
+    },
+    clearData: function clearData() {
+      this.toBeEditedAgent = {
+        'id': '',
+        'number': '',
+        'name': '',
+        'language': '',
+        'hourly_rate': '',
+        'available_hours': '',
+        'location': '',
+        'experience': '',
+        records: []
+      };
+    },
+    isAdmin: function isAdmin() {
+      var _this4 = this;
 
-    created: function created() {
-        this.isAdmin();
-        this.getCurrentAgents();
+      axios.get('/workforce/isAdmin').then(function (response) {
+        if (response.data === 'admin') {
+          _this4.admin = true;
+        } else {
+          _this4.admin = false;
+        }
+      });
     }
+  },
+
+  created: function created() {
+    this.isAdmin();
+    this.getCurrentAgents();
+  }
 });
 
 /***/ }),
@@ -89088,13 +88810,12 @@ var render = function() {
                             _c("a", { attrs: { href: "javascript:void(0)" } }, [
                               _c("img", {
                                 attrs: {
-                                  src:
-                                    "/resumeApp/resources/assets/images/close_blue.png",
+                                  src: "/images/close_blue.png",
                                   alt: "edit profile"
                                 }
                               }),
                               _vm._v(
-                                "\n                                            Delete\n                                        "
+                                "\n                                              Delete\n                                          "
                               )
                             ])
                           ]
@@ -89166,13 +88887,12 @@ var render = function() {
                           _c("a", { attrs: { href: "javascript:void(0)" } }, [
                             _c("img", {
                               attrs: {
-                                src:
-                                  "/resumeApp/resources/assets/images/close_blue.png",
+                                src: "/images/close_blue.png",
                                 alt: "edit profile"
                               }
                             }),
                             _vm._v(
-                              "\n                                            Delete\n                                        "
+                              "\n                                              Delete\n                                          "
                             )
                           ])
                         ]
@@ -89227,13 +88947,12 @@ var render = function() {
                                   height: "15px"
                                 },
                                 attrs: {
-                                  src:
-                                    "/resumeApp/resources/assets/images/edit_blue.png",
+                                  src: "/images/edit_blue.png",
                                   alt: "edit profile"
                                 }
                               }),
                               _vm._v(
-                                "\n                            Edit\n                        "
+                                "\n                              Edit\n                          "
                               )
                             ]
                           )
@@ -89283,13 +89002,12 @@ var render = function() {
                             [
                               _c("img", {
                                 attrs: {
-                                  src:
-                                    "/resumeApp/resources/assets/images/add_blue.png",
+                                  src: "/images/add_blue.png",
                                   alt: "edit profile"
                                 }
                               }),
                               _vm._v(
-                                "\n                                        Record\n                                    "
+                                "\n                                          Record\n                                      "
                               )
                             ]
                           )
@@ -89352,12 +89070,9 @@ var staticRenderFns = [
       },
       [
         _c("img", {
-          attrs: {
-            src: "/resumeApp/resources/assets/images/add_blue.png",
-            alt: "edit profile"
-          }
+          attrs: { src: "/images/add_blue.png", alt: "edit profile" }
         }),
-        _vm._v("\n            Add agent\n        ")
+        _vm._v("\n              Add agent\n          ")
       ]
     )
   }
@@ -90622,7 +90337,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+exports.push([module.i, "\n.list-item {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active,\n.list-leave-active {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter,\n.list-leave-to\n\n/* .list-leave-active below version 2.1.8 */\n  {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n", ""]);
 
 // exports
 
@@ -90676,96 +90391,96 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            references: [],
-            canAdd: true,
-            toBeEditedReference: {
-                'id': '',
-                'title': '',
-                'details': '',
-                'name': '',
-                'phone': '',
-                'email': '',
-                'company': ''
-            }
-        };
+  data: function data() {
+    return {
+      references: [],
+      canAdd: true,
+      toBeEditedReference: {
+        'id': '',
+        'title': '',
+        'details': '',
+        'name': '',
+        'phone': '',
+        'email': '',
+        'company': ''
+      }
+    };
+  },
+
+
+  methods: {
+    getCurrentReferences: function getCurrentReferences() {
+      var _this = this;
+
+      axios.get('/freelancer/references').then(function (response) {
+        var currReferences = response.data;
+        $.each(currReferences, function (i) {});
+        _this.references = currReferences;
+        _this.checkMaxReferences();
+      });
     },
+    addReference: function addReference(newReference) {
+      this.references.push(newReference);
+      this.checkMaxReferences();
+    },
+    deleteReference: function deleteReference(reference) {
+      var _this2 = this;
 
+      if (!confirm('Are you sure you want to delete this reference?')) {
+        return;
+      }
+      axios.post('/freelancer/deletereference', { referenceID: reference.id }).then(function (response) {
+        var references = _this2.references;
+        $.each(references, function (i) {
+          if (references[i].id === reference.id) {
+            references.splice(i, 1);
+            return false;
+          }
+        });
 
-    methods: {
-        getCurrentReferences: function getCurrentReferences() {
-            var _this = this;
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
 
-            axios.get('/freelancer/references').then(function (response) {
-                var currReferences = response.data;
-                $.each(currReferences, function (i) {});
-                _this.references = currReferences;
-                _this.checkMaxReferences();
-            });
-        },
-        addReference: function addReference(newReference) {
-            this.references.push(newReference);
-            this.checkMaxReferences();
-        },
-        deleteReference: function deleteReference(reference) {
-            var _this2 = this;
+        _this2.checkMaxReferences();
+      });
+    },
+    editReference: function editReference(referenceID) {
+      var references = this.references;
+      var editedReference = {};
 
-            if (!confirm('Are you sure you want to delete this reference?')) {
-                return;
-            }
-            axios.post('/freelancer/deletereference', { referenceID: reference.id }).then(function (response) {
-                var references = _this2.references;
-                $.each(references, function (i) {
-                    if (references[i].id === reference.id) {
-                        references.splice(i, 1);
-                        return false;
-                    }
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-
-                _this2.checkMaxReferences();
-            });
-        },
-        editReference: function editReference(referenceID) {
-            var references = this.references;
-            var editedReference = {};
-
-            $.each(references, function (i) {
-                if (references[i].id === referenceID) {
-                    editedReference = references[i];
-                }
-            });
-            this.toBeEditedReference = editedReference;
-        },
-        checkMaxReferences: function checkMaxReferences() {
-            if (this.references.length > 4) {
-                this.canAdd = false;
-            } else {
-                this.canAdd = true;
-            }
-        },
-        clearData: function clearData() {
-            this.toBeEditedReference = {
-                'id': '',
-                'title': '',
-                'details': '',
-                'name': '',
-                'phone': '',
-                'email': '',
-                'company': ''
-            };
+      $.each(references, function (i) {
+        if (references[i].id === referenceID) {
+          editedReference = references[i];
         }
+      });
+      this.toBeEditedReference = editedReference;
     },
-
-    created: function created() {
-        this.getCurrentReferences();
+    checkMaxReferences: function checkMaxReferences() {
+      if (this.references.length > 4) {
+        this.canAdd = false;
+      } else {
+        this.canAdd = true;
+      }
+    },
+    clearData: function clearData() {
+      this.toBeEditedReference = {
+        'id': '',
+        'title': '',
+        'details': '',
+        'name': '',
+        'phone': '',
+        'email': '',
+        'company': ''
+      };
     }
+  },
+
+  created: function created() {
+    this.getCurrentReferences();
+  }
 });
 
 /***/ }),
@@ -90805,12 +90520,11 @@ var render = function() {
                   _c("a", { attrs: { href: "javascript:void(0)" } }, [
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/resources/assets/images/close_blue.png",
+                        src: "/images/close_blue.png",
                         alt: "edit profile"
                       }
                     }),
-                    _vm._v("\n                    Delete\n                ")
+                    _vm._v("\n                      Delete\n                  ")
                   ])
                 ]
               ),
@@ -90845,12 +90559,11 @@ var render = function() {
                           height: "15px"
                         },
                         attrs: {
-                          src:
-                            "/resumeApp/resources/assets/images/edit_blue.png",
+                          src: "/images/edit_blue.png",
                           alt: "edit profile"
                         }
                       }),
-                      _vm._v("\n                    Edit\n                ")
+                      _vm._v("\n                      Edit\n                  ")
                     ]
                   )
                 ]
@@ -90943,12 +90656,9 @@ var staticRenderFns = [
       },
       [
         _c("img", {
-          attrs: {
-            src: "/resumeApp/resources/assets/images/add_blue.png",
-            alt: "edit profile"
-          }
+          attrs: { src: "/images/add_blue.png", alt: "edit profile" }
         }),
-        _vm._v("\n            Add reference\n        ")
+        _vm._v("\n              Add reference\n          ")
       ]
     )
   }
@@ -91584,7 +91294,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+exports.push([module.i, "\n.list-item {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active,\n.list-leave-active {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter,\n.list-leave-to\n\n/* .list-leave-active below version 2.1.8 */\n  {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n", ""]);
 
 // exports
 
@@ -91643,120 +91353,124 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            jobs: [],
-            canAdd: true,
-            toBeEditedJob: {
-                'id': '',
-                'title': '',
-                'description': '',
-                'budget': '',
-                'time': '',
-                'skills': '',
-                'status': '',
-                'level': '',
-                'posted': ''
-            },
-            appliedFreelancers: []
-        };
+  data: function data() {
+    return {
+      jobs: [],
+      canAdd: true,
+      toBeEditedJob: {
+        'id': '',
+        'title': '',
+        'description': '',
+        'budget': '',
+        'time': '',
+        'skills': '',
+        'status': '',
+        'level': '',
+        'posted': ''
+      },
+      appliedFreelancers: []
+    };
+  },
+
+
+  methods: {
+    getCurrentJobs: function getCurrentJobs() {
+      var _this = this;
+
+      axios.get('/client/get_jobs').then(function (response) {
+        var currJobs = response.data;
+        $.each(currJobs, function (i) {});
+        _this.jobs = currJobs;
+        _this.checkMaxJobs();
+      });
     },
+    addJobPost: function addJobPost(newJob) {
+      this.jobs.push(newJob);
+      this.checkMaxJobs();
+    },
+    deleteJob: function deleteJob(job) {
+      var _this2 = this;
 
+      if (!confirm('Are you sure you want to delete this job post ?')) {
+        return;
+      }
+      axios.post('/client/jobs/delete', { jobID: job.id }).then(function (response) {
+        var jobs = _this2.jobs;
+        $.each(jobs, function (i) {
+          if (jobs[i].id === job.id) {
+            jobs.splice(i, 1);
+            return false;
+          }
+        });
 
-    methods: {
-        getCurrentJobs: function getCurrentJobs() {
-            var _this = this;
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
 
-            axios.get('/client/get_jobs').then(function (response) {
-                var currJobs = response.data;
-                $.each(currJobs, function (i) {});
-                _this.jobs = currJobs;
-                _this.checkMaxJobs();
-            });
-        },
-        addJobPost: function addJobPost(newJob) {
-            this.jobs.push(newJob);
-            this.checkMaxJobs();
-        },
-        deleteJob: function deleteJob(job) {
-            var _this2 = this;
+        _this2.checkMaxJobs();
+      });
+    },
+    editJob: function editJob(jobID) {
+      var jobs = this.jobs;
+      var editedJob = {};
 
-            if (!confirm('Are you sure you want to delete this job post ?')) {
-                return;
-            }
-            axios.post('/client/jobs/delete', { jobID: job.id }).then(function (response) {
-                var jobs = _this2.jobs;
-                $.each(jobs, function (i) {
-                    if (jobs[i].id === job.id) {
-                        jobs.splice(i, 1);
-                        return false;
-                    }
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-
-                _this2.checkMaxJobs();
-            });
-        },
-        editJob: function editJob(jobID) {
-            var jobs = this.jobs;
-            var editedJob = {};
-
-            $.each(jobs, function (i) {
-                if (jobs[i].id === jobID) {
-                    editedJob = jobs[i];
-                }
-            });
-            this.toBeEditedJob = editedJob;
-        },
-        checkMaxJobs: function checkMaxJobs() {
-            if (this.jobs.length > 4) {
-                this.canAdd = false;
-            } else {
-                this.canAdd = true;
-            }
-        },
-        clearData: function clearData() {
-            this.toBeEditedJob = {
-                'id': '',
-                'title': '',
-                'description': '',
-                'budget': '',
-                'time': '',
-                'skills': '',
-                'status': '',
-                'level': '',
-                'posted': ''
-            };
-        },
-        getAppliedFreelancers: function getAppliedFreelancers(jobID) {
-            var _this3 = this;
-
-            axios.post('/client/jobs/applied_freelancers', { jobID: jobID }).then(function (response) {
-                console.log(response.data);
-                var results = response.data;
-                var applied = false;
-                results.forEach(function (freelancer) {
-                    _this3.appliedFreelancers.push({ jobID: jobID, freelancer: freelancer });
-                    applied = true;
-                });
-                $('#seeApplied' + jobID).attr('disabled', true);
-                if (!applied) {
-                    alert('No one has been applied to this job yet..');
-                }
-            });
+      $.each(jobs, function (i) {
+        if (jobs[i].id === jobID) {
+          editedJob = jobs[i];
         }
+      });
+      this.toBeEditedJob = editedJob;
     },
+    checkMaxJobs: function checkMaxJobs() {
+      if (this.jobs.length > 4) {
+        this.canAdd = false;
+      } else {
+        this.canAdd = true;
+      }
+    },
+    clearData: function clearData() {
+      this.toBeEditedJob = {
+        'id': '',
+        'title': '',
+        'description': '',
+        'budget': '',
+        'time': '',
+        'skills': '',
+        'status': '',
+        'level': '',
+        'posted': ''
+      };
+    },
+    getAppliedFreelancers: function getAppliedFreelancers(jobID) {
+      var _this3 = this;
 
-    created: function created() {
-        this.getCurrentJobs();
+      axios.post('/client/jobs/applied_freelancers', { jobID: jobID }).then(function (response) {
+        console.log(response.data);
+        var results = response.data;
+        var applied = false;
+        results.forEach(function (freelancer) {
+          _this3.appliedFreelancers.push({ jobID: jobID, freelancer: freelancer });
+          applied = true;
+        });
+        $('#seeApplied' + jobID).attr('disabled', true);
+        if (!applied) {
+          alert('No one has been applied to this job yet..');
+        }
+      });
     }
+  },
+
+  created: function created() {
+    this.getCurrentJobs();
+  }
 });
 
 /***/ }),
@@ -91796,12 +91510,11 @@ var render = function() {
                   _c("a", { attrs: { href: "javascript:void(0)" } }, [
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/resources/assets/images/close_blue.png",
+                        src: "/images/close_blue.png",
                         alt: "edit profile"
                       }
                     }),
-                    _vm._v("\n                    Delete\n                ")
+                    _vm._v("\n                      Delete\n                  ")
                   ])
                 ]
               ),
@@ -91836,12 +91549,11 @@ var render = function() {
                           height: "15px"
                         },
                         attrs: {
-                          src:
-                            "/resumeApp/resources/assets/images/edit_blue.png",
+                          src: "/images/edit_blue.png",
                           alt: "edit profile"
                         }
                       }),
-                      _vm._v("\n                    Edit\n                ")
+                      _vm._v("\n                      Edit\n                  ")
                     ]
                   )
                 ]
@@ -91976,12 +91688,9 @@ var staticRenderFns = [
       },
       [
         _c("img", {
-          attrs: {
-            src: "/resumeApp/resources/assets/images/add_blue.png",
-            alt: "edit profile"
-          }
+          attrs: { src: "/images/add_blue.png", alt: "edit profile" }
         }),
-        _vm._v("\n            Add job\n        ")
+        _vm._v("\n              Add job\n          ")
       ]
     )
   }
@@ -92693,7 +92402,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n#addSKillBtn{\n    border:1px lightgray solid;\n    margin-bottom: 8px;\n    margin-left: -30px;\n}\n@media only screen and (max-width: 600px) {\n#addSKillBtn{\n        margin-left: 0px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.list-item {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active,\n.list-leave-active {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter,\n.list-leave-to\n\n/* .list-leave-active below version 2.1.8 */\n  {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n#addSKillBtn {\n  border: 1px lightgray solid;\n  margin-bottom: 8px;\n  margin-left: -30px;\n}\n@media only screen and (max-width: 600px) {\n#addSKillBtn {\n    margin-left: 0px;\n}\n}\n", ""]);
 
 // exports
 
@@ -92776,84 +92485,96 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            skills: [],
-            currSkill: {
-                skill_title: '',
-                type: ''
-            },
-            currType: ''
+  data: function data() {
+    return {
+      skills: [],
+      currSkill: {
+        skill_title: '',
+        type: ''
+      },
+      currType: ''
+    };
+  },
+
+  methods: {
+    getSkills: function getSkills() {
+      var _this = this;
+
+      axios.get('/freelancer/skills').then(function (response) {
+        _this.skills = response.data;
+      });
+    },
+    deleteSkill: function deleteSkill(skill) {
+      var _this2 = this;
+
+      axios.post('/freelancer/deleteskill', { skillID: skill.id }).then(function (response) {
+        var skills = _this2.skills;
+        $.each(skills, function (i) {
+          if (skills[i].id === skill.id) {
+            skills.splice(i, 1);
+            return false;
+          }
+        });
+
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
+      });
+    },
+    addSkill: function addSkill() {
+      var _this3 = this;
+
+      // disable the input :
+      $('#skill_title').attr('disabled', true);
+      $('#skill_title').css('background-color', 'lightgrey');
+      // post data :
+      axios.post('/freelancer/addskill', {
+        skill_title: this.currSkill.skill_title,
+        type: this.currType
+      }).then(function (response) {
+        var newSkill = {
+          id: response.data.id,
+          skill_title: _this3.currSkill.skill_title,
+          type: _this3.currType
         };
+
+        _this3.skills.push(newSkill);
+        // clear input :
+        _this3.currSkill.skill_title = '';
+        // enable the input :
+        $('#skill_title').attr('disabled', false);
+        $('#skill_title').css('background-color', 'white');
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
+      });
     },
-
-    methods: {
-        getSkills: function getSkills() {
-            var _this = this;
-
-            axios.get('/freelancer/skills').then(function (response) {
-                _this.skills = response.data;
-            });
-        },
-        deleteSkill: function deleteSkill(skill) {
-            var _this2 = this;
-
-            axios.post('/freelancer/deleteskill', { skillID: skill.id }).then(function (response) {
-                var skills = _this2.skills;
-                $.each(skills, function (i) {
-                    if (skills[i].id === skill.id) {
-                        skills.splice(i, 1);
-                        return false;
-                    }
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-            });
-        },
-        addSkill: function addSkill() {
-            var _this3 = this;
-
-            // disable the input :
-            $('#skill_title').attr('disabled', true);
-            $('#skill_title').css('background-color', 'lightgrey');
-            // post data :
-            axios.post('/freelancer/addskill', {
-                skill_title: this.currSkill.skill_title,
-                type: this.currType
-            }).then(function (response) {
-                var newSkill = {
-                    id: response.data.id,
-                    skill_title: _this3.currSkill.skill_title,
-                    type: _this3.currType
-                };
-
-                _this3.skills.push(newSkill);
-                // clear input :
-                _this3.currSkill.skill_title = '';
-                // enable the input :
-                $('#skill_title').attr('disabled', false);
-                $('#skill_title').css('background-color', 'white');
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-            });
-        },
-        setCurrSkillType: function setCurrSkillType(type) {
-            this.currType = type;
-        }
-    },
-    created: function created() {
-        this.getSkills();
-        this.currType = 'programming';
+    setCurrSkillType: function setCurrSkillType(type) {
+      this.currType = type;
     }
+  },
+  created: function created() {
+    this.getSkills();
+    this.currType = 'programming';
+  }
 });
 
 /***/ }),
@@ -92890,7 +92611,7 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n                    Programming Languages\n                "
+                  "\n                      Programming Languages\n                  "
                 )
               ]
             )
@@ -92920,7 +92641,7 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n                    Frameworks / Databases\n                "
+                  "\n                      Frameworks / Databases\n                  "
                 )
               ]
             )
@@ -92948,7 +92669,11 @@ var render = function() {
                   "data-toggle": "tab"
                 }
               },
-              [_vm._v("\n                    Design Skills\n                ")]
+              [
+                _vm._v(
+                  "\n                      Design Skills\n                  "
+                )
+              ]
             )
           ]
         ),
@@ -92974,7 +92699,7 @@ var render = function() {
                   "data-toggle": "tab"
                 }
               },
-              [_vm._v("\n                    Software\n                ")]
+              [_vm._v("\n                      Software\n                  ")]
             )
           ]
         )
@@ -93017,7 +92742,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                               Your skills section looks empty. Please add your skills.\n                         "
+                          "\n                                 Your skills section looks empty. Please add your skills.\n                           "
                         )
                       ]
                     ),
@@ -93061,9 +92786,9 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n                                   " +
+                                  "\n                                     " +
                                     _vm._s(skill.skill_title) +
-                                    "\n                                   "
+                                    "\n                                     "
                                 ),
                                 _c(
                                   "button",
@@ -93126,7 +92851,7 @@ var render = function() {
                           staticClass: "form-control",
                           staticStyle: {
                             background:
-                              "white url('/resumeApp/resources/assets/images/add_skill.png')  no-repeat right .75rem center",
+                              "white url('/images/add_skill.png')  no-repeat right .75rem center",
                             "background-size": "15px 15px"
                           },
                           attrs: {
@@ -93278,7 +93003,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.loader {\n    border: 15px solid lightblue;\n    border-radius: 50%;\n    border-top: 15px solid #3498db;\n    width: 150px;\n    height: 150px;\n    margin-right: 25px;\n    margin-top: 50px;\n    -webkit-animation: spin 2s linear infinite; /* Safari */\n    animation: spin 2s linear infinite;\n}\n\n/* Safari */\n@-webkit-keyframes spin {\n0% { -webkit-transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg);\n}\n}\n@keyframes spin {\n0% { -webkit-transform: rotate(0deg); transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg); transform: rotate(360deg);\n}\n}\n@media only screen and (max-width: 600px){\n.recorder_wrapper_phone{\n        width:300px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.loader {\n  border: 15px solid lightblue;\n  border-radius: 50%;\n  border-top: 15px solid #3498db;\n  width: 150px;\n  height: 150px;\n  margin-right: 25px;\n  margin-top: 50px;\n  -webkit-animation: spin 2s linear infinite;\n  /* Safari */\n  animation: spin 2s linear infinite;\n}\n\n/* Safari */\n@-webkit-keyframes spin {\n0% {\n    -webkit-transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(360deg);\n}\n}\n@keyframes spin {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\n}\n@media only screen and (max-width: 600px) {\n.recorder_wrapper_phone {\n    width: 300px;\n}\n}\n", ""]);
 
 // exports
 
@@ -93475,169 +93200,216 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            isLoading: false,
-            file: '',
-            cv_file: '',
-            fileChosen: false,
-            uploadPercentage: 0,
-            uploadMethod: '',
-            cv_included: false,
-            toBeEditedRecord: {
-                'src': ''
-            },
-            errors: {
-                'firstName': '',
-                'lastName': '',
-                'phone': '',
-                'email': '',
-                'whatsapp': '',
-                'skype': '',
-                'audioError': ''
-            },
-            freelancerData: {
-                'id': '',
-                'firstName': '',
-                'lastName': '',
-                'phone': '',
-                'email': '',
-                'whatsapp': '',
-                'skype': ''
-            }
-        };
+  data: function data() {
+    return {
+      isLoading: false,
+      file: '',
+      cv_file: '',
+      fileChosen: false,
+      uploadPercentage: 0,
+      uploadMethod: '',
+      cv_included: false,
+      toBeEditedRecord: {
+        'src': ''
+      },
+      errors: {
+        'firstName': '',
+        'lastName': '',
+        'phone': '',
+        'email': '',
+        'whatsapp': '',
+        'skype': '',
+        'audioError': ''
+      },
+      freelancerData: {
+        'id': '',
+        'firstName': '',
+        'lastName': '',
+        'phone': '',
+        'email': '',
+        'whatsapp': '',
+        'skype': ''
+      }
+    };
+  },
+
+  methods: {
+    handleFileUpload: function handleFileUpload() {
+      this.file = this.$refs.file.files[0];
+      this.fileChosen = true;
     },
+    handleCVUpload: function handleCVUpload() {
+      this.cv_file = this.$refs.cv_file.files[0];
+    },
+    validateForm: function validateForm() {
+      var _this = this;
 
-    methods: {
-        handleFileUpload: function handleFileUpload() {
-            this.file = this.$refs.file.files[0];
-            this.fileChosen = true;
-        },
-        handleCVUpload: function handleCVUpload() {
-            this.cv_file = this.$refs.cv_file.files[0];
-        },
-        validateForm: function validateForm() {
-            var _this = this;
+      var formData = new FormData();
+      formData.append('firstName', this.freelancerData.firstName);
+      formData.append('lastName', this.freelancerData.lastName);
+      formData.append('email', this.freelancerData.email);
+      formData.append('phone', this.freelancerData.phone);
+      formData.append('whatsapp', this.freelancerData.whatsapp);
+      formData.append('skype', this.freelancerData.skype);
 
-            var formData = new FormData();
-            formData.append('firstName', this.freelancerData.firstName);
-            formData.append('lastName', this.freelancerData.lastName);
-            formData.append('email', this.freelancerData.email);
-            formData.append('phone', this.freelancerData.phone);
-            formData.append('whatsapp', this.freelancerData.whatsapp);
-            formData.append('skype', this.freelancerData.skype);
-
-            this.clearErros();
-            this.isLoading = true;
-            axios.post('/freelancer/workforce/form/validate', formData).then(function (response) {
-                if (response.data.errors) {
-                    _this.updateErrors(response.data.errors);
-                    _this.isLoading = false;
-                } else {
-                    $('#saveAudioRegister').click();
-                    _this.isLoading = true;
-                }
-            });
-        },
-        submitForm: function submitForm() {
-            var _this2 = this;
-
-            if (this.toBeEditedRecord.src.length < 1 && this.file.length < 1) {
-                alert('Please upload the required record..');
-                return;
-            }
-            this.isLoading = true;
-            var formData = new FormData();
-            formData.append('audioFile', this.file);
-            if (this.cv_file !== '') {
-                formData.append('included_cv', this.cv_file);
-            }
-            formData.append('cv_included', this.cv_included);
-            formData.append('src', this.toBeEditedRecord.src);
-            formData.append('title', 'Business support application (uploaded/link)');
-            formData.append('transcription', "");
-            formData.append('firstName', this.freelancerData.firstName);
-            formData.append('lastName', this.freelancerData.lastName);
-            formData.append('email', this.freelancerData.email);
-            formData.append('phone', this.freelancerData.phone);
-            formData.append('whatsapp', this.freelancerData.whatsapp);
-            formData.append('skype', this.freelancerData.skype);
-            formData.append('audioType', 'uploaded');
-
-            this.clearErros();
-
-            axios.post('/freelancer/apply/register_business', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                onUploadProgress: function (progressEvent) {
-                    this.uploadPercentage = parseInt(Math.round(progressEvent.loaded * 100 / progressEvent.total));
-                }.bind(this)
-            }).then(function (response) {
-                if (response.data.errors) {
-                    _this2.updateErrors(response.data.errors);
-                    _this2.isLoading = false;
-                } else {
-                    window.location.href = '/freelancer/workforce/success';
-                }
-            });
-        },
-        changesSaved: function changesSaved() {
-            // changes saved :
-            $('#changesSaved').fadeIn('slow');
-            setTimeout(function () {
-                $('#changesSaved').fadeOut();
-            }, 2000);
-        },
-        clearErros: function clearErros() {
-            this.errors = {
-                'firstName': '',
-                'lastName': '',
-                'phone': '',
-                'email': '',
-                'whatsapp': '',
-                'skype': '',
-                'audioError': ''
-            };
-        },
-        setUploadMethod: function setUploadMethod(method) {
-            this.uploadMethod = method;
-        },
-        clearUploadMethod: function clearUploadMethod() {
-            this.uploadMethod = '';
-        },
-        loadingBtn: function loadingBtn() {
-            $('#loadingBtn').removeClass('d-none');
-            $('#saveAudio').addClass('d-none');
-        },
-        updateErrors: function updateErrors(responseErrors) {
-            if (responseErrors.email) {
-                this.errors.email = responseErrors.email[0];
-            }
-            if (responseErrors.firstName) {
-                this.errors.firstName = responseErrors.firstName[0];
-            }
-            if (responseErrors.lastName) {
-                this.errors.lastName = responseErrors.lastName[0];
-            }
-            if (responseErrors.phone) {
-                this.errors.phone = responseErrors.phone[0];
-            }
-            if (responseErrors.skype) {
-                this.errors.skype = responseErrors.skype[0];
-            }
-            if (responseErrors.whatsapp) {
-                this.errors.whatsapp = responseErrors.whatsapp[0];
-            }
-            if (responseErrors.audioError) {
-                this.errors.audioError = responseErrors.audioError;
-            }
+      this.clearErros();
+      this.isLoading = true;
+      axios.post('/freelancer/workforce/form/validate', formData).then(function (response) {
+        if (response.data.errors) {
+          _this.updateErrors(response.data.errors);
+          _this.isLoading = false;
+        } else {
+          $('#saveAudioRegister').click();
+          _this.isLoading = true;
         }
+      });
     },
-    mounted: function mounted() {}
+    submitForm: function submitForm() {
+      var _this2 = this;
+
+      if (this.toBeEditedRecord.src.length < 1 && this.file.length < 1) {
+        alert('Please upload the required record..');
+        return;
+      }
+      this.isLoading = true;
+      var formData = new FormData();
+      formData.append('audioFile', this.file);
+      if (this.cv_file !== '') {
+        formData.append('included_cv', this.cv_file);
+      }
+      formData.append('cv_included', this.cv_included);
+      formData.append('src', this.toBeEditedRecord.src);
+      formData.append('title', 'Business support application (uploaded/link)');
+      formData.append('transcription', "");
+      formData.append('firstName', this.freelancerData.firstName);
+      formData.append('lastName', this.freelancerData.lastName);
+      formData.append('email', this.freelancerData.email);
+      formData.append('phone', this.freelancerData.phone);
+      formData.append('whatsapp', this.freelancerData.whatsapp);
+      formData.append('skype', this.freelancerData.skype);
+      formData.append('audioType', 'uploaded');
+
+      this.clearErros();
+
+      axios.post('/freelancer/apply/register_business', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        onUploadProgress: function (progressEvent) {
+          this.uploadPercentage = parseInt(Math.round(progressEvent.loaded * 100 / progressEvent.total));
+        }.bind(this)
+      }).then(function (response) {
+        if (response.data.errors) {
+          _this2.updateErrors(response.data.errors);
+          _this2.isLoading = false;
+        } else {
+          window.location.href = '/freelancer/workforce/success';
+        }
+      });
+    },
+    changesSaved: function changesSaved() {
+      // changes saved :
+      $('#changesSaved').fadeIn('slow');
+      setTimeout(function () {
+        $('#changesSaved').fadeOut();
+      }, 2000);
+    },
+    clearErros: function clearErros() {
+      this.errors = {
+        'firstName': '',
+        'lastName': '',
+        'phone': '',
+        'email': '',
+        'whatsapp': '',
+        'skype': '',
+        'audioError': ''
+      };
+    },
+    setUploadMethod: function setUploadMethod(method) {
+      this.uploadMethod = method;
+    },
+    clearUploadMethod: function clearUploadMethod() {
+      this.uploadMethod = '';
+    },
+    loadingBtn: function loadingBtn() {
+      $('#loadingBtn').removeClass('d-none');
+      $('#saveAudio').addClass('d-none');
+    },
+    updateErrors: function updateErrors(responseErrors) {
+      if (responseErrors.email) {
+        this.errors.email = responseErrors.email[0];
+      }
+      if (responseErrors.firstName) {
+        this.errors.firstName = responseErrors.firstName[0];
+      }
+      if (responseErrors.lastName) {
+        this.errors.lastName = responseErrors.lastName[0];
+      }
+      if (responseErrors.phone) {
+        this.errors.phone = responseErrors.phone[0];
+      }
+      if (responseErrors.skype) {
+        this.errors.skype = responseErrors.skype[0];
+      }
+      if (responseErrors.whatsapp) {
+        this.errors.whatsapp = responseErrors.whatsapp[0];
+      }
+      if (responseErrors.audioError) {
+        this.errors.audioError = responseErrors.audioError;
+      }
+    }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -94005,7 +93777,7 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _c("div", { staticClass: "col-md-12 text-left panelFormLabel" }, [
                 _vm._v(
-                  "\n                    Please upload / record a short audio recording describing your previous experience in Customer service and\n                    Sales ( Ideal recording length from 1 - 2 minutes ).\n                    "
+                  "\n          Please upload / record a short audio recording describing your previous experience in Customer service and\n          Sales ( Ideal recording length from 1 - 2 minutes ).\n          "
                 ),
                 _c("br"),
                 _vm._v(" "),
@@ -94046,7 +93818,7 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n                    Please choose uploading method :\n                "
+                      "\n          Please choose uploading method :\n        "
                     )
                   ]
                 ),
@@ -94300,9 +94072,7 @@ var render = function() {
                     }
                   }
                 }),
-                _vm._v(
-                  "\n                     Include resume (PDF)\n\n                "
-                )
+                _vm._v("\n            Include resume (PDF)\n          ")
               ]),
               _vm._v(" "),
               _c(
@@ -94361,7 +94131,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                            Apply\n                        "
+                        "\n                              Apply\n                          "
                       )
                     ]
                   ),
@@ -94387,7 +94157,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                            Apply\n                            "
+                        "\n                              Apply\n                              "
                       )
                     ]
                   ),
@@ -94423,7 +94193,7 @@ var staticRenderFns = [
           _c("div", { attrs: { id: "recordImg" } }, [
             _c("img", {
               attrs: {
-                src: "/resumeApp/resources/assets/images/Microphone_1.png",
+                src: "/images/Microphone_1.png",
                 alt: "mic",
                 width: "30px"
               }
@@ -94485,7 +94255,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "text-center" }, [
       _c("div", { staticClass: "smallText" }, [
         _c("br"),
-        _vm._v("Already have an account?\n                            "),
+        _vm._v("Already have an account?\n                "),
         _c("span", [
           _c("a", { attrs: { href: "/freelancer/login" } }, [
             _vm._v(" Log in!")
@@ -94590,7 +94360,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -94621,47 +94391,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            barVisible: false
-        };
+  data: function data() {
+    return {
+      barVisible: false
+    };
+  },
+
+  methods: {
+    agreeWithTerms: function agreeWithTerms() {
+      var _this = this;
+
+      var data = {
+        terms: 'AGREED'
+      };
+      axios.post('/client/set_terms', data).then(function (response) {
+        // change the text and then close
+        setTimeout(function () {
+          $('#termsLabel').text('Thank you ');
+        }, 2000);
+        setTimeout(function () {
+          _this.barVisible = false;
+        }, 4000);
+      });
     },
+    isClientAgreed: function isClientAgreed() {
+      var _this2 = this;
 
-    methods: {
-        agreeWithTerms: function agreeWithTerms() {
-            var _this = this;
-
-            var data = {
-                terms: 'AGREED'
-            };
-            axios.post('/client/set_terms', data).then(function (response) {
-                // change the text and then close
-                setTimeout(function () {
-                    $('#termsLabel').text('Thank you ');
-                }, 2000);
-                setTimeout(function () {
-                    _this.barVisible = false;
-                }, 4000);
-            });
-        },
-        isClientAgreed: function isClientAgreed() {
-            var _this2 = this;
-
-            axios.get('/client/has_agreed').then(function (response) {
-                if (response.data.terms === 'AGREED') {
-                    _this2.barVisible = false;
-                } else {
-                    _this2.barVisible = true;
-                }
-            });
+      axios.get('/client/has_agreed').then(function (response) {
+        if (response.data.terms === 'AGREED') {
+          _this2.barVisible = false;
+        } else {
+          _this2.barVisible = true;
         }
-    },
-    mounted: function mounted() {
-        console.log('terms-bar compoent mounted');
-        this.isClientAgreed();
+      });
     }
+  },
+  mounted: function mounted() {
+    console.log('terms-bar compoent mounted');
+    this.isClientAgreed();
+  }
 });
 
 /***/ }),
@@ -94696,13 +94473,13 @@ var render = function() {
               attrs: { id: "termsLabel" }
             },
             [
-              _vm._v("\n                I agree with 123 Workforce "),
+              _vm._v("\n        I agree with 123 Workforce "),
               _c(
                 "a",
                 { attrs: { target: "_blank", href: "/client/agreement" } },
                 [_vm._v("Client agreement")]
               ),
-              _vm._v(" and\n                "),
+              _vm._v(" and\n        "),
               _c(
                 "a",
                 { attrs: { href: "/client/privacy_policy", target: "_blank" } },
@@ -94750,7 +94527,7 @@ var staticRenderFns = [
     return _c("a", { attrs: { href: "javascript:void(0)" } }, [
       _c("img", {
         attrs: {
-          src: "/resumeApp/resources/assets/images/close_blue.png",
+          src: "/images/close_blue.png",
           alt: "close terms",
           width: "10",
           height: "10"
@@ -95276,7 +95053,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -95307,47 +95084,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            barVisible: false
-        };
+  data: function data() {
+    return {
+      barVisible: false
+    };
+  },
+
+  methods: {
+    agreeWithTerms: function agreeWithTerms() {
+      var _this = this;
+
+      var data = {
+        terms: 'AGREED'
+      };
+      axios.post('/freelancer/set_terms', data).then(function (response) {
+        // change the text and then close
+        setTimeout(function () {
+          $('#termsLabel').text('Thank you! ');
+        }, 2000);
+        setTimeout(function () {
+          _this.barVisible = false;
+        }, 4000);
+      });
     },
+    isUserAgreed: function isUserAgreed() {
+      var _this2 = this;
 
-    methods: {
-        agreeWithTerms: function agreeWithTerms() {
-            var _this = this;
-
-            var data = {
-                terms: 'AGREED'
-            };
-            axios.post('/freelancer/set_terms', data).then(function (response) {
-                // change the text and then close
-                setTimeout(function () {
-                    $('#termsLabel').text('Thank you! ');
-                }, 2000);
-                setTimeout(function () {
-                    _this.barVisible = false;
-                }, 4000);
-            });
-        },
-        isUserAgreed: function isUserAgreed() {
-            var _this2 = this;
-
-            axios.get('/freelancer/has_agreed').then(function (response) {
-                if (response.data.terms === 'AGREED') {
-                    _this2.barVisible = false;
-                } else {
-                    _this2.barVisible = true;
-                }
-            });
+      axios.get('/freelancer/has_agreed').then(function (response) {
+        if (response.data.terms === 'AGREED') {
+          _this2.barVisible = false;
+        } else {
+          _this2.barVisible = true;
         }
-    },
-    mounted: function mounted() {
-        console.log('agent terms-bar compoent mounted');
-        this.isUserAgreed();
+      });
     }
+  },
+  mounted: function mounted() {
+    console.log('agent terms-bar compoent mounted');
+    this.isUserAgreed();
+  }
 });
 
 /***/ }),
@@ -95382,7 +95166,7 @@ var render = function() {
               attrs: { id: "termsLabel" }
             },
             [
-              _vm._v("\n                I agree with 123 Workforce "),
+              _vm._v("\n        I agree with 123 Workforce "),
               _c(
                 "a",
                 {
@@ -95390,7 +95174,7 @@ var render = function() {
                 },
                 [_vm._v("Agent Requirements")]
               ),
-              _vm._v(" and\n                "),
+              _vm._v(" and\n        "),
               _c(
                 "a",
                 {
@@ -95443,7 +95227,7 @@ var staticRenderFns = [
     return _c("a", { attrs: { href: "javascript:void(0)" } }, [
       _c("img", {
         attrs: {
-          src: "/resumeApp/resources/assets/images/close_blue.png",
+          src: "/images/close_blue.png",
           alt: "close terms",
           width: "10",
           height: "10"
@@ -95547,7 +95331,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+exports.push([module.i, "\n.list-item {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active,\n.list-leave-active {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter,\n.list-leave-to\n\n/* .list-leave-active below version 2.1.8 */\n  {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n", ""]);
 
 // exports
 
@@ -95590,109 +95374,120 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            projects: [],
-            canAddProject: true,
-            toBeEditedProject: {
-                'id': '',
-                'projectName': '',
-                'isActive': '',
-                'link': '',
-                'projectDesc': '',
-                'images': [],
-                'imagesFiles': [],
-                'mainImage': '',
-                'order': 1
-            }
-        };
-    },
+  data: function data() {
+    return {
+      projects: [],
+      canAddProject: true,
+      toBeEditedProject: {
+        'id': '',
+        'projectName': '',
+        'isActive': '',
+        'link': '',
+        'projectDesc': '',
+        'images': [],
+        'imagesFiles': [],
+        'mainImage': '',
+        'order': 1
+      }
+    };
+  },
 
 
-    methods: {
-        getCurrentProjects: function getCurrentProjects() {
-            var _this = this;
+  methods: {
+    getCurrentProjects: function getCurrentProjects() {
+      var _this = this;
 
-            axios.get('/freelancer/projects').then(function (response) {
-                var currProjects = response.data;
-                _this.projects = currProjects;
-                var i = 0;
-                for (i = 0; i < _this.projects.length; i++) {
-                    var project = _this.projects[i];
-                    if (project.images !== null) {
-                        _this.projects[i].images = project.images.split(',');
-                    }
-                }
-
-                _this.checkMaxProjects();
-            });
-        },
-        addProject: function addProject(newProject) {
-            this.projects.push(newProject);
-            this.checkMaxProjects();
-        },
-        deleteProject: function deleteProject(project) {
-            var _this2 = this;
-
-            if (!confirm('Are you sure you want to delete this Project ?')) {
-                return;
-            }
-            axios.post('/freelancer/deleteproject', { projectID: project.id }).then(function (response) {
-                var projects = _this2.projects;
-                $.each(projects, function (i) {
-                    if (projects[i].id === project.id) {
-                        projects.splice(i, 1);
-                        return false;
-                    }
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-
-                _this2.checkMaxProjects();
-            });
-        },
-        editProject: function editProject(projectID) {
-            var projects = this.projects;
-            var editedProject = {};
-
-            $.each(projects, function (i) {
-                if (projects[i].id === projectID) {
-                    editedProject = projects[i];
-                }
-            });
-            this.toBeEditedProject = editedProject;
-        },
-        checkMaxProjects: function checkMaxProjects() {
-            if (this.projects.length > 16) {
-                this.canAddProject = false;
-            } else {
-                this.canAddProject = true;
-            }
-        },
-        clearData: function clearData() {
-            this.toBeEditedProject = {
-                'id': '',
-                'projectName': '',
-                'isActive': '',
-                'link': '',
-                'projectDesc': '',
-                'images': [],
-                'imagesFiles': [],
-                'mainImage': '',
-                'order': 1
-            };
+      axios.get('/freelancer/projects').then(function (response) {
+        var currProjects = response.data;
+        _this.projects = currProjects;
+        var i = 0;
+        for (i = 0; i < _this.projects.length; i++) {
+          var project = _this.projects[i];
+          if (project.images !== null) {
+            _this.projects[i].images = project.images.split(',');
+          }
         }
-    },
 
-    created: function created() {
-        this.getCurrentProjects();
+        _this.checkMaxProjects();
+      });
+    },
+    addProject: function addProject(newProject) {
+      this.projects.push(newProject);
+      this.checkMaxProjects();
+    },
+    deleteProject: function deleteProject(project) {
+      var _this2 = this;
+
+      if (!confirm('Are you sure you want to delete this Project ?')) {
+        return;
+      }
+      axios.post('/freelancer/deleteproject', { projectID: project.id }).then(function (response) {
+        var projects = _this2.projects;
+        $.each(projects, function (i) {
+          if (projects[i].id === project.id) {
+            projects.splice(i, 1);
+            return false;
+          }
+        });
+
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
+
+        _this2.checkMaxProjects();
+      });
+    },
+    editProject: function editProject(projectID) {
+      var projects = this.projects;
+      var editedProject = {};
+
+      $.each(projects, function (i) {
+        if (projects[i].id === projectID) {
+          editedProject = projects[i];
+        }
+      });
+      this.toBeEditedProject = editedProject;
+    },
+    checkMaxProjects: function checkMaxProjects() {
+      if (this.projects.length > 16) {
+        this.canAddProject = false;
+      } else {
+        this.canAddProject = true;
+      }
+    },
+    clearData: function clearData() {
+      this.toBeEditedProject = {
+        'id': '',
+        'projectName': '',
+        'isActive': '',
+        'link': '',
+        'projectDesc': '',
+        'images': [],
+        'imagesFiles': [],
+        'mainImage': '',
+        'order': 1
+      };
     }
+  },
+
+  created: function created() {
+    this.getCurrentProjects();
+  }
 });
 
 /***/ }),
@@ -95789,7 +95584,7 @@ var render = function() {
                   _c("span", { attrs: { "aria-hidden": "true" } }, [
                     _c("img", {
                       attrs: {
-                        src: "/resumeApp/public/images/edit.png",
+                        src: "/images/edit.png",
                         alt: "edit",
                         width: "17px"
                       }
@@ -95855,12 +95650,9 @@ var staticRenderFns = [
       },
       [
         _c("img", {
-          attrs: {
-            src: "/resumeApp/resources/assets/images/add_blue.png",
-            alt: "edit profile"
-          }
+          attrs: { src: "/images/add_blue.png", alt: "edit profile" }
         }),
-        _vm._v("\n            Add work\n        ")
+        _vm._v("\n              Add work\n          ")
       ]
     )
   }
@@ -96113,105 +95905,168 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['toBeEditedProject'],
-    data: function data() {
-        return {
-            form_data: {},
-            canAddImage: false
-        };
-    },
+  props: ['toBeEditedProject'],
+  data: function data() {
+    return {
+      form_data: {},
+      canAddImage: false
+    };
+  },
 
-    methods: {
-        submitProjectForm: function submitProjectForm() {
-            var _this = this;
+  methods: {
+    submitProjectForm: function submitProjectForm() {
+      var _this = this;
 
-            // post data :
-            this.form_data = new FormData();
-            this.form_data.append('id', this.toBeEditedProject.id);
-            this.form_data.append('projectName', this.toBeEditedProject.projectName || '');
-            this.form_data.append('link', this.toBeEditedProject.link || '');
-            this.form_data.append('projectDesc', this.toBeEditedProject.projectDesc || '');
-            this.form_data.append('isActive', this.toBeEditedProject.isActive || '');
-            this.form_data.append('order', this.toBeEditedProject.order || '');
+      // post data :
+      this.form_data = new FormData();
+      this.form_data.append('id', this.toBeEditedProject.id);
+      this.form_data.append('projectName', this.toBeEditedProject.projectName || '');
+      this.form_data.append('link', this.toBeEditedProject.link || '');
+      this.form_data.append('projectDesc', this.toBeEditedProject.projectDesc || '');
+      this.form_data.append('isActive', this.toBeEditedProject.isActive || '');
+      this.form_data.append('order', this.toBeEditedProject.order || '');
 
-            if (this.canAddImage) {
-                var mainImage = this.$refs.file.files[0];
-                this.form_data.append('mainImage', mainImage);
-            }
+      if (this.canAddImage) {
+        var mainImage = this.$refs.file.files[0];
+        this.form_data.append('mainImage', mainImage);
+      }
 
-            if (this.toBeEditedProject.imagesFiles !== undefined) {
-                var i = 0;
-                this.toBeEditedProject.imagesFiles.forEach(function (file) {
-                    var name = 'moreImages' + i;
-                    _this.form_data.append(name, file);
-                    i++;
-                });
-            }
+      if (this.toBeEditedProject.imagesFiles !== undefined) {
+        var i = 0;
+        this.toBeEditedProject.imagesFiles.forEach(function (file) {
+          var name = 'moreImages' + i;
+          _this.form_data.append(name, file);
+          i++;
+        });
+      }
 
-            axios.post('/freelancer/addproject', this.form_data).then(function (response) {
-                console.log(response.data);
+      axios.post('/freelancer/addproject', this.form_data).then(function (response) {
+        console.log(response.data);
 
-                if (_this.toBeEditedProject.id === "") {
-                    _this.$emit('projectAdded', _this.toBeEditedProject);
-                }
-                // save the project id :
-                _this.toBeEditedProject.id = response.data.id;
-                _this.toBeEditedProject.mainImage = response.data.mainImagePath;
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-            });
-            $('#closeProjectModal').click();
-        },
-        handleFile: function handleFile() {
-            this.canAddImage = true;
-            var file = this.$refs.file.files[0];
-            this.toBeEditedProject.mainImage = URL.createObjectURL(file);
-        },
-        handleNewImage: function handleNewImage() {
-            var newImage = document.getElementById('newImage');
-            var image = newImage.files[0];
-            var tempPath = URL.createObjectURL(image);
-
-            var currentImages = this.toBeEditedProject.images;
-            if (currentImages == null) {
-                this.toBeEditedProject.images = [];
-            }
-            this.toBeEditedProject.images.push(tempPath);
-            // save files array
-            var currentImagesFiles = this.toBeEditedProject.imagesFiles;
-            if (currentImagesFiles == null) {
-                this.toBeEditedProject.imagesFiles = [];
-            }
-            this.toBeEditedProject.imagesFiles.push(image);
-        },
-        openNewImageBrowse: function openNewImageBrowse() {
-            $('#newImage').click();
-        },
-        deleteImage: function deleteImage(index, projectID, imageSrc) {
-            if (!confirm('Are you sure you want to delete this photo ?')) {
-                return;
-            }
-            var deleteData = {
-                projectID: projectID,
-                imageSrc: imageSrc
-            };
-            if (index > -1) {
-                this.toBeEditedProject.images.splice(index, 1);
-                // delete from db
-                axios.post('/freelancer/delete_project_image', deleteData).then(function (response) {
-                    console.log(response.data);
-                });
-                // delete from files if exist :
-                if (this.toBeEditedProject.imagesFiles.length > 0) {}
-            }
+        if (_this.toBeEditedProject.id === "") {
+          _this.$emit('projectAdded', _this.toBeEditedProject);
         }
+        // save the project id :
+        _this.toBeEditedProject.id = response.data.id;
+        _this.toBeEditedProject.mainImage = response.data.mainImagePath;
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
+      });
+      $('#closeProjectModal').click();
     },
-    mounted: function mounted() {}
+    handleFile: function handleFile() {
+      this.canAddImage = true;
+      var file = this.$refs.file.files[0];
+      this.toBeEditedProject.mainImage = URL.createObjectURL(file);
+    },
+    handleNewImage: function handleNewImage() {
+      var newImage = document.getElementById('newImage');
+      var image = newImage.files[0];
+      var tempPath = URL.createObjectURL(image);
+
+      var currentImages = this.toBeEditedProject.images;
+      if (currentImages == null) {
+        this.toBeEditedProject.images = [];
+      }
+      this.toBeEditedProject.images.push(tempPath);
+      // save files array
+      var currentImagesFiles = this.toBeEditedProject.imagesFiles;
+      if (currentImagesFiles == null) {
+        this.toBeEditedProject.imagesFiles = [];
+      }
+      this.toBeEditedProject.imagesFiles.push(image);
+    },
+    openNewImageBrowse: function openNewImageBrowse() {
+      $('#newImage').click();
+    },
+    deleteImage: function deleteImage(index, projectID, imageSrc) {
+      if (!confirm('Are you sure you want to delete this photo ?')) {
+        return;
+      }
+      var deleteData = {
+        projectID: projectID,
+        imageSrc: imageSrc
+      };
+      if (index > -1) {
+        this.toBeEditedProject.images.splice(index, 1);
+        // delete from db
+        axios.post('/freelancer/delete_project_image', deleteData).then(function (response) {
+          console.log(response.data);
+        });
+        // delete from files if exist :
+        if (this.toBeEditedProject.imagesFiles.length > 0) {}
+      }
+    }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -96472,7 +96327,7 @@ var render = function() {
                                 },
                                 [
                                   _vm._v(
-                                    "Choose project order\n                                        "
+                                    "Choose project order\n                      "
                                   )
                                 ]
                               ),
@@ -96566,7 +96421,7 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                                                Main image\n                                            "
+                                        "\n                          Main image\n                        "
                                       )
                                     ]
                                   )
@@ -96612,7 +96467,7 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                                More images\n                                            "
+                                          "\n                          More images\n                        "
                                         )
                                       ]
                                     )
@@ -96696,7 +96551,7 @@ var render = function() {
                                     }
                                   }),
                                   _vm._v(
-                                    "\n                                            Active\n                                            "
+                                    "\n                        Active\n                        "
                                   ),
                                   _c("span", { staticClass: "checkmark" })
                                 ]
@@ -96822,13 +96677,13 @@ var staticRenderFns = [
     return _c("span", [
       _c("img", {
         attrs: {
-          src: "/resumeApp/public/images/add_work_img.png",
+          src: "/images/add_work_img.png",
           alt: "add project",
           width: "30px"
         }
       }),
       _vm._v(
-        "\n                                                Add image\n                                            "
+        "\n                                                  Add image\n                                              "
       )
     ])
   },
@@ -96940,7 +96795,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+exports.push([module.i, "\n.list-item {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active,\n.list-leave-active {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter,\n.list-leave-to\n\n/* .list-leave-active below version 2.1.8 */\n  {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n", ""]);
 
 // exports
 
@@ -97065,179 +96920,194 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            camps: [],
-            canAdd: true,
-            toBeEditedCamp: {
-                'id': '',
-                'client_id': '',
-                'title': '',
-                'description': '',
-                'status': '',
-                'start_date': '',
-                'end_date': '',
-                'clientName': '',
-                'members': [],
-                'shifts': [],
-                client: {}
-            },
-            toBeEditedShift: {
-                'id': '',
-                'start_time': '',
-                'end_time': '',
-                'days': [],
-                'campaign_id': ''
-            }
-        };
-    },
+  data: function data() {
+    return {
+      camps: [],
+      canAdd: true,
+      toBeEditedCamp: {
+        'id': '',
+        'client_id': '',
+        'title': '',
+        'description': '',
+        'status': '',
+        'start_date': '',
+        'end_date': '',
+        'clientName': '',
+        'members': [],
+        'shifts': [],
+        client: {}
+      },
+      toBeEditedShift: {
+        'id': '',
+        'start_time': '',
+        'end_time': '',
+        'days': [],
+        'campaign_id': ''
+      }
+    };
+  },
 
-    methods: {
-        getCurrentCamps: function getCurrentCamps() {
-            var _this = this;
+  methods: {
+    getCurrentCamps: function getCurrentCamps() {
+      var _this = this;
 
-            axios.get('/admin/get_camps').then(function (response) {
-                var currCamps = response.data;
-                $.each(currCamps, function (i) {
-                    $.each(currCamps[i].shifts, function (j) {
-                        if (currCamps[i].shifts[j].days === null) {
-                            currCamps[i].shifts[j].days = [];
-                        } else {
-                            currCamps[i].shifts[j].days = currCamps[i].shifts[j].days.split('|');
-                        }
-                    });
-                });
-                _this.camps = currCamps;
-                _this.checkMaxCamps();
-            });
-        },
-        addCamp: function addCamp(newCamp) {
-            this.camps.push(newCamp);
-            this.checkMaxCamps();
-        },
-        shiftAdded: function shiftAdded(newShift) {
-            var currCamps = this.camps;
-            $.each(currCamps, function (i) {
-                if (currCamps[i].id === newShift.campaign_id) {
-                    currCamps[i].shifts.push(newShift);
-                }
-            });
-        },
-        deleteCamp: function deleteCamp(camp) {
-            var _this2 = this;
-
-            if (!confirm('Are you sure you want to delete this campaign ?')) {
-                return;
-            }
-            axios.post('/admin/camps/delete', { campID: camp.id }).then(function (response) {
-                var camps = _this2.camps;
-                $.each(camps, function (i) {
-                    if (camps[i].id === camp.id) {
-                        camps.splice(i, 1);
-                        return false;
-                    }
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-
-                _this2.checkMaxCamps();
-            });
-        },
-        deleteShift: function deleteShift(shift) {
-            var _this3 = this;
-
-            if (!confirm('Are you sure you want to delete this shift ?')) {
-                return;
-            }
-            axios.post('/admin/camps/delete_shift', { shiftID: shift.id }).then(function (response) {
-                var camps = _this3.camps;
-                $.each(camps, function (i) {
-                    $.each(camps[i].shifts, function (j) {
-                        if (camps[i].shifts[j].id === shift.id) {
-                            camps[i].shifts.splice(j, 1);
-                            return false;
-                        }
-                    });
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-
-                _this3.checkMaxCamps();
-            });
-        },
-        updateCamp: function updateCamp(campID) {
-            var camps = this.camps;
-            var editedCamp = {};
-
-            $.each(camps, function (i) {
-                if (camps[i].id === campID) {
-                    editedCamp = camps[i];
-                }
-            });
-            this.toBeEditedCamp = editedCamp;
-        },
-        updateShift: function updateShift(shift) {
-            this.updateCamp(shift.campaign_id);
-            var shifts = this.toBeEditedCamp.shifts;
-            var editedShift = {};
-            $.each(shifts, function (i) {
-                if (shifts[i].id === shift.id) {
-                    editedShift = shifts[i];
-                }
-            });
-            this.toBeEditedShift = editedShift;
-        },
-        checkMaxCamps: function checkMaxCamps() {
-            if (this.camps.length > 4) {
-                this.canAdd = false;
+      axios.get('/admin/get_camps').then(function (response) {
+        var currCamps = response.data;
+        $.each(currCamps, function (i) {
+          $.each(currCamps[i].shifts, function (j) {
+            if (currCamps[i].shifts[j].days === null) {
+              currCamps[i].shifts[j].days = [];
             } else {
-                this.canAdd = true;
+              currCamps[i].shifts[j].days = currCamps[i].shifts[j].days.split('|');
             }
-        },
-        clearData: function clearData() {
-            this.toBeEditedCamp = {
-                'id': '',
-                'client_id': '',
-                'title': '',
-                'description': '',
-                'status': '',
-                'start_date': '',
-                'end_date': '',
-                'clientName': '',
-                'members': [],
-                'shifts': [],
-                client: {}
-            };
-        },
-        clearShiftData: function clearShiftData() {
-            this.toBeEditedShift = {
-                'id': '',
-                'start_time': '',
-                'end_time': '',
-                'days': [],
-                'campaign_id': ''
-            };
-        },
-        getDate: function getDate(date) {
-            var event = new Date(date);
-            var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
-            return event.toLocaleDateString('en-EN', options);
-        }
+          });
+        });
+        _this.camps = currCamps;
+        _this.checkMaxCamps();
+      });
     },
+    addCamp: function addCamp(newCamp) {
+      this.camps.push(newCamp);
+      this.checkMaxCamps();
+    },
+    shiftAdded: function shiftAdded(newShift) {
+      var currCamps = this.camps;
+      $.each(currCamps, function (i) {
+        if (currCamps[i].id === newShift.campaign_id) {
+          currCamps[i].shifts.push(newShift);
+        }
+      });
+    },
+    deleteCamp: function deleteCamp(camp) {
+      var _this2 = this;
 
-    created: function created() {
-        this.getCurrentCamps();
+      if (!confirm('Are you sure you want to delete this campaign ?')) {
+        return;
+      }
+      axios.post('/admin/camps/delete', { campID: camp.id }).then(function (response) {
+        var camps = _this2.camps;
+        $.each(camps, function (i) {
+          if (camps[i].id === camp.id) {
+            camps.splice(i, 1);
+            return false;
+          }
+        });
+
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
+
+        _this2.checkMaxCamps();
+      });
+    },
+    deleteShift: function deleteShift(shift) {
+      var _this3 = this;
+
+      if (!confirm('Are you sure you want to delete this shift ?')) {
+        return;
+      }
+      axios.post('/admin/camps/delete_shift', { shiftID: shift.id }).then(function (response) {
+        var camps = _this3.camps;
+        $.each(camps, function (i) {
+          $.each(camps[i].shifts, function (j) {
+            if (camps[i].shifts[j].id === shift.id) {
+              camps[i].shifts.splice(j, 1);
+              return false;
+            }
+          });
+        });
+
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
+
+        _this3.checkMaxCamps();
+      });
+    },
+    updateCamp: function updateCamp(campID) {
+      var camps = this.camps;
+      var editedCamp = {};
+
+      $.each(camps, function (i) {
+        if (camps[i].id === campID) {
+          editedCamp = camps[i];
+        }
+      });
+      this.toBeEditedCamp = editedCamp;
+    },
+    updateShift: function updateShift(shift) {
+      this.updateCamp(shift.campaign_id);
+      var shifts = this.toBeEditedCamp.shifts;
+      var editedShift = {};
+      $.each(shifts, function (i) {
+        if (shifts[i].id === shift.id) {
+          editedShift = shifts[i];
+        }
+      });
+      this.toBeEditedShift = editedShift;
+    },
+    checkMaxCamps: function checkMaxCamps() {
+      if (this.camps.length > 4) {
+        this.canAdd = false;
+      } else {
+        this.canAdd = true;
+      }
+    },
+    clearData: function clearData() {
+      this.toBeEditedCamp = {
+        'id': '',
+        'client_id': '',
+        'title': '',
+        'description': '',
+        'status': '',
+        'start_date': '',
+        'end_date': '',
+        'clientName': '',
+        'members': [],
+        'shifts': [],
+        client: {}
+      };
+    },
+    clearShiftData: function clearShiftData() {
+      this.toBeEditedShift = {
+        'id': '',
+        'start_time': '',
+        'end_time': '',
+        'days': [],
+        'campaign_id': ''
+      };
+    },
+    getDate: function getDate(date) {
+      var event = new Date(date);
+      var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+      return event.toLocaleDateString('en-EN', options);
     }
+  },
+
+  created: function created() {
+    this.getCurrentCamps();
+  }
 });
 
 /***/ }),
@@ -97343,9 +97213,9 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                            " +
+                            "\n                              " +
                               _vm._s(camp.client.name) +
-                              "\n                        "
+                              "\n                          "
                           )
                         ]
                       )
@@ -97371,7 +97241,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                            View\n                        "
+                            "\n                              View\n                          "
                           )
                         ]
                       )
@@ -97393,7 +97263,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                        No shifts in this campaign.\n                    "
+                        "\n            No shifts in this campaign.\n          "
                       )
                     ]
                   ),
@@ -97414,9 +97284,9 @@ var render = function() {
                     [
                       _c("div", { staticClass: "font-weight-bold" }, [
                         _vm._v(
-                          "\n                            Shifts : (" +
+                          "\n              Shifts : (" +
                             _vm._s(camp.shifts.length) +
-                            "#)\n                        "
+                            "#)\n            "
                         )
                       ]),
                       _vm._v(" "),
@@ -97448,7 +97318,7 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                                        Shift details\n                                    "
+                                      "\n                                          Shift details\n                                      "
                                     )
                                   ]
                                 )
@@ -97470,8 +97340,7 @@ var render = function() {
                                     1
                                   ),
                                   _vm._v(
-                                    _vm._s(shift.days) +
-                                      "\n                                    "
+                                    _vm._s(shift.days) + "\n                  "
                                   )
                                 ]),
                                 _vm._v(" "),
@@ -97495,13 +97364,12 @@ var render = function() {
                                         [
                                           _c("img", {
                                             attrs: {
-                                              src:
-                                                "/resumeApp/resources/assets/images/close_blue.png",
+                                              src: "/images/close_blue.png",
                                               alt: "edit profile"
                                             }
                                           }),
                                           _vm._v(
-                                            "\n                                                Delete\n                                            "
+                                            "\n                                                  Delete\n                                              "
                                           )
                                         ]
                                       )
@@ -97531,13 +97399,12 @@ var render = function() {
                                         [
                                           _c("img", {
                                             attrs: {
-                                              src:
-                                                "/resumeApp/resources/assets/images/edit_blue.png",
+                                              src: "/images/edit_blue.png",
                                               alt: "edit profile"
                                             }
                                           }),
                                           _vm._v(
-                                            "\n                                                Edit\n                                            "
+                                            "\n                                                  Edit\n                                              "
                                           )
                                         ]
                                       )
@@ -97569,13 +97436,12 @@ var render = function() {
                       _c("a", { attrs: { href: "javascript:void(0)" } }, [
                         _c("img", {
                           attrs: {
-                            src:
-                              "/resumeApp/resources/assets/images/close_blue.png",
+                            src: "/images/close_blue.png",
                             alt: "edit profile"
                           }
                         }),
                         _vm._v(
-                          "\n                            Delete\n                        "
+                          "\n                              Delete\n                          "
                         )
                       ])
                     ]
@@ -97611,12 +97477,13 @@ var render = function() {
                               height: "15px"
                             },
                             attrs: {
-                              src:
-                                "/resumeApp/resources/assets/images/edit_blue.png",
+                              src: "/images/edit_blue.png",
                               alt: "edit profile"
                             }
                           }),
-                          _vm._v("\n                    Edit\n                ")
+                          _vm._v(
+                            "\n                      Edit\n                  "
+                          )
                         ]
                       )
                     ]
@@ -97652,13 +97519,12 @@ var render = function() {
                               height: "15px"
                             },
                             attrs: {
-                              src:
-                                "/resumeApp/resources/assets/images/edit_blue.png",
+                              src: "/images/edit_blue.png",
                               alt: "edit profile"
                             }
                           }),
                           _vm._v(
-                            "\n                            Update members\n                        "
+                            "\n                              Update members\n                          "
                           )
                         ]
                       )
@@ -97696,13 +97562,12 @@ var render = function() {
                               height: "15px"
                             },
                             attrs: {
-                              src:
-                                "/resumeApp/resources/assets/images/add_blue.png",
+                              src: "/images/add_blue.png",
                               alt: "edit profile"
                             }
                           }),
                           _vm._v(
-                            "\n                            Add shift\n                        "
+                            "\n                              Add shift\n                          "
                           )
                         ]
                       )
@@ -97771,12 +97636,9 @@ var staticRenderFns = [
       },
       [
         _c("img", {
-          attrs: {
-            src: "/resumeApp/resources/assets/images/add_blue.png",
-            alt: "edit profile"
-          }
+          attrs: { src: "/images/add_blue.png", alt: "edit profile" }
         }),
-        _vm._v("\n            Create campaign\n        ")
+        _vm._v("\n              Create campaign\n          ")
       ]
     )
   }
@@ -98525,7 +98387,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 2s;\n    transition: all 2s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+exports.push([module.i, "\n.list-item {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active,\n.list-leave-active {\n  -webkit-transition: all 2s;\n  transition: all 2s;\n}\n.list-enter,\n.list-leave-to\n\n/* .list-leave-active below version 2.1.8 */\n  {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n", ""]);
 
 // exports
 
@@ -98614,88 +98476,111 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['toBeEditedCamp'],
-    data: function data() {
-        return {
-            businessUsers: []
-        };
+  props: ['toBeEditedCamp'],
+  data: function data() {
+    return {
+      businessUsers: []
+    };
+  },
+
+  methods: {
+    updateCampMembers: function updateCampMembers() {
+      axios.post('/admin/camp/update_members', { users: this.toBeEditedCamp.members, campID: this.toBeEditedCamp.id }).then(function (response) {
+
+        console.log(response.data);
+
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
+      });
+
+      $('#closeMembersModal').click();
     },
+    getBusinessUsers: function getBusinessUsers() {
+      var _this = this;
 
-    methods: {
-        updateCampMembers: function updateCampMembers() {
-            axios.post('/admin/camp/update_members', { users: this.toBeEditedCamp.members, campID: this.toBeEditedCamp.id }).then(function (response) {
+      axios.get('/admin/get_users').then(function (response) {
+        _this.businessUsers = response.data;
+      });
+    },
+    addMember: function addMember(user) {
+      var _this2 = this;
 
-                console.log(response.data);
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-            });
-
-            $('#closeMembersModal').click();
-        },
-        getBusinessUsers: function getBusinessUsers() {
-            var _this = this;
-
-            axios.get('/admin/get_users').then(function (response) {
-                _this.businessUsers = response.data;
-            });
-        },
-        addMember: function addMember(user) {
-            var _this2 = this;
-
-            var canAdd = true;
-            $.each(this.toBeEditedCamp.members, function (i) {
-                if (_this2.toBeEditedCamp.members[i].id === user.id) {
-                    alert('Freelancer already exists.');
-                    canAdd = false;
-                }
-            });
-            if (canAdd) {
-                this.toBeEditedCamp.members.push(user);
-            }
-        },
-        removeMember: function removeMember(user) {
-            var _this3 = this;
-
-            $.each(this.toBeEditedCamp.members, function (i) {
-                if (_this3.toBeEditedCamp.members[i].id === user.id) {
-                    _this3.toBeEditedCamp.members.splice(i, 1);
-                    return false;
-                }
-            });
-        },
-        freelancerExists: function freelancerExists(user_id) {
-            var _this4 = this;
-
-            var canAdd = true;
-            $.each(this.toBeEditedCamp.members, function (i) {
-                if (_this4.toBeEditedCamp.members[i].id === user_id) {
-                    canAdd = false;
-                }
-            });
-
-            return canAdd;
-        },
-        getImageSrc: function getImageSrc(userImage) {
-            if (!userImage || userImage === null) {
-                return '/resumeApp/public/images/user.png';
-            }
-
-            if (userImage.charAt(0) !== 'h') {
-                return '/' + userImage;
-            }
-
-            return userImage;
+      var canAdd = true;
+      $.each(this.toBeEditedCamp.members, function (i) {
+        if (_this2.toBeEditedCamp.members[i].id === user.id) {
+          alert('Freelancer already exists.');
+          canAdd = false;
         }
+      });
+      if (canAdd) {
+        this.toBeEditedCamp.members.push(user);
+      }
     },
-    mounted: function mounted() {
-        this.getBusinessUsers();
+    removeMember: function removeMember(user) {
+      var _this3 = this;
+
+      $.each(this.toBeEditedCamp.members, function (i) {
+        if (_this3.toBeEditedCamp.members[i].id === user.id) {
+          _this3.toBeEditedCamp.members.splice(i, 1);
+          return false;
+        }
+      });
+    },
+    freelancerExists: function freelancerExists(user_id) {
+      var _this4 = this;
+
+      var canAdd = true;
+      $.each(this.toBeEditedCamp.members, function (i) {
+        if (_this4.toBeEditedCamp.members[i].id === user_id) {
+          canAdd = false;
+        }
+      });
+
+      return canAdd;
+    },
+    getImageSrc: function getImageSrc(userImage) {
+      if (!userImage || userImage === null) {
+        return '/images/user.png';
+      }
+
+      if (userImage.charAt(0) !== 'h') {
+        return '/' + userImage;
+      }
+
+      return userImage;
     }
+  },
+  mounted: function mounted() {
+    this.getBusinessUsers();
+  }
 });
 
 /***/ }),
@@ -98739,7 +98624,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                        Current campaign members.\n                    "
+                        "\n            Current campaign members.\n          "
                       )
                     ]
                   ),
@@ -98782,20 +98667,20 @@ var render = function() {
                                 { staticClass: "freelancerName nohover" },
                                 [
                                   _vm._v(
-                                    "\n                                        " +
+                                    "\n                    " +
                                       _vm._s(user.firstName) +
                                       " " +
                                       _vm._s(user.lastName) +
-                                      "\n                                    "
+                                      "\n                  "
                                   )
                                 ]
                               ),
                               _vm._v(" "),
                               _c("div", { staticClass: "freelancerJob" }, [
                                 _vm._v(
-                                  "\n                                        " +
+                                  "\n                    " +
                                     _vm._s(user.profession) +
-                                    "\n                                    "
+                                    "\n                  "
                                 )
                               ])
                             ])
@@ -98819,13 +98704,12 @@ var render = function() {
                                 [
                                   _c("img", {
                                     attrs: {
-                                      src:
-                                        "/resumeApp/resources/assets/images/close_blue.png",
+                                      src: "/images/close_blue.png",
                                       alt: "edit profile"
                                     }
                                   }),
                                   _vm._v(
-                                    "\n                                    Remove\n                                "
+                                    "\n                                      Remove\n                                  "
                                   )
                                 ]
                               )
@@ -98851,7 +98735,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                       No members assigned to this campaign.\n                    "
+                        "\n            No members assigned to this campaign.\n          "
                       )
                     ]
                   ),
@@ -98866,7 +98750,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                        Business support freelancers.\n                    "
+                        "\n            Business support freelancers.\n          "
                       )
                     ]
                   ),
@@ -98898,20 +98782,20 @@ var render = function() {
                                 { staticClass: "freelancerName nohover" },
                                 [
                                   _vm._v(
-                                    "\n                                        " +
+                                    "\n                    " +
                                       _vm._s(user.firstName) +
                                       " " +
                                       _vm._s(user.lastName) +
-                                      "\n                                    "
+                                      "\n                  "
                                   )
                                 ]
                               ),
                               _vm._v(" "),
                               _c("div", { staticClass: "freelancerJob" }, [
                                 _vm._v(
-                                  "\n                                        " +
+                                  "\n                    " +
                                     _vm._s(user.profession) +
-                                    "\n                                    "
+                                    "\n                  "
                                 )
                               ])
                             ])
@@ -98943,13 +98827,12 @@ var render = function() {
                                 [
                                   _c("img", {
                                     attrs: {
-                                      src:
-                                        "/resumeApp/resources/assets/images/add_blue.png",
+                                      src: "/images/add_blue.png",
                                       alt: "edit profile"
                                     }
                                   }),
                                   _vm._v(
-                                    "\n                                    Add\n                                "
+                                    "\n                                      Add\n                                  "
                                   )
                                 ]
                               )
@@ -99602,7 +99485,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.memberImg{\n    width: 150px;\n    height: 150px;\n    border-radius: 50%;\n    border: grey 2px solid;\n    margin:5px;\n    padding:3px;\n}\n.memberName{\n    color:#218dce;\n    font: 14px;\n    padding-top: 8px;\n}\n.log{\n    background: white;\n    color: grey;\n    font:12px;\n    display:inline-block;\n    padding: 10px;\n    border: lightgrey solid 1px;\n    border-radius: 5px;\n}\n", ""]);
+exports.push([module.i, "\n.memberImg {\n  width: 150px;\n  height: 150px;\n  border-radius: 50%;\n  border: grey 2px solid;\n  margin: 5px;\n  padding: 3px;\n}\n.memberName {\n  color: #218dce;\n  font: 14px;\n  padding-top: 8px;\n}\n.log {\n  background: white;\n  color: grey;\n  font: 12px;\n  display: inline-block;\n  padding: 10px;\n  border: lightgrey solid 1px;\n  border-radius: 5px;\n}\n", ""]);
 
 // exports
 
@@ -99659,85 +99542,93 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['campaign_id', 'user_id'],
-    data: function data() {
-        return {
-            logs: [],
-            members: [],
-            currentLog: {
-                log_text: '',
-                campaign_id: this.campaign_id
-            }
-        };
+  props: ['campaign_id', 'user_id'],
+  data: function data() {
+    return {
+      logs: [],
+      members: [],
+      currentLog: {
+        log_text: '',
+        campaign_id: this.campaign_id
+      }
+    };
+  },
+
+  methods: {
+    submitForm: function submitForm() {
+      var _this = this;
+
+      // post data :
+      axios.post('/admin/camps/add_log', this.currentLog).then(function (response) {
+        _this.logs.push(response.data);
+        _this.currentLog.log_text = '';
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
+      });
     },
+    getCampLogs: function getCampLogs() {
+      var _this2 = this;
 
-    methods: {
-        submitForm: function submitForm() {
-            var _this = this;
-
-            // post data :
-            axios.post('/admin/camps/add_log', this.currentLog).then(function (response) {
-                _this.logs.push(response.data);
-                _this.currentLog.log_text = '';
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-            });
-        },
-        getCampLogs: function getCampLogs() {
-            var _this2 = this;
-
-            axios.get('/admin/camps/get_camp_logs/' + this.campaign_id).then(function (response) {
-                _this2.logs = response.data;
-            });
-        },
-        getCampMembers: function getCampMembers() {
-            var _this3 = this;
-
-            axios.get('/admin/camps/get_camp_members/' + this.campaign_id).then(function (response) {
-                _this3.members = response.data;
-            });
-        },
-        getImageSrc: function getImageSrc(userImage) {
-            if (!userImage || userImage === null) {
-                return '/resumeApp/public/images/user.png';
-            }
-
-            if (userImage.charAt(0) !== 'h') {
-                return '/' + userImage;
-            }
-
-            return userImage;
-        },
-        deleteLog: function deleteLog(log) {
-            var _this4 = this;
-
-            axios.post('/admin/camps/delete_log', { logID: log.id }).then(function (response) {
-                // remove log :
-                var logs = _this4.logs;
-                $.each(logs, function (i) {
-                    if (logs[i].id === log.id) {
-                        logs.splice(i, 1);
-                        return false;
-                    }
-                });
-
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-            });
-        }
+      axios.get('/admin/camps/get_camp_logs/' + this.campaign_id).then(function (response) {
+        _this2.logs = response.data;
+      });
     },
-    mounted: function mounted() {
-        this.getCampLogs();
-        this.getCampMembers();
+    getCampMembers: function getCampMembers() {
+      var _this3 = this;
+
+      axios.get('/admin/camps/get_camp_members/' + this.campaign_id).then(function (response) {
+        _this3.members = response.data;
+      });
+    },
+    getImageSrc: function getImageSrc(userImage) {
+      if (!userImage || userImage === null) {
+        return '/images/user.png';
+      }
+
+      if (userImage.charAt(0) !== 'h') {
+        return '/' + userImage;
+      }
+
+      return userImage;
+    },
+    deleteLog: function deleteLog(log) {
+      var _this4 = this;
+
+      axios.post('/admin/camps/delete_log', { logID: log.id }).then(function (response) {
+        // remove log :
+        var logs = _this4.logs;
+        $.each(logs, function (i) {
+          if (logs[i].id === log.id) {
+            logs.splice(i, 1);
+            return false;
+          }
+        });
+
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
+      });
     }
+  },
+  mounted: function mounted() {
+    this.getCampLogs();
+    this.getCampMembers();
+  }
 });
 
 /***/ }),
@@ -99771,9 +99662,9 @@ var render = function() {
             _vm._v(" "),
             _c("span", { staticClass: "memberName" }, [
               _vm._v(
-                "\n                " +
+                "\n                  " +
                   _vm._s(member.firstName) +
-                  "\n            "
+                  "\n              "
               )
             ]),
             _vm._v(" "),
@@ -99807,9 +99698,9 @@ var render = function() {
                     _vm._v(" "),
                     _c("small", { staticClass: "logTime" }, [
                       _vm._v(
-                        "\n                        " +
+                        "\n                          " +
                           _vm._s(log.created_at) +
-                          "\n                    "
+                          "\n                      "
                       )
                     ]),
                     _vm._v(" "),
@@ -99897,7 +99788,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                       Add\n                   "
+                        "\n                         Add\n                     "
                       )
                     ]
                   )
@@ -99920,10 +99811,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "javascript:void(0)" } }, [
       _c("img", {
-        attrs: {
-          src: "/resumeApp/resources/assets/images/close_blue.png",
-          alt: "edit profile"
-        }
+        attrs: { src: "/images/close_blue.png", alt: "edit profile" }
       })
     ])
   },
@@ -100029,7 +99917,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.memberImg{\n    width: 150px;\n    height: 150px;\n    border-radius: 50%;\n    border: grey 2px solid;\n    margin:5px;\n    padding:3px;\n}\n.memberName{\n    color:#218dce;\n    font: 14px;\n    padding-top: 8px;\n}\n.log{\n    background: white;\n    color: grey;\n    font:12px;\n    display:inline-block;\n    padding: 10px;\n    border: lightgrey solid 1px;\n    border-radius: 5px;\n    margin: 5px;\n}\n", ""]);
+exports.push([module.i, "\n.memberImg {\n  width: 150px;\n  height: 150px;\n  border-radius: 50%;\n  border: grey 2px solid;\n  margin: 5px;\n  padding: 3px;\n}\n.memberName {\n  color: #218dce;\n  font: 14px;\n  padding-top: 8px;\n}\n.log {\n  background: white;\n  color: grey;\n  font: 12px;\n  display: inline-block;\n  padding: 10px;\n  border: lightgrey solid 1px;\n  border-radius: 5px;\n  margin: 5px;\n}\n", ""]);
 
 // exports
 
@@ -100085,81 +99973,93 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['campaign_id'],
-    data: function data() {
-        return {
-            shifts: [],
-            members: [],
-            selectedUser: 'Add agent'
-        };
-    },
+  props: ['campaign_id'],
+  data: function data() {
+    return {
+      shifts: [],
+      members: [],
+      selectedUser: 'Add agent'
+    };
+  },
 
-    methods: {
-        updateDayAgents: function updateDayAgents(day) {
-            // post data :
-            var selectedUserID = this.selectedUser.id;
-            this.selectedUser = 'Add agent';
-            axios.post('/admin/camps/add_user_to_day', { dayID: day.id, selectedUser: selectedUserID }).then(function (response) {
-                if (response.data === 'user_exists') {
-                    alert('User Already exists.');
-                    return;
-                }
-                day.users.push(response.data);
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-            });
-        },
-        submitForm: function submitForm() {},
-        getCampMembers: function getCampMembers() {
-            var _this = this;
-
-            axios.get('/admin/camps/get_camp_members/' + this.campaign_id).then(function (response) {
-                _this.members = response.data;
-            });
-        },
-        getCampShifts: function getCampShifts() {
-            var _this2 = this;
-
-            axios.get('/admin/camps/get_camp_shifts/' + this.campaign_id).then(function (response) {
-                _this2.shifts = response.data;
-            });
-        },
-        deleteDayUser: function deleteDayUser(user, day) {
-            $.each(day.users, function (i) {
-                if (day.users[i].id === user.id) {
-                    day.users.splice(i, 1);
-                    return false;
-                }
-            });
-            axios.post('/admin/camps/remove_user_from_day', { dayID: day.id, selectedUser: user.id }).then(function (response) {
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
-            });
-        },
-        getImageSrc: function getImageSrc(userImage) {
-            if (!userImage || userImage === null) {
-                return '/resumeApp/public/images/user.png';
-            }
-
-            if (userImage.charAt(0) !== 'h') {
-                return '/' + userImage;
-            }
-
-            return userImage;
+  methods: {
+    updateDayAgents: function updateDayAgents(day) {
+      // post data :
+      var selectedUserID = this.selectedUser.id;
+      this.selectedUser = 'Add agent';
+      axios.post('/admin/camps/add_user_to_day', { dayID: day.id, selectedUser: selectedUserID }).then(function (response) {
+        if (response.data === 'user_exists') {
+          alert('User Already exists.');
+          return;
         }
+        day.users.push(response.data);
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
+      });
     },
-    mounted: function mounted() {
-        this.getCampMembers();
-        this.getCampShifts();
+    submitForm: function submitForm() {},
+    getCampMembers: function getCampMembers() {
+      var _this = this;
+
+      axios.get('/admin/camps/get_camp_members/' + this.campaign_id).then(function (response) {
+        _this.members = response.data;
+      });
+    },
+    getCampShifts: function getCampShifts() {
+      var _this2 = this;
+
+      axios.get('/admin/camps/get_camp_shifts/' + this.campaign_id).then(function (response) {
+        _this2.shifts = response.data;
+      });
+    },
+    deleteDayUser: function deleteDayUser(user, day) {
+      $.each(day.users, function (i) {
+        if (day.users[i].id === user.id) {
+          day.users.splice(i, 1);
+          return false;
+        }
+      });
+      axios.post('/admin/camps/remove_user_from_day', { dayID: day.id, selectedUser: user.id }).then(function (response) {
+        // changes saved :
+        $('#changesSaved').fadeIn('slow');
+        setTimeout(function () {
+          $('#changesSaved').fadeOut();
+        }, 2000);
+      });
+    },
+    getImageSrc: function getImageSrc(userImage) {
+      if (!userImage || userImage === null) {
+        return '/images/user.png';
+      }
+
+      if (userImage.charAt(0) !== 'h') {
+        return '/' + userImage;
+      }
+
+      return userImage;
     }
+  },
+  mounted: function mounted() {
+    this.getCampMembers();
+    this.getCampShifts();
+  }
 });
 
 /***/ }),
@@ -100207,12 +100107,12 @@ var render = function() {
               "tr",
               [
                 _c("th", { attrs: { scope: "row" } }, [
-                  _vm._v("\n                        Start at : "),
+                  _vm._v("\n            Start at : "),
                   _c("span", { staticStyle: { color: "#218dce" } }, [
                     _vm._v(_vm._s(shift.start_time))
                   ]),
                   _c("br"),
-                  _vm._v("\n                        Ends at  :"),
+                  _vm._v("\n            Ends at :"),
                   _c("span", { staticStyle: { color: "#218dce" } }, [
                     _vm._v(_vm._s(shift.end_time))
                   ])
@@ -100226,11 +100126,11 @@ var render = function() {
                       _vm._l(day.users, function(user, index) {
                         return _c("div", { key: index, staticClass: "log" }, [
                           _vm._v(
-                            "\n                            " +
+                            "\n              " +
                               _vm._s(user.firstName) +
                               " " +
                               _vm._s(user.lastName) +
-                              "\n                            "
+                              "\n              "
                           ),
                           _c(
                             "span",
@@ -100302,11 +100202,11 @@ var render = function() {
                                 { key: index, domProps: { value: member } },
                                 [
                                   _vm._v(
-                                    "\n                                    " +
+                                    "\n                  " +
                                       _vm._s(member.firstName) +
                                       " " +
                                       _vm._s(member.lastName) +
-                                      "\n                                "
+                                      "\n                "
                                   )
                                 ]
                               )
@@ -100335,10 +100235,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "javascript:void(0)" } }, [
       _c("img", {
-        attrs: {
-          src: "/resumeApp/resources/assets/images/close_blue.png",
-          alt: "edit profile"
-        }
+        attrs: { src: "/images/close_blue.png", alt: "edit profile" }
       })
     ])
   }
@@ -101814,251 +101711,275 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['client_id', 'user_id'],
-    data: function data() {
-        return {
-            conversations: [],
-            currentConversation: {},
-            currentMessagesList: [],
-            newMessage: {
-                body: '',
-                type: 'text'
-            },
-            currFreelancer: {},
-            currClient: {},
-            time: ''
-        };
+  props: ['client_id', 'user_id'],
+  data: function data() {
+    return {
+      conversations: [],
+      currentConversation: {},
+      currentMessagesList: [],
+      newMessage: {
+        body: '',
+        type: 'text'
+      },
+      currFreelancer: {},
+      currClient: {},
+      time: ''
+    };
+  },
+
+
+  methods: {
+    getAuthorConversations: function getAuthorConversations() {
+      var _this = this;
+
+      axios.get('/chat-room/conversations').then(function (response) {
+        _this.conversations = response.data;
+        _this.setDefaultConversation();
+      });
     },
+    setCurrentConversation: function setCurrentConversation(conversation_id) {
+      var _this2 = this;
 
-
-    methods: {
-        getAuthorConversations: function getAuthorConversations() {
-            var _this = this;
-
-            axios.get('/chat-room/conversations').then(function (response) {
-                _this.conversations = response.data;
-                _this.setDefaultConversation();
-            });
-        },
-        setCurrentConversation: function setCurrentConversation(conversation_id) {
-            var _this2 = this;
-
-            this.conversations.forEach(function (data) {
-                if (data.conversation.id === conversation_id) {
-                    _this2.currentConversation = data.conversation;
-                    _this2.currFreelancer = data.freelancer;
-                    _this2.currClient = data.client;
-                }
-            });
-
-            // clear unread messages :
-            axios.post('/chat-room/allRead', { conversation_id: this.currentConversation.id, client_id: this.client_id, user_id: this.user_id }).then(function (response) {
-                if (_this2.client_id) {
-                    _this2.currentConversation.unread_messages_client = 0;
-                }
-                if (_this2.user_id) {
-                    _this2.currentConversation.unread_messages_freelancer = 0;
-                }
-            });
-
-            this.setConversationMessages();
-
-            // listen to this conversation to add the message.
-            window.Echo.channel('chat.' + this.currentConversation.id).listen('MessageSent', function (e) {
-                if (e.message.conversation_id == _this2.currentConversation.id) {
-                    // i am on this conversation
-                    _this2.currentMessagesList.push(e.message);
-
-                    // scroll down:
-                    $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight") }, 1000);
-                } else {
-                    // i am on another conversation :
-                    _this2.updateUnReadMessageCount(e.message.conversation_id);
-                }
-            });
-
-            // clear status :
-            $('#status').html('');
-        },
-        setConversationMessages: function setConversationMessages() {
-            var _this3 = this;
-
-            axios.get('/chat-room/messages/' + this.currentConversation.id).then(function (response) {
-                _this3.currentMessagesList = response.data;
-
-                // scroll down to the messages
-                setTimeout(function () {
-                    $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight") }, 1000);
-                }, 2000);
-            });
-        },
-        sendMessage: function sendMessage() {
-            var message = {
-                conversation_id: this.currentConversation.id,
-                message: this.newMessage.body,
-                client_id: this.client_id,
-                user_id: this.user_id,
-                type: this.newMessage.type
-            };
-            // clear input :
-            this.currentMessagesList.push(message);
-            $('#status').html('Sending..');
-            this.newMessage.body = '';
-            axios.post('/chat-room/addMessage', message).then(function (response) {
-                $('#status').html('Sent');
-            });
-
-            $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight") }, 1000);
-        },
-        setDefaultConversation: function setDefaultConversation() {
-            if (this.currentConversation.id !== undefined) {
-                this.setCurrentConversation(this.currentConversation.id);
-            } else if (this.conversations.length > 0) {
-                this.setCurrentConversation(this.conversations[0].conversation.id);
-            }
-        },
-        updateUnReadMessageCount: function updateUnReadMessageCount($conversation_id) {
-            var _this4 = this;
-
-            this.conversations.forEach(function (data) {
-                if (data.conversation.id == $conversation_id) {
-                    if (_this4.client_id) {
-                        data.conversation.unread_messages_client += 1;
-                    }
-                    if (_this4.user_id) {
-                        data.conversation.unread_messages_freelancer += 1;
-                    }
-                }
-            });
-        },
-        handleChatFile: function handleChatFile() {
-            var _this5 = this;
-
-            var chat_form_data = new FormData();
-            var chatFile = this.$refs.file.files[0];
-            chat_form_data.append('shared_file', chatFile);
-
-            axios.post('/chat-room/message_file', chat_form_data).then(function (response) {
-                // response.data is the file path
-                _this5.sendFileMessage(response.data);
-            });
-        },
-        openFileSelect: function openFileSelect() {
-            $('#shared_file').click();
-        },
-        sendFileMessage: function sendFileMessage(fileInfo) {
-            var message = {
-                conversation_id: this.currentConversation.id,
-                message: fileInfo.path,
-                client_id: this.client_id,
-                user_id: this.user_id,
-                type: fileInfo.type
-            };
-            // clear input :
-            this.currentMessagesList.push(message);
-            $('#status').html('Sending..');
-            this.newMessage.body = '';
-            axios.post('/chat-room/addMessage', message).then(function (response) {
-                $('#status').html('Sent');
-            });
-            $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight") }, 1000);
-        },
-        getFileName: function getFileName(path) {
-            var parts = path.split('/');
-            return parts.pop() || parts.pop();
-        },
-        sendAudioRecord: function sendAudioRecord() {
-            var currAudioSrc = $('#currAudioChatSrc').html();
-            if (currAudioSrc !== '') {
-                var fileInfo = {
-                    path: currAudioSrc,
-                    type: 'audio'
-                };
-
-                var message = {
-                    conversation_id: this.currentConversation.id,
-                    message: fileInfo.path,
-                    client_id: this.client_id,
-                    user_id: this.user_id,
-                    type: fileInfo.type
-                };
-
-                this.currentMessagesList.push(message);
-
-                // save the message to the database of messages :
-                axios.post('/chat-room/addMessage', message).then(function (response) {
-                    $('#status').html('Sent');
-                });
-
-                // scroll down:
-                $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight") }, 1000);
-
-                $('#currAudioChatSrc').html('');
-
-                // hide play and send
-                $('#sendAudio').fadeOut().addClass('d-none');
-                $('#playAudio').fadeOut().addClass('d-none');
-                $('#record_status').fadeOut().addClass('d-none');
-                $('#discardAudio').fadeOut().addClass('d-none');
-                $('#startRecord').fadeIn().removeClass('d-none');
-            } else {
-                setTimeout(this.sendAudioRecord, 3000);
-            }
-        },
-        resetAudio: function resetAudio() {
-            $('#currAudioChatSrc').html('');
-
-            // hide play and send
-            $('#sendAudio').fadeOut().addClass('d-none');
-            $('#playAudio').fadeOut().addClass('d-none');
-            $('#record_status').fadeOut().addClass('d-none');
-            $('#discardAudio').fadeOut().addClass('d-none');
-            $('#startRecord').fadeIn().removeClass('d-none');
-            $('#record_status').html('');
-        },
-        startCount: function startCount() {
-            var counter = parseInt($('#counter').html());
-            this.timer = setInterval(function () {
-                var counter = parseInt($('#counter').html());
-                counter++;
-                if (counter < 10) {
-                    $('#counter').html('0' + counter);
-                } else {
-                    $('#counter').html(counter);
-                }
-                if (counter > 30) {
-                    $('#stopAudio').click();
-                    clearInterval(this.timer);
-                    $('#counter').addClass('d-none');
-                }
-            }, 1000);
-        },
-        stopCount: function stopCount() {
-            clearInterval(this.timer);
-            $('#counter').addClass('d-none');
+      this.conversations.forEach(function (data) {
+        if (data.conversation.id === conversation_id) {
+          _this2.currentConversation = data.conversation;
+          _this2.currFreelancer = data.freelancer;
+          _this2.currClient = data.client;
         }
+      });
+
+      // clear unread messages :
+      axios.post('/chat-room/allRead', { conversation_id: this.currentConversation.id, client_id: this.client_id, user_id: this.user_id }).then(function (response) {
+        if (_this2.client_id) {
+          _this2.currentConversation.unread_messages_client = 0;
+        }
+        if (_this2.user_id) {
+          _this2.currentConversation.unread_messages_freelancer = 0;
+        }
+      });
+
+      this.setConversationMessages();
+
+      // listen to this conversation to add the message.
+      window.Echo.channel('chat.' + this.currentConversation.id).listen('MessageSent', function (e) {
+        if (e.message.conversation_id == _this2.currentConversation.id) {
+          // i am on this conversation
+          _this2.currentMessagesList.push(e.message);
+
+          // scroll down:
+          $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight") }, 1000);
+        } else {
+          // i am on another conversation :
+          _this2.updateUnReadMessageCount(e.message.conversation_id);
+        }
+      });
+
+      // clear status :
+      $('#status').html('');
     },
+    setConversationMessages: function setConversationMessages() {
+      var _this3 = this;
 
-    mounted: function mounted() {
-        var _this6 = this;
+      axios.get('/chat-room/messages/' + this.currentConversation.id).then(function (response) {
+        _this3.currentMessagesList = response.data;
 
-        this.getAuthorConversations();
+        // scroll down to the messages
+        setTimeout(function () {
+          $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight") }, 1000);
+        }, 2000);
+      });
+    },
+    sendMessage: function sendMessage() {
+      var message = {
+        conversation_id: this.currentConversation.id,
+        message: this.newMessage.body,
+        client_id: this.client_id,
+        user_id: this.user_id,
+        type: this.newMessage.type
+      };
+      // clear input :
+      this.currentMessagesList.push(message);
+      $('#status').html('Sending..');
+      this.newMessage.body = '';
+      axios.post('/chat-room/addMessage', message).then(function (response) {
+        $('#status').html('Sent');
+      });
 
-        // listen to new conversations made :
-        window.Echo.channel('conversations').listen('ConversationStarted', function (e) {
-            _this6.getAuthorConversations();
+      $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight") }, 1000);
+    },
+    setDefaultConversation: function setDefaultConversation() {
+      if (this.currentConversation.id !== undefined) {
+        this.setCurrentConversation(this.currentConversation.id);
+      } else if (this.conversations.length > 0) {
+        this.setCurrentConversation(this.conversations[0].conversation.id);
+      }
+    },
+    updateUnReadMessageCount: function updateUnReadMessageCount($conversation_id) {
+      var _this4 = this;
+
+      this.conversations.forEach(function (data) {
+        if (data.conversation.id == $conversation_id) {
+          if (_this4.client_id) {
+            data.conversation.unread_messages_client += 1;
+          }
+          if (_this4.user_id) {
+            data.conversation.unread_messages_freelancer += 1;
+          }
+        }
+      });
+    },
+    handleChatFile: function handleChatFile() {
+      var _this5 = this;
+
+      var chat_form_data = new FormData();
+      var chatFile = this.$refs.file.files[0];
+      chat_form_data.append('shared_file', chatFile);
+
+      axios.post('/chat-room/message_file', chat_form_data).then(function (response) {
+        // response.data is the file path
+        _this5.sendFileMessage(response.data);
+      });
+    },
+    openFileSelect: function openFileSelect() {
+      $('#shared_file').click();
+    },
+    sendFileMessage: function sendFileMessage(fileInfo) {
+      var message = {
+        conversation_id: this.currentConversation.id,
+        message: fileInfo.path,
+        client_id: this.client_id,
+        user_id: this.user_id,
+        type: fileInfo.type
+      };
+      // clear input :
+      this.currentMessagesList.push(message);
+      $('#status').html('Sending..');
+      this.newMessage.body = '';
+      axios.post('/chat-room/addMessage', message).then(function (response) {
+        $('#status').html('Sent');
+      });
+      $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight") }, 1000);
+    },
+    getFileName: function getFileName(path) {
+      var parts = path.split('/');
+      return parts.pop() || parts.pop();
+    },
+    sendAudioRecord: function sendAudioRecord() {
+      var currAudioSrc = $('#currAudioChatSrc').html();
+      if (currAudioSrc !== '') {
+        var fileInfo = {
+          path: currAudioSrc,
+          type: 'audio'
+        };
+
+        var message = {
+          conversation_id: this.currentConversation.id,
+          message: fileInfo.path,
+          client_id: this.client_id,
+          user_id: this.user_id,
+          type: fileInfo.type
+        };
+
+        this.currentMessagesList.push(message);
+
+        // save the message to the database of messages :
+        axios.post('/chat-room/addMessage', message).then(function (response) {
+          $('#status').html('Sent');
         });
 
-        // clear messaging :
-        if (this.client_id) {
-            $('#MessagingClient' + this.client_id).addClass('d-none');
+        // scroll down:
+        $("#newChatMessagesArea").animate({ scrollTop: $('#newChatMessagesArea').prop("scrollHeight") }, 1000);
+
+        $('#currAudioChatSrc').html('');
+
+        // hide play and send
+        $('#sendAudio').fadeOut().addClass('d-none');
+        $('#playAudio').fadeOut().addClass('d-none');
+        $('#record_status').fadeOut().addClass('d-none');
+        $('#discardAudio').fadeOut().addClass('d-none');
+        $('#startRecord').fadeIn().removeClass('d-none');
+      } else {
+        setTimeout(this.sendAudioRecord, 3000);
+      }
+    },
+    resetAudio: function resetAudio() {
+      $('#currAudioChatSrc').html('');
+
+      // hide play and send
+      $('#sendAudio').fadeOut().addClass('d-none');
+      $('#playAudio').fadeOut().addClass('d-none');
+      $('#record_status').fadeOut().addClass('d-none');
+      $('#discardAudio').fadeOut().addClass('d-none');
+      $('#startRecord').fadeIn().removeClass('d-none');
+      $('#record_status').html('');
+    },
+    startCount: function startCount() {
+      var counter = parseInt($('#counter').html());
+      this.timer = setInterval(function () {
+        var counter = parseInt($('#counter').html());
+        counter++;
+        if (counter < 10) {
+          $('#counter').html('0' + counter);
+        } else {
+          $('#counter').html(counter);
         }
-        if (this.user_id) {
-            $('#MessagingFreelancer' + this.user_id).addClass('d-none');
+        if (counter > 30) {
+          $('#stopAudio').click();
+          clearInterval(this.timer);
+          $('#counter').addClass('d-none');
         }
+      }, 1000);
+    },
+    stopCount: function stopCount() {
+      clearInterval(this.timer);
+      $('#counter').addClass('d-none');
     }
+  },
+
+  mounted: function mounted() {
+    var _this6 = this;
+
+    this.getAuthorConversations();
+
+    // listen to new conversations made :
+    window.Echo.channel('conversations').listen('ConversationStarted', function (e) {
+      _this6.getAuthorConversations();
+    });
+
+    // clear messaging :
+    if (this.client_id) {
+      $('#MessagingClient' + this.client_id).addClass('d-none');
+    }
+    if (this.user_id) {
+      $('#MessagingFreelancer' + this.user_id).addClass('d-none');
+    }
+  }
 });
 
 /***/ }),
@@ -102129,17 +102050,17 @@ var render = function() {
                         ],
                         staticStyle: { "border-radius": "50%" },
                         attrs: {
-                          src: "/resumeApp/public/images/no-image-icon-.png",
+                          src: "/images/no-image-icon-.png",
                           alt: "img",
                           width: "25px"
                         }
                       }),
                       _vm._v(
-                        "\n                             " +
+                        "\n                               " +
                           _vm._s(data.freelancer.firstName) +
                           " " +
                           _vm._s(data.freelancer.lastName) +
-                          "\n                            "
+                          "\n                              "
                       ),
                       _c(
                         "span",
@@ -102181,9 +102102,9 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                            " +
+                        "\n                              " +
                           _vm._s(data.client.firstName) +
-                          "\n                            "
+                          "\n                              "
                       ),
                       _c(
                         "span",
@@ -102237,11 +102158,11 @@ var render = function() {
         [
           _c("div", [
             _vm._v(
-              "\n                " +
+              "\n        " +
                 _vm._s(this.currFreelancer.firstName) +
                 " - " +
                 _vm._s(this.currClient.firstName) +
-                "\n            "
+                "\n      "
             )
           ]),
           _c("br"),
@@ -102325,16 +102246,15 @@ var render = function() {
                           [
                             _c("img", {
                               attrs: {
-                                src:
-                                  "/resumeApp/resources/assets/images/file-icon.png",
+                                src: "/images/file-icon.png",
                                 alt: "file",
                                 width: "45px"
                               }
                             }),
                             _vm._v(
-                              "\n                            " +
+                              "\n                              " +
                                 _vm._s(_vm.getFileName(message.message)) +
-                                "\n                        "
+                                "\n                          "
                             )
                           ]
                         )
@@ -102342,9 +102262,9 @@ var render = function() {
                     : message.type == "video"
                       ? _c("span", { staticClass: "NoDecor" }, [
                           _vm._v(
-                            "\n\n                        " +
+                            "\n\n                          " +
                               _vm._s(_vm.getFileName(message.message)) +
-                              "\n                        "
+                              "\n                          "
                           ),
                           _c("div", { staticClass: "text-center col-md-6" }, [
                             _c(
@@ -102388,9 +102308,9 @@ var render = function() {
                         ? _c("span", [
                             _c("span", [
                               _vm._v(
-                                "\n                            " +
+                                "\n                              " +
                                   _vm._s(_vm.getFileName(message.message)) +
-                                  "\n                        "
+                                  "\n                          "
                               )
                             ]),
                             _vm._v(" "),
@@ -102406,7 +102326,7 @@ var render = function() {
                                       attrs: { src: message.message }
                                     }),
                                     _vm._v(
-                                      "\n                            Your browser does not support the audio element.\n                        "
+                                      "\n              Your browser does not support the audio element.\n            "
                                     )
                                   ]
                                 )
@@ -102437,9 +102357,9 @@ var render = function() {
                           ? _c("span", [
                               _c("span", [
                                 _vm._v(
-                                  "\n                            " +
+                                  "\n                              " +
                                     _vm._s(_vm.getFileName(message.message)) +
-                                    "\n                        "
+                                    "\n                          "
                                 )
                               ]),
                               _vm._v(" "),
@@ -102548,14 +102468,14 @@ var render = function() {
                           : message.type == "text"
                             ? _c("span", [
                                 _vm._v(
-                                  "\n                        " +
+                                  "\n                          " +
                                     _vm._s(message.message) +
-                                    "\n                    "
+                                    "\n                      "
                                 )
                               ])
                             : _c("span", [
                                 _vm._v(
-                                  "\n                        File can not be uploaded.\n                    "
+                                  "\n                          File can not be uploaded.\n                      "
                                 )
                               ]),
                   _vm._v(" "),
@@ -102697,8 +102617,7 @@ var render = function() {
                     [
                       _c("img", {
                         attrs: {
-                          src:
-                            "/resumeApp/resources/assets/images/Microphone_1.png",
+                          src: "/images/Microphone_1.png",
                           alt: "mic",
                           width: "25px"
                         }
@@ -102815,11 +102734,7 @@ var staticRenderFns = [
           staticClass: "pageHeading",
           staticStyle: { "padding-bottom": "50px", "padding-top": "50px" }
         },
-        [
-          _vm._v(
-            "\n                You have no conversations yet.\n            "
-          )
-        ]
+        [_vm._v("\n        You have no conversations yet.\n      ")]
       ),
       _c("br")
     ])
@@ -104749,7 +104664,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n.emailTemplate{\n    padding: 20px;\n    border-radius: 5px;\n    margin: 10px;\n    text-transform: uppercase;\n    border: 2px solid lightgrey;\n    text-align:center;\n    color: #697786;\n    font-family: Roboto;\n}\n.emailTemplate:hover{\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.list-item {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active,\n.list-leave-active {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter,\n.list-leave-to\n\n/* .list-leave-active below version 2.1.8 */\n  {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n.emailTemplate {\n  padding: 20px;\n  border-radius: 5px;\n  margin: 10px;\n  text-transform: uppercase;\n  border: 2px solid lightgrey;\n  text-align: center;\n  color: #697786;\n  font-family: Roboto;\n}\n.emailTemplate:hover {\n  cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -104853,97 +104768,112 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            currEmail: '',
-            mailsList: [],
-            template: '',
-            currEmailSubject: '',
-            templatesList: ['company_info', 'test_mail_content']
-        };
+  data: function data() {
+    return {
+      currEmail: '',
+      mailsList: [],
+      template: '',
+      currEmailSubject: '',
+      templatesList: ['company_info', 'test_mail_content']
+    };
+  },
+
+  methods: {
+    addEmail: function addEmail() {
+      // validate it is an email :
+      if (this.isValidEmailAddress(this.currEmail)) {
+        this.mailsList.push(this.currEmail);
+        this.currEmail = '';
+      } else {
+        alert('Not valid mail');
+      }
     },
-
-    methods: {
-        addEmail: function addEmail() {
-            // validate it is an email :
-            if (this.isValidEmailAddress(this.currEmail)) {
-                this.mailsList.push(this.currEmail);
-                this.currEmail = '';
-            } else {
-                alert('Not valid mail');
-            }
-        },
-        deleteEmail: function deleteEmail(mail) {
-            var emails = this.mailsList;
-            $.each(emails, function (i) {
-                if (emails[i] === mail) {
-                    emails.splice(i, 1);
-                    return false;
-                }
-            });
-        },
-        sendEmail: function sendEmail() {
-            var _this = this;
-
-            var data = {
-                emailTemplate: this.template,
-                mailingList: this.mailsList,
-                emailSubject: this.currEmailSubject
-            };
-            if (this.canSend()) {
-                $('#sendEmailBtn').attr('disabled', true);
-                $('#sendEmailBtn').text('Sending');
-                axios.post('/send_emails', data).then(function (response) {
-                    alert(response.data);
-                    _this.mailsList = [];
-                    _this.template = '';
-                    _this.currEmailSubject = '';
-                    $('#sendEmailBtn').attr('disabled', false);
-                    $('#sendEmailBtn').text('Send');
-                    $('.emailTemplate').css('border', '2px lightgrey solid');
-                });
-            } else {
-                alert('Please fill in empty fields !');
-            }
-        },
-        chooseTemplate: function chooseTemplate(template) {
-            var _this2 = this;
-
-            $('.emailTemplate').css('border', '2px lightgrey solid');
-            var templates = this.templatesList;
-            $(templates).each(function (i) {
-                if (templates[i] === template) {
-                    _this2.template = template;
-                    $('#' + template).css('border', '2px #0D96DB solid');
-                    return false;
-                }
-            });
-        },
-        canSend: function canSend() {
-            if (this.mailsList.length > 0 && this.template.length > 0 && this.currEmailSubject.length > 0) {
-                return true;
-            } else {
-                return false;
-            }
-        },
-        viewTemplate: function viewTemplate(template) {
-            axios.post('/get_emailTemplate', {
-                templateName: template
-            }).then(function (response) {
-                $('#templateContent').html(response.data);
-                $('#openTemplateModal').click();
-                $('#emailsheader').css('padding-top', '80px');
-                $('.customFooter').css('background', 'whitesmoke');
-            });
-        },
-        isValidEmailAddress: function isValidEmailAddress(emailAddress) {
-            var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
-            return pattern.test(emailAddress);
+    deleteEmail: function deleteEmail(mail) {
+      var emails = this.mailsList;
+      $.each(emails, function (i) {
+        if (emails[i] === mail) {
+          emails.splice(i, 1);
+          return false;
         }
+      });
     },
-    created: function created() {}
+    sendEmail: function sendEmail() {
+      var _this = this;
+
+      var data = {
+        emailTemplate: this.template,
+        mailingList: this.mailsList,
+        emailSubject: this.currEmailSubject
+      };
+      if (this.canSend()) {
+        $('#sendEmailBtn').attr('disabled', true);
+        $('#sendEmailBtn').text('Sending');
+        axios.post('/send_emails', data).then(function (response) {
+          alert(response.data);
+          _this.mailsList = [];
+          _this.template = '';
+          _this.currEmailSubject = '';
+          $('#sendEmailBtn').attr('disabled', false);
+          $('#sendEmailBtn').text('Send');
+          $('.emailTemplate').css('border', '2px lightgrey solid');
+        });
+      } else {
+        alert('Please fill in empty fields !');
+      }
+    },
+    chooseTemplate: function chooseTemplate(template) {
+      var _this2 = this;
+
+      $('.emailTemplate').css('border', '2px lightgrey solid');
+      var templates = this.templatesList;
+      $(templates).each(function (i) {
+        if (templates[i] === template) {
+          _this2.template = template;
+          $('#' + template).css('border', '2px #0D96DB solid');
+          return false;
+        }
+      });
+    },
+    canSend: function canSend() {
+      if (this.mailsList.length > 0 && this.template.length > 0 && this.currEmailSubject.length > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    viewTemplate: function viewTemplate(template) {
+      axios.post('/get_emailTemplate', {
+        templateName: template
+      }).then(function (response) {
+        $('#templateContent').html(response.data);
+        $('#openTemplateModal').click();
+        $('#emailsheader').css('padding-top', '80px');
+        $('.customFooter').css('background', 'whitesmoke');
+      });
+    },
+    isValidEmailAddress: function isValidEmailAddress(emailAddress) {
+      var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+      return pattern.test(emailAddress);
+    }
+  },
+  created: function created() {}
 });
 
 /***/ }),
@@ -104962,7 +104892,7 @@ var render = function() {
         staticStyle: { "padding-bottom": "15px", "padding-top": "20px" },
         attrs: { id: "emailsheader" }
       },
-      [_vm._v("\n        Emails list\n    ")]
+      [_vm._v("\n    Emails list\n  ")]
     ),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
@@ -104992,7 +104922,7 @@ var render = function() {
                 staticClass: "form-control",
                 staticStyle: {
                   background:
-                    "white url('/resumeApp/resources/assets/images/add_skill.png')  no-repeat right .75rem center",
+                    "white url('/images/add_skill.png')  no-repeat right .75rem center",
                   "background-size": "15px 15px"
                 },
                 attrs: {
@@ -105049,7 +104979,7 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n                " + _vm._s(mail) + "\n                "
+                  "\n                  " + _vm._s(mail) + "\n                  "
                 ),
                 _c(
                   "button",
@@ -105083,7 +105013,7 @@ var render = function() {
     _c(
       "div",
       { staticClass: "pageHeading", staticStyle: { "padding-bottom": "15px" } },
-      [_vm._v("\n        Choose Template\n    ")]
+      [_vm._v("\n    Choose Template\n  ")]
     ),
     _vm._v(" "),
     _c(
@@ -105103,7 +105033,7 @@ var render = function() {
             }
           },
           [
-            _vm._v("\n            " + _vm._s(template)),
+            _vm._v("\n      " + _vm._s(template)),
             _c("br"),
             _vm._v(" "),
             _c(
@@ -105130,7 +105060,7 @@ var render = function() {
     _c(
       "div",
       { staticClass: "pageHeading", staticStyle: { "padding-bottom": "15px" } },
-      [_vm._v("\n        Enter email subject\n    ")]
+      [_vm._v("\n    Enter email subject\n  ")]
     ),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
@@ -105323,7 +105253,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+exports.push([module.i, "\n.list-item {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active,\n.list-leave-active {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter,\n.list-leave-to\n\n/* .list-leave-active below version 2.1.8 */\n  {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n", ""]);
 
 // exports
 
@@ -105399,60 +105329,77 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['job'],
-    data: function data() {
-        return {
-            currEmail: '',
-            invitationData: {
-                job_id: this.job.id,
-                mailingLists: [],
-                customEmails: []
-            }
-        };
-    },
+  props: ['job'],
+  data: function data() {
+    return {
+      currEmail: '',
+      invitationData: {
+        job_id: this.job.id,
+        mailingLists: [],
+        customEmails: []
+      }
+    };
+  },
 
-    methods: {
-        invite: function invite() {
-            // check before invitation
-            if (this.invitationData.mailingLists.length < 1 && this.invitationData.customEmails.length < 1) {
-                alert('Please choose mailing list or add custom emails');
-                return;
-            }
-            var sendBtn = $('#sendInv');
-            sendBtn.prop('disabled', true);
-            $('#sendInv').text('Sending..');
-            axios.post('/admin/invite', this.invitationData).then(function (response) {
-                sendBtn.text('Invitation sent');
-                sendBtn.css('background', 'lightgreen');
-                sendBtn.css('border', 'none');
-            });
-        },
-        addEmail: function addEmail() {
-            // validate it is an email :
-            if (this.isValidEmailAddress(this.currEmail)) {
-                this.invitationData.customEmails.push(this.currEmail);
-                this.currEmail = '';
-            } else {
-                alert('Not valid mail');
-            }
-        },
-        deleteEmail: function deleteEmail(mail) {
-            var emails = this.invitationData.customEmails;
-            $.each(emails, function (i) {
-                if (emails[i] === mail) {
-                    emails.splice(i, 1);
-                    return false;
-                }
-            });
-        },
-        isValidEmailAddress: function isValidEmailAddress(emailAddress) {
-            var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
-            return pattern.test(emailAddress);
-        }
+  methods: {
+    invite: function invite() {
+      // check before invitation
+      if (this.invitationData.mailingLists.length < 1 && this.invitationData.customEmails.length < 1) {
+        alert('Please choose mailing list or add custom emails');
+        return;
+      }
+      var sendBtn = $('#sendInv');
+      sendBtn.prop('disabled', true);
+      $('#sendInv').text('Sending..');
+      axios.post('/admin/invite', this.invitationData).then(function (response) {
+        sendBtn.text('Invitation sent');
+        sendBtn.css('background', 'lightgreen');
+        sendBtn.css('border', 'none');
+      });
     },
-    created: function created() {}
+    addEmail: function addEmail() {
+      // validate it is an email :
+      if (this.isValidEmailAddress(this.currEmail)) {
+        this.invitationData.customEmails.push(this.currEmail);
+        this.currEmail = '';
+      } else {
+        alert('Not valid mail');
+      }
+    },
+    deleteEmail: function deleteEmail(mail) {
+      var emails = this.invitationData.customEmails;
+      $.each(emails, function (i) {
+        if (emails[i] === mail) {
+          emails.splice(i, 1);
+          return false;
+        }
+      });
+    },
+    isValidEmailAddress: function isValidEmailAddress(emailAddress) {
+      var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+      return pattern.test(emailAddress);
+    }
+  },
+  created: function created() {}
 });
 
 /***/ }),
@@ -105465,13 +105412,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "pageHeading" }, [
-      _vm._v("\n        Send job invitation\n    ")
+      _vm._v("\n    Send job invitation\n  ")
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "pageSubHeading" }, [
-      _vm._v("\n        Title: " + _vm._s(this.job.title)),
+      _vm._v("\n    Title: " + _vm._s(this.job.title)),
       _c("br"),
-      _vm._v("\n        Desc: " + _vm._s(this.job.description) + "\n    ")
+      _vm._v("\n    Desc: " + _vm._s(this.job.description) + "\n  ")
     ]),
     _vm._v(" "),
     _c("br"),
@@ -105479,7 +105426,7 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "panelFormLabel" }, [
-          _vm._v("\n                Please choose mailing list :\n            ")
+          _vm._v("\n        Please choose mailing list :\n      ")
         ]),
         _vm._v(" "),
         _c("br"),
@@ -105686,7 +105633,7 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "panelFormLabel" }, [
-          _vm._v("\n                Add custom emails\n            ")
+          _vm._v("\n        Add custom emails\n      ")
         ]),
         _vm._v(" "),
         _c(
@@ -105714,7 +105661,7 @@ var render = function() {
                 staticClass: "form-control",
                 staticStyle: {
                   background:
-                    "white url('/resumeApp/resources/assets/images/add_skill.png')  no-repeat right .75rem center",
+                    "white url('/images/add_skill.png')  no-repeat right .75rem center",
                   "background-size": "15px 15px"
                 },
                 attrs: {
@@ -105771,7 +105718,7 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n                " + _vm._s(mail) + "\n                "
+                  "\n                  " + _vm._s(mail) + "\n                  "
                 ),
                 _c(
                   "button",

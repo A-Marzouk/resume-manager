@@ -35,7 +35,7 @@
                         data-amount="{{$amountToPay}}"
                         data-name="Hire  {{$user->name}}"
                         data-description="for 10 hours"
-                        data-image="/resumeApp/public/images/newResume/logo.png"
+                        data-image="/images/newResume/logo.png"
                         data-locale="auto">
                 </script>
                 <script>
@@ -57,7 +57,7 @@
 <div id="quote">
     <div class="row">
         <div class="col-lg-1 offset-lg-1">
-            <img src="/resumeApp/public/images/newResume/quote.png" alt="quote">
+            <img src="/images/newResume/quote.png" alt="quote">
         </div>
         <div class="col-lg-10 col-md-12">
             <div class="quoteText">

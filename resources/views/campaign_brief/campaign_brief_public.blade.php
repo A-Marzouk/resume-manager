@@ -7,15 +7,15 @@
                 <div class="row">
                     <div class="col-md-6 col-12" style="padding-top: 20px;">
                         <div>
-                            <img src="/resumeApp/public/images/newResume/123wf_logo.png" alt="logo" width="100%">
+                            <img src="/images/newResume/123wf_logo.png" alt="logo" width="100%">
                         </div>
                         <div style="padding-top: 20px;">
-                            <img src="/resumeApp/resources/assets/images/invoice/camp_brief_word.png" alt="word" width="100%">
+                            <img src="/images/invoice/camp_brief_word.png" alt="word" width="100%">
                         </div>
                     </div>
                     <div class="col-md-4 offset-md-2 d-none d-md-block">
                         <div>
-                            <img src="/resumeApp/resources/assets/images/invoice/circle_logo.png" alt="word" width="auto" height="120px">
+                            <img src="/images/invoice/circle_logo.png" alt="word" width="auto" height="120px">
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 <div id="video">
     <div class="row">
         <div class="col-md-5 offset-md-1 videoHeading">
-            <img src="/resumeApp/public/images/newResume/videoIcon.png" alt="video">
+            <img src="/images/newResume/videoIcon.png" alt="video">
             <span class="quoteText">
                 Video Introduction
             </span>

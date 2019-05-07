@@ -6,11 +6,11 @@
             </div>
             <div class="hoursBtn NoDecor">
                 <a href="javascript:void(0)" id="hoursMinus{{$freelancer->id}}{{$value['id']}}" class="hoursMinus">
-                    <img src="/resumeApp/public/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">
+                    <img src="/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">
                 </a>
                 <span id="numberOfHours{{$freelancer->id}}{{$value['id']}}">@if($freelancer->userData->availableHours==0) 0 @else {{$freelancer->userData->availableHours}} @endif</span> hours
                 <a href="javascript:void(0)" id="hoursPlus{{$freelancer->id}}{{$value['id']}}" class="hoursPlus">
-                    <img src="/resumeApp/public/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus">
+                    <img src="/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus">
                 </a>
             </div>
         </div>
@@ -22,11 +22,11 @@
             </div>
             <div class="hoursBtn NoDecor">
                 <a href="javascript:void(0)" id="weeksMinus{{$freelancer->id}}{{$value['id']}}" class="weeksMinus">
-                    <img src="/resumeApp/public/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">
+                    <img src="/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">
                 </a>
                 <span id="numberOfWeeks{{$freelancer->id}}{{$value['id']}}">4</span> weeks
                 <a href="javascript:void(0)" id="weeksPlus{{$freelancer->id}}{{$value['id']}}" class="weeksPlus">
-                    <img src="/resumeApp/public/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus">
+                    <img src="/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus">
                 </a>
             </div>
         </div>

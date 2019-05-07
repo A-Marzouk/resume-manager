@@ -7,10 +7,10 @@
                 <div class="row">
                     <div class="col-md-4 col-12">
                         <div>
-                            <img src="/resumeApp/public/images/newResume/123wf_logo.png" alt="logo" width="100%">
+                            <img src="/images/newResume/123wf_logo.png" alt="logo" width="100%">
                         </div>
                         <div style="padding-top: 10px;">
-                            <img src="/resumeApp/resources/assets/images/invoice/invoice_word.png" alt="word" width="99%">
+                            <img src="/images/invoice/invoice_word.png" alt="word" width="99%">
                         </div>
                         <div class="invoiceNumber">
                             Invoice Number {{$invoice->unique_number}}
@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-md-4 offset-md-4 d-none d-md-block">
                         <div>
-                            <img src="/resumeApp/resources/assets/images/invoice/circle_logo.png" alt="word" width="auto" height="150px">
+                            <img src="/images/invoice/circle_logo.png" alt="word" width="auto" height="150px">
                         </div>
                     </div>
                 </div>
@@ -189,7 +189,7 @@
                                         data-amount=""
                                         data-name="123 Workforce"
                                         data-description="Custom payment"
-                                        data-image="/resumeApp/public/images/newResume/logo.png"
+                                        data-image="/images/newResume/logo.png"
                                         data-locale="auto"
                                         id="customPayment">
                                 </script>
@@ -242,7 +242,7 @@
 
                 <div class="row" style="padding-top:15px; ">
                     <div class="col-md-8 col-12">
-                        <img src="/resumeApp/resources/assets/images/invoice/payment-systems.png" alt="payment" width="100%">
+                        <img src="/images/invoice/payment-systems.png" alt="payment" width="100%">
                     </div>
                     <div class="col-12" style="padding-top: 25px;">
                         <a href="{{route('invoice.to.pdf',$invoice->unique_number)}}"  target="_blank" class="btn btn-primary">Export as PDF</a>

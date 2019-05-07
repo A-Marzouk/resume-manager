@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div id="freelancerRegister">
+    <div id="freelancerRegisterComponent">
         <freelancer-register></freelancer-register>
     </div>
 

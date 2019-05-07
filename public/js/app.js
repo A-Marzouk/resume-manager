@@ -14314,6 +14314,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_freelancer_dashboardComponents_CampaignManager_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_freelancer_dashboardComponents_CampaignManager_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_freelancer_dashboardComponents_MyAccount_vue__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_freelancer_dashboardComponents_MyAccount_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_freelancer_dashboardComponents_MyAccount_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_freelancer_registerForms_page1_vue__ = __webpack_require__(421);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_freelancer_registerForms_page1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_freelancer_registerForms_page1_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_freelancer_registerForms_page2_vue__ = __webpack_require__(424);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_freelancer_registerForms_page2_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_freelancer_registerForms_page2_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -14378,7 +14382,7 @@ Vue.component('campaign-agents', __webpack_require__(105));
 
 
 
-if ($("#campaignMainComponent").length !== 0) {
+if ($('#campaignMainComponent').length !== 0) {
     var routes = [{ path: '/:campaign-team', component: __WEBPACK_IMPORTED_MODULE_2__components_client_campaignComponents_CampaignTeam_vue___default.a }, { path: '/:campaign-brief', component: __WEBPACK_IMPORTED_MODULE_3__components_client_campaignComponents_CampaignBrief_vue___default.a }, { path: '/', component: __WEBPACK_IMPORTED_MODULE_1__components_client_campaignComponents_CampaignActivity_vue___default.a }];
 
     var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
@@ -14391,7 +14395,7 @@ if ($("#campaignMainComponent").length !== 0) {
     });
 }
 
-if ($("#clientDashboardComponent").length !== 0) {
+if ($('#clientDashboardComponent').length !== 0) {
 
     var _routes = [{ path: '/client/dashboard/my-account', component: __WEBPACK_IMPORTED_MODULE_6__components_client_dashboardComponents_MyAccount_vue___default.a }, { path: '/client/dashboard/payments', component: __WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_Payments_vue___default.a }, { path: '/client', component: __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue___default.a }, { path: '/client/dashboard', component: __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue___default.a }, { path: '/client/dashboard/*', component: __WEBPACK_IMPORTED_MODULE_4__components_client_dashboardComponents_CampaignManager_vue___default.a }];
 
@@ -14406,97 +14410,97 @@ if ($("#clientDashboardComponent").length !== 0) {
     });
 }
 
-if ($("#addAgentComponent").length !== 0) {
+if ($('#addAgentComponent').length !== 0) {
 
     var addAgentComponent = new Vue({
         el: '#addAgentComponent'
     });
 }
 
-if ($("#loginComponent").length !== 0) {
+if ($('#loginComponent').length !== 0) {
 
     var loginComponent = new Vue({
         el: '#loginComponent'
     });
 }
 
-if ($("#campaignAgent").length !== 0) {
+if ($('#campaignAgent').length !== 0) {
 
     var campaignAgent = new Vue({
         el: '#campaignAgent'
     });
 }
 
-if ($("#managerCalculation").length !== 0) {
+if ($('#managerCalculation').length !== 0) {
 
     var managerCalculation = new Vue({
         el: '#managerCalculation'
     });
 }
 
-if ($("#clientRegister").length !== 0) {
+if ($('#clientRegister').length !== 0) {
 
     var clientRegister = new Vue({
         el: '#clientRegister'
     });
 }
 
-if ($("#serviceAgreement").length !== 0) {
+if ($('#serviceAgreement').length !== 0) {
 
     var serviceAgreement = new Vue({
         el: '#serviceAgreement'
     });
 }
-if ($("#updateSubPlan").length !== 0) {
+if ($('#updateSubPlan').length !== 0) {
 
     var updateSubPlan = new Vue({
         el: '#updateSubPlan'
     });
 }
 
-if ($("#privacyAgreement").length !== 0) {
+if ($('#privacyAgreement').length !== 0) {
 
     var privacyAgreement = new Vue({
         el: '#privacyAgreement'
     });
 }
 
-if ($("#paymentShowInvoice").length !== 0) {
+if ($('#paymentShowInvoice').length !== 0) {
 
     var paymentShowInvoice = new Vue({
         el: '#paymentShowInvoice'
     });
 }
 
-if ($("#paymentPay").length !== 0) {
+if ($('#paymentPay').length !== 0) {
 
     var paymentPay = new Vue({
         el: '#paymentPay'
     });
 }
 
-if ($("#subSetUp").length !== 0) {
+if ($('#subSetUp').length !== 0) {
 
     var subSetUp = new Vue({
         el: '#subSetUp'
     });
 }
 
-if ($("#addAgent").length !== 0) {
+if ($('#addAgent').length !== 0) {
 
     var addAgent = new Vue({
         el: '#addAgent'
     });
 }
 
-if ($("#campaignArchives").length !== 0) {
+if ($('#campaignArchives').length !== 0) {
 
     var campaignArchives = new Vue({
         el: '#campaignArchives'
     });
 }
 
-if ($("#account_info_edit").length !== 0) {
+if ($('#account_info_edit').length !== 0) {
 
     var account_info_edit = new Vue({
         el: '#account_info_edit'
@@ -14508,6 +14512,10 @@ if ($("#account_info_edit").length !== 0) {
 
 
 
+// Register forms
+
+
+
 Vue.component('freelancer-register', __webpack_require__(416));
 Vue.component('freelancer-dashboard', __webpack_require__(152));
 Vue.component('freelancer-campaign-archives', __webpack_require__(155));
@@ -14515,23 +14523,31 @@ Vue.component('freelancer-campaign-main', __webpack_require__(160));
 Vue.component('freelancer-account-info-edit', __webpack_require__(165));
 Vue.component('freelancer-professional-info-edit', __webpack_require__(170));
 
-if ($("#freelancerRegister").length !== 0) {
+if ($('#freelancerRegisterComponent').length !== 0) {
 
-    var freelancerRegister = new Vue({
-        el: '#freelancerRegister'
+    var _routes2 = [{ path: '/freelancer/register', component: __WEBPACK_IMPORTED_MODULE_10__components_freelancer_registerForms_page1_vue___default.a }, { path: '/freelancer/register#page2', component: __WEBPACK_IMPORTED_MODULE_11__components_freelancer_registerForms_page2_vue___default.a }];
+
+    var _router2 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+        mode: 'history',
+        routes: _routes2
+    });
+
+    var freelancerRegisterComponent = new Vue({
+        router: _router2,
+        el: '#freelancerRegisterComponent'
     });
 }
 
 if ($('#freelancerDashboardComponent').length !== 0) {
-    var _routes2 = [{ path: '/freelancer/:my-account', component: __WEBPACK_IMPORTED_MODULE_9__components_freelancer_dashboardComponents_MyAccount_vue___default.a }, { path: '/freelancer', component: __WEBPACK_IMPORTED_MODULE_8__components_freelancer_dashboardComponents_CampaignManager_vue___default.a }];
+    var _routes3 = [{ path: '/freelancer/:my-account', component: __WEBPACK_IMPORTED_MODULE_9__components_freelancer_dashboardComponents_MyAccount_vue___default.a }, { path: '/freelancer', component: __WEBPACK_IMPORTED_MODULE_8__components_freelancer_dashboardComponents_CampaignManager_vue___default.a }];
 
-    var _router2 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-        routes: _routes2,
+    var _router3 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+        routes: _routes3,
         mode: 'history'
     });
 
     var freelancerDashboardComponent = new Vue({
-        router: _router2,
+        router: _router3,
         el: '#freelancerDashboardComponent'
     });
 }
@@ -14543,27 +14559,27 @@ if ($('#freelancerCampaignArchives').length !== 0) {
 }
 
 if ($('#freelancerCampaignMainComponent').length !== 0) {
-    var _routes3 = [{ path: '/freelancer/campaign-team', component: __WEBPACK_IMPORTED_MODULE_2__components_client_campaignComponents_CampaignTeam_vue___default.a }, { path: '/freelancer/campaign-brief', component: __WEBPACK_IMPORTED_MODULE_3__components_client_campaignComponents_CampaignBrief_vue___default.a }, { path: '/freelancer/campaign', component: __WEBPACK_IMPORTED_MODULE_7__components_freelancer_campaignComponents_CampaignActivity_vue___default.a }];
+    var _routes4 = [{ path: '/freelancer/campaign-team', component: __WEBPACK_IMPORTED_MODULE_2__components_client_campaignComponents_CampaignTeam_vue___default.a }, { path: '/freelancer/campaign-brief', component: __WEBPACK_IMPORTED_MODULE_3__components_client_campaignComponents_CampaignBrief_vue___default.a }, { path: '/freelancer/campaign', component: __WEBPACK_IMPORTED_MODULE_7__components_freelancer_campaignComponents_CampaignActivity_vue___default.a }];
 
-    var _router3 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-        routes: _routes3,
+    var _router4 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+        routes: _routes4,
         mode: 'history'
     });
 
     var freelancerCampaignMainComponent = new Vue({
-        router: _router3,
+        router: _router4,
         el: '#freelancerCampaignMainComponent'
     });
 }
 
-if ($("#freelancer_account_info_edit").length !== 0) {
+if ($('#freelancer_account_info_edit').length !== 0) {
 
     var freelancer_account_info_edit = new Vue({
         el: '#freelancer_account_info_edit'
     });
 }
 
-if ($("#freelancer_professional_info_edit").length !== 0) {
+if ($('#freelancer_professional_info_edit').length !== 0) {
 
     var freelancer_professional_info_edit = new Vue({
         el: '#freelancer_professional_info_edit'
@@ -14673,154 +14689,154 @@ Vue.component('business-support-users', __webpack_require__(395));
 Vue.component('send-emails', __webpack_require__(400));
 Vue.component('send-invitations', __webpack_require__(405));
 
-if ($("#searchFreelancers").length !== 0) {
+if ($('#searchFreelancers').length !== 0) {
     var searchFreelancers = new Vue({
         el: '#searchFreelancers'
     });
 }
 
-if ($("#record_input").length !== 0) {
+if ($('#record_input').length !== 0) {
     var record_input = new Vue({
         el: '#record_input'
     });
 }
 
-if ($("#faq_list").length !== 0) {
+if ($('#faq_list').length !== 0) {
     var faq_list = new Vue({
         el: '#faq_list'
     });
 }
 
-if ($("#currentSubscriptions").length !== 0) {
+if ($('#currentSubscriptions').length !== 0) {
     var currentSubscriptions = new Vue({
         el: '#currentSubscriptions'
     });
 }
 
-if ($("#activityLog").length !== 0) {
+if ($('#activityLog').length !== 0) {
     var activityLog = new Vue({
         el: '#activityLog'
     });
 }
-if ($("#businessSupport").length !== 0) {
+if ($('#businessSupport').length !== 0) {
     var businessSupport = new Vue({
         el: '#businessSupport'
     });
 }
 
-if ($("#timeTable").length !== 0) {
+if ($('#timeTable').length !== 0) {
     var timeTable = new Vue({
         el: '#timeTable'
     });
 }
 
-if ($("#terms_bar").length !== 0) {
+if ($('#terms_bar').length !== 0) {
     var terms_bar = new Vue({
         el: '#terms_bar'
     });
 }
 
-if ($("#agent_terms_bar").length !== 0) {
+if ($('#agent_terms_bar').length !== 0) {
     var agent_terms_bar = new Vue({
         el: '#agent_terms_bar'
     });
 }
 
-if ($("#agents").length !== 0) {
+if ($('#agents').length !== 0) {
     var agents = new Vue({
         el: '#agents'
     });
 }
 
-if ($("#bookings_calendar").length !== 0) {
+if ($('#bookings_calendar').length !== 0) {
     var bookings_calendar = new Vue({
         el: '#bookings_calendar'
     });
 }
 
-if ($("#clientJobs").length !== 0) {
+if ($('#clientJobs').length !== 0) {
     var clientJobs = new Vue({
         el: '#clientJobs'
     });
 }
-if ($("#send_emails_vue").length !== 0) {
+if ($('#send_emails_vue').length !== 0) {
     var send_emails_vue = new Vue({
         el: '#send_emails_vue'
     });
 }
-if ($("#send_invitations_vue").length !== 0) {
+if ($('#send_invitations_vue').length !== 0) {
     var send_invitations_vue = new Vue({
         el: '#send_invitations_vue'
     });
 }
 
-if ($("#newChat").length !== 0) {
+if ($('#newChat').length !== 0) {
     var newChat = new Vue({
         el: '#newChat'
     });
 }
 
-if ($("#cbriefs").length !== 0) {
+if ($('#cbriefs').length !== 0) {
     var cbriefs = new Vue({
         el: '#cbriefs'
     });
 }
 
-if ($("#work_overview").length !== 0) {
+if ($('#work_overview').length !== 0) {
     var work_overview = new Vue({
         el: '#work_overview'
     });
 }
 
-if ($("#freelancer_works").length !== 0) {
+if ($('#freelancer_works').length !== 0) {
     var freelancer_works = new Vue({
         el: '#freelancer_works'
     });
 }
 
-if ($("#freelancer_educations").length !== 0) {
+if ($('#freelancer_educations').length !== 0) {
     var freelancer_educations = new Vue({
         el: '#freelancer_educations'
     });
 }
 
-if ($("#client_invoices").length !== 0) {
+if ($('#client_invoices').length !== 0) {
     var client_invoices = new Vue({
         el: '#client_invoices'
     });
 }
 
-if ($("#client_services").length !== 0) {
+if ($('#client_services').length !== 0) {
     var client_services = new Vue({
         el: '#client_services'
     });
 }
 
-if ($("#client_campaings").length !== 0) {
+if ($('#client_campaings').length !== 0) {
     var client_campaings = new Vue({
         el: '#client_campaings'
     });
 }
 
-if ($("#freelancer_records").length !== 0) {
+if ($('#freelancer_records').length !== 0) {
     var freelancer_records = new Vue({
         el: '#freelancer_records'
     });
 }
 
-if ($("#freelancer_references").length !== 0) {
+if ($('#freelancer_references').length !== 0) {
     var freelancer_references = new Vue({
         el: '#freelancer_references'
     });
 }
 
-if ($("#freelancer_skills").length !== 0) {
+if ($('#freelancer_skills').length !== 0) {
     var freelancer_skills = new Vue({
         el: '#freelancer_skills'
     });
 }
 
-if ($("#VueChat").length !== 0) {
+if ($('#VueChat').length !== 0) {
     var app = new Vue({
         el: '#VueChat',
         data: {
@@ -14847,12 +14863,12 @@ if ($("#VueChat").length !== 0) {
                     }
                 });
                 //scroll down :
-                if ($("#chatBox").length) {
+                if ($('#chatBox').length) {
                     $('#messagesBox').animate({ scrollTop: $('#messagesBox')[0].scrollHeight }, 'slow');
                 }
-                if ($("#chatLogs").length && this.currentUser.admin == 1) {
+                if ($('#chatLogs').length && this.currentUser.admin == 1) {
                     setTimeout(function () {
-                        $('html,body').animate({ scrollTop: $("#sendMessage").offset().top }, 'slow');
+                        $('html,body').animate({ scrollTop: $('#sendMessage').offset().top }, 'slow');
                     }, 2000);
                 }
                 // save to DB and so on.
@@ -14898,13 +14914,13 @@ if ($("#VueChat").length !== 0) {
 
                 // scroll down : only if message is to this conversation.
                 if (_this.currentConvId == e.message.conversation_id) {
-                    if ($("#chatLogs").length) {
+                    if ($('#chatLogs').length) {
                         setTimeout(function () {
-                            $('html,body').animate({ scrollTop: $("#sendMessage").offset().top }, 'slow');
+                            $('html,body').animate({ scrollTop: $('#sendMessage').offset().top }, 'slow');
                         }, 2000);
                     }
                     // play sound :
-                    var chatAudio = document.getElementById("chatAudio");
+                    var chatAudio = document.getElementById('chatAudio');
 
                     // if user is not admin and message is from admin
                     if (_this.currentUser.admin != 1 && e.message.user_id == 2) {
@@ -110235,10 +110251,1257 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            formData: {
+                name: '',
+                surname: '',
+                gender: '',
+                phone: '',
+                email: '',
+                timeZone: '',
+                city: '',
+                paypal: ''
+            },
+            canSubmit: false,
+            errors: []
+        };
+    },
+
+    methods: {
+        submitForm: function submitForm() {
+            var _this = this;
+
+            if ($('#submitBtnWrapper').hasClass('disabled-btn')) {
+                return;
+            }
+            this.canSubmit = false;
+            axios.post('/client/register/submit', this.formData).then(function (response) {
+                if (response.data.status === 'success') {
+                    // redirect to client dashboard
+                    window.location.href = '/client';
+                }
+                _this.errors = response.data.errors;
+            });
+        },
+        clearInput: function clearInput(inputName) {
+            this.formData[inputName] = '';
+        }
+    },
+    watch: {
+        formData: {
+            handler: function handler() {
+                // check if all formData values are filled
+                var values = Object.values(this.formData);
+                var isAll_filled = true;
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var value = _step.value;
+
+                        if (value.length < 1) {
+                            isAll_filled = false;
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+
+                this.canSubmit = isAll_filled;
+            },
+
+            deep: true
+        }
+    }
+});
+
+/***/ }),
+/* 420 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass:
+        "d-flex justify-content-center flex-column align-items-center"
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "account-info-edit-wrapper" },
+        [_vm._m(0), _vm._v(" "), _c("keep-alive", [_c("router-view")], 1)],
+        1
+      ),
+      _vm._v(" "),
+      _vm._m(1)
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "nav",
+      { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
+      [
+        _c("div", { staticClass: "backBtn" }, [
+          _c("a", { attrs: { href: "/" } }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/arrow_back.png",
+                alt: "back-icon"
+              }
+            })
+          ]),
+          _vm._v("\n                BECOME AN AGENT\n            ")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "pt-3 no-decoration d-flex justify-content-center base-text align-items-center"
+      },
+      [
+        _vm._v("\n        Already have an account ? "),
+        _c("a", { staticClass: "ml-2 base-link", attrs: { href: "#" } }, [
+          _vm._v(" LOG IN ")
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-64218dd0", module.exports)
+  }
+}
+
+/***/ }),
+/* 421 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(423)
+/* template */
+var __vue_template__ = __webpack_require__(422)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\freelancer\\registerForms\\page1.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-26607bb0", Component.options)
+  } else {
+    hotAPI.reload("data-v-26607bb0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 422 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "account-info-edit dashboard-box" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "account-edit-section" }, [
+      _c("div", { staticClass: "account-edit-section-heading" }, [
+        _vm._v("\n          BASIC INFORMATION\n      ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-edit-section-inputs" }, [
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Enter your name\n              ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.name }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.name,
+                    expression: "formData.name"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "name",
+                  placeholder: "Enter your name"
+                },
+                domProps: { value: _vm.formData.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "name", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.name.length > 0,
+                    expression: "formData.name.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("name")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.name
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.name[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Enter your surname\n              ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.surname }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.surname,
+                    expression: "formData.surname"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "surname",
+                  placeholder: "Enter your surname"
+                },
+                domProps: { value: _vm.formData.surname },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "surname", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.surname.length > 0,
+                    expression: "formData.surname.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("surname")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.surname
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.surname[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Choose your gender\n              ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.gender }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.gender,
+                    expression: "formData.gender"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "gender",
+                  placeholder: "Enter your gender"
+                },
+                domProps: { value: _vm.formData.gender },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "gender", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.phone.length > 0,
+                    expression: "formData.phone.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("phone")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.gender
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.gender[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v(
+              "\n                  Enter your phone number\n              "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.phone }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.phone,
+                    expression: "formData.phone"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "phone",
+                  placeholder: "Enter your phone"
+                },
+                domProps: { value: _vm.formData.phone },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "phone", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.phone.length > 0,
+                    expression: "formData.phone.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("phone")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.phone
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.phone[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Enter your e-mail\n              ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.email }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.email,
+                    expression: "formData.email"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "email",
+                  placeholder: "Enter your email"
+                },
+                domProps: { value: _vm.formData.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "email", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.email.length > 0,
+                    expression: "formData.email.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("email")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.email
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.email[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Select your time zone\n              ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.timeZone }
+            },
+            [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.timeZone,
+                      expression: "formData.timeZone"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  staticStyle: { height: "50px" },
+                  attrs: { id: "timeZone", name: "timeZone" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.formData,
+                        "timeZone",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "", selected: "selected" } }, [
+                    _vm._v("Select your timezone")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT -7:00) Mountain Time (US & Canada)"
+                      }
+                    },
+                    [_vm._v("(GMT -7:00) Mountain Time (US & Canada)")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: { value: "(GMT -8:00) Pacific Time (US & Canada)" }
+                    },
+                    [_vm._v("(GMT -8:00) Pacific Time (US & Canada)")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT -9:00) Alaska" } }, [
+                    _vm._v("(GMT -9:00) Alaska")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "" } }, [
+                    _vm._v("--------------")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT -12:00) Eniwetok, Kwajalein" } },
+                    [_vm._v("(GMT -12:00) Eniwetok, Kwajalein")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT -11:00) Midway Island, Samoa" } },
+                    [_vm._v("(GMT -11:00) Midway Island, Samoa")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT -10:00) Hawaii" } }, [
+                    _vm._v("(GMT -10:00) Hawaii")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT -9:30) Taiohae" } }, [
+                    _vm._v("(GMT -9:30) Taiohae")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT -9:00) Alaska" } }, [
+                    _vm._v("(GMT -9:00) Alaska")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: { value: "(GMT -8:00) Pacific Time (US & Canada)" }
+                    },
+                    [_vm._v("(GMT -8:00) Pacific Time (US & Canada)")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT -7:00) Mountain Time (US & Canada)"
+                      }
+                    },
+                    [_vm._v("(GMT -7:00) Mountain Time (US & Canada)")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT -4:30) Caracas" } }, [
+                    _vm._v("(GMT -4:30) Caracas")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT -3:30) Newfoundland" } },
+                    [_vm._v("(GMT -3:30) Newfoundland")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT -3:00) Brazil, Buenos Aires, Georgetown"
+                      }
+                    },
+                    [_vm._v("(GMT -3:00) Brazil, Buenos Aires, Georgetown")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT -2:00) Mid-Atlantic" } },
+                    [_vm._v("(GMT -2:00) Mid-Atlantic")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: { value: "(GMT -1:00) Azores, Cape Verde Islands" }
+                    },
+                    [_vm._v("(GMT -1:00) Azores, Cape Verde Islands")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT +1:00) Brussels, Copenhagen, Madrid, Paris"
+                      }
+                    },
+                    [_vm._v("(GMT +1:00) Brussels, Copenhagen, Madrid, Paris")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: { value: "(GMT +2:00) Kaliningrad, South Africa" }
+                    },
+                    [_vm._v("(GMT +2:00) Kaliningrad, South Africa")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT +3:30) Tehran" } }, [
+                    _vm._v("(GMT +3:30) Tehran")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi"
+                      }
+                    },
+                    [_vm._v("(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT +4:30) Kabul" } }, [
+                    _vm._v("(GMT +4:30) Kabul")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi"
+                      }
+                    },
+                    [_vm._v("(GMT +5:30) Bombay, Calcutta, Madras, New Delhi")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +5:45) Kathmandu, Pokhara" } },
+                    [_vm._v("(GMT +5:45) Kathmandu, Pokhara")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +6:00) Almaty, Dhaka, Colombo" } },
+                    [_vm._v("(GMT +6:00) Almaty, Dhaka, Colombo")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +6:30) Yangon, Mandalay" } },
+                    [_vm._v("(GMT +6:30) Yangon, Mandalay")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +7:00) Bangkok, Hanoi, Jakarta" } },
+                    [_vm._v("(GMT +7:00) Bangkok, Hanoi, Jakarta")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
+                      }
+                    },
+                    [_vm._v("(GMT +8:00) Beijing, Perth, Singapore, Hong Kong")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT +8:45) Eucla" } }, [
+                    _vm._v("(GMT +8:45) Eucla")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +9:30) Adelaide, Darwin" } },
+                    [_vm._v("(GMT +9:30) Adelaide, Darwin")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +10:30) Lord Howe Island" } },
+                    [_vm._v("(GMT +10:30) Lord Howe Island")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +11:30) Norfolk Island" } },
+                    [_vm._v("(GMT +11:30) Norfolk Island")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +12:45) Chatham Islands" } },
+                    [_vm._v("(GMT +12:45) Chatham Islands")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +13:00) Apia, Nukualofa" } },
+                    [_vm._v("(GMT +13:00) Apia, Nukualofa")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +14:00) Line Islands, Tokelau" } },
+                    [_vm._v("(GMT +14:00) Line Islands, Tokelau")]
+                  )
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.timeZone
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.timeZone[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Enter your city name\n              ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.cityName }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.cityName,
+                    expression: "formData.cityName"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "cityName",
+                  placeholder: "You can enter several items using comas"
+                },
+                domProps: { value: _vm.formData.cityName },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "cityName", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.cityName.length > 0,
+                    expression: "formData.cityName.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("cityName")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.cityName
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.cityName[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v(
+              "\n                  Enter your PayPal acc number\n              "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.paypal }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.paypal,
+                    expression: "formData.paypal"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "paypal",
+                  placeholder: "Enter your PayPal acc number"
+                },
+                domProps: { value: _vm.formData.paypal },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "paypal", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.paypal.length > 0,
+                    expression: "formData.paypal.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("paypal")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.paypal
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.paypal[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "account-edit-section-edit-btn no-decoration",
+        class: { "disabled-btn": !_vm.canSubmit },
+        attrs: { id: "submitBtnWrapper" }
+      },
+      [
+        _c("router-link", { attrs: { to: "/freelancer/register#page2" } }, [
+          _vm._v("\n          CONTINUE\n      ")
+        ])
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "account-info-edit-heading dashboard-box-heading" },
+      [
+        _c("div", { staticClass: "left" }, [
+          _c("img", {
+            attrs: {
+              src: "/resumeApp/public/images/client/my_account/info_40px.png",
+              alt: "info icon"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", [
+            _vm._v(
+              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT\n      "
+            )
+          ])
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-26607bb0", module.exports)
+  }
+}
+
+/***/ }),
+/* 423 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
@@ -110425,1273 +111688,1279 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             formData: {
                 name: '',
-                email: '',
-                agency: '',
-                emailDept: '',
+                surname: '',
+                gender: '',
                 phone: '',
+                email: '',
                 timeZone: '',
-                password: '',
-                password_confirmation: ''
+                cityName: '',
+                paypal: ''
             },
             canSubmit: false,
             errors: []
         };
-    },
-
-    methods: {
-        submitForm: function submitForm() {
-            var _this = this;
-
-            if ($('#submitBtnWrapper').hasClass('disabled-btn')) {
-                return;
-            }
-            this.canSubmit = false;
-            axios.post('/client/register/submit', this.formData).then(function (response) {
-                if (response.data.status === 'success') {
-                    // redirect to client dashboard
-                    window.location.href = '/client';
-                }
-                _this.errors = response.data.errors;
-            });
-        },
-        clearInput: function clearInput(inputName) {
-            this.formData[inputName] = '';
-        }
-    },
-    watch: {
-        formData: {
-            handler: function handler() {
-                // check if all formData values are filled
-                var values = Object.values(this.formData);
-                var isAll_filled = true;
-                var _iteratorNormalCompletion = true;
-                var _didIteratorError = false;
-                var _iteratorError = undefined;
-
-                try {
-                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                        var value = _step.value;
-
-                        if (value.length < 1) {
-                            isAll_filled = false;
-                        }
-                    }
-                } catch (err) {
-                    _didIteratorError = true;
-                    _iteratorError = err;
-                } finally {
-                    try {
-                        if (!_iteratorNormalCompletion && _iterator.return) {
-                            _iterator.return();
-                        }
-                    } finally {
-                        if (_didIteratorError) {
-                            throw _iteratorError;
-                        }
-                    }
-                }
-
-                this.canSubmit = isAll_filled;
-            },
-
-            deep: true
-        }
     }
 });
 
 /***/ }),
-/* 420 */
+/* 424 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(425)
+/* template */
+var __vue_template__ = __webpack_require__(426)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\freelancer\\registerForms\\page2.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-266e9331", Component.options)
+  } else {
+    hotAPI.reload("data-v-266e9331", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 425 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            formData: {
+                name: '',
+                surname: '',
+                gender: '',
+                phone: '',
+                email: '',
+                timeZone: '',
+                cityName: '',
+                paypal: ''
+            },
+            canSubmit: false,
+            errors: []
+        };
+    }
+});
+
+/***/ }),
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass:
-        "d-flex justify-content-center flex-column align-items-center"
-    },
-    [
-      _c("div", { staticClass: "account-info-edit-wrapper" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "account-info-edit dashboard-box" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c("div", { staticClass: "account-edit-section" }, [
-            _c("div", { staticClass: "account-edit-section-heading" }, [
-              _vm._v(
-                "\n                    BASIC INFORMATION\n                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "account-edit-section-inputs" }, [
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Enter your agency name\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "faq-input",
-                      class: { "error-input": _vm.errors.agency }
-                    },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.formData.agency,
-                            expression: "formData.agency"
-                          }
-                        ],
-                        attrs: {
-                          type: "text",
-                          name: "agency",
-                          placeholder: "Enter your agency name"
-                        },
-                        domProps: { value: _vm.formData.agency },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.formData,
-                              "agency",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("img", {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.formData.agency.length > 0,
-                            expression: "formData.agency.length > 0"
-                          }
-                        ],
-                        attrs: {
-                          src:
-                            "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                          alt: "delete icon"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.clearInput("agency")
-                          }
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm.errors.agency
-                    ? _c("div", { staticClass: "error" }, [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.errors.agency[0]) +
-                            "\n                        "
-                        )
-                      ])
-                    : _vm._e()
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Enter name of contact person\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "faq-input",
-                      class: { "error-input": _vm.errors.name }
-                    },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.formData.name,
-                            expression: "formData.name"
-                          }
-                        ],
-                        attrs: {
-                          type: "text",
-                          name: "name",
-                          placeholder: "Enter your name"
-                        },
-                        domProps: { value: _vm.formData.name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.formData, "name", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("img", {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.formData.name.length > 0,
-                            expression: "formData.name.length > 0"
-                          }
-                        ],
-                        attrs: {
-                          src:
-                            "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                          alt: "delete icon"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.clearInput("name")
-                          }
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm.errors.name
-                    ? _c("div", { staticClass: "error" }, [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.errors.name[0]) +
-                            "\n                        "
-                        )
-                      ])
-                    : _vm._e()
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Enter contact phone\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "faq-input",
-                      class: { "error-input": _vm.errors.phone }
-                    },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.formData.phone,
-                            expression: "formData.phone"
-                          }
-                        ],
-                        attrs: {
-                          type: "text",
-                          name: "phone",
-                          placeholder: "Enter your phone"
-                        },
-                        domProps: { value: _vm.formData.phone },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.formData, "phone", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("img", {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.formData.phone.length > 0,
-                            expression: "formData.phone.length > 0"
-                          }
-                        ],
-                        attrs: {
-                          src:
-                            "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                          alt: "delete icon"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.clearInput("phone")
-                          }
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm.errors.phone
-                    ? _c("div", { staticClass: "error" }, [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.errors.phone[0]) +
-                            "\n                        "
-                        )
-                      ])
-                    : _vm._e()
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Select your time zone\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "faq-input",
-                      class: { "error-input": _vm.errors.timeZone }
-                    },
-                    [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.formData.timeZone,
-                              expression: "formData.timeZone"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          staticStyle: { height: "50px" },
-                          attrs: { id: "timeZone", name: "timeZone" },
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.formData,
-                                "timeZone",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            }
-                          }
-                        },
-                        [
-                          _c(
-                            "option",
-                            { attrs: { value: "", selected: "selected" } },
-                            [_vm._v("Select your timezone")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT -6:00) Central Time (US & Canada), Mexico City"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT -6:00) Central Time (US & Canada), Mexico City"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "(GMT -7:00) Mountain Time (US & Canada)"
-                              }
-                            },
-                            [_vm._v("(GMT -7:00) Mountain Time (US & Canada)")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "(GMT -8:00) Pacific Time (US & Canada)"
-                              }
-                            },
-                            [_vm._v("(GMT -8:00) Pacific Time (US & Canada)")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "(GMT -9:00) Alaska" } },
-                            [_vm._v("(GMT -9:00) Alaska")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("--------------")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "(GMT -12:00) Eniwetok, Kwajalein"
-                              }
-                            },
-                            [_vm._v("(GMT -12:00) Eniwetok, Kwajalein")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "(GMT -11:00) Midway Island, Samoa"
-                              }
-                            },
-                            [_vm._v("(GMT -11:00) Midway Island, Samoa")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "(GMT -10:00) Hawaii" } },
-                            [_vm._v("(GMT -10:00) Hawaii")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "(GMT -9:30) Taiohae" } },
-                            [_vm._v("(GMT -9:30) Taiohae")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "(GMT -9:00) Alaska" } },
-                            [_vm._v("(GMT -9:00) Alaska")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "(GMT -8:00) Pacific Time (US & Canada)"
-                              }
-                            },
-                            [_vm._v("(GMT -8:00) Pacific Time (US & Canada)")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "(GMT -7:00) Mountain Time (US & Canada)"
-                              }
-                            },
-                            [_vm._v("(GMT -7:00) Mountain Time (US & Canada)")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT -6:00) Central Time (US & Canada), Mexico City"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT -6:00) Central Time (US & Canada), Mexico City"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "(GMT -4:30) Caracas" } },
-                            [_vm._v("(GMT -4:30) Caracas")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "(GMT -3:30) Newfoundland" } },
-                            [_vm._v("(GMT -3:30) Newfoundland")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT -3:00) Brazil, Buenos Aires, Georgetown"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT -3:00) Brazil, Buenos Aires, Georgetown"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "(GMT -2:00) Mid-Atlantic" } },
-                            [_vm._v("(GMT -2:00) Mid-Atlantic")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "(GMT -1:00) Azores, Cape Verde Islands"
-                              }
-                            },
-                            [_vm._v("(GMT -1:00) Azores, Cape Verde Islands")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT +1:00) Brussels, Copenhagen, Madrid, Paris"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT +1:00) Brussels, Copenhagen, Madrid, Paris"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "(GMT +2:00) Kaliningrad, South Africa"
-                              }
-                            },
-                            [_vm._v("(GMT +2:00) Kaliningrad, South Africa")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "(GMT +3:30) Tehran" } },
-                            [_vm._v("(GMT +3:30) Tehran")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "(GMT +4:30) Kabul" } },
-                            [_vm._v("(GMT +4:30) Kabul")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "(GMT +5:45) Kathmandu, Pokhara" }
-                            },
-                            [_vm._v("(GMT +5:45) Kathmandu, Pokhara")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "(GMT +6:00) Almaty, Dhaka, Colombo"
-                              }
-                            },
-                            [_vm._v("(GMT +6:00) Almaty, Dhaka, Colombo")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "(GMT +6:30) Yangon, Mandalay" }
-                            },
-                            [_vm._v("(GMT +6:30) Yangon, Mandalay")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "(GMT +7:00) Bangkok, Hanoi, Jakarta"
-                              }
-                            },
-                            [_vm._v("(GMT +7:00) Bangkok, Hanoi, Jakarta")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "(GMT +8:45) Eucla" } },
-                            [_vm._v("(GMT +8:45) Eucla")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "(GMT +9:30) Adelaide, Darwin" }
-                            },
-                            [_vm._v("(GMT +9:30) Adelaide, Darwin")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "(GMT +10:30) Lord Howe Island" }
-                            },
-                            [_vm._v("(GMT +10:30) Lord Howe Island")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            { attrs: { value: "(GMT +11:30) Norfolk Island" } },
-                            [_vm._v("(GMT +11:30) Norfolk Island")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value:
-                                  "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "(GMT +12:45) Chatham Islands" }
-                            },
-                            [_vm._v("(GMT +12:45) Chatham Islands")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: { value: "(GMT +13:00) Apia, Nukualofa" }
-                            },
-                            [_vm._v("(GMT +13:00) Apia, Nukualofa")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "(GMT +14:00) Line Islands, Tokelau"
-                              }
-                            },
-                            [_vm._v("(GMT +14:00) Line Islands, Tokelau")]
-                          )
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm.errors.timeZone
-                    ? _c("div", { staticClass: "error" }, [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.errors.timeZone[0]) +
-                            "\n                        "
-                        )
-                      ])
-                    : _vm._e()
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Enter main e-mail address\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "faq-input",
-                      class: { "error-input": _vm.errors.email }
-                    },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.formData.email,
-                            expression: "formData.email"
-                          }
-                        ],
-                        attrs: {
-                          type: "text",
-                          name: "email",
-                          placeholder: "Enter your email"
-                        },
-                        domProps: { value: _vm.formData.email },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.formData, "email", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("img", {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.formData.email.length > 0,
-                            expression: "formData.email.length > 0"
-                          }
-                        ],
-                        attrs: {
-                          src:
-                            "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                          alt: "delete icon"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.clearInput("email")
-                          }
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm.errors.email
-                    ? _c("div", { staticClass: "error" }, [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.errors.email[0]) +
-                            "\n                        "
-                        )
-                      ])
-                    : _vm._e()
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Email address of accounts dept\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "faq-input",
-                      class: { "error-input": _vm.errors.emailDept }
-                    },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.formData.emailDept,
-                            expression: "formData.emailDept"
-                          }
-                        ],
-                        attrs: {
-                          type: "text",
-                          name: "emailDept",
-                          placeholder: "Enter your email dept"
-                        },
-                        domProps: { value: _vm.formData.emailDept },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.formData,
-                              "emailDept",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("img", {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.formData.emailDept.length > 0,
-                            expression: "formData.emailDept.length > 0"
-                          }
-                        ],
-                        attrs: {
-                          src:
-                            "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                          alt: "delete icon"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.clearInput("emailDept")
-                          }
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm.errors.emailDept
-                    ? _c("div", { staticClass: "error" }, [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.errors.emailDept[0]) +
-                            "\n                        "
-                        )
-                      ])
-                    : _vm._e()
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "account-edit-section sub-section" }, [
-            _c("div", { staticClass: "account-edit-section-heading" }, [
-              _vm._v("\n                    PASSWORD\n                ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "account-edit-section-inputs" }, [
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Write a new password\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "faq-input",
-                      class: { "error-input": _vm.errors.password }
-                    },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.formData.password,
-                            expression: "formData.password"
-                          }
-                        ],
-                        attrs: {
-                          type: "password",
-                          name: "password",
-                          placeholder: "Enter your password"
-                        },
-                        domProps: { value: _vm.formData.password },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.formData,
-                              "password",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("img", {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.formData.password.length > 0,
-                            expression: "formData.password.length > 0"
-                          }
-                        ],
-                        attrs: {
-                          src:
-                            "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                          alt: "delete icon"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.clearInput("password")
-                          }
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm.errors.password
-                    ? _c("div", { staticClass: "error" }, [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.errors.password[0]) +
-                            "\n                        "
-                        )
-                      ])
-                    : _vm._e()
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Repeat your new password\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.formData.password_confirmation,
-                          expression: "formData.password_confirmation"
-                        }
-                      ],
-                      attrs: {
-                        type: "password",
-                        name: "password_confirmation",
-                        placeholder: "Enter your password confirmation"
-                      },
-                      domProps: { value: _vm.formData.password_confirmation },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.formData,
-                            "password_confirmation",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.formData.password_confirmation.length > 0,
-                          expression:
-                            "formData.password_confirmation.length > 0"
-                        }
-                      ],
-                      attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.clearInput("password_confirmation")
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _vm.errors.password_confirmation
-                    ? _c("div", { staticClass: "error" }, [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.errors.password_confirmation[0]) +
-                            "\n                        "
-                        )
-                      ])
-                    : _vm._e()
-                ]
-              )
-            ])
+  return _c("div", { staticClass: "account-info-edit dashboard-box" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "account-edit-section" }, [
+      _c("div", { staticClass: "account-edit-section-heading" }, [
+        _vm._v("\n          BASIC INFORMATION\n      ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-edit-section-inputs" }, [
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Enter your name\n              ")
           ]),
           _vm._v(" "),
           _c(
             "div",
             {
-              staticClass: "account-edit-section-edit-btn no-decoration",
-              class: { "disabled-btn": !_vm.canSubmit },
-              attrs: { id: "submitBtnWrapper" }
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.name }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.name,
+                    expression: "formData.name"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "name",
+                  placeholder: "Enter your name"
+                },
+                domProps: { value: _vm.formData.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "name", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.name.length > 0,
+                    expression: "formData.name.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("name")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.name
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.name[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Enter your surname\n              ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.surname }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.surname,
+                    expression: "formData.surname"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "surname",
+                  placeholder: "Enter your surname"
+                },
+                domProps: { value: _vm.formData.surname },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "surname", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.surname.length > 0,
+                    expression: "formData.surname.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("surname")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.surname
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.surname[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Choose your gender\n              ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.gender }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.gender,
+                    expression: "formData.gender"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "gender",
+                  placeholder: "Enter your gender"
+                },
+                domProps: { value: _vm.formData.gender },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "gender", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.phone.length > 0,
+                    expression: "formData.phone.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("phone")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.gender
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.gender[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v(
+              "\n                  Enter your phone number\n              "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.phone }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.phone,
+                    expression: "formData.phone"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "phone",
+                  placeholder: "Enter your phone"
+                },
+                domProps: { value: _vm.formData.phone },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "phone", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.phone.length > 0,
+                    expression: "formData.phone.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("phone")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.phone
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.phone[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Enter your e-mail\n              ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.email }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.email,
+                    expression: "formData.email"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "email",
+                  placeholder: "Enter your email"
+                },
+                domProps: { value: _vm.formData.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "email", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.email.length > 0,
+                    expression: "formData.email.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("email")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.email
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.email[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Select your time zone\n              ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.timeZone }
             },
             [
               _c(
-                "a",
+                "select",
                 {
-                  attrs: { href: "javascript:void(0)" },
-                  on: { click: _vm.submitForm }
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.timeZone,
+                      expression: "formData.timeZone"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  staticStyle: { height: "50px" },
+                  attrs: { id: "timeZone", name: "timeZone" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.formData,
+                        "timeZone",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
                 },
-                [_vm._v("\n                    REGISTER\n                ")]
+                [
+                  _c("option", { attrs: { value: "", selected: "selected" } }, [
+                    _vm._v("Select your timezone")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT -7:00) Mountain Time (US & Canada)"
+                      }
+                    },
+                    [_vm._v("(GMT -7:00) Mountain Time (US & Canada)")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: { value: "(GMT -8:00) Pacific Time (US & Canada)" }
+                    },
+                    [_vm._v("(GMT -8:00) Pacific Time (US & Canada)")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT -9:00) Alaska" } }, [
+                    _vm._v("(GMT -9:00) Alaska")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "" } }, [
+                    _vm._v("--------------")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT -12:00) Eniwetok, Kwajalein" } },
+                    [_vm._v("(GMT -12:00) Eniwetok, Kwajalein")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT -11:00) Midway Island, Samoa" } },
+                    [_vm._v("(GMT -11:00) Midway Island, Samoa")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT -10:00) Hawaii" } }, [
+                    _vm._v("(GMT -10:00) Hawaii")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT -9:30) Taiohae" } }, [
+                    _vm._v("(GMT -9:30) Taiohae")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT -9:00) Alaska" } }, [
+                    _vm._v("(GMT -9:00) Alaska")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: { value: "(GMT -8:00) Pacific Time (US & Canada)" }
+                    },
+                    [_vm._v("(GMT -8:00) Pacific Time (US & Canada)")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT -7:00) Mountain Time (US & Canada)"
+                      }
+                    },
+                    [_vm._v("(GMT -7:00) Mountain Time (US & Canada)")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT -4:30) Caracas" } }, [
+                    _vm._v("(GMT -4:30) Caracas")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT -3:30) Newfoundland" } },
+                    [_vm._v("(GMT -3:30) Newfoundland")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT -3:00) Brazil, Buenos Aires, Georgetown"
+                      }
+                    },
+                    [_vm._v("(GMT -3:00) Brazil, Buenos Aires, Georgetown")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT -2:00) Mid-Atlantic" } },
+                    [_vm._v("(GMT -2:00) Mid-Atlantic")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: { value: "(GMT -1:00) Azores, Cape Verde Islands" }
+                    },
+                    [_vm._v("(GMT -1:00) Azores, Cape Verde Islands")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT +1:00) Brussels, Copenhagen, Madrid, Paris"
+                      }
+                    },
+                    [_vm._v("(GMT +1:00) Brussels, Copenhagen, Madrid, Paris")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: { value: "(GMT +2:00) Kaliningrad, South Africa" }
+                    },
+                    [_vm._v("(GMT +2:00) Kaliningrad, South Africa")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT +3:30) Tehran" } }, [
+                    _vm._v("(GMT +3:30) Tehran")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi"
+                      }
+                    },
+                    [_vm._v("(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT +4:30) Kabul" } }, [
+                    _vm._v("(GMT +4:30) Kabul")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi"
+                      }
+                    },
+                    [_vm._v("(GMT +5:30) Bombay, Calcutta, Madras, New Delhi")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +5:45) Kathmandu, Pokhara" } },
+                    [_vm._v("(GMT +5:45) Kathmandu, Pokhara")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +6:00) Almaty, Dhaka, Colombo" } },
+                    [_vm._v("(GMT +6:00) Almaty, Dhaka, Colombo")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +6:30) Yangon, Mandalay" } },
+                    [_vm._v("(GMT +6:30) Yangon, Mandalay")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +7:00) Bangkok, Hanoi, Jakarta" } },
+                    [_vm._v("(GMT +7:00) Bangkok, Hanoi, Jakarta")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
+                      }
+                    },
+                    [_vm._v("(GMT +8:00) Beijing, Perth, Singapore, Hong Kong")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT +8:45) Eucla" } }, [
+                    _vm._v("(GMT +8:45) Eucla")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +9:30) Adelaide, Darwin" } },
+                    [_vm._v("(GMT +9:30) Adelaide, Darwin")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +10:30) Lord Howe Island" } },
+                    [_vm._v("(GMT +10:30) Lord Howe Island")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +11:30) Norfolk Island" } },
+                    [_vm._v("(GMT +11:30) Norfolk Island")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +12:45) Chatham Islands" } },
+                    [_vm._v("(GMT +12:45) Chatham Islands")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +13:00) Apia, Nukualofa" } },
+                    [_vm._v("(GMT +13:00) Apia, Nukualofa")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +14:00) Line Islands, Tokelau" } },
+                    [_vm._v("(GMT +14:00) Line Islands, Tokelau")]
+                  )
+                ]
               )
             ]
-          )
+          ),
+          _vm._v(" "),
+          _vm.errors.timeZone
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.timeZone[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Enter your city name\n              ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.cityName }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.cityName,
+                    expression: "formData.cityName"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "cityName",
+                  placeholder: "You can enter several items using comas"
+                },
+                domProps: { value: _vm.formData.cityName },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "cityName", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.cityName.length > 0,
+                    expression: "formData.cityName.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("cityName")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.cityName
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.cityName[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v(
+              "\n                  Enter your PayPal acc number\n              "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.paypal }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.paypal,
+                    expression: "formData.paypal"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "paypal",
+                  placeholder: "Enter your PayPal acc number"
+                },
+                domProps: { value: _vm.formData.paypal },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "paypal", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.paypal.length > 0,
+                    expression: "formData.paypal.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("paypal")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.paypal
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.paypal[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
         ])
-      ]),
-      _vm._v(" "),
-      _vm._m(2)
-    ]
-  )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "account-edit-section-edit-btn no-decoration",
+        class: { "disabled-btn": !_vm.canSubmit },
+        attrs: { id: "submitBtnWrapper" }
+      },
+      [
+        _c("router-link", { attrs: { to: "/freelancer/register#page2" } }, [
+          _vm._v("\n          CONTINUE\n      ")
+        ])
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "nav",
-      { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
-      [
-        _c("div", { staticClass: "backBtn" }, [
-          _c("a", { attrs: { href: "/" } }, [
-            _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/arrow_back.png",
-                alt: "back-icon"
-              }
-            })
-          ]),
-          _vm._v("\n                BECOME AN AGENT\n            ")
-        ])
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -111710,27 +112979,9 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n                    FILL IN THE INFORMATION TO BECOME AN AGENT\n                "
+              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT\n      "
             )
           ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "pt-3 no-decoration d-flex justify-content-center base-text align-items-center"
-      },
-      [
-        _vm._v("\n        Already have an account ? "),
-        _c("a", { staticClass: "ml-2 base-link", attrs: { href: "#" } }, [
-          _vm._v(" LOG IN ")
         ])
       ]
     )
@@ -111741,7 +112992,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-64218dd0", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-266e9331", module.exports)
   }
 }
 

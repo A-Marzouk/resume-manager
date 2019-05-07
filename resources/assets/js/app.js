@@ -221,7 +221,7 @@ if ($('#freelancerRegisterComponent').length !== 0){
 
     const routes = [
         { path: '/freelancer/register', component: FreelancerRegisterPage1 },
-        { path: '/freelancer/register#page2', component: FreelancerRegisterPage2 }
+        { path: '/freelancer/register/page2', component: FreelancerRegisterPage2 }
     ];
 
     const router = new VueRouter({

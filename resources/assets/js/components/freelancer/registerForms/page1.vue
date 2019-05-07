@@ -172,7 +172,7 @@
         </div>
     </div>
     <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}" id="submitBtnWrapper">
-        <router-link to="/freelancer/register#page2">
+        <router-link to="/freelancer/register/page2">
             CONTINUE
         </router-link>
     </div>

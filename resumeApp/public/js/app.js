@@ -67203,40 +67203,47 @@ var staticRenderFns = [
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "visiblty" }, [
-                    _c("div", [
-                      _c(
-                        "button",
-                        {
-                          staticClass:
-                            "btn btn-primar btn-radius btn-responsive"
-                        },
-                        [_vm._v("VISIT AGENT’S PROFILE")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "button",
-                        {
-                          staticClass:
-                            "btn btn-left btn-radius btn-responsive d-flex align-items-center"
-                        },
-                        [
-                          _c("img", {
-                            staticStyle: { "margin-right": "15px" },
-                            attrs: {
-                              src:
-                                "/resumeApp/public/images/client/add_agent/search_result/ic/play_rec/Vector.png"
-                            }
-                          }),
-                          _vm._v(
-                            "\n                                    LISTEN TO THE RECORD\n                                "
-                          )
-                        ]
-                      )
-                    ])
-                  ])
+                  _c(
+                    "div",
+                    {
+                      staticClass: "visiblty",
+                      staticStyle: { "text-align": "center" }
+                    },
+                    [
+                      _c("div", [
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn btn-primar btn-radius btn-responsive"
+                          },
+                          [_vm._v("VISIT AGENT’S PROFILE")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn btn-left btn-radius btn-responsive d-flex align-items-center justify-content-around"
+                          },
+                          [
+                            _c("img", {
+                              staticStyle: { "margin-right": "15px" },
+                              attrs: {
+                                src:
+                                  "/resumeApp/public/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                              }
+                            }),
+                            _vm._v(
+                              "\n                                    LISTEN TO THE RECORD\n                                "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
                 ])
               ]),
               _vm._v(" "),
@@ -67264,9 +67271,13 @@ var staticRenderFns = [
                     }
                   },
                   [
-                    _c("span", { staticStyle: { "font-weight": "500" } }, [
-                      _vm._v("Sector experience: ")
-                    ]),
+                    _c(
+                      "span",
+                      {
+                        staticStyle: { "font-weight": "500", color: "#4A5464" }
+                      },
+                      [_vm._v("Sector experience: ")]
+                    ),
                     _vm._v(
                       " Real estate, Investement, Insurance\n                    "
                     )
@@ -67274,23 +67285,29 @@ var staticRenderFns = [
                 ),
                 _vm._v(" "),
                 _c("div", [
-                  _c("span", { staticStyle: { "font-weight": "500" } }, [
-                    _vm._v("Technologies, software: ")
-                  ]),
+                  _c(
+                    "span",
+                    { staticStyle: { "font-weight": "500", color: "#4A5464" } },
+                    [_vm._v("Technologies, software: ")]
+                  ),
                   _vm._v(" Microsoft Excel\n                    ")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticStyle: { margin: "20px 0" } }, [
-                  _c("span", { staticStyle: { "font-weight": "500" } }, [
-                    _vm._v("Languages: ")
-                  ]),
+                  _c(
+                    "span",
+                    { staticStyle: { "font-weight": "500", color: "#4A5464" } },
+                    [_vm._v("Languages: ")]
+                  ),
                   _vm._v("English, Spanish\n                    ")
                 ]),
                 _vm._v(" "),
                 _c("div", [
-                  _c("span", { staticStyle: { "font-weight": "500" } }, [
-                    _vm._v("No. hours per week: ")
-                  ]),
+                  _c(
+                    "span",
+                    { staticStyle: { "font-weight": "500", color: "#4A5464" } },
+                    [_vm._v("No. hours per week: ")]
+                  ),
                   _vm._v("30-40 hours\n                    ")
                 ])
               ]),

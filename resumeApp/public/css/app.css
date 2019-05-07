@@ -7002,12 +7002,8 @@ body {
 
 .account-info-content-wrapper .account-info-content .acc-info-content-heading .acc-info-timezone {
   font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 30px;
-  text-align: right;
-  color: #7A828D;
+  color: #4A5464;
+  font-weight: 500;
 }
 
 .account-info-content-wrapper .account-info-content .acc-info-content-item {

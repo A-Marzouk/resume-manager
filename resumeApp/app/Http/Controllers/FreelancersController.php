@@ -34,6 +34,14 @@ class FreelancersController extends Controller
         return view('freelancer.campaign_main');
     }
 
+    public function viewAccountEditPage(){
+        return view('freelancer.my_account.account_information_edition');
+    }
+
+    public function viewProfessionalEditPage(){
+        return view('freelancer.my_account.professional_information_edition');
+    }
+
     public function form(){
         if(Auth::user()->admin == 1 && Auth::user()->username == 'admin_workforce'){
             return redirect(route('admin.dashboard'));

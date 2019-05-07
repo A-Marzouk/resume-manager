@@ -7269,6 +7269,14 @@ body {
   }
 }
 
+.account-edit-section-edit-btn a {
+  float: right;
+  background-color: #218dce;
+  color: white;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
 .add-agent-form {
   margin-left: 15px !important;
 }

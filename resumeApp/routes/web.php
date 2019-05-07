@@ -34,7 +34,7 @@ Route::prefix('client')->group(function (){
     Route::get('/campaign','ClientsController@campaignActivity')->name('campaign.main');
     Route::get('/campaigns-archive','ClientsController@campaignArchives')->name('campaign.archives');
     Route::get('/campaign/add-agent','ClientsController@campaignAddAgent')->name('campaign.add.agent');
-    Route::get('/account/edit','ClientsController@viewAccountEditPage')->name('account.edi');
+    Route::get('/account/edit','ClientsController@viewAccountEditPage')->name('account.edit');
     // service agreement route
     Route::get('/account/service-agreement','ClientsController@viewClientServiceAgreement')->name('service.agreement');
     Route::get('/payments/pay','ClientsController@viewClientPaymentPay')->name('payment.pay');
@@ -84,6 +84,8 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/logout','Auth\LoginController@logout')->name('freelancer.logout');
     Route::get('/campaigns-archive','FreelancersController@campaignArchives')->name('freelancer.campaign.archives');
     Route::get('/campaign','FreelancersController@campaignActivity')->name('freelancer.campaign.main');
+    Route::get('/account/edit','FreelancersController@viewAccountEditPage')->name('freelancer.account.edit');
+    Route::get('/professional/edit','FreelancersController@viewProfessionalEditPage')->name('freelancer.professional.edit');
     // Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard'); 
     // Route::get('/','FreelancersController@showEditForm')->name('show.edit_form');
 

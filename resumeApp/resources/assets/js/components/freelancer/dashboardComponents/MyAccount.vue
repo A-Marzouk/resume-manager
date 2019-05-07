@@ -9,7 +9,7 @@
                     </span>
                 </div>
                 <div class="right no-decoration">
-                    <a href="/client/account/edit" class="normal-link">
+                    <a href="/freelancer/account/edit" class="normal-link">
                         EDIT
                     </a>
                 </div>
@@ -61,7 +61,7 @@
                     </span>
                 </div>
                 <div class="right no-decoration">
-                    <a href="/client/account/edit" class="normal-link">
+                    <a href="/freelancer/professional/edit" class="normal-link">
                         EDIT
                     </a>
                 </div>
@@ -127,7 +127,7 @@
                            </div>
                        </div>
                         <div class="left no-decoration">
-                            <a href="/client/account/service-agreement">
+                            <a href="/freelancer/account/service-agreement">
                                 COMPLETE AGREEMENT
                             </a>
                         </div>
@@ -140,7 +140,7 @@
                             </div>
                         </div>
                         <div class="left no-decoration">
-                            <a href="/client/account/service-agreement">
+                            <a href="/freelancer/account/service-agreement">
                                 COMPLETE AGREEMENT
                             </a>
                         </div>

@@ -233,3 +233,13 @@
     width:100%;
   }
 }
+
+.account-edit-section-edit-btn {
+  a {
+    float: right;
+    background-color: $l-blue;
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+}

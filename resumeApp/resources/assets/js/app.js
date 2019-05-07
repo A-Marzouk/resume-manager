@@ -209,6 +209,8 @@ import FreelancerMyAccount from './components/freelancer/dashboardComponents/MyA
 Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'))
 Vue.component('freelancer-campaign-archives', require('./components/freelancer/CampaignArchives.vue'))
 Vue.component('freelancer-campaign-main', require('./components/freelancer/CampaignMainComponent.vue'))
+Vue.component('freelancer-account-info-edit', require('./components/freelancer/dashboardComponents/my_account/MyAccountEdit.vue'));
+Vue.component('freelancer-professional-info-edit', require('./components/freelancer/dashboardComponents/my_account/ProfessionalInfoEdit.vue'));
 
 if ($('#freelancerDashboardComponent').length !== 0) {
   const routes = [
@@ -249,6 +251,20 @@ if ($('#freelancerCampaignMainComponent').length !== 0) {
     router,
     el: '#freelancerCampaignMainComponent'
   })
+}
+
+if ($("#freelancer_account_info_edit").length !== 0){
+
+    let freelancer_account_info_edit = new Vue({
+        el:'#freelancer_account_info_edit'
+    });
+}
+
+if ($("#freelancer_professional_info_edit").length !== 0){
+
+    let freelancer_professional_info_edit = new Vue({
+        el:'#freelancer_professional_info_edit'
+    });
 }
 
 Vue.component('chat-message', require('./components/chat/chatMessage.vue'));

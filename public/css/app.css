@@ -6649,6 +6649,8 @@ body {
 .header-text {
   font-size: 1.25rem;
   font-family: Roboto;
+  color: #4A5464;
+  font-weight: 500;
 }
 
 .form-main-grid {

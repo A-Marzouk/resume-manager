@@ -40,12 +40,13 @@
                     <img src="/images/client/add_agent/search_result/icon/maps/place_24px.png"/>
                                 Dublin, Ireland
                             </div>
-                    <div class="visiblty">
+                    <div class="visiblty"
+                         style="text-align: center">
                       <div>
                         <button class="btn btn-primar btn-radius btn-responsive">VISIT AGENT’S PROFILE</button>
                       </div>
                       <div>
-                        <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">
+                        <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center justify-content-around">
                           <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png" style="margin-right: 15px;"/>
                                         LISTEN TO THE RECORD
                                     </button>
@@ -61,16 +62,16 @@
                             Telemarketing
                         </div>
                     <div style="font-size: 16px; color : #4a5464; margin: 20px 0 20px;">
-                      <span style="font-weight: 500;">Sector experience: </span> Real estate, Investement, Insurance
+                      <span style="font-weight: 500;color: #4A5464;">Sector experience: </span> Real estate, Investement, Insurance
                     </div>
                     <div>
-                      <span style="font-weight: 500;">Technologies, software: </span> Microsoft Excel
+                      <span style="font-weight: 500;color: #4A5464;">Technologies, software: </span> Microsoft Excel
                     </div>
                     <div style="margin: 20px 0 ;">
-                      <span style="font-weight: 500;">Languages: </span>English, Spanish
+                      <span style="font-weight: 500;color: #4A5464;">Languages: </span>English, Spanish
                     </div>
                     <div>
-                      <span style="font-weight: 500;">No. hours per week: </span>30-40 hours
+                      <span style="font-weight: 500; color: #4A5464;">No. hours per week: </span>30-40 hours
                     </div>
                   </div>
                   <div class="invisiblty">

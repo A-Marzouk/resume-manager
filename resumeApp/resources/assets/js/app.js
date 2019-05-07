@@ -51,6 +51,7 @@ Vue.component('update-sub-plan',require('./components/client/dashboardComponents
 Vue.component('client-register',require('./components/client/ClientRegister.vue'));
 Vue.component('login-component',require('./components/main/LoginComponent.vue'));
 Vue.component('campaign-agents',require('./components/client/campaignComponents/CampaignAgents.vue'));
+Vue.component('campaign-statistics',require('./components/client/campaignComponents/CampaignStatistics.vue'));
 
     // campaign-activity inside components :
     import CampaignActivity from './components/client/campaignComponents/CampaignActivity.vue';
@@ -114,6 +115,13 @@ if ($("#loginComponent").length !== 0){
 
     let loginComponent = new Vue({
         el:'#loginComponent'
+    });
+}
+
+if ($("#campaignStatistics").length !== 0){
+
+    let campaignStatistics = new Vue({
+        el:'#campaignStatistics'
     });
 }
 

@@ -1,74 +1,86 @@
 <template>
     <div class="d-flex justify-content-center">
         <div class="client_dashboard_content campaign_activity">
-            <div class="dashboard-side-menu hideOnTablet">
-                <div class="team-list-header">
-                    <div class="teamName">
-                        TEAM
+            <div class="hideOnTablet">
+                <div class="dashboard-side-menu">
+                    <div class="team-list-header">
+                        <div class="teamName">
+                            TEAM
+                        </div>
+                        <div class="teamChat">
+                            GO TO TEAM CHAT
+                        </div>
                     </div>
-                    <div class="teamChat">
-                        GO TO TEAM CHAT
+                    <div class="lineDivide"></div>
+                    <div class="team-member">
+                        <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+                        <div class="team-member-info">
+                            <div class="member-name manager">
+                                Louis Snyderberg
+                            </div>
+                            <div class="job-title">
+                                Team manager
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+                        <div class="team-member-info">
+                            <div class="member-name">
+                                Mohamed Salah
+                            </div>
+                            <div class="job-title">
+                                Egyptian king
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+                        <div class="team-member-info">
+                            <div class="member-name">
+                                Lionel Messi
+                            </div>
+                            <div class="job-title">
+                                Artist
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+                        <div class="team-member-info">
+                            <div class="member-name">
+                                Zlatan Ibrahimovic
+                            </div>
+                            <div class="job-title">
+                                Animation
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+                        <div class="team-member-info">
+                            <div class="member-name">
+                                Louis Snyderberg
+                            </div>
+                            <div class="job-title">
+                                Animation
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="lineDivide"></div>
-                <div class="team-member">
-                    <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
-                    <div class="team-member-info">
-                        <div class="member-name manager">
-                            Louis Snyderberg
-                        </div>
-                        <div class="job-title">
-                            Team manager
-                        </div>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
-                    <div class="team-member-info">
-                        <div class="member-name">
-                            Mohamed Salah
-                        </div>
-                        <div class="job-title">
-                            Egyptian king
-                        </div>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
-                    <div class="team-member-info">
-                        <div class="member-name">
-                            Lionel Messi
-                        </div>
-                        <div class="job-title">
-                            Artist
-                        </div>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
-                    <div class="team-member-info">
-                        <div class="member-name">
-                            Zlatan Ibrahimovic
-                        </div>
-                        <div class="job-title">
-                            Animation
-                        </div>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
-                    <div class="team-member-info">
-                        <div class="member-name">
-                            Louis Snyderberg
-                        </div>
-                        <div class="job-title">
-                            Animation
-                        </div>
-                    </div>
+                <div class="documents-bar d-flex justify-content-center">
+                   <div class="button-base blue-button-a">
+                       <a href="#" style="width:178px; height: 38px;">GO TO STATISTICS</a>
+                   </div>
                 </div>
             </div>
             <div class="content-block">
                 <div class="content-block-campaign-activity">
+                    <div class="showOnlyOnTablet">
+                        <div class="button-base blue-button-a d-flex justify-content-end" style="margin-bottom: 22px;">
+                            <a href="#" class="m-0" style="width:178px; height: 38px;">GO TO STATISTICS</a>
+                        </div>
+                    </div>
                     <div class="team-bar-tablet">
                         <div class="team-info">
                             <div class="team-name">

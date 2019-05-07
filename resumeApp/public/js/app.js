@@ -14363,6 +14363,7 @@ Vue.component('update-sub-plan', __webpack_require__(90));
 Vue.component('client-register', __webpack_require__(95));
 Vue.component('login-component', __webpack_require__(100));
 Vue.component('campaign-agents', __webpack_require__(105));
+Vue.component('campaign-statistics', __webpack_require__(385));
 
 // campaign-activity inside components :
 
@@ -14413,6 +14414,13 @@ if ($("#loginComponent").length !== 0) {
 
     var loginComponent = new Vue({
         el: '#loginComponent'
+    });
+}
+
+if ($("#campaignStatistics").length !== 0) {
+
+    var campaignStatistics = new Vue({
+        el: '#campaignStatistics'
     });
 }
 
@@ -67755,6 +67763,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -67804,6 +67824,8 @@ var render = function() {
       _c("div", { staticClass: "content-block" }, [
         _c("div", { staticClass: "content-block-campaign-activity" }, [
           _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2),
           _vm._v(" "),
           _c("div", { staticClass: "data-logs" }, [
             _c("div", { staticClass: "date-picker-bar" }, [
@@ -67888,7 +67910,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(2)
+                _vm._m(3)
               ]
             ),
             _vm._v(" "),
@@ -67905,16 +67927,16 @@ var render = function() {
                 ],
                 staticClass: "member-logs"
               },
-              [_vm._m(3)]
+              [_vm._m(4)]
             )
           ]),
           _vm._v(" "),
-          _vm._m(4)
+          _vm._m(5)
         ])
       ])
     ]),
     _vm._v(" "),
-    _vm._m(5),
+    _vm._m(6),
     _vm._v(" "),
     _c("div", { staticClass: "modal", attrs: { id: "pick-date-modal" } }, [
       _c("div", { staticClass: "modal-dialog" }, [
@@ -67988,127 +68010,179 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "dashboard-side-menu hideOnTablet" }, [
-      _c("div", { staticClass: "team-list-header" }, [
-        _c("div", { staticClass: "teamName" }, [
-          _vm._v("\n                    TEAM\n                ")
+    return _c("div", { staticClass: "hideOnTablet" }, [
+      _c("div", { staticClass: "dashboard-side-menu" }, [
+        _c("div", { staticClass: "team-list-header" }, [
+          _c("div", { staticClass: "teamName" }, [
+            _vm._v("\n                        TEAM\n                    ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "teamChat" }, [
+            _vm._v(
+              "\n                        GO TO TEAM CHAT\n                    "
+            )
+          ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "teamChat" }, [
-          _vm._v("\n                    GO TO TEAM CHAT\n                ")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "lineDivide" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "team-member" }, [
-        _c("img", {
-          attrs: {
-            src: "/resumeApp/public/images/client/dummy.png",
-            alt: "member image"
-          }
-        }),
+        _c("div", { staticClass: "lineDivide" }),
         _vm._v(" "),
-        _c("div", { staticClass: "team-member-info" }, [
-          _c("div", { staticClass: "member-name manager" }, [
-            _vm._v(
-              "\n                        Louis Snyderberg\n                    "
-            )
-          ]),
+        _c("div", { staticClass: "team-member" }, [
+          _c("img", {
+            attrs: {
+              src: "/resumeApp/public/images/client/dummy.png",
+              alt: "member image"
+            }
+          }),
           _vm._v(" "),
-          _c("div", { staticClass: "job-title" }, [
-            _vm._v(
-              "\n                        Team manager\n                    "
-            )
+          _c("div", { staticClass: "team-member-info" }, [
+            _c("div", { staticClass: "member-name manager" }, [
+              _vm._v(
+                "\n                            Louis Snyderberg\n                        "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "job-title" }, [
+              _vm._v(
+                "\n                            Team manager\n                        "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "team-member" }, [
+          _c("img", {
+            attrs: {
+              src: "/resumeApp/public/images/client/dummy.png",
+              alt: "member image"
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "team-member-info" }, [
+            _c("div", { staticClass: "member-name" }, [
+              _vm._v(
+                "\n                            Mohamed Salah\n                        "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "job-title" }, [
+              _vm._v(
+                "\n                            Egyptian king\n                        "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "team-member" }, [
+          _c("img", {
+            attrs: {
+              src: "/resumeApp/public/images/client/dummy.png",
+              alt: "member image"
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "team-member-info" }, [
+            _c("div", { staticClass: "member-name" }, [
+              _vm._v(
+                "\n                            Lionel Messi\n                        "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "job-title" }, [
+              _vm._v(
+                "\n                            Artist\n                        "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "team-member" }, [
+          _c("img", {
+            attrs: {
+              src: "/resumeApp/public/images/client/dummy.png",
+              alt: "member image"
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "team-member-info" }, [
+            _c("div", { staticClass: "member-name" }, [
+              _vm._v(
+                "\n                            Zlatan Ibrahimovic\n                        "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "job-title" }, [
+              _vm._v(
+                "\n                            Animation\n                        "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "team-member" }, [
+          _c("img", {
+            attrs: {
+              src: "/resumeApp/public/images/client/dummy.png",
+              alt: "member image"
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "team-member-info" }, [
+            _c("div", { staticClass: "member-name" }, [
+              _vm._v(
+                "\n                            Louis Snyderberg\n                        "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "job-title" }, [
+              _vm._v(
+                "\n                            Animation\n                        "
+              )
+            ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "team-member" }, [
-        _c("img", {
-          attrs: {
-            src: "/resumeApp/public/images/client/dummy.png",
-            alt: "member image"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "team-member-info" }, [
-          _c("div", { staticClass: "member-name" }, [
-            _vm._v(
-              "\n                        Mohamed Salah\n                    "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "job-title" }, [
-            _vm._v(
-              "\n                        Egyptian king\n                    "
+      _c(
+        "div",
+        { staticClass: "documents-bar d-flex justify-content-center" },
+        [
+          _c("div", { staticClass: "button-base blue-button-a" }, [
+            _c(
+              "a",
+              {
+                staticStyle: { width: "178px", height: "38px" },
+                attrs: { href: "#" }
+              },
+              [_vm._v("GO TO STATISTICS")]
             )
           ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "team-member" }, [
-        _c("img", {
-          attrs: {
-            src: "/resumeApp/public/images/client/dummy.png",
-            alt: "member image"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "team-member-info" }, [
-          _c("div", { staticClass: "member-name" }, [
-            _vm._v(
-              "\n                        Lionel Messi\n                    "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "job-title" }, [
-            _vm._v("\n                        Artist\n                    ")
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "team-member" }, [
-        _c("img", {
-          attrs: {
-            src: "/resumeApp/public/images/client/dummy.png",
-            alt: "member image"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "team-member-info" }, [
-          _c("div", { staticClass: "member-name" }, [
-            _vm._v(
-              "\n                        Zlatan Ibrahimovic\n                    "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "job-title" }, [
-            _vm._v("\n                        Animation\n                    ")
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "team-member" }, [
-        _c("img", {
-          attrs: {
-            src: "/resumeApp/public/images/client/dummy.png",
-            alt: "member image"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "team-member-info" }, [
-          _c("div", { staticClass: "member-name" }, [
-            _vm._v(
-              "\n                        Louis Snyderberg\n                    "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "job-title" }, [
-            _vm._v("\n                        Animation\n                    ")
-          ])
-        ])
-      ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "showOnlyOnTablet" }, [
+      _c(
+        "div",
+        {
+          staticClass: "button-base blue-button-a d-flex justify-content-end",
+          staticStyle: { "margin-bottom": "22px" }
+        },
+        [
+          _c(
+            "a",
+            {
+              staticClass: "m-0",
+              staticStyle: { width: "178px", height: "38px" },
+              attrs: { href: "#" }
+            },
+            [_vm._v("GO TO STATISTICS")]
+          )
+        ]
+      )
     ])
   },
   function() {
@@ -106205,6 +106279,133 @@ new SideNav();
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 382 */,
+/* 383 */,
+/* 384 */,
+/* 385 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(386)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(388)
+/* template */
+var __vue_template__ = __webpack_require__(389)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-586d594f"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\client\\campaignComponents\\CampaignStatistics.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-586d594f", Component.options)
+  } else {
+    hotAPI.reload("data-v-586d594f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 386 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(387);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("03104f30", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-586d594f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignStatistics.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-586d594f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignStatistics.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 387 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 388 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 389 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div")
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-586d594f", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

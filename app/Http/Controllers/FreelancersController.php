@@ -18,11 +18,11 @@ class FreelancersController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     public function index(){
-        $client = auth()->guard('client')->user();
+        // $client = auth()->guard('client')->user();
         return view('freelancer.dashboard',compact('client'));
     }
 
@@ -32,6 +32,14 @@ class FreelancersController extends Controller
 
     public function campaignActivity(){
         return view('freelancer.campaign_main');
+    }
+
+    public function viewAccountEditPage(){
+        return view('freelancer.my_account.account_information_edition');
+    }
+
+    public function viewProfessionalEditPage(){
+        return view('freelancer.my_account.professional_information_edition');
     }
 
     public function form(){

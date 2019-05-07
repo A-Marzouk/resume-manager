@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     @include('layouts.includes.styles')
 </head>
-<body id="freelancer_dash">
+<body id="dashboard" class="dashboard">
 
     @yield('content')
 

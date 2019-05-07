@@ -6,7 +6,7 @@
                     <a href="/freelancer/dashboard/my-account">
                         <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
                     </a>
-                    YOUR PERSONAL INFORMATION
+                    PROFESSIONAL INFORMATION
                 </div>
             </nav>
 
@@ -15,107 +15,61 @@
                     <div class="left">
                         <img src="/resumeApp/public/images/client/my_account/info_40px.png" alt="info icon">
                         <span>
-                        EDIT YOUR PERSONAL INFORMATION
+                        EDIT PROFESSIONAL INFORMATION
                     </span>
                     </div>
                 </div>
 
                 <div class="account-edit-section">
-                    <div class="account-edit-section-heading">
-                        PERSONAL INFORMATION
-                    </div>
                     <div class="account-edit-section-inputs">
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Enter your name
+                                Enter primary job title
                             </label>
                             <div class="faq-input">
-                                <input type="text" name="faq" placeholder="Jose" >
+                                <input type="text" name="faq" placeholder="Telemarketing" >
                                 <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Enter your surname
+                                Choice voice character (for sales-agents)
                             </label>
                             <div class="faq-input">
-                                <input type="text" name="faq" placeholder="Quintero" >
+                                <input type="text" name="faq" placeholder="Friendly" >
                                 <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Choose your gender
+                                Enter sector experience
                             </label>
                             <div class="faq-input">
-                                <input type="text" name="faq" placeholder="Enter your ..." >
+                                <input type="text" name="faq" placeholder="Real state, Insurance, Investment" >
                                 <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Enter your phone number
+                                Specify available hours per week
                             </label>
                             <div class="faq-input">
-                                <input type="text" name="faq" placeholder="Enter your ..." >
+                                <input type="text" name="faq" placeholder="25" >
                                 <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Enter yout e-mail
+                                Enter technologies/frameworks/software
                             </label>
                             <div class="faq-input">
-                                <input type="text" name="faq" placeholder="123456@gmail.com" >
+                                <input type="text" name="faq" placeholder="Microsoft Word, Excel" >
                                 <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Select your time zone
-                            </label>
-                            <div class="faq-input">
-                                <input type="text" name="faq" placeholder="Enter your ..." >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="faq-question-input account-edit-input">
-                        <label class="faq-input-label">
-                            Enter your city name
-                        </label>
-                        <div class="faq-input">
-                            <input type="text" name="faq" placeholder="London" >
-                            <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
-                        </div>
-                    </div>
-                    <div class="faq-question-input account-edit-input">
-                        <label class="faq-input-label">
-                            Enter your PayPal acc number
-                        </label>
-                        <div class="faq-input">
-                            <input type="text" name="faq" placeholder="9128412945" >
-                            <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
-                        </div>
-                    </div>
-                </div>
-                <div class="account-edit-section sub-section">
-                    <div class="account-edit-section-heading">
-                        PASSWORD
-                    </div>
-                    <div class="account-edit-section-inputs">
-                        <div class="faq-question-input account-edit-input">
-                            <label class="faq-input-label">
-                                Write a new password
-                            </label>
-                            <div class="faq-input">
-                                <input type="text" name="faq" placeholder="Enter your ..." >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
-                            </div>
-                        </div>
-                        <div class="faq-question-input account-edit-input">
-                            <label class="faq-input-label">
-                                Repeat your new password
+                                Choose languages you speak
                             </label>
                             <div class="faq-input">
                                 <input type="text" name="faq" placeholder="Enter your ..." >
@@ -124,11 +78,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="account-edit-section-edit-btn no-decoration">
-                    <a href="#">
-                        SAVE EDITS
-                    </a>
-                </div>
+                <div class="account-edit-section flex-row flex-wrap justify-content-between sub-section">
+                    
+                  <div class="account-edit-section-edit-btn no-decoration">
+                      <a href="#">
+                          SAVE EDITS
+                      </a>
+                  </div>
+                </div>                
             </div>
 
         </div>

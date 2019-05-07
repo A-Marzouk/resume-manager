@@ -77,15 +77,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="account-info-edit-heading dashboard-box-heading"></div>
                 </div>
-
-                
-                <div class="account-edit-section-edit-btn no-decoration">
-                    <a href="#">
-                        SAVE EDITS
-                    </a>
-                </div>
+                <div class="account-edit-section flex-row flex-wrap justify-content-between sub-section">
+                    
+                  <div class="account-edit-section-edit-btn no-decoration">
+                      <a href="#">
+                          SAVE EDITS
+                      </a>
+                  </div>
+                </div>                
             </div>
 
         </div>

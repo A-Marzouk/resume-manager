@@ -6,7 +6,7 @@
                     <a href="/freelancer/dashboard/my-account">
                         <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
                     </a>
-                    ACCOUNT INFORMATION
+                    YOUR PERSONAL INFORMATION
                 </div>
             </nav>
 
@@ -15,19 +15,37 @@
                     <div class="left">
                         <img src="/resumeApp/public/images/client/my_account/info_40px.png" alt="info icon">
                         <span>
-                        EDIT ACCOUNT INFORMATION
+                        EDIT YOUR PERSONAL INFORMATION
                     </span>
                     </div>
                 </div>
 
                 <div class="account-edit-section">
                     <div class="account-edit-section-heading">
-                        BASIC INFORMATION
+                        PERSONAL INFORMATION
                     </div>
                     <div class="account-edit-section-inputs">
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Enter your agency name
+                                Enter your name
+                            </label>
+                            <div class="faq-input">
+                                <input type="text" name="faq" placeholder="Jose" >
+                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
+                            </div>
+                        </div>
+                        <div class="faq-question-input account-edit-input">
+                            <label class="faq-input-label">
+                                Enter your surname
+                            </label>
+                            <div class="faq-input">
+                                <input type="text" name="faq" placeholder="Quintero" >
+                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
+                            </div>
+                        </div>
+                        <div class="faq-question-input account-edit-input">
+                            <label class="faq-input-label">
+                                Choose your gender
                             </label>
                             <div class="faq-input">
                                 <input type="text" name="faq" placeholder="Enter your ..." >
@@ -36,7 +54,7 @@
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Enter name of contact person
+                                Enter your phone number
                             </label>
                             <div class="faq-input">
                                 <input type="text" name="faq" placeholder="Enter your ..." >
@@ -45,10 +63,10 @@
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Enter contact phone
+                                Enter yout e-mail
                             </label>
                             <div class="faq-input">
-                                <input type="text" name="faq" placeholder="Enter your ..." >
+                                <input type="text" name="faq" placeholder="123456@gmail.com" >
                                 <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
@@ -61,84 +79,23 @@
                                 <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
-                        <div class="faq-question-input account-edit-input">
-                            <label class="faq-input-label">
-                                Enter main e-mail address
-                            </label>
-                            <div class="faq-input">
-                                <input type="text" name="faq" placeholder="Enter your ..." >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
-                            </div>
-                        </div>
-                        <div class="faq-question-input account-edit-input">
-                            <label class="faq-input-label">
-                                Email address of accounts dept
-                            </label>
-                            <div class="faq-input">
-                                <input type="text" name="faq" placeholder="Enter your ..." >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
-                            </div>
-                        </div>
                     </div>
-                </div>
-                <div class="account-edit-section flex-row flex-wrap justify-content-between sub-section">
                     <div class="faq-question-input account-edit-input">
                         <label class="faq-input-label">
-                            Enter your company website
+                            Enter your city name
                         </label>
                         <div class="faq-input">
-                            <input type="text" name="faq" placeholder="Enter your ..." >
+                            <input type="text" name="faq" placeholder="London" >
                             <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
                         </div>
                     </div>
                     <div class="faq-question-input account-edit-input">
                         <label class="faq-input-label">
-                            Enter your Skype ID
+                            Enter your PayPal acc number
                         </label>
                         <div class="faq-input">
-                            <input type="text" name="faq" placeholder="Enter your ..." >
+                            <input type="text" name="faq" placeholder="9128412945" >
                             <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
-                        </div>
-                    </div>
-                    <div class="faq-question-input account-edit-input">
-                        <label class="faq-input-label">
-                            Enter second contact person
-                        </label>
-                        <div class="faq-input">
-                            <input type="text" name="faq" placeholder="Enter your ..." >
-                            <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
-                        </div>
-                    </div>
-                    <div class="faq-question-input account-edit-input">
-                        <label class="faq-input-label">
-                            Enter second contact phone
-                        </label>
-                        <div class="faq-input">
-                            <input type="text" name="faq" placeholder="Enter your ..." >
-                            <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
-                        </div>
-                    </div>
-                </div>
-                <div class="account-edit-section">
-                    <div class="account-edit-section-heading">
-                        PREFERRED CONTACT
-                    </div>
-                    <div class="account-edit-section-inputs flex">
-                        <div class="faq-question-input account-edit-input">
-                            <label class="faq-input-label">
-                                Choose your preferred contact
-                            </label>
-                            <div class="faq-input-label sub-label">
-                                Please state here the preferred way that you would like to communicate with your agent.
-                            </div>
-                            <div class="faq-input">
-                                <input type="text" name="faq" placeholder="Enter your ..." >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
-                            </div>
-                            <div class="faq-input mt-4">
-                                <input type="text" name="faq" placeholder="Enter your ..." >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -169,7 +126,7 @@
                 </div>
                 <div class="account-edit-section-edit-btn no-decoration">
                     <a href="#">
-                        APPLY EDITS
+                        SAVE EDITS
                     </a>
                 </div>
             </div>

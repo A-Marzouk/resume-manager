@@ -109005,7 +109005,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -109016,49 +109016,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -109244,7 +109201,9 @@ var staticRenderFns = [
                   }
                 })
               ]),
-              _vm._v("\n                ACCOUNT INFORMATION\n            ")
+              _vm._v(
+                "\n                YOUR PERSONAL INFORMATION\n            "
+              )
             ])
           ]
         ),
@@ -109265,7 +109224,7 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("span", [
                   _vm._v(
-                    "\n                    EDIT ACCOUNT INFORMATION\n                "
+                    "\n                    EDIT YOUR PERSONAL INFORMATION\n                "
                   )
                 ])
               ])
@@ -109275,7 +109234,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "account-edit-section" }, [
             _c("div", { staticClass: "account-edit-section-heading" }, [
               _vm._v(
-                "\n                    BASIC INFORMATION\n                "
+                "\n                    PERSONAL INFORMATION\n                "
               )
             ]),
             _vm._v(" "),
@@ -109286,7 +109245,63 @@ var staticRenderFns = [
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Enter your agency name\n                        "
+                      "\n                            Enter your name\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      attrs: { type: "text", name: "faq", placeholder: "Jose" }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      }
+                    })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Enter your surname\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-input" }, [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Quintero"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      }
+                    })
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Choose your gender\n                        "
                     )
                   ]),
                   _vm._v(" "),
@@ -109316,7 +109331,7 @@ var staticRenderFns = [
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Enter name of contact person\n                        "
+                      "\n                            Enter your phone number\n                        "
                     )
                   ]),
                   _vm._v(" "),
@@ -109346,7 +109361,7 @@ var staticRenderFns = [
                 [
                   _c("label", { staticClass: "faq-input-label" }, [
                     _vm._v(
-                      "\n                            Enter contact phone\n                        "
+                      "\n                            Enter yout e-mail\n                        "
                     )
                   ]),
                   _vm._v(" "),
@@ -109355,7 +109370,7 @@ var staticRenderFns = [
                       attrs: {
                         type: "text",
                         name: "faq",
-                        placeholder: "Enter your ..."
+                        placeholder: "123456@gmail.com"
                       }
                     }),
                     _vm._v(" "),
@@ -109398,261 +109413,64 @@ var staticRenderFns = [
                     })
                   ])
                 ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Enter main e-mail address\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Email address of accounts dept\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "account-edit-section flex-row flex-wrap justify-content-between sub-section"
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                        Enter your company website\n                    "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                        Enter your Skype ID\n                    "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                        Enter second contact person\n                    "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                        Enter second contact phone\n                    "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "account-edit-section" }, [
-            _c("div", { staticClass: "account-edit-section-heading" }, [
-              _vm._v(
-                "\n                    PREFERRED CONTACT\n                "
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "account-edit-section-inputs flex" }, [
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Choose your preferred contact\n                        "
-                    )
-                  ]),
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                        Enter your city name\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "faq-input" }, [
+                  _c("input", {
+                    attrs: { type: "text", name: "faq", placeholder: "London" }
+                  }),
                   _vm._v(" "),
-                  _c("div", { staticClass: "faq-input-label sub-label" }, [
-                    _vm._v(
-                      "\n                            Please state here the preferred way that you would like to communicate with your agent.\n                        "
-                    )
-                  ]),
+                  _c("img", {
+                    attrs: {
+                      src:
+                        "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                      alt: "delete icon"
+                    }
+                  })
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                        Enter your PayPal acc number\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "faq-input" }, [
+                  _c("input", {
+                    attrs: {
+                      type: "text",
+                      name: "faq",
+                      placeholder: "9128412945"
+                    }
+                  }),
                   _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input mt-4" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              )
-            ])
+                  _c("img", {
+                    attrs: {
+                      src:
+                        "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                      alt: "delete icon"
+                    }
+                  })
+                ])
+              ]
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "account-edit-section sub-section" }, [
@@ -109728,7 +109546,7 @@ var staticRenderFns = [
             { staticClass: "account-edit-section-edit-btn no-decoration" },
             [
               _c("a", { attrs: { href: "#" } }, [
-                _vm._v("\n                    APPLY EDITS\n                ")
+                _vm._v("\n                    SAVE EDITS\n                ")
               ])
             ]
           )
@@ -110190,20 +110008,27 @@ var staticRenderFns = [
                   ])
                 ]
               )
-            ]),
-            _vm._v(" "),
-            _c("div", {
-              staticClass: "account-info-edit-heading dashboard-box-heading"
-            })
+            ])
           ]),
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "account-edit-section-edit-btn no-decoration" },
+            {
+              staticClass:
+                "account-edit-section flex-row flex-wrap justify-content-between sub-section"
+            },
             [
-              _c("a", { attrs: { href: "#" } }, [
-                _vm._v("\n                    SAVE EDITS\n                ")
-              ])
+              _c(
+                "div",
+                { staticClass: "account-edit-section-edit-btn no-decoration" },
+                [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _vm._v(
+                      "\n                      SAVE EDITS\n                  "
+                    )
+                  ])
+                ]
+              )
             ]
           )
         ])

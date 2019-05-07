@@ -235,11 +235,16 @@
 }
 
 .account-edit-section-edit-btn {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  height: auto;
+
   a {
-    float: right;
     background-color: $l-blue;
     color: white;
     padding: 10px;
-    margin-bottom: 20px;
+    text-align: center;
+    width: 150px;
   }
 }

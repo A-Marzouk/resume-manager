@@ -96,7 +96,7 @@
             </div>
         </div>
 
-        <div class="dashboard_dashboard_content">
+        <div class="dashboard_content">
             <div class="dashboard-side-menu hideOnTablet">
                 <router-link to="/client/dashboard/campaign-manager" class="menu-block row" :class="{'active' : activeTab === 'campaign-manager'}" @click.native="selectTab('campaign-manager')">
                     <div class="imageContainer">

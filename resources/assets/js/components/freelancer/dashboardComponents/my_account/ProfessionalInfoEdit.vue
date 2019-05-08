@@ -4,7 +4,7 @@
             <nav class="navbar navbar-light fixed-top client_navbar">
                 <div class="backBtn">
                     <a href="/freelancer/dashboard/my-account">
-                        <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
+                        <img src="/images/client/arrow_back.png" alt="back-icon">
                     </a>
                     PROFESSIONAL INFORMATION
                 </div>
@@ -13,7 +13,7 @@
             <div class="account-info-edit dashboard-box">
                 <div class="account-info-edit-heading dashboard-box-heading">
                     <div class="left">
-                        <img src="/resumeApp/public/images/client/my_account/info_40px.png" alt="info icon">
+                        <img src="/images/client/my_account/info_40px.png" alt="info icon">
                         <span>
                         EDIT PROFESSIONAL INFORMATION
                     </span>
@@ -28,7 +28,7 @@
                             </label>
                             <div class="faq-input">
                                 <input type="text" name="faq" placeholder="Telemarketing" >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
+                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
@@ -37,7 +37,7 @@
                             </label>
                             <div class="faq-input">
                                 <input type="text" name="faq" placeholder="Friendly" >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
+                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
@@ -46,7 +46,7 @@
                             </label>
                             <div class="faq-input">
                                 <input type="text" name="faq" placeholder="Real state, Insurance, Investment" >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
+                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
@@ -55,7 +55,7 @@
                             </label>
                             <div class="faq-input">
                                 <input type="text" name="faq" placeholder="25" >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
+                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
@@ -64,7 +64,7 @@
                             </label>
                             <div class="faq-input">
                                 <input type="text" name="faq" placeholder="Microsoft Word, Excel" >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
+                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
@@ -73,7 +73,7 @@
                             </label>
                             <div class="faq-input">
                                 <input type="text" name="faq" placeholder="Enter your ..." >
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" alt="delete icon">
+                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
                     </div>

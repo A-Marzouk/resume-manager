@@ -3,7 +3,7 @@
         <nav class="navbar navbar-light fixed-top client_navbar">
             <div class="backBtn">
                 <a href="/client/dashboard">
-                    <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
+                    <img src="/images/client/arrow_back.png" alt="back-icon">
                 </a>
                 YOUR CAMPAIGN AGENTS
             </div>
@@ -13,7 +13,7 @@
         <div class="d-flex justify-content-center">
             <div class="main-grid">
                 <div class="header-text">
-                    <img src="/resumeApp/public/images/client/payments/agents_40px.svg" alt=""  class="icon-margin small-image">
+                    <img src="/images/client/payments/agents_40px.svg" alt=""  class="icon-margin small-image">
                     YOUR CAMPAIGN AGENTS
                 </div>
 
@@ -33,13 +33,13 @@
                     <!--image-->
                     <div class="d-flex">
                         <div class="p-2">
-                            <img src="/resumeApp/public/images/client/add_agent/search_result/ic/user/user123.png" class="avator"/>
+                            <img src="/images/client/add_agent/search_result/ic/user/user123.png" class="avator"/>
                         </div>
                         <!--location-->
                         <div class="p-2">
                             <div class="big-font">Jason Morgenstern</div>
                             <div class="location">
-                                <img src="/resumeApp/public/images/client/add_agent/search_result/icon/maps/place_24px.png"/>
+                                <img src="/images/client/add_agent/search_result/icon/maps/place_24px.png"/>
                                 Dublin, Ireland
                             </div>
                             <div class="visiblty" style="text-align: center">
@@ -48,7 +48,7 @@
                                 </div>
                                 <div>
                                     <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center justify-content-around">
-                                        <img src="/resumeApp/public/images/client/add_agent/search_result/ic/play_rec/Vector.png" style="margin-right: 15px;"/>
+                                        <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png" style="margin-right: 15px;"/>
                                         LISTEN TO THE RECORD
                                     </button>
                                 </div>
@@ -59,7 +59,7 @@
                     <!--info-->
                     <div class="p-2 info-grid" style="">
                         <div class="big-font">
-                            <img src="/resumeApp/public/images/client/add_agent/search_result/ic/primary_job_name.png" class="primaryjob-icon"/>
+                            <img src="/images/client/add_agent/search_result/ic/primary_job_name.png" class="primaryjob-icon"/>
                             Telemarketing
                         </div>
                         <div style="font-size: 16px; color : #4a5464; margin: 20px 0 20px;">
@@ -79,7 +79,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center" style="width: 136px;!important">
-                                    <img src="/resumeApp/public/images/client/add_agent/search_result/ic/play_rec/Vector.png" style="margin-right: 15px;"/>
+                                    <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png" style="margin-right: 15px;"/>
                                     LISTEN TO THE RECORD
                                 </button>
                             </div>

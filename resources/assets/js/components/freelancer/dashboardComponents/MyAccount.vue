@@ -3,7 +3,7 @@
         <div class="account-info dashboard-box">
             <div class="account-info-heading dashboard-box-heading">
                 <div class="left">
-                    <img src="/resumeApp/public/images/client/my_account/info_40px.png" alt="info icon">
+                    <img src="/images/client/my_account/info_40px.png" alt="info icon">
                     <span>
                         YOUR ACCOUNT INFORMATION
                     </span>
@@ -19,7 +19,7 @@
                 <div class="account-info-content">
                     <div class="acc-info-content-heading">
                         <div class="acc-info-item">
-                            <img src="/resumeApp/public/images/client/my_account/name.png" alt="name icon">
+                            <img src="/images/client/my_account/name.png" alt="name icon">
                             <span>
                                 Edward Norton
                             </span>
@@ -29,19 +29,19 @@
                         </div>
                     </div>
                     <div class="acc-info-content-item">
-                        <img src="/resumeApp/public/images/client/my_account/agency.png" alt="agency icon">
+                        <img src="/images/client/my_account/agency.png" alt="agency icon">
                         <div>
                             Black and White - agency
                         </div>
                     </div>
                     <div class="acc-info-content-item">
-                        <img src="/resumeApp/public/images/client/my_account/phone_number.png" alt="phone icon">
+                        <img src="/images/client/my_account/phone_number.png" alt="phone icon">
                         <div>
                             00442037000685
                         </div>
                     </div>
                     <div class="acc-info-content-item">
-                        <img src="/resumeApp/public/images/client/my_account/email.png" alt="email icon">
+                        <img src="/images/client/my_account/email.png" alt="email icon">
                         <div>
                             email@gmail.com<br/>
                             email123456656@gmail.com (account dept)
@@ -55,7 +55,7 @@
             <div class="account-info-heading dashboard-box-heading">
                 <div class="left">
                     <!-- Replace here with the professional info icon -->
-                    <img src="/resumeApp/public/images/client/my_account/contract_40px.png" alt="info icon">
+                    <img src="/images/client/my_account/contract_40px.png" alt="info icon">
                     <span>
                         PROFESSIONAL INFORMATION
                     </span>
@@ -111,7 +111,7 @@
         <div class="contracts dashboard-box">
             <div class="account-info-heading dashboard-box-heading">
                 <div class="left">
-                    <img src="/resumeApp/public/images/client/my_account/contract_40px.png" alt="info icon">
+                    <img src="/images/client/my_account/contract_40px.png" alt="info icon">
                     <span>
                         CONTRACTS
                     </span>
@@ -121,7 +121,7 @@
                 <div class="account-info-content p-0">
                     <div class="agreement">
                        <div class="right">
-                           <img src="/resumeApp/public/images/client/my_account/privacy.png" alt="privacy icon">
+                           <img src="/images/client/my_account/privacy.png" alt="privacy icon">
                            <div>
                                Privacy agreement
                            </div>
@@ -134,7 +134,7 @@
                     </div>
                     <div class="agreement">
                         <div class="right">
-                            <img src="/resumeApp/public/images/client/my_account/service.png" alt="service icon">
+                            <img src="/images/client/my_account/service.png" alt="service icon">
                             <div>
                                 Service agreement
                             </div>
@@ -152,7 +152,7 @@
         <div class="faqs dashboard-box">
             <div class="account-info-heading dashboard-box-heading">
                 <div class="left">
-                    <img src="/resumeApp/public/images/client/my_account/faq_40px.png" alt="info icon">
+                    <img src="/images/client/my_account/faq_40px.png" alt="info icon">
                     <span>
                         FAQ
                     </span>
@@ -175,7 +175,7 @@
                             </div>
                         </div>
                         <div class="faq-edit">
-                            <img src="/resumeApp/public/images/client/my_account/dropdown.png" :id="'toggleIcon_'+faq.id" alt="toggle icon" @click="toggleAnswer(faq.id)">
+                            <img src="/images/client/my_account/dropdown.png" :id="'toggleIcon_'+faq.id" alt="toggle icon" @click="toggleAnswer(faq.id)">
                         </div>
                     </div>
                     </div>

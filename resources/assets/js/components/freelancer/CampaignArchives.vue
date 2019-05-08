@@ -3,7 +3,7 @@
         <nav class="navbar navbar-light fixed-top dashboard_navbar">
             <div class="backBtn">
                 <a href="/client/dashboard">
-                    <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
+                    <img src="/images/client/arrow_back.png" alt="back-icon">
                 </a>
                 ARCHIVE OF CAMPAIGNS
             </div>
@@ -12,7 +12,7 @@
         <div class="archive-content-box">
             <div v-show="!empty_state">
                 <div class="archive-heading">
-                    <img src="/resumeApp/public/images/client/campaign_archives/search.png" alt="search icon">
+                    <img src="/images/client/campaign_archives/search.png" alt="search icon">
                     YOUR PAST CAMPAIGNS
                 </div>
                 <div class="archive-list">
@@ -24,11 +24,11 @@
                                 </a>
                             </div>
                             <div class="date">
-                                <img src="/resumeApp/public/images/client/campaign_archives/date.png" alt="date icon">
+                                <img src="/images/client/campaign_archives/date.png" alt="date icon">
                                 4.09.18 - 4.01.19
                             </div>
                             <div class="amount">
-                                <img src="/resumeApp/public/images/client/campaign_archives/amount.png" alt="amount icon">
+                                <img src="/images/client/campaign_archives/amount.png" alt="amount icon">
                                 $ 8,500
                             </div>
                         </div>
@@ -41,11 +41,11 @@
                                 </a>
                             </div>
                             <div class="date">
-                                <img src="/resumeApp/public/images/client/campaign_archives/date.png" alt="date icon">
+                                <img src="/images/client/campaign_archives/date.png" alt="date icon">
                                 4.09.18 - 4.01.19
                             </div>
                             <div class="amount">
-                                <img src="/resumeApp/public/images/client/campaign_archives/amount.png" alt="amount icon">
+                                <img src="/images/client/campaign_archives/amount.png" alt="amount icon">
                                 $ 8,500
                             </div>
                         </div>
@@ -58,11 +58,11 @@
                                 </a>
                             </div>
                             <div class="date">
-                                <img src="/resumeApp/public/images/client/campaign_archives/date.png" alt="date icon">
+                                <img src="/images/client/campaign_archives/date.png" alt="date icon">
                                 4.09.18 - 4.01.19
                             </div>
                             <div class="amount">
-                                <img src="/resumeApp/public/images/client/campaign_archives/amount.png" alt="amount icon">
+                                <img src="/images/client/campaign_archives/amount.png" alt="amount icon">
                                 $ 8,500
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                     You Archive of campaigns is empty
                 </div>
                 <div class="archive-empty-state-img-wrapper">
-                    <img src="/resumeApp/public/images/client/campaign_archives/archive_emty_state.png"
+                    <img src="/images/client/campaign_archives/archive_emty_state.png"
                          alt="emty state photo">
                 </div>
 

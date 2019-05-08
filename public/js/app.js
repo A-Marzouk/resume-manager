@@ -60847,10 +60847,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "backBtn" }, [
           _c("a", { attrs: { href: "/client/dashboard" } }, [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/arrow_back.png",
-                alt: "back-icon"
-              }
+              attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
             })
           ]),
           _vm._v("\n            ARCHIVE OF CAMPAIGNS\n        ")
@@ -60865,7 +60862,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "archive-heading" }, [
       _c("img", {
         attrs: {
-          src: "/resumeApp/public/images/client/campaign_archives/search.png",
+          src: "/images/client/campaign_archives/search.png",
           alt: "search icon"
         }
       }),
@@ -60898,8 +60895,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "date" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/date.png",
+                src: "/images/client/campaign_archives/date.png",
                 alt: "date icon"
               }
             }),
@@ -60911,8 +60907,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "amount" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/amount.png",
+                src: "/images/client/campaign_archives/amount.png",
                 alt: "amount icon"
               }
             }),
@@ -60944,8 +60939,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "date" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/date.png",
+                src: "/images/client/campaign_archives/date.png",
                 alt: "date icon"
               }
             }),
@@ -60957,8 +60951,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "amount" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/amount.png",
+                src: "/images/client/campaign_archives/amount.png",
                 alt: "amount icon"
               }
             }),
@@ -60990,8 +60983,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "date" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/date.png",
+                src: "/images/client/campaign_archives/date.png",
                 alt: "date icon"
               }
             }),
@@ -61003,8 +60995,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "amount" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/amount.png",
+                src: "/images/client/campaign_archives/amount.png",
                 alt: "amount icon"
               }
             }),
@@ -61036,8 +61027,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "date" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/date.png",
+                src: "/images/client/campaign_archives/date.png",
                 alt: "date icon"
               }
             }),
@@ -61049,8 +61039,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "amount" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/amount.png",
+                src: "/images/client/campaign_archives/amount.png",
                 alt: "amount icon"
               }
             }),
@@ -61069,8 +61058,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "archive-empty-state-img-wrapper" }, [
       _c("img", {
         attrs: {
-          src:
-            "/resumeApp/public/images/client/campaign_archives/archive_emty_state.png",
+          src: "/images/client/campaign_archives/archive_emty_state.png",
           alt: "empty state photo"
         }
       })
@@ -67141,7 +67129,7 @@ var staticRenderFns = [
             _c("a", { attrs: { href: "/client/dashboard" } }, [
               _c("img", {
                 attrs: {
-                  src: "/resumeApp/public/images/client/arrow_back.png",
+                  src: "/images/client/arrow_back.png",
                   alt: "back-icon"
                 }
               })
@@ -67156,10 +67144,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "header-text" }, [
             _c("img", {
               staticClass: "icon-margin small-image",
-              attrs: {
-                src: "/resumeApp/public/images/client/payments/agents_40px.svg",
-                alt: ""
-              }
+              attrs: { src: "/images/client/payments/agents_40px.svg", alt: "" }
             }),
             _vm._v("\n                YOUR CAMPAIGN AGENTS\n            ")
           ]),
@@ -67191,7 +67176,7 @@ var staticRenderFns = [
                     staticClass: "avator",
                     attrs: {
                       src:
-                        "/resumeApp/public/images/client/add_agent/search_result/ic/user/user123.png"
+                        "/images/client/add_agent/search_result/ic/user/user123.png"
                     }
                   })
                 ]),
@@ -67205,7 +67190,7 @@ var staticRenderFns = [
                     _c("img", {
                       attrs: {
                         src:
-                          "/resumeApp/public/images/client/add_agent/search_result/icon/maps/place_24px.png"
+                          "/images/client/add_agent/search_result/icon/maps/place_24px.png"
                       }
                     }),
                     _vm._v(
@@ -67243,7 +67228,7 @@ var staticRenderFns = [
                               staticStyle: { "margin-right": "15px" },
                               attrs: {
                                 src:
-                                  "/resumeApp/public/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                                  "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
                               }
                             }),
                             _vm._v(
@@ -67263,7 +67248,7 @@ var staticRenderFns = [
                     staticClass: "primaryjob-icon",
                     attrs: {
                       src:
-                        "/resumeApp/public/images/client/add_agent/search_result/ic/primary_job_name.png"
+                        "/images/client/add_agent/search_result/ic/primary_job_name.png"
                     }
                   }),
                   _vm._v(
@@ -67343,7 +67328,7 @@ var staticRenderFns = [
                             staticStyle: { "margin-right": "15px" },
                             attrs: {
                               src:
-                                "/resumeApp/public/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                                "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
                             }
                           }),
                           _vm._v(
@@ -74863,10 +74848,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "actionBtn" }, [
           _c("a", { attrs: { href: "#" } }, [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/plus.png",
-                alt: "plus sign"
-              }
+              attrs: { src: "/images/client/plus.png", alt: "plus sign" }
             }),
             _vm._v("CREATE NEW CAMPAIGN\n                ")
           ])
@@ -74901,10 +74883,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "menu-img" }, [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/more_vert_24px.png",
-                alt: "menu"
-              }
+              attrs: { src: "/images/client/more_vert_24px.png", alt: "menu" }
             })
           ])
         ])
@@ -74912,9 +74891,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "agent-logs-block" }, [
         _c("div", { staticClass: "agentInfo" }, [
-          _c("img", {
-            attrs: { src: "/resumeApp/public/images/client/dummy.png", alt: "" }
-          }),
+          _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
           _vm._v(" "),
           _c("span", { staticClass: "userName" }, [
             _vm._v(
@@ -74984,9 +74961,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "agent-logs-block" }, [
         _c("div", { staticClass: "agentInfo" }, [
-          _c("img", {
-            attrs: { src: "/resumeApp/public/images/client/dummy.png", alt: "" }
-          }),
+          _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
           _vm._v(" "),
           _c("span", { staticClass: "userName" }, [
             _vm._v(
@@ -75085,10 +75060,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "menu-img" }, [
           _c("img", {
-            attrs: {
-              src: "/resumeApp/public/images/client/more_vert_24px.png",
-              alt: "menu"
-            }
+            attrs: { src: "/images/client/more_vert_24px.png", alt: "menu" }
           })
         ])
       ])
@@ -75100,9 +75072,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "agent-logs-block" }, [
       _c("div", { staticClass: "agentInfo" }, [
-        _c("img", {
-          attrs: { src: "/resumeApp/public/images/client/dummy.png", alt: "" }
-        }),
+        _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
         _vm._v(" "),
         _c("span", { staticClass: "userName" }, [
           _vm._v(
@@ -75194,9 +75164,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "agent-logs-block" }, [
       _c("div", { staticClass: "agentInfo" }, [
-        _c("img", {
-          attrs: { src: "/resumeApp/public/images/client/dummy.png", alt: "" }
-        }),
+        _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
         _vm._v(" "),
         _c("span", { staticClass: "userName" }, [
           _vm._v(
@@ -75671,8 +75639,7 @@ var render = function() {
                   _c("div", { staticClass: "faq-edit" }, [
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/my_account/dropdown.png",
+                        src: "/images/client/my_account/dropdown.png",
                         id: "toggleIcon_" + faq.id,
                         alt: "toggle icon"
                       },
@@ -75702,7 +75669,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "left" }, [
           _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/my_account/info_40px.png",
+              src: "/images/client/my_account/info_40px.png",
               alt: "info icon"
             }
           }),
@@ -75732,7 +75699,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "acc-info-item" }, [
               _c("img", {
                 attrs: {
-                  src: "/resumeApp/public/images/client/my_account/name.png",
+                  src: "/images/client/my_account/name.png",
                   alt: "name icon"
                 }
               }),
@@ -75752,7 +75719,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "acc-info-content-item" }, [
             _c("img", {
               attrs: {
-                src: "/resumeApp/public/images/client/my_account/agency.png",
+                src: "/images/client/my_account/agency.png",
                 alt: "agency icon"
               }
             }),
@@ -75767,8 +75734,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "acc-info-content-item" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/my_account/phone_number.png",
+                src: "/images/client/my_account/phone_number.png",
                 alt: "phone icon"
               }
             }),
@@ -75783,7 +75749,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "acc-info-content-item" }, [
             _c("img", {
               attrs: {
-                src: "/resumeApp/public/images/client/my_account/email.png",
+                src: "/images/client/my_account/email.png",
                 alt: "email icon"
               }
             }),
@@ -75809,8 +75775,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "left" }, [
           _c("img", {
             attrs: {
-              src:
-                "/resumeApp/public/images/client/my_account/contract_40px.png",
+              src: "/images/client/my_account/contract_40px.png",
               alt: "info icon"
             }
           }),
@@ -75902,8 +75867,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "left" }, [
           _c("img", {
             attrs: {
-              src:
-                "/resumeApp/public/images/client/my_account/contract_40px.png",
+              src: "/images/client/my_account/contract_40px.png",
               alt: "info icon"
             }
           }),
@@ -75920,7 +75884,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "right" }, [
               _c("img", {
                 attrs: {
-                  src: "/resumeApp/public/images/client/my_account/privacy.png",
+                  src: "/images/client/my_account/privacy.png",
                   alt: "privacy icon"
                 }
               }),
@@ -75949,7 +75913,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "right" }, [
               _c("img", {
                 attrs: {
-                  src: "/resumeApp/public/images/client/my_account/service.png",
+                  src: "/images/client/my_account/service.png",
                   alt: "service icon"
                 }
               }),
@@ -75988,7 +75952,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "left" }, [
           _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/my_account/faq_40px.png",
+              src: "/images/client/my_account/faq_40px.png",
               alt: "info icon"
             }
           }),
@@ -76258,6 +76222,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             canSubmit: false,
             errors: []
         };
+<<<<<<< HEAD
+=======
+    },
+
+    methods: {
+        selectTab: function selectTab(tabName) {
+            this.activeTab = tabName;
+        },
+        getMenuBlockIcon: function getMenuBlockIcon(tabName) {
+            if (this.activeTab === tabName) {
+                return '/images/client/menu_icons/active/' + tabName + '.png';
+            }
+            return '/images/client/menu_icons/inactive/' + tabName + '.png';
+        },
+        setActiveTab: function setActiveTab() {
+            this.activeTab = this.$route.path.replace('/', '');
+            if (this.activeTab === '') {
+                this.activeTab = 'campaign_manager';
+            }
+        },
+        rootLinkTo: function rootLinkTo(link) {
+            return this.$route.path + '/' + link;
+        }
+    },
+    mounted: function mounted() {
+        this.setActiveTab();
+>>>>>>> DEV_TEST
     }
 });
 
@@ -76269,62 +76260,8 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "account-info-edit dashboard-box" }, [
-    _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "account-edit-section" }, [
-      _c("div", { staticClass: "account-edit-section-heading" }, [
-        _vm._v("\n          BASIC INFORMATION\n      ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "account-edit-section-inputs" }, [
-        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
-          _c("label", { staticClass: "faq-input-label" }, [
-            _vm._v("\n                  Enter your name\n              ")
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "faq-input",
-              class: { "error-input": _vm.errors.name }
-            },
-            [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formData.name,
-                    expression: "formData.name"
-                  }
                 ],
-                attrs: {
-                  type: "text",
-                  name: "name",
-                  placeholder: "Enter your name"
-                },
-                domProps: { value: _vm.formData.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.formData, "name", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("img", {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.formData.name.length > 0,
-                    expression: "formData.name.length > 0"
-                  }
-                ],
-                attrs: {
                   src:
                     "/resumeApp/public/images/client/campaign_activity/close_black.png",
                   alt: "delete icon"
@@ -78876,14 +78813,7 @@ var staticRenderFns = [
         staticClass: "js-menu-open menu-open",
         attrs: { href: "javascript:void(0)", id: "menu-open-icon" }
       },
-      [
-        _c("img", {
-          attrs: {
-            src: "/resumeApp/public/images/client/Group.png",
-            alt: "menu"
-          }
-        })
-      ]
+      [_c("img", { attrs: { src: "/images/client/Group.png", alt: "menu" } })]
     )
   },
   function() {
@@ -78896,14 +78826,7 @@ var staticRenderFns = [
         staticClass: "js-menu-close d-none",
         attrs: { href: "javascript:void(0)" }
       },
-      [
-        _c("img", {
-          attrs: {
-            src: "/resumeApp/public/images/client/close.png",
-            alt: "menu"
-          }
-        })
-      ]
+      [_c("img", { attrs: { src: "/images/client/close.png", alt: "menu" } })]
     )
   },
   function() {
@@ -78914,10 +78837,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "logoutButton" }, [
         _c("a", { attrs: { href: "/logout" } }, [
           _c("img", {
-            attrs: {
-              src: "/resumeApp/public/images/client/log_out.png",
-              alt: "logout"
-            }
+            attrs: { src: "/images/client/log_out.png", alt: "logout" }
           })
         ])
       ]),
@@ -78925,12 +78845,7 @@ var staticRenderFns = [
       _c("div", [_vm._v("\n                Ahmed R. Marzouk\n            ")]),
       _vm._v(" "),
       _c("div", { staticClass: "avatar" }, [
-        _c("img", {
-          attrs: {
-            src: "/resumeApp/public/images/client/dummy.png",
-            alt: "logout"
-          }
-        })
+        _c("img", { attrs: { src: "/images/client/dummy.png", alt: "logout" } })
       ])
     ])
   },
@@ -78940,12 +78855,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "info-bar" }, [
       _c("div", { staticClass: "avatar" }, [
-        _c("img", {
-          attrs: {
-            src: "/resumeApp/public/images/client/dummy.png",
-            alt: "logout"
-          }
-        })
+        _c("img", { attrs: { src: "/images/client/dummy.png", alt: "logout" } })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "name" }, [
@@ -78985,11 +78895,7 @@ var staticRenderFns = [
                   staticClass: "close",
                   attrs: { type: "button", "data-dismiss": "modal" }
                 },
-                [
-                  _c("img", {
-                    attrs: { src: "/resumeApp/public/images/client/close.png" }
-                  })
-                ]
+                [_c("img", { attrs: { src: "/images/client/close.png" } })]
               )
             ]),
             _vm._v(" "),
@@ -79055,8 +78961,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "invoice-download" }, [
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/payments/export_invoice.png"
+                        src: "/images/client/payments/export_invoice.png"
                       }
                     }),
                     _vm._v("   copy invioce link ")
@@ -79107,10 +79012,7 @@ var staticRenderFns = [
                   _c("div", { staticClass: "d-flex align-items-center" }, [
                     _c("img", {
                       staticClass: "invoice-info-icon",
-                      attrs: {
-                        src:
-                          "/resumeApp/public/images/client/payments/people_24px.png"
-                      }
+                      attrs: { src: "/images/client/payments/people_24px.png" }
                     }),
                     _vm._v(" "),
                     _c("span", { staticClass: "invoice-info-title" }, [
@@ -79126,7 +79028,7 @@ var staticRenderFns = [
                       staticClass: "invoice-info-icon",
                       attrs: {
                         src:
-                          "/resumeApp/public/images/client/payments/assignment_turned_in_24px.png"
+                          "/images/client/payments/assignment_turned_in_24px.png"
                       }
                     }),
                     _vm._v(" "),
@@ -79143,7 +79045,7 @@ var staticRenderFns = [
                       staticClass: "invoice-info-icon",
                       attrs: {
                         src:
-                          "/resumeApp/public/images/client/payments/account_balance_wallet_24px.png"
+                          "/images/client/payments/account_balance_wallet_24px.png"
                       }
                     }),
                     _vm._v(" "),
@@ -79159,9 +79061,22 @@ var staticRenderFns = [
                     _c("img", {
                       staticClass: "invoice-info-icon",
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/payments/watch_later_24px.png"
+                        src: "/images/client/payments/watch_later_24px.png"
                       }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "invoice-info-title" }, [
+                      _vm._v(" Name of agents: ")
+                    ]),
+                    _vm._v(
+                      "\n                            Analiza Belleza, Cheska Ramos\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "d-flex align-items-center" }, [
+                    _c("img", {
+                      staticClass: "invoice-info-icon",
+                      attrs: { src: "/images/client/payments/Subtract.png" }
                     }),
                     _vm._v(" "),
                     _c("span", { staticClass: "invoice-info-title" }, [
@@ -79177,24 +79092,7 @@ var staticRenderFns = [
                       staticClass: "invoice-info-icon",
                       attrs: {
                         src:
-                          "/resumeApp/public/images/client/payments/Subtract.png"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "invoice-info-title" }, [
-                      _vm._v(" Name of agents: ")
-                    ]),
-                    _vm._v(
-                      "\n                            Analiza Belleza, Cheska Ramos\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "d-flex align-items-center" }, [
-                    _c("img", {
-                      staticClass: "invoice-info-icon",
-                      attrs: {
-                        src:
-                          "/resumeApp/public/images/client/payments/account_balance_wallet_24px.png"
+                          "/images/client/payments/account_balance_wallet_24px.png"
                       }
                     }),
                     _vm._v(" "),
@@ -79479,10 +79377,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "backBtn" }, [
           _c("a", { attrs: { href: "/client/dashboard" } }, [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/arrow_back.png",
-                alt: "back-icon"
-              }
+              attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
             })
           ]),
           _vm._v("\n            ARCHIVE OF CAMPAIGNS\n        ")
@@ -79497,7 +79392,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "archive-heading" }, [
       _c("img", {
         attrs: {
-          src: "/resumeApp/public/images/client/campaign_archives/search.png",
+          src: "/images/client/campaign_archives/search.png",
           alt: "search icon"
         }
       }),
@@ -79522,8 +79417,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "date" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/date.png",
+                src: "/images/client/campaign_archives/date.png",
                 alt: "date icon"
               }
             }),
@@ -79535,8 +79429,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "amount" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/amount.png",
+                src: "/images/client/campaign_archives/amount.png",
                 alt: "amount icon"
               }
             }),
@@ -79560,8 +79453,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "date" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/date.png",
+                src: "/images/client/campaign_archives/date.png",
                 alt: "date icon"
               }
             }),
@@ -79573,8 +79465,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "amount" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/amount.png",
+                src: "/images/client/campaign_archives/amount.png",
                 alt: "amount icon"
               }
             }),
@@ -79598,8 +79489,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "date" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/date.png",
+                src: "/images/client/campaign_archives/date.png",
                 alt: "date icon"
               }
             }),
@@ -79611,8 +79501,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "amount" }, [
             _c("img", {
               attrs: {
-                src:
-                  "/resumeApp/public/images/client/campaign_archives/amount.png",
+                src: "/images/client/campaign_archives/amount.png",
                 alt: "amount icon"
               }
             }),
@@ -79631,8 +79520,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "archive-empty-state-img-wrapper" }, [
       _c("img", {
         attrs: {
-          src:
-            "/resumeApp/public/images/client/campaign_archives/archive_emty_state.png",
+          src: "/images/client/campaign_archives/archive_emty_state.png",
           alt: "emty state photo"
         }
       })
@@ -79877,10 +79765,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "backBtn" }, [
           _c("a", { attrs: { href: "/client/dashboard" } }, [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/arrow_back.png",
-                alt: "back-icon"
-              }
+              attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
             })
           ]),
           _vm._v("\n            NAME OF THE CAMPAIGN\n        ")
@@ -80175,7 +80060,7 @@ var staticRenderFns = [
               _c("a", { attrs: { href: "/freelancer/dashboard/my-account" } }, [
                 _c("img", {
                   attrs: {
-                    src: "/resumeApp/public/images/client/arrow_back.png",
+                    src: "/images/client/arrow_back.png",
                     alt: "back-icon"
                   }
                 })
@@ -80195,8 +80080,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "left" }, [
                 _c("img", {
                   attrs: {
-                    src:
-                      "/resumeApp/public/images/client/my_account/info_40px.png",
+                    src: "/images/client/my_account/info_40px.png",
                     alt: "info icon"
                   }
                 }),
@@ -80235,8 +80119,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -80265,8 +80148,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -80295,8 +80177,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -80325,8 +80206,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -80355,8 +80235,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -80385,8 +80264,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -80412,8 +80290,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("img", {
                     attrs: {
-                      src:
-                        "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                      src: "/images/client/campaign_activity/close_black.png",
                       alt: "delete icon"
                     }
                   })
@@ -80442,8 +80319,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("img", {
                     attrs: {
-                      src:
-                        "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                      src: "/images/client/campaign_activity/close_black.png",
                       alt: "delete icon"
                     }
                   })
@@ -80479,8 +80355,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -80509,8 +80384,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -80777,7 +80651,7 @@ var staticRenderFns = [
               _c("a", { attrs: { href: "/freelancer/dashboard/my-account" } }, [
                 _c("img", {
                   attrs: {
-                    src: "/resumeApp/public/images/client/arrow_back.png",
+                    src: "/images/client/arrow_back.png",
                     alt: "back-icon"
                   }
                 })
@@ -80795,8 +80669,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "left" }, [
                 _c("img", {
                   attrs: {
-                    src:
-                      "/resumeApp/public/images/client/my_account/info_40px.png",
+                    src: "/images/client/my_account/info_40px.png",
                     alt: "info icon"
                   }
                 }),
@@ -80833,8 +80706,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -80863,8 +80735,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -80893,8 +80764,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -80919,8 +80789,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -80949,8 +80818,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })
@@ -80979,8 +80847,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("img", {
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       }
                     })

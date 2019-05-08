@@ -15,7 +15,7 @@
                 </div>
                 <div class="actionBtn">
                     <a href="#">
-                        <img src="/resumeApp/public/images/client/plus.png" alt="plus sign">CREATE NEW CAMPAIGN
+                        <img src="/images/client/plus.png" alt="plus sign">CREATE NEW CAMPAIGN
                     </a>
                 </div>
             </div>
@@ -35,13 +35,13 @@
                         ACTIVE
                     </a>
                     <div class="menu-img">
-                        <img src="/resumeApp/public/images/client/more_vert_24px.png" alt="menu">
+                        <img src="/images/client/more_vert_24px.png" alt="menu">
                     </div>
                 </div>
             </div>
             <div class="agent-logs-block">
                 <div class="agentInfo">
-                    <img src="/resumeApp/public/images/client/dummy.png" alt="">
+                    <img src="/images/client/dummy.png" alt="">
                     <span class="userName">
                                 Mohamed Salah
                             </span>
@@ -94,7 +94,7 @@
             </div>
             <div class="agent-logs-block">
                 <div class="agentInfo">
-                    <img src="/resumeApp/public/images/client/dummy.png" alt="">
+                    <img src="/images/client/dummy.png" alt="">
                     <span class="userName">
                                 Lionel Messi
                             </span>
@@ -167,13 +167,13 @@
                         LIVE
                     </a>
                     <div class="menu-img">
-                        <img src="/resumeApp/public/images/client/more_vert_24px.png" alt="menu">
+                        <img src="/images/client/more_vert_24px.png" alt="menu">
                     </div>
                 </div>
             </div>
             <div class="agent-logs-block">
                 <div class="agentInfo">
-                    <img src="/resumeApp/public/images/client/dummy.png" alt="">
+                    <img src="/images/client/dummy.png" alt="">
                     <span class="userName">
                                 Mohamed Salah
                             </span>
@@ -240,7 +240,7 @@
             </div>
             <div class="agent-logs-block">
                 <div class="agentInfo">
-                    <img src="/resumeApp/public/images/client/dummy.png" alt="">
+                    <img src="/images/client/dummy.png" alt="">
                     <span class="userName">
                                 Lionel Messi
                             </span>

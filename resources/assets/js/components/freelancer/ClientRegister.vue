@@ -4,7 +4,7 @@
             <nav class="navbar navbar-light fixed-top client_navbar">
                 <div class="backBtn">
                     <a href="/">
-                        <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
+                        <img src="/images/client/arrow_back.png" alt="back-icon">
                     </a>
                     BECOME A CLIENT
                 </div>
@@ -13,7 +13,7 @@
             <div class="account-info-edit dashboard-box">
                 <div class="account-info-edit-heading dashboard-box-heading">
                     <div class="left">
-                        <img src="/resumeApp/public/images/client/my_account/info_40px.png" alt="info icon">
+                        <img src="/images/client/my_account/info_40px.png" alt="info icon">
                         <span>
                         FILL IN THE INFORMATION TO BECOME A CLIENT
                     </span>
@@ -31,7 +31,7 @@
                             </label>
                             <div class="faq-input" :class="{ 'error-input' : errors.agency}">
                                 <input type="text" name="agency" placeholder="Enter your agency name" v-model="formData.agency">
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+                                <img src="/images/client/campaign_activity/close_black.png"
                                      alt="delete icon"
                                      v-show="formData.agency.length > 0"
                                      @click="clearInput('agency')"
@@ -47,7 +47,7 @@
                             </label>
                             <div class="faq-input"  :class="{ 'error-input' : errors.name}">
                                 <input type="text" name="name" placeholder="Enter your name" v-model="formData.name">
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('name')" alt="delete icon" v-show="formData.name.length > 0">
+                                <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('name')" alt="delete icon" v-show="formData.name.length > 0">
                             </div>
                             <div class="error" v-if="errors.name">
                                 {{errors.name[0]}}
@@ -59,7 +59,7 @@
                             </label>
                             <div class="faq-input" :class="{ 'error-input' : errors.phone}">
                                 <input type="text" name="phone" placeholder="Enter your phone" v-model="formData.phone">
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('phone')" alt="delete icon" v-show="formData.phone.length > 0">
+                                <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('phone')" alt="delete icon" v-show="formData.phone.length > 0">
                             </div>
                             <div class="error" v-if="errors.phone">
                                 {{errors.phone[0]}}
@@ -130,7 +130,7 @@
                             </label>
                             <div class="faq-input"  :class="{ 'error-input' : errors.email}">
                                 <input type="text" name="email" placeholder="Enter your email" v-model="formData.email">
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('email')" alt="delete icon" v-show="formData.email.length > 0">
+                                <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('email')" alt="delete icon" v-show="formData.email.length > 0">
                             </div>
                             <div class="error" v-if="errors.email">
                                 {{errors.email[0]}}
@@ -142,7 +142,7 @@
                             </label>
                             <div class="faq-input"  :class="{ 'error-input' : errors.emailDept}">
                                 <input type="text" name="emailDept" placeholder="Enter your email dept" v-model="formData.emailDept">
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+                                <img src="/images/client/campaign_activity/close_black.png"
                                      alt="delete icon"
                                      v-show="formData.emailDept.length > 0"
                                      @click="clearInput('emailDept')"
@@ -165,7 +165,7 @@
                             </label>
                             <div class="faq-input"  :class="{ 'error-input' : errors.password}">
                                 <input type="password" name="password" placeholder="Enter your password" v-model="formData.password">
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+                                <img src="/images/client/campaign_activity/close_black.png"
                                      alt="delete icon"
                                      v-show="formData.password.length > 0"
                                      @click="clearInput('password')">
@@ -180,7 +180,7 @@
                             </label>
                             <div class="faq-input">
                                 <input type="password" name="password_confirmation" placeholder="Enter your password confirmation" v-model="formData.password_confirmation">
-                                <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+                                <img src="/images/client/campaign_activity/close_black.png"
                                      alt="delete icon"
                                      v-show="formData.password_confirmation.length > 0"
                                      @click="clearInput('password_confirmation')">

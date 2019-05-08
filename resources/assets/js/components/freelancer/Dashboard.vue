@@ -3,15 +3,15 @@
         <nav class="navbar navbar-light fixed-top dashboard_navbar" id="sideNav">
 
             <a href="javascript:void(0)" class="js-menu-open menu-open" id="menu-open-icon">
-                <img src="/resumeApp/public/images/client/Group.png" alt="menu">
+                <img src="/images/client/Group.png" alt="menu">
             </a>
 
             <a href="javascript:void(0)" class="js-menu-close d-none">
-                <img src="/resumeApp/public/images/client/close.png" alt="menu">
+                <img src="/images/client/close.png" alt="menu">
             </a>
 
             <a class="navbar-brand" :href="rootURL">
-                <img src="/resumeApp/public/images/client/logo_123.png" alt="logout" style="width: 177px;">
+                <img src="/images/client/logo_123.png" alt="logout" style="width: 177px;">
             </a>
             <div class="form-inline my-2 my-lg-0">
 
@@ -19,14 +19,14 @@
             <div class="form-inline my-2 my-lg-0 name">
                 <div class="logoutButton">
                     <a href="/logout">
-                        <img src="/resumeApp/public/images/client/log_out.png" alt="logout">
+                        <img src="/images/client/log_out.png" alt="logout">
                     </a>
                 </div>
                 <div>
                     Ahmed R. Marzouk
                 </div>
                 <div class="avatar">
-                    <img src="/resumeApp/public/images/client/dummy.png" alt="logout">
+                    <img src="/images/client/dummy.png" alt="logout">
                 </div>
             </div>
         </nav>
@@ -36,7 +36,7 @@
                 <a href="javascript:void(0)" class="js-menu-close menu-close" id="close-menu"></a>
                 <div class="info-bar">
                     <div class="avatar">
-                        <img src="/resumeApp/public/images/client/dummy.png" alt="logout">
+                        <img src="/images/client/dummy.png" alt="logout">
                     </div>
                     <div class="name">
                         Welcome,<br/>
@@ -131,14 +131,14 @@
                     <div class="modal-header close-button" style="">
 
                         <button type="button" class="close" data-dismiss="modal">
-                            <img src="/resumeApp/public/images/client/close.png"/>
+                            <img src="/images/client/close.png"/>
                         </button>
                     </div>
                     <div class="invoice-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="invoice-style"> INVOICE </div>
                             <div class="modal-logo"></div>
-                            <!-- <img src="/resumeApp/public/images/freelancer/logo_123.png" class="modal-logo"/> -->
+                            <!-- <img src="/images/freelancer/logo_123.png" class="modal-logo"/> -->
                         </div>
                         <div class="invioce-top-text">
                             123 Workforce
@@ -154,7 +154,7 @@
                             <div>№ 059-004-038</div>
                             <div> other services</div>
                             <div  class="d-flex justify-content-between align-items-center"> $400  <span class="invoice-outstand"> outstand</span> </div>
-                            <div class="invoice-download"> <img src="/resumeApp/public/images/client/payments/export_invoice.png"/>   copy invioce link </div>
+                            <div class="invoice-download"> <img src="/images/client/payments/export_invoice.png"/>   copy invioce link </div>
                         </div>
 
                         <div class="invoice-date">
@@ -176,36 +176,36 @@
 
                         <div class="freelancer-info invoice-info-freelancer">
                             <div class="d-flex align-items-center">
-                                <img src="/resumeApp/public/images/client/payments/people_24px.png" class="invoice-info-icon"/>
+                                <img src="/images/client/payments/people_24px.png" class="invoice-info-icon"/>
                                 <span class="invoice-info-title"> Name of agents: </span> Analiza Belleza, Cheska Ramos
                             </div>
 
                             <div class="d-flex align-items-center">
-                                <img src="/resumeApp/public/images/client/payments/assignment_turned_in_24px.png" class="invoice-info-icon"/>
+                                <img src="/images/client/payments/assignment_turned_in_24px.png" class="invoice-info-icon"/>
                                 <span class="invoice-info-title"> Name of agents: </span>
                                 Analiza Belleza, Cheska Ramos
                             </div>
 
                             <div class="d-flex align-items-center">
-                                <img src="/resumeApp/public/images/client/payments/account_balance_wallet_24px.png" class="invoice-info-icon"/>
+                                <img src="/images/client/payments/account_balance_wallet_24px.png" class="invoice-info-icon"/>
                                 <span class="invoice-info-title"> Name of agents: </span>
                                 Analiza Belleza, Cheska Ramos
                             </div>
 
                             <div class="d-flex align-items-center">
-                                <img src="/resumeApp/public/images/client/payments/watch_later_24px.png" class="invoice-info-icon"/>
+                                <img src="/images/client/payments/watch_later_24px.png" class="invoice-info-icon"/>
                                 <span class="invoice-info-title"> Name of agents: </span>
                                 Analiza Belleza, Cheska Ramos
                             </div>
 
                             <div class="d-flex align-items-center">
-                                <img src="/resumeApp/public/images/client/payments/Subtract.png" class="invoice-info-icon"/>
+                                <img src="/images/client/payments/Subtract.png" class="invoice-info-icon"/>
                                 <span class="invoice-info-title"> Name of agents: </span>
                                 Analiza Belleza, Cheska Ramos
                             </div>
 
                             <div class="d-flex align-items-center">
-                                <img src="/resumeApp/public/images/client/payments/account_balance_wallet_24px.png" class="invoice-info-icon"/>
+                                <img src="/images/client/payments/account_balance_wallet_24px.png" class="invoice-info-icon"/>
                                 <span class="invoice-info-title"> Name of agents: </span>
                                 Analiza Belleza, Cheska Ramos
                             </div>
@@ -236,9 +236,9 @@
             },
             getMenuBlockIcon(tabName){
                 if(this.activeTab === tabName){
-                   return '/resumeApp/public/images/client/menu_icons/active/'+ tabName + '.png';
+                   return '/images/client/menu_icons/active/'+ tabName + '.png';
                 }
-                return '/resumeApp/public/images/client/menu_icons/inactive/'+ tabName + '.png';
+                return '/images/client/menu_icons/inactive/'+ tabName + '.png';
             },
             setActiveTab(){
                 this.activeTab = this.$route.path.replace('/','')

@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-content-center">
-    <div class="client_dashboard_content campaign_activity">
+    <div class="dashboard_content campaign_activity">
       <div class="hideOnTablet">
         <div class="dashboard-side-menu">
           <div class="team-list-header">

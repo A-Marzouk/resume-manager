@@ -215,7 +215,7 @@ Vue.component('freelancer-professional-info-edit', require('./components/freelan
 
 if ($('#freelancerDashboardComponent').length !== 0) {
   const routes = [
-    { path: '/freelancer/:my-account', component: FreelancerMyAccount },
+    { path: '/freelancer/my-account', component: FreelancerMyAccount },
     { path: '/freelancer', component: FreelancerCampaignManager }
   ]
 

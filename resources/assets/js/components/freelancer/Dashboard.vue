@@ -247,7 +247,7 @@
                 }
             },
             rootLinkTo (link) {
-                return this.$route.path + '/' + link
+                return this.$route.path + link
             }
         },
         mounted(){

@@ -170,6 +170,7 @@
 .account-info-edit-wrapper{
   display: flex;
   justify-content: center;
+  position: relative;
   @media (max-width:1240px) {
     width: 738px;
   }
@@ -213,6 +214,10 @@
     margin-top: 40px;
   }
 
+  .faq-question-input.faq-description {
+    width: 100%;
+  }
+
   .faq-question-input .faq-input img, .faq-answer-input .faq-input img {
     margin-left: -34px;
   }
@@ -246,5 +251,36 @@
     padding: 10px;
     text-align: center;
     width: 150px;
+  }
+}
+
+.step-footer {
+  position: absolute;
+  bottom: 40px;
+  margin: 0 auto;
+
+  @media (max-width:600px) {
+    bottom: 80px;
+  }
+}
+
+.account-edit-section .faq-question-input .img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    margin: 0 30px;
+  }
+
+  .lang {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      margin-top: 10px;
+    }
   }
 }

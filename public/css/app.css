@@ -7174,6 +7174,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  position: relative;
 }
 
 @media (max-width: 1240px) {
@@ -7237,6 +7238,10 @@ body {
   margin-top: 40px;
 }
 
+.account-edit-section .faq-question-input.faq-description {
+  width: 100%;
+}
+
 .account-edit-section .faq-question-input .faq-input img,
 .account-edit-section .faq-answer-input .faq-input img {
   margin-left: -34px;
@@ -7286,6 +7291,54 @@ body {
   padding: 10px;
   text-align: center;
   width: 150px;
+}
+
+.step-footer {
+  position: absolute;
+  bottom: 40px;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .step-footer {
+    bottom: 80px;
+  }
+}
+
+.account-edit-section .faq-question-input .img-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.account-edit-section .faq-question-input .img-container img {
+  margin: 0 30px;
+}
+
+.account-edit-section .faq-question-input .img-container .lang {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.account-edit-section .faq-question-input .img-container .lang span {
+  margin-top: 10px;
 }
 
 .add-agent-form {

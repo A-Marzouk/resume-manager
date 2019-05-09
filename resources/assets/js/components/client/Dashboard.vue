@@ -96,7 +96,7 @@
             </div>
         </div>
 
-        <div class="dashboard_dashboard_content">
+        <div class="dashboard_content">
             <div class="dashboard-side-menu hideOnTablet">
                 <router-link to="/client/dashboard/campaign-manager" class="menu-block row" :class="{'active' : activeTab === 'campaign-manager'}" @click.native="selectTab('campaign-manager')">
                     <div class="imageContainer">
@@ -177,7 +177,7 @@
                         <div class="d-flex justify-content-between align-items-center invioce-title">
                             <div>№ 059-004-038</div>
                             <div> other services</div>
-                            <div  class="d-flex justify-content-between align-items-center"> $400  <span class="invoice-outstand"> outstand</span> </div>
+                            <div class="d-flex justify-content-between align-items-center"> $400  <span class="invoice-outstand"> outstand</span> </div>
                             <div class="invoice-download"> <img src="/images/client/payments/export_invoice.png"/>   copy invioce link </div>
                         </div>
 

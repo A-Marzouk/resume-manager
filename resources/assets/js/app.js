@@ -64,7 +64,7 @@ Vue.component('campaign-statistics',require('./components/client/campaignCompone
     import MyAccount from './components/client/dashboardComponents/MyAccount.vue';
 
 
-if ($("#campaignMainComponent").length !== 0){
+if ($('#campaignMainComponent').length !== 0){
     const routes = [
         { path: '/:campaign-team', component: CampaignTeam },
         { path: '/:campaign-brief', component: CampaignBrief },
@@ -115,13 +115,6 @@ if ($("#loginComponent").length !== 0){
 
     let loginComponent = new Vue({
         el:'#loginComponent'
-    });
-}
-
-if ($("#campaignStatistics").length !== 0){
-
-    let campaignStatistics = new Vue({
-        el:'#campaignStatistics'
     });
 }
 

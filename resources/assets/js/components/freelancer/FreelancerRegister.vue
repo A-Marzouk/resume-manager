@@ -10,7 +10,7 @@
                 </div>
             </nav>
             <keep-alive>
-                <router-view v-bind="{step, changeStep}"></router-view>
+                <router-view :changeStep="changeStep" ></router-view>
             </keep-alive>
             <span class="step-footer">{{ step }} / 5</span>
         </div>
@@ -48,7 +48,7 @@
                 this.formData[inputName] = '' ;
             },
             changeStep(step) {
-                console.log(step)
+                console.log(this)
                 this.step = step
             }
         },

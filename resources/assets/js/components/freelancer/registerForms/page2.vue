@@ -107,14 +107,15 @@
         </div>
     </div>
     <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}" id="submitBtnWrapper">
-        <router-link to="/freelancer/register/page3">
+        <a href="javascript:;" v-on:click="nextStep">
             CONTINUE
-        </router-link>
+        </a>
     </div>
   </div>
 </template>
 <script>
 export default {
+    props: ['changeStep'],
   data () {
     return{
         formData:{
@@ -128,6 +129,13 @@ export default {
         canSubmit: false,
         errors:[]
     }
+  },
+  methods: {
+      nextStep (e) {
+          e.preventDefault()
+        this.changeStep(3)
+        this.$router.push('/freelancer/register/page3')
+      }
   }
 }
 </script>

@@ -2,7 +2,7 @@
   <div class="account-info-edit dashboard-box">
     <div class="account-info-edit-heading dashboard-box-heading">
         <div class="left">
-            <img src="/resumeApp/public/images/client/my_account/info_40px.png" alt="info icon">
+            <img src="/images/dashboard/info.svg" alt="info icon">
             <span>
             FILL IN THE INFORMATION TO BECOME AN AGENT
         </span>
@@ -174,14 +174,15 @@
         </div>
     </div>
     <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}" id="submitBtnWrapper">
-        <router-link to="/freelancer/register/page2" v-on:click="$attrs.changeStep(2)">
+        <a href="javascript:;" v-on:click="nextStep">
             CONTINUE
-        </router-link>
+        </a>
     </div>
   </div>
 </template>
 <script>
 export default {
+    props: ['changeStep'],
   data () {
     return{
         formData:{
@@ -199,9 +200,10 @@ export default {
     }
   },
   methods: {
-      nextStep () {
-				console.log('Changing step')
+      nextStep (e) {
+          e.preventDefault()
         this.changeStep(2)
+        this.$router.push('/freelancer/register/page2')
       }
   }
 }

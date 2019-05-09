@@ -14314,6 +14314,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_freelancer_dashboardComponents_CampaignManager_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_freelancer_dashboardComponents_CampaignManager_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_freelancer_dashboardComponents_MyAccount_vue__ = __webpack_require__(152);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_freelancer_dashboardComponents_MyAccount_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_freelancer_dashboardComponents_MyAccount_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_freelancer_registerForms_page1_vue__ = __webpack_require__(426);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_freelancer_registerForms_page1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_freelancer_registerForms_page1_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_freelancer_registerForms_page2_vue__ = __webpack_require__(429);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_freelancer_registerForms_page2_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_freelancer_registerForms_page2_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_freelancer_registerForms_page3_vue__ = __webpack_require__(432);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_freelancer_registerForms_page3_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_freelancer_registerForms_page3_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_freelancer_registerForms_page4_vue__ = __webpack_require__(435);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_freelancer_registerForms_page4_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_freelancer_registerForms_page4_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_freelancer_registerForms_page5_vue__ = __webpack_require__(438);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_freelancer_registerForms_page5_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__components_freelancer_registerForms_page5_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -14509,7 +14519,13 @@ if ($("#account_info_edit").length !== 0) {
 
 
 
+
+
+
+
+
 Vue.component('freelancer-dashboard', __webpack_require__(157));
+Vue.component('freelancer-register', __webpack_require__(421));
 Vue.component('freelancer-campaign-archives', __webpack_require__(160));
 Vue.component('freelancer-campaign-main', __webpack_require__(165));
 Vue.component('freelancer-account-info-edit', __webpack_require__(170));
@@ -14517,7 +14533,7 @@ Vue.component('freelancer-professional-info-edit', __webpack_require__(175));
 
 if ($('#freelancerRegisterComponent').length !== 0) {
 
-    var _routes2 = [{ path: '/freelancer/register', component: FreelancerRegisterPage1 }, { path: '/freelancer/register/page2', component: FreelancerRegisterPage2 }, { path: '/freelancer/register/page3', component: FreelancerRegisterPage3 }, { path: '/freelancer/register/page4', component: FreelancerRegisterPage4 }, { path: '/freelancer/register/page5', component: FreelancerRegisterPage5 }];
+    var _routes2 = [{ path: '/freelancer/register', component: __WEBPACK_IMPORTED_MODULE_10__components_freelancer_registerForms_page1_vue___default.a }, { path: '/freelancer/register/page2', component: __WEBPACK_IMPORTED_MODULE_11__components_freelancer_registerForms_page2_vue___default.a }, { path: '/freelancer/register/page3', component: __WEBPACK_IMPORTED_MODULE_12__components_freelancer_registerForms_page3_vue___default.a }, { path: '/freelancer/register/page4', component: __WEBPACK_IMPORTED_MODULE_13__components_freelancer_registerForms_page4_vue___default.a }, { path: '/freelancer/register/page5', component: __WEBPACK_IMPORTED_MODULE_14__components_freelancer_registerForms_page5_vue___default.a }];
 
     var _router2 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
         mode: 'history',
@@ -67363,15 +67379,129 @@ if (false) {
 
 /***/ }),
 /* 107 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\wamp64\\www\\resources\\assets\\js\\components\\client\\campaignComponents\\CampaignStatistics.vue'");
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(108)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(110)
+/* template */
+var __vue_template__ = __webpack_require__(111)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-586d594f"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\client\\campaignComponents\\CampaignStatistics.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-586d594f", Component.options)
+  } else {
+    hotAPI.reload("data-v-586d594f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
 
 /***/ }),
-/* 108 */,
-/* 109 */,
-/* 110 */,
-/* 111 */,
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(109);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("03104f30", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-586d594f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignStatistics.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-586d594f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignStatistics.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 109 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 110 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div")
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-586d594f", module.exports)
+  }
+}
+
+/***/ }),
 /* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -77898,10 +78028,7 @@ var staticRenderFns = [
             [
               _c("div", { staticClass: "left" }, [
                 _c("img", {
-                  attrs: {
-                    src: "/images/client/my_account/info_40px.png",
-                    alt: "info icon"
-                  }
+                  attrs: { src: "/images/dashboard/info.svg", alt: "info icon" }
                 }),
                 _vm._v(" "),
                 _c("span", [
@@ -110038,6 +110165,3238 @@ new SideNav();
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 418 */,
+/* 419 */,
+/* 420 */,
+/* 421 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(422)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(424)
+/* template */
+var __vue_template__ = __webpack_require__(425)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-64218dd0"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\freelancer\\FreelancerRegister.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-64218dd0", Component.options)
+  } else {
+    hotAPI.reload("data-v-64218dd0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 422 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(423);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("784ed2cd", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-64218dd0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FreelancerRegister.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-64218dd0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./FreelancerRegister.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 423 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.error[data-v-64218dd0]{\n    font-family: Roboto;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 16px;\n    line-height: 30px;/* identical to box height, or 187% */\n    color: #F56F6F;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 424 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            step: 1,
+            canSubmit: false,
+            errors: []
+        };
+    },
+
+    methods: {
+        submitForm: function submitForm() {
+            var _this = this;
+
+            if ($('#submitBtnWrapper').hasClass('disabled-btn')) {
+                return;
+            }
+            this.canSubmit = false;
+            axios.post('/client/register/submit', this.formData).then(function (response) {
+                if (response.data.status === 'success') {
+                    // redirect to client dashboard
+                    window.location.href = '/client';
+                }
+                _this.errors = response.data.errors;
+            });
+        },
+        clearInput: function clearInput(inputName) {
+            this.formData[inputName] = '';
+        },
+        changeStep: function changeStep(step) {
+            console.log(this);
+            this.step = step;
+        }
+    },
+    watch: {
+        formData: {
+            handler: function handler() {
+                // check if all formData values are filled
+                var values = Object.values(this.formData);
+                var isAll_filled = true;
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var value = _step.value;
+
+                        if (value.length < 1) {
+                            isAll_filled = false;
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+
+                this.canSubmit = isAll_filled;
+            },
+
+            deep: true
+        }
+    }
+});
+
+/***/ }),
+/* 425 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass:
+        "d-flex justify-content-center flex-column align-items-center"
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "account-info-edit-wrapper" },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "keep-alive",
+            [_c("router-view", { attrs: { changeStep: _vm.changeStep } })],
+            1
+          ),
+          _vm._v(" "),
+          _c("span", { staticClass: "step-footer" }, [
+            _vm._v(_vm._s(_vm.step) + " / 5")
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _vm._m(1)
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "nav",
+      { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
+      [
+        _c("div", { staticClass: "backBtn" }, [
+          _c("a", { attrs: { href: "/" } }, [
+            _c("img", {
+              attrs: {
+                src: "/resumeApp/public/images/client/arrow_back.png",
+                alt: "back-icon"
+              }
+            })
+          ]),
+          _vm._v("\n                BECOME AN AGENT\n            ")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "pt-3 no-decoration d-flex justify-content-center base-text align-items-center"
+      },
+      [
+        _vm._v("\n        Already have an account ? "),
+        _c("a", { staticClass: "ml-2 base-link", attrs: { href: "#" } }, [
+          _vm._v(" LOG IN ")
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-64218dd0", module.exports)
+  }
+}
+
+/***/ }),
+/* 426 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(427)
+/* template */
+var __vue_template__ = __webpack_require__(428)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\freelancer\\registerForms\\page1.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-26607bb0", Component.options)
+  } else {
+    hotAPI.reload("data-v-26607bb0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 427 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['changeStep'],
+    data: function data() {
+        return {
+            formData: {
+                name: '',
+                surname: '',
+                gender: '',
+                phone: '',
+                email: '',
+                timeZone: '',
+                cityName: '',
+                paypal: ''
+            },
+            canSubmit: false,
+            errors: []
+        };
+    },
+
+    methods: {
+        nextStep: function nextStep(e) {
+            e.preventDefault();
+            this.changeStep(2);
+            this.$router.push('/freelancer/register/page2');
+        }
+    }
+});
+
+/***/ }),
+/* 428 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "account-info-edit dashboard-box" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "account-edit-section" }, [
+      _c("div", { staticClass: "account-edit-section-heading" }, [
+        _vm._v("\n          BASIC INFORMATION\n      ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-edit-section-inputs" }, [
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Enter your name\n              ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.name }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.name,
+                    expression: "formData.name"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "name",
+                  placeholder: "Enter your name"
+                },
+                domProps: { value: _vm.formData.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "name", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.name.length > 0,
+                    expression: "formData.name.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("name")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.name
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.name[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Enter your surname\n              ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.surname }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.surname,
+                    expression: "formData.surname"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "surname",
+                  placeholder: "Enter your surname"
+                },
+                domProps: { value: _vm.formData.surname },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "surname", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.surname.length > 0,
+                    expression: "formData.surname.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("surname")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.surname
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.surname[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Choose your gender\n              ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "img-container" }, [
+            _c(
+              "div",
+              {
+                staticClass: "faq-input",
+                class: { "error-input": _vm.errors.gender }
+              },
+              [
+                _c("img", {
+                  attrs: {
+                    src: "/images/client/add_agent/gender/male_icon.png"
+                  }
+                }),
+                _vm._v(" "),
+                _c("img", {
+                  attrs: {
+                    src: "/images/client/add_agent/gender/female_icon.png"
+                  }
+                })
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _vm.errors.gender
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.gender[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v(
+              "\n                  Enter your phone number\n              "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.phone }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.phone,
+                    expression: "formData.phone"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "phone",
+                  placeholder: "Enter your phone"
+                },
+                domProps: { value: _vm.formData.phone },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "phone", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.phone.length > 0,
+                    expression: "formData.phone.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("phone")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.phone
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.phone[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Enter your e-mail\n              ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.email }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.email,
+                    expression: "formData.email"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "email",
+                  placeholder: "Enter your email"
+                },
+                domProps: { value: _vm.formData.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "email", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.email.length > 0,
+                    expression: "formData.email.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("email")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.email
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.email[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Select your time zone\n              ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.timeZone }
+            },
+            [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.timeZone,
+                      expression: "formData.timeZone"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  staticStyle: { height: "50px" },
+                  attrs: { id: "timeZone", name: "timeZone" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.formData,
+                        "timeZone",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "", selected: "selected" } }, [
+                    _vm._v("Select your timezone")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT -7:00) Mountain Time (US & Canada)"
+                      }
+                    },
+                    [_vm._v("(GMT -7:00) Mountain Time (US & Canada)")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: { value: "(GMT -8:00) Pacific Time (US & Canada)" }
+                    },
+                    [_vm._v("(GMT -8:00) Pacific Time (US & Canada)")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT -9:00) Alaska" } }, [
+                    _vm._v("(GMT -9:00) Alaska")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "" } }, [
+                    _vm._v("--------------")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT -12:00) Eniwetok, Kwajalein" } },
+                    [_vm._v("(GMT -12:00) Eniwetok, Kwajalein")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT -11:00) Midway Island, Samoa" } },
+                    [_vm._v("(GMT -11:00) Midway Island, Samoa")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT -10:00) Hawaii" } }, [
+                    _vm._v("(GMT -10:00) Hawaii")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT -9:30) Taiohae" } }, [
+                    _vm._v("(GMT -9:30) Taiohae")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT -9:00) Alaska" } }, [
+                    _vm._v("(GMT -9:00) Alaska")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: { value: "(GMT -8:00) Pacific Time (US & Canada)" }
+                    },
+                    [_vm._v("(GMT -8:00) Pacific Time (US & Canada)")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT -7:00) Mountain Time (US & Canada)"
+                      }
+                    },
+                    [_vm._v("(GMT -7:00) Mountain Time (US & Canada)")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT -4:30) Caracas" } }, [
+                    _vm._v("(GMT -4:30) Caracas")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT -3:30) Newfoundland" } },
+                    [_vm._v("(GMT -3:30) Newfoundland")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT -3:00) Brazil, Buenos Aires, Georgetown"
+                      }
+                    },
+                    [_vm._v("(GMT -3:00) Brazil, Buenos Aires, Georgetown")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT -2:00) Mid-Atlantic" } },
+                    [_vm._v("(GMT -2:00) Mid-Atlantic")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: { value: "(GMT -1:00) Azores, Cape Verde Islands" }
+                    },
+                    [_vm._v("(GMT -1:00) Azores, Cape Verde Islands")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT +1:00) Brussels, Copenhagen, Madrid, Paris"
+                      }
+                    },
+                    [_vm._v("(GMT +1:00) Brussels, Copenhagen, Madrid, Paris")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: { value: "(GMT +2:00) Kaliningrad, South Africa" }
+                    },
+                    [_vm._v("(GMT +2:00) Kaliningrad, South Africa")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT +3:30) Tehran" } }, [
+                    _vm._v("(GMT +3:30) Tehran")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi"
+                      }
+                    },
+                    [_vm._v("(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT +4:30) Kabul" } }, [
+                    _vm._v("(GMT +4:30) Kabul")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value: "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi"
+                      }
+                    },
+                    [_vm._v("(GMT +5:30) Bombay, Calcutta, Madras, New Delhi")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +5:45) Kathmandu, Pokhara" } },
+                    [_vm._v("(GMT +5:45) Kathmandu, Pokhara")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +6:00) Almaty, Dhaka, Colombo" } },
+                    [_vm._v("(GMT +6:00) Almaty, Dhaka, Colombo")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +6:30) Yangon, Mandalay" } },
+                    [_vm._v("(GMT +6:30) Yangon, Mandalay")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +7:00) Bangkok, Hanoi, Jakarta" } },
+                    [_vm._v("(GMT +7:00) Bangkok, Hanoi, Jakarta")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
+                      }
+                    },
+                    [_vm._v("(GMT +8:00) Beijing, Perth, Singapore, Hong Kong")]
+                  ),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "(GMT +8:45) Eucla" } }, [
+                    _vm._v("(GMT +8:45) Eucla")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +9:30) Adelaide, Darwin" } },
+                    [_vm._v("(GMT +9:30) Adelaide, Darwin")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +10:30) Lord Howe Island" } },
+                    [_vm._v("(GMT +10:30) Lord Howe Island")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +11:30) Norfolk Island" } },
+                    [_vm._v("(GMT +11:30) Norfolk Island")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    {
+                      attrs: {
+                        value:
+                          "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +12:45) Chatham Islands" } },
+                    [_vm._v("(GMT +12:45) Chatham Islands")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +13:00) Apia, Nukualofa" } },
+                    [_vm._v("(GMT +13:00) Apia, Nukualofa")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "option",
+                    { attrs: { value: "(GMT +14:00) Line Islands, Tokelau" } },
+                    [_vm._v("(GMT +14:00) Line Islands, Tokelau")]
+                  )
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.timeZone
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.timeZone[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v("\n                  Enter your city name\n              ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.cityName }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.cityName,
+                    expression: "formData.cityName"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "cityName",
+                  placeholder: "You can enter several items using comas"
+                },
+                domProps: { value: _vm.formData.cityName },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "cityName", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.cityName.length > 0,
+                    expression: "formData.cityName.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("cityName")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.cityName
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.cityName[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v(
+              "\n                  Enter your PayPal acc number\n              "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.paypal }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.paypal,
+                    expression: "formData.paypal"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "paypal",
+                  placeholder: "Enter your PayPal acc number"
+                },
+                domProps: { value: _vm.formData.paypal },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "paypal", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.paypal.length > 0,
+                    expression: "formData.paypal.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("paypal")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.paypal
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.paypal[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "account-edit-section-edit-btn no-decoration",
+        class: { "disabled-btn": !_vm.canSubmit },
+        attrs: { id: "submitBtnWrapper" }
+      },
+      [
+        _c(
+          "a",
+          { attrs: { href: "javascript:;" }, on: { click: _vm.nextStep } },
+          [_vm._v("\n          CONTINUE\n      ")]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "account-info-edit-heading dashboard-box-heading" },
+      [
+        _c("div", { staticClass: "left" }, [
+          _c("img", {
+            attrs: { src: "/images/dashboard/info.svg", alt: "info icon" }
+          }),
+          _vm._v(" "),
+          _c("span", [
+            _vm._v(
+              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT\n      "
+            )
+          ])
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-26607bb0", module.exports)
+  }
+}
+
+/***/ }),
+/* 429 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(430)
+/* template */
+var __vue_template__ = __webpack_require__(431)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\freelancer\\registerForms\\page2.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-266e9331", Component.options)
+  } else {
+    hotAPI.reload("data-v-266e9331", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 430 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['changeStep'],
+    data: function data() {
+        return {
+            formData: {
+                primaryJob: '',
+                sector: '',
+                voice: '',
+                hoursPerWeek: '',
+                techs: '',
+                lang: ''
+            },
+            canSubmit: false,
+            errors: []
+        };
+    },
+
+    methods: {
+        nextStep: function nextStep(e) {
+            e.preventDefault();
+            this.changeStep(3);
+            this.$router.push('/freelancer/register/page3');
+        }
+    }
+});
+
+/***/ }),
+/* 431 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "account-info-edit dashboard-box" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "account-edit-section" }, [
+      _c("div", { staticClass: "account-edit-section-heading" }, [
+        _vm._v("\n          PROFESSIONAL INFORMATION\n      ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-edit-section-inputs" }, [
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v(
+              "\n                  Enter primary job title\n              "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.primaryJob }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.primaryJob,
+                    expression: "formData.primaryJob"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "primaryJob",
+                  placeholder: "e.g. Frontend Developer"
+                },
+                domProps: { value: _vm.formData.primaryJob },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "primaryJob", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.primaryJob.length > 0,
+                    expression: "formData.primaryJob.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("primaryJob")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.primaryJob
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.primaryJob[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v(
+              "\n                  Enter sector experience\n              "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.sector }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.sector,
+                    expression: "formData.sector"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "sector",
+                  placeholder: "e.g. React.js"
+                },
+                domProps: { value: _vm.formData.sector },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "sector", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.sector.length > 0,
+                    expression: "formData.sector.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("sector")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.sector
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.sector[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v(
+              "\n                  Choose voice character (for sales-agents)\n              "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.voice }
+            },
+            [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.voice,
+                      expression: "formData.voice"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  staticStyle: { height: "50px" },
+                  attrs: { id: "voice", name: "voice" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.formData,
+                        "voice",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "", selected: "selected" } }, [
+                    _vm._v("Select your voice character")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "voice1" } }, [
+                    _vm._v("Voice character 1")
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.voice
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.voice[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v(
+              "\n                  Specify available hours per week hoursPerWeek\n              "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.hoursPerWeek }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.hoursPerWeek,
+                    expression: "formData.hoursPerWeek"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "hoursPerWeek",
+                  placeholder: "25"
+                },
+                domProps: { value: _vm.formData.hoursPerWeek },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "hoursPerWeek", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.hoursPerWeek.length > 0,
+                    expression: "formData.hoursPerWeek.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("hoursPerWeek")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.hoursPerWeek
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.hoursPerWeek[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v(
+              "\n                  Enter technologies/frameworks/software\n              "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.techs }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.techs,
+                    expression: "formData.techs"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "techs",
+                  placeholder: "You can enter several items using comas"
+                },
+                domProps: { value: _vm.formData.techs },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "techs", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.techs.length > 0,
+                    expression: "formData.techs.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("techs")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.techs
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.techs[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v(
+              "\n                  Choose languages you speak\n              "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "img-container" }, [
+            _c(
+              "div",
+              {
+                staticClass: "faq-input",
+                class: { "error-input": _vm.errors.gender }
+              },
+              [_vm._m(1), _vm._v(" "), _vm._m(2)]
+            )
+          ]),
+          _vm._v(" "),
+          _vm.errors.lang
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.lang[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "account-edit-section-edit-btn no-decoration",
+        class: { "disabled-btn": !_vm.canSubmit },
+        attrs: { id: "submitBtnWrapper" }
+      },
+      [
+        _c(
+          "a",
+          { attrs: { href: "javascript:;" }, on: { click: _vm.nextStep } },
+          [_vm._v("\n          CONTINUE\n      ")]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "account-info-edit-heading dashboard-box-heading" },
+      [
+        _c("div", { staticClass: "left" }, [
+          _c("img", {
+            attrs: {
+              src: "/resumeApp/public/images/client/my_account/info_40px.png",
+              alt: "info icon"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", [
+            _vm._v(
+              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT\n      "
+            )
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "lang" }, [
+      _c("img", {
+        attrs: { src: "/images/client/add_agent/language/english_icon.png" }
+      }),
+      _vm._v(" "),
+      _c("span", [_vm._v("English")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "lang" }, [
+      _c("img", {
+        attrs: { src: "/images/client/add_agent/language/spanish_icon.png" }
+      }),
+      _vm._v(" "),
+      _c("span", [_vm._v("Spanish")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-266e9331", module.exports)
+  }
+}
+
+/***/ }),
+/* 432 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(433)
+/* template */
+var __vue_template__ = __webpack_require__(434)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\freelancer\\registerForms\\page3.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-267caab2", Component.options)
+  } else {
+    hotAPI.reload("data-v-267caab2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 433 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            formData: {
+                primaryJob: '',
+                sector: '',
+                voice: '',
+                hoursPerWeek: '',
+                techs: '',
+                lang: ''
+            },
+            canSubmit: false,
+            errors: []
+        };
+    }
+});
+
+/***/ }),
+/* 434 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "account-info-edit dashboard-box" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "account-edit-section" }, [
+      _c("div", { staticClass: "account-edit-section-heading" }, [
+        _vm._v("\n          RECORDING\n      ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-edit-section-inputs" }, [
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-description" }, [
+            _vm._v(
+              "\n                  Please upload a short audio recording describing your previous experience in Customer service and Sales (ideal recording length is from 1 to 2 minutes). File must be in .mp3 format and no more than 45 MB.\n              "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.primaryJob }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.primaryJob,
+                    expression: "formData.primaryJob"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "primaryJob",
+                  placeholder: "e.g. Frontend Developer"
+                },
+                domProps: { value: _vm.formData.primaryJob },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "primaryJob", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.primaryJob.length > 0,
+                    expression: "formData.primaryJob.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("primaryJob")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.primaryJob
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.primaryJob[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "account-edit-section-edit-btn no-decoration",
+            class: { "disabled-btn": !_vm.canSubmit }
+          },
+          [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _vm._v("\n                  UPLOAD A FILE\n              ")
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "account-edit-section" }, [
+      _c("div", { staticClass: "account-edit-section-heading" }, [
+        _vm._v("\n          RESUME\n      ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-edit-section-inputs" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "account-edit-section-edit-btn no-decoration",
+            class: { "disabled-btn": !_vm.canSubmit }
+          },
+          [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _vm._v("\n                  UPLOAD A FILE\n              ")
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "account-edit-section-edit-btn no-decoration",
+        class: { "disabled-btn": !_vm.canSubmit },
+        attrs: { id: "submitBtnWrapper" }
+      },
+      [
+        _c("router-link", { attrs: { to: "/freelancer/register/page4" } }, [
+          _vm._v("\n          CONTINUE\n      ")
+        ])
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "account-info-edit-heading dashboard-box-heading" },
+      [
+        _c("div", { staticClass: "left" }, [
+          _c("img", {
+            attrs: {
+              src: "/resumeApp/public/images/client/my_account/info_40px.png",
+              alt: "info icon"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", [
+            _vm._v(
+              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT\n      "
+            )
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "faq-question-input account-edit-input faq-description" },
+      [
+        _c("label", { staticClass: "faq-input-description" }, [
+          _vm._v(
+            "\n                  Please upload your resume. Only .pdf files are allowed.\n              "
+          )
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-267caab2", module.exports)
+  }
+}
+
+/***/ }),
+/* 435 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(436)
+/* template */
+var __vue_template__ = __webpack_require__(437)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\freelancer\\registerForms\\page4.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-268ac233", Component.options)
+  } else {
+    hotAPI.reload("data-v-268ac233", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 436 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            formData: {
+                primaryJob: '',
+                sector: '',
+                voice: '',
+                hoursPerWeek: '',
+                techs: '',
+                lang: ''
+            },
+            canSubmit: false,
+            errors: []
+        };
+    }
+});
+
+/***/ }),
+/* 437 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "account-info-edit dashboard-box" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "account-edit-section" }, [
+      _c("div", { staticClass: "account-edit-section-heading" }, [
+        _vm._v("\n          RECORDING\n      ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-edit-section-inputs" }, [
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-description" }, [
+            _vm._v(
+              "\n                  Please upload a short audio recording describing your previous experience in Customer service and Sales (ideal recording length is from 1 to 2 minutes). File must be in .mp3 format and no more than 45 MB.\n              "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.primaryJob }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.primaryJob,
+                    expression: "formData.primaryJob"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "primaryJob",
+                  placeholder: "e.g. Frontend Developer"
+                },
+                domProps: { value: _vm.formData.primaryJob },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "primaryJob", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.primaryJob.length > 0,
+                    expression: "formData.primaryJob.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("primaryJob")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.primaryJob
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.primaryJob[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "account-edit-section-edit-btn no-decoration",
+            class: { "disabled-btn": !_vm.canSubmit }
+          },
+          [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _vm._v("\n                  UPLOAD A FILE\n              ")
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "account-edit-section" }, [
+      _c("div", { staticClass: "account-edit-section-heading" }, [
+        _vm._v("\n          RESUME\n      ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-edit-section-inputs" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "account-edit-section-edit-btn no-decoration",
+            class: { "disabled-btn": !_vm.canSubmit }
+          },
+          [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _vm._v("\n                  UPLOAD A FILE\n              ")
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "account-edit-section-edit-btn no-decoration",
+        class: { "disabled-btn": !_vm.canSubmit },
+        attrs: { id: "submitBtnWrapper" }
+      },
+      [
+        _c("router-link", { attrs: { to: "/freelancer/register/page4" } }, [
+          _vm._v("\n          CONTINUE\n      ")
+        ])
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "account-info-edit-heading dashboard-box-heading" },
+      [
+        _c("div", { staticClass: "left" }, [
+          _c("img", {
+            attrs: {
+              src: "/resumeApp/public/images/client/my_account/info_40px.png",
+              alt: "info icon"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", [
+            _vm._v(
+              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT\n      "
+            )
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "faq-question-input account-edit-input faq-description" },
+      [
+        _c("label", { staticClass: "faq-input-description" }, [
+          _vm._v(
+            "\n                  Please upload your resume. Only .pdf files are allowed.\n              "
+          )
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-268ac233", module.exports)
+  }
+}
+
+/***/ }),
+/* 438 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(439)
+/* template */
+var __vue_template__ = __webpack_require__(440)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\freelancer\\registerForms\\page5.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2698d9b4", Component.options)
+  } else {
+    hotAPI.reload("data-v-2698d9b4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 439 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            formData: {
+                primaryJob: '',
+                sector: '',
+                voice: '',
+                hoursPerWeek: '',
+                techs: '',
+                lang: ''
+            },
+            canSubmit: false,
+            errors: []
+        };
+    }
+});
+
+/***/ }),
+/* 440 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "account-info-edit dashboard-box" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "account-edit-section" }, [
+      _c("div", { staticClass: "account-edit-section-heading" }, [
+        _vm._v("\n          RECORDING\n      ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-edit-section-inputs" }, [
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-description" }, [
+            _vm._v(
+              "\n                  Please upload a short audio recording describing your previous experience in Customer service and Sales (ideal recording length is from 1 to 2 minutes). File must be in .mp3 format and no more than 45 MB.\n              "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.primaryJob }
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.formData.primaryJob,
+                    expression: "formData.primaryJob"
+                  }
+                ],
+                attrs: {
+                  type: "text",
+                  name: "primaryJob",
+                  placeholder: "e.g. Frontend Developer"
+                },
+                domProps: { value: _vm.formData.primaryJob },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.formData, "primaryJob", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.formData.primaryJob.length > 0,
+                    expression: "formData.primaryJob.length > 0"
+                  }
+                ],
+                attrs: {
+                  src:
+                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  alt: "delete icon"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.clearInput("primaryJob")
+                  }
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _vm.errors.primaryJob
+            ? _c("div", { staticClass: "error" }, [
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(_vm.errors.primaryJob[0]) +
+                    "\n              "
+                )
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "account-edit-section-edit-btn no-decoration",
+            class: { "disabled-btn": !_vm.canSubmit }
+          },
+          [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _vm._v("\n                  UPLOAD A FILE\n              ")
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "account-edit-section" }, [
+      _c("div", { staticClass: "account-edit-section-heading" }, [
+        _vm._v("\n          RESUME\n      ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-edit-section-inputs" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "account-edit-section-edit-btn no-decoration",
+            class: { "disabled-btn": !_vm.canSubmit }
+          },
+          [
+            _c("a", { attrs: { href: "javascript:;" } }, [
+              _vm._v("\n                  UPLOAD A FILE\n              ")
+            ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "account-edit-section-edit-btn no-decoration",
+        class: { "disabled-btn": !_vm.canSubmit },
+        attrs: { id: "submitBtnWrapper" }
+      },
+      [
+        _c("router-link", { attrs: { to: "/freelancer/register/page4" } }, [
+          _vm._v("\n          CONTINUE\n      ")
+        ])
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "account-info-edit-heading dashboard-box-heading" },
+      [
+        _c("div", { staticClass: "left" }, [
+          _c("img", {
+            attrs: {
+              src: "/resumeApp/public/images/client/my_account/info_40px.png",
+              alt: "info icon"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", [
+            _vm._v(
+              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT\n      "
+            )
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "faq-question-input account-edit-input faq-description" },
+      [
+        _c("label", { staticClass: "faq-input-description" }, [
+          _vm._v(
+            "\n                  Please upload your resume. Only .pdf files are allowed.\n              "
+          )
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2698d9b4", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

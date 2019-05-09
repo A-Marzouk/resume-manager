@@ -13,7 +13,7 @@
             <div class="account-info-edit dashboard-box">
                 <div class="account-info-edit-heading dashboard-box-heading">
                     <div class="left">
-                        <img src="/images/client/my_account/info_40px.png" alt="info icon">
+                        <img src="/images/dashboard/info.svg" alt="info icon">
                         <span>
                         EDIT YOUR PERSONAL INFORMATION
                     </span>

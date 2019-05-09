@@ -206,8 +206,14 @@ if ($("#account_info_edit").length !== 0){
 import FreelancerCampaignActivity from './components/freelancer/campaignComponents/CampaignActivity.vue';
 import FreelancerCampaignManager from './components/freelancer/dashboardComponents/CampaignManager.vue';
 import FreelancerMyAccount from './components/freelancer/dashboardComponents/MyAccount.vue';
+import FreelancerRegisterPage1 from './components/freelancer/registerForms/page1.vue'
+import FreelancerRegisterPage2 from './components/freelancer/registerForms/page2.vue'
+import FreelancerRegisterPage3 from './components/freelancer/registerForms/page3.vue'
+import FreelancerRegisterPage4 from './components/freelancer/registerForms/page4.vue'
+import FreelancerRegisterPage5 from './components/freelancer/registerForms/page5.vue'
 
 Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'))
+Vue.component('freelancer-register', require('./components/freelancer/FreelancerRegister.vue'))
 Vue.component('freelancer-campaign-archives', require('./components/freelancer/CampaignArchives.vue'))
 Vue.component('freelancer-campaign-main', require('./components/freelancer/CampaignMainComponent.vue'))
 Vue.component('freelancer-account-info-edit', require('./components/freelancer/dashboardComponents/my_account/MyAccountEdit.vue'));

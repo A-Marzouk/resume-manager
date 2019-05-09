@@ -13,7 +13,7 @@
           </div>
           <div class="lineDivide"></div>
           <div class="team-member">
-            <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+            <img src="/images/client/dummy.png" alt="member image">
             <div class="team-member-info">
               <div class="member-name manager">
                 Louis Snyderberg
@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="team-member">
-            <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+            <img src="/images/client/dummy.png" alt="member image">
             <div class="team-member-info">
               <div class="member-name">
                 Mohamed Salah
@@ -35,7 +35,7 @@
             </div>
           </div>
           <div class="team-member">
-            <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+            <img src="/images/client/dummy.png" alt="member image">
             <div class="team-member-info">
               <div class="member-name">
                 Lionel Messi
@@ -46,7 +46,7 @@
             </div>
           </div>
           <div class="team-member">
-            <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+            <img src="/images/client/dummy.png" alt="member image">
             <div class="team-member-info">
               <div class="member-name">
                 Zlatan Ibrahimovic
@@ -57,7 +57,7 @@
             </div>
           </div>
           <div class="team-member">
-            <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+            <img src="/images/client/dummy.png" alt="member image">
             <div class="team-member-info">
               <div class="member-name">
                 Louis Snyderberg
@@ -93,7 +93,7 @@
             <div class="lineDivide tablet-bar"></div>
             <div class="agent-bar">
               <div class="team-member tablet-bar">
-                <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+                <img src="/images/client/dummy.png" alt="member image">
                 <div class="team-member-info">
                   <div class="member-name">
                     Z. Ibrahimovic
@@ -114,7 +114,7 @@
                 {{appliedDate}}
               </div>
               <a href="javascript:void(0)" data-toggle="modal" data-target="#pick-date-modal" @click.once="setDatePicker" >
-                <img src="/resumeApp/public/images/client/campaign_activity/pick_date.png" alt="pick date">
+                <img src="/images/client/campaign_activity/pick_date.png" alt="pick date">
               </a>
             </div>
             <div class="lineDivide"></div>
@@ -124,7 +124,7 @@
                 <a href="javascript:void(0)" @click="hasLogs = !hasLogs" class="text"> SHOW DEMO LOGS</a>
               </div>
               <div class="empty-state-image">
-                <img src="/resumeApp/public/images/client/campaign_activity/empty_state.png" alt="empty state">
+                <img src="/images/client/campaign_activity/empty_state.png" alt="empty state">
               </div>
             </div>
             <div class="member-logs" v-show="hasLogs">
@@ -222,7 +222,7 @@
             </div>
           </div>
           <div class="documents-bar">
-            <img src="/resumeApp/public/images/client/campaign_activity/document.png" alt="document">
+            <img src="/images/client/campaign_activity/document.png" alt="document">
             <div class="document-text">
               Document link: <span>No links.</span>
             </div>
@@ -249,7 +249,7 @@
           <div class="modal-body">
             <div class="dashboard-side-menu">
               <div class="team-member">
-                <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+                <img src="/images/client/dummy.png" alt="member image">
                 <div class="team-member-info">
                   <div class="member-name manager">
                     Louis Snyderberg
@@ -260,7 +260,7 @@
                 </div>
               </div>
               <div class="team-member">
-                <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+                <img src="/images/client/dummy.png" alt="member image">
                 <div class="team-member-info">
                   <div class="member-name">
                     Mohamed Salah
@@ -271,7 +271,7 @@
                 </div>
               </div>
               <div class="team-member">
-                <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+                <img src="/images/client/dummy.png" alt="member image">
                 <div class="team-member-info">
                   <div class="member-name">
                     Lionel Messi
@@ -282,7 +282,7 @@
                 </div>
               </div>
               <div class="team-member">
-                <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+                <img src="/images/client/dummy.png" alt="member image">
                 <div class="team-member-info">
                   <div class="member-name">
                     Zlatan Ibrahimovic
@@ -293,7 +293,7 @@
                 </div>
               </div>
               <div class="team-member">
-                <img src="/resumeApp/public/images/client/dummy.png" alt="member image">
+                <img src="/images/client/dummy.png" alt="member image">
                 <div class="team-member-info">
                   <div class="member-name">
                     Louis Snyderberg

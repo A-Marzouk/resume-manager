@@ -14515,16 +14515,31 @@ Vue.component('freelancer-campaign-main', __webpack_require__(165));
 Vue.component('freelancer-account-info-edit', __webpack_require__(170));
 Vue.component('freelancer-professional-info-edit', __webpack_require__(175));
 
-if ($('#freelancerDashboardComponent').length !== 0) {
-    var _routes2 = [{ path: '/freelancer/my-account', component: __WEBPACK_IMPORTED_MODULE_9__components_freelancer_dashboardComponents_MyAccount_vue___default.a }, { path: '/freelancer', component: __WEBPACK_IMPORTED_MODULE_8__components_freelancer_dashboardComponents_CampaignManager_vue___default.a }];
+if ($('#freelancerRegisterComponent').length !== 0) {
+
+    var _routes2 = [{ path: '/freelancer/register', component: FreelancerRegisterPage1 }, { path: '/freelancer/register/page2', component: FreelancerRegisterPage2 }, { path: '/freelancer/register/page3', component: FreelancerRegisterPage3 }, { path: '/freelancer/register/page4', component: FreelancerRegisterPage4 }, { path: '/freelancer/register/page5', component: FreelancerRegisterPage5 }];
 
     var _router2 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-        routes: _routes2,
+        mode: 'history',
+        routes: _routes2
+    });
+
+    var freelancerRegisterComponent = new Vue({
+        router: _router2,
+        el: '#freelancerRegisterComponent'
+    });
+}
+
+if ($('#freelancerDashboardComponent').length !== 0) {
+    var _routes3 = [{ path: '/freelancer/my-account', component: __WEBPACK_IMPORTED_MODULE_9__components_freelancer_dashboardComponents_MyAccount_vue___default.a }, { path: '/freelancer', component: __WEBPACK_IMPORTED_MODULE_8__components_freelancer_dashboardComponents_CampaignManager_vue___default.a }];
+
+    var _router3 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+        routes: _routes3,
         mode: 'history'
     });
 
     var freelancerDashboardComponent = new Vue({
-        router: _router2,
+        router: _router3,
         el: '#freelancerDashboardComponent'
     });
 }
@@ -14536,15 +14551,15 @@ if ($('#freelancerCampaignArchives').length !== 0) {
 }
 
 if ($('#freelancerCampaignMainComponent').length !== 0) {
-    var _routes3 = [{ path: '/freelancer/campaign-team', component: __WEBPACK_IMPORTED_MODULE_2__components_client_campaignComponents_CampaignTeam_vue___default.a }, { path: '/freelancer/campaign-brief', component: __WEBPACK_IMPORTED_MODULE_3__components_client_campaignComponents_CampaignBrief_vue___default.a }, { path: '/freelancer/campaign', component: __WEBPACK_IMPORTED_MODULE_7__components_freelancer_campaignComponents_CampaignActivity_vue___default.a }];
+    var _routes4 = [{ path: '/freelancer/campaign-team', component: __WEBPACK_IMPORTED_MODULE_2__components_client_campaignComponents_CampaignTeam_vue___default.a }, { path: '/freelancer/campaign-brief', component: __WEBPACK_IMPORTED_MODULE_3__components_client_campaignComponents_CampaignBrief_vue___default.a }, { path: '/freelancer/campaign', component: __WEBPACK_IMPORTED_MODULE_7__components_freelancer_campaignComponents_CampaignActivity_vue___default.a }];
 
-    var _router3 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-        routes: _routes3,
+    var _router4 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+        routes: _routes4,
         mode: 'history'
     });
 
     var freelancerCampaignMainComponent = new Vue({
-        router: _router3,
+        router: _router4,
         el: '#freelancerCampaignMainComponent'
     });
 }
@@ -67348,129 +67363,15 @@ if (false) {
 
 /***/ }),
 /* 107 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(108)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(110)
-/* template */
-var __vue_template__ = __webpack_require__(111)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-586d594f"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\client\\campaignComponents\\CampaignStatistics.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-586d594f", Component.options)
-  } else {
-    hotAPI.reload("data-v-586d594f", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\wamp64\\www\\resources\\assets\\js\\components\\client\\campaignComponents\\CampaignStatistics.vue'");
 
 /***/ }),
-/* 108 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(109);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("03104f30", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-586d594f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignStatistics.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-586d594f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignStatistics.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 109 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 110 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-/* 111 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div")
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-586d594f", module.exports)
-  }
-}
-
-/***/ }),
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
 /* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 

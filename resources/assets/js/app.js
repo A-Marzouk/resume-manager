@@ -213,6 +213,28 @@ Vue.component('freelancer-campaign-main', require('./components/freelancer/Campa
 Vue.component('freelancer-account-info-edit', require('./components/freelancer/dashboardComponents/my_account/MyAccountEdit.vue'));
 Vue.component('freelancer-professional-info-edit', require('./components/freelancer/dashboardComponents/my_account/ProfessionalInfoEdit.vue'));
 
+if ($('#freelancerRegisterComponent').length !== 0){
+
+    const routes = [
+        { path: '/freelancer/register', component: FreelancerRegisterPage1 },
+        { path: '/freelancer/register/page2', component: FreelancerRegisterPage2 },
+        { path: '/freelancer/register/page3', component: FreelancerRegisterPage3 },
+        { path: '/freelancer/register/page4', component: FreelancerRegisterPage4 },
+        { path: '/freelancer/register/page5', component: FreelancerRegisterPage5 }
+    ];
+
+    const router = new VueRouter({
+        mode: 'history',
+        routes,
+    });
+
+
+    let freelancerRegisterComponent = new Vue({
+        router,
+        el:'#freelancerRegisterComponent'
+    });
+}
+
 if ($('#freelancerDashboardComponent').length !== 0) {
   const routes = [
     { path: '/freelancer/my-account', component: FreelancerMyAccount },

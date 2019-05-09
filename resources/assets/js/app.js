@@ -51,6 +51,7 @@ Vue.component('update-sub-plan',require('./components/client/dashboardComponents
 Vue.component('client-register',require('./components/client/ClientRegister.vue'));
 Vue.component('login-component',require('./components/main/LoginComponent.vue'));
 Vue.component('campaign-agents',require('./components/client/campaignComponents/CampaignAgents.vue'));
+Vue.component('campaign-statistics',require('./components/client/campaignComponents/CampaignStatistics.vue'));
 
     // campaign-activity inside components :
     import CampaignActivity from './components/client/campaignComponents/CampaignActivity.vue';
@@ -81,7 +82,7 @@ if ($('#campaignMainComponent').length !== 0){
 }
 
 
-if ($('#clientDashboardComponent').length !== 0){
+if ($("#clientDashboardComponent").length !== 0){
 
     const routes = [
         { path: '/client/dashboard/my-account', component: MyAccount },
@@ -103,35 +104,35 @@ if ($('#clientDashboardComponent').length !== 0){
     });
 }
 
-if ($('#addAgentComponent').length !== 0){
+if ($("#addAgentComponent").length !== 0){
 
     let addAgentComponent = new Vue({
         el:'#addAgentComponent'
     });
 }
 
-if ($('#loginComponent').length !== 0){
+if ($("#loginComponent").length !== 0){
 
     let loginComponent = new Vue({
         el:'#loginComponent'
     });
 }
 
-if ($('#campaignAgent').length !== 0){
+if ($("#campaignAgent").length !== 0){
 
     let campaignAgent = new Vue({
         el:'#campaignAgent'
     });
 }
 
-if ($('#managerCalculation').length !== 0){
+if ($("#managerCalculation").length !== 0){
 
     let managerCalculation = new Vue({
         el:'#managerCalculation'
     });
 }
 
-if ($('#clientRegister').length !== 0){
+if ($("#clientRegister").length !== 0){
 
     let clientRegister = new Vue({
         el:'#clientRegister'
@@ -139,62 +140,62 @@ if ($('#clientRegister').length !== 0){
 }
 
 
-if ($('#serviceAgreement').length !== 0){
+if ($("#serviceAgreement").length !== 0){
 
     let serviceAgreement = new Vue({
         el:'#serviceAgreement'
     });
 }
-if ($('#updateSubPlan').length !== 0){
+if ($("#updateSubPlan").length !== 0){
 
     let updateSubPlan = new Vue({
         el:'#updateSubPlan'
     });
 }
 
-if ($('#privacyAgreement').length !== 0){
+if ($("#privacyAgreement").length !== 0){
 
     let privacyAgreement = new Vue({
         el:'#privacyAgreement'
     });
 }
 
-if ($('#paymentShowInvoice').length !== 0){
+if ($("#paymentShowInvoice").length !== 0){
 
     let paymentShowInvoice = new Vue({
         el:'#paymentShowInvoice'
     });
 }
 
-if ($('#paymentPay').length !== 0){
+if ($("#paymentPay").length !== 0){
 
     let paymentPay = new Vue({
         el:'#paymentPay'
     });
 }
 
-if ($('#subSetUp').length !== 0){
+if ($("#subSetUp").length !== 0){
 
     let subSetUp = new Vue({
         el:'#subSetUp'
     });
 }
 
-if ($('#addAgent').length !== 0){
+if ($("#addAgent").length !== 0){
 
     let addAgent = new Vue({
         el:'#addAgent'
     });
 }
 
-if ($('#campaignArchives').length !== 0){
+if ($("#campaignArchives").length !== 0){
 
     let campaignArchives = new Vue({
         el:'#campaignArchives'
     });
 }
 
-if ($('#account_info_edit').length !== 0){
+if ($("#account_info_edit").length !== 0){
 
     let account_info_edit = new Vue({
         el:'#account_info_edit'
@@ -206,41 +207,11 @@ import FreelancerCampaignActivity from './components/freelancer/campaignComponen
 import FreelancerCampaignManager from './components/freelancer/dashboardComponents/CampaignManager.vue';
 import FreelancerMyAccount from './components/freelancer/dashboardComponents/MyAccount.vue';
 
-// Register forms
-import FreelancerRegisterPage1 from './components/freelancer/registerForms/page1.vue'
-import FreelancerRegisterPage2 from './components/freelancer/registerForms/page2.vue'
-import FreelancerRegisterPage3 from './components/freelancer/registerForms/page3.vue'
-import FreelancerRegisterPage4 from './components/freelancer/registerForms/page4.vue'
-import FreelancerRegisterPage5 from './components/freelancer/registerForms/page5.vue'
-
-Vue.component('freelancer-register', require('./components/freelancer/FreelancerRegister.vue'))
 Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'))
 Vue.component('freelancer-campaign-archives', require('./components/freelancer/CampaignArchives.vue'))
 Vue.component('freelancer-campaign-main', require('./components/freelancer/CampaignMainComponent.vue'))
 Vue.component('freelancer-account-info-edit', require('./components/freelancer/dashboardComponents/my_account/MyAccountEdit.vue'));
 Vue.component('freelancer-professional-info-edit', require('./components/freelancer/dashboardComponents/my_account/ProfessionalInfoEdit.vue'));
-
-if ($('#freelancerRegisterComponent').length !== 0){
-
-    const routes = [
-        { path: '/freelancer/register', component: FreelancerRegisterPage1 },
-        { path: '/freelancer/register/page2', component: FreelancerRegisterPage2 },
-        { path: '/freelancer/register/page3', component: FreelancerRegisterPage3 },
-        { path: '/freelancer/register/page4', component: FreelancerRegisterPage4 },
-        { path: '/freelancer/register/page5', component: FreelancerRegisterPage5 }
-    ];
-
-    const router = new VueRouter({
-        mode: 'history',
-        routes,
-    });
-
-
-    let freelancerRegisterComponent = new Vue({
-        router,
-        el:'#freelancerRegisterComponent'
-    });
-}
 
 if ($('#freelancerDashboardComponent').length !== 0) {
   const routes = [
@@ -283,14 +254,14 @@ if ($('#freelancerCampaignMainComponent').length !== 0) {
   })
 }
 
-if ($('#freelancer_account_info_edit').length !== 0){
+if ($("#freelancer_account_info_edit").length !== 0){
 
     let freelancer_account_info_edit = new Vue({
         el:'#freelancer_account_info_edit'
     });
 }
 
-if ($('#freelancer_professional_info_edit').length !== 0){
+if ($("#freelancer_professional_info_edit").length !== 0){
 
     let freelancer_professional_info_edit = new Vue({
         el:'#freelancer_professional_info_edit'
@@ -408,7 +379,7 @@ Vue.component('send-emails', require('./components/mails/sendEmailsComponent.vue
 Vue.component('send-invitations', require('./components/mails/sendInvitationMail.vue'));
 
 
-if ($('#searchFreelancers').length !== 0){
+if ($("#searchFreelancers").length !== 0){
     let searchFreelancers = new Vue({
         el:'#searchFreelancers'
     });
@@ -417,89 +388,89 @@ if ($('#searchFreelancers').length !== 0){
 
 
 
-if ($('#record_input').length !== 0){
+if ($("#record_input").length !== 0){
     let record_input = new Vue({
         el:'#record_input'
     });
 }
 
-if ($('#faq_list').length !== 0){
+if ($("#faq_list").length !== 0){
     let faq_list = new Vue({
         el:'#faq_list'
     });
 }
 
-if ($('#currentSubscriptions').length !== 0){
+if ($("#currentSubscriptions").length !== 0){
     let currentSubscriptions = new Vue({
         el:'#currentSubscriptions'
     });
 }
 
-if ($('#activityLog').length !== 0){
+if ($("#activityLog").length !== 0){
     let activityLog = new Vue({
         el:'#activityLog'
     });
 }
-if ($('#businessSupport').length !== 0){
+if ($("#businessSupport").length !== 0){
     let businessSupport = new Vue({
         el:'#businessSupport'
     });
 }
 
-if ($('#timeTable').length !== 0){
+if ($("#timeTable").length !== 0){
     let timeTable = new Vue({
         el:'#timeTable'
     });
 }
 
-if ($('#terms_bar').length !== 0){
+if ($("#terms_bar").length !== 0){
     let terms_bar = new Vue({
         el:'#terms_bar'
     });
 }
 
-if ($('#agent_terms_bar').length !== 0){
+if ($("#agent_terms_bar").length !== 0){
     let agent_terms_bar = new Vue({
         el:'#agent_terms_bar'
     });
 }
 
-if ($('#agents').length !== 0){
+if ($("#agents").length !== 0){
     let agents = new Vue({
         el:'#agents'
     });
 }
 
-if ($('#bookings_calendar').length !== 0){
+if ($("#bookings_calendar").length !== 0){
     let bookings_calendar = new Vue({
         el:'#bookings_calendar'
     });
 }
 
 
-if ($('#clientJobs').length !== 0){
+if ($("#clientJobs").length !== 0){
     let clientJobs = new Vue({
         el:'#clientJobs'
     });
 }
-if ($('#send_emails_vue').length !== 0){
+if ($("#send_emails_vue").length !== 0){
     let send_emails_vue = new Vue({
         el:'#send_emails_vue'
     });
 }
-if ($('#send_invitations_vue').length !== 0){
+if ($("#send_invitations_vue").length !== 0){
     let send_invitations_vue = new Vue({
         el:'#send_invitations_vue'
     });
 }
 
-if ($('#newChat').length !== 0){
+if ($("#newChat").length !== 0){
     let newChat = new Vue({
         el:'#newChat'
     });
 }
 
-if ($('#cbriefs').length !== 0){
+if ($("#cbriefs").length !== 0){
     let cbriefs = new Vue({
         el:'#cbriefs'
     });
@@ -507,63 +478,63 @@ if ($('#cbriefs').length !== 0){
 
 
 
-if ($('#work_overview').length !== 0){
+if ($("#work_overview").length !== 0){
     let work_overview = new Vue({
         el:'#work_overview'
     });
 }
 
-if ($('#freelancer_works').length !== 0){
+if ($("#freelancer_works").length !== 0){
     let freelancer_works = new Vue({
         el:'#freelancer_works'
     });
 }
 
-if ($('#freelancer_educations').length !== 0){
+if ($("#freelancer_educations").length !== 0){
     let freelancer_educations = new Vue({
         el:'#freelancer_educations'
     });
 }
 
-if ($('#client_invoices').length !== 0){
+if ($("#client_invoices").length !== 0){
     let client_invoices = new Vue({
         el:'#client_invoices'
     });
 }
 
-if ($('#client_services').length !== 0){
+if ($("#client_services").length !== 0){
     let client_services = new Vue({
         el:'#client_services'
     });
 }
 
-if ($('#client_campaings').length !== 0){
+if ($("#client_campaings").length !== 0){
     let client_campaings = new Vue({
         el:'#client_campaings'
     });
 }
 
-if ($('#freelancer_records').length !== 0){
+if ($("#freelancer_records").length !== 0){
     let freelancer_records = new Vue({
         el:'#freelancer_records'
     });
 }
 
-if ($('#freelancer_references').length !== 0){
+if ($("#freelancer_references").length !== 0){
     let freelancer_references = new Vue({
         el:'#freelancer_references'
     });
 }
 
 
-if ($('#freelancer_skills').length !== 0){
+if ($("#freelancer_skills").length !== 0){
     let freelancer_skills = new Vue({
         el:'#freelancer_skills'
     });
 }
 
 
-if ($('#VueChat').length !== 0){
+if ($("#VueChat").length !== 0){
     const app = new Vue({
         el: '#VueChat',
         data:{
@@ -590,12 +561,12 @@ if ($('#VueChat').length !== 0){
                     }
                 });
                 //scroll down :
-                if ($('#chatBox').length ){
+                if ($("#chatBox").length ){
                     $('#messagesBox').animate({scrollTop: $('#messagesBox')[0].scrollHeight}, 'slow');
                 }
-                if ($('#chatLogs').length && this.currentUser.admin == 1 ){
+                if ($("#chatLogs").length && this.currentUser.admin == 1 ){
                     setTimeout(function(){
-                        $('html,body').animate({scrollTop: $('#sendMessage').offset().top}, 'slow');
+                        $('html,body').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
                     }, 2000);
                 }
                 // save to DB and so on.
@@ -640,13 +611,13 @@ if ($('#VueChat').length !== 0){
 
                     // scroll down : only if message is to this conversation.
                     if(this.currentConvId == e.message.conversation_id){
-                        if ($('#chatLogs').length ){
+                        if ($("#chatLogs").length ){
                             setTimeout(function(){
-                                $('html,body').animate({scrollTop: $('#sendMessage').offset().top}, 'slow');
+                                $('html,body').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
                             }, 2000);
                         }
                         // play sound :
-                        var chatAudio = document.getElementById('chatAudio');
+                        var chatAudio = document.getElementById("chatAudio");
 
                         // if user is not admin and message is from admin
                         if(this.currentUser.admin != 1 && e.message.user_id == 2){

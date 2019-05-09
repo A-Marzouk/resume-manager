@@ -10,9 +10,9 @@
                 </div>
             </nav>
             <keep-alive>
-                <router-view></router-view>
+                <router-view v-bind="{step, changeStep}"></router-view>
             </keep-alive>
-            
+            <span class="step-footer">{{ step }} / 5</span>
         </div>
 
         <div class="pt-3 no-decoration d-flex justify-content-center base-text align-items-center">
@@ -25,16 +25,7 @@
     export default {
         data(){
             return{
-                formData:{
-                    name:'',
-                    surname:'',
-                    gender:'',
-                    phone:'',
-                    email:'',
-                    timeZone:'',
-                    city:'',
-                    paypal:''
-                },
+                step: 1,
                 canSubmit: false,
                 errors:[]
             }
@@ -56,6 +47,10 @@
             clearInput(inputName){
                 this.formData[inputName] = '' ;
             },
+            changeStep(step) {
+                console.log(step)
+                this.step = step
+            }
         },
         watch: {
             formData: {

@@ -88,9 +88,17 @@
                 <label class="faq-input-label">
                     Choose languages you speak
                 </label>
-                <div class="faq-input"  :class="{ 'error-input' : errors.lang}">
-                    <input type="text" name="lang" placeholder="Enter your lang" v-model="formData.lang">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('lang')" alt="delete icon" v-show="formData.lang.length > 0">
+                <div class="img-container">
+                    <div class="faq-input" :class="{ 'error-input' : errors.gender}">
+                        <div class="lang">
+                            <img src="/images/client/add_agent/language/english_icon.png">
+                            <span>English</span>
+                        </div>
+                        <div class="lang">
+                            <img src="/images/client/add_agent/language/spanish_icon.png">
+                            <span>Spanish</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="error" v-if="errors.lang">
                     {{errors.lang[0]}}

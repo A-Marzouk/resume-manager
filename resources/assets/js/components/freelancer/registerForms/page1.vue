@@ -46,9 +46,11 @@
                 <label class="faq-input-label">
                     Choose your gender
                 </label>
-                <div class="faq-input" :class="{ 'error-input' : errors.gender}">
-                    <input type="text" name="gender" placeholder="Enter your gender" v-model="formData.gender">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('phone')" alt="delete icon" v-show="formData.phone.length > 0">
+                <div class="img-container">
+                    <div class="faq-input" :class="{ 'error-input' : errors.gender}">    
+                        <img src="/images/client/add_agent/gender/male_icon.png">
+                        <img src="/images/client/add_agent/gender/female_icon.png">
+                    </div>
                 </div>
                 <div class="error" v-if="errors.gender">
                     {{errors.gender[0]}}
@@ -172,7 +174,7 @@
         </div>
     </div>
     <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}" id="submitBtnWrapper">
-        <router-link to="/freelancer/register/page2">
+        <router-link to="/freelancer/register/page2" v-on:click="$attrs.changeStep(2)">
             CONTINUE
         </router-link>
     </div>
@@ -195,6 +197,12 @@ export default {
         canSubmit: false,
         errors:[]
     }
+  },
+  methods: {
+      nextStep () {
+				console.log('Changing step')
+        this.changeStep(2)
+      }
   }
 }
 </script>

@@ -65,18 +65,47 @@
 export default {
   data () {
     return{
-        formData:{
-            primaryJob:'',
-            sector:'',
-            voice:'',
-            hoursPerWeek:'',
-            techs:'',
-            lang:'',
+        resumeData:{
+            voiceRecorder: '',
+            resumeFile: ''
         },
         canSubmit: false,
         errors:[]
     }
-  }
+  },
+  methods: {
+      nextStep (e) {
+        e.preventDefault()
+        if (this.canSubmit) {
+            this.getData({ resumeData: { ...this.resumeData }})
+            this.changeStep(2)
+            this.$router.push('/freelancer/register/page2')
+        } else {
+            // Send errors
+        }
+
+      },
+      updateData () {
+          this.getData ({ resumeData: data })
+      }
+  },
+  watch: {
+        resumeData: {
+            handler(){
+                // check if all resumeData values are filled
+                let values = Object.values(this.resumeData);
+                let isAll_filled = true;
+                for (const value of values) {
+                    if (value.trim().length < 1) {
+                        isAll_filled = false;
+                        break
+                    }
+                }
+                this.canSubmit = isAll_filled;
+            },
+            deep: true
+        }
+    }
 }
 </script>
 

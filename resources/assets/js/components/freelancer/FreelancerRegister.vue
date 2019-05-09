@@ -10,7 +10,7 @@
                 </div>
             </nav>
             <keep-alive>
-                <router-view :changeStep="changeStep" ></router-view>
+                <router-view :changeStep="changeStep" :getData="getData" ></router-view>
             </keep-alive>
             <span class="step-footer">Step {{ step }} / 5</span>
         </div>
@@ -26,6 +26,7 @@
         data(){
             return{
                 step: 1,
+                formData: {},
                 canSubmit: false,
                 errors:[]
             }
@@ -36,10 +37,10 @@
                     return ;
                 }
                 this.canSubmit = false;
-                axios.post('/client/register/submit',this.formData).then( (response) => {
+                axios.post('/freelancer/register/submit',this.formData).then( (response) => {
                     if(response.data.status === 'success'){
                         // redirect to client dashboard
-                        window.location.href = '/client';
+                        window.location.href = '/freelancer';
                     }
                     this.errors = response.data.errors;
                 });
@@ -49,6 +50,9 @@
             },
             changeStep(step) {
                 this.step = step
+            },
+            getData(data) {
+                this.formData = {...this.formData, ...data}
             }
         },
         watch: {
@@ -58,11 +62,12 @@
                     let values = Object.values(this.formData);
                     let isAll_filled = true;
                     for (const value of values) {
-                        if (value.length < 1) {
+                        if (value.trim().length < 1) {
                             isAll_filled = false;
+                            break
                         }
                     }
-                    this.canSubmit = isAll_filled ;
+                    this.canSubmit = isAll_filled;
                 },
                 deep: true
             }

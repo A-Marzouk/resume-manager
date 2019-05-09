@@ -19,10 +19,10 @@
                     Enter your name
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.name}">
-                    <input type="text" name="name" placeholder="Enter your name" v-model="formData.name">
+                    <input type="text" name="name" placeholder="Enter your name" v-model="personalData.name">
                     <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
                           alt="delete icon"
-                          v-show="formData.name.length > 0"
+                          v-show="personalData.name.length > 0"
                           @click="clearInput('name')"
                     >
                 </div>
@@ -35,8 +35,8 @@
                     Enter your surname
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.surname}">
-                    <input type="text" name="surname" placeholder="Enter your surname" v-model="formData.surname">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('surname')" alt="delete icon" v-show="formData.surname.length > 0">
+                    <input type="text" name="surname" placeholder="Enter your surname" v-model="personalData.surname">
+                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('surname')" alt="delete icon" v-show="personalData.surname.length > 0">
                 </div>
                 <div class="error" v-if="errors.surname">
                     {{errors.surname[0]}}
@@ -62,8 +62,8 @@
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.phone}">
                     <flag-dropdown>
-                        <input type="text" name="phone" placeholder="Enter your phone" v-model="formData.phone">
-                        <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('phone')" alt="delete icon" v-show="formData.phone.length > 0">
+                        <input type="text" name="phone" placeholder="Enter your phone" v-model="personalData.phone">
+                        <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('phone')" alt="delete icon" v-show="personalData.phone.length > 0">
                     </flag-dropdown>                    
                 </div>
                 <div class="error" v-if="errors.phone">
@@ -75,8 +75,8 @@
                     Enter your e-mail
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.email}">
-                    <input type="text" name="email" placeholder="Enter your email" v-model="formData.email">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('email')" alt="delete icon" v-show="formData.email.length > 0">
+                    <input type="text" name="email" placeholder="Enter your email" v-model="personalData.email">
+                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('email')" alt="delete icon" v-show="personalData.email.length > 0">
                 </div>
                 <div class="error" v-if="errors.email">
                     {{errors.email[0]}}
@@ -87,7 +87,7 @@
                     Select your time zone
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.timeZone}">
-                    <select class="form-control" id="timeZone" name="timeZone" style="height: 50px;" v-model="formData.timeZone">
+                    <select class="form-control" id="timeZone" name="timeZone" style="height: 50px;" v-model="personalData.timeZone">
                         <option value="" selected="selected">Select your timezone</option>
                         <option value="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima">(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima</option>
                         <option value="(GMT -6:00) Central Time (US & Canada), Mexico City">(GMT -6:00) Central Time (US & Canada), Mexico City</option>
@@ -146,10 +146,10 @@
                     Enter your city name
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.cityName}">
-                    <input type="text" name="cityName" placeholder="You can enter several items using comas" v-model="formData.cityName">
+                    <input type="text" name="cityName" placeholder="You can enter several items using comas" v-model="personalData.cityName">
                     <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
                           alt="delete icon"
-                          v-show="formData.cityName.length > 0"
+                          v-show="personalData.cityName.length > 0"
                           @click="clearInput('cityName')"
                     >
                 </div>
@@ -162,10 +162,10 @@
                     Enter your PayPal acc number
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.paypal}">
-                    <input type="text" name="paypal" placeholder="Enter your PayPal acc number" v-model="formData.paypal">
+                    <input type="text" name="paypal" placeholder="Enter your PayPal acc number" v-model="personalData.paypal">
                     <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
                           alt="delete icon"
-                          v-show="formData.paypal.length > 0"
+                          v-show="personalData.paypal.length > 0"
                           @click="clearInput('paypal')"
                     >
                 </div>
@@ -186,13 +186,13 @@
 import FlagDropdown from '../../flagsDropdown.vue'
 
 export default {
-    props: ['changeStep'],
+    props: ['changeStep', 'getData'],
     components: {
         'flag-dropdown': FlagDropdown
     },
   data () {
     return{
-        formData:{
+        personalData:{
             name:'',
             surname:'',
             gender:'',
@@ -208,11 +208,37 @@ export default {
   },
   methods: {
       nextStep (e) {
-          e.preventDefault()
-        this.changeStep(2)
-        this.$router.push('/freelancer/register/page2')
+				e.preventDefault()
+				if (this.canSubmit) {
+					this.getData({ personalData: { ...this.personalData }})
+					this.changeStep(2)
+					this.$router.push('/freelancer/register/page2')
+				} else {
+					// Send errors
+				}
+
+      },
+      updateData () {
+          this.getData ({ personalData: data })
       }
-  }
+  },
+  watch: {
+			personalData: {
+					handler(){
+							// check if all personalData values are filled
+							let values = Object.values(this.personalData);
+							let isAll_filled = true;
+							for (const value of values) {
+									if (value.trim().length < 1) {
+											isAll_filled = false;
+											break
+									}
+							}
+							this.canSubmit = isAll_filled;
+					},
+					deep: true
+			}
+	}
 }
 </script>
 

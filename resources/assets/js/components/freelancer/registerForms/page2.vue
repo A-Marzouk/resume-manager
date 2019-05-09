@@ -19,10 +19,10 @@
                     Enter primary job title
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.primaryJob}">
-                    <input type="text" name="primaryJob" placeholder="e.g. Frontend Developer" v-model="formData.primaryJob">
+                    <input type="text" name="primaryJob" placeholder="e.g. Frontend Developer" v-model="professionalData.primaryJob">
                     <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
                           alt="delete icon"
-                          v-show="formData.primaryJob.length > 0"
+                          v-show="professionalData.primaryJob.length > 0"
                           @click="clearInput('primaryJob')"
                     >
                 </div>
@@ -35,10 +35,10 @@
                     Enter sector experience
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.sector}">
-                    <input type="text" name="sector" placeholder="e.g. React.js" v-model="formData.sector">
+                    <input type="text" name="sector" placeholder="e.g. React.js" v-model="professionalData.sector">
                     <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
                           alt="delete icon"
-                          v-show="formData.sector.length > 0"
+                          v-show="professionalData.sector.length > 0"
                           @click="clearInput('sector')"
                     >
                 </div>
@@ -51,7 +51,7 @@
                     Choose voice character (for sales-agents)
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.voice}">
-                    <select class="form-control" id="voice" name="voice" style="height: 50px;" v-model="formData.voice">
+                    <select class="form-control" id="voice" name="voice" style="height: 50px;" v-model="professionalData.voice">
                         <option value="" selected="selected">Select your voice character</option>
                         <option value="voice1">Voice character 1</option>
                     </select>
@@ -65,8 +65,8 @@
                     Specify available hours per week hoursPerWeek
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.hoursPerWeek}">
-                    <input type="text" name="hoursPerWeek" placeholder="25" v-model="formData.hoursPerWeek">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('hoursPerWeek')" alt="delete icon" v-show="formData.hoursPerWeek.length > 0">
+                    <input type="text" name="hoursPerWeek" placeholder="25" v-model="professionalData.hoursPerWeek">
+                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('hoursPerWeek')" alt="delete icon" v-show="professionalData.hoursPerWeek.length > 0">
                 </div>
                 <div class="error" v-if="errors.hoursPerWeek">
                     {{errors.hoursPerWeek[0]}}
@@ -77,8 +77,8 @@
                     Enter technologies/frameworks/software
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.techs}">
-                    <input type="text" name="techs" placeholder="You can enter several items using comas" v-model="formData.techs">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('techs')" alt="delete icon" v-show="formData.techs.length > 0">
+                    <input type="text" name="techs" placeholder="You can enter several items using comas" v-model="professionalData.techs">
+                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('techs')" alt="delete icon" v-show="professionalData.techs.length > 0">
                 </div>
                 <div class="error" v-if="errors.techs">
                     {{errors.techs[0]}}
@@ -115,10 +115,10 @@
 </template>
 <script>
 export default {
-    props: ['changeStep'],
+    props: ['changeStep', 'getData'],
   data () {
     return{
-        formData:{
+        professionalData:{
             primaryJob:'',
             sector:'',
             voice:'',
@@ -132,11 +132,37 @@ export default {
   },
   methods: {
       nextStep (e) {
-          e.preventDefault()
-        this.changeStep(3)
-        this.$router.push('/freelancer/register/page3')
+        e.preventDefault()
+        if (this.canSubmit) {
+            this.getData({ professionalData: { ...this.professionalData }})
+            this.changeStep(2)
+            this.$router.push('/freelancer/register/page2')
+        } else {
+            // Send errors
+        }
+
+      },
+      updateData () {
+          this.getData ({ professionalData: data })
       }
-  }
+  },
+  watch: {
+        professionalData: {
+            handler(){
+                // check if all professionalData values are filled
+                let values = Object.values(this.professionalData);
+                let isAll_filled = true;
+                for (const value of values) {
+                    if (value.trim().length < 1) {
+                        isAll_filled = false;
+                        break
+                    }
+                }
+                this.canSubmit = isAll_filled;
+            },
+            deep: true
+        }
+    }
 }
 </script>
 

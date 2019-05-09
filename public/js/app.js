@@ -110267,6 +110267,8 @@ exports.push([module.i, "\n.error[data-v-64218dd0]{\n    font-family: Roboto;\n 
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -110295,6 +110297,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             step: 1,
+            formData: {},
             canSubmit: false,
             errors: []
         };
@@ -110308,10 +110311,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return;
             }
             this.canSubmit = false;
-            axios.post('/client/register/submit', this.formData).then(function (response) {
+            axios.post('/freelancer/register/submit', this.formData).then(function (response) {
                 if (response.data.status === 'success') {
                     // redirect to client dashboard
-                    window.location.href = '/client';
+                    window.location.href = '/freelancer';
                 }
                 _this.errors = response.data.errors;
             });
@@ -110321,6 +110324,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         changeStep: function changeStep(step) {
             this.step = step;
+        },
+        getData: function getData(data) {
+            this.formData = _extends({}, this.formData, data);
         }
     },
     watch: {
@@ -110337,8 +110343,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                         var value = _step.value;
 
-                        if (value.length < 1) {
+                        if (value.trim().length < 1) {
                             isAll_filled = false;
+                            break;
                         }
                     }
                 } catch (err) {
@@ -110387,7 +110394,11 @@ var render = function() {
           _vm._v(" "),
           _c(
             "keep-alive",
-            [_c("router-view", { attrs: { changeStep: _vm.changeStep } })],
+            [
+              _c("router-view", {
+                attrs: { changeStep: _vm.changeStep, getData: _vm.getData }
+              })
+            ],
             1
           ),
           _vm._v(" "),
@@ -110508,6 +110519,8 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue__ = __webpack_require__(441);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -110696,13 +110709,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['changeStep'],
+    props: ['changeStep', 'getData'],
     components: {
         'flag-dropdown': __WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue___default.a
     },
     data: function data() {
         return {
-            formData: {
+            personalData: {
                 name: '',
                 surname: '',
                 gender: '',
@@ -110720,8 +110733,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         nextStep: function nextStep(e) {
             e.preventDefault();
-            this.changeStep(2);
-            this.$router.push('/freelancer/register/page2');
+            if (this.canSubmit) {
+                this.getData({ personalData: _extends({}, this.personalData) });
+                this.changeStep(2);
+                this.$router.push('/freelancer/register/page2');
+            } else {
+                // Send errors
+            }
+        },
+        updateData: function updateData() {
+            this.getData({ personalData: data });
+        }
+    },
+    watch: {
+        personalData: {
+            handler: function handler() {
+                // check if all personalData values are filled
+                var values = Object.values(this.personalData);
+                var isAll_filled = true;
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var value = _step.value;
+
+                        if (value.trim().length < 1) {
+                            isAll_filled = false;
+                            break;
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+
+                this.canSubmit = isAll_filled;
+            },
+
+            deep: true
         }
     }
 });
@@ -110760,8 +110821,8 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.formData.name,
-                    expression: "formData.name"
+                    value: _vm.personalData.name,
+                    expression: "personalData.name"
                   }
                 ],
                 attrs: {
@@ -110769,13 +110830,13 @@ var render = function() {
                   name: "name",
                   placeholder: "Enter your name"
                 },
-                domProps: { value: _vm.formData.name },
+                domProps: { value: _vm.personalData.name },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.formData, "name", $event.target.value)
+                    _vm.$set(_vm.personalData, "name", $event.target.value)
                   }
                 }
               }),
@@ -110785,8 +110846,8 @@ var render = function() {
                   {
                     name: "show",
                     rawName: "v-show",
-                    value: _vm.formData.name.length > 0,
-                    expression: "formData.name.length > 0"
+                    value: _vm.personalData.name.length > 0,
+                    expression: "personalData.name.length > 0"
                   }
                 ],
                 attrs: {
@@ -110831,8 +110892,8 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.formData.surname,
-                    expression: "formData.surname"
+                    value: _vm.personalData.surname,
+                    expression: "personalData.surname"
                   }
                 ],
                 attrs: {
@@ -110840,13 +110901,13 @@ var render = function() {
                   name: "surname",
                   placeholder: "Enter your surname"
                 },
-                domProps: { value: _vm.formData.surname },
+                domProps: { value: _vm.personalData.surname },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.formData, "surname", $event.target.value)
+                    _vm.$set(_vm.personalData, "surname", $event.target.value)
                   }
                 }
               }),
@@ -110856,8 +110917,8 @@ var render = function() {
                   {
                     name: "show",
                     rawName: "v-show",
-                    value: _vm.formData.surname.length > 0,
-                    expression: "formData.surname.length > 0"
+                    value: _vm.personalData.surname.length > 0,
+                    expression: "personalData.surname.length > 0"
                   }
                 ],
                 attrs: {
@@ -110944,8 +111005,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.formData.phone,
-                      expression: "formData.phone"
+                      value: _vm.personalData.phone,
+                      expression: "personalData.phone"
                     }
                   ],
                   attrs: {
@@ -110953,13 +111014,13 @@ var render = function() {
                     name: "phone",
                     placeholder: "Enter your phone"
                   },
-                  domProps: { value: _vm.formData.phone },
+                  domProps: { value: _vm.personalData.phone },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.formData, "phone", $event.target.value)
+                      _vm.$set(_vm.personalData, "phone", $event.target.value)
                     }
                   }
                 }),
@@ -110969,8 +111030,8 @@ var render = function() {
                     {
                       name: "show",
                       rawName: "v-show",
-                      value: _vm.formData.phone.length > 0,
-                      expression: "formData.phone.length > 0"
+                      value: _vm.personalData.phone.length > 0,
+                      expression: "personalData.phone.length > 0"
                     }
                   ],
                   attrs: {
@@ -111017,8 +111078,8 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.formData.email,
-                    expression: "formData.email"
+                    value: _vm.personalData.email,
+                    expression: "personalData.email"
                   }
                 ],
                 attrs: {
@@ -111026,13 +111087,13 @@ var render = function() {
                   name: "email",
                   placeholder: "Enter your email"
                 },
-                domProps: { value: _vm.formData.email },
+                domProps: { value: _vm.personalData.email },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.formData, "email", $event.target.value)
+                    _vm.$set(_vm.personalData, "email", $event.target.value)
                   }
                 }
               }),
@@ -111042,8 +111103,8 @@ var render = function() {
                   {
                     name: "show",
                     rawName: "v-show",
-                    value: _vm.formData.email.length > 0,
-                    expression: "formData.email.length > 0"
+                    value: _vm.personalData.email.length > 0,
+                    expression: "personalData.email.length > 0"
                   }
                 ],
                 attrs: {
@@ -111090,8 +111151,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.formData.timeZone,
-                      expression: "formData.timeZone"
+                      value: _vm.personalData.timeZone,
+                      expression: "personalData.timeZone"
                     }
                   ],
                   staticClass: "form-control",
@@ -111108,7 +111169,7 @@ var render = function() {
                           return val
                         })
                       _vm.$set(
-                        _vm.formData,
+                        _vm.personalData,
                         "timeZone",
                         $event.target.multiple
                           ? $$selectedVal
@@ -111557,8 +111618,8 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.formData.cityName,
-                    expression: "formData.cityName"
+                    value: _vm.personalData.cityName,
+                    expression: "personalData.cityName"
                   }
                 ],
                 attrs: {
@@ -111566,13 +111627,13 @@ var render = function() {
                   name: "cityName",
                   placeholder: "You can enter several items using comas"
                 },
-                domProps: { value: _vm.formData.cityName },
+                domProps: { value: _vm.personalData.cityName },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.formData, "cityName", $event.target.value)
+                    _vm.$set(_vm.personalData, "cityName", $event.target.value)
                   }
                 }
               }),
@@ -111582,8 +111643,8 @@ var render = function() {
                   {
                     name: "show",
                     rawName: "v-show",
-                    value: _vm.formData.cityName.length > 0,
-                    expression: "formData.cityName.length > 0"
+                    value: _vm.personalData.cityName.length > 0,
+                    expression: "personalData.cityName.length > 0"
                   }
                 ],
                 attrs: {
@@ -111630,8 +111691,8 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.formData.paypal,
-                    expression: "formData.paypal"
+                    value: _vm.personalData.paypal,
+                    expression: "personalData.paypal"
                   }
                 ],
                 attrs: {
@@ -111639,13 +111700,13 @@ var render = function() {
                   name: "paypal",
                   placeholder: "Enter your PayPal acc number"
                 },
-                domProps: { value: _vm.formData.paypal },
+                domProps: { value: _vm.personalData.paypal },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.formData, "paypal", $event.target.value)
+                    _vm.$set(_vm.personalData, "paypal", $event.target.value)
                   }
                 }
               }),
@@ -111655,8 +111716,8 @@ var render = function() {
                   {
                     name: "show",
                     rawName: "v-show",
-                    value: _vm.formData.paypal.length > 0,
-                    expression: "formData.paypal.length > 0"
+                    value: _vm.personalData.paypal.length > 0,
+                    expression: "personalData.paypal.length > 0"
                   }
                 ],
                 attrs: {
@@ -111789,6 +111850,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -111906,10 +111969,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['changeStep'],
+    props: ['changeStep', 'getData'],
     data: function data() {
         return {
-            formData: {
+            professionalData: {
                 primaryJob: '',
                 sector: '',
                 voice: '',
@@ -111925,8 +111988,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         nextStep: function nextStep(e) {
             e.preventDefault();
-            this.changeStep(3);
-            this.$router.push('/freelancer/register/page3');
+            if (this.canSubmit) {
+                this.getData({ professionalData: _extends({}, this.professionalData) });
+                this.changeStep(2);
+                this.$router.push('/freelancer/register/page2');
+            } else {
+                // Send errors
+            }
+        },
+        updateData: function updateData() {
+            this.getData({ professionalData: data });
+        }
+    },
+    watch: {
+        professionalData: {
+            handler: function handler() {
+                // check if all professionalData values are filled
+                var values = Object.values(this.professionalData);
+                var isAll_filled = true;
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var value = _step.value;
+
+                        if (value.trim().length < 1) {
+                            isAll_filled = false;
+                            break;
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+
+                this.canSubmit = isAll_filled;
+            },
+
+            deep: true
         }
     }
 });
@@ -111967,8 +112078,8 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.formData.primaryJob,
-                    expression: "formData.primaryJob"
+                    value: _vm.professionalData.primaryJob,
+                    expression: "professionalData.primaryJob"
                   }
                 ],
                 attrs: {
@@ -111976,13 +112087,17 @@ var render = function() {
                   name: "primaryJob",
                   placeholder: "e.g. Frontend Developer"
                 },
-                domProps: { value: _vm.formData.primaryJob },
+                domProps: { value: _vm.professionalData.primaryJob },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.formData, "primaryJob", $event.target.value)
+                    _vm.$set(
+                      _vm.professionalData,
+                      "primaryJob",
+                      $event.target.value
+                    )
                   }
                 }
               }),
@@ -111992,8 +112107,8 @@ var render = function() {
                   {
                     name: "show",
                     rawName: "v-show",
-                    value: _vm.formData.primaryJob.length > 0,
-                    expression: "formData.primaryJob.length > 0"
+                    value: _vm.professionalData.primaryJob.length > 0,
+                    expression: "professionalData.primaryJob.length > 0"
                   }
                 ],
                 attrs: {
@@ -112040,8 +112155,8 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.formData.sector,
-                    expression: "formData.sector"
+                    value: _vm.professionalData.sector,
+                    expression: "professionalData.sector"
                   }
                 ],
                 attrs: {
@@ -112049,13 +112164,17 @@ var render = function() {
                   name: "sector",
                   placeholder: "e.g. React.js"
                 },
-                domProps: { value: _vm.formData.sector },
+                domProps: { value: _vm.professionalData.sector },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.formData, "sector", $event.target.value)
+                    _vm.$set(
+                      _vm.professionalData,
+                      "sector",
+                      $event.target.value
+                    )
                   }
                 }
               }),
@@ -112065,8 +112184,8 @@ var render = function() {
                   {
                     name: "show",
                     rawName: "v-show",
-                    value: _vm.formData.sector.length > 0,
-                    expression: "formData.sector.length > 0"
+                    value: _vm.professionalData.sector.length > 0,
+                    expression: "professionalData.sector.length > 0"
                   }
                 ],
                 attrs: {
@@ -112115,8 +112234,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.formData.voice,
-                      expression: "formData.voice"
+                      value: _vm.professionalData.voice,
+                      expression: "professionalData.voice"
                     }
                   ],
                   staticClass: "form-control",
@@ -112133,7 +112252,7 @@ var render = function() {
                           return val
                         })
                       _vm.$set(
-                        _vm.formData,
+                        _vm.professionalData,
                         "voice",
                         $event.target.multiple
                           ? $$selectedVal
@@ -112185,8 +112304,8 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.formData.hoursPerWeek,
-                    expression: "formData.hoursPerWeek"
+                    value: _vm.professionalData.hoursPerWeek,
+                    expression: "professionalData.hoursPerWeek"
                   }
                 ],
                 attrs: {
@@ -112194,13 +112313,17 @@ var render = function() {
                   name: "hoursPerWeek",
                   placeholder: "25"
                 },
-                domProps: { value: _vm.formData.hoursPerWeek },
+                domProps: { value: _vm.professionalData.hoursPerWeek },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.formData, "hoursPerWeek", $event.target.value)
+                    _vm.$set(
+                      _vm.professionalData,
+                      "hoursPerWeek",
+                      $event.target.value
+                    )
                   }
                 }
               }),
@@ -112210,8 +112333,8 @@ var render = function() {
                   {
                     name: "show",
                     rawName: "v-show",
-                    value: _vm.formData.hoursPerWeek.length > 0,
-                    expression: "formData.hoursPerWeek.length > 0"
+                    value: _vm.professionalData.hoursPerWeek.length > 0,
+                    expression: "professionalData.hoursPerWeek.length > 0"
                   }
                 ],
                 attrs: {
@@ -112258,8 +112381,8 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.formData.techs,
-                    expression: "formData.techs"
+                    value: _vm.professionalData.techs,
+                    expression: "professionalData.techs"
                   }
                 ],
                 attrs: {
@@ -112267,13 +112390,13 @@ var render = function() {
                   name: "techs",
                   placeholder: "You can enter several items using comas"
                 },
-                domProps: { value: _vm.formData.techs },
+                domProps: { value: _vm.professionalData.techs },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.formData, "techs", $event.target.value)
+                    _vm.$set(_vm.professionalData, "techs", $event.target.value)
                   }
                 }
               }),
@@ -112283,8 +112406,8 @@ var render = function() {
                   {
                     name: "show",
                     rawName: "v-show",
-                    value: _vm.formData.techs.length > 0,
-                    expression: "formData.techs.length > 0"
+                    value: _vm.professionalData.techs.length > 0,
+                    expression: "professionalData.techs.length > 0"
                   }
                 ],
                 attrs: {
@@ -112473,6 +112596,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -112540,17 +112665,69 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            formData: {
-                primaryJob: '',
-                sector: '',
-                voice: '',
-                hoursPerWeek: '',
-                techs: '',
-                lang: ''
+            resumeData: {
+                voiceRecorder: '',
+                resumeFile: ''
             },
             canSubmit: false,
             errors: []
         };
+    },
+
+    methods: {
+        nextStep: function nextStep(e) {
+            e.preventDefault();
+            if (this.canSubmit) {
+                this.getData({ resumeData: _extends({}, this.resumeData) });
+                this.changeStep(2);
+                this.$router.push('/freelancer/register/page2');
+            } else {
+                // Send errors
+            }
+        },
+        updateData: function updateData() {
+            this.getData({ resumeData: data });
+        }
+    },
+    watch: {
+        resumeData: {
+            handler: function handler() {
+                // check if all resumeData values are filled
+                var values = Object.values(this.resumeData);
+                var isAll_filled = true;
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var value = _step.value;
+
+                        if (value.trim().length < 1) {
+                            isAll_filled = false;
+                            break;
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+
+                this.canSubmit = isAll_filled;
+            },
+
+            deep: true
+        }
     }
 });
 

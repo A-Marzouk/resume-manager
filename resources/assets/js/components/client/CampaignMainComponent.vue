@@ -1,6 +1,6 @@
 <template>
   <div id="campaign_activity">
-    <nav class="navbar navbar-light fixed-top client_navbar">
+    <nav class="navbar navbar-light fixed-top dashboard_navbar">
       <div class="backBtn">
         <a href="/client/dashboard">
                     <img src="/images/client/arrow_back.png" alt="back-icon">

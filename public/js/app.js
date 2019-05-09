@@ -60540,7 +60540,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "nav",
-      { staticClass: "navbar navbar-light fixed-top client_navbar" },
+      { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
       [
         _c("div", { staticClass: "backBtn" }, [
           _c("a", { attrs: { href: "/client/dashboard" } }, [
@@ -60851,7 +60851,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "nav",
-      { staticClass: "navbar navbar-light fixed-top client_navbar" },
+      { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
       [
         _c("div", { staticClass: "backBtn" }, [
           _c("a", { attrs: { href: "/client/dashboard" } }, [
@@ -67132,7 +67132,7 @@ var staticRenderFns = [
     return _c("div", [
       _c(
         "nav",
-        { staticClass: "navbar navbar-light fixed-top client_navbar" },
+        { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
         [
           _c("div", { staticClass: "backBtn" }, [
             _c("a", { attrs: { href: "/client/dashboard" } }, [
@@ -67809,7 +67809,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "d-flex justify-content-center" }, [
-    _c("div", { staticClass: "client_dashboard_content campaign_activity" }, [
+    _c("div", { staticClass: "dashboard_content campaign_activity" }, [
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "content-block" }, [

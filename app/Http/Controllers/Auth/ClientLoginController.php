@@ -34,14 +34,25 @@ class ClientLoginController extends Controller
         }
 
 
-        // attempt to log in
+        // attempt to log in as client
         $loginAttempt = Auth::guard('client')->attempt(['email'=> $request->email,'password'=>$request->password] , $request->filled('remember'));
         // if success : log them in
         if($loginAttempt) {
             return [
                 'status' => 'success',
+                'redirect' => '/client',
             ];
         }
+
+        $loginAttemptFreelancer = Auth::guard()->attempt(['email'=> $request->email,'password'=>$request->password] , $request->filled('remember'));
+        // if success : log them in
+        if($loginAttemptFreelancer) {
+            return [
+                'status' => 'success',
+                'redirect' => '/freelancer',
+            ];
+        }
+
         // if un successful redirect them back :
          $response['email'] = ['Your e-mail or password is not correct'];
         return [

@@ -227,7 +227,7 @@
         data(){
             return{
                 activeTab: 'campaign_manager',
-                rootURL: this.$route.path
+                rootURL: this.$route.path.split('/')[1]
             }
         },
         methods:{
@@ -247,7 +247,8 @@
                 }
             },
             rootLinkTo (link) {
-                return this.$route.path + link
+                console.log(this.rootURL)
+                return '/' + this.rootURL + '/' + link
             }
         },
         mounted(){

@@ -12,7 +12,7 @@
             <keep-alive>
                 <router-view :changeStep="changeStep" ></router-view>
             </keep-alive>
-            <span class="step-footer">{{ step }} / 5</span>
+            <span class="step-footer">Step {{ step }} / 5</span>
         </div>
 
         <div class="pt-3 no-decoration d-flex justify-content-center base-text align-items-center">
@@ -48,7 +48,6 @@
                 this.formData[inputName] = '' ;
             },
             changeStep(step) {
-                console.log(this)
                 this.step = step
             }
         },

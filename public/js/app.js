@@ -76436,7 +76436,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             activeTab: 'campaign_manager',
-            rootURL: this.$route.path
+            rootURL: this.$route.path.split('/')[1]
         };
     },
 
@@ -76457,7 +76457,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         rootLinkTo: function rootLinkTo(link) {
-            return this.$route.path + link;
+            console.log(this.rootURL);
+            return '/' + this.rootURL + '/' + link;
         }
     },
     mounted: function mounted() {
@@ -110319,7 +110320,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.formData[inputName] = '';
         },
         changeStep: function changeStep(step) {
-            console.log(this);
             this.step = step;
         }
     },
@@ -110392,7 +110392,7 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("span", { staticClass: "step-footer" }, [
-            _vm._v(_vm._s(_vm.step) + " / 5")
+            _vm._v("Step " + _vm._s(_vm.step) + " / 5")
           ])
         ],
         1
@@ -110506,6 +110506,10 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue__);
+//
+//
 //
 //
 //
@@ -110689,8 +110693,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['changeStep'],
+    components: {
+        'flag-dropdown': __WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue___default.a
+    },
     data: function data() {
         return {
             formData: {
@@ -110929,52 +110938,55 @@ var render = function() {
               class: { "error-input": _vm.errors.phone }
             },
             [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formData.phone,
-                    expression: "formData.phone"
-                  }
-                ],
-                attrs: {
-                  type: "text",
-                  name: "phone",
-                  placeholder: "Enter your phone"
-                },
-                domProps: { value: _vm.formData.phone },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c("flag-dropdown", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.phone,
+                      expression: "formData.phone"
                     }
-                    _vm.$set(_vm.formData, "phone", $event.target.value)
+                  ],
+                  attrs: {
+                    type: "text",
+                    name: "phone",
+                    placeholder: "Enter your phone"
+                  },
+                  domProps: { value: _vm.formData.phone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.formData, "phone", $event.target.value)
+                    }
                   }
-                }
-              }),
-              _vm._v(" "),
-              _c("img", {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.formData.phone.length > 0,
-                    expression: "formData.phone.length > 0"
+                }),
+                _vm._v(" "),
+                _c("img", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.formData.phone.length > 0,
+                      expression: "formData.phone.length > 0"
+                    }
+                  ],
+                  attrs: {
+                    src:
+                      "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                    alt: "delete icon"
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.clearInput("phone")
+                    }
                   }
-                ],
-                attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                  alt: "delete icon"
-                },
-                on: {
-                  click: function($event) {
-                    _vm.clearInput("phone")
-                  }
-                }
-              })
-            ]
+                })
+              ])
+            ],
+            1
           ),
           _vm._v(" "),
           _vm.errors.phone
@@ -113395,6 +113407,204 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-2698d9b4", module.exports)
+  }
+}
+
+/***/ }),
+/* 441 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(442)
+/* template */
+var __vue_template__ = __webpack_require__(443)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\flagsDropdown.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8785d41e", Component.options)
+  } else {
+    hotAPI.reload("data-v-8785d41e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 442 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      flags: [{
+        code: '1',
+        name: 'USA',
+        abrev: 'us'
+      }, {
+        code: '58',
+        name: 'Venezuela',
+        abrev: 'ven'
+      }, {
+        code: '57',
+        name: 'Colombia',
+        abrev: 'col'
+      }],
+      selected: 0,
+      opened: false
+    };
+  }
+});
+
+/***/ }),
+/* 443 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "flags-dropdown no-decoration" },
+    [
+      _vm._t("default"),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "selected-country",
+          attrs: { href: "javascript:;" },
+          on: {
+            click: function($event) {
+              _vm.opened = !_vm.opened
+            }
+          }
+        },
+        [
+          _c("img", {
+            staticClass: "flag-img",
+            attrs: {
+              src: "/images/dashboard/flag.svg",
+              alt: "flag " + _vm.flags[_vm.selected].name
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "flag-name" }, [
+            _vm._v("+" + _vm._s(_vm.flags[_vm.selected].code))
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "flags-container", class: { opened: _vm.opened } },
+        _vm._l(_vm.flags, function(flag, index) {
+          return _c(
+            "a",
+            {
+              key: index + flag.name,
+              staticClass: "flag-item",
+              attrs: { href: "javascript:;" },
+              on: {
+                click: function() {
+                  _vm.selected = index
+                  _vm.opened = false
+                }
+              }
+            },
+            [
+              _c("img", {
+                staticClass: "flag-img",
+                attrs: {
+                  src: "/images/dashboard/flag.svg",
+                  alt: "flag " + flag.name
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "flag-name" }, [
+                _vm._v(_vm._s(flag.name))
+              ])
+            ]
+          )
+        })
+      )
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8785d41e", module.exports)
   }
 }
 

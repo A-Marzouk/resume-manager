@@ -61,8 +61,10 @@
                     Enter your phone number
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.phone}">
-                    <input type="text" name="phone" placeholder="Enter your phone" v-model="formData.phone">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('phone')" alt="delete icon" v-show="formData.phone.length > 0">
+                    <flag-dropdown>
+                        <input type="text" name="phone" placeholder="Enter your phone" v-model="formData.phone">
+                        <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('phone')" alt="delete icon" v-show="formData.phone.length > 0">
+                    </flag-dropdown>                    
                 </div>
                 <div class="error" v-if="errors.phone">
                     {{errors.phone[0]}}
@@ -181,8 +183,13 @@
   </div>
 </template>
 <script>
+import FlagDropdown from '../../flagsDropdown.vue'
+
 export default {
     props: ['changeStep'],
+    components: {
+        'flag-dropdown': FlagDropdown
+    },
   data () {
     return{
         formData:{

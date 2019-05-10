@@ -76451,8 +76451,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return '/images/client/menu_icons/inactive/' + tabName + '.png';
         },
         setActiveTab: function setActiveTab() {
-            this.activeTab = this.$route.path.replace('/', '');
-            if (this.activeTab === 'freelancer/') {
+            this.activeTab = this.$route.path.replace(/\//g, '');
+            if (this.activeTab === 'freelancer') {
                 console.log('Active tab: ' + this.activeTab);
                 this.activeTab = 'campaign-manager';
             }

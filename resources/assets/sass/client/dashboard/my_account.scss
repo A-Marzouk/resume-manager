@@ -1,0 +1,278 @@
+.account-info-content-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top:47px;
+  padding-bootom:28px ;
+  .account-info-content{
+    padding:26px 34px 26px 34px;
+    width: 644px;
+    display:flex;
+    flex-direction:column;
+    border: 1px solid #E2E3E6;
+    margin-bottom: 28px;
+    .acc-info-content-heading{
+      display: flex;
+      justify-content: space-between;
+      .acc-info-item{
+        display: flex;
+        align-items: center;
+        img{
+          margin-right:22px;
+        }
+        span{
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 20px;
+          letter-spacing: 0.2px;
+          color: #4A5464;
+        }
+      }
+      .acc-info-timezone{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 30px;
+        text-align: right;
+        color: #7A828D;
+      }
+    }
+    .acc-info-content-item{
+      display: flex;
+      align-items: center;
+      margin-top: 26px;
+      img{
+        margin-right:22px;
+      }
+      div{
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0.2px;
+        color: #4A5464;
+      }
+    }
+    .acc-info-content-item:last-child{
+      align-items: flex-start;
+      img{
+        margin-top:6px;
+      }
+      div{
+        line-height: 34px;
+      }
+    }
+  }
+}
+
+.contracts,.faqs{
+  margin-top: 18px;
+}
+
+.agreement{
+  margin-left:34px;
+  margin-right:36px;
+  height:94px;
+  display:flex;
+  justify-content : space-between;
+  align-items:center;
+  .right{
+    display: flex;
+    align-items: center;
+    img{
+      margin-right: 20px;
+    }
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    color: #4A5464;
+
+  }
+  .left{
+    a{
+      display:flex;
+      justify-content : center;
+      align-items:center;
+      width:181px;
+      height:36px;
+      border: 1px solid #05A4F4;
+      border-radius: 4px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      text-align: center;
+      letter-spacing: -0.1px;
+      color: #05A4F4;
+    }
+  }
+}
+.agreement:first-child{
+  border-bottom: 1px solid #E2E3E6;
+}
+
+.faqs-wrapper{
+  padding:30px 32px 34px 26px;
+  .faq-questions-list{
+    margin-top: 0;
+  }
+  .faq-questions-list .faq-question .faq-numbering {
+    margin-top: 10px;
+    span{
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+// my account edit scss :
+
+.account-info-edit.dashboard-box{
+  max-width: 1164px;
+  width: 100%;
+  padding-left: 113px;
+  padding-right: 113px;
+  @media (max-width:1240px) {
+    padding-left: 38px;
+    padding-right: 38px;
+  }
+
+  @media (max-width:425px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+}
+
+.account-info-edit-wrapper{
+  display: flex;
+  justify-content: center;
+  @media (max-width:1240px) {
+    width: 738px;
+  }
+  @media (max-width:768px) {
+    width: 96%;
+  }
+}
+
+.account-info-edit-heading{
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.faq-question-input.account-edit-input{
+  .faq-input{
+    width:400px;
+    @media (max-width:1240px) {
+      width:307px;
+    }
+    @media (max-width:600px) {
+      width:100%;
+    }
+  }
+  @media (max-width:600px) {
+    width:100%;
+  }
+}
+
+.account-edit-section{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 38px;
+  .account-edit-section-heading{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #3EA3D7;
+    margin-top: 40px;
+  }
+
+  .faq-question-input .faq-input img, .faq-answer-input .faq-input img {
+    margin-left: -34px;
+  }
+
+  .faq-question-input img, .faq-answer-input img {
+    margin-right: 0;
+  }
+}
+.sub-section{
+  border-top: 1px solid  rgba(188, 191, 198, 0.44);
+  border-bottom: 1px solid rgba(188, 191, 198, 0.44);
+}
+.account-edit-section-inputs{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  @media (max-width:600px) {
+    width:100%;
+  }
+}
+
+
+.account-edit-section-edit-btn{
+  margin-top: 44px;
+  margin-bottom: 26px;
+  display: flex;
+  justify-content: flex-end;
+  a{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 2px;
+    width:158px;
+    height:48px;
+    background: #05A4F4;
+  }
+  a:hover{
+    color: #fff;
+  }
+}
+.disabled-btn{
+  a{
+    color: #A1A7AF;
+    background: #E4E4E4;
+  }
+  a:hover{
+    color: #A1A7AF;
+    cursor: not-allowed;
+  }
+}
+
+.base-text{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    color: #4A5464;
+}
+
+.base-link{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;/* identical to box height, or 133% */
+  color: #05A4F4;
+}

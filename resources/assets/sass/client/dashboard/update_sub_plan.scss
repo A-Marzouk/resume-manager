@@ -1,0 +1,83 @@
+.update-sub-plan{
+  display: flex;
+  justify-content: center;
+  .subscriptions {
+    padding-left:79px;
+    padding-right:79px;
+    @media (max-width: 1240px) {
+      width: 96%;
+      padding-left:25px;
+      padding-right:25px;
+    }
+    .subs-heading {
+      @media (max-width: 1240px) {
+        padding-top: 20px;
+      }
+      margin:0;
+    }
+    .subs-list{
+      margin:0;
+    }
+    width: 1096px;
+    background-color: #fff;
+    box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+    border-radius: 4px;
+  }
+
+  .sub-action{
+    a{
+      width: 158px;
+    }
+  }
+}
+
+.blue-text{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;/* or 150% */
+  letter-spacing: -0.1px;
+  color: #3EA0D7;
+}
+
+.faq-question-input.sub-edit-input{
+  .faq-input{
+    width:234px;
+    @media (max-width:600px) {
+      width:100%;
+    }
+  }
+  @media (max-width:600px) {
+    width:100%;
+  }
+}
+
+.weeks-number-heading{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;/* or 133% */
+  color: #4A5464;
+}
+
+.weeks-number-note{
+  padding-top: 22px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;/* or 171% */
+  color: #818893;
+}
+
+.sub-agent-numbering{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;/* or 133% */
+  color: #FFA368;
+}
+

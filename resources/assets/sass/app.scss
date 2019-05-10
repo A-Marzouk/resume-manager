@@ -1,0 +1,31 @@
+
+// Variables
+@import "variables";
+@import "main";
+@import "invoice";
+@import "campaign_brief";
+@import "recorder";
+@import "campaign_page";
+@import "admin";
+@import "chat";
+@import "affiliates_styles";
+
+@import "components/dashboard";
+@import "components/side_nave";
+@import "components/campaign_activity";
+@import "components/campaign_team";
+@import "components/campaign_brief";
+@import "components/campaign_archives";
+@import "components/my_account";
+@import "components/flags_dropdown";
+
+@import "client/addAgent";
+
+@import "client/dashboard/payments";
+@import "client/dashboard/update_sub_plan";
+@import "client/dashboard/payment_show_invoice";
+@import "client/dashboard/service_agreement";
+@import "client/dashboard/payment_pay";
+@import "client/dashboard/manager_calculation";
+@import "client/dashboard/sub_set_up";
+@import "client/campaign_agents";

@@ -78568,6 +78568,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['changeStep', 'getData'],
@@ -78787,11 +78788,7 @@ var render = function() {
             staticClass: "account-edit-section-edit-btn no-decoration",
             class: { "disabled-btn": !_vm.canSubmit }
           },
-          [
-            _c("a", { attrs: { href: "javascript:;" } }, [
-              _vm._v("\n                  UPLOAD A FILE\n              ")
-            ])
-          ]
+          [_vm._m(3)]
         )
       ])
     ]),
@@ -78862,6 +78859,15 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "fake-file-input btn" }, [
+      _c("input", { attrs: { type: "file", id: "resumeFile" } }),
+      _vm._v("\n                  UPLOAD A FILE\n              ")
+    ])
   }
 ]
 render._withStripped = true

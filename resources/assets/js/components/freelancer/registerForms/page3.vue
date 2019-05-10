@@ -61,9 +61,10 @@
                 </label>
             </div>
             <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
-                <a href="javascript:;">
+                <div class="fake-file-input btn" >
+                    <input type="file" id="resumeFile" />
                     UPLOAD A FILE
-                </a>
+                </div>
             </div>
         </div>
     </div>

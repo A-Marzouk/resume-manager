@@ -73598,105 +73598,101 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "d-flex justify-content-center" }, [
-    _c(
-      "div",
-      { staticClass: "freelancer_dashboard_content campaign_activity" },
-      [
-        _c("div", { staticClass: "content-block" }, [
-          _c("div", { staticClass: "content-block-campaign-activity" }, [
-            _c(
-              "div",
-              { staticClass: "data-logs" },
-              [
-                _c("datepicker", [
-                  _c(
-                    "a",
-                    {
-                      attrs: {
-                        href: "javascript:void(0)",
-                        "data-toggle": "modal",
-                        "data-target": "#pick-date-modal"
-                      },
-                      on: {
-                        "~click": function($event) {
-                          return _vm.setDatePicker($event)
-                        }
-                      }
-                    },
-                    [
-                      _c("img", {
-                        attrs: {
-                          src: "/images/client/campaign_activity/pick_date.png",
-                          alt: "pick date"
-                        }
-                      })
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "lineDivide" }),
-                _vm._v(" "),
+    _c("div", { staticClass: "dashboard_content campaign_activity" }, [
+      _c("div", { staticClass: "content-block" }, [
+        _c("div", { staticClass: "content-block-campaign-activity" }, [
+          _c(
+            "div",
+            { staticClass: "data-logs" },
+            [
+              _c("datepicker", [
                 _c(
-                  "div",
+                  "a",
                   {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: !_vm.hasLogs,
-                        expression: "!hasLogs"
+                    attrs: {
+                      href: "javascript:void(0)",
+                      "data-toggle": "modal",
+                      "data-target": "#pick-date-modal"
+                    },
+                    on: {
+                      "~click": function($event) {
+                        return _vm.setDatePicker($event)
                       }
-                    ],
-                    staticClass: "member-logs-empty"
+                    }
                   },
                   [
-                    _c("div", { staticClass: "empty-state-text" }, [
-                      _vm._v(
-                        "\n              Sorry, no entries for today yet -\n              "
-                      ),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "text",
-                          attrs: { href: "javascript:void(0)" },
-                          on: {
-                            click: function($event) {
-                              _vm.hasLogs = !_vm.hasLogs
-                            }
-                          }
-                        },
-                        [_vm._v(" SHOW DEMO LOGS")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(0)
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.hasLogs,
-                        expression: "hasLogs"
+                    _c("img", {
+                      attrs: {
+                        src: "/images/client/campaign_activity/pick_date.png",
+                        alt: "pick date"
                       }
-                    ],
-                    staticClass: "member-logs"
-                  },
-                  [_vm._m(1)]
+                    })
+                  ]
                 )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _vm._m(2)
-          ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "lineDivide" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.hasLogs,
+                      expression: "!hasLogs"
+                    }
+                  ],
+                  staticClass: "member-logs-empty"
+                },
+                [
+                  _c("div", { staticClass: "empty-state-text" }, [
+                    _vm._v(
+                      "\n              Sorry, no entries for today yet -\n              "
+                    ),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "text",
+                        attrs: { href: "javascript:void(0)" },
+                        on: {
+                          click: function($event) {
+                            _vm.hasLogs = !_vm.hasLogs
+                          }
+                        }
+                      },
+                      [_vm._v(" SHOW DEMO LOGS")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.hasLogs,
+                      expression: "hasLogs"
+                    }
+                  ],
+                  staticClass: "member-logs"
+                },
+                [_vm._m(1)]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._m(2)
         ])
-      ]
-    ),
+      ])
+    ]),
     _vm._v(" "),
     _vm._m(3),
     _vm._v(" "),
@@ -77624,7 +77620,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         setActiveTab: function setActiveTab() {
-            this.activeTab = this.$route.path.replace('/', '');
+            this.activeTab = this.$route.path.split('/')[2];
         }
     },
     mounted: function mounted() {
@@ -77654,7 +77650,7 @@ var render = function() {
             "router-link",
             {
               staticClass: "campaign-info-tab firstTab",
-              class: { active: _vm.activeTab === "" },
+              class: { active: _vm.activeTab === "campaign" },
               attrs: { to: "/" },
               nativeOn: {
                 click: function($event) {
@@ -77710,7 +77706,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "nav",
-      { staticClass: "navbar navbar-light fixed-top client_navbar" },
+      { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
       [
         _c("div", { staticClass: "backBtn" }, [
           _c("a", { attrs: { href: "/client/dashboard" } }, [

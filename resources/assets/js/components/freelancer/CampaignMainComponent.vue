@@ -1,6 +1,6 @@
 <template>
     <div id="campaign_activity">
-        <nav class="navbar navbar-light fixed-top client_navbar">
+        <nav class="navbar navbar-light fixed-top dashboard_navbar">
             <div class="backBtn">
                 <a href="/client/dashboard">
                     <img src="/images/client/arrow_back.png" alt="back-icon">
@@ -9,7 +9,7 @@
             </div>
         </nav>
         <div class="campaign-info-bar">
-            <router-link  to="/" class="campaign-info-tab firstTab" :class="{active : activeTab === ''}" @click.native="activeTab = ''">
+            <router-link  to="/" class="campaign-info-tab firstTab" :class="{active : activeTab === 'campaign'}" @click.native="activeTab = ''">
                 ACTIVITY
             </router-link>
             <router-link to="/campaign-team" class="campaign-info-tab" :class="{active : activeTab === 'campaign-team'}" @click.native="activeTab = 'campaign-team'">
@@ -38,7 +38,7 @@
         },
         methods:{
             setActiveTab(){
-                this.activeTab = this.$route.path.replace('/','')
+                this.activeTab = this.$route.path.split('/')[2]
             }
         },
         mounted(){

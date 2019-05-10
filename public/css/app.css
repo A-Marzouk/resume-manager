@@ -7441,6 +7441,10 @@ body {
   position: relative;
 }
 
+.faq-question-input .faq-input input.radio-option:hover {
+  cursor: pointer;
+}
+
 .flags-dropdown {
   position: relative;
   width: 100%;

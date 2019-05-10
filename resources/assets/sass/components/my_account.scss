@@ -363,4 +363,8 @@
   height: auto;
   opacity: 0;
   position: relative;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

@@ -78564,6 +78564,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['changeStep', 'getData'],
@@ -78661,7 +78665,7 @@ var render = function() {
             "div",
             {
               staticClass: "faq-input",
-              class: { "error-input": _vm.errors.primaryJob }
+              class: { "error-input": _vm.errors.voiceRecorder }
             },
             [
               _c("div", { staticClass: "form-group" }, [
@@ -78698,7 +78702,7 @@ var render = function() {
             "div",
             {
               staticClass: "faq-input",
-              class: { "error-input": _vm.errors.primaryJob }
+              class: { "error-input": _vm.errors.voiceRecorder }
             },
             [
               _c("div", { staticClass: "form-group" }, [
@@ -78732,27 +78736,40 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "account-edit-section-edit-btn no-decoration",
-            class: { "disabled-btn": !_vm.canSubmit }
-          },
-          [
-            !_vm.isALinkRecorder
-              ? _c("div", { staticClass: "fake-file-input btn" }, [
-                  _c("input", { attrs: { type: "file", id: "voiceRecorder" } }),
-                  _vm._v("\n                  UPLOAD A FILE\n              ")
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.isALinkRecorder
-              ? _c("input", {
-                  attrs: { type: "text", placeholder: "Insert link here..." }
-                })
-              : _vm._e()
-          ]
-        )
+        !_vm.isALinkRecorder
+          ? _c(
+              "div",
+              {
+                staticClass: "account-edit-section-edit-btn no-decoration",
+                class: { "disabled-btn": !_vm.canSubmit }
+              },
+              [_vm._m(1)]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.isALinkRecorder
+          ? _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.primaryJob }
+                  },
+                  [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        placeholder: "Insert link here..."
+                      }
+                    })
+                  ]
+                )
+              ]
+            )
+          : _vm._e()
       ])
     ]),
     _vm._v(" "),
@@ -78762,7 +78779,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "account-edit-section-inputs" }, [
-        _vm._m(1),
+        _vm._m(2),
         _vm._v(" "),
         _c(
           "div",
@@ -78820,6 +78837,15 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "fake-file-input btn" }, [
+      _c("input", { attrs: { type: "file", id: "voiceRecorder" } }),
+      _vm._v("\n                  UPLOAD A FILE\n              ")
+    ])
   },
   function() {
     var _vm = this

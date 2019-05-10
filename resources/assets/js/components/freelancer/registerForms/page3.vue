@@ -18,7 +18,7 @@
                 <label class="faq-input-description">
                     Please upload a short audio recording describing your previous experience in Customer service and Sales (ideal recording length is from 1 to 2 minutes). File must be in .mp3 format and no more than 45 MB.
                 </label>
-                <div class="faq-input" :class="{ 'error-input' : errors.primaryJob}">
+                <div class="faq-input" :class="{ 'error-input' : errors.voiceRecorder}">
                     <div class="form-group">
                         <div class="fake-radio-option" :class="{ checked: !isALinkRecorder }">
                             <div class="inner-circle"></div>
@@ -27,7 +27,7 @@
                         <label for="">Upload a file</label>
                     </div>
                 </div>
-                <div class="faq-input" :class="{ 'error-input' : errors.primaryJob}">
+                <div class="faq-input" :class="{ 'error-input' : errors.voiceRecorder}">
                     <div class="form-group">
                         <div class="fake-radio-option" :class="{ checked: isALinkRecorder }">
                             <div class="inner-circle"></div>
@@ -37,12 +37,16 @@
                     </div>
                 </div>
             </div>
-            <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
-                <div class="fake-file-input btn" v-if="!isALinkRecorder">
+            <div v-if="!isALinkRecorder" class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
+                <div class="fake-file-input btn" >
                     <input type="file" id="voiceRecorder" />
                     UPLOAD A FILE
                 </div>
-                <input type="text" v-if="isALinkRecorder" placeholder="Insert link here..." />
+            </div>
+            <div v-if="isALinkRecorder" class="faq-question-input account-edit-input">
+                <div  class="faq-input" :class="{ 'error-input' : errors.primaryJob}">
+                    <input type="text" placeholder="Insert link here..." />
+                </div>
             </div>
         </div>
     </div>

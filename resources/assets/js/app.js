@@ -206,16 +206,44 @@ if ($("#account_info_edit").length !== 0){
 import FreelancerCampaignActivity from './components/freelancer/campaignComponents/CampaignActivity.vue';
 import FreelancerCampaignManager from './components/freelancer/dashboardComponents/CampaignManager.vue';
 import FreelancerMyAccount from './components/freelancer/dashboardComponents/MyAccount.vue';
+import FreelancerRegisterPage1 from './components/freelancer/registerForms/page1.vue'
+import FreelancerRegisterPage2 from './components/freelancer/registerForms/page2.vue'
+import FreelancerRegisterPage3 from './components/freelancer/registerForms/page3.vue'
+import FreelancerRegisterPage4 from './components/freelancer/registerForms/page4.vue'
+import FreelancerRegisterPage5 from './components/freelancer/registerForms/page5.vue'
 
 Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'))
+Vue.component('freelancer-register', require('./components/freelancer/FreelancerRegister.vue'))
 Vue.component('freelancer-campaign-archives', require('./components/freelancer/CampaignArchives.vue'))
 Vue.component('freelancer-campaign-main', require('./components/freelancer/CampaignMainComponent.vue'))
 Vue.component('freelancer-account-info-edit', require('./components/freelancer/dashboardComponents/my_account/MyAccountEdit.vue'));
 Vue.component('freelancer-professional-info-edit', require('./components/freelancer/dashboardComponents/my_account/ProfessionalInfoEdit.vue'));
 
+if ($('#freelancerRegisterComponent').length !== 0){
+
+    const routes = [
+        { path: '/freelancer/register', component: FreelancerRegisterPage1 },
+        { path: '/freelancer/register/page2', component: FreelancerRegisterPage2 },
+        { path: '/freelancer/register/page3', component: FreelancerRegisterPage3 },
+        { path: '/freelancer/register/page4', component: FreelancerRegisterPage4 },
+        { path: '/freelancer/register/page5', component: FreelancerRegisterPage5 }
+    ];
+
+    const router = new VueRouter({
+        mode: 'history',
+        routes,
+    });
+
+
+    let freelancerRegisterComponent = new Vue({
+        router,
+        el:'#freelancerRegisterComponent'
+    });
+}
+
 if ($('#freelancerDashboardComponent').length !== 0) {
   const routes = [
-    { path: '/freelancer/:my-account', component: FreelancerMyAccount },
+    { path: '/freelancer/my-account', component: FreelancerMyAccount },
     { path: '/freelancer', component: FreelancerCampaignManager }
   ]
 

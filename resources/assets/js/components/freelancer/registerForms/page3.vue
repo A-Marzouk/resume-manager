@@ -19,21 +19,30 @@
                     Please upload a short audio recording describing your previous experience in Customer service and Sales (ideal recording length is from 1 to 2 minutes). File must be in .mp3 format and no more than 45 MB.
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.primaryJob}">
-                    <input type="text" name="primaryJob" placeholder="e.g. Frontend Developer" v-model="formData.primaryJob">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
-                          alt="delete icon"
-                          v-show="formData.primaryJob.length > 0"
-                          @click="clearInput('primaryJob')"
-                    >
+                    <div class="form-group">
+                        <div class="fake-radio-option" :class="{ checked: !isALinkRecorder }">
+                            <div class="inner-circle"></div>
+                        </div>
+                        <input class="radio-option" type="radio" name="voiceRecorder" id="voiceRecorder" :checked="!isALinkRecorder" v-on:click="isALinkRecorder = false">
+                        <label for="">Upload a file</label>
+                    </div>
                 </div>
-                <div class="error" v-if="errors.primaryJob">
-                    {{errors.primaryJob[0]}}
+                <div class="faq-input" :class="{ 'error-input' : errors.primaryJob}">
+                    <div class="form-group">
+                        <div class="fake-radio-option" :class="{ checked: isALinkRecorder }">
+                            <div class="inner-circle"></div>
+                        </div>
+                        <input class="radio-option" type="radio" name="voiceRecorder" id="voiceRecorder" :checked="isALinkRecorder" v-on:click="isALinkRecorder = true">
+                        <label for="">Share a link</label>
+                    </div>
                 </div>
             </div>
             <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
-                <a href="javascript:;">
+                <div class="fake-file-input btn" v-if="!isALinkRecorder">
+                    <input type="file" id="voiceRecorder" />
                     UPLOAD A FILE
-                </a>
+                </div>
+                <input type="text" v-if="isALinkRecorder" placeholder="Insert link here..." />
             </div>
         </div>
     </div>
@@ -63,12 +72,14 @@
 </template>
 <script>
 export default {
+    props: ['changeStep', 'getData'],
   data () {
     return{
         resumeData:{
             voiceRecorder: '',
             resumeFile: ''
         },
+        isALinkRecorder: false,
         canSubmit: false,
         errors:[]
     }
@@ -78,15 +89,12 @@ export default {
         e.preventDefault()
         if (this.canSubmit) {
             this.getData({ resumeData: { ...this.resumeData }})
-            this.changeStep(2)
-            this.$router.push('/freelancer/register/page2')
+            this.changeStep(4)
+            this.$router.push('/freelancer/register/page4')
         } else {
             // Send errors
         }
 
-      },
-      updateData () {
-          this.getData ({ resumeData: data })
       }
   },
   watch: {
@@ -96,7 +104,7 @@ export default {
                 let values = Object.values(this.resumeData);
                 let isAll_filled = true;
                 for (const value of values) {
-                    if (value.trim().length < 1) {
+                    if (value.trim() !== '') {
                         isAll_filled = false;
                         break
                     }

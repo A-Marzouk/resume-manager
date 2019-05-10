@@ -133,17 +133,15 @@ export default {
   methods: {
       nextStep (e) {
         e.preventDefault()
+        this.canSubmit = true
         if (this.canSubmit) {
             this.getData({ professionalData: { ...this.professionalData }})
-            this.changeStep(2)
-            this.$router.push('/freelancer/register/page2')
+            this.changeStep(3)
+            this.$router.push('/freelancer/register/page3')
         } else {
             // Send errors
         }
 
-      },
-      updateData () {
-          this.getData ({ professionalData: data })
       }
   },
   watch: {

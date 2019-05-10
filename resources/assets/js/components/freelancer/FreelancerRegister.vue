@@ -61,11 +61,14 @@
                     // check if all formData values are filled
                     let values = Object.values(this.formData);
                     let isAll_filled = true;
-                    for (const value of values) {
-                        if (value.trim().length < 1) {
-                            isAll_filled = false;
-                            break
+                    for (const section of values) {
+                        for (let value in section) {
+                            if (value.trim() !== '') {
+                                isAll_filled = false;
+                                break
+                            }
                         }
+                        if (!isAll_filled) break
                     }
                     this.canSubmit = isAll_filled;
                 },

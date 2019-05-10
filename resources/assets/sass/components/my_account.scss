@@ -284,3 +284,83 @@
     }
   }
 }
+
+.fake-file-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #218dce;
+  color: white;
+  // padding: 10px;
+  text-align: center;
+  width: 150px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  & > * {
+    position: absolute;
+  }
+
+  input {
+    opacity: 0;
+    z-index: 2;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  input {
+    margin-right: 10px;
+  }
+
+  .fake-radio-option {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    background: white;
+    position: absolute;
+    left: 0;
+    top: 4px;
+    border: 1.5px solid #FF9B68;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .inner-circle {
+      background: #FF9B68;
+      opacity: 0;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;     
+    }
+  }
+
+  .fake-radio-option.checked {
+    .inner-circle {
+      opacity: 1;
+    }
+  }
+}
+
+
+.faq-question-input .faq-input input.radio-option {
+  width: 15px;
+  height: auto;
+  opacity: 0;
+  position: relative;
+}

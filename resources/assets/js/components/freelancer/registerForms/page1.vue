@@ -48,8 +48,8 @@
                 </label>
                 <div class="img-container">
                     <div class="faq-input" :class="{ 'error-input' : errors.gender}">    
-                        <img src="/images/client/add_agent/gender/male_icon.png">
-                        <img src="/images/client/add_agent/gender/female_icon.png">
+                        <img v-on:click="gender = 'male'" src="/images/client/add_agent/gender/male_icon.png">
+                        <img v-on:click="gender = 'female'" src="/images/client/add_agent/gender/female_icon.png">
                     </div>
                 </div>
                 <div class="error" v-if="errors.gender">
@@ -209,6 +209,7 @@ export default {
   methods: {
       nextStep (e) {
 				e.preventDefault()
+                this.canSubmit = true
 				if (this.canSubmit) {
 					this.getData({ personalData: { ...this.personalData }})
 					this.changeStep(2)
@@ -217,9 +218,6 @@ export default {
 					// Send errors
 				}
 
-      },
-      updateData () {
-          this.getData ({ personalData: data })
       }
   },
   watch: {

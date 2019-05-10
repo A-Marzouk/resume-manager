@@ -3842,6 +3842,7 @@ body {
 }
 
 .dashboard .dashboard_navbar .name {
+  opacity: 1;
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
@@ -4961,6 +4962,7 @@ body {
   line-height: 20px;
   letter-spacing: 0.2px;
   color: #4A5464;
+  opacity: 1;
 }
 
 .side-nav .info-bar .avatar {

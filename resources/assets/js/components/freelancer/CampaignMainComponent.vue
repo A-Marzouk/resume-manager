@@ -2,7 +2,7 @@
     <div id="campaign_activity">
         <nav class="navbar navbar-light fixed-top dashboard_navbar">
             <div class="backBtn">
-                <a href="/client/dashboard">
+                <a href="/freelancer">
                     <img src="/images/client/arrow_back.png" alt="back-icon">
                 </a>
                 NAME OF THE CAMPAIGN

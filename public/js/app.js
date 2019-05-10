@@ -61420,7 +61420,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "account-info-edit-wrapper" }, [
         _c(
           "nav",
-          { staticClass: "navbar navbar-light fixed-top client_navbar" },
+          { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
           [
             _c("div", { staticClass: "backBtn" }, [
               _c("a", { attrs: { href: "/client/dashboard/my-account" } }, [
@@ -61985,7 +61985,7 @@ var staticRenderFns = [
     return _c("div", [
       _c(
         "nav",
-        { staticClass: "navbar navbar-light fixed-top client_navbar" },
+        { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
         [
           _c("div", { staticClass: "backBtn" }, [
             _c("a", { attrs: { href: "/client/dashboard" } }, [
@@ -63498,7 +63498,7 @@ var staticRenderFns = [
     return _c("div", [
       _c(
         "nav",
-        { staticClass: "navbar navbar-light fixed-top client_navbar" },
+        { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
         [
           _c("div", { staticClass: "backBtn" }, [
             _c("a", { attrs: { href: "/client/dashboard" } }, [
@@ -81412,7 +81412,7 @@ var staticRenderFns = [
       { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
       [
         _c("div", { staticClass: "backBtn" }, [
-          _c("a", { attrs: { href: "/client/dashboard" } }, [
+          _c("a", { attrs: { href: "/freelancer" } }, [
             _c("img", {
               attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
             })

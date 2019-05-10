@@ -9,13 +9,13 @@
             </div>
         </nav>
         <div class="campaign-info-bar">
-            <router-link  to="/" class="campaign-info-tab firstTab" :class="{active : activeTab === 'campaign'}" @click.native="activeTab = ''">
+            <router-link  to="/freelancer/campaign" class="campaign-info-tab firstTab" :class="{active : activeTab === 'campaign'}" @click.native="activeTab = ''">
                 ACTIVITY
             </router-link>
-            <router-link to="/campaign-team" class="campaign-info-tab" :class="{active : activeTab === 'campaign-team'}" @click.native="activeTab = 'campaign-team'">
+            <router-link to="/freelancer/campaign-team" class="campaign-info-tab" :class="{active : activeTab === 'campaign-team'}" @click.native="activeTab = 'campaign-team'">
                 CAMPAIGN TEAM
             </router-link>
-            <router-link to="/campaign-brief" class="campaign-info-tab" :class="{active : activeTab === 'campaign-brief'}" @click.native="activeTab = 'campaign-brief'">
+            <router-link to="/freelancer/campaign-brief" class="campaign-info-tab" :class="{active : activeTab === 'campaign-brief'}" @click.native="activeTab = 'campaign-brief'">
                 CAMPAIGN BRIEF
             </router-link>
         </div>

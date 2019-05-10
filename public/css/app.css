@@ -5060,7 +5060,7 @@ body {
   opacity: 1;
 }
 
-#campaign_activity .dashboard_navbar {
+#campaign_activity .freelancer_navbar {
   height: 56px !important;
 }
 
@@ -5159,6 +5159,10 @@ body {
   }
 }
 
+.dashboard_content.campaign_activity {
+  width: 100%;
+}
+
 @media (max-width: 1240px) {
   .dashboard_content.campaign_activity {
     width: 100%;
@@ -5168,7 +5172,7 @@ body {
 .dashboard_content.campaign_activity .dashboard-side-menu {
   background: white;
   width: 339px;
-  height: 506px;
+  height: 600px;
   -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
           box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
   border-radius: 4px;
@@ -5234,7 +5238,7 @@ body {
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity {
   margin-bottom: 0;
-  width: 791px;
+  width: 1200px;
 }
 
 @media (max-width: 1240px) {
@@ -5253,13 +5257,13 @@ body {
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar {
   height: 78px;
+  padding: 0 20px;
   background: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -5267,6 +5271,50 @@ body {
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar img {
   margin-right: 18px;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container {
+  width: 75%;
+  height: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .date-item {
+  padding: 15px 10px;
+  text-align: center;
+  width: 50px;
+  height: 100%;
+  color: #4A5464;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .date-item:hover {
+  text-decoration: none;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week.active {
+  border-bottom: 1.5px solid #218dce;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-number,
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-number.active,
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week.active {
+  color: #218dce;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .date-control-right,
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .date-control-left {
+  font-size: 2rem;
 }
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .member-logs-empty .empty-state-text {
@@ -5294,6 +5342,47 @@ body {
   .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .member-logs-empty .empty-state-image img {
     width: 100%;
   }
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar {
+  height: 76px;
+  margin-top: 16px;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar img {
+  margin-left: 24px;
+  margin-right: 5px;
+  margin-bottom: 4px;
+  height: 24px;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar .document-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #4A5464;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar .document-text span {
+  font-weight: normal;
+  margin-left: 5px;
+  color: #7A828D;
 }
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .team-bar-tablet {
@@ -5371,53 +5460,6 @@ body {
   .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .team-bar-tablet {
     display: none;
   }
-}
-
-@media (min-width: 1240px) {
-  .showOnlyOnTablet {
-    display: none;
-  }
-}
-
-.documents-bar {
-  height: 76px;
-  margin-top: 16px;
-  background: #FFFFFF;
-  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
-          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
-  border-radius: 4px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.documents-bar img {
-  margin-left: 24px;
-  margin-right: 5px;
-  margin-bottom: 4px;
-  height: 24px;
-}
-
-.documents-bar .document-text {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: -0.1px;
-  color: #4A5464;
-}
-
-.documents-bar .document-text span {
-  font-weight: normal;
-  margin-left: 5px;
-  color: #7A828D;
 }
 
 #select-agent-modal .select-agent-modal-header {
@@ -5571,12 +5613,12 @@ body {
 
 .agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-next span {
   background-position: 0px -3px !important;
-  background-image: url(http://local.123workforce.me/resumeApp/public/images/client/campaign_activity/right.png);
+  background-image: url(http://local.123workforce.me/images/freelancer/campaign_activity/right.png);
 }
 
 .agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-prev span {
   background-position: 0px -3px !important;
-  background-image: url(http://local.123workforce.me/resumeApp/public/images/client/campaign_activity/left.png);
+  background-image: url(http://local.123workforce.me/images/freelancer/campaign_activity/left.png);
 }
 
 .agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-next,

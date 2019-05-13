@@ -2,7 +2,7 @@
   <div class="account-info-edit dashboard-box">
     <div class="account-info-edit-heading dashboard-box-heading">
         <div class="left">
-            <img src="/resumeApp/public/images/client/my_account/info_40px.png" alt="info icon">
+            <img src="/images/client/my_account/info_40px.png" alt="info icon">
             <span>
             FILL IN THE INFORMATION TO BECOME AN AGENT
         </span>

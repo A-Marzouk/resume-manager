@@ -4,7 +4,7 @@
             <nav class="navbar navbar-light fixed-top dashboard_navbar">
                 <div class="backBtn">
                     <a href="/freelancer">
-                        <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
+                        <img src="/images/client/arrow_back.png" alt="back-icon">
                     </a>
                     BECOME AN AGENT
                 </div>

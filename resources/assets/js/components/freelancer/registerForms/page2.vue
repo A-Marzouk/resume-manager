@@ -2,7 +2,7 @@
   <div class="account-info-edit dashboard-box">
     <div class="account-info-edit-heading dashboard-box-heading">
         <div class="left">
-            <img src="/resumeApp/public/images/client/my_account/info_40px.png" alt="info icon">
+            <img src="/images/client/my_account/info_40px.png" alt="info icon">
             <span>
             FILL IN THE INFORMATION TO BECOME AN AGENT
         </span>
@@ -20,7 +20,7 @@
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.primaryJob}">
                     <input type="text" name="primaryJob" placeholder="e.g. Frontend Developer" v-model="professionalData.primaryJob">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+                    <img src="/images/client/campaign_activity/close_black.png"
                           alt="delete icon"
                           v-show="professionalData.primaryJob.length > 0"
                           @click="clearInput('primaryJob')"
@@ -36,7 +36,7 @@
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.sector}">
                     <input type="text" name="sector" placeholder="e.g. React.js" v-model="professionalData.sector">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+                    <img src="/images/client/campaign_activity/close_black.png"
                           alt="delete icon"
                           v-show="professionalData.sector.length > 0"
                           @click="clearInput('sector')"
@@ -66,7 +66,7 @@
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.hoursPerWeek}">
                     <input type="text" name="hoursPerWeek" placeholder="25" v-model="professionalData.hoursPerWeek">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('hoursPerWeek')" alt="delete icon" v-show="professionalData.hoursPerWeek.length > 0">
+                    <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('hoursPerWeek')" alt="delete icon" v-show="professionalData.hoursPerWeek.length > 0">
                 </div>
                 <div class="error" v-if="errors.hoursPerWeek">
                     {{errors.hoursPerWeek[0]}}
@@ -78,7 +78,7 @@
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.techs}">
                     <input type="text" name="techs" placeholder="You can enter several items using comas" v-model="professionalData.techs">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('techs')" alt="delete icon" v-show="professionalData.techs.length > 0">
+                    <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('techs')" alt="delete icon" v-show="professionalData.techs.length > 0">
                 </div>
                 <div class="error" v-if="errors.techs">
                     {{errors.techs[0]}}

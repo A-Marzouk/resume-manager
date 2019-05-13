@@ -66859,8 +66859,7 @@ var render = function() {
                         }
                       ],
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       },
                       on: {
@@ -66940,8 +66939,7 @@ var render = function() {
                         }
                       ],
                       attrs: {
-                        src:
-                          "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                        src: "/images/client/campaign_activity/close_black.png",
                         alt: "delete icon"
                       },
                       on: {
@@ -67067,7 +67065,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "left" }, [
           _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/my_account/info_40px.png",
+              src: "/images/client/my_account/info_40px.png",
               alt: "info icon"
             }
           }),
@@ -76746,8 +76744,7 @@ var render = function() {
                   }
                 ],
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  src: "/images/client/campaign_activity/close_black.png",
                   alt: "delete icon"
                 },
                 on: {
@@ -76817,8 +76814,7 @@ var render = function() {
                   }
                 ],
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  src: "/images/client/campaign_activity/close_black.png",
                   alt: "delete icon"
                 },
                 on: {
@@ -76940,8 +76936,7 @@ var render = function() {
                     }
                   ],
                   attrs: {
-                    src:
-                      "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                    src: "/images/client/campaign_activity/close_black.png",
                     alt: "delete icon"
                   },
                   on: {
@@ -77013,8 +77008,7 @@ var render = function() {
                   }
                 ],
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  src: "/images/client/campaign_activity/close_black.png",
                   alt: "delete icon"
                 },
                 on: {
@@ -77553,8 +77547,7 @@ var render = function() {
                   }
                 ],
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  src: "/images/client/campaign_activity/close_black.png",
                   alt: "delete icon"
                 },
                 on: {
@@ -77626,8 +77619,7 @@ var render = function() {
                   }
                 ],
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  src: "/images/client/campaign_activity/close_black.png",
                   alt: "delete icon"
                 },
                 on: {
@@ -78015,8 +78007,7 @@ var render = function() {
                   }
                 ],
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  src: "/images/client/campaign_activity/close_black.png",
                   alt: "delete icon"
                 },
                 on: {
@@ -78092,8 +78083,7 @@ var render = function() {
                   }
                 ],
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  src: "/images/client/campaign_activity/close_black.png",
                   alt: "delete icon"
                 },
                 on: {
@@ -78241,8 +78231,7 @@ var render = function() {
                   }
                 ],
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  src: "/images/client/campaign_activity/close_black.png",
                   alt: "delete icon"
                 },
                 on: {
@@ -78314,8 +78303,7 @@ var render = function() {
                   }
                 ],
                 attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
+                  src: "/images/client/campaign_activity/close_black.png",
                   alt: "delete icon"
                 },
                 on: {
@@ -78398,7 +78386,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "left" }, [
           _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/my_account/info_40px.png",
+              src: "/images/client/my_account/info_40px.png",
               alt: "info icon"
             }
           }),
@@ -78831,7 +78819,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "left" }, [
           _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/my_account/info_40px.png",
+              src: "/images/client/my_account/info_40px.png",
               alt: "info icon"
             }
           }),
@@ -79274,7 +79262,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "left" }, [
           _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/my_account/info_40px.png",
+              src: "/images/client/my_account/info_40px.png",
               alt: "info icon"
             }
           }),
@@ -79717,7 +79705,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "left" }, [
           _c("img", {
             attrs: {
-              src: "/resumeApp/public/images/client/my_account/info_40px.png",
+              src: "/images/client/my_account/info_40px.png",
               alt: "info icon"
             }
           }),
@@ -80950,10 +80938,7 @@ var staticRenderFns = [
         _c("div", { staticClass: "backBtn" }, [
           _c("a", { attrs: { href: "/freelancer" } }, [
             _c("img", {
-              attrs: {
-                src: "/resumeApp/public/images/client/arrow_back.png",
-                alt: "back-icon"
-              }
+              attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
             })
           ]),
           _vm._v("\n                BECOME AN AGENT\n            ")

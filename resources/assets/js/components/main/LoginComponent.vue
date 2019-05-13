@@ -3,7 +3,7 @@
     <div class="account-info-edit">
       <div class="account-info-edit-heading dashboard-box-heading">
         <div class="left">
-          <img src="/resumeApp/public/images/client/my_account/info_40px.png" alt="info icon">
+          <img src="/images/client/my_account/info_40px.png" alt="info icon">
           <span>
                         LOG IN
                     </span>
@@ -18,7 +18,7 @@
             </label>
             <div class="faq-input"  :class="{ 'error-input' : errors.email}">
               <input type="text" name="email" placeholder="Enter your email" v-model="formData.email">
-              <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('email')" alt="delete icon" v-show="formData.email.length > 0">
+              <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('email')" alt="delete icon" v-show="formData.email.length > 0">
             </div>
             <div class="error" v-if="errors.email">
               {{errors.email[0]}}
@@ -33,7 +33,7 @@
             </label>
             <div class="faq-input"  :class="{ 'error-input' : errors.password}">
               <input type="password" name="password" placeholder="Enter your password" v-model="formData.password">
-              <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+              <img src="/images/client/campaign_activity/close_black.png"
                    alt="delete icon"
                    v-show="formData.password.length > 0"
                    @click="clearInput('password')">

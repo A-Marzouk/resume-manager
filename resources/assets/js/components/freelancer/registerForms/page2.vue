@@ -76,8 +76,17 @@
                 <label class="faq-input-label">
                     Enter technologies/frameworks/software
                 </label>
-                <div class="faq-input" :class="{ 'error-input' : errors.techs}">
-                    <input type="text" name="techs" placeholder="You can enter several items using comas" v-model="professionalData.techs">
+                <div class="faq-input multi-items" :class="{ 'error-input' : errors.techs}">
+                    <input type="text" class="fake-input">
+                    <div class="tech-item" v-for="(item, index) in professionalData.techs" :key="item + index">
+                        <span>
+                            {{ item }}
+                        </span>
+                        <img class="delete-multi-item" src="/images/client/campaign_activity/close_black.png" @click="deleteItem(index)" alt="delete icon">
+                    </div>
+                    <input class="multi-input" type="text" name="techs" placeholder="You can enter several items using comas" v-model="inputTechs"
+                        @keydown="addToTechs"
+                    >
                     <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('techs')" alt="delete icon" v-show="professionalData.techs.length > 0">
                 </div>
                 <div class="error" v-if="errors.techs">
@@ -123,9 +132,10 @@ export default {
             sector:'',
             voice:'',
             hoursPerWeek:'',
-            techs:'',
+            techs: [],
             lang:'',
         },
+        inputTechs: '',
         canSubmit: false,
         errors:[]
     }
@@ -142,6 +152,16 @@ export default {
             // Send errors
         }
 
+      },
+      addToTechs (e) {
+          if (e.key == ',') {
+            e.preventDefault()
+            this.professionalData.techs.push(this.inputTechs)
+            this.inputTechs = ''
+          }
+      },
+      deleteItem (index) {
+          this.professionalData.techs.splice(index, 1)
       }
   },
   watch: {

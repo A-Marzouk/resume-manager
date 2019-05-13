@@ -77863,6 +77863,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['changeStep', 'getData'],
@@ -77873,9 +77882,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 sector: '',
                 voice: '',
                 hoursPerWeek: '',
-                techs: '',
+                techs: [],
                 lang: ''
             },
+            inputTechs: '',
             canSubmit: false,
             errors: []
         };
@@ -77892,6 +77902,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             } else {
                 // Send errors
             }
+        },
+        addToTechs: function addToTechs(e) {
+            if (e.key == ',') {
+                e.preventDefault();
+                this.professionalData.techs.push(this.inputTechs);
+                this.inputTechs = '';
+            }
+        },
+        deleteItem: function deleteItem(index) {
+            this.professionalData.techs.splice(index, 1);
         }
     },
     watch: {
@@ -78266,31 +78286,67 @@ var render = function() {
           _c(
             "div",
             {
-              staticClass: "faq-input",
+              staticClass: "faq-input multi-items",
               class: { "error-input": _vm.errors.techs }
             },
             [
+              _c("input", {
+                staticClass: "fake-input",
+                attrs: { type: "text" }
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.professionalData.techs, function(item, index) {
+                return _c(
+                  "div",
+                  { key: item + index, staticClass: "tech-item" },
+                  [
+                    _c("span", [
+                      _vm._v(
+                        "\n                          " +
+                          _vm._s(item) +
+                          "\n                      "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("img", {
+                      staticClass: "delete-multi-item",
+                      attrs: {
+                        src: "/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.deleteItem(index)
+                        }
+                      }
+                    })
+                  ]
+                )
+              }),
+              _vm._v(" "),
               _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.professionalData.techs,
-                    expression: "professionalData.techs"
+                    value: _vm.inputTechs,
+                    expression: "inputTechs"
                   }
                 ],
+                staticClass: "multi-input",
                 attrs: {
                   type: "text",
                   name: "techs",
                   placeholder: "You can enter several items using comas"
                 },
-                domProps: { value: _vm.professionalData.techs },
+                domProps: { value: _vm.inputTechs },
                 on: {
+                  keydown: _vm.addToTechs,
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.professionalData, "techs", $event.target.value)
+                    _vm.inputTechs = $event.target.value
                   }
                 }
               }),
@@ -78314,7 +78370,8 @@ var render = function() {
                   }
                 }
               })
-            ]
+            ],
+            2
           ),
           _vm._v(" "),
           _vm.errors.techs

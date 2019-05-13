@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="date-picker-bar">
-      <span class="date-control-left"><</span>
+      <span class="date-control-left"><img src="/images/icons/arrow_back.svg" alt="arrow back"></span>
       <div class="days-container">
         <a href="javascript:;"
           class="date-item"
@@ -13,7 +13,7 @@
           <div class="day-of-week" :class="{active: n === activeDay}">{{ dayOfWeek(n) }}</div>
         </a>
       </div>
-      <span class="date-control-right">></span>
+      <span class="date-control-right"><img src="/images/icons/arrow_forward.svg" alt="arrow forward"></span>
       <slot></slot>
     </div>
   </div>

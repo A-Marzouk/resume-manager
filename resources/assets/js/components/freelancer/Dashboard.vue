@@ -45,7 +45,7 @@
                 </div>
                 <div class="dashboard_content">
                     <div class="dashboard-side-menu">
-                        <router-link :to="rootURL" class="menu-block row" :class="{'active' : activeTab === 'campaign-manager'}" @click.native="selectTab('campaign-manager')">
+                        <router-link :to="'/' + rootURL" class="menu-block row" :class="{'active' : activeTab === 'campaign-manager'}" @click.native="selectTab('campaign-manager')">
                             <div class="imageContainer">
                                 <img  :src="getMenuBlockIcon('campaign-manager')" alt="icon">
                             </div>
@@ -98,7 +98,7 @@
 
         <div class="dashboard_content">
             <div class="dashboard-side-menu hideOnTablet">
-                <router-link :to="rootURL" class="menu-block row" :class="{'active' : activeTab === 'campaign-manager'}" @click.native="selectTab('campaign-manager')">
+                <router-link :to="'/' + rootURL" class="menu-block row" :class="{'active' : activeTab === 'campaign-manager'}" @click.native="selectTab('campaign-manager')">
                     <div class="imageContainer">
                         <img  :src="getMenuBlockIcon('campaign-manager')" alt="icon">
                     </div>
@@ -226,7 +226,7 @@
     export default {
         data(){
             return{
-                activeTab: 'campaign_manager',
+                activeTab: 'campaign-manager',
                 rootURL: this.$route.path.split('/')[1]
             }
         },
@@ -241,13 +241,13 @@
                 return '/images/client/menu_icons/inactive/'+ tabName + '.png';
             },
             setActiveTab(){
-                this.activeTab = this.$route.path.replace('/','')
-                if(this.activeTab === ''){
-                    this.activeTab = 'campaign_manager';
+                this.activeTab = this.$route.path.replace(/\//g,'')
+                if (this.activeTab === 'freelancer'){
+                    console.log('Active tab: ' + this.activeTab)
+                    this.activeTab = 'campaign-manager';
                 }
             },
             rootLinkTo (link) {
-                console.log(this.rootURL)
                 return '/' + this.rootURL + '/' + link
             }
         },

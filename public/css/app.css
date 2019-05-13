@@ -3826,6 +3826,12 @@ body {
   padding-bottom: 9px;
 }
 
+@media (max-width: 1240px) {
+  .dashboard .hideOnTablet {
+    display: none;
+  }
+}
+
 .dashboard .dashboard_navbar {
   background: white;
   height: 56px !important;
@@ -3842,6 +3848,7 @@ body {
 }
 
 .dashboard .dashboard_navbar .name {
+  opacity: 1;
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
@@ -3952,12 +3959,6 @@ body {
   background: white;
 }
 
-@media (max-width: 1240px) {
-  .dashboard_content .hideOnTablet {
-    display: none;
-  }
-}
-
 .dashboard_content .content-block {
   margin-left: 50px;
   display: -webkit-box;
@@ -3969,6 +3970,15 @@ body {
           flex-direction: column;
   z-index: 1;
   width: 938px;
+}
+
+.dashboard_content .content-block.freelancer {
+  width: 90%;
+  margin-left: 0;
+}
+
+.dashboard_content .content-block.client {
+  width: 65%;
 }
 
 @media (max-width: 1240px) {
@@ -4961,6 +4971,7 @@ body {
   line-height: 20px;
   letter-spacing: 0.2px;
   color: #4A5464;
+  opacity: 1;
 }
 
 .side-nav .info-bar .avatar {
@@ -5060,7 +5071,11 @@ body {
   opacity: 1;
 }
 
-#campaign_activity .client_navbar {
+#campaign_activity {
+  width: 100vw;
+}
+
+#campaign_activity .dashboard_navbar {
   height: 56px !important;
 }
 
@@ -5159,16 +5174,21 @@ body {
   }
 }
 
+.dashboard_content.campaign_activity {
+  width: 100%;
+}
+
 @media (max-width: 1240px) {
   .dashboard_content.campaign_activity {
     width: 100%;
+    padding: 0 20px;
   }
 }
 
 .dashboard_content.campaign_activity .dashboard-side-menu {
   background: white;
   width: 339px;
-  height: 506px;
+  height: 600px;
   -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
           box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
   border-radius: 4px;
@@ -5217,7 +5237,6 @@ body {
       -ms-flex-direction: row;
           flex-direction: row;
   background: none;
-  width: auto;
 }
 
 @media (max-width: 1240px) {
@@ -5234,7 +5253,8 @@ body {
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity {
   margin-bottom: 0;
-  width: 791px;
+  max-width: 1200px;
+  width: 100%;
 }
 
 @media (max-width: 1240px) {
@@ -5253,13 +5273,13 @@ body {
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar {
   height: 78px;
+  padding: 0 20px;
   background: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -5267,6 +5287,50 @@ body {
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar img {
   margin-right: 18px;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container {
+  width: 75%;
+  height: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .date-item {
+  padding: 15px 10px;
+  text-align: center;
+  width: 50px;
+  height: 100%;
+  color: #4A5464;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .date-item:hover {
+  text-decoration: none;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week.active {
+  border-bottom: 1.5px solid #218dce;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-number,
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-number.active,
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week.active {
+  color: #218dce;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .date-control-right,
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .date-control-left {
+  font-size: 2rem;
 }
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .member-logs-empty .empty-state-text {
@@ -5294,6 +5358,47 @@ body {
   .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .member-logs-empty .empty-state-image img {
     width: 100%;
   }
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar {
+  height: 76px;
+  margin-top: 16px;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar img {
+  margin-left: 24px;
+  margin-right: 5px;
+  margin-bottom: 4px;
+  height: 24px;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar .document-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #4A5464;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar .document-text span {
+  font-weight: normal;
+  margin-left: 5px;
+  color: #7A828D;
 }
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .team-bar-tablet {
@@ -5371,53 +5476,6 @@ body {
   .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .team-bar-tablet {
     display: none;
   }
-}
-
-@media (min-width: 1240px) {
-  .showOnlyOnTablet {
-    display: none;
-  }
-}
-
-.documents-bar {
-  height: 76px;
-  margin-top: 16px;
-  background: #FFFFFF;
-  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
-          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
-  border-radius: 4px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.documents-bar img {
-  margin-left: 24px;
-  margin-right: 5px;
-  margin-bottom: 4px;
-  height: 24px;
-}
-
-.documents-bar .document-text {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: -0.1px;
-  color: #4A5464;
-}
-
-.documents-bar .document-text span {
-  font-weight: normal;
-  margin-left: 5px;
-  color: #7A828D;
 }
 
 #select-agent-modal .select-agent-modal-header {
@@ -5571,12 +5629,12 @@ body {
 
 .agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-next span {
   background-position: 0px -3px !important;
-  background-image: url(http://local.123workforce.me/resumeApp/public/images/client/campaign_activity/right.png);
+  background-image: url(http://local.123workforce.me/images/freelancer/campaign_activity/right.png);
 }
 
 .agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-prev span {
   background-position: 0px -3px !important;
-  background-image: url(http://local.123workforce.me/resumeApp/public/images/client/campaign_activity/left.png);
+  background-image: url(http://local.123workforce.me/images/freelancer/campaign_activity/left.png);
 }
 
 .agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-next,
@@ -6589,6 +6647,66 @@ body {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  position: relative;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.faq-question-input .faq-input input.fake-input,
+.faq-answer-input .faq-input input.fake-input {
+  position: absolute;
+}
+
+.faq-question-input .faq-input.multi-items,
+.faq-answer-input .faq-input.multi-items {
+  overflow-x: auto;
+}
+
+.faq-question-input .faq-input input.multi-input,
+.faq-answer-input .faq-input input.multi-input {
+  min-width: 200px;
+  z-index: 1;
+}
+
+.faq-question-input .faq-input input.multi-input:focus,
+.faq-answer-input .faq-input input.multi-input:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 0;
+  outline: none;
+  background: transparent;
+}
+
+.faq-question-input .faq-input input.multi-input:focus ~ .fake-input,
+.faq-answer-input .faq-input input.multi-input:focus ~ .fake-input {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 1px solid #05A4F4;
+  outline: none;
+}
+
+.faq-question-input .faq-input .tech-item,
+.faq-answer-input .faq-input .tech-item {
+  padding: 5px;
+  border: 1px solid #05A4F4;
+  z-index: 1;
+  margin: 0 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 45px;
+  word-wrap: normal;
+}
+
+.faq-question-input .faq-input .tech-item img.delete-multi-item,
+.faq-answer-input .faq-input .tech-item img.delete-multi-item {
+  margin-left: 5px;
 }
 
 .faq-question-input .faq-input input,
@@ -7361,7 +7479,13 @@ body {
   background-color: #218dce;
   color: white;
   text-align: center;
-  width: 150px;
+}
+
+.fake-file-input.btn {
+  border-radius: 2px;
+  padding: 10px 25px;
+  font-size: 0.75rem;
+  font-weight: normal;
 }
 
 .fake-file-input:hover {

@@ -1,5 +1,6 @@
 #campaign_activity{
-  .client_navbar{
+  width: 100vw;
+  .dashboard_navbar{
     height:56px !important;
   }
 
@@ -76,13 +77,15 @@
 }
 
 .dashboard_content.campaign_activity{
+  width: 100%;
   @media (max-width:1240px) {
     width: 100%;
+    padding: 0 20px;
   }
   .dashboard-side-menu{
     background: white;
     width: 339px;
-    height: 506px;
+    height:600px;
     box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
     border-radius: 4px;
 
@@ -120,11 +123,10 @@
 
   }
 
-
   .content-block{
     flex-direction: row;
     background: none;
-    width: auto;
+
     @media (max-width:1240px) {
       width: 96%;
     }
@@ -133,7 +135,8 @@
     }
     .content-block-campaign-activity{
       margin-bottom: 0;
-      width: 791px;
+      max-width: 1200px;
+      width: 100%;
       @media (max-width:1240px) {
         width: 100%;
       }
@@ -144,12 +147,53 @@
         border-radius: 4px;
         .date-picker-bar{
           height: 78px;
+          padding: 0 20px;
           background:white;
           display:flex;
-          justify-content: flex-end;
+          justify-content: space-around;
           align-items: center;
           img{
             margin-right:18px;
+          }
+
+          .days-container {
+            width: 75%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+
+            .date-item {
+              padding: 15px 10px;
+              text-align: center;
+              width: 50px;
+              height: 100%;
+              color: #4A5464;;
+
+              &:hover {
+                text-decoration: none;
+              }
+            }
+
+            .day-of-week.active {
+              border-bottom: 1.5px solid $l-blue;
+            }
+
+            .day-number,
+            .day-of-week {
+              margin: 0 auto;
+              text-align: center;
+
+              &.active {
+                color: $l-blue
+              }
+            }
+
+          }
+          .date-control-right,
+          .date-control-left {
+            // Replace this controls with images
+            font-size: 2rem;
           }
         }
         .member-logs-empty{
@@ -175,6 +219,38 @@
           }
         }
       }
+
+      .documents-bar{
+        height: 76px;
+        margin-top: 16px;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+        border-radius: 4px;
+        display:flex;
+        justify-content: flex-start;
+        align-items: center;
+        img{
+          margin-left: 24px;
+          margin-right: 5px;
+          margin-bottom: 4px;
+          height: 24px;
+        }
+        .document-text{
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: -0.1px;
+          color: #4A5464;
+          span{
+            font-weight: normal;
+            margin-left: 5px;
+            color: #7A828D;
+          }
+        }
+      }
+
       .team-bar-tablet{
         height: 130px;
         margin-bottom: 16px;
@@ -231,43 +307,6 @@
           display: none;
         }
       }
-    }
-  }
-}
-
-.showOnlyOnTablet{
-  @media (min-width:1240px) {
-    display: none;
-  }
-}
-
-.documents-bar{
-  height: 76px;
-  margin-top: 16px;
-  background: #FFFFFF;
-  box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
-  border-radius: 4px;
-  display:flex;
-  justify-content: flex-start;
-  align-items: center;
-  img{
-    margin-left: 24px;
-    margin-right: 5px;
-    margin-bottom: 4px;
-    height: 24px;
-  }
-  .document-text{
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: -0.1px;
-    color: #4A5464;
-    span{
-      font-weight: normal;
-      margin-left: 5px;
-      color: #7A828D;
     }
   }
 }
@@ -399,11 +438,11 @@
 
     .ui-datepicker .ui-datepicker-next span{
       background-position: 0px -3px !important;
-      background-image: url(http://local.123workforce.me/resumeApp/public/images/client/campaign_activity/right.png);
+      background-image: url(http://local.123workforce.me/images/freelancer/campaign_activity/right.png);
     }
     .ui-datepicker .ui-datepicker-prev span{
       background-position: 0px -3px !important;
-      background-image: url(http://local.123workforce.me/resumeApp/public/images/client/campaign_activity/left.png);
+      background-image: url(http://local.123workforce.me/images/freelancer/campaign_activity/left.png);
 
     }
     .ui-datepicker .ui-datepicker-next,.ui-datepicker .ui-datepicker-prev{

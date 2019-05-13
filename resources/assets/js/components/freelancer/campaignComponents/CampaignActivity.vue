@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-content-center">
-    <div class="freelancer_dashboard_content campaign_activity">
+    <div class="dashboard_content campaign_activity">
       <!-- <div class="dashboard-side-menu hideOnTablet">
                 <div class="team-list-header">
                     <div class="teamName">
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div> -->
-      <div class="content-block">
+      <div class="content-block freelancer">
         <div class="content-block-campaign-activity">
           <!-- <div class="team-bar-tablet">
                         <div class="team-info">

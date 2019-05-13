@@ -78588,7 +78588,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 resumeFile: ''
             },
             isALinkRecorder: false,
-            canSubmit: false,
+            canSubmit: true,
             errors: []
         };
     },
@@ -78810,11 +78810,12 @@ var render = function() {
         attrs: { id: "submitBtnWrapper" }
       },
       [
-        _c("router-link", { attrs: { to: "/freelancer/register/page4" } }, [
-          _vm._v("\n          CONTINUE\n      ")
-        ])
-      ],
-      1
+        _c(
+          "a",
+          { attrs: { href: "javascript:;" }, on: { click: _vm.nextStep } },
+          [_vm._v("\n          CONTINUE\n      ")]
+        )
+      ]
     )
   ])
 }
@@ -78941,6 +78942,22 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -79006,19 +79023,70 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['changeStep', 'getData'],
     data: function data() {
         return {
-            formData: {
-                primaryJob: '',
-                sector: '',
-                voice: '',
-                hoursPerWeek: '',
-                techs: '',
-                lang: ''
+            resumeData: {
+                voiceRecorder: '',
+                resumeFile: ''
             },
-            canSubmit: false,
+            isALinkRecorder: false,
+            canSubmit: true,
             errors: []
         };
+    },
+
+    methods: {
+        nextStep: function nextStep(e) {
+            e.preventDefault();
+            if (this.canSubmit) {
+                this.getData({ resumeData: _extends({}, this.resumeData) });
+                this.changeStep(5);
+                this.$router.push('/freelancer/register/page5');
+            } else {
+                // Send errors
+            }
+        }
+    },
+    watch: {
+        resumeData: {
+            handler: function handler() {
+                // check if all resumeData values are filled
+                var values = Object.values(this.resumeData);
+                var isAll_filled = true;
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var value = _step.value;
+
+                        if (value.trim() !== '') {
+                            isAll_filled = false;
+                            break;
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+
+                this.canSubmit = isAll_filled;
+            },
+
+            deep: true
+        }
     }
 });
 
@@ -79050,80 +79118,111 @@ var render = function() {
             "div",
             {
               staticClass: "faq-input",
-              class: { "error-input": _vm.errors.primaryJob }
+              class: { "error-input": _vm.errors.voiceRecorder }
             },
             [
-              _c("input", {
-                directives: [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "div",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formData.primaryJob,
-                    expression: "formData.primaryJob"
-                  }
-                ],
-                attrs: {
-                  type: "text",
-                  name: "primaryJob",
-                  placeholder: "e.g. Frontend Developer"
-                },
-                domProps: { value: _vm.formData.primaryJob },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                    staticClass: "fake-radio-option",
+                    class: { checked: !_vm.isALinkRecorder }
+                  },
+                  [_c("div", { staticClass: "inner-circle" })]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "radio-option",
+                  attrs: {
+                    type: "radio",
+                    name: "voiceRecorder",
+                    id: "voiceRecorder"
+                  },
+                  domProps: { checked: !_vm.isALinkRecorder },
+                  on: {
+                    click: function($event) {
+                      _vm.isALinkRecorder = false
                     }
-                    _vm.$set(_vm.formData, "primaryJob", $event.target.value)
                   }
-                }
-              }),
-              _vm._v(" "),
-              _c("img", {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.formData.primaryJob.length > 0,
-                    expression: "formData.primaryJob.length > 0"
-                  }
-                ],
-                attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                  alt: "delete icon"
-                },
-                on: {
-                  click: function($event) {
-                    _vm.clearInput("primaryJob")
-                  }
-                }
-              })
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "" } }, [_vm._v("Upload a file")])
+              ])
             ]
           ),
           _vm._v(" "),
-          _vm.errors.primaryJob
-            ? _c("div", { staticClass: "error" }, [
-                _vm._v(
-                  "\n                  " +
-                    _vm._s(_vm.errors.primaryJob[0]) +
-                    "\n              "
-                )
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.voiceRecorder }
+            },
+            [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "fake-radio-option",
+                    class: { checked: _vm.isALinkRecorder }
+                  },
+                  [_c("div", { staticClass: "inner-circle" })]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "radio-option",
+                  attrs: {
+                    type: "radio",
+                    name: "voiceRecorder",
+                    id: "voiceRecorder"
+                  },
+                  domProps: { checked: _vm.isALinkRecorder },
+                  on: {
+                    click: function($event) {
+                      _vm.isALinkRecorder = true
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "" } }, [_vm._v("Share a link")])
               ])
-            : _vm._e()
+            ]
+          )
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "account-edit-section-edit-btn no-decoration",
-            class: { "disabled-btn": !_vm.canSubmit }
-          },
-          [
-            _c("a", { attrs: { href: "javascript:;" } }, [
-              _vm._v("\n                  UPLOAD A FILE\n              ")
-            ])
-          ]
-        )
+        !_vm.isALinkRecorder
+          ? _c(
+              "div",
+              {
+                staticClass: "account-edit-section-edit-btn no-decoration",
+                class: { "disabled-btn": !_vm.canSubmit }
+              },
+              [_vm._m(1)]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.isALinkRecorder
+          ? _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.primaryJob }
+                  },
+                  [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        placeholder: "Insert link here..."
+                      }
+                    })
+                  ]
+                )
+              ]
+            )
+          : _vm._e()
       ])
     ]),
     _vm._v(" "),
@@ -79133,7 +79232,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "account-edit-section-inputs" }, [
-        _vm._m(1),
+        _vm._m(2),
         _vm._v(" "),
         _c(
           "div",
@@ -79141,11 +79240,7 @@ var render = function() {
             staticClass: "account-edit-section-edit-btn no-decoration",
             class: { "disabled-btn": !_vm.canSubmit }
           },
-          [
-            _c("a", { attrs: { href: "javascript:;" } }, [
-              _vm._v("\n                  UPLOAD A FILE\n              ")
-            ])
-          ]
+          [_vm._m(3)]
         )
       ])
     ]),
@@ -79158,11 +79253,12 @@ var render = function() {
         attrs: { id: "submitBtnWrapper" }
       },
       [
-        _c("router-link", { attrs: { to: "/freelancer/register/page4" } }, [
-          _vm._v("\n          CONTINUE\n      ")
-        ])
-      ],
-      1
+        _c(
+          "a",
+          { attrs: { href: "javascript:;" }, on: { click: _vm.nextStep } },
+          [_vm._v("\n          CONTINUE\n      ")]
+        )
+      ]
     )
   ])
 }
@@ -79196,6 +79292,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "fake-file-input btn" }, [
+      _c("input", { attrs: { type: "file", id: "voiceRecorder" } }),
+      _vm._v("\n                  UPLOAD A FILE\n              ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
       { staticClass: "faq-question-input account-edit-input faq-description" },
@@ -79207,6 +79312,15 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "fake-file-input btn" }, [
+      _c("input", { attrs: { type: "file", id: "resumeFile" } }),
+      _vm._v("\n                  UPLOAD A FILE\n              ")
+    ])
   }
 ]
 render._withStripped = true
@@ -79271,6 +79385,22 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -79336,19 +79466,70 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['changeStep', 'getData'],
     data: function data() {
         return {
-            formData: {
-                primaryJob: '',
-                sector: '',
-                voice: '',
-                hoursPerWeek: '',
-                techs: '',
-                lang: ''
+            resumeData: {
+                voiceRecorder: '',
+                resumeFile: ''
             },
-            canSubmit: false,
+            isALinkRecorder: false,
+            canSubmit: true,
             errors: []
         };
+    },
+
+    methods: {
+        nextStep: function nextStep(e) {
+            e.preventDefault();
+            if (this.canSubmit) {
+                this.getData({ resumeData: _extends({}, this.resumeData) });
+                this.changeStep(5);
+                this.$router.push('/freelancer/register/page5');
+            } else {
+                // Send errors
+            }
+        }
+    },
+    watch: {
+        resumeData: {
+            handler: function handler() {
+                // check if all resumeData values are filled
+                var values = Object.values(this.resumeData);
+                var isAll_filled = true;
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var value = _step.value;
+
+                        if (value.trim() !== '') {
+                            isAll_filled = false;
+                            break;
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+
+                this.canSubmit = isAll_filled;
+            },
+
+            deep: true
+        }
     }
 });
 
@@ -79380,80 +79561,111 @@ var render = function() {
             "div",
             {
               staticClass: "faq-input",
-              class: { "error-input": _vm.errors.primaryJob }
+              class: { "error-input": _vm.errors.voiceRecorder }
             },
             [
-              _c("input", {
-                directives: [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "div",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.formData.primaryJob,
-                    expression: "formData.primaryJob"
-                  }
-                ],
-                attrs: {
-                  type: "text",
-                  name: "primaryJob",
-                  placeholder: "e.g. Frontend Developer"
-                },
-                domProps: { value: _vm.formData.primaryJob },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                    staticClass: "fake-radio-option",
+                    class: { checked: !_vm.isALinkRecorder }
+                  },
+                  [_c("div", { staticClass: "inner-circle" })]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "radio-option",
+                  attrs: {
+                    type: "radio",
+                    name: "voiceRecorder",
+                    id: "voiceRecorder"
+                  },
+                  domProps: { checked: !_vm.isALinkRecorder },
+                  on: {
+                    click: function($event) {
+                      _vm.isALinkRecorder = false
                     }
-                    _vm.$set(_vm.formData, "primaryJob", $event.target.value)
                   }
-                }
-              }),
-              _vm._v(" "),
-              _c("img", {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.formData.primaryJob.length > 0,
-                    expression: "formData.primaryJob.length > 0"
-                  }
-                ],
-                attrs: {
-                  src:
-                    "/resumeApp/public/images/client/campaign_activity/close_black.png",
-                  alt: "delete icon"
-                },
-                on: {
-                  click: function($event) {
-                    _vm.clearInput("primaryJob")
-                  }
-                }
-              })
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "" } }, [_vm._v("Upload a file")])
+              ])
             ]
           ),
           _vm._v(" "),
-          _vm.errors.primaryJob
-            ? _c("div", { staticClass: "error" }, [
-                _vm._v(
-                  "\n                  " +
-                    _vm._s(_vm.errors.primaryJob[0]) +
-                    "\n              "
-                )
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.voiceRecorder }
+            },
+            [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "fake-radio-option",
+                    class: { checked: _vm.isALinkRecorder }
+                  },
+                  [_c("div", { staticClass: "inner-circle" })]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "radio-option",
+                  attrs: {
+                    type: "radio",
+                    name: "voiceRecorder",
+                    id: "voiceRecorder"
+                  },
+                  domProps: { checked: _vm.isALinkRecorder },
+                  on: {
+                    click: function($event) {
+                      _vm.isALinkRecorder = true
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "" } }, [_vm._v("Share a link")])
               ])
-            : _vm._e()
+            ]
+          )
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "account-edit-section-edit-btn no-decoration",
-            class: { "disabled-btn": !_vm.canSubmit }
-          },
-          [
-            _c("a", { attrs: { href: "javascript:;" } }, [
-              _vm._v("\n                  UPLOAD A FILE\n              ")
-            ])
-          ]
-        )
+        !_vm.isALinkRecorder
+          ? _c(
+              "div",
+              {
+                staticClass: "account-edit-section-edit-btn no-decoration",
+                class: { "disabled-btn": !_vm.canSubmit }
+              },
+              [_vm._m(1)]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.isALinkRecorder
+          ? _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.primaryJob }
+                  },
+                  [
+                    _c("input", {
+                      attrs: {
+                        type: "text",
+                        placeholder: "Insert link here..."
+                      }
+                    })
+                  ]
+                )
+              ]
+            )
+          : _vm._e()
       ])
     ]),
     _vm._v(" "),
@@ -79463,7 +79675,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "account-edit-section-inputs" }, [
-        _vm._m(1),
+        _vm._m(2),
         _vm._v(" "),
         _c(
           "div",
@@ -79471,11 +79683,7 @@ var render = function() {
             staticClass: "account-edit-section-edit-btn no-decoration",
             class: { "disabled-btn": !_vm.canSubmit }
           },
-          [
-            _c("a", { attrs: { href: "javascript:;" } }, [
-              _vm._v("\n                  UPLOAD A FILE\n              ")
-            ])
-          ]
+          [_vm._m(3)]
         )
       ])
     ]),
@@ -79488,11 +79696,12 @@ var render = function() {
         attrs: { id: "submitBtnWrapper" }
       },
       [
-        _c("router-link", { attrs: { to: "/freelancer/register/page4" } }, [
-          _vm._v("\n          CONTINUE\n      ")
-        ])
-      ],
-      1
+        _c(
+          "a",
+          { attrs: { href: "javascript:;" }, on: { click: _vm.nextStep } },
+          [_vm._v("\n          CONTINUE\n      ")]
+        )
+      ]
     )
   ])
 }
@@ -79526,6 +79735,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "fake-file-input btn" }, [
+      _c("input", { attrs: { type: "file", id: "voiceRecorder" } }),
+      _vm._v("\n                  UPLOAD A FILE\n              ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
       { staticClass: "faq-question-input account-edit-input faq-description" },
@@ -79537,6 +79755,15 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "fake-file-input btn" }, [
+      _c("input", { attrs: { type: "file", id: "resumeFile" } }),
+      _vm._v("\n                  UPLOAD A FILE\n              ")
+    ])
   }
 ]
 render._withStripped = true

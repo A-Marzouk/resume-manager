@@ -69,9 +69,9 @@
         </div>
     </div>
     <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}" id="submitBtnWrapper">
-        <router-link to="/freelancer/register/page4">
+        <a href="javascript:;" v-on:click="nextStep">
             CONTINUE
-        </router-link>
+        </a>
     </div>
   </div>
 </template>
@@ -85,7 +85,7 @@ export default {
             resumeFile: ''
         },
         isALinkRecorder: false,
-        canSubmit: false,
+        canSubmit: true,
         errors:[]
     }
   },

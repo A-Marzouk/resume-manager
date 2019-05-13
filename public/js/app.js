@@ -58302,7 +58302,7 @@ var staticRenderFns = [
     return _c("div", [
       _c(
         "nav",
-        { staticClass: "navbar navbar-light fixed-top client_navbar" },
+        { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
         [
           _c("div", { staticClass: "backBtn" }, [
             _c("a", { attrs: { href: "/client/dashboard" } }, [
@@ -66432,7 +66432,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "nav",
-      { staticClass: "navbar navbar-light fixed-top client_navbar" },
+      { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
       [
         _c("div", { staticClass: "backBtn" }, [
           _c("a", { attrs: { href: "/" } }, [
@@ -67554,9 +67554,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__datepicker__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__datepicker__);
 //
 //
 //
@@ -67889,7 +67888,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    datepicker: __WEBPACK_IMPORTED_MODULE_0__datepicker___default.a
+  },
   data: function data() {
     return {
       hasLogs: false,
@@ -67940,108 +67944,93 @@ var render = function() {
           _vm._v(" "),
           _vm._m(2),
           _vm._v(" "),
-          _c("div", { staticClass: "data-logs" }, [
-            _c("div", { staticClass: "date-picker-bar" }, [
+          _c(
+            "div",
+            { staticClass: "data-logs" },
+            [
+              _c("datepicker", [
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href: "javascript:void(0)",
+                      "data-toggle": "modal",
+                      "data-target": "#pick-date-modal"
+                    },
+                    on: {
+                      "~click": function($event) {
+                        return _vm.setDatePicker($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("img", {
+                      attrs: {
+                        src: "/images/client/campaign_activity/pick_date.png",
+                        alt: "pick date"
+                      }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "lineDivide" }),
+              _vm._v(" "),
               _c(
                 "div",
                 {
-                  staticStyle: {
-                    "margin-right": "20px",
-                    padding: "6px",
-                    border: "1px solid lightgray",
-                    "border-radius": "5px",
-                    color: "lightblue"
-                  }
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.hasLogs,
+                      expression: "!hasLogs"
+                    }
+                  ],
+                  staticClass: "member-logs-empty"
                 },
                 [
-                  _vm._v(
-                    "\n              " +
-                      _vm._s(_vm.appliedDate) +
-                      "\n            "
-                  )
+                  _c("div", { staticClass: "empty-state-text" }, [
+                    _vm._v(
+                      "\n              Sorry, no entries for today yet  -\n              "
+                    ),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "text",
+                        attrs: { href: "javascript:void(0)" },
+                        on: {
+                          click: function($event) {
+                            _vm.hasLogs = !_vm.hasLogs
+                          }
+                        }
+                      },
+                      [_vm._v(" SHOW DEMO LOGS")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(3)
                 ]
               ),
               _vm._v(" "),
               _c(
-                "a",
+                "div",
                 {
-                  attrs: {
-                    href: "javascript:void(0)",
-                    "data-toggle": "modal",
-                    "data-target": "#pick-date-modal"
-                  },
-                  on: {
-                    "~click": function($event) {
-                      return _vm.setDatePicker($event)
-                    }
-                  }
-                },
-                [
-                  _c("img", {
-                    attrs: {
-                      src: "/images/client/campaign_activity/pick_date.png",
-                      alt: "pick date"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "lineDivide" }),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.hasLogs,
-                    expression: "!hasLogs"
-                  }
-                ],
-                staticClass: "member-logs-empty"
-              },
-              [
-                _c("div", { staticClass: "empty-state-text" }, [
-                  _vm._v(
-                    "\n              Sorry, no entries for today yet  -\n              "
-                  ),
-                  _c(
-                    "a",
+                  directives: [
                     {
-                      staticClass: "text",
-                      attrs: { href: "javascript:void(0)" },
-                      on: {
-                        click: function($event) {
-                          _vm.hasLogs = !_vm.hasLogs
-                        }
-                      }
-                    },
-                    [_vm._v(" SHOW DEMO LOGS")]
-                  )
-                ]),
-                _vm._v(" "),
-                _vm._m(3)
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.hasLogs,
-                    expression: "hasLogs"
-                  }
-                ],
-                staticClass: "member-logs"
-              },
-              [_vm._m(4)]
-            )
-          ]),
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.hasLogs,
+                      expression: "hasLogs"
+                    }
+                  ],
+                  staticClass: "member-logs"
+                },
+                [_vm._m(4)]
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
           _vm._m(5)
         ])

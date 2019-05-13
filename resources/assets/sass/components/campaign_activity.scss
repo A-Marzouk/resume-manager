@@ -1,5 +1,6 @@
 #campaign_activity{
-  .freelancer_navbar{
+  width: 100vw;
+  .dashboard_navbar{
     height:56px !important;
   }
 
@@ -79,6 +80,7 @@
   width: 100%;
   @media (max-width:1240px) {
     width: 100%;
+    padding: 0 20px;
   }
   .dashboard-side-menu{
     background: white;
@@ -124,7 +126,7 @@
   .content-block{
     flex-direction: row;
     background: none;
-    width: auto;
+
     @media (max-width:1240px) {
       width: 96%;
     }
@@ -133,7 +135,8 @@
     }
     .content-block-campaign-activity{
       margin-bottom: 0;
-      width: 1200px;
+      max-width: 1200px;
+      width: 100%;
       @media (max-width:1240px) {
         width: 100%;
       }

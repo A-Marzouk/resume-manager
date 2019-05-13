@@ -68,15 +68,15 @@
             </div>
           </div>
         </div>
-        <div class="documents-bar d-flex justify-content-center">
+        <div class="hideOnTablet documents-bar d-flex justify-content-center">
           <div class="button-base blue-button-a">
             <a href="#" style="width:178px; height: 38px;">GO TO STATISTICS</a>
           </div>
         </div>
       </div>
-      <div class="content-block">
+      <div class="content-block client">
         <div class="content-block-campaign-activity">
-          <div class="showOnlyOnTablet">
+          <div class="hideOnTablet">
             <div class="button-base blue-button-a d-flex justify-content-end" style="margin-bottom: 22px;">
               <a href="#" class="m-0" style="width:178px; height: 38px;">GO TO STATISTICS</a>
             </div>

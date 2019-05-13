@@ -292,9 +292,14 @@
   position: relative;
   background-color: #218dce;
   color: white;
-  // padding: 10px;
   text-align: center;
-  width: 150px;
+  
+  &.btn {
+    border-radius: 2px;
+    padding: 10px 25px;
+    font-size: 0.75rem;
+    font-weight: normal;
+  }
 
   &:hover {
     cursor: pointer;

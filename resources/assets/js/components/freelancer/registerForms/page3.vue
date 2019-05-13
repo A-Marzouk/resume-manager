@@ -118,6 +118,9 @@ export default {
             },
             deep: true
         }
+    },
+    mounted () {
+        this.changeStep(3)
     }
 }
 </script>

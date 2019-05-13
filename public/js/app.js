@@ -76406,80 +76406,79 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['changeStep', 'getData'],
-  components: {
-    'flag-dropdown': __WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue___default.a
-  },
-  data: function data() {
-    return {
-      personalData: {
-        name: '',
-        surname: '',
-        gender: '',
-        phone: '',
-        email: '',
-        timeZone: '',
-        cityName: '',
-        paypal: ''
-      },
-      canSubmit: false,
-      errors: []
-    };
-  },
+    props: ['changeStep', 'getData'],
+    components: {
+        'flag-dropdown': __WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue___default.a
+    },
+    data: function data() {
+        return {
+            personalData: {
+                name: '',
+                surname: '',
+                gender: '',
+                phone: '',
+                email: '',
+                timeZone: '',
+                cityName: '',
+                paypal: ''
+            },
+            canSubmit: false,
+            errors: []
+        };
+    },
 
-  methods: {
-    nextStep: function nextStep(e) {
-      e.preventDefault();
-      this.canSubmit = true;
-      if (this.canSubmit) {
-        this.getData({ personalData: _extends({}, this.personalData) });
-        this.changeStep(2);
-        this.$router.push('/freelancer/register/page2');
-      } else {
-        // Send errors
-      }
-    }
-  },
-  watch: {
-    personalData: {
-      handler: function handler() {
-        // check if all personalData values are filled
-        var values = Object.values(this.personalData);
-        var isAll_filled = true;
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
-        try {
-          for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var value = _step.value;
-
-            if (value.trim().length < 1) {
-              isAll_filled = false;
-              break;
+    methods: {
+        nextStep: function nextStep(e) {
+            e.preventDefault();
+            this.canSubmit = true;
+            if (this.canSubmit) {
+                this.getData({ personalData: _extends({}, this.personalData) });
+                this.$router.push('/freelancer/register/page2');
+            } else {
+                // Send errors
             }
-          }
-        } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-              _iterator.return();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
-          }
         }
+    },
+    watch: {
+        personalData: {
+            handler: function handler() {
+                // check if all personalData values are filled
+                var values = Object.values(this.personalData);
+                var isAll_filled = true;
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
 
-        this.canSubmit = isAll_filled;
-      },
+                try {
+                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var value = _step.value;
 
-      deep: true
+                        if (value.trim().length < 1) {
+                            isAll_filled = false;
+                            break;
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+
+                this.canSubmit = isAll_filled;
+            },
+
+            deep: true
+        }
     }
-  }
 });
 
 /***/ }),
@@ -77934,6 +77933,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
             deep: true
         }
+    },
+    mounted: function mounted() {
+        this.changeStep(2);
     }
 });
 
@@ -78632,6 +78634,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
             deep: true
         }
+    },
+    mounted: function mounted() {
+        this.changeStep(3);
     }
 });
 
@@ -79075,6 +79080,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
             deep: true
         }
+    },
+    mounted: function mounted() {
+        this.changeStep(4);
     }
 });
 
@@ -79518,6 +79526,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
             deep: true
         }
+    },
+    mounted: function mounted() {
+        this.changeStep(5);
     }
 });
 
@@ -80880,6 +80891,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             },
 
             deep: true
+        },
+        $route: {
+            handler: function handler(val, oldVal) {
+                console.log(val.path.split('/'));
+                var splittedPath = val.path.split('/');
+                if (splittedPath[3] === '') this.step = 1;else this.step = splittedPath[3].charAt(4);
+            }
         }
     }
 });

@@ -160,6 +160,9 @@ export default {
             },
             deep: true
         }
+    },
+    mounted () {
+        this.changeStep(2)
     }
 }
 </script>

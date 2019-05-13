@@ -73,6 +73,14 @@
                     this.canSubmit = isAll_filled;
                 },
                 deep: true
+            },
+            $route: {
+                handler (val, oldVal) {
+                    console.log(val.path.split('/'))
+                    let splittedPath = val.path.split('/')
+                    if (splittedPath[3] === '') this.step = 1
+                    else this.step = splittedPath[3].charAt(4)
+                }
             }
         }
     }

@@ -212,7 +212,6 @@ export default {
                 this.canSubmit = true
 				if (this.canSubmit) {
 					this.getData({ personalData: { ...this.personalData }})
-					this.changeStep(2)
 					this.$router.push('/freelancer/register/page2')
 				} else {
 					// Send errors
@@ -236,7 +235,7 @@ export default {
 					},
 					deep: true
 			}
-	}
+    }
 }
 </script>
 

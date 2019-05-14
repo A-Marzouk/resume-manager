@@ -5,8 +5,8 @@
         <div class="left">
           <img src="/images/client/my_account/info_40px.png" alt="info icon">
           <span>
-                        LOG IN
-                    </span>
+              LOG IN
+          </span>
         </div>
       </div>
 

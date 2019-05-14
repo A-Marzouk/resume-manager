@@ -1,16 +1,10 @@
 .dashboard {
   .hideOnTablet{
     @media (max-width:1240px) {
-      display:none;
+      display: none;
     }
   }
 
-  .showOnTablet{
-    display: none;
-    @media (max-width:1240px) {
-      display: block;
-    }
-  }
   .dashboard_navbar{
       background: white;
       height: 56px !important;

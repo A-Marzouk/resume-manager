@@ -67097,9 +67097,7 @@ var staticRenderFns = [
             }
           }),
           _vm._v(" "),
-          _c("span", [
-            _vm._v("\n                      LOG IN\n                  ")
-          ])
+          _c("span", [_vm._v("\n            LOG IN\n        ")])
         ])
       ]
     )

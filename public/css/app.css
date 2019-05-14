@@ -3832,6 +3832,16 @@ body {
   }
 }
 
+.dashboard .showOnTablet {
+  display: none;
+}
+
+@media (max-width: 1240px) {
+  .dashboard .showOnTablet {
+    display: block;
+  }
+}
+
 .dashboard .dashboard_navbar {
   background: white;
   height: 56px !important;
@@ -5104,7 +5114,7 @@ body {
 
 @media (max-width: 1240px) {
   #campaign_activity .campaign-info-bar {
-    overflow-x: scroll;
+    overflow-x: auto;
   }
 }
 
@@ -5229,6 +5239,47 @@ body {
   text-align: right;
   letter-spacing: -0.1px;
   color: #05A4F4;
+}
+
+.dashboard_content.campaign_activity .documents-bar {
+  height: 76px;
+  margin-top: 16px;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dashboard_content.campaign_activity .documents-bar img {
+  margin-left: 24px;
+  margin-right: 5px;
+  margin-bottom: 4px;
+  height: 24px;
+}
+
+.dashboard_content.campaign_activity .documents-bar .document-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #4A5464;
+}
+
+.dashboard_content.campaign_activity .documents-bar .document-text span {
+  font-weight: normal;
+  margin-left: 5px;
+  color: #7A828D;
 }
 
 .dashboard_content.campaign_activity .content-block {
@@ -5358,47 +5409,6 @@ body {
   .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .member-logs-empty .empty-state-image img {
     width: 100%;
   }
-}
-
-.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar {
-  height: 76px;
-  margin-top: 16px;
-  background: #FFFFFF;
-  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
-          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
-  border-radius: 4px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar img {
-  margin-left: 24px;
-  margin-right: 5px;
-  margin-bottom: 4px;
-  height: 24px;
-}
-
-.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar .document-text {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: -0.1px;
-  color: #4A5464;
-}
-
-.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .documents-bar .document-text span {
-  font-weight: normal;
-  margin-left: 5px;
-  color: #7A828D;
 }
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .team-bar-tablet {
@@ -7313,12 +7323,6 @@ body {
   }
 }
 
-.account-info-edit-heading {
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-}
-
 .faq-question-input.account-edit-input .faq-input {
   width: 400px;
 }
@@ -7374,6 +7378,59 @@ body {
 .account-edit-section .faq-question-input img,
 .account-edit-section .faq-answer-input img {
   margin-right: 0;
+}
+
+.account-edit-section .form-group.form-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.account-edit-section .form-group.form-center input {
+  margin-right: 10px;
+}
+
+.account-edit-section .form-group.form-center .fake-radio-option {
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 15px;
+  height: 15px;
+  background: white;
+  position: absolute;
+  left: 0;
+  top: 4px;
+  border: 1.5px solid #FF9B68;
+}
+
+.account-edit-section .form-group.form-center .fake-radio-option:hover {
+  cursor: pointer;
+}
+
+.account-edit-section .form-group.form-center .fake-radio-option .inner-circle {
+  background: #FF9B68;
+  opacity: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.account-edit-section .form-group.form-center .fake-radio-option.checked .inner-circle {
+  opacity: 1;
 }
 
 .sub-section {
@@ -7503,59 +7560,6 @@ body {
 
 .fake-file-input input:hover {
   cursor: pointer;
-}
-
-.form-group {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative;
-}
-
-.form-group input {
-  margin-right: 10px;
-}
-
-.form-group .fake-radio-option {
-  border-radius: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 15px;
-  height: 15px;
-  background: white;
-  position: absolute;
-  left: 0;
-  top: 4px;
-  border: 1.5px solid #FF9B68;
-}
-
-.form-group .fake-radio-option:hover {
-  cursor: pointer;
-}
-
-.form-group .fake-radio-option .inner-circle {
-  background: #FF9B68;
-  opacity: 0;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-}
-
-.form-group .fake-radio-option.checked .inner-circle {
-  opacity: 1;
 }
 
 .faq-question-input .faq-input input.radio-option {

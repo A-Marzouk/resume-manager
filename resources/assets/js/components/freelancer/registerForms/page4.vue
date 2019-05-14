@@ -19,7 +19,7 @@
                     Please upload a short audio recording describing your previous experience in Customer service and Sales (ideal recording length is from 1 to 2 minutes). File must be in .mp3 format and no more than 45 MB.
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.voiceRecorder}">
-                    <div class="form-group">
+                    <div class="form-group form-center">
                         <div class="fake-radio-option" :class="{ checked: !isALinkRecorder }">
                             <div class="inner-circle"></div>
                         </div>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="faq-input" :class="{ 'error-input' : errors.voiceRecorder}">
-                    <div class="form-group">
+                    <div class="form-group form-center">
                         <div class="fake-radio-option" :class="{ checked: isALinkRecorder }">
                             <div class="inner-circle"></div>
                         </div>

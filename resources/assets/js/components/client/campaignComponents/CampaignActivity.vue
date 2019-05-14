@@ -76,8 +76,8 @@
       </div>
       <div class="content-block client">
         <div class="content-block-campaign-activity">
-          <div class="hideOnTablet">
-            <div class="button-base blue-button-a d-flex justify-content-end" style="margin-bottom: 22px;">
+          <div class="showOnTablet">
+            <div class="button-base blue-button-a d-flex justify-content-end" style="margin: 22px 0;">
               <a href="#" class="m-0" style="width:178px; height: 38px;">GO TO STATISTICS</a>
             </div>
           </div>

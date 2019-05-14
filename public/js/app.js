@@ -76428,79 +76428,196 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['changeStep', 'getData'],
-    components: {
-        'flag-dropdown': __WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue___default.a
-    },
-    data: function data() {
-        return {
-            personalData: {
-                name: '',
-                surname: '',
-                gender: '',
-                phone: '',
-                email: '',
-                timeZone: '',
-                cityName: '',
-                paypal: ''
-            },
-            canSubmit: false,
-            errors: []
-        };
-    },
+				props: ['changeStep', 'getData'],
+				components: {
+								'flag-dropdown': __WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue___default.a
+				},
+				data: function data() {
+								return {
+												personalData: {
+																name: '',
+																surname: '',
+																gender: '',
+																phone: '',
+																email: '',
+																timeZone: '',
+																cityName: '',
+																paypal: ''
+												},
+												canSubmit: false,
+												errors: {
+																name: '',
+																surname: '',
+																gender: '',
+																phone: '',
+																email: '',
+																timeZone: '',
+																cityName: '',
+																paypal: ''
+												},
+												showErrors: false
+								};
+				},
 
-    methods: {
-        nextStep: function nextStep(e) {
-            e.preventDefault();
-            this.canSubmit = true;
-            if (this.canSubmit) {
-                this.getData({ personalData: _extends({}, this.personalData) });
-                this.$router.push('/freelancer/register/page2');
-            } else {
-                // Send errors
-            }
-        }
-    },
-    watch: {
-        personalData: {
-            handler: function handler() {
-                // check if all personalData values are filled
-                var values = Object.values(this.personalData);
-                var isAll_filled = true;
-                var _iteratorNormalCompletion = true;
-                var _didIteratorError = false;
-                var _iteratorError = undefined;
+				methods: {
+								nextStep: function nextStep(e) {
+												e.preventDefault();
+												// this.canSubmit = true
+												if (this.noErrors()) {
+																this.getData({ personalData: _extends({}, this.personalData) });
+																this.$router.push('/freelancer/register/page2');
+												} else this.showErrors = true;
+								},
+								noErrors: function noErrors() {
+												var noErrorsName = this.noErrorsName();
+												var noErrorsPhone = this.noErrorsPhone();
+												var noErrorsEmail = this.noErrorsEmail();
+												var noErrorsPaypal = this.noErrorsPaypal();
+												var noErrorsGender = this.noErrorsGender();
+												var noErrorsSurname = this.noErrorsSurname();
+												var noErrorsTimeZone = this.noErrorsTimeZone();
+												var noErrorsCityName = this.noErrorsCityName();
 
-                try {
-                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                        var value = _step.value;
+												return noErrorsName && noErrorsPhone && noErrorsEmail && noErrorsPaypal && noErrorsGender && noErrorsSurname && noErrorsTimeZone && noErrorsCityName;
+								},
+								noErrorsName: function noErrorsName() {
+												var valid = true;
 
-                        if (value.trim().length < 1) {
-                            isAll_filled = false;
-                            break;
-                        }
-                    }
-                } catch (err) {
-                    _didIteratorError = true;
-                    _iteratorError = err;
-                } finally {
-                    try {
-                        if (!_iteratorNormalCompletion && _iterator.return) {
-                            _iterator.return();
-                        }
-                    } finally {
-                        if (_didIteratorError) {
-                            throw _iteratorError;
-                        }
-                    }
-                }
+												// Empty field
+												if (this.personalData.name.trim() === '') {
+																valid = false;
+																this.errors.name = 'Please, enter your name';
+												} else this.errors.name = '';
+												// Invalid characters (?)
+												return valid;
+								},
+								noErrorsSurname: function noErrorsSurname() {
+												var valid = true;
 
-                this.canSubmit = isAll_filled;
-            },
+												// Empty field
+												if (this.personalData.surname.trim() === '') {
+																valid = false;
+																this.errors.surname = 'Please, enter your surname';
+												} else this.errors.surname = '';
+												// Invalid characters (?)
+												return valid;
+								},
+								noErrorsGender: function noErrorsGender() {
+												var valid = true;
 
-            deep: true
-        }
-    }
+												// Empty field
+												if (this.personalData.gender.trim() === '') {
+																valid = false;
+																this.errors.gender = 'Choose a gender';
+												} else this.errors.gender = '';
+
+												return valid;
+								},
+								noErrorsPhone: function noErrorsPhone() {
+												var valid = true;
+												var phoneFormat = /[0-9]{1,3}-[0-9]{7}/;
+
+												if (this.personalData.phone.trim() === '') {
+																// Empty field
+																valid = false;
+																this.errors.phone = 'Please enter your phone number';
+												} else if (!phoneFormat.test(this.personalData.phone)) {
+																// Review the regExp
+																valid = false;
+																this.errors.phone = 'This not a valid phone number format';
+												} else this.errors.phone = '';
+
+												return valid;
+								},
+								noErrorsEmail: function noErrorsEmail() {
+												var valid = true;
+												var emailFormat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+
+												if (this.personalData.email.trim() === '') {
+																// Empty field
+																valid = false;
+																this.errors.email = 'Please, enter your email';
+												} else if (!emailFormat.test(this.personalData.email)) {
+																valid = false;
+																this.errors.email = 'This email not has a valid format. Please check again';
+												} else this.errors.email = '';
+
+												return valid;
+								},
+								noErrorsTimeZone: function noErrorsTimeZone() {
+												var valid = true;
+
+												if (this.personalData.timeZone.trim() === '') {
+																// Empty field
+																valid = false;
+																this.errors.timeZone = 'Please, select a time zone';
+												} else this.errors.timeZone = '';
+
+												return valid;
+								},
+								noErrorsCityName: function noErrorsCityName() {
+												var valid = true;
+
+												if (this.personalData.cityName.trim() === '') {
+																// Empty field
+																valid = false;
+																this.errors.cityName = 'Please, enter a city';
+												} else this.errors.cityName = '';
+
+												return valid;
+								},
+								noErrorsPaypal: function noErrorsPaypal() {
+												var valid = true;
+
+												if (this.personalData.paypal.trim() === '') {
+																// Empty field
+																valid = false;
+																this.errors.paypal = 'Please, enter your paypal id';
+												} else this.errors.paypal = '';
+
+												return valid;
+								}
+				},
+				watch: {
+								personalData: {
+												handler: function handler() {
+																// check if all personalData values are filled
+																var keys = Object.keys(this.personalData);
+																var isAll_filled = true;
+																var _iteratorNormalCompletion = true;
+																var _didIteratorError = false;
+																var _iteratorError = undefined;
+
+																try {
+																				for (var _iterator = keys[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+																								var key = _step.value;
+
+																								if (this.personalData[key].trim().length < 1) {
+																												isAll_filled = false;
+																												break;
+																								}
+																				}
+																} catch (err) {
+																				_didIteratorError = true;
+																				_iteratorError = err;
+																} finally {
+																				try {
+																								if (!_iteratorNormalCompletion && _iterator.return) {
+																												_iterator.return();
+																								}
+																				} finally {
+																								if (_didIteratorError) {
+																												throw _iteratorError;
+																								}
+																				}
+																}
+
+																this.canSubmit = isAll_filled;
+												},
+
+												deep: true
+								}
+				}
 });
 
 /***/ }),
@@ -76777,11 +76894,11 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.errors.name
+          _vm.showErrors && _vm.errors.name
             ? _c("div", { staticClass: "error" }, [
                 _vm._v(
                   "\n                  " +
-                    _vm._s(_vm.errors.name[0]) +
+                    _vm._s(_vm.errors.name) +
                     "\n              "
                 )
               ])
@@ -76847,11 +76964,11 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.errors.surname
+          _vm.showErrors && _vm.errors.surname
             ? _c("div", { staticClass: "error" }, [
                 _vm._v(
                   "\n                  " +
-                    _vm._s(_vm.errors.surname[0]) +
+                    _vm._s(_vm.errors.surname) +
                     "\n              "
                 )
               ])
@@ -76877,7 +76994,7 @@ var render = function() {
                   },
                   on: {
                     click: function($event) {
-                      _vm.gender = "male"
+                      _vm.personalData.gender = "M"
                     }
                   }
                 }),
@@ -76888,7 +77005,7 @@ var render = function() {
                   },
                   on: {
                     click: function($event) {
-                      _vm.gender = "female"
+                      _vm.personalData.gender = "F"
                     }
                   }
                 })
@@ -76896,11 +77013,11 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm.errors.gender
+          _vm.showErrors && _vm.errors.gender
             ? _c("div", { staticClass: "error" }, [
                 _vm._v(
                   "\n                  " +
-                    _vm._s(_vm.errors.gender[0]) +
+                    _vm._s(_vm.errors.gender) +
                     "\n              "
                 )
               ])
@@ -76934,7 +77051,7 @@ var render = function() {
                   attrs: {
                     type: "text",
                     name: "phone",
-                    placeholder: "Enter your phone"
+                    placeholder: "123-3534634"
                   },
                   domProps: { value: _vm.personalData.phone },
                   on: {
@@ -76971,11 +77088,11 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _vm.errors.phone
+          _vm.showErrors && _vm.errors.phone
             ? _c("div", { staticClass: "error" }, [
                 _vm._v(
                   "\n                  " +
-                    _vm._s(_vm.errors.phone[0]) +
+                    _vm._s(_vm.errors.phone) +
                     "\n              "
                 )
               ])
@@ -77041,11 +77158,11 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.errors.email
+          _vm.showErrors && _vm.errors.email
             ? _c("div", { staticClass: "error" }, [
                 _vm._v(
                   "\n                  " +
-                    _vm._s(_vm.errors.email[0]) +
+                    _vm._s(_vm.errors.email) +
                     "\n              "
                 )
               ])
@@ -77510,11 +77627,11 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.errors.timeZone
+          _vm.showErrors && _vm.errors.timeZone
             ? _c("div", { staticClass: "error" }, [
                 _vm._v(
                   "\n                  " +
-                    _vm._s(_vm.errors.timeZone[0]) +
+                    _vm._s(_vm.errors.timeZone) +
                     "\n              "
                 )
               ])
@@ -77580,11 +77697,11 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.errors.cityName
+          _vm.showErrors && _vm.errors.cityName
             ? _c("div", { staticClass: "error" }, [
                 _vm._v(
                   "\n                  " +
-                    _vm._s(_vm.errors.cityName[0]) +
+                    _vm._s(_vm.errors.cityName) +
                     "\n              "
                 )
               ])
@@ -77652,11 +77769,11 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.errors.paypal
+          _vm.showErrors && _vm.errors.paypal
             ? _c("div", { staticClass: "error" }, [
                 _vm._v(
                   "\n                  " +
-                    _vm._s(_vm.errors.paypal[0]) +
+                    _vm._s(_vm.errors.paypal) +
                     "\n              "
                 )
               ])

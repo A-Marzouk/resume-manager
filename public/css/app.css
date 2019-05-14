@@ -6803,6 +6803,11 @@ body {
   border-bottom: 1px solid #F56F6F;
 }
 
+.error {
+  color: #F56F6F;
+  margin-top: 1px;
+}
+
 .faq-questions-list {
   margin-top: 37px;
 }
@@ -7625,6 +7630,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 5;
 }
 
 .flags-dropdown a {

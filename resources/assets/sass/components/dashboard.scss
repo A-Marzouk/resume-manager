@@ -1,9 +1,4 @@
 .dashboard {
-  .hideOnTablet{
-    @media (max-width:1240px) {
-      display:none;
-    }
-  }
   .dashboard_navbar{
       background: white;
       height: 56px !important;
@@ -823,5 +818,11 @@
         top: -15px;
       }
     }
+  }
+}
+
+.hideOnTablet{
+  @media (max-width:1240px) {
+    display:none;
   }
 }

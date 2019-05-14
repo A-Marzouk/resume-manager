@@ -59647,6 +59647,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (!tabs.includes(this.activeTab)) {
                 this.activeTab = 'campaign-manager';
             }
+        },
+        logoutClient: function logoutClient() {
+            axios.post('client/logout').then(function (response) {
+                if (response.data.status === 'success') {
+                    // redirect to dashboard
+                    window.location.href = '/';
+                }
+            });
         }
     },
     mounted: function mounted() {
@@ -59663,7 +59671,45 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c(
+      "nav",
+      {
+        staticClass: "navbar navbar-light fixed-top dashboard_navbar",
+        attrs: { id: "sideNav" }
+      },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._m(2),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-inline my-2 my-lg-0" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-inline my-2 my-lg-0 name" }, [
+          _c("div", { staticClass: "logoutButton" }, [
+            _c(
+              "a",
+              {
+                attrs: { href: "javascript:void(0)" },
+                on: { click: _vm.logoutClient }
+              },
+              [
+                _c("img", {
+                  attrs: { src: "/images/client/log_out.png", alt: "logout" }
+                })
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _vm._v("\n                Ahmed R. Marzouk\n            ")
+          ]),
+          _vm._v(" "),
+          _vm._m(3)
+        ])
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "js-side-nav-container side-nav-container" }, [
       _c("div", { staticClass: "js-side-nav side-nav" }, [
@@ -59672,7 +59718,7 @@ var render = function() {
           attrs: { href: "javascript:void(0)", id: "close-menu" }
         }),
         _vm._v(" "),
-        _vm._m(1),
+        _vm._m(4),
         _vm._v(" "),
         _c("div", { staticClass: "dashboard_content" }, [
           _c(
@@ -59828,7 +59874,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm._m(2)
+        _vm._m(5)
       ])
     ]),
     _vm._v(" "),
@@ -59984,7 +60030,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(3)
+    _vm._m(6)
   ])
 }
 var staticRenderFns = [
@@ -59993,68 +60039,49 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "nav",
+      "a",
       {
-        staticClass: "navbar navbar-light fixed-top dashboard_navbar",
-        attrs: { id: "sideNav" }
+        staticClass: "js-menu-open menu-open",
+        attrs: { href: "javascript:void(0)", id: "menu-open-icon" }
       },
+      [_c("img", { attrs: { src: "/images/client/Group.png", alt: "menu" } })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "js-menu-close d-none",
+        attrs: { href: "javascript:void(0)" }
+      },
+      [_c("img", { attrs: { src: "/images/client/close.png", alt: "menu" } })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "navbar-brand", attrs: { href: "/client" } },
       [
-        _c(
-          "a",
-          {
-            staticClass: "js-menu-open menu-open",
-            attrs: { href: "javascript:void(0)", id: "menu-open-icon" }
-          },
-          [
-            _c("img", {
-              attrs: { src: "/images/client/Group.png", alt: "menu" }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "js-menu-close d-none",
-            attrs: { href: "javascript:void(0)" }
-          },
-          [
-            _c("img", {
-              attrs: { src: "/images/client/close.png", alt: "menu" }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _c("a", { staticClass: "navbar-brand", attrs: { href: "/client" } }, [
-          _c("img", {
-            staticStyle: { width: "177px" },
-            attrs: { src: "/images/client/logo_123.png", alt: "logout" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-inline my-2 my-lg-0" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-inline my-2 my-lg-0 name" }, [
-          _c("div", { staticClass: "logoutButton" }, [
-            _c("a", { attrs: { href: "#" } }, [
-              _c("img", {
-                attrs: { src: "/images/client/log_out.png", alt: "logout" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _vm._v("\n                Ahmed R. Marzouk\n            ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "avatar" }, [
-            _c("img", {
-              attrs: { src: "/images/client/dummy.png", alt: "logout" }
-            })
-          ])
-        ])
+        _c("img", {
+          staticStyle: { width: "177px" },
+          attrs: { src: "/images/client/logo_123.png", alt: "logout" }
+        })
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "avatar" }, [
+      _c("img", { attrs: { src: "/images/client/dummy.png", alt: "logout" } })
+    ])
   },
   function() {
     var _vm = this
@@ -66738,7 +66765,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.canSubmit = false;
       axios.post('/client/login/submit', this.formData).then(function (response) {
         if (response.data.status === 'success') {
-          // redirect to client dashboard
+          // redirect to dashboard
           window.location.href = response.data.redirect;
         }
         _this.errors = response.data.errors;
@@ -66967,7 +66994,7 @@ var render = function() {
           _c(
             "div",
             {
-              staticClass: "form-group",
+              staticClass: "form-group d-flex justify-content-start",
               staticStyle: { "margin-top": "36px" }
             },
             [
@@ -68402,10 +68429,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c(
         "div",
-        {
-          staticClass:
-            "hideOnTablet documents-bar d-flex justify-content-center"
-        },
+        { staticClass: "documents-bar d-flex justify-content-center" },
         [
           _c("div", { staticClass: "button-base blue-button-a" }, [
             _c(
@@ -68425,12 +68449,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "hideOnTablet" }, [
+    return _c("div", { staticClass: "hideOnLg" }, [
       _c(
         "div",
         {
           staticClass: "button-base blue-button-a d-flex justify-content-end",
-          staticStyle: { "margin-bottom": "22px" }
+          staticStyle: { "margin-bottom": "22px", "margin-top": "22px" }
         },
         [
           _c(

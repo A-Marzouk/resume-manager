@@ -20,7 +20,7 @@
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.name}">
                     <input type="text" name="name" placeholder="Enter your name" v-model="personalData.name">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+                    <img src="/images/client/campaign_activity/close_black.png"
                           alt="delete icon"
                           v-show="personalData.name.length > 0"
                           @click="clearInput('name')"
@@ -36,7 +36,7 @@
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.surname}">
                     <input type="text" name="surname" placeholder="Enter your surname" v-model="personalData.surname">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('surname')" alt="delete icon" v-show="personalData.surname.length > 0">
+                    <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('surname')" alt="delete icon" v-show="personalData.surname.length > 0">
                 </div>
                 <div class="error" v-if="errors.surname">
                     {{errors.surname[0]}}
@@ -63,7 +63,7 @@
                 <div class="faq-input" :class="{ 'error-input' : errors.phone}">
                     <flag-dropdown>
                         <input type="text" name="phone" placeholder="Enter your phone" v-model="personalData.phone">
-                        <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('phone')" alt="delete icon" v-show="personalData.phone.length > 0">
+                        <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('phone')" alt="delete icon" v-show="personalData.phone.length > 0">
                     </flag-dropdown>                    
                 </div>
                 <div class="error" v-if="errors.phone">
@@ -76,7 +76,7 @@
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.email}">
                     <input type="text" name="email" placeholder="Enter your email" v-model="personalData.email">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('email')" alt="delete icon" v-show="personalData.email.length > 0">
+                    <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('email')" alt="delete icon" v-show="personalData.email.length > 0">
                 </div>
                 <div class="error" v-if="errors.email">
                     {{errors.email[0]}}
@@ -147,7 +147,7 @@
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.cityName}">
                     <input type="text" name="cityName" placeholder="You can enter several items using comas" v-model="personalData.cityName">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+                    <img src="/images/client/campaign_activity/close_black.png"
                           alt="delete icon"
                           v-show="personalData.cityName.length > 0"
                           @click="clearInput('cityName')"
@@ -163,7 +163,7 @@
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.paypal}">
                     <input type="text" name="paypal" placeholder="Enter your PayPal acc number" v-model="personalData.paypal">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+                    <img src="/images/client/campaign_activity/close_black.png"
                           alt="delete icon"
                           v-show="personalData.paypal.length > 0"
                           @click="clearInput('paypal')"
@@ -212,7 +212,6 @@ export default {
                 this.canSubmit = true
 				if (this.canSubmit) {
 					this.getData({ personalData: { ...this.personalData }})
-					this.changeStep(2)
 					this.$router.push('/freelancer/register/page2')
 				} else {
 					// Send errors
@@ -236,7 +235,7 @@ export default {
 					},
 					deep: true
 			}
-	}
+    }
 }
 </script>
 

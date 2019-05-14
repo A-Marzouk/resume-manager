@@ -355,6 +355,55 @@
     display: flex;
     align-items: center;
     width: 100%;
+    position: relative;
+    flex-wrap: nowrap;
+
+    input.fake-input {
+      position: absolute;
+    }
+
+    &.multi-items {
+      overflow-x: auto;
+    }
+
+    input.multi-input {
+      min-width: 200px;
+      z-index: 1;
+
+      &:focus {
+        border-color: inherit;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-bottom: 0;
+        outline: none;
+        background: transparent;
+      }
+
+      &:focus ~ .fake-input {
+        border-color: inherit;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-bottom: 1px solid #05A4F4;
+        outline: none;
+      }
+    }
+
+    .tech-item {
+      padding: 5px;
+      border: 1px solid #05A4F4;
+      z-index: 1;
+      margin: 0 4px;
+      display: flex;
+      justify-items: center;
+      align-items: center;
+      height: 45px;
+      word-wrap: normal;
+      
+      img.delete-multi-item {
+        margin-left: 5px;
+      }
+    }
+
     input,textarea,select{
       width: 100%;
       border: none;

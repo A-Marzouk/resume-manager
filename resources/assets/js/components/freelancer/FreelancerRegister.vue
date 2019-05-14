@@ -4,7 +4,7 @@
             <nav class="navbar navbar-light fixed-top dashboard_navbar">
                 <div class="backBtn">
                     <a href="/freelancer">
-                        <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
+                        <img src="/images/client/arrow_back.png" alt="back-icon">
                     </a>
                     BECOME AN AGENT
                 </div>
@@ -73,6 +73,14 @@
                     this.canSubmit = isAll_filled;
                 },
                 deep: true
+            },
+            $route: {
+                handler (val, oldVal) {
+                    console.log(val.path.split('/'))
+                    let splittedPath = val.path.split('/')
+                    if (splittedPath[3] === '') this.step = 1
+                    else this.step = splittedPath[3].charAt(4)
+                }
             }
         }
     }

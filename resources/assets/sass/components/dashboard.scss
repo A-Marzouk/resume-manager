@@ -1,4 +1,9 @@
 .dashboard {
+  .hideOnTablet{
+    @media (max-width:1240px) {
+      display:none;
+    }
+  }
   .dashboard_navbar{
       background: white;
       height: 56px !important;
@@ -107,18 +112,23 @@
 
   }
 
-  .hideOnTablet{
-    @media (max-width:1240px) {
-      display:none;
-    }
-  }
-
   .content-block{
     margin-left:50px;
     display: flex;
     flex-direction: column;
     z-index: 1;
     width: 938px;
+
+    &.freelancer {
+      width: 90%;
+      margin-left: 0;
+    }
+
+    &.client {
+      width: 65%;
+    }
+
+
     @media (max-width:1240px) {
       width: 734px;
       margin-left:0;

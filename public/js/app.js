@@ -66832,7 +66832,7 @@ var render = function() {
         "div",
         {
           staticClass: "account-edit-section",
-          staticStyle: { "padding-bottom": "0" }
+          staticStyle: { "padding-bottom": "0", margin: "0 24px" }
         },
         [
           _c("div", { staticClass: "account-edit-section-inputs" }, [
@@ -67097,9 +67097,7 @@ var staticRenderFns = [
             }
           }),
           _vm._v(" "),
-          _c("span", [
-            _vm._v("\n                      LOG IN\n                  ")
-          ])
+          _c("span", [_vm._v("\n            LOG IN\n        ")])
         ])
       ]
     )
@@ -78752,7 +78750,7 @@ var render = function() {
               class: { "error-input": _vm.errors.voiceRecorder }
             },
             [
-              _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "form-group form-center" }, [
                 _c(
                   "div",
                   {
@@ -78789,7 +78787,7 @@ var render = function() {
               class: { "error-input": _vm.errors.voiceRecorder }
             },
             [
-              _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "form-group form-center" }, [
                 _c(
                   "div",
                   {
@@ -79198,7 +79196,7 @@ var render = function() {
               class: { "error-input": _vm.errors.voiceRecorder }
             },
             [
-              _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "form-group form-center" }, [
                 _c(
                   "div",
                   {
@@ -79235,7 +79233,7 @@ var render = function() {
               class: { "error-input": _vm.errors.voiceRecorder }
             },
             [
-              _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "form-group form-center" }, [
                 _c(
                   "div",
                   {
@@ -79644,7 +79642,7 @@ var render = function() {
               class: { "error-input": _vm.errors.voiceRecorder }
             },
             [
-              _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "form-group form-center" }, [
                 _c(
                   "div",
                   {
@@ -79681,7 +79679,7 @@ var render = function() {
               class: { "error-input": _vm.errors.voiceRecorder }
             },
             [
-              _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "form-group form-center" }, [
                 _c(
                   "div",
                   {

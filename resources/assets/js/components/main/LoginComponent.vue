@@ -5,12 +5,12 @@
         <div class="left">
           <img src="/images/client/my_account/info_40px.png" alt="info icon">
           <span>
-                        LOG IN
-                    </span>
+              LOG IN
+          </span>
         </div>
       </div>
 
-      <div class="account-edit-section" style="padding-bottom: 0;">
+      <div class="account-edit-section" style="padding-bottom: 0; margin: 0 24px;">
         <div class="account-edit-section-inputs">
           <div class="faq-question-input account-edit-input">
             <label class="faq-input-label">

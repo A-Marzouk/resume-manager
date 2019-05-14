@@ -243,8 +243,8 @@ if ($('#freelancerRegisterComponent').length !== 0){
 
 if ($('#freelancerDashboardComponent').length !== 0) {
   const routes = [
-    { path: '/freelancer/my-account', component: FreelancerMyAccount },
-    { path: '/freelancer', component: FreelancerCampaignManager }
+    { path: '/freelancer/dashboard/my-account', component: FreelancerMyAccount },
+    { path: '/freelancer/dashboard', component: FreelancerCampaignManager }
   ]
 
   const router = new VueRouter({

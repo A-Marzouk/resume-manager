@@ -227,7 +227,7 @@
         data(){
             return{
                 activeTab: 'campaign-manager',
-                rootURL: this.$route.path.split('/')[1]
+                rootURL: this.$route.path.split('/')[1] + '/' + this.$route.path.split('/')[2]
             }
         },
         methods:{
@@ -241,9 +241,8 @@
                 return '/images/client/menu_icons/inactive/'+ tabName + '.png';
             },
             setActiveTab(){
-                this.activeTab = this.$route.path.replace(/\//g,'')
-                if (this.activeTab === 'freelancer'){
-                    console.log('Active tab: ' + this.activeTab)
+                this.activeTab = this.$route.path.split('/')[3]
+                if (this.activeTab === undefined){
                     this.activeTab = 'campaign-manager';
                 }
             },

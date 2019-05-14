@@ -14594,7 +14594,7 @@ if ($('#freelancerRegisterComponent').length !== 0) {
 }
 
 if ($('#freelancerDashboardComponent').length !== 0) {
-    var _routes3 = [{ path: '/freelancer/my-account', component: __WEBPACK_IMPORTED_MODULE_9__components_freelancer_dashboardComponents_MyAccount_vue___default.a }, { path: '/freelancer', component: __WEBPACK_IMPORTED_MODULE_8__components_freelancer_dashboardComponents_CampaignManager_vue___default.a }];
+    var _routes3 = [{ path: '/freelancer/dashboard/my-account', component: __WEBPACK_IMPORTED_MODULE_9__components_freelancer_dashboardComponents_MyAccount_vue___default.a }, { path: '/freelancer/dashboard', component: __WEBPACK_IMPORTED_MODULE_8__components_freelancer_dashboardComponents_CampaignManager_vue___default.a }];
 
     var _router3 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
         routes: _routes3,
@@ -80135,7 +80135,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             activeTab: 'campaign-manager',
-            rootURL: this.$route.path.split('/')[1]
+            rootURL: this.$route.path.split('/')[1] + '/' + this.$route.path.split('/')[2]
         };
     },
 
@@ -80150,9 +80150,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return '/images/client/menu_icons/inactive/' + tabName + '.png';
         },
         setActiveTab: function setActiveTab() {
-            this.activeTab = this.$route.path.replace(/\//g, '');
-            if (this.activeTab === 'freelancer') {
-                console.log('Active tab: ' + this.activeTab);
+            this.activeTab = this.$route.path.split('/')[3];
+            if (this.activeTab === undefined) {
                 this.activeTab = 'campaign-manager';
             }
         },
@@ -81033,7 +81032,7 @@ var staticRenderFns = [
       { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
       [
         _c("div", { staticClass: "backBtn" }, [
-          _c("a", { attrs: { href: "/freelancer" } }, [
+          _c("a", { attrs: { href: "/freelancer/dashboard" } }, [
             _c("img", {
               attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
             })

@@ -4913,6 +4913,12 @@ body {
   top: -15px;
 }
 
+@media (max-width: 1240px) {
+  .hideOnTablet {
+    display: none;
+  }
+}
+
 @media (min-width: 1240px) {
   .menu-open {
     display: none;
@@ -5198,7 +5204,7 @@ body {
 .dashboard_content.campaign_activity .dashboard-side-menu {
   background: white;
   width: 339px;
-  height: 600px;
+  height: 506px;
   -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
           box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
   border-radius: 4px;
@@ -5832,6 +5838,53 @@ body {
       -ms-flex-align: center;
           align-items: center;
   margin: 0;
+}
+
+@media (min-width: 1240px) {
+  .hideOnLg {
+    display: none !important;
+  }
+}
+
+.documents-bar {
+  height: 76px;
+  margin-top: 16px;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.documents-bar img {
+  margin-left: 24px;
+  margin-right: 5px;
+  margin-bottom: 4px;
+  height: 24px;
+}
+
+.documents-bar .document-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  color: #4A5464;
+}
+
+.documents-bar .document-text span {
+  font-weight: normal;
+  margin-left: 5px;
+  color: #7A828D;
 }
 
 .campaign_team_content {
@@ -9366,5 +9419,27 @@ select:focus {
   letter-spacing: -0.1px;
   color: #4A5464;
   margin-bottom: 10px;
+}
+
+.login-modal-content {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px !important;
+  border: none !important;
+  padding: 20px 52px 52px 52px;
+}
+
+@media only screen and (max-width: 644px) {
+  .login-modal-content {
+    width: 100% !important;
+    padding: 12px 12px 40px 12px;
+  }
+}
+
+.login-modal-dialog {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-left: 17px;
 }
 

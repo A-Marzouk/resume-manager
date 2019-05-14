@@ -44,7 +44,7 @@
           </div>
         </div>
 
-        <div class="form-group" style="margin-top: 36px;">
+        <div class="form-group d-flex justify-content-start" style="margin-top: 36px;">
           <div class="checkbox">
             <label class="checkBoxText checkBoxContainer">
               <input type="checkbox" name="remember" v-model="formData.remember">
@@ -91,7 +91,7 @@
         this.canSubmit = false;
         axios.post('/client/login/submit',this.formData).then( (response) => {
           if(response.data.status === 'success'){
-            // redirect to client dashboard
+            // redirect to dashboard
             window.location.href =response.data.redirect ;
           }
           this.errors = response.data.errors;

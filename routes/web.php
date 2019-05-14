@@ -90,7 +90,7 @@ Route::prefix('freelancer')->group(function (){
     // Route::get('/','FreelancersController@showEditForm')->name('show.edit_form');
 
     // frontend routes
-    Route::get('/','FreelancersController@index')->name('freelancer.dashboard');
+    Route::get('/dashboard/{any?}','FreelancersController@index')->name('freelancer.dashboard');
     
     Route::post('/store','UserDataController@store')->name('freelancer.data.store');
     Route::get('/store',function(){
@@ -101,7 +101,7 @@ Route::prefix('freelancer')->group(function (){
         return redirect()->back();
     });
     
-    Route::get('/register', 'Auth\FreelancerRegisterController@showRegistrationForm')->name('freelancer.register');
+    Route::get('/register/{any?}', 'Auth\FreelancerRegisterController@showRegistrationForm')->name('freelancer.register');
     Route::post('/register/submit','Auth\RegisterController@register')->name('freelancer.register.submit');
     Route::get('/register/submit',function(){
         return redirect()->back();

@@ -3,7 +3,7 @@
         <div class="account-info-edit-wrapper">
             <nav class="navbar navbar-light fixed-top dashboard_navbar">
                 <div class="backBtn">
-                    <a href="/freelancer">
+                    <a href="/freelancer/dashboard">
                         <img src="/images/client/arrow_back.png" alt="back-icon">
                     </a>
                     BECOME AN AGENT

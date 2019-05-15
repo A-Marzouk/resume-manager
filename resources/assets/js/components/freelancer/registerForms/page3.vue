@@ -15,7 +15,7 @@
         </div>
         <div class="account-edit-section-inputs">
             <div class="faq-question-input account-edit-input">
-                <label class="faq-input-description">
+                <label class="faq-input-description" style="margin-bottom: 30px;">
                     Please upload a short audio recording describing your previous experience in Customer service and Sales (ideal recording length is from 1 to 2 minutes). File must be in .mp3 format and no more than 45 MB.
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.voiceRecorder}">

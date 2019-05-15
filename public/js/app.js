@@ -78965,11 +78965,18 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "account-edit-section-inputs" }, [
         _c("div", { staticClass: "faq-question-input account-edit-input" }, [
-          _c("label", { staticClass: "faq-input-description" }, [
-            _vm._v(
-              "\n                  Please upload a short audio recording describing your previous experience in Customer service and Sales (ideal recording length is from 1 to 2 minutes). File must be in .mp3 format and no more than 45 MB.\n              "
-            )
-          ]),
+          _c(
+            "label",
+            {
+              staticClass: "faq-input-description",
+              staticStyle: { "margin-bottom": "30px" }
+            },
+            [
+              _vm._v(
+                "\n                  Please upload a short audio recording describing your previous experience in Customer service and Sales (ideal recording length is from 1 to 2 minutes). File must be in .mp3 format and no more than 45 MB.\n              "
+              )
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -79349,51 +79356,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['changeStep', 'getData'],
     data: function data() {
         return {
             resumeData: {
-                voiceRecorder: '',
-                resumeFile: ''
+                profilePicture: ''
             },
-            isALinkRecorder: false,
             canSubmit: true,
             errors: []
         };
@@ -79402,6 +79372,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     methods: {
         nextStep: function nextStep(e) {
             e.preventDefault();
+            this.canSubmit = true;
             if (this.canSubmit) {
                 this.getData({ resumeData: _extends({}, this.resumeData) });
                 this.changeStep(5);
@@ -79473,140 +79444,35 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "account-edit-section-inputs" }, [
-        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
-          _c("label", { staticClass: "faq-input-description" }, [
-            _vm._v(
-              "\n                  Please upload a short audio recording describing your previous experience in Customer service and Sales (ideal recording length is from 1 to 2 minutes). File must be in .mp3 format and no more than 45 MB.\n              "
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "faq-input",
-              class: { "error-input": _vm.errors.voiceRecorder }
-            },
-            [
-              _c("div", { staticClass: "form-group form-center" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "fake-radio-option",
-                    class: { checked: !_vm.isALinkRecorder }
-                  },
-                  [_c("div", { staticClass: "inner-circle" })]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "radio-option",
-                  attrs: {
-                    type: "radio",
-                    name: "voiceRecorder",
-                    id: "voiceRecorder"
-                  },
-                  domProps: { checked: !_vm.isALinkRecorder },
-                  on: {
-                    click: function($event) {
-                      _vm.isALinkRecorder = false
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "" } }, [_vm._v("Upload a file")])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "faq-input",
-              class: { "error-input": _vm.errors.voiceRecorder }
-            },
-            [
-              _c("div", { staticClass: "form-group form-center" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "fake-radio-option",
-                    class: { checked: _vm.isALinkRecorder }
-                  },
-                  [_c("div", { staticClass: "inner-circle" })]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "radio-option",
-                  attrs: {
-                    type: "radio",
-                    name: "voiceRecorder",
-                    id: "voiceRecorder"
-                  },
-                  domProps: { checked: _vm.isALinkRecorder },
-                  on: {
-                    click: function($event) {
-                      _vm.isALinkRecorder = true
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("label", { attrs: { for: "" } }, [_vm._v("Share a link")])
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        !_vm.isALinkRecorder
-          ? _c(
-              "div",
-              {
-                staticClass: "account-edit-section-edit-btn no-decoration",
-                class: { "disabled-btn": !_vm.canSubmit }
-              },
-              [_vm._m(1)]
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.isALinkRecorder
-          ? _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "faq-input",
-                    class: { "error-input": _vm.errors.primaryJob }
-                  },
-                  [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        placeholder: "Insert link here..."
-                      }
-                    })
-                  ]
-                )
-              ]
-            )
-          : _vm._e()
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "account-edit-section" }, [
-      _c("div", { staticClass: "account-edit-section-heading" }, [
-        _vm._v("\n          RESUME\n      ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "account-edit-section-inputs" }, [
-        _vm._m(2),
+        _vm._m(1),
         _vm._v(" "),
         _c(
           "div",
           {
-            staticClass: "account-edit-section-edit-btn no-decoration",
-            class: { "disabled-btn": !_vm.canSubmit }
+            staticClass:
+              "account-edit-section-edit-btn no-decoration picture-box",
+            class: { "disabled-btn": !_vm.canSubmit },
+            attrs: { id: "dropbox" }
           },
-          [_vm._m(3)]
+          [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("p", { staticClass: "dz-message" }, [
+              _vm._v("Drag and drop a photo you want to upload")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "fake-file-input btn btn-orange dz-input" },
+              [_vm._v("\n                  CHOOSE A FILE\n              ")]
+            ),
+            _vm._v(" "),
+            _c("p", { staticClass: "dz-message little" }, [
+              _vm._v("Maximum allowed size is 45 MB")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dropzone", attrs: { id: "dropzone" } })
+          ]
         )
       ])
     ]),
@@ -79658,22 +79524,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "fake-file-input btn" }, [
-      _c("input", { attrs: { type: "file", id: "voiceRecorder" } }),
-      _vm._v("\n                  UPLOAD A FILE\n              ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "faq-question-input account-edit-input faq-description" },
+      { staticClass: "faq-question-input account-edit-input full-width" },
       [
         _c("label", { staticClass: "faq-input-description" }, [
           _vm._v(
-            "\n                  Please upload your resume. Only .pdf files are allowed.\n              "
+            "\n                  Please upload a picture of yourself. There should be only your face\n              "
           )
         ])
       ]
@@ -79683,9 +79540,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "fake-file-input btn" }, [
-      _c("input", { attrs: { type: "file", id: "resumeFile" } }),
-      _vm._v("\n                  UPLOAD A FILE\n              ")
+    return _c("div", { staticClass: "fallback" }, [
+      _c("input", { attrs: { type: "file", id: "photo", name: "photo" } })
     ])
   }
 ]

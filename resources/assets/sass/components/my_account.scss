@@ -180,8 +180,14 @@
 }
 
 .faq-question-input.account-edit-input{
+  &.full-width {
+    width: 100%;
+  }
+
   .faq-input{
     width:400px;
+
+
     @media (max-width:1240px) {
       width:307px;
     }
@@ -286,6 +292,27 @@
   display: flex;
   justify-content: flex-end;
   height: auto;
+  position: relative;
+
+  &.picture-box {
+    border: 2px $l-blue dashed;
+    background-color: #F2FBFF;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 4px;
+    width: 384px;
+    height: 222px;
+
+    input[type='file'] {
+      display: none;
+    }
+
+    &.file-upload {
+      border: 0;
+      background-color: transparent;
+    }
+  }
 
   a {
     background-color: $l-blue;
@@ -293,6 +320,23 @@
     padding: 10px;
     text-align: center;
     width: 150px;
+    border-radius: 4px;
+
+    &.dz-remove {
+      color: $l-blue;
+      background-color: #fff;
+      border: 2px solid $l-blue;
+      margin-top: 20px;
+      position: absolute;
+      bottom: 10px;
+      // height: 60px;
+      width: 200px;
+      font-weight: 500;
+
+      &:hover {
+        color: $l-blue;
+      }
+    }
   }
 }
 
@@ -343,6 +387,10 @@
     font-weight: normal;
   }
 
+  &.btn-orange {
+    background-color: #FFA368;
+  }
+
   &:hover {
     cursor: pointer;
   }
@@ -383,5 +431,32 @@
 
   &:hover {
     text-decoration: none;
+  }
+}
+
+.dropzone {
+  background: transparent;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.dz-preview {
+  height: 200px;
+  position: relative;
+  
+  .dz-image {
+    width: 120px;
+    height: 120px;
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  .dz-details,
+  .dz-error-message,
+  .dz-error-mark,
+  .dz-success-mark {
+    display: none;
   }
 }

@@ -7409,6 +7409,10 @@ body {
   }
 }
 
+.faq-question-input.account-edit-input.full-width {
+  width: 100%;
+}
+
 .faq-question-input.account-edit-input .faq-input {
   width: 400px;
 }
@@ -7554,6 +7558,33 @@ body {
       -ms-flex-pack: end;
           justify-content: flex-end;
   height: auto;
+  position: relative;
+}
+
+.account-edit-section-edit-btn.picture-box {
+  border: 2px #218dce dashed;
+  background-color: #F2FBFF;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 4px;
+  width: 384px;
+  height: 222px;
+}
+
+.account-edit-section-edit-btn.picture-box input[type='file'] {
+  display: none;
+}
+
+.account-edit-section-edit-btn.picture-box.file-upload {
+  border: 0;
+  background-color: transparent;
 }
 
 .account-edit-section-edit-btn a {
@@ -7562,6 +7593,22 @@ body {
   padding: 10px;
   text-align: center;
   width: 150px;
+  border-radius: 4px;
+}
+
+.account-edit-section-edit-btn a.dz-remove {
+  color: #218dce;
+  background-color: #fff;
+  border: 2px solid #218dce;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 10px;
+  width: 200px;
+  font-weight: 500;
+}
+
+.account-edit-section-edit-btn a.dz-remove:hover {
+  color: #218dce;
 }
 
 .step-footer {
@@ -7635,6 +7682,10 @@ body {
   font-weight: normal;
 }
 
+.fake-file-input.btn-orange {
+  background-color: #FFA368;
+}
+
 .fake-file-input:hover {
   cursor: pointer;
 }
@@ -7675,6 +7726,34 @@ body {
 
 .faq-question-input .faq-input .recording-button:hover {
   text-decoration: none;
+}
+
+.dropzone {
+  background: transparent;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.dz-preview {
+  height: 200px;
+  position: relative;
+}
+
+.dz-preview .dz-image {
+  width: 120px;
+  height: 120px;
+}
+
+.dz-preview .dz-image img {
+  border-radius: 50%;
+}
+
+.dz-preview .dz-details,
+.dz-preview .dz-error-message,
+.dz-preview .dz-error-mark,
+.dz-preview .dz-success-mark {
+  display: none;
 }
 
 .flags-dropdown {

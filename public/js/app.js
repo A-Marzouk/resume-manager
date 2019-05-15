@@ -76428,196 +76428,197 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-				props: ['changeStep', 'getData'],
-				components: {
-								'flag-dropdown': __WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue___default.a
-				},
-				data: function data() {
-								return {
-												personalData: {
-																name: '',
-																surname: '',
-																gender: '',
-																phone: '',
-																email: '',
-																timeZone: '',
-																cityName: '',
-																paypal: ''
-												},
-												canSubmit: false,
-												errors: {
-																name: '',
-																surname: '',
-																gender: '',
-																phone: '',
-																email: '',
-																timeZone: '',
-																cityName: '',
-																paypal: ''
-												},
-												showErrors: false
-								};
-				},
+    props: ['changeStep', 'getData'],
+    components: {
+        'flag-dropdown': __WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue___default.a
+    },
+    data: function data() {
+        return {
+            personalData: {
+                name: '',
+                surname: '',
+                gender: '',
+                phone: '',
+                email: '',
+                timeZone: '',
+                cityName: '',
+                paypal: ''
+            },
+            canSubmit: false,
+            errors: {
+                name: '',
+                surname: '',
+                gender: '',
+                phone: '',
+                email: '',
+                timeZone: '',
+                cityName: '',
+                paypal: ''
+            },
+            showErrors: false
+        };
+    },
 
-				methods: {
-								nextStep: function nextStep(e) {
-												e.preventDefault();
-												// this.canSubmit = true
-												if (this.noErrors()) {
-																this.getData({ personalData: _extends({}, this.personalData) });
-																this.$router.push('/freelancer/register/page2');
-												} else this.showErrors = true;
-								},
-								noErrors: function noErrors() {
-												var noErrorsName = this.noErrorsName();
-												var noErrorsPhone = this.noErrorsPhone();
-												var noErrorsEmail = this.noErrorsEmail();
-												var noErrorsPaypal = this.noErrorsPaypal();
-												var noErrorsGender = this.noErrorsGender();
-												var noErrorsSurname = this.noErrorsSurname();
-												var noErrorsTimeZone = this.noErrorsTimeZone();
-												var noErrorsCityName = this.noErrorsCityName();
+    methods: {
+        nextStep: function nextStep(e) {
+            e.preventDefault();
+            // this.canSubmit = true
+            if (this.noErrors()) {
+                this.getData({ personalData: _extends({}, this.personalData) });
+                this.$router.push('/freelancer/register/page2');
+            } else this.showErrors = true;
+        },
+        noErrors: function noErrors() {
+            var noErrorsName = this.noErrorsName();
+            var noErrorsPhone = this.noErrorsPhone();
+            var noErrorsEmail = this.noErrorsEmail();
+            var noErrorsPaypal = this.noErrorsPaypal();
+            var noErrorsGender = this.noErrorsGender();
+            var noErrorsSurname = this.noErrorsSurname();
+            var noErrorsTimeZone = this.noErrorsTimeZone();
+            var noErrorsCityName = this.noErrorsCityName();
 
-												return noErrorsName && noErrorsPhone && noErrorsEmail && noErrorsPaypal && noErrorsGender && noErrorsSurname && noErrorsTimeZone && noErrorsCityName;
-								},
-								noErrorsName: function noErrorsName() {
-												var valid = true;
+            return noErrorsName && noErrorsPhone && noErrorsEmail && noErrorsPaypal && noErrorsGender && noErrorsSurname && noErrorsTimeZone && noErrorsCityName;
+        },
+        noErrorsName: function noErrorsName() {
+            var valid = true;
 
-												// Empty field
-												if (this.personalData.name.trim() === '') {
-																valid = false;
-																this.errors.name = 'Please, enter your name';
-												} else this.errors.name = '';
-												// Invalid characters (?)
-												return valid;
-								},
-								noErrorsSurname: function noErrorsSurname() {
-												var valid = true;
+            // Empty field
+            if (this.personalData.name.trim() === '') {
+                valid = false;
+                this.errors.name = 'Please, enter your name';
+            } else this.errors.name = '';
+            // Invalid characters (?)
+            return valid;
+        },
+        noErrorsSurname: function noErrorsSurname() {
+            var valid = true;
 
-												// Empty field
-												if (this.personalData.surname.trim() === '') {
-																valid = false;
-																this.errors.surname = 'Please, enter your surname';
-												} else this.errors.surname = '';
-												// Invalid characters (?)
-												return valid;
-								},
-								noErrorsGender: function noErrorsGender() {
-												var valid = true;
+            // Empty field
+            if (this.personalData.surname.trim() === '') {
+                valid = false;
+                this.errors.surname = 'Please, enter your surname';
+            } else this.errors.surname = '';
 
-												// Empty field
-												if (this.personalData.gender.trim() === '') {
-																valid = false;
-																this.errors.gender = 'Choose a gender';
-												} else this.errors.gender = '';
+            // Invalid characters (?)
+            return valid;
+        },
+        noErrorsGender: function noErrorsGender() {
+            var valid = true;
 
-												return valid;
-								},
-								noErrorsPhone: function noErrorsPhone() {
-												var valid = true;
-												var phoneFormat = /[0-9]{1,3}-[0-9]{7}/;
+            // Empty field
+            if (this.personalData.gender.trim() === '') {
+                valid = false;
+                this.errors.gender = 'Choose a gender';
+            } else this.errors.gender = '';
 
-												if (this.personalData.phone.trim() === '') {
-																// Empty field
-																valid = false;
-																this.errors.phone = 'Please enter your phone number';
-												} else if (!phoneFormat.test(this.personalData.phone)) {
-																// Review the regExp
-																valid = false;
-																this.errors.phone = 'This not a valid phone number format';
-												} else this.errors.phone = '';
+            return valid;
+        },
+        noErrorsPhone: function noErrorsPhone() {
+            var valid = true;
+            var phoneFormat = /[0-9]{1,3}-[0-9]{7}/;
 
-												return valid;
-								},
-								noErrorsEmail: function noErrorsEmail() {
-												var valid = true;
-												var emailFormat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+            if (this.personalData.phone.trim() === '') {
+                // Empty field
+                valid = false;
+                this.errors.phone = 'Please enter your phone number';
+            } else if (!phoneFormat.test(this.personalData.phone)) {
+                // Review the regExp
+                valid = false;
+                this.errors.phone = 'This not a valid phone number format';
+            } else this.errors.phone = '';
 
-												if (this.personalData.email.trim() === '') {
-																// Empty field
-																valid = false;
-																this.errors.email = 'Please, enter your email';
-												} else if (!emailFormat.test(this.personalData.email)) {
-																valid = false;
-																this.errors.email = 'This email not has a valid format. Please check again';
-												} else this.errors.email = '';
+            return valid;
+        },
+        noErrorsEmail: function noErrorsEmail() {
+            var valid = true;
+            var emailFormat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
-												return valid;
-								},
-								noErrorsTimeZone: function noErrorsTimeZone() {
-												var valid = true;
+            if (this.personalData.email.trim() === '') {
+                // Empty field
+                valid = false;
+                this.errors.email = 'Please, enter your email';
+            } else if (!emailFormat.test(this.personalData.email)) {
+                valid = false;
+                this.errors.email = 'This email not has a valid format. Please check again';
+            } else this.errors.email = '';
 
-												if (this.personalData.timeZone.trim() === '') {
-																// Empty field
-																valid = false;
-																this.errors.timeZone = 'Please, select a time zone';
-												} else this.errors.timeZone = '';
+            return valid;
+        },
+        noErrorsTimeZone: function noErrorsTimeZone() {
+            var valid = true;
 
-												return valid;
-								},
-								noErrorsCityName: function noErrorsCityName() {
-												var valid = true;
+            if (this.personalData.timeZone.trim() === '') {
+                // Empty field
+                valid = false;
+                this.errors.timeZone = 'Please, select a time zone';
+            } else this.errors.timeZone = '';
 
-												if (this.personalData.cityName.trim() === '') {
-																// Empty field
-																valid = false;
-																this.errors.cityName = 'Please, enter a city';
-												} else this.errors.cityName = '';
+            return valid;
+        },
+        noErrorsCityName: function noErrorsCityName() {
+            var valid = true;
 
-												return valid;
-								},
-								noErrorsPaypal: function noErrorsPaypal() {
-												var valid = true;
+            if (this.personalData.cityName.trim() === '') {
+                // Empty field
+                valid = false;
+                this.errors.cityName = 'Please, enter a city';
+            } else this.errors.cityName = '';
 
-												if (this.personalData.paypal.trim() === '') {
-																// Empty field
-																valid = false;
-																this.errors.paypal = 'Please, enter your paypal id';
-												} else this.errors.paypal = '';
+            return valid;
+        },
+        noErrorsPaypal: function noErrorsPaypal() {
+            var valid = true;
 
-												return valid;
-								}
-				},
-				watch: {
-								personalData: {
-												handler: function handler() {
-																// check if all personalData values are filled
-																var keys = Object.keys(this.personalData);
-																var isAll_filled = true;
-																var _iteratorNormalCompletion = true;
-																var _didIteratorError = false;
-																var _iteratorError = undefined;
+            if (this.personalData.paypal.trim() === '') {
+                // Empty field
+                valid = false;
+                this.errors.paypal = 'Please, enter your paypal id';
+            } else this.errors.paypal = '';
 
-																try {
-																				for (var _iterator = keys[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-																								var key = _step.value;
+            return valid;
+        }
+    },
+    watch: {
+        personalData: {
+            handler: function handler() {
+                // check if all personalData values are filled
+                var keys = Object.keys(this.personalData);
+                var isAll_filled = true;
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
 
-																								if (this.personalData[key].trim().length < 1) {
-																												isAll_filled = false;
-																												break;
-																								}
-																				}
-																} catch (err) {
-																				_didIteratorError = true;
-																				_iteratorError = err;
-																} finally {
-																				try {
-																								if (!_iteratorNormalCompletion && _iterator.return) {
-																												_iterator.return();
-																								}
-																				} finally {
-																								if (_didIteratorError) {
-																												throw _iteratorError;
-																								}
-																				}
-																}
+                try {
+                    for (var _iterator = keys[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var key = _step.value;
 
-																this.canSubmit = isAll_filled;
-												},
+                        if (this.personalData[key].trim().length < 1) {
+                            isAll_filled = false;
+                            break;
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
 
-												deep: true
-								}
-				}
+                this.canSubmit = isAll_filled;
+            },
+
+            deep: true
+        }
+    }
 });
 
 /***/ }),
@@ -78026,15 +78027,87 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             },
             inputTechs: '',
             canSubmit: false,
-            errors: []
+            showErrors: false,
+            errors: {
+                primaryJob: '',
+                sector: '',
+                voice: '',
+                hoursPerWeek: '',
+                techs: '',
+                lang: ''
+            }
         };
     },
 
     methods: {
+        noErrors: function noErrors() {
+            var noErrorsPrimaryJob = this.noErrorsPrimaryJob();
+            var noErrorsSector = this.noErrorsSector();
+            var noErrorsVoice = this.noErrorsVoice();
+            var noErrorsHours = this.noErrorsHours();
+            var noErrorsLang = this.noErrorsLang();
+
+            return noErrorsPrimaryJob && noErrorsSector && noErrorsVoice && noErrorsHours && noErrorsLang;
+        },
+        noErrorsPrimaryJob: function noErrorsPrimaryJob() {
+            var valid = true;
+
+            // Empty field
+            if (this.professionalData.primaryJob.trim() === '') {
+                valid = false;
+                this.errors.primaryJob = 'Please, fill this field';
+            } else this.errors.primaryJob = '';
+            // Invalid characters (?)
+            return valid;
+        },
+        noErrorsSector: function noErrorsSector() {
+            var valid = true;
+
+            // Empty field
+            if (this.professionalData.sector.trim() === '') {
+                valid = false;
+                this.errors.sector = 'Please, fill this field';
+            } else this.errors.sector = '';
+            // Invalid characters (?)
+            return valid;
+        },
+        noErrorsVoice: function noErrorsVoice() {
+            var valid = true;
+
+            // Empty field
+            if (this.professionalData.voice.trim() === '') {
+                valid = false;
+                this.errors.voice = 'Please, fill this field';
+            } else this.errors.voice = '';
+            // Invalid characters (?)
+            return valid;
+        },
+        noErrorsHours: function noErrorsHours() {
+            var valid = true;
+
+            // Empty field
+            if (this.professionalData.hoursPerWeek.trim() === '') {
+                valid = false;
+                this.errors.hoursPerWeek = 'Indicate how many hours do you work';
+            } else this.errors.hoursPerWeek = '';
+            // Invalid characters (?)
+            return valid;
+        },
+        noErrorsLang: function noErrorsLang() {
+            var valid = true;
+
+            // Empty field
+            if (this.professionalData.lang.trim() === '') {
+                valid = false;
+                this.errors.lang = 'Please, fill this field';
+            } else this.errors.lang = '';
+            // Invalid characters (?)
+            return valid;
+        },
         nextStep: function nextStep(e) {
             e.preventDefault();
             this.canSubmit = true;
-            if (this.canSubmit) {
+            if (this.noErrors()) {
                 this.getData({ professionalData: _extends({}, this.professionalData) });
                 this.changeStep(3);
                 this.$router.push('/freelancer/register/page3');
@@ -78180,11 +78253,11 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.errors.primaryJob
+          _vm.showErrors && _vm.errors.primaryJob
             ? _c("div", { staticClass: "error" }, [
                 _vm._v(
                   "\n                  " +
-                    _vm._s(_vm.errors.primaryJob[0]) +
+                    _vm._s(_vm.errors.primaryJob) +
                     "\n              "
                 )
               ])
@@ -78256,11 +78329,11 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.errors.sector
+          _vm.showErrors && _vm.errors.sector
             ? _c("div", { staticClass: "error" }, [
                 _vm._v(
                   "\n                  " +
-                    _vm._s(_vm.errors.sector[0]) +
+                    _vm._s(_vm.errors.sector) +
                     "\n              "
                 )
               ])
@@ -78328,11 +78401,11 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.errors.voice
+          _vm.showErrors && _vm.errors.voice
             ? _c("div", { staticClass: "error" }, [
                 _vm._v(
                   "\n                  " +
-                    _vm._s(_vm.errors.voice[0]) +
+                    _vm._s(_vm.errors.voice) +
                     "\n              "
                 )
               ])
@@ -78404,11 +78477,11 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.errors.hoursPerWeek
+          _vm.showErrors && _vm.errors.hoursPerWeek
             ? _c("div", { staticClass: "error" }, [
                 _vm._v(
                   "\n                  " +
-                    _vm._s(_vm.errors.hoursPerWeek[0]) +
+                    _vm._s(_vm.errors.hoursPerWeek) +
                     "\n              "
                 )
               ])
@@ -78513,11 +78586,11 @@ var render = function() {
             2
           ),
           _vm._v(" "),
-          _vm.errors.techs
+          _vm.showErrors && _vm.errors.techs
             ? _c("div", { staticClass: "error" }, [
                 _vm._v(
                   "\n                  " +
-                    _vm._s(_vm.errors.techs[0]) +
+                    _vm._s(_vm.errors.techs) +
                     "\n              "
                 )
               ])
@@ -78542,11 +78615,11 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm.errors.lang
+          _vm.showErrors && _vm.errors.lang
             ? _c("div", { staticClass: "error" }, [
                 _vm._v(
                   "\n                  " +
-                    _vm._s(_vm.errors.lang[0]) +
+                    _vm._s(_vm.errors.lang) +
                     "\n              "
                 )
               ])

@@ -218,133 +218,134 @@ export default {
   },
   methods: {
       nextStep (e) {
-				e.preventDefault()
-								// this.canSubmit = true
-				if (this.noErrors()) {
-					this.getData({ personalData: { ...this.personalData }})
-					this.$router.push('/freelancer/register/page2')
-				} else
-					this.showErrors = true
+        e.preventDefault()
+        // this.canSubmit = true
+        if (this.noErrors()) {
+            this.getData({ personalData: { ...this.personalData }})
+            this.$router.push('/freelancer/register/page2')
+        } else
+            this.showErrors = true
 
       },
       noErrors () {
-					let noErrorsName = this.noErrorsName()
-					let noErrorsPhone = this.noErrorsPhone()
-					let noErrorsEmail = this.noErrorsEmail()
-					let noErrorsPaypal = this.noErrorsPaypal()
-					let noErrorsGender = this.noErrorsGender()
-					let noErrorsSurname = this.noErrorsSurname()
-					let noErrorsTimeZone = this.noErrorsTimeZone()
-					let noErrorsCityName = this.noErrorsCityName()
+        let noErrorsName = this.noErrorsName()
+        let noErrorsPhone = this.noErrorsPhone()
+        let noErrorsEmail = this.noErrorsEmail()
+        let noErrorsPaypal = this.noErrorsPaypal()
+        let noErrorsGender = this.noErrorsGender()
+        let noErrorsSurname = this.noErrorsSurname()
+        let noErrorsTimeZone = this.noErrorsTimeZone()
+        let noErrorsCityName = this.noErrorsCityName()
 
-          return (
+        return (
             noErrorsName &&
-						noErrorsPhone &&
-						noErrorsEmail &&
-						noErrorsPaypal &&
-						noErrorsGender &&
-						noErrorsSurname &&
-						noErrorsTimeZone &&
-						noErrorsCityName
-          )
+            noErrorsPhone &&
+            noErrorsEmail &&
+            noErrorsPaypal &&
+            noErrorsGender &&
+            noErrorsSurname &&
+            noErrorsTimeZone &&
+            noErrorsCityName
+        )
       },
       noErrorsName () {
-				let valid = true 
-				
-				// Empty field
-				if (this.personalData.name.trim() === '') {
-					valid = false
-					this.errors.name = 'Please, enter your name'
-				} else this.errors.name  = ''
-				// Invalid characters (?)
-				return valid
+        let valid = true 
+        
+        // Empty field
+        if (this.personalData.name.trim() === '') {
+            valid = false
+            this.errors.name = 'Please, enter your name'
+        } else this.errors.name  = ''
+        // Invalid characters (?)
+        return valid
       },
       noErrorsSurname () {
-          let valid = true
+        let valid = true
 
-          // Empty field
-          if (this.personalData.surname.trim() === '') {
-						valid = false
-						this.errors.surname = 'Please, enter your surname'
-					} else this.errors.surname = ''
-          // Invalid characters (?)
-          return valid
+        // Empty field
+        if (this.personalData.surname.trim() === '') {
+            valid = false
+            this.errors.surname = 'Please, enter your surname'
+        } else this.errors.surname = ''
+        
+        // Invalid characters (?)
+        return valid
       },
       noErrorsGender () {
-          let valid = true
+        let valid = true
 
-          // Empty field
-          if (this.personalData.gender.trim() === '') {
-						valid = false
-						this.errors.gender = 'Choose a gender'
-					} else this.errors.gender = ''
+        // Empty field
+        if (this.personalData.gender.trim() === '') {
+            valid = false
+            this.errors.gender = 'Choose a gender'
+        } else this.errors.gender = ''
           
-          return valid
+        return valid
       },
       noErrorsPhone () {
-				let valid = true
-				let phoneFormat = /[0-9]{1,3}-[0-9]{7}/
+            let valid = true
+            let phoneFormat = /[0-9]{1,3}-[0-9]{7}/
 
-				if (this.personalData.phone.trim() === '') {
-					// Empty field
-					valid = false
-					this.errors.phone = 'Please enter your phone number'
-				} else if (!phoneFormat.test(this.personalData.phone)) {
-					// Review the regExp
-					valid = false
-					this.errors.phone = 'This not a valid phone number format'
-				} else this.errors.phone = ''
-				
-				return valid
-			},
-			noErrorsEmail () {
-				let valid = true
-				let emailFormat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+            if (this.personalData.phone.trim() === '') {
+                // Empty field
+                valid = false
+                this.errors.phone = 'Please enter your phone number'
+            } else if (!phoneFormat.test(this.personalData.phone)) {
+                // Review the regExp
+                valid = false
+                this.errors.phone = 'This not a valid phone number format'
+            } else this.errors.phone = ''
+            
+            return valid
+        },
+        noErrorsEmail () {
+            let valid = true
+            let emailFormat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
 
-				if (this.personalData.email.trim() === '') {
-					// Empty field
-					valid = false
-					this.errors.email = 'Please, enter your email'
-				} else if (!emailFormat.test(this.personalData.email)) {
-					valid = false
-					this.errors.email = 'This email not has a valid format. Please check again'
-				} else this.errors.email = ''
+            if (this.personalData.email.trim() === '') {
+                // Empty field
+                valid = false
+                this.errors.email = 'Please, enter your email'
+            } else if (!emailFormat.test(this.personalData.email)) {
+                valid = false
+                this.errors.email = 'This email not has a valid format. Please check again'
+            } else this.errors.email = ''
 
-				return valid
-			},
-			noErrorsTimeZone () {
-				let valid = true
-				
-				if (this.personalData.timeZone.trim() === '') {
-					// Empty field
-					valid = false
-					this.errors.timeZone = 'Please, select a time zone'
-				} else this.errors.timeZone = ''
+            return valid
+        },
+        noErrorsTimeZone () {
+            let valid = true
+            
+            if (this.personalData.timeZone.trim() === '') {
+                // Empty field
+                valid = false
+                this.errors.timeZone = 'Please, select a time zone'
+            } else this.errors.timeZone = ''
 
-				return valid
-			},
-			noErrorsCityName () {
-				let valid = true
+            return valid
+        },
+        noErrorsCityName () {
+            let valid = true
 
-				if (this.personalData.cityName.trim() === '') {
-					// Empty field
-					valid = false
-					this.errors.cityName = 'Please, enter a city'
-				} else this.errors.cityName = ''
+            if (this.personalData.cityName.trim() === '') {
+                // Empty field
+                valid = false
+                this.errors.cityName = 'Please, enter a city'
+            } else this.errors.cityName = ''
 
-				return valid
-			},
-			noErrorsPaypal () {
-				let valid = true
+            return valid
+        },
+        noErrorsPaypal () {
+            let valid = true
 
-				if (this.personalData.paypal.trim() === '') {
-					// Empty field
-					valid = false
-					this.errors.paypal = 'Please, enter your paypal id'
-				} else this.errors.paypal = ''
+            if (this.personalData.paypal.trim() === '') {
+                // Empty field
+                valid = false
+                this.errors.paypal = 'Please, enter your paypal id'
+            } else this.errors.paypal = ''
 
-				return valid
-			}
+            return valid
+        }
   },
   watch: {
         personalData: {

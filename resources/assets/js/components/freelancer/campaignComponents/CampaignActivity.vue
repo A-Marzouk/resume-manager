@@ -99,8 +99,8 @@
           <div class="data-logs">
             <datepicker>
               <a href="javascript:void(0)" data-toggle="modal" data-target="#pick-date-modal" @click.once="setDatePicker" >
-                                <img src="/images/client/campaign_activity/pick_date.png" alt="pick date">
-                            </a>
+                  <img src="/images/client/campaign_activity/pick_date.png" alt="pick date">
+              </a>
             </datepicker>
             <div class="lineDivide"></div>
             <div class="member-logs-empty"

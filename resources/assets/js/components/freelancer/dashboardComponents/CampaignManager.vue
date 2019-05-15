@@ -151,6 +151,9 @@
                 <a href="/freelancer/campaign">
                     GO TO CAMPAIGN
                 </a>
+                <a class="add-entry" href="#">
+                    <img src="/images/client/close_24px.png" alt="plus sign" /> ADD ENTRY
+                </a>
             </div>
         </div>
         <div class="content-block-campaign-brief">
@@ -296,6 +299,9 @@
             <div class="campaign-brief-footer">
                 <a :href="rootLink">
                     GO TO CAMPAIGN
+                </a>
+                <a class="add-entry" href="#">
+                    <img src="/images/client/close_24px.png" alt="plus sign" /> ADD ENTRY
                 </a>
             </div>
         </div>

@@ -147,7 +147,7 @@
             </div>
 
             <div class="campaign-brief-footer">
-                <a href="/client/campaign">
+                <a href="/freelancer/campaign">
                     GO TO CAMPAIGN
                 </a>
             </div>

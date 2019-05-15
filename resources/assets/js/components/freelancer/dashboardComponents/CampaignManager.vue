@@ -52,9 +52,7 @@
                         9.15 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -66,9 +64,7 @@
                         9.15 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -80,9 +76,7 @@
                         9.15 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -105,9 +99,7 @@
                         9.15 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -119,9 +111,7 @@
                         9.15 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -133,9 +123,7 @@
                         9.15 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -187,9 +175,7 @@
                         9 am - 10 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -201,9 +187,7 @@
                         10 am - 11 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -215,9 +199,7 @@
                         11 am - 12 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -229,9 +211,7 @@
                         11 am - 12 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -254,9 +234,7 @@
                         9 am - 10 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -268,9 +246,7 @@
                         10 am - 11 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -282,9 +258,7 @@
                         11 am - 12 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -315,11 +289,13 @@
 <script>
     import addEntry from './addEntry'
     import addDocument from './addDocument'
+    import statusSelector from '../../status-selector.vue'
 
     export default {
         components: {
             addEntry,
-            addDocument
+            addDocument,
+            'status-selector': statusSelector
         },
         data(){
           return{

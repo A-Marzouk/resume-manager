@@ -74206,7 +74206,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -74221,6 +74221,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__addEntry___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__addEntry__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__addDocument__ = __webpack_require__(149);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__addDocument___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__addDocument__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__status_selector_vue__ = __webpack_require__(444);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__status_selector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__status_selector_vue__);
 //
 //
 //
@@ -74509,32 +74511,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 
@@ -74542,7 +74519,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
         addEntry: __WEBPACK_IMPORTED_MODULE_0__addEntry___default.a,
-        addDocument: __WEBPACK_IMPORTED_MODULE_1__addDocument___default.a
+        addDocument: __WEBPACK_IMPORTED_MODULE_1__addDocument___default.a,
+        'status-selector': __WEBPACK_IMPORTED_MODULE_2__status_selector_vue___default.a
     },
     data: function data() {
         return {
@@ -74610,6 +74588,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__status_selector_vue__ = __webpack_require__(444);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__status_selector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__status_selector_vue__);
 //
 //
 //
@@ -74644,38 +74624,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    'status-selector': __WEBPACK_IMPORTED_MODULE_0__status_selector_vue___default.a
+  },
   data: function data() {
     return {
-      entry: '',
-      showStatusList: false,
-      selectedStatus: 'status-default'
+      entry: ''
     };
-  },
-
-  methods: {
-    printStatus: function printStatus() {
-      var splittedStatusName = this.selectedStatus.split('-');
-      return this.selectedStatus !== 'status-default' ? splittedStatusName[0].charAt(0).toUpperCase() + splittedStatusName[1].charAt(0).toUpperCase() : 'S';
-    }
   }
 });
 
@@ -74692,104 +74652,36 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "entry-input-block" }, [
-        _c("div", { staticClass: "input-container" }, [
-          _c(
-            "div",
-            { staticClass: "status-list", class: { show: _vm.showStatusList } },
-            [
-              _c("div", { staticClass: "status-component" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "icon email-request",
-                    attrs: { href: "javascript:;" },
-                    on: {
-                      click: function($event) {
-                        _vm.selectedStatus = "email-request"
-                      }
-                    }
-                  },
-                  [_vm._v("ER")]
-                ),
-                _vm._v(" "),
-                _vm._m(1)
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "status-component" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "icon call-back",
-                    attrs: { href: "javascript:;" },
-                    on: {
-                      click: function($event) {
-                        _vm.selectedStatus = "call-back"
-                      }
-                    }
-                  },
-                  [_vm._v("CB")]
-                ),
-                _vm._v(" "),
-                _c("span", { staticClass: "icon-name" }, [_vm._v("Call back")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "status-component" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "icon not-interested",
-                    attrs: { href: "javascript:;" },
-                    on: {
-                      click: function($event) {
-                        _vm.selectedStatus = "not-interested"
-                      }
-                    }
-                  },
-                  [_vm._v("NI")]
-                ),
-                _vm._v(" "),
-                _vm._m(2)
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "recording-status icon",
-              class: _vm.selectedStatus,
-              attrs: { href: "javascript:;" },
+        _c(
+          "div",
+          { staticClass: "input-container" },
+          [
+            _c("status-selector"),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.entry,
+                  expression: "entry"
+                }
+              ],
+              staticClass: "entry-input",
+              attrs: { placeholder: "Type your entry here" },
+              domProps: { value: _vm.entry },
               on: {
-                click: function($event) {
-                  _vm.showStatusList = !_vm.showStatusList
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.entry = $event.target.value
                 }
               }
-            },
-            [_vm._v(_vm._s(_vm.printStatus()))]
-          ),
-          _vm._v(" "),
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.entry,
-                expression: "entry"
-              }
-            ],
-            staticClass: "entry-input",
-            attrs: { placeholder: "Type your entry here" },
-            domProps: { value: _vm.entry },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.entry = $event.target.value
-              }
-            }
-          })
-        ]),
+            })
+          ],
+          1
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "entry-comment" }, [
           _vm._v(
@@ -74797,7 +74689,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm._m(3),
+        _vm._m(1),
         _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
@@ -74841,26 +74733,6 @@ var staticRenderFns = [
       _c("div", { staticClass: "type-entry-label" }, [
         _c("div", { staticClass: "title" }, [_vm._v("Type your entry")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "icon-name" }, [
-      _vm._v("E-mail"),
-      _c("br"),
-      _vm._v("request")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "icon-name" }, [
-      _vm._v("Not"),
-      _c("br"),
-      _vm._v("interested")
     ])
   },
   function() {
@@ -74991,21 +74863,318 @@ var render = function() {
     [
       _vm._m(0),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "content-block-campaign-brief" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "agent-logs-block" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    9.15 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    9.15 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    9.15 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(3)
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "agent-logs-block" }, [
+          _vm._m(4),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    9.15 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    9.15 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    9.15 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(5)
+        ]),
+        _vm._v(" "),
+        _vm._m(6)
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "content-block-campaign-brief" }, [
-        _vm._m(2),
+        _vm._m(7),
         _vm._v(" "),
-        _vm._m(3),
+        _c("div", { staticClass: "agent-logs-block" }, [
+          _vm._m(8),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    9 am - 10 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    10 am - 11 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    11 am - 12 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    11 am - 12 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(9)
+        ]),
         _vm._v(" "),
-        _vm._m(4),
+        _c("div", { staticClass: "agent-logs-block" }, [
+          _vm._m(10),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    9 am - 10 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    10 am - 11 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    11 am - 12 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(11)
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "campaign-brief-footer" }, [
           _c("a", { attrs: { href: _vm.rootLink } }, [
             _vm._v("\n                GO TO CAMPAIGN\n            ")
           ]),
           _vm._v(" "),
-          _vm._m(5)
+          _vm._m(12)
         ])
       ]),
       _vm._v(" "),
@@ -75062,186 +75231,90 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content-block-campaign-brief" }, [
-      _c("div", { staticClass: "upper-bar" }, [
-        _c("div", { staticClass: "campaignInfo" }, [
-          _c("div", { staticClass: "title" }, [
-            _vm._v(
-              "\n                    Name of the campaign\n                "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "info hideOnXS" }, [
-            _vm._v(
-              "\n                    2 agents on the campaign\n                "
-            )
-          ])
+    return _c("div", { staticClass: "upper-bar" }, [
+      _c("div", { staticClass: "campaignInfo" }, [
+        _c("div", { staticClass: "title" }, [
+          _vm._v("\n                    Name of the campaign\n                ")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "actionBtn" }, [
-          _c("a", { attrs: { href: "#" } }, [
-            _vm._v("\n                    ACTIVE\n                ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "menu-img" }, [
-            _c("img", {
-              attrs: { src: "/images/client/more_vert_24px.png", alt: "menu" }
-            })
-          ])
+        _c("div", { staticClass: "info hideOnXS" }, [
+          _vm._v(
+            "\n                    2 agents on the campaign\n                "
+          )
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "agent-logs-block" }, [
-        _c("div", { staticClass: "agentInfo" }, [
-          _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
-          _vm._v(" "),
-          _c("span", { staticClass: "userName" }, [
-            _vm._v(
-              "\n                            Mohamed Salah\n                        "
-            )
-          ])
+      _c("div", { staticClass: "actionBtn" }, [
+        _c("a", { attrs: { href: "#" } }, [
+          _vm._v("\n                    ACTIVE\n                ")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "log" }, [
-          _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    9.15 am\n                ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log-text" }, [
-            _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "log-text-content" }, [
-              _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log" }, [
-          _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    9.15 am\n                ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log-text" }, [
-            _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "log-text-content" }, [
-              _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log" }, [
-          _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    9.15 am\n                ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log-text" }, [
-            _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "log-text-content" }, [
-              _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "showMoreBtn" }, [
-          _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "agent-logs-block" }, [
-        _c("div", { staticClass: "agentInfo" }, [
-          _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
-          _vm._v(" "),
-          _c("span", { staticClass: "userName" }, [
-            _vm._v(
-              "\n                            Lionel Messi\n                        "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log" }, [
-          _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    9.15 am\n                ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log-text" }, [
-            _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "log-text-content" }, [
-              _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log" }, [
-          _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    9.15 am\n                ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log-text" }, [
-            _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "log-text-content" }, [
-              _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log" }, [
-          _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n                    9.15 am\n                ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log-text" }, [
-            _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                        CB\n                    ")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "log-text-content" }, [
-              _vm._v(
-                "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "showMoreBtn" }, [
-          _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "campaign-brief-footer" }, [
-        _c("a", { attrs: { href: "/freelancer/campaign" } }, [
-          _vm._v("\n                GO TO CAMPAIGN\n            ")
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "add-entry", attrs: { href: "#" } }, [
+        _c("div", { staticClass: "menu-img" }, [
           _c("img", {
-            attrs: { src: "/images/client/close_24px.png", alt: "plus sign" }
-          }),
-          _vm._v(" ADD ENTRY\n            ")
+            attrs: { src: "/images/client/more_vert_24px.png", alt: "menu" }
+          })
         ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "agentInfo" }, [
+      _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
+      _vm._v(" "),
+      _c("span", { staticClass: "userName" }, [
+        _vm._v(
+          "\n                            Mohamed Salah\n                        "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "showMoreBtn" }, [
+      _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "agentInfo" }, [
+      _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
+      _vm._v(" "),
+      _c("span", { staticClass: "userName" }, [
+        _vm._v(
+          "\n                            Lionel Messi\n                        "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "showMoreBtn" }, [
+      _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "campaign-brief-footer" }, [
+      _c("a", { attrs: { href: "/freelancer/campaign" } }, [
+        _vm._v("\n                GO TO CAMPAIGN\n            ")
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "add-entry", attrs: { href: "#" } }, [
+        _c("img", {
+          attrs: { src: "/images/client/close_24px.png", alt: "plus sign" }
+        }),
+        _vm._v(" ADD ENTRY\n            ")
       ])
     ])
   },
@@ -75279,91 +75352,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "agent-logs-block" }, [
-      _c("div", { staticClass: "agentInfo" }, [
-        _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
-        _vm._v(" "),
-        _c("span", { staticClass: "userName" }, [
-          _vm._v(
-            "\n                            Mohamed Salah\n                        "
-          )
-        ])
-      ]),
+    return _c("div", { staticClass: "agentInfo" }, [
+      _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
       _vm._v(" "),
-      _c("div", { staticClass: "log" }, [
-        _c("div", { staticClass: "log-time" }, [
-          _vm._v("\n                    9 am - 10 am\n                ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log-text" }, [
-          _c("span", { staticClass: "agent-initials" }, [
-            _vm._v("\n                        CB\n                    ")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "log-text-content" }, [
-            _vm._v(
-              "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "log" }, [
-        _c("div", { staticClass: "log-time" }, [
-          _vm._v("\n                    10 am - 11 am\n                ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log-text" }, [
-          _c("span", { staticClass: "agent-initials" }, [
-            _vm._v("\n                        CB\n                    ")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "log-text-content" }, [
-            _vm._v(
-              "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "log" }, [
-        _c("div", { staticClass: "log-time" }, [
-          _vm._v("\n                    11 am - 12 am\n                ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log-text" }, [
-          _c("span", { staticClass: "agent-initials" }, [
-            _vm._v("\n                        CB\n                    ")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "log-text-content" }, [
-            _vm._v(
-              "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "log" }, [
-        _c("div", { staticClass: "log-time" }, [
-          _vm._v("\n                    11 am - 12 am\n                ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log-text" }, [
-          _c("span", { staticClass: "agent-initials" }, [
-            _vm._v("\n                        CB\n                    ")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "log-text-content" }, [
-            _vm._v(
-              "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "showMoreBtn" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW LESS")])
+      _c("span", { staticClass: "userName" }, [
+        _vm._v(
+          "\n                            Mohamed Salah\n                        "
+        )
       ])
     ])
   },
@@ -75371,74 +75366,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "agent-logs-block" }, [
-      _c("div", { staticClass: "agentInfo" }, [
-        _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
-        _vm._v(" "),
-        _c("span", { staticClass: "userName" }, [
-          _vm._v(
-            "\n                            Lionel Messi\n                        "
-          )
-        ])
-      ]),
+    return _c("div", { staticClass: "showMoreBtn" }, [
+      _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW LESS")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "agentInfo" }, [
+      _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
       _vm._v(" "),
-      _c("div", { staticClass: "log" }, [
-        _c("div", { staticClass: "log-time" }, [
-          _vm._v("\n                    9 am - 10 am\n                ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log-text" }, [
-          _c("span", { staticClass: "agent-initials" }, [
-            _vm._v("\n                        CB\n                    ")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "log-text-content" }, [
-            _vm._v(
-              "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "log" }, [
-        _c("div", { staticClass: "log-time" }, [
-          _vm._v("\n                    10 am - 11 am\n                ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log-text" }, [
-          _c("span", { staticClass: "agent-initials" }, [
-            _vm._v("\n                        CB\n                    ")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "log-text-content" }, [
-            _vm._v(
-              "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "log" }, [
-        _c("div", { staticClass: "log-time" }, [
-          _vm._v("\n                    11 am - 12 am\n                ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log-text" }, [
-          _c("span", { staticClass: "agent-initials" }, [
-            _vm._v("\n                        CB\n                    ")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "log-text-content" }, [
-            _vm._v(
-              "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "showMoreBtn" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
+      _c("span", { staticClass: "userName" }, [
+        _vm._v(
+          "\n                            Lionel Messi\n                        "
+        )
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "showMoreBtn" }, [
+      _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
     ])
   },
   function() {
@@ -114408,6 +114359,310 @@ new SideNav();
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 441 */,
+/* 442 */,
+/* 443 */,
+/* 444 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(445)
+/* template */
+var __vue_template__ = __webpack_require__(446)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\status-selector.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a6032f5a", Component.options)
+  } else {
+    hotAPI.reload("data-v-a6032f5a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 445 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['status'],
+  data: function data() {
+    return {
+      showStatusList: false,
+      selectedStatus: this.status || 'status-default'
+    };
+  },
+
+  methods: {
+    printStatus: function printStatus() {
+      var splittedStatusName = this.selectedStatus.split('-');
+      return this.selectedStatus !== 'status-default' ? splittedStatusName.length > 1 ? splittedStatusName[0].charAt(0).toUpperCase() + splittedStatusName[1].charAt(0).toUpperCase() : splittedStatusName[0].charAt(0).toUpperCase() : 'S';
+    }
+  }
+});
+
+/***/ }),
+/* 446 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "status-selector-component" }, [
+    _c(
+      "div",
+      { staticClass: "status-list", class: { show: _vm.showStatusList } },
+      [
+        _c("div", { staticClass: "status-component" }, [
+          _c(
+            "a",
+            {
+              staticClass: "icon email-request",
+              attrs: { href: "javascript:;" },
+              on: {
+                click: function($event) {
+                  _vm.selectedStatus = "email-request"
+                }
+              }
+            },
+            [_vm._v("ER")]
+          ),
+          _vm._v(" "),
+          _vm._m(0)
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "status-component" }, [
+          _c(
+            "a",
+            {
+              staticClass: "icon call-back",
+              attrs: { href: "javascript:;" },
+              on: {
+                click: function($event) {
+                  _vm.selectedStatus = "call-back"
+                }
+              }
+            },
+            [_vm._v("CB")]
+          ),
+          _vm._v(" "),
+          _c("span", { staticClass: "icon-name" }, [_vm._v("Call back")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "status-component" }, [
+          _c(
+            "a",
+            {
+              staticClass: "icon not-interested",
+              attrs: { href: "javascript:;" },
+              on: {
+                click: function($event) {
+                  _vm.selectedStatus = "not-interested"
+                }
+              }
+            },
+            [_vm._v("NI")]
+          ),
+          _vm._v(" "),
+          _vm._m(1)
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "status-component" }, [
+          _c(
+            "a",
+            {
+              staticClass: "icon",
+              staticStyle: { background: "#8567FF" },
+              attrs: { href: "javascript:;" },
+              on: {
+                click: function($event) {
+                  _vm.selectedStatus = "appointment-set"
+                }
+              }
+            },
+            [_vm._v("AS")]
+          ),
+          _vm._v(" "),
+          _vm._m(2)
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "status-component" }, [
+          _c(
+            "a",
+            {
+              staticClass: "icon",
+              staticStyle: { background: "#4ABFF1" },
+              attrs: { href: "javascript:;" },
+              on: {
+                click: function($event) {
+                  _vm.selectedStatus = "contacts-received"
+                }
+              }
+            },
+            [_vm._v("CR")]
+          ),
+          _vm._v(" "),
+          _vm._m(3)
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "status-component" }, [
+          _c(
+            "a",
+            {
+              staticClass: "icon",
+              staticStyle: { background: "#2ABD68" },
+              attrs: { href: "javascript:;" },
+              on: {
+                click: function($event) {
+                  _vm.selectedStatus = "successful"
+                }
+              }
+            },
+            [_vm._v("S")]
+          ),
+          _vm._v(" "),
+          _c("span", { staticClass: "icon-name" }, [_vm._v("Successful")])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "a",
+      {
+        staticClass: "recording-status icon",
+        class: _vm.selectedStatus,
+        attrs: { href: "javascript:;" },
+        on: {
+          click: function($event) {
+            _vm.showStatusList = !_vm.showStatusList
+          }
+        }
+      },
+      [_vm._v(_vm._s(_vm.printStatus()))]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon-name" }, [
+      _vm._v("E-mail"),
+      _c("br"),
+      _vm._v("request")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon-name" }, [
+      _vm._v("Not"),
+      _c("br"),
+      _vm._v("interested")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon-name" }, [
+      _vm._v("Appointment"),
+      _c("br"),
+      _vm._v("set")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "icon-name" }, [
+      _vm._v("Decission"),
+      _c("br"),
+      _vm._v("maker"),
+      _c("br"),
+      _vm._v("contacts received")
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-a6032f5a", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

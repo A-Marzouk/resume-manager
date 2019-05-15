@@ -78858,6 +78858,23 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['changeStep', 'getData'],
@@ -78867,7 +78884,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 voiceRecorder: '',
                 resumeFile: ''
             },
-            isALinkRecorder: false,
+            typeOfRecording: 'file',
             canSubmit: true,
             errors: []
         };
@@ -78966,7 +78983,7 @@ var render = function() {
                   "div",
                   {
                     staticClass: "fake-radio-option",
-                    class: { checked: !_vm.isALinkRecorder }
+                    class: { checked: _vm.typeOfRecording === "file" }
                   },
                   [_c("div", { staticClass: "inner-circle" })]
                 ),
@@ -78978,10 +78995,10 @@ var render = function() {
                     name: "voiceRecorder",
                     id: "voiceRecorder"
                   },
-                  domProps: { checked: !_vm.isALinkRecorder },
+                  domProps: { checked: _vm.typeOfRecording === "file" },
                   on: {
                     click: function($event) {
-                      _vm.isALinkRecorder = false
+                      _vm.typeOfRecording = "file"
                     }
                   }
                 }),
@@ -79003,7 +79020,7 @@ var render = function() {
                   "div",
                   {
                     staticClass: "fake-radio-option",
-                    class: { checked: _vm.isALinkRecorder }
+                    class: { checked: _vm.typeOfRecording === "link" }
                   },
                   [_c("div", { staticClass: "inner-circle" })]
                 ),
@@ -79015,10 +79032,10 @@ var render = function() {
                     name: "voiceRecorder",
                     id: "voiceRecorder"
                   },
-                  domProps: { checked: _vm.isALinkRecorder },
+                  domProps: { checked: _vm.typeOfRecording === "link" },
                   on: {
                     click: function($event) {
-                      _vm.isALinkRecorder = true
+                      _vm.typeOfRecording = "link"
                     }
                   }
                 }),
@@ -79026,10 +79043,49 @@ var render = function() {
                 _c("label", { attrs: { for: "" } }, [_vm._v("Share a link")])
               ])
             ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "faq-input",
+              class: { "error-input": _vm.errors.voiceRecorder }
+            },
+            [
+              _c("div", { staticClass: "form-group form-center" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "fake-radio-option",
+                    class: { checked: _vm.typeOfRecording === "recording" }
+                  },
+                  [_c("div", { staticClass: "inner-circle" })]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "radio-option",
+                  attrs: {
+                    type: "radio",
+                    name: "voiceRecorder",
+                    id: "voiceRecorder"
+                  },
+                  domProps: { checked: _vm.typeOfRecording === "recording" },
+                  on: {
+                    click: function($event) {
+                      _vm.typeOfRecording = "recording"
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "" } }, [
+                  _vm._v("Record your voice")
+                ])
+              ])
+            ]
           )
         ]),
         _vm._v(" "),
-        !_vm.isALinkRecorder
+        _vm.typeOfRecording === "file"
           ? _c(
               "div",
               {
@@ -79038,31 +79094,42 @@ var render = function() {
               },
               [_vm._m(1)]
             )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.isALinkRecorder
-          ? _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "faq-input",
-                    class: { "error-input": _vm.errors.primaryJob }
-                  },
-                  [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        placeholder: "Insert link here..."
-                      }
-                    })
-                  ]
-                )
-              ]
-            )
-          : _vm._e()
+          : _vm.typeOfRecording === "link"
+            ? _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.primaryJob }
+                    },
+                    [
+                      _c("input", {
+                        attrs: {
+                          type: "text",
+                          placeholder: "Insert link here..."
+                        }
+                      })
+                    ]
+                  )
+                ]
+              )
+            : _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.primaryJob }
+                    },
+                    [_vm._m(2)]
+                  )
+                ]
+              )
       ])
     ]),
     _vm._v(" "),
@@ -79072,7 +79139,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "account-edit-section-inputs" }, [
-        _vm._m(2),
+        _vm._m(3),
         _vm._v(" "),
         _c(
           "div",
@@ -79080,7 +79147,7 @@ var render = function() {
             staticClass: "account-edit-section-edit-btn no-decoration",
             class: { "disabled-btn": !_vm.canSubmit }
           },
-          [_vm._m(3)]
+          [_vm._m(4)]
         )
       ])
     ]),
@@ -79136,6 +79203,19 @@ var staticRenderFns = [
       _c("input", { attrs: { type: "file", id: "voiceRecorder" } }),
       _vm._v("\n                  UPLOAD A FILE\n              ")
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "recording-button", attrs: { href: "javascript:;" } },
+      [
+        _c("img", { attrs: { src: "/images/icons/mic_record.svg", alt: "" } }),
+        _vm._v("\n                      START RECORDING\n                  ")
+      ]
+    )
   },
   function() {
     var _vm = this

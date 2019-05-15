@@ -20,32 +20,49 @@
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.voiceRecorder}">
                     <div class="form-group form-center">
-                        <div class="fake-radio-option" :class="{ checked: !isALinkRecorder }">
+                        <div class="fake-radio-option" :class="{ checked: typeOfRecording === 'file' }">
                             <div class="inner-circle"></div>
                         </div>
-                        <input class="radio-option" type="radio" name="voiceRecorder" id="voiceRecorder" :checked="!isALinkRecorder" v-on:click="isALinkRecorder = false">
+                        <input class="radio-option" type="radio" name="voiceRecorder" id="voiceRecorder" :checked="(typeOfRecording === 'file')" v-on:click="typeOfRecording = 'file'">
                         <label for="">Upload a file</label>
                     </div>
                 </div>
                 <div class="faq-input" :class="{ 'error-input' : errors.voiceRecorder}">
                     <div class="form-group form-center">
-                        <div class="fake-radio-option" :class="{ checked: isALinkRecorder }">
+                        <div class="fake-radio-option" :class="{ checked: typeOfRecording === 'link' }">
                             <div class="inner-circle"></div>
                         </div>
-                        <input class="radio-option" type="radio" name="voiceRecorder" id="voiceRecorder" :checked="isALinkRecorder" v-on:click="isALinkRecorder = true">
+                        <input class="radio-option" type="radio" name="voiceRecorder" id="voiceRecorder" :checked="(typeOfRecording === 'link')" v-on:click="typeOfRecording = 'link'">
                         <label for="">Share a link</label>
                     </div>
                 </div>
+                <div class="faq-input" :class="{ 'error-input' : errors.voiceRecorder}">
+                    <div class="form-group form-center">
+                        <div class="fake-radio-option" :class="{ checked: typeOfRecording === 'recording' }">
+                            <div class="inner-circle"></div>
+                        </div>
+                        <input class="radio-option" type="radio" name="voiceRecorder" id="voiceRecorder" :checked="(typeOfRecording === 'recording')" v-on:click="typeOfRecording = 'recording'">
+                        <label for="">Record your voice</label>
+                    </div>
+                </div>
             </div>
-            <div v-if="!isALinkRecorder" class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
+            <div v-if="(typeOfRecording === 'file')" class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
                 <div class="fake-file-input btn" >
                     <input type="file" id="voiceRecorder" />
                     UPLOAD A FILE
                 </div>
             </div>
-            <div v-if="isALinkRecorder" class="faq-question-input account-edit-input">
+            <div v-else-if="(typeOfRecording === 'link')" class="faq-question-input account-edit-input">
                 <div  class="faq-input" :class="{ 'error-input' : errors.primaryJob}">
                     <input type="text" placeholder="Insert link here..." />
+                </div>
+            </div>
+            <div v-else class="faq-question-input account-edit-input">
+                <div  class="faq-input" :class="{ 'error-input' : errors.primaryJob}">
+                    <a href="javascript:;" class="recording-button">
+                        <img src="/images/icons/mic_record.svg" alt="">
+                        START RECORDING
+                    </a>
                 </div>
             </div>
         </div>
@@ -84,7 +101,7 @@ export default {
             voiceRecorder: '',
             resumeFile: ''
         },
-        isALinkRecorder: false,
+        typeOfRecording: 'file',
         canSubmit: true,
         errors:[]
     }

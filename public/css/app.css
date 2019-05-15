@@ -7395,6 +7395,7 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
+  width: 85%;
 }
 
 @media (max-width: 1240px) {

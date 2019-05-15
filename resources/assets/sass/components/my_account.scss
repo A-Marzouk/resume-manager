@@ -171,6 +171,8 @@
   display: flex;
   justify-content: center;
   position: relative;
+  width: 85%;
+
   @media (max-width:1240px) {
     width: 738px;
   }

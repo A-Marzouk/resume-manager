@@ -14578,6 +14578,9 @@ Vue.component('freelancer-campaign-main', __webpack_require__(188));
 Vue.component('freelancer-account-info-edit', __webpack_require__(193));
 Vue.component('freelancer-professional-info-edit', __webpack_require__(198));
 
+Vue.component('service-agreement', __webpack_require__(447));
+Vue.component('privacy-agreement', __webpack_require__(452));
+
 if ($('#freelancerRegisterComponent').length !== 0) {
 
     var _routes2 = [{ path: '/freelancer/register', component: __WEBPACK_IMPORTED_MODULE_10__components_freelancer_registerForms_page1_vue___default.a }, { path: '/freelancer/register/page2', component: __WEBPACK_IMPORTED_MODULE_11__components_freelancer_registerForms_page2_vue___default.a }, { path: '/freelancer/register/page3', component: __WEBPACK_IMPORTED_MODULE_12__components_freelancer_registerForms_page3_vue___default.a }, { path: '/freelancer/register/page4', component: __WEBPACK_IMPORTED_MODULE_13__components_freelancer_registerForms_page4_vue___default.a }, { path: '/freelancer/register/page5', component: __WEBPACK_IMPORTED_MODULE_14__components_freelancer_registerForms_page5_vue___default.a }];
@@ -14638,6 +14641,20 @@ if ($("#freelancer_professional_info_edit").length !== 0) {
 
     var freelancer_professional_info_edit = new Vue({
         el: '#freelancer_professional_info_edit'
+    });
+}
+
+if ($("#serviceAgreementFreelancer").length !== 0) {
+
+    var _serviceAgreement = new Vue({
+        el: '#serviceAgreementFreelancer'
+    });
+}
+
+if ($("#privacyAgreementFreelancer").length !== 0) {
+
+    var _privacyAgreement = new Vue({
+        el: '#privacyAgreementFreelancer'
     });
 }
 
@@ -76091,7 +76108,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "left no-decoration" }, [
               _c(
                 "a",
-                { attrs: { href: "/freelancer/account/service-agreement" } },
+                { attrs: { href: "/freelancer/account/privacy-agreement" } },
                 [
                   _vm._v(
                     "\n                            COMPLETE AGREEMENT\n                        "
@@ -114661,6 +114678,804 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-a6032f5a", module.exports)
+  }
+}
+
+/***/ }),
+/* 447 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(448)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(450)
+/* template */
+var __vue_template__ = __webpack_require__(451)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-2c27f623"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\freelancer\\dashboardComponents\\my_account\\ServiceAgreement.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2c27f623", Component.options)
+  } else {
+    hotAPI.reload("data-v-2c27f623", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 448 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(449);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("6d465d0f", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2c27f623\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ServiceAgreement.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2c27f623\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ServiceAgreement.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 449 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 450 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 451 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "nav",
+        { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
+        [
+          _c("div", { staticClass: "backBtn" }, [
+            _c("a", { attrs: { href: "/freelancer/dashboard" } }, [
+              _c("img", {
+                attrs: {
+                  src: "/images/client/arrow_back.png",
+                  alt: "back-icon"
+                }
+              })
+            ]),
+            _vm._v("\n      ACCOUNT INFORMATION EDITION\n    ")
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-main-grid main-grid" }, [
+        _c("div", { staticClass: "col-12 col-sm-12 col-md-12 header-text" }, [
+          _c("img", {
+            staticClass: "icon-margin small-image",
+            attrs: {
+              src: "/images/client/my_account/contract_40px.png",
+              alt: ""
+            }
+          }),
+          _vm._v("\n              SERVICE AGREEMENT\n          ")
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "agreement-main" }, [
+          _c("div", { staticClass: "agreement-text agreement-margin" }, [
+            _vm._v("\n          THIS AGREEMENT\n          "),
+            _c("span", { staticStyle: { "font-weight": "bold" } }, [
+              _vm._v("(THE ”AGREEMENT”)")
+            ]),
+            _vm._v(" IS MADE ON\n          "),
+            _c("span", { staticStyle: { "font-weight": "bold" } }, [
+              _vm._v("“DATE”")
+            ]),
+            _vm._v(" BY AND BETWEEN THE\n          "),
+            _c("span", { staticStyle: { "font-weight": "bold" } }, [
+              _vm._v("“CLIENT”")
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(
+              "\n          AND THE “____”. IN CONSIDERATION OF THE MUTUAL AGREEMENT MADE HEREIN, BOTH PARTIES AGREE AS FOLLOWS:\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n          work\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n          CONFIDENTIALITY\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n          proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing\n          elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim\n          id est laborum.\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n          COMPENSATION\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n          proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing\n          elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim\n          id est laborum.\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n          COMPENSATION\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n          CLIENT APPROVAL\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n          CANCELLATION\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-tex agreement-main-text" }, [
+            _vm._v(
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n          ACCEPTANCE OF TERMS\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n        "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "bluechecked d-flex align-items-center" }, [
+          _c("input", {
+            staticClass: "chechbox-blue",
+            attrs: { type: "checkbox" }
+          }),
+          _vm._v(" "),
+          _c("label", { staticClass: "agreement-text" }, [
+            _vm._v(" I agree with the privacy agreemen")
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-12 col-md-8 col-lg-6 agreement-segniture" },
+          [
+            _c("div", { staticClass: "blue-part" }, [
+              _vm._v("\n          YOUR SIGNATURE\n        ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "agreement-text signiture-main-text" }, [
+              _vm._v("\n          Name surname\n        ")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex justify-content-end" }, [
+          _c("button", { staticClass: "agreement-button" }, [_vm._v("SIGN")])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2c27f623", module.exports)
+  }
+}
+
+/***/ }),
+/* 452 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(453)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(455)
+/* template */
+var __vue_template__ = __webpack_require__(456)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-d2e56fa0"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\freelancer\\dashboardComponents\\my_account\\PrivacyAgreement.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d2e56fa0", Component.options)
+  } else {
+    hotAPI.reload("data-v-d2e56fa0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 453 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(454);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("a10ecd02", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d2e56fa0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PrivacyAgreement.vue", function() {
+     var newContent = require("!!../../../../../../../node_modules/css-loader/index.js!../../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d2e56fa0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./PrivacyAgreement.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 454 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 455 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 456 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "nav",
+        { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
+        [
+          _c("div", { staticClass: "backBtn" }, [
+            _c("a", { attrs: { href: "/freelancer/dashboard" } }, [
+              _c("img", {
+                attrs: {
+                  src: "/images/client/arrow_back.png",
+                  alt: "back-icon"
+                }
+              })
+            ]),
+            _vm._v("\n      ACCOUNT INFORMATION EDITION\n    ")
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-main-grid main-grid" }, [
+        _c("div", { staticClass: "col-12 col-sm-12 col-md-12 header-text" }, [
+          _c("img", {
+            staticClass: "icon-margin small-image",
+            attrs: {
+              src: "/images/client/my_account/contract_40px.png",
+              alt: ""
+            }
+          }),
+          _vm._v("\n              PRIVACY AGREEMENT\n          ")
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "agreement-main" }, [
+          _c("div", { staticClass: "agreement-text agreement-margin" }, [
+            _vm._v("\n          THIS AGREEMENT\n          "),
+            _c("span", { staticStyle: { "font-weight": "bold" } }, [
+              _vm._v("(THE ”AGREEMENT”)")
+            ]),
+            _vm._v(" IS MADE ON\n          "),
+            _c("span", { staticStyle: { "font-weight": "bold" } }, [
+              _vm._v("“DATE”")
+            ]),
+            _vm._v(" BY AND BETWEEN THE\n          "),
+            _c("span", { staticStyle: { "font-weight": "bold" } }, [
+              _vm._v("“CLIENT”")
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(
+              "\n          AND THE “____”. IN CONSIDERATION OF THE MUTUAL AGREEMENT MADE HEREIN, BOTH PARTIES AGREE AS FOLLOWS:\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n          work\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n          CONFIDENTIALITY\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n          proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing\n          elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim\n          id est laborum.\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n          COMPENSATION\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n          proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing\n          elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation\n          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim\n          id est laborum.\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n          COMPENSATION\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n          CLIENT APPROVAL\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n          CANCELLATION\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-tex agreement-main-text" }, [
+            _vm._v(
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-part" }, [
+            _vm._v("\n          ACCEPTANCE OF TERMS\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement-text agreement-main-text" }, [
+            _vm._v(
+              "\n          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n        "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "bluechecked d-flex align-items-center" }, [
+          _c("input", {
+            staticClass: "chechbox-blue",
+            attrs: { type: "checkbox", vlaue: "", id: "", name: "" }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            { staticClass: "agreement-text", attrs: { for: "checkbox" } },
+            [_vm._v(" I agree with the privacy agreemen")]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-12 col-md-8 col-lg-6 agreement-segniture" },
+          [
+            _c("div", { staticClass: "blue-part" }, [
+              _vm._v("\n          YOUR SIGNATURE\n        ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "agreement-text signiture-main-text" }, [
+              _vm._v("\n          Name surname\n        ")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex justify-content-end" }, [
+          _c("button", { staticClass: "agreement-button" }, [_vm._v("SIGN")])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-d2e56fa0", module.exports)
   }
 }
 

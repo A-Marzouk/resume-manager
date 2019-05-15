@@ -42,6 +42,14 @@ class FreelancersController extends Controller
         return view('freelancer.my_account.professional_information_edition');
     }
 
+    public function viewFreelancerServiceAgreement(){
+        return view('freelancer.my_account.service_agreement') ;
+    }
+
+    public function viewFreelancerPrivacyAgreement(){
+        return view('freelancer.my_account.privacy_agreement') ;
+    }
+
     public function form(){
         if(Auth::user()->admin == 1 && Auth::user()->username == 'admin_workforce'){
             return redirect(route('admin.dashboard'));

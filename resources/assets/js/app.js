@@ -219,6 +219,9 @@ Vue.component('freelancer-campaign-main', require('./components/freelancer/Campa
 Vue.component('freelancer-account-info-edit', require('./components/freelancer/dashboardComponents/my_account/MyAccountEdit.vue'));
 Vue.component('freelancer-professional-info-edit', require('./components/freelancer/dashboardComponents/my_account/ProfessionalInfoEdit.vue'));
 
+Vue.component('service-agreement',require('./components/freelancer/dashboardComponents/my_account/ServiceAgreement.vue'));
+Vue.component('privacy-agreement',require('./components/freelancer/dashboardComponents/my_account/PrivacyAgreement.vue'));
+
 if ($('#freelancerRegisterComponent').length !== 0){
 
     const routes = [
@@ -293,6 +296,20 @@ if ($("#freelancer_professional_info_edit").length !== 0){
 
     let freelancer_professional_info_edit = new Vue({
         el:'#freelancer_professional_info_edit'
+    });
+}
+
+if ($("#serviceAgreementFreelancer").length !== 0){
+
+    let serviceAgreement = new Vue({
+        el:'#serviceAgreementFreelancer'
+    });
+}
+
+if ($("#privacyAgreementFreelancer").length !== 0){
+
+    let privacyAgreement = new Vue({
+        el:'#privacyAgreementFreelancer'
     });
 }
 

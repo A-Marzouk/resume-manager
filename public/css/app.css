@@ -5370,6 +5370,14 @@ body {
           align-items: center;
 }
 
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar a {
+  font-weight: 500;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar a:hover {
+  text-decoration: none;
+}
+
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar img {
   margin-right: 18px;
 }
@@ -5913,6 +5921,12 @@ body {
   font-weight: normal;
   margin-left: 5px;
   color: #7A828D;
+}
+
+@media (max-width: 900px) {
+  .hideDate {
+    display: none;
+  }
 }
 
 .campaign_team_content {

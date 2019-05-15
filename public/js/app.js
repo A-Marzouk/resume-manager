@@ -68257,10 +68257,14 @@ var render = function() {
                   [
                     _c("img", {
                       attrs: {
-                        src: "/images/client/campaign_activity/pick_date.png",
+                        src: "/images/icons/pick_date.svg",
                         alt: "pick date"
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "hideDate" }, [
+                      _vm._v("PICK A DATE")
+                    ])
                   ]
                 )
               ]),
@@ -73720,10 +73724,14 @@ var render = function() {
                   [
                     _c("img", {
                       attrs: {
-                        src: "/images/client/campaign_activity/pick_date.png",
+                        src: "/images/icons/pick_date.svg",
                         alt: "pick date"
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "hideDate" }, [
+                      _vm._v("PICK A DATE")
+                    ])
                   ]
                 )
               ]),

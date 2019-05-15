@@ -4110,6 +4110,12 @@ body {
 .dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn {
   margin-top: 24px;
   margin-right: 34px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 @media (max-width: 745px) {
@@ -4126,8 +4132,9 @@ body {
 .dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a {
   padding: 4px 23px 3px 13px;
   display: block;
-  width: 203px;
+  width: 100px;
   height: 31px;
+  text-align: center;
   border-radius: 30px;
   background: #05A4F4;
   font-family: Roboto;
@@ -4137,6 +4144,7 @@ body {
   line-height: 24px;
   letter-spacing: -0.1px;
   color: #FFFFFF;
+  margin: 0 5px;
 }
 
 @media (max-width: 745px) {
@@ -4145,6 +4153,15 @@ body {
     height: 31px;
     font-size: 11px;
   }
+}
+
+.dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a.little-padding {
+  padding: 4px 15px;
+}
+
+.dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a.secondary {
+  background: transparent;
+  color: #05A4F4;
 }
 
 .dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a img {

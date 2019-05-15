@@ -74206,7 +74206,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -74221,6 +74221,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__addEntry___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__addEntry__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__addDocument__ = __webpack_require__(149);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__addDocument___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__addDocument__);
+//
 //
 //
 //
@@ -75036,11 +75037,14 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "actionBtn" }, [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("img", {
-              attrs: { src: "/images/client/plus.png", alt: "plus sign" }
-            }),
-            _vm._v("CREATE NEW CAMPAIGN\n                ")
+          _c(
+            "a",
+            { staticClass: "secondary little-padding", attrs: { href: "#" } },
+            [_vm._v("FINISH SHIFT")]
+          ),
+          _vm._v(" "),
+          _c("a", { staticClass: "little-padding", attrs: { href: "#" } }, [
+            _vm._v("\n                    I AM AWAY\n                ")
           ])
         ])
       ])
@@ -75220,7 +75224,7 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "campaign-brief-footer" }, [
-        _c("a", { attrs: { href: "/client/campaign" } }, [
+        _c("a", { attrs: { href: "/freelancer/campaign" } }, [
           _vm._v("\n                GO TO CAMPAIGN\n            ")
         ])
       ])
@@ -78112,7 +78116,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 this.changeStep(3);
                 this.$router.push('/freelancer/register/page3');
             } else {
-                // Send errors
+                this.showErrors = true;
             }
         },
         addToTechs: function addToTechs(e) {
@@ -78140,7 +78144,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                         var value = _step.value;
 
-                        if (value.trim().length < 1) {
+                        if (!Array.isArray(value) && value.trim().length < 1) {
+                            isAll_filled = false;
+                            break;
+                        } else if (value.length < 1) {
                             isAll_filled = false;
                             break;
                         }
@@ -78611,7 +78618,51 @@ var render = function() {
                 staticClass: "faq-input",
                 class: { "error-input": _vm.errors.gender }
               },
-              [_vm._m(1), _vm._v(" "), _vm._m(2)]
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "lang",
+                    on: {
+                      click: function($event) {
+                        _vm.professionalData.lang = "en"
+                      }
+                    }
+                  },
+                  [
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/images/client/add_agent/language/english_icon.png"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("English")])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "lang",
+                    on: {
+                      click: function($event) {
+                        _vm.professionalData.lang = "es"
+                      }
+                    }
+                  },
+                  [
+                    _c("img", {
+                      attrs: {
+                        src:
+                          "/images/client/add_agent/language/spanish_icon.png"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Spanish")])
+                  ]
+                )
+              ]
             )
           ]),
           _vm._v(" "),
@@ -78670,30 +78721,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "lang" }, [
-      _c("img", {
-        attrs: { src: "/images/client/add_agent/language/english_icon.png" }
-      }),
-      _vm._v(" "),
-      _c("span", [_vm._v("English")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "lang" }, [
-      _c("img", {
-        attrs: { src: "/images/client/add_agent/language/spanish_icon.png" }
-      }),
-      _vm._v(" "),
-      _c("span", [_vm._v("Spanish")])
-    ])
   }
 ]
 render._withStripped = true
@@ -81902,7 +81929,7 @@ var staticRenderFns = [
       { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
       [
         _c("div", { staticClass: "backBtn" }, [
-          _c("a", { attrs: { href: "/freelancer" } }, [
+          _c("a", { attrs: { href: "/freelancer/dashboard" } }, [
             _c("img", {
               attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
             })

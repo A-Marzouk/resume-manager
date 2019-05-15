@@ -234,6 +234,9 @@
         .actionBtn{
           margin-top: 24px;
           margin-right: 34px;
+          justify-content: space-between;
+          display: flex;
+
           @media (max-width:745px) {
             margin-top: 24px;
             margin-right: 6px;
@@ -242,7 +245,7 @@
           a:hover {
             text-decoration: none;
           }
-          a{
+          a {
             @media (max-width:745px) {
               width: 190px;
               height: 31px;
@@ -251,8 +254,9 @@
 
             padding: 4px 23px 3px 13px;
             display:block;
-            width: 203px;
+            width: 100px;
             height: 31px;
+            text-align: center;
             border-radius: 30px;
             background: #05A4F4;
 
@@ -263,7 +267,16 @@
             line-height: 24px;
             letter-spacing: -0.1px;
             color: #FFFFFF;
+            margin: 0 5px;
 
+            &.little-padding {
+              padding: 4px 15px;
+            } 
+
+            &.secondary {
+              background: transparent;
+              color: #05A4F4;
+            }
 
             img{
               padding-right: 8px;

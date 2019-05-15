@@ -14,8 +14,9 @@
                     MY ACTIVE CAMPAIGNS
                 </div>
                 <div class="actionBtn">
-                    <a href="#">
-                        <img src="/images/client/plus.png" alt="plus sign">CREATE NEW CAMPAIGN
+                    <a class="secondary little-padding" href="#">FINISH SHIFT</a>
+                    <a class="little-padding" href="#">
+                        I AM AWAY
                     </a>
                 </div>
             </div>

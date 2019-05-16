@@ -94,8 +94,8 @@ export default {
         e.preventDefault()
         if (this.noErrors()) {
             this.getData({ password: this.password, password2: this.passwordConf})
-            this.changeStep(5)
-            this.$router.push('/freelancer/register/page5')
+            // this.changeStep(5)
+            this.$router.push('/freelancer/register/completed')
         } else {
             this.showErrors = true
         }

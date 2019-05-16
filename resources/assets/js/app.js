@@ -211,6 +211,7 @@ import FreelancerRegisterPage2 from './components/freelancer/registerForms/page2
 import FreelancerRegisterPage3 from './components/freelancer/registerForms/page3.vue'
 import FreelancerRegisterPage4 from './components/freelancer/registerForms/page4.vue'
 import FreelancerRegisterPage5 from './components/freelancer/registerForms/page5.vue'
+import FreelancerRegisterCompleted from './components/freelancer/registerForms/finish.vue'
 
 Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'))
 Vue.component('freelancer-register', require('./components/freelancer/FreelancerRegister.vue'))
@@ -229,7 +230,8 @@ if ($('#freelancerRegisterComponent').length !== 0){
         { path: '/freelancer/register/page2', component: FreelancerRegisterPage2 },
         { path: '/freelancer/register/page3', component: FreelancerRegisterPage3 },
         { path: '/freelancer/register/page4', component: FreelancerRegisterPage4 },
-        { path: '/freelancer/register/page5', component: FreelancerRegisterPage5 }
+        { path: '/freelancer/register/page5', component: FreelancerRegisterPage5 },
+        { path: '/freelancer/register/completed', component: FreelancerRegisterCompleted }
     ];
 
     const router = new VueRouter({

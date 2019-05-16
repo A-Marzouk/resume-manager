@@ -14418,6 +14418,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_freelancer_registerForms_page4_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_freelancer_registerForms_page4_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_freelancer_registerForms_page5_vue__ = __webpack_require__(175);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_freelancer_registerForms_page5_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__components_freelancer_registerForms_page5_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_freelancer_registerForms_finish_vue__ = __webpack_require__(462);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_freelancer_registerForms_finish_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__components_freelancer_registerForms_finish_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -14618,6 +14620,7 @@ if ($("#account_info_edit").length !== 0) {
 
 
 
+
 Vue.component('freelancer-dashboard', __webpack_require__(178));
 Vue.component('freelancer-register', __webpack_require__(181));
 Vue.component('freelancer-campaign-archives', __webpack_require__(186));
@@ -14630,7 +14633,7 @@ Vue.component('privacy-agreement', __webpack_require__(211));
 
 if ($('#freelancerRegisterComponent').length !== 0) {
 
-    var _routes2 = [{ path: '/freelancer/register', component: __WEBPACK_IMPORTED_MODULE_10__components_freelancer_registerForms_page1_vue___default.a }, { path: '/freelancer/register/page2', component: __WEBPACK_IMPORTED_MODULE_11__components_freelancer_registerForms_page2_vue___default.a }, { path: '/freelancer/register/page3', component: __WEBPACK_IMPORTED_MODULE_12__components_freelancer_registerForms_page3_vue___default.a }, { path: '/freelancer/register/page4', component: __WEBPACK_IMPORTED_MODULE_13__components_freelancer_registerForms_page4_vue___default.a }, { path: '/freelancer/register/page5', component: __WEBPACK_IMPORTED_MODULE_14__components_freelancer_registerForms_page5_vue___default.a }];
+    var _routes2 = [{ path: '/freelancer/register', component: __WEBPACK_IMPORTED_MODULE_10__components_freelancer_registerForms_page1_vue___default.a }, { path: '/freelancer/register/page2', component: __WEBPACK_IMPORTED_MODULE_11__components_freelancer_registerForms_page2_vue___default.a }, { path: '/freelancer/register/page3', component: __WEBPACK_IMPORTED_MODULE_12__components_freelancer_registerForms_page3_vue___default.a }, { path: '/freelancer/register/page4', component: __WEBPACK_IMPORTED_MODULE_13__components_freelancer_registerForms_page4_vue___default.a }, { path: '/freelancer/register/page5', component: __WEBPACK_IMPORTED_MODULE_14__components_freelancer_registerForms_page5_vue___default.a }, { path: '/freelancer/register/completed', component: __WEBPACK_IMPORTED_MODULE_15__components_freelancer_registerForms_finish_vue___default.a }];
 
     var _router2 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
         mode: 'history',
@@ -80016,8 +80019,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             e.preventDefault();
             if (this.noErrors()) {
                 this.getData({ password: this.password, password2: this.passwordConf });
-                this.changeStep(5);
-                this.$router.push('/freelancer/register/page5');
+                // this.changeStep(5)
+                this.$router.push('/freelancer/register/completed');
             } else {
                 this.showErrors = true;
             }
@@ -81266,6 +81269,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -81347,7 +81351,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         $route: {
             handler: function handler(val, oldVal) {
-                console.log(val.path.split('/'));
                 var splittedPath = val.path.split('/');
                 if (splittedPath[3] === '') this.step = 1;else this.step = splittedPath[3].charAt(4);
             }
@@ -81374,7 +81377,19 @@ var render = function() {
         "div",
         { staticClass: "account-info-edit-wrapper" },
         [
-          _vm._m(0),
+          _c(
+            "nav",
+            { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
+            [
+              _c("div", { staticClass: "backBtn" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _vm.step !== 6
+                  ? _c("span", [_vm._v("BECOME AN AGENT")])
+                  : _c("span", [_vm._v("REGISTRATION COMPLETED")])
+              ])
+            ]
+          ),
           _vm._v(" "),
           _c(
             "keep-alive",
@@ -81386,9 +81401,11 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("span", { staticClass: "step-footer" }, [
-            _vm._v("Step " + _vm._s(_vm.step) + " / 5")
-          ])
+          _vm.step !== 6
+            ? _c("span", { staticClass: "step-footer" }, [
+                _vm._v("Step " + _vm._s(_vm.step) + " / 5")
+              ])
+            : _vm._e()
         ],
         1
       ),
@@ -81402,20 +81419,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "nav",
-      { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
-      [
-        _c("div", { staticClass: "backBtn" }, [
-          _c("a", { attrs: { href: "/freelancer/dashboard" } }, [
-            _c("img", {
-              attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
-            })
-          ]),
-          _vm._v("\n                BECOME AN AGENT\n            ")
-        ])
-      ]
-    )
+    return _c("a", { attrs: { href: "/freelancer/dashboard" } }, [
+      _c("img", {
+        attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
+      })
+    ])
   },
   function() {
     var _vm = this
@@ -115338,6 +115346,161 @@ new SideNav();
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 454 */,
+/* 455 */,
+/* 456 */,
+/* 457 */,
+/* 458 */,
+/* 459 */,
+/* 460 */,
+/* 461 */,
+/* 462 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(463)
+/* template */
+var __vue_template__ = __webpack_require__(464)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\freelancer\\registerForms\\finish.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4934b456", Component.options)
+  } else {
+    hotAPI.reload("data-v-4934b456", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 463 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['changeStep', 'getData'],
+  data: function data() {
+    return {};
+  },
+
+  methods: {},
+  watch: {},
+  mounted: function mounted() {
+    this.changeStep(6);
+  }
+});
+
+/***/ }),
+/* 464 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "account-info-edit dashboard-box" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "account-edit-section-edit-btn no-decoration",
+        class: { "disabled-btn": !_vm.canSubmit },
+        attrs: { id: "submitBtnWrapper" }
+      },
+      [
+        _c("a", { attrs: { href: "/freelancer/dashboard" } }, [
+          _vm._v("\n          GO TO MAIN PAGE\n      ")
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "account-edit-section" }, [
+      _c("div", { staticClass: "account-edit-section-heading" }, [
+        _vm._v("\n          THANK YOU FOR THE REGISTRATION!\n      ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-edit-section-inputs" }, [
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v(
+              "\n                  Your registration is completed. Soon our recruitment coordinator will contact you.\n              "
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4934b456", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

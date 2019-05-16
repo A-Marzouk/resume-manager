@@ -76884,6 +76884,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             } else this.errors.paypal = '';
 
             return valid;
+        },
+        clearInput: function clearInput(name) {
+            this.personalData[name] = '';
         }
     },
     watch: {
@@ -78431,8 +78434,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         deleteItem: function deleteItem(index) {
             this.professionalData.techs.splice(index, 1);
+        },
+        clearInput: function clearInput(name) {
+            if (name !== 'techs') this.professionalData[name] = '';else this.inputTechs = '';
         }
     },
+
     watch: {
         professionalData: {
             handler: function handler() {
@@ -79985,15 +79992,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        noErrors: function noErrors() {
+            var noErrorPassword = this.noErrorPassword();
+            var noErrorPasswordConf = this.noErrorPasswordConf();
+            var passwordsMatch = this.password === this.passwordConf;
+
+            return noErrorPassword && noErrorPasswordConf && passwordsMatch;
+        },
+        noErrorPassword: function noErrorPassword() {
+            var valid = true;
+
+            if (this.password.trim().length < 1) {
+                valid = false;
+                this.errors.password = 'Please, enter a password';
+            } else if (this.password.length < 8) {
+                valid = false;
+                this.errors.password = 'The password must have at least 8 characters';
+            } else this.errors.password = '';
+
+            return valid;
+        },
         nextStep: function nextStep(e) {
             e.preventDefault();
-            if (this.canSubmit) {
+            if (this.noErrors()) {
                 this.getData({ password: this.password, password2: this.passwordConf });
                 this.changeStep(5);
                 this.$router.push('/freelancer/register/page5');
             } else {
-                // Send errors
+                this.showErrors = true;
             }
+        },
+        clearInput: function clearInput(name) {
+            this[name] = '';
         }
     },
     mounted: function mounted() {

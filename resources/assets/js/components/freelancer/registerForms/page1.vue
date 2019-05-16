@@ -345,6 +345,9 @@ export default {
             } else this.errors.paypal = ''
 
             return valid
+        },
+        clearInput(name) {
+            this.personalData[name] = ''
         }
   },
   watch: {

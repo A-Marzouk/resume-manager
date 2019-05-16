@@ -66,16 +66,43 @@ export default {
     }
   },
   methods: {
+      noErrors () {
+          let noErrorPassword = this.noErrorPassword()
+          let noErrorPasswordConf = this.noErrorPasswordConf ()
+          let passwordsMatch = this.password === this.passwordConf
+
+          return (
+              noErrorPassword &&
+              noErrorPasswordConf &&
+              passwordsMatch
+          )
+      },
+      noErrorPassword () {
+          let valid = true
+
+          if (this.password.trim().length < 1) {
+              valid = false
+              this.errors.password = 'Please, enter a password'
+          } else if (this.password.length < 8) {
+              valid = false
+              this.errors.password = 'The password must have at least 8 characters'
+          } else this.errors.password = ''
+
+          return valid
+      },
       nextStep (e) {
         e.preventDefault()
-        if (this.canSubmit) {
+        if (this.noErrors()) {
             this.getData({ password: this.password, password2: this.passwordConf})
             this.changeStep(5)
             this.$router.push('/freelancer/register/page5')
         } else {
-            // Send errors
+            this.showErrors = true
         }
 
+      },
+      clearInput(name) {
+          this[name] = ''
       }
   },
     mounted () {

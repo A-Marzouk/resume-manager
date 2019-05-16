@@ -240,8 +240,13 @@ export default {
       },
       deleteItem (index) {
           this.professionalData.techs.splice(index, 1)
+      },
+      clearInput (name) {
+            if (name !== 'techs') this.professionalData[name] = ''
+            else this.inputTechs = ''
       }
-  },
+    },
+
   watch: {
         professionalData: {
             handler(){

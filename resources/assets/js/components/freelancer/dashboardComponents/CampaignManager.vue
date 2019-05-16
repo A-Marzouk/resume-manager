@@ -57,6 +57,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
+                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
@@ -69,6 +70,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
+                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
@@ -81,10 +83,8 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
+                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
-                </div>
-                <div class="showMoreBtn">
-                    <a href="#">SHOW MORE</a>
                 </div>
             </div>
             <div class="agent-logs-block">
@@ -104,6 +104,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
+                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
@@ -116,6 +117,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
+                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
@@ -128,10 +130,8 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
+                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
-                </div>
-                <div class="showMoreBtn">
-                    <a href="#">SHOW MORE</a>
                 </div>
             </div>
 
@@ -172,7 +172,7 @@
                 </div>
                 <div class="log">
                     <div class="log-time">
-                        9 am - 10 am
+                        9 am
                     </div>
                     <div class="log-text">
                         <status-selector status="call-back"></status-selector>
@@ -180,11 +180,12 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
+                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
                     <div class="log-time">
-                        10 am - 11 am
+                        10 am
                     </div>
                     <div class="log-text">
                         <status-selector status="call-back"></status-selector>
@@ -192,11 +193,12 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
+                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
                     <div class="log-time">
-                        11 am - 12 am
+                        11 am
                     </div>
                     <div class="log-text">
                         <status-selector status="call-back"></status-selector>
@@ -204,11 +206,12 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
+                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
                     <div class="log-time">
-                        11 am - 12 am
+                        11 am
                     </div>
                     <div class="log-text">
                         <status-selector status="call-back"></status-selector>
@@ -216,10 +219,8 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
+                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
-                </div>
-                <div class="showMoreBtn">
-                    <a href="#">SHOW LESS</a>
                 </div>
             </div>
             <div class="agent-logs-block">
@@ -231,7 +232,7 @@
                 </div>
                 <div class="log">
                     <div class="log-time">
-                        9 am - 10 am
+                        9 am
                     </div>
                     <div class="log-text">
                         <status-selector status="call-back"></status-selector>
@@ -239,11 +240,12 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
+                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
                     <div class="log-time">
-                        10 am - 11 am
+                        10 am
                     </div>
                     <div class="log-text">
                         <status-selector status="call-back"></status-selector>
@@ -251,11 +253,12 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
+                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
                     <div class="log-time">
-                        11 am - 12 am
+                        11 am
                     </div>
                     <div class="log-text">
                         <status-selector status="call-back"></status-selector>
@@ -263,10 +266,8 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
+                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
-                </div>
-                <div class="showMoreBtn">
-                    <a href="#">SHOW MORE</a>
                 </div>
             </div>
 

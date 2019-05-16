@@ -79208,7 +79208,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             },
             typeOfRecording: 'file',
             canSubmit: true,
-            errors: []
+            errors: [],
+            showErrors: false
         };
     },
 
@@ -79220,7 +79221,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 this.changeStep(4);
                 this.$router.push('/freelancer/register/page4');
             } else {
-                // Send errors
+                this.showErrors = true;
             }
         }
     },
@@ -79986,8 +79987,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['changeStep', 'getData'],
     data: function data() {
         return {
-            password: '',
-            passwordConf: '',
+            passwords: {
+                password: '',
+                passwordConf: ''
+            },
             canSubmit: false,
             errors: {
                 password: '',
@@ -80000,18 +80003,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         noErrors: function noErrors() {
             var noErrorPassword = this.noErrorPassword();
-            var noErrorPasswordConf = this.noErrorPasswordConf();
             var passwordsMatch = this.password === this.passwordConf;
 
-            return noErrorPassword && noErrorPasswordConf && passwordsMatch;
+            return noErrorPassword && passwordsMatch;
         },
         noErrorPassword: function noErrorPassword() {
             var valid = true;
 
-            if (this.password.trim().length < 1) {
+            if (this.passwords.password.trim().length < 1) {
                 valid = false;
                 this.errors.password = 'Please, enter a password';
-            } else if (this.password.length < 8) {
+            } else if (this.passwords.password.length < 6) {
                 valid = false;
                 this.errors.password = 'The password must have at least 8 characters';
             } else this.errors.password = '';
@@ -80021,15 +80023,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         nextStep: function nextStep(e) {
             e.preventDefault();
             if (this.noErrors()) {
-                this.getData({ password: this.password, password2: this.passwordConf });
+                this.getData({ password: this.passwords.password, password2: this.passwords.passwordConf });
                 // this.changeStep(5)
-                this.$router.push('/freelancer/register/completed');
+                // window.location.href = '/freelancer/register/completed'
+                window.location.replace('/freelancer/register/completed');
             } else {
                 this.showErrors = true;
             }
         },
         clearInput: function clearInput(name) {
-            this[name] = '';
+            this.passwords[name] = '';
+        }
+    },
+    watch: {
+        passwords: {
+            handler: function handler() {
+                // check if all personalData values are filled
+                var keys = Object.keys(this.passwords);
+                var isAll_filled = true;
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = keys[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var key = _step.value;
+
+                        if (this.passwords[key].trim().length < 1) {
+                            isAll_filled = false;
+                            break;
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+
+                this.canSubmit = isAll_filled;
+            },
+
+            deep: true
         }
     },
     mounted: function mounted() {
@@ -80071,27 +80114,27 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.password,
-                    expression: "password"
+                    value: _vm.passwords.password,
+                    expression: "passwords.password"
                   }
                 ],
                 attrs: {
-                  type: "text",
+                  type: "password",
                   name: "name",
                   placeholder: "Enter your password"
                 },
-                domProps: { value: _vm.password },
+                domProps: { value: _vm.passwords.password },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.password = $event.target.value
+                    _vm.$set(_vm.passwords, "password", $event.target.value)
                   }
                 }
               }),
               _vm._v(" "),
-              _vm.password.length > 0
+              _vm.passwords.password.length > 0
                 ? _c("img", {
                     attrs: {
                       src: "/images/client/campaign_activity/close_black.png",
@@ -80135,27 +80178,27 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.passwordConf,
-                    expression: "passwordConf"
+                    value: _vm.passwords.passwordConf,
+                    expression: "passwords.passwordConf"
                   }
                 ],
                 attrs: {
-                  type: "text",
+                  type: "password",
                   name: "surname",
                   placeholder: "Repeat your password"
                 },
-                domProps: { value: _vm.passwordConf },
+                domProps: { value: _vm.passwords.passwordConf },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.passwordConf = $event.target.value
+                    _vm.$set(_vm.passwords, "passwordConf", $event.target.value)
                   }
                 }
               }),
               _vm._v(" "),
-              _vm.passwordConf.length > 0
+              _vm.passwords.passwordConf.length > 0
                 ? _c("img", {
                     attrs: {
                       src: "/images/client/campaign_activity/close_black.png",
@@ -80171,7 +80214,7 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _vm.showErrors && _vm.passwordConf
+          _vm.showErrors && _vm.errors.passwordConf
             ? _c("div", { staticClass: "error" }, [
                 _vm._v(
                   "\n                  " +
@@ -115482,43 +115525,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "account-info-edit dashboard-box" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "account-edit-section-edit-btn no-decoration",
-        class: { "disabled-btn": !_vm.canSubmit },
-        attrs: { id: "submitBtnWrapper" }
-      },
-      [
-        _c("a", { attrs: { href: "/freelancer/dashboard" } }, [
-          _vm._v("\n          GO TO MAIN PAGE\n      ")
-        ])
-      ]
-    )
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "account-edit-section" }, [
-      _c("div", { staticClass: "account-edit-section-heading" }, [
-        _vm._v("\n          THANK YOU FOR THE REGISTRATION!\n      ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "account-edit-section-inputs" }, [
-        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
-          _c("label", { staticClass: "faq-input-label" }, [
-            _vm._v(
-              "\n                  Your registration is completed. Soon our recruitment coordinator will contact you.\n              "
-            )
+    return _c("div", { staticClass: "account-info-edit dashboard-box" }, [
+      _c("div", { staticClass: "account-edit-section" }, [
+        _c("div", { staticClass: "account-edit-section-heading" }, [
+          _vm._v("\n          THANK YOU FOR THE REGISTRATION!\n      ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "account-edit-section-inputs" }, [
+          _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+            _c("label", { staticClass: "faq-input-label" }, [
+              _vm._v(
+                "\n                  Your registration is completed. Soon our recruitment coordinator will contact you.\n              "
+              )
+            ])
           ])
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "account-edit-section-edit-btn no-decoration",
+          attrs: { id: "submitBtnWrapper" }
+        },
+        [
+          _c("a", { attrs: { href: "/freelancer/dashboard" } }, [
+            _vm._v("\n          GO TO MAIN PAGE\n      ")
+          ])
+        ]
+      )
     ])
   }
 ]

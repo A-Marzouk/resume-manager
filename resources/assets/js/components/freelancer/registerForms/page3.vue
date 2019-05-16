@@ -103,7 +103,8 @@ export default {
         },
         typeOfRecording: 'file',
         canSubmit: true,
-        errors:[]
+        errors:[],
+        showErrors: false
     }
   },
   methods: {
@@ -114,7 +115,7 @@ export default {
             this.changeStep(4)
             this.$router.push('/freelancer/register/page4')
         } else {
-            // Send errors
+            this.showErrors = true
         }
 
       }

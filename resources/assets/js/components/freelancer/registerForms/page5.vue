@@ -19,10 +19,10 @@
                     Choose a password
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.password !== ''}">
-                    <input v-model="password" type="text" name="name" placeholder="Enter your password">
+                    <input v-model="passwords.password" type="password" name="name" placeholder="Enter your password">
                     <img src="/images/client/campaign_activity/close_black.png"
                           alt="delete icon"
-                          @click="clearInput('password')" v-if="password.length > 0"
+                          @click="clearInput('password')" v-if="passwords.password.length > 0"
                     >
                 </div>
                 <div class="error" v-if="showErrors && errors.password">
@@ -34,10 +34,10 @@
                     Repeat your password
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.passwordConf !== ''}">
-                    <input v-model="passwordConf" type="text" name="surname" placeholder="Repeat your password">
-                    <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('passwordConf')" alt="delete icon" v-if="passwordConf.length > 0">
+                    <input v-model="passwords.passwordConf" type="password" name="surname" placeholder="Repeat your password">
+                    <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('passwordConf')" alt="delete icon" v-if="passwords.passwordConf.length > 0">
                 </div>
-                <div class="error" v-if="showErrors && passwordConf">
+                <div class="error" v-if="showErrors && errors.passwordConf">
                     {{errors.passwordConf}}
                 </div>
             </div>
@@ -55,8 +55,10 @@ export default {
     props: ['changeStep', 'getData'],
   data () {
     return{
-        password: '',
-        passwordConf: '',
+        passwords: {
+            password: '',
+            passwordConf: '',
+        },
         canSubmit: false,
         errors: {
             password: '',
@@ -68,22 +70,20 @@ export default {
   methods: {
       noErrors () {
           let noErrorPassword = this.noErrorPassword()
-          let noErrorPasswordConf = this.noErrorPasswordConf ()
           let passwordsMatch = this.password === this.passwordConf
 
           return (
               noErrorPassword &&
-              noErrorPasswordConf &&
               passwordsMatch
           )
       },
       noErrorPassword () {
           let valid = true
 
-          if (this.password.trim().length < 1) {
+          if (this.passwords.password.trim().length < 1) {
               valid = false
               this.errors.password = 'Please, enter a password'
-          } else if (this.password.length < 8) {
+          } else if (this.passwords.password.length < 6) {
               valid = false
               this.errors.password = 'The password must have at least 8 characters'
           } else this.errors.password = ''
@@ -93,16 +93,34 @@ export default {
       nextStep (e) {
         e.preventDefault()
         if (this.noErrors()) {
-            this.getData({ password: this.password, password2: this.passwordConf})
+            this.getData({ password: this.passwords.password, password2: this.passwords.passwordConf})
             // this.changeStep(5)
-            this.$router.push('/freelancer/register/completed')
+            // window.location.href = '/freelancer/register/completed'
+            window.location.replace('/freelancer/register/completed')
         } else {
             this.showErrors = true
         }
 
       },
       clearInput(name) {
-          this[name] = ''
+          this.passwords[name] = ''
+      }
+  },
+  watch: {
+      passwords: {
+          handler () {
+                // check if all personalData values are filled
+                let keys = Object.keys(this.passwords);
+                let isAll_filled = true;
+                for (const key of keys) {
+                    if (this.passwords[key].trim().length < 1) {
+												isAll_filled = false
+												break
+                    }
+                }
+                this.canSubmit = isAll_filled;
+            },
+            deep: true
       }
   },
     mounted () {

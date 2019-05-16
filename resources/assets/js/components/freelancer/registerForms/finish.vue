@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}" id="submitBtnWrapper">
+    <div class="account-edit-section-edit-btn no-decoration" id="submitBtnWrapper">
         <a href="/freelancer/dashboard">
             GO TO MAIN PAGE
         </a>

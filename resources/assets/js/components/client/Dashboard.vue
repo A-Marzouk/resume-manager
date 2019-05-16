@@ -271,7 +271,7 @@
                 }
             },
             logoutClient(){
-                axios.post('client/logout').then( (response)=>{
+                axios.post('/client/logout').then( (response)=>{
                     if(response.data.status === 'success'){
                         // redirect to dashboard
                         window.location.href = '/' ;

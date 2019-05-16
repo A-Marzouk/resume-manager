@@ -59713,7 +59713,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         logoutClient: function logoutClient() {
-            axios.post('client/logout').then(function (response) {
+            axios.post('/client/logout').then(function (response) {
                 if (response.data.status === 'success') {
                     // redirect to dashboard
                     window.location.href = '/';

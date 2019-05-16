@@ -2,68 +2,43 @@
   <div class="account-info-edit dashboard-box">
     <div class="account-info-edit-heading dashboard-box-heading">
         <div class="left">
-            <img src="/images/client/my_account/info_40px.png" alt="info icon">
+            <img src="/images/dashboard/info.svg" alt="info icon">
             <span>
-            FILL IN THE INFORMATION TO BECOME AN AGENT
+            FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)
         </span>
         </div>
     </div>
 
     <div class="account-edit-section">
         <div class="account-edit-section-heading">
-            RECORDING
+            CHOOSE A PASSWORD
         </div>
         <div class="account-edit-section-inputs">
             <div class="faq-question-input account-edit-input">
-                <label class="faq-input-description">
-                    Please upload a short audio recording describing your previous experience in Customer service and Sales (ideal recording length is from 1 to 2 minutes). File must be in .mp3 format and no more than 45 MB.
+                <label class="faq-input-label">
+                    Choose a password
                 </label>
-                <div class="faq-input" :class="{ 'error-input' : errors.voiceRecorder}">
-                    <div class="form-group">
-                        <div class="fake-radio-option" :class="{ checked: !isALinkRecorder }">
-                            <div class="inner-circle"></div>
-                        </div>
-                        <input class="radio-option" type="radio" name="voiceRecorder" id="voiceRecorder" :checked="!isALinkRecorder" v-on:click="isALinkRecorder = false">
-                        <label for="">Upload a file</label>
-                    </div>
+                <div class="faq-input" :class="{ 'error-input' : errors.password !== ''}">
+                    <input v-model="passwords.password" type="password" name="name" placeholder="Enter your password">
+                    <img src="/images/client/campaign_activity/close_black.png"
+                          alt="delete icon"
+                          @click="clearInput('password')" v-if="passwords.password.length > 0"
+                    >
                 </div>
-                <div class="faq-input" :class="{ 'error-input' : errors.voiceRecorder}">
-                    <div class="form-group">
-                        <div class="fake-radio-option" :class="{ checked: isALinkRecorder }">
-                            <div class="inner-circle"></div>
-                        </div>
-                        <input class="radio-option" type="radio" name="voiceRecorder" id="voiceRecorder" :checked="isALinkRecorder" v-on:click="isALinkRecorder = true">
-                        <label for="">Share a link</label>
-                    </div>
+                <div class="error" v-if="showErrors && errors.password">
+                    {{errors.password}}
                 </div>
             </div>
-            <div v-if="!isALinkRecorder" class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
-                <div class="fake-file-input btn" >
-                    <input type="file" id="voiceRecorder" />
-                    UPLOAD A FILE
-                </div>
-            </div>
-            <div v-if="isALinkRecorder" class="faq-question-input account-edit-input">
-                <div  class="faq-input" :class="{ 'error-input' : errors.primaryJob}">
-                    <input type="text" placeholder="Insert link here..." />
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="account-edit-section">
-        <div class="account-edit-section-heading">
-            RESUME
-        </div>
-        <div class="account-edit-section-inputs">
-            <div class="faq-question-input account-edit-input faq-description">
-                <label class="faq-input-description">
-                    Please upload your resume. Only .pdf files are allowed.
+            <div class="faq-question-input account-edit-input">
+                <label class="faq-input-label">
+                    Repeat your password
                 </label>
-            </div>
-            <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
-                <div class="fake-file-input btn" >
-                    <input type="file" id="resumeFile" />
-                    UPLOAD A FILE
+                <div class="faq-input"  :class="{ 'error-input' : errors.passwordConf !== ''}">
+                    <input v-model="passwords.passwordConf" type="password" name="surname" placeholder="Repeat your password">
+                    <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('passwordConf')" alt="delete icon" v-if="passwords.passwordConf.length > 0">
+                </div>
+                <div class="error" v-if="showErrors && errors.passwordConf">
+                    {{errors.passwordConf}}
                 </div>
             </div>
         </div>
@@ -80,45 +55,74 @@ export default {
     props: ['changeStep', 'getData'],
   data () {
     return{
-        resumeData:{
-            voiceRecorder: '',
-            resumeFile: ''
+        passwords: {
+            password: '',
+            passwordConf: '',
         },
-        isALinkRecorder: false,
-        canSubmit: true,
-        errors:[]
+        canSubmit: false,
+        errors: {
+            password: '',
+            passwordConf: ''
+        },
+        showErrors: false
     }
   },
   methods: {
+      noErrors () {
+          let noErrorPassword = this.noErrorPassword()
+          let passwordsMatch = this.password === this.passwordConf
+
+          return (
+              noErrorPassword &&
+              passwordsMatch
+          )
+      },
+      noErrorPassword () {
+          let valid = true
+
+          if (this.passwords.password.trim().length < 1) {
+              valid = false
+              this.errors.password = 'Please, enter a password'
+          } else if (this.passwords.password.length < 6) {
+              valid = false
+              this.errors.password = 'The password must have at least 8 characters'
+          } else this.errors.password = ''
+
+          return valid
+      },
       nextStep (e) {
         e.preventDefault()
-        if (this.canSubmit) {
-            this.getData({ resumeData: { ...this.resumeData }})
-            this.changeStep(5)
-            this.$router.push('/freelancer/register/page5')
+        if (this.noErrors()) {
+            this.getData({ password: this.passwords.password, password2: this.passwords.passwordConf})
+            // this.changeStep(5)
+            // window.location.href = '/freelancer/register/completed'
+            window.location.replace('/freelancer/register/completed')
         } else {
-            // Send errors
+            this.showErrors = true
         }
 
+      },
+      clearInput(name) {
+          this.passwords[name] = ''
       }
   },
   watch: {
-        resumeData: {
-            handler(){
-                // check if all resumeData values are filled
-                let values = Object.values(this.resumeData);
+      passwords: {
+          handler () {
+                // check if all personalData values are filled
+                let keys = Object.keys(this.passwords);
                 let isAll_filled = true;
-                for (const value of values) {
-                    if (value.trim() !== '') {
-                        isAll_filled = false;
-                        break
+                for (const key of keys) {
+                    if (this.passwords[key].trim().length < 1) {
+												isAll_filled = false
+												break
                     }
                 }
                 this.canSubmit = isAll_filled;
             },
             deep: true
-        }
-    },
+      }
+  },
     mounted () {
         this.changeStep(5)
     }

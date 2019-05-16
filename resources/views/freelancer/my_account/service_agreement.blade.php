@@ -1,8 +1,8 @@
-@extends('client.layouts.client_frame')
+@extends('freelancer.layouts.freelancer_frame')
 
 @section('content')
 
-    <div id="serviceAgreement">
+    <div id="serviceAgreementFreelancer">
         <service-agreement></service-agreement>
     </div>
 

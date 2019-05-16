@@ -4,7 +4,7 @@
         <div class="left">
             <img src="/images/client/my_account/info_40px.png" alt="info icon">
             <span>
-            FILL IN THE INFORMATION TO BECOME AN AGENT
+            FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)
         </span>
         </div>
     </div>
@@ -26,8 +26,8 @@
                           @click="clearInput('primaryJob')"
                     >
                 </div>
-                <div class="error" v-if="errors.primaryJob">
-                    {{errors.primaryJob[0]}}
+                <div class="error" v-if="showErrors && errors.primaryJob">
+                    {{errors.primaryJob}}
                 </div>
             </div>
             <div class="faq-question-input account-edit-input">
@@ -42,8 +42,8 @@
                           @click="clearInput('sector')"
                     >
                 </div>
-                <div class="error" v-if="errors.sector">
-                    {{errors.sector[0]}}
+                <div class="error" v-if="showErrors && errors.sector">
+                    {{errors.sector}}
                 </div>
             </div>
             <div class="faq-question-input account-edit-input">
@@ -56,8 +56,8 @@
                         <option value="voice1">Voice character 1</option>
                     </select>
                 </div>
-                <div class="error" v-if="errors.voice">
-                    {{errors.voice[0]}}
+                <div class="error" v-if="showErrors && errors.voice">
+                    {{errors.voice}}
                 </div>
             </div>
             <div class="faq-question-input account-edit-input">
@@ -68,8 +68,8 @@
                     <input type="text" name="hoursPerWeek" placeholder="25" v-model="professionalData.hoursPerWeek">
                     <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('hoursPerWeek')" alt="delete icon" v-show="professionalData.hoursPerWeek.length > 0">
                 </div>
-                <div class="error" v-if="errors.hoursPerWeek">
-                    {{errors.hoursPerWeek[0]}}
+                <div class="error" v-if="showErrors && errors.hoursPerWeek">
+                    {{errors.hoursPerWeek}}
                 </div>
             </div>
             <div class="faq-question-input account-edit-input">
@@ -89,8 +89,8 @@
                     >
                     <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('techs')" alt="delete icon" v-show="professionalData.techs.length > 0">
                 </div>
-                <div class="error" v-if="errors.techs">
-                    {{errors.techs[0]}}
+                <div class="error" v-if="showErrors && errors.techs">
+                    {{errors.techs}}
                 </div>
             </div>
             <div class="faq-question-input account-edit-input">
@@ -98,19 +98,19 @@
                     Choose languages you speak
                 </label>
                 <div class="img-container">
-                    <div class="faq-input" :class="{ 'error-input' : errors.gender}">
-                        <div class="lang">
+                    <div class="faq-input" :class="{ 'error-input' : errors.lang}">
+                        <div v-on:click='professionalData.lang = "en"' class="lang">
                             <img src="/images/client/add_agent/language/english_icon.png">
                             <span>English</span>
                         </div>
-                        <div class="lang">
+                        <div v-on:click='professionalData.lang = "es"' class="lang">
                             <img src="/images/client/add_agent/language/spanish_icon.png">
                             <span>Spanish</span>
                         </div>
                     </div>
                 </div>
-                <div class="error" v-if="errors.lang">
-                    {{errors.lang[0]}}
+                <div class="error" v-if="showErrors && errors.lang">
+                    {{errors.lang}}
                 </div>
             </div>
         </div>
@@ -133,23 +133,101 @@ export default {
             voice:'',
             hoursPerWeek:'',
             techs: [],
-            lang:'',
+            lang:''
         },
         inputTechs: '',
         canSubmit: false,
-        errors:[]
+        showErrors: false,
+        errors: {
+            primaryJob:'',
+            sector:'',
+            voice:'',
+            hoursPerWeek:'',
+            techs: '',
+            lang:''
+        }
     }
   },
   methods: {
+      noErrors () {
+            let noErrorsPrimaryJob = this.noErrorsPrimaryJob()
+            let noErrorsSector = this.noErrorsSector()
+            let noErrorsVoice = this.noErrorsVoice()
+            let noErrorsHours = this.noErrorsHours()
+            let noErrorsLang = this.noErrorsLang()
+
+            return (
+                noErrorsPrimaryJob &&
+                noErrorsSector &&
+                noErrorsVoice &&
+                noErrorsHours &&
+                noErrorsLang
+            )
+      },
+      noErrorsPrimaryJob () {
+            let valid = true 
+        
+            // Empty field
+            if (this.professionalData.primaryJob.trim() === '') {
+                valid = false
+                this.errors.primaryJob = 'Please, fill this field'
+            } else this.errors.primaryJob  = ''
+            // Invalid characters (?)
+            return valid
+      },
+      noErrorsSector () {
+            let valid = true 
+        
+            // Empty field
+            if (this.professionalData.sector.trim() === '') {
+                valid = false
+                this.errors.sector = 'Please, fill this field'
+            } else this.errors.sector  = ''
+            // Invalid characters (?)
+            return valid
+      },
+      noErrorsVoice () {
+            let valid = true 
+        
+            // Empty field
+            if (this.professionalData.voice.trim() === '') {
+                valid = false
+                this.errors.voice = 'Please, fill this field'
+            } else this.errors.voice  = ''
+            // Invalid characters (?)
+            return valid
+      },
+      noErrorsHours () {
+            let valid = true 
+        
+            // Empty field
+            if (this.professionalData.hoursPerWeek.trim() === '') {
+                valid = false
+                this.errors.hoursPerWeek = 'Indicate how many hours do you work'
+            } else this.errors.hoursPerWeek  = ''
+            // Invalid characters (?)
+            return valid
+      },
+      noErrorsLang () {
+            let valid = true 
+        
+            // Empty field
+            if (this.professionalData.lang.trim() === '') {
+                valid = false
+                this.errors.lang = 'Please, fill this field'
+            } else this.errors.lang  = ''
+            // Invalid characters (?)
+            return valid
+      },
       nextStep (e) {
         e.preventDefault()
         this.canSubmit = true
-        if (this.canSubmit) {
+        if (this.noErrors()) {
             this.getData({ professionalData: { ...this.professionalData }})
             this.changeStep(3)
             this.$router.push('/freelancer/register/page3')
         } else {
-            // Send errors
+            this.showErrors = true
         }
 
       },
@@ -162,8 +240,13 @@ export default {
       },
       deleteItem (index) {
           this.professionalData.techs.splice(index, 1)
+      },
+      clearInput (name) {
+            if (name !== 'techs') this.professionalData[name] = ''
+            else this.inputTechs = ''
       }
-  },
+    },
+
   watch: {
         professionalData: {
             handler(){
@@ -171,7 +254,10 @@ export default {
                 let values = Object.values(this.professionalData);
                 let isAll_filled = true;
                 for (const value of values) {
-                    if (value.trim().length < 1) {
+                    if (!Array.isArray(value) && value.trim().length < 1) {
+                        isAll_filled = false;
+                        break
+                    } else if (value.length < 1) {
                         isAll_filled = false;
                         break
                     }

@@ -47,9 +47,11 @@
                             <label class="faq-input-label">
                                 Choose your gender
                             </label>
-                            <div class="faq-input">
-                                <input type="text" name="faq" placeholder="Enter your ..." >
-                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
+                            <div class="img-container">
+                                <div class="faq-input">    
+                                    <img src="/images/client/add_agent/gender/male_icon.png">
+                                    <img src="/images/client/add_agent/gender/female_icon.png">
+                                </div>
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
@@ -57,13 +59,15 @@
                                 Enter your phone number
                             </label>
                             <div class="faq-input">
-                                <input type="text" name="faq" placeholder="Enter your ..." >
-                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
+                                <flag-dropdown>
+                                    <input type="text" name="phone" placeholder="123-3534634">
+                                    <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
+                                </flag-dropdown>                    
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Enter yout e-mail
+                                Enter your e-mail
                             </label>
                             <div class="faq-input">
                                 <input type="text" name="faq" placeholder="123456@gmail.com" >

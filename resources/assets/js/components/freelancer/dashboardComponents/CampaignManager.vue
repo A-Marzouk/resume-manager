@@ -14,8 +14,9 @@
                     MY ACTIVE CAMPAIGNS
                 </div>
                 <div class="actionBtn">
-                    <a href="#">
-                        <img src="/images/client/plus.png" alt="plus sign">CREATE NEW CAMPAIGN
+                    <a class="secondary little-padding hideOnSm" href="#">FINISH SHIFT</a>
+                    <a class="little-padding" href="#">
+                        I AM AWAY
                     </a>
                 </div>
             </div>
@@ -51,9 +52,7 @@
                         9.15 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -65,9 +64,7 @@
                         9.15 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -79,9 +76,7 @@
                         9.15 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -104,9 +99,7 @@
                         9.15 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -118,9 +111,7 @@
                         9.15 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -132,9 +123,7 @@
                         9.15 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -147,8 +136,11 @@
             </div>
 
             <div class="campaign-brief-footer">
-                <a href="/client/campaign">
+                <a href="/freelancer/campaign">
                     GO TO CAMPAIGN
+                </a>
+                <a class="add-entry" href="#">
+                    <img src="/images/client/close_24px.png" alt="plus sign" /> ADD ENTRY
                 </a>
             </div>
         </div>
@@ -183,9 +175,7 @@
                         9 am - 10 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -197,9 +187,7 @@
                         10 am - 11 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -211,9 +199,7 @@
                         11 am - 12 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -225,9 +211,7 @@
                         11 am - 12 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -250,9 +234,7 @@
                         9 am - 10 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -264,9 +246,7 @@
                         10 am - 11 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -278,9 +258,7 @@
                         11 am - 12 am
                     </div>
                     <div class="log-text">
-                        <span class="agent-initials">
-                            CB
-                        </span>
+                        <status-selector status="call-back"></status-selector>
                         <span class="log-text-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -293,8 +271,11 @@
             </div>
 
             <div class="campaign-brief-footer">
-                <a :href="rootLink">
+                <a href="/freelancer/campaign">
                     GO TO CAMPAIGN
+                </a>
+                <a class="add-entry" href="#">
+                    <img src="/images/client/close_24px.png" alt="plus sign" /> ADD ENTRY
                 </a>
             </div>
         </div>
@@ -308,11 +289,13 @@
 <script>
     import addEntry from './addEntry'
     import addDocument from './addDocument'
+    import statusSelector from '../../status-selector.vue'
 
     export default {
         components: {
             addEntry,
-            addDocument
+            addDocument,
+            'status-selector': statusSelector
         },
         data(){
           return{

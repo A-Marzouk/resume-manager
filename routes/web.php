@@ -88,9 +88,11 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/professional/edit','FreelancersController@viewProfessionalEditPage')->name('freelancer.professional.edit');
     // Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard'); 
     // Route::get('/','FreelancersController@showEditForm')->name('show.edit_form');
+    Route::get('/account/service-agreement','FreelancersController@viewFreelancerServiceAgreement')->name('service.agreement');
+    Route::get('/account/privacy-agreement','FreelancersController@viewFreelancerPrivacyAgreement')->name('privacy.agreement');
 
     // frontend routes
-    Route::get('/','FreelancersController@index')->name('freelancer.dashboard');
+    Route::get('/dashboard/{any?}','FreelancersController@index')->name('freelancer.dashboard');
     
     Route::post('/store','UserDataController@store')->name('freelancer.data.store');
     Route::get('/store',function(){
@@ -101,7 +103,7 @@ Route::prefix('freelancer')->group(function (){
         return redirect()->back();
     });
     
-    Route::get('/register', 'Auth\FreelancerRegisterController@showRegistrationForm')->name('freelancer.register');
+    Route::get('/register/{any?}', 'Auth\FreelancerRegisterController@showRegistrationForm')->name('freelancer.register');
     Route::post('/register/submit','Auth\RegisterController@register')->name('freelancer.register.submit');
     Route::get('/register/submit',function(){
         return redirect()->back();

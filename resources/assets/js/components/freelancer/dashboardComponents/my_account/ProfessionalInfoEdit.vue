@@ -71,9 +71,17 @@
                             <label class="faq-input-label">
                                 Choose languages you speak
                             </label>
-                            <div class="faq-input">
-                                <input type="text" name="faq" placeholder="Enter your ..." >
-                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
+                            <div class="img-container">
+                                <div class="faq-input">
+                                    <div class="lang">
+                                        <img src="/images/icons/english_icon_pressed.svg">
+                                        <span>English</span>
+                                    </div>
+                                    <div class="lang">
+                                        <img src="/images/client/add_agent/language/spanish_icon.png">
+                                        <span>Spanish</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -3,16 +3,17 @@
         <div class="account-info-edit-wrapper">
             <nav class="navbar navbar-light fixed-top dashboard_navbar">
                 <div class="backBtn">
-                    <a href="/freelancer">
+                    <a href="/freelancer/dashboard">
                         <img src="/images/client/arrow_back.png" alt="back-icon">
                     </a>
-                    BECOME AN AGENT
+                    <span v-if="step !== 6">BECOME AN AGENT</span>
+                    <span v-else>REGISTRATION COMPLETED</span>
                 </div>
             </nav>
             <keep-alive>
                 <router-view :changeStep="changeStep" :getData="getData" ></router-view>
             </keep-alive>
-            <span class="step-footer">Step {{ step }} / 5</span>
+            <span v-if="step !== 6" class="step-footer">Step {{ step }} / 5</span>
         </div>
 
         <div class="pt-3 no-decoration d-flex justify-content-center base-text align-items-center">
@@ -76,7 +77,6 @@
             },
             $route: {
                 handler (val, oldVal) {
-                    console.log(val.path.split('/'))
                     let splittedPath = val.path.split('/')
                     if (splittedPath[3] === '') this.step = 1
                     else this.step = splittedPath[3].charAt(4)

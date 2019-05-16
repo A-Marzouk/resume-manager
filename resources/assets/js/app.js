@@ -211,6 +211,7 @@ import FreelancerRegisterPage2 from './components/freelancer/registerForms/page2
 import FreelancerRegisterPage3 from './components/freelancer/registerForms/page3.vue'
 import FreelancerRegisterPage4 from './components/freelancer/registerForms/page4.vue'
 import FreelancerRegisterPage5 from './components/freelancer/registerForms/page5.vue'
+import FreelancerRegisterCompleted from './components/freelancer/registerForms/finish.vue'
 
 Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'))
 Vue.component('freelancer-register', require('./components/freelancer/FreelancerRegister.vue'))
@@ -219,6 +220,9 @@ Vue.component('freelancer-campaign-main', require('./components/freelancer/Campa
 Vue.component('freelancer-account-info-edit', require('./components/freelancer/dashboardComponents/my_account/MyAccountEdit.vue'));
 Vue.component('freelancer-professional-info-edit', require('./components/freelancer/dashboardComponents/my_account/ProfessionalInfoEdit.vue'));
 
+Vue.component('service-agreement',require('./components/freelancer/dashboardComponents/my_account/ServiceAgreement.vue'));
+Vue.component('privacy-agreement',require('./components/freelancer/dashboardComponents/my_account/PrivacyAgreement.vue'));
+
 if ($('#freelancerRegisterComponent').length !== 0){
 
     const routes = [
@@ -226,7 +230,8 @@ if ($('#freelancerRegisterComponent').length !== 0){
         { path: '/freelancer/register/page2', component: FreelancerRegisterPage2 },
         { path: '/freelancer/register/page3', component: FreelancerRegisterPage3 },
         { path: '/freelancer/register/page4', component: FreelancerRegisterPage4 },
-        { path: '/freelancer/register/page5', component: FreelancerRegisterPage5 }
+        { path: '/freelancer/register/page5', component: FreelancerRegisterPage5 },
+        { path: '/freelancer/register/completed', component: FreelancerRegisterCompleted }
     ];
 
     const router = new VueRouter({
@@ -243,8 +248,8 @@ if ($('#freelancerRegisterComponent').length !== 0){
 
 if ($('#freelancerDashboardComponent').length !== 0) {
   const routes = [
-    { path: '/freelancer/my-account', component: FreelancerMyAccount },
-    { path: '/freelancer', component: FreelancerCampaignManager }
+    { path: '/freelancer/dashboard/my-account', component: FreelancerMyAccount },
+    { path: '/freelancer/dashboard', component: FreelancerCampaignManager }
   ]
 
   const router = new VueRouter({
@@ -293,6 +298,20 @@ if ($("#freelancer_professional_info_edit").length !== 0){
 
     let freelancer_professional_info_edit = new Vue({
         el:'#freelancer_professional_info_edit'
+    });
+}
+
+if ($("#serviceAgreementFreelancer").length !== 0){
+
+    let serviceAgreement = new Vue({
+        el:'#serviceAgreementFreelancer'
+    });
+}
+
+if ($("#privacyAgreementFreelancer").length !== 0){
+
+    let privacyAgreement = new Vue({
+        el:'#privacyAgreementFreelancer'
     });
 }
 

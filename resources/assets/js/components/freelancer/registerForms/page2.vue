@@ -99,11 +99,11 @@
                 </label>
                 <div class="img-container">
                     <div class="faq-input" :class="{ 'error-input' : errors.gender}">
-                        <div class="lang">
+                        <div v-on:click='professionalData.lang = "en"' class="lang">
                             <img src="/images/client/add_agent/language/english_icon.png">
                             <span>English</span>
                         </div>
-                        <div class="lang">
+                        <div v-on:click='professionalData.lang = "es"' class="lang">
                             <img src="/images/client/add_agent/language/spanish_icon.png">
                             <span>Spanish</span>
                         </div>
@@ -227,7 +227,7 @@ export default {
             this.changeStep(3)
             this.$router.push('/freelancer/register/page3')
         } else {
-            // Send errors
+            this.showErrors = true
         }
 
       },
@@ -249,7 +249,10 @@ export default {
                 let values = Object.values(this.professionalData);
                 let isAll_filled = true;
                 for (const value of values) {
-                    if (value.trim().length < 1) {
+                    if (!Array.isArray(value) && value.trim().length < 1) {
+                        isAll_filled = false;
+                        break
+                    } else if (value.length < 1) {
                         isAll_filled = false;
                         break
                     }

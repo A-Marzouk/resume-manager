@@ -14,57 +14,22 @@
             RECORDING
         </div>
         <div class="account-edit-section-inputs">
-            <div class="faq-question-input account-edit-input">
+            <div class="faq-question-input account-edit-input full-width">
                 <label class="faq-input-description">
-                    Please upload a short audio recording describing your previous experience in Customer service and Sales (ideal recording length is from 1 to 2 minutes). File must be in .mp3 format and no more than 45 MB.
-                </label>
-                <div class="faq-input" :class="{ 'error-input' : errors.voiceRecorder}">
-                    <div class="form-group form-center">
-                        <div class="fake-radio-option" :class="{ checked: !isALinkRecorder }">
-                            <div class="inner-circle"></div>
-                        </div>
-                        <input class="radio-option" type="radio" name="voiceRecorder" id="voiceRecorder" :checked="!isALinkRecorder" v-on:click="isALinkRecorder = false">
-                        <label for="">Upload a file</label>
-                    </div>
-                </div>
-                <div class="faq-input" :class="{ 'error-input' : errors.voiceRecorder}">
-                    <div class="form-group form-center">
-                        <div class="fake-radio-option" :class="{ checked: isALinkRecorder }">
-                            <div class="inner-circle"></div>
-                        </div>
-                        <input class="radio-option" type="radio" name="voiceRecorder" id="voiceRecorder" :checked="isALinkRecorder" v-on:click="isALinkRecorder = true">
-                        <label for="">Share a link</label>
-                    </div>
-                </div>
-            </div>
-            <div v-if="!isALinkRecorder" class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
-                <div class="fake-file-input btn" >
-                    <input type="file" id="voiceRecorder" />
-                    UPLOAD A FILE
-                </div>
-            </div>
-            <div v-if="isALinkRecorder" class="faq-question-input account-edit-input">
-                <div  class="faq-input" :class="{ 'error-input' : errors.primaryJob}">
-                    <input type="text" placeholder="Insert link here..." />
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="account-edit-section">
-        <div class="account-edit-section-heading">
-            RESUME
-        </div>
-        <div class="account-edit-section-inputs">
-            <div class="faq-question-input account-edit-input faq-description">
-                <label class="faq-input-description">
-                    Please upload your resume. Only .pdf files are allowed.
+                    Please upload a picture of yourself. There should be only your face
                 </label>
             </div>
-            <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
-                <div class="fake-file-input btn" >
-                    <input type="file" id="resumeFile" />
-                    UPLOAD A FILE
+            <div id="dropbox" class="account-edit-section-edit-btn no-decoration picture-box" :class="{'disabled-btn' : !canSubmit}">
+                <div class="fallback">
+                    <input type="file" id="photo" name="photo" />
                 </div>
+                <p class="dz-message">Drag and drop a photo you want to upload</p>
+        
+                <div class="fake-file-input btn btn-orange dz-input" >
+                    CHOOSE A FILE
+                </div>
+                <p class="dz-message little">Maximum allowed size is 45 MB</p>
+                <div id="dropzone" class="dropzone"></div>
             </div>
         </div>
     </div>
@@ -81,10 +46,8 @@ export default {
   data () {
     return{
         resumeData:{
-            voiceRecorder: '',
-            resumeFile: ''
+            profilePicture: ''
         },
-        isALinkRecorder: false,
         canSubmit: true,
         errors:[]
     }
@@ -92,6 +55,7 @@ export default {
   methods: {
       nextStep (e) {
         e.preventDefault()
+        this.canSubmit = true
         if (this.canSubmit) {
             this.getData({ resumeData: { ...this.resumeData }})
             this.changeStep(5)

@@ -127,7 +127,7 @@
                            </div>
                        </div>
                         <div class="left no-decoration">
-                            <a href="/freelancer/account/service-agreement">
+                            <a href="/freelancer/account/privacy-agreement">
                                 COMPLETE AGREEMENT
                             </a>
                         </div>

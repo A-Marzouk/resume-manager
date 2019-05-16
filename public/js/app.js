@@ -75498,13 +75498,7 @@ var render = function() {
           _vm._m(11)
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "campaign-brief-footer" }, [
-          _c("a", { attrs: { href: _vm.rootLink } }, [
-            _vm._v("\n                GO TO CAMPAIGN\n            ")
-          ]),
-          _vm._v(" "),
-          _vm._m(12)
-        ])
+        _vm._m(12)
       ]),
       _vm._v(" "),
       _c("addEntry"),
@@ -75545,7 +75539,10 @@ var staticRenderFns = [
         _c("div", { staticClass: "actionBtn" }, [
           _c(
             "a",
-            { staticClass: "secondary little-padding", attrs: { href: "#" } },
+            {
+              staticClass: "secondary little-padding hideOnSm",
+              attrs: { href: "#" }
+            },
             [_vm._v("FINISH SHIFT")]
           ),
           _vm._v(" "),
@@ -75725,11 +75722,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "add-entry", attrs: { href: "#" } }, [
-      _c("img", {
-        attrs: { src: "/images/client/close_24px.png", alt: "plus sign" }
-      }),
-      _vm._v(" ADD ENTRY\n            ")
+    return _c("div", { staticClass: "campaign-brief-footer" }, [
+      _c("a", { attrs: { href: "/freelancer/campaign" } }, [
+        _vm._v("\n                GO TO CAMPAIGN\n            ")
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "add-entry", attrs: { href: "#" } }, [
+        _c("img", {
+          attrs: { src: "/images/client/close_24px.png", alt: "plus sign" }
+        }),
+        _vm._v(" ADD ENTRY\n            ")
+      ])
     ])
   }
 ]
@@ -78929,7 +78932,7 @@ var render = function() {
               "div",
               {
                 staticClass: "faq-input",
-                class: { "error-input": _vm.errors.gender }
+                class: { "error-input": _vm.errors.lang }
               },
               [
                 _c(
@@ -79028,7 +79031,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT\n      "
+              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)\n      "
             )
           ])
         ])
@@ -79514,7 +79517,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT\n      "
+              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)\n      "
             )
           ])
         ])
@@ -79759,7 +79762,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "account-edit-section" }, [
       _c("div", { staticClass: "account-edit-section-heading" }, [
-        _vm._v("\n          RECORDING\n      ")
+        _vm._v("\n          ADD A PICTURE OF YOURSELF\n      ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "account-edit-section-inputs" }, [
@@ -79832,7 +79835,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT\n      "
+              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)\n      "
             )
           ])
         ])
@@ -80214,7 +80217,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT\n      "
+              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)\n      "
             )
           ])
         ])
@@ -82201,7 +82204,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -82212,6 +82215,10 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -82375,366 +82382,372 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "d-flex justify-content-center" }, [
+    _c("div", { staticClass: "account-info-edit-wrapper" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-info-edit dashboard-box" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "account-edit-section" }, [
+          _c("div", { staticClass: "account-edit-section-heading" }, [
+            _vm._v(
+              "\n                    PERSONAL INFORMATION\n                "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "account-edit-section-inputs" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _vm._m(3),
+            _vm._v(" "),
+            _vm._m(4),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                            Enter your phone number\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "faq-input" },
+                  [
+                    _c("flag-dropdown", [
+                      _c("input", {
+                        attrs: {
+                          type: "text",
+                          name: "phone",
+                          placeholder: "123-3534634"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("img", {
+                        attrs: {
+                          src:
+                            "/images/client/campaign_activity/close_black.png",
+                          alt: "delete icon"
+                        }
+                      })
+                    ])
+                  ],
+                  1
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _vm._m(5),
+            _vm._v(" "),
+            _vm._m(6)
+          ]),
+          _vm._v(" "),
+          _vm._m(7),
+          _vm._v(" "),
+          _vm._m(8)
+        ]),
+        _vm._v(" "),
+        _vm._m(9),
+        _vm._v(" "),
+        _vm._m(10)
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex justify-content-center" }, [
-      _c("div", { staticClass: "account-info-edit-wrapper" }, [
-        _c(
-          "nav",
-          { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
-          [
-            _c("div", { staticClass: "backBtn" }, [
-              _c("a", { attrs: { href: "/freelancer/dashboard/my-account" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "/images/client/arrow_back.png",
-                    alt: "back-icon"
-                  }
-                })
-              ]),
-              _vm._v(
-                "\n                YOUR PERSONAL INFORMATION\n            "
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "account-info-edit dashboard-box" }, [
-          _c(
-            "div",
-            { staticClass: "account-info-edit-heading dashboard-box-heading" },
-            [
-              _c("div", { staticClass: "left" }, [
-                _c("img", {
-                  attrs: { src: "/images/dashboard/info.svg", alt: "info icon" }
-                }),
-                _vm._v(" "),
-                _c("span", [
-                  _vm._v(
-                    "\n                    EDIT YOUR PERSONAL INFORMATION\n                "
-                  )
-                ])
-              ])
-            ]
-          ),
+    return _c(
+      "nav",
+      { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
+      [
+        _c("div", { staticClass: "backBtn" }, [
+          _c("a", { attrs: { href: "/freelancer/dashboard/my-account" } }, [
+            _c("img", {
+              attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
+            })
+          ]),
+          _vm._v("\n                YOUR PERSONAL INFORMATION\n            ")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "account-info-edit-heading dashboard-box-heading" },
+      [
+        _c("div", { staticClass: "left" }, [
+          _c("img", {
+            attrs: { src: "/images/dashboard/info.svg", alt: "info icon" }
+          }),
           _vm._v(" "),
-          _c("div", { staticClass: "account-edit-section" }, [
-            _c("div", { staticClass: "account-edit-section-heading" }, [
-              _vm._v(
-                "\n                    PERSONAL INFORMATION\n                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "account-edit-section-inputs" }, [
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Enter your name\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: { type: "text", name: "faq", placeholder: "Jose" }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Enter your surname\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Quintero"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Choose your gender\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Enter your phone number\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Enter yout e-mail\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "123456@gmail.com"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Select your time zone\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("label", { staticClass: "faq-input-label" }, [
-                  _vm._v(
-                    "\n                        Enter your city name\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "faq-input" }, [
-                  _c("input", {
-                    attrs: { type: "text", name: "faq", placeholder: "London" }
-                  }),
-                  _vm._v(" "),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/client/campaign_activity/close_black.png",
-                      alt: "delete icon"
-                    }
-                  })
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("label", { staticClass: "faq-input-label" }, [
-                  _vm._v(
-                    "\n                        Enter your PayPal acc number\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "faq-input" }, [
-                  _c("input", {
-                    attrs: {
-                      type: "text",
-                      name: "faq",
-                      placeholder: "9128412945"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/client/campaign_activity/close_black.png",
-                      alt: "delete icon"
-                    }
-                  })
-                ])
-              ]
+          _c("span", [
+            _vm._v(
+              "\n                    EDIT YOUR PERSONAL INFORMATION\n                "
             )
-          ]),
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+      _c("label", { staticClass: "faq-input-label" }, [
+        _vm._v(
+          "\n                            Enter your name\n                        "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "faq-input" }, [
+        _c("input", {
+          attrs: { type: "text", name: "faq", placeholder: "Jose" }
+        }),
+        _vm._v(" "),
+        _c("img", {
+          attrs: {
+            src: "/images/client/campaign_activity/close_black.png",
+            alt: "delete icon"
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+      _c("label", { staticClass: "faq-input-label" }, [
+        _vm._v(
+          "\n                            Enter your surname\n                        "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "faq-input" }, [
+        _c("input", {
+          attrs: { type: "text", name: "faq", placeholder: "Quintero" }
+        }),
+        _vm._v(" "),
+        _c("img", {
+          attrs: {
+            src: "/images/client/campaign_activity/close_black.png",
+            alt: "delete icon"
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+      _c("label", { staticClass: "faq-input-label" }, [
+        _vm._v(
+          "\n                            Choose your gender\n                        "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "img-container" }, [
+        _c("div", { staticClass: "faq-input" }, [
+          _c("img", {
+            attrs: { src: "/images/client/add_agent/gender/male_icon.png" }
+          }),
           _vm._v(" "),
-          _c("div", { staticClass: "account-edit-section sub-section" }, [
-            _c("div", { staticClass: "account-edit-section-heading" }, [
-              _vm._v("\n                    PASSWORD\n                ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "account-edit-section-inputs" }, [
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Write a new password\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Repeat your new password\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "account-edit-section-edit-btn no-decoration" },
-            [
-              _c("a", { attrs: { href: "#" } }, [
-                _vm._v("\n                    SAVE EDITS\n                ")
-              ])
-            ]
-          )
+          _c("img", {
+            attrs: { src: "/images/client/add_agent/gender/female_icon.png" }
+          })
         ])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+      _c("label", { staticClass: "faq-input-label" }, [
+        _vm._v(
+          "\n                            Enter your e-mail\n                        "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "faq-input" }, [
+        _c("input", {
+          attrs: { type: "text", name: "faq", placeholder: "123456@gmail.com" }
+        }),
+        _vm._v(" "),
+        _c("img", {
+          attrs: {
+            src: "/images/client/campaign_activity/close_black.png",
+            alt: "delete icon"
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+      _c("label", { staticClass: "faq-input-label" }, [
+        _vm._v(
+          "\n                            Select your time zone\n                        "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "faq-input" }, [
+        _c("input", {
+          attrs: { type: "text", name: "faq", placeholder: "Enter your ..." }
+        }),
+        _vm._v(" "),
+        _c("img", {
+          attrs: {
+            src: "/images/client/campaign_activity/close_black.png",
+            alt: "delete icon"
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+      _c("label", { staticClass: "faq-input-label" }, [
+        _vm._v(
+          "\n                        Enter your city name\n                    "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "faq-input" }, [
+        _c("input", {
+          attrs: { type: "text", name: "faq", placeholder: "London" }
+        }),
+        _vm._v(" "),
+        _c("img", {
+          attrs: {
+            src: "/images/client/campaign_activity/close_black.png",
+            alt: "delete icon"
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+      _c("label", { staticClass: "faq-input-label" }, [
+        _vm._v(
+          "\n                        Enter your PayPal acc number\n                    "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "faq-input" }, [
+        _c("input", {
+          attrs: { type: "text", name: "faq", placeholder: "9128412945" }
+        }),
+        _vm._v(" "),
+        _c("img", {
+          attrs: {
+            src: "/images/client/campaign_activity/close_black.png",
+            alt: "delete icon"
+          }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "account-edit-section sub-section" }, [
+      _c("div", { staticClass: "account-edit-section-heading" }, [
+        _vm._v("\n                    PASSWORD\n                ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-edit-section-inputs" }, [
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v(
+              "\n                            Write a new password\n                        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "faq-input" }, [
+            _c("input", {
+              attrs: {
+                type: "text",
+                name: "faq",
+                placeholder: "Enter your ..."
+              }
+            }),
+            _vm._v(" "),
+            _c("img", {
+              attrs: {
+                src: "/images/client/campaign_activity/close_black.png",
+                alt: "delete icon"
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
+          _c("label", { staticClass: "faq-input-label" }, [
+            _vm._v(
+              "\n                            Repeat your new password\n                        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "faq-input" }, [
+            _c("input", {
+              attrs: {
+                type: "text",
+                name: "faq",
+                placeholder: "Enter your ..."
+              }
+            }),
+            _vm._v(" "),
+            _c("img", {
+              attrs: {
+                src: "/images/client/campaign_activity/close_black.png",
+                alt: "delete icon"
+              }
+            })
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "account-edit-section-edit-btn no-decoration" },
+      [
+        _c("a", { attrs: { href: "#" } }, [
+          _vm._v("\n                    SAVE EDITS\n                ")
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -82832,7 +82845,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -82843,6 +82856,14 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -83165,21 +83186,29 @@ var staticRenderFns = [
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
+                  _c("div", { staticClass: "img-container" }, [
+                    _c("div", { staticClass: "faq-input" }, [
+                      _c("div", { staticClass: "lang" }, [
+                        _c("img", {
+                          attrs: {
+                            src: "/images/icons/english_icon_pressed.svg"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("English")])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "lang" }, [
+                        _c("img", {
+                          attrs: {
+                            src:
+                              "/images/client/add_agent/language/spanish_icon.png"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Spanish")])
+                      ])
+                    ])
                   ])
                 ]
               )

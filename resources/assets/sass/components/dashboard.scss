@@ -247,9 +247,13 @@
           }
           a {
             @media (max-width:745px) {
-              width: 190px;
+              width: 120px;
               height: 31px;
               font-size: 11px;
+
+              &.hideOnSm {
+                display: none;
+              }
             }
 
             padding: 4px 23px 3px 13px;
@@ -644,9 +648,15 @@
     left: 0;
     top: -100px;
     background: white;
-    z-index: 1;
+    z-index: 2;
     box-shadow: 0px 0px 6px rgba(173, 173, 173, 0.25);
     border-radius: 4px;
+
+    @media (max-width:745px) {
+      flex-direction: column;
+      left: 50px;
+      top: -200px;
+    }
 
     &::after {
       content: "";

@@ -14,7 +14,7 @@
                     MY ACTIVE CAMPAIGNS
                 </div>
                 <div class="actionBtn">
-                    <a class="secondary little-padding" href="#">FINISH SHIFT</a>
+                    <a class="secondary little-padding hideOnSm" href="#">FINISH SHIFT</a>
                     <a class="little-padding" href="#">
                         I AM AWAY
                     </a>
@@ -271,7 +271,7 @@
             </div>
 
             <div class="campaign-brief-footer">
-                <a :href="rootLink">
+                <a href="/freelancer/campaign">
                     GO TO CAMPAIGN
                 </a>
                 <a class="add-entry" href="#">

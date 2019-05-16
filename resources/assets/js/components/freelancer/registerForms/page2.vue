@@ -4,7 +4,7 @@
         <div class="left">
             <img src="/images/client/my_account/info_40px.png" alt="info icon">
             <span>
-            FILL IN THE INFORMATION TO BECOME AN AGENT
+            FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)
         </span>
         </div>
     </div>
@@ -98,7 +98,7 @@
                     Choose languages you speak
                 </label>
                 <div class="img-container">
-                    <div class="faq-input" :class="{ 'error-input' : errors.gender}">
+                    <div class="faq-input" :class="{ 'error-input' : errors.lang}">
                         <div v-on:click='professionalData.lang = "en"' class="lang">
                             <img src="/images/client/add_agent/language/english_icon.png">
                             <span>English</span>

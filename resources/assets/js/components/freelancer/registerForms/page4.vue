@@ -4,14 +4,14 @@
         <div class="left">
             <img src="/images/client/my_account/info_40px.png" alt="info icon">
             <span>
-            FILL IN THE INFORMATION TO BECOME AN AGENT
+            FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)
         </span>
         </div>
     </div>
 
     <div class="account-edit-section">
         <div class="account-edit-section-heading">
-            RECORDING
+            ADD A PICTURE OF YOURSELF
         </div>
         <div class="account-edit-section-inputs">
             <div class="faq-question-input account-edit-input full-width">

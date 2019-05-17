@@ -67,7 +67,7 @@
       .menu-block-name{
         margin: auto auto auto 5px;
         font-style: normal;
-        font-weight: normal;
+        font-weight: bold;
         font-size: 13px;
         line-height: 24px;
         letter-spacing: -0.1px;
@@ -102,7 +102,6 @@
       .menu-block-name{
         color: #FFFFFF;
         font-style: normal;
-        font-weight: bold;
         font-size: 16px;
         line-height: 13px;
       }
@@ -247,9 +246,13 @@
           }
           a {
             @media (max-width:745px) {
-              width: 190px;
+              width: 120px;
               height: 31px;
               font-size: 11px;
+
+              &.hideOnSm {
+                display: none;
+              }
             }
 
             padding: 4px 23px 3px 13px;
@@ -471,26 +474,28 @@
   .log{
     display:flex;
     min-height: 75px;
+    align-items: flex-start;
+
     .log-time{
       font-family: Roboto;
       font-style: normal;
       font-weight: bold;
       width: 69px;
       font-size: 12px;
-      margin-top: 22px;
+      margin-top: 12px;
       line-height: 24px;
       letter-spacing: -0.1px;
       color: #FF9B68;
       margin-left:34px;
-      @media (max-width:1240px) {
-        margin-top: 30px;
-      }
-      @media (max-width:1240px) {
-        margin-left: 16px;
-      }
+      // @media (max-width:1240px) {
+      //   margin-top: 30px;
+      // }
+      // @media (max-width:1240px) {
+      //   margin-left: 16px;
+      // }
     }
     .log-text{
-      width: 766px;
+      width: 85%;
       background:#EEF9FF;
       position: relative;
       border-radius:  80px;
@@ -498,7 +503,7 @@
       display:flex;
       padding-top: 8px;
       padding-bottom: 8px;
-      padding-right: 8px;
+      padding-right: 18px;
       align-items:center;
       .log-text-content{
         font-family: Roboto;
@@ -509,7 +514,7 @@
         letter-spacing: -0.1px;
         color: #4A5464;
         padding-left: 50px;
-        padding-right: 10px;
+        padding-right: 8px;
       }
       .agent-initials{
         font-family: Roboto;
@@ -644,9 +649,15 @@
     left: 0;
     top: -100px;
     background: white;
-    z-index: 1;
+    z-index: 2;
     box-shadow: 0px 0px 6px rgba(173, 173, 173, 0.25);
     border-radius: 4px;
+
+    @media (max-width:745px) {
+      flex-direction: column;
+      left: 50px;
+      top: -200px;
+    }
 
     &::after {
       content: "";
@@ -855,17 +866,25 @@
       width: 100%;
       display: flex;
       justify-content: flex-end;
+      align-items: center;
 
       .btn {
         font-family: Roboto;
         font-style: normal;
         font-weight: 500;
         font-size: 14px;
-        // line-height: 24px;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        min-width: 120px;
+        padding: 10px 25px;
+      }
+
+      .btn-link {
+        background: transparent;
+        color: $l-blue;
       }
 
       .btn-submit {
-        padding: 10px 25px;
         margin-left: 50px;
       }
 
@@ -880,14 +899,11 @@
       }
 
       .btn-primary {
-        border: 2px solid $l-blue;
         background: white;
-        position: relative;
         padding: 0 15px;
         color: $l-blue;
         height: 25px;
-        margin: 0 15px;
-        top: -15px;
+        margin: 40px 0 28px;
       }
     }
   }

@@ -4,7 +4,7 @@
         <div class="left">
             <img src="/images/client/my_account/info_40px.png" alt="info icon">
             <span>
-            FILL IN THE INFORMATION TO BECOME AN AGENT
+            FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)
         </span>
         </div>
     </div>
@@ -103,7 +103,8 @@ export default {
         },
         typeOfRecording: 'file',
         canSubmit: true,
-        errors:[]
+        errors:[],
+        showErrors: false
     }
   },
   methods: {
@@ -114,7 +115,7 @@ export default {
             this.changeStep(4)
             this.$router.push('/freelancer/register/page4')
         } else {
-            // Send errors
+            this.showErrors = true
         }
 
       }

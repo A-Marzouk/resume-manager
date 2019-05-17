@@ -82433,7 +82433,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -82444,6 +82444,105 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -82586,21 +82685,206 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        'flag-dropdown': __WEBPACK_IMPORTED_MODULE_0__flagsDropdown_vue___default.a
+    },
     data: function data() {
         return {
-            client: {
-                name: 'Ahmed Marzouk',
-                agency: 'The best agency',
-                contact: ' 0044203700685',
-                timeZone: '(GMT - 5:00) Eastern time (US & Canada), Bogota, Lima',
-                emailDept: 'email1234567890@gmail.com',
-                email: 'test@gmail.com'
-            }
+            personalData: {
+                name: '',
+                surname: '',
+                gender: '',
+                phone: '',
+                email: '',
+                timeZone: '',
+                cityName: '',
+                paypal: '',
+                password: '',
+                passwordConf: ''
+            },
+            canSubmit: false,
+            errors: {
+                name: '',
+                surname: '',
+                gender: '',
+                phone: '',
+                email: '',
+                timeZone: '',
+                cityName: '',
+                paypal: '',
+                password: '',
+                passwordConf: ''
+            },
+            showErrors: false
         };
     },
 
-    methods: {}
+    methods: {
+        nextStep: function nextStep(e) {
+            e.preventDefault();
+            // this.canSubmit = true
+            if (this.noErrors()) {
+                this.getData({ personalData: _extends({}, this.personalData) });
+                this.$router.push('/freelancer/register/page2');
+            } else this.showErrors = true;
+        },
+        noErrors: function noErrors() {
+            var noErrorsName = this.noErrorsName();
+            var noErrorsPhone = this.noErrorsPhone();
+            var noErrorsEmail = this.noErrorsEmail();
+            var noErrorsPaypal = this.noErrorsPaypal();
+            var noErrorsGender = this.noErrorsGender();
+            var noErrorsSurname = this.noErrorsSurname();
+            var noErrorsTimeZone = this.noErrorsTimeZone();
+            var noErrorsCityName = this.noErrorsCityName();
+
+            return noErrorsName && noErrorsPhone && noErrorsEmail && noErrorsPaypal && noErrorsGender && noErrorsSurname && noErrorsTimeZone && noErrorsCityName;
+        },
+        noErrorsName: function noErrorsName() {
+            var valid = true;
+
+            // Empty field
+            if (this.personalData.name.trim() === '') {
+                valid = false;
+                this.errors.name = 'Please, enter your name';
+            } else this.errors.name = '';
+            // Invalid characters (?)
+            return valid;
+        },
+        noErrorsSurname: function noErrorsSurname() {
+            var valid = true;
+
+            // Empty field
+            if (this.personalData.surname.trim() === '') {
+                valid = false;
+                this.errors.surname = 'Please, enter your surname';
+            } else this.errors.surname = '';
+
+            // Invalid characters (?)
+            return valid;
+        },
+        noErrorsGender: function noErrorsGender() {
+            var valid = true;
+
+            // Empty field
+            if (this.personalData.gender.trim() === '') {
+                valid = false;
+                this.errors.gender = 'Choose a gender';
+            } else this.errors.gender = '';
+
+            return valid;
+        },
+        noErrorsPhone: function noErrorsPhone() {
+            var valid = true;
+            var phoneFormat = /[0-9]{1,3}-[0-9]{7}/;
+
+            if (this.personalData.phone.trim() === '') {
+                // Empty field
+                valid = false;
+                this.errors.phone = 'Please enter your phone number';
+            } else if (!phoneFormat.test(this.personalData.phone)) {
+                // Review the regExp
+                valid = false;
+                this.errors.phone = 'This not a valid phone number format';
+            } else this.errors.phone = '';
+
+            return valid;
+        },
+        noErrorsEmail: function noErrorsEmail() {
+            var valid = true;
+            var emailFormat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+
+            if (this.personalData.email.trim() === '') {
+                // Empty field
+                valid = false;
+                this.errors.email = 'Please, enter your email';
+            } else if (!emailFormat.test(this.personalData.email)) {
+                valid = false;
+                this.errors.email = 'This email not has a valid format. Please check again';
+            } else this.errors.email = '';
+
+            return valid;
+        },
+        noErrorsTimeZone: function noErrorsTimeZone() {
+            var valid = true;
+
+            if (this.personalData.timeZone.trim() === '') {
+                // Empty field
+                valid = false;
+                this.errors.timeZone = 'Please, select a time zone';
+            } else this.errors.timeZone = '';
+
+            return valid;
+        },
+        noErrorsCityName: function noErrorsCityName() {
+            var valid = true;
+
+            if (this.personalData.cityName.trim() === '') {
+                // Empty field
+                valid = false;
+                this.errors.cityName = 'Please, enter a city';
+            } else this.errors.cityName = '';
+
+            return valid;
+        },
+        noErrorsPaypal: function noErrorsPaypal() {
+            var valid = true;
+
+            if (this.personalData.paypal.trim() === '') {
+                // Empty field
+                valid = false;
+                this.errors.paypal = 'Please, enter your paypal id';
+            } else this.errors.paypal = '';
+
+            return valid;
+        },
+        clearInput: function clearInput(name) {
+            this.personalData[name] = '';
+        }
+    },
+    watch: {
+        personalData: {
+            handler: function handler() {
+                // check if all personalData values are filled
+                var keys = Object.keys(this.personalData);
+                var isAll_filled = true;
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = keys[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var key = _step.value;
+
+                        if (this.personalData[key].trim().length < 1) {
+                            isAll_filled = false;
+                            break;
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+
+                this.canSubmit = isAll_filled;
+            },
+
+            deep: true
+        }
+    }
 });
 
 /***/ }),
@@ -82626,11 +82910,220 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "account-edit-section-inputs" }, [
-            _vm._m(2),
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                            Enter your name\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.name }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.personalData.name,
+                          expression: "personalData.name"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "name",
+                        placeholder: "Enter your name"
+                      },
+                      domProps: { value: _vm.personalData.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.personalData,
+                            "name",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.personalData.name.length > 0,
+                          expression: "personalData.name.length > 0"
+                        }
+                      ],
+                      attrs: {
+                        src: "/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.clearInput("name")
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.name
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.name) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            ),
             _vm._v(" "),
-            _vm._m(3),
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                            Enter your surname\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.surname }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.personalData.surname,
+                          expression: "personalData.surname"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "surname",
+                        placeholder: "Enter your surname"
+                      },
+                      domProps: { value: _vm.personalData.surname },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.personalData,
+                            "surname",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.personalData.surname.length > 0,
+                          expression: "personalData.surname.length > 0"
+                        }
+                      ],
+                      attrs: {
+                        src: "/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.clearInput("surname")
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.surname
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.surname) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            ),
             _vm._v(" "),
-            _vm._m(4),
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                            Choose your gender\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "img-container" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.gender }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          src: "/images/client/add_agent/gender/male_icon.png"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.personalData.gender = "M"
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("img", {
+                        attrs: {
+                          src: "/images/client/add_agent/gender/female_icon.png"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.personalData.gender = "F"
+                          }
+                        }
+                      })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.gender
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.gender) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -82644,44 +83137,1034 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "div",
-                  { staticClass: "faq-input" },
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.phone }
+                  },
                   [
                     _c("flag-dropdown", [
                       _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.personalData.phone,
+                            expression: "personalData.phone"
+                          }
+                        ],
                         attrs: {
                           type: "text",
                           name: "phone",
                           placeholder: "123-3534634"
+                        },
+                        domProps: { value: _vm.personalData.phone },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.personalData,
+                              "phone",
+                              $event.target.value
+                            )
+                          }
                         }
                       }),
                       _vm._v(" "),
                       _c("img", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.personalData.phone.length > 0,
+                            expression: "personalData.phone.length > 0"
+                          }
+                        ],
                         attrs: {
                           src:
                             "/images/client/campaign_activity/close_black.png",
                           alt: "delete icon"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.clearInput("phone")
+                          }
                         }
                       })
                     ])
                   ],
                   1
-                )
+                ),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.phone
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.phone) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
               ]
             ),
             _vm._v(" "),
-            _vm._m(5),
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                            Enter your e-mail\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.email }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.personalData.email,
+                          expression: "personalData.email"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "email",
+                        placeholder: "Enter your email"
+                      },
+                      domProps: { value: _vm.personalData.email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.personalData,
+                            "email",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.personalData.email.length > 0,
+                          expression: "personalData.email.length > 0"
+                        }
+                      ],
+                      attrs: {
+                        src: "/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.clearInput("email")
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.email
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.email) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            ),
             _vm._v(" "),
-            _vm._m(6)
-          ]),
-          _vm._v(" "),
-          _vm._m(7),
-          _vm._v(" "),
-          _vm._m(8)
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                            Select your time zone\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.timeZone }
+                  },
+                  [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.personalData.timeZone,
+                            expression: "personalData.timeZone"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        staticStyle: { height: "50px" },
+                        attrs: { id: "timeZone", name: "timeZone" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.personalData,
+                              "timeZone",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { value: "", selected: "selected" } },
+                          [_vm._v("Select your timezone")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "(GMT -7:00) Mountain Time (US & Canada)"
+                            }
+                          },
+                          [_vm._v("(GMT -7:00) Mountain Time (US & Canada)")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "(GMT -8:00) Pacific Time (US & Canada)"
+                            }
+                          },
+                          [_vm._v("(GMT -8:00) Pacific Time (US & Canada)")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "(GMT -9:00) Alaska" } },
+                          [_vm._v("(GMT -9:00) Alaska")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("--------------")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "(GMT -12:00) Eniwetok, Kwajalein" }
+                          },
+                          [_vm._v("(GMT -12:00) Eniwetok, Kwajalein")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "(GMT -11:00) Midway Island, Samoa"
+                            }
+                          },
+                          [_vm._v("(GMT -11:00) Midway Island, Samoa")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "(GMT -10:00) Hawaii" } },
+                          [_vm._v("(GMT -10:00) Hawaii")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "(GMT -9:30) Taiohae" } },
+                          [_vm._v("(GMT -9:30) Taiohae")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "(GMT -9:00) Alaska" } },
+                          [_vm._v("(GMT -9:00) Alaska")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "(GMT -8:00) Pacific Time (US & Canada)"
+                            }
+                          },
+                          [_vm._v("(GMT -8:00) Pacific Time (US & Canada)")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "(GMT -7:00) Mountain Time (US & Canada)"
+                            }
+                          },
+                          [_vm._v("(GMT -7:00) Mountain Time (US & Canada)")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "(GMT -4:30) Caracas" } },
+                          [_vm._v("(GMT -4:30) Caracas")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "(GMT -3:30) Newfoundland" } },
+                          [_vm._v("(GMT -3:30) Newfoundland")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT -3:00) Brazil, Buenos Aires, Georgetown"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT -3:00) Brazil, Buenos Aires, Georgetown"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "(GMT -2:00) Mid-Atlantic" } },
+                          [_vm._v("(GMT -2:00) Mid-Atlantic")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "(GMT -1:00) Azores, Cape Verde Islands"
+                            }
+                          },
+                          [_vm._v("(GMT -1:00) Azores, Cape Verde Islands")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT +1:00) Brussels, Copenhagen, Madrid, Paris"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT +1:00) Brussels, Copenhagen, Madrid, Paris"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "(GMT +2:00) Kaliningrad, South Africa"
+                            }
+                          },
+                          [_vm._v("(GMT +2:00) Kaliningrad, South Africa")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "(GMT +3:30) Tehran" } },
+                          [_vm._v("(GMT +3:30) Tehran")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "(GMT +4:30) Kabul" } },
+                          [_vm._v("(GMT +4:30) Kabul")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "(GMT +5:45) Kathmandu, Pokhara" }
+                          },
+                          [_vm._v("(GMT +5:45) Kathmandu, Pokhara")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "(GMT +6:00) Almaty, Dhaka, Colombo"
+                            }
+                          },
+                          [_vm._v("(GMT +6:00) Almaty, Dhaka, Colombo")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "(GMT +6:30) Yangon, Mandalay" } },
+                          [_vm._v("(GMT +6:30) Yangon, Mandalay")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "(GMT +7:00) Bangkok, Hanoi, Jakarta"
+                            }
+                          },
+                          [_vm._v("(GMT +7:00) Bangkok, Hanoi, Jakarta")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "(GMT +8:45) Eucla" } },
+                          [_vm._v("(GMT +8:45) Eucla")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "(GMT +9:30) Adelaide, Darwin" } },
+                          [_vm._v("(GMT +9:30) Adelaide, Darwin")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "(GMT +10:30) Lord Howe Island" } },
+                          [_vm._v("(GMT +10:30) Lord Howe Island")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "(GMT +11:30) Norfolk Island" } },
+                          [_vm._v("(GMT +11:30) Norfolk Island")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value:
+                                "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "(GMT +12:45) Chatham Islands" } },
+                          [_vm._v("(GMT +12:45) Chatham Islands")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          { attrs: { value: "(GMT +13:00) Apia, Nukualofa" } },
+                          [_vm._v("(GMT +13:00) Apia, Nukualofa")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "(GMT +14:00) Line Islands, Tokelau"
+                            }
+                          },
+                          [_vm._v("(GMT +14:00) Line Islands, Tokelau")]
+                        )
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.timeZone
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.timeZone) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                            Enter your city name\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.cityName }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.personalData.cityName,
+                          expression: "personalData.cityName"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "cityName",
+                        placeholder: "You can enter several items using comas"
+                      },
+                      domProps: { value: _vm.personalData.cityName },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.personalData,
+                            "cityName",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.personalData.cityName.length > 0,
+                          expression: "personalData.cityName.length > 0"
+                        }
+                      ],
+                      attrs: {
+                        src: "/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.clearInput("cityName")
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.cityName
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.cityName) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                            Enter your PayPal acc number\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.paypal }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.personalData.paypal,
+                          expression: "personalData.paypal"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "paypal",
+                        placeholder: "Enter your PayPal acc number"
+                      },
+                      domProps: { value: _vm.personalData.paypal },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.personalData,
+                            "paypal",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.personalData.paypal.length > 0,
+                          expression: "personalData.paypal.length > 0"
+                        }
+                      ],
+                      attrs: {
+                        src: "/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.clearInput("paypal")
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.paypal
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.paypal) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            )
+          ])
         ]),
         _vm._v(" "),
-        _vm._m(9),
+        _c("div", { staticClass: "account-edit-section sub-section" }, [
+          _c("div", { staticClass: "account-edit-section-heading" }, [
+            _vm._v("\n                    PASSWORD\n                ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "account-edit-section-inputs" }, [
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                            Write a new password\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.password }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.personalData.password,
+                          expression: "personalData.password"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Enter your ..."
+                      },
+                      domProps: { value: _vm.personalData.password },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.personalData,
+                            "password",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.personalData.password.length > 0,
+                          expression: "personalData.password.length > 0"
+                        }
+                      ],
+                      attrs: {
+                        src: "/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.clearInput("password")
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.password
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.password) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                            Repeat your new password\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.passwordConf }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.personalData.passwordConf,
+                          expression: "personalData.passwordConf"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "faq",
+                        placeholder: "Enter your ..."
+                      },
+                      domProps: { value: _vm.personalData.passwordConf },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.personalData,
+                            "passwordConf",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.personalData.passwordConf.length > 0,
+                          expression: "personalData.passwordConf.length > 0"
+                        }
+                      ],
+                      attrs: {
+                        src: "/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.clearInput("passwordConf")
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.passwordConf
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.passwordConf) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            )
+          ])
+        ]),
         _vm._v(" "),
-        _vm._m(10)
+        _vm._m(2)
       ])
     ])
   ])
@@ -82727,242 +84210,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "faq-question-input account-edit-input" }, [
-      _c("label", { staticClass: "faq-input-label" }, [
-        _vm._v(
-          "\n                            Enter your name\n                        "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "faq-input" }, [
-        _c("input", {
-          attrs: { type: "text", name: "faq", placeholder: "Jose" }
-        }),
-        _vm._v(" "),
-        _c("img", {
-          attrs: {
-            src: "/images/client/campaign_activity/close_black.png",
-            alt: "delete icon"
-          }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "faq-question-input account-edit-input" }, [
-      _c("label", { staticClass: "faq-input-label" }, [
-        _vm._v(
-          "\n                            Enter your surname\n                        "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "faq-input" }, [
-        _c("input", {
-          attrs: { type: "text", name: "faq", placeholder: "Quintero" }
-        }),
-        _vm._v(" "),
-        _c("img", {
-          attrs: {
-            src: "/images/client/campaign_activity/close_black.png",
-            alt: "delete icon"
-          }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "faq-question-input account-edit-input" }, [
-      _c("label", { staticClass: "faq-input-label" }, [
-        _vm._v(
-          "\n                            Choose your gender\n                        "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "img-container" }, [
-        _c("div", { staticClass: "faq-input" }, [
-          _c("img", {
-            attrs: { src: "/images/client/add_agent/gender/male_icon.png" }
-          }),
-          _vm._v(" "),
-          _c("img", {
-            attrs: { src: "/images/client/add_agent/gender/female_icon.png" }
-          })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "faq-question-input account-edit-input" }, [
-      _c("label", { staticClass: "faq-input-label" }, [
-        _vm._v(
-          "\n                            Enter your e-mail\n                        "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "faq-input" }, [
-        _c("input", {
-          attrs: { type: "text", name: "faq", placeholder: "123456@gmail.com" }
-        }),
-        _vm._v(" "),
-        _c("img", {
-          attrs: {
-            src: "/images/client/campaign_activity/close_black.png",
-            alt: "delete icon"
-          }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "faq-question-input account-edit-input" }, [
-      _c("label", { staticClass: "faq-input-label" }, [
-        _vm._v(
-          "\n                            Select your time zone\n                        "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "faq-input" }, [
-        _c("input", {
-          attrs: { type: "text", name: "faq", placeholder: "Enter your ..." }
-        }),
-        _vm._v(" "),
-        _c("img", {
-          attrs: {
-            src: "/images/client/campaign_activity/close_black.png",
-            alt: "delete icon"
-          }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "faq-question-input account-edit-input" }, [
-      _c("label", { staticClass: "faq-input-label" }, [
-        _vm._v(
-          "\n                        Enter your city name\n                    "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "faq-input" }, [
-        _c("input", {
-          attrs: { type: "text", name: "faq", placeholder: "London" }
-        }),
-        _vm._v(" "),
-        _c("img", {
-          attrs: {
-            src: "/images/client/campaign_activity/close_black.png",
-            alt: "delete icon"
-          }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "faq-question-input account-edit-input" }, [
-      _c("label", { staticClass: "faq-input-label" }, [
-        _vm._v(
-          "\n                        Enter your PayPal acc number\n                    "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "faq-input" }, [
-        _c("input", {
-          attrs: { type: "text", name: "faq", placeholder: "9128412945" }
-        }),
-        _vm._v(" "),
-        _c("img", {
-          attrs: {
-            src: "/images/client/campaign_activity/close_black.png",
-            alt: "delete icon"
-          }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "account-edit-section sub-section" }, [
-      _c("div", { staticClass: "account-edit-section-heading" }, [
-        _vm._v("\n                    PASSWORD\n                ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "account-edit-section-inputs" }, [
-        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
-          _c("label", { staticClass: "faq-input-label" }, [
-            _vm._v(
-              "\n                            Write a new password\n                        "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "faq-input" }, [
-            _c("input", {
-              attrs: {
-                type: "text",
-                name: "faq",
-                placeholder: "Enter your ..."
-              }
-            }),
-            _vm._v(" "),
-            _c("img", {
-              attrs: {
-                src: "/images/client/campaign_activity/close_black.png",
-                alt: "delete icon"
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "faq-question-input account-edit-input" }, [
-          _c("label", { staticClass: "faq-input-label" }, [
-            _vm._v(
-              "\n                            Repeat your new password\n                        "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "faq-input" }, [
-            _c("input", {
-              attrs: {
-                type: "text",
-                name: "faq",
-                placeholder: "Enter your ..."
-              }
-            }),
-            _vm._v(" "),
-            _c("img", {
-              attrs: {
-                src: "/images/client/campaign_activity/close_black.png",
-                alt: "delete icon"
-              }
-            })
-          ])
-        ])
-      ])
-    ])
   },
   function() {
     var _vm = this
@@ -83074,7 +84321,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -83085,6 +84332,45 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -83191,18 +84477,162 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            client: {
-                name: 'Ahmed Marzouk',
-                agency: 'The best agency',
-                contact: ' 0044203700685',
-                timeZone: '(GMT - 5:00) Eastern time (US & Canada), Bogota, Lima',
-                emailDept: 'email1234567890@gmail.com',
-                email: 'test@gmail.com'
+            professionalData: {
+                primaryJob: '',
+                sector: '',
+                voice: '',
+                hoursPerWeek: '',
+                techs: [],
+                lang: ''
+            },
+            inputTechs: '',
+            canSubmit: false,
+            showErrors: false,
+            errors: {
+                primaryJob: '',
+                sector: '',
+                voice: '',
+                hoursPerWeek: '',
+                techs: '',
+                lang: ''
             }
         };
     },
 
-    methods: {}
+    methods: {
+        noErrors: function noErrors() {
+            var noErrorsPrimaryJob = this.noErrorsPrimaryJob();
+            var noErrorsSector = this.noErrorsSector();
+            var noErrorsVoice = this.noErrorsVoice();
+            var noErrorsHours = this.noErrorsHours();
+            var noErrorsLang = this.noErrorsLang();
+
+            return noErrorsPrimaryJob && noErrorsSector && noErrorsVoice && noErrorsHours && noErrorsLang;
+        },
+        noErrorsPrimaryJob: function noErrorsPrimaryJob() {
+            var valid = true;
+
+            // Empty field
+            if (this.professionalData.primaryJob.trim() === '') {
+                valid = false;
+                this.errors.primaryJob = 'Please, fill this field';
+            } else this.errors.primaryJob = '';
+            // Invalid characters (?)
+            return valid;
+        },
+        noErrorsSector: function noErrorsSector() {
+            var valid = true;
+
+            // Empty field
+            if (this.professionalData.sector.trim() === '') {
+                valid = false;
+                this.errors.sector = 'Please, fill this field';
+            } else this.errors.sector = '';
+            // Invalid characters (?)
+            return valid;
+        },
+        noErrorsVoice: function noErrorsVoice() {
+            var valid = true;
+
+            // Empty field
+            if (this.professionalData.voice.trim() === '') {
+                valid = false;
+                this.errors.voice = 'Please, fill this field';
+            } else this.errors.voice = '';
+            // Invalid characters (?)
+            return valid;
+        },
+        noErrorsHours: function noErrorsHours() {
+            var valid = true;
+
+            // Empty field
+            if (this.professionalData.hoursPerWeek.trim() === '') {
+                valid = false;
+                this.errors.hoursPerWeek = 'Indicate how many hours do you work';
+            } else this.errors.hoursPerWeek = '';
+            // Invalid characters (?)
+            return valid;
+        },
+        noErrorsLang: function noErrorsLang() {
+            var valid = true;
+
+            // Empty field
+            if (this.professionalData.lang.trim() === '') {
+                valid = false;
+                this.errors.lang = 'Please, fill this field';
+            } else this.errors.lang = '';
+            // Invalid characters (?)
+            return valid;
+        },
+        nextStep: function nextStep(e) {
+            e.preventDefault();
+            this.canSubmit = true;
+            if (this.noErrors()) {
+                this.getData({ professionalData: _extends({}, this.professionalData) });
+                this.changeStep(3);
+                this.$router.push('/freelancer/register/page3');
+            } else {
+                this.showErrors = true;
+            }
+        },
+        addToTechs: function addToTechs(e) {
+            if (e.key == ',') {
+                e.preventDefault();
+                this.professionalData.techs.push(this.inputTechs);
+                this.inputTechs = '';
+            }
+        },
+        deleteItem: function deleteItem(index) {
+            this.professionalData.techs.splice(index, 1);
+        },
+        clearInput: function clearInput(name) {
+            if (name !== 'techs') this.professionalData[name] = '';else this.inputTechs = '';
+        }
+    },
+
+    watch: {
+        professionalData: {
+            handler: function handler() {
+                // check if all professionalData values are filled
+                var values = Object.values(this.professionalData);
+                var isAll_filled = true;
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var value = _step.value;
+
+                        if (!Array.isArray(value) && value.trim().length < 1) {
+                            isAll_filled = false;
+                            break;
+                        } else if (value.length < 1) {
+                            isAll_filled = false;
+                            break;
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+
+                this.canSubmit = isAll_filled;
+            },
+
+            deep: true
+        }
+    }
 });
 
 /***/ }),
@@ -83213,260 +84643,598 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "d-flex justify-content-center" }, [
+    _c("div", { staticClass: "account-info-edit-wrapper" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-info-edit dashboard-box" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "account-edit-section" }, [
+          _c("div", { staticClass: "account-edit-section-inputs" }, [
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                            Enter primary job title\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.primaryJob }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.professionalData.primaryJob,
+                          expression: "professionalData.primaryJob"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "primaryJob",
+                        placeholder: "e.g. Frontend Developer"
+                      },
+                      domProps: { value: _vm.professionalData.primaryJob },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.professionalData,
+                            "primaryJob",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.professionalData.primaryJob.length > 0,
+                          expression: "professionalData.primaryJob.length > 0"
+                        }
+                      ],
+                      attrs: {
+                        src: "/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.clearInput("primaryJob")
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.primaryJob
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.primaryJob) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                            Choose voice character (for sales-agents)\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.voice }
+                  },
+                  [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.professionalData.voice,
+                            expression: "professionalData.voice"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        staticStyle: { height: "50px" },
+                        attrs: { id: "voice", name: "voice" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.professionalData,
+                              "voice",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { value: "", selected: "selected" } },
+                          [_vm._v("Select your voice character")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "voice1" } }, [
+                          _vm._v("Voice character 1")
+                        ])
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.voice
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.voice) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                            Enter sector experience\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.sector }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.professionalData.sector,
+                          expression: "professionalData.sector"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "sector",
+                        placeholder: "e.g. React.js"
+                      },
+                      domProps: { value: _vm.professionalData.sector },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.professionalData,
+                            "sector",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.professionalData.sector.length > 0,
+                          expression: "professionalData.sector.length > 0"
+                        }
+                      ],
+                      attrs: {
+                        src: "/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.clearInput("sector")
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.sector
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.sector) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                            Specify available hours per week hoursPerWeek\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input",
+                    class: { "error-input": _vm.errors.hoursPerWeek }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.professionalData.hoursPerWeek,
+                          expression: "professionalData.hoursPerWeek"
+                        }
+                      ],
+                      attrs: {
+                        type: "text",
+                        name: "hoursPerWeek",
+                        placeholder: "25"
+                      },
+                      domProps: { value: _vm.professionalData.hoursPerWeek },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.professionalData,
+                            "hoursPerWeek",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.professionalData.hoursPerWeek.length > 0,
+                          expression: "professionalData.hoursPerWeek.length > 0"
+                        }
+                      ],
+                      attrs: {
+                        src: "/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.clearInput("hoursPerWeek")
+                        }
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.hoursPerWeek
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.hoursPerWeek) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                            Enter technologies/frameworks/software\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "faq-input multi-items",
+                    class: { "error-input": _vm.errors.techs }
+                  },
+                  [
+                    _c("input", {
+                      staticClass: "fake-input",
+                      attrs: { type: "text" }
+                    }),
+                    _vm._v(" "),
+                    _vm._l(_vm.professionalData.techs, function(item, index) {
+                      return _c(
+                        "div",
+                        { key: item + index, staticClass: "tech-item" },
+                        [
+                          _c("span", [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(item) +
+                                "\n                                "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("img", {
+                            staticClass: "delete-multi-item",
+                            attrs: {
+                              src:
+                                "/images/client/campaign_activity/close_black.png",
+                              alt: "delete icon"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.deleteItem(index)
+                              }
+                            }
+                          })
+                        ]
+                      )
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.inputTechs,
+                          expression: "inputTechs"
+                        }
+                      ],
+                      staticClass: "multi-input",
+                      attrs: {
+                        type: "text",
+                        name: "techs",
+                        placeholder: "You can enter several items using comas"
+                      },
+                      domProps: { value: _vm.inputTechs },
+                      on: {
+                        keydown: _vm.addToTechs,
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.inputTechs = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.professionalData.techs.length > 0,
+                          expression: "professionalData.techs.length > 0"
+                        }
+                      ],
+                      attrs: {
+                        src: "/images/client/campaign_activity/close_black.png",
+                        alt: "delete icon"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.clearInput("techs")
+                        }
+                      }
+                    })
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.techs
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.techs) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "faq-question-input account-edit-input" },
+              [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                            Choose languages you speak\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "img-container" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.lang }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "lang",
+                          on: {
+                            click: function($event) {
+                              _vm.professionalData.lang = "en"
+                            }
+                          }
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              src:
+                                "/images/client/add_agent/language/english_icon.png"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span", [_vm._v("English")])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "lang",
+                          on: {
+                            click: function($event) {
+                              _vm.professionalData.lang = "es"
+                            }
+                          }
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              src:
+                                "/images/client/add_agent/language/spanish_icon.png"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span", [_vm._v("Spanish")])
+                        ]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.lang
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.errors.lang) +
+                          "\n                        "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(2)
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex justify-content-center" }, [
-      _c("div", { staticClass: "account-info-edit-wrapper" }, [
+    return _c(
+      "nav",
+      { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
+      [
+        _c("div", { staticClass: "backBtn" }, [
+          _c("a", { attrs: { href: "/freelancer/dashboard/my-account" } }, [
+            _c("img", {
+              attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
+            })
+          ]),
+          _vm._v("\n                PROFESSIONAL INFORMATION\n            ")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "account-info-edit-heading dashboard-box-heading" },
+      [
+        _c("div", { staticClass: "left" }, [
+          _c("img", {
+            attrs: {
+              src: "/images/client/my_account/info_40px.png",
+              alt: "info icon"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", [
+            _vm._v(
+              "\n                    EDIT PROFESSIONAL INFORMATION\n                "
+            )
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "account-edit-section flex-row flex-wrap justify-content-between sub-section"
+      },
+      [
         _c(
-          "nav",
-          { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
+          "div",
+          { staticClass: "account-edit-section-edit-btn no-decoration" },
           [
-            _c("div", { staticClass: "backBtn" }, [
-              _c("a", { attrs: { href: "/freelancer/dashboard/my-account" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "/images/client/arrow_back.png",
-                    alt: "back-icon"
-                  }
-                })
-              ]),
-              _vm._v("\n                PROFESSIONAL INFORMATION\n            ")
+            _c("a", { attrs: { href: "#" } }, [
+              _vm._v("\n                      SAVE EDITS\n                  ")
             ])
           ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "account-info-edit dashboard-box" }, [
-          _c(
-            "div",
-            { staticClass: "account-info-edit-heading dashboard-box-heading" },
-            [
-              _c("div", { staticClass: "left" }, [
-                _c("img", {
-                  attrs: {
-                    src: "/images/client/my_account/info_40px.png",
-                    alt: "info icon"
-                  }
-                }),
-                _vm._v(" "),
-                _c("span", [
-                  _vm._v(
-                    "\n                    EDIT PROFESSIONAL INFORMATION\n                "
-                  )
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "account-edit-section" }, [
-            _c("div", { staticClass: "account-edit-section-inputs" }, [
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Enter primary job title\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Telemarketing"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Choice voice character (for sales-agents)\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Friendly"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Enter sector experience\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Real state, Insurance, Investment"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Specify available hours per week\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: { type: "text", name: "faq", placeholder: "25" }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Enter technologies/frameworks/software\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("input", {
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Microsoft Word, Excel"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      }
-                    })
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "faq-question-input account-edit-input" },
-                [
-                  _c("label", { staticClass: "faq-input-label" }, [
-                    _vm._v(
-                      "\n                            Choose languages you speak\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "img-container" }, [
-                    _c("div", { staticClass: "faq-input" }, [
-                      _c("div", { staticClass: "lang" }, [
-                        _c("img", {
-                          attrs: {
-                            src: "/images/icons/english_icon_pressed.svg"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("English")])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "lang" }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "/images/client/add_agent/language/spanish_icon.png"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Spanish")])
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "account-edit-section flex-row flex-wrap justify-content-between sub-section"
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "account-edit-section-edit-btn no-decoration" },
-                [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _vm._v(
-                      "\n                      SAVE EDITS\n                  "
-                    )
-                  ])
-                ]
-              )
-            ]
-          )
-        ])
-      ])
-    ])
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true

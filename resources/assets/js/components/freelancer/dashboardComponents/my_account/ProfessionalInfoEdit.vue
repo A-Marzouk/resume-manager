@@ -26,79 +26,45 @@
                             <label class="faq-input-label">
                                 Enter primary job title
                             </label>
-                            <div class="faq-input" :class="{ 'error-input' : errors.primaryJob}">
-                                <input type="text" name="primaryJob" placeholder="e.g. Frontend Developer" v-model="professionalData.primaryJob">
-                                <img src="/images/client/campaign_activity/close_black.png"
-                                    alt="delete icon"
-                                    v-show="professionalData.primaryJob.length > 0"
-                                    @click="clearInput('primaryJob')"
-                                >
-                            </div>
-                            <div class="error" v-if="showErrors && errors.primaryJob">
-                                {{errors.primaryJob}}
+                            <div class="faq-input">
+                                <input type="text" name="faq" placeholder="Telemarketing" >
+                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Choose voice character (for sales-agents)
+                                Choice voice character (for sales-agents)
                             </label>
-                            <div class="faq-input"  :class="{ 'error-input' : errors.voice}">
-                                <select class="form-control" id="voice" name="voice" style="height: 50px;" v-model="professionalData.voice">
-                                    <option value="" selected="selected">Select your voice character</option>
-                                    <option value="voice1">Voice character 1</option>
-                                </select>
-                            </div>
-                            <div class="error" v-if="showErrors && errors.voice">
-                                {{errors.voice}}
+                            <div class="faq-input">
+                                <input type="text" name="faq" placeholder="Friendly" >
+                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
                                 Enter sector experience
                             </label>
-                            <div class="faq-input" :class="{ 'error-input' : errors.sector}">
-                                <input type="text" name="sector" placeholder="e.g. React.js" v-model="professionalData.sector">
-                                <img src="/images/client/campaign_activity/close_black.png"
-                                    alt="delete icon"
-                                    v-show="professionalData.sector.length > 0"
-                                    @click="clearInput('sector')"
-                                >
-                            </div>
-                            <div class="error" v-if="showErrors && errors.sector">
-                                {{errors.sector}}
+                            <div class="faq-input">
+                                <input type="text" name="faq" placeholder="Real state, Insurance, Investment" >
+                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Specify available hours per week hoursPerWeek
+                                Specify available hours per week
                             </label>
-                            <div class="faq-input" :class="{ 'error-input' : errors.hoursPerWeek}">
-                                <input type="text" name="hoursPerWeek" placeholder="25" v-model="professionalData.hoursPerWeek">
-                                <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('hoursPerWeek')" alt="delete icon" v-show="professionalData.hoursPerWeek.length > 0">
-                            </div>
-                            <div class="error" v-if="showErrors && errors.hoursPerWeek">
-                                {{errors.hoursPerWeek}}
+                            <div class="faq-input">
+                                <input type="text" name="faq" placeholder="25" >
+                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
                                 Enter technologies/frameworks/software
                             </label>
-                            <div class="faq-input multi-items" :class="{ 'error-input' : errors.techs}">
-                                <input type="text" class="fake-input">
-                                <div class="tech-item" v-for="(item, index) in professionalData.techs" :key="item + index">
-                                    <span>
-                                        {{ item }}
-                                    </span>
-                                    <img class="delete-multi-item" src="/images/client/campaign_activity/close_black.png" @click="deleteItem(index)" alt="delete icon">
-                                </div>
-                                <input class="multi-input" type="text" name="techs" placeholder="You can enter several items using comas" v-model="inputTechs"
-                                    @keydown="addToTechs"
-                                >
-                                <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('techs')" alt="delete icon" v-show="professionalData.techs.length > 0">
-                            </div>
-                            <div class="error" v-if="showErrors && errors.techs">
-                                {{errors.techs}}
+                            <div class="faq-input">
+                                <input type="text" name="faq" placeholder="Microsoft Word, Excel" >
+                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
@@ -106,19 +72,16 @@
                                 Choose languages you speak
                             </label>
                             <div class="img-container">
-                                <div class="faq-input" :class="{ 'error-input' : errors.lang}">
-                                    <div v-on:click='professionalData.lang = "en"' class="lang">
-                                        <img src="/images/client/add_agent/language/english_icon.png">
+                                <div class="faq-input">
+                                    <div class="lang">
+                                        <img src="/images/icons/english_icon_pressed.svg">
                                         <span>English</span>
                                     </div>
-                                    <div v-on:click='professionalData.lang = "es"' class="lang">
+                                    <div class="lang">
                                         <img src="/images/client/add_agent/language/spanish_icon.png">
                                         <span>Spanish</span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="error" v-if="showErrors && errors.lang">
-                                {{errors.lang}}
                             </div>
                         </div>
                     </div>
@@ -139,148 +102,21 @@
 
 <script>
     export default {
-      data () {
-        return{
-            professionalData:{
-                primaryJob:'',
-                sector:'',
-                voice:'',
-                hoursPerWeek:'',
-                techs: [],
-                lang:''
-            },
-            inputTechs: '',
-            canSubmit: false,
-            showErrors: false,
-            errors: {
-                primaryJob:'',
-                sector:'',
-                voice:'',
-                hoursPerWeek:'',
-                techs: '',
-                lang:''
-            }
-        }
-    },
-    methods: {
-        noErrors () {
-                let noErrorsPrimaryJob = this.noErrorsPrimaryJob()
-                let noErrorsSector = this.noErrorsSector()
-                let noErrorsVoice = this.noErrorsVoice()
-                let noErrorsHours = this.noErrorsHours()
-                let noErrorsLang = this.noErrorsLang()
+      data(){
+          return {
+              client:{
+                  name: 'Ahmed Marzouk',
+                  agency:  'The best agency',
+                  contact: ' 0044203700685',
+                  timeZone: '(GMT - 5:00) Eastern time (US & Canada), Bogota, Lima',
+                  emailDept: 'email1234567890@gmail.com',
+                  email: 'test@gmail.com',
+              }
+          }
+      },
+      methods:{
 
-                return (
-                    noErrorsPrimaryJob &&
-                    noErrorsSector &&
-                    noErrorsVoice &&
-                    noErrorsHours &&
-                    noErrorsLang
-                )
-        },
-        noErrorsPrimaryJob () {
-                let valid = true 
-            
-                // Empty field
-                if (this.professionalData.primaryJob.trim() === '') {
-                    valid = false
-                    this.errors.primaryJob = 'Please, fill this field'
-                } else this.errors.primaryJob  = ''
-                // Invalid characters (?)
-                return valid
-        },
-        noErrorsSector () {
-                let valid = true 
-            
-                // Empty field
-                if (this.professionalData.sector.trim() === '') {
-                    valid = false
-                    this.errors.sector = 'Please, fill this field'
-                } else this.errors.sector  = ''
-                // Invalid characters (?)
-                return valid
-        },
-        noErrorsVoice () {
-                let valid = true 
-            
-                // Empty field
-                if (this.professionalData.voice.trim() === '') {
-                    valid = false
-                    this.errors.voice = 'Please, fill this field'
-                } else this.errors.voice  = ''
-                // Invalid characters (?)
-                return valid
-        },
-        noErrorsHours () {
-                let valid = true 
-            
-                // Empty field
-                if (this.professionalData.hoursPerWeek.trim() === '') {
-                    valid = false
-                    this.errors.hoursPerWeek = 'Indicate how many hours do you work'
-                } else this.errors.hoursPerWeek  = ''
-                // Invalid characters (?)
-                return valid
-        },
-        noErrorsLang () {
-                let valid = true 
-            
-                // Empty field
-                if (this.professionalData.lang.trim() === '') {
-                    valid = false
-                    this.errors.lang = 'Please, fill this field'
-                } else this.errors.lang  = ''
-                // Invalid characters (?)
-                return valid
-        },
-        nextStep (e) {
-            e.preventDefault()
-            this.canSubmit = true
-            if (this.noErrors()) {
-                this.getData({ professionalData: { ...this.professionalData }})
-                this.changeStep(3)
-                this.$router.push('/freelancer/register/page3')
-            } else {
-                this.showErrors = true
-            }
-
-        },
-        addToTechs (e) {
-            if (e.key == ',') {
-                e.preventDefault()
-                this.professionalData.techs.push(this.inputTechs)
-                this.inputTechs = ''
-            }
-        },
-        deleteItem (index) {
-            this.professionalData.techs.splice(index, 1)
-        },
-        clearInput (name) {
-                if (name !== 'techs') this.professionalData[name] = ''
-                else this.inputTechs = ''
-        }
-        },
-
-    watch: {
-            professionalData: {
-                handler(){
-                    // check if all professionalData values are filled
-                    let values = Object.values(this.professionalData);
-                    let isAll_filled = true;
-                    for (const value of values) {
-                        if (!Array.isArray(value) && value.trim().length < 1) {
-                            isAll_filled = false;
-                            break
-                        } else if (value.length < 1) {
-                            isAll_filled = false;
-                            break
-                        }
-                    }
-                    this.canSubmit = isAll_filled;
-                },
-                deep: true
-            }
-        },
+      }
     }
 </script>
 

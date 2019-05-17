@@ -203,17 +203,17 @@ export default {
             paypal:''
         },
         canSubmit: false,
-        errors: {
-            name:'',
-            surname:'',
-            gender:'',
-            phone:'',
-            email:'',
-            timeZone:'',
-            cityName:'',
-            paypal:''
-        },
-        showErrors: false
+				errors: {
+					name:'',
+					surname:'',
+					gender:'',
+					phone:'',
+					email:'',
+					timeZone:'',
+					cityName:'',
+					paypal:''
+				},
+				showErrors: false
     }
   },
   methods: {
@@ -358,8 +358,8 @@ export default {
                 let isAll_filled = true;
                 for (const key of keys) {
                     if (this.personalData[key].trim().length < 1) {
-                        isAll_filled = false
-                        break
+												isAll_filled = false
+												break
                     }
                 }
                 this.canSubmit = isAll_filled;

@@ -53,7 +53,7 @@
                                 Campaign manager
                             </div>
                         </router-link>
-                        <div v-if="rootURL !== '/freelancer'" class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
+                        <!-- <div v-if="rootURL !== '/freelancer'" class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('chats')" alt="icon">
                             </div>
@@ -76,7 +76,7 @@
                             <div class="menu-block-name">
                                 Agents database
                             </div>
-                        </div>
+                        </div> -->
                         <router-link :to="rootLinkTo('my-account')" class="menu-block row" :class="{'active' : activeTab === 'my-account'}" @click.native="selectTab('my-account')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('my-account')" alt="icon">

@@ -20,9 +20,12 @@
         <hr>
         <div class="btn-container">
           <button v-if="entry !== ''" type="button" name="button"
-            class="btn btn-link hideOnTablet"
+            class="btn btn-primary hideOnTablet"
           >CANCEL</button>
-          <button class="btn btn-submit btn-primar">ADD ENTRY</button>
+          <button v-if="entry !== ''" type="button" name="button"
+            class="btn btn-secondary hideOnTablet"
+          >DELETE</button>
+          <button class="btn btn-submit disabled">ADD ENTRY</button>
         </div>
       </div>
     </div>

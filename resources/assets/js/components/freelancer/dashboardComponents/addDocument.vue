@@ -10,7 +10,7 @@
         <input type="text" class="document-input" placeholder="Add a document link">
         <hr>
         <div class="btn-container">
-          <button class="btn btn-primar disabled">SAVE LINK</button>
+          <button class="btn disabled">SAVE LINK</button>
         </div>
       </div>
     </div>

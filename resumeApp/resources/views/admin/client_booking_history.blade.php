@@ -65,8 +65,10 @@
                             <span class="panelFormLabel">Freelancer booked :</span>
                         </div>
                         <div class="col-8">
-                            <? $freelancerBooked = \App\User::find($booking->user_id);?>
-                            {{$freelancerBooked->firstName}} {{$freelancerBooked->lastName}}
+                            <? if(isset($booking->user_id)):?>
+                                <? $freelancerBooked = \App\User::find($booking->user_id);?>
+                                {{$freelancerBooked->firstName}} {{$freelancerBooked->lastName}}
+                            <? endif; ?>
                         </div>
                     </div>
                     <div class="row">
@@ -98,7 +100,7 @@
                             <span class="panelFormLabel">Amount per week :</span>
                         </div>
                         <div class="col-8">
-                            {{intval($booking->amount_paid)/100}} USD
+                            {{intval($booking->amount_paid)}} USD
                         </div>
                     </div>
                     <div class="row">
@@ -111,6 +113,11 @@
                             @else
                                 <span class="panelFormLabel" style="color: lawngreen; font-weight: bold;">On going</span>
                             @endif
+
+                            @if($booking->is_paid)
+                                <span class="panelFormLabel" style="color: green"> / PAID</span>
+                            @endif
+
                         </div>
                     </div>
                     <div>

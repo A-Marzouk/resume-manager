@@ -8,18 +8,17 @@
 
 namespace App;
 
-
 use Illuminate\Database\Eloquent\Model;
 
 class Skill extends Model
 {
     protected $table = 'skills';
     protected $fillable = [
-        'skill_title','type','icon'
+        'skill_title', 'type', 'icon',
     ];
 
-
-    public function freelancer(){
+    public function freelancer()
+    {
         return $this->belongsTo(User::class);
     }
 }

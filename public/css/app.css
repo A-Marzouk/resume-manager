@@ -7479,6 +7479,17 @@ body {
   width: 400px;
 }
 
+.faq-question-input.account-edit-input .faq-input input {
+  /* Change the white to any color ;) */
+}
+
+.faq-question-input.account-edit-input .faq-input input:-webkit-autofill,
+.faq-question-input.account-edit-input .faq-input input:-webkit-autofill:hover,
+.faq-question-input.account-edit-input .faq-input input:-webkit-autofill:focus,
+.faq-question-input.account-edit-input .faq-input input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+}
+
 @media (max-width: 1240px) {
   .faq-question-input.account-edit-input .faq-input {
     width: 307px;

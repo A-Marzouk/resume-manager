@@ -206,6 +206,16 @@
   .faq-input{
     width:400px;
 
+    input {
+      /* Change the white to any color ;) */
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover, 
+      &:-webkit-autofill:focus, 
+      &:-webkit-autofill:active  {
+          -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+      }
+    }
+
 
     @media (max-width:1240px) {
       width:307px;

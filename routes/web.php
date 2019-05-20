@@ -86,8 +86,8 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/campaign','FreelancersController@campaignActivity')->name('freelancer.campaign.main');
     Route::get('/account/edit','FreelancersController@viewAccountEditPage')->name('freelancer.account.edit');
     Route::get('/professional/edit','FreelancersController@viewProfessionalEditPage')->name('freelancer.professional.edit');
-    // Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard'); 
-    // Route::get('/','FreelancersController@showEditForm')->name('show.edit_form');
+    Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard');
+     Route::get('/','FreelancersController@showEditForm')->name('show.edit_form');
     Route::get('/account/service-agreement','FreelancersController@viewFreelancerServiceAgreement')->name('service.agreement');
     Route::get('/account/privacy-agreement','FreelancersController@viewFreelancerPrivacyAgreement')->name('privacy.agreement');
 

@@ -48,8 +48,8 @@
                 </label>
                 <div class="img-container">
                     <div class="faq-input" :class="{ 'error-input' : errors.gender}">    
-                        <img v-on:click="personalData.gender = 'M'" src="/images/client/add_agent/gender/male_icon.png">
-                        <img v-on:click="personalData.gender = 'F'" src="/images/client/add_agent/gender/female_icon.png">
+                        <img v-on:click="personalData.gender = 'M'" :src="`/images/icons/${(personalData.gender === 'M') ? 'male_icon_pressed' : 'male_icon'}.svg`">
+                        <img v-on:click="personalData.gender = 'F'" :src="`/images/icons/${(personalData.gender === 'F') ? 'female_icon_pressed' : 'female_icon'}.svg`">
                     </div>
                 </div>
                 <div class="error" v-if="showErrors && errors.gender">

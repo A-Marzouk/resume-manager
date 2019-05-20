@@ -77347,7 +77347,12 @@ var render = function() {
               [
                 _c("img", {
                   attrs: {
-                    src: "/images/client/add_agent/gender/male_icon.png"
+                    src:
+                      "/images/icons/" +
+                      (_vm.personalData.gender === "M"
+                        ? "male_icon_pressed"
+                        : "male_icon") +
+                      ".svg"
                   },
                   on: {
                     click: function($event) {
@@ -77358,7 +77363,12 @@ var render = function() {
                 _vm._v(" "),
                 _c("img", {
                   attrs: {
-                    src: "/images/client/add_agent/gender/female_icon.png"
+                    src:
+                      "/images/icons/" +
+                      (_vm.personalData.gender === "F"
+                        ? "female_icon_pressed"
+                        : "female_icon") +
+                      ".svg"
                   },
                   on: {
                     click: function($event) {

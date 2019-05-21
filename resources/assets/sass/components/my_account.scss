@@ -216,6 +216,9 @@
       }
     }
 
+    select {
+      border-radius: 0 !important;
+    }
 
     @media (max-width:1240px) {
       width:307px;

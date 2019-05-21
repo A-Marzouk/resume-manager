@@ -337,11 +337,15 @@ export default {
         },
         noErrorsPaypal () {
             let valid = true
+            let paypalRegex = /\d{9}/
 
             if (this.personalData.paypal.trim() === '') {
                 // Empty field
                 valid = false
                 this.errors.paypal = 'Please, enter your paypal id'
+            } else if (!paypalRegex.test(this.personalData.paypal)) {
+                valid = false
+                this.errors.paypal = 'Invalid paypal id'
             } else this.errors.paypal = ''
 
             return valid

@@ -74831,6 +74831,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   _vm.selectedStatus = "email-request"
+                  _vm.showStatusList = !_vm.showStatusList
                 }
               }
             },
@@ -74849,6 +74850,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   _vm.selectedStatus = "call-back"
+                  _vm.showStatusList = !_vm.showStatusList
                 }
               }
             },
@@ -74867,6 +74869,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   _vm.selectedStatus = "not-interested"
+                  _vm.showStatusList = !_vm.showStatusList
                 }
               }
             },
@@ -74886,6 +74889,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   _vm.selectedStatus = "appointment-set"
+                  _vm.showStatusList = !_vm.showStatusList
                 }
               }
             },
@@ -74905,6 +74909,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   _vm.selectedStatus = "contacts-received"
+                  _vm.showStatusList = !_vm.showStatusList
                 }
               }
             },
@@ -74924,6 +74929,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   _vm.selectedStatus = "successful"
+                  _vm.showStatusList = !_vm.showStatusList
                 }
               }
             },

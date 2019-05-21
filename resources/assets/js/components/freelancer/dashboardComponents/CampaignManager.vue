@@ -27,17 +27,11 @@
                     <div class="title">
                         Name of the campaign
                     </div>
-                    <div class="info hideOnXS">
-                        2 agents on the campaign
-                    </div>
                 </div>
                 <div class="actionBtn">
                     <a href="#">
                         ACTIVE
                     </a>
-                    <div class="menu-img">
-                        <img src="/images/client/more_vert_24px.png" alt="menu">
-                    </div>
                 </div>
             </div>
             <div class="agent-logs-block">
@@ -158,9 +152,6 @@
                     <a href="#">
                         LIVE
                     </a>
-                    <div class="menu-img">
-                        <img src="/images/client/more_vert_24px.png" alt="menu">
-                    </div>
                 </div>
             </div>
             <div class="agent-logs-block">

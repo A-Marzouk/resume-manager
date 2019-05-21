@@ -4197,6 +4197,15 @@ body {
   height: 68px;
 }
 
+.dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignInfo .title {
   font-family: Roboto;
   font-style: normal;
@@ -4206,7 +4215,6 @@ body {
   letter-spacing: -0.1px;
   color: #4A5464;
   margin-left: 34px;
-  margin-top: 16px;
 }
 
 @media (max-width: 745px) {
@@ -4413,6 +4421,7 @@ body {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  padding: 0 34px;
 }
 
 .agent-logs-block .log .log-time {
@@ -4425,7 +4434,6 @@ body {
   line-height: 24px;
   letter-spacing: -0.1px;
   color: #FF9B68;
-  margin-left: 34px;
 }
 
 .agent-logs-block .log .log-text {
@@ -4440,9 +4448,13 @@ body {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-right: 18px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.agent-logs-block .log .log-text img {
+  margin-top: 8px;
 }
 
 .agent-logs-block .log .log-text .log-text-content {
@@ -4618,7 +4630,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 10px;
+  padding: 10px 0;
   left: 0;
   top: -100px;
   background: white;
@@ -4683,7 +4695,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 83px;
+  height: 88px;
   width: 88px;
 }
 
@@ -4754,8 +4766,8 @@ body {
 .status-selector-component .icon {
   display: block;
   border-radius: 50%;
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4774,7 +4786,7 @@ body {
 .status-selector-component .recording-status {
   position: absolute;
   left: 16px;
-  top: 10px;
+  top: 9px;
   z-index: 1;
 }
 

@@ -831,6 +831,12 @@
       padding: 10px 10px 10px 60px;
       border-radius: 4px 4px 0px 0px;
       resize: none;
+
+      &:focus {
+        border-bottom: 2px solid rgba($color: $l-blue, $alpha: 0.7);
+        outline: none;
+        box-shadow: none;
+      }
     }
 
     .document-input {

@@ -76977,7 +76977,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 this.errors.paypal = 'Please, enter your paypal id';
             } else if (!paypalRegex.test(this.personalData.paypal)) {
                 valid = false;
-                this.errors.paypal = 'Invalid paypal id';
+                this.errors.paypal = 'Paypal acc number must contain 9 digits. Only numbers are allowed';
             } else this.errors.paypal = '';
 
             return valid;

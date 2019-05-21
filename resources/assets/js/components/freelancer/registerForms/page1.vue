@@ -345,7 +345,7 @@ export default {
                 this.errors.paypal = 'Please, enter your paypal id'
             } else if (!paypalRegex.test(this.personalData.paypal)) {
                 valid = false
-                this.errors.paypal = 'Invalid paypal id'
+                this.errors.paypal = 'Paypal acc number must contain 9 digits. Only numbers are allowed'
             } else this.errors.paypal = ''
 
             return valid

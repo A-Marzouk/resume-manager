@@ -3,27 +3,27 @@
     <div class="status-list"
         v-bind:class="{ show: showStatusList }"
     >
-      <div class="status-component">
+      <div class="status-component" v-if="selectedStatus != 'email-request'">
         <a v-on:click="selectedStatus = 'email-request'; showStatusList = !showStatusList" href="javascript:;" class="icon email-request">ER</a>
         <span class="icon-name">E-mail<br>request</span>
       </div>
-      <div class="status-component">
+      <div class="status-component" v-if="selectedStatus != 'call-back'">
         <a v-on:click="selectedStatus = 'call-back'; showStatusList = !showStatusList" href="javascript:;" class="icon call-back">CB</a>
         <span class="icon-name">Call back</span>
       </div>
-      <div class="status-component">
+      <div class="status-component" v-if="selectedStatus != 'not-interested'">
         <a v-on:click="selectedStatus = 'not-interested'; showStatusList = !showStatusList" href="javascript:;" class="icon not-interested">NI</a>
         <span class="icon-name">Not<br>interested</span>
       </div>
-      <div class="status-component">
+      <div class="status-component" v-if="selectedStatus != 'appointment-set'">
         <a v-on:click="selectedStatus = 'appointment-set'; showStatusList = !showStatusList" href="javascript:;"  style="background: #8567FF;" class="icon">AS</a>
         <span class="icon-name">Appointment<br>set</span>
       </div>
-      <div class="status-component">
+      <div class="status-component" v-if="selectedStatus != 'contacts-received'">
         <a v-on:click="selectedStatus = 'contacts-received'; showStatusList = !showStatusList" href="javascript:;"  style="background: #4ABFF1;" class="icon">CR</a>
         <span class="icon-name">Decission<br>maker<br>contacts received</span>
       </div>
-      <div class="status-component">
+      <div class="status-component" v-if="selectedStatus != 'successful'">
         <a v-on:click="selectedStatus = 'successful'; showStatusList = !showStatusList" href="javascript:;"  style="background: #2ABD68;" class="icon">S</a>
         <span class="icon-name">Successful</span>
       </div>

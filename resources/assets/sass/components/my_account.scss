@@ -218,6 +218,17 @@
 
     select {
       border-radius: 0 !important;
+      appearance: none !important;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -o-appearance: none;
+      position: relative;
+    }
+
+    .select-icon {
+      position: absolute;
+      right: 10px;
+      z-index: 2;
     }
 
     @media (max-width:1240px) {

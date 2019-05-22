@@ -7,6 +7,7 @@
         :src="`/images/dashboard/flag.svg`"
         :alt="`flag ${flags[selected].name}`"
       />
+      <i class="select-icon"></i>
       <span class="flag-name">+{{ flags[selected].code }}</span>
     </a>
     <div class="flags-container"

@@ -7539,6 +7539,17 @@ body {
 
 .faq-question-input.account-edit-input .faq-input select {
   border-radius: 0 !important;
+  appearance: none !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  position: relative;
+}
+
+.faq-question-input.account-edit-input .faq-input .select-icon {
+  position: absolute;
+  right: 10px;
+  z-index: 2;
 }
 
 @media (max-width: 1240px) {
@@ -7915,7 +7926,7 @@ body {
   position: absolute;
   left: 0;
   height: 100%;
-  width: 110px;
+  width: 120px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7925,6 +7936,13 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.flags-dropdown .selected-country .select-icon {
+  position: static !important;
+  right: auto;
+  margin: 0;
+  margin-right: 5px;
 }
 
 .flags-dropdown .flags-container {
@@ -7974,12 +7992,21 @@ body {
 
 .account-edit-section .faq-question-input .faq-input .flags-dropdown img {
   margin-left: 0;
-  margin-right: 10px;
+  margin-right: 0;
 }
 
 .account-edit-section .faq-question-input .faq-input .flags-dropdown input {
   padding: 0;
-  padding-left: 110px;
+  padding-left: 120px;
+}
+
+.select-icon {
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 5px #495057 solid;
+  border-right: 5px transparent solid;
+  border-left: 5px transparent solid;
 }
 
 .add-agent-form {

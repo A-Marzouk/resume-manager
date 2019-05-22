@@ -76921,6 +76921,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -77131,6 +77132,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -78067,6 +78069,8 @@ var render = function() {
             }
           }),
           _vm._v(" "),
+          _c("i", { staticClass: "select-icon" }),
+          _vm._v(" "),
           _c("span", { staticClass: "flag-name" }, [
             _vm._v("+" + _vm._s(_vm.flags[_vm.selected].code))
           ])
@@ -78493,6 +78497,8 @@ var render = function() {
               class: { "error-input": _vm.errors.timeZone }
             },
             [
+              _c("div", { staticClass: "select-icon" }),
+              _vm._v(" "),
               _c(
                 "select",
                 {

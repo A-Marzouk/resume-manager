@@ -17,10 +17,17 @@
     position: absolute;
     left: 0;
     height: 100%;
-    width: 110px;
+    width: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    .select-icon {
+      position: static !important;
+      right: auto;
+      margin: 0;
+      margin-right: 5px;
+    }
   }
 
   .flags-container {
@@ -40,7 +47,9 @@
       height: 180px;
       overflow-y: scroll;
     }
+    
   }
+
   
   .flag-item {
     position: relative;
@@ -56,11 +65,20 @@
 .account-edit-section .faq-question-input .faq-input .flags-dropdown {
   img {
     margin-left: 0;
-    margin-right: 10px;
+    margin-right: 0;
   }
 
   input {
     padding: 0;
-    padding-left: 110px;
+    padding-left: 120px;
   }
+}
+
+.select-icon {
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 5px #495057 solid;
+  border-right: 5px transparent solid;
+  border-left: 5px transparent solid;
 }

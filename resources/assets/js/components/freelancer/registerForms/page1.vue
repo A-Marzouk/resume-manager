@@ -87,6 +87,7 @@
                     Select your time zone
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.timeZone}">
+                    <div class="select-icon"></div>
                     <select class="form-control" id="timeZone" name="timeZone" style="height: 50px;" v-model="personalData.timeZone">
                         <option value="" selected="selected">Select your timezone</option>
                         <option value="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima">(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima</option>

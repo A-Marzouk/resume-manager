@@ -48,8 +48,8 @@
                 </label>
                 <div class="img-container">
                     <div class="faq-input" :class="{ 'error-input' : errors.gender}">    
-                        <img v-on:click="personalData.gender = 'M'" src="/images/client/add_agent/gender/male_icon.png">
-                        <img v-on:click="personalData.gender = 'F'" src="/images/client/add_agent/gender/female_icon.png">
+                        <img v-on:click="personalData.gender = 'M'" :src="`/images/icons/${(personalData.gender === 'M') ? 'male_icon_pressed' : 'male_icon'}.svg`">
+                        <img v-on:click="personalData.gender = 'F'" :src="`/images/icons/${(personalData.gender === 'F') ? 'female_icon_pressed' : 'female_icon'}.svg`">
                     </div>
                 </div>
                 <div class="error" v-if="showErrors && errors.gender">
@@ -87,6 +87,7 @@
                     Select your time zone
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.timeZone}">
+                    <div class="select-icon"></div>
                     <select class="form-control" id="timeZone" name="timeZone" style="height: 50px;" v-model="personalData.timeZone">
                         <option value="" selected="selected">Select your timezone</option>
                         <option value="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima">(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima</option>
@@ -337,11 +338,15 @@ export default {
         },
         noErrorsPaypal () {
             let valid = true
+            let paypalRegex = /\d{9}/
 
             if (this.personalData.paypal.trim() === '') {
                 // Empty field
                 valid = false
                 this.errors.paypal = 'Please, enter your paypal id'
+            } else if (!paypalRegex.test(this.personalData.paypal)) {
+                valid = false
+                this.errors.paypal = 'Paypal acc number must contain 9 digits. Only numbers are allowed'
             } else this.errors.paypal = ''
 
             return valid

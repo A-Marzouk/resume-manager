@@ -305,6 +305,8 @@
         border-bottom: 0.5px solid #E0E1E3;
         height:68px;
         .campaignInfo{
+          display: flex;
+        align-items: center;
           .title{
             font-family: Roboto;
             font-style: normal;
@@ -314,7 +316,6 @@
             letter-spacing: -0.1px;
             color: #4A5464;
             margin-left: 34px;
-            margin-top: 16px;
             @media (max-width:745px) {
               margin-left: 10px;
             }
@@ -428,7 +429,7 @@
           margin-right: 34px;
 
           &.add-entry {
-            color: #B6B6B6;
+            color: #05A4F4;
             background: #FFF;
             width: 130px;
             border-radius: 20px;
@@ -438,6 +439,10 @@
             align-items: center;
             line-height: 16px;
             height: 28px;
+
+            &.disabled {
+              color: #B6B6B6;
+            }
           }
         }
       }
@@ -475,6 +480,7 @@
     display:flex;
     min-height: 75px;
     align-items: flex-start;
+    padding: 0 34px;
 
     .log-time{
       font-family: Roboto;
@@ -486,7 +492,6 @@
       line-height: 24px;
       letter-spacing: -0.1px;
       color: #FF9B68;
-      margin-left:34px;
       // @media (max-width:1240px) {
       //   margin-top: 30px;
       // }
@@ -504,7 +509,12 @@
       padding-top: 8px;
       padding-bottom: 8px;
       padding-right: 18px;
-      align-items:center;
+      align-items: flex-start;
+
+      img {
+        margin-top: 8px;
+      }
+
       .log-text-content{
         font-family: Roboto;
         font-style: normal;
@@ -513,7 +523,7 @@
         line-height: 18px;
         letter-spacing: -0.1px;
         color: #4A5464;
-        padding-left: 50px;
+        padding-left: 60px;
         padding-right: 8px;
       }
       .agent-initials{
@@ -645,7 +655,7 @@
     display: none;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 10px 0;
     left: 0;
     top: -100px;
     background: white;
@@ -691,7 +701,7 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-      height: 83px;
+      height: 88px;
       width: 88px;
 
       a {
@@ -764,21 +774,21 @@
   .icon {
     display: block;
     border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .recording-status {
     position: absolute;
     left: 16px;
-    top: 10px;
+    top: 9px;
     z-index: 1;
   }
 }
@@ -825,9 +835,23 @@
       padding: 10px 10px 10px 60px;
       border-radius: 4px 4px 0px 0px;
       resize: none;
+
+      &:focus {
+        border-bottom: 2px solid rgba($color: $l-blue, $alpha: 0.7);
+        outline: none;
+        box-shadow: none;
+      }
     }
 
     .document-input {
+      width: 100%;
+      background: #FBFBFB;
+      border: 0;
+      border-bottom: 2px solid rgba(179, 183, 186, 0.7);
+      padding: 10px 10px 10px 30px;
+    }
+
+    .names-input {
       width: 100%;
       background: #FBFBFB;
       border: 0;
@@ -882,10 +906,17 @@
       .btn-link {
         background: transparent;
         color: $l-blue;
+        border: none !important;
       }
 
       .btn-submit {
         margin-left: 50px;
+        border: none;
+
+        &.disabled {
+          color: #A1A7AF;
+          background-color: #E4E4E4;
+        }
       }
 
       .btn-secondary {

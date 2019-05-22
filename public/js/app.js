@@ -74624,16 +74624,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -74647,13 +74637,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            rootLink: this.$route.path
+            rootLink: this.$route.path,
+            addEntry: false,
+            imAway: true,
+            startShift: false
         };
     },
 
     methods: {
         rootLinkTo: function rootLinkTo(link) {
             return this.$route.path + '/' + link;
+        },
+        clear: function clear() {
+            this.addEntry = false;
+        },
+        tryToAddEntry: function tryToAddEntry() {
+            if (this.startShift && this.imAway) this.addEntry = true;
         }
     }
 });
@@ -74744,18 +74743,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['clear'],
   components: {
     'status-selector': __WEBPACK_IMPORTED_MODULE_0__status_selector_vue___default.a
   },
   data: function data() {
     return {
-      entry: ''
+      entry: '',
+      isSuccessful: false,
+      names: '',
+      errors: {
+        entry: ''
+      }
     };
+  },
+
+  methods: {
+    setStatus: function setStatus(value) {
+      this.isSuccessful = value;
+    },
+    addEntry: function addEntry() {
+      if (this.entry.trim() === '') {
+        this.errors.entry = 'Entry is empty';
+        return;
+      }
+
+      if (this.isSuccessful && this.names === '') {
+        this.errors.entry = 'To save entry with “Successful” status you need to add names';
+        return;
+      }
+    }
   }
 });
 
@@ -74802,7 +74827,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['status'],
+  props: ['status', 'setStatus'],
   data: function data() {
     return {
       showStatusList: false,
@@ -74814,6 +74839,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     printStatus: function printStatus() {
       var splittedStatusName = this.selectedStatus.split('-');
       return this.selectedStatus !== 'status-default' ? splittedStatusName.length > 1 ? splittedStatusName[0].charAt(0).toUpperCase() + splittedStatusName[1].charAt(0).toUpperCase() : splittedStatusName[0].charAt(0).toUpperCase() : 'S';
+    }
+  },
+  watch: {
+    selectedStatus: function selectedStatus(status) {
+      if (this.setStatus !== null || this.setStatus !== undefined) {
+        if (status === 'successful') this.setStatus(true);else this.setStatus(false);
+      }
     }
   }
 });
@@ -74840,6 +74872,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   _vm.selectedStatus = "email-request"
+                  _vm.showStatusList = !_vm.showStatusList
                 }
               }
             },
@@ -74858,6 +74891,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   _vm.selectedStatus = "call-back"
+                  _vm.showStatusList = !_vm.showStatusList
                 }
               }
             },
@@ -74876,6 +74910,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   _vm.selectedStatus = "not-interested"
+                  _vm.showStatusList = !_vm.showStatusList
                 }
               }
             },
@@ -74895,6 +74930,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   _vm.selectedStatus = "appointment-set"
+                  _vm.showStatusList = !_vm.showStatusList
                 }
               }
             },
@@ -74914,6 +74950,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   _vm.selectedStatus = "contacts-received"
+                  _vm.showStatusList = !_vm.showStatusList
                 }
               }
             },
@@ -74933,6 +74970,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   _vm.selectedStatus = "successful"
+                  _vm.showStatusList = !_vm.showStatusList
                 }
               }
             },
@@ -75030,7 +75068,7 @@ var render = function() {
           "div",
           { staticClass: "input-container" },
           [
-            _c("status-selector"),
+            _c("status-selector", { attrs: { setStatus: _vm.setStatus } }),
             _vm._v(" "),
             _c("textarea", {
               directives: [
@@ -75063,6 +75101,40 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
+        _vm.isSuccessful
+          ? _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.names,
+                  expression: "names"
+                }
+              ],
+              staticClass: "names-input",
+              staticStyle: { "margin-bottom": "15px" },
+              attrs: {
+                placeholder:
+                  "Please, write names of the registered people using commas"
+              },
+              domProps: { value: _vm.names },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.names = $event.target.value
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        this.errors.entry !== ""
+          ? _c("div", { staticClass: "error" }, [
+              _vm._v(_vm._s(_vm.errors.entry))
+            ])
+          : _vm._e(),
+        _vm._v(" "),
         _vm._m(1),
         _vm._v(" "),
         _c("hr"),
@@ -75072,16 +75144,28 @@ var render = function() {
             ? _c(
                 "button",
                 {
-                  staticClass: "btn btn-link hideOnTablet",
-                  attrs: { type: "button", name: "button" }
+                  staticClass: "btn btn-link",
+                  attrs: { type: "button", name: "button" },
+                  on: {
+                    click: function() {
+                      _vm.entry = ""
+                      _vm.clear()
+                    }
+                  }
                 },
                 [_vm._v("CANCEL")]
               )
             : _vm._e(),
           _vm._v(" "),
-          _c("button", { staticClass: "btn btn-submit btn-primar" }, [
-            _vm._v("ADD ENTRY")
-          ])
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-submit btn-primar",
+              class: { disabled: _vm.entry === "" },
+              on: { click: _vm.addEntry }
+            },
+            [_vm._v("ADD ENTRY")]
+          )
         ])
       ])
     ])
@@ -75192,15 +75276,7 @@ var staticRenderFns = [
           _c("input", {
             staticClass: "document-input",
             attrs: { type: "text", placeholder: "Add a document link" }
-          }),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("div", { staticClass: "btn-container" }, [
-            _c("button", { staticClass: "btn btn-primar disabled" }, [
-              _vm._v("SAVE LINK")
-            ])
-          ])
+          })
         ])
       ])
     ])
@@ -75226,7 +75302,57 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm._m(0),
+      _c("div", { staticClass: "content-block-campaign" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "bottom-bar" }, [
+          _c("div", { staticClass: "title" }, [
+            _vm._v("\n                MY ACTIVE CAMPAIGNS\n            ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "actionBtn" }, [
+            _c(
+              "a",
+              {
+                staticClass: "secondary little-padding hideOnSm",
+                attrs: { href: "javascript:;" },
+                on: {
+                  click: function($event) {
+                    _vm.startShift = !_vm.startShift
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.startShift ? "FINISH SHIFT" : "START SHIFT") +
+                    "\n                "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "little-padding",
+                attrs: { href: "javascript:;" },
+                on: {
+                  click: function($event) {
+                    _vm.imAway = !_vm.imAway
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.imAway ? "I'M AWAY" : "I'M BACK") +
+                    "\n                "
+                )
+              ]
+            )
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "content-block-campaign-brief" }, [
         _vm._m(1),
@@ -75407,11 +75533,153 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(4)
+        _c("div", { staticClass: "campaign-brief-footer" }, [
+          _c("a", { attrs: { href: "/freelancer/campaign" } }, [
+            _vm._v("\n                GO TO CAMPAIGN\n            ")
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "add-entry",
+              class: { disabled: _vm.addEntry },
+              attrs: { href: "javascript:;" },
+              on: { click: _vm.tryToAddEntry }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src:
+                    "/images/icons/" +
+                    (!_vm.addEntry ? "plus_icon_blue" : "plus_icon_gray") +
+                    ".svg",
+                  alt: "plus sign"
+                }
+              }),
+              _vm._v(" ADD ENTRY\n            ")
+            ]
+          )
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "content-block-campaign-brief" }, [
-        _vm._m(5),
+        _vm._m(4),
+        _vm._v(" "),
+        _c("div", { staticClass: "agent-logs-block" }, [
+          _vm._m(5),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    9 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("img", {
+                  attrs: {
+                    src: "/images/icons/edit_icon.svg",
+                    alt: "edit icon"
+                  }
+                })
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    10 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("img", {
+                  attrs: {
+                    src: "/images/icons/edit_icon.svg",
+                    alt: "edit icon"
+                  }
+                })
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    11 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("img", {
+                  attrs: {
+                    src: "/images/icons/edit_icon.svg",
+                    alt: "edit icon"
+                  }
+                })
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n                    11 am\n                ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("img", {
+                  attrs: {
+                    src: "/images/icons/edit_icon.svg",
+                    alt: "edit icon"
+                  }
+                })
+              ],
+              1
+            )
+          ])
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "agent-logs-block" }, [
           _vm._m(6),
@@ -75498,131 +75766,41 @@ var render = function() {
               ],
               1
             )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    11 am\n                ")
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "log-text" },
-              [
-                _c("status-selector", { attrs: { status: "call-back" } }),
-                _vm._v(" "),
-                _c("span", { staticClass: "log-text-content" }, [
-                  _vm._v(
-                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("img", {
-                  attrs: {
-                    src: "/images/icons/edit_icon.svg",
-                    alt: "edit icon"
-                  }
-                })
-              ],
-              1
-            )
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "agent-logs-block" }, [
-          _vm._m(7),
-          _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    9 am\n                ")
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "log-text" },
-              [
-                _c("status-selector", { attrs: { status: "call-back" } }),
-                _vm._v(" "),
-                _c("span", { staticClass: "log-text-content" }, [
-                  _vm._v(
-                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("img", {
-                  attrs: {
-                    src: "/images/icons/edit_icon.svg",
-                    alt: "edit icon"
-                  }
-                })
-              ],
-              1
-            )
+        _c("div", { staticClass: "campaign-brief-footer" }, [
+          _c("a", { attrs: { href: "/freelancer/campaign" } }, [
+            _vm._v("\n                GO TO CAMPAIGN\n            ")
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    10 am\n                ")
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "log-text" },
-              [
-                _c("status-selector", { attrs: { status: "call-back" } }),
-                _vm._v(" "),
-                _c("span", { staticClass: "log-text-content" }, [
-                  _vm._v(
-                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("img", {
-                  attrs: {
-                    src: "/images/icons/edit_icon.svg",
-                    alt: "edit icon"
-                  }
-                })
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log" }, [
-            _c("div", { staticClass: "log-time" }, [
-              _vm._v("\n                    11 am\n                ")
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "log-text" },
-              [
-                _c("status-selector", { attrs: { status: "call-back" } }),
-                _vm._v(" "),
-                _c("span", { staticClass: "log-text-content" }, [
-                  _vm._v(
-                    "\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("img", {
-                  attrs: {
-                    src: "/images/icons/edit_icon.svg",
-                    alt: "edit icon"
-                  }
-                })
-              ],
-              1
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(8)
+          _c(
+            "a",
+            {
+              staticClass: "add-entry",
+              class: { disabled: _vm.addEntry },
+              attrs: { href: "javascript:;" },
+              on: { click: _vm.tryToAddEntry }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src:
+                    "/images/icons/" +
+                    (!_vm.addEntry ? "plus_icon_blue" : "plus_icon_gray") +
+                    ".svg",
+                  alt: "plus sign"
+                }
+              }),
+              _vm._v(" ADD ENTRY\n            ")
+            ]
+          )
+        ])
       ]),
       _vm._v(" "),
-      _c("addEntry"),
+      _vm.addEntry ? _c("addEntry", { attrs: { clear: _vm.clear } }) : _vm._e(),
       _vm._v(" "),
-      _c("addDocument")
+      _vm.addEntry ? _c("addDocument") : _vm._e()
     ],
     1
   )
@@ -75632,44 +75810,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content-block-campaign" }, [
-      _c("div", { staticClass: "upper-bar" }, [
-        _c("div", { staticClass: "welcomeText" }, [
-          _vm._v(
-            "\n                Hello Mr. Marzouk!  You have 8 active campaigns.\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "actionText",
-            attrs: { href: "/freelancer/campaigns-archive" }
-          },
-          [_vm._v("\n                GO TO ARCHIVE OF CAMPAIGNS\n            ")]
+    return _c("div", { staticClass: "upper-bar" }, [
+      _c("div", { staticClass: "welcomeText" }, [
+        _vm._v(
+          "\n                Hello Mr. Marzouk!  You have 8 active campaigns.\n            "
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "bottom-bar" }, [
-        _c("div", { staticClass: "title" }, [
-          _vm._v("\n                MY ACTIVE CAMPAIGNS\n            ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "actionBtn" }, [
-          _c(
-            "a",
-            {
-              staticClass: "secondary little-padding hideOnSm",
-              attrs: { href: "#" }
-            },
-            [_vm._v("FINISH SHIFT")]
-          ),
-          _vm._v(" "),
-          _c("a", { staticClass: "little-padding", attrs: { href: "#" } }, [
-            _vm._v("\n                    I AM AWAY\n                ")
-          ])
-        ])
-      ])
+      _c(
+        "a",
+        {
+          staticClass: "actionText",
+          attrs: { href: "/freelancer/campaigns-archive" }
+        },
+        [_vm._v("\n                GO TO ARCHIVE OF CAMPAIGNS\n            ")]
+      )
     ])
   },
   function() {
@@ -75680,24 +75835,12 @@ var staticRenderFns = [
       _c("div", { staticClass: "campaignInfo" }, [
         _c("div", { staticClass: "title" }, [
           _vm._v("\n                    Name of the campaign\n                ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "info hideOnXS" }, [
-          _vm._v(
-            "\n                    2 agents on the campaign\n                "
-          )
         ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "actionBtn" }, [
         _c("a", { attrs: { href: "#" } }, [
           _vm._v("\n                    ACTIVE\n                ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "menu-img" }, [
-          _c("img", {
-            attrs: { src: "/images/client/more_vert_24px.png", alt: "menu" }
-          })
         ])
       ])
     ])
@@ -75727,23 +75870,6 @@ var staticRenderFns = [
         _vm._v(
           "\n                            Lionel Messi\n                        "
         )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "campaign-brief-footer" }, [
-      _c("a", { attrs: { href: "/freelancer/campaign" } }, [
-        _vm._v("\n                GO TO CAMPAIGN\n            ")
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "add-entry", attrs: { href: "#" } }, [
-        _c("img", {
-          attrs: { src: "/images/client/close_24px.png", alt: "plus sign" }
-        }),
-        _vm._v(" ADD ENTRY\n            ")
       ])
     ])
   },
@@ -75755,24 +75881,12 @@ var staticRenderFns = [
       _c("div", { staticClass: "campaignInfo" }, [
         _c("div", { staticClass: "title" }, [
           _vm._v("\n                    Name of the campaign\n                ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "info" }, [
-          _vm._v(
-            "\n                    2 agents currently working on the campaign\n                "
-          )
         ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "actionBtn live" }, [
         _c("a", { attrs: { href: "#" } }, [
           _vm._v("\n                    LIVE\n                ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "menu-img" }, [
-          _c("img", {
-            attrs: { src: "/images/client/more_vert_24px.png", alt: "menu" }
-          })
         ])
       ])
     ])
@@ -75802,23 +75916,6 @@ var staticRenderFns = [
         _vm._v(
           "\n                            Lionel Messi\n                        "
         )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "campaign-brief-footer" }, [
-      _c("a", { attrs: { href: "/freelancer/campaign" } }, [
-        _vm._v("\n                GO TO CAMPAIGN\n            ")
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "add-entry", attrs: { href: "#" } }, [
-        _c("img", {
-          attrs: { src: "/images/client/close_24px.png", alt: "plus sign" }
-        }),
-        _vm._v(" ADD ENTRY\n            ")
       ])
     ])
   }
@@ -76824,6 +76921,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -76969,11 +77067,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         noErrorsPaypal: function noErrorsPaypal() {
             var valid = true;
+            var paypalRegex = /\d{9}/;
 
             if (this.personalData.paypal.trim() === '') {
                 // Empty field
                 valid = false;
                 this.errors.paypal = 'Please, enter your paypal id';
+            } else if (!paypalRegex.test(this.personalData.paypal)) {
+                valid = false;
+                this.errors.paypal = 'Paypal acc number must contain 9 digits. Only numbers are allowed';
             } else this.errors.paypal = '';
 
             return valid;
@@ -77065,22 +77167,867 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       flags: [{
-        code: '1',
-        name: 'USA',
-        abrev: 'us'
+        value: "DZ",
+        code: "213",
+        name: 'Algeria'
       }, {
-        code: '58',
-        name: 'Venezuela',
-        abrev: 'ven'
+        value: "AD",
+        code: "376",
+        name: 'Andorra'
       }, {
-        code: '57',
-        name: 'Colombia',
-        abrev: 'col'
+        value: "AO",
+        code: "244",
+        name: 'Angola'
+      }, {
+        value: "AI",
+        code: "1264",
+        name: 'Anguilla'
+      }, {
+        value: "AG",
+        code: "1268",
+        name: 'Antigua &amp; Barbuda'
+      }, {
+        value: "AR",
+        code: "54",
+        name: 'Argentina'
+      }, {
+        value: "AM",
+        code: "374",
+        name: 'Armenia'
+      }, {
+        value: "AW",
+        code: "297",
+        name: 'Aruba'
+      }, {
+        value: "AU",
+        code: "61",
+        name: 'Australia'
+      }, {
+        value: "AT",
+        code: "43",
+        name: 'Austria'
+      }, {
+        value: "AZ",
+        code: "994",
+        name: 'Azerbaijan'
+      }, {
+        value: "BS",
+        code: "1242",
+        name: 'Bahamas'
+      }, {
+        value: "BH",
+        code: "973",
+        name: 'Bahrain'
+      }, {
+        value: "BD",
+        code: "880",
+        name: 'Bangladesh'
+      }, {
+        value: "BB",
+        code: "1246",
+        name: 'Barbados'
+      }, {
+        value: "BY",
+        code: "375",
+        name: 'Belarus'
+      }, {
+        value: "BE",
+        code: "32",
+        name: 'Belgium'
+      }, {
+        value: "BZ",
+        code: "501",
+        name: 'Belize'
+      }, {
+        value: "BJ",
+        code: "229",
+        name: 'Benin'
+      }, {
+        value: "BM",
+        code: "1441",
+        name: 'Bermuda'
+      }, {
+        value: "BT",
+        code: "975",
+        name: 'Bhutan'
+      }, {
+        value: "BO",
+        code: "591",
+        name: 'Bolivia (+591)'
+      }, {
+        value: "BA",
+        code: "387",
+        name: 'Bosnia Herzegovina (+387)'
+      }, {
+        value: "BW",
+        code: "267",
+        name: 'Botswana (+267)'
+      }, {
+        value: "BR",
+        code: "55",
+        name: 'Brazil (+55)'
+      }, {
+        value: "BN",
+        code: "673",
+        name: 'Brunei (+673)'
+      }, {
+        value: "BG",
+        code: "359",
+        name: 'Bulgaria (+359)'
+      }, {
+        value: "BF",
+        code: "226",
+        name: 'Burkina Faso (+226)'
+      }, {
+        value: "BI",
+        code: "257",
+        name: 'Burundi (+257)'
+      }, {
+        value: "KH",
+        code: "855",
+        name: 'Cambodia (+855)'
+      }, {
+        value: "CM",
+        code: "237",
+        name: 'Cameroon (+237)'
+      }, {
+        value: "CA",
+        code: "1",
+        name: 'Canada (+1)'
+      }, {
+        value: "CV",
+        code: "238",
+        name: 'Cape Verde Islands (+238)'
+      }, {
+        value: "KY",
+        code: "1345",
+        name: 'Cayman Islands (+1345)'
+      }, {
+        value: "CF",
+        code: "236",
+        name: 'Central African Republic (+236)'
+      }, {
+        value: "CL",
+        code: "56",
+        name: 'Chile (+56)'
+      }, {
+        value: "CN",
+        code: "86",
+        name: 'China (+86)'
+      }, {
+        value: "CO",
+        code: "57",
+        name: 'Colombia (+57)'
+      }, {
+        value: "KM",
+        code: "269",
+        name: 'Comoros (+269)'
+      }, {
+        value: "CG",
+        code: "242",
+        name: 'Congo (+242)'
+      }, {
+        value: "CK",
+        code: "682",
+        name: 'Cook Islands (+682)'
+      }, {
+        value: "CR",
+        code: "506",
+        name: 'Costa Rica (+506)'
+      }, {
+        value: "HR",
+        code: "385",
+        name: 'Croatia (+385)'
+      }, {
+        value: "CU",
+        code: "53",
+        name: 'Cuba (+53)'
+      }, {
+        value: "CY",
+        code: "90392",
+        name: 'Cyprus North (+90392)'
+      }, {
+        value: "CY",
+        code: "357",
+        name: 'Cyprus South (+357)'
+      }, {
+        value: "CZ",
+        code: "42",
+        name: 'Czech Republic (+42)'
+      }, {
+        value: "DK",
+        code: "45",
+        name: 'Denmark (+45)'
+      }, {
+        value: "DJ",
+        code: "253",
+        name: 'Djibouti (+253)'
+      }, {
+        value: "DM",
+        code: "1809",
+        name: 'Dominica (+1809)'
+      }, {
+        value: "DO",
+        code: "1809",
+        name: 'Dominican Republic (+1809)'
+      }, {
+        value: "EC",
+        code: "593",
+        name: 'Ecuador (+593)'
+      }, {
+        value: "EG",
+        code: "20",
+        name: 'Egypt (+20)'
+      }, {
+        value: "SV",
+        code: "503",
+        name: 'El Salvador (+503)'
+      }, {
+        value: "GQ",
+        code: "240",
+        name: 'Equatorial Guinea (+240)'
+      }, {
+        value: "ER",
+        code: "291",
+        name: 'Eritrea (+291)'
+      }, {
+        value: "EE",
+        code: "372",
+        name: 'Estonia (+372)'
+      }, {
+        value: "ET",
+        code: "251",
+        name: 'Ethiopia (+251)'
+      }, {
+        value: "FK",
+        code: "500",
+        name: 'Falkland Islands (+500)'
+      }, {
+        value: "FO",
+        code: "298",
+        name: 'Faroe Islands (+298)'
+      }, {
+        value: "FJ",
+        code: "679",
+        name: 'Fiji (+679)'
+      }, {
+        value: "FI",
+        code: "358",
+        name: 'Finland (+358)'
+      }, {
+        value: "FR",
+        code: "33",
+        name: 'France (+33)'
+      }, {
+        value: "GF",
+        code: "594",
+        name: 'French Guiana (+594)'
+      }, {
+        value: "PF",
+        code: "689",
+        name: 'French Polynesia (+689)'
+      }, {
+        value: "GA",
+        code: "241",
+        name: 'Gabon (+241)'
+      }, {
+        value: "GM",
+        code: "220",
+        name: 'Gambia (+220)'
+      }, {
+        value: "GE",
+        code: "7880",
+        name: 'Georgia (+7880)'
+      }, {
+        value: "DE",
+        code: "49",
+        name: 'Germany (+49)'
+      }, {
+        value: "GH",
+        code: "233",
+        name: 'Ghana (+233)'
+      }, {
+        value: "GI",
+        code: "350",
+        name: 'Gibraltar (+350)'
+      }, {
+        value: "GR",
+        code: "30",
+        name: 'Greece (+30)'
+      }, {
+        value: "GL",
+        code: "299",
+        name: 'Greenland (+299)'
+      }, {
+        value: "GD",
+        code: "1473",
+        name: 'Grenada (+1473)'
+      }, {
+        value: "GP",
+        code: "590",
+        name: 'Guadeloupe (+590)'
+      }, {
+        value: "GU",
+        code: "671",
+        name: 'Guam (+671)'
+      }, {
+        value: "GT",
+        code: "502",
+        name: 'Guatemala (+502)'
+      }, {
+        value: "GN",
+        code: "224",
+        name: 'Guinea (+224)'
+      }, {
+        value: "GW",
+        code: "245",
+        name: 'Guinea - Bissau (+245)'
+      }, {
+        value: "GY",
+        code: "592",
+        name: 'Guyana (+592)'
+      }, {
+        value: "HT",
+        code: "509",
+        name: 'Haiti (+509)'
+      }, {
+        value: "HN",
+        code: "504",
+        name: 'Honduras (+504)'
+      }, {
+        value: "HK",
+        code: "852",
+        name: 'Hong Kong (+852)'
+      }, {
+        value: "HU",
+        code: "36",
+        name: 'Hungary (+36)'
+      }, {
+        value: "IS",
+        code: "354",
+        name: 'Iceland (+354)'
+      }, {
+        value: "IN",
+        code: "91",
+        name: 'India (+91)'
+      }, {
+        value: "ID",
+        code: "62",
+        name: 'Indonesia (+62)'
+      }, {
+        value: "IR",
+        code: "98",
+        name: 'Iran (+98)'
+      }, {
+        value: "IQ",
+        code: "964",
+        name: 'Iraq (+964)'
+      }, {
+        value: "IE",
+        code: "353",
+        name: 'Ireland (+353)'
+      }, {
+        value: "IL",
+        code: "972",
+        name: 'Israel (+972)'
+      }, {
+        value: "IT",
+        code: "39",
+        name: 'Italy (+39)'
+      }, {
+        value: "JM",
+        code: "1876",
+        name: 'Jamaica (+1876)'
+      }, {
+        value: "JP",
+        code: "81",
+        name: 'Japan (+81)'
+      }, {
+        value: "JO",
+        code: "962",
+        name: 'Jordan (+962)'
+      }, {
+        value: "KZ",
+        code: "7",
+        name: 'Kazakhstan (+7)'
+      }, {
+        value: "KE",
+        code: "254",
+        name: 'Kenya (+254)'
+      }, {
+        value: "KI",
+        code: "686",
+        name: 'Kiribati (+686)'
+      }, {
+        value: "KP",
+        code: "850",
+        name: 'Korea North (+850)'
+      }, {
+        value: "KR",
+        code: "82",
+        name: 'Korea South (+82)'
+      }, {
+        value: "KW",
+        code: "965",
+        name: 'Kuwait (+965)'
+      }, {
+        value: "KG",
+        code: "996",
+        name: 'Kyrgyzstan (+996)'
+      }, {
+        value: "LA",
+        code: "856",
+        name: 'Laos (+856)'
+      }, {
+        value: "LV",
+        code: "371",
+        name: 'Latvia (+371)'
+      }, {
+        value: "LB",
+        code: "961",
+        name: 'Lebanon (+961)'
+      }, {
+        value: "LS",
+        code: "266",
+        name: 'Lesotho (+266)'
+      }, {
+        value: "LR",
+        code: "231",
+        name: 'Liberia (+231)'
+      }, {
+        value: "LY",
+        code: "218",
+        name: 'Libya (+218)'
+      }, {
+        value: "LI",
+        code: "417",
+        name: 'Liechtenstein (+417)'
+      }, {
+        value: "LT",
+        code: "370",
+        name: 'Lithuania (+370)'
+      }, {
+        value: "LU",
+        code: "352",
+        name: 'Luxembourg (+352)'
+      }, {
+        value: "MO",
+        code: "853",
+        name: 'Macao (+853)'
+      }, {
+        value: "MK",
+        code: "389",
+        name: 'Macedonia (+389)'
+      }, {
+        value: "MG",
+        code: "261",
+        name: 'Madagascar (+261)'
+      }, {
+        value: "MW",
+        code: "265",
+        name: 'Malawi (+265)'
+      }, {
+        value: "MY",
+        code: "60",
+        name: 'Malaysia (+60)'
+      }, {
+        value: "MV",
+        code: "960",
+        name: 'Maldives (+960)'
+      }, {
+        value: "ML",
+        code: "223",
+        name: 'Mali (+223)'
+      }, {
+        value: "MT",
+        code: "356",
+        name: 'Malta (+356)'
+      }, {
+        value: "MH",
+        code: "692",
+        name: 'Marshall Islands (+692)'
+      }, {
+        value: "MQ",
+        code: "596",
+        name: 'Martinique (+596)'
+      }, {
+        value: "MR",
+        code: "222",
+        name: 'Mauritania (+222)'
+      }, {
+        value: "YT",
+        code: "269",
+        name: 'Mayotte (+269)'
+      }, {
+        value: "MX",
+        code: "52",
+        name: 'Mexico (+52)'
+      }, {
+        value: "FM",
+        code: "691",
+        name: 'Micronesia (+691)'
+      }, {
+        value: "MD",
+        code: "373",
+        name: 'Moldova (+373)'
+      }, {
+        value: "MC",
+        code: "377",
+        name: 'Monaco (+377)'
+      }, {
+        value: "MN",
+        code: "976",
+        name: 'Mongolia (+976)'
+      }, {
+        value: "MS",
+        code: "1664",
+        name: 'Montserrat (+1664)'
+      }, {
+        value: "MA",
+        code: "212",
+        name: 'Morocco (+212)'
+      }, {
+        value: "MZ",
+        code: "258",
+        name: 'Mozambique (+258)'
+      }, {
+        value: "MN",
+        code: "95",
+        name: 'Myanmar (+95)'
+      }, {
+        value: "NA",
+        code: "264",
+        name: 'Namibia (+264)'
+      }, {
+        value: "NR",
+        code: "674",
+        name: 'Nauru (+674)'
+      }, {
+        value: "NP",
+        code: "977",
+        name: 'Nepal (+977)'
+      }, {
+        value: "NL",
+        code: "31",
+        name: 'Netherlands (+31)'
+      }, {
+        value: "NC",
+        code: "687",
+        name: 'New Caledonia (+687)'
+      }, {
+        value: "NZ",
+        code: "64",
+        name: 'New Zealand (+64)'
+      }, {
+        value: "NI",
+        code: "505",
+        name: 'Nicaragua (+505)'
+      }, {
+        value: "NE",
+        code: "227",
+        name: 'Niger (+227)'
+      }, {
+        value: "NG",
+        code: "234",
+        name: 'Nigeria (+234)'
+      }, {
+        value: "NU",
+        code: "683",
+        name: 'Niue (+683)'
+      }, {
+        value: "NF",
+        code: "672",
+        name: 'Norfolk Islands (+672)'
+      }, {
+        value: "NP",
+        code: "670",
+        name: 'Northern Marianas (+670)'
+      }, {
+        value: "NO",
+        code: "47",
+        name: 'Norway (+47)'
+      }, {
+        value: "OM",
+        code: "968",
+        name: 'Oman (+968)'
+      }, {
+        value: "PW",
+        code: "680",
+        name: 'Palau (+680)'
+      }, {
+        value: "PA",
+        code: "507",
+        name: 'Panama (+507)'
+      }, {
+        value: "PG",
+        code: "675",
+        name: 'Papua New Guinea (+675)'
+      }, {
+        value: "PY",
+        code: "595",
+        name: 'Paraguay (+595)'
+      }, {
+        value: "PE",
+        code: "51",
+        name: 'Peru (+51)'
+      }, {
+        value: "PH",
+        code: "63",
+        name: 'Philippines (+63)'
+      }, {
+        value: "PL",
+        code: "48",
+        name: 'Poland (+48)'
+      }, {
+        value: "PT",
+        code: "351",
+        name: 'Portugal (+351)'
+      }, {
+        value: "PR",
+        code: "1787",
+        name: 'Puerto Rico (+1787)'
+      }, {
+        value: "QA",
+        code: "974",
+        name: 'Qatar (+974)'
+      }, {
+        value: "RE",
+        code: "262",
+        name: 'Reunion (+262)'
+      }, {
+        value: "RO",
+        code: "40",
+        name: 'Romania (+40)'
+      }, {
+        value: "RU",
+        code: "7",
+        name: 'Russia (+7)'
+      }, {
+        value: "RW",
+        code: "250",
+        name: 'Rwanda (+250)'
+      }, {
+        value: "SM",
+        code: "378",
+        name: 'San Marino (+378)'
+      }, {
+        value: "ST",
+        code: "239",
+        name: 'Sao Tome &amp; Principe (+239)'
+      }, {
+        value: "SA",
+        code: "966",
+        name: 'Saudi Arabia (+966)'
+      }, {
+        value: "SN",
+        code: "221",
+        name: 'Senegal (+221)'
+      }, {
+        value: "CS",
+        code: "381",
+        name: 'Serbia (+381)'
+      }, {
+        value: "SC",
+        code: "248",
+        name: 'Seychelles (+248)'
+      }, {
+        value: "SL",
+        code: "232",
+        name: 'Sierra Leone (+232)'
+      }, {
+        value: "SG",
+        code: "65",
+        name: 'Singapore (+65)'
+      }, {
+        value: "SK",
+        code: "421",
+        name: 'Slovak Republic (+421)'
+      }, {
+        value: "SI",
+        code: "386",
+        name: 'Slovenia (+386)'
+      }, {
+        value: "SB",
+        code: "677",
+        name: 'Solomon Islands (+677)'
+      }, {
+        value: "SO",
+        code: "252",
+        name: 'Somalia (+252)'
+      }, {
+        value: "ZA",
+        code: "27",
+        name: 'South Africa (+27)'
+      }, {
+        value: "ES",
+        code: "34",
+        name: 'Spain (+34)'
+      }, {
+        value: "LK",
+        code: "94",
+        name: 'Sri Lanka (+94)'
+      }, {
+        value: "SH",
+        code: "290",
+        name: 'St. Helena (+290)'
+      }, {
+        value: "KN",
+        code: "1869",
+        name: 'St. Kitts (+1869)'
+      }, {
+        value: "SC",
+        code: "1758",
+        name: 'St. Lucia (+1758)'
+      }, {
+        value: "SD",
+        code: "249",
+        name: 'Sudan (+249)'
+      }, {
+        value: "SR",
+        code: "597",
+        name: 'Suriname (+597)'
+      }, {
+        value: "SZ",
+        code: "268",
+        name: 'Swaziland (+268)'
+      }, {
+        value: "SE",
+        code: "46",
+        name: 'Sweden (+46)'
+      }, {
+        value: "CH",
+        code: "41",
+        name: 'Switzerland (+41)'
+      }, {
+        value: "SI",
+        code: "963",
+        name: 'Syria (+963)'
+      }, {
+        value: "TW",
+        code: "886",
+        name: 'Taiwan (+886)'
+      }, {
+        value: "TJ",
+        code: "7",
+        name: 'Tajikstan (+7)'
+      }, {
+        value: "TH",
+        code: "66",
+        name: 'Thailand (+66)'
+      }, {
+        value: "TG",
+        code: "228",
+        name: 'Togo (+228)'
+      }, {
+        value: "TO",
+        code: "676",
+        name: 'Tonga (+676)'
+      }, {
+        value: "TT",
+        code: "1868",
+        name: 'Trinidad &amp; Tobago (+1868)'
+      }, {
+        value: "TN",
+        code: "216",
+        name: 'Tunisia (+216)'
+      }, {
+        value: "TR",
+        code: "90",
+        name: 'Turkey (+90)'
+      }, {
+        value: "TM",
+        code: "7",
+        name: 'Turkmenistan (+7)'
+      }, {
+        value: "TM",
+        code: "993",
+        name: 'Turkmenistan (+993)'
+      }, {
+        value: "TC",
+        code: "1649",
+        name: 'Turks &amp; Caicos Islands (+1649)'
+      }, {
+        value: "TV",
+        code: "688",
+        name: 'Tuvalu (+688)'
+      }, {
+        value: "UG",
+        code: "256",
+        name: 'Uganda (+256)'
+      }, {
+        value: "GB",
+        code: "44",
+        name: 'UK'
+      }, {
+        value: "UA",
+        code: "380",
+        name: 'Ukraine (+380)'
+      }, {
+        value: "AE",
+        code: "971",
+        name: 'United Arab Emirates (+971)'
+      }, {
+        value: "UY",
+        code: "598",
+        name: 'Uruguay (+598)'
+      }, {
+        value: "US",
+        code: "1",
+        name: 'USA'
+      }, {
+        value: "UZ",
+        code: "7",
+        name: 'Uzbekistan (+7)'
+      }, {
+        value: "VU",
+        code: "678",
+        name: 'Vanuatu (+678)'
+      }, {
+        value: "VA",
+        code: "379",
+        name: 'Vatican City (+379)'
+      }, {
+        value: "VE",
+        code: "58",
+        name: 'Venezuela (+58)'
+      }, {
+        value: "VN",
+        code: "84",
+        name: 'Vietnam (+84)'
+      }, {
+        value: "VG",
+        code: "84",
+        name: 'Virgin Islands - British (+1284)'
+      }, {
+        value: "VI",
+        code: "84",
+        name: 'Virgin Islands - US (+1340)'
+      }, {
+        value: "WF",
+        code: "681",
+        name: 'Wallis &amp; Futuna (+681)'
+      }, {
+        value: "YE",
+        code: "969",
+        name: 'Yemen (North)(+969)'
+      }, {
+        value: "YE",
+        code: "967",
+        name: 'Yemen (South)(+967)'
+      }, {
+        value: "ZM",
+        code: "260",
+        name: 'Zambia (+260)'
+      }, {
+        value: "ZW",
+        code: "263",
+        name: 'Zimbabwe (+263)'
       }],
       selected: 0,
       opened: false
@@ -77121,6 +78068,8 @@ var render = function() {
               alt: "flag " + _vm.flags[_vm.selected].name
             }
           }),
+          _vm._v(" "),
+          _c("i", { staticClass: "select-icon" }),
           _vm._v(" "),
           _c("span", { staticClass: "flag-name" }, [
             _vm._v("+" + _vm._s(_vm.flags[_vm.selected].code))
@@ -77347,7 +78296,12 @@ var render = function() {
               [
                 _c("img", {
                   attrs: {
-                    src: "/images/client/add_agent/gender/male_icon.png"
+                    src:
+                      "/images/icons/" +
+                      (_vm.personalData.gender === "M"
+                        ? "male_icon_pressed"
+                        : "male_icon") +
+                      ".svg"
                   },
                   on: {
                     click: function($event) {
@@ -77358,7 +78312,12 @@ var render = function() {
                 _vm._v(" "),
                 _c("img", {
                   attrs: {
-                    src: "/images/client/add_agent/gender/female_icon.png"
+                    src:
+                      "/images/icons/" +
+                      (_vm.personalData.gender === "F"
+                        ? "female_icon_pressed"
+                        : "female_icon") +
+                      ".svg"
                   },
                   on: {
                     click: function($event) {
@@ -77538,6 +78497,8 @@ var render = function() {
               class: { "error-input": _vm.errors.timeZone }
             },
             [
+              _c("div", { staticClass: "select-icon" }),
+              _vm._v(" "),
               _c(
                 "select",
                 {
@@ -80850,100 +81811,6 @@ var render = function() {
                   ])
                 ]
               ),
-              _vm._v(" "),
-              _vm.rootURL !== "/freelancer"
-                ? _c(
-                    "div",
-                    {
-                      staticClass: "menu-block row",
-                      class: { active: _vm.activeTab === "chats" },
-                      on: {
-                        click: function($event) {
-                          _vm.selectTab("chats")
-                        }
-                      }
-                    },
-                    [
-                      _c("div", { staticClass: "imageContainer" }, [
-                        _c("img", {
-                          attrs: {
-                            src: _vm.getMenuBlockIcon("chats"),
-                            alt: "icon"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "menu-block-name" }, [
-                        _vm._v(
-                          "\n                            Chats\n                        "
-                        )
-                      ])
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.rootURL !== "/freelancer"
-                ? _c(
-                    "router-link",
-                    {
-                      staticClass: "menu-block row",
-                      class: { active: _vm.activeTab === "payments" },
-                      attrs: { to: _vm.rootLinkTo("payments") },
-                      nativeOn: {
-                        click: function($event) {
-                          _vm.selectTab("payments")
-                        }
-                      }
-                    },
-                    [
-                      _c("div", { staticClass: "imageContainer" }, [
-                        _c("img", {
-                          attrs: {
-                            src: _vm.getMenuBlockIcon("payments"),
-                            alt: "icon"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "menu-block-name" }, [
-                        _vm._v(
-                          "\n                            Payments\n                        "
-                        )
-                      ])
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.rootURL !== "/freelancer"
-                ? _c(
-                    "div",
-                    {
-                      staticClass: "menu-block row",
-                      class: { active: _vm.activeTab === "agents_database" },
-                      on: {
-                        click: function($event) {
-                          _vm.selectTab("agents_database")
-                        }
-                      }
-                    },
-                    [
-                      _c("div", { staticClass: "imageContainer" }, [
-                        _c("img", {
-                          attrs: {
-                            src: _vm.getMenuBlockIcon("agents_database"),
-                            alt: "icon"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "menu-block-name" }, [
-                        _vm._v(
-                          "\n                            Agents database\n                        "
-                        )
-                      ])
-                    ]
-                  )
-                : _vm._e(),
               _vm._v(" "),
               _c(
                 "router-link",

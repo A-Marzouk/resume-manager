@@ -206,6 +206,30 @@
   .faq-input{
     width:400px;
 
+    input {
+      /* Change the white to any color ;) */
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover, 
+      &:-webkit-autofill:focus, 
+      &:-webkit-autofill:active  {
+          -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+      }
+    }
+
+    select {
+      border-radius: 0 !important;
+      appearance: none !important;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -o-appearance: none;
+      position: relative;
+    }
+
+    .select-icon {
+      position: absolute;
+      right: 10px;
+      z-index: 2;
+    }
 
     @media (max-width:1240px) {
       width:307px;

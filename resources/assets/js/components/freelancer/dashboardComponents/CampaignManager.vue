@@ -14,9 +14,11 @@
                     MY ACTIVE CAMPAIGNS
                 </div>
                 <div class="actionBtn">
-                    <a class="secondary little-padding hideOnSm" href="#">FINISH SHIFT</a>
-                    <a class="little-padding" href="#">
-                        I AM AWAY
+                    <a class="secondary little-padding hideOnSm" href="javascript:;" v-on:click="startShift = !startShift">
+                        {{ (startShift) ? 'FINISH SHIFT' : 'START SHIFT' }}
+                    </a>
+                    <a class="little-padding" href="javascript:;" v-on:click="imAway = !imAway">
+                        {{ (imAway) ? 'I\'M AWAY' : 'I\'M BACK' }}
                     </a>
                 </div>
             </div>
@@ -26,18 +28,12 @@
                 <div class="campaignInfo">
                     <div class="title">
                         Name of the campaign
-                    </div>
-                    <div class="info hideOnXS">
-                        2 agents on the campaign
                     </div>
                 </div>
                 <div class="actionBtn">
                     <a href="#">
                         ACTIVE
                     </a>
-                    <div class="menu-img">
-                        <img src="/images/client/more_vert_24px.png" alt="menu">
-                    </div>
                 </div>
             </div>
             <div class="agent-logs-block">
@@ -139,8 +135,8 @@
                 <a href="/freelancer/campaign">
                     GO TO CAMPAIGN
                 </a>
-                <a class="add-entry" href="#">
-                    <img src="/images/client/close_24px.png" alt="plus sign" /> ADD ENTRY
+                <a class="add-entry" :class="{disabled: addEntry}" href="javascript:;" v-on:click="tryToAddEntry">
+                    <img :src="`/images/icons/${(!addEntry) ? 'plus_icon_blue' : 'plus_icon_gray'}.svg`" alt="plus sign" /> ADD ENTRY
                 </a>
             </div>
         </div>
@@ -150,17 +146,11 @@
                     <div class="title">
                         Name of the campaign
                     </div>
-                    <div class="info">
-                        2 agents currently working on the campaign
-                    </div>
                 </div>
                 <div class="actionBtn live">
                     <a href="#">
                         LIVE
                     </a>
-                    <div class="menu-img">
-                        <img src="/images/client/more_vert_24px.png" alt="menu">
-                    </div>
                 </div>
             </div>
             <div class="agent-logs-block">
@@ -275,14 +265,14 @@
                 <a href="/freelancer/campaign">
                     GO TO CAMPAIGN
                 </a>
-                <a class="add-entry" href="#">
-                    <img src="/images/client/close_24px.png" alt="plus sign" /> ADD ENTRY
+                <a class="add-entry" :class="{disabled: addEntry}" href="javascript:;" v-on:click="tryToAddEntry">
+                    <img :src="`/images/icons/${(!addEntry) ? 'plus_icon_blue' : 'plus_icon_gray'}.svg`" alt="plus sign" /> ADD ENTRY
                 </a>
             </div>
         </div>
 
-        <addEntry></addEntry>
-        <addDocument></addDocument>
+        <addEntry :clear="clear" v-if="addEntry"></addEntry>
+        <addDocument v-if="addEntry"></addDocument>
         
     </div>
 </template>
@@ -300,12 +290,22 @@
         },
         data(){
           return{
-              rootLink: this.$route.path
+              rootLink: this.$route.path,
+              addEntry: false,
+              imAway: true,
+              startShift: false
           }
         },
         methods:{
             rootLinkTo (link) {
                 return this.$route.path + '/' + link
+            },
+            clear () {
+                this.addEntry = false
+            },
+            tryToAddEntry () {
+                if (this.startShift && this.imAway)
+                    this.addEntry = true
             }
         }
     }

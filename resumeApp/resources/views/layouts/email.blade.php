@@ -96,7 +96,7 @@
                     <img src="http://123workforce.magictimeapps.com/resumeApp/public/images/newResume/logo.png" alt="logo">
                 </div><br/>
                 Please do not reply to this message.  |  Need help? Visit our <a href="http://123workforce.magictimeapps.com">FAQ</a><br/>
-                © 2018 123Workforce | All Rights Reserved<br/><br/>
+                © 2019 123Workforce | All Rights Reserved<br/><br/>
                 <div style="padding-bottom: 20px;">
                     <a href="https://www.facebook.com/123workforce">
                         <img src="http://123workforce.magictimeapps.com/resumeApp/public/images/newResume/fb.png" alt="fb" width="25px">

@@ -4366,7 +4366,7 @@ body {
 }
 
 .dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer a.add-entry {
-  color: #B6B6B6;
+  color: #05A4F4;
   background: #FFF;
   width: 130px;
   border-radius: 20px;
@@ -4381,6 +4381,10 @@ body {
           align-items: center;
   line-height: 16px;
   height: 28px;
+}
+
+.dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer a.add-entry.disabled {
+  color: #B6B6B6;
 }
 
 .agent-logs-block {
@@ -4957,6 +4961,7 @@ body {
 .add-document-block .entry-input-block .btn-container .btn-submit,
 .add-document-block .document-input-block .btn-container .btn-submit {
   margin-left: 50px;
+  border: none;
 }
 
 .type-entry-block .entry-input-block .btn-container .btn-secondary,

@@ -429,7 +429,7 @@
           margin-right: 34px;
 
           &.add-entry {
-            color: #B6B6B6;
+            color: #05A4F4;
             background: #FFF;
             width: 130px;
             border-radius: 20px;
@@ -439,6 +439,10 @@
             align-items: center;
             line-height: 16px;
             height: 28px;
+
+            &.disabled {
+              color: #B6B6B6;
+            }
           }
         }
       }
@@ -898,6 +902,7 @@
 
       .btn-submit {
         margin-left: 50px;
+        border: none;
       }
 
       .btn-secondary {

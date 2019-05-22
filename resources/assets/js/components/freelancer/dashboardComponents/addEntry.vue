@@ -20,7 +20,8 @@
         <hr>
         <div class="btn-container">
           <button v-if="entry !== ''" type="button" name="button"
-            class="btn btn-link hideOnTablet"
+            class="btn btn-link"
+            v-on:click="() => {entry = ''; clear()}"
           >CANCEL</button>
           <button class="btn btn-submit btn-primar">ADD ENTRY</button>
         </div>
@@ -34,6 +35,7 @@
   import statusSelector from '../../status-selector.vue'
 
   export default {
+    props: ['clear'],
     components: {
       'status-selector': statusSelector
     },

@@ -14,7 +14,9 @@
                     MY ACTIVE CAMPAIGNS
                 </div>
                 <div class="actionBtn">
-                    <a class="secondary little-padding hideOnSm" href="#">FINISH SHIFT</a>
+                    <a class="secondary little-padding hideOnSm" href="javascript:;" v-on:click="startShift = !startShift">
+                        {{ (startShift) ? 'FINISH SHIFT' : 'START SHIFT' }}
+                    </a>
                     <a class="little-padding" href="javascript:;" v-on:click="imAway = !imAway">
                         {{ (imAway) ? 'I\'M AWAY' : 'I\'M BACK' }}
                     </a>
@@ -290,7 +292,8 @@
           return{
               rootLink: this.$route.path,
               addEntry: false,
-              imAway: true
+              imAway: true,
+              startShift: false
           }
         },
         methods:{
@@ -301,7 +304,7 @@
                 this.addEntry = false
             },
             tryToAddEntry () {
-                if (this.imAway)
+                if (this.startShift && this.imAway)
                     this.addEntry = true
             }
         }

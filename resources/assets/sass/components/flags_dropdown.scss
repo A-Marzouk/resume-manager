@@ -14,7 +14,8 @@
   }
 
   .selected-country {
-    position: absolute;
+    position: relative;
+    top: 0;
     left: 0;
     height: 100%;
     width: 120px;
@@ -32,28 +33,22 @@
 
   .flags-container {
     position: absolute;
-    top: 55px;
+    top: 50px;
     height: 0;
     width: 100%;
     transition: .5s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     overflow: hidden;
     background: white;
+    z-index: 2;
 
     &.opened {
-      height: 180px;
+      height: 300px;
       overflow-y: scroll;
     }
     
   }
-
   
   .flag-item {
-    position: relative;
-    top: 0;
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -71,6 +66,7 @@
   input {
     padding: 0;
     padding-left: 120px;
+    position: absolute;
   }
 }
 

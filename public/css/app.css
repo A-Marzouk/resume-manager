@@ -7923,7 +7923,8 @@ body {
 }
 
 .flags-dropdown .selected-country {
-  position: absolute;
+  position: relative;
+  top: 0;
   left: 0;
   height: 100%;
   width: 120px;
@@ -7947,36 +7948,22 @@ body {
 
 .flags-dropdown .flags-container {
   position: absolute;
-  top: 55px;
+  top: 50px;
   height: 0;
   width: 100%;
   -webkit-transition: .5s;
   transition: .5s;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   overflow: hidden;
   background: white;
+  z-index: 2;
 }
 
 .flags-dropdown .flags-container.opened {
-  height: 180px;
+  height: 300px;
   overflow-y: scroll;
 }
 
 .flags-dropdown .flag-item {
-  position: relative;
-  top: 0;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7998,6 +7985,7 @@ body {
 .account-edit-section .faq-question-input .faq-input .flags-dropdown input {
   padding: 0;
   padding-left: 120px;
+  position: absolute;
 }
 
 .select-icon {

@@ -74328,7 +74328,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -74636,7 +74636,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             rootLink: this.$route.path,
-            addEntry: false
+            addEntry: false,
+            imAway: true
         };
     },
 
@@ -74646,6 +74647,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         clear: function clear() {
             this.addEntry = false;
+        },
+        tryToAddEntry: function tryToAddEntry() {
+            if (this.imAway) this.addEntry = true;
         }
     }
 });
@@ -75224,7 +75228,46 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm._m(0),
+      _c("div", { staticClass: "content-block-campaign" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "bottom-bar" }, [
+          _c("div", { staticClass: "title" }, [
+            _vm._v("\n                MY ACTIVE CAMPAIGNS\n            ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "actionBtn" }, [
+            _c(
+              "a",
+              {
+                staticClass: "secondary little-padding hideOnSm",
+                attrs: { href: "#" }
+              },
+              [_vm._v("FINISH SHIFT")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "little-padding",
+                attrs: { href: "javascript:;" },
+                on: {
+                  click: function($event) {
+                    _vm.imAway = !_vm.imAway
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.imAway ? "I'M AWAY" : "I'M BACK") +
+                    "\n                "
+                )
+              ]
+            )
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "content-block-campaign-brief" }, [
         _vm._m(1),
@@ -75416,11 +75459,7 @@ var render = function() {
               staticClass: "add-entry",
               class: { disabled: _vm.addEntry },
               attrs: { href: "javascript:;" },
-              on: {
-                click: function($event) {
-                  _vm.addEntry = true
-                }
-              }
+              on: { click: _vm.tryToAddEntry }
             },
             [
               _c("img", {
@@ -75656,11 +75695,7 @@ var render = function() {
               staticClass: "add-entry",
               class: { disabled: _vm.addEntry },
               attrs: { href: "javascript:;" },
-              on: {
-                click: function($event) {
-                  _vm.addEntry = true
-                }
-              }
+              on: { click: _vm.tryToAddEntry }
             },
             [
               _c("img", {
@@ -75690,44 +75725,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content-block-campaign" }, [
-      _c("div", { staticClass: "upper-bar" }, [
-        _c("div", { staticClass: "welcomeText" }, [
-          _vm._v(
-            "\n                Hello Mr. Marzouk!  You have 8 active campaigns.\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "actionText",
-            attrs: { href: "/freelancer/campaigns-archive" }
-          },
-          [_vm._v("\n                GO TO ARCHIVE OF CAMPAIGNS\n            ")]
+    return _c("div", { staticClass: "upper-bar" }, [
+      _c("div", { staticClass: "welcomeText" }, [
+        _vm._v(
+          "\n                Hello Mr. Marzouk!  You have 8 active campaigns.\n            "
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "bottom-bar" }, [
-        _c("div", { staticClass: "title" }, [
-          _vm._v("\n                MY ACTIVE CAMPAIGNS\n            ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "actionBtn" }, [
-          _c(
-            "a",
-            {
-              staticClass: "secondary little-padding hideOnSm",
-              attrs: { href: "#" }
-            },
-            [_vm._v("FINISH SHIFT")]
-          ),
-          _vm._v(" "),
-          _c("a", { staticClass: "little-padding", attrs: { href: "#" } }, [
-            _vm._v("\n                    I AM AWAY\n                ")
-          ])
-        ])
-      ])
+      _c(
+        "a",
+        {
+          staticClass: "actionText",
+          attrs: { href: "/freelancer/campaigns-archive" }
+        },
+        [_vm._v("\n                GO TO ARCHIVE OF CAMPAIGNS\n            ")]
+      )
     ])
   },
   function() {

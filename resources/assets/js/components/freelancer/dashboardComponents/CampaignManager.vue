@@ -15,8 +15,8 @@
                 </div>
                 <div class="actionBtn">
                     <a class="secondary little-padding hideOnSm" href="#">FINISH SHIFT</a>
-                    <a class="little-padding" href="#">
-                        I AM AWAY
+                    <a class="little-padding" href="javascript:;" v-on:click="imAway = !imAway">
+                        {{ (imAway) ? 'I\'M AWAY' : 'I\'M BACK' }}
                     </a>
                 </div>
             </div>
@@ -133,7 +133,7 @@
                 <a href="/freelancer/campaign">
                     GO TO CAMPAIGN
                 </a>
-                <a class="add-entry" :class="{disabled: addEntry}" href="javascript:;" v-on:click="addEntry = true">
+                <a class="add-entry" :class="{disabled: addEntry}" href="javascript:;" v-on:click="tryToAddEntry">
                     <img :src="`/images/icons/${(!addEntry) ? 'plus_icon_blue' : 'plus_icon_gray'}.svg`" alt="plus sign" /> ADD ENTRY
                 </a>
             </div>
@@ -263,7 +263,7 @@
                 <a href="/freelancer/campaign">
                     GO TO CAMPAIGN
                 </a>
-                <a class="add-entry" :class="{disabled: addEntry}" href="javascript:;" v-on:click="addEntry = true">
+                <a class="add-entry" :class="{disabled: addEntry}" href="javascript:;" v-on:click="tryToAddEntry">
                     <img :src="`/images/icons/${(!addEntry) ? 'plus_icon_blue' : 'plus_icon_gray'}.svg`" alt="plus sign" /> ADD ENTRY
                 </a>
             </div>
@@ -289,7 +289,8 @@
         data(){
           return{
               rootLink: this.$route.path,
-              addEntry: false
+              addEntry: false,
+              imAway: true
           }
         },
         methods:{
@@ -298,6 +299,10 @@
             },
             clear () {
                 this.addEntry = false
+            },
+            tryToAddEntry () {
+                if (this.imAway)
+                    this.addEntry = true
             }
         }
     }

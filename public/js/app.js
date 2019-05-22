@@ -74741,6 +74741,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -74752,8 +74754,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
-      entry: ''
+      entry: '',
+      isSuccessful: false,
+      names: '',
+      errors: {
+        entry: ''
+      }
     };
+  },
+
+  methods: {
+    setStatus: function setStatus(value) {
+      this.isSuccessful = value;
+    },
+    addEntry: function addEntry() {
+      if (this.entry.trim() === '') {
+        this.errors.entry = 'Entry is empty';
+        return;
+      }
+
+      if (this.isSuccessful && this.names === '') {
+        this.errors.entry = 'To save entry with “Successful” status you need to add names';
+        return;
+      }
+    }
   }
 });
 
@@ -74800,7 +74824,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['status'],
+  props: ['status', 'setStatus'],
   data: function data() {
     return {
       showStatusList: false,
@@ -74812,6 +74836,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     printStatus: function printStatus() {
       var splittedStatusName = this.selectedStatus.split('-');
       return this.selectedStatus !== 'status-default' ? splittedStatusName.length > 1 ? splittedStatusName[0].charAt(0).toUpperCase() + splittedStatusName[1].charAt(0).toUpperCase() : splittedStatusName[0].charAt(0).toUpperCase() : 'S';
+    }
+  },
+  watch: {
+    selectedStatus: function selectedStatus(status) {
+      if (this.setStatus !== null || this.setStatus !== undefined) {
+        if (status === 'successful') this.setStatus(true);else this.setStatus(false);
+      }
     }
   }
 });
@@ -75034,7 +75065,7 @@ var render = function() {
           "div",
           { staticClass: "input-container" },
           [
-            _c("status-selector"),
+            _c("status-selector", { attrs: { setStatus: _vm.setStatus } }),
             _vm._v(" "),
             _c("textarea", {
               directives: [
@@ -75067,6 +75098,40 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
+        _vm.isSuccessful
+          ? _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.names,
+                  expression: "names"
+                }
+              ],
+              staticClass: "names-input",
+              staticStyle: { "margin-bottom": "15px" },
+              attrs: {
+                placeholder:
+                  "Please, write names of the registered people using commas"
+              },
+              domProps: { value: _vm.names },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.names = $event.target.value
+                }
+              }
+            })
+          : _vm._e(),
+        _vm._v(" "),
+        this.errors.entry !== ""
+          ? _c("div", { staticClass: "error" }, [
+              _vm._v(_vm._s(_vm.errors.entry))
+            ])
+          : _vm._e(),
+        _vm._v(" "),
         _vm._m(1),
         _vm._v(" "),
         _c("hr"),
@@ -75089,9 +75154,15 @@ var render = function() {
               )
             : _vm._e(),
           _vm._v(" "),
-          _c("button", { staticClass: "btn btn-submit btn-primar" }, [
-            _vm._v("ADD ENTRY")
-          ])
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-submit btn-primar",
+              class: { disabled: _vm.entry === "" },
+              on: { click: _vm.addEntry }
+            },
+            [_vm._v("ADD ENTRY")]
+          )
         ])
       ])
     ])

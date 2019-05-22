@@ -851,6 +851,14 @@
       padding: 10px 10px 10px 30px;
     }
 
+    .names-input {
+      width: 100%;
+      background: #FBFBFB;
+      border: 0;
+      border-bottom: 2px solid rgba(179, 183, 186, 0.7);
+      padding: 10px 10px 10px 30px;
+    }
+
     .entry-comment {
       width: 100%;
       color: rgba(179, 183, 186, 0.5);
@@ -898,11 +906,17 @@
       .btn-link {
         background: transparent;
         color: $l-blue;
+        border: none !important;
       }
 
       .btn-submit {
         margin-left: 50px;
         border: none;
+
+        &.disabled {
+          color: #A1A7AF;
+          background-color: #E4E4E4;
+        }
       }
 
       .btn-secondary {

@@ -8,12 +8,14 @@
       </div>
       <div class="entry-input-block">
         <div class="input-container">
-          <status-selector></status-selector>
+          <status-selector :setStatus="setStatus"></status-selector>
           <textarea class="entry-input" placeholder="Type your entry here" v-model="entry"></textarea>
         </div>
         <div class="entry-comment">
           Please don't forget to mention N° of the client (company) in the document
         </div>
+        <input v-model="names" style="margin-bottom: 15px;" v-if="isSuccessful" class="names-input" placeholder="Please, write names of the registered people using commas" />
+        <div v-if="this.errors.entry !== ''" class="error">{{errors.entry}}</div>
         <div class="add-recording-action">
           <a href="javascript:void(0);">ADD RECORDING</a>
         </div>
@@ -23,7 +25,7 @@
             class="btn btn-link"
             v-on:click="() => {entry = ''; clear()}"
           >CANCEL</button>
-          <button class="btn btn-submit btn-primar">ADD ENTRY</button>
+          <button v-on:click="addEntry" class="btn btn-submit btn-primar" :class="{ disabled: entry === '' }" >ADD ENTRY</button>
         </div>
       </div>
     </div>
@@ -42,6 +44,27 @@
     data () {
       return {
         entry: '',
+        isSuccessful: false,
+        names: '',
+        errors: {
+          entry: ''
+        }
+      }
+    },
+    methods: {
+      setStatus: function (value) {
+        this.isSuccessful = value
+      },
+      addEntry: function () {
+        if (this.entry.trim() === '') {
+          this.errors.entry = 'Entry is empty'
+          return
+        }
+
+        if (this.isSuccessful && this.names === '') {
+          this.errors.entry = 'To save entry with “Successful” status you need to add names'
+          return
+        }
       }
     }
   }

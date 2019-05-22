@@ -4879,6 +4879,17 @@ body {
   padding: 10px 10px 10px 30px;
 }
 
+.type-entry-block .entry-input-block .names-input,
+.type-entry-block .document-input-block .names-input,
+.add-document-block .entry-input-block .names-input,
+.add-document-block .document-input-block .names-input {
+  width: 100%;
+  background: #FBFBFB;
+  border: 0;
+  border-bottom: 2px solid rgba(179, 183, 186, 0.7);
+  padding: 10px 10px 10px 30px;
+}
+
 .type-entry-block .entry-input-block .entry-comment,
 .type-entry-block .document-input-block .entry-comment,
 .add-document-block .entry-input-block .entry-comment,
@@ -4954,6 +4965,7 @@ body {
 .add-document-block .document-input-block .btn-container .btn-link {
   background: transparent;
   color: #218dce;
+  border: none !important;
 }
 
 .type-entry-block .entry-input-block .btn-container .btn-submit,
@@ -4962,6 +4974,14 @@ body {
 .add-document-block .document-input-block .btn-container .btn-submit {
   margin-left: 50px;
   border: none;
+}
+
+.type-entry-block .entry-input-block .btn-container .btn-submit.disabled,
+.type-entry-block .document-input-block .btn-container .btn-submit.disabled,
+.add-document-block .entry-input-block .btn-container .btn-submit.disabled,
+.add-document-block .document-input-block .btn-container .btn-submit.disabled {
+  color: #A1A7AF;
+  background-color: #E4E4E4;
 }
 
 .type-entry-block .entry-input-block .btn-container .btn-secondary,

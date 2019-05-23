@@ -45,28 +45,39 @@
             In this section you can add frequently asked questions and answers to them.
           </div>
           <div class="faq-question-input">
-            <img src="/images/client/campaign_activity/faq.png" alt="faq icon">
-            <div class="faq-input">
-              <input type="text"
-                     name="faq"
-                     placeholder="Write a frequently asked question"
-                     v-model="newFAQ.question">
-              <img src="/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="newFAQ.question.length > 0" @click="newFAQ.question = ''">
-                        </div>
+            <div class="faq-container">
+              <img src="/images/client/campaign_activity/faq.png" alt="faq icon">
+              <div class="faq-input">
+                <input type="text"
+                      name="faq"
+                      placeholder="Write a frequently asked question"
+                      v-model="newFAQ.question">
+                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="newFAQ.question.length > 0" @click="newFAQ.question = ''">
+              </div>
+            </div>
+            <div v-if="showErrors && errors.question" class="error">
+              This field must contain at least 7 characters.
+            </div>
             </div>
             <div class="faq-answer-input">
-              <img src="/images/client/campaign_activity/answer.png" alt="faq icon">
-              <div class="faq-input">
-                <textarea rows="1"
-                          name="faq-answer"
-                          placeholder="Add an answer to the question"
-                          v-model="newFAQ.answer"></textarea>
-                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="newFAQ.answer.length > 0" @click="newFAQ.answer = ''">
-                        </div>
+              <div class="faq-container">
+                
+                <img src="/images/client/campaign_activity/answer.png" alt="faq icon">
+                <div class="faq-input">
+                  <textarea rows="1"
+                            name="faq-answer"
+                            placeholder="Add an answer to the question"
+                            v-model="newFAQ.answer"></textarea>
+                  <img src="/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="newFAQ.answer.length > 0" @click="newFAQ.answer = ''">
+                          </div>
+              </div>
+              <div v-if="showErrors && errors.answer" class="error">
+                This field must contain at least 7 characters.
+              </div>
               </div>
               <div class="faq-add-btn"
                    :class="{ active : newFAQ.question.length > 7 && newFAQ.answer.length > 7 }">
-                <a href="#">
+                <a v-on:click="addFAQ" href="javascript:;">
                             ADD FAQ
                         </a>
               </div>
@@ -154,7 +165,6 @@
                               Enter the description of the process flow:
                             </div>
                             <div class="edit-state-action">
-                              <a href="javascript:void(0)">DELETE</a>
                               <a href="javascript:void(0)">CANCEL</a>
                               <a href="javascript:void(0)">SAVE</a>
                             </div>
@@ -280,13 +290,18 @@ export default {
         question: '',
         answer: ''
       },
+      errors: {
+        question: false,
+        answer: false
+      },
       currentlyEditedQuestion: {
         beingEdited: false,
         question: '',
         answer: ''
       },
       process_flow_em: false,
-      is_text_editor_set: false
+      is_text_editor_set: false,
+      showErrors: false
     }
   },
   methods: {
@@ -318,6 +333,30 @@ export default {
           this.currentlyEditedQuestion.answer = '';
         }
       });
+    },
+    addFAQ () {
+      if (this.newFAQ.answer.length < 7) {
+        this.showErrors = true
+        this.errors.answer = true
+      }
+
+      if (this.newFAQ.question.length < 7) {
+        this.showErrors = true
+        this.errors.question = true
+      }
+
+      if (this.showErrors) return
+
+      // add FAQ
+      this.faqs.push({
+        id: this.faqs.length,
+        answer: this.newFAQ.answer,
+        question: this.newFAQ.question
+      })
+
+      this.newFAQ.question = ''
+      this.newFAQ.answer = ''
+      this.showErrors = false
     },
     saveFAQ(faq_id) {
       let faqs = this.faqs;

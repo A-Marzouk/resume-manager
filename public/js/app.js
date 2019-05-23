@@ -70035,6 +70035,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -70065,13 +70075,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         question: '',
         answer: ''
       },
+      errors: {
+        question: false,
+        answer: false
+      },
       currentlyEditedQuestion: {
         beingEdited: false,
         question: '',
         answer: ''
       },
       process_flow_em: false,
-      is_text_editor_set: false
+      is_text_editor_set: false,
+      showErrors: false
     };
   },
 
@@ -70108,6 +70123,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           _this2.currentlyEditedQuestion.answer = '';
         }
       });
+    },
+    addFAQ: function addFAQ() {
+      if (this.newFAQ.answer.length < 7) {
+        this.showErrors = true;
+        this.errors.answer = true;
+      }
+
+      if (this.newFAQ.question.length < 7) {
+        this.showErrors = true;
+        this.errors.question = true;
+      }
+
+      if (this.showErrors) return;
+
+      // add FAQ
+      this.faqs.push({
+        id: this.faqs.length,
+        answer: this.newFAQ.answer,
+        question: this.newFAQ.question
+      });
+
+      this.newFAQ.question = '';
+      this.newFAQ.answer = '';
+      this.showErrors = false;
     },
     saveFAQ: function saveFAQ(faq_id) {
       var _this3 = this;
@@ -70252,115 +70291,135 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "faq-question-input" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/client/campaign_activity/faq.png",
-                  alt: "faq icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "faq-input" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.newFAQ.question,
-                      expression: "newFAQ.question"
-                    }
-                  ],
+              _c("div", { staticClass: "faq-container" }, [
+                _c("img", {
                   attrs: {
-                    type: "text",
-                    name: "faq",
-                    placeholder: "Write a frequently asked question"
-                  },
-                  domProps: { value: _vm.newFAQ.question },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.newFAQ, "question", $event.target.value)
-                    }
+                    src: "/images/client/campaign_activity/faq.png",
+                    alt: "faq icon"
                   }
                 }),
                 _vm._v(" "),
-                _c("img", {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.newFAQ.question.length > 0,
-                      expression: "newFAQ.question.length > 0"
+                _c("div", { staticClass: "faq-input" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.newFAQ.question,
+                        expression: "newFAQ.question"
+                      }
+                    ],
+                    attrs: {
+                      type: "text",
+                      name: "faq",
+                      placeholder: "Write a frequently asked question"
+                    },
+                    domProps: { value: _vm.newFAQ.question },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.newFAQ, "question", $event.target.value)
+                      }
                     }
-                  ],
-                  attrs: {
-                    src: "/images/client/campaign_activity/close_black.png",
-                    alt: "delete icon"
-                  },
-                  on: {
-                    click: function($event) {
-                      _vm.newFAQ.question = ""
+                  }),
+                  _vm._v(" "),
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.newFAQ.question.length > 0,
+                        expression: "newFAQ.question.length > 0"
+                      }
+                    ],
+                    attrs: {
+                      src: "/images/client/campaign_activity/close_black.png",
+                      alt: "delete icon"
+                    },
+                    on: {
+                      click: function($event) {
+                        _vm.newFAQ.question = ""
+                      }
                     }
-                  }
-                })
-              ])
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _vm.showErrors && _vm.errors.question
+                ? _c("div", { staticClass: "error" }, [
+                    _vm._v(
+                      "\n            This field must contain at least 7 characters.\n          "
+                    )
+                  ])
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "faq-answer-input" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/client/campaign_activity/answer.png",
-                  alt: "faq icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "faq-input" }, [
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.newFAQ.answer,
-                      expression: "newFAQ.answer"
-                    }
-                  ],
+              _c("div", { staticClass: "faq-container" }, [
+                _c("img", {
                   attrs: {
-                    rows: "1",
-                    name: "faq-answer",
-                    placeholder: "Add an answer to the question"
-                  },
-                  domProps: { value: _vm.newFAQ.answer },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.newFAQ, "answer", $event.target.value)
-                    }
+                    src: "/images/client/campaign_activity/answer.png",
+                    alt: "faq icon"
                   }
                 }),
                 _vm._v(" "),
-                _c("img", {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.newFAQ.answer.length > 0,
-                      expression: "newFAQ.answer.length > 0"
+                _c("div", { staticClass: "faq-input" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.newFAQ.answer,
+                        expression: "newFAQ.answer"
+                      }
+                    ],
+                    attrs: {
+                      rows: "1",
+                      name: "faq-answer",
+                      placeholder: "Add an answer to the question"
+                    },
+                    domProps: { value: _vm.newFAQ.answer },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.newFAQ, "answer", $event.target.value)
+                      }
                     }
-                  ],
-                  attrs: {
-                    src: "/images/client/campaign_activity/close_black.png",
-                    alt: "delete icon"
-                  },
-                  on: {
-                    click: function($event) {
-                      _vm.newFAQ.answer = ""
+                  }),
+                  _vm._v(" "),
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.newFAQ.answer.length > 0,
+                        expression: "newFAQ.answer.length > 0"
+                      }
+                    ],
+                    attrs: {
+                      src: "/images/client/campaign_activity/close_black.png",
+                      alt: "delete icon"
+                    },
+                    on: {
+                      click: function($event) {
+                        _vm.newFAQ.answer = ""
+                      }
                     }
-                  }
-                })
-              ])
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _vm.showErrors && _vm.errors.answer
+                ? _c("div", { staticClass: "error" }, [
+                    _vm._v(
+                      "\n              This field must contain at least 7 characters.\n            "
+                    )
+                  ])
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c(
@@ -70374,11 +70433,18 @@ var render = function() {
                 }
               },
               [
-                _c("a", { attrs: { href: "#" } }, [
-                  _vm._v(
-                    "\n                          ADD FAQ\n                      "
-                  )
-                ])
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "javascript:;" },
+                    on: { click: _vm.addFAQ }
+                  },
+                  [
+                    _vm._v(
+                      "\n                          ADD FAQ\n                      "
+                    )
+                  ]
+                )
               ]
             ),
             _vm._v(" "),
@@ -70862,8 +70928,6 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "edit-state-action" }, [
-        _c("a", { attrs: { href: "javascript:void(0)" } }, [_vm._v("DELETE")]),
-        _vm._v(" "),
         _c("a", { attrs: { href: "javascript:void(0)" } }, [_vm._v("CANCEL")]),
         _vm._v(" "),
         _c("a", { attrs: { href: "javascript:void(0)" } }, [_vm._v("SAVE")])

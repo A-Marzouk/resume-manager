@@ -6893,6 +6893,31 @@ body {
   margin-top: 36px;
 }
 
+.faq-question-input .faq-container,
+.faq-answer-input .faq-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.faq-question-input .faq-container img:first-child,
+.faq-answer-input .faq-container img:first-child {
+  margin-right: 20px;
+  width: 36px;
+  height: 36px;
+}
+
+.faq-question-input .faq-container .faq-input,
+.faq-answer-input .faq-container .faq-input {
+  width: 100%;
+}
+
 .faq-question-input .faq-input-label,
 .faq-answer-input .faq-input-label {
   font-family: Roboto;

@@ -330,6 +330,23 @@
   display: flex;
   flex-direction: column;
   margin-top: 36px;
+
+  .faq-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img:first-child {
+      margin-right: 20px;
+      width: 36px;
+      height: 36px;
+    }
+
+    .faq-input {
+      width: 100%;
+    }
+  }
+
   .faq-input-label{
     font-family: Roboto;
     font-style: normal;

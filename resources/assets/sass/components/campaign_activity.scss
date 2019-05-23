@@ -216,7 +216,7 @@
             }
 
             .day-of-week.active {
-              border-bottom: 1.5px solid $l-blue;
+              border-bottom: 1.5px solid #05A4F4;;
             }
 
             .day-number,
@@ -225,7 +225,7 @@
               text-align: center;
 
               &.active {
-                color: $l-blue
+                color: #05A4F4;
               }
             }
 
@@ -632,6 +632,7 @@
 }
 
 .hideDate {
+  color: #05A4F4;
   @media (max-width: 900px) {
     display: none;
   }

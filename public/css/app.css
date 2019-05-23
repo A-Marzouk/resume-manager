@@ -5516,7 +5516,7 @@ body {
 }
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week.active {
-  border-bottom: 1.5px solid #218dce;
+  border-bottom: 1.5px solid #05A4F4;
 }
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-number,
@@ -5527,7 +5527,7 @@ body {
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-number.active,
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week.active {
-  color: #218dce;
+  color: #05A4F4;
 }
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .date-control-right,
@@ -6030,6 +6030,10 @@ body {
   font-weight: normal;
   margin-left: 5px;
   color: #7A828D;
+}
+
+.hideDate {
+  color: #05A4F4;
 }
 
 @media (max-width: 900px) {

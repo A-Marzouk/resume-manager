@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="actionBtn">
-                    <a href="#">
+                    <a class="status active" href="#">
                         ACTIVE
                     </a>
                 </div>
@@ -147,8 +147,8 @@
                         Name of the campaign
                     </div>
                 </div>
-                <div class="actionBtn live">
-                    <a href="#">
+                <div class="actionBtn">
+                    <a class="status live" href="#">
                         LIVE
                     </a>
                 </div>

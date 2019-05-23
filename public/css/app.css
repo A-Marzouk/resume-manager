@@ -4135,7 +4135,7 @@ body {
 .dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a {
   padding: 4px 23px 3px 13px;
   display: block;
-  width: 120px;
+  min-width: 120px;
   height: 31px;
   text-align: center;
   border-radius: 30px;
@@ -4152,7 +4152,7 @@ body {
 
 @media (max-width: 745px) {
   .dashboard_content .content-block .content-block-campaign .bottom-bar .actionBtn a {
-    width: 120px;
+    min-width: 120px;
     height: 31px;
     font-size: 11px;
   }
@@ -4247,13 +4247,37 @@ body {
   }
 }
 
-.dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn.live a {
-  color: #27AE60;
-  border: 2px solid #27AE60;
+.dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignMenu {
+  display: none;
+  position: absolute;
+  right: -15px;
+  opacity: 0;
+  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  background: white;
+  z-index: 2;
+}
+
+.dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignMenu.opened {
+  display: block;
+  opacity: 1;
+}
+
+.dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignMenu a {
+  display: block;
+  color: #4A5464;
+  padding: 20px;
+  width: 100%;
+  min-width: 200px;
+}
+
+.dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignMenu a:first-child {
+  border-bottom: 1px solid #E0E0E0;
 }
 
 .dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn {
   margin-right: 34px;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4272,9 +4296,8 @@ body {
   text-decoration: none;
 }
 
-.dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn a {
+.dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn a.status {
   background: #FFFFFF;
-  border: 2px solid #F2994A;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 40px;
@@ -4296,7 +4319,26 @@ body {
   line-height: 24px;
   text-align: center;
   letter-spacing: -0.1px;
+}
+
+.dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn a.status.active {
+  border: 2px solid #F2994A;
   color: #F2994A;
+}
+
+.dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn a.status.paused {
+  border: 2px solid #9346DA;
+  color: #9346DA;
+}
+
+.dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn a.status.canceled {
+  border: 2px solid #F56F6F;
+  color: #F56F6F;
+}
+
+.dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn a.status.live {
+  color: #27AE60;
+  border: 2px solid #27AE60;
 }
 
 .dashboard_content .content-block .content-block-campaign-brief .upper-bar .actionBtn a.statistics-btn {

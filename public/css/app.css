@@ -6042,6 +6042,23 @@ body {
   }
 }
 
+#pick-date-modal.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#pick-date-modal.show .modal-dialog {
+  -webkit-transform: none;
+          transform: none;
+}
+
 .campaign_team_content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6189,6 +6206,12 @@ body {
   }
 }
 
+@media (max-width: 600px) {
+  .campaign_team_content .campaign_team .campaign-team-list {
+    padding: 20px;
+  }
+}
+
 .campaign_team_content .campaign_team .campaign-team-list .lineDivide {
   width: 100%;
   margin-left: 0;
@@ -6200,9 +6223,9 @@ body {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -6213,22 +6236,40 @@ body {
 @media (max-width: 600px) {
   .campaign_team_content .campaign_team .campaign-team-list .campaign-team-row {
     height: auto;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
 }
 
 .campaign_team_content .campaign_team .campaign-team-list .campaign-team-row .team-member {
   margin-bottom: 0;
+  margin-right: 200px;
+}
+
+@media (max-width: 920px) {
+  .campaign_team_content .campaign_team .campaign-team-list .campaign-team-row .team-member {
+    padding-top: 20px;
+    margin-right: 80px;
+  }
 }
 
 @media (max-width: 600px) {
   .campaign_team_content .campaign_team .campaign-team-list .campaign-team-row .team-member {
-    padding-top: 20px;
+    margin-right: 0;
+    margin-left: 20px;
   }
 }
 
 .campaign_team_content .campaign_team .campaign-team-list .campaign-team-row .team-member img {
   margin-left: 0;
   margin-right: 8px;
+}
+
+@media (max-width: 600px) {
+  .campaign_team_content .campaign_team .campaign-team-list .campaign-team-row .chat-action-btn {
+    margin-right: 20px;
+  }
 }
 
 .campaign_team_content .campaign_team .campaign-team-list .campaign-team-row .change-status-btn {
@@ -6243,11 +6284,40 @@ body {
   margin-left: 45px;
 }
 
+@media (max-width: 920px) {
+  .campaign_team_content .campaign_team .campaign-team-list .campaign-team-row .change-status-btn {
+    margin-left: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .campaign_team_content .campaign_team .campaign-team-list .campaign-team-row .change-status-btn[data-target="#remove-modal"] {
+    text-align: left;
+  }
+}
+
 @media (max-width: 600px) {
   .campaign_team_content .campaign_team .campaign-team-list .campaign-team-row .change-status-btn {
-    margin-left: 0;
+    width: 50%;
+    margin: 0;
     padding-top: 32px;
     padding-bottom: 28px;
+  }
+}
+
+.campaign_team_content .campaign_team .campaign-team-list .campaign-team-row .change-status-btn[data-target="#backup-modal"] {
+  margin-left: 100px;
+}
+
+@media (max-width: 920px) {
+  .campaign_team_content .campaign_team .campaign-team-list .campaign-team-row .change-status-btn[data-target="#backup-modal"] {
+    margin-left: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .campaign_team_content .campaign_team .campaign-team-list .campaign-team-row .change-status-btn[data-target="#backup-modal"] {
+    margin: 0;
   }
 }
 

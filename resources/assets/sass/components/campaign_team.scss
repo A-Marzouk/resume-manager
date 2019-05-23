@@ -104,6 +104,9 @@
       @media (max-width:1240px) {
         padding: 0px 38px 30px 38px;
       }
+      @media (max-width:600px) {
+        padding:20px;
+      }
       .lineDivide{
         width:100%;
         margin-left:0;
@@ -111,23 +114,39 @@
       .campaign-team-row{
         display: flex;
         flex-wrap: wrap;
-        justify-content:space-between;
+        justify-content: flex-start;
         align-items: center;
         height:80px;
         @media (max-width:600px) {
           height:auto;
+          justify-content: space-between;
         }
         border-top:1px solid rgba(188, 191, 198, 0.44);
         .team-member {
           margin-bottom: 0;
-          @media (max-width:600px) {
+          margin-right: 200px;
+          @media (max-width: 920px) {
             padding-top: 20px;
+            margin-right: 80px;
           }
+
+          @media (max-width: 600px) {
+            margin-right: 0;
+            margin-left: 20px;
+          }
+
           img{
             margin-left: 0;
             margin-right: 8px;
           }
         }
+
+        .chat-action-btn {
+          @media (max-width: 600px) {
+            margin-right: 20px;
+          }
+        }
+
         .change-status-btn{
           font-family: Roboto;
           font-style: normal;
@@ -138,12 +157,34 @@
           letter-spacing: -0.1px;
           color: #05A4F4;
           margin-left: 45px;
+
+          @media (max-width: 920px) {
+            margin-left: 30px;
+          }
+
+          &[data-target="#remove-modal"] {
+            @media (max-width:600px) {
+              text-align: left;
+            }
+          }
+
           @media (max-width:600px) {
-            margin-left: 0;
+            width: 50%;
+            margin: 0;
             padding-top: 32px;
             padding-bottom: 28px;
           }
-        }
+
+          &[data-target="#backup-modal"] {
+            margin-left: 100px;
+            @media (max-width: 920px) {
+              margin-left: 40px;
+            }
+            @media (max-width:600px) {
+              margin: 0;
+            }
+          }
+        } 
 
       }
 

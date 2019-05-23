@@ -637,3 +637,13 @@
     display: none;
   }
 }
+
+#pick-date-modal.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal-dialog {
+    transform: none;
+  }
+}

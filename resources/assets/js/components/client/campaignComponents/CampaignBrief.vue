@@ -58,7 +58,7 @@
             <div v-if="showErrors && errors.question" class="error">
               This field must contain at least 7 characters.
             </div>
-            </div>
+          </div>
             <div class="faq-answer-input">
               <div class="faq-container">
                 
@@ -180,19 +180,35 @@
                       </div>
                       <div class="files-tab-content"
                            v-show="activeBriefTab === 'FILES'">
-                        <div class="files-tab-heading">
-                          In this section you can add documents important to your agents and campaign
-                        </div>
-                        <div class="files-tab-upload-area">
-                          <div class="upload-box">
-                            <div class="upload-box-heading">
-                              Drag or Drop documents you want to upload <br />or
+
+                        <div class="faq-content">
+                          <div class="faq-question-input">
+                            <label class="faq-input-label">
+                              <i class="icon icon-point"></i>
+                              List of the links
+                            </label>
+                            <div class="faq-input">
+                              <input class="bg-gray-input" type="text" placeholder="Add a link you want to share">
                             </div>
-                            <a href="#" class="upload-btn">
-                                CHOOSE A FILE
-                            </a>
-                            <div class="upload-notes">
-                              Maximum allowed size is 45 MB
+                          </div>
+                          <div class="faq-question-input">
+                            <label class="faq-input-label">
+                              <i class="icon icon-point"></i>
+                              List of the documents
+                            </label>
+                            <div class="faq-input">
+                              <div id="dropbox" class="account-edit-section-edit-btn no-decoration picture-box" :class="{'disabled-btn' : !canSubmit}">
+                                <div class="fallback">
+                                    <input type="file" id="photo" name="photo" />
+                                </div>
+                                <p class="dz-message">Drag and drop a photo you want to upload</p>
+                        
+                                <div class="fake-file-input btn btn-orange dz-input" >
+                                    CHOOSE A FILE
+                                </div>
+                                <p class="dz-message little">Maximum allowed size is 45 MB</p>
+                                <div id="dropzone" class="dropzone"></div>
+                              </div>
                             </div>
                           </div>
                         </div>

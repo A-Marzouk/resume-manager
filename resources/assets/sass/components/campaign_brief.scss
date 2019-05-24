@@ -331,6 +331,15 @@
   flex-direction: column;
   margin-top: 36px;
 
+  .icon.icon-point {
+    display: inline-block;
+    height: 11px;
+    width: 11px;
+    background: #FFA368;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+
   .faq-container {
     display: flex;
     justify-content: space-between;
@@ -354,6 +363,7 @@
     font-size: 18px;
     line-height: 24px;
     color: #4A5464;
+    margin-bottom: 1rem;
   }
   .sub-label{
     font-size: 16px;
@@ -374,6 +384,10 @@
     width: 100%;
     position: relative;
     flex-wrap: nowrap;
+
+    .bg-gray-input {
+      background: #FBFBFB;
+    }
 
     input.fake-input {
       position: absolute;
@@ -563,4 +577,9 @@
       }
     }
   }
+}
+
+.little {
+  color: #7A828D;
+  font-size: 13px;
 }

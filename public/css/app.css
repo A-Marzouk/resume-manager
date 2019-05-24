@@ -6893,6 +6893,16 @@ body {
   margin-top: 36px;
 }
 
+.faq-question-input .icon.icon-point,
+.faq-answer-input .icon.icon-point {
+  display: inline-block;
+  height: 11px;
+  width: 11px;
+  background: #FFA368;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
 .faq-question-input .faq-container,
 .faq-answer-input .faq-container {
   display: -webkit-box;
@@ -6926,6 +6936,7 @@ body {
   font-size: 18px;
   line-height: 24px;
   color: #4A5464;
+  margin-bottom: 1rem;
 }
 
 .faq-question-input .sub-label,
@@ -6963,6 +6974,11 @@ body {
   position: relative;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
+}
+
+.faq-question-input .faq-input .bg-gray-input,
+.faq-answer-input .faq-input .bg-gray-input {
+  background: #FBFBFB;
 }
 
 .faq-question-input .faq-input input.fake-input,
@@ -7205,6 +7221,11 @@ body {
   letter-spacing: -0.1px;
   color: #05A4F4;
   margin-left: 70px;
+}
+
+.little {
+  color: #7A828D;
+  font-size: 13px;
 }
 
 .campaign-archives {

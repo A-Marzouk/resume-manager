@@ -64266,60 +64266,64 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("nav", { staticClass: "navbar navbar-light fixed-top client_navbar" }, [
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.status === "update",
-              expression: "status === 'update'"
-            }
-          ],
-          staticClass: "backBtn"
-        },
-        [_vm._m(0), _vm._v("\n      SUBSCRIPTION PLAN UPDATE\n    ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.status === "finish",
-              expression: "status === 'finish'"
-            }
-          ],
-          staticClass: "backBtn"
-        },
-        [
-          _c(
-            "a",
-            {
-              attrs: { href: "javascript:void(0)" },
-              on: {
-                click: function($event) {
-                  _vm.status = "update"
-                }
+    _c(
+      "nav",
+      { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
+      [
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.status === "update",
+                expression: "status === 'update'"
               }
-            },
-            [
-              _c("img", {
-                attrs: {
-                  src: "/images/client/arrow_back.png",
-                  alt: "back-icon"
+            ],
+            staticClass: "backBtn"
+          },
+          [_vm._m(0), _vm._v("\n      SUBSCRIPTION PLAN UPDATE\n    ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.status === "finish",
+                expression: "status === 'finish'"
+              }
+            ],
+            staticClass: "backBtn"
+          },
+          [
+            _c(
+              "a",
+              {
+                attrs: { href: "javascript:void(0)" },
+                on: {
+                  click: function($event) {
+                    _vm.status = "update"
+                  }
                 }
-              })
-            ]
-          ),
-          _vm._v("\n      SUBSCRIPTION PLAN UPDATE\n    ")
-        ]
-      )
-    ]),
+              },
+              [
+                _c("img", {
+                  attrs: {
+                    src: "/images/client/arrow_back.png",
+                    alt: "back-icon"
+                  }
+                })
+              ]
+            ),
+            _vm._v("\n      SUBSCRIPTION PLAN UPDATE\n    ")
+          ]
+        )
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "update-sub-plan" }, [
       _c("div", { staticClass: "subscriptions" }, [

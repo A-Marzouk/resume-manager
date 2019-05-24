@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-light fixed-top client_navbar">
+    <nav class="navbar navbar-light fixed-top dashboard_navbar">
       <div class="backBtn"
            v-show="status === 'update'">
         <a href="/client/dashboard/payments">

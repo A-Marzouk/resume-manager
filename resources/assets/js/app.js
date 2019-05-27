@@ -24,6 +24,7 @@ require('./freelancer_card.js');
 require('./affiliates.js');
 require('./freelancer.js');
 require('./main.js');
+require('./select.js');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

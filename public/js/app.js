@@ -14495,6 +14495,7 @@ __webpack_require__(49);
 __webpack_require__(50);
 __webpack_require__(51);
 __webpack_require__(52);
+__webpack_require__(468);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -58858,7 +58859,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59343,16 +59344,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             activeTab: 'business-support',
-            secondaryActiveTab: 'approved-agents'
+            secondaryActiveTab: 'approved-agents',
+            sort: 'new_first',
+            showSortSelection: false
         };
     },
 
-    methods: {},
+    methods: {
+        selectSort: function selectSort(sort) {
+            this.sort = sort;
+            this.showSortSelection = false;
+        }
+    },
     mounted: function mounted() {}
 });
 
@@ -59442,13 +59463,107 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "optionsBar" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "d-flex align-items-center right no-decoration",
+            staticStyle: { "padding-right": "24px" }
+          },
+          [
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "sortingBox d-flex align-items-center",
+                attrs: { href: "javascript:void(0)" },
+                on: {
+                  click: function($event) {
+                    _vm.showSortSelection = true
+                  }
+                }
+              },
+              [
+                _c("img", {
+                  attrs: { src: "/images/admin/sorting.svg", alt: "" }
+                }),
+                _vm._v(" "),
+                _c("div", [
+                  _vm._v(
+                    "\n                        Sorting:\n                        "
+                  ),
+                  _vm.sort === "new_first"
+                    ? _c("span", [_vm._v("newest first")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.sort === "old_first"
+                    ? _c("span", [_vm._v("oldest first")])
+                    : _vm._e()
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.showSortSelection,
+                    expression: "showSortSelection"
+                  }
+                ],
+                staticClass: "select-popup"
+              },
+              [
+                _c("ul", { staticClass: "select-popup-list" }, [
+                  _c(
+                    "li",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.selectSort("new_first")
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Newest first\n                        "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.selectSort("old_first")
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Oldest first\n                        "
+                      )
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c(
         "div",
         { staticStyle: { "padding-left": "24px", "padding-right": "24px" } },
         [
-          _vm._m(2),
+          _vm._m(3),
           _vm._v(" "),
           _c(
             "div",
@@ -59505,7 +59620,7 @@ var render = function() {
                 2
               ),
               _vm._v(" "),
-              _vm._m(3)
+              _vm._m(4)
             ]
           ),
           _vm._v(" "),
@@ -59566,7 +59681,7 @@ var render = function() {
                 2
               ),
               _vm._v(" "),
-              _vm._m(4)
+              _vm._m(5)
             ]
           )
         ]
@@ -59607,52 +59722,42 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "optionsBar" }, [
-      _c("div", { staticClass: "d-flex align-items-center left" }, [
-        _c("div", { staticClass: "searchBox" }, [
-          _c("img", {
-            attrs: { src: "/images/admin/magnifier-tool.svg", alt: "" }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { type: "text", placeholder: "Search by name, e-mail" }
-          })
-        ]),
+    return _c("div", { staticClass: "d-flex align-items-center left" }, [
+      _c("div", { staticClass: "searchBox" }, [
+        _c("img", {
+          attrs: { src: "/images/admin/magnifier-tool.svg", alt: "" }
+        }),
         _vm._v(" "),
-        _c("div", { staticClass: "blue-text" }, [
-          _vm._v("\n                    ADVANCED SEARCH\n                ")
-        ])
+        _c("input", {
+          attrs: { type: "text", placeholder: "Search by name, e-mail" }
+        })
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "d-flex align-items-center right",
-          staticStyle: { "padding-right": "24px" }
-        },
-        [
-          _c("div", { staticClass: "filterBox d-flex align-items-center" }, [
-            _c("img", { attrs: { src: "/images/admin/filter.svg", alt: "" } }),
-            _vm._v(" "),
-            _c("div", [
-              _vm._v(
-                "\n                        Filter: show not available\n                    "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "sortingBox d-flex align-items-center" }, [
-            _c("img", { attrs: { src: "/images/admin/sorting.svg", alt: "" } }),
-            _vm._v(" "),
-            _c("div", [
-              _vm._v(
-                "\n                        Sorting: newest first\n                    "
-              )
-            ])
-          ])
-        ]
-      )
+      _c("div", { staticClass: "blue-text" }, [
+        _vm._v("\n                    ADVANCED SEARCH\n                ")
+      ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "filterBox d-flex align-items-center",
+        attrs: { href: "javascript:void(0)" }
+      },
+      [
+        _c("img", { attrs: { src: "/images/admin/filter.svg", alt: "" } }),
+        _vm._v(" "),
+        _c("div", [
+          _vm._v(
+            "\n                        Filter: show not available\n                    "
+          )
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -120892,6 +120997,15 @@ new SideNav();
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 465 */,
+/* 466 */,
+/* 467 */,
+/* 468 */
+/***/ (function(module, exports) {
+
+
 
 /***/ })
 /******/ ]);

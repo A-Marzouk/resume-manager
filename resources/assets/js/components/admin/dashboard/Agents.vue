@@ -54,18 +54,30 @@
                         ADVANCED SEARCH
                     </div>
                 </div>
-                <div class="d-flex align-items-center right" style="padding-right: 24px;">
-                    <div class="filterBox d-flex align-items-center">
+                <div class="d-flex align-items-center right no-decoration" style="padding-right: 24px;">
+                    <a href="javascript:void(0)" class="filterBox d-flex align-items-center">
                         <img src="/images/admin/filter.svg" alt="">
                         <div>
                             Filter: show not available
                         </div>
-                    </div>
-                    <div class="sortingBox d-flex align-items-center">
+                    </a>
+                    <a href="javascript:void(0)" class="sortingBox d-flex align-items-center"  @click="showSortSelection = true">
                         <img src="/images/admin/sorting.svg" alt="">
                         <div>
-                            Sorting: newest first
+                            Sorting:
+                            <span v-if="sort=== 'new_first' ">newest first</span>
+                            <span v-if="sort=== 'old_first' ">oldest first</span>
                         </div>
+                    </a>
+                    <div class="select-popup" v-show="showSortSelection">
+                        <ul class="select-popup-list">
+                            <li @click="selectSort('new_first')">
+                                Newest first
+                            </li>
+                            <li @click="selectSort('old_first')">
+                                Oldest first
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -435,6 +447,7 @@
                 </div>
 
             </div>
+            </div>
         </div>
     </div>
 </template>
@@ -445,10 +458,15 @@
             return {
                 activeTab: 'business-support',
                 secondaryActiveTab: 'approved-agents',
+                sort:'new_first',
+                showSortSelection : false,
             }
         },
         methods: {
-
+            selectSort(sort){
+                this.sort = sort ;
+                this.showSortSelection = false;
+            }
         },
         mounted() {
 

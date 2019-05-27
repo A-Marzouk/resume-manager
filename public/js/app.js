@@ -63939,7 +63939,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -64248,12 +64248,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      status: 'update' // or finish
+      status: 'update', // or finish
+      checked: false
     };
+  },
+
+  methods: {
+    handleCheck: function handleCheck() {
+      this.checked = !this.checked;
+    }
   }
 });
 
@@ -64353,15 +64364,83 @@ var render = function() {
               _vm._v("\n          NEW SUBSCRIPTION PLAN\n        ")
             ]),
             _vm._v(" "),
-            _vm._m(3),
-            _vm._v(" "),
-            _vm._m(4),
+            _c("div", { staticClass: "new-sub-plan" }, [
+              _c("div", { staticClass: "weeks-number" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c("div", { staticClass: "week-input" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "account-edit-section-inputs d-flex align-items-center"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "faq-question-input sub-edit-input  mt-3 d-flex flex-lg-row flex-column align-items-center"
+                        },
+                        [
+                          _vm._m(4),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "mt-3",
+                              staticStyle: { "margin-left": "99px" }
+                            },
+                            [
+                              _c("div", { staticClass: "custom-checkbox" }, [
+                                _c("div", {
+                                  staticClass: "checkbox",
+                                  class: { checked: _vm.checked }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: {
+                                    checked: "",
+                                    type: "checkbox",
+                                    name: "no-end-date"
+                                  },
+                                  on: { click: _vm.handleCheck }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass:
+                                      "weeks-number-heading sub-heading ml-1"
+                                  },
+                                  [_vm._v(" no end date ")]
+                                )
+                              ])
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "weeks-number-note" }, [
+                  _vm._v(
+                    "\n              Campaign period: 4.04.19 — 4.01.20\n            "
+                  )
+                ])
+              ])
+            ]),
             _vm._v(" "),
             _vm._m(5),
             _vm._v(" "),
             _vm._m(6),
             _vm._v(" "),
             _vm._m(7),
+            _vm._v(" "),
+            _vm._m(8),
             _vm._v(" "),
             _c(
               "div",
@@ -64372,7 +64451,7 @@ var render = function() {
               [_vm._v("\n          Conor Marjoram\n        ")]
             ),
             _vm._v(" "),
-            _vm._m(8),
+            _vm._m(9),
             _vm._v(" "),
             _c("div", { staticClass: "sub-action pt-5" }, [
               _c(
@@ -64407,12 +64486,12 @@ var render = function() {
               }
             ]
           },
-          [_vm._m(9), _vm._v(" "), _vm._m(10)]
+          [_vm._m(10), _vm._v(" "), _vm._m(11)]
         )
       ])
     ]),
     _vm._v(" "),
-    _vm._m(11)
+    _vm._m(12)
   ])
 }
 var staticRenderFns = [
@@ -64589,86 +64668,32 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "new-sub-plan" }, [
-      _c("div", { staticClass: "weeks-number" }, [
-        _c(
-          "div",
-          { staticClass: "d-flex justify-content-start align-items-center" },
-          [
-            _c("img", {
-              staticClass: "mr-3",
-              attrs: {
-                src: "/images/client/payments/week.png",
-                alt: "week icon"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "weeks-number-heading" }, [
-              _vm._v("\n                Total number of weeks\n              ")
-            ])
-          ]
-        ),
+    return _c(
+      "div",
+      { staticClass: "d-flex justify-content-start align-items-center" },
+      [
+        _c("img", {
+          staticClass: "mr-3",
+          attrs: { src: "/images/client/payments/week.png", alt: "week icon" }
+        }),
         _vm._v(" "),
-        _c("div", { staticClass: "week-input" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "account-edit-section-inputs d-flex align-items-center"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "faq-question-input sub-edit-input  mt-3 d-flex flex-lg-row flex-column align-items-center"
-                },
-                [
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("select", { attrs: { name: "weeks", id: "weeks" } }, [
-                      _c("option", { attrs: { value: "2" } }, [
-                        _vm._v("2 weeks")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "4" } }, [
-                        _vm._v("4 weeks")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "6" } }, [
-                        _vm._v("6 weeks")
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "mt-3",
-                      staticStyle: { "margin-left": "99px" }
-                    },
-                    [
-                      _c("input", {
-                        attrs: { type: "checkbox", name: "no-end-date" }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "weeks-number-heading ml-1" }, [
-                        _vm._v(" no end date ")
-                      ])
-                    ]
-                  )
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c("div")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "weeks-number-note" }, [
-          _vm._v(
-            "\n              Campaign period: 4.04.19 — 4.01.20\n            "
-          )
+        _c("div", { staticClass: "weeks-number-heading" }, [
+          _vm._v("\n                Total number of weeks\n              ")
         ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "faq-input" }, [
+      _c("select", { attrs: { name: "weeks", id: "weeks" } }, [
+        _c("option", { attrs: { value: "2" } }, [_vm._v("2 weeks")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "4" } }, [_vm._v("4 weeks")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "6" } }, [_vm._v("6 weeks")])
       ])
     ])
   },

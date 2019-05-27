@@ -136,9 +136,13 @@
                     </div>
                     <div class="mt-3"
                          style="margin-left:99px;">
-                      <input type="checkbox"
-                             name="no-end-date" />
-                      <span class="weeks-number-heading ml-1"> no end date </span>
+
+                      <div class="custom-checkbox">
+                        <div class="checkbox" :class="{checked}"></div>
+                        <input v-on:click="handleCheck" checked type="checkbox"
+                              name="no-end-date" />
+                        <span class="weeks-number-heading sub-heading ml-1"> no end date </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -300,7 +304,13 @@
 export default {
   data() {
     return {
-      status: 'update' // or finish
+      status: 'update', // or finish
+      checked: false
+    }
+  },
+  methods: {
+    handleCheck () {
+      this.checked = !this.checked
     }
   }
 }

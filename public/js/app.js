@@ -69512,9 +69512,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      dropdown: {
+        selectedOption: 'Show active team',
+        options: ['Show active team', 'Show backup agents', 'Show past agents'],
+        showDropdown: false
+      }
+    };
+  },
+
+  methods: {
+    toggleDropdown: function toggleDropdown() {
+      this.dropdown.showDropdown = !this.dropdown.showDropdown;
+    },
+    selectedOption: function selectedOption(value) {
+      this.selectedOption = value;
+      this.toggleDropdown();
+    }
+  },
   mounted: function mounted() {}
 });
 
@@ -69526,491 +69544,487 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "campaign_team_content" }, [
+    _c("div", { staticClass: "campaign_team" }, [
+      _c("div", { staticClass: "campaign-team-header" }, [
+        _c("div", { staticClass: "select-list" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("div", { staticClass: "custom-dropdown" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "selected-option",
+                  on: { click: _vm.toggleDropdown }
+                },
+                [_vm._v(_vm._s(_vm.dropdown.selectedOption))]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "list-options",
+                  class: { show: _vm.dropdown.showDropdown }
+                },
+                _vm._l(_vm.dropdown.options, function(option, index) {
+                  return _c(
+                    "div",
+                    {
+                      key: index,
+                      staticClass: "dropdown-item",
+                      on: {
+                        click: function($event) {
+                          _vm.selectOption(index)
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(option))]
+                  )
+                })
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "actionBtn" })
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ]),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "campaign_team_content" }, [
-      _c("div", { staticClass: "campaign_team" }, [
-        _c("div", { staticClass: "campaign-team-header" }, [
-          _c("div", { staticClass: "select-list" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "select",
-                {
-                  staticClass: "form-control",
-                  attrs: { id: "exampleFormControlSelect1" }
-                },
-                [
-                  _c(
-                    "option",
-                    {
-                      staticClass: "custom-option",
-                      staticStyle: { height: "40px" }
-                    },
-                    [_vm._v("Show active team")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { staticClass: "custom-option" }, [
-                    _vm._v("Show backup agents")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { staticClass: "custom-option" }, [
-                    _vm._v("Show past agents")
-                  ])
-                ]
-              )
-            ])
-          ]),
+    return _c("div", { staticClass: "campaign-team-list" }, [
+      _c("div", { staticClass: "campaign-team-row no-decoration" }, [
+        _c("div", { staticClass: "team-member" }, [
+          _c("img", {
+            attrs: { src: "/images/client/dummy.png", alt: "member image" }
+          }),
           _vm._v(" "),
-          _c("div", { staticClass: "actionBtn" })
+          _c("div", { staticClass: "team-member-info" }, [
+            _c("div", { staticClass: "member-name" }, [
+              _vm._v("\n              Louis Snyderberg\n            ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "job-title" }, [
+              _vm._v("\n              Team manager\n            ")
+            ])
+          ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "campaign-team-list" }, [
-          _c("div", { staticClass: "campaign-team-row no-decoration" }, [
-            _c("div", { staticClass: "team-member" }, [
-              _c("img", {
-                attrs: { src: "/images/client/dummy.png", alt: "member image" }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "team-member-info" }, [
-                _c("div", { staticClass: "member-name" }, [
-                  _vm._v("\n              Louis Snyderberg\n            ")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "job-title" }, [
-                  _vm._v("\n              Team manager\n            ")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "chat-action-btn" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/client/campaign_activity/send_message.png",
-                  alt: "chat icon"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "change-status-btn",
-                attrs: {
-                  href: "javascript:void(0)",
-                  "data-toggle": "modal",
-                  "data-target": "#remove-modal"
-                }
-              },
-              [_vm._v("\n                      REMOVE\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "change-status-btn",
-                attrs: {
-                  href: "javascript:void(0)",
-                  "data-toggle": "modal",
-                  "data-target": "#backup-modal"
-                }
-              },
-              [
-                _vm._v(
-                  "\n                      MAKE BACKUP\n                  "
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "campaign-team-row" }, [
-            _c("div", { staticClass: "team-member" }, [
-              _c("img", {
-                attrs: { src: "/images/client/dummy.png", alt: "member image" }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "team-member-info" }, [
-                _c("div", { staticClass: "member-name" }, [
-                  _vm._v("\n                Louis Snyderberg\n              ")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "job-title" }, [
-                  _vm._v("\n                Team manager\n              ")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "chat-action-btn" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/client/campaign_activity/send_message.png",
-                  alt: "chat icon"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "change-status-btn",
-                attrs: {
-                  href: "javascript:void(0)",
-                  "data-toggle": "modal",
-                  "data-target": "#remove-modal"
-                }
-              },
-              [_vm._v("\n                      REMOVE\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "change-status-btn",
-                attrs: {
-                  href: "javascript:void(0)",
-                  "data-toggle": "modal",
-                  "data-target": "#backup-modal"
-                }
-              },
-              [
-                _vm._v(
-                  "\n                      MAKE BACKUP\n                  "
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "campaign-team-row" }, [
-            _c("div", { staticClass: "team-member" }, [
-              _c("img", {
-                attrs: { src: "/images/client/dummy.png", alt: "member image" }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "team-member-info" }, [
-                _c("div", { staticClass: "member-name" }, [
-                  _vm._v(
-                    "\n                  Louis Snyderberg\n                "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "job-title" }, [
-                  _vm._v("\n                  Team manager\n                ")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "chat-action-btn" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/client/campaign_activity/send_message.png",
-                  alt: "chat icon"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "change-status-btn",
-                attrs: {
-                  href: "javascript:void(0)",
-                  "data-toggle": "modal",
-                  "data-target": "#remove-modal"
-                }
-              },
-              [_vm._v("\n                      REMOVE\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "change-status-btn",
-                attrs: {
-                  href: "javascript:void(0)",
-                  "data-toggle": "modal",
-                  "data-target": "#backup-modal"
-                }
-              },
-              [
-                _vm._v(
-                  "\n                      MAKE BACKUP\n                  "
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "campaign-team-row" }, [
-            _c("div", { staticClass: "team-member" }, [
-              _c("img", {
-                attrs: { src: "/images/client/dummy.png", alt: "member image" }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "team-member-info" }, [
-                _c("div", { staticClass: "member-name" }, [
-                  _vm._v(
-                    "\n                    Louis Snyderberg\n                  "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "job-title" }, [
-                  _vm._v(
-                    "\n                    Team manager\n                  "
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "chat-action-btn" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/client/campaign_activity/send_message.png",
-                  alt: "chat icon"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "change-status-btn",
-                attrs: {
-                  href: "javascript:void(0)",
-                  "data-toggle": "modal",
-                  "data-target": "#remove-modal"
-                }
-              },
-              [_vm._v("\n                      REMOVE\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "change-status-btn",
-                attrs: {
-                  href: "javascript:void(0)",
-                  "data-toggle": "modal",
-                  "data-target": "#backup-modal"
-                }
-              },
-              [
-                _vm._v(
-                  "\n                      MAKE BACKUP\n                  "
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "campaign-team-row" }, [
-            _c("div", { staticClass: "team-member" }, [
-              _c("img", {
-                attrs: { src: "/images/client/dummy.png", alt: "member image" }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "team-member-info" }, [
-                _c("div", { staticClass: "member-name" }, [
-                  _vm._v(
-                    "\n                      Louis Snyderberg\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "job-title" }, [
-                  _vm._v(
-                    "\n                      Team manager\n                    "
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "chat-action-btn" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/client/campaign_activity/send_message.png",
-                  alt: "chat icon"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "change-status-btn",
-                attrs: {
-                  href: "javascript:void(0)",
-                  "data-toggle": "modal",
-                  "data-target": "#remove-modal"
-                }
-              },
-              [_vm._v("\n                      REMOVE\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "change-status-btn",
-                attrs: {
-                  href: "javascript:void(0)",
-                  "data-toggle": "modal",
-                  "data-target": "#backup-modal"
-                }
-              },
-              [
-                _vm._v(
-                  "\n                      MAKE BACKUP\n                  "
-                )
-              ]
-            )
-          ])
-        ])
+        _c("div", { staticClass: "chat-action-btn" }, [
+          _c("img", {
+            attrs: {
+              src: "/images/client/campaign_activity/send_message.png",
+              alt: "chat icon"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "change-status-btn",
+            attrs: {
+              href: "javascript:void(0)",
+              "data-toggle": "modal",
+              "data-target": "#remove-modal"
+            }
+          },
+          [_vm._v("\n                      REMOVE\n                  ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "change-status-btn",
+            attrs: {
+              href: "javascript:void(0)",
+              "data-toggle": "modal",
+              "data-target": "#backup-modal"
+            }
+          },
+          [_vm._v("\n                      MAKE BACKUP\n                  ")]
+        )
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "modal fade",
-          attrs: {
-            id: "remove-modal",
-            tabindex: "-1",
-            role: "dialog",
-            "aria-labelledby": "remove-modal",
-            "aria-hidden": "true"
-          }
-        },
-        [
-          _c(
-            "div",
-            { staticClass: "modal-dialog", attrs: { role: "document" } },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "modal-content border-0",
-                  staticStyle: { "margin-top": "30%" }
-                },
-                [
-                  _c("div", { staticClass: "modal-body campaign-team-modal" }, [
-                    _c("div", { staticClass: "modal-question" }, [
-                      _vm._v(
-                        "\n                      Are you sure you want to remove the agent ?\n                    "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "modal-answer" }, [
-                      _vm._v(
-                        "\n                      Agent will be in the list of Past agents from this moment.\n                    "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "modal-btn-wrapper" }, [
-                      _c("div", { staticClass: "button-base white-button-a" }, [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              href: "javascript:void(0)",
-                              "data-dismiss": "modal"
-                            }
-                          },
-                          [_vm._v("CANCEL")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "button-base blue-button-a" }, [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              href: "javascript:void(0)",
-                              "data-dismiss": "modal"
-                            }
-                          },
-                          [_vm._v("REMOVE THE AGENT")]
-                        )
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ]
-          )
-        ]
-      ),
+      _c("div", { staticClass: "campaign-team-row" }, [
+        _c("div", { staticClass: "team-member" }, [
+          _c("img", {
+            attrs: { src: "/images/client/dummy.png", alt: "member image" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "team-member-info" }, [
+            _c("div", { staticClass: "member-name" }, [
+              _vm._v("\n                Louis Snyderberg\n              ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "job-title" }, [
+              _vm._v("\n                Team manager\n              ")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "chat-action-btn" }, [
+          _c("img", {
+            attrs: {
+              src: "/images/client/campaign_activity/send_message.png",
+              alt: "chat icon"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "change-status-btn",
+            attrs: {
+              href: "javascript:void(0)",
+              "data-toggle": "modal",
+              "data-target": "#remove-modal"
+            }
+          },
+          [_vm._v("\n                      REMOVE\n                  ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "change-status-btn",
+            attrs: {
+              href: "javascript:void(0)",
+              "data-toggle": "modal",
+              "data-target": "#backup-modal"
+            }
+          },
+          [_vm._v("\n                      MAKE BACKUP\n                  ")]
+        )
+      ]),
       _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "modal fade",
-          attrs: {
-            id: "backup-modal",
-            tabindex: "-1",
-            role: "dialog",
-            "aria-labelledby": "backup-modal",
-            "aria-hidden": "true"
-          }
-        },
-        [
-          _c(
-            "div",
-            { staticClass: "modal-dialog", attrs: { role: "document" } },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "modal-content border-0",
-                  staticStyle: { "margin-top": "30%" }
-                },
-                [
-                  _c("div", { staticClass: "modal-body campaign-team-modal" }, [
-                    _c("div", { staticClass: "modal-question" }, [
-                      _vm._v(
-                        "\n                      Are you sure you want to make agent back up?\n                    "
+      _c("div", { staticClass: "campaign-team-row" }, [
+        _c("div", { staticClass: "team-member" }, [
+          _c("img", {
+            attrs: { src: "/images/client/dummy.png", alt: "member image" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "team-member-info" }, [
+            _c("div", { staticClass: "member-name" }, [
+              _vm._v("\n                  Louis Snyderberg\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "job-title" }, [
+              _vm._v("\n                  Team manager\n                ")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "chat-action-btn" }, [
+          _c("img", {
+            attrs: {
+              src: "/images/client/campaign_activity/send_message.png",
+              alt: "chat icon"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "change-status-btn",
+            attrs: {
+              href: "javascript:void(0)",
+              "data-toggle": "modal",
+              "data-target": "#remove-modal"
+            }
+          },
+          [_vm._v("\n                      REMOVE\n                  ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "change-status-btn",
+            attrs: {
+              href: "javascript:void(0)",
+              "data-toggle": "modal",
+              "data-target": "#backup-modal"
+            }
+          },
+          [_vm._v("\n                      MAKE BACKUP\n                  ")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "campaign-team-row" }, [
+        _c("div", { staticClass: "team-member" }, [
+          _c("img", {
+            attrs: { src: "/images/client/dummy.png", alt: "member image" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "team-member-info" }, [
+            _c("div", { staticClass: "member-name" }, [
+              _vm._v(
+                "\n                    Louis Snyderberg\n                  "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "job-title" }, [
+              _vm._v("\n                    Team manager\n                  ")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "chat-action-btn" }, [
+          _c("img", {
+            attrs: {
+              src: "/images/client/campaign_activity/send_message.png",
+              alt: "chat icon"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "change-status-btn",
+            attrs: {
+              href: "javascript:void(0)",
+              "data-toggle": "modal",
+              "data-target": "#remove-modal"
+            }
+          },
+          [_vm._v("\n                      REMOVE\n                  ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "change-status-btn",
+            attrs: {
+              href: "javascript:void(0)",
+              "data-toggle": "modal",
+              "data-target": "#backup-modal"
+            }
+          },
+          [_vm._v("\n                      MAKE BACKUP\n                  ")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "campaign-team-row" }, [
+        _c("div", { staticClass: "team-member" }, [
+          _c("img", {
+            attrs: { src: "/images/client/dummy.png", alt: "member image" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "team-member-info" }, [
+            _c("div", { staticClass: "member-name" }, [
+              _vm._v(
+                "\n                      Louis Snyderberg\n                    "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "job-title" }, [
+              _vm._v(
+                "\n                      Team manager\n                    "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "chat-action-btn" }, [
+          _c("img", {
+            attrs: {
+              src: "/images/client/campaign_activity/send_message.png",
+              alt: "chat icon"
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "change-status-btn",
+            attrs: {
+              href: "javascript:void(0)",
+              "data-toggle": "modal",
+              "data-target": "#remove-modal"
+            }
+          },
+          [_vm._v("\n                      REMOVE\n                  ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "change-status-btn",
+            attrs: {
+              href: "javascript:void(0)",
+              "data-toggle": "modal",
+              "data-target": "#backup-modal"
+            }
+          },
+          [_vm._v("\n                      MAKE BACKUP\n                  ")]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "remove-modal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "remove-modal",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-content border-0",
+                staticStyle: { "margin-top": "30%" }
+              },
+              [
+                _c("div", { staticClass: "modal-body campaign-team-modal" }, [
+                  _c("div", { staticClass: "modal-question" }, [
+                    _vm._v(
+                      "\n                      Are you sure you want to remove the agent ?\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-answer" }, [
+                    _vm._v(
+                      "\n                      Agent will be in the list of Past agents from this moment.\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-btn-wrapper" }, [
+                    _c("div", { staticClass: "button-base white-button-a" }, [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "javascript:void(0)",
+                            "data-dismiss": "modal"
+                          }
+                        },
+                        [_vm._v("CANCEL")]
                       )
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "modal-answer" }, [
-                      _vm._v(
-                        "\n                      Agent will be in the list of back up agents from this moment.\n                    "
+                    _c("div", { staticClass: "button-base blue-button-a" }, [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "javascript:void(0)",
+                            "data-dismiss": "modal"
+                          }
+                        },
+                        [_vm._v("REMOVE THE AGENT")]
                       )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "modal-btn-wrapper" }, [
-                      _c("div", { staticClass: "button-base white-button-a" }, [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              href: "javascript:void(0)",
-                              "data-dismiss": "modal"
-                            }
-                          },
-                          [_vm._v("CANCEL")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "button-base blue-button-a" }, [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              href: "javascript:void(0)",
-                              "data-dismiss": "modal"
-                            }
-                          },
-                          [_vm._v("MAKE AGENT BACK UP")]
-                        )
-                      ])
                     ])
                   ])
-                ]
-              )
-            ]
-          )
-        ]
-      )
-    ])
+                ])
+              ]
+            )
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "backup-modal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "backup-modal",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-content border-0",
+                staticStyle: { "margin-top": "30%" }
+              },
+              [
+                _c("div", { staticClass: "modal-body campaign-team-modal" }, [
+                  _c("div", { staticClass: "modal-question" }, [
+                    _vm._v(
+                      "\n                      Are you sure you want to make agent back up?\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-answer" }, [
+                    _vm._v(
+                      "\n                      Agent will be in the list of back up agents from this moment.\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-btn-wrapper" }, [
+                    _c("div", { staticClass: "button-base white-button-a" }, [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "javascript:void(0)",
+                            "data-dismiss": "modal"
+                          }
+                        },
+                        [_vm._v("CANCEL")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "button-base blue-button-a" }, [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "javascript:void(0)",
+                            "data-dismiss": "modal"
+                          }
+                        },
+                        [_vm._v("MAKE AGENT BACK UP")]
+                      )
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true

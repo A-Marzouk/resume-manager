@@ -4,13 +4,12 @@
       <div class="campaign-team-header">
         <div class="select-list">
           <div class="form-group">
-            <select class="form-control"
-                    id="exampleFormControlSelect1">
-              <option class="custom-option"
-                      style="height:40px;">Show active team</option>
-              <option class="custom-option">Show backup agents</option>
-              <option class="custom-option">Show past agents</option>
-            </select>
+            <div class="custom-dropdown">
+              <div v-on:click="toggleDropdown" class="selected-option">{{dropdown.selectedOption}}</div>
+              <div class="list-options" :class="{show: dropdown.showDropdown}">
+                <div v-on:click="selectOption(index)" :key="index" v-for="(option, index) in dropdown.options" class="dropdown-item">{{option}}</div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="actionBtn">
@@ -200,6 +199,28 @@
 </template>
 <script>
 export default {
+  data () {
+    return {
+      dropdown: {
+        selectedOption: 'Show active team',
+        options: [
+          'Show active team',
+          'Show backup agents',
+          'Show past agents'
+        ],
+        showDropdown: false
+      }
+    }
+  },
+  methods: {
+    toggleDropdown () {
+      this.dropdown.showDropdown = !this.dropdown.showDropdown
+    },
+    selectedOption (value) {
+      this.selectedOption = value
+      this.toggleDropdown()
+    }
+  },
   mounted() {}
 }
 </script>

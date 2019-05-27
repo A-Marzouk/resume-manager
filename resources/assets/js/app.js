@@ -24,6 +24,7 @@ require('./freelancer_card.js');
 require('./affiliates.js');
 require('./freelancer.js');
 require('./main.js');
+require('./select.js');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,6 +33,33 @@ require('./main.js');
  */
 
 Vue.config.devtools = true;
+
+// admin front-end components :
+Vue.component('admin-dashboard', require('./components/admin/dashboard/Main.vue'));
+import AdminAgents from './components/admin/dashboard/Agents.vue';
+
+
+
+if ($("#adminDashboardComponent").length !== 0){
+
+    const routes = [
+        { path: '/admin-front/agents/', component: AdminAgents }
+    ];
+
+    const router = new VueRouter({
+        mode:'history',
+        routes,
+    });
+
+
+    let clientDashboardComponent = new Vue({
+        router,
+        el:'#adminDashboardComponent'
+    });
+}
+
+
+// end of admin front-end components
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('add-agent-component', require('./components/client/AddAgentComponent.vue'));

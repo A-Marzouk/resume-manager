@@ -19,6 +19,12 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
+// admin front end routs :
+Route::prefix('admin-front')->group(function (){
+    Route::get('/{any?}','AdminFrontEndController@showDashboard')->name('admin.front.dashboard');
+});
+
+
 Route::prefix('client')->group(function (){
     Route::get('/login','Auth\ClientLoginController@showLoginForm')->name('client.login');
     Route::post('/logout','Auth\ClientLoginController@logout')->name('client.logout');

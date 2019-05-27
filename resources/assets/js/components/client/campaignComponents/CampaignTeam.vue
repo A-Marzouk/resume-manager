@@ -216,8 +216,8 @@ export default {
     toggleDropdown () {
       this.dropdown.showDropdown = !this.dropdown.showDropdown
     },
-    selectedOption (value) {
-      this.selectedOption = value
+    selectOption: function (value) {
+      this.dropdown.selectedOption = this.dropdown.options[value]
       this.toggleDropdown()
     }
   },

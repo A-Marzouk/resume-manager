@@ -69528,8 +69528,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     toggleDropdown: function toggleDropdown() {
       this.dropdown.showDropdown = !this.dropdown.showDropdown;
     },
-    selectedOption: function selectedOption(value) {
-      this.selectedOption = value;
+
+    selectOption: function selectOption(value) {
+      this.dropdown.selectedOption = this.dropdown.options[value];
       this.toggleDropdown();
     }
   },

@@ -436,9 +436,27 @@
                              </span>
                         <img src="/images/new_theme/arrow@2x.png" alt="" style="width:7.5px; height:12px;">
                     </div>
-                    <div class="paginationBox d-flex align-items-center justify-content-center">
-                        Users per page : 15
-                        <img src="/images/admin/down_arrow.png" alt="">
+                    <div class="no-decoration">
+                        <a href="javascript:void(0)" class="paginationBox d-flex align-items-center justify-content-center" @click="showUsersNumSelection = true">
+                            Users per page :
+                            <span v-if="usersNumber === 15 ">15</span>
+                            <span v-if="usersNumber === 25 ">25</span>
+                            <span v-if="usersNumber === 50 ">50</span>
+                            <img src="/images/admin/down_arrow.png" alt="arrow down">
+                        </a>
+                        <div class="select-popup usersNumber" v-show="showUsersNumSelection">
+                            <ul class="select-popup-list">
+                                <li @click="selectUsersNum(15)">
+                                    15 items
+                                </li>
+                                <li @click="selectUsersNum(25)">
+                                    25 items
+                                </li>
+                                <li @click="selectUsersNum(50)">
+                                    50 items
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -459,9 +477,27 @@
                         <div class="base-text" style="font-size: 12px;">
                             Total : 124
                         </div>
-                        <div class="paginationBox d-flex align-items-center justify-content-center"  style="font-size: 12px; width:140px;">
-                            Users per page : 15
-                            <img src="/images/admin/down_arrow.png" alt="">
+                        <div class="no-decoration">
+                            <a href="javascript:void(0)" class="paginationBox d-flex align-items-center justify-content-center" @click="showUsersNumSelection = true">
+                                Users per page :
+                                <span v-if="usersNumber === 15 ">15</span>
+                                <span v-if="usersNumber === 25 ">25</span>
+                                <span v-if="usersNumber === 50 ">50</span>
+                                <img src="/images/admin/down_arrow.png" alt="arrow down">
+                            </a>
+                            <div class="select-popup usersNumber" v-show="showUsersNumSelection">
+                                <ul class="select-popup-list">
+                                    <li @click="selectUsersNum(15)">
+                                        15 items
+                                    </li>
+                                    <li @click="selectUsersNum(25)">
+                                        25 items
+                                    </li>
+                                    <li @click="selectUsersNum(50)">
+                                        50 items
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -479,8 +515,10 @@
                 secondaryActiveTab: 'approved-agents',
                 sort:'new_first',
                 filter:'show_all',
+                usersNumber:15,
                 showSortSelection : false,
-                showFilterSelection : false
+                showFilterSelection : false,
+                showUsersNumSelection : false,
 
             }
         },
@@ -492,6 +530,11 @@
             selectFilter(filter){
                 this.filter = filter ;
                 this.showFilterSelection = false;
+            },
+
+            selectUsersNum(number){
+                this.usersNumber = number ;
+                this.showUsersNumSelection = false;
             }
         },
         mounted() {

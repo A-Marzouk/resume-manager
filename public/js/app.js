@@ -58865,7 +58865,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59382,6 +59382,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -59390,8 +59426,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             secondaryActiveTab: 'approved-agents',
             sort: 'new_first',
             filter: 'show_all',
+            usersNumber: 15,
             showSortSelection: false,
-            showFilterSelection: false
+            showFilterSelection: false,
+            showUsersNumSelection: false
 
         };
     },
@@ -59404,6 +59442,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         selectFilter: function selectFilter(filter) {
             this.filter = filter;
             this.showFilterSelection = false;
+        },
+        selectUsersNum: function selectUsersNum(number) {
+            this.usersNumber = number;
+            this.showUsersNumSelection = false;
         }
     },
     mounted: function mounted() {}
@@ -59756,7 +59798,110 @@ var render = function() {
                 2
               ),
               _vm._v(" "),
-              _vm._m(3)
+              _c("div", { staticClass: "no-decoration" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "paginationBox d-flex align-items-center justify-content-center",
+                    attrs: { href: "javascript:void(0)" },
+                    on: {
+                      click: function($event) {
+                        _vm.showUsersNumSelection = true
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Users per page :\n                        "
+                    ),
+                    _vm.usersNumber === 15
+                      ? _c("span", [_vm._v("15")])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.usersNumber === 25
+                      ? _c("span", [_vm._v("25")])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.usersNumber === 50
+                      ? _c("span", [_vm._v("50")])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src: "/images/admin/down_arrow.png",
+                        alt: "arrow down"
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.showUsersNumSelection,
+                        expression: "showUsersNumSelection"
+                      }
+                    ],
+                    staticClass: "select-popup usersNumber"
+                  },
+                  [
+                    _c("ul", { staticClass: "select-popup-list" }, [
+                      _c(
+                        "li",
+                        {
+                          on: {
+                            click: function($event) {
+                              _vm.selectUsersNum(15)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                15 items\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "li",
+                        {
+                          on: {
+                            click: function($event) {
+                              _vm.selectUsersNum(25)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                25 items\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "li",
+                        {
+                          on: {
+                            click: function($event) {
+                              _vm.selectUsersNum(50)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                50 items\n                            "
+                          )
+                        ]
+                      )
+                    ])
+                  ]
+                )
+              ])
             ]
           ),
           _vm._v(" "),
@@ -59817,7 +59962,133 @@ var render = function() {
                 2
               ),
               _vm._v(" "),
-              _vm._m(4)
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex justify-content-between align-items-center w-100",
+                  staticStyle: { "padding-top": "24px" }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "base-text",
+                      staticStyle: { "font-size": "12px" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Total : 124\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "no-decoration" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass:
+                          "paginationBox d-flex align-items-center justify-content-center",
+                        attrs: { href: "javascript:void(0)" },
+                        on: {
+                          click: function($event) {
+                            _vm.showUsersNumSelection = true
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            Users per page :\n                            "
+                        ),
+                        _vm.usersNumber === 15
+                          ? _c("span", [_vm._v("15")])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.usersNumber === 25
+                          ? _c("span", [_vm._v("25")])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.usersNumber === 50
+                          ? _c("span", [_vm._v("50")])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("img", {
+                          attrs: {
+                            src: "/images/admin/down_arrow.png",
+                            alt: "arrow down"
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.showUsersNumSelection,
+                            expression: "showUsersNumSelection"
+                          }
+                        ],
+                        staticClass: "select-popup usersNumber"
+                      },
+                      [
+                        _c("ul", { staticClass: "select-popup-list" }, [
+                          _c(
+                            "li",
+                            {
+                              on: {
+                                click: function($event) {
+                                  _vm.selectUsersNum(15)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    15 items\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              on: {
+                                click: function($event) {
+                                  _vm.selectUsersNum(25)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    25 items\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              on: {
+                                click: function($event) {
+                                  _vm.selectUsersNum(50)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    50 items\n                                "
+                              )
+                            ]
+                          )
+                        ])
+                      ]
+                    )
+                  ])
+                ]
+              )
             ]
           )
         ]
@@ -60631,64 +60902,6 @@ var staticRenderFns = [
         ])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "paginationBox d-flex align-items-center justify-content-center"
-      },
-      [
-        _vm._v(
-          "\n                    Users per page : 15\n                    "
-        ),
-        _c("img", { attrs: { src: "/images/admin/down_arrow.png", alt: "" } })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "d-flex justify-content-between align-items-center w-100",
-        staticStyle: { "padding-top": "24px" }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "base-text", staticStyle: { "font-size": "12px" } },
-          [
-            _vm._v(
-              "\n                        Total : 124\n                    "
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "paginationBox d-flex align-items-center justify-content-center",
-            staticStyle: { "font-size": "12px", width: "140px" }
-          },
-          [
-            _vm._v(
-              "\n                        Users per page : 15\n                        "
-            ),
-            _c("img", {
-              attrs: { src: "/images/admin/down_arrow.png", alt: "" }
-            })
-          ]
-        )
-      ]
-    )
   }
 ]
 render._withStripped = true

@@ -101,14 +101,24 @@
 }
 
 .paginationBox{
-  width: 175px;
+  width: 152px;
   padding-left: 5px;
+  letter-spacing: -0.1px;
+  font-size: 13px;
+  color: #4A5464;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 13px;
   img{
     margin-right:5px;
     margin-left:8px;
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
   }
+}
+.paginationBox:hover{
+  color: #4A5464;
 }
 
 .pagination-bar{

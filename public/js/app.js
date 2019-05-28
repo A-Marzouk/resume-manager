@@ -58865,7 +58865,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58909,6 +58909,78 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -60206,6 +60278,223 @@ var staticRenderFns = [
                 ]
               )
             ])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c(
+              "td",
+              {
+                staticStyle: { "border-top": "0", "padding-top": "0" },
+                attrs: { colspan: "3" }
+              },
+              [
+                _c("div", { staticClass: "d-flex" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "responsive-grid mb-3",
+                      staticStyle: { "margin-top": "20px" }
+                    },
+                    [
+                      _c("div", { staticClass: "d-flex" }, [
+                        _c("div", { staticClass: "p-2" }, [
+                          _c("img", {
+                            staticClass: "avator",
+                            attrs: {
+                              src:
+                                "/images/client/add_agent/search_result/ic/user/user123.png"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "p-2" }, [
+                          _c("div", { staticClass: "big-font" }, [
+                            _vm._v("Jason Morgenstern")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "location" }, [
+                            _c("img", {
+                              attrs: {
+                                src:
+                                  "/images/client/add_agent/search_result/icon/maps/place_24px.png"
+                              }
+                            }),
+                            _vm._v(
+                              "\n                                                        Dublin, Ireland\n                                                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "visiblty" }, [
+                            _c("div", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "btn btn-primar btn-radius btn-responsive"
+                                },
+                                [_vm._v("VISIT AGENT’S PROFILE")]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "btn btn-left btn-radius btn-responsive d-flex align-items-center"
+                                },
+                                [
+                                  _c("img", {
+                                    staticStyle: { "margin-right": "15px" },
+                                    attrs: {
+                                      src:
+                                        "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                                    }
+                                  }),
+                                  _vm._v(
+                                    "\n                                                                LISTEN TO THE RECORD\n                                                            "
+                                  )
+                                ]
+                              )
+                            ])
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "p-2" }, [
+                        _c("div", { staticClass: "big-font" }, [
+                          _c("img", {
+                            staticClass: "primaryjob-icon",
+                            attrs: {
+                              src:
+                                "/images/client/add_agent/search_result/ic/primary_job_name.png"
+                            }
+                          }),
+                          _vm._v(
+                            "\n                                                    Telemarketing\n                                                "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticStyle: {
+                              "font-size": "16px",
+                              color: "#4a5464",
+                              margin: "20px 0 20px"
+                            }
+                          },
+                          [
+                            _c(
+                              "span",
+                              { staticStyle: { "font-weight": "500" } },
+                              [_vm._v("Sector experience: ")]
+                            ),
+                            _vm._v(
+                              " Real estate, Investement, Insurance\n                                                "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "span",
+                            { staticStyle: { "font-weight": "500" } },
+                            [_vm._v("Technologies, software: ")]
+                          ),
+                          _vm._v(
+                            " Microsoft Excel\n                                                "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticStyle: { margin: "20px 0" } }, [
+                          _c(
+                            "span",
+                            { staticStyle: { "font-weight": "500" } },
+                            [_vm._v("Languages: ")]
+                          ),
+                          _vm._v(
+                            "English, Spanish\n                                                "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "span",
+                            { staticStyle: { "font-weight": "500" } },
+                            [_vm._v("No. hours per week: ")]
+                          ),
+                          _vm._v(
+                            "30-40 hours\n                                                "
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "invisiblty" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-between align-items-center"
+                          },
+                          [
+                            _c("div", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "btn btn-left btn-radius btn-responsive d-flex align-items-center",
+                                  staticStyle: { width: "136px" }
+                                },
+                                [
+                                  _c("img", {
+                                    staticStyle: { "margin-right": "15px" },
+                                    attrs: {
+                                      src:
+                                        "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                                    }
+                                  }),
+                                  _vm._v(
+                                    "\n                                                            LISTEN TO THE RECORD\n                                                        "
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", [
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "btn btn-primar btn-radius btn-responsive"
+                                },
+                                [_vm._v("VISIT PROFILE")]
+                              )
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "blue-text",
+                          staticStyle: {
+                            "white-space": "nowrap",
+                            "margin-top": "7px"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                                EDIT PROFILE\n                                            "
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              ]
+            )
           ]),
           _vm._v(" "),
           _c("tr", [

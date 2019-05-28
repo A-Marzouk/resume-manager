@@ -55,29 +55,49 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-center right no-decoration" style="padding-right: 24px;">
-                    <a href="javascript:void(0)" class="filterBox d-flex align-items-center">
-                        <img src="/images/admin/filter.svg" alt="">
-                        <div>
-                            Filter: show not available
+                    <div>
+                        <a href="javascript:void(0)" class="filterBox d-flex align-items-center" @click="showFilterSelection = true">
+                            <img src="/images/admin/filter.svg" alt="">
+                            <div>
+                                Filter :
+                                <span v-if="filter=== 'show_all' ">All applications</span>
+                                <span v-if="filter=== 'show_new' ">New applications</span>
+                                <span v-if="filter=== 'show_in_process' ">In process</span>
+                            </div>
+                        </a>
+                        <div class="select-popup" v-show="showFilterSelection" style="margin-top:-45px;">
+                            <ul class="select-popup-list">
+                                <li @click="selectFilter('show_all')">
+                                    Show all applications
+                                </li>
+                                <li @click="selectFilter('show_new')">
+                                    Show new applications
+                                </li>
+                                <li @click="selectFilter('show_in_process')">
+                                    Show applications in process
+                                </li>
+                            </ul>
                         </div>
-                    </a>
-                    <a href="javascript:void(0)" class="sortingBox d-flex align-items-center"  @click="showSortSelection = true">
-                        <img src="/images/admin/sorting.svg" alt="">
-                        <div>
-                            Sorting:
-                            <span v-if="sort=== 'new_first' ">newest first</span>
-                            <span v-if="sort=== 'old_first' ">oldest first</span>
+                    </div>
+                    <div>
+                        <a href="javascript:void(0)" class="sortingBox d-flex align-items-center"  @click="showSortSelection = true">
+                            <img src="/images/admin/sorting.svg" alt="">
+                            <div>
+                                Sorting :
+                                <span v-if="sort=== 'new_first' ">newest first</span>
+                                <span v-if="sort=== 'old_first' ">oldest first</span>
+                            </div>
+                        </a>
+                        <div class="select-popup" v-show="showSortSelection">
+                            <ul class="select-popup-list">
+                                <li @click="selectSort('new_first')">
+                                    Newest first
+                                </li>
+                                <li @click="selectSort('old_first')">
+                                    Oldest first
+                                </li>
+                            </ul>
                         </div>
-                    </a>
-                    <div class="select-popup" v-show="showSortSelection">
-                        <ul class="select-popup-list">
-                            <li @click="selectSort('new_first')">
-                                Newest first
-                            </li>
-                            <li @click="selectSort('old_first')">
-                                Oldest first
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -449,7 +469,6 @@
             </div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
@@ -459,13 +478,20 @@
                 activeTab: 'business-support',
                 secondaryActiveTab: 'approved-agents',
                 sort:'new_first',
+                filter:'show_all',
                 showSortSelection : false,
+                showFilterSelection : false
+
             }
         },
         methods: {
             selectSort(sort){
                 this.sort = sort ;
                 this.showSortSelection = false;
+            },
+            selectFilter(filter){
+                this.filter = filter ;
+                this.showFilterSelection = false;
             }
         },
         mounted() {

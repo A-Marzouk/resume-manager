@@ -10017,6 +10017,10 @@ select:focus {
   }
 }
 
+.applicants-table .hour-text {
+  margin-top: -6px;
+}
+
 .applicants-table .hour-text img {
   margin-left: 14px !important;
   cursor: pointer;

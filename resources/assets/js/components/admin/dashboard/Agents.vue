@@ -139,12 +139,12 @@
                                                  style="margin-top: 20px;">
                                                 <!--image-->
                                                 <div class="d-flex">
-                                                    <div class="p-2">
+                                                    <div class="">
                                                         <img src="/images/client/add_agent/search_result/ic/user/user123.png" class="avator"/>
                                                     </div>
                                                     <!--location-->
                                                     <div class="p-2">
-                                                        <div class="big-font">Jason Morgenstern</div>
+                                                        <div class="big-font" style="margin-bottom:6px;">Jason Morgenstern</div>
                                                         <div class="location">
                                                             <img src="/images/client/add_agent/search_result/icon/maps/place_24px.png"/>
                                                             Dublin, Ireland
@@ -163,8 +163,8 @@
                                                     </div>
                                                 </div>
                                                 <!--info-->
-                                                <div class="p-2"
-                                                     style="">
+                                                <div class=""
+                                                     style="margin-top:15px;">
                                                     <div class="big-font">
                                                         <img src="/images/client/add_agent/search_result/ic/primary_job_name.png" class="primaryjob-icon"/>
                                                         Telemarketing
@@ -182,22 +182,21 @@
                                                         <span style="font-weight: 500;">No. hours per week: </span>30-40 hours
                                                     </div>
                                                 </div>
-                                                <div class="invisiblty">
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div>
-                                                            <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center"
-                                                                    style="width: 136px;!important">
-                                                                <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png" style="margin-right: 15px;"/>
-                                                                LISTEN TO THE RECORD
-                                                            </button>
+                                                <div class="invisiblty" style="padding-top: 40px;">
+                                                    <div class="d-flex align-items-center" style="">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png" style="margin-right: 8px;">
+                                                            <div class="blue-text" style="font-size:12px;">LISTEN TO THE RECORD</div>
                                                         </div>
                                                         <div>
-                                                            <button class="btn btn-primar btn-radius btn-responsive">VISIT PROFILE</button>
+                                                            <button class="btn btn-primar btn-radius btn-responsive" style="margin:0 0 0 20px; ">
+                                                                <b>VISIT PROFILE</b>
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="blue-text" style="white-space: nowrap;margin-top: 7px;">
+                                                <div class="blue-text showFrom-600" style="white-space: nowrap;margin-top: 7px;">
                                                     EDIT PROFILE
                                                 </div>
                                             </div>

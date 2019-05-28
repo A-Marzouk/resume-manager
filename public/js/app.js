@@ -58865,7 +58865,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58909,7 +58909,6 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -60297,7 +60296,7 @@ var staticRenderFns = [
                     },
                     [
                       _c("div", { staticClass: "d-flex" }, [
-                        _c("div", { staticClass: "p-2" }, [
+                        _c("div", {}, [
                           _c("img", {
                             staticClass: "avator",
                             attrs: {
@@ -60308,9 +60307,14 @@ var staticRenderFns = [
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "p-2" }, [
-                          _c("div", { staticClass: "big-font" }, [
-                            _vm._v("Jason Morgenstern")
-                          ]),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "big-font",
+                              staticStyle: { "margin-bottom": "6px" }
+                            },
+                            [_vm._v("Jason Morgenstern")]
+                          ),
                           _vm._v(" "),
                           _c("div", { staticClass: "location" }, [
                             _c("img", {
@@ -60361,7 +60365,7 @@ var staticRenderFns = [
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "p-2" }, [
+                      _c("div", { staticStyle: { "margin-top": "15px" } }, [
                         _c("div", { staticClass: "big-font" }, [
                           _c("img", {
                             staticClass: "primaryjob-icon",
@@ -60430,55 +60434,60 @@ var staticRenderFns = [
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "invisiblty" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "d-flex justify-content-between align-items-center"
-                          },
-                          [
-                            _c("div", [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "invisiblty",
+                          staticStyle: { "padding-top": "40px" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "d-flex align-items-center" },
+                            [
                               _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "btn btn-left btn-radius btn-responsive d-flex align-items-center",
-                                  staticStyle: { width: "136px" }
-                                },
+                                "div",
+                                { staticClass: "d-flex align-items-center" },
                                 [
                                   _c("img", {
-                                    staticStyle: { "margin-right": "15px" },
+                                    staticStyle: { "margin-right": "8px" },
                                     attrs: {
                                       src:
                                         "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
                                     }
                                   }),
-                                  _vm._v(
-                                    "\n                                                            LISTEN TO THE RECORD\n                                                        "
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "blue-text",
+                                      staticStyle: { "font-size": "12px" }
+                                    },
+                                    [_vm._v("LISTEN TO THE RECORD")]
                                   )
                                 ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", [
-                              _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "btn btn-primar btn-radius btn-responsive"
-                                },
-                                [_vm._v("VISIT PROFILE")]
-                              )
-                            ])
-                          ]
-                        )
-                      ]),
+                              ),
+                              _vm._v(" "),
+                              _c("div", [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "btn btn-primar btn-radius btn-responsive",
+                                    staticStyle: { margin: "0 0 0 20px" }
+                                  },
+                                  [_c("b", [_vm._v("VISIT PROFILE")])]
+                                )
+                              ])
+                            ]
+                          )
+                        ]
+                      ),
                       _vm._v(" "),
                       _c(
                         "div",
                         {
-                          staticClass: "blue-text",
+                          staticClass: "blue-text showFrom-600",
                           staticStyle: {
                             "white-space": "nowrap",
                             "margin-top": "7px"

@@ -10062,6 +10062,27 @@ select:focus {
   }
 }
 
+.stage-select a {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 13px;
+  /* or 93% */
+  letter-spacing: -0.1px;
+  color: #4A5464;
+}
+
+.stage-select a img {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  margin-left: 15px;
+}
+
+.stage-column img {
+  margin-left: 12px;
+}
+
 .select-popup {
   width: 212px;
   background: white;

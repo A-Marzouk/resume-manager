@@ -58865,7 +58865,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59489,6 +59489,86 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -59501,7 +59581,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             showSortSelection: false,
             showFilterSelection: false,
             showUsersNumSelection: false
-
         };
     },
 
@@ -59812,7 +59891,320 @@ var render = function() {
         "div",
         { staticStyle: { "padding-left": "24px", "padding-right": "24px" } },
         [
-          _vm._m(2),
+          _c("div", { staticClass: "table invoices-table applicants-table" }, [
+            _c("table", [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("FULL NAME")]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [
+                    _vm._v("HOURLY RATE")
+                  ]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("STATUS")]),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "th",
+                        {
+                          staticClass: "d-flex align-items-center stage-column",
+                          staticStyle: {
+                            "padding-left": "30px",
+                            "padding-right": "30px"
+                          },
+                          attrs: { scope: "col" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            STAGE\n                            "
+                          ),
+                          _c("img", {
+                            attrs: {
+                              src: "/images/admin/arrows.svg",
+                              alt: "arrow down"
+                            }
+                          })
+                        ]
+                      )
+                    : _vm._e()
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tbody", [
+                _c("tr", [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(5)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _vm._m(6),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(7),
+                  _vm._v(" "),
+                  _vm._m(8),
+                  _vm._v(" "),
+                  _vm._m(9),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(10)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(11),
+                  _vm._v(" "),
+                  _vm._m(12),
+                  _vm._v(" "),
+                  _vm._m(13),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(14)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(15),
+                  _vm._v(" "),
+                  _vm._m(16),
+                  _vm._v(" "),
+                  _vm._m(17),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(18)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(19),
+                  _vm._v(" "),
+                  _vm._m(20),
+                  _vm._v(" "),
+                  _vm._m(21),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(22)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(23),
+                  _vm._v(" "),
+                  _vm._m(24),
+                  _vm._v(" "),
+                  _vm._m(25),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(26)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(27),
+                  _vm._v(" "),
+                  _vm._m(28),
+                  _vm._v(" "),
+                  _vm._m(29),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(30)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(31),
+                  _vm._v(" "),
+                  _vm._m(32),
+                  _vm._v(" "),
+                  _vm._m(33),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(34)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(35),
+                  _vm._v(" "),
+                  _vm._m(36),
+                  _vm._v(" "),
+                  _vm._m(37),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(38)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(39),
+                  _vm._v(" "),
+                  _vm._m(40),
+                  _vm._v(" "),
+                  _vm._m(41),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(42)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(43),
+                  _vm._v(" "),
+                  _vm._m(44),
+                  _vm._v(" "),
+                  _vm._m(45),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(46)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(47),
+                  _vm._v(" "),
+                  _vm._m(48),
+                  _vm._v(" "),
+                  _vm._m(49),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(50)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(51),
+                  _vm._v(" "),
+                  _vm._m(52),
+                  _vm._v(" "),
+                  _vm._m(53),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(54)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(55),
+                  _vm._v(" "),
+                  _vm._m(56),
+                  _vm._v(" "),
+                  _vm._m(57),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(58)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(59),
+                  _vm._v(" "),
+                  _vm._m(60),
+                  _vm._v(" "),
+                  _vm._m(61),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(62)]
+                      )
+                    : _vm._e()
+                ])
+              ])
+            ])
+          ]),
           _vm._v(" "),
           _c(
             "div",
@@ -60220,985 +60612,1034 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "table invoices-table applicants-table" }, [
-      _c("table", [
-        _c("thead", [
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("FULL NAME")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("HOURLY RATE")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("STATUS")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("td", [
-              _c("div", { staticClass: "invoice-number base-text name-text" }, [
-                _vm._v(
-                  "\n                                   Edward Smith-Lorence\n                                    "
-                ),
-                _c("img", {
-                  attrs: {
-                    src: "/images/admin/down_arrow.png",
-                    alt: "down arrow"
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+15 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number base-text name-text" }, [
+        _vm._v(
+          "\n                                   Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+15 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c(
+        "td",
+        {
+          staticStyle: { "border-top": "0", "padding-top": "0" },
+          attrs: { colspan: "3" }
+        },
+        [
+          _c("div", { staticClass: "d-flex" }, [
             _c(
-              "td",
+              "div",
               {
-                staticStyle: { "border-top": "0", "padding-top": "0" },
-                attrs: { colspan: "3" }
+                staticClass: "responsive-grid mb-3",
+                staticStyle: { "margin-top": "20px" }
               },
               [
                 _c("div", { staticClass: "d-flex" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "responsive-grid mb-3",
-                      staticStyle: { "margin-top": "20px" }
-                    },
-                    [
-                      _c("div", { staticClass: "d-flex" }, [
-                        _c("div", {}, [
-                          _c("img", {
-                            staticClass: "avator",
-                            attrs: {
-                              src:
-                                "/images/client/add_agent/search_result/ic/user/user123.png"
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "p-2" }, [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "big-font",
-                              staticStyle: { "margin-bottom": "6px" }
-                            },
-                            [_vm._v("Jason Morgenstern")]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "location" }, [
+                  _c("div", {}, [
+                    _c("img", {
+                      staticClass: "avator",
+                      attrs: {
+                        src:
+                          "/images/client/add_agent/search_result/ic/user/user123.png"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "p-2" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "big-font",
+                        staticStyle: { "margin-bottom": "6px" }
+                      },
+                      [_vm._v("Jason Morgenstern")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "location" }, [
+                      _c("img", {
+                        attrs: {
+                          src:
+                            "/images/client/add_agent/search_result/icon/maps/place_24px.png"
+                        }
+                      }),
+                      _vm._v(
+                        "\n                                                        Dublin, Ireland\n                                                    "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "visiblty" }, [
+                      _c("div", [
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn btn-primar btn-radius btn-responsive"
+                          },
+                          [_vm._v("VISIT AGENT’S PROFILE")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn btn-left btn-radius btn-responsive d-flex align-items-center"
+                          },
+                          [
                             _c("img", {
+                              staticStyle: { "margin-right": "15px" },
                               attrs: {
                                 src:
-                                  "/images/client/add_agent/search_result/icon/maps/place_24px.png"
+                                  "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
                               }
                             }),
                             _vm._v(
-                              "\n                                                        Dublin, Ireland\n                                                    "
+                              "\n                                                                LISTEN TO THE RECORD\n                                                            "
                             )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "visiblty" }, [
-                            _c("div", [
-                              _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "btn btn-primar btn-radius btn-responsive"
-                                },
-                                [_vm._v("VISIT AGENT’S PROFILE")]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", [
-                              _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "btn btn-left btn-radius btn-responsive d-flex align-items-center"
-                                },
-                                [
-                                  _c("img", {
-                                    staticStyle: { "margin-right": "15px" },
-                                    attrs: {
-                                      src:
-                                        "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
-                                    }
-                                  }),
-                                  _vm._v(
-                                    "\n                                                                LISTEN TO THE RECORD\n                                                            "
-                                  )
-                                ]
-                              )
-                            ])
-                          ])
-                        ])
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticStyle: { "margin-top": "15px" } }, [
+                  _c("div", { staticClass: "big-font" }, [
+                    _c("img", {
+                      staticClass: "primaryjob-icon",
+                      attrs: {
+                        src:
+                          "/images/client/add_agent/search_result/ic/primary_job_name.png"
+                      }
+                    }),
+                    _vm._v(
+                      "\n                                                    Telemarketing\n                                                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticStyle: {
+                        "font-size": "16px",
+                        color: "#4a5464",
+                        margin: "20px 0 20px"
+                      }
+                    },
+                    [
+                      _c("span", { staticStyle: { "font-weight": "500" } }, [
+                        _vm._v("Sector experience: ")
                       ]),
-                      _vm._v(" "),
-                      _c("div", { staticStyle: { "margin-top": "15px" } }, [
-                        _c("div", { staticClass: "big-font" }, [
-                          _c("img", {
-                            staticClass: "primaryjob-icon",
-                            attrs: {
-                              src:
-                                "/images/client/add_agent/search_result/ic/primary_job_name.png"
-                            }
-                          }),
-                          _vm._v(
-                            "\n                                                    Telemarketing\n                                                "
-                          )
-                        ]),
+                      _vm._v(
+                        " Real estate, Investement, Insurance\n                                                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("span", { staticStyle: { "font-weight": "500" } }, [
+                      _vm._v("Technologies, software: ")
+                    ]),
+                    _vm._v(
+                      " Microsoft Excel\n                                                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticStyle: { margin: "20px 0" } }, [
+                    _c("span", { staticStyle: { "font-weight": "500" } }, [
+                      _vm._v("Languages: ")
+                    ]),
+                    _vm._v(
+                      "English, Spanish\n                                                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("span", { staticStyle: { "font-weight": "500" } }, [
+                      _vm._v("No. hours per week: ")
+                    ]),
+                    _vm._v(
+                      "30-40 hours\n                                                "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "invisiblty",
+                    staticStyle: { "padding-top": "40px" }
+                  },
+                  [
+                    _c("div", { staticClass: "d-flex align-items-center" }, [
+                      _c("div", { staticClass: "d-flex align-items-center" }, [
+                        _c("img", {
+                          staticStyle: { "margin-right": "8px" },
+                          attrs: {
+                            src:
+                              "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                          }
+                        }),
                         _vm._v(" "),
                         _c(
                           "div",
                           {
-                            staticStyle: {
-                              "font-size": "16px",
-                              color: "#4a5464",
-                              margin: "20px 0 20px"
-                            }
+                            staticClass: "blue-text",
+                            staticStyle: { "font-size": "12px" }
                           },
-                          [
-                            _c(
-                              "span",
-                              { staticStyle: { "font-weight": "500" } },
-                              [_vm._v("Sector experience: ")]
-                            ),
-                            _vm._v(
-                              " Real estate, Investement, Insurance\n                                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("div", [
-                          _c(
-                            "span",
-                            { staticStyle: { "font-weight": "500" } },
-                            [_vm._v("Technologies, software: ")]
-                          ),
-                          _vm._v(
-                            " Microsoft Excel\n                                                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticStyle: { margin: "20px 0" } }, [
-                          _c(
-                            "span",
-                            { staticStyle: { "font-weight": "500" } },
-                            [_vm._v("Languages: ")]
-                          ),
-                          _vm._v(
-                            "English, Spanish\n                                                "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", [
-                          _c(
-                            "span",
-                            { staticStyle: { "font-weight": "500" } },
-                            [_vm._v("No. hours per week: ")]
-                          ),
-                          _vm._v(
-                            "30-40 hours\n                                                "
-                          )
-                        ])
+                          [_vm._v("LISTEN TO THE RECORD")]
+                        )
                       ]),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "invisiblty",
-                          staticStyle: { "padding-top": "40px" }
-                        },
-                        [
-                          _c(
-                            "div",
-                            { staticClass: "d-flex align-items-center" },
-                            [
-                              _c(
-                                "div",
-                                { staticClass: "d-flex align-items-center" },
-                                [
-                                  _c("img", {
-                                    staticStyle: { "margin-right": "8px" },
-                                    attrs: {
-                                      src:
-                                        "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "blue-text",
-                                      staticStyle: { "font-size": "12px" }
-                                    },
-                                    [_vm._v("LISTEN TO THE RECORD")]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("div", [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass:
-                                      "btn btn-primar btn-radius btn-responsive",
-                                    staticStyle: { margin: "0 0 0 20px" }
-                                  },
-                                  [_c("b", [_vm._v("VISIT PROFILE")])]
-                                )
-                              ])
-                            ]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "blue-text showFrom-600",
-                          staticStyle: {
-                            "white-space": "nowrap",
-                            "margin-top": "7px"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                                EDIT PROFILE\n                                            "
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ])
+                      _c("div", [
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "btn btn-primar btn-radius btn-responsive",
+                            staticStyle: { margin: "0 0 0 20px" }
+                          },
+                          [_c("b", [_vm._v("VISIT PROFILE")])]
+                        )
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "blue-text showFrom-600",
+                    staticStyle: {
+                      "white-space": "nowrap",
+                      "margin-top": "7px"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                                                EDIT PROFILE\n                                            "
+                    )
+                  ]
+                )
               ]
             )
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                   Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $12\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+10 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                   Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text not-available-text" },
-                [
-                  _vm._v(
-                    "\n                                    NOT AVAILABLE\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $12\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+10 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text not-available-text" },
-                [
-                  _vm._v(
-                    "\n                                    NOT AVAILABLE\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c("div", { staticClass: "invoice-number base-text name-text" }, [
-                _vm._v(
-                  "\n                                    Edward Smith-Lorence\n                                    "
-                ),
-                _c("img", {
-                  attrs: {
-                    src: "/images/admin/down_arrow.png",
-                    alt: "down arrow"
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+15 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $12\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+10 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text not-available-text" },
-                [
-                  _vm._v(
-                    "\n                                    NOT AVAILABLE\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $12\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+10 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text not-available-text" },
-                [
-                  _vm._v(
-                    "\n                                    NOT AVAILABLE\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c("div", { staticClass: "invoice-number base-text name-text" }, [
-                _vm._v(
-                  "\n                                    Edward Smith-Lorence\n                                    "
-                ),
-                _c("img", {
-                  attrs: {
-                    src: "/images/admin/down_arrow.png",
-                    alt: "down arrow"
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+15 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $12\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+10 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text not-available-text" },
-                [
-                  _vm._v(
-                    "\n                                    NOT AVAILABLE\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $12\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+10 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text not-available-text" },
-                [
-                  _vm._v(
-                    "\n                                    NOT AVAILABLE\n                                "
-                  )
-                ]
-              )
-            ])
           ])
-        ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                   Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $12\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+10 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                   Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "div",
+        { staticClass: "invoice-amount base-text not-available-text" },
+        [
+          _vm._v(
+            "\n                                    NOT AVAILABLE\n                                "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $12\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+10 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "div",
+        { staticClass: "invoice-amount base-text not-available-text" },
+        [
+          _vm._v(
+            "\n                                    NOT AVAILABLE\n                                "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+15 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $12\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+10 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "div",
+        { staticClass: "invoice-amount base-text not-available-text" },
+        [
+          _vm._v(
+            "\n                                    NOT AVAILABLE\n                                "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $12\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+10 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "div",
+        { staticClass: "invoice-amount base-text not-available-text" },
+        [
+          _vm._v(
+            "\n                                    NOT AVAILABLE\n                                "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+15 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $12\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+10 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "div",
+        { staticClass: "invoice-amount base-text not-available-text" },
+        [
+          _vm._v(
+            "\n                                    NOT AVAILABLE\n                                "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $12\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+10 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "div",
+        { staticClass: "invoice-amount base-text not-available-text" },
+        [
+          _vm._v(
+            "\n                                    NOT AVAILABLE\n                                "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
     ])
   }
 ]

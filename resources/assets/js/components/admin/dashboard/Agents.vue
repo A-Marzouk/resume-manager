@@ -110,6 +110,10 @@
                             <th scope="col">FULL NAME</th>
                             <th scope="col">HOURLY RATE</th>
                             <th scope="col">STATUS</th>
+                            <th scope="col" class="d-flex align-items-center stage-column" v-if="secondaryActiveTab === 'applicants'" style="padding-left: 30px;padding-right: 30px;">
+                                STAGE
+                                <img src="/images/admin/arrows.svg" alt="arrow down">
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -130,6 +134,12 @@
                                     <div class="invoice-amount base-text available-text">
                                         AVAILABLE (+15 h/week)
                                     </div>
+                                </td>
+
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -222,6 +232,11 @@
                                         AVAILABLE (+10 h/week)
                                     </div>
                                 </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -243,6 +258,11 @@
                                         NOT AVAILABLE
                                     </div>
                                 </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -262,6 +282,11 @@
                                     <div class="invoice-amount base-text available-text">
                                         AVAILABLE (+10 h/week)
                                     </div>
+                                </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -283,6 +308,11 @@
                                     <div class="invoice-amount base-text not-available-text">
                                         NOT AVAILABLE
                                     </div>
+                                </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -303,6 +333,11 @@
                                         AVAILABLE (+15 h/week)
                                     </div>
                                 </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -322,6 +357,11 @@
                                     <div class="invoice-amount base-text available-text">
                                         AVAILABLE (+10 h/week)
                                     </div>
+                                </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -344,6 +384,11 @@
                                         NOT AVAILABLE
                                     </div>
                                 </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -363,6 +408,11 @@
                                     <div class="invoice-amount base-text available-text">
                                         AVAILABLE (+10 h/week)
                                     </div>
+                                </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -384,6 +434,11 @@
                                     <div class="invoice-amount base-text not-available-text">
                                         NOT AVAILABLE
                                     </div>
+                                </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -404,6 +459,11 @@
                                         AVAILABLE (+15 h/week)
                                     </div>
                                 </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -423,6 +483,11 @@
                                     <div class="invoice-amount base-text available-text">
                                         AVAILABLE (+10 h/week)
                                     </div>
+                                </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -445,6 +510,11 @@
                                         NOT AVAILABLE
                                     </div>
                                 </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -464,6 +534,11 @@
                                     <div class="invoice-amount base-text available-text">
                                         AVAILABLE (+10 h/week)
                                     </div>
+                                </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -485,6 +560,11 @@
                                     <div class="invoice-amount base-text not-available-text">
                                         NOT AVAILABLE
                                     </div>
+                                </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
@@ -590,7 +670,6 @@
                 showSortSelection : false,
                 showFilterSelection : false,
                 showUsersNumSelection : false,
-
             }
         },
         methods: {

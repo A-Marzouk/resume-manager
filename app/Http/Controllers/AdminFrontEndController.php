@@ -14,4 +14,8 @@ class AdminFrontEndController extends Controller
     public function showDashboard(){
         return view('admin.dashboard.dashboard');
     }
+
+    public function showApplicantProfile(){
+        return view('admin.dashboard.applicant_profile');
+    }
 }

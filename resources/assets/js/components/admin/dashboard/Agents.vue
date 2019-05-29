@@ -172,8 +172,8 @@
                                                             Dublin, Ireland
                                                         </div>
                                                         <div class="visiblty">
-                                                            <div>
-                                                                <button class="btn btn-primar btn-radius btn-responsive">VISIT AGENT’S PROFILE</button>
+                                                            <div class="no-decoration">
+                                                                <a href="/admin-front/applicant-profile" class="btn btn-primar btn-radius btn-responsive">VISIT AGENT’S PROFILE</a>
                                                             </div>
                                                             <div>
                                                                 <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">

@@ -36,26 +36,35 @@ Vue.config.devtools = true;
 
 // admin front-end components :
 Vue.component('admin-dashboard', require('./components/admin/dashboard/Main.vue'));
+Vue.component('applicant-profile', require('./components/admin/ApplicantProfile.vue'));
 import AdminAgents from './components/admin/dashboard/Agents.vue';
 
 
 
+if ($("#applicantProfile").length !== 0){
+    let applicantProfile = new Vue({
+        el:'#applicantProfile'
+    });
+
+}
+
+
 if ($("#adminDashboardComponent").length !== 0){
 
-    const routes = [
-        { path: '/admin-front/agents/', component: AdminAgents }
-    ];
+        const routes = [
+            { path: '/admin-front/agents/', component: AdminAgents }
+        ];
 
-    const router = new VueRouter({
-        mode:'history',
-        routes,
-    });
+        const router = new VueRouter({
+            mode:'history',
+            routes,
+        });
 
 
-    let clientDashboardComponent = new Vue({
-        router,
-        el:'#adminDashboardComponent'
-    });
+        let clientDashboardComponent = new Vue({
+            router,
+            el:'#adminDashboardComponent'
+        });
 }
 
 

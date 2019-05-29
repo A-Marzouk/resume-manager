@@ -14507,7 +14507,14 @@ Vue.config.devtools = true;
 
 // admin front-end components :
 Vue.component('admin-dashboard', __webpack_require__(54));
+Vue.component('applicant-profile', __webpack_require__(472));
 
+
+if ($("#applicantProfile").length !== 0) {
+    var applicantProfile = new Vue({
+        el: '#applicantProfile'
+    });
+}
 
 if ($("#adminDashboardComponent").length !== 0) {
 
@@ -58111,11 +58118,92 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            activeTab: 'campaign-manager'
+            activeTab: 'campaign-manager',
+            selection: 'disapprove',
+            disapproveStatus: 'process'
         };
     },
 
@@ -58144,6 +58232,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     window.location.href = '/';
                 }
             });
+        },
+        disapproveApplicant: function disapproveApplicant() {
+            this.selection = 'disapprove';
+        },
+        disapproveAndBlockApplicant: function disapproveAndBlockApplicant() {
+            this.selection = 'disapprove_and_block';
         }
     },
     mounted: function mounted() {
@@ -58458,7 +58552,238 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(6)
+    _vm._m(6),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "disapprove-agent",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "remove-modal",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-content border-0",
+                staticStyle: { "margin-top": "30%" }
+              },
+              [
+                _c("div", { staticClass: "modal-body campaign-team-modal" }, [
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.disapproveStatus === "process",
+                          expression: "disapproveStatus === 'process'"
+                        }
+                      ]
+                    },
+                    [
+                      _c("div", { staticClass: "modal-question" }, [
+                        _vm._v(
+                          "\n                            Are you sure you want to disapprove this applicant ?\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-answer" }, [
+                        _c("div", { staticClass: "col-12" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "form-check-label checkBoxContainer disapprove-text",
+                              on: { click: _vm.disapproveApplicant }
+                            },
+                            [
+                              _c("input", {
+                                staticClass: "form-check-input",
+                                attrs: { type: "radio", name: "disapprove" }
+                              }),
+                              _vm._v(" "),
+                              _c("span", {
+                                staticClass: "checkmark make-circle"
+                              }),
+                              _vm._v(
+                                " disapprove\n                                "
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-12" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "form-check-label checkBoxContainer disapprove-text",
+                              on: { click: _vm.disapproveAndBlockApplicant }
+                            },
+                            [
+                              _c("input", {
+                                staticClass: "form-check-input",
+                                attrs: { type: "radio", name: "disapprove" }
+                              }),
+                              _vm._v(" "),
+                              _c("span", {
+                                staticClass: "checkmark make-circle"
+                              }),
+                              _vm._v(
+                                " disapprove and block\n                                "
+                              )
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-note" }, [
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.selection === "disapprove",
+                                expression: "selection === 'disapprove'"
+                              }
+                            ]
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Disapproved agent will be able to apply again\n                       "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.selection === "disapprove_and_block",
+                                expression:
+                                  "selection === 'disapprove_and_block'"
+                              }
+                            ]
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Disapproved and blocked agent will not be able to apply again\n                       "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-btn-wrapper" }, [
+                        _vm._m(7),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "button-base blue-button-a" },
+                          [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "javascript:void(0)" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.disapproveStatus = "disapproved"
+                                  }
+                                }
+                              },
+                              [_vm._v("DISAPPROVE AGENT")]
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value:
+                            _vm.disapproveStatus === "disapproved" &&
+                            _vm.selection === "disapprove",
+                          expression:
+                            "disapproveStatus === 'disapproved' && selection === 'disapprove'"
+                        }
+                      ]
+                    },
+                    [
+                      _c("div", { staticClass: "modal-question" }, [
+                        _vm._v(
+                          "\n                          The agent was disapproved\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-answer" }, [
+                        _vm._v(
+                          "\n                          Agent will be able to apply again\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(8)
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value:
+                            _vm.disapproveStatus === "disapproved" &&
+                            _vm.selection === "disapprove_and_block",
+                          expression:
+                            "disapproveStatus === 'disapproved' && selection === 'disapprove_and_block'"
+                        }
+                      ]
+                    },
+                    [
+                      _c("div", { staticClass: "modal-question" }, [
+                        _vm._v(
+                          "\n                            The agent was disapproved and blocked\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-answer" }, [
+                        _vm._v(
+                          "\n                            Agent will not be able to apply again\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(9)
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -58768,6 +59093,60 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "button-base white-button-a" }, [
+      _c(
+        "a",
+        { attrs: { href: "javascript:void(0)", "data-dismiss": "modal" } },
+        [_vm._v("CANCEL")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "modal-btn-wrapper d-flex justify-content-end" },
+      [
+        _c("div", { staticClass: "button-base blue-button-a" }, [
+          _c(
+            "a",
+            {
+              staticStyle: { width: "83px" },
+              attrs: { href: "javascript:void(0)", "data-dismiss": "modal" }
+            },
+            [_vm._v("OK")]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "modal-btn-wrapper d-flex justify-content-end" },
+      [
+        _c("div", { staticClass: "button-base blue-button-a" }, [
+          _c(
+            "a",
+            {
+              staticStyle: { width: "83px" },
+              attrs: { href: "javascript:void(0)", "data-dismiss": "modal" }
+            },
+            [_vm._v("OK")]
+          )
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -58865,7 +59244,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59363,6 +59742,224 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -59370,7 +59967,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             activeTab: 'business-support',
             secondaryActiveTab: 'approved-agents',
             sort: 'new_first',
-            showSortSelection: false
+            filter: 'show_all',
+            usersNumber: 15,
+            showSortSelection: false,
+            showFilterSelection: false,
+            showUsersNumSelection: false
         };
     },
 
@@ -59378,6 +59979,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         selectSort: function selectSort(sort) {
             this.sort = sort;
             this.showSortSelection = false;
+        },
+        selectFilter: function selectFilter(filter) {
+            this.filter = filter;
+            this.showFilterSelection = false;
+        },
+        selectUsersNum: function selectUsersNum(number) {
+            this.usersNumber = number;
+            this.showUsersNumSelection = false;
         }
     },
     mounted: function mounted() {}
@@ -59479,88 +60088,192 @@ var render = function() {
             staticStyle: { "padding-right": "24px" }
           },
           [
-            _vm._m(2),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "sortingBox d-flex align-items-center",
-                attrs: { href: "javascript:void(0)" },
-                on: {
-                  click: function($event) {
-                    _vm.showSortSelection = true
+            _c("div", [
+              _c(
+                "a",
+                {
+                  staticClass: "filterBox d-flex align-items-center",
+                  attrs: { href: "javascript:void(0)" },
+                  on: {
+                    click: function($event) {
+                      _vm.showFilterSelection = true
+                    }
                   }
-                }
-              },
-              [
-                _c("img", {
-                  attrs: { src: "/images/admin/sorting.svg", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", [
-                  _vm._v(
-                    "\n                        Sorting:\n                        "
-                  ),
-                  _vm.sort === "new_first"
-                    ? _c("span", [_vm._v("newest first")])
-                    : _vm._e(),
+                },
+                [
+                  _c("img", {
+                    attrs: { src: "/images/admin/filter.svg", alt: "" }
+                  }),
                   _vm._v(" "),
-                  _vm.sort === "old_first"
-                    ? _c("span", [_vm._v("oldest first")])
-                    : _vm._e()
-                ])
-              ]
-            ),
+                  _c("div", [
+                    _vm._v(
+                      "\n                            Filter :\n                            "
+                    ),
+                    _vm.filter === "show_all"
+                      ? _c("span", [_vm._v("All applications")])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.filter === "show_new"
+                      ? _c("span", [_vm._v("New applications")])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.filter === "show_in_process"
+                      ? _c("span", [_vm._v("In process")])
+                      : _vm._e()
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.showFilterSelection,
+                      expression: "showFilterSelection"
+                    }
+                  ],
+                  staticClass: "select-popup",
+                  staticStyle: { "margin-top": "-45px" }
+                },
+                [
+                  _c("ul", { staticClass: "select-popup-list" }, [
+                    _c(
+                      "li",
+                      {
+                        on: {
+                          click: function($event) {
+                            _vm.selectFilter("show_all")
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Show all applications\n                            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        on: {
+                          click: function($event) {
+                            _vm.selectFilter("show_new")
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Show new applications\n                            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        on: {
+                          click: function($event) {
+                            _vm.selectFilter("show_in_process")
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Show applications in process\n                            "
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              )
+            ]),
             _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.showSortSelection,
-                    expression: "showSortSelection"
+            _c("div", [
+              _c(
+                "a",
+                {
+                  staticClass: "sortingBox d-flex align-items-center",
+                  attrs: { href: "javascript:void(0)" },
+                  on: {
+                    click: function($event) {
+                      _vm.showSortSelection = true
+                    }
                   }
-                ],
-                staticClass: "select-popup"
-              },
-              [
-                _c("ul", { staticClass: "select-popup-list" }, [
-                  _c(
-                    "li",
-                    {
-                      on: {
-                        click: function($event) {
-                          _vm.selectSort("new_first")
-                        }
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            Newest first\n                        "
-                      )
-                    ]
-                  ),
+                },
+                [
+                  _c("img", {
+                    attrs: { src: "/images/admin/sorting.svg", alt: "" }
+                  }),
                   _vm._v(" "),
-                  _c(
-                    "li",
+                  _c("div", [
+                    _vm._v(
+                      "\n                            Sorting :\n                            "
+                    ),
+                    _vm.sort === "new_first"
+                      ? _c("span", [_vm._v("newest first")])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.sort === "old_first"
+                      ? _c("span", [_vm._v("oldest first")])
+                      : _vm._e()
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
                     {
-                      on: {
-                        click: function($event) {
-                          _vm.selectSort("old_first")
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.showSortSelection,
+                      expression: "showSortSelection"
+                    }
+                  ],
+                  staticClass: "select-popup"
+                },
+                [
+                  _c("ul", { staticClass: "select-popup-list" }, [
+                    _c(
+                      "li",
+                      {
+                        on: {
+                          click: function($event) {
+                            _vm.selectSort("new_first")
+                          }
                         }
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            Oldest first\n                        "
-                      )
-                    ]
-                  )
-                ])
-              ]
-            )
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Newest first\n                            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        on: {
+                          click: function($event) {
+                            _vm.selectSort("old_first")
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Oldest first\n                            "
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              )
+            ])
           ]
         )
       ]),
@@ -59569,7 +60282,389 @@ var render = function() {
         "div",
         { staticStyle: { "padding-left": "24px", "padding-right": "24px" } },
         [
-          _vm._m(3),
+          _c("div", { staticClass: "table invoices-table applicants-table" }, [
+            _c("table", [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("FULL NAME")]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [
+                    _vm._v("HOURLY RATE")
+                  ]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("STATUS")]),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "th",
+                        {
+                          staticClass: "d-flex align-items-center stage-column",
+                          staticStyle: {
+                            "padding-left": "30px",
+                            "padding-right": "30px"
+                          },
+                          attrs: { scope: "col" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            STAGE\n                            "
+                          ),
+                          _c("img", {
+                            attrs: {
+                              src: "/images/admin/arrows.svg",
+                              alt: "arrow down"
+                            }
+                          })
+                        ]
+                      )
+                    : _vm._e()
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tbody", [
+                _c("tr", [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(5)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c(
+                    "td",
+                    {
+                      staticStyle: { "border-top": "0", "padding-top": "0" },
+                      attrs: { colspan: "4" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.secondaryActiveTab === "applicants",
+                              expression: "secondaryActiveTab === 'applicants'"
+                            }
+                          ],
+                          staticClass: "action-buttons-bar"
+                        },
+                        [_vm._m(6), _vm._v(" "), _vm._m(7)]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "d-flex" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "responsive-grid mb-3",
+                            staticStyle: { "margin-top": "20px" }
+                          },
+                          [
+                            _vm._m(8),
+                            _vm._v(" "),
+                            _vm._m(9),
+                            _vm._v(" "),
+                            _vm._m(10),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value:
+                                      _vm.secondaryActiveTab ===
+                                      "approved-agents",
+                                    expression:
+                                      "secondaryActiveTab === 'approved-agents'"
+                                  }
+                                ],
+                                staticClass: "blue-text showFrom-600",
+                                staticStyle: {
+                                  "white-space": "nowrap",
+                                  "margin-top": "7px"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                                EDIT PROFILE\n                                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(11),
+                  _vm._v(" "),
+                  _vm._m(12),
+                  _vm._v(" "),
+                  _vm._m(13),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(14)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(15),
+                  _vm._v(" "),
+                  _vm._m(16),
+                  _vm._v(" "),
+                  _vm._m(17),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(18)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(19),
+                  _vm._v(" "),
+                  _vm._m(20),
+                  _vm._v(" "),
+                  _vm._m(21),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(22)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(23),
+                  _vm._v(" "),
+                  _vm._m(24),
+                  _vm._v(" "),
+                  _vm._m(25),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(26)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(27),
+                  _vm._v(" "),
+                  _vm._m(28),
+                  _vm._v(" "),
+                  _vm._m(29),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(30)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(31),
+                  _vm._v(" "),
+                  _vm._m(32),
+                  _vm._v(" "),
+                  _vm._m(33),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(34)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(35),
+                  _vm._v(" "),
+                  _vm._m(36),
+                  _vm._v(" "),
+                  _vm._m(37),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(38)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(39),
+                  _vm._v(" "),
+                  _vm._m(40),
+                  _vm._v(" "),
+                  _vm._m(41),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(42)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(43),
+                  _vm._v(" "),
+                  _vm._m(44),
+                  _vm._v(" "),
+                  _vm._m(45),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(46)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(47),
+                  _vm._v(" "),
+                  _vm._m(48),
+                  _vm._v(" "),
+                  _vm._m(49),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(50)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(51),
+                  _vm._v(" "),
+                  _vm._m(52),
+                  _vm._v(" "),
+                  _vm._m(53),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(54)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(55),
+                  _vm._v(" "),
+                  _vm._m(56),
+                  _vm._v(" "),
+                  _vm._m(57),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(58)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(59),
+                  _vm._v(" "),
+                  _vm._m(60),
+                  _vm._v(" "),
+                  _vm._m(61),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(62)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(63),
+                  _vm._v(" "),
+                  _vm._m(64),
+                  _vm._v(" "),
+                  _vm._m(65),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(66)]
+                      )
+                    : _vm._e()
+                ])
+              ])
+            ])
+          ]),
           _vm._v(" "),
           _c(
             "div",
@@ -59626,7 +60721,110 @@ var render = function() {
                 2
               ),
               _vm._v(" "),
-              _vm._m(4)
+              _c("div", { staticClass: "no-decoration" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "paginationBox d-flex align-items-center justify-content-center",
+                    attrs: { href: "javascript:void(0)" },
+                    on: {
+                      click: function($event) {
+                        _vm.showUsersNumSelection = true
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Users per page :\n                        "
+                    ),
+                    _vm.usersNumber === 15
+                      ? _c("span", [_vm._v("15")])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.usersNumber === 25
+                      ? _c("span", [_vm._v("25")])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.usersNumber === 50
+                      ? _c("span", [_vm._v("50")])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        src: "/images/admin/down_arrow.png",
+                        alt: "arrow down"
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.showUsersNumSelection,
+                        expression: "showUsersNumSelection"
+                      }
+                    ],
+                    staticClass: "select-popup usersNumber"
+                  },
+                  [
+                    _c("ul", { staticClass: "select-popup-list" }, [
+                      _c(
+                        "li",
+                        {
+                          on: {
+                            click: function($event) {
+                              _vm.selectUsersNum(15)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                15 items\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "li",
+                        {
+                          on: {
+                            click: function($event) {
+                              _vm.selectUsersNum(25)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                25 items\n                            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "li",
+                        {
+                          on: {
+                            click: function($event) {
+                              _vm.selectUsersNum(50)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                50 items\n                            "
+                          )
+                        ]
+                      )
+                    ])
+                  ]
+                )
+              ])
             ]
           ),
           _vm._v(" "),
@@ -59687,7 +60885,133 @@ var render = function() {
                 2
               ),
               _vm._v(" "),
-              _vm._m(5)
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "d-flex justify-content-between align-items-center w-100",
+                  staticStyle: { "padding-top": "24px" }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "base-text",
+                      staticStyle: { "font-size": "12px" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Total : 124\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "no-decoration" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass:
+                          "paginationBox d-flex align-items-center justify-content-center",
+                        attrs: { href: "javascript:void(0)" },
+                        on: {
+                          click: function($event) {
+                            _vm.showUsersNumSelection = true
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            Users per page :\n                            "
+                        ),
+                        _vm.usersNumber === 15
+                          ? _c("span", [_vm._v("15")])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.usersNumber === 25
+                          ? _c("span", [_vm._v("25")])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.usersNumber === 50
+                          ? _c("span", [_vm._v("50")])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("img", {
+                          attrs: {
+                            src: "/images/admin/down_arrow.png",
+                            alt: "arrow down"
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.showUsersNumSelection,
+                            expression: "showUsersNumSelection"
+                          }
+                        ],
+                        staticClass: "select-popup usersNumber"
+                      },
+                      [
+                        _c("ul", { staticClass: "select-popup-list" }, [
+                          _c(
+                            "li",
+                            {
+                              on: {
+                                click: function($event) {
+                                  _vm.selectUsersNum(15)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    15 items\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              on: {
+                                click: function($event) {
+                                  _vm.selectUsersNum(25)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    25 items\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            {
+                              on: {
+                                click: function($event) {
+                                  _vm.selectUsersNum(50)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    50 items\n                                "
+                              )
+                            ]
+                          )
+                        ])
+                      ]
+                    )
+                  ])
+                ]
+              )
             ]
           )
         ]
@@ -59748,776 +61072,154 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "filterBox d-flex align-items-center",
-        attrs: { href: "javascript:void(0)" }
-      },
-      [
-        _c("img", { attrs: { src: "/images/admin/filter.svg", alt: "" } }),
-        _vm._v(" "),
-        _c("div", [
-          _vm._v(
-            "\n                        Filter: show not available\n                    "
-          )
-        ])
-      ]
-    )
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number base-text name-text" }, [
+        _vm._v(
+          "\n                                   Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "table invoices-table applicants-table" }, [
-      _c("table", [
-        _c("thead", [
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("FULL NAME")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("HOURLY RATE")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("STATUS")])
-          ])
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+15 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "disapprove-btn no-decoration" }, [
+      _c(
+        "a",
+        {
+          attrs: {
+            href: "javascript:void(0)",
+            "data-toggle": "modal",
+            "data-target": "#disapprove-agent"
+          }
+        },
+        [
+          _vm._v(
+            "\n                                            DISAPPROVE APPLICANT\n                                        "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "approve-btn no-decoration" }, [
+      _c("a", { attrs: { href: "javascript:void(0)" } }, [
+        _vm._v(
+          "\n                                            APPROVE APPLICANT\n                                        "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "d-flex" }, [
+      _c("div", {}, [
+        _c("img", {
+          staticClass: "avator",
+          attrs: {
+            src: "/images/client/add_agent/search_result/ic/user/user123.png"
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-2" }, [
+        _c(
+          "div",
+          { staticClass: "big-font", staticStyle: { "margin-bottom": "6px" } },
+          [_vm._v("Jason Morgenstern")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "location" }, [
+          _c("img", {
+            attrs: {
+              src:
+                "/images/client/add_agent/search_result/icon/maps/place_24px.png"
+            }
+          }),
+          _vm._v(
+            "\n                                                        Dublin, Ireland\n                                                    "
+          )
         ]),
         _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("td", [
-              _c("div", { staticClass: "invoice-number base-text name-text" }, [
-                _vm._v(
-                  "\n                                   Edward Smith-Lorence\n                                    "
-                ),
+        _c("div", { staticClass: "visiblty" }, [
+          _c("div", { staticClass: "no-decoration" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-primar btn-radius btn-responsive",
+                attrs: { href: "/admin-front/applicant-profile" }
+              },
+              [_vm._v("VISIT AGENT’S PROFILE")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "btn btn-left btn-radius btn-responsive d-flex align-items-center"
+              },
+              [
                 _c("img", {
+                  staticStyle: { "margin-right": "15px" },
                   attrs: {
-                    src: "/images/admin/down_arrow.png",
-                    alt: "down arrow"
+                    src:
+                      "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
                   }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+15 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                   Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $12\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+10 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                   Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text not-available-text" },
-                [
-                  _vm._v(
-                    "\n                                    NOT AVAILABLE\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $12\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+10 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text not-available-text" },
-                [
-                  _vm._v(
-                    "\n                                    NOT AVAILABLE\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c("div", { staticClass: "invoice-number base-text name-text" }, [
+                }),
                 _vm._v(
-                  "\n                                    Edward Smith-Lorence\n                                    "
-                ),
-                _c("img", {
-                  attrs: {
-                    src: "/images/admin/down_arrow.png",
-                    alt: "down arrow"
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+15 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $12\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+10 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text not-available-text" },
-                [
-                  _vm._v(
-                    "\n                                    NOT AVAILABLE\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $12\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+10 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text not-available-text" },
-                [
-                  _vm._v(
-                    "\n                                    NOT AVAILABLE\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c("div", { staticClass: "invoice-number base-text name-text" }, [
-                _vm._v(
-                  "\n                                    Edward Smith-Lorence\n                                    "
-                ),
-                _c("img", {
-                  attrs: {
-                    src: "/images/admin/down_arrow.png",
-                    alt: "down arrow"
-                  }
-                })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+15 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $12\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+10 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text not-available-text" },
-                [
-                  _vm._v(
-                    "\n                                    NOT AVAILABLE\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $12\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text available-text" },
-                [
-                  _vm._v(
-                    "\n                                    AVAILABLE (+10 h/week)\n                                "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-number  base-text name-text" },
-                [
-                  _vm._v(
-                    "\n                                    Edward Smith-Lorence\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/down_arrow.png",
-                      alt: "down arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-service  base-text hour-text" },
-                [
-                  _vm._v(
-                    "\n                                    $10\n                                    "
-                  ),
-                  _c("img", {
-                    attrs: {
-                      src: "/images/admin/edit_24px.svg",
-                      alt: "edit arrow"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "div",
-                { staticClass: "invoice-amount base-text not-available-text" },
-                [
-                  _vm._v(
-                    "\n                                    NOT AVAILABLE\n                                "
-                  )
-                ]
-              )
-            ])
+                  "\n                                                                LISTEN TO THE RECORD\n                                                            "
+                )
+              ]
+            )
           ])
         ])
       ])
@@ -60527,19 +61229,64 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "paginationBox d-flex align-items-center justify-content-center"
-      },
-      [
+    return _c("div", { staticStyle: { "margin-top": "15px" } }, [
+      _c("div", { staticClass: "big-font" }, [
+        _c("img", {
+          staticClass: "primaryjob-icon",
+          attrs: {
+            src:
+              "/images/client/add_agent/search_result/ic/primary_job_name.png"
+          }
+        }),
         _vm._v(
-          "\n                    Users per page : 15\n                    "
-        ),
-        _c("img", { attrs: { src: "/images/admin/down_arrow.png", alt: "" } })
-      ]
-    )
+          "\n                                                    Telemarketing\n                                                "
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticStyle: {
+            "font-size": "16px",
+            color: "#4a5464",
+            margin: "20px 0 20px"
+          }
+        },
+        [
+          _c("span", { staticStyle: { "font-weight": "500" } }, [
+            _vm._v("Sector experience: ")
+          ]),
+          _vm._v(
+            " Real estate, Investement, Insurance\n                                                "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", [
+        _c("span", { staticStyle: { "font-weight": "500" } }, [
+          _vm._v("Technologies, software: ")
+        ]),
+        _vm._v(
+          " Microsoft Excel\n                                                "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticStyle: { margin: "20px 0" } }, [
+        _c("span", { staticStyle: { "font-weight": "500" } }, [
+          _vm._v("Languages: ")
+        ]),
+        _vm._v(
+          "English, Spanish\n                                                "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("span", { staticStyle: { "font-weight": "500" } }, [
+          _vm._v("No. hours per week: ")
+        ]),
+        _vm._v("30-40 hours\n                                                ")
+      ])
+    ])
   },
   function() {
     var _vm = this
@@ -60547,39 +61294,807 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      {
-        staticClass: "d-flex justify-content-between align-items-center w-100",
-        staticStyle: { "padding-top": "24px" }
-      },
+      { staticClass: "invisiblty", staticStyle: { "padding-top": "40px" } },
       [
-        _c(
-          "div",
-          { staticClass: "base-text", staticStyle: { "font-size": "12px" } },
-          [
-            _vm._v(
-              "\n                        Total : 124\n                    "
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "paginationBox d-flex align-items-center justify-content-center",
-            staticStyle: { "font-size": "12px", width: "140px" }
-          },
-          [
-            _vm._v(
-              "\n                        Users per page : 15\n                        "
-            ),
+        _c("div", { staticClass: "d-flex align-items-center" }, [
+          _c("div", { staticClass: "d-flex align-items-center" }, [
             _c("img", {
-              attrs: { src: "/images/admin/down_arrow.png", alt: "" }
-            })
-          ]
-        )
+              staticStyle: { "margin-right": "8px" },
+              attrs: {
+                src:
+                  "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "blue-text",
+                staticStyle: { "font-size": "12px" }
+              },
+              [_vm._v("LISTEN TO THE RECORD")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primar btn-radius btn-responsive",
+                staticStyle: { margin: "0 0 0 20px" }
+              },
+              [_c("b", [_vm._v("VISIT PROFILE")])]
+            )
+          ])
+        ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                   Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $12\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+10 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                   Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "div",
+        { staticClass: "invoice-amount base-text not-available-text" },
+        [
+          _vm._v(
+            "\n                                    NOT AVAILABLE\n                                "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $12\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+10 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "div",
+        { staticClass: "invoice-amount base-text not-available-text" },
+        [
+          _vm._v(
+            "\n                                    NOT AVAILABLE\n                                "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+15 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $12\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+10 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "div",
+        { staticClass: "invoice-amount base-text not-available-text" },
+        [
+          _vm._v(
+            "\n                                    NOT AVAILABLE\n                                "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $12\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+10 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "div",
+        { staticClass: "invoice-amount base-text not-available-text" },
+        [
+          _vm._v(
+            "\n                                    NOT AVAILABLE\n                                "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+15 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $12\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+10 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "div",
+        { staticClass: "invoice-amount base-text not-available-text" },
+        [
+          _vm._v(
+            "\n                                    NOT AVAILABLE\n                                "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $12\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
+        _vm._v(
+          "\n                                    AVAILABLE (+10 h/week)\n                                "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
+        _vm._v(
+          "\n                                    Edward Smith-Lorence\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
+        _vm._v(
+          "\n                                    $10\n                                    "
+        ),
+        _c("img", {
+          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "div",
+        { staticClass: "invoice-amount base-text not-available-text" },
+        [
+          _vm._v(
+            "\n                                    NOT AVAILABLE\n                                "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                    v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
+    ])
   }
 ]
 render._withStripped = true
@@ -67370,25 +68885,6 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(6),
-            _vm._v(" "),
-            _vm._m(7),
-            _vm._v(" "),
-            _vm._m(8),
-            _vm._v(" "),
-            _vm._m(9),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "blue-text",
-                staticStyle: { "margin-left": "2.7rem" }
-              },
-              [_vm._v("\n          Conor Marjoram\n        ")]
-            ),
-            _vm._v(" "),
-            _vm._m(10),
-            _vm._v(" "),
             _c("div", { staticClass: "sub-action pt-5" }, [
               _c(
                 "a",
@@ -67422,12 +68918,12 @@ var render = function() {
               }
             ]
           },
-          [_vm._m(11), _vm._v(" "), _vm._m(12)]
+          [_vm._m(6), _vm._v(" "), _vm._m(7)]
         )
       ])
     ]),
     _vm._v(" "),
-    _vm._m(13)
+    _vm._m(8)
   ])
 }
 var staticRenderFns = [
@@ -67646,228 +69142,6 @@ var staticRenderFns = [
         _c("div", { staticClass: "weeks-number-heading" }, [
           _vm._v("\n                Total number of weeks\n              ")
         ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "new-sub-plan pt-5" }, [
-      _c("div", { staticClass: "weeks-number" }, [
-        _c("div", { staticClass: "sub-agent-numbering pb-3" }, [
-          _vm._v("\n              Agent № 1\n            ")
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "d-flex justify-content-start align-items-center" },
-          [
-            _c("img", {
-              staticClass: "mr-3",
-              attrs: {
-                src: "/images/client/payments/time.png",
-                alt: "week icon"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "weeks-number-heading" }, [
-              _vm._v(
-                "\n                Number of working hours per week\n              "
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "week-input" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "account-edit-section-inputs d-flex align-items-center"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "faq-question-input sub-edit-input  mt-3 d-flex flex-row align-items-center"
-                },
-                [
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("select", { attrs: { name: "weeks", id: "hours" } }, [
-                      _c("option", { attrs: { value: "2" } }, [
-                        _vm._v("15 hours")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "4" } }, [
-                        _vm._v("20 hours")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "6" } }, [
-                        _vm._v("25 hours")
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c("div")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "new-sub-plan pt-5" }, [
-      _c("div", { staticClass: "weeks-number" }, [
-        _c("div", { staticClass: "sub-agent-numbering pb-3" }, [
-          _vm._v("\n              Agent № 2\n            ")
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "d-flex justify-content-start align-items-center" },
-          [
-            _c("img", {
-              staticClass: "mr-3",
-              attrs: {
-                src: "/images/client/payments/time.png",
-                alt: "week icon"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "weeks-number-heading" }, [
-              _vm._v(
-                "\n                Number of working hours per week\n              "
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "week-input" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "account-edit-section-inputs d-flex align-items-center"
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "faq-question-input sub-edit-input  mt-3 d-flex flex-row align-items-center"
-                },
-                [
-                  _c("div", { staticClass: "faq-input" }, [
-                    _c("select", { attrs: { name: "weeks", id: "hours2" } }, [
-                      _c("option", { attrs: { value: "2" } }, [
-                        _vm._v("15 hours")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "4" } }, [
-                        _vm._v("20 hours")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "6" } }, [
-                        _vm._v("25 hours")
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c("div")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "button-base white-button-a pt-4 w-100 d-flex justify-content-center"
-      },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "border-0 m-0",
-            staticStyle: { width: "auto" },
-            attrs: { href: "#" }
-          },
-          [
-            _vm._v(
-              "\n                          ADD ANOTHER AGENT\n                      "
-            )
-          ]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "new-sub-plan pt-5" }, [
-      _c(
-        "div",
-        { staticClass: "d-flex justify-content-start align-items-center" },
-        [
-          _c("img", {
-            staticClass: "mr-3",
-            attrs: {
-              src: "/images/client/payments/manager.png",
-              alt: "week icon"
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "weeks-number-heading" }, [
-            _vm._v("\n              Manager of your campaign\n            ")
-          ])
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "button-base white-button-a pt-4 w-100 d-flex justify-content-center"
-      },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "m-0",
-            staticStyle: { width: "158px", height: "36px" },
-            attrs: {
-              href: "javascript:void(0)",
-              "data-toggle": "modal",
-              "data-target": "#remove-manager-modal"
-            }
-          },
-          [
-            _vm._v(
-              "\n                          REMOVE MANAGER\n                      "
-            )
-          ]
-        )
       ]
     )
   },
@@ -121799,6 +123073,236 @@ new SideNav();
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 469 */,
+/* 470 */,
+/* 471 */,
+/* 472 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(473)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(475)
+/* template */
+var __vue_template__ = __webpack_require__(476)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-4738bb6b"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\admin\\ApplicantProfile.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4738bb6b", Component.options)
+  } else {
+    hotAPI.reload("data-v-4738bb6b", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 473 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(474);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("9c2b4494", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4738bb6b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ApplicantProfile.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4738bb6b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ApplicantProfile.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 474 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 475 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "ApplicantProfile"
+});
+
+/***/ }),
+/* 476 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "nav",
+        { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
+        [
+          _c("div", { staticClass: "backBtn" }, [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("img", {
+                attrs: {
+                  src: "/images/client/arrow_back.png",
+                  alt: "back-icon"
+                }
+              })
+            ]),
+            _vm._v("\n            JASON MORGENSTERN APPLICATION\n        ")
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "d-flex justify-content-center" }, [
+        _c("div", { staticClass: "main-grid" }, [
+          _c("div", { staticClass: "header-text" }, [
+            _c("img", {
+              staticClass: "icon-margin small-image",
+              attrs: { src: "/images/admin/main_40px", alt: "" }
+            }),
+            _vm._v(
+              "\n                PROFILE OF THE APPLICANT (BUSINESS SUPPORT)\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("div", { staticClass: "action-buttons-bar mt-5" }, [
+            _c("div", { staticClass: "disapprove-btn no-decoration" }, [
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href: "javascript:void(0)",
+                    "data-toggle": "modal",
+                    "data-target": "#disapprove-agent"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        DISAPPROVE APPLICANT\n                    "
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "approve-btn no-decoration" }, [
+              _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                _vm._v(
+                  "\n                        APPROVE APPLICANT\n                    "
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4738bb6b", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

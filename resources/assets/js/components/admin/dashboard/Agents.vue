@@ -55,29 +55,49 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-center right no-decoration" style="padding-right: 24px;">
-                    <a href="javascript:void(0)" class="filterBox d-flex align-items-center">
-                        <img src="/images/admin/filter.svg" alt="">
-                        <div>
-                            Filter: show not available
+                    <div>
+                        <a href="javascript:void(0)" class="filterBox d-flex align-items-center" @click="showFilterSelection = true">
+                            <img src="/images/admin/filter.svg" alt="">
+                            <div>
+                                Filter :
+                                <span v-if="filter=== 'show_all' ">All applications</span>
+                                <span v-if="filter=== 'show_new' ">New applications</span>
+                                <span v-if="filter=== 'show_in_process' ">In process</span>
+                            </div>
+                        </a>
+                        <div class="select-popup" v-show="showFilterSelection" style="margin-top:-45px;">
+                            <ul class="select-popup-list">
+                                <li @click="selectFilter('show_all')">
+                                    Show all applications
+                                </li>
+                                <li @click="selectFilter('show_new')">
+                                    Show new applications
+                                </li>
+                                <li @click="selectFilter('show_in_process')">
+                                    Show applications in process
+                                </li>
+                            </ul>
                         </div>
-                    </a>
-                    <a href="javascript:void(0)" class="sortingBox d-flex align-items-center"  @click="showSortSelection = true">
-                        <img src="/images/admin/sorting.svg" alt="">
-                        <div>
-                            Sorting:
-                            <span v-if="sort=== 'new_first' ">newest first</span>
-                            <span v-if="sort=== 'old_first' ">oldest first</span>
+                    </div>
+                    <div>
+                        <a href="javascript:void(0)" class="sortingBox d-flex align-items-center"  @click="showSortSelection = true">
+                            <img src="/images/admin/sorting.svg" alt="">
+                            <div>
+                                Sorting :
+                                <span v-if="sort=== 'new_first' ">newest first</span>
+                                <span v-if="sort=== 'old_first' ">oldest first</span>
+                            </div>
+                        </a>
+                        <div class="select-popup" v-show="showSortSelection">
+                            <ul class="select-popup-list">
+                                <li @click="selectSort('new_first')">
+                                    Newest first
+                                </li>
+                                <li @click="selectSort('old_first')">
+                                    Oldest first
+                                </li>
+                            </ul>
                         </div>
-                    </a>
-                    <div class="select-popup" v-show="showSortSelection">
-                        <ul class="select-popup-list">
-                            <li @click="selectSort('new_first')">
-                                Newest first
-                            </li>
-                            <li @click="selectSort('old_first')">
-                                Oldest first
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -90,6 +110,10 @@
                             <th scope="col">FULL NAME</th>
                             <th scope="col">HOURLY RATE</th>
                             <th scope="col">STATUS</th>
+                            <th scope="col" class="d-flex align-items-center stage-column" v-if="secondaryActiveTab === 'applicants'" style="padding-left: 30px;padding-right: 30px;">
+                                STAGE
+                                <img src="/images/admin/arrows.svg" alt="arrow down">
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -111,6 +135,95 @@
                                         AVAILABLE (+15 h/week)
                                     </div>
                                 </td>
+
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" style="border-top:0; padding-top:0">
+                                    <div v-show="secondaryActiveTab === 'applicants'" class="action-buttons-bar">
+                                        <div class="disapprove-btn no-decoration">
+                                            <a href="javascript:void(0)" data-toggle="modal" data-target="#disapprove-agent">
+                                                DISAPPROVE APPLICANT
+                                            </a>
+                                        </div>
+                                        <div class="approve-btn no-decoration">
+                                            <a href="javascript:void(0)">
+                                                APPROVE APPLICANT
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="responsive-grid mb-3"
+                                                 style="margin-top: 20px;">
+                                                <!--image-->
+                                                <div class="d-flex">
+                                                    <div class="">
+                                                        <img src="/images/client/add_agent/search_result/ic/user/user123.png" class="avator"/>
+                                                    </div>
+                                                    <!--location-->
+                                                    <div class="p-2">
+                                                        <div class="big-font" style="margin-bottom:6px;">Jason Morgenstern</div>
+                                                        <div class="location">
+                                                            <img src="/images/client/add_agent/search_result/icon/maps/place_24px.png"/>
+                                                            Dublin, Ireland
+                                                        </div>
+                                                        <div class="visiblty">
+                                                            <div class="no-decoration">
+                                                                <a href="/admin-front/applicant-profile" class="btn btn-primar btn-radius btn-responsive">VISIT AGENT’S PROFILE</a>
+                                                            </div>
+                                                            <div>
+                                                                <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">
+                                                                    <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png" style="margin-right: 15px;"/>
+                                                                    LISTEN TO THE RECORD
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--info-->
+                                                <div class=""
+                                                     style="margin-top:15px;">
+                                                    <div class="big-font">
+                                                        <img src="/images/client/add_agent/search_result/ic/primary_job_name.png" class="primaryjob-icon"/>
+                                                        Telemarketing
+                                                    </div>
+                                                    <div style="font-size: 16px; color : #4a5464; margin: 20px 0 20px;">
+                                                        <span style="font-weight: 500;">Sector experience: </span> Real estate, Investement, Insurance
+                                                    </div>
+                                                    <div>
+                                                        <span style="font-weight: 500;">Technologies, software: </span> Microsoft Excel
+                                                    </div>
+                                                    <div style="margin: 20px 0 ;">
+                                                        <span style="font-weight: 500;">Languages: </span>English, Spanish
+                                                    </div>
+                                                    <div>
+                                                        <span style="font-weight: 500;">No. hours per week: </span>30-40 hours
+                                                    </div>
+                                                </div>
+                                                <div class="invisiblty" style="padding-top: 40px;">
+                                                    <div class="d-flex align-items-center" style="">
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png" style="margin-right: 8px;">
+                                                            <div class="blue-text" style="font-size:12px;">LISTEN TO THE RECORD</div>
+                                                        </div>
+                                                        <div>
+                                                            <button class="btn btn-primar btn-radius btn-responsive" style="margin:0 0 0 20px; ">
+                                                                <b>VISIT PROFILE</b>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="blue-text showFrom-600" style="white-space: nowrap;margin-top: 7px;" v-show="secondaryActiveTab === 'approved-agents'">
+                                                    EDIT PROFILE
+                                                </div>
+                                            </div>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -131,6 +244,11 @@
                                         AVAILABLE (+10 h/week)
                                     </div>
                                 </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -152,6 +270,11 @@
                                         NOT AVAILABLE
                                     </div>
                                 </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -171,6 +294,11 @@
                                     <div class="invoice-amount base-text available-text">
                                         AVAILABLE (+10 h/week)
                                     </div>
+                                </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -192,6 +320,11 @@
                                     <div class="invoice-amount base-text not-available-text">
                                         NOT AVAILABLE
                                     </div>
+                                </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -212,6 +345,11 @@
                                         AVAILABLE (+15 h/week)
                                     </div>
                                 </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -231,6 +369,11 @@
                                     <div class="invoice-amount base-text available-text">
                                         AVAILABLE (+10 h/week)
                                     </div>
+                                </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -253,6 +396,11 @@
                                         NOT AVAILABLE
                                     </div>
                                 </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -272,6 +420,11 @@
                                     <div class="invoice-amount base-text available-text">
                                         AVAILABLE (+10 h/week)
                                     </div>
+                                </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -293,6 +446,11 @@
                                     <div class="invoice-amount base-text not-available-text">
                                         NOT AVAILABLE
                                     </div>
+                                </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -313,6 +471,11 @@
                                         AVAILABLE (+15 h/week)
                                     </div>
                                 </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -332,6 +495,11 @@
                                     <div class="invoice-amount base-text available-text">
                                         AVAILABLE (+10 h/week)
                                     </div>
+                                </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -354,6 +522,11 @@
                                         NOT AVAILABLE
                                     </div>
                                 </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -373,6 +546,11 @@
                                     <div class="invoice-amount base-text available-text">
                                         AVAILABLE (+10 h/week)
                                     </div>
+                                </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -394,6 +572,11 @@
                                     <div class="invoice-amount base-text not-available-text">
                                         NOT AVAILABLE
                                     </div>
+                                </td>
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                    <a href="javascript:void(0)">
+                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
@@ -416,9 +599,27 @@
                              </span>
                         <img src="/images/new_theme/arrow@2x.png" alt="" style="width:7.5px; height:12px;">
                     </div>
-                    <div class="paginationBox d-flex align-items-center justify-content-center">
-                        Users per page : 15
-                        <img src="/images/admin/down_arrow.png" alt="">
+                    <div class="no-decoration">
+                        <a href="javascript:void(0)" class="paginationBox d-flex align-items-center justify-content-center" @click="showUsersNumSelection = true">
+                            Users per page :
+                            <span v-if="usersNumber === 15 ">15</span>
+                            <span v-if="usersNumber === 25 ">25</span>
+                            <span v-if="usersNumber === 50 ">50</span>
+                            <img src="/images/admin/down_arrow.png" alt="arrow down">
+                        </a>
+                        <div class="select-popup usersNumber" v-show="showUsersNumSelection">
+                            <ul class="select-popup-list">
+                                <li @click="selectUsersNum(15)">
+                                    15 items
+                                </li>
+                                <li @click="selectUsersNum(25)">
+                                    25 items
+                                </li>
+                                <li @click="selectUsersNum(50)">
+                                    50 items
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -439,9 +640,27 @@
                         <div class="base-text" style="font-size: 12px;">
                             Total : 124
                         </div>
-                        <div class="paginationBox d-flex align-items-center justify-content-center"  style="font-size: 12px; width:140px;">
-                            Users per page : 15
-                            <img src="/images/admin/down_arrow.png" alt="">
+                        <div class="no-decoration">
+                            <a href="javascript:void(0)" class="paginationBox d-flex align-items-center justify-content-center" @click="showUsersNumSelection = true">
+                                Users per page :
+                                <span v-if="usersNumber === 15 ">15</span>
+                                <span v-if="usersNumber === 25 ">25</span>
+                                <span v-if="usersNumber === 50 ">50</span>
+                                <img src="/images/admin/down_arrow.png" alt="arrow down">
+                            </a>
+                            <div class="select-popup usersNumber" v-show="showUsersNumSelection">
+                                <ul class="select-popup-list">
+                                    <li @click="selectUsersNum(15)">
+                                        15 items
+                                    </li>
+                                    <li @click="selectUsersNum(25)">
+                                        25 items
+                                    </li>
+                                    <li @click="selectUsersNum(50)">
+                                        50 items
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -449,7 +668,6 @@
             </div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
@@ -459,13 +677,26 @@
                 activeTab: 'business-support',
                 secondaryActiveTab: 'approved-agents',
                 sort:'new_first',
+                filter:'show_all',
+                usersNumber:15,
                 showSortSelection : false,
+                showFilterSelection : false,
+                showUsersNumSelection : false,
             }
         },
         methods: {
             selectSort(sort){
                 this.sort = sort ;
                 this.showSortSelection = false;
+            },
+            selectFilter(filter){
+                this.filter = filter ;
+                this.showFilterSelection = false;
+            },
+
+            selectUsersNum(number){
+                this.usersNumber = number ;
+                this.showUsersNumSelection = false;
             }
         },
         mounted() {

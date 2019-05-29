@@ -180,7 +180,7 @@
               </div>
             </div>
           </div>
-          <div class="new-sub-plan pt-5">
+          <!-- <div class="new-sub-plan pt-5">
             <div class="weeks-number">
               <div class="sub-agent-numbering pb-3">
                 Agent № 1
@@ -259,7 +259,7 @@
             <a href="javascript:void(0)" style="width:158px; height:36px;" class="m-0" data-toggle="modal" data-target="#remove-manager-modal">
                             REMOVE MANAGER
                         </a>
-          </div>
+          </div> -->
           <div class="sub-action pt-5">
             <a href="#"  @click="status='finish'">
                             CONTINUE

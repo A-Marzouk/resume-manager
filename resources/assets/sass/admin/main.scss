@@ -101,14 +101,24 @@
 }
 
 .paginationBox{
-  width: 175px;
+  width: 152px;
   padding-left: 5px;
+  letter-spacing: -0.1px;
+  font-size: 13px;
+  color: #4A5464;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 13px;
   img{
     margin-right:5px;
     margin-left:8px;
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
   }
+}
+.paginationBox:hover{
+  color: #4A5464;
 }
 
 .pagination-bar{
@@ -174,6 +184,7 @@
   }
 
   .hour-text{
+    margin-top: -6px;
     img{
       margin-left:14px !important;
       cursor: pointer;
@@ -203,5 +214,103 @@
   display: flex !important;
   @media only screen and (max-width: 600px){
     display: none !important;
+  }
+}
+
+.stage-select{
+  a{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 13px;
+    /* or 93% */
+
+    letter-spacing: -0.1px;
+
+    color: #4A5464;
+    img{
+      filter: grayscale(100%);
+      margin-left:15px;
+    }
+  }
+}
+
+.stage-column{
+  img{
+    margin-left: 12px;
+  }
+}
+
+
+.action-buttons-bar{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.disapprove-btn, .approve-btn{
+  a{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.1px;
+    border-radius: 2px;
+    width: 193px;
+    height: 36px;
+  }
+}
+
+.disapprove-btn{
+  a{
+    color: #FF576B;
+    border: 2px solid #FF576B;
+  }
+  a:hover{
+    color: #FF576B;
+  }
+}
+
+.approve-btn{
+  margin-left: 26px;
+  a{
+    color: #30C56F;
+    border: 2px solid #30C56F;
+  }
+  a:hover{
+    color: #30C56F;
+  }
+}
+
+.disapprove-text{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px !important;
+  line-height: 24px;
+  color: #4A5464;
+  mix-blend-mode: normal;
+  opacity: 0.9;
+}
+
+.modal-note{
+  margin-top: 26px;
+  border-top: 1px solid rgba(188, 191, 198, 0.44);
+  padding-top: 16px;
+  span{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #7A828D;
+    mix-blend-mode: normal;
+    opacity: 0.9;
   }
 }

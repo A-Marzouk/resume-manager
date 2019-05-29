@@ -7994,30 +7994,6 @@ body {
   background-color: transparent;
 }
 
-.account-edit-section-edit-btn a {
-  background-color: #218dce;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  min-width: 150px;
-  border-radius: 4px;
-}
-
-.account-edit-section-edit-btn a.dz-remove {
-  color: #218dce;
-  background-color: #fff;
-  border: 2px solid #218dce;
-  margin-top: 20px;
-  position: absolute;
-  bottom: 10px;
-  width: 200px;
-  font-weight: 500;
-}
-
-.account-edit-section-edit-btn a.dz-remove:hover {
-  color: #218dce;
-}
-
 .step-footer {
   position: absolute;
   bottom: 40px;
@@ -8148,25 +8124,195 @@ body {
   position: absolute;
 }
 
-.dz-preview {
-  height: 200px;
-  position: relative;
+#dropzone a {
+  background-color: #218dce;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  min-width: 150px;
+  border-radius: 4px;
 }
 
-.dz-preview .dz-image {
+#dropzone .dz-image {
   width: 120px;
   height: 120px;
 }
 
-.dz-preview .dz-image img {
+#dropzone .dz-image img {
   border-radius: 50%;
 }
 
-.dz-preview .dz-details,
-.dz-preview .dz-error-message,
-.dz-preview .dz-error-mark,
-.dz-preview .dz-success-mark {
+#dropzone.dz-remove {
+  color: #218dce;
+  background-color: #fff;
+  border: 2px solid #218dce;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 10px;
+  width: 200px;
+  font-weight: 500;
+}
+
+#dropzone.dz-remove:hover {
+  color: #218dce;
+}
+
+#dropzone .dz-preview {
+  height: 200px;
+  position: relative;
+}
+
+#dropzone .dz-preview .dz-details,
+#dropzone .dz-preview .dz-error-message,
+#dropzone .dz-preview .dz-error-mark,
+#dropzone .dz-preview .dz-success-mark {
   display: none;
+}
+
+.preview-files-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.preview-files-container .preview-container,
+.preview-files-container .dz-preview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 120px;
+  font-size: 16px;
+  color: #4A5464;
+}
+
+.preview-files-container .preview-container {
+  margin-right: 20px;
+}
+
+.preview-files-container .dz-preview {
+  position: relative;
+}
+
+.preview-files-container .dz-details {
+  width: 100%;
+}
+
+.preview-files-container .filename {
+  text-overflow: ellipsis;
+}
+
+.preview-files-container .thumbnail-container {
+  width: 118px;
+  height: 118px;
+  background: #EFF3FA;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.preview-files-container .thumbnail-container img {
+  margin: 0 !important;
+}
+
+.preview-files-container .menu-preview {
+  position: absolute;
+  opacity: 0;
+  font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  top: 40px;
+  left: 70px;
+  width: 230px;
+  z-index: 20;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.preview-files-container .menu-preview a {
+  color: #4A5464;
+  width: 100%;
+  border-bottom: 1px solid #E0E0E0;
+  padding: 10px 20px;
+}
+
+.preview-files-container .menu-preview a:last-child {
+  border: none;
+}
+
+.preview-files-container .menu-preview.show {
+  opacity: 1;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.preview-files-container .icon-menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.preview-files-container .dz-image,
+.preview-files-container .dz-error-mark,
+.preview-files-container .dz-error-message,
+.preview-files-container .dz-success-mark,
+.preview-files-container .dz-size,
+.preview-files-container .dz-filename {
+  display: none;
+}
+
+.preview-files-container .add-document-container {
+  margin-right: 20px;
+}
+
+.preview-files-container .add-document-container img {
+  height: 34px;
+  width: 27.2px;
+}
+
+.preview-files-container .add-document-container .thumbnail-container {
+  position: relative;
+}
+
+.preview-files-container .add-document-container input {
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+}
+
+.preview-files-container .add-document-container input:hover {
+  cursor: pointer;
+}
+
+.preview-files-container .add-document-container a {
+  font-weight: 500;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+}
+
+.preview-files-container .add-document-container a:hover {
+  text-decoration: none;
 }
 
 .flags-dropdown {

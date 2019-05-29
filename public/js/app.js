@@ -72879,6 +72879,42 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -73177,7 +73213,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       },
       process_flow_em: false,
       is_text_editor_set: false,
-      showErrors: false
+      showErrors: false,
+      files: []
     };
   },
 
@@ -73271,9 +73308,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         theme: 'snow' // or 'bubble'
       });
       this.is_text_editor_set = true;
+    },
+    removeDoc: function removeDoc(index) {
+      this.files.splice(index, 1);
+    },
+    showMenu: function showMenu(index) {
+      var fileContainers = document.getElementsByClassName('preview-container');
+
+      var container = fileContainers[index].getElementsByClassName('menu-preview')[0].classList.toggle('show');
+    },
+    addFiles: function addFiles(e) {
+      this.files = [].concat(_toConsumableArray(this.files), _toConsumableArray(e.target.files));
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    var component = this;
+
+    var dropZone = new Dropzone("#dropfiles-team-brief", {
+      maxFilesize: 45,
+      dictDefaultMessage: '',
+      dictRemoveFile: '',
+      dictCancelUpload: '',
+      url: '/',
+      paramName: 'files',
+      addRemoveLinks: true,
+      uploadMultiple: true,
+      init: function init() {
+        this.on('addedfile', function (file) {
+          var filesInput = document.getElementById('files');
+          component.files.push(file);
+        });
+
+        this.on('error', function (error) {
+          return console.log(error);
+        });
+
+        this.on('removedfile', function (file) {
+          console.log("Remove file");
+        });
+      }
+    });
+  }
 });
 
 /***/ }),
@@ -73906,43 +73981,164 @@ var render = function() {
                 _vm._m(4),
                 _vm._v(" "),
                 _c("div", { staticClass: "faq-input" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "account-edit-section-edit-btn no-decoration picture-box",
-                      class: { "disabled-btn": !_vm.canSubmit },
-                      attrs: { id: "dropbox" }
-                    },
-                    [
-                      _vm._m(5),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "dz-message" }, [
-                        _vm._v("Drag and drop a photo you want to upload")
-                      ]),
-                      _vm._v(" "),
-                      _c(
+                  _vm.files.length === 0
+                    ? _c(
                         "div",
                         {
-                          staticClass: "fake-file-input btn btn-orange dz-input"
+                          staticClass:
+                            "account-edit-section-edit-btn no-decoration picture-box"
                         },
                         [
-                          _vm._v(
-                            "\n                                  CHOOSE A FILE\n                              "
-                          )
+                          _vm._m(5),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "dz-message" }, [
+                            _vm._v("Drag and drop a photo you want to upload")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "fake-file-input btn btn-orange dz-input"
+                            },
+                            [
+                              _vm._v(
+                                "\n                                  CHOOSE A FILE\n                              "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "dz-message little" }, [
+                            _vm._v("Maximum allowed size is 45 MB")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", {
+                            staticClass: "dropzone",
+                            attrs: { id: "dropfiles-team-brief" }
+                          })
                         ]
-                      ),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "dz-message little" }, [
-                        _vm._v("Maximum allowed size is 45 MB")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass: "dropzone",
-                        attrs: { id: "dropzone" }
-                      })
-                    ]
-                  )
+                      )
+                    : _c(
+                        "div",
+                        { staticClass: "preview-files-container" },
+                        [
+                          _c("div", { staticClass: "add-document-container" }, [
+                            _c("div", { staticClass: "dz-details" }, [
+                              _c(
+                                "div",
+                                { staticClass: "thumbnail-container" },
+                                [
+                                  _c("img", {
+                                    staticClass: "icon-download",
+                                    attrs: { src: "/images/icons/document.svg" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    attrs: {
+                                      multiple: "",
+                                      type: "file",
+                                      id: "files",
+                                      name: "files"
+                                    },
+                                    on: { change: _vm.addFiles }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("a", { attrs: { href: "javascript:;" } }, [
+                                _vm._v("UPLOAD NEW FILE")
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.files, function(file, index) {
+                            return _c(
+                              "div",
+                              {
+                                key: index + file.name,
+                                staticClass: "preview-container"
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  { staticClass: "dz-preview dz-file-preview" },
+                                  [
+                                    _c("div", { staticClass: "dz-details" }, [
+                                      _c(
+                                        "div",
+                                        { staticClass: "thumbnail-container" },
+                                        [
+                                          _c("img", {
+                                            staticClass: "icon-download",
+                                            attrs: {
+                                              src:
+                                                "/images/icons/download_icon.svg"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "a",
+                                            {
+                                              staticClass: "menu-handler",
+                                              attrs: { href: "javascript:;" },
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.showMenu(index)
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c("img", {
+                                                staticClass: "icon-menu",
+                                                attrs: {
+                                                  src:
+                                                    "/images/icons/more_vert.svg"
+                                                }
+                                              })
+                                            ]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "filename" }, [
+                                        _vm._v(_vm._s(file.name))
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "menu-preview" }, [
+                                      _c(
+                                        "a",
+                                        {
+                                          attrs: { href: "javascript:;" },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.removeDoc(index)
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("Delete the document")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "a",
+                                        { attrs: { href: "javascript:;" } },
+                                        [_vm._v("Send in private message")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "a",
+                                        { attrs: { href: "javascript:;" } },
+                                        [_vm._v("Send to email")]
+                                      )
+                                    ])
+                                  ]
+                                )
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
                 ])
               ])
             ])
@@ -74101,7 +74297,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "fallback" }, [
-      _c("input", { attrs: { type: "file", id: "photo", name: "photo" } })
+      _c("input", {
+        attrs: { multiple: "", type: "file", id: "files", name: "files" }
+      })
     ])
   },
   function() {

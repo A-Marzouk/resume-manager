@@ -197,9 +197,9 @@
                               List of the documents
                             </label>
                             <div class="faq-input">
-                              <div id="dropbox" class="account-edit-section-edit-btn no-decoration picture-box" :class="{'disabled-btn' : !canSubmit}">
+                              <div v-if="files.length === 0" class="account-edit-section-edit-btn no-decoration picture-box">
                                 <div class="fallback">
-                                    <input type="file" id="photo" name="photo" />
+                                    <input multiple type="file" id="files" name="files" />
                                 </div>
                                 <p class="dz-message">Drag and drop a photo you want to upload</p>
                         
@@ -207,7 +207,41 @@
                                     CHOOSE A FILE
                                 </div>
                                 <p class="dz-message little">Maximum allowed size is 45 MB</p>
-                                <div id="dropzone" class="dropzone"></div>
+                                <div id="dropfiles-team-brief" class="dropzone"></div>
+                              </div>
+                              <div class="preview-files-container" v-else>
+                                <div class="add-document-container">
+                                  <div class="dz-details">
+                                        <div
+                                        class="thumbnail-container">
+                                            <img class="icon-download" src="/images/icons/document.svg" />
+                                            <input multiple type="file" id="files" name="files"
+                                            v-on:change="addFiles" />
+                                        </div>
+                                        <a href="javascript:;">UPLOAD NEW FILE</a>
+                                    </div>
+                                </div>
+                                <div :key="index + file.name" v-for="(file, index) in files" class="preview-container">
+                                  <div class="dz-preview dz-file-preview">
+                                    <div class="dz-details">
+                                        <div class="thumbnail-container">
+                                            <img class="icon-download" src="/images/icons/download_icon.svg" />
+                                            <a href="javascript:;"
+                                            v-on:click="showMenu(index)"
+                                            class="menu-handler">
+                                                <img class="icon-menu"
+                                                src="/images/icons/more_vert.svg" />
+                                            </a>
+                                        </div>
+                                        <div class="filename">{{file.name}}</div>
+                                    </div>
+                                    <div class="menu-preview">
+                                        <a href="javascript:;" v-on:click="removeDoc(index)">Delete the document</a>
+                                        <a href="javascript:;">Send in private message</a>
+                                        <a href="javascript:;">Send to email</a>
+                                    </div>
+                                  </div>   
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -317,7 +351,8 @@ export default {
       },
       process_flow_em: false,
       is_text_editor_set: false,
-      showErrors: false
+      showErrors: false,
+      files: []
     }
   },
   methods: {
@@ -410,8 +445,44 @@ export default {
         theme: 'snow' // or 'bubble'
       });
       this.is_text_editor_set = true;
+    },
+    removeDoc (index) {
+      this.files.splice(index, 1)
+    },
+    showMenu (index) {
+      let fileContainers = document.getElementsByClassName('preview-container')
+
+      let container = fileContainers[index].getElementsByClassName('menu-preview')[0].classList.toggle('show')
+    },
+    addFiles (e) {
+      this.files = [...this.files, ...e.target.files]
     }
   },
-  mounted() {},
+  mounted() {
+    let component = this
+
+    let dropZone = new Dropzone("#dropfiles-team-brief", {
+        maxFilesize: 45,
+        dictDefaultMessage: '',
+        dictRemoveFile: '',
+        dictCancelUpload: '',
+        url: '/',
+        paramName: 'files',
+        addRemoveLinks: true,
+        uploadMultiple: true,
+        init: function () {
+            this.on('addedfile', (file) => {
+                let filesInput = document.getElementById('files')
+                component.files.push(file)
+            })
+
+            this.on('error', (error) => console.log(error))
+
+            this.on('removedfile', (file) => {
+                console.log("Remove file")
+            })
+        }
+    })
+  },
 }
 </script>

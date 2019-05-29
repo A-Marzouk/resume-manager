@@ -2140,81 +2140,6 @@ body {
   border-radius: 5px;
 }
 
-/* The container */
-
-.checkBoxContainer {
-  display: inline-block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Hide the browser's default checkbox */
-
-.checkBoxContainer input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-/* Create a custom checkbox */
-
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 18px;
-  width: 18px;
-  background-color: white;
-  border: 1px solid #eee;
-  border-radius: 2px;
-}
-
-/* On mouse-over, add a grey background color */
-
-.checkBoxContainer:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-/* When the checkbox is checked, add a blue background */
-
-.checkBoxContainer input:checked ~ .checkmark {
-  background-color: #AC81FC;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the checkmark when checked */
-
-.checkBoxContainer input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-
-.checkBoxContainer .checkmark:after {
-  left: 5px;
-  top: 1px;
-  width: 6px;
-  height: 12px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
 .deleteBtn {
   border: 1px solid rgba(223, 24, 24, 0.3);
   background: none;
@@ -10083,6 +10008,93 @@ select:focus {
   margin-left: 12px;
 }
 
+.action-buttons-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.disapprove-btn a,
+.approve-btn a {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  letter-spacing: -0.1px;
+  border-radius: 2px;
+  width: 193px;
+  height: 36px;
+}
+
+.disapprove-btn a {
+  color: #FF576B;
+  border: 2px solid #FF576B;
+}
+
+.disapprove-btn a:hover {
+  color: #FF576B;
+}
+
+.approve-btn {
+  margin-left: 26px;
+}
+
+.approve-btn a {
+  color: #30C56F;
+  border: 2px solid #30C56F;
+}
+
+.approve-btn a:hover {
+  color: #30C56F;
+}
+
+.disapprove-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px !important;
+  line-height: 24px;
+  color: #4A5464;
+  mix-blend-mode: normal;
+  opacity: 0.9;
+}
+
+.modal-note {
+  margin-top: 26px;
+  border-top: 1px solid rgba(188, 191, 198, 0.44);
+  padding-top: 16px;
+}
+
+.modal-note span {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #7A828D;
+  mix-blend-mode: normal;
+  opacity: 0.9;
+}
+
 .select-popup {
   width: 212px;
   background: white;
@@ -10135,5 +10147,104 @@ select:focus {
 
 .select-popup-list li:hover {
   cursor: pointer;
+}
+
+/* The container */
+
+.checkBoxContainer {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+
+.checkBoxContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: white;
+  border: 1px solid #eee;
+  border-radius: 2px;
+  margin-top: 3px;
+}
+
+.checkmark.make-circle {
+  height: 20px;
+  width: 20px;
+}
+
+/* On mouse-over, add a grey background color */
+
+.checkBoxContainer:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+
+.checkBoxContainer input:checked ~ .checkmark {
+  background-color: #AC81FC;
+}
+
+.checkBoxContainer input:checked ~ .checkmark.make-circle {
+  border: 1px solid #FFA368;
+  background-color: white;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+
+.checkBoxContainer input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+
+.checkBoxContainer .checkmark:after {
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.checkBoxContainer .checkmark.make-circle:after {
+  left: 3px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: 6px solid #FFA368;
+  border-radius: 50%;
+}
+
+.make-circle {
+  border-radius: 50% !important;
 }
 

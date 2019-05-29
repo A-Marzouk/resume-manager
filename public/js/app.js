@@ -58111,11 +58111,92 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            activeTab: 'campaign-manager'
+            activeTab: 'campaign-manager',
+            selection: 'disapprove',
+            disapproveStatus: 'process'
         };
     },
 
@@ -58144,6 +58225,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     window.location.href = '/';
                 }
             });
+        },
+        disapproveApplicant: function disapproveApplicant() {
+            this.selection = 'disapprove';
+        },
+        disapproveAndBlockApplicant: function disapproveAndBlockApplicant() {
+            this.selection = 'disapprove_and_block';
         }
     },
     mounted: function mounted() {
@@ -58458,7 +58545,238 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(6)
+    _vm._m(6),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "disapprove-agent",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "remove-modal",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-content border-0",
+                staticStyle: { "margin-top": "30%" }
+              },
+              [
+                _c("div", { staticClass: "modal-body campaign-team-modal" }, [
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.disapproveStatus === "process",
+                          expression: "disapproveStatus === 'process'"
+                        }
+                      ]
+                    },
+                    [
+                      _c("div", { staticClass: "modal-question" }, [
+                        _vm._v(
+                          "\n                            Are you sure you want to disapprove this applicant ?\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-answer" }, [
+                        _c("div", { staticClass: "col-12" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "form-check-label checkBoxContainer disapprove-text",
+                              on: { click: _vm.disapproveApplicant }
+                            },
+                            [
+                              _c("input", {
+                                staticClass: "form-check-input",
+                                attrs: { type: "radio", name: "disapprove" }
+                              }),
+                              _vm._v(" "),
+                              _c("span", {
+                                staticClass: "checkmark make-circle"
+                              }),
+                              _vm._v(
+                                " disapprove\n                                "
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-12" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "form-check-label checkBoxContainer disapprove-text",
+                              on: { click: _vm.disapproveAndBlockApplicant }
+                            },
+                            [
+                              _c("input", {
+                                staticClass: "form-check-input",
+                                attrs: { type: "radio", name: "disapprove" }
+                              }),
+                              _vm._v(" "),
+                              _c("span", {
+                                staticClass: "checkmark make-circle"
+                              }),
+                              _vm._v(
+                                " disapprove and block\n                                "
+                              )
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-note" }, [
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.selection === "disapprove",
+                                expression: "selection === 'disapprove'"
+                              }
+                            ]
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Disapproved agent will be able to apply again\n                       "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.selection === "disapprove_and_block",
+                                expression:
+                                  "selection === 'disapprove_and_block'"
+                              }
+                            ]
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Disapproved and blocked agent will not be able to apply again\n                       "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-btn-wrapper" }, [
+                        _vm._m(7),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "button-base blue-button-a" },
+                          [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "javascript:void(0)" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.disapproveStatus = "disapproved"
+                                  }
+                                }
+                              },
+                              [_vm._v("DISAPPROVE AGENT")]
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value:
+                            _vm.disapproveStatus === "disapproved" &&
+                            _vm.selection === "disapprove",
+                          expression:
+                            "disapproveStatus === 'disapproved' && selection === 'disapprove'"
+                        }
+                      ]
+                    },
+                    [
+                      _c("div", { staticClass: "modal-question" }, [
+                        _vm._v(
+                          "\n                          The agent was disapproved\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-answer" }, [
+                        _vm._v(
+                          "\n                          Agent will be able to apply again\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(8)
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value:
+                            _vm.disapproveStatus === "disapproved" &&
+                            _vm.selection === "disapprove_and_block",
+                          expression:
+                            "disapproveStatus === 'disapproved' && selection === 'disapprove_and_block'"
+                        }
+                      ]
+                    },
+                    [
+                      _c("div", { staticClass: "modal-question" }, [
+                        _vm._v(
+                          "\n                            The agent was disapproved and blocked\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-answer" }, [
+                        _vm._v(
+                          "\n                            Agent will not be able to apply again\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(9)
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -58768,6 +59086,60 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "button-base white-button-a" }, [
+      _c(
+        "a",
+        { attrs: { href: "javascript:void(0)", "data-dismiss": "modal" } },
+        [_vm._v("CANCEL")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "modal-btn-wrapper d-flex justify-content-end" },
+      [
+        _c("div", { staticClass: "button-base blue-button-a" }, [
+          _c(
+            "a",
+            {
+              staticStyle: { width: "83px" },
+              attrs: { href: "javascript:void(0)", "data-dismiss": "modal" }
+            },
+            [_vm._v("OK")]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "modal-btn-wrapper d-flex justify-content-end" },
+      [
+        _c("div", { staticClass: "button-base blue-button-a" }, [
+          _c(
+            "a",
+            {
+              staticStyle: { width: "83px" },
+              attrs: { href: "javascript:void(0)", "data-dismiss": "modal" }
+            },
+            [_vm._v("OK")]
+          )
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -58865,7 +59237,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58909,6 +59281,18 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -59949,24 +60333,75 @@ var render = function() {
                     : _vm._e()
                 ]),
                 _vm._v(" "),
-                _vm._m(6),
-                _vm._v(" "),
                 _c("tr", [
-                  _vm._m(7),
-                  _vm._v(" "),
-                  _vm._m(8),
-                  _vm._v(" "),
-                  _vm._m(9),
-                  _vm._v(" "),
-                  _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
+                  _c(
+                    "td",
+                    {
+                      staticStyle: { "border-top": "0", "padding-top": "0" },
+                      attrs: { colspan: "4" }
+                    },
+                    [
+                      _c(
+                        "div",
                         {
-                          staticClass: "no-decoration stage-select text-center"
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.secondaryActiveTab === "applicants",
+                              expression: "secondaryActiveTab === 'applicants'"
+                            }
+                          ],
+                          staticClass: "action-buttons-bar"
                         },
-                        [_vm._m(10)]
-                      )
-                    : _vm._e()
+                        [_vm._m(6), _vm._v(" "), _vm._m(7)]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "d-flex" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "responsive-grid mb-3",
+                            staticStyle: { "margin-top": "20px" }
+                          },
+                          [
+                            _vm._m(8),
+                            _vm._v(" "),
+                            _vm._m(9),
+                            _vm._v(" "),
+                            _vm._m(10),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value:
+                                      _vm.secondaryActiveTab ===
+                                      "approved-agents",
+                                    expression:
+                                      "secondaryActiveTab === 'approved-agents'"
+                                  }
+                                ],
+                                staticClass: "blue-text showFrom-600",
+                                staticStyle: {
+                                  "white-space": "nowrap",
+                                  "margin-top": "7px"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                                EDIT PROFILE\n                                            "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
                 ]),
                 _vm._v(" "),
                 _c("tr", [
@@ -60199,6 +60634,24 @@ var render = function() {
                           staticClass: "no-decoration stage-select text-center"
                         },
                         [_vm._m(62)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(63),
+                  _vm._v(" "),
+                  _vm._m(64),
+                  _vm._v(" "),
+                  _vm._m(65),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(66)]
                       )
                     : _vm._e()
                 ])
@@ -60665,216 +61118,207 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", [
+    return _c("div", { staticClass: "disapprove-btn no-decoration" }, [
       _c(
-        "td",
+        "a",
         {
-          staticStyle: { "border-top": "0", "padding-top": "0" },
-          attrs: { colspan: "3" }
+          attrs: {
+            href: "javascript:void(0)",
+            "data-toggle": "modal",
+            "data-target": "#disapprove-agent"
+          }
         },
         [
-          _c("div", { staticClass: "d-flex" }, [
+          _vm._v(
+            "\n                                            DISAPPROVE APPLICANT\n                                        "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "approve-btn no-decoration" }, [
+      _c("a", { attrs: { href: "javascript:void(0)" } }, [
+        _vm._v(
+          "\n                                            APPROVE APPLICANT\n                                        "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "d-flex" }, [
+      _c("div", {}, [
+        _c("img", {
+          staticClass: "avator",
+          attrs: {
+            src: "/images/client/add_agent/search_result/ic/user/user123.png"
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "p-2" }, [
+        _c(
+          "div",
+          { staticClass: "big-font", staticStyle: { "margin-bottom": "6px" } },
+          [_vm._v("Jason Morgenstern")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "location" }, [
+          _c("img", {
+            attrs: {
+              src:
+                "/images/client/add_agent/search_result/icon/maps/place_24px.png"
+            }
+          }),
+          _vm._v(
+            "\n                                                        Dublin, Ireland\n                                                    "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "visiblty" }, [
+          _c("div", [
             _c(
-              "div",
+              "button",
+              { staticClass: "btn btn-primar btn-radius btn-responsive" },
+              [_vm._v("VISIT AGENT’S PROFILE")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "button",
               {
-                staticClass: "responsive-grid mb-3",
-                staticStyle: { "margin-top": "20px" }
+                staticClass:
+                  "btn btn-left btn-radius btn-responsive d-flex align-items-center"
               },
               [
-                _c("div", { staticClass: "d-flex" }, [
-                  _c("div", {}, [
-                    _c("img", {
-                      staticClass: "avator",
-                      attrs: {
-                        src:
-                          "/images/client/add_agent/search_result/ic/user/user123.png"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "p-2" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "big-font",
-                        staticStyle: { "margin-bottom": "6px" }
-                      },
-                      [_vm._v("Jason Morgenstern")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "location" }, [
-                      _c("img", {
-                        attrs: {
-                          src:
-                            "/images/client/add_agent/search_result/icon/maps/place_24px.png"
-                        }
-                      }),
-                      _vm._v(
-                        "\n                                                        Dublin, Ireland\n                                                    "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "visiblty" }, [
-                      _c("div", [
-                        _c(
-                          "button",
-                          {
-                            staticClass:
-                              "btn btn-primar btn-radius btn-responsive"
-                          },
-                          [_vm._v("VISIT AGENT’S PROFILE")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _c(
-                          "button",
-                          {
-                            staticClass:
-                              "btn btn-left btn-radius btn-responsive d-flex align-items-center"
-                          },
-                          [
-                            _c("img", {
-                              staticStyle: { "margin-right": "15px" },
-                              attrs: {
-                                src:
-                                  "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
-                              }
-                            }),
-                            _vm._v(
-                              "\n                                                                LISTEN TO THE RECORD\n                                                            "
-                            )
-                          ]
-                        )
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticStyle: { "margin-top": "15px" } }, [
-                  _c("div", { staticClass: "big-font" }, [
-                    _c("img", {
-                      staticClass: "primaryjob-icon",
-                      attrs: {
-                        src:
-                          "/images/client/add_agent/search_result/ic/primary_job_name.png"
-                      }
-                    }),
-                    _vm._v(
-                      "\n                                                    Telemarketing\n                                                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticStyle: {
-                        "font-size": "16px",
-                        color: "#4a5464",
-                        margin: "20px 0 20px"
-                      }
-                    },
-                    [
-                      _c("span", { staticStyle: { "font-weight": "500" } }, [
-                        _vm._v("Sector experience: ")
-                      ]),
-                      _vm._v(
-                        " Real estate, Investement, Insurance\n                                                "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("span", { staticStyle: { "font-weight": "500" } }, [
-                      _vm._v("Technologies, software: ")
-                    ]),
-                    _vm._v(
-                      " Microsoft Excel\n                                                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticStyle: { margin: "20px 0" } }, [
-                    _c("span", { staticStyle: { "font-weight": "500" } }, [
-                      _vm._v("Languages: ")
-                    ]),
-                    _vm._v(
-                      "English, Spanish\n                                                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("span", { staticStyle: { "font-weight": "500" } }, [
-                      _vm._v("No. hours per week: ")
-                    ]),
-                    _vm._v(
-                      "30-40 hours\n                                                "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "invisiblty",
-                    staticStyle: { "padding-top": "40px" }
-                  },
-                  [
-                    _c("div", { staticClass: "d-flex align-items-center" }, [
-                      _c("div", { staticClass: "d-flex align-items-center" }, [
-                        _c("img", {
-                          staticStyle: { "margin-right": "8px" },
-                          attrs: {
-                            src:
-                              "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "blue-text",
-                            staticStyle: { "font-size": "12px" }
-                          },
-                          [_vm._v("LISTEN TO THE RECORD")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _c(
-                          "button",
-                          {
-                            staticClass:
-                              "btn btn-primar btn-radius btn-responsive",
-                            staticStyle: { margin: "0 0 0 20px" }
-                          },
-                          [_c("b", [_vm._v("VISIT PROFILE")])]
-                        )
-                      ])
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "blue-text showFrom-600",
-                    staticStyle: {
-                      "white-space": "nowrap",
-                      "margin-top": "7px"
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                                                EDIT PROFILE\n                                            "
-                    )
-                  ]
+                _c("img", {
+                  staticStyle: { "margin-right": "15px" },
+                  attrs: {
+                    src:
+                      "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                  }
+                }),
+                _vm._v(
+                  "\n                                                                LISTEN TO THE RECORD\n                                                            "
                 )
               ]
             )
           ])
-        ]
-      )
+        ])
+      ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticStyle: { "margin-top": "15px" } }, [
+      _c("div", { staticClass: "big-font" }, [
+        _c("img", {
+          staticClass: "primaryjob-icon",
+          attrs: {
+            src:
+              "/images/client/add_agent/search_result/ic/primary_job_name.png"
+          }
+        }),
+        _vm._v(
+          "\n                                                    Telemarketing\n                                                "
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticStyle: {
+            "font-size": "16px",
+            color: "#4a5464",
+            margin: "20px 0 20px"
+          }
+        },
+        [
+          _c("span", { staticStyle: { "font-weight": "500" } }, [
+            _vm._v("Sector experience: ")
+          ]),
+          _vm._v(
+            " Real estate, Investement, Insurance\n                                                "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", [
+        _c("span", { staticStyle: { "font-weight": "500" } }, [
+          _vm._v("Technologies, software: ")
+        ]),
+        _vm._v(
+          " Microsoft Excel\n                                                "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticStyle: { margin: "20px 0" } }, [
+        _c("span", { staticStyle: { "font-weight": "500" } }, [
+          _vm._v("Languages: ")
+        ]),
+        _vm._v(
+          "English, Spanish\n                                                "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("span", { staticStyle: { "font-weight": "500" } }, [
+          _vm._v("No. hours per week: ")
+        ]),
+        _vm._v("30-40 hours\n                                                ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "invisiblty", staticStyle: { "padding-top": "40px" } },
+      [
+        _c("div", { staticClass: "d-flex align-items-center" }, [
+          _c("div", { staticClass: "d-flex align-items-center" }, [
+            _c("img", {
+              staticStyle: { "margin-right": "8px" },
+              attrs: {
+                src:
+                  "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "blue-text",
+                staticStyle: { "font-size": "12px" }
+              },
+              [_vm._v("LISTEN TO THE RECORD")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primar btn-radius btn-responsive",
+                staticStyle: { margin: "0 0 0 20px" }
+              },
+              [_c("b", [_vm._v("VISIT PROFILE")])]
+            )
+          ])
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this

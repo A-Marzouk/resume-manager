@@ -143,7 +143,19 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3" style="border-top:0; padding-top:0">
+                                <td colspan="4" style="border-top:0; padding-top:0">
+                                    <div v-show="secondaryActiveTab === 'applicants'" class="action-buttons-bar">
+                                        <div class="disapprove-btn no-decoration">
+                                            <a href="javascript:void(0)" data-toggle="modal" data-target="#disapprove-agent">
+                                                DISAPPROVE APPLICANT
+                                            </a>
+                                        </div>
+                                        <div class="approve-btn no-decoration">
+                                            <a href="javascript:void(0)">
+                                                APPROVE APPLICANT
+                                            </a>
+                                        </div>
+                                    </div>
                                     <div class="d-flex">
                                         <div class="responsive-grid mb-3"
                                                  style="margin-top: 20px;">
@@ -206,7 +218,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="blue-text showFrom-600" style="white-space: nowrap;margin-top: 7px;">
+                                                <div class="blue-text showFrom-600" style="white-space: nowrap;margin-top: 7px;" v-show="secondaryActiveTab === 'approved-agents'">
                                                     EDIT PROFILE
                                                 </div>
                                             </div>

@@ -230,6 +230,85 @@
 
             </div>
         </div>
+
+        <!-- modals -->
+
+        <div class="modal fade"
+             id="disapprove-agent"
+             tabindex="-1"
+             role="dialog"
+             aria-labelledby="remove-modal"
+             aria-hidden="true">
+            <div class="modal-dialog"
+                 role="document">
+                <div class="modal-content border-0"
+                     style="margin-top: 30%;">
+                    <div class="modal-body campaign-team-modal">
+                        <div v-show="disapproveStatus === 'process'">
+                            <div class="modal-question">
+                                Are you sure you want to disapprove this applicant ?
+                            </div>
+                            <div class="modal-answer">
+                                <div class="col-12">
+                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveApplicant">
+                                        <input class="form-check-input" type="radio" name="disapprove">
+                                        <span class="checkmark make-circle"></span> disapprove
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveAndBlockApplicant">
+                                        <input class="form-check-input" type="radio" name="disapprove">
+                                        <span class="checkmark make-circle"></span> disapprove and block
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="modal-note">
+                           <span v-show="selection === 'disapprove'">
+                                Disapproved agent will be able to apply again
+                           </span>
+                                <span v-show="selection === 'disapprove_and_block'">
+                                Disapproved and blocked agent will not be able to apply again
+                           </span>
+                            </div>
+                            <div class="modal-btn-wrapper">
+                                <div class="button-base white-button-a">
+                                    <a href="javascript:void(0)" data-dismiss="modal">CANCEL</a>
+                                </div>
+                                <div class="button-base blue-button-a">
+                                    <a href="javascript:void(0)" @click="disapproveStatus = 'disapproved' ">DISAPPROVE AGENT</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-show="disapproveStatus === 'disapproved' && selection === 'disapprove'">
+                            <div class="modal-question">
+                              The agent was disapproved
+                            </div>
+                            <div class="modal-answer">
+                              Agent will be able to apply again
+                            </div>
+                            <div class="modal-btn-wrapper d-flex justify-content-end">
+                                <div class="button-base blue-button-a">
+                                    <a href="javascript:void(0)" data-dismiss="modal" style="width: 83px;">OK</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-show="disapproveStatus === 'disapproved' && selection === 'disapprove_and_block'">
+                            <div class="modal-question">
+                                The agent was disapproved and blocked
+                            </div>
+                            <div class="modal-answer">
+                                Agent will not be able to apply again
+                            </div>
+                            <div class="modal-btn-wrapper d-flex justify-content-end">
+                                <div class="button-base blue-button-a">
+                                    <a href="javascript:void(0)" data-dismiss="modal" style="width: 83px;">OK</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -237,6 +316,8 @@
         data(){
             return{
                 activeTab: 'campaign-manager',
+                selection: 'disapprove',
+                disapproveStatus: 'process',
             }
         },
         methods:{
@@ -264,7 +345,16 @@
                         window.location.href = '/' ;
                     }
                 });
+            },
+
+            disapproveApplicant(){
+                this.selection = 'disapprove';
+            },
+
+            disapproveAndBlockApplicant(){
+                this.selection = 'disapprove_and_block';
             }
+
         },
         mounted(){
             this.setActiveTab();

@@ -241,3 +241,76 @@
     margin-left: 12px;
   }
 }
+
+
+.action-buttons-bar{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.disapprove-btn, .approve-btn{
+  a{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.1px;
+    border-radius: 2px;
+    width: 193px;
+    height: 36px;
+  }
+}
+
+.disapprove-btn{
+  a{
+    color: #FF576B;
+    border: 2px solid #FF576B;
+  }
+  a:hover{
+    color: #FF576B;
+  }
+}
+
+.approve-btn{
+  margin-left: 26px;
+  a{
+    color: #30C56F;
+    border: 2px solid #30C56F;
+  }
+  a:hover{
+    color: #30C56F;
+  }
+}
+
+.disapprove-text{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px !important;
+  line-height: 24px;
+  color: #4A5464;
+  mix-blend-mode: normal;
+  opacity: 0.9;
+}
+
+.modal-note{
+  margin-top: 26px;
+  border-top: 1px solid rgba(188, 191, 198, 0.44);
+  padding-top: 16px;
+  span{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #7A828D;
+    mix-blend-mode: normal;
+    opacity: 0.9;
+  }
+}

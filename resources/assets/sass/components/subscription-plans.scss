@@ -1,0 +1,105 @@
+.subscription-plans {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  .plan {
+    margin: 5px 0;
+    padding: 20px;
+    box-shadow: 0px 1px 16px rgba(202, 202, 202, 0.26);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .price {
+      .value {
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 24px;
+        color: #FC9968;
+        width: 60px;
+        display: inline-block;
+      }
+
+      .frequency {
+        font-size: 12px;
+        color: #818893;
+      }
+    }
+
+    .hours {
+      width: 190px;
+      color: #4A5464;
+      font-size: 18px;
+      text-align: left;
+
+      img {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .btn-bordered {
+    width: 150px;
+  }
+}
+
+.btn-bordered {
+  color: #05A4F4;
+  background: white;
+  padding: 7px;
+  text-align: center;
+  border: 2px solid #05A4F4;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-weight: 500;
+  font-size: 14px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.selected {
+    background: #05A4F4;
+    color: #fff;
+  }
+}
+
+.start-date {
+  margin-top: 40px;
+
+  a {
+    font-weight: 500;
+    margin-top: 40px;
+    margin-left: 40px;
+    display: block;
+    color: #05A4F4;
+    font-size: 14px;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .start-date-heading {
+    display: flex;
+    align-items: center;
+    color: #4A5464;
+    font-size: 18px;
+
+    img {
+      margin-right: 10px;
+    }
+  }
+}
+
+.weeks-number {
+  margin-top: 40px;
+
+  select,
+  input {
+    background: #FBFBFB;
+  }
+}

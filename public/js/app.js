@@ -66703,7 +66703,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -66714,6 +66714,34 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -67021,13 +67049,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       status: 'update', // or finish
-      checked: false
+      checked: false,
+      numOfWeeks: '',
+      plans: [{
+        price: 75,
+        hoursPerWeek: 5,
+        selected: false
+      }, {
+        price: 140,
+        hoursPerWeek: 10,
+        selected: false
+      }, {
+        price: 260,
+        hoursPerWeek: 20,
+        selected: false
+      }, {
+        price: 360,
+        hoursPerWeek: 30,
+        selected: true
+      }, {
+        price: 440,
+        hoursPerWeek: 40,
+        selected: false
+      }, {
+        price: 600,
+        hoursPerWeek: 60,
+        selected: false
+      }]
     };
   },
 
   methods: {
     handleCheck: function handleCheck() {
       this.checked = !this.checked;
+    },
+    changePlan: function changePlan(index) {
+      var plans = this.plans;
+
+      var i = 0;
+
+      while (!plans[i].selected) {
+        i++;
+      }plans[i].selected = false;
+      plans[index].selected = true;
+
+      this.plans = [].concat(_toConsumableArray(plans));
+    },
+    clearInput: function clearInput(key) {
+      this[key] = '';
     }
   }
 });
@@ -67125,12 +67194,76 @@ var render = function() {
             _vm._m(2),
             _vm._v(" "),
             _c("div", { staticClass: "blue-text pt-4 pb-4" }, [
-              _vm._v("\n          NEW SUBSCRIPTION PLAN\n        ")
+              _vm._v("\n          SUBSCRIPTION PLAN UPDATE\n        ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "new-sub-plan" }, [
+              _c(
+                "div",
+                { staticClass: "subscription-plans" },
+                _vm._l(_vm.plans, function(plan, index) {
+                  return _c(
+                    "div",
+                    { key: index + plan.price, staticClass: "plan" },
+                    [
+                      _c("div", { staticClass: "price" }, [
+                        _c("span", { staticClass: "value" }, [
+                          _vm._v("$ " + _vm._s(plan.price))
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "frequency" }, [
+                          _vm._v("peer week, billed weekly")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "hours" }, [
+                        _c("img", {
+                          attrs: {
+                            src: "/images/client/payments/time.png",
+                            alt: "time icon"
+                          }
+                        }),
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(plan.hoursPerWeek) +
+                            " hours/week\n              "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn-bordered",
+                          class: { selected: plan.selected },
+                          on: {
+                            click: function($event) {
+                              _vm.changePlan(index)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(plan.selected ? "SELECTED" : "SELECT") +
+                              "\n              "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm._m(3, true)
+                    ]
+                  )
+                })
+              ),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _vm._m(4),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
               _c("div", { staticClass: "weeks-number" }, [
-                _vm._m(3),
+                _vm._m(5),
                 _vm._v(" "),
                 _c("div", { staticClass: "week-input" }, [
                   _c(
@@ -67147,7 +67280,52 @@ var render = function() {
                             "faq-question-input sub-edit-input  mt-3 d-flex flex-lg-row flex-column align-items-center"
                         },
                         [
-                          _vm._m(4),
+                          _c("div", { staticClass: "faq-input" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.numOfWeeks,
+                                  expression: "numOfWeeks"
+                                }
+                              ],
+                              attrs: {
+                                type: "text",
+                                placeholder: "N° of weeks"
+                              },
+                              domProps: { value: _vm.numOfWeeks },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.numOfWeeks = $event.target.value
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("img", {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.numOfWeeks.length > 0,
+                                  expression: "numOfWeeks.length > 0"
+                                }
+                              ],
+                              attrs: {
+                                src:
+                                  "/images/client/campaign_activity/close_black.png",
+                                alt: "delete icon"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.clearInput("numOfWeeks")
+                                }
+                              }
+                            })
+                          ]),
                           _vm._v(" "),
                           _c(
                             "div",
@@ -67188,23 +67366,17 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c("div")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "weeks-number-note" }, [
-                  _vm._v(
-                    "\n              Campaign period: 4.04.19 — 4.01.20\n            "
-                  )
                 ])
               ])
             ]),
-            _vm._v(" "),
-            _vm._m(5),
             _vm._v(" "),
             _vm._m(6),
             _vm._v(" "),
             _vm._m(7),
             _vm._v(" "),
             _vm._m(8),
+            _vm._v(" "),
+            _vm._m(9),
             _vm._v(" "),
             _c(
               "div",
@@ -67215,7 +67387,7 @@ var render = function() {
               [_vm._v("\n          Conor Marjoram\n        ")]
             ),
             _vm._v(" "),
-            _vm._m(9),
+            _vm._m(10),
             _vm._v(" "),
             _c("div", { staticClass: "sub-action pt-5" }, [
               _c(
@@ -67250,12 +67422,12 @@ var render = function() {
               }
             ]
           },
-          [_vm._m(10), _vm._v(" "), _vm._m(11)]
+          [_vm._m(11), _vm._v(" "), _vm._m(12)]
         )
       ])
     ]),
     _vm._v(" "),
-    _vm._m(12)
+    _vm._m(13)
   ])
 }
 var staticRenderFns = [
@@ -67432,6 +67604,36 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "javascript:;" } }, [
+      _c("img", {
+        attrs: {
+          src: "/images/icons/arrow_drop_down_circle.svg",
+          alt: "arrow dropdown icon"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "start-date" }, [
+      _c("div", { staticClass: "start-date-heading" }, [
+        _c("img", {
+          attrs: { src: "/images/client/payments/period.png", alt: "time icon" }
+        }),
+        _vm._v(
+          "\n              Pick a start date of updated campaign\n            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "javascript:;" } }, [_vm._v("PICK START DATE")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
       { staticClass: "d-flex justify-content-start align-items-center" },
@@ -67446,20 +67648,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "faq-input" }, [
-      _c("select", { attrs: { name: "weeks", id: "weeks" } }, [
-        _c("option", { attrs: { value: "2" } }, [_vm._v("2 weeks")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "4" } }, [_vm._v("4 weeks")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "6" } }, [_vm._v("6 weeks")])
-      ])
-    ])
   },
   function() {
     var _vm = this

@@ -8410,6 +8410,127 @@ body {
   border-left: 5px transparent solid;
 }
 
+.subscription-plans {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.subscription-plans .plan {
+  margin: 5px 0;
+  padding: 20px;
+  -webkit-box-shadow: 0px 1px 16px rgba(202, 202, 202, 0.26);
+          box-shadow: 0px 1px 16px rgba(202, 202, 202, 0.26);
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.subscription-plans .plan .price .value {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 24px;
+  color: #FC9968;
+  width: 60px;
+  display: inline-block;
+}
+
+.subscription-plans .plan .price .frequency {
+  font-size: 12px;
+  color: #818893;
+}
+
+.subscription-plans .plan .hours {
+  width: 190px;
+  color: #4A5464;
+  font-size: 18px;
+  text-align: left;
+}
+
+.subscription-plans .plan .hours img {
+  margin-right: 10px;
+}
+
+.subscription-plans .btn-bordered {
+  width: 150px;
+}
+
+.btn-bordered {
+  color: #05A4F4;
+  background: white;
+  padding: 7px;
+  text-align: center;
+  border: 2px solid #05A4F4;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 2px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.btn-bordered:hover {
+  cursor: pointer;
+}
+
+.btn-bordered.selected {
+  background: #05A4F4;
+  color: #fff;
+}
+
+.start-date {
+  margin-top: 40px;
+}
+
+.start-date a {
+  font-weight: 500;
+  margin-top: 40px;
+  margin-left: 40px;
+  display: block;
+  color: #05A4F4;
+  font-size: 14px;
+}
+
+.start-date a:hover {
+  text-decoration: none;
+}
+
+.start-date .start-date-heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #4A5464;
+  font-size: 18px;
+}
+
+.start-date .start-date-heading img {
+  margin-right: 10px;
+}
+
+.weeks-number {
+  margin-top: 40px;
+}
+
+.weeks-number select,
+.weeks-number input {
+  background: #FBFBFB;
+}
+
 .add-agent-form {
   margin-left: 15px !important;
 }

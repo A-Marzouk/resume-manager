@@ -142,7 +142,8 @@
                 <img src="/images/client/payments/period.png" alt="time icon">
                 Pick a start date of updated campaign
               </div>
-              <a href="javascript:;">PICK START DATE</a>
+              <a href="javascript:void(0)" data-toggle="modal" data-target="#pick-date-modal" @click.once="setDatePicker" >PICK START DATE
+              </a>
             </div>
             <hr>
             <div class="weeks-number">
@@ -392,6 +393,25 @@ export default {
       if (this.canSubmit) {
         this.status = 'finish'
       }
+    },
+    dateChanged(){
+      this.selectedDate = $('#selected-date-value').val();
+    },
+    applySelectedDate(){
+      this.appliedDate =  this.selectedDate;
+      $('#close-modal').click();
+    },
+    cancelDatePicking(){
+      $('#close-modal').click();
+    },
+    setDatePicker(){
+      $( "#datepicker" ).datepicker({
+        onSelect: function(dateText, inst) {
+          $("input[name='selected-date-value']").val(dateText);
+          const dateChanged = new CustomEvent('change');
+          document.getElementById('selected-date-value').dispatchEvent(dateChanged);
+        }
+      });
     }
   },
   watch: {

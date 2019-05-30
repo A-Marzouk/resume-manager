@@ -67810,6 +67810,27 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -67869,6 +67890,25 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       if (this.canSubmit) {
         this.status = 'finish';
       }
+    },
+    dateChanged: function dateChanged() {
+      this.selectedDate = $('#selected-date-value').val();
+    },
+    applySelectedDate: function applySelectedDate() {
+      this.appliedDate = this.selectedDate;
+      $('#close-modal').click();
+    },
+    cancelDatePicking: function cancelDatePicking() {
+      $('#close-modal').click();
+    },
+    setDatePicker: function setDatePicker() {
+      $("#datepicker").datepicker({
+        onSelect: function onSelect(dateText, inst) {
+          $("input[name='selected-date-value']").val(dateText);
+          var dateChanged = new CustomEvent('change');
+          document.getElementById('selected-date-value').dispatchEvent(dateChanged);
+        }
+      });
     }
   },
   watch: {
@@ -67999,7 +68039,26 @@ var render = function() {
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
-          _vm._m(3),
+          _c("div", { staticClass: "start-date" }, [
+            _vm._m(3),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "javascript:void(0)",
+                  "data-toggle": "modal",
+                  "data-target": "#pick-date-modal"
+                },
+                on: {
+                  "~click": function($event) {
+                    return _vm.setDatePicker($event)
+                  }
+                }
+              },
+              [_vm._v("PICK START DATE\n            ")]
+            )
+          ]),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
@@ -68130,6 +68189,64 @@ var render = function() {
           )
         ])
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal", attrs: { id: "pick-date-modal" } }, [
+      _c("div", { staticClass: "modal-dialog" }, [
+        _c(
+          "div",
+          { staticClass: "modal-content agent-modal-content date-picker" },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "close d-none",
+                attrs: {
+                  type: "button",
+                  id: "close-modal",
+                  "data-dismiss": "modal"
+                }
+              },
+              [_vm._v("×")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { attrs: { id: "datepicker" } }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: {
+                  type: "hidden",
+                  name: "selected-date-value",
+                  id: "selected-date-value"
+                },
+                on: { change: _vm.dateChanged }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "date-picker-modal-footer" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "cancelBtn",
+                    attrs: { href: "javascriot:void(0)" },
+                    on: { click: _vm.cancelDatePicking }
+                  },
+                  [_vm._v("\n              CANCEL\n            ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "applyBtn selected-date",
+                    attrs: { href: "javascriot:void(0)" },
+                    on: { click: _vm.applySelectedDate }
+                  },
+                  [_vm._v("\n              APPLY\n            ")]
+                )
+              ])
+            ])
+          ]
+        )
+      ])
     ])
   ])
 }
@@ -68182,17 +68299,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "start-date" }, [
-      _c("div", { staticClass: "start-date-heading" }, [
-        _c("img", {
-          attrs: { src: "/images/client/payments/period.png", alt: "time icon" }
-        }),
-        _vm._v(
-          "\n              Pick a start date of updated campaign\n            "
-        )
-      ]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "javascript:;" } }, [_vm._v("PICK START DATE")])
+    return _c("div", { staticClass: "start-date-heading" }, [
+      _c("img", {
+        attrs: { src: "/images/client/payments/period.png", alt: "time icon" }
+      }),
+      _vm._v(
+        "\n              Pick a start date of updated campaign\n            "
+      )
     ])
   },
   function() {
@@ -68712,7 +68825,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -68725,6 +68838,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
+//
 //
 //
 //
@@ -69113,6 +69227,25 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       if (this.canSubmit) {
         this.status = 'finish';
       }
+    },
+    dateChanged: function dateChanged() {
+      this.selectedDate = $('#selected-date-value').val();
+    },
+    applySelectedDate: function applySelectedDate() {
+      this.appliedDate = this.selectedDate;
+      $('#close-modal').click();
+    },
+    cancelDatePicking: function cancelDatePicking() {
+      $('#close-modal').click();
+    },
+    setDatePicker: function setDatePicker() {
+      $("#datepicker").datepicker({
+        onSelect: function onSelect(dateText, inst) {
+          $("input[name='selected-date-value']").val(dateText);
+          var dateChanged = new CustomEvent('change');
+          document.getElementById('selected-date-value').dispatchEvent(dateChanged);
+        }
+      });
     }
   },
   watch: {
@@ -69305,7 +69438,26 @@ var render = function() {
               _vm._v(" "),
               _c("hr"),
               _vm._v(" "),
-              _vm._m(4),
+              _c("div", { staticClass: "start-date" }, [
+                _vm._m(4),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      href: "javascript:void(0)",
+                      "data-toggle": "modal",
+                      "data-target": "#pick-date-modal"
+                    },
+                    on: {
+                      "~click": function($event) {
+                        return _vm.setDatePicker($event)
+                      }
+                    }
+                  },
+                  [_vm._v("PICK START DATE\n            ")]
+                )
+              ]),
               _vm._v(" "),
               _c("hr"),
               _vm._v(" "),
@@ -69645,17 +69797,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "start-date" }, [
-      _c("div", { staticClass: "start-date-heading" }, [
-        _c("img", {
-          attrs: { src: "/images/client/payments/period.png", alt: "time icon" }
-        }),
-        _vm._v(
-          "\n              Pick a start date of updated campaign\n            "
-        )
-      ]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "javascript:;" } }, [_vm._v("PICK START DATE")])
+    return _c("div", { staticClass: "start-date-heading" }, [
+      _c("img", {
+        attrs: { src: "/images/client/payments/period.png", alt: "time icon" }
+      }),
+      _vm._v(
+        "\n              Pick a start date of updated campaign\n            "
+      )
     ])
   },
   function() {

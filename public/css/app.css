@@ -8456,6 +8456,16 @@ body {
   background: #FBFBFB;
 }
 
+.disabled-btn a {
+  color: #A1A7AF !important;
+  background: #E4E4E4 !important;
+}
+
+.disabled-btn a:hover {
+  color: #31363d;
+  cursor: not-allowed;
+}
+
 .add-agent-form {
   margin-left: 15px !important;
 }

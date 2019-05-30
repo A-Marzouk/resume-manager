@@ -103,3 +103,14 @@
     background: #FBFBFB;
   }
 }
+
+.disabled-btn{
+  a{
+    color: #A1A7AF !important;
+    background: #E4E4E4 !important;
+  }
+  a:hover{
+    color: rgb(49, 54, 61);
+    cursor: not-allowed;
+  }
+}

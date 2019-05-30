@@ -260,8 +260,9 @@
                             REMOVE MANAGER
                         </a>
           </div> -->
-          <div class="sub-action pt-5">
-            <a href="#"  @click="status='finish'">
+          <div class="sub-action pt-5" :class="{'disabled-btn': !canSubmit}">
+            <a href="#"  @click="finishUpdate"
+            >
                             CONTINUE
                         </a>
           </div>
@@ -333,6 +334,7 @@ export default {
       status: 'update', // or finish
       checked: false,
       numOfWeeks: '',
+      canSubmit: false,
       plans: [
         {
           price: 75,
@@ -352,7 +354,7 @@ export default {
         {
           price: 360,
           hoursPerWeek: 30,
-          selected: true
+          selected: false
         },
         {
           price: 440,
@@ -375,9 +377,9 @@ export default {
       let { plans } = this
       let i = 0
 
-      while (!plans[i].selected) i++
+      while (i < plans.length && !plans[i].selected) i++
 
-      plans[i].selected = false
+      if (i < plans.length) plans[i].selected = false
       plans[index].selected = true
 
       this.plans = [...plans]
@@ -385,6 +387,42 @@ export default {
     },
     clearInput (key) {
       this[key] = ''
+    },
+    finishUpdate() {
+      if (this.canSubmit) {
+        this.status = 'finish'
+      }
+    }
+  },
+  watch: {
+    plans: {
+      handler (value) {
+        console.log(value)
+        let selectedPlan = false
+
+        for (let i = 0; i < value.length; i++) {
+          if (value[i].selected) {
+            selectedPlan = true
+            break
+          }
+        }
+
+        if (this.numOfWeeks !== '' && selectedPlan) this.canSubmit = true
+      }
+    },
+    numOfWeeks: {
+      handler (value) {
+        let selectedPlan = false
+
+        for (let i = 0; i < this.plans.length; i++) {
+          if (this.plans.selected) {
+            selectedPlan = true
+            break
+          }
+        }
+
+        if (value !== '' && selectedPlan) this.canSubmit = true
+      }
     }
   }
 }

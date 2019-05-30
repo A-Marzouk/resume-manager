@@ -237,7 +237,7 @@
             }
 
             .day-of-week.active {
-              border-bottom: 1.5px solid $l-blue;
+              border-bottom: 1.5px solid #05A4F4;;
             }
 
             .day-number,
@@ -246,7 +246,7 @@
               text-align: center;
 
               &.active {
-                color: $l-blue
+                color: #05A4F4;
               }
             }
 
@@ -362,6 +362,18 @@
   .modal-dialog{
     display: flex;
     justify-content: center;
+  }
+}
+
+#pick-date-modal.show {
+  .modal-dialog {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
   }
 }
 
@@ -653,7 +665,18 @@
 }
 
 .hideDate {
+  color: #05A4F4;
   @media (max-width: 900px) {
     display: none;
+  }
+}
+
+#pick-date-modal.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal-dialog {
+    transform: none;
   }
 }

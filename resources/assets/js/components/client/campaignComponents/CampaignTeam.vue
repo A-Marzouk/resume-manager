@@ -4,19 +4,18 @@
       <div class="campaign-team-header">
         <div class="select-list">
           <div class="form-group">
-            <select class="form-control"
-                    id="exampleFormControlSelect1">
-              <option class="custom-option"
-                      style="height:40px;">Show active team</option>
-              <option class="custom-option">Show backup agents</option>
-              <option class="custom-option">Show past agents</option>
-            </select>
+            <div class="custom-dropdown">
+              <div v-on:click="toggleDropdown" class="selected-option">{{dropdown.selectedOption}}</div>
+              <div class="list-options" :class="{show: dropdown.showDropdown}">
+                <div v-on:click="selectOption(index)" :key="index" v-for="(option, index) in dropdown.options" class="dropdown-item">{{option}}</div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="actionBtn">
-          <a href="/client/campaign/add-agent">
+          <!-- <a href="/client/campaign/add-agent">
                         <img src="/images/client/plus.png" alt="plus sign">ADD NEW AGENT
-                    </a>
+                    </a> -->
         </div>
       </div>
       <div class="campaign-team-list">
@@ -200,6 +199,28 @@
 </template>
 <script>
 export default {
+  data () {
+    return {
+      dropdown: {
+        selectedOption: 'Show active team',
+        options: [
+          'Show active team',
+          'Show backup agents',
+          'Show past agents'
+        ],
+        showDropdown: false
+      }
+    }
+  },
+  methods: {
+    toggleDropdown () {
+      this.dropdown.showDropdown = !this.dropdown.showDropdown
+    },
+    selectOption: function (value) {
+      this.dropdown.selectedOption = this.dropdown.options[value]
+      this.toggleDropdown()
+    }
+  },
   mounted() {}
 }
 </script>

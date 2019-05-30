@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-light fixed-top client_navbar">
+    <nav class="navbar navbar-light fixed-top dashboard_navbar">
       <div class="backBtn"
            v-show="status === 'update'">
         <a href="/client/dashboard/payments">
@@ -113,9 +113,38 @@
             </div>
           </div>
           <div class="blue-text pt-4 pb-4">
-            NEW SUBSCRIPTION PLAN
+            SUBSCRIPTION PLAN UPDATE
           </div>
           <div class="new-sub-plan">
+            <div class="subscription-plans">
+              <div :key="index + plan.price" v-for="(plan, index) in plans" class="plan">
+                <div class="price">
+                  <span class="value">$ {{plan.price}}</span> 
+                  <span class="frequency">peer week, billed weekly</span>
+                </div>
+                <div class="hours">
+                  <img src="/images/client/payments/time.png" alt="time icon">
+                  {{plan.hoursPerWeek}} hours/week
+                </div>
+                <button class="btn-bordered" :class="{selected: plan.selected}"
+                  v-on:click="changePlan(index)"
+                >
+                  {{plan.selected ? 'SELECTED' : 'SELECT'}}
+                </button>
+                <a href="javascript:;">
+                  <img src="/images/icons/arrow_drop_down_circle.svg" alt="arrow dropdown icon">
+                </a>
+              </div>
+            </div>
+            <hr>
+            <div class="start-date">
+              <div class="start-date-heading">
+                <img src="/images/client/payments/period.png" alt="time icon">
+                Pick a start date of updated campaign
+              </div>
+              <a href="javascript:;">PICK START DATE</a>
+            </div>
+            <hr>
             <div class="weeks-number">
               <div class="d-flex justify-content-start align-items-center">
                 <img src="/images/client/payments/week.png" alt="week icon" class="mr-3">
@@ -127,30 +156,31 @@
                 <div class="account-edit-section-inputs d-flex align-items-center">
                   <div class="faq-question-input sub-edit-input  mt-3 d-flex flex-lg-row flex-column align-items-center">
                     <div class="faq-input">
-                      <select name="weeks"
-                              id="weeks">
-                        <option value="2">2 weeks</option>
-                        <option value="4">4 weeks</option>
-                        <option value="6">6 weeks</option>
-                      </select>
+                      <input v-model="numOfWeeks" type="text" placeholder="N° of weeks">
+                      <img src="/images/client/campaign_activity/close_black.png"
+                          alt="delete icon"
+                          v-show="numOfWeeks.length > 0"
+                          @click="clearInput('numOfWeeks')"
+                    >
                     </div>
                     <div class="mt-3"
                          style="margin-left:99px;">
-                      <input type="checkbox"
-                             name="no-end-date" />
-                      <span class="weeks-number-heading ml-1"> no end date </span>
+
+                      <div class="custom-checkbox">
+                        <div class="checkbox" :class="{checked}"></div>
+                        <input v-on:click="handleCheck" checked type="checkbox"
+                              name="no-end-date" />
+                        <span class="weeks-number-heading sub-heading ml-1"> no end date </span>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div>
                 </div>
               </div>
-              <div class="weeks-number-note">
-                Campaign period: 4.04.19 — 4.01.20
-              </div>
             </div>
           </div>
-          <div class="new-sub-plan pt-5">
+          <!-- <div class="new-sub-plan pt-5">
             <div class="weeks-number">
               <div class="sub-agent-numbering pb-3">
                 Agent № 1
@@ -229,9 +259,10 @@
             <a href="javascript:void(0)" style="width:158px; height:36px;" class="m-0" data-toggle="modal" data-target="#remove-manager-modal">
                             REMOVE MANAGER
                         </a>
-          </div>
-          <div class="sub-action pt-5">
-            <a href="#"  @click="status='finish'">
+          </div> -->
+          <div class="sub-action pt-5" :class="{'disabled-btn': !canSubmit}">
+            <a href="#"  @click="finishUpdate"
+            >
                             CONTINUE
                         </a>
           </div>
@@ -300,7 +331,98 @@
 export default {
   data() {
     return {
-      status: 'update' // or finish
+      status: 'update', // or finish
+      checked: false,
+      numOfWeeks: '',
+      canSubmit: false,
+      plans: [
+        {
+          price: 75,
+          hoursPerWeek: 5,
+          selected: false
+        },
+        {
+          price: 140,
+          hoursPerWeek: 10,
+          selected: false
+        },
+        {
+          price: 260,
+          hoursPerWeek: 20,
+          selected: false
+        },
+        {
+          price: 360,
+          hoursPerWeek: 30,
+          selected: false
+        },
+        {
+          price: 440,
+          hoursPerWeek: 40,
+          selected: false
+        },
+        {
+          price: 600,
+          hoursPerWeek: 60,
+          selected: false
+        }
+      ]
+    }
+  },
+  methods: {
+    handleCheck () {
+      this.checked = !this.checked
+    },
+    changePlan (index) {
+      let { plans } = this
+      let i = 0
+
+      while (i < plans.length && !plans[i].selected) i++
+
+      if (i < plans.length) plans[i].selected = false
+      plans[index].selected = true
+
+      this.plans = [...plans]
+
+    },
+    clearInput (key) {
+      this[key] = ''
+    },
+    finishUpdate() {
+      if (this.canSubmit) {
+        this.status = 'finish'
+      }
+    }
+  },
+  watch: {
+    plans: {
+      handler (value) {
+        console.log(value)
+        let selectedPlan = false
+
+        for (let i = 0; i < value.length; i++) {
+          if (value[i].selected) {
+            selectedPlan = true
+            break
+          }
+        }
+
+        if (this.numOfWeeks !== '' && selectedPlan) this.canSubmit = true
+      }
+    },
+    numOfWeeks: {
+      handler (value) {
+        let selectedPlan = false
+
+        for (let i = 0; i < this.plans.length; i++) {
+          if (this.plans.selected) {
+            selectedPlan = true
+            break
+          }
+        }
+
+        if (value !== '' && selectedPlan) this.canSubmit = true
+      }
     }
   }
 }

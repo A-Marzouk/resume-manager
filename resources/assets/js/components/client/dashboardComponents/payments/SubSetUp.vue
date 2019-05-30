@@ -47,7 +47,8 @@
                 <img src="/images/client/payments/period.png" alt="time icon">
                 Pick a start date of updated campaign
               </div>
-              <a href="javascript:;">PICK START DATE</a>
+              <a href="javascript:void(0)" data-toggle="modal" data-target="#pick-date-modal" @click.once="setDatePicker" >PICK START DATE
+              </a>
             </div>
             <hr>
             <div class="weeks-number">
@@ -91,6 +92,26 @@
             >
                 CONTINUE
             </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="pick-date-modal">
+      <div class="modal-dialog">
+        <div class="modal-content agent-modal-content date-picker">
+          <!-- Modal body -->
+          <button type="button" id="close-modal" class="close d-none" data-dismiss="modal">&times;</button>
+          <div class="modal-body">
+            <div id="datepicker"></div>
+            <input type="hidden" name="selected-date-value" id="selected-date-value" @change="dateChanged">
+            <div class="date-picker-modal-footer">
+              <a href="javascriot:void(0)" class="cancelBtn" @click="cancelDatePicking">
+                CANCEL
+              </a>
+              <a href="javascriot:void(0)" class="applyBtn selected-date" @click="applySelectedDate">
+                APPLY
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -162,6 +183,25 @@ export default {
       if (this.canSubmit) {
         this.status = 'finish'
       }
+    },
+    dateChanged(){
+      this.selectedDate = $('#selected-date-value').val();
+    },
+    applySelectedDate(){
+      this.appliedDate =  this.selectedDate;
+      $('#close-modal').click();
+    },
+    cancelDatePicking(){
+      $('#close-modal').click();
+    },
+    setDatePicker(){
+      $( "#datepicker" ).datepicker({
+        onSelect: function(dateText, inst) {
+          $("input[name='selected-date-value']").val(dateText);
+          const dateChanged = new CustomEvent('change');
+          document.getElementById('selected-date-value').dispatchEvent(dateChanged);
+        }
+      });
     }
   },
   watch: {

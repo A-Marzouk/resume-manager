@@ -131,7 +131,7 @@
                 >
                   {{plan.selected ? 'SELECTED' : 'SELECT'}}
                 </button>
-                <a href="javascript:;">
+                <a href="javascript:;" class="arrow-dropdown">
                   <img src="/images/icons/arrow_drop_down_circle.svg" alt="arrow dropdown icon">
                 </a>
               </div>

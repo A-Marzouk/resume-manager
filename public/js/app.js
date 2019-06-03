@@ -70631,14 +70631,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "javascript:;" } }, [
-      _c("img", {
-        attrs: {
-          src: "/images/icons/arrow_drop_down_circle.svg",
-          alt: "arrow dropdown icon"
-        }
-      })
-    ])
+    return _c(
+      "a",
+      { staticClass: "arrow-dropdown", attrs: { href: "javascript:;" } },
+      [
+        _c("img", {
+          attrs: {
+            src: "/images/icons/arrow_drop_down_circle.svg",
+            alt: "arrow dropdown icon"
+          }
+        })
+      ]
+    )
   },
   function() {
     var _vm = this

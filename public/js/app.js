@@ -59244,7 +59244,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59324,9 +59324,255 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "ApplicantProfile"
+    data: function data() {
+        return {
+            selection: 'disapprove',
+            disapproveStatus: 'process'
+        };
+    },
+
+    methods: {
+        disapproveApplicant: function disapproveApplicant() {
+            this.selection = 'disapprove';
+        },
+        disapproveAndBlockApplicant: function disapproveAndBlockApplicant() {
+            this.selection = 'disapprove_and_block';
+        }
+    }
 });
 
 /***/ }),
@@ -59337,76 +59583,677 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "d-flex justify-content-center" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "disapprove-agent",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "remove-modal",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-content border-0",
+                staticStyle: { "margin-top": "30%" }
+              },
+              [
+                _c("div", { staticClass: "modal-body campaign-team-modal" }, [
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.disapproveStatus === "process",
+                          expression: "disapproveStatus === 'process'"
+                        }
+                      ]
+                    },
+                    [
+                      _c("div", { staticClass: "modal-question" }, [
+                        _vm._v(
+                          "\n                            Are you sure you want to disapprove this applicant ?\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-answer" }, [
+                        _c("div", { staticClass: "col-12" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "form-check-label checkBoxContainer disapprove-text",
+                              on: { click: _vm.disapproveApplicant }
+                            },
+                            [
+                              _c("input", {
+                                staticClass: "form-check-input",
+                                attrs: { type: "radio", name: "disapprove" }
+                              }),
+                              _vm._v(" "),
+                              _c("span", {
+                                staticClass: "checkmark make-circle"
+                              }),
+                              _vm._v(
+                                " disapprove\n                                "
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-12" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "form-check-label checkBoxContainer disapprove-text",
+                              on: { click: _vm.disapproveAndBlockApplicant }
+                            },
+                            [
+                              _c("input", {
+                                staticClass: "form-check-input",
+                                attrs: { type: "radio", name: "disapprove" }
+                              }),
+                              _vm._v(" "),
+                              _c("span", {
+                                staticClass: "checkmark make-circle"
+                              }),
+                              _vm._v(
+                                " disapprove and block\n                                "
+                              )
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-note" }, [
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.selection === "disapprove",
+                                expression: "selection === 'disapprove'"
+                              }
+                            ]
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Disapproved agent will be able to apply again\n                       "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "span",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.selection === "disapprove_and_block",
+                                expression:
+                                  "selection === 'disapprove_and_block'"
+                              }
+                            ]
+                          },
+                          [
+                            _vm._v(
+                              "\n                            Disapproved and blocked agent will not be able to apply again\n                       "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-btn-wrapper" }, [
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "button-base blue-button-a" },
+                          [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "javascript:void(0)" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.disapproveStatus = "disapproved"
+                                  }
+                                }
+                              },
+                              [_vm._v("DISAPPROVE AGENT")]
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value:
+                            _vm.disapproveStatus === "disapproved" &&
+                            _vm.selection === "disapprove",
+                          expression:
+                            "disapproveStatus === 'disapproved' && selection === 'disapprove'"
+                        }
+                      ]
+                    },
+                    [
+                      _c("div", { staticClass: "modal-question" }, [
+                        _vm._v(
+                          "\n                            The agent was disapproved\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-answer" }, [
+                        _vm._v(
+                          "\n                            Agent will be able to apply again\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(3)
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value:
+                            _vm.disapproveStatus === "disapproved" &&
+                            _vm.selection === "disapprove_and_block",
+                          expression:
+                            "disapproveStatus === 'disapproved' && selection === 'disapprove_and_block'"
+                        }
+                      ]
+                    },
+                    [
+                      _c("div", { staticClass: "modal-question" }, [
+                        _vm._v(
+                          "\n                            The agent was disapproved and blocked\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-answer" }, [
+                        _vm._v(
+                          "\n                            Agent will not be able to apply again\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(4)
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
+    return _c(
+      "nav",
+      { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
+      [
+        _c("div", { staticClass: "backBtn" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("img", {
+              attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
+            })
+          ]),
+          _vm._v("\n            JASON MORGENSTERN APPLICATION\n        ")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "account-info-edit dashboard-box" }, [
       _c(
-        "nav",
-        { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
+        "div",
+        {
+          staticClass:
+            "account-info-edit-heading dashboard-box-heading mr-0 ml-0"
+        },
         [
-          _c("div", { staticClass: "backBtn" }, [
-            _c("a", { attrs: { href: "#" } }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/client/arrow_back.png",
-                  alt: "back-icon"
-                }
-              })
-            ]),
-            _vm._v("\n            JASON MORGENSTERN APPLICATION\n        ")
+          _c("div", { staticClass: "left" }, [
+            _c("img", {
+              staticClass: "icon-margin small-image",
+              attrs: { src: "/images/admin/main_40px.svg", alt: "" }
+            }),
+            _vm._v(" "),
+            _c("span", [
+              _vm._v(
+                "\n                    PROFILE OF THE APPLICANT (BUSINESS SUPPORT)\n                "
+              )
+            ])
           ])
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "d-flex justify-content-center" }, [
-        _c("div", { staticClass: "main-grid" }, [
-          _c("div", { staticClass: "header-text" }, [
-            _c("img", {
-              staticClass: "icon-margin small-image",
-              attrs: { src: "/images/admin/main_40px", alt: "" }
-            }),
-            _vm._v(
-              "\n                PROFILE OF THE APPLICANT (BUSINESS SUPPORT)\n            "
-            )
+      _c("div", { staticClass: "action-buttons-bar mt-5 mb-5" }, [
+        _c("div", { staticClass: "disapprove-btn no-decoration" }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "javascript:void(0)",
+                "data-toggle": "modal",
+                "data-target": "#disapprove-agent"
+              }
+            },
+            [
+              _vm._v(
+                "\n                    DISAPPROVE APPLICANT\n                "
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "approve-btn no-decoration" }, [
+          _c("a", { attrs: { href: "javascript:void(0)" } }, [
+            _vm._v("\n                    APPROVE APPLICANT\n                ")
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "d-flex  justify-content-center w-100" }, [
+        _c("div", { staticClass: "stages-list-container" }, [
+          _c("div", { staticClass: "mb-4" }, [
+            _vm._v("\n                    History of stages\n                ")
           ]),
           _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("div", { staticClass: "action-buttons-bar mt-5" }, [
-            _c("div", { staticClass: "disapprove-btn no-decoration" }, [
-              _c(
-                "a",
-                {
-                  attrs: {
-                    href: "javascript:void(0)",
-                    "data-toggle": "modal",
-                    "data-target": "#disapprove-agent"
-                  }
-                },
-                [
+          _c("div", { staticClass: "stages-list" }, [
+            _c(
+              "div",
+              { staticClass: "stage-item d-flex justify-content-between" },
+              [
+                _c("div", [
                   _vm._v(
-                    "\n                        DISAPPROVE APPLICANT\n                    "
+                    "\n                            14.05.19\n                        "
                   )
-                ]
-              )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticStyle: { "font-weight": "500" } }, [
+                  _vm._v(
+                    "\n                            Stage:v1\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _vm._v(
+                    "\n                            Application received\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticStyle: { color: "#27AE60", "font-weight": "500" } },
+                  [
+                    _vm._v(
+                      "\n                            E-mail sent\n                        "
+                    )
+                  ]
+                )
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-info-content-wrapper pb-2" }, [
+        _c("div", { staticClass: "account-info-content" }, [
+          _c("div", { staticClass: "acc-info-content-heading" }, [
+            _c("div", { staticClass: "acc-info-item" }, [
+              _c("img", {
+                staticStyle: { width: "58px", height: "56px" },
+                attrs: { src: "/images/client/dummy.png", alt: "name icon" }
+              }),
+              _vm._v(" "),
+              _c("span", [
+                _vm._v(
+                  "\n                            Edward Norton\n                        "
+                )
+              ]),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "ml-2",
+                attrs: { src: "/images/admin/male.png", alt: "" }
+              })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "approve-btn no-decoration" }, [
-              _c("a", { attrs: { href: "javascript:void(0)" } }, [
-                _vm._v(
-                  "\n                        APPROVE APPLICANT\n                    "
-                )
-              ])
+            _c("div", { staticClass: "acc-info-timezone" }, [
+              _vm._v("\n                        GMT - 8\n                    ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/client/my_account/phone_number.png",
+                alt: "phone icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _vm._v(
+                "\n                        00442037000685\n                    "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/client/my_account/email.png",
+                alt: "email icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _vm._v(
+                "\n                        email@gmail.com\n                    "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/admin/applicant-profile/place_24px.svg",
+                alt: "email icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _vm._v(
+                "\n                        Dublin, Ireland\n                    "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/admin/applicant-profile/paypal.svg",
+                alt: "email icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _vm._v(
+                "\n                        PayPal account: 2018150859\n                    "
+              )
             ])
           ])
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-info-content-wrapper pt-0 pb-2" }, [
+        _c("div", { staticClass: "account-info-content" }, [
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/admin/applicant-profile/job_title.svg",
+                alt: "phone icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c("b", [_vm._v("Primary job title:")]),
+              _vm._v(" Telemarketing\n                    ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/admin/applicant-profile/experience.svg",
+                alt: "phone icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c("b", [_vm._v("Sector experience:")]),
+              _vm._v(
+                " Real estate, Investement, Insurance\n                    "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/admin/applicant-profile/software.svg",
+                alt: "phone icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c("b", [_vm._v("Technologies, software:")]),
+              _vm._v(" Microsoft Excel\n                    ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/admin/applicant-profile/hours.svg",
+                alt: "phone icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c("b", [_vm._v("No. hours per week:")]),
+              _vm._v(" 30-40 hours\n                    ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/admin/applicant-profile/voice.svg",
+                alt: "phone icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c("b", [_vm._v("Voice character:")]),
+              _vm._v(" Friendly\n                    ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/admin/applicant-profile/languages.svg",
+                alt: "phone icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c("b", [_vm._v("Languages")]),
+              _vm._v(" English\n                    ")
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-info-content-wrapper pt-0 pb-2" }, [
+        _c("div", { staticClass: "account-info-content pt-0" }, [
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("div", [_c("b", [_vm._v("Recording of the applicant’s voice")])])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "recorder-bar justify-content-between" }, [
+            _c("div", { staticClass: "d-flex align-items-center ml-2" }, [
+              _c("img", {
+                staticStyle: { "margin-top": "-3px", "margin-right": "8px" },
+                attrs: {
+                  src: "/images/admin/applicant-profile/pause.svg",
+                  alt: ""
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticStyle: { "font-size": "12px" } }, [
+                _vm._v(
+                  "\n                            Title_of_the_record...\n                        "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "d-flex align-items-center mr-2" }, [
+              _c("div", { staticClass: "time mr-4" }, [
+                _vm._v(
+                  "\n                            25:15\n                        "
+                )
+              ]),
+              _vm._v(" "),
+              _c("img", {
+                staticStyle: { "margin-top": "-3px", "margin-right": "8px" },
+                attrs: { src: "/images/admin/applicant-profile/download.svg" }
+              })
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-info-content-wrapper pt-0 pb-2" }, [
+        _c("div", { staticClass: "account-info-content pt-0" }, [
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("div", [_c("b", [_vm._v("Applicant’s resume")])])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "acc-info-content-item d-flex justify-content-between"
+            },
+            [
+              _c("div", { staticClass: "d-flex align-items-center" }, [
+                _c("img", {
+                  staticStyle: { "margin-top": "-3px", "margin-right": "8px" },
+                  attrs: {
+                    src: "/images/admin/applicant-profile/resume.svg",
+                    alt: "phone icon"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticStyle: { "font-size": "12px" } }, [
+                  _vm._v(
+                    "\n                            Title_of_the_resumeffgjkj...df.pdf\n                        "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex align-items-center" }, [
+                _c("div", { staticClass: "open-resume-text mr-4" }, [
+                  _vm._v(
+                    "\n                            OPEN RESUME\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("img", {
+                  staticStyle: { "margin-top": "-3px", "margin-right": "8px" },
+                  attrs: { src: "/images/admin/applicant-profile/download.svg" }
+                })
+              ])
+            ]
+          )
+        ])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "button-base white-button-a" }, [
+      _c(
+        "a",
+        { attrs: { href: "javascript:void(0)", "data-dismiss": "modal" } },
+        [_vm._v("CANCEL")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "modal-btn-wrapper d-flex justify-content-end" },
+      [
+        _c("div", { staticClass: "button-base blue-button-a" }, [
+          _c(
+            "a",
+            {
+              staticStyle: { width: "83px" },
+              attrs: { href: "javascript:void(0)", "data-dismiss": "modal" }
+            },
+            [_vm._v("OK")]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "modal-btn-wrapper d-flex justify-content-end" },
+      [
+        _c("div", { staticClass: "button-base blue-button-a" }, [
+          _c(
+            "a",
+            {
+              staticStyle: { width: "83px" },
+              attrs: { href: "javascript:void(0)", "data-dismiss": "modal" }
+            },
+            [_vm._v("OK")]
+          )
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

@@ -3,15 +3,37 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
-
+  
   .plan {
     margin: 5px 0;
     padding: 20px;
     box-shadow: 0px 1px 16px rgba(202, 202, 202, 0.26);
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 700px) {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      position: relative;
+
+      .arrow-dropdown {
+        position: absolute;
+        top: 30px;
+        right: 20px;
+      }
+
+      .price, .hours, .btn-bordered {
+        margin: 15px 0;
+      }
+
+      .btn-bordered {
+        align-self: flex-end;
+      }
+    }
 
     .price {
       .value {

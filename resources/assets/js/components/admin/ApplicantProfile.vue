@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-center">
         <nav class="navbar navbar-light fixed-top dashboard_navbar">
             <div class="backBtn">
-                <a href="#">
+                <a href="/admin-front">
                     <img src="/images/client/arrow_back.png" alt="back-icon">
                 </a>
                 JASON MORGENSTERN APPLICATION

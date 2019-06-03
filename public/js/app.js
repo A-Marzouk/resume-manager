@@ -59830,7 +59830,7 @@ var staticRenderFns = [
       { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
       [
         _c("div", { staticClass: "backBtn" }, [
-          _c("a", { attrs: { href: "#" } }, [
+          _c("a", { attrs: { href: "/admin-front" } }, [
             _c("img", {
               attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
             })

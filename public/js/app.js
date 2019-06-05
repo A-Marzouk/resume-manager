@@ -72738,7 +72738,9 @@ var render = function() {
           _c("div", { staticClass: "account-edit-section-inputs" }, [
             _c(
               "div",
-              { staticClass: "faq-question-input account-edit-input" },
+              {
+                staticClass: "faq-question-input account-edit-input full-width"
+              },
               [
                 _c("label", { staticClass: "faq-input-label" }, [
                   _vm._v("\n            Enter your e-mail address\n          ")
@@ -72814,7 +72816,9 @@ var render = function() {
           _c("div", { staticClass: "account-edit-section-inputs" }, [
             _c(
               "div",
-              { staticClass: "faq-question-input account-edit-input" },
+              {
+                staticClass: "faq-question-input account-edit-input full-width"
+              },
               [
                 _c("label", { staticClass: "faq-input-label" }, [
                   _vm._v("\n            Enter your password\n          ")
@@ -72969,6 +72973,7 @@ var render = function() {
         _c(
           "a",
           {
+            staticClass: "btn btn-primar",
             attrs: { href: "javascript:void(0)" },
             on: { click: _vm.submitForm }
           },

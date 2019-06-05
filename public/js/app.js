@@ -14509,6 +14509,7 @@ Vue.config.devtools = true;
 Vue.component('admin-dashboard', __webpack_require__(54));
 Vue.component('applicant-profile', __webpack_require__(57));
 Vue.component('advanced-search-component', __webpack_require__(477));
+Vue.component('admin-register-agent', __webpack_require__(480));
 
 
 
@@ -14536,6 +14537,21 @@ if ($("#adminDashboardComponent").length !== 0) {
     var clientDashboardComponent = new Vue({
         router: router,
         el: '#adminDashboardComponent'
+    });
+}
+
+if ($('#adminRegisterAgent').length !== 0) {
+
+    var _routes = [{ path: '/admin-front/register-agent', component: __WEBPACK_IMPORTED_MODULE_11__components_freelancer_registerForms_page1_vue___default.a }, { path: '/admin-front/register-agent/page2', component: __WEBPACK_IMPORTED_MODULE_12__components_freelancer_registerForms_page2_vue___default.a }, { path: '/admin-front/register-agent/page3', component: __WEBPACK_IMPORTED_MODULE_13__components_freelancer_registerForms_page3_vue___default.a }, { path: '/admin-front/register-agent/page4', component: __WEBPACK_IMPORTED_MODULE_14__components_freelancer_registerForms_page4_vue___default.a }, { path: '/admin-front/register-agent/page5', component: __WEBPACK_IMPORTED_MODULE_15__components_freelancer_registerForms_page5_vue___default.a }, { path: '/admin-front/register-agent/completed', component: __WEBPACK_IMPORTED_MODULE_16__components_freelancer_registerForms_finish_vue___default.a }];
+
+    var _router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+        mode: 'history',
+        routes: _routes
+    });
+
+    var adminRegisterAgent = new Vue({
+        router: _router,
+        el: '#adminRegisterAgent'
     });
 }
 
@@ -14572,29 +14588,29 @@ Vue.component('campaign-statistics', __webpack_require__(124));
 
 
 if ($('#campaignMainComponent').length !== 0) {
-    var _routes = [{ path: '/:campaign-team', component: __WEBPACK_IMPORTED_MODULE_3__components_client_campaignComponents_CampaignTeam_vue___default.a }, { path: '/:campaign-brief', component: __WEBPACK_IMPORTED_MODULE_4__components_client_campaignComponents_CampaignBrief_vue___default.a }, { path: '/', component: __WEBPACK_IMPORTED_MODULE_2__components_client_campaignComponents_CampaignActivity_vue___default.a }];
+    var _routes2 = [{ path: '/:campaign-team', component: __WEBPACK_IMPORTED_MODULE_3__components_client_campaignComponents_CampaignTeam_vue___default.a }, { path: '/:campaign-brief', component: __WEBPACK_IMPORTED_MODULE_4__components_client_campaignComponents_CampaignBrief_vue___default.a }, { path: '/', component: __WEBPACK_IMPORTED_MODULE_2__components_client_campaignComponents_CampaignActivity_vue___default.a }];
 
-    var _router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-        routes: _routes
+    var _router2 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+        routes: _routes2
     });
 
     var campaignMainComponent = new Vue({
-        router: _router,
+        router: _router2,
         el: '#campaignMainComponent'
     });
 }
 
 if ($("#clientDashboardComponent").length !== 0) {
 
-    var _routes2 = [{ path: '/client/dashboard/my-account', component: __WEBPACK_IMPORTED_MODULE_7__components_client_dashboardComponents_MyAccount_vue___default.a }, { path: '/client/dashboard/payments', component: __WEBPACK_IMPORTED_MODULE_6__components_client_dashboardComponents_Payments_vue___default.a }, { path: '/client', component: __WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_CampaignManager_vue___default.a }, { path: '/client/dashboard', component: __WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_CampaignManager_vue___default.a }, { path: '/client/dashboard/*', component: __WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_CampaignManager_vue___default.a }];
+    var _routes3 = [{ path: '/client/dashboard/my-account', component: __WEBPACK_IMPORTED_MODULE_7__components_client_dashboardComponents_MyAccount_vue___default.a }, { path: '/client/dashboard/payments', component: __WEBPACK_IMPORTED_MODULE_6__components_client_dashboardComponents_Payments_vue___default.a }, { path: '/client', component: __WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_CampaignManager_vue___default.a }, { path: '/client/dashboard', component: __WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_CampaignManager_vue___default.a }, { path: '/client/dashboard/*', component: __WEBPACK_IMPORTED_MODULE_5__components_client_dashboardComponents_CampaignManager_vue___default.a }];
 
-    var _router2 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+    var _router3 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
         mode: 'history',
-        routes: _routes2
+        routes: _routes3
     });
 
     var _clientDashboardComponent = new Vue({
-        router: _router2,
+        router: _router3,
         el: '#clientDashboardComponent'
     });
 }
@@ -14719,29 +14735,29 @@ Vue.component('privacy-agreement', __webpack_require__(231));
 
 if ($('#freelancerRegisterComponent').length !== 0) {
 
-    var _routes3 = [{ path: '/freelancer/register', component: __WEBPACK_IMPORTED_MODULE_11__components_freelancer_registerForms_page1_vue___default.a }, { path: '/freelancer/register/page2', component: __WEBPACK_IMPORTED_MODULE_12__components_freelancer_registerForms_page2_vue___default.a }, { path: '/freelancer/register/page3', component: __WEBPACK_IMPORTED_MODULE_13__components_freelancer_registerForms_page3_vue___default.a }, { path: '/freelancer/register/page4', component: __WEBPACK_IMPORTED_MODULE_14__components_freelancer_registerForms_page4_vue___default.a }, { path: '/freelancer/register/page5', component: __WEBPACK_IMPORTED_MODULE_15__components_freelancer_registerForms_page5_vue___default.a }, { path: '/freelancer/register/completed', component: __WEBPACK_IMPORTED_MODULE_16__components_freelancer_registerForms_finish_vue___default.a }];
+    var _routes4 = [{ path: '/freelancer/register', component: __WEBPACK_IMPORTED_MODULE_11__components_freelancer_registerForms_page1_vue___default.a }, { path: '/freelancer/register/page2', component: __WEBPACK_IMPORTED_MODULE_12__components_freelancer_registerForms_page2_vue___default.a }, { path: '/freelancer/register/page3', component: __WEBPACK_IMPORTED_MODULE_13__components_freelancer_registerForms_page3_vue___default.a }, { path: '/freelancer/register/page4', component: __WEBPACK_IMPORTED_MODULE_14__components_freelancer_registerForms_page4_vue___default.a }, { path: '/freelancer/register/page5', component: __WEBPACK_IMPORTED_MODULE_15__components_freelancer_registerForms_page5_vue___default.a }, { path: '/freelancer/register/completed', component: __WEBPACK_IMPORTED_MODULE_16__components_freelancer_registerForms_finish_vue___default.a }];
 
-    var _router3 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+    var _router4 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
         mode: 'history',
-        routes: _routes3
+        routes: _routes4
     });
 
     var freelancerRegisterComponent = new Vue({
-        router: _router3,
+        router: _router4,
         el: '#freelancerRegisterComponent'
     });
 }
 
 if ($('#freelancerDashboardComponent').length !== 0) {
-    var _routes4 = [{ path: '/freelancer/dashboard/my-account', component: __WEBPACK_IMPORTED_MODULE_10__components_freelancer_dashboardComponents_MyAccount_vue___default.a }, { path: '/freelancer/dashboard', component: __WEBPACK_IMPORTED_MODULE_9__components_freelancer_dashboardComponents_CampaignManager_vue___default.a }];
+    var _routes5 = [{ path: '/freelancer/dashboard/my-account', component: __WEBPACK_IMPORTED_MODULE_10__components_freelancer_dashboardComponents_MyAccount_vue___default.a }, { path: '/freelancer/dashboard', component: __WEBPACK_IMPORTED_MODULE_9__components_freelancer_dashboardComponents_CampaignManager_vue___default.a }];
 
-    var _router4 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-        routes: _routes4,
+    var _router5 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+        routes: _routes5,
         mode: 'history'
     });
 
     var freelancerDashboardComponent = new Vue({
-        router: _router4,
+        router: _router5,
         el: '#freelancerDashboardComponent'
     });
 }
@@ -14753,15 +14769,15 @@ if ($('#freelancerCampaignArchives').length !== 0) {
 }
 
 if ($('#freelancerCampaignMainComponent').length !== 0) {
-    var _routes5 = [{ path: '/freelancer/campaign-team', component: __WEBPACK_IMPORTED_MODULE_3__components_client_campaignComponents_CampaignTeam_vue___default.a }, { path: '/freelancer/campaign-brief', component: __WEBPACK_IMPORTED_MODULE_4__components_client_campaignComponents_CampaignBrief_vue___default.a }, { path: '/freelancer/campaign', component: __WEBPACK_IMPORTED_MODULE_8__components_freelancer_campaignComponents_CampaignActivity_vue___default.a }];
+    var _routes6 = [{ path: '/freelancer/campaign-team', component: __WEBPACK_IMPORTED_MODULE_3__components_client_campaignComponents_CampaignTeam_vue___default.a }, { path: '/freelancer/campaign-brief', component: __WEBPACK_IMPORTED_MODULE_4__components_client_campaignComponents_CampaignBrief_vue___default.a }, { path: '/freelancer/campaign', component: __WEBPACK_IMPORTED_MODULE_8__components_freelancer_campaignComponents_CampaignActivity_vue___default.a }];
 
-    var _router5 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-        routes: _routes5,
+    var _router6 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+        routes: _routes6,
         mode: 'history'
     });
 
     var freelancerCampaignMainComponent = new Vue({
-        router: _router5,
+        router: _router6,
         el: '#freelancerCampaignMainComponent'
     });
 }
@@ -58205,6 +58221,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -58791,6 +58857,135 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "add-agent",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "remove-modal",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-content border-0",
+                staticStyle: { "margin-top": "30%" }
+              },
+              [
+                _c("div", { staticClass: "modal-body campaign-team-modal" }, [
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.disapproveStatus === "process",
+                          expression: "disapproveStatus === 'process'"
+                        }
+                      ]
+                    },
+                    [
+                      _c("div", { staticClass: "modal-question" }, [
+                        _vm._v(
+                          "\n                           Which agent do you want to add ?\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-answer" }, [
+                        _c("div", { staticClass: "col-12" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "form-check-label checkBoxContainer disapprove-text",
+                              on: { click: _vm.disapproveApplicant }
+                            },
+                            [
+                              _c("input", {
+                                staticClass: "form-check-input",
+                                attrs: { type: "radio", name: "disapprove" }
+                              }),
+                              _vm._v(" "),
+                              _c("span", {
+                                staticClass: "checkmark make-circle"
+                              }),
+                              _vm._v(
+                                " business support\n                                "
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-12" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "form-check-label checkBoxContainer disapprove-text",
+                              on: { click: _vm.disapproveAndBlockApplicant }
+                            },
+                            [
+                              _c("input", {
+                                staticClass: "form-check-input",
+                                attrs: { type: "radio", name: "disapprove" }
+                              }),
+                              _vm._v(" "),
+                              _c("span", {
+                                staticClass: "checkmark make-circle"
+                              }),
+                              _vm._v(
+                                " designer\n                                "
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-12" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "form-check-label checkBoxContainer disapprove-text",
+                              on: { click: _vm.disapproveAndBlockApplicant }
+                            },
+                            [
+                              _c("input", {
+                                staticClass: "form-check-input",
+                                attrs: { type: "radio", name: "disapprove" }
+                              }),
+                              _vm._v(" "),
+                              _c("span", {
+                                staticClass: "checkmark make-circle"
+                              }),
+                              _vm._v(
+                                " developer\n                                "
+                              )
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(10)
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]
+        )
+      ]
     )
   ])
 }
@@ -59155,6 +59350,31 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-btn-wrapper" }, [
+      _c("div", { staticClass: "button-base white-button-a" }, [
+        _c(
+          "a",
+          { attrs: { href: "javascript:void(0)", "data-dismiss": "modal" } },
+          [_vm._v("CANCEL")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "button-base blue-button-a" }, [
+        _c(
+          "a",
+          {
+            staticStyle: { width: "106px" },
+            attrs: { href: "/admin-front/register-agent" }
+          },
+          [_vm._v("Continue")]
+        )
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -62169,7 +62389,11 @@ var staticRenderFns = [
               height: "30px",
               "border-radius": "40px"
             },
-            attrs: { href: "javascript:void(0)" }
+            attrs: {
+              href: "javascript:void(0)",
+              "data-toggle": "modal",
+              "data-target": "#add-agent"
+            }
           },
           [
             _c("img", {
@@ -126199,6 +126423,312 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-5b73a10e", module.exports)
+  }
+}
+
+/***/ }),
+/* 480 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(481)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(483)
+/* template */
+var __vue_template__ = __webpack_require__(484)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-8ae911a4"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\admin\\RegisterAgent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8ae911a4", Component.options)
+  } else {
+    hotAPI.reload("data-v-8ae911a4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 481 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(482);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("d455a7d8", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8ae911a4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RegisterAgent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-8ae911a4\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RegisterAgent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 482 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.error[data-v-8ae911a4]{\n    font-family: Roboto;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 16px;\n    line-height: 30px;/* identical to box height, or 187% */\n    color: #F56F6F;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 483 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            step: 1,
+            formData: {},
+            canSubmit: false,
+            errors: []
+        };
+    },
+
+    methods: {
+        submitForm: function submitForm() {
+            var _this = this;
+
+            if ($('#submitBtnWrapper').hasClass('disabled-btn')) {
+                return;
+            }
+            this.canSubmit = false;
+            axios.post('/freelancer/register/submit', this.formData).then(function (response) {
+                if (response.data.status === 'success') {
+                    // redirect to client dashboard
+                    window.location.href = '/freelancer';
+                }
+                _this.errors = response.data.errors;
+            });
+        },
+        clearInput: function clearInput(inputName) {
+            this.formData[inputName] = '';
+        },
+        changeStep: function changeStep(step) {
+            this.step = step;
+        },
+        getData: function getData(data) {
+            this.formData = _extends({}, this.formData, data);
+        }
+    },
+    watch: {
+        formData: {
+            handler: function handler() {
+                // check if all formData values are filled
+                var values = Object.values(this.formData);
+                var isAll_filled = true;
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var section = _step.value;
+
+                        for (var value in section) {
+                            if (value.trim() !== '') {
+                                isAll_filled = false;
+                                break;
+                            }
+                        }
+                        if (!isAll_filled) break;
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+
+                this.canSubmit = isAll_filled;
+            },
+
+            deep: true
+        },
+        $route: {
+            handler: function handler(val, oldVal) {
+                var splittedPath = val.path.split('/');
+                if (splittedPath[3] === '') this.step = 1;else this.step = splittedPath[3].charAt(4);
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 484 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass:
+        "d-flex justify-content-center flex-column align-items-center"
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "account-info-edit-wrapper" },
+        [
+          _c(
+            "nav",
+            { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
+            [
+              _c("div", { staticClass: "backBtn" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _vm.step !== 6
+                  ? _c("span", [_vm._v("NEW AGENT")])
+                  : _c("span", [_vm._v("REGISTRATION COMPLETED")])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "keep-alive",
+            [
+              _c("router-view", {
+                attrs: { changeStep: _vm.changeStep, getData: _vm.getData }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm.step !== 6
+            ? _c("span", { staticClass: "step-footer" }, [
+                _vm._v("Step " + _vm._s(_vm.step) + " / 5")
+              ])
+            : _vm._e()
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _vm._m(1)
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "/admin-front/agents" } }, [
+      _c("img", {
+        attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "pt-3 no-decoration d-flex justify-content-center base-text align-items-center"
+      },
+      [
+        _vm._v("\n        Already have an account ? "),
+        _c("a", { staticClass: "ml-2 base-link", attrs: { href: "#" } }, [
+          _vm._v(" LOG IN ")
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8ae911a4", module.exports)
   }
 }
 

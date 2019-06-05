@@ -22,4 +22,8 @@ class AdminFrontEndController extends Controller
     public function showAdvancedSearchPage(){
         return view('admin.advanced_search_view');
     }
+
+    public function showRegisterAgentPage(){
+        return view('admin.register_agent_view');
+    }
 }

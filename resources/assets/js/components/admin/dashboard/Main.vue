@@ -309,6 +309,56 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade"
+             id="add-agent"
+             tabindex="-1"
+             role="dialog"
+             aria-labelledby="remove-modal"
+             aria-hidden="true">
+            <div class="modal-dialog"
+                 role="document">
+                <div class="modal-content border-0"
+                     style="margin-top: 30%;">
+                    <div class="modal-body campaign-team-modal">
+                        <div v-show="disapproveStatus === 'process'">
+                            <div class="modal-question">
+                               Which agent do you want to add ?
+                            </div>
+                            <div class="modal-answer">
+                                <div class="col-12">
+                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveApplicant">
+                                        <input class="form-check-input" type="radio" name="disapprove">
+                                        <span class="checkmark make-circle"></span> business support
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveAndBlockApplicant">
+                                        <input class="form-check-input" type="radio" name="disapprove">
+                                        <span class="checkmark make-circle"></span> designer
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveAndBlockApplicant">
+                                        <input class="form-check-input" type="radio" name="disapprove">
+                                        <span class="checkmark make-circle"></span> developer
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="modal-btn-wrapper">
+                                <div class="button-base white-button-a">
+                                    <a href="javascript:void(0)" data-dismiss="modal">CANCEL</a>
+                                </div>
+                                <div class="button-base blue-button-a">
+                                    <a href="/admin-front/register-agent" style="width:106px;">Continue</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>

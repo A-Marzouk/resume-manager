@@ -42,13 +42,27 @@
                                 14.05.19
                             </div>
                             <div style="font-weight: 500;">
-                                Stage:v1
+                                Stage: v1
                             </div>
                             <div>
                                 Application received
                             </div>
                             <div style="color:#27AE60; font-weight: 500;">
                                 E-mail sent
+                            </div>
+                        </div>
+                        <div class="stage-item d-flex justify-content-around border-top-0">
+                            <div>
+                                15.05.19
+                            </div>
+                            <div style="font-weight: 500;">
+                                Stage: v6
+                            </div>
+                            <div>
+                                Application received
+                            </div>
+                            <div style="color:#FF7557; font-weight: 500;">
+                                E-mail failed
                             </div>
                         </div>
                     </div>

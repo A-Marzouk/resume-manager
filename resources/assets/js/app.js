@@ -37,6 +37,7 @@ Vue.config.devtools = true;
 // admin front-end components :
 Vue.component('admin-dashboard', require('./components/admin/dashboard/Main.vue'));
 Vue.component('applicant-profile', require('./components/admin/ApplicantProfile.vue'));
+Vue.component('approved-agent-profile', require('./components/admin/ApprovedAgentProfile.vue'));
 Vue.component('advanced-search-component', require('./components/admin/AdvancedSearch.vue'));
 Vue.component('admin-register-agent', require('./components/admin/RegisterAgent.vue'));
 
@@ -44,6 +45,13 @@ Vue.component('admin-register-agent', require('./components/admin/RegisterAgent.
 import AdminAgents from './components/admin/dashboard/Agents.vue';
 
 
+
+if ($("#approvedAgentProfile").length !== 0){
+    let approvedAgentProfile = new Vue({
+        el:'#approvedAgentProfile'
+    });
+
+}
 
 if ($("#applicantProfile").length !== 0){
     let applicantProfile = new Vue({

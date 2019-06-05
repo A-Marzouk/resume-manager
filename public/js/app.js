@@ -14508,10 +14508,17 @@ Vue.config.devtools = true;
 // admin front-end components :
 Vue.component('admin-dashboard', __webpack_require__(54));
 Vue.component('applicant-profile', __webpack_require__(57));
+Vue.component('approved-agent-profile', __webpack_require__(485));
 Vue.component('advanced-search-component', __webpack_require__(477));
 Vue.component('admin-register-agent', __webpack_require__(480));
 
 
+
+if ($("#approvedAgentProfile").length !== 0) {
+    var approvedAgentProfile = new Vue({
+        el: '#approvedAgentProfile'
+    });
+}
 
 if ($("#applicantProfile").length !== 0) {
     var applicantProfile = new Vue({
@@ -60630,7 +60637,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -60641,6 +60648,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -61727,11 +61735,78 @@ var render = function() {
                             staticStyle: { "margin-top": "20px" }
                           },
                           [
-                            _vm._m(8),
+                            _c("div", { staticClass: "d-flex" }, [
+                              _vm._m(8),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "p-2" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "big-font",
+                                    staticStyle: { "margin-bottom": "6px" }
+                                  },
+                                  [_vm._v("Jason Morgenstern")]
+                                ),
+                                _vm._v(" "),
+                                _vm._m(9),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "visiblty" }, [
+                                  _c("div", { staticClass: "no-decoration" }, [
+                                    _c(
+                                      "a",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "show",
+                                            rawName: "v-show",
+                                            value:
+                                              _vm.secondaryActiveTab !==
+                                              "applicants",
+                                            expression:
+                                              "secondaryActiveTab !== 'applicants'"
+                                          }
+                                        ],
+                                        staticClass:
+                                          "btn btn-primar btn-radius btn-responsive",
+                                        attrs: {
+                                          href: "/admin-front/agent-profile"
+                                        }
+                                      },
+                                      [_vm._v("VISIT AGENT’S PROFILE")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "show",
+                                            rawName: "v-show",
+                                            value:
+                                              _vm.secondaryActiveTab ===
+                                              "applicants",
+                                            expression:
+                                              "secondaryActiveTab === 'applicants'"
+                                          }
+                                        ],
+                                        staticClass:
+                                          "btn btn-primar btn-radius btn-responsive",
+                                        attrs: {
+                                          href: "/admin-front/applicant-profile"
+                                        }
+                                      },
+                                      [_vm._v("VISIT AGENT’S PROFILE")]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(10)
+                                ])
+                              ])
+                            ]),
                             _vm._v(" "),
-                            _vm._m(9),
+                            _vm._m(11),
                             _vm._v(" "),
-                            _vm._m(10),
+                            _vm._m(12),
                             _vm._v(" "),
                             _c(
                               "div",
@@ -61767,245 +61842,227 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("tr", [
-                  _vm._m(11),
-                  _vm._v(" "),
-                  _vm._m(12),
-                  _vm._v(" "),
                   _vm._m(13),
                   _vm._v(" "),
-                  _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(14)]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("tr", [
+                  _vm._m(14),
+                  _vm._v(" "),
                   _vm._m(15),
                   _vm._v(" "),
-                  _vm._m(16),
-                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(16)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
                   _vm._m(17),
                   _vm._v(" "),
-                  _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(18)]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("tr", [
+                  _vm._m(18),
+                  _vm._v(" "),
                   _vm._m(19),
                   _vm._v(" "),
-                  _vm._m(20),
-                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(20)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
                   _vm._m(21),
                   _vm._v(" "),
-                  _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(22)]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("tr", [
+                  _vm._m(22),
+                  _vm._v(" "),
                   _vm._m(23),
                   _vm._v(" "),
-                  _vm._m(24),
-                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(24)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
                   _vm._m(25),
                   _vm._v(" "),
-                  _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(26)]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("tr", [
+                  _vm._m(26),
+                  _vm._v(" "),
                   _vm._m(27),
                   _vm._v(" "),
-                  _vm._m(28),
-                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(28)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
                   _vm._m(29),
                   _vm._v(" "),
-                  _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(30)]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("tr", [
+                  _vm._m(30),
+                  _vm._v(" "),
                   _vm._m(31),
                   _vm._v(" "),
-                  _vm._m(32),
-                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(32)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
                   _vm._m(33),
                   _vm._v(" "),
-                  _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(34)]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("tr", [
+                  _vm._m(34),
+                  _vm._v(" "),
                   _vm._m(35),
                   _vm._v(" "),
-                  _vm._m(36),
-                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(36)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
                   _vm._m(37),
                   _vm._v(" "),
-                  _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(38)]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("tr", [
+                  _vm._m(38),
+                  _vm._v(" "),
                   _vm._m(39),
                   _vm._v(" "),
-                  _vm._m(40),
-                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(40)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
                   _vm._m(41),
                   _vm._v(" "),
-                  _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(42)]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("tr", [
+                  _vm._m(42),
+                  _vm._v(" "),
                   _vm._m(43),
                   _vm._v(" "),
-                  _vm._m(44),
-                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(44)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
                   _vm._m(45),
                   _vm._v(" "),
-                  _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(46)]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("tr", [
+                  _vm._m(46),
+                  _vm._v(" "),
                   _vm._m(47),
                   _vm._v(" "),
-                  _vm._m(48),
-                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(48)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
                   _vm._m(49),
                   _vm._v(" "),
-                  _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(50)]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("tr", [
+                  _vm._m(50),
+                  _vm._v(" "),
                   _vm._m(51),
                   _vm._v(" "),
-                  _vm._m(52),
-                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(52)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
                   _vm._m(53),
                   _vm._v(" "),
-                  _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(54)]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("tr", [
+                  _vm._m(54),
+                  _vm._v(" "),
                   _vm._m(55),
                   _vm._v(" "),
-                  _vm._m(56),
-                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(56)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
                   _vm._m(57),
                   _vm._v(" "),
-                  _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(58)]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("tr", [
+                  _vm._m(58),
+                  _vm._v(" "),
                   _vm._m(59),
                   _vm._v(" "),
-                  _vm._m(60),
-                  _vm._v(" "),
-                  _vm._m(61),
-                  _vm._v(" "),
                   _vm.secondaryActiveTab === "applicants"
                     ? _c(
                         "td",
                         {
                           staticClass: "no-decoration stage-select text-center"
                         },
-                        [_vm._m(62)]
+                        [_vm._m(60)]
                       )
                     : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("tr", [
+                  _vm._m(61),
+                  _vm._v(" "),
+                  _vm._m(62),
+                  _vm._v(" "),
                   _vm._m(63),
-                  _vm._v(" "),
-                  _vm._m(64),
-                  _vm._v(" "),
-                  _vm._m(65),
                   _vm._v(" "),
                   _vm.secondaryActiveTab === "applicants"
                     ? _c(
@@ -62013,7 +62070,25 @@ var render = function() {
                         {
                           staticClass: "no-decoration stage-select text-center"
                         },
-                        [_vm._m(66)]
+                        [_vm._m(64)]
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _vm._m(65),
+                  _vm._v(" "),
+                  _vm._m(66),
+                  _vm._v(" "),
+                  _vm._m(67),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c(
+                        "td",
+                        {
+                          staticClass: "no-decoration stage-select text-center"
+                        },
+                        [_vm._m(68)]
                       )
                     : _vm._e()
                 ])
@@ -62522,70 +62597,54 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex" }, [
-      _c("div", {}, [
-        _c("img", {
-          staticClass: "avator",
-          attrs: {
-            src: "/images/client/add_agent/search_result/ic/user/user123.png"
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "p-2" }, [
-        _c(
-          "div",
-          { staticClass: "big-font", staticStyle: { "margin-bottom": "6px" } },
-          [_vm._v("Jason Morgenstern")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "location" }, [
+    return _c("div", {}, [
+      _c("img", {
+        staticClass: "avator",
+        attrs: {
+          src: "/images/client/add_agent/search_result/ic/user/user123.png"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "location" }, [
+      _c("img", {
+        attrs: {
+          src: "/images/client/add_agent/search_result/icon/maps/place_24px.png"
+        }
+      }),
+      _vm._v(
+        "\n                                                        Dublin, Ireland\n                                                    "
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "button",
+        {
+          staticClass:
+            "btn btn-left btn-radius btn-responsive d-flex align-items-center"
+        },
+        [
           _c("img", {
+            staticStyle: { "margin-right": "15px" },
             attrs: {
               src:
-                "/images/client/add_agent/search_result/icon/maps/place_24px.png"
+                "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
             }
           }),
           _vm._v(
-            "\n                                                        Dublin, Ireland\n                                                    "
+            "\n                                                                LISTEN TO THE RECORD\n                                                            "
           )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "visiblty" }, [
-          _c("div", { staticClass: "no-decoration" }, [
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-primar btn-radius btn-responsive",
-                attrs: { href: "/admin-front/applicant-profile" }
-              },
-              [_vm._v("VISIT AGENT’S PROFILE")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c(
-              "button",
-              {
-                staticClass:
-                  "btn btn-left btn-radius btn-responsive d-flex align-items-center"
-              },
-              [
-                _c("img", {
-                  staticStyle: { "margin-right": "15px" },
-                  attrs: {
-                    src:
-                      "/images/client/add_agent/search_result/ic/play_rec/Vector.png"
-                  }
-                }),
-                _vm._v(
-                  "\n                                                                LISTEN TO THE RECORD\n                                                            "
-                )
-              ]
-            )
-          ])
-        ])
-      ])
+        ]
+      )
     ])
   },
   function() {
@@ -126729,6 +126788,720 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-8ae911a4", module.exports)
+  }
+}
+
+/***/ }),
+/* 485 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(486)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(488)
+/* template */
+var __vue_template__ = __webpack_require__(489)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-40e57e5f"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\admin\\ApprovedAgentProfile.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-40e57e5f", Component.options)
+  } else {
+    hotAPI.reload("data-v-40e57e5f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 486 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(487);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("05fef856", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-40e57e5f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ApprovedAgentProfile.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-40e57e5f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ApprovedAgentProfile.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 487 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 488 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            selection: 'disapprove',
+            disapproveStatus: 'process'
+        };
+    },
+
+    methods: {
+        disapproveApplicant: function disapproveApplicant() {
+            this.selection = 'disapprove';
+        },
+        disapproveAndBlockApplicant: function disapproveAndBlockApplicant() {
+            this.selection = 'disapprove_and_block';
+        }
+    }
+});
+
+/***/ }),
+/* 489 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "d-flex align-items-center flex-column" }, [
+      _c(
+        "nav",
+        { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
+        [
+          _c("div", { staticClass: "backBtn" }, [
+            _c("a", { attrs: { href: "/admin-front/agents" } }, [
+              _c("img", {
+                attrs: {
+                  src: "/images/client/arrow_back.png",
+                  alt: "back-icon"
+                }
+              })
+            ]),
+            _vm._v("\n            JASON MORGENSTERN PROFILE\n        ")
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-info-edit dashboard-box mt-2" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "account-info-edit-heading dashboard-box-heading mr-0 ml-0"
+          },
+          [
+            _c("div", { staticClass: "left" }, [
+              _c("img", {
+                staticClass: "icon-margin small-image",
+                attrs: {
+                  src: "/images/admin/applicant-profile/main_40px.svg",
+                  alt: ""
+                }
+              }),
+              _vm._v(" "),
+              _c("span", [
+                _vm._v(
+                  "\n                    PERSONAL INFORMATION\n                "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "blue-text no-decoration right" }, [
+              _c("a", { attrs: { href: "#" } }, [_vm._v("EDIT")])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "account-info-content-wrapper pb-2" }, [
+          _c("div", { staticClass: "account-info-content " }, [
+            _c("div", { staticClass: "acc-info-content-heading" }, [
+              _c("div", { staticClass: "acc-info-item" }, [
+                _c("img", {
+                  staticStyle: { width: "58px", height: "56px" },
+                  attrs: { src: "/images/client/dummy.png", alt: "name icon" }
+                }),
+                _vm._v(" "),
+                _c("span", [
+                  _vm._v(
+                    "\n                            Edward Norton\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("img", {
+                  staticClass: "ml-2",
+                  attrs: { src: "/images/admin/male.png", alt: "" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "acc-info-timezone" }, [
+                _vm._v(
+                  "\n                        GMT - 8\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "acc-info-content-item" }, [
+              _c("img", {
+                attrs: {
+                  src: "/images/client/my_account/phone_number.png",
+                  alt: "phone icon"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                        00442037000685\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "acc-info-content-item" }, [
+              _c("img", {
+                attrs: {
+                  src: "/images/client/my_account/email.png",
+                  alt: "email icon"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                        email@gmail.com\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "acc-info-content-item" }, [
+              _c("img", {
+                attrs: {
+                  src: "/images/admin/applicant-profile/place_24px.svg",
+                  alt: "email icon"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                        Dublin, Ireland\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "acc-info-content-item" }, [
+              _c("img", {
+                attrs: {
+                  src: "/images/admin/applicant-profile/paypal.svg",
+                  alt: "email icon"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                        PayPal account: 2018150859\n                    "
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-info-edit dashboard-box mt-2" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "account-info-edit-heading dashboard-box-heading mr-0 ml-0"
+          },
+          [
+            _c("div", { staticClass: "left" }, [
+              _c("img", {
+                staticClass: "icon-margin small-image",
+                attrs: {
+                  src: "/images/admin/applicant-profile/prof_info_40px.svg",
+                  alt: ""
+                }
+              }),
+              _vm._v(" "),
+              _c("span", [
+                _vm._v(
+                  "\n                    PROFESSIONAL INFORMATION\n                "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "blue-text no-decoration right" }, [
+              _c("a", { attrs: { href: "#" } }, [_vm._v("EDIT")])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "account-info-content-wrapper  pb-2" }, [
+          _c("div", { staticClass: "account-info-content " }, [
+            _c("div", { staticClass: "acc-info-content-item" }, [
+              _c("img", {
+                attrs: {
+                  src: "/images/admin/applicant-profile/job_title.svg",
+                  alt: "phone icon"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _c("b", [_vm._v("Primary job title:")]),
+                _vm._v(" Telemarketing\n                    ")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "acc-info-content-item" }, [
+              _c("img", {
+                attrs: {
+                  src: "/images/admin/applicant-profile/experience.svg",
+                  alt: "phone icon"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _c("b", [_vm._v("Sector experience:")]),
+                _vm._v(
+                  " Real estate, Investement, Insurance\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "acc-info-content-item" }, [
+              _c("img", {
+                attrs: {
+                  src: "/images/admin/applicant-profile/software.svg",
+                  alt: "phone icon"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _c("b", [_vm._v("Technologies, software:")]),
+                _vm._v(" Microsoft Excel\n                    ")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "acc-info-content-item" }, [
+              _c("img", {
+                attrs: {
+                  src: "/images/admin/applicant-profile/hours.svg",
+                  alt: "phone icon"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _c("b", [_vm._v("No. hours per week:")]),
+                _vm._v(" 30-40 hours\n                    ")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "acc-info-content-item" }, [
+              _c("img", {
+                attrs: {
+                  src: "/images/admin/applicant-profile/voice.svg",
+                  alt: "phone icon"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _c("b", [_vm._v("Voice character:")]),
+                _vm._v(" Friendly\n                    ")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "acc-info-content-item" }, [
+              _c("img", {
+                attrs: {
+                  src: "/images/admin/applicant-profile/languages.svg",
+                  alt: "phone icon"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _c("b", [_vm._v("Languages")]),
+                _vm._v(" English\n                    ")
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-info-edit dashboard-box mt-2" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              "account-info-edit-heading dashboard-box-heading mr-0 ml-0"
+          },
+          [
+            _c("div", { staticClass: "left" }, [
+              _c("img", {
+                staticClass: "icon-margin small-image",
+                attrs: {
+                  src:
+                    "/images/admin/applicant-profile/recording_resume_40px.svg",
+                  alt: ""
+                }
+              }),
+              _vm._v(" "),
+              _c("span", [
+                _vm._v(
+                  "\n                    RECORDING AND RESUME\n                "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "blue-text no-decoration right" }, [
+              _c("a", { attrs: { href: "#" } }, [_vm._v("EDIT")])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "account-info-content-wrapper  pb-2" }, [
+          _c("div", { staticClass: "account-info-content pt-0 " }, [
+            _c("div", { staticClass: "acc-info-content-item" }, [
+              _c("div", [
+                _c("b", [_vm._v("Recording of the applicant’s voice")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "recorder-bar justify-content-between" }, [
+              _c("div", { staticClass: "d-flex align-items-center ml-2" }, [
+                _c("img", {
+                  staticStyle: { "margin-top": "-3px", "margin-right": "8px" },
+                  attrs: {
+                    src: "/images/admin/applicant-profile/pause.svg",
+                    alt: ""
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticStyle: { "font-size": "12px" } }, [
+                  _vm._v(
+                    "\n                            Title_of_the_record...\n                        "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex align-items-center mr-2" }, [
+                _c("div", { staticClass: "time mr-4" }, [
+                  _vm._v(
+                    "\n                            25:15\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("img", {
+                  staticStyle: { "margin-top": "-3px", "margin-right": "8px" },
+                  attrs: { src: "/images/admin/applicant-profile/download.svg" }
+                })
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "account-info-content-wrapper pt-0 pb-2" }, [
+          _c("div", { staticClass: "account-info-content pt-0 " }, [
+            _c("div", { staticClass: "acc-info-content-item" }, [
+              _c("div", [_c("b", [_vm._v("Applicant’s resume")])])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "acc-info-content-item d-flex justify-content-between"
+              },
+              [
+                _c("div", { staticClass: "d-flex align-items-center" }, [
+                  _c("img", {
+                    staticStyle: {
+                      "margin-top": "-3px",
+                      "margin-right": "8px"
+                    },
+                    attrs: {
+                      src: "/images/admin/applicant-profile/resume.svg",
+                      alt: "phone icon"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticStyle: { "font-size": "12px" } }, [
+                    _vm._v(
+                      "\n                            Title_of_the_resumeffgjkj...df.pdf\n                        "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex align-items-center" }, [
+                  _c("div", { staticClass: "open-resume-text mr-4" }, [
+                    _vm._v(
+                      "\n                            OPEN RESUME\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("img", {
+                    staticStyle: {
+                      "margin-top": "-3px",
+                      "margin-right": "8px"
+                    },
+                    attrs: {
+                      src: "/images/admin/applicant-profile/download.svg"
+                    }
+                  })
+                ])
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-40e57e5f", module.exports)
   }
 }
 

@@ -175,7 +175,8 @@
                                                         </div>
                                                         <div class="visiblty">
                                                             <div class="no-decoration">
-                                                                <a href="/admin-front/applicant-profile" class="btn btn-primar btn-radius btn-responsive">VISIT AGENT’S PROFILE</a>
+                                                                <a href="/admin-front/agent-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab !== 'applicants'">VISIT AGENT’S PROFILE</a>
+                                                                <a href="/admin-front/applicant-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab === 'applicants'">VISIT AGENT’S PROFILE</a>
                                                             </div>
                                                             <div>
                                                                 <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">

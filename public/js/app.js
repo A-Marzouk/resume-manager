@@ -58453,7 +58453,7 @@ var render = function() {
                 {
                   staticClass: "menu-block row",
                   class: { active: _vm.activeTab === "clients" },
-                  on: {
+                  nativeOn: {
                     click: function($event) {
                       _vm.selectTab("clients")
                     }
@@ -58578,7 +58578,7 @@ var render = function() {
             {
               staticClass: "menu-block row",
               class: { active: _vm.activeTab === "clients" },
-              on: {
+              nativeOn: {
                 click: function($event) {
                   _vm.selectTab("clients")
                 }

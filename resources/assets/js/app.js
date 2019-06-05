@@ -37,6 +37,8 @@ Vue.config.devtools = true;
 // admin front-end components :
 Vue.component('admin-dashboard', require('./components/admin/dashboard/Main.vue'));
 Vue.component('applicant-profile', require('./components/admin/ApplicantProfile.vue'));
+Vue.component('advanced-search-component', require('./components/admin/AdvancedSearch.vue'));
+
 import AdminAgents from './components/admin/dashboard/Agents.vue';
 
 
@@ -48,6 +50,12 @@ if ($("#applicantProfile").length !== 0){
 
 }
 
+if ($("#advancedSearch").length !== 0){
+    let advancedSearch = new Vue({
+        el:'#advancedSearch'
+    });
+
+}
 
 if ($("#adminDashboardComponent").length !== 0){
 

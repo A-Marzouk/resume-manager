@@ -50,8 +50,10 @@
                         <img src="/images/admin/magnifier-tool.svg" alt="">
                         <input type="text" placeholder="Search by name, e-mail">
                     </div>
-                    <div class="blue-text">
-                        ADVANCED SEARCH
+                    <div class="blue-text no-decoration">
+                        <a href="/admin-front/advanced-search" >
+                            ADVANCED SEARCH
+                        </a>
                     </div>
                 </div>
                 <div class="d-flex align-items-center right no-decoration" style="padding-right: 24px;">

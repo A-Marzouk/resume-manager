@@ -18,4 +18,8 @@ class AdminFrontEndController extends Controller
     public function showApplicantProfile(){
         return view('admin.dashboard.applicant_profile');
     }
+
+    public function showAdvancedSearchPage(){
+        return view('admin.advanced_search_view');
+    }
 }

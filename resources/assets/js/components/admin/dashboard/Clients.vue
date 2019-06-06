@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="optionsBar">
-                <div class="d-flex align-items-center no-decoration" style="padding-right: 24px;">
+                <div class="d-flex flex-small-wrap align-items-center no-decoration" style="padding-right: 24px;">
                     <div>
                         <a href="javascript:void(0)" class="filter-box-clients filterBox d-flex align-items-center" >
                             <img src="/images/admin/filter.svg" alt="">
@@ -93,7 +93,7 @@
                         </div>
                     </div>
                     <div>
-                        <a href="javascript:void(0)" class="sortingBox d-flex align-items-center"  @click="showSortSelection = true">
+                        <a href="javascript:void(0)" class="filterBox filter-box-clients d-flex align-items-center"  @click="showSortSelection = true">
                             <img src="/images/admin/sorting.svg" alt="">
                             <div>
                                 Sorting :
@@ -165,9 +165,18 @@
                                     <img src="/images/admin/clients/yellow.svg" alt="">
                                 </td>
                                 <td>
-                                    <div class="invoice-number base-text name-text">
-                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
+                                    <div class="d-flex align-items-center">
+                                        <div style="margin-top: -12px;">
+                                            <div style="margin-bottom: 10px;">
+                                                Company name
+                                            </div>
+                                            <div class="base-text name-text">
+                                                Edward Smith-Lorence
+                                            </div>
+                                        </div>
+                                        <div class="name-text">
+                                            <img src="/images/admin/down_arrow.png" alt="down arrow">
+                                        </div>
                                     </div>
                                 </td>
                                 <td>
@@ -182,15 +191,44 @@
                                         ACTIVE (40 h)
                                     </div>
                                 </td>
+                                <td>
+                                    <div class="invoice-amount base-text new-text">
+                                      NON
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        $ 500
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text primary-text">
+                                        george Newtone
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                       GMT - 8
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
                                     <img src="/images/admin/clients/orange.svg" alt="">
                                 </td>
                                 <td>
-                                    <div class="invoice-number base-text name-text">
-                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
+                                    <div class="d-flex align-items-center">
+                                        <div style="margin-top: -12px;">
+                                            <div style="margin-bottom: 10px;">
+                                                Company name
+                                            </div>
+                                            <div class="base-text name-text">
+                                                Edward Smith-Lorence
+                                            </div>
+                                        </div>
+                                        <div class="name-text">
+                                            <img src="/images/admin/down_arrow.png" alt="down arrow">
+                                        </div>
                                     </div>
                                 </td>
                                 <td>
@@ -202,7 +240,27 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text new-text">
-                                        NO SUBSCR
+                                        NO SUBSC
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text new-text">
+                                      NON
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        $ 500
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text primary-text">
+                                        george Newtone
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                       GMT - 8
                                     </div>
                                 </td>
                             </tr>
@@ -211,9 +269,18 @@
                                     <img src="/images/admin/clients/red.svg" alt="">
                                 </td>
                                 <td>
-                                    <div class="invoice-number base-text name-text">
-                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
+                                    <div class="d-flex align-items-center">
+                                        <div style="margin-top: -12px;">
+                                            <div style="margin-bottom: 10px;">
+                                                Company name
+                                            </div>
+                                            <div class="base-text name-text">
+                                                Edward Smith-Lorence
+                                            </div>
+                                        </div>
+                                        <div class="name-text">
+                                            <img src="/images/admin/down_arrow.png" alt="down arrow">
+                                        </div>
                                     </div>
                                 </td>
                                 <td>
@@ -225,7 +292,391 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text not-available-text">
-                                       DUE
+                                        DUE
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text available-text">
+                                        PAID
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        $ 500
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text primary-text">
+                                        george Newtone
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        GMT - 8
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="/images/admin/clients/yellow.svg" alt="">
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div style="margin-top: -12px;">
+                                            <div style="margin-bottom: 10px;">
+                                                Company name
+                                            </div>
+                                            <div class="base-text name-text">
+                                                Edward Smith-Lorence
+                                            </div>
+                                        </div>
+                                        <div class="name-text">
+                                            <img src="/images/admin/down_arrow.png" alt="down arrow">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="payment-btn active">
+                                        <a href="#">
+                                            ACTIVE
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text available-text">
+                                        ACTIVE (40 h)
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text new-text">
+                                        NON
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        $ 500
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text primary-text">
+                                        george Newtone
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        GMT - 8
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="/images/admin/clients/yellow.svg" alt="">
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div style="margin-top: -12px;">
+                                            <div style="margin-bottom: 10px;">
+                                                Company name
+                                            </div>
+                                            <div class="base-text name-text">
+                                                Edward Smith-Lorence
+                                            </div>
+                                        </div>
+                                        <div class="name-text">
+                                            <img src="/images/admin/down_arrow.png" alt="down arrow">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="payment-btn active">
+                                        <a href="#">
+                                            ACTIVE
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text available-text">
+                                        ACTIVE (40 h)
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text new-text">
+                                        NON
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        $ 500
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text primary-text">
+                                        george Newtone
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        GMT - 8
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="/images/admin/clients/yellow.svg" alt="">
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div style="margin-top: -12px;">
+                                            <div style="margin-bottom: 10px;">
+                                                Company name
+                                            </div>
+                                            <div class="base-text name-text">
+                                                Edward Smith-Lorence
+                                            </div>
+                                        </div>
+                                        <div class="name-text">
+                                            <img src="/images/admin/down_arrow.png" alt="down arrow">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="payment-btn active">
+                                        <a href="#">
+                                            ACTIVE
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text available-text">
+                                        ACTIVE (40 h)
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text new-text">
+                                        NON
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        $ 500
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text primary-text">
+                                        george Newtone
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        GMT - 8
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="/images/admin/clients/yellow.svg" alt="">
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div style="margin-top: -12px;">
+                                            <div style="margin-bottom: 10px;">
+                                                Company name
+                                            </div>
+                                            <div class="base-text name-text">
+                                                Edward Smith-Lorence
+                                            </div>
+                                        </div>
+                                        <div class="name-text">
+                                            <img src="/images/admin/down_arrow.png" alt="down arrow">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="payment-btn active">
+                                        <a href="#">
+                                            ACTIVE
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text available-text">
+                                        ACTIVE (40 h)
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text new-text">
+                                        NON
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        $ 500
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text primary-text">
+                                        george Newtone
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        GMT - 8
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="/images/admin/clients/yellow.svg" alt="">
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div style="margin-top: -12px;">
+                                            <div style="margin-bottom: 10px;">
+                                                Company name
+                                            </div>
+                                            <div class="base-text name-text">
+                                                Edward Smith-Lorence
+                                            </div>
+                                        </div>
+                                        <div class="name-text">
+                                            <img src="/images/admin/down_arrow.png" alt="down arrow">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="payment-btn active">
+                                        <a href="#">
+                                            ACTIVE
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text available-text">
+                                        ACTIVE (40 h)
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text new-text">
+                                        NON
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        $ 500
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text primary-text">
+                                        george Newtone
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        GMT - 8
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="/images/admin/clients/yellow.svg" alt="">
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div style="margin-top: -12px;">
+                                            <div style="margin-bottom: 10px;">
+                                                Company name
+                                            </div>
+                                            <div class="base-text name-text">
+                                                Edward Smith-Lorence
+                                            </div>
+                                        </div>
+                                        <div class="name-text">
+                                            <img src="/images/admin/down_arrow.png" alt="down arrow">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="payment-btn active">
+                                        <a href="#">
+                                            ACTIVE
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text available-text">
+                                        ACTIVE (40 h)
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text new-text">
+                                        NON
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        $ 500
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text primary-text">
+                                        george Newtone
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        GMT - 8
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="/images/admin/clients/yellow.svg" alt="">
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div style="margin-top: -12px;">
+                                            <div style="margin-bottom: 10px;">
+                                                Company name
+                                            </div>
+                                            <div class="base-text name-text">
+                                                Edward Smith-Lorence
+                                            </div>
+                                        </div>
+                                        <div class="name-text">
+                                            <img src="/images/admin/down_arrow.png" alt="down arrow">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="payment-btn active">
+                                        <a href="#">
+                                            ACTIVE
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text available-text">
+                                        ACTIVE (40 h)
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text new-text">
+                                        NON
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        $ 500
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text primary-text">
+                                        george Newtone
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="invoice-amount base-text">
+                                        GMT - 8
                                     </div>
                                 </td>
                             </tr>

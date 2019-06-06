@@ -9493,7 +9493,7 @@ select:focus {
   margin-left: 10px;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 900px) {
   .table {
     overflow-x: scroll !important;
   }
@@ -10334,6 +10334,13 @@ select:focus {
   }
 }
 
+@media only screen and (max-width: 1024px) {
+  .flex-small-wrap {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
 .optionsBar {
   margin-top: 32px;
   margin-bottom: 28px;
@@ -10474,8 +10481,22 @@ select:focus {
           align-items: center;
 }
 
-.search-box-container .searchBox input {
-  width: 427px;
+@media only screen and (max-width: 1024px) {
+  .search-box-container .searchBox input {
+    width: 426px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .search-box-container .searchBox input {
+    width: 270px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .search-box-container .searchBox input {
+    width: 250px;
+  }
 }
 
 .filterBox,
@@ -10910,6 +10931,12 @@ select:focus {
   padding-right: 225px;
 }
 
+@media only screen and (max-width: 1024px) {
+  .info-bar {
+    padding-right: 42px;
+  }
+}
+
 .info-bar div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10929,6 +10956,12 @@ select:focus {
 
 .filter-box-clients {
   margin-right: 41px !important;
+}
+
+@media only screen and (max-width: 1024px) {
+  .filter-box-clients {
+    margin-bottom: 26px;
+  }
 }
 
 .select-popup {

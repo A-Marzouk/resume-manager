@@ -7,6 +7,11 @@
 }
 
 
+.flex-small-wrap{
+  @media only screen and (max-width: 1024px){
+    flex-wrap: wrap;
+  }
+}
 
 .optionsBar{
   margin-top: 32px;
@@ -85,7 +90,15 @@
   align-items: center;
   .searchBox{
     input{
-      width:427px;
+      @media only screen and (max-width: 1024px){
+        width: 426px;
+      }
+      @media only screen and (max-width: 600px){
+        width: 270px;
+      }
+      @media only screen and (max-width: 400px){
+        width: 250px;
+      }
     }
   }
 }

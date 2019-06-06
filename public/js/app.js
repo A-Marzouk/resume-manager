@@ -60906,7 +60906,7 @@ var staticRenderFns = [
           "div",
           {
             staticClass:
-              "account-info-edit-heading dashboard-box-heading mr-0 ml-0"
+              "account-info-edit-heading dashboard-box-heading mr-0 ml-0 align-items-center"
           },
           [
             _c("div", { staticClass: "left" }, [
@@ -61194,7 +61194,7 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("div", { staticStyle: { "font-size": "12px" } }, [
                   _vm._v(
-                    "\n                            Title_of_the_record...\n                        "
+                    "\n                            Title_o...\n                        "
                   )
                 ])
               ]),
@@ -61225,7 +61225,7 @@ var staticRenderFns = [
               "div",
               {
                 staticClass:
-                  "acc-info-content-item d-flex justify-content-between"
+                  "acc-info-content-item d-flex justify-content-between flex-small-column"
               },
               [
                 _c("div", { staticClass: "d-flex align-items-center" }, [
@@ -61242,7 +61242,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("div", { staticStyle: { "font-size": "12px" } }, [
                     _vm._v(
-                      "\n                            Title_of_the_resumeffgjkj...df.pdf\n                        "
+                      "\n                            Title_of_...df.pdf\n                        "
                     )
                   ])
                 ]),

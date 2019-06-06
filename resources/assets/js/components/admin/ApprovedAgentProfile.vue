@@ -11,7 +11,7 @@
         <!--navbar-->
 
         <div class="account-info-edit dashboard-box mt-2">
-            <div class="account-info-edit-heading dashboard-box-heading mr-0 ml-0">
+            <div class="account-info-edit-heading dashboard-box-heading mr-0 ml-0 align-items-center">
                 <div class="left">
                     <img src="/images/admin/applicant-profile/main_40px.svg" alt=""  class="icon-margin small-image">
                     <span>
@@ -140,7 +140,7 @@
                         <div class="d-flex align-items-center ml-2">
                             <img src="/images/admin/applicant-profile/pause.svg" alt="" style="margin-top: -3px; margin-right: 8px;" >
                             <div style="font-size: 12px;">
-                                Title_of_the_record...
+                                Title_o...
                             </div>
                         </div>
                         <div class="d-flex align-items-center mr-2">
@@ -160,11 +160,11 @@
                             <b>Applicant’s resume</b>
                         </div>
                     </div>
-                    <div class="acc-info-content-item d-flex justify-content-between">
+                    <div class="acc-info-content-item d-flex justify-content-between flex-small-column">
                         <div class="d-flex align-items-center">
                             <img src="/images/admin/applicant-profile/resume.svg" alt="phone icon" style="    margin-top: -3px; margin-right: 8px;" >
                             <div style="font-size: 12px;">
-                                Title_of_the_resumeffgjkj...df.pdf
+                                Title_of_...df.pdf
                             </div>
                         </div>
                         <div class="d-flex align-items-center">

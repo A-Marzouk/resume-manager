@@ -52,7 +52,7 @@
                         <div class="form-group">
                             <label class="checkBoxText form-check-label checkBoxContainer">
                                 <input type="checkbox" id="bookkeper" name="bookkeper" {{ old('remember') ? 'checked' : '' }} checked>
-                                I need Sales Agent
+                                I need a Designer
                                 <span class="checkmark"></span>
                             </label>
                         </div>
@@ -61,7 +61,7 @@
                         <div class="form-group">
                             <label class="checkBoxText form-check-label checkBoxContainer">
                                 <input type="checkbox" id="accountant" name="accountant"{{ old('remember') ? 'checked' : '' }}>
-                                I need Customer Service Agents
+                                I need a Developer
                                 <span class="checkmark"></span>
                             </label>
                         </div>

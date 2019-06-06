@@ -2,10 +2,10 @@
     <div class="row customContainer">
         <div class="col-md-10 offset-md-1 offset-lg-0 col-lg-8">
             <div class="mainSectionHeading">
-                Outbound Sales Teams & Customer Service Agents - <span> On Demand</span>.
+                Connecting companies with Top - <span> Tech Talent</span>.
             </div>
             <div class="mainSectionSubHeading">
-                Access our global talent network of professional Agents, they are<br/>reliable, qualified
+                Access our global talent network of professional developers, they are<br/>reliable, qualified
                 and ready to join your team.
             </div>
             <div class="buttonMain col-lg-4 col-md-6 offset-md-3 offset-lg-0">

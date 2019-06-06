@@ -211,8 +211,8 @@
 
 </div>
 {{-- login modal --}}
-<div class="modal fade" style="background-color:rgba(255, 255, 255, 0.95); padding-right: 3px!important;" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" style="background-color:rgba(255, 255, 255, 0.95);" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog login-modal" role="document">
         <div class="modal-content login-modal-content">
             <div class="modal-body p-0">
                 @include('auth.login_tabs')

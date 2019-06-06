@@ -12,7 +12,7 @@
 
       <div class="account-edit-section" style="padding-bottom: 0; margin: 0 24px;">
         <div class="account-edit-section-inputs">
-          <div class="faq-question-input account-edit-input">
+          <div class="faq-question-input account-edit-input full-width">
             <label class="faq-input-label">
               Enter your e-mail address
             </label>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="account-edit-section-inputs">
-          <div class="faq-question-input account-edit-input">
+          <div class="faq-question-input account-edit-input full-width">
             <label class="faq-input-label">
               Enter your password
             </label>
@@ -58,7 +58,7 @@
     </div>
 
     <div class="account-edit-section-edit-btn no-decoration mt-0" :class="{'disabled-btn' : !canSubmit}" id="submitBtnWrapper">
-      <a href="javascript:void(0)" @click="submitForm">
+      <a class="btn btn-primar" href="javascript:void(0)" @click="submitForm">
         LOG IN
       </a>
     </div>

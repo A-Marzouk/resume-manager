@@ -4916,10 +4916,7 @@ body {
           align-items: center;
 }
 
-.type-entry-block .entry-input-block .btn-container .btn,
-.type-entry-block .document-input-block .btn-container .btn,
-.add-document-block .entry-input-block .btn-container .btn,
-.add-document-block .document-input-block .btn-container .btn {
+.btn {
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
@@ -4930,35 +4927,23 @@ body {
   padding: 10px 25px;
 }
 
-.type-entry-block .entry-input-block .btn-container .btn-link,
-.type-entry-block .document-input-block .btn-container .btn-link,
-.add-document-block .entry-input-block .btn-container .btn-link,
-.add-document-block .document-input-block .btn-container .btn-link {
+.btn-link {
   background: transparent;
   color: #218dce;
   border: none !important;
 }
 
-.type-entry-block .entry-input-block .btn-container .btn-submit,
-.type-entry-block .document-input-block .btn-container .btn-submit,
-.add-document-block .entry-input-block .btn-container .btn-submit,
-.add-document-block .document-input-block .btn-container .btn-submit {
+.btn-submit {
   margin-left: 50px;
   border: none;
 }
 
-.type-entry-block .entry-input-block .btn-container .btn-submit.disabled,
-.type-entry-block .document-input-block .btn-container .btn-submit.disabled,
-.add-document-block .entry-input-block .btn-container .btn-submit.disabled,
-.add-document-block .document-input-block .btn-container .btn-submit.disabled {
+.btn-submit.disabled {
   color: #A1A7AF;
   background-color: #E4E4E4;
 }
 
-.type-entry-block .entry-input-block .btn-container .btn-secondary,
-.type-entry-block .document-input-block .btn-container .btn-secondary,
-.add-document-block .entry-input-block .btn-container .btn-secondary,
-.add-document-block .document-input-block .btn-container .btn-secondary {
+.btn-secondary {
   background: #218dce;
   border: 2px solid #218dce;
   position: relative;
@@ -4968,10 +4953,7 @@ body {
   top: -15px;
 }
 
-.type-entry-block .entry-input-block .btn-container .btn-primary,
-.type-entry-block .document-input-block .btn-container .btn-primary,
-.add-document-block .entry-input-block .btn-container .btn-primary,
-.add-document-block .document-input-block .btn-container .btn-primary {
+.btn-primary {
   background: white;
   padding: 0 15px;
   color: #218dce;
@@ -7649,12 +7631,17 @@ body {
   }
 }
 
+.faq-question-input.account-edit-input {
+  position: relative;
+}
+
 .faq-question-input.account-edit-input.full-width {
   width: 100%;
 }
 
 .faq-question-input.account-edit-input .faq-input {
   width: 400px;
+  max-width: 100%;
 }
 
 .faq-question-input.account-edit-input .faq-input input {
@@ -8503,6 +8490,18 @@ body {
 .disabled-btn a:hover {
   color: #31363d;
   cursor: not-allowed;
+}
+
+.login-modal {
+  width: 70%;
+  max-width: 70% !important;
+}
+
+@media (max-width: 576px) {
+  .login-modal {
+    max-width: 85% !important;
+    margin: 0 auto !important;
+  }
 }
 
 .add-agent-form {

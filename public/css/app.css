@@ -3675,6 +3675,10 @@ body {
   margin-top: 8px;
 }
 
+.white-on-hover a:hover {
+  color: white;
+}
+
 .freelancerChatBox {
   border: 1px lightgrey solid;
   border-radius: 15px;
@@ -10648,6 +10652,14 @@ select:focus {
   height: 36px;
 }
 
+@media only screen and (max-width: 600px) {
+  .disapprove-btn a,
+  .approve-btn a {
+    font-size: 10px;
+    width: 126px;
+  }
+}
+
 .disapprove-btn a {
   color: #FF576B;
   border: 2px solid #FF576B;
@@ -10714,6 +10726,12 @@ select:focus {
   color: #4A5464;
 }
 
+@media only screen and (max-width: 600px) {
+  .stages-list-container {
+    width: 100%;
+  }
+}
+
 .stages-list {
   letter-spacing: -0.1px;
   font-weight: normal;
@@ -10735,6 +10753,17 @@ select:focus {
           align-items: center;
   padding-left: 12px;
   padding-right: 97px;
+}
+
+@media only screen and (max-width: 600px) {
+  .stage-item {
+    width: 100%;
+    padding-right: 12px;
+    -webkit-box-pack: space-evenly !important;
+        -ms-flex-pack: space-evenly !important;
+            justify-content: space-evenly !important;
+    font-size: 12px;
+  }
 }
 
 .open-resume-text {
@@ -10761,6 +10790,12 @@ select:focus {
   margin-top: 26px;
 }
 
+@media only screen and (max-width: 600px) {
+  .recorder-bar {
+    width: 100%;
+  }
+}
+
 .recorder-bar .time {
   font-family: Roboto;
   font-style: normal;
@@ -10772,6 +10807,35 @@ select:focus {
   letter-spacing: -0.1px;
   color: #7A828D;
   opacity: 0.6;
+}
+
+@media only screen and (max-width: 600px) {
+  .account-info-content-wrapper .account-info-content {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .flex-small-column {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .account-info-content-wrapper {
+    padding: 40px 0 0 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .action-buttons-bar {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 .select-popup {

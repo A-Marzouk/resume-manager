@@ -53,22 +53,22 @@
                                 Campaigns
                             </div>
                         </router-link>
-                        <div class="menu-block row" :class="{'active' : activeTab === 'agents'}" @click="selectTab('agents')">
+                        <router-link to="/admin-front/agents"  class="menu-block row" :class="{'active' : activeTab === 'agents'}" @click="selectTab('agents')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('agents')" alt="icon">
                             </div>
                             <div class="menu-block-name">
                                 agents
                             </div>
-                        </div>
-                        <div class="menu-block row" :class="{'active' : activeTab === 'clients'}" @click.native="selectTab('clients')">
+                        </router-link>
+                        <router-link to="/admin-front/clients"  class="menu-block row" :class="{'active' : activeTab === 'clients'}" @click.native="selectTab('clients')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('clients')"  alt="icon">
                             </div>
                             <div class="menu-block-name">
                                 Clients
                             </div>
-                        </div>
+                        </router-link>
                         <router-link to="/admin-front/payments" class="menu-block row" :class="{'active' : activeTab === 'payments'}" @click.native="selectTab('payments')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('payments')" alt="icon">
@@ -107,14 +107,14 @@
                         Agents
                     </div>
                 </router-link>
-                <div class="menu-block row" :class="{'active' : activeTab === 'clients'}" @click.native="selectTab('clients')">
+                <router-link to="/admin-front/clients" class="menu-block row" :class="{'active' : activeTab === 'clients'}" @click.native="selectTab('clients')">
                     <div class="imageContainer">
                         <img :src="getMenuBlockIcon('clients')"  alt="icon">
                     </div>
                     <div class="menu-block-name">
                         Clients
                     </div>
-                </div>
+                </router-link>
 
                 <router-link to="/admin-front/payments" class="menu-block row" :class="{'active' : activeTab === 'payments'}" @click.native="selectTab('payments')">
                     <div class="imageContainer">

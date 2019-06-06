@@ -174,7 +174,7 @@
                                                             Dublin, Ireland
                                                         </div>
                                                         <div class="visiblty">
-                                                            <div class="no-decoration">
+                                                            <div class="no-decoration white-on-hover">
                                                                 <a href="/admin-front/agent-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab !== 'applicants'">VISIT AGENT’S PROFILE</a>
                                                                 <a href="/admin-front/applicant-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab === 'applicants'">VISIT AGENT’S PROFILE</a>
                                                             </div>
@@ -214,9 +214,9 @@
                                                             <div class="blue-text" style="font-size:12px;">LISTEN TO THE RECORD</div>
                                                         </div>
                                                         <div>
-                                                            <button class="btn btn-primar btn-radius btn-responsive" style="margin:0 0 0 20px; ">
+                                                            <a href="/admin-front/applicant-profile" class="btn btn-primar btn-radius btn-responsive" style="margin:0 0 0 20px; ">
                                                                 <b>VISIT PROFILE</b>
-                                                            </button>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -262,6 +262,10 @@
     border-radius: 2px;
     width: 193px;
     height: 36px;
+    @media only screen and (max-width: 600px) {
+      font-size: 10px;
+      width: 126px;
+    }
   }
 }
 

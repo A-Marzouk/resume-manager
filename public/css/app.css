@@ -9465,6 +9465,30 @@ select:focus {
   color: #27AE60;
 }
 
+.invoices-table table tbody tr td .active a {
+  border: 2px solid #27AE60;
+  color: #27AE60;
+  width: 79px;
+  height: 30px;
+  margin-top: -8px;
+}
+
+.invoices-table table tbody tr td .new a {
+  border: 2px solid #FFA368;
+  color: #FFA368;
+  width: 79px;
+  height: 30px;
+  margin-top: -8px;
+}
+
+.invoices-table table tbody tr td .paused a {
+  border: 2px solid #9346DA;
+  color: #9346DA;
+  width: 79px;
+  height: 30px;
+  margin-top: -8px;
+}
+
 .invoices-table table tbody tr td .export-icon img {
   margin-left: 10px;
 }
@@ -10359,7 +10383,7 @@ select:focus {
   }
 }
 
-.optionsBar .searchBox {
+.searchBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10369,9 +10393,9 @@ select:focus {
   padding-left: 10px;
 }
 
-.optionsBar .searchBox input,
-.optionsBar .searchBox textarea,
-.optionsBar .searchBox select {
+.searchBox input,
+.searchBox textarea,
+.searchBox select {
   border: 1px solid #DADADA;
   height: 30px;
   border-radius: 20px;
@@ -10382,58 +10406,76 @@ select:focus {
 }
 
 @media only screen and (max-width: 1024px) {
-  .optionsBar .searchBox input,
-  .optionsBar .searchBox textarea,
-  .optionsBar .searchBox select {
+  .searchBox input,
+  .searchBox textarea,
+  .searchBox select {
     width: 426px;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .optionsBar .searchBox input,
-  .optionsBar .searchBox textarea,
-  .optionsBar .searchBox select {
+  .searchBox input,
+  .searchBox textarea,
+  .searchBox select {
     width: 270px;
   }
 }
 
 @media only screen and (max-width: 400px) {
-  .optionsBar .searchBox input,
-  .optionsBar .searchBox textarea,
-  .optionsBar .searchBox select {
+  .searchBox input,
+  .searchBox textarea,
+  .searchBox select {
     width: 250px;
   }
 }
 
-.optionsBar .searchBox input:focus,
-.optionsBar .searchBox textarea:focus,
-.optionsBar .searchBox select:focus {
+.searchBox input:focus,
+.searchBox textarea:focus,
+.searchBox select:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
   border: 1px solid #DADADA;
   outline: none;
 }
 
-.optionsBar .searchBox ::-webkit-input-placeholder {
+.searchBox ::-webkit-input-placeholder {
   color: #C4C4C4;
 }
 
-.optionsBar .searchBox :-ms-input-placeholder {
+.searchBox :-ms-input-placeholder {
   color: #C4C4C4;
 }
 
-.optionsBar .searchBox ::-ms-input-placeholder {
+.searchBox ::-ms-input-placeholder {
   color: #C4C4C4;
 }
 
-.optionsBar .searchBox ::placeholder {
+.searchBox ::placeholder {
   color: #C4C4C4;
 }
 
 @media only screen and (max-width: 600px) {
-  .optionsBar .searchBox {
+  .searchBox {
     margin-bottom: 20px;
   }
+}
+
+.search-box-container {
+  margin-top: 32px;
+  padding-left: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search-box-container .searchBox input {
+  width: 427px;
 }
 
 .filterBox,
@@ -10519,6 +10561,24 @@ select:focus {
   line-height: 13px;
   letter-spacing: -0.1px;
   color: #27AE60;
+  white-space: nowrap;
+}
+
+.applicants-table .new-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 13px;
+  letter-spacing: -0.1px;
+  color: #F2994A;
+  white-space: nowrap;
+}
+
+.applicants-table .primary-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 13px;
+  letter-spacing: -0.1px;
+  color: #05A4F4;
   white-space: nowrap;
 }
 
@@ -10835,6 +10895,40 @@ select:focus {
         -ms-flex-pack: center;
             justify-content: center;
   }
+}
+
+.info-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 22px;
+  margin-bottom: 29px;
+  padding-left: 42px;
+  padding-right: 225px;
+}
+
+.info-bar div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 12px;
+  line-height: 13px;
+  letter-spacing: -0.1px;
+  color: #666C76;
+}
+
+.info-bar div img {
+  margin-right: 6px;
+}
+
+.filter-box-clients {
+  margin-right: 41px !important;
 }
 
 .select-popup {

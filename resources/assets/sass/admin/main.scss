@@ -37,41 +37,55 @@
     }
 
   }
-  .searchBox{
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    input,textarea,select{
-      border: 1px solid #DADADA;
-      height: 30px;
-      border-radius: 20px;
-      width: 246px;
-      padding-left: 40px;
-      margin-left: -25px;
-      background: none;
-      @media only screen and (max-width: 1024px){
-        width: 426px;
-      }
-      @media only screen and (max-width: 600px){
-        width: 270px;
-      }
-      @media only screen and (max-width: 400px){
-        width: 250px;
-      }
-    }
-    input:focus,textarea:focus,select:focus {
-      -webkit-box-shadow: none;
-      box-shadow: none;
-      border: 1px solid #DADADA;
-      outline: none;
-    }
+}
 
-    ::placeholder {
-      color: #C4C4C4;
+.searchBox{
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  input,textarea,select{
+    border: 1px solid #DADADA;
+    height: 30px;
+    border-radius: 20px;
+    width: 246px;
+    padding-left: 40px;
+    margin-left: -25px;
+    background: none;
+    @media only screen and (max-width: 1024px){
+      width: 426px;
     }
-
     @media only screen and (max-width: 600px){
-      margin-bottom: 20px;
+      width: 270px;
+    }
+    @media only screen and (max-width: 400px){
+      width: 250px;
+    }
+  }
+  input:focus,textarea:focus,select:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #DADADA;
+    outline: none;
+  }
+
+  ::placeholder {
+    color: #C4C4C4;
+  }
+
+  @media only screen and (max-width: 600px){
+    margin-bottom: 20px;
+  }
+}
+
+.search-box-container{
+  margin-top: 32px;
+  padding-left: 24px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  .searchBox{
+    input{
+      width:427px;
     }
   }
 }
@@ -154,6 +168,25 @@
     white-space: nowrap;
 
   }
+
+  .new-text{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 13px;
+    letter-spacing: -0.1px;
+    color: #F2994A;
+    white-space: nowrap;
+  }
+
+  .primary-text{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 13px;
+    letter-spacing: -0.1px;
+    color: #05A4F4;
+    white-space: nowrap;
+  }
+
 
   .not-available-text{
     font-weight: 500;

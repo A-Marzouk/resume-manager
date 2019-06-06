@@ -46,7 +46,7 @@
 
             <div class="optionsBar">
                 <div class="d-flex align-items-center left">
-                    <div class="searchBox">
+                    <div class="searchBox mt-3">
                         <img src="/images/admin/magnifier-tool.svg" alt="">
                         <input type="text" placeholder="Search by name, e-mail">
                     </div>

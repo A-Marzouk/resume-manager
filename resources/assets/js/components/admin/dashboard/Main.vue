@@ -53,7 +53,7 @@
                                 Campaigns
                             </div>
                         </router-link>
-                        <router-link to="/admin-front/agents"  class="menu-block row" :class="{'active' : activeTab === 'agents'}" @click="selectTab('agents')">
+                        <router-link to="/admin-front/agents"  class="menu-block row" :class="{'active' : activeTab === 'agents'}" @click.native="selectTab('agents')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('agents')" alt="icon">
                             </div>

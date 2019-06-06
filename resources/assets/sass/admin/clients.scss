@@ -7,6 +7,7 @@
   padding-right:225px;
   @media only screen and (max-width: 1024px){
     padding-right:42px;
+    flex-wrap: wrap;
   }
   div{
     display:flex;
@@ -17,6 +18,14 @@
     color: #666C76;
     img{
       margin-right:6px;
+
+      @media only screen and (max-width: 1024px){
+        margin-top: -12px;
+      }
+    }
+
+    @media only screen and (max-width: 1024px){
+      margin-bottom: 12px;
     }
   }
 }
@@ -25,5 +34,8 @@
   margin-right: 41px !important;
   @media only screen and (max-width: 1024px){
     margin-bottom: 26px;
+  }
+  @media only screen and (max-width: 600px){
+    margin-bottom: 12px;
   }
 }

@@ -58428,7 +58428,7 @@ var render = function() {
                   staticClass: "menu-block row",
                   class: { active: _vm.activeTab === "agents" },
                   attrs: { to: "/admin-front/agents" },
-                  on: {
+                  nativeOn: {
                     click: function($event) {
                       _vm.selectTab("agents")
                     }
@@ -65063,7 +65063,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "d-flex align-items-center left" }, [
-      _c("div", { staticClass: "searchBox" }, [
+      _c("div", { staticClass: "searchBox mt-3" }, [
         _c("img", {
           attrs: { src: "/images/admin/magnifier-tool.svg", alt: "" }
         }),

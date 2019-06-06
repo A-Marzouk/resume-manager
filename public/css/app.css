@@ -10366,6 +10366,12 @@ select:focus {
   }
 }
 
+@media only screen and (max-width: 600px) {
+  .optionsBar {
+    margin-top: 0;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   .optionsBar .left {
     margin-bottom: 25px;
@@ -10934,6 +10940,8 @@ select:focus {
 @media only screen and (max-width: 1024px) {
   .info-bar {
     padding-right: 42px;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
 }
 
@@ -10954,6 +10962,18 @@ select:focus {
   margin-right: 6px;
 }
 
+@media only screen and (max-width: 1024px) {
+  .info-bar div img {
+    margin-top: -12px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .info-bar div {
+    margin-bottom: 12px;
+  }
+}
+
 .filter-box-clients {
   margin-right: 41px !important;
 }
@@ -10961,6 +10981,12 @@ select:focus {
 @media only screen and (max-width: 1024px) {
   .filter-box-clients {
     margin-bottom: 26px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .filter-box-clients {
+    margin-bottom: 12px;
   }
 }
 

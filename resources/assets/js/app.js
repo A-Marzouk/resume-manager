@@ -44,6 +44,7 @@ Vue.component('admin-register-agent', require('./components/admin/RegisterAgent.
 
 import AdminAgents from './components/admin/dashboard/Agents.vue';
 import AdminClients from './components/admin/dashboard/Clients.vue';
+import AdminCampaigns from './components/admin/dashboard/Campaigns.vue';
 
 
 
@@ -72,7 +73,8 @@ if ($("#adminDashboardComponent").length !== 0){
 
         const routes = [
             { path: '/admin-front/agents/', component: AdminAgents },
-            { path: '/admin-front/clients/', component: AdminClients }
+            { path: '/admin-front/clients/', component: AdminClients },
+            { path: '/admin-front/campaign-manager/', component: AdminCampaigns },
         ];
 
         const router = new VueRouter({

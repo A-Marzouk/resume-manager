@@ -46,7 +46,7 @@
 
             <div class="optionsBar">
                 <div class="d-flex align-items-center left">
-                    <div class="searchBox mt-3">
+                    <div class="searchBox agents">
                         <img src="/images/admin/magnifier-tool.svg" alt="">
                         <input type="text" placeholder="Search by name, e-mail">
                     </div>
@@ -174,11 +174,11 @@
                                                             Dublin, Ireland
                                                         </div>
                                                         <div class="visiblty">
-                                                            <div class="no-decoration white-on-hover">
+                                                            <div class="no-decoration white-on-hover mt-4">
                                                                 <a href="/admin-front/agent-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab !== 'applicants'">VISIT AGENT’S PROFILE</a>
                                                                 <a href="/admin-front/applicant-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab === 'applicants'">VISIT AGENT’S PROFILE</a>
                                                             </div>
-                                                            <div>
+                                                            <div class="mt-4">
                                                                 <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">
                                                                     <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png" style="margin-right: 15px;"/>
                                                                     LISTEN TO THE RECORD

@@ -15,7 +15,7 @@
             <div class="search-box-container d-flex align-items-center">
                 <div class="searchBox">
                     <img src="/images/admin/magnifier-tool.svg" alt="">
-                    <input type="text" placeholder="Search by name, e-mail">
+                    <input type="text" placeholder="Search by name, e-mail" class="client-search-box">
                 </div>
             </div>
             <div class="optionsBar">

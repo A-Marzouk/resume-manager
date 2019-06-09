@@ -10416,7 +10416,17 @@ select:focus {
 
 @media only screen and (max-width: 1024px) {
   .optionsBar .blue-text {
-    padding-left: 4px;
+    padding-left: 20px;
+  }
+}
+
+.searchBox.agents {
+  width: 246px;
+}
+
+@media only screen and (max-width: 600px) {
+  .searchBox.agents {
+    margin-top: 28px;
   }
 }
 
@@ -10436,18 +10446,10 @@ select:focus {
   border: 1px solid #DADADA;
   height: 30px;
   border-radius: 20px;
-  width: 246px;
   padding-left: 40px;
   margin-left: -25px;
+  width: 426px;
   background: none;
-}
-
-@media only screen and (max-width: 1024px) {
-  .searchBox input,
-  .searchBox textarea,
-  .searchBox select {
-    width: 426px;
-  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -10509,24 +10511,6 @@ select:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-@media only screen and (max-width: 1024px) {
-  .search-box-container .searchBox input {
-    width: 426px;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .search-box-container .searchBox input {
-    width: 270px;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .search-box-container .searchBox input {
-    width: 250px;
-  }
 }
 
 .filterBox,

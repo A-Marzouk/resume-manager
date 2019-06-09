@@ -64333,7 +64333,7 @@ var render = function() {
                                     "div",
                                     {
                                       staticClass:
-                                        "no-decoration white-on-hover"
+                                        "no-decoration white-on-hover mt-4"
                                     },
                                     [
                                       _c(
@@ -65073,7 +65073,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "d-flex align-items-center left" }, [
-      _c("div", { staticClass: "searchBox mt-3" }, [
+      _c("div", { staticClass: "searchBox agents" }, [
         _c("img", {
           attrs: { src: "/images/admin/magnifier-tool.svg", alt: "" }
         }),
@@ -65211,7 +65211,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
+    return _c("div", { staticClass: "mt-4" }, [
       _c(
         "button",
         {
@@ -67851,6 +67851,7 @@ var staticRenderFns = [
           }),
           _vm._v(" "),
           _c("input", {
+            staticClass: "client-search-box",
             attrs: { type: "text", placeholder: "Search by name, e-mail" }
           })
         ])

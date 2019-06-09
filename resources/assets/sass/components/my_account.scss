@@ -396,6 +396,25 @@
   height: auto;
   position: relative;
 
+  a{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 2px;
+    width:158px;
+    height:48px;
+    background: #05A4F4;
+  }
+
   &.disabled-btn {
     a {
       background-color: #E4E4E4;

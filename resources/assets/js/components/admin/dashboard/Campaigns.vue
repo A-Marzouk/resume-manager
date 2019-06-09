@@ -121,7 +121,7 @@
                                 </td>
                                 <td>
                                     <div class="no-decoration">
-                                        <a href="#" class="base-text primary-text">
+                                        <a href="/client/campaign" class="base-text primary-text">
                                             MANAGE
                                         </a>
                                     </div>

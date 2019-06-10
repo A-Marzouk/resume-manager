@@ -1,0 +1,41 @@
+.info-bar{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 22px;
+  margin-bottom: 29px;
+  padding-left:42px;
+  padding-right:225px;
+  @media only screen and (max-width: 1024px){
+    padding-right:42px;
+    flex-wrap: wrap;
+  }
+  div{
+    display:flex;
+    align-items: center;
+    font-size: 12px;
+    line-height: 13px;
+    letter-spacing: -0.1px;
+    color: #666C76;
+    img{
+      margin-right:6px;
+
+      @media only screen and (max-width: 1024px){
+        margin-top: -12px;
+      }
+    }
+
+    @media only screen and (max-width: 1024px){
+      margin-bottom: 12px;
+    }
+  }
+}
+
+.filter-box-clients{
+  margin-right: 41px !important;
+  @media only screen and (max-width: 1024px){
+    margin-bottom: 26px;
+  }
+  @media only screen and (max-width: 600px){
+    margin-bottom: 12px;
+  }
+}

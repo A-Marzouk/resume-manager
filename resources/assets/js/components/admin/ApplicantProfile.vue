@@ -42,7 +42,7 @@
                                 14.05.19
                             </div>
                             <div style="font-weight: 500;">
-                                Stage:v1
+                                Stage: v1
                             </div>
                             <div>
                                 Application received
@@ -51,13 +51,27 @@
                                 E-mail sent
                             </div>
                         </div>
+                        <div class="stage-item d-flex justify-content-between border-top-0">
+                            <div>
+                                15.05.19
+                            </div>
+                            <div style="font-weight: 500;">
+                                Stage: v6
+                            </div>
+                            <div>
+                                Application received
+                            </div>
+                            <div style="color:#FF7557; font-weight: 500;">
+                                E-mail faild
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="account-info-content-wrapper pb-2">
                 <div class="account-info-content">
-                    <div class="acc-info-content-heading">
+                    <div class="acc-info-content-heading align-items-center">
                         <div class="acc-info-item">
                             <img src="/images/client/dummy.png" alt="name icon" style="width:58px; height:56px;">
                             <span>
@@ -65,8 +79,8 @@
                             </span>
                             <img src="/images/admin/male.png" alt="" class="ml-2">
                         </div>
-                        <div class="acc-info-timezone">
-                            GMT - 8
+                        <div class="acc-info-timezone" style="white-space: nowrap;" >
+                            GMT -8
                         </div>
                     </div>
                     <div class="acc-info-content-item">
@@ -148,7 +162,7 @@
                         <div class="d-flex align-items-center ml-2">
                             <img src="/images/admin/applicant-profile/pause.svg" alt="" style="margin-top: -3px; margin-right: 8px;" >
                             <div style="font-size: 12px;">
-                                Title_of_the_record...
+                                Title_r...
                             </div>
                         </div>
                         <div class="d-flex align-items-center mr-2">
@@ -168,11 +182,11 @@
                             <b>Applicant’s resume</b>
                         </div>
                     </div>
-                    <div class="acc-info-content-item d-flex justify-content-between">
+                    <div class="acc-info-content-item d-flex justify-content-between flex-small-column">
                         <div class="d-flex align-items-center">
                             <img src="/images/admin/applicant-profile/resume.svg" alt="phone icon" style="    margin-top: -3px; margin-right: 8px;" >
                             <div style="font-size: 12px;">
-                                Title_of_the_resumeffgjkj...df.pdf
+                                Title_of_the_...df.pdf
                             </div>
                         </div>
                         <div class="d-flex align-items-center">

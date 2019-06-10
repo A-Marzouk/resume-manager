@@ -39,4 +39,11 @@
   padding: 3px 0 0 0;
   width: 30px;
   background-color: #30323D;
-  margin-top: 8px; }
+  margin-top: 8px;
+}
+
+.white-on-hover{
+  a:hover{
+    color: white;
+  }
+}

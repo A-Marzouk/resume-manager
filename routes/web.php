@@ -22,7 +22,12 @@ Auth::routes();
 // admin front end routs :
 Route::prefix('admin-front')->group(function (){
     Route::get('/applicant-profile','AdminFrontEndController@showApplicantProfile')->name('admin.front.applicant_profile');
+    Route::get('/agent-profile','AdminFrontEndController@showApprovedAgentProfile')->name('admin.front.agent_profile');
+    Route::get('/advanced-search','AdminFrontEndController@showAdvancedSearchPage')->name('admin.search');
+    Route::get('/register-agent','AdminFrontEndController@showRegisterAgentPage')->name('admin.register.agent');
+    Route::get('/register-agent/{any?}','AdminFrontEndController@showRegisterAgentPage')->name('admin.register.agent');
     Route::get('/{any?}','AdminFrontEndController@showDashboard')->name('admin.front.dashboard');
+
 });
 
 

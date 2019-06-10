@@ -5,7 +5,7 @@
         <a href="/client/dashboard">
                     <img src="/images/client/arrow_back.png" alt="back-icon">
                 </a>
-        ADD NEW AGEN
+        ADD NEW AGENT
       </div>
     </nav>
     <!--<div class="visible-add-agent">-->

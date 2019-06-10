@@ -357,6 +357,33 @@
               color: #27AE60;
             }
           }
+          .active{
+            a{
+              border: 2px solid #27AE60;
+              color: #27AE60;
+              width: 79px;
+              height: 30px;
+              margin-top: -8px;
+            }
+          }
+          .new{
+            a{
+              border: 2px solid #FFA368;
+              color: #FFA368;
+              width: 79px;
+              height: 30px;
+              margin-top: -8px;
+            }
+          }
+          .paused{
+            a{
+              border: 2px solid #9346DA;
+              color: #9346DA;
+              width: 79px;
+              height: 30px;
+              margin-top: -8px;
+            }
+          }
           .export-icon{
             img{
               margin-left:10px;
@@ -369,7 +396,7 @@
 }
 
 .table{
-  @media (max-width:650px) {
+  @media (max-width:900px) {
     overflow-x: scroll !important;
   }
 }

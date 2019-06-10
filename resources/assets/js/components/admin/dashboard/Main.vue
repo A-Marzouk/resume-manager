@@ -53,22 +53,22 @@
                                 Campaigns
                             </div>
                         </router-link>
-                        <div class="menu-block row" :class="{'active' : activeTab === 'agents'}" @click="selectTab('agents')">
+                        <router-link to="/admin-front/agents"  class="menu-block row" :class="{'active' : activeTab === 'agents'}" @click.native="selectTab('agents')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('agents')" alt="icon">
                             </div>
                             <div class="menu-block-name">
                                 agents
                             </div>
-                        </div>
-                        <div class="menu-block row" :class="{'active' : activeTab === 'clients'}" @click="selectTab('clients')">
+                        </router-link>
+                        <router-link to="/admin-front/clients"  class="menu-block row" :class="{'active' : activeTab === 'clients'}" @click.native="selectTab('clients')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('clients')"  alt="icon">
                             </div>
                             <div class="menu-block-name">
                                 Clients
                             </div>
-                        </div>
+                        </router-link>
                         <router-link to="/admin-front/payments" class="menu-block row" :class="{'active' : activeTab === 'payments'}" @click.native="selectTab('payments')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('payments')" alt="icon">
@@ -107,14 +107,14 @@
                         Agents
                     </div>
                 </router-link>
-                <div class="menu-block row" :class="{'active' : activeTab === 'clients'}" @click="selectTab('clients')">
+                <router-link to="/admin-front/clients" class="menu-block row" :class="{'active' : activeTab === 'clients'}" @click.native="selectTab('clients')">
                     <div class="imageContainer">
                         <img :src="getMenuBlockIcon('clients')"  alt="icon">
                     </div>
                     <div class="menu-block-name">
                         Clients
                     </div>
-                </div>
+                </router-link>
 
                 <router-link to="/admin-front/payments" class="menu-block row" :class="{'active' : activeTab === 'payments'}" @click.native="selectTab('payments')">
                     <div class="imageContainer">
@@ -302,6 +302,56 @@
                             <div class="modal-btn-wrapper d-flex justify-content-end">
                                 <div class="button-base blue-button-a">
                                     <a href="javascript:void(0)" data-dismiss="modal" style="width: 83px;">OK</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade"
+             id="add-agent"
+             tabindex="-1"
+             role="dialog"
+             aria-labelledby="remove-modal"
+             aria-hidden="true">
+            <div class="modal-dialog"
+                 role="document">
+                <div class="modal-content border-0"
+                     style="margin-top: 30%;">
+                    <div class="modal-body campaign-team-modal">
+                        <div v-show="disapproveStatus === 'process'">
+                            <div class="modal-question">
+                               Which agent do you want to add ?
+                            </div>
+                            <div class="modal-answer">
+                                <div class="col-12">
+                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveApplicant">
+                                        <input class="form-check-input" type="radio" name="disapprove">
+                                        <span class="checkmark make-circle"></span> business support
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveAndBlockApplicant">
+                                        <input class="form-check-input" type="radio" name="disapprove">
+                                        <span class="checkmark make-circle"></span> designer
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveAndBlockApplicant">
+                                        <input class="form-check-input" type="radio" name="disapprove">
+                                        <span class="checkmark make-circle"></span> developer
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="modal-btn-wrapper">
+                                <div class="button-base white-button-a">
+                                    <a href="javascript:void(0)" data-dismiss="modal">CANCEL</a>
+                                </div>
+                                <div class="button-base blue-button-a">
+                                    <a href="/admin-front/register-agent" style="width:106px;">Continue</a>
                                 </div>
                             </div>
                         </div>

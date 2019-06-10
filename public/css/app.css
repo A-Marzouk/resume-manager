@@ -3675,6 +3675,10 @@ body {
   margin-top: 8px;
 }
 
+.white-on-hover a:hover {
+  color: white;
+}
+
 .freelancerChatBox {
   border: 1px lightgrey solid;
   border-radius: 15px;
@@ -9463,11 +9467,35 @@ select:focus {
   color: #27AE60;
 }
 
+.invoices-table table tbody tr td .active a {
+  border: 2px solid #27AE60;
+  color: #27AE60;
+  width: 79px;
+  height: 30px;
+  margin-top: -8px;
+}
+
+.invoices-table table tbody tr td .new a {
+  border: 2px solid #FFA368;
+  color: #FFA368;
+  width: 79px;
+  height: 30px;
+  margin-top: -8px;
+}
+
+.invoices-table table tbody tr td .paused a {
+  border: 2px solid #9346DA;
+  color: #9346DA;
+  width: 79px;
+  height: 30px;
+  margin-top: -8px;
+}
+
 .invoices-table table tbody tr td .export-icon img {
   margin-left: 10px;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 900px) {
   .table {
     overflow-x: scroll !important;
   }
@@ -10308,6 +10336,13 @@ select:focus {
   }
 }
 
+@media only screen and (max-width: 1024px) {
+  .flex-small-wrap {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
 .optionsBar {
   margin-top: 32px;
   margin-bottom: 28px;
@@ -10330,6 +10365,12 @@ select:focus {
     -webkit-box-pack: left;
         -ms-flex-pack: left;
             justify-content: left;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .optionsBar {
+    margin-top: 0;
   }
 }
 
@@ -10357,7 +10398,7 @@ select:focus {
   }
 }
 
-.optionsBar .searchBox {
+.searchBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10367,9 +10408,9 @@ select:focus {
   padding-left: 10px;
 }
 
-.optionsBar .searchBox input,
-.optionsBar .searchBox textarea,
-.optionsBar .searchBox select {
+.searchBox input,
+.searchBox textarea,
+.searchBox select {
   border: 1px solid #DADADA;
   height: 30px;
   border-radius: 20px;
@@ -10380,57 +10421,89 @@ select:focus {
 }
 
 @media only screen and (max-width: 1024px) {
-  .optionsBar .searchBox input,
-  .optionsBar .searchBox textarea,
-  .optionsBar .searchBox select {
+  .searchBox input,
+  .searchBox textarea,
+  .searchBox select {
     width: 426px;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .optionsBar .searchBox input,
-  .optionsBar .searchBox textarea,
-  .optionsBar .searchBox select {
+  .searchBox input,
+  .searchBox textarea,
+  .searchBox select {
     width: 270px;
   }
 }
 
 @media only screen and (max-width: 400px) {
-  .optionsBar .searchBox input,
-  .optionsBar .searchBox textarea,
-  .optionsBar .searchBox select {
+  .searchBox input,
+  .searchBox textarea,
+  .searchBox select {
     width: 250px;
   }
 }
 
-.optionsBar .searchBox input:focus,
-.optionsBar .searchBox textarea:focus,
-.optionsBar .searchBox select:focus {
+.searchBox input:focus,
+.searchBox textarea:focus,
+.searchBox select:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
   border: 1px solid #DADADA;
   outline: none;
 }
 
-.optionsBar .searchBox ::-webkit-input-placeholder {
+.searchBox ::-webkit-input-placeholder {
   color: #C4C4C4;
 }
 
-.optionsBar .searchBox :-ms-input-placeholder {
+.searchBox :-ms-input-placeholder {
   color: #C4C4C4;
 }
 
-.optionsBar .searchBox ::-ms-input-placeholder {
+.searchBox ::-ms-input-placeholder {
   color: #C4C4C4;
 }
 
-.optionsBar .searchBox ::placeholder {
+.searchBox ::placeholder {
   color: #C4C4C4;
 }
 
 @media only screen and (max-width: 600px) {
-  .optionsBar .searchBox {
+  .searchBox {
     margin-bottom: 20px;
+  }
+}
+
+.search-box-container {
+  margin-top: 32px;
+  padding-left: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media only screen and (max-width: 1024px) {
+  .search-box-container .searchBox input {
+    width: 426px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .search-box-container .searchBox input {
+    width: 270px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .search-box-container .searchBox input {
+    width: 250px;
   }
 }
 
@@ -10517,6 +10590,24 @@ select:focus {
   line-height: 13px;
   letter-spacing: -0.1px;
   color: #27AE60;
+  white-space: nowrap;
+}
+
+.applicants-table .new-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 13px;
+  letter-spacing: -0.1px;
+  color: #F2994A;
+  white-space: nowrap;
+}
+
+.applicants-table .primary-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 13px;
+  letter-spacing: -0.1px;
+  color: #05A4F4;
   white-space: nowrap;
 }
 
@@ -10649,6 +10740,14 @@ select:focus {
   height: 36px;
 }
 
+@media only screen and (max-width: 600px) {
+  .disapprove-btn a,
+  .approve-btn a {
+    font-size: 10px;
+    width: 126px;
+  }
+}
+
 .disapprove-btn a {
   color: #FF576B;
   border: 2px solid #FF576B;
@@ -10715,6 +10814,12 @@ select:focus {
   color: #4A5464;
 }
 
+@media only screen and (max-width: 600px) {
+  .stages-list-container {
+    width: 100%;
+  }
+}
+
 .stages-list {
   letter-spacing: -0.1px;
   font-weight: normal;
@@ -10736,6 +10841,17 @@ select:focus {
           align-items: center;
   padding-left: 12px;
   padding-right: 97px;
+}
+
+@media only screen and (max-width: 600px) {
+  .stage-item {
+    width: 100%;
+    padding-right: 12px;
+    -webkit-box-pack: space-evenly !important;
+        -ms-flex-pack: space-evenly !important;
+            justify-content: space-evenly !important;
+    font-size: 12px;
+  }
 }
 
 .open-resume-text {
@@ -10762,6 +10878,12 @@ select:focus {
   margin-top: 26px;
 }
 
+@media only screen and (max-width: 600px) {
+  .recorder-bar {
+    width: 100%;
+  }
+}
+
 .recorder-bar .time {
   font-family: Roboto;
   font-style: normal;
@@ -10773,6 +10895,101 @@ select:focus {
   letter-spacing: -0.1px;
   color: #7A828D;
   opacity: 0.6;
+}
+
+@media only screen and (max-width: 600px) {
+  .account-info-content-wrapper .account-info-content {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .flex-small-column {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .account-info-content-wrapper {
+    padding: 40px 0 0 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .action-buttons-bar {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.info-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 22px;
+  margin-bottom: 29px;
+  padding-left: 42px;
+  padding-right: 225px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .info-bar {
+    padding-right: 42px;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+.info-bar div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 12px;
+  line-height: 13px;
+  letter-spacing: -0.1px;
+  color: #666C76;
+}
+
+.info-bar div img {
+  margin-right: 6px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .info-bar div img {
+    margin-top: -12px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .info-bar div {
+    margin-bottom: 12px;
+  }
+}
+
+.filter-box-clients {
+  margin-right: 41px !important;
+}
+
+@media only screen and (max-width: 1024px) {
+  .filter-box-clients {
+    margin-bottom: 26px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .filter-box-clients {
+    margin-bottom: 12px;
+  }
 }
 
 .select-popup {

@@ -22,7 +22,7 @@
                 </div>
                 <div>
                     <div class="white-button-a button-base">
-                        <a href="javascript:void(0)" style="width:175px; height:30px; border-radius:40px;">
+                        <a href="javascript:void(0)" style="width:175px; height:30px; border-radius:40px;" data-toggle="modal" data-target="#add-agent">
                             <img src="/images/client/payments/add.png" alt="add icon">
                             ADD NEW AGENT
                         </a>
@@ -46,12 +46,14 @@
 
             <div class="optionsBar">
                 <div class="d-flex align-items-center left">
-                    <div class="searchBox">
+                    <div class="searchBox mt-3">
                         <img src="/images/admin/magnifier-tool.svg" alt="">
                         <input type="text" placeholder="Search by name, e-mail">
                     </div>
-                    <div class="blue-text">
-                        ADVANCED SEARCH
+                    <div class="blue-text no-decoration">
+                        <a href="/admin-front/advanced-search" >
+                            ADVANCED SEARCH
+                        </a>
                     </div>
                 </div>
                 <div class="d-flex align-items-center right no-decoration" style="padding-right: 24px;">
@@ -172,8 +174,9 @@
                                                             Dublin, Ireland
                                                         </div>
                                                         <div class="visiblty">
-                                                            <div class="no-decoration">
-                                                                <a href="/admin-front/applicant-profile" class="btn btn-primar btn-radius btn-responsive">VISIT AGENT’S PROFILE</a>
+                                                            <div class="no-decoration white-on-hover">
+                                                                <a href="/admin-front/agent-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab !== 'applicants'">VISIT AGENT’S PROFILE</a>
+                                                                <a href="/admin-front/applicant-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab === 'applicants'">VISIT AGENT’S PROFILE</a>
                                                             </div>
                                                             <div>
                                                                 <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">
@@ -211,9 +214,9 @@
                                                             <div class="blue-text" style="font-size:12px;">LISTEN TO THE RECORD</div>
                                                         </div>
                                                         <div>
-                                                            <button class="btn btn-primar btn-radius btn-responsive" style="margin:0 0 0 20px; ">
+                                                            <a href="/admin-front/applicant-profile" class="btn btn-primar btn-radius btn-responsive" style="margin:0 0 0 20px; ">
                                                                 <b>VISIT PROFILE</b>
-                                                            </button>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>

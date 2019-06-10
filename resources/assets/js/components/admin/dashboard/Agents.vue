@@ -51,7 +51,7 @@
                         <input type="text" placeholder="Search by name, e-mail">
                     </div>
                     <div class="blue-text no-decoration">
-                        <a href="/admin-front/advanced-search" >
+                        <a href="/admin-front/advanced-search" style="color: #05A4F4;" >
                             ADVANCED SEARCH
                         </a>
                     </div>
@@ -123,7 +123,7 @@
                                 <td>
                                     <div class="invoice-number base-text name-text">
                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
+                                        <img src="/images/admin/down_arrow.png" alt="down arrow" style="transform: rotate(180deg);">
                                     </div>
                                 </td>
                                 <td>
@@ -604,7 +604,7 @@
                     </div>
                     <div class="no-decoration">
                         <a href="javascript:void(0)" class="paginationBox d-flex align-items-center justify-content-center" @click="showUsersNumSelection = true">
-                            Users per page :
+                            Users per page:&nbsp;
                             <span v-if="usersNumber === 15 ">15</span>
                             <span v-if="usersNumber === 25 ">25</span>
                             <span v-if="usersNumber === 50 ">50</span>

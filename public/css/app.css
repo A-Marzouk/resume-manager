@@ -3805,9 +3805,17 @@ body {
 }
 
 .dashboard .dashboard_navbar .logoutButton {
-  width: 28px;
-  height: 28px;
   margin-right: 27px;
+}
+
+.dashboard .dashboard_navbar .logoutButton a {
+  width: 20px;
+  height: 20px;
+  margin-top: 5px;
+}
+
+.dashboard .dashboard_navbar .logoutButton img {
+  width: 20px;
 }
 
 .dashboard .dashboard_navbar .logoutButton :hover {
@@ -5177,7 +5185,7 @@ body {
   font-family: Roboto;
   font-style: normal;
   margin-right: 80px !important;
-  font-weight: normal;
+  font-weight: 500;
   font-size: 18px;
   line-height: 24px;
   color: #FFFFFF;
@@ -10499,6 +10507,11 @@ select:focus {
   }
 }
 
+.searchBox img {
+  width: 12px;
+  height: 12px;
+}
+
 .search-box-container {
   margin-top: 32px;
   padding-left: 24px;
@@ -11022,7 +11035,7 @@ select:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 11px !important;
+  padding: 11px 0 11px 0 !important;
   margin: 0 !important;
 }
 
@@ -11037,15 +11050,17 @@ select:focus {
   line-height: 24px;
   color: #4A5464;
   mix-blend-mode: normal;
+  padding-right: 11px;
+  padding-left: 11px;
 }
 
 .select-popup-list li:last-child {
-  padding-bottom: 0;
+  padding-bottom: 5px;
   border-bottom: 0;
 }
 
 .select-popup-list li:first-child {
-  padding-top: 0px;
+  padding-top: 5px;
 }
 
 .select-popup-list li:hover {

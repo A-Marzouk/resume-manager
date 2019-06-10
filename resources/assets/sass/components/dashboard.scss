@@ -9,6 +9,10 @@
       background: white;
       height: 56px !important;
       box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+
       .navbar-brand img {
         margin-left: 34px;
         @media (max-width:745px) {
@@ -23,9 +27,22 @@
         font-weight: 500;
         font-size: 18px;
         margin-right: 75px;
-        line-height: 20px;
         letter-spacing: 0.2px;
         color: #4A5464;
+        padding: 0;
+
+        .avatar {
+          width: 57px;
+          height: 28px;
+          display: flex;
+          justify-content: center;
+
+          img {
+            height: 100%;
+            margin: 0 auto;
+          }
+        }
+
         @media (max-width:1240px) {
           margin-right: 2px;
         }
@@ -35,11 +52,15 @@
       }
 
       .logoutButton{
-        width: 28px;
-        height: 28px;
-        margin-right: 27px;
+        width: 20px;
+        height: 20px;
+        margin-right: 31px;
         :hover{
           background-color: aliceblue;
+        }
+
+        img {
+          width: 20px;
         }
       }
 
@@ -474,14 +495,19 @@
           &.add-entry {
             color: #05A4F4;
             background: #FFF;
-            width: 130px;
+            width: 116px;
             border-radius: 20px;
             padding: 2px 15px;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
             line-height: 16px;
-            height: 28px;
+            height: 22px;
+            font-size: 12px;
+
+            img {
+              height: 13px;
+            }
 
             &.disabled {
               color: #B6B6B6;
@@ -556,6 +582,10 @@
 
       img {
         margin-top: 8px;
+      }
+
+      .icon-edit {
+        height: 13.5px;
       }
 
       .log-text-content{
@@ -817,21 +847,22 @@
   .icon {
     display: block;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
-    font-size: 11px;
+    font-size: 10px;
+    line-height: 24px;
   }
 
   .recording-status {
     position: absolute;
     left: 16px;
-    top: 9px;
+    top: 8px;
     z-index: 1;
   }
 }

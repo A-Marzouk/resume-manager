@@ -207,6 +207,17 @@
             }
           }
 
+          .date-picker-btn {
+            background: #F3F3F3;
+            height: 38px;
+            width: 122px;
+            display: block;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
           height: 78px;
           padding: 0 20px;
           background:white;
@@ -214,7 +225,7 @@
           justify-content: space-around;
           align-items: center;
           img{
-            margin-right:18px;
+            margin-right: 11px;
           }
 
           .days-container {
@@ -234,19 +245,37 @@
               &:hover {
                 text-decoration: none;
               }
+
+              &.active {
+                padding: 10px;
+              }
             }
 
             .day-of-week.active {
-              border-bottom: 1.5px solid #05A4F4;;
+              display: flex;
+              justify-content: center;
+              position: relative;
+
+              &::after {
+                content: "";
+                height: 3px;
+                width: 100%;
+                border-radius: 6px;
+                background-color: #05A4F4;
+                position: absolute;
+                bottom: -10px;
+              }
             }
 
             .day-number,
             .day-of-week {
               margin: 0 auto;
               text-align: center;
+              font-size: 16px;
 
               &.active {
                 color: #05A4F4;
+                font-size: 18px;
               }
             }
 

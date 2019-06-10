@@ -3770,6 +3770,14 @@ body {
   height: 56px !important;
   -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
           box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
 
 .dashboard .dashboard_navbar .navbar-brand img {
@@ -3789,9 +3797,25 @@ body {
   font-weight: 500;
   font-size: 18px;
   margin-right: 75px;
-  line-height: 20px;
   letter-spacing: 0.2px;
   color: #4A5464;
+  padding: 0;
+}
+
+.dashboard .dashboard_navbar .name .avatar {
+  width: 57px;
+  height: 28px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.dashboard .dashboard_navbar .name .avatar img {
+  height: 100%;
+  margin: 0 auto;
 }
 
 @media (max-width: 1240px) {
@@ -3807,13 +3831,17 @@ body {
 }
 
 .dashboard .dashboard_navbar .logoutButton {
-  width: 28px;
-  height: 28px;
-  margin-right: 27px;
+  width: 20px;
+  height: 20px;
+  margin-right: 31px;
 }
 
 .dashboard .dashboard_navbar .logoutButton :hover {
   background-color: aliceblue;
+}
+
+.dashboard .dashboard_navbar .logoutButton img {
+  width: 20px;
 }
 
 .dashboard .dashboard_navbar .avatar {
@@ -4341,19 +4369,25 @@ body {
 .dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer a.add-entry {
   color: #05A4F4;
   background: #FFF;
-  width: 130px;
+  width: 116px;
   border-radius: 20px;
   padding: 2px 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   line-height: 16px;
-  height: 28px;
+  height: 22px;
+  font-size: 12px;
+}
+
+.dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer a.add-entry img {
+  height: 13px;
 }
 
 .dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer a.add-entry.disabled {
@@ -4432,6 +4466,10 @@ body {
 
 .agent-logs-block .log .log-text img {
   margin-top: 8px;
+}
+
+.agent-logs-block .log .log-text .icon-edit {
+  height: 13.5px;
 }
 
 .agent-logs-block .log .log-text .log-text-content {
@@ -4743,8 +4781,8 @@ body {
 .status-selector-component .icon {
   display: block;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4757,13 +4795,14 @@ body {
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
-  font-size: 11px;
+  font-size: 10px;
+  line-height: 24px;
 }
 
 .status-selector-component .recording-status {
   position: absolute;
   left: 16px;
-  top: 9px;
+  top: 8px;
   z-index: 1;
 }
 
@@ -5425,8 +5464,25 @@ body {
   text-decoration: none;
 }
 
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .date-picker-btn {
+  background: #F3F3F3;
+  height: 38px;
+  width: 122px;
+  display: block;
+  font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar img {
-  margin-right: 18px;
+  margin-right: 11px;
 }
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container {
@@ -5453,19 +5509,41 @@ body {
   text-decoration: none;
 }
 
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .date-item.active {
+  padding: 10px;
+}
+
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week.active {
-  border-bottom: 1.5px solid #05A4F4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week.active::after {
+  content: "";
+  height: 3px;
+  width: 100%;
+  border-radius: 6px;
+  background-color: #05A4F4;
+  position: absolute;
+  bottom: -10px;
 }
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-number,
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week {
   margin: 0 auto;
   text-align: center;
+  font-size: 16px;
 }
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-number.active,
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week.active {
   color: #05A4F4;
+  font-size: 18px;
 }
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .date-control-right,

@@ -3764,6 +3764,8 @@ body {
 .dashboard .dashboard_navbar {
   background: white;
   height: 56px !important;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
 }
 
 .dashboard .dashboard_navbar .navbar-brand img {
@@ -4067,7 +4069,7 @@ body {
   background: #05A4F4;
   font-family: Roboto;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 12px;
   line-height: 24px;
   letter-spacing: -0.1px;

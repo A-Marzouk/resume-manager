@@ -233,7 +233,7 @@
 
         <!-- modals -->
 
-        <div class="modal fade"
+        <div class="modal fade centered-modal"
              id="disapprove-agent"
              tabindex="-1"
              role="dialog"
@@ -241,21 +241,20 @@
              aria-hidden="true">
             <div class="modal-dialog"
                  role="document">
-                <div class="modal-content border-0"
-                     style="margin-top: 30%;">
+                <div class="modal-content border-0">
                     <div class="modal-body campaign-team-modal">
                         <div v-show="disapproveStatus === 'process'">
                             <div class="modal-question">
                                 Are you sure you want to disapprove this applicant ?
                             </div>
-                            <div class="modal-answer">
+                            <div class="modal-answer radio-options">
                                 <div class="col-12">
                                     <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveApplicant" id="defaultRadio_disapprove">
                                         <input class="form-check-input" type="radio" name="disapprove">
                                         <span class="checkmark make-circle"></span> disapprove
                                     </label>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12" style="margin-bottom: 26px;">
                                     <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveAndBlockApplicant">
                                         <input class="form-check-input" type="radio" name="disapprove">
                                         <span class="checkmark make-circle"></span> disapprove and block
@@ -310,7 +309,7 @@
             </div>
         </div>
 
-        <div class="modal fade"
+        <div class="modal fade centered-modal"
              id="add-agent"
              tabindex="-1"
              role="dialog"
@@ -318,14 +317,13 @@
              aria-hidden="true">
             <div class="modal-dialog"
                  role="document">
-                <div class="modal-content border-0"
-                     style="margin-top: 30%;">
+                <div class="modal-content border-0 add-agent-modal-content">
                     <div class="modal-body campaign-team-modal">
-                        <div v-show="disapproveStatus === 'process'">
+                        <div>
                             <div class="modal-question">
                                Which agent do you want to add ?
                             </div>
-                            <div class="modal-answer">
+                            <div class="modal-answer radio-options">
                                 <div class="col-12">
                                     <label class="form-check-label checkBoxContainer disapprove-text" id="defaultRadio">
                                         <input class="form-check-input" type="radio" name="disapprove">

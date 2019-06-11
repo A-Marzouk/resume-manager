@@ -58290,8 +58290,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -58655,7 +58653,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "modal fade",
+        staticClass: "modal fade centered-modal",
         attrs: {
           id: "disapprove-agent",
           tabindex: "-1",
@@ -58669,60 +58667,60 @@ var render = function() {
           "div",
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
-            _c(
-              "div",
-              {
-                staticClass: "modal-content border-0",
-                staticStyle: { "margin-top": "30%" }
-              },
-              [
-                _c("div", { staticClass: "modal-body campaign-team-modal" }, [
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.disapproveStatus === "process",
-                          expression: "disapproveStatus === 'process'"
-                        }
-                      ]
-                    },
-                    [
-                      _c("div", { staticClass: "modal-question" }, [
-                        _vm._v(
-                          "\n                            Are you sure you want to disapprove this applicant ?\n                        "
+            _c("div", { staticClass: "modal-content border-0" }, [
+              _c("div", { staticClass: "modal-body campaign-team-modal" }, [
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.disapproveStatus === "process",
+                        expression: "disapproveStatus === 'process'"
+                      }
+                    ]
+                  },
+                  [
+                    _c("div", { staticClass: "modal-question" }, [
+                      _vm._v(
+                        "\n                            Are you sure you want to disapprove this applicant ?\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-answer radio-options" }, [
+                      _c("div", { staticClass: "col-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass:
+                              "form-check-label checkBoxContainer disapprove-text",
+                            attrs: { id: "defaultRadio_disapprove" },
+                            on: { click: _vm.disapproveApplicant }
+                          },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: { type: "radio", name: "disapprove" }
+                            }),
+                            _vm._v(" "),
+                            _c("span", {
+                              staticClass: "checkmark make-circle"
+                            }),
+                            _vm._v(
+                              " disapprove\n                                "
+                            )
+                          ]
                         )
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "modal-answer" }, [
-                        _c("div", { staticClass: "col-12" }, [
-                          _c(
-                            "label",
-                            {
-                              staticClass:
-                                "form-check-label checkBoxContainer disapprove-text",
-                              attrs: { id: "defaultRadio_disapprove" },
-                              on: { click: _vm.disapproveApplicant }
-                            },
-                            [
-                              _c("input", {
-                                staticClass: "form-check-input",
-                                attrs: { type: "radio", name: "disapprove" }
-                              }),
-                              _vm._v(" "),
-                              _c("span", {
-                                staticClass: "checkmark make-circle"
-                              }),
-                              _vm._v(
-                                " disapprove\n                                "
-                              )
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-12" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-12",
+                          staticStyle: { "margin-bottom": "26px" }
+                        },
+                        [
                           _c(
                             "label",
                             {
@@ -58744,202 +58742,142 @@ var render = function() {
                               )
                             ]
                           )
-                        ])
-                      ]),
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-note" }, [
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.selection === "disapprove",
+                              expression: "selection === 'disapprove'"
+                            }
+                          ]
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Disapproved agent will be able to apply again\n                       "
+                          )
+                        ]
+                      ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "modal-note" }, [
-                        _c(
-                          "span",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.selection === "disapprove",
-                                expression: "selection === 'disapprove'"
-                              }
-                            ]
-                          },
-                          [
-                            _vm._v(
-                              "\n                            Disapproved agent will be able to apply again\n                       "
-                            )
+                      _c(
+                        "span",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.selection === "disapprove_and_block",
+                              expression: "selection === 'disapprove_and_block'"
+                            }
                           ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.selection === "disapprove_and_block",
-                                expression:
-                                  "selection === 'disapprove_and_block'"
-                              }
-                            ]
-                          },
-                          [
-                            _vm._v(
-                              "\n                            Disapproved and blocked agent will not be able to apply again\n                       "
-                            )
-                          ]
-                        )
-                      ]),
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Disapproved and blocked agent will not be able to apply again\n                       "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-btn-wrapper" }, [
+                      _vm._m(7),
                       _vm._v(" "),
-                      _c("div", { staticClass: "modal-btn-wrapper" }, [
-                        _vm._m(7),
-                        _vm._v(" "),
+                      _c("div", { staticClass: "button-base blue-button-a" }, [
                         _c(
-                          "div",
-                          { staticClass: "button-base blue-button-a" },
-                          [
-                            _c(
-                              "a",
-                              {
-                                attrs: { href: "javascript:void(0)" },
-                                on: {
-                                  click: function($event) {
-                                    _vm.disapproveStatus = "disapproved"
-                                  }
-                                }
-                              },
-                              [_vm._v("DISAPPROVE AGENT")]
-                            )
-                          ]
+                          "a",
+                          {
+                            attrs: { href: "javascript:void(0)" },
+                            on: {
+                              click: function($event) {
+                                _vm.disapproveStatus = "disapproved"
+                              }
+                            }
+                          },
+                          [_vm._v("DISAPPROVE AGENT")]
                         )
                       ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value:
+                          _vm.disapproveStatus === "disapproved" &&
+                          _vm.selection === "disapprove",
+                        expression:
+                          "disapproveStatus === 'disapproved' && selection === 'disapprove'"
+                      }
                     ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value:
-                            _vm.disapproveStatus === "disapproved" &&
-                            _vm.selection === "disapprove",
-                          expression:
-                            "disapproveStatus === 'disapproved' && selection === 'disapprove'"
-                        }
-                      ]
-                    },
-                    [
-                      _c("div", { staticClass: "modal-question" }, [
-                        _vm._v(
-                          "\n                          The agent was disapproved\n                        "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "modal-answer" }, [
-                        _vm._v(
-                          "\n                          Agent will be able to apply again\n                        "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(8)
+                  },
+                  [
+                    _c("div", { staticClass: "modal-question" }, [
+                      _vm._v(
+                        "\n                          The agent was disapproved\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-answer" }, [
+                      _vm._v(
+                        "\n                          Agent will be able to apply again\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(8)
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value:
+                          _vm.disapproveStatus === "disapproved" &&
+                          _vm.selection === "disapprove_and_block",
+                        expression:
+                          "disapproveStatus === 'disapproved' && selection === 'disapprove_and_block'"
+                      }
                     ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value:
-                            _vm.disapproveStatus === "disapproved" &&
-                            _vm.selection === "disapprove_and_block",
-                          expression:
-                            "disapproveStatus === 'disapproved' && selection === 'disapprove_and_block'"
-                        }
-                      ]
-                    },
-                    [
-                      _c("div", { staticClass: "modal-question" }, [
-                        _vm._v(
-                          "\n                            The agent was disapproved and blocked\n                        "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "modal-answer" }, [
-                        _vm._v(
-                          "\n                            Agent will not be able to apply again\n                        "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(9)
-                    ]
-                  )
-                ])
-              ]
-            )
+                  },
+                  [
+                    _c("div", { staticClass: "modal-question" }, [
+                      _vm._v(
+                        "\n                            The agent was disapproved and blocked\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-answer" }, [
+                      _vm._v(
+                        "\n                            Agent will not be able to apply again\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(9)
+                  ]
+                )
+              ])
+            ])
           ]
         )
       ]
     ),
     _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "add-agent",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "remove-modal",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "modal-content border-0",
-                staticStyle: { "margin-top": "30%" }
-              },
-              [
-                _c("div", { staticClass: "modal-body campaign-team-modal" }, [
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.disapproveStatus === "process",
-                          expression: "disapproveStatus === 'process'"
-                        }
-                      ]
-                    },
-                    [
-                      _c("div", { staticClass: "modal-question" }, [
-                        _vm._v(
-                          "\n                           Which agent do you want to add ?\n                        "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(10),
-                      _vm._v(" "),
-                      _vm._m(11)
-                    ]
-                  )
-                ])
-              ]
-            )
-          ]
-        )
-      ]
-    )
+    _vm._m(10)
   ])
 }
 var staticRenderFns = [
@@ -59308,83 +59246,140 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-answer" }, [
-      _c("div", { staticClass: "col-12" }, [
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade centered-modal",
+        attrs: {
+          id: "add-agent",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "remove-modal",
+          "aria-hidden": "true"
+        }
+      },
+      [
         _c(
-          "label",
-          {
-            staticClass: "form-check-label checkBoxContainer disapprove-text",
-            attrs: { id: "defaultRadio" }
-          },
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
-            _c("input", {
-              staticClass: "form-check-input",
-              attrs: { type: "radio", name: "disapprove" }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "checkmark make-circle" }),
-            _vm._v(" business support\n                                ")
+            _c(
+              "div",
+              { staticClass: "modal-content border-0 add-agent-modal-content" },
+              [
+                _c("div", { staticClass: "modal-body campaign-team-modal" }, [
+                  _c("div", [
+                    _c("div", { staticClass: "modal-question" }, [
+                      _vm._v(
+                        "\n                           Which agent do you want to add ?\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-answer radio-options" }, [
+                      _c("div", { staticClass: "col-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass:
+                              "form-check-label checkBoxContainer disapprove-text",
+                            attrs: { id: "defaultRadio" }
+                          },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: { type: "radio", name: "disapprove" }
+                            }),
+                            _vm._v(" "),
+                            _c("span", {
+                              staticClass: "checkmark make-circle"
+                            }),
+                            _vm._v(
+                              " business support\n                                "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass:
+                              "form-check-label checkBoxContainer disapprove-text"
+                          },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: { type: "radio", name: "disapprove" }
+                            }),
+                            _vm._v(" "),
+                            _c("span", {
+                              staticClass: "checkmark make-circle"
+                            }),
+                            _vm._v(
+                              " designer\n                                "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass:
+                              "form-check-label checkBoxContainer disapprove-text"
+                          },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: { type: "radio", name: "disapprove" }
+                            }),
+                            _vm._v(" "),
+                            _c("span", {
+                              staticClass: "checkmark make-circle"
+                            }),
+                            _vm._v(
+                              " developer\n                                "
+                            )
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-btn-wrapper" }, [
+                      _c("div", { staticClass: "button-base white-button-a" }, [
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href: "javascript:void(0)",
+                              "data-dismiss": "modal"
+                            }
+                          },
+                          [_vm._v("CANCEL")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "button-base blue-button-a" }, [
+                        _c(
+                          "a",
+                          {
+                            staticStyle: { width: "106px" },
+                            attrs: { href: "/admin-front/register-agent" }
+                          },
+                          [_vm._v("Continue")]
+                        )
+                      ])
+                    ])
+                  ])
+                ])
+              ]
+            )
           ]
         )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-12" }, [
-        _c(
-          "label",
-          { staticClass: "form-check-label checkBoxContainer disapprove-text" },
-          [
-            _c("input", {
-              staticClass: "form-check-input",
-              attrs: { type: "radio", name: "disapprove" }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "checkmark make-circle" }),
-            _vm._v(" designer\n                                ")
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-12" }, [
-        _c(
-          "label",
-          { staticClass: "form-check-label checkBoxContainer disapprove-text" },
-          [
-            _c("input", {
-              staticClass: "form-check-input",
-              attrs: { type: "radio", name: "disapprove" }
-            }),
-            _vm._v(" "),
-            _c("span", { staticClass: "checkmark make-circle" }),
-            _vm._v(" developer\n                                ")
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-btn-wrapper" }, [
-      _c("div", { staticClass: "button-base white-button-a" }, [
-        _c(
-          "a",
-          { attrs: { href: "javascript:void(0)", "data-dismiss": "modal" } },
-          [_vm._v("CANCEL")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "button-base blue-button-a" }, [
-        _c(
-          "a",
-          {
-            staticStyle: { width: "106px" },
-            attrs: { href: "/admin-front/register-agent" }
-          },
-          [_vm._v("Continue")]
-        )
-      ])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true

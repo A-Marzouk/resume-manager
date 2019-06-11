@@ -6282,7 +6282,7 @@ body {
 
 .campaign-team-modal {
   border-radius: 4px;
-  padding: 32px 33px 22px 33px !important;
+  padding: 32px 32px 22px 33px !important;
 }
 
 .modal-question {
@@ -6314,9 +6314,9 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 @media (max-width: 400px) {
@@ -10821,6 +10821,40 @@ select:focus {
   color: #7A828D;
   mix-blend-mode: normal;
   opacity: 0.9;
+}
+
+.modal.fade.centered-modal.show {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 0 !important;
+}
+
+.add-agent-modal-content {
+  height: 302px;
+  width: 439px !important;
+}
+
+.modal-answer.radio-options {
+  padding-left: 29px;
+}
+
+.modal-answer.radio-options div {
+  margin-bottom: 20px;
+}
+
+.modal-answer.radio-options div:first-child {
+  margin-top: 32px;
+}
+
+.modal-answer.radio-options div:last-child {
+  margin-bottom: 46px;
 }
 
 .stages-list-container {

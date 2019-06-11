@@ -363,3 +363,29 @@
     opacity: 0.9;
   }
 }
+
+.modal.fade.centered-modal.show {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  padding-right: 0 !important;
+}
+
+.add-agent-modal-content{
+  height: 302px;
+  width: 439px !important;
+}
+
+.modal-answer.radio-options{
+  padding-left:29px;
+  
+  div{
+    margin-bottom: 20px;
+  }
+  div:first-child{
+    margin-top: 32px;
+  }
+  div:last-child{
+    margin-bottom: 46px;
+  }
+}

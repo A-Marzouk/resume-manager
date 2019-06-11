@@ -58703,6 +58703,7 @@ var render = function() {
                             {
                               staticClass:
                                 "form-check-label checkBoxContainer disapprove-text",
+                              attrs: { id: "defaultRadio_disapprove" },
                               on: { click: _vm.disapproveApplicant }
                             },
                             [
@@ -58927,81 +58928,9 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "modal-answer" }, [
-                        _c("div", { staticClass: "col-12" }, [
-                          _c(
-                            "label",
-                            {
-                              staticClass:
-                                "form-check-label checkBoxContainer disapprove-text",
-                              on: { click: _vm.disapproveApplicant }
-                            },
-                            [
-                              _c("input", {
-                                staticClass: "form-check-input",
-                                attrs: { type: "radio", name: "disapprove" }
-                              }),
-                              _vm._v(" "),
-                              _c("span", {
-                                staticClass: "checkmark make-circle"
-                              }),
-                              _vm._v(
-                                " business support\n                                "
-                              )
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-12" }, [
-                          _c(
-                            "label",
-                            {
-                              staticClass:
-                                "form-check-label checkBoxContainer disapprove-text",
-                              on: { click: _vm.disapproveAndBlockApplicant }
-                            },
-                            [
-                              _c("input", {
-                                staticClass: "form-check-input",
-                                attrs: { type: "radio", name: "disapprove" }
-                              }),
-                              _vm._v(" "),
-                              _c("span", {
-                                staticClass: "checkmark make-circle"
-                              }),
-                              _vm._v(
-                                " designer\n                                "
-                              )
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-12" }, [
-                          _c(
-                            "label",
-                            {
-                              staticClass:
-                                "form-check-label checkBoxContainer disapprove-text",
-                              on: { click: _vm.disapproveAndBlockApplicant }
-                            },
-                            [
-                              _c("input", {
-                                staticClass: "form-check-input",
-                                attrs: { type: "radio", name: "disapprove" }
-                              }),
-                              _vm._v(" "),
-                              _c("span", {
-                                staticClass: "checkmark make-circle"
-                              }),
-                              _vm._v(
-                                " developer\n                                "
-                              )
-                            ]
-                          )
-                        ])
-                      ]),
+                      _vm._m(10),
                       _vm._v(" "),
-                      _vm._m(10)
+                      _vm._m(11)
                     ]
                   )
                 ])
@@ -59374,6 +59303,63 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-answer" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c(
+          "label",
+          {
+            staticClass: "form-check-label checkBoxContainer disapprove-text",
+            attrs: { id: "defaultRadio" }
+          },
+          [
+            _c("input", {
+              staticClass: "form-check-input",
+              attrs: { type: "radio", name: "disapprove" }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "checkmark make-circle" }),
+            _vm._v(" business support\n                                ")
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12" }, [
+        _c(
+          "label",
+          { staticClass: "form-check-label checkBoxContainer disapprove-text" },
+          [
+            _c("input", {
+              staticClass: "form-check-input",
+              attrs: { type: "radio", name: "disapprove" }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "checkmark make-circle" }),
+            _vm._v(" designer\n                                ")
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12" }, [
+        _c(
+          "label",
+          { staticClass: "form-check-label checkBoxContainer disapprove-text" },
+          [
+            _c("input", {
+              staticClass: "form-check-input",
+              attrs: { type: "radio", name: "disapprove" }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "checkmark make-circle" }),
+            _vm._v(" developer\n                                ")
+          ]
+        )
+      ])
+    ])
   },
   function() {
     var _vm = this
@@ -63483,7 +63469,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -63494,6 +63480,21 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -64196,6 +64197,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         selectUsersNum: function selectUsersNum(number) {
             this.usersNumber = number;
             this.showUsersNumSelection = false;
+        },
+        checkDefaultRadio: function checkDefaultRadio() {
+            $('#defaultRadio').click();
+        },
+        checkDefaultRadioDisapprove: function checkDefaultRadioDisapprove() {
+            $('#defaultRadio_disapprove').click();
         }
     },
     mounted: function mounted() {}
@@ -64254,7 +64261,37 @@ var render = function() {
           [_vm._v("\n                DEVELOPERS\n            ")]
         ),
         _vm._v(" "),
-        _vm._m(0)
+        _c("div", [
+          _c("div", { staticClass: "white-button-a button-base" }, [
+            _c(
+              "a",
+              {
+                staticStyle: {
+                  width: "175px",
+                  height: "30px",
+                  "border-radius": "40px"
+                },
+                attrs: {
+                  href: "javascript:void(0)",
+                  "data-toggle": "modal",
+                  "data-target": "#add-agent"
+                },
+                on: { click: _vm.checkDefaultRadio }
+              },
+              [
+                _c("img", {
+                  attrs: {
+                    src: "/images/client/payments/add.png",
+                    alt: "add icon"
+                  }
+                }),
+                _vm._v(
+                  "\n                        ADD NEW AGENT\n                    "
+                )
+              ]
+            )
+          ])
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "campaign-info-bar reversed mt-0" }, [
@@ -64288,7 +64325,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "optionsBar" }, [
-        _vm._m(1),
+        _vm._m(0),
         _vm._v(" "),
         _c(
           "div",
@@ -64508,10 +64545,7 @@ var render = function() {
                         "th",
                         {
                           staticClass: "d-flex align-items-center stage-column",
-                          staticStyle: {
-                            "padding-left": "30px",
-                            "padding-right": "30px"
-                          },
+                          staticStyle: { "padding-right": "30px" },
                           attrs: { scope: "col" }
                         },
                         [
@@ -64532,20 +64566,36 @@ var render = function() {
               _vm._v(" "),
               _c("tbody", [
                 _c("tr", [
+                  _vm._m(1),
+                  _vm._v(" "),
                   _vm._m(2),
                   _vm._v(" "),
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _vm._m(4),
+                  _c("td", [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "invoice-amount base-text available-text"
+                      },
+                      [
+                        _vm.secondaryActiveTab === "applicants"
+                          ? _c("span", { staticClass: "base-text new-text" }, [
+                              _vm._v(
+                                "\n                                        APPLICATION PROCESS\n                                    "
+                              )
+                            ])
+                          : _c("span", { staticClass: "available-text" }, [
+                              _vm._v(
+                                "\n                                        AVAILABLE (+15 h/week)\n                                    "
+                              )
+                            ])
+                      ]
+                    )
+                  ]),
                   _vm._v(" "),
                   _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(5)]
-                      )
+                    ? _c("td", { staticClass: "no-decoration stage-select " }, [
+                        _vm._m(3)
+                      ])
                     : _vm._e()
                 ]),
                 _vm._v(" "),
@@ -64570,7 +64620,32 @@ var render = function() {
                           ],
                           staticClass: "action-buttons-bar"
                         },
-                        [_vm._m(6), _vm._v(" "), _vm._m(7)]
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "disapprove-btn no-decoration" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  attrs: {
+                                    href: "javascript:void(0)",
+                                    "data-toggle": "modal",
+                                    "data-target": "#disapprove-agent"
+                                  },
+                                  on: { click: _vm.checkDefaultRadioDisapprove }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                            DISAPPROVE APPLICANT\n                                        "
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm._m(4)
+                        ]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "d-flex" }, [
@@ -64582,7 +64657,7 @@ var render = function() {
                           },
                           [
                             _c("div", { staticClass: "d-flex" }, [
-                              _vm._m(8),
+                              _vm._m(5),
                               _vm._v(" "),
                               _c("div", { staticClass: "p-2" }, [
                                 _c(
@@ -64594,7 +64669,7 @@ var render = function() {
                                   [_vm._v("Jason Morgenstern")]
                                 ),
                                 _vm._v(" "),
-                                _vm._m(9),
+                                _vm._m(6),
                                 _vm._v(" "),
                                 _c("div", { staticClass: "visiblty" }, [
                                   _c(
@@ -64653,14 +64728,14 @@ var render = function() {
                                     ]
                                   ),
                                   _vm._v(" "),
-                                  _vm._m(10)
+                                  _vm._m(7)
                                 ])
                               ])
                             ]),
                             _vm._v(" "),
-                            _vm._m(11),
+                            _vm._m(8),
                             _vm._v(" "),
-                            _vm._m(12),
+                            _vm._m(9),
                             _vm._v(" "),
                             _c(
                               "div",
@@ -64696,74 +64771,86 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("tr", [
-                  _vm._m(13),
+                  _vm._m(10),
                   _vm._v(" "),
+                  _vm._m(11),
+                  _vm._v(" "),
+                  _vm._m(12),
+                  _vm._v(" "),
+                  _vm.secondaryActiveTab === "applicants"
+                    ? _c("td", { staticClass: "no-decoration stage-select " }, [
+                        _vm._m(13)
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("tr", [
                   _vm._m(14),
                   _vm._v(" "),
                   _vm._m(15),
                   _vm._v(" "),
+                  _vm._m(16),
+                  _vm._v(" "),
                   _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(16)]
-                      )
+                    ? _c("td", { staticClass: "no-decoration stage-select " }, [
+                        _vm._m(17)
+                      ])
                     : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("tr", [
-                  _vm._m(17),
-                  _vm._v(" "),
                   _vm._m(18),
                   _vm._v(" "),
                   _vm._m(19),
                   _vm._v(" "),
+                  _vm._m(20),
+                  _vm._v(" "),
                   _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(20)]
-                      )
+                    ? _c("td", { staticClass: "no-decoration stage-select " }, [
+                        _vm._m(21)
+                      ])
                     : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("tr", [
-                  _vm._m(21),
-                  _vm._v(" "),
                   _vm._m(22),
                   _vm._v(" "),
                   _vm._m(23),
                   _vm._v(" "),
+                  _vm._m(24),
+                  _vm._v(" "),
                   _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(24)]
-                      )
+                    ? _c("td", { staticClass: "no-decoration stage-select " }, [
+                        _vm._m(25)
+                      ])
                     : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("tr", [
-                  _vm._m(25),
-                  _vm._v(" "),
                   _vm._m(26),
                   _vm._v(" "),
                   _vm._m(27),
                   _vm._v(" "),
+                  _c("td", [
+                    _c("div", { staticClass: "invoice-amount" }, [
+                      _vm.secondaryActiveTab === "applicants"
+                        ? _c("span", { staticClass: "base-text new-text" }, [
+                            _vm._v(
+                              "\n                                        APPLICATION PROCESS\n                                    "
+                            )
+                          ])
+                        : _c("span", { staticClass: "available-text" }, [
+                            _vm._v(
+                              "\n                                        AVAILABLE (+15 h/week)\n                                    "
+                            )
+                          ])
+                    ])
+                  ]),
+                  _vm._v(" "),
                   _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(28)]
-                      )
+                    ? _c("td", { staticClass: "no-decoration stage-select " }, [
+                        _vm._m(28)
+                      ])
                     : _vm._e()
                 ]),
                 _vm._v(" "),
@@ -64775,13 +64862,9 @@ var render = function() {
                   _vm._m(31),
                   _vm._v(" "),
                   _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(32)]
-                      )
+                    ? _c("td", { staticClass: "no-decoration stage-select " }, [
+                        _vm._m(32)
+                      ])
                     : _vm._e()
                 ]),
                 _vm._v(" "),
@@ -64793,13 +64876,9 @@ var render = function() {
                   _vm._m(35),
                   _vm._v(" "),
                   _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(36)]
-                      )
+                    ? _c("td", { staticClass: "no-decoration stage-select " }, [
+                        _vm._m(36)
+                      ])
                     : _vm._e()
                 ]),
                 _vm._v(" "),
@@ -64811,13 +64890,9 @@ var render = function() {
                   _vm._m(39),
                   _vm._v(" "),
                   _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(40)]
-                      )
+                    ? _c("td", { staticClass: "no-decoration stage-select " }, [
+                        _vm._m(40)
+                      ])
                     : _vm._e()
                 ]),
                 _vm._v(" "),
@@ -64829,13 +64904,9 @@ var render = function() {
                   _vm._m(43),
                   _vm._v(" "),
                   _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(44)]
-                      )
+                    ? _c("td", { staticClass: "no-decoration stage-select " }, [
+                        _vm._m(44)
+                      ])
                     : _vm._e()
                 ]),
                 _vm._v(" "),
@@ -64844,106 +64915,88 @@ var render = function() {
                   _vm._v(" "),
                   _vm._m(46),
                   _vm._v(" "),
-                  _vm._m(47),
+                  _c("td", [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "invoice-amount base-text available-text"
+                      },
+                      [
+                        _vm.secondaryActiveTab === "applicants"
+                          ? _c("span", { staticClass: "base-text new-text" }, [
+                              _vm._v(
+                                "\n                                        APPLICATION PROCESS\n                                    "
+                              )
+                            ])
+                          : _c("span", { staticClass: "available-text" }, [
+                              _vm._v(
+                                "\n                                        AVAILABLE (+15 h/week)\n                                    "
+                              )
+                            ])
+                      ]
+                    )
+                  ]),
                   _vm._v(" "),
                   _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(48)]
-                      )
+                    ? _c("td", { staticClass: "no-decoration stage-select " }, [
+                        _vm._m(47)
+                      ])
                     : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("tr", [
+                  _vm._m(48),
+                  _vm._v(" "),
                   _vm._m(49),
                   _vm._v(" "),
                   _vm._m(50),
                   _vm._v(" "),
-                  _vm._m(51),
-                  _vm._v(" "),
                   _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(52)]
-                      )
+                    ? _c("td", { staticClass: "no-decoration stage-select " }, [
+                        _vm._m(51)
+                      ])
                     : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("tr", [
+                  _vm._m(52),
+                  _vm._v(" "),
                   _vm._m(53),
                   _vm._v(" "),
                   _vm._m(54),
                   _vm._v(" "),
-                  _vm._m(55),
-                  _vm._v(" "),
                   _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(56)]
-                      )
+                    ? _c("td", { staticClass: "no-decoration stage-select " }, [
+                        _vm._m(55)
+                      ])
                     : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("tr", [
+                  _vm._m(56),
+                  _vm._v(" "),
                   _vm._m(57),
                   _vm._v(" "),
                   _vm._m(58),
                   _vm._v(" "),
-                  _vm._m(59),
-                  _vm._v(" "),
                   _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(60)]
-                      )
+                    ? _c("td", { staticClass: "no-decoration stage-select " }, [
+                        _vm._m(59)
+                      ])
                     : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c("tr", [
+                  _vm._m(60),
+                  _vm._v(" "),
                   _vm._m(61),
                   _vm._v(" "),
                   _vm._m(62),
                   _vm._v(" "),
-                  _vm._m(63),
-                  _vm._v(" "),
                   _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(64)]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _vm._m(65),
-                  _vm._v(" "),
-                  _vm._m(66),
-                  _vm._v(" "),
-                  _vm._m(67),
-                  _vm._v(" "),
-                  _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "td",
-                        {
-                          staticClass: "no-decoration stage-select text-center"
-                        },
-                        [_vm._m(68)]
-                      )
+                    ? _c("td", { staticClass: "no-decoration stage-select " }, [
+                        _vm._m(63)
+                      ])
                     : _vm._e()
                 ])
               ])
@@ -65308,38 +65361,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "white-button-a button-base" }, [
-        _c(
-          "a",
-          {
-            staticStyle: {
-              width: "175px",
-              height: "30px",
-              "border-radius": "40px"
-            },
-            attrs: {
-              href: "javascript:void(0)",
-              "data-toggle": "modal",
-              "data-target": "#add-agent"
-            }
-          },
-          [
-            _c("img", {
-              attrs: { src: "/images/client/payments/add.png", alt: "add icon" }
-            }),
-            _vm._v(
-              "\n                        ADD NEW AGENT\n                    "
-            )
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "d-flex align-items-center left" }, [
       _c("div", { staticClass: "searchBox agents" }, [
         _c("img", {
@@ -65402,45 +65423,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
-        _vm._v(
-          "\n                                    AVAILABLE (+15 h/week)\n                                "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "javascript:void(0)" } }, [
       _vm._v("\n                                    v1   "),
       _c("img", {
         attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
       })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "disapprove-btn no-decoration" }, [
-      _c(
-        "a",
-        {
-          attrs: {
-            href: "javascript:void(0)",
-            "data-toggle": "modal",
-            "data-target": "#disapprove-agent"
-          }
-        },
-        [
-          _vm._v(
-            "\n                                            DISAPPROVE APPLICANT\n                                        "
-          )
-        ]
-      )
     ])
   },
   function() {
@@ -65869,18 +65856,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
-        _vm._v(
-          "\n                                    AVAILABLE (+15 h/week)\n                                "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "javascript:void(0)" } }, [
       _vm._v("\n                                    v1   "),
       _c("img", {
@@ -66135,18 +66110,6 @@ var staticRenderFns = [
         _c("img", {
           attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
         })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("div", { staticClass: "invoice-amount base-text available-text" }, [
-        _vm._v(
-          "\n                                    AVAILABLE (+15 h/week)\n                                "
-        )
       ])
     ])
   },

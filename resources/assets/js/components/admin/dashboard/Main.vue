@@ -250,7 +250,7 @@
                             </div>
                             <div class="modal-answer">
                                 <div class="col-12">
-                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveApplicant">
+                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveApplicant" id="defaultRadio_disapprove">
                                         <input class="form-check-input" type="radio" name="disapprove">
                                         <span class="checkmark make-circle"></span> disapprove
                                     </label>
@@ -327,20 +327,20 @@
                             </div>
                             <div class="modal-answer">
                                 <div class="col-12">
-                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveApplicant">
+                                    <label class="form-check-label checkBoxContainer disapprove-text" id="defaultRadio">
                                         <input class="form-check-input" type="radio" name="disapprove">
                                         <span class="checkmark make-circle"></span> business support
                                     </label>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveAndBlockApplicant">
+                                    <label class="form-check-label checkBoxContainer disapprove-text">
                                         <input class="form-check-input" type="radio" name="disapprove">
                                         <span class="checkmark make-circle">
                                         </span> designer
                                     </label>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveAndBlockApplicant">
+                                    <label class="form-check-label checkBoxContainer disapprove-text">
                                         <input class="form-check-input" type="radio" name="disapprove">
                                         <span class="checkmark make-circle"></span> developer
                                     </label>

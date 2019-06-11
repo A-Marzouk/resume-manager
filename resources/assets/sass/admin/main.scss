@@ -193,10 +193,11 @@
   .primary-text{
     font-weight: 500;
     font-size: 14px;
-    line-height: 13px;
     letter-spacing: -0.1px;
     color: #05A4F4;
     white-space: nowrap;
+    line-height: 19px;
+    margin-top: -10px;
   }
 
 
@@ -378,7 +379,7 @@
 
 .modal-answer.radio-options{
   padding-left:29px;
-  
+
   div{
     margin-bottom: 20px;
   }

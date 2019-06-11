@@ -611,7 +611,7 @@
                                  <b v-if="i === 5">
                                      {{i}}
                                  </b>
-                                 <span v-else>
+                                 <span v-else style="font-size: 13px;">
                                      {{i}}
                                  </span>
                              </span>

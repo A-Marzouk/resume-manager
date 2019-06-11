@@ -10624,10 +10624,11 @@ select:focus {
 .applicants-table .primary-text {
   font-weight: 500;
   font-size: 14px;
-  line-height: 13px;
   letter-spacing: -0.1px;
   color: #05A4F4;
   white-space: nowrap;
+  line-height: 19px;
+  margin-top: -10px;
 }
 
 .applicants-table .not-available-text {
@@ -10986,15 +10987,22 @@ select:focus {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-top: 22px;
-  margin-bottom: 29px;
-  padding-left: 42px;
+  padding-top: 14px;
+  margin-top: 8px;
+  padding-bottom: 15px;
+  margin-bottom: 14px;
+  padding-left: 14px;
+  margin-left: 25px;
+  margin-right: 24px;
   padding-right: 225px;
+  border-radius: 4px;
+  background: #F8F9FB;
 }
 
 @media only screen and (max-width: 1024px) {
   .info-bar {
     padding-right: 42px;
+    padding-bottom: 0;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }

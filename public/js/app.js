@@ -65034,13 +65034,17 @@ var render = function() {
                                   "\n                             "
                               )
                             ])
-                          : _c("span", [
-                              _vm._v(
-                                "\n                                 " +
-                                  _vm._s(i) +
-                                  "\n                             "
-                              )
-                            ])
+                          : _c(
+                              "span",
+                              { staticStyle: { "font-size": "13px" } },
+                              [
+                                _vm._v(
+                                  "\n                                 " +
+                                    _vm._s(i) +
+                                    "\n                             "
+                                )
+                              ]
+                            )
                       ]
                     )
                   }),
@@ -67291,9 +67295,8 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("div", [
-                    _vm._v(
-                      "\n                            Status :\n                            "
-                    ),
+                    _c("b", [_vm._v("Status :")]),
+                    _vm._v(" "),
                     _vm.filter === "show_all"
                       ? _c("span", [_vm._v("show all")])
                       : _vm._e(),
@@ -67391,9 +67394,8 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("div", [
-                    _vm._v(
-                      "\n                            Subscr :\n                            "
-                    ),
+                    _c("b", [_vm._v("Subscr :")]),
+                    _vm._v(" "),
                     _vm.filter === "show_all"
                       ? _c("span", [_vm._v("show all")])
                       : _vm._e(),
@@ -67491,9 +67493,8 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("div", [
-                    _vm._v(
-                      "\n                            Invoices :\n                            "
-                    ),
+                    _c("b", [_vm._v(" Invoices :")]),
+                    _vm._v(" "),
                     _vm.filter === "show_all"
                       ? _c("span", [_vm._v("show all")])
                       : _vm._e(),
@@ -67596,9 +67597,8 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("div", [
-                    _vm._v(
-                      "\n                            Sorting :\n                            "
-                    ),
+                    _c("b", [_vm._v("Sorting :")]),
+                    _vm._v(" "),
                     _vm.sort === "all_income"
                       ? _c("span", [_vm._v("all income")])
                       : _vm._e(),
@@ -67708,13 +67708,17 @@ var render = function() {
                                   "\n                             "
                               )
                             ])
-                          : _c("span", [
-                              _vm._v(
-                                "\n                                 " +
-                                  _vm._s(i) +
-                                  "\n                             "
-                              )
-                            ])
+                          : _c(
+                              "span",
+                              { staticStyle: { "font-size": "13px" } },
+                              [
+                                _vm._v(
+                                  "\n                                 " +
+                                    _vm._s(i) +
+                                    "\n                             "
+                                )
+                              ]
+                            )
                       ]
                     )
                   }),
@@ -68113,7 +68117,9 @@ var staticRenderFns = [
         }),
         _vm._v(" "),
         _c("div", [
-          _vm._v("\n                    sign up: 1 week ago\n                ")
+          _vm._v(
+            "\n                    sign up: 1 week ago   \n                "
+          )
         ])
       ]),
       _vm._v(" "),
@@ -68240,9 +68246,9 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    $ 500\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("$ 500 ")
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -68251,18 +68257,18 @@ var staticRenderFns = [
                 "div",
                 { staticClass: "invoice-amount base-text primary-text" },
                 [
-                  _vm._v(
-                    "\n                                    george Newtone\n                                "
-                  )
+                  _vm._v("\n                                    George "),
+                  _c("br"),
+                  _vm._v(" Newtone\n                                ")
                 ]
               )
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                   GMT - 8\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("GMT - 8 ")
+                ])
               ])
             ])
           ]),
@@ -68329,9 +68335,9 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    $ 500\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("$ 500 ")
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -68340,18 +68346,18 @@ var staticRenderFns = [
                 "div",
                 { staticClass: "invoice-amount base-text primary-text" },
                 [
-                  _vm._v(
-                    "\n                                    george Newtone\n                                "
-                  )
+                  _vm._v("\n                                    George "),
+                  _c("br"),
+                  _vm._v(" Newtone\n                                ")
                 ]
               )
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                   GMT - 8\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("GMT - 8 ")
+                ])
               ])
             ])
           ]),
@@ -68426,9 +68432,9 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    $ 500\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("$ 500 ")
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -68437,18 +68443,18 @@ var staticRenderFns = [
                 "div",
                 { staticClass: "invoice-amount base-text primary-text" },
                 [
-                  _vm._v(
-                    "\n                                    george Newtone\n                                "
-                  )
+                  _vm._v("\n                                    George "),
+                  _c("br"),
+                  _vm._v(" Newtone\n                                ")
                 ]
               )
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    GMT - 8\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("GMT - 8 ")
+                ])
               ])
             ])
           ]),
@@ -68519,9 +68525,9 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    $ 500\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("$ 500 ")
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -68530,18 +68536,18 @@ var staticRenderFns = [
                 "div",
                 { staticClass: "invoice-amount base-text primary-text" },
                 [
-                  _vm._v(
-                    "\n                                    george Newtone\n                                "
-                  )
+                  _vm._v("\n                                    George "),
+                  _c("br"),
+                  _vm._v(" Newtone\n                                ")
                 ]
               )
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    GMT - 8\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("GMT - 8 ")
+                ])
               ])
             ])
           ]),
@@ -68612,9 +68618,9 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    $ 500\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("$ 500 ")
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -68623,18 +68629,18 @@ var staticRenderFns = [
                 "div",
                 { staticClass: "invoice-amount base-text primary-text" },
                 [
-                  _vm._v(
-                    "\n                                    george Newtone\n                                "
-                  )
+                  _vm._v("\n                                    George "),
+                  _c("br"),
+                  _vm._v(" Newtone\n                                ")
                 ]
               )
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    GMT - 8\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("GMT - 8 ")
+                ])
               ])
             ])
           ]),
@@ -68705,9 +68711,9 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    $ 500\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("$ 500 ")
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -68716,18 +68722,18 @@ var staticRenderFns = [
                 "div",
                 { staticClass: "invoice-amount base-text primary-text" },
                 [
-                  _vm._v(
-                    "\n                                    george Newtone\n                                "
-                  )
+                  _vm._v("\n                                    George "),
+                  _c("br"),
+                  _vm._v(" Newtone\n                                ")
                 ]
               )
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    GMT - 8\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("GMT - 8 ")
+                ])
               ])
             ])
           ]),
@@ -68798,9 +68804,9 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    $ 500\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("$ 500 ")
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -68809,18 +68815,18 @@ var staticRenderFns = [
                 "div",
                 { staticClass: "invoice-amount base-text primary-text" },
                 [
-                  _vm._v(
-                    "\n                                    george Newtone\n                                "
-                  )
+                  _vm._v("\n                                    George "),
+                  _c("br"),
+                  _vm._v(" Newtone\n                                ")
                 ]
               )
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    GMT - 8\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("GMT - 8 ")
+                ])
               ])
             ])
           ]),
@@ -68891,9 +68897,9 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    $ 500\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("$ 500 ")
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -68902,18 +68908,18 @@ var staticRenderFns = [
                 "div",
                 { staticClass: "invoice-amount base-text primary-text" },
                 [
-                  _vm._v(
-                    "\n                                    george Newtone\n                                "
-                  )
+                  _vm._v("\n                                    George "),
+                  _c("br"),
+                  _vm._v(" Newtone\n                                ")
                 ]
               )
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    GMT - 8\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("GMT - 8 ")
+                ])
               ])
             ])
           ]),
@@ -68984,9 +68990,9 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    $ 500\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("$ 500 ")
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -68995,18 +69001,18 @@ var staticRenderFns = [
                 "div",
                 { staticClass: "invoice-amount base-text primary-text" },
                 [
-                  _vm._v(
-                    "\n                                    george Newtone\n                                "
-                  )
+                  _vm._v("\n                                    George "),
+                  _c("br"),
+                  _vm._v(" Newtone\n                                ")
                 ]
               )
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    GMT - 8\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("GMT - 8 ")
+                ])
               ])
             ])
           ]),
@@ -69077,9 +69083,9 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    $ 500\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("$ 500 ")
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -69088,18 +69094,18 @@ var staticRenderFns = [
                 "div",
                 { staticClass: "invoice-amount base-text primary-text" },
                 [
-                  _vm._v(
-                    "\n                                    george Newtone\n                                "
-                  )
+                  _vm._v("\n                                    George "),
+                  _c("br"),
+                  _vm._v(" Newtone\n                                ")
                 ]
               )
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _vm._v(
-                  "\n                                    GMT - 8\n                                "
-                )
+                _c("span", { staticStyle: { "font-weight": "normal" } }, [
+                  _vm._v("GMT - 8 ")
+                ])
               ])
             ])
           ])

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserEducationalDegreesTable extends Migration
+class CreateEducationHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,18 @@ class CreateUserEducationalDegreesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_educational_degrees', function (Blueprint $table) {
+        Schema::create('education_histories', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->increments('id');
 
-            $table->string('title')->nullable();
-            $table->string('year')->nullable();
+            $table->text('school_title')->nullable();
+            $table->text('description')->nullable();
+            $table->date('date_from')->nullable();
+            $table->date('date_to')->nullable();
             $table->string('description')->nullable();
+            $table->tinyInteger('type')->unsigned()->index()->nullable();
+            $table->boolean('is_currently_learning')->default(false);
             $table->integer('user_id')->unsigned()->index();
 
             $table->foreign('user_id')->references('id')->on('users');
@@ -34,6 +40,6 @@ class CreateUserEducationalDegreesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_educational_degrees');
+        Schema::dropIfExists('education_histories');
     }
 }

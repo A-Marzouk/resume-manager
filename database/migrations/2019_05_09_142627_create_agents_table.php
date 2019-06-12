@@ -18,17 +18,13 @@ class CreateAgentsTable extends Migration
 
             $table->increments('id');
 
-            $table->integer('number')->unsigned();
-
-            $table->decimal('hourly_rate', 14, 4)->nullable();
-            $table->decimal('available_hours', 14, 4)->nullable();
-
+            // $table->integer('number')->unsigned();
+            $table->decimal('hourly_rate', 16, 4)->nullable();
+            $table->decimal('available_hours', 16, 4)->nullable();
             $table->text('experience')->nullable();
             $table->integer('user_id')->unsigned()->index();
-            $table->integer('language_id')->unsigned()->index();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('language_id')->references('id')->on('languages');
 
             $table->timestamps();
         });

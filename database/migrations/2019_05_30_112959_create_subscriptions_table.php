@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInvoicesTable extends Migration
+class CreateSubscriptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,18 @@ class CreateInvoicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('invoices', function (Blueprint $table) {
+        Schema::create('subscriptions', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->increments('id');
+
+            $table->timestamp('canceled_at')->nullable();
+            $table->timestamp('finished_at')->nullable();
+
+            $table->integer('invoice_id')->unsigned()->index();
+
+            $table->foreign('invoice_id')->references('id')->on('invoices');
+
             $table->timestamps();
         });
     }
@@ -28,6 +36,6 @@ class CreateInvoicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invoices');
+        Schema::dropIfExists('subscriptions');
     }
 }

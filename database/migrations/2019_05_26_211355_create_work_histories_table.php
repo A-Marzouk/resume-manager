@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserTrainingsTable extends Migration
+class CreateWorkHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,17 @@ class CreateUserTrainingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_trainings', function (Blueprint $table) {
+        Schema::create('work_histories', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->increments('id');
 
-            $table->string('title')->nullable();
-            $table->string('year')->nullable();
-            $table->string('description')->nullable();
+            $table->text('company')->nullable();
+            $table->text('job_title')->nullable();
+            $table->longText('job_description')->nullable();
+            $table->date('date_from')->nullable();
+            $table->date('date_to')->nullable();
+            $table->boolean('is_currently_working')->default(false);
             $table->integer('user_id')->unsigned()->index();
 
             $table->foreign('user_id')->references('id')->on('users');
@@ -34,6 +39,6 @@ class CreateUserTrainingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_trainings');
+        Schema::dropIfExists('work_histories');
     }
 }

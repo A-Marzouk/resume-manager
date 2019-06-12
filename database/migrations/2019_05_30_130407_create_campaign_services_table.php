@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserWorksTable extends Migration
+class CreateCampaignServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateUserWorksTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_works', function (Blueprint $table) {
+        Schema::create('campaign_services', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->increments('id');
-
-            $table->text('description');
-            $table->integer('user_id')->unsigned()->index();
-
-            $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
         });
@@ -32,6 +29,6 @@ class CreateUserWorksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_works');
+        Schema::dropIfExists('campaign_services');
     }
 }

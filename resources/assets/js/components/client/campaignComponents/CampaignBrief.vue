@@ -189,7 +189,10 @@
                             </label>
                             <div class="faq-input">
                               <input class="bg-gray-input" type="text" placeholder="Add a link you want to share">
+                              <img src="/images/icons/arrow_drop_down_circle_gray.svg" alt="" class="dropdown-circle-icon">
+                              <img class="edit-icon" src="/images/icons/edit_icon.svg" alt="edit icon">
                             </div>
+                            <a class="btn btn-link" href="javascript:;">ADD LINK</a>
                           </div>
                           <div class="faq-question-input">
                             <label class="faq-input-label">
@@ -201,7 +204,7 @@
                                 <div class="fallback">
                                     <input multiple type="file" id="files" name="files" />
                                 </div>
-                                <p class="dz-message">Drag and drop a photo you want to upload</p>
+                                <p class="dz-message">Drag and drop a photo you want to upload <br/> or</p>
                         
                                 <div class="fake-file-input btn btn-orange dz-input" >
                                     CHOOSE A FILE
@@ -290,6 +293,7 @@
                 </div>
 </template>
 <script>
+let dropZone
 export default {
   data() {
     return {
@@ -340,6 +344,9 @@ export default {
         question: '',
         answer: ''
       },
+      links: [
+
+      ],
       errors: {
         question: false,
         answer: false
@@ -361,6 +368,12 @@ export default {
       if (tab_name === 'PROCESS_FLOW' && !this.is_text_editor_set) {
         this.setTextEditor();
       }
+    },
+    addLink(link) {
+      this.links.push(link)
+    },
+    editLink(link, index) {
+      this.links[index] = link
     },
     editFAQ(faq_id) {
       let faqs = this.faqs;
@@ -448,6 +461,7 @@ export default {
     },
     removeDoc (index) {
       this.files.splice(index, 1)
+      if (this.files.length === 0) dropZone.removeAllFiles()
     },
     showMenu (index) {
       let fileContainers = document.getElementsByClassName('preview-container')
@@ -461,7 +475,7 @@ export default {
   mounted() {
     let component = this
 
-    let dropZone = new Dropzone("#dropfiles-team-brief", {
+    dropZone = new Dropzone("#dropfiles-team-brief", {
         maxFilesize: 45,
         dictDefaultMessage: '',
         dictRemoveFile: '',
@@ -477,10 +491,6 @@ export default {
             })
 
             this.on('error', (error) => console.log(error))
-
-            this.on('removedfile', (file) => {
-                console.log("Remove file")
-            })
         }
     })
   },

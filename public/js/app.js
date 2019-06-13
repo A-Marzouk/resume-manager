@@ -823,6 +823,53 @@ module.exports = g;
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(156)
+/* template */
+var __vue_template__ = __webpack_require__(157)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\status-selector.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a6032f5a", Component.options)
+  } else {
+    hotAPI.reload("data-v-a6032f5a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
@@ -922,53 +969,6 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(156)
-/* template */
-var __vue_template__ = __webpack_require__(157)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\status-selector.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a6032f5a", Component.options)
-  } else {
-    hotAPI.reload("data-v-a6032f5a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
 
 /***/ }),
 /* 7 */
@@ -36360,7 +36360,7 @@ module.exports = __webpack_require__(24);
 var utils = __webpack_require__(3);
 var bind = __webpack_require__(9);
 var Axios = __webpack_require__(26);
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(6);
 
 /**
  * Create an instance of Axios
@@ -36443,7 +36443,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(6);
 var utils = __webpack_require__(3);
 var InterceptorManager = __webpack_require__(35);
 var dispatchRequest = __webpack_require__(36);
@@ -36982,7 +36982,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(3);
 var transformData = __webpack_require__(37);
 var isCancel = __webpack_require__(13);
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(6);
 var isAbsoluteURL = __webpack_require__(38);
 var combineURLs = __webpack_require__(39);
 
@@ -81385,7 +81385,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__datepicker__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__datepicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__status_selector__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__status_selector__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__status_selector___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__status_selector__);
 //
 //
@@ -82199,6 +82199,7 @@ var render = function() {
                 _c(
                   "a",
                   {
+                    staticClass: "date-picker-btn",
                     attrs: {
                       href: "javascript:void(0)",
                       "data-toggle": "modal",
@@ -83159,7 +83160,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       dropdown: {
         selectedOption: 'Show active team',
-        options: ['Show active team', 'Show backup agents', 'Show past agents'],
+        options: ['Show backup agents', 'Show past agents'],
         showDropdown: false
       }
     };
@@ -83171,7 +83172,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     selectOption: function selectOption(value) {
+      this.dropdown.options.push(this.dropdown.selectedOption);
       this.dropdown.selectedOption = this.dropdown.options[value];
+      this.dropdown.options.splice(value, 1);
       this.toggleDropdown();
     }
   },
@@ -83191,7 +83194,7 @@ var render = function() {
       _c("div", { staticClass: "campaign-team-header" }, [
         _c("div", { staticClass: "select-list" }, [
           _c("div", { staticClass: "form-group" }, [
-            _c("div", { staticClass: "custom-dropdown" }, [
+            _c("div", { staticClass: "custom-dropdown team" }, [
               _c(
                 "div",
                 {
@@ -84024,7 +84027,11 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
 
+var dropZone = void 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -84054,6 +84061,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         question: '',
         answer: ''
       },
+      links: [],
       errors: {
         question: false,
         answer: false
@@ -84076,6 +84084,12 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       if (tab_name === 'PROCESS_FLOW' && !this.is_text_editor_set) {
         this.setTextEditor();
       }
+    },
+    addLink: function addLink(link) {
+      this.links.push(link);
+    },
+    editLink: function editLink(link, index) {
+      this.links[index] = link;
     },
     editFAQ: function editFAQ(faq_id) {
       var _this = this;
@@ -84163,6 +84177,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     },
     removeDoc: function removeDoc(index) {
       this.files.splice(index, 1);
+      if (this.files.length === 0) dropZone.removeAllFiles();
     },
     showMenu: function showMenu(index) {
       var fileContainers = document.getElementsByClassName('preview-container');
@@ -84176,7 +84191,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   mounted: function mounted() {
     var component = this;
 
-    var dropZone = new Dropzone("#dropfiles-team-brief", {
+    dropZone = new Dropzone("#dropfiles-team-brief", {
       maxFilesize: 45,
       dictDefaultMessage: '',
       dictRemoveFile: '',
@@ -84193,10 +84208,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
         this.on('error', function (error) {
           return console.log(error);
-        });
-
-        this.on('removedfile', function (file) {
-          console.log("Remove file");
         });
       }
     });
@@ -84843,9 +84854,7 @@ var render = function() {
                         [
                           _vm._m(5),
                           _vm._v(" "),
-                          _c("p", { staticClass: "dz-message" }, [
-                            _vm._v("Drag and drop a photo you want to upload")
-                          ]),
+                          _vm._m(6),
                           _vm._v(" "),
                           _c(
                             "div",
@@ -85017,7 +85026,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(6)
+            _vm._m(7)
           ]
         ),
         _vm._v(" "),
@@ -85041,7 +85050,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(7)
+            _vm._m(8)
           ]
         )
       ])
@@ -85129,8 +85138,27 @@ var staticRenderFns = [
         _c("input", {
           staticClass: "bg-gray-input",
           attrs: { type: "text", placeholder: "Add a link you want to share" }
+        }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "dropdown-circle-icon",
+          attrs: {
+            src: "/images/icons/arrow_drop_down_circle_gray.svg",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "edit-icon",
+          attrs: { src: "/images/icons/edit_icon.svg", alt: "edit icon" }
         })
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "a",
+        { staticClass: "btn btn-link", attrs: { href: "javascript:;" } },
+        [_vm._v("ADD LINK")]
+      )
     ])
   },
   function() {
@@ -85152,6 +85180,16 @@ var staticRenderFns = [
       _c("input", {
         attrs: { multiple: "", type: "file", id: "files", name: "files" }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "dz-message" }, [
+      _vm._v("Drag and drop a photo you want to upload "),
+      _c("br"),
+      _vm._v(" or")
     ])
   },
   function() {
@@ -85306,7 +85344,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -85319,6 +85357,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__campaign_brief_dashboard_vue__ = __webpack_require__(169);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__campaign_brief_dashboard_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__campaign_brief_dashboard_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__status_selector_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__status_selector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__status_selector_vue__);
 //
 //
 //
@@ -85477,26 +85517,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    "campaing-brief-dashboard": __WEBPACK_IMPORTED_MODULE_0__campaign_brief_dashboard_vue___default.a
+    "campaing-brief-dashboard": __WEBPACK_IMPORTED_MODULE_0__campaign_brief_dashboard_vue___default.a,
+    'status-selector': __WEBPACK_IMPORTED_MODULE_1__status_selector_vue___default.a
   },
   data: function data() {
     return {
@@ -86008,7 +86036,170 @@ var render = function() {
       _vm._v(" "),
       _c("campaing-brief-dashboard"),
       _vm._v(" "),
-      _vm._m(1)
+      _c("div", { staticClass: "content-block-campaign-brief" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "agent-logs-block" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n          9 am\n        ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n          10 am\n        ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n          11 am\n        ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n          11 am\n        ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(3)
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "agent-logs-block" }, [
+          _vm._m(4),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n          9 am\n        ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n          10 am\n        ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "log" }, [
+            _c("div", { staticClass: "log-time" }, [
+              _vm._v("\n          11 am\n        ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "log-text" },
+              [
+                _c("status-selector", { attrs: { status: "call-back" } }),
+                _vm._v(" "),
+                _c("span", { staticClass: "log-text-content" }, [
+                  _vm._v(
+                    "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(5)
+        ]),
+        _vm._v(" "),
+        _vm._m(6)
+      ])
     ],
     1
   )
@@ -86060,195 +86251,81 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content-block-campaign-brief" }, [
-      _c("div", { staticClass: "upper-bar" }, [
-        _c("div", { staticClass: "campaignInfo" }, [
-          _c("div", { staticClass: "title" }, [
-            _vm._v("\n        Name of the campaign\n      ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "info" }, [
-            _vm._v(
-              "\n        2 agents currently working on the campaign\n      "
-            )
-          ])
+    return _c("div", { staticClass: "upper-bar" }, [
+      _c("div", { staticClass: "campaignInfo" }, [
+        _c("div", { staticClass: "title" }, [
+          _vm._v("\n        Name of the campaign\n      ")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "actionBtn" }, [
-          _c("a", { staticClass: "status live", attrs: { href: "#" } }, [
-            _vm._v("\n          LIVE\n      ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "menu-img" }, [
-            _c("img", {
-              attrs: { src: "/images/client/more_vert_24px.png", alt: "menu" }
-            })
-          ])
+        _c("div", { staticClass: "info" }, [
+          _vm._v("\n        2 agents currently working on the campaign\n      ")
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "agent-logs-block" }, [
-        _c("div", { staticClass: "agentInfo" }, [
-          _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
-          _vm._v(" "),
-          _c("span", { staticClass: "userName" }, [
-            _vm._v(
-              "\n                          Mohamed Salah\n                      "
-            )
-          ])
+      _c("div", { staticClass: "actionBtn" }, [
+        _c("a", { staticClass: "status live", attrs: { href: "#" } }, [
+          _vm._v("\n          LIVE\n      ")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "log" }, [
-          _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n          9 am - 10 am\n        ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log-text" }, [
-            _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                      CB\n                  ")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "log-text-content" }, [
-              _vm._v(
-                "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log" }, [
-          _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n          10 am - 11 am\n        ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log-text" }, [
-            _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                      CB\n                  ")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "log-text-content" }, [
-              _vm._v(
-                "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log" }, [
-          _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n          11 am - 12 am\n        ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log-text" }, [
-            _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                      CB\n                  ")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "log-text-content" }, [
-              _vm._v(
-                "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log" }, [
-          _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n          11 am - 12 am\n        ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log-text" }, [
-            _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                      CB\n                  ")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "log-text-content" }, [
-              _vm._v(
-                "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "showMoreBtn" }, [
-          _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW LESS")])
+        _c("div", { staticClass: "menu-img" }, [
+          _c("img", {
+            attrs: { src: "/images/client/more_vert_24px.png", alt: "menu" }
+          })
         ])
-      ]),
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "agentInfo" }, [
+      _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
       _vm._v(" "),
-      _c("div", { staticClass: "agent-logs-block" }, [
-        _c("div", { staticClass: "agentInfo" }, [
-          _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
-          _vm._v(" "),
-          _c("span", { staticClass: "userName" }, [
-            _vm._v(
-              "\n                          Lionel Messi\n                      "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log" }, [
-          _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n          9 am - 10 am\n        ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log-text" }, [
-            _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                      CB\n                  ")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "log-text-content" }, [
-              _vm._v(
-                "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log" }, [
-          _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n          10 am - 11 am\n        ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log-text" }, [
-            _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                      CB\n                  ")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "log-text-content" }, [
-              _vm._v(
-                "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log" }, [
-          _c("div", { staticClass: "log-time" }, [
-            _vm._v("\n          11 am - 12 am\n        ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "log-text" }, [
-            _c("span", { staticClass: "agent-initials" }, [
-              _vm._v("\n                      CB\n                  ")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "log-text-content" }, [
-              _vm._v(
-                "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "showMoreBtn" }, [
-          _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
-        ])
-      ]),
+      _c("span", { staticClass: "userName" }, [
+        _vm._v(
+          "\n                          Mohamed Salah\n                      "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "showMoreBtn" }, [
+      _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW LESS")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "agentInfo" }, [
+      _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
       _vm._v(" "),
-      _c("div", { staticClass: "campaign-brief-footer" }, [
-        _c("a", { attrs: { href: "/client/campaign" } }, [
-          _vm._v("\n              GO TO CAMPAIGN\n          ")
-        ])
+      _c("span", { staticClass: "userName" }, [
+        _vm._v(
+          "\n                          Lionel Messi\n                      "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "showMoreBtn" }, [
+      _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "campaign-brief-footer" }, [
+      _c("a", { attrs: { href: "/client/campaign" } }, [
+        _vm._v("\n              GO TO CAMPAIGN\n          ")
       ])
     ])
   }
@@ -87867,7 +87944,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__datepicker_vue__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__datepicker_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__datepicker_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__status_selector_vue__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__status_selector_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__status_selector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__status_selector_vue__);
 //
 //
@@ -88881,7 +88958,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__addEntry___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__addEntry__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__addDocument__ = __webpack_require__(193);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__addDocument___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__addDocument__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__status_selector_vue__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__status_selector_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__status_selector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__status_selector_vue__);
 //
 //
@@ -89248,7 +89325,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__status_selector_vue__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__status_selector_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__status_selector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__status_selector_vue__);
 //
 //

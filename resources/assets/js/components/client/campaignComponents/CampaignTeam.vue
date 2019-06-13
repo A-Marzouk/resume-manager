@@ -4,7 +4,7 @@
       <div class="campaign-team-header">
         <div class="select-list">
           <div class="form-group">
-            <div class="custom-dropdown">
+            <div class="custom-dropdown team">
               <div v-on:click="toggleDropdown" class="selected-option">{{dropdown.selectedOption}}</div>
               <div class="list-options" :class="{show: dropdown.showDropdown}">
                 <div v-on:click="selectOption(index)" :key="index" v-for="(option, index) in dropdown.options" class="dropdown-item">{{option}}</div>
@@ -204,7 +204,6 @@ export default {
       dropdown: {
         selectedOption: 'Show active team',
         options: [
-          'Show active team',
           'Show backup agents',
           'Show past agents'
         ],
@@ -217,7 +216,9 @@ export default {
       this.dropdown.showDropdown = !this.dropdown.showDropdown
     },
     selectOption: function (value) {
+      this.dropdown.options.push(this.dropdown.selectedOption)
       this.dropdown.selectedOption = this.dropdown.options[value]
+      this.dropdown.options.splice(value, 1)
       this.toggleDropdown()
     }
   },

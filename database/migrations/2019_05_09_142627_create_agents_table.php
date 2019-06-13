@@ -20,7 +20,7 @@ class CreateAgentsTable extends Migration
 
             // $table->integer('number')->unsigned();
             $table->decimal('hourly_rate', 16, 4)->nullable();
-            $table->decimal('available_hours', 16, 4)->nullable();
+            $table->decimal('available_hours_per_week', 3, 2)->unsigned()->nullable();
             $table->text('experience')->nullable();
             $table->integer('user_id')->unsigned()->index();
 

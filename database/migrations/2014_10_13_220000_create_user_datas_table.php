@@ -43,12 +43,10 @@ class CreateUserDatasTable extends Migration
             $table->text('professional_attributes')->nullable();
             $table->text('personal_interests')->nullable();
             $table->longText('career_objective')->nullable();
-            $table->smallInteger('available_hours_per_week')->unsigned()->nullable();
+            $table->decimal('available_hours_per_week', 3, 2)->unsigned()->nullable();
             $table->time('preferred_time')->nullable();
-            $table->decimal('salary', 16, 4)->nullable();
             $table->char('gender', 1)->nullable()->default('f');
             $table->text('education')->nullable();
-            $table->text('work_experience')->nullable();
             $table->text('primary_skills')->nullable();
             $table->text('char_skills')->nullable();
             $table->text('video_url')->nullable();
@@ -58,6 +56,7 @@ class CreateUserDatasTable extends Migration
             $table->timestamp('approved_at')->nullable();
             $table->longText('audio_transcription')->nullable();
             $table->boolean('is_homepage_visible')->default(false);
+            $table->timestamp('agreed_with_terms_at')->nullable();
 
             // $table->string('address_line_1')->nullable();
             // $table->string('address_line_2')->nullable();

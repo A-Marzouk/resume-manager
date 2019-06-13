@@ -22,7 +22,6 @@ class CreateEducationHistoriesTable extends Migration
             $table->text('description')->nullable();
             $table->date('date_from')->nullable();
             $table->date('date_to')->nullable();
-            $table->string('description')->nullable();
             $table->tinyInteger('type')->unsigned()->index()->nullable();
             $table->boolean('is_currently_learning')->default(false);
             $table->integer('user_id')->unsigned()->index();

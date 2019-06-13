@@ -69928,8 +69928,7 @@ var render = function() {
                       expression: "showFilterSelection"
                     }
                   ],
-                  staticClass: "select-popup",
-                  staticStyle: { "margin-top": "-30px" }
+                  staticClass: "select-popup"
                 },
                 [
                   _c("ul", { staticClass: "select-popup-list" }, [

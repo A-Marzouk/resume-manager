@@ -41,7 +41,7 @@
                                 <span v-if="filter=== 'show_in_process' ">In process</span>
                             </div>
                         </a>
-                        <div class="select-popup" v-show="showFilterSelection" style="margin-top:-30px;">
+                        <div class="select-popup" v-show="showFilterSelection">
                             <ul class="select-popup-list">
                                 <li @click="selectFilter('show_all')">
                                     Show all applications

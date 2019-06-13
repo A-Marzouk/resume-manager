@@ -58290,6 +58290,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -58934,17 +58936,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "info-bar" }, [
-      _c("div", { staticClass: "avatar" }, [
-        _c("img", { attrs: { src: "/images/client/dummy.png", alt: "logout" } })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "name" }, [
-        _vm._v("\n                    Welcome,"),
-        _c("br"),
-        _vm._v("\n                    Ahmed R. Marzouk\n                ")
-      ])
-    ])
+    return _c(
+      "div",
+      {
+        staticClass:
+          "welcome-box d-flex justify-content-start align-items-center"
+      },
+      [
+        _c("img", {
+          attrs: { src: "/images/client/dummy.png", alt: "profile" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex flex-column" }, [
+          _c("div", [
+            _vm._v("\n                        Welcome,\n                    ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticStyle: { "font-weight": "500" } }, [
+            _vm._v(
+              "\n                        Ahmed R. Marzouk\n                    "
+            )
+          ])
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -73229,6 +73244,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -73694,17 +73711,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "info-bar" }, [
-      _c("div", { staticClass: "avatar" }, [
-        _c("img", { attrs: { src: "/images/client/dummy.png", alt: "logout" } })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "name" }, [
-        _vm._v("\n                    Welcome,"),
-        _c("br"),
-        _vm._v("\n                    Ahmed R. Marzouk\n                ")
-      ])
-    ])
+    return _c(
+      "div",
+      {
+        staticClass:
+          "welcome-box d-flex justify-content-start align-items-center"
+      },
+      [
+        _c("img", {
+          attrs: { src: "/images/client/dummy.png", alt: "profile" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex flex-column" }, [
+          _c("div", [
+            _vm._v("\n                        Welcome,\n                    ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticStyle: { "font-weight": "500" } }, [
+            _vm._v(
+              "\n                        Ahmed R. Marzouk\n                    "
+            )
+          ])
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -96177,6 +96207,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -96455,17 +96488,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "info-bar" }, [
-      _c("div", { staticClass: "avatar" }, [
-        _c("img", { attrs: { src: "/images/client/dummy.png", alt: "logout" } })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "name" }, [
-        _vm._v("\n                    Welcome,"),
-        _c("br"),
-        _vm._v("\n                    Ahmed R. Marzouk\n                ")
-      ])
-    ])
+    return _c(
+      "div",
+      {
+        staticClass:
+          "welcome-box d-flex justify-content-start align-items-center"
+      },
+      [
+        _c("img", {
+          attrs: { src: "/images/client/dummy.png", alt: "profile" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex flex-column" }, [
+          _c("div", [
+            _vm._v("\n                        Welcome,\n                    ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticStyle: { "font-weight": "500" } }, [
+            _vm._v(
+              "\n                        Ahmed R. Marzouk\n                    "
+            )
+          ])
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this

@@ -6,6 +6,24 @@
   }
 }
 
+.welcome-box{
+  margin-top: 20px;
+  padding-bottom: 26px;
+  padding-left: 30px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  color: #4A5464;
+  border-bottom: 0.5px solid #E0E1E3;
+  img{
+    margin-right: 10px;
+    width: 39px;
+    height: 39px;
+  }
+}
 
 .flex-small-wrap{
   @media only screen and (max-width: 1024px){

@@ -24,7 +24,8 @@
                         <a href="javascript:void(0)" class="filter-box-clients filterBox d-flex align-items-center" >
                             <img src="/images/admin/filter.svg" alt="">
                             <div>
-                                <b>Status :</b>
+                                <span style="font-weight: 500;">Status :</span>
+
                                 <span v-if="filter=== 'show_all' ">show all</span>
                                 <span v-if="filter=== 'show_new' ">New applications</span>
                                 <span v-if="filter=== 'show_in_process' ">In process</span>
@@ -48,7 +49,7 @@
                         <a href="javascript:void(0)" class="filter-box-clients filterBox d-flex align-items-center" >
                             <img src="/images/admin/filter.svg" alt="">
                             <div>
-                                <b>Subscr :</b>
+                                <span style="font-weight: 500;">Subscr :</span>
                                 <span v-if="filter=== 'show_all' ">show all</span>
                                 <span v-if="filter=== 'show_new' ">New applications</span>
                                 <span v-if="filter=== 'show_in_process' ">In process</span>
@@ -72,7 +73,8 @@
                         <a href="javascript:void(0)" class="filter-box-clients filterBox d-flex align-items-center" >
                             <img src="/images/admin/filter.svg" alt="">
                             <div>
-                               <b> Invoices :</b>
+                                <span style="font-weight: 500;">Invoices :</span>
+
                                 <span v-if="filter=== 'show_all' ">show all</span>
                                 <span v-if="filter=== 'show_new' ">New applications</span>
                                 <span v-if="filter=== 'show_in_process' ">In process</span>
@@ -96,7 +98,8 @@
                         <a href="javascript:void(0)" class="filterBox filter-box-clients d-flex align-items-center"  @click="showSortSelection = true">
                             <img src="/images/admin/sorting.svg" alt="">
                             <div>
-                                <b>Sorting :</b>
+                                <span style="font-weight: 500;">Sorting :</span>
+
                                 <span v-if="sort=== 'all_income' ">all income</span>
                                 <span v-if="sort=== 'old_first' ">oldest first</span>
                             </div>
@@ -208,7 +211,7 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                       <span style="font-weight: normal;">GMT - 8 </span>
+                                       <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -260,7 +263,7 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                       <span style="font-weight: normal;">GMT - 8 </span>
+                                       <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -312,7 +315,7 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        <span style="font-weight: normal;">GMT - 8 </span>
+                                        <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -364,7 +367,7 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        <span style="font-weight: normal;">GMT - 8 </span>
+                                        <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -416,7 +419,7 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        <span style="font-weight: normal;">GMT - 8 </span>
+                                        <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -468,7 +471,7 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        <span style="font-weight: normal;">GMT - 8 </span>
+                                        <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -520,7 +523,7 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        <span style="font-weight: normal;">GMT - 8 </span>
+                                        <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -572,7 +575,7 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        <span style="font-weight: normal;">GMT - 8 </span>
+                                        <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -624,7 +627,7 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        <span style="font-weight: normal;">GMT - 8 </span>
+                                        <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -676,7 +679,7 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        <span style="font-weight: normal;">GMT - 8 </span>
+                                        <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>

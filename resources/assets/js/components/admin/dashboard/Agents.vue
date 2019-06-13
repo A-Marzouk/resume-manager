@@ -121,13 +121,13 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <div class="invoice-number base-text name-text">
+                                    <div class="invoice-number base-text name-text" style="font-weight: 500;">
                                        Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow" style="transform: rotate(180deg);">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
                                     </div>
@@ -235,13 +235,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                        Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $12
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -260,14 +260,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                        Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
 
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -286,13 +286,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $12
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -311,14 +311,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
 
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -337,13 +337,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number base-text name-text">
+                                    <div class="invoice-number base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
                                     </div>
@@ -366,13 +366,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $12
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -391,14 +391,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
 
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -417,13 +417,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $12
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -442,14 +442,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
 
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -468,13 +468,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number base-text name-text">
+                                    <div class="invoice-number base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
                                     </div>
@@ -497,13 +497,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $12
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -522,14 +522,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
 
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -548,13 +548,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $12
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -573,14 +573,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
 
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 

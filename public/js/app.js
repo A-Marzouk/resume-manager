@@ -65407,15 +65407,22 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-number base-text name-text" }, [
-        _vm._v(
-          "\n                                   Edward Smith-Lorence\n                                    "
-        ),
-        _c("img", {
-          staticStyle: { transform: "rotate(180deg)" },
-          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-number base-text name-text",
+          staticStyle: { "font-weight": "500" }
+        },
+        [
+          _vm._v(
+            "\n                                   Edward Smith-Lorence\n                                    "
+          ),
+          _c("img", {
+            staticStyle: { transform: "rotate(180deg)" },
+            attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -65423,14 +65430,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
-        _vm._v(
-          "\n                                    $10\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-service  base-text hour-text",
+          staticStyle: { "font-weight": "normal" }
+        },
+        [
+          _vm._v(
+            "\n                                    $10\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -65621,14 +65635,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
-        _vm._v(
-          "\n                                   Edward Smith-Lorence\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-number  base-text name-text",
+          staticStyle: { "font-weight": "500" }
+        },
+        [
+          _vm._v(
+            "\n                                   Edward Smith-Lorence\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -65636,14 +65657,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
-        _vm._v(
-          "\n                                    $12\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-service  base-text hour-text",
+          staticStyle: { "font-weight": "normal" }
+        },
+        [
+          _vm._v(
+            "\n                                    $12\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -65674,14 +65702,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
-        _vm._v(
-          "\n                                   Edward Smith-Lorence\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-number  base-text name-text",
+          staticStyle: { "font-weight": "500" }
+        },
+        [
+          _vm._v(
+            "\n                                   Edward Smith-Lorence\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -65689,14 +65724,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
-        _vm._v(
-          "\n                                    $10\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-service  base-text hour-text",
+          staticStyle: { "font-weight": "normal" }
+        },
+        [
+          _vm._v(
+            "\n                                    $10\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -65731,14 +65773,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
-        _vm._v(
-          "\n                                    Edward Smith-Lorence\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-number  base-text name-text",
+          staticStyle: { "font-weight": "500" }
+        },
+        [
+          _vm._v(
+            "\n                                    Edward Smith-Lorence\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -65746,14 +65795,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
-        _vm._v(
-          "\n                                    $12\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-service  base-text hour-text",
+          staticStyle: { "font-weight": "normal" }
+        },
+        [
+          _vm._v(
+            "\n                                    $12\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -65784,14 +65840,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
-        _vm._v(
-          "\n                                    Edward Smith-Lorence\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-number  base-text name-text",
+          staticStyle: { "font-weight": "500" }
+        },
+        [
+          _vm._v(
+            "\n                                    Edward Smith-Lorence\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -65799,14 +65862,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
-        _vm._v(
-          "\n                                    $10\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-service  base-text hour-text",
+          staticStyle: { "font-weight": "normal" }
+        },
+        [
+          _vm._v(
+            "\n                                    $10\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -65841,14 +65911,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-number base-text name-text" }, [
-        _vm._v(
-          "\n                                    Edward Smith-Lorence\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-number base-text name-text",
+          staticStyle: { "font-weight": "500" }
+        },
+        [
+          _vm._v(
+            "\n                                    Edward Smith-Lorence\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -65856,14 +65933,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
-        _vm._v(
-          "\n                                    $10\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-service  base-text hour-text",
+          staticStyle: { "font-weight": "normal" }
+        },
+        [
+          _vm._v(
+            "\n                                    $10\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -65882,14 +65966,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
-        _vm._v(
-          "\n                                    Edward Smith-Lorence\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-number  base-text name-text",
+          staticStyle: { "font-weight": "500" }
+        },
+        [
+          _vm._v(
+            "\n                                    Edward Smith-Lorence\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -65897,14 +65988,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
-        _vm._v(
-          "\n                                    $12\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-service  base-text hour-text",
+          staticStyle: { "font-weight": "normal" }
+        },
+        [
+          _vm._v(
+            "\n                                    $12\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -65935,14 +66033,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
-        _vm._v(
-          "\n                                    Edward Smith-Lorence\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-number  base-text name-text",
+          staticStyle: { "font-weight": "500" }
+        },
+        [
+          _vm._v(
+            "\n                                    Edward Smith-Lorence\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -65950,14 +66055,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
-        _vm._v(
-          "\n                                    $10\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-service  base-text hour-text",
+          staticStyle: { "font-weight": "normal" }
+        },
+        [
+          _vm._v(
+            "\n                                    $10\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -65992,14 +66104,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
-        _vm._v(
-          "\n                                    Edward Smith-Lorence\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-number  base-text name-text",
+          staticStyle: { "font-weight": "500" }
+        },
+        [
+          _vm._v(
+            "\n                                    Edward Smith-Lorence\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -66007,14 +66126,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
-        _vm._v(
-          "\n                                    $12\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-service  base-text hour-text",
+          staticStyle: { "font-weight": "normal" }
+        },
+        [
+          _vm._v(
+            "\n                                    $12\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -66045,14 +66171,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
-        _vm._v(
-          "\n                                    Edward Smith-Lorence\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-number  base-text name-text",
+          staticStyle: { "font-weight": "500" }
+        },
+        [
+          _vm._v(
+            "\n                                    Edward Smith-Lorence\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -66060,14 +66193,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
-        _vm._v(
-          "\n                                    $10\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-service  base-text hour-text",
+          staticStyle: { "font-weight": "normal" }
+        },
+        [
+          _vm._v(
+            "\n                                    $10\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -66102,14 +66242,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-number base-text name-text" }, [
-        _vm._v(
-          "\n                                    Edward Smith-Lorence\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-number base-text name-text",
+          staticStyle: { "font-weight": "500" }
+        },
+        [
+          _vm._v(
+            "\n                                    Edward Smith-Lorence\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -66117,14 +66264,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
-        _vm._v(
-          "\n                                    $10\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-service  base-text hour-text",
+          staticStyle: { "font-weight": "normal" }
+        },
+        [
+          _vm._v(
+            "\n                                    $10\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -66143,14 +66297,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
-        _vm._v(
-          "\n                                    Edward Smith-Lorence\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-number  base-text name-text",
+          staticStyle: { "font-weight": "500" }
+        },
+        [
+          _vm._v(
+            "\n                                    Edward Smith-Lorence\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -66158,14 +66319,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
-        _vm._v(
-          "\n                                    $12\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-service  base-text hour-text",
+          staticStyle: { "font-weight": "normal" }
+        },
+        [
+          _vm._v(
+            "\n                                    $12\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -66196,14 +66364,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
-        _vm._v(
-          "\n                                    Edward Smith-Lorence\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-number  base-text name-text",
+          staticStyle: { "font-weight": "500" }
+        },
+        [
+          _vm._v(
+            "\n                                    Edward Smith-Lorence\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -66211,14 +66386,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
-        _vm._v(
-          "\n                                    $10\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-service  base-text hour-text",
+          staticStyle: { "font-weight": "normal" }
+        },
+        [
+          _vm._v(
+            "\n                                    $10\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -66253,14 +66435,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
-        _vm._v(
-          "\n                                    Edward Smith-Lorence\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-number  base-text name-text",
+          staticStyle: { "font-weight": "500" }
+        },
+        [
+          _vm._v(
+            "\n                                    Edward Smith-Lorence\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -66268,14 +66457,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
-        _vm._v(
-          "\n                                    $12\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-service  base-text hour-text",
+          staticStyle: { "font-weight": "normal" }
+        },
+        [
+          _vm._v(
+            "\n                                    $12\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -66306,14 +66502,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-number  base-text name-text" }, [
-        _vm._v(
-          "\n                                    Edward Smith-Lorence\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-number  base-text name-text",
+          staticStyle: { "font-weight": "500" }
+        },
+        [
+          _vm._v(
+            "\n                                    Edward Smith-Lorence\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/down_arrow.png", alt: "down arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -66321,14 +66524,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("div", { staticClass: "invoice-service  base-text hour-text" }, [
-        _vm._v(
-          "\n                                    $10\n                                    "
-        ),
-        _c("img", {
-          attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
-        })
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "invoice-service  base-text hour-text",
+          staticStyle: { "font-weight": "normal" }
+        },
+        [
+          _vm._v(
+            "\n                                    $10\n                                    "
+          ),
+          _c("img", {
+            attrs: { src: "/images/admin/edit_24px.svg", alt: "edit arrow" }
+          })
+        ]
+      )
     ])
   },
   function() {
@@ -66454,7 +66664,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -66465,6 +66675,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -67310,7 +67523,9 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("div", [
-                    _c("b", [_vm._v("Status :")]),
+                    _c("span", { staticStyle: { "font-weight": "500" } }, [
+                      _vm._v("Status :")
+                    ]),
                     _vm._v(" "),
                     _vm.filter === "show_all"
                       ? _c("span", [_vm._v("show all")])
@@ -67409,7 +67624,9 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("div", [
-                    _c("b", [_vm._v("Subscr :")]),
+                    _c("span", { staticStyle: { "font-weight": "500" } }, [
+                      _vm._v("Subscr :")
+                    ]),
                     _vm._v(" "),
                     _vm.filter === "show_all"
                       ? _c("span", [_vm._v("show all")])
@@ -67508,7 +67725,9 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("div", [
-                    _c("b", [_vm._v(" Invoices :")]),
+                    _c("span", { staticStyle: { "font-weight": "500" } }, [
+                      _vm._v("Invoices :")
+                    ]),
                     _vm._v(" "),
                     _vm.filter === "show_all"
                       ? _c("span", [_vm._v("show all")])
@@ -67612,7 +67831,9 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("div", [
-                    _c("b", [_vm._v("Sorting :")]),
+                    _c("span", { staticStyle: { "font-weight": "500" } }, [
+                      _vm._v("Sorting :")
+                    ]),
                     _vm._v(" "),
                     _vm.sort === "all_income"
                       ? _c("span", [_vm._v("all income")])
@@ -68281,9 +68502,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _c("span", { staticStyle: { "font-weight": "normal" } }, [
-                  _vm._v("GMT - 8 ")
-                ])
+                _c(
+                  "span",
+                  {
+                    staticStyle: { "font-weight": "normal", color: "#7A828D" }
+                  },
+                  [_vm._v("GMT - 8 ")]
+                )
               ])
             ])
           ]),
@@ -68370,9 +68595,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _c("span", { staticStyle: { "font-weight": "normal" } }, [
-                  _vm._v("GMT - 8 ")
-                ])
+                _c(
+                  "span",
+                  {
+                    staticStyle: { "font-weight": "normal", color: "#7A828D" }
+                  },
+                  [_vm._v("GMT - 8 ")]
+                )
               ])
             ])
           ]),
@@ -68467,9 +68696,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _c("span", { staticStyle: { "font-weight": "normal" } }, [
-                  _vm._v("GMT - 8 ")
-                ])
+                _c(
+                  "span",
+                  {
+                    staticStyle: { "font-weight": "normal", color: "#7A828D" }
+                  },
+                  [_vm._v("GMT - 8 ")]
+                )
               ])
             ])
           ]),
@@ -68560,9 +68793,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _c("span", { staticStyle: { "font-weight": "normal" } }, [
-                  _vm._v("GMT - 8 ")
-                ])
+                _c(
+                  "span",
+                  {
+                    staticStyle: { "font-weight": "normal", color: "#7A828D" }
+                  },
+                  [_vm._v("GMT - 8 ")]
+                )
               ])
             ])
           ]),
@@ -68653,9 +68890,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _c("span", { staticStyle: { "font-weight": "normal" } }, [
-                  _vm._v("GMT - 8 ")
-                ])
+                _c(
+                  "span",
+                  {
+                    staticStyle: { "font-weight": "normal", color: "#7A828D" }
+                  },
+                  [_vm._v("GMT - 8 ")]
+                )
               ])
             ])
           ]),
@@ -68746,9 +68987,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _c("span", { staticStyle: { "font-weight": "normal" } }, [
-                  _vm._v("GMT - 8 ")
-                ])
+                _c(
+                  "span",
+                  {
+                    staticStyle: { "font-weight": "normal", color: "#7A828D" }
+                  },
+                  [_vm._v("GMT - 8 ")]
+                )
               ])
             ])
           ]),
@@ -68839,9 +69084,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _c("span", { staticStyle: { "font-weight": "normal" } }, [
-                  _vm._v("GMT - 8 ")
-                ])
+                _c(
+                  "span",
+                  {
+                    staticStyle: { "font-weight": "normal", color: "#7A828D" }
+                  },
+                  [_vm._v("GMT - 8 ")]
+                )
               ])
             ])
           ]),
@@ -68932,9 +69181,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _c("span", { staticStyle: { "font-weight": "normal" } }, [
-                  _vm._v("GMT - 8 ")
-                ])
+                _c(
+                  "span",
+                  {
+                    staticStyle: { "font-weight": "normal", color: "#7A828D" }
+                  },
+                  [_vm._v("GMT - 8 ")]
+                )
               ])
             ])
           ]),
@@ -69025,9 +69278,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _c("span", { staticStyle: { "font-weight": "normal" } }, [
-                  _vm._v("GMT - 8 ")
-                ])
+                _c(
+                  "span",
+                  {
+                    staticStyle: { "font-weight": "normal", color: "#7A828D" }
+                  },
+                  [_vm._v("GMT - 8 ")]
+                )
               ])
             ])
           ]),
@@ -69118,9 +69375,13 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount base-text" }, [
-                _c("span", { staticStyle: { "font-weight": "normal" } }, [
-                  _vm._v("GMT - 8 ")
-                ])
+                _c(
+                  "span",
+                  {
+                    staticStyle: { "font-weight": "normal", color: "#7A828D" }
+                  },
+                  [_vm._v("GMT - 8 ")]
+                )
               ])
             ])
           ])

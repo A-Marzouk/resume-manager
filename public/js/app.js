@@ -59278,91 +59278,81 @@ var staticRenderFns = [
           "div",
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
-            _c(
-              "div",
-              { staticClass: "modal-content border-0 add-agent-modal-content" },
-              [
-                _c("div", { staticClass: "modal-body campaign-team-modal" }, [
-                  _c("div", [
-                    _c("div", { staticClass: "modal-question" }, [
-                      _vm._v(
-                        "\n                           Which agent do you want to add ?\n                        "
+            _c("div", { staticClass: "modal-content border-0" }, [
+              _c("div", { staticClass: "modal-body campaign-team-modal" }, [
+                _c("div", [
+                  _c("div", { staticClass: "modal-question" }, [
+                    _vm._v(
+                      "\n                           Which agent do you want to add ?\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-answer radio-options" }, [
+                    _c("div", { staticClass: "col-12" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "form-check-label checkBoxContainer disapprove-text",
+                          attrs: { id: "defaultRadio" }
+                        },
+                        [
+                          _c("input", {
+                            staticClass: "form-check-input",
+                            attrs: { type: "radio", name: "disapprove" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "checkmark make-circle" }),
+                          _vm._v(
+                            " business support\n                                "
+                          )
+                        ]
                       )
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "modal-answer radio-options" }, [
-                      _c("div", { staticClass: "col-12" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass:
-                              "form-check-label checkBoxContainer disapprove-text",
-                            attrs: { id: "defaultRadio" }
-                          },
-                          [
-                            _c("input", {
-                              staticClass: "form-check-input",
-                              attrs: { type: "radio", name: "disapprove" }
-                            }),
-                            _vm._v(" "),
-                            _c("span", {
-                              staticClass: "checkmark make-circle"
-                            }),
-                            _vm._v(
-                              " business support\n                                "
-                            )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass:
-                              "form-check-label checkBoxContainer disapprove-text"
-                          },
-                          [
-                            _c("input", {
-                              staticClass: "form-check-input",
-                              attrs: { type: "radio", name: "disapprove" }
-                            }),
-                            _vm._v(" "),
-                            _c("span", {
-                              staticClass: "checkmark make-circle"
-                            }),
-                            _vm._v(
-                              " designer\n                                "
-                            )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass:
-                              "form-check-label checkBoxContainer disapprove-text"
-                          },
-                          [
-                            _c("input", {
-                              staticClass: "form-check-input",
-                              attrs: { type: "radio", name: "disapprove" }
-                            }),
-                            _vm._v(" "),
-                            _c("span", {
-                              staticClass: "checkmark make-circle"
-                            }),
-                            _vm._v(
-                              " developer\n                                "
-                            )
-                          ]
-                        )
-                      ])
+                    _c("div", { staticClass: "col-12" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "form-check-label checkBoxContainer disapprove-text"
+                        },
+                        [
+                          _c("input", {
+                            staticClass: "form-check-input",
+                            attrs: { type: "radio", name: "disapprove" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "checkmark make-circle" }),
+                          _vm._v(" designer\n                                ")
+                        ]
+                      )
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "modal-btn-wrapper" }, [
+                    _c("div", { staticClass: "col-12" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "form-check-label checkBoxContainer disapprove-text"
+                        },
+                        [
+                          _c("input", {
+                            staticClass: "form-check-input",
+                            attrs: { type: "radio", name: "disapprove" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "checkmark make-circle" }),
+                          _vm._v(" developer\n                                ")
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "modal-btn-wrapper flex-row-mobile" },
+                    [
                       _c("div", { staticClass: "button-base white-button-a" }, [
                         _c(
                           "a",
@@ -59386,11 +59376,11 @@ var staticRenderFns = [
                           [_vm._v("Continue")]
                         )
                       ])
-                    ])
-                  ])
+                    ]
+                  )
                 ])
-              ]
-            )
+              ])
+            ])
           ]
         )
       ]
@@ -64240,7 +64230,10 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n                BUSINESS SUPPORT\n            ")]
+          [
+            _c("span", {}, [_vm._v("BUSINESS")]),
+            _vm._v(" SUPPORT\n            ")
+          ]
         ),
         _vm._v(" "),
         _c(
@@ -64268,7 +64261,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n                DEVELOPERS\n            ")]
+          [_vm._v("\n                DEVEL"), _c("span", {}, [_vm._v("OPERS")])]
         ),
         _vm._v(" "),
         _c("div", [
@@ -64295,9 +64288,8 @@ var render = function() {
                     alt: "add icon"
                   }
                 }),
-                _vm._v(
-                  "\n                        ADD NEW AGENT\n                    "
-                )
+                _vm._v(" "),
+                _c("span", {}, [_vm._v(" ADD NEW AGENT")])
               ]
             )
           ])
@@ -68289,13 +68281,10 @@ var staticRenderFns = [
               staticStyle: {
                 width: "175px",
                 height: "30px",
-                "border-radius": "40px"
+                "border-radius": "40px",
+                "margin-right": "20px"
               },
-              attrs: {
-                href: "javascript:void(0)",
-                "data-toggle": "modal",
-                "data-target": "#add-agent"
-              }
+              attrs: { href: "javascript:void(0)" }
             },
             [
               _c("img", {

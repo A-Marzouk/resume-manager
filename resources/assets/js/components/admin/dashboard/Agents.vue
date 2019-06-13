@@ -6,7 +6,7 @@
                              class="campaign-info-tab firstTab"
                              :class="{active : activeTab === 'business-support'}"
                              @click="activeTab = 'business-support'">
-                    BUSINESS SUPPORT
+                    <span class="">BUSINESS</span> SUPPORT
                 </div>
                 <div
                              class="campaign-info-tab"
@@ -18,13 +18,13 @@
                              class="campaign-info-tab"
                              :class="{active : activeTab === 'developers'}"
                              @click="activeTab = 'developers'">
-                    DEVELOPERS
+                    DEVEL<span class="">OPERS</span>
                 </div>
                 <div>
                     <div class="white-button-a button-base">
                         <a href="javascript:void(0)" style="width:175px; height:30px; border-radius:40px;" data-toggle="modal" data-target="#add-agent" @click="checkDefaultRadio">
                             <img src="/images/client/payments/add.png" alt="add icon">
-                            ADD NEW AGENT
+                            <span class=""> ADD NEW AGENT</span>
                         </a>
                     </div>
                 </div>

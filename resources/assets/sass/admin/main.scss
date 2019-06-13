@@ -397,7 +397,9 @@
 
 .modal-answer.radio-options{
   padding-left:29px;
-
+  @media only screen and (max-width: 600px) {
+    padding-left:0;
+  }
   div{
     margin-bottom: 20px;
   }

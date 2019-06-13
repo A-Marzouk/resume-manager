@@ -206,6 +206,9 @@
   color: #4A5464;
   mix-blend-mode: normal;
   opacity: 0.9;
+  @media only screen and (max-width: 600px) {
+    font-size: 18px;
+  }
 }
 
 .modal-answer{

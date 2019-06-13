@@ -319,7 +319,7 @@
              aria-hidden="true">
             <div class="modal-dialog"
                  role="document">
-                <div class="modal-content border-0 add-agent-modal-content">
+                <div class="modal-content border-0">
                     <div class="modal-body campaign-team-modal">
                         <div>
                             <div class="modal-question">
@@ -347,7 +347,7 @@
                                 </div>
                             </div>
 
-                            <div class="modal-btn-wrapper">
+                            <div class="modal-btn-wrapper flex-row-mobile">
                                 <div class="button-base white-button-a">
                                     <a href="javascript:void(0)" data-dismiss="modal">CANCEL</a>
                                 </div>

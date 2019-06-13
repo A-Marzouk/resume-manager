@@ -6297,6 +6297,12 @@ body {
   opacity: 0.9;
 }
 
+@media only screen and (max-width: 600px) {
+  .modal-question {
+    font-size: 18px;
+  }
+}
+
 .modal-answer {
   font-family: Roboto;
   font-style: normal;
@@ -10865,6 +10871,12 @@ select:focus {
 
 .modal-answer.radio-options {
   padding-left: 29px;
+}
+
+@media only screen and (max-width: 600px) {
+  .modal-answer.radio-options {
+    padding-left: 0;
+  }
 }
 
 .modal-answer.radio-options div {

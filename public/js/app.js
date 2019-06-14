@@ -75617,7 +75617,7 @@ var staticRenderFns = [
     return _c("div", [
       _c(
         "nav",
-        { staticClass: "navbar navbar-light fixed-top client_navbar" },
+        { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
         [
           _c("div", { staticClass: "backBtn" }, [
             _c("a", { attrs: { href: "/client/dashboard/payments" } }, [
@@ -75635,7 +75635,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "d-flex justify-content-center" }, [
         _c("div", { staticClass: "main-grid search-main-grid" }, [
-          _c("div", { staticClass: "invoice-body" }, [
+          _c("div", [
             _c(
               "div",
               {
@@ -75667,7 +75667,7 @@ var staticRenderFns = [
             "div",
             {
               staticClass:
-                "row justify-content-between align-items-baseline invioce-title payment-pay-text "
+                "row justify-content-between align-items-baseline invoice-title"
             },
             [
               _c("div", { staticClass: "col-6" }, [
@@ -75710,13 +75710,13 @@ var staticRenderFns = [
                       {
                         staticClass: "invoice-outstand",
                         staticStyle: {
-                          padding: "4px 16px!important",
+                          padding: "0px 16px!important",
                           display: "inline",
                           "margin-left": "0",
                           "line-height": "24px"
                         }
                       },
-                      [_vm._v("outstand")]
+                      [_vm._v("OUTSTANDING")]
                     ),
                     _vm._v(" "),
                     _c(
@@ -75745,7 +75745,7 @@ var staticRenderFns = [
                             staticClass:
                               "invoice-download export-invoice payment-pay-text"
                           },
-                          [_vm._v("copy invioce link")]
+                          [_vm._v("COPY INVOICE LINK")]
                         )
                       ]
                     )
@@ -75816,7 +75816,7 @@ var staticRenderFns = [
             {
               staticClass:
                 "payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center",
-              staticStyle: { "margin-top": "30px" }
+              staticStyle: { "margin-top": "24px" }
             },
             [
               _c("img", {
@@ -75847,7 +75847,7 @@ var staticRenderFns = [
             {
               staticClass:
                 "payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center",
-              staticStyle: { "margin-top": "30px" }
+              staticStyle: { "margin-top": "24px" }
             },
             [
               _c("img", {
@@ -75874,7 +75874,7 @@ var staticRenderFns = [
             {
               staticClass:
                 "payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center",
-              staticStyle: { "margin-top": "30px" }
+              staticStyle: { "margin-top": "24px" }
             },
             [
               _c("img", {
@@ -75901,7 +75901,7 @@ var staticRenderFns = [
             {
               staticClass:
                 "payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center",
-              staticStyle: { "margin-top": "30px" }
+              staticStyle: { "margin-top": "24px" }
             },
             [
               _c("img", {
@@ -75928,7 +75928,7 @@ var staticRenderFns = [
             {
               staticClass:
                 "payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center",
-              staticStyle: { "margin-top": "30px" }
+              staticStyle: { "margin-top": "24px" }
             },
             [
               _c("img", {
@@ -75952,7 +75952,7 @@ var staticRenderFns = [
             ]
           ),
           _vm._v(" "),
-          _c("hr"),
+          _c("hr", { staticStyle: { margin: "30px 0" } }),
           _vm._v(" "),
           _c("div", { staticClass: "d-flex justify-content-end" }, [
             _c("button", { staticClass: "agreement-button payment-button" }, [
@@ -76132,7 +76132,7 @@ var staticRenderFns = [
     return _c("div", [
       _c(
         "nav",
-        { staticClass: "navbar navbar-light fixed-top client_navbar" },
+        { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
         [
           _c("div", { staticClass: "backBtn" }, [
             _c("a", { attrs: { href: "#" } }, [
@@ -86882,7 +86882,10 @@ var staticRenderFns = [
     return _c("div", { staticClass: "sub-item" }, [
       _c("div", { staticClass: "next-billing-date" }, [
         _c("span", { staticClass: "date" }, [_vm._v(" 22.04.19 ")]),
-        _vm._v(" next billing date\n        ")
+        _vm._v(" "),
+        _c("span", { staticStyle: { opacity: "0.7" } }, [
+          _vm._v("next billing date")
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "sub-info" }, [

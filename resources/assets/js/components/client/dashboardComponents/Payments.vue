@@ -33,7 +33,7 @@
            v-show="!payments_empty_state">
         <div class="sub-item">
           <div class="next-billing-date">
-            <span class="date"> 22.04.19 </span> next billing date
+            <span class="date"> 22.04.19 </span> <span style='opacity: 0.7;'>next billing date</span>
           </div>
           <div class="sub-info">
             <div class="sub-info-box">

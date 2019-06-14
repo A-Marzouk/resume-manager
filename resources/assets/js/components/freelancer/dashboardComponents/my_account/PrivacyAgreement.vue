@@ -1,8 +1,8 @@
 <template>
   <div>
-    <nav class="navbar navbar-light fixed-top client_navbar">
+    <nav class="navbar navbar-light fixed-top dashboard_navbar">
       <div class="backBtn">
-        <a href="/client/dashboard">
+        <a href="/freelancer/dashboard">
                     <img src="/images/client/arrow_back.png" alt="back-icon">
                 </a>
         ACCOUNT INFORMATION EDITION

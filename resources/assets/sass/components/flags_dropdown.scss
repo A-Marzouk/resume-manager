@@ -1,0 +1,58 @@
+.flags-dropdown {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+  
+  a {
+    color: #4A5464;
+
+    &:hover {
+      color: #4A5464;
+    }
+  }
+
+  .selected-country {
+    position: absolute;
+    left: 0;
+    width: 100px;
+  }
+
+  .flags-container {
+    position: absolute;
+    top: 55px;
+    height: 0;
+    width: 100%;
+    transition: .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    background: white;
+
+    &.opened {
+      height: 120px;
+      overflow-y: scroll;
+    }
+  }
+  .flag-item {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #7A828D;    
+  }
+}
+
+.account-edit-section .faq-question-input .faq-input .flags-dropdown {
+  img {
+    margin-left: 0;
+    margin-right: 10px;
+  }
+
+  input {
+    padding-left: 100px;
+  }
+}

@@ -2,7 +2,7 @@
   <div class="account-info-edit dashboard-box">
     <div class="account-info-edit-heading dashboard-box-heading">
         <div class="left">
-            <img src="/resumeApp/public/images/client/my_account/info_40px.png" alt="info icon">
+            <img src="/images/dashboard/info.svg" alt="info icon">
             <span>
             FILL IN THE INFORMATION TO BECOME AN AGENT
         </span>
@@ -19,15 +19,15 @@
                     Enter your name
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.name}">
-                    <input type="text" name="name" placeholder="Enter your name" v-model="formData.name">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+                    <input type="text" name="name" placeholder="Enter your name" v-model="personalData.name">
+                    <img src="/images/client/campaign_activity/close_black.png"
                           alt="delete icon"
-                          v-show="formData.name.length > 0"
+                          v-show="personalData.name.length > 0"
                           @click="clearInput('name')"
                     >
                 </div>
-                <div class="error" v-if="errors.name">
-                    {{errors.name[0]}}
+                <div class="error" v-if="showErrors && errors.name">
+                    {{errors.name}}
                 </div>
             </div>
             <div class="faq-question-input account-edit-input">
@@ -35,23 +35,25 @@
                     Enter your surname
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.surname}">
-                    <input type="text" name="surname" placeholder="Enter your surname" v-model="formData.surname">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('surname')" alt="delete icon" v-show="formData.surname.length > 0">
+                    <input type="text" name="surname" placeholder="Enter your surname" v-model="personalData.surname">
+                    <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('surname')" alt="delete icon" v-show="personalData.surname.length > 0">
                 </div>
-                <div class="error" v-if="errors.surname">
-                    {{errors.surname[0]}}
+                <div class="error" v-if="showErrors && errors.surname">
+                    {{errors.surname}}
                 </div>
             </div>
             <div class="faq-question-input account-edit-input">
                 <label class="faq-input-label">
                     Choose your gender
                 </label>
-                <div class="faq-input" :class="{ 'error-input' : errors.gender}">
-                    <input type="text" name="gender" placeholder="Enter your gender" v-model="formData.gender">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('phone')" alt="delete icon" v-show="formData.phone.length > 0">
+                <div class="img-container">
+                    <div class="faq-input" :class="{ 'error-input' : errors.gender}">    
+                        <img v-on:click="personalData.gender = 'M'" src="/images/client/add_agent/gender/male_icon.png">
+                        <img v-on:click="personalData.gender = 'F'" src="/images/client/add_agent/gender/female_icon.png">
+                    </div>
                 </div>
-                <div class="error" v-if="errors.gender">
-                    {{errors.gender[0]}}
+                <div class="error" v-if="showErrors && errors.gender">
+                    {{errors.gender}}
                 </div>
             </div>
             <div class="faq-question-input account-edit-input">
@@ -59,11 +61,13 @@
                     Enter your phone number
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.phone}">
-                    <input type="text" name="phone" placeholder="Enter your phone" v-model="formData.phone">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('phone')" alt="delete icon" v-show="formData.phone.length > 0">
+                    <flag-dropdown>
+                        <input type="text" name="phone" placeholder="123-3534634" v-model="personalData.phone">
+                        <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('phone')" alt="delete icon" v-show="personalData.phone.length > 0">
+                    </flag-dropdown>                    
                 </div>
-                <div class="error" v-if="errors.phone">
-                    {{errors.phone[0]}}
+                <div class="error" v-if="showErrors && errors.phone">
+                    {{errors.phone}}
                 </div>
             </div>
             <div class="faq-question-input account-edit-input">
@@ -71,11 +75,11 @@
                     Enter your e-mail
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.email}">
-                    <input type="text" name="email" placeholder="Enter your email" v-model="formData.email">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png" @click="clearInput('email')" alt="delete icon" v-show="formData.email.length > 0">
+                    <input type="text" name="email" placeholder="Enter your email" v-model="personalData.email">
+                    <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('email')" alt="delete icon" v-show="personalData.email.length > 0">
                 </div>
-                <div class="error" v-if="errors.email">
-                    {{errors.email[0]}}
+                <div class="error" v-if="showErrors && errors.email">
+                    {{errors.email}}
                 </div>
             </div>
             <div class="faq-question-input account-edit-input">
@@ -83,7 +87,7 @@
                     Select your time zone
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.timeZone}">
-                    <select class="form-control" id="timeZone" name="timeZone" style="height: 50px;" v-model="formData.timeZone">
+                    <select class="form-control" id="timeZone" name="timeZone" style="height: 50px;" v-model="personalData.timeZone">
                         <option value="" selected="selected">Select your timezone</option>
                         <option value="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima">(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima</option>
                         <option value="(GMT -6:00) Central Time (US & Canada), Mexico City">(GMT -6:00) Central Time (US & Canada), Mexico City</option>
@@ -133,8 +137,8 @@
                         <option value="(GMT +14:00) Line Islands, Tokelau">(GMT +14:00) Line Islands, Tokelau</option>
                     </select>
                 </div>
-                <div class="error" v-if="errors.timeZone">
-                    {{errors.timeZone[0]}}
+                <div class="error" v-if="showErrors && errors.timeZone">
+                    {{errors.timeZone}}
                 </div>
             </div>
             <div class="faq-question-input account-edit-input">
@@ -142,15 +146,15 @@
                     Enter your city name
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.cityName}">
-                    <input type="text" name="cityName" placeholder="You can enter several items using comas" v-model="formData.cityName">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+                    <input type="text" name="cityName" placeholder="You can enter several items using comas" v-model="personalData.cityName">
+                    <img src="/images/client/campaign_activity/close_black.png"
                           alt="delete icon"
-                          v-show="formData.cityName.length > 0"
+                          v-show="personalData.cityName.length > 0"
                           @click="clearInput('cityName')"
                     >
                 </div>
-                <div class="error" v-if="errors.cityName">
-                    {{errors.cityName[0]}}
+                <div class="error" v-if="showErrors && errors.cityName">
+                    {{errors.cityName}}
                 </div>
             </div>
             <div class="faq-question-input account-edit-input">
@@ -158,31 +162,37 @@
                     Enter your PayPal acc number
                 </label>
                 <div class="faq-input"  :class="{ 'error-input' : errors.paypal}">
-                    <input type="text" name="paypal" placeholder="Enter your PayPal acc number" v-model="formData.paypal">
-                    <img src="/resumeApp/public/images/client/campaign_activity/close_black.png"
+                    <input type="text" name="paypal" placeholder="Enter your PayPal acc number" v-model="personalData.paypal">
+                    <img src="/images/client/campaign_activity/close_black.png"
                           alt="delete icon"
-                          v-show="formData.paypal.length > 0"
+                          v-show="personalData.paypal.length > 0"
                           @click="clearInput('paypal')"
                     >
                 </div>
-                <div class="error" v-if="errors.paypal">
-                    {{errors.paypal[0]}}
+                <div class="error" v-if="showErrors && errors.paypal">
+                    {{errors.paypal}}
                 </div>
             </div>
         </div>
     </div>
     <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}" id="submitBtnWrapper">
-        <router-link to="/freelancer/register/page2">
+        <a href="javascript:;" v-on:click="nextStep">
             CONTINUE
-        </router-link>
+        </a>
     </div>
   </div>
 </template>
 <script>
+import FlagDropdown from '../../flagsDropdown.vue'
+
 export default {
+    props: ['changeStep', 'getData'],
+    components: {
+        'flag-dropdown': FlagDropdown
+    },
   data () {
     return{
-        formData:{
+        personalData:{
             name:'',
             surname:'',
             gender:'',
@@ -193,9 +203,170 @@ export default {
             paypal:''
         },
         canSubmit: false,
-        errors:[]
+				errors: {
+					name:'',
+					surname:'',
+					gender:'',
+					phone:'',
+					email:'',
+					timeZone:'',
+					cityName:'',
+					paypal:''
+				},
+				showErrors: false
     }
-  }
+  },
+  methods: {
+      nextStep (e) {
+        e.preventDefault()
+        // this.canSubmit = true
+        if (this.noErrors()) {
+            this.getData({ personalData: { ...this.personalData }})
+            this.$router.push('/freelancer/register/page2')
+        } else
+            this.showErrors = true
+
+      },
+      noErrors () {
+        let noErrorsName = this.noErrorsName()
+        let noErrorsPhone = this.noErrorsPhone()
+        let noErrorsEmail = this.noErrorsEmail()
+        let noErrorsPaypal = this.noErrorsPaypal()
+        let noErrorsGender = this.noErrorsGender()
+        let noErrorsSurname = this.noErrorsSurname()
+        let noErrorsTimeZone = this.noErrorsTimeZone()
+        let noErrorsCityName = this.noErrorsCityName()
+
+        return (
+            noErrorsName &&
+            noErrorsPhone &&
+            noErrorsEmail &&
+            noErrorsPaypal &&
+            noErrorsGender &&
+            noErrorsSurname &&
+            noErrorsTimeZone &&
+            noErrorsCityName
+        )
+      },
+      noErrorsName () {
+        let valid = true 
+        
+        // Empty field
+        if (this.personalData.name.trim() === '') {
+            valid = false
+            this.errors.name = 'Please, enter your name'
+        } else this.errors.name  = ''
+        // Invalid characters (?)
+        return valid
+      },
+      noErrorsSurname () {
+        let valid = true
+
+        // Empty field
+        if (this.personalData.surname.trim() === '') {
+            valid = false
+            this.errors.surname = 'Please, enter your surname'
+        } else this.errors.surname = ''
+        
+        // Invalid characters (?)
+        return valid
+      },
+      noErrorsGender () {
+        let valid = true
+
+        // Empty field
+        if (this.personalData.gender.trim() === '') {
+            valid = false
+            this.errors.gender = 'Choose a gender'
+        } else this.errors.gender = ''
+          
+        return valid
+      },
+      noErrorsPhone () {
+            let valid = true
+            let phoneFormat = /[0-9]{1,3}-[0-9]{7}/
+
+            if (this.personalData.phone.trim() === '') {
+                // Empty field
+                valid = false
+                this.errors.phone = 'Please enter your phone number'
+            } else if (!phoneFormat.test(this.personalData.phone)) {
+                // Review the regExp
+                valid = false
+                this.errors.phone = 'This not a valid phone number format'
+            } else this.errors.phone = ''
+            
+            return valid
+        },
+        noErrorsEmail () {
+            let valid = true
+            let emailFormat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+
+            if (this.personalData.email.trim() === '') {
+                // Empty field
+                valid = false
+                this.errors.email = 'Please, enter your email'
+            } else if (!emailFormat.test(this.personalData.email)) {
+                valid = false
+                this.errors.email = 'This email not has a valid format. Please check again'
+            } else this.errors.email = ''
+
+            return valid
+        },
+        noErrorsTimeZone () {
+            let valid = true
+            
+            if (this.personalData.timeZone.trim() === '') {
+                // Empty field
+                valid = false
+                this.errors.timeZone = 'Please, select a time zone'
+            } else this.errors.timeZone = ''
+
+            return valid
+        },
+        noErrorsCityName () {
+            let valid = true
+
+            if (this.personalData.cityName.trim() === '') {
+                // Empty field
+                valid = false
+                this.errors.cityName = 'Please, enter a city'
+            } else this.errors.cityName = ''
+
+            return valid
+        },
+        noErrorsPaypal () {
+            let valid = true
+
+            if (this.personalData.paypal.trim() === '') {
+                // Empty field
+                valid = false
+                this.errors.paypal = 'Please, enter your paypal id'
+            } else this.errors.paypal = ''
+
+            return valid
+        },
+        clearInput(name) {
+            this.personalData[name] = ''
+        }
+  },
+  watch: {
+        personalData: {
+            handler(){
+                // check if all personalData values are filled
+                let keys = Object.keys(this.personalData);
+                let isAll_filled = true;
+                for (const key of keys) {
+                    if (this.personalData[key].trim().length < 1) {
+												isAll_filled = false
+												break
+                    }
+                }
+                this.canSubmit = isAll_filled;
+            },
+            deep: true
+        }
+    }
 }
 </script>
 

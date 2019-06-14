@@ -18,7 +18,7 @@ class FreelancersController extends Controller
 
     public function __construct()
     {
-        // $this->middleware('auth');
+//         $this->middleware('auth');
     }
 
     public function index(){
@@ -40,6 +40,14 @@ class FreelancersController extends Controller
 
     public function viewProfessionalEditPage(){
         return view('freelancer.my_account.professional_information_edition');
+    }
+
+    public function viewFreelancerServiceAgreement(){
+        return view('freelancer.my_account.service_agreement') ;
+    }
+
+    public function viewFreelancerPrivacyAgreement(){
+        return view('freelancer.my_account.privacy_agreement') ;
     }
 
     public function form(){

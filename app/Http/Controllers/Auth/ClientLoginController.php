@@ -34,14 +34,26 @@ class ClientLoginController extends Controller
         }
 
 
-        // attempt to log in
+        // attempt to log in as client
         $loginAttempt = Auth::guard('client')->attempt(['email'=> $request->email,'password'=>$request->password] , $request->filled('remember'));
         // if success : log them in
         if($loginAttempt) {
             return [
                 'status' => 'success',
+                'redirect' => '/client',
             ];
         }
+
+        // attempt to log in as freelancer
+        $loginAttemptFreelancer = Auth::guard()->attempt(['email'=> $request->email,'password'=>$request->password] , $request->filled('remember'));
+        // if success : log them in
+        if($loginAttemptFreelancer) {
+            return [
+                'status' => 'success',
+                'redirect' => '/freelancer',
+            ];
+        }
+
         // if un successful redirect them back :
          $response['email'] = ['Your e-mail or password is not correct'];
         return [
@@ -52,7 +64,9 @@ class ClientLoginController extends Controller
 
     public function logout(){
         Auth::guard('client')->logout();
-        return redirect(route('client.login'));
+        return [
+            'status' => 'success',
+        ];
     }
 
     protected function validator(array $data)

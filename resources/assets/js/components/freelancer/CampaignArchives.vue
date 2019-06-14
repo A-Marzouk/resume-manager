@@ -2,7 +2,7 @@
     <div class="campaign-archives">
         <nav class="navbar navbar-light fixed-top dashboard_navbar">
             <div class="backBtn">
-                <a href="/client/dashboard">
+                <a href="/freelancer">
                     <img src="/images/client/arrow_back.png" alt="back-icon">
                 </a>
                 ARCHIVE OF CAMPAIGNS

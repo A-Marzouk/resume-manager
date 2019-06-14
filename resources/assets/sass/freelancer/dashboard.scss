@@ -106,12 +106,6 @@
 
   }
 
-  .hideOnTablet{
-    @media (max-width:1240px) {
-      display:none;
-    }
-  }
-
   .content-block{
     margin-left:50px;
     display: flex;
@@ -814,3 +808,4 @@
     }
   }
 }
+

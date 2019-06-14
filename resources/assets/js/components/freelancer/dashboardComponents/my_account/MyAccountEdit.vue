@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex justify-content-center">
         <div class="account-info-edit-wrapper">
-            <nav class="navbar navbar-light fixed-top client_navbar">
+            <nav class="navbar navbar-light fixed-top dashboard_navbar">
                 <div class="backBtn">
                     <a href="/freelancer/dashboard/my-account">
                         <img src="/images/client/arrow_back.png" alt="back-icon">
@@ -13,7 +13,7 @@
             <div class="account-info-edit dashboard-box">
                 <div class="account-info-edit-heading dashboard-box-heading">
                     <div class="left">
-                        <img src="/images/client/my_account/info_40px.png" alt="info icon">
+                        <img src="/images/dashboard/info.svg" alt="info icon">
                         <span>
                         EDIT YOUR PERSONAL INFORMATION
                     </span>
@@ -47,9 +47,11 @@
                             <label class="faq-input-label">
                                 Choose your gender
                             </label>
-                            <div class="faq-input">
-                                <input type="text" name="faq" placeholder="Enter your ..." >
-                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
+                            <div class="img-container">
+                                <div class="faq-input">    
+                                    <img src="/images/client/add_agent/gender/male_icon.png">
+                                    <img src="/images/client/add_agent/gender/female_icon.png">
+                                </div>
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
@@ -57,13 +59,15 @@
                                 Enter your phone number
                             </label>
                             <div class="faq-input">
-                                <input type="text" name="faq" placeholder="Enter your ..." >
-                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
+                                <flag-dropdown>
+                                    <input type="text" name="phone" placeholder="123-3534634">
+                                    <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
+                                </flag-dropdown>                    
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Enter yout e-mail
+                                Enter your e-mail
                             </label>
                             <div class="faq-input">
                                 <input type="text" name="faq" placeholder="123456@gmail.com" >

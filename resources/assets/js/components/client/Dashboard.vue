@@ -18,7 +18,7 @@
             </div>
             <div class="form-inline my-2 my-lg-0 name">
                 <div class="logoutButton">
-                    <a href="#">
+                    <a href="javascript:void(0)" @click="logoutClient">
                         <img src="/images/client/log_out.png" alt="logout">
                     </a>
                 </div>
@@ -177,7 +177,7 @@
                         <div class="d-flex justify-content-between align-items-center invioce-title">
                             <div>№ 059-004-038</div>
                             <div> other services</div>
-                            <div  class="d-flex justify-content-between align-items-center"> $400  <span class="invoice-outstand"> outstand</span> </div>
+                            <div class="d-flex justify-content-between align-items-center"> $400  <span class="invoice-outstand"> outstand</span> </div>
                             <div class="invoice-download"> <img src="/images/client/payments/export_invoice.png"/>   copy invioce link </div>
                         </div>
 
@@ -269,6 +269,14 @@
                 if(!tabs.includes(this.activeTab)){
                     this.activeTab = 'campaign-manager';
                 }
+            },
+            logoutClient(){
+                axios.post('client/logout').then( (response)=>{
+                    if(response.data.status === 'success'){
+                        // redirect to dashboard
+                        window.location.href = '/' ;
+                    }
+                });
             }
         },
         mounted(){

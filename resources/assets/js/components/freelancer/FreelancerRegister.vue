@@ -3,16 +3,17 @@
         <div class="account-info-edit-wrapper">
             <nav class="navbar navbar-light fixed-top dashboard_navbar">
                 <div class="backBtn">
-                    <a href="/">
-                        <img src="/resumeApp/public/images/client/arrow_back.png" alt="back-icon">
+                    <a href="/freelancer/dashboard">
+                        <img src="/images/client/arrow_back.png" alt="back-icon">
                     </a>
-                    BECOME AN AGENT
+                    <span v-if="step !== 6">BECOME AN AGENT</span>
+                    <span v-else>REGISTRATION COMPLETED</span>
                 </div>
             </nav>
             <keep-alive>
-                <router-view></router-view>
+                <router-view :changeStep="changeStep" :getData="getData" ></router-view>
             </keep-alive>
-            
+            <span v-if="step !== 6" class="step-footer">Step {{ step }} / 5</span>
         </div>
 
         <div class="pt-3 no-decoration d-flex justify-content-center base-text align-items-center">
@@ -25,16 +26,8 @@
     export default {
         data(){
             return{
-                formData:{
-                    name:'',
-                    surname:'',
-                    gender:'',
-                    phone:'',
-                    email:'',
-                    timeZone:'',
-                    city:'',
-                    paypal:''
-                },
+                step: 1,
+                formData: {},
                 canSubmit: false,
                 errors:[]
             }
@@ -45,10 +38,10 @@
                     return ;
                 }
                 this.canSubmit = false;
-                axios.post('/client/register/submit',this.formData).then( (response) => {
+                axios.post('/freelancer/register/submit',this.formData).then( (response) => {
                     if(response.data.status === 'success'){
                         // redirect to client dashboard
-                        window.location.href = '/client';
+                        window.location.href = '/freelancer';
                     }
                     this.errors = response.data.errors;
                 });
@@ -56,6 +49,12 @@
             clearInput(inputName){
                 this.formData[inputName] = '' ;
             },
+            changeStep(step) {
+                this.step = step
+            },
+            getData(data) {
+                this.formData = {...this.formData, ...data}
+            }
         },
         watch: {
             formData: {
@@ -63,14 +62,25 @@
                     // check if all formData values are filled
                     let values = Object.values(this.formData);
                     let isAll_filled = true;
-                    for (const value of values) {
-                        if (value.length < 1) {
-                            isAll_filled = false;
+                    for (const section of values) {
+                        for (let value in section) {
+                            if (value.trim() !== '') {
+                                isAll_filled = false;
+                                break
+                            }
                         }
+                        if (!isAll_filled) break
                     }
-                    this.canSubmit = isAll_filled ;
+                    this.canSubmit = isAll_filled;
                 },
                 deep: true
+            },
+            $route: {
+                handler (val, oldVal) {
+                    let splittedPath = val.path.split('/')
+                    if (splittedPath[3] === '') this.step = 1
+                    else this.step = splittedPath[3].charAt(4)
+                }
             }
         }
     }

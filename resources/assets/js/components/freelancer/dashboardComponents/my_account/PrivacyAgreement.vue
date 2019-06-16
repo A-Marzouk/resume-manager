@@ -98,9 +98,9 @@
                  id=""
                  name="" />
           <label for="checkbox"
-                 class="agreement-text"> I agree with the privacy agreemen</label>
+                 class="agreement-text"> I agree with the privacy agreement</label>
         </div>
-        <div class="col-12 col-md-8 col-lg-6 agreement-segniture">
+        <div class="col-12 col-md-8 col-lg-6 agreement-signiture">
           <div class="blue-part">
             YOUR SIGNATURE
           </div>

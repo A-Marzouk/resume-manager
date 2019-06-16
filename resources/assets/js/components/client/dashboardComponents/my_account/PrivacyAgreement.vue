@@ -92,32 +92,35 @@
           </div>
         </div>
         <div class="bluechecked d-flex align-items-center">
-          <input type="checkbox"
-                 class="chechbox-blue"
-                 vlaue=""
-                 id=""
-                 name="" />
-          <label for="checkbox"
-                 class="agreement-text"> I agree with the privacy agreemen</label>
+          <label class="checkBoxText checkBoxContainer">
+              <input v-on:change="agree = !agree" type="checkbox" name="remember">
+              <span class="agreement-checkbox-text">I agree with the privacy agreement</span>
+              <span class="checkmark"></span>
+            </label>
         </div>
-        <div class="col-12 col-md-8 col-lg-6 agreement-segniture">
-          <div class="blue-part">
+        <div class="col-12 col-md-8 col-lg-6 agreement-signiture">
+          <div class="blue-part" :class="{disabled: !agree}">
             YOUR SIGNATURE
           </div>
           <div class="agreement-text signiture-main-text">
-            Name surname
+            <input :disabled="!agree" type="text" placeholder="Jhon Doe" v-model="signature">
           </div>
         </div>
         <hr />
         <div class="d-flex justify-content-end">
-          <button class="agreement-button">SIGN</button>
+          <button style="height: 48px; width: 98px;" class="agreement-button" :class="{disabled: !(signature.length > 0 && agree) }">SIGN</button>
         </div>
       </div>
     </div>
 </template>
 <script>
 export default {
-
+  data () {
+    return {
+      agree: false,
+      signature: ''
+    }
+  }
 }
 </script>
 <style scoped>

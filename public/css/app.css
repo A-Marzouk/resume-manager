@@ -7083,9 +7083,7 @@ body {
 }
 
 .faq-questions-list .faq-question {
-  margin-top: 7px;
-  padding-bottom: 45px;
-  padding-top: 54px;
+  padding: 18px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7119,7 +7117,6 @@ body {
   font-size: 16px;
   line-height: 24px;
   color: #4A5464;
-  margin-bottom: 20px;
 }
 
 .faq-questions-list .faq-question .faq-item .faq-item-answer {
@@ -7489,17 +7486,14 @@ body {
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0.2px;
-  color: #4A5464;
+  color: #7A828D;
 }
 
 .account-info-content-wrapper .account-info-content .acc-info-content-item:last-child {
+  margin-top: 22px;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-}
-
-.account-info-content-wrapper .account-info-content .acc-info-content-item:last-child img {
-  margin-top: 6px;
 }
 
 .account-info-content-wrapper .account-info-content .acc-info-content-item:last-child div {
@@ -9997,6 +9991,10 @@ select:focus {
   padding: 14px 0 14px 24px;
 }
 
+.blue-part.disabled {
+  opacity: .4;
+}
+
 .agreement-main-text {
   padding: 32px 0 40px;
   line-height: 28px;
@@ -10057,7 +10055,7 @@ select:focus {
   display: block;
 }
 
-.agreement-segniture {
+.agreement-signiture {
   padding: 0 !important;
   background: #FFFFFF;
   -webkit-box-shadow: 0 3px 18px rgba(179, 183, 186, 0.15);
@@ -10068,6 +10066,19 @@ select:focus {
 
 .signiture-main-text {
   padding: 40px 0 40px 25px;
+}
+
+.signiture-main-text input {
+  border: none;
+  background: transparent;
+  width: 100%;
+}
+
+.signiture-main-text input:focus {
+  border: none;
+  -webkit-box-shadow: 0;
+          box-shadow: 0;
+  outline: none;
 }
 
 .agreement-button {
@@ -10082,6 +10093,11 @@ select:focus {
   padding: 16px 25px;
   margin-top: 6px;
   margin-bottom: 6px;
+}
+
+.agreement-button.disabled {
+  background: #E4E4E4;
+  color: #A1A7AF;
 }
 
 .payment-pay-text {
@@ -11141,6 +11157,14 @@ select:focus {
   user-select: none;
 }
 
+.agreement-checkbox-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 28px;
+}
+
 /* Hide the browser's default checkbox */
 
 .checkBoxContainer input {
@@ -11177,7 +11201,7 @@ select:focus {
 /* When the checkbox is checked, add a blue background */
 
 .checkBoxContainer input:checked ~ .checkmark {
-  background-color: #AC81FC;
+  background-color: #05A4F4;
 }
 
 .checkBoxContainer input:checked ~ .checkmark.make-circle {

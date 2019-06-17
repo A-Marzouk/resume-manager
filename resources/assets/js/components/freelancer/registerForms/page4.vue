@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}" id="submitBtnWrapper">
-        <a href="javascript:;" v-on:click="nextStep">
+        <a class="btn-primary" href="javascript:;" v-on:click="nextStep">
             CONTINUE
         </a>
     </div>

@@ -21,6 +21,10 @@
   text-transform: uppercase;
   color: #05A4F4;
   padding: 14px 0 14px 24px;
+
+  &.disabled {
+    opacity: .4;
+  }
 }
 
 .agreement-main-text {
@@ -78,7 +82,7 @@
   display: block;
 }
 
-.agreement-segniture {
+.agreement-signiture {
   padding: 0 !important;
   background: #FFFFFF;
   box-shadow: 0 3px 18px rgba(179, 183, 186, 0.15);
@@ -88,6 +92,17 @@
 
 .signiture-main-text {
   padding: 40px 0 40px 25px;
+  input {
+    border: none;
+    background: transparent;
+    width: 100%;
+
+    &:focus {
+      border: none;
+      box-shadow: 0;
+      outline: none;
+    }
+  }
 }
 
 .agreement-button {
@@ -102,4 +117,9 @@
   padding: 16px 25px;
   margin-top: 6px;
   margin-bottom: 6px;
+
+  &.disabled {
+    background: #E4E4E4;
+    color: #A1A7AF;
+  }
 }

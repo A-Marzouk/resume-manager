@@ -56,14 +56,12 @@
         font-size: 16px;
         line-height: 20px;
         letter-spacing: 0.2px;
-        color: #4A5464;
+        color: #7A828D;
       }
     }
     .acc-info-content-item:last-child{
+      margin-top: 22px;
       align-items: flex-start;
-      img{
-        margin-top:6px;
-      }
       div{
         line-height: 34px;
       }
@@ -265,6 +263,14 @@
 
   .faq-question-input .faq-input img, .faq-answer-input .faq-input img {
     margin-left: -34px;
+
+    &.edit-icon {
+      margin-left: -30px;
+    }
+  }
+
+  .faq-question-input .faq-input img.edit-icon {
+    margin-left: -30px;  
   }
 
   .faq-question-input img, .faq-answer-input img {
@@ -328,15 +334,28 @@
 
 .custom-dropdown {
   position: relative;
+  width: 200px;
+
+  &.team {
+    width: 400px;
+
+    @media (max-width:1240px) {
+      max-width: 326px;
+    }
+
+    @media (max-width:425px) {
+      max-width: 286px;
+    }
+  }
   
   .selected-option {
+    width: 100%;
     background: #EEF9FF;
     color: $l-blue;
     position: relative;
     padding: 10px 25px;
     display: flex;
     align-items: center;
-    width: 200px;
     
     &::after {
       content: "";
@@ -353,21 +372,22 @@
   
   .list-options {
     height: 0;
+    width: 100%;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     position: absolute;
-    bottom: -127px;
+    bottom: -85px;
     z-index: 2;
     overflow: hidden;
     background-color: #fff;
     
     &.show {
-      height: calc(32px*3 + 30px);
+      height: calc(32px*2 + 25px);
     }
     
     .dropdown-item {
       border-bottom: 1px solid rgba(188, 191, 198, 0.44);
       padding: 10px 25px;
-      width: 200px;
+      width: 100%;
 
       &:last-child {
         border: 0;
@@ -498,6 +518,7 @@
 
   &.btn-orange {
     background-color: #FFA368;
+    font-weight: bold !important;
   }
 
   &:hover {
@@ -599,6 +620,10 @@
   }
 }
 
+.dz-message {
+  text-align: center;
+}
+
 .preview-files-container {
   display: flex;
   align-content: center;
@@ -613,7 +638,7 @@
   }
 
   .preview-container {
-    margin-right: 20px;
+    margin-right: 74px;
   }
 
   .dz-preview {
@@ -689,7 +714,7 @@
   }
 
   .add-document-container {
-    margin-right: 20px;
+    margin-right: 74px;
 
     img {
       height: 34px;

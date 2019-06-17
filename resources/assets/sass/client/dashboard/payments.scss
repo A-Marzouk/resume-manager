@@ -111,14 +111,14 @@
       line-height: 24px;
       padding-top: 20px;
       padding-bottom: 18px;
+      color: #4A5464;
+      font-size: 12px;
       .date{
         font-weight: 500;
         font-size: 14px;
         color: #FFA368;
         margin-right:5px;
       }
-      font-size: 12px;
-      color: lightgray;
     }
     .sub-info{
       @media (max-width:650px) {
@@ -289,6 +289,7 @@
       }
     }
     tbody{
+      box-shadow: 0px 4px 7px rgba(202, 202, 202, 0.25);
       tr{
         height: 70px;
         td{

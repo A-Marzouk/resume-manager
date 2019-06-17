@@ -110,7 +110,7 @@
           </div>
           <div class="data-logs">
             <datepicker>
-              <a href="javascript:void(0)" data-toggle="modal" data-target="#pick-date-modal" @click.once="setDatePicker" >
+              <a href="javascript:void(0)" class="date-picker-btn" data-toggle="modal" data-target="#pick-date-modal" @click.once="setDatePicker" >
                   <img src="/images/icons/pick_date.svg" alt="pick date"> <span class="hideDate">PICK A DATE</span>
               </a>
             </datepicker>

@@ -9,6 +9,7 @@
 .campaign-info-bar{
   height: 56px;
   width: 100%;
+  padding-left: 35px;
   background: #05A4F4;
   display: flex;
   margin-top: -16px;
@@ -22,6 +23,10 @@
   }
   @media (max-width:1240px) {
     overflow-x: auto;
+  }
+
+  @media (max-width:768px) {
+    padding-left: 15px;
   }
   .campaign-info-tab{
     font-family: Roboto;
@@ -86,7 +91,7 @@
   letter-spacing: -0.1px;
   color: #4A5464;
   a{
-    margin: 0px 30px 2px 25px;
+    margin: 0px 30px 2px 32px;
     @media (max-width:600px) {
       margin-left: 0;
     }
@@ -207,6 +212,18 @@
             }
           }
 
+          .date-picker-btn {
+            background: #F3F3F3;
+            height: 38px;
+            width: 122px;
+            display: block;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 2px;
+          }
+
           height: 78px;
           padding: 0 20px;
           background:white;
@@ -214,7 +231,7 @@
           justify-content: space-around;
           align-items: center;
           img{
-            margin-right:18px;
+            margin-right: 11px;
           }
 
           .days-container {
@@ -234,19 +251,37 @@
               &:hover {
                 text-decoration: none;
               }
+
+              &.active {
+                padding: 10px;
+              }
             }
 
             .day-of-week.active {
-              border-bottom: 1.5px solid #05A4F4;;
+              display: flex;
+              justify-content: center;
+              position: relative;
+
+              &::after {
+                content: "";
+                height: 3px;
+                width: 100%;
+                border-radius: 6px;
+                background-color: #05A4F4;
+                position: absolute;
+                bottom: -10px;
+              }
             }
 
             .day-number,
             .day-of-week {
               margin: 0 auto;
               text-align: center;
+              font-size: 16px;
 
               &.active {
                 color: #05A4F4;
+                font-size: 18px;
               }
             }
 
@@ -406,8 +441,8 @@
   img{
     margin-left: 12px;
     margin-right: 19px;
-    height: 35px;
-    width: 35px;
+    height: 34px;
+    width: 34px;
     margin-top: 5px;
   }
   .team-member-info{
@@ -470,6 +505,7 @@
   margin: auto;
   .modal-body{
     .ui-datepicker .ui-datepicker-header{
+      text-transform: uppercase;
       background: white;
       border: none;
       width: 282px;
@@ -479,12 +515,14 @@
     }
 
     .ui-datepicker .ui-datepicker-next span{
-      background-position: 0px -3px !important;
-      background-image: url(http://local.123workforce.me/images/freelancer/campaign_activity/right.png);
+      background-position: center !important;
+      background-size: auto 100%;
+      background-image: url("/images/icons/arrow_forward.svg");
     }
     .ui-datepicker .ui-datepicker-prev span{
-      background-position: 0px -3px !important;
-      background-image: url(http://local.123workforce.me/images/freelancer/campaign_activity/left.png);
+      background-position: center !important;
+      background-size: auto 100%;
+      background-image: url("/images/icons/arrow_back.svg");
 
     }
     .ui-datepicker .ui-datepicker-next,.ui-datepicker .ui-datepicker-prev{
@@ -561,7 +599,8 @@
     line-height: 20px;
     text-align: center;
     color: #4A5464;
-    padding-bottom: 20px;
+    padding-bottom: 17px;
+    padding-top: 5px;
   }
   .ui-datepicker th{
     font-family: Roboto;
@@ -579,7 +618,7 @@
 
   .date-picker-modal-footer{
     display:flex;
-    justify-content:space-around;
+    justify-content: center;
     align-items:center;
     margin-top:0px;
     height:65px;
@@ -589,6 +628,7 @@
     .cancelBtn{
       width:86px;
       height:26px;
+      margin: 0 23px;
       background:white;
       font-family: Roboto;
       font-style: normal;
@@ -620,7 +660,7 @@
       display:flex;
       justify-content:center;
       align-items:center;
-      margin: 0;
+      margin: 0 23px;
     }
   }
 

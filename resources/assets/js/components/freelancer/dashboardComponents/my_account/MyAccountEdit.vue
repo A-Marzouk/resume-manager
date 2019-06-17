@@ -224,7 +224,7 @@
                     </div>
                 </div>
                 <div class="account-edit-section-edit-btn no-decoration">
-                    <a href="#">
+                    <a class="btn-primary" href="#">
                         SAVE EDITS
                     </a>
                 </div>

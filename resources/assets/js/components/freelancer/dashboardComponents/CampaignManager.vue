@@ -53,7 +53,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
-                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
+                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
@@ -66,7 +66,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
-                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
+                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
@@ -79,7 +79,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
-                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
+                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
             </div>
@@ -100,7 +100,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
-                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
+                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
@@ -113,7 +113,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
-                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
+                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
@@ -126,7 +126,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
-                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
+                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
             </div>
@@ -170,7 +170,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
-                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
+                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
@@ -183,7 +183,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
-                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
+                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
@@ -196,7 +196,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
-                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
+                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
@@ -209,7 +209,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
-                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
+                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
             </div>
@@ -230,7 +230,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
-                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
+                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
@@ -243,7 +243,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
-                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
+                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
                 <div class="log">
@@ -256,7 +256,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                         </span>
-                        <img src="/images/icons/edit_icon.svg" alt="edit icon" />
+                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
                     </div>
                 </div>
             </div>

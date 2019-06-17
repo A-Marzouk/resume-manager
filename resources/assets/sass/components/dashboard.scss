@@ -8,6 +8,11 @@
   .dashboard_navbar{
       background: white;
       height: 56px !important;
+      box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+
       .navbar-brand img {
         margin-left: 34px;
         @media (max-width:745px) {
@@ -22,9 +27,22 @@
         font-weight: 500;
         font-size: 18px;
         margin-right: 75px;
-        line-height: 20px;
         letter-spacing: 0.2px;
         color: #4A5464;
+        padding: 0;
+
+        .avatar {
+          width: 57px;
+          height: 28px;
+          display: flex;
+          justify-content: center;
+
+          img {
+            height: 32px;
+            margin: 0 auto;
+          }
+        }
+
         @media (max-width:1240px) {
           margin-right: 2px;
         }
@@ -46,6 +64,10 @@
         :hover{
           background-color: aliceblue;
         }
+
+        img {
+          width: 20px;
+        }
       }
 
       .avatar{
@@ -57,7 +79,7 @@
 .dashboard_content{
   display: flex;
   justify-content: center;
-  padding-top: 20px;
+  padding-top: 32px;
   .dashboard-side-menu{
     .menu-block:hover{
       text-decoration: none;
@@ -73,7 +95,7 @@
       .menu-block-name{
         margin: auto auto auto 5px;
         font-style: normal;
-        font-weight: bold;
+        font-weight: 500;
         font-size: 13px;
         line-height: 24px;
         letter-spacing: -0.1px;
@@ -108,6 +130,7 @@
       .menu-block-name{
         color: #FFFFFF;
         font-style: normal;
+        font-weight: bold;
         font-size: 16px;
         line-height: 13px;
       }
@@ -119,7 +142,7 @@
   }
 
   .content-block{
-    margin-left:50px;
+    margin-left: 75px;
     display: flex;
     flex-direction: column;
     z-index: 1;
@@ -152,7 +175,7 @@
       background: white;
       box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
       border-radius: 4px;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
       height: 138px;
 
       .upper-bar{
@@ -271,7 +294,7 @@
 
             font-family: Roboto;
             font-style: normal;
-            font-weight: bold;
+            font-weight: 500;
             font-size: 12px;
             line-height: 24px;
             letter-spacing: -0.1px;
@@ -310,9 +333,12 @@
         width:100%;
         border-bottom: 0.5px solid #E0E1E3;
         height:68px;
+        padding: 18px 24px;
+
         .campaignInfo{
           display: flex;
-        align-items: center;
+          flex-direction: column;
+          justify-content: center;
           .title{
             font-family: Roboto;
             font-style: normal;
@@ -322,6 +348,7 @@
             letter-spacing: -0.1px;
             color: #4A5464;
             margin-left: 34px;
+
             @media (max-width:745px) {
               margin-left: 10px;
             }
@@ -479,14 +506,19 @@
           &.add-entry {
             color: #05A4F4;
             background: #FFF;
-            width: 130px;
+            width: 116px;
             border-radius: 20px;
             padding: 2px 15px;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
             line-height: 16px;
-            height: 28px;
+            height: 22px;
+            font-size: 12px;
+
+            img {
+              height: 13px;
+            }
 
             &.disabled {
               color: #B6B6B6;
@@ -512,6 +544,7 @@
     padding-bottom: 20px;
     img{
       padding-right: 8px;
+      height: 34px;
     }
     .userName{
       font-family: Roboto;
@@ -548,19 +581,19 @@
       // }
     }
     .log-text{
-      width: 85%;
+      width: 100%;
       background:#EEF9FF;
       position: relative;
-      border-radius:  80px;
+      border-radius: 80px;
       margin-bottom: 18px;
       display:flex;
       padding-top: 8px;
       padding-bottom: 8px;
       padding-right: 18px;
-      align-items: flex-start;
+      align-items: center;
 
-      img {
-        margin-top: 8px;
+      .icon-edit {
+        height: 13.5px;
       }
 
       .log-text-content{
@@ -572,7 +605,7 @@
         letter-spacing: -0.1px;
         color: #4A5464;
         padding-left: 60px;
-        padding-right: 8px;
+        padding-right: 25px;
       }
       .agent-initials{
         font-family: Roboto;
@@ -610,7 +643,7 @@
   .showMoreBtn{
     display: flex;
     justify-content: flex-end;
-    margin: 26px 34px 34px;
+    margin: 15px 34px 34px;
     a:hover{
       text-decoration: none;
     }
@@ -691,10 +724,11 @@
 }
 
 .status-selector-component {
-  height: 0;
+  height: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
+  display: flex;
+  left: 15px;
+  align-items: center;
 
   .status-list {
     opacity: 0;
@@ -720,7 +754,7 @@
     &::after {
       content: "";
       width: 0;
-      height: 0;
+      height: 100%;
       bottom: -4px;
       left: 22px;
       border-width: 5px 8px 0 5px;
@@ -822,21 +856,22 @@
   .icon {
     display: block;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
-    font-size: 11px;
+    font-size: 10px;
+    line-height: 24px;
   }
 
   .recording-status {
-    position: absolute;
-    left: 16px;
-    top: 9px;
+    // position: absolute;
+    // left: 16px;
+    // top: 8px;
     z-index: 1;
   }
 }
@@ -946,7 +981,7 @@
 .btn {
   font-family: Roboto;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 500 !important;
   font-size: 14px;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
@@ -958,6 +993,16 @@
   background: transparent;
   color: $l-blue;
   border: none !important;
+  width: auto;
+  padding: 0 !important;
+
+  &:hover, &:active {
+    text-decoration: none !important;
+  }
+
+  &.disabled {
+    color: #A1A7AF !important;
+  }
 }
 
 .btn-submit {
@@ -984,8 +1029,12 @@
   background: white;
   padding: 0 15px;
   color: $l-blue;
-  height: 25px;
   margin: 40px 0 28px;
+  min-height: 48px;
+  min-width: 158px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hideOnTablet{

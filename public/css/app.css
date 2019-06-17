@@ -3768,6 +3768,16 @@ body {
 .dashboard .dashboard_navbar {
   background: white;
   height: 56px !important;
+  -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+          box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
 
 .dashboard .dashboard_navbar .navbar-brand img {
@@ -3787,9 +3797,25 @@ body {
   font-weight: 500;
   font-size: 18px;
   margin-right: 75px;
-  line-height: 20px;
   letter-spacing: 0.2px;
   color: #4A5464;
+  padding: 0;
+}
+
+.dashboard .dashboard_navbar .name .avatar {
+  width: 57px;
+  height: 28px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.dashboard .dashboard_navbar .name .avatar img {
+  height: 32px;
+  margin: 0 auto;
 }
 
 @media (max-width: 1240px) {
@@ -3822,6 +3848,10 @@ body {
   background-color: aliceblue;
 }
 
+.dashboard .dashboard_navbar .logoutButton img {
+  width: 20px;
+}
+
 .dashboard .dashboard_navbar .avatar {
   margin-left: 10px;
 }
@@ -3833,7 +3863,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-top: 20px;
+  padding-top: 32px;
 }
 
 .dashboard_content .dashboard-side-menu .menu-block:hover {
@@ -3853,7 +3883,7 @@ body {
 .dashboard_content .dashboard-side-menu .menu-block .menu-block-name {
   margin: auto auto auto 5px;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 13px;
   line-height: 24px;
   letter-spacing: -0.1px;
@@ -3891,6 +3921,7 @@ body {
 .dashboard_content .dashboard-side-menu .menu-block.active .menu-block-name {
   color: #FFFFFF;
   font-style: normal;
+  font-weight: bold;
   font-size: 16px;
   line-height: 13px;
 }
@@ -3900,7 +3931,7 @@ body {
 }
 
 .dashboard_content .content-block {
-  margin-left: 50px;
+  margin-left: 75px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3943,7 +3974,7 @@ body {
   -webkit-box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
           box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
   border-radius: 4px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   height: 138px;
 }
 
@@ -4079,7 +4110,7 @@ body {
   background: #05A4F4;
   font-family: Roboto;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 12px;
   line-height: 24px;
   letter-spacing: -0.1px;
@@ -4132,15 +4163,20 @@ body {
   width: 100%;
   border-bottom: 0.5px solid #E0E1E3;
   height: 68px;
+  padding: 18px 24px;
 }
 
 .dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignInfo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .dashboard_content .content-block .content-block-campaign-brief .upper-bar .campaignInfo .title {
@@ -4347,19 +4383,25 @@ body {
 .dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer a.add-entry {
   color: #05A4F4;
   background: #FFF;
-  width: 130px;
+  width: 116px;
   border-radius: 20px;
   padding: 2px 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   line-height: 16px;
-  height: 28px;
+  height: 22px;
+  font-size: 12px;
+}
+
+.dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer a.add-entry img {
+  height: 13px;
 }
 
 .dashboard_content .content-block .content-block-campaign-brief .campaign-brief-footer a.add-entry.disabled {
@@ -4384,6 +4426,7 @@ body {
 
 .agent-logs-block .agentInfo img {
   padding-right: 8px;
+  height: 34px;
 }
 
 .agent-logs-block .agentInfo .userName {
@@ -4420,7 +4463,7 @@ body {
 }
 
 .agent-logs-block .log .log-text {
-  width: 85%;
+  width: 100%;
   background: #EEF9FF;
   position: relative;
   border-radius: 80px;
@@ -4431,13 +4474,13 @@ body {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-right: 18px;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.agent-logs-block .log .log-text img {
-  margin-top: 8px;
+.agent-logs-block .log .log-text .icon-edit {
+  height: 13.5px;
 }
 
 .agent-logs-block .log .log-text .log-text-content {
@@ -4449,7 +4492,7 @@ body {
   letter-spacing: -0.1px;
   color: #4A5464;
   padding-left: 60px;
-  padding-right: 8px;
+  padding-right: 25px;
 }
 
 .agent-logs-block .log .log-text .agent-initials {
@@ -4500,7 +4543,7 @@ body {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  margin: 26px 34px 34px;
+  margin: 15px 34px 34px;
 }
 
 .agent-logs-block .showMoreBtn a:hover {
@@ -4595,10 +4638,15 @@ body {
 }
 
 .status-selector-component {
-  height: 0;
+  height: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  left: 15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .status-selector-component .status-list {
@@ -4637,7 +4685,7 @@ body {
 .status-selector-component .status-list::after {
   content: "";
   width: 0;
-  height: 0;
+  height: 100%;
   bottom: -4px;
   left: 22px;
   border-width: 5px 8px 0 5px;
@@ -4749,8 +4797,8 @@ body {
 .status-selector-component .icon {
   display: block;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4763,13 +4811,11 @@ body {
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
-  font-size: 11px;
+  font-size: 10px;
+  line-height: 24px;
 }
 
 .status-selector-component .recording-status {
-  position: absolute;
-  left: 16px;
-  top: 9px;
   z-index: 1;
 }
 
@@ -4927,7 +4973,7 @@ body {
 .btn {
   font-family: Roboto;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 500 !important;
   font-size: 14px;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
@@ -4939,6 +4985,17 @@ body {
   background: transparent;
   color: #218dce;
   border: none !important;
+  width: auto;
+  padding: 0 !important;
+}
+
+.btn-link:hover,
+.btn-link:active {
+  text-decoration: none !important;
+}
+
+.btn-link.disabled {
+  color: #A1A7AF !important;
 }
 
 .btn-submit {
@@ -4965,8 +5022,18 @@ body {
   background: white;
   padding: 0 15px;
   color: #218dce;
-  height: 25px;
   margin: 40px 0 28px;
+  min-height: 48px;
+  min-width: 158px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 @media (max-width: 1240px) {
@@ -5155,6 +5222,7 @@ body {
 .campaign-info-bar {
   height: 56px;
   width: 100%;
+  padding-left: 35px;
   background: #05A4F4;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5179,6 +5247,12 @@ body {
 @media (max-width: 1240px) {
   .campaign-info-bar {
     overflow-x: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .campaign-info-bar {
+    padding-left: 15px;
   }
 }
 
@@ -5257,7 +5331,7 @@ body {
 }
 
 .backBtn a {
-  margin: 0px 30px 2px 25px;
+  margin: 0px 30px 2px 32px;
 }
 
 @media (max-width: 600px) {
@@ -5432,8 +5506,26 @@ body {
   text-decoration: none;
 }
 
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .date-picker-btn {
+  background: #F3F3F3;
+  height: 38px;
+  width: 122px;
+  display: block;
+  font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 2px;
+}
+
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar img {
-  margin-right: 18px;
+  margin-right: 11px;
 }
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container {
@@ -5460,19 +5552,41 @@ body {
   text-decoration: none;
 }
 
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .date-item.active {
+  padding: 10px;
+}
+
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week.active {
-  border-bottom: 1.5px solid #05A4F4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+.dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week.active::after {
+  content: "";
+  height: 3px;
+  width: 100%;
+  border-radius: 6px;
+  background-color: #05A4F4;
+  position: absolute;
+  bottom: -10px;
 }
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-number,
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week {
   margin: 0 auto;
   text-align: center;
+  font-size: 16px;
 }
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-number.active,
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .days-container .day-of-week.active {
   color: #05A4F4;
+  font-size: 18px;
 }
 
 .dashboard_content.campaign_activity .content-block .content-block-campaign-activity .data-logs .date-picker-bar .date-control-right,
@@ -5668,8 +5782,8 @@ body {
 .team-member img {
   margin-left: 12px;
   margin-right: 19px;
-  height: 35px;
-  width: 35px;
+  height: 34px;
+  width: 34px;
   margin-top: 5px;
 }
 
@@ -5737,6 +5851,7 @@ body {
 }
 
 .agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-header {
+  text-transform: uppercase;
   background: white;
   border: none;
   width: 282px;
@@ -5749,13 +5864,15 @@ body {
 }
 
 .agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-next span {
-  background-position: 0px -3px !important;
-  background-image: url(http://local.123workforce.me/images/freelancer/campaign_activity/right.png);
+  background-position: center !important;
+  background-size: auto 100%;
+  background-image: url("/images/icons/arrow_forward.svg");
 }
 
 .agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-prev span {
-  background-position: 0px -3px !important;
-  background-image: url(http://local.123workforce.me/images/freelancer/campaign_activity/left.png);
+  background-position: center !important;
+  background-size: auto 100%;
+  background-image: url("/images/icons/arrow_back.svg");
 }
 
 .agent-modal-content.date-picker .modal-body .ui-datepicker .ui-datepicker-next,
@@ -5864,7 +5981,8 @@ body {
   line-height: 20px;
   text-align: center;
   color: #4A5464;
-  padding-bottom: 20px;
+  padding-bottom: 17px;
+  padding-top: 5px;
 }
 
 .agent-modal-content.date-picker .ui-datepicker th {
@@ -5882,8 +6000,9 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -5898,6 +6017,7 @@ body {
 .agent-modal-content.date-picker .date-picker-modal-footer .cancelBtn {
   width: 86px;
   height: 26px;
+  margin: 0 23px;
   background: white;
   font-family: Roboto;
   font-style: normal;
@@ -5942,7 +6062,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0;
+  margin: 0 23px;
 }
 
 @media (min-width: 1240px) {
@@ -6223,7 +6343,7 @@ body {
 
 .campaign_team_content .campaign_team .campaign-team-list .campaign-team-row .team-member img {
   margin-left: 0;
-  margin-right: 8px;
+  margin-right: 18px;
 }
 
 @media (max-width: 600px) {
@@ -6745,101 +6865,34 @@ body {
   }
 }
 
-.campaign_brief_content .campaign-info-content .files-tab-content .files-tab-upload-area,
-.campaign_brief_content .campaign-info-content .voice-scripts-content .files-tab-upload-area,
-.campaign_brief_content .campaign-info-content .email-templates-tab-content .files-tab-upload-area {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-bottom: 56px;
+.campaign_brief_content .campaign-info-content .files-tab-content .faq-question-input,
+.campaign_brief_content .campaign-info-content .voice-scripts-content .faq-question-input,
+.campaign_brief_content .campaign-info-content .email-templates-tab-content .faq-question-input {
+  max-width: 628px;
 }
 
-.campaign_brief_content .campaign-info-content .files-tab-content .files-tab-upload-area .upload-box,
-.campaign_brief_content .campaign-info-content .voice-scripts-content .files-tab-upload-area .upload-box,
-.campaign_brief_content .campaign-info-content .email-templates-tab-content .files-tab-upload-area .upload-box {
-  width: 384px;
-  height: 222px;
-  margin-left: 10px;
-  margin-right: 10px;
-  background: #F2FBFF;
-  border: 1px dashed #05A4F4;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border-radius: 4px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+.campaign_brief_content .campaign-info-content .files-tab-content .faq-question-input .btn-link,
+.campaign_brief_content .campaign-info-content .voice-scripts-content .faq-question-input .btn-link,
+.campaign_brief_content .campaign-info-content .email-templates-tab-content .faq-question-input .btn-link {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  text-align: right;
+  margin-top: 23px !important;
+  margin-right: 50px;
 }
 
-.campaign_brief_content .campaign-info-content .files-tab-content .files-tab-upload-area .upload-box a,
-.campaign_brief_content .campaign-info-content .voice-scripts-content .files-tab-upload-area .upload-box a,
-.campaign_brief_content .campaign-info-content .email-templates-tab-content .files-tab-upload-area .upload-box a {
-  text-decoration: none;
+.campaign_brief_content .campaign-info-content .files-tab-content .faq-question-input .edit-icon,
+.campaign_brief_content .campaign-info-content .voice-scripts-content .faq-question-input .edit-icon,
+.campaign_brief_content .campaign-info-content .email-templates-tab-content .faq-question-input .edit-icon {
+  margin-left: -30px;
 }
 
-.campaign_brief_content .campaign-info-content .files-tab-content .files-tab-upload-area .upload-box .upload-box-heading,
-.campaign_brief_content .campaign-info-content .voice-scripts-content .files-tab-upload-area .upload-box .upload-box-heading,
-.campaign_brief_content .campaign-info-content .email-templates-tab-content .files-tab-upload-area .upload-box .upload-box-heading {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 24px;
-  text-align: center;
-  letter-spacing: -0.1px;
-  color: #4A5464;
-  margin-top: 29.15px;
-}
-
-.campaign_brief_content .campaign-info-content .files-tab-content .files-tab-upload-area .upload-box .upload-btn,
-.campaign_brief_content .campaign-info-content .voice-scripts-content .files-tab-upload-area .upload-box .upload-btn,
-.campaign_brief_content .campaign-info-content .email-templates-tab-content .files-tab-upload-area .upload-box .upload-btn {
-  width: 178px;
-  height: 48px;
-  margin-top: 22.43px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-  text-transform: uppercase;
-  color: #FFFFFF;
-  background: #FFA368;
-  border-radius: 2px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.campaign_brief_content .campaign-info-content .files-tab-content .files-tab-upload-area .upload-box .upload-notes,
-.campaign_brief_content .campaign-info-content .voice-scripts-content .files-tab-upload-area .upload-box .upload-notes,
-.campaign_brief_content .campaign-info-content .email-templates-tab-content .files-tab-upload-area .upload-box .upload-notes {
-  margin-top: 29.87px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 13px;
-  line-height: 24px;
-  text-align: center;
-  letter-spacing: -0.1px;
-  color: #7A828D;
-  opacity: 0.75;
+.campaign_brief_content .campaign-info-content .files-tab-content .faq-question-input .dropdown-circle-icon,
+.campaign_brief_content .campaign-info-content .voice-scripts-content .faq-question-input .dropdown-circle-icon,
+.campaign_brief_content .campaign-info-content .email-templates-tab-content .faq-question-input .dropdown-circle-icon {
+  margin-left: 0;
+  position: absolute;
+  right: -46px;
 }
 
 .ql-toolbar.ql-snow {
@@ -7059,9 +7112,7 @@ body {
 }
 
 .faq-questions-list .faq-question {
-  margin-top: 7px;
-  padding-bottom: 45px;
-  padding-top: 54px;
+  padding: 18px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7095,7 +7146,6 @@ body {
   font-size: 16px;
   line-height: 24px;
   color: #4A5464;
-  margin-bottom: 20px;
 }
 
 .faq-questions-list .faq-question .faq-item .faq-item-answer {
@@ -7190,8 +7240,12 @@ body {
 }
 
 .little {
-  color: #7A828D;
   font-size: 13px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.1px;
+  color: #7A828D;
+  opacity: 0.75;
 }
 
 .campaign-archives {
@@ -7461,17 +7515,14 @@ body {
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0.2px;
-  color: #4A5464;
+  color: #7A828D;
 }
 
 .account-info-content-wrapper .account-info-content .acc-info-content-item:last-child {
+  margin-top: 22px;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-}
-
-.account-info-content-wrapper .account-info-content .acc-info-content-item:last-child img {
-  margin-top: 6px;
 }
 
 .account-info-content-wrapper .account-info-content .acc-info-content-item:last-child div {
@@ -7733,6 +7784,15 @@ body {
   margin-left: -34px;
 }
 
+.account-edit-section .faq-question-input .faq-input img.edit-icon,
+.account-edit-section .faq-answer-input .faq-input img.edit-icon {
+  margin-left: -30px;
+}
+
+.account-edit-section .faq-question-input .faq-input img.edit-icon {
+  margin-left: -30px;
+}
+
 .account-edit-section .faq-question-input img,
 .account-edit-section .faq-answer-input img {
   margin-right: 0;
@@ -7807,9 +7867,27 @@ body {
 
 .custom-dropdown {
   position: relative;
+  width: 200px;
+}
+
+.custom-dropdown.team {
+  width: 400px;
+}
+
+@media (max-width: 1240px) {
+  .custom-dropdown.team {
+    max-width: 326px;
+  }
+}
+
+@media (max-width: 425px) {
+  .custom-dropdown.team {
+    max-width: 286px;
+  }
 }
 
 .custom-dropdown .selected-option {
+  width: 100%;
   background: #EEF9FF;
   color: #218dce;
   position: relative;
@@ -7820,7 +7898,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 200px;
 }
 
 .custom-dropdown .selected-option::after {
@@ -7837,23 +7914,24 @@ body {
 
 .custom-dropdown .list-options {
   height: 0;
+  width: 100%;
   -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
           box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   position: absolute;
-  bottom: -127px;
+  bottom: -85px;
   z-index: 2;
   overflow: hidden;
   background-color: #fff;
 }
 
 .custom-dropdown .list-options.show {
-  height: calc(32px*3 + 30px);
+  height: calc(32px*2 + 25px);
 }
 
 .custom-dropdown .list-options .dropdown-item {
   border-bottom: 1px solid rgba(188, 191, 198, 0.44);
   padding: 10px 25px;
-  width: 200px;
+  width: 100%;
 }
 
 .custom-dropdown .list-options .dropdown-item:last-child {
@@ -8028,6 +8106,7 @@ body {
 
 .fake-file-input.btn-orange {
   background-color: #FFA368;
+  font-weight: bold !important;
 }
 
 .fake-file-input:hover {
@@ -8124,6 +8203,10 @@ body {
   display: none;
 }
 
+.dz-message {
+  text-align: center;
+}
+
 .preview-files-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8146,7 +8229,7 @@ body {
 }
 
 .preview-files-container .preview-container {
-  margin-right: 20px;
+  margin-right: 74px;
 }
 
 .preview-files-container .dz-preview {
@@ -8236,7 +8319,7 @@ body {
 }
 
 .preview-files-container .add-document-container {
-  margin-right: 20px;
+  margin-right: 74px;
 }
 
 .preview-files-container .add-document-container img {
@@ -8291,7 +8374,7 @@ body {
 }
 
 .flags-dropdown .selected-country {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   height: 100%;
@@ -8353,7 +8436,6 @@ body {
 .account-edit-section .faq-question-input .faq-input .flags-dropdown input {
   padding: 0;
   padding-left: 120px;
-  position: absolute;
 }
 
 .select-icon {
@@ -9169,8 +9251,8 @@ select:focus {
   line-height: 24px;
   padding-top: 20px;
   padding-bottom: 18px;
+  color: #4A5464;
   font-size: 12px;
-  color: lightgray;
 }
 
 .subscriptions .sub-item .next-billing-date .date {
@@ -9412,6 +9494,11 @@ select:focus {
 .invoices-table table thead tr th:last-child {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
+}
+
+.invoices-table table tbody {
+  -webkit-box-shadow: 0px 4px 7px rgba(202, 202, 202, 0.25);
+          box-shadow: 0px 4px 7px rgba(202, 202, 202, 0.25);
 }
 
 .invoices-table table tbody tr {
@@ -9804,11 +9891,13 @@ select:focus {
   border: 2px solid #F56F6F;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  letter-spacing: -0.1px;
   border-radius: 40px;
   color: #F56F6F;
   font-size: 12px;
   padding: 7px 16px;
   margin-left: 15px;
+  font-weight: bold;
 }
 
 .invoice-download {
@@ -9824,7 +9913,7 @@ select:focus {
 }
 
 .invoice-body {
-  padding: 0 62px 64px 0;
+  padding: 0 62px 64px;
 }
 
 .invioce-top-text {
@@ -9836,7 +9925,7 @@ select:focus {
   margin-top: 55px;
 }
 
-.invioce-title {
+.invoice-title {
   border-top: 1px solid rgba(188, 191, 198, 0.44);
   border-bottom: 1px solid rgba(188, 191, 198, 0.44);
   padding-top: 27px;
@@ -9954,6 +10043,10 @@ select:focus {
   padding: 14px 0 14px 24px;
 }
 
+.blue-part.disabled {
+  opacity: .4;
+}
+
 .agreement-main-text {
   padding: 32px 0 40px;
   line-height: 28px;
@@ -10014,7 +10107,7 @@ select:focus {
   display: block;
 }
 
-.agreement-segniture {
+.agreement-signiture {
   padding: 0 !important;
   background: #FFFFFF;
   -webkit-box-shadow: 0 3px 18px rgba(179, 183, 186, 0.15);
@@ -10025,6 +10118,19 @@ select:focus {
 
 .signiture-main-text {
   padding: 40px 0 40px 25px;
+}
+
+.signiture-main-text input {
+  border: none;
+  background: transparent;
+  width: 100%;
+}
+
+.signiture-main-text input:focus {
+  border: none;
+  -webkit-box-shadow: 0;
+          box-shadow: 0;
+  outline: none;
 }
 
 .agreement-button {
@@ -10039,6 +10145,11 @@ select:focus {
   padding: 16px 25px;
   margin-top: 6px;
   margin-bottom: 6px;
+}
+
+.agreement-button.disabled {
+  background: #E4E4E4;
+  color: #A1A7AF;
 }
 
 .payment-pay-text {
@@ -11157,6 +11268,14 @@ select:focus {
   user-select: none;
 }
 
+.agreement-checkbox-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 28px;
+}
+
 /* Hide the browser's default checkbox */
 
 .checkBoxContainer input {
@@ -11193,7 +11312,7 @@ select:focus {
 /* When the checkbox is checked, add a blue background */
 
 .checkBoxContainer input:checked ~ .checkmark {
-  background-color: #AC81FC;
+  background-color: #05A4F4;
 }
 
 .checkBoxContainer input:checked ~ .checkmark.make-circle {

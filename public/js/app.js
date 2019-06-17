@@ -77861,11 +77861,11 @@ var staticRenderFns = [
               _vm._v("Client info:")
             ]),
             _vm._v(" "),
-            _c("div", { staticStyle: { margin: "22px 0 18px" } }, [
+            _c("div", { staticStyle: { margin: "20px 0 16px" } }, [
               _vm._v("Name: Kim Coe")
             ]),
             _vm._v(" "),
-            _c("div", { staticStyle: { margin: "18px 0" } }, [
+            _c("div", { staticStyle: { margin: "16px 0" } }, [
               _vm._v("Company: Urban HQ LTD")
             ]),
             _vm._v(" "),

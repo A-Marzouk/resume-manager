@@ -50,8 +50,8 @@
         <!-- date -->
         <div class="payment-pay-text">
           <div style=" font-weight: 500;">Client info:</div>
-          <div>Name: Kim Coe</div>
-          <div>Company: Urban HQ LTD</div>
+          <div style="margin:20px 0 16px;">Name: Kim Coe</div>
+          <div style="margin:16px 0;">Company: Urban HQ LTD</div>
           <div class="d-flex">
             <div>
               Contact:

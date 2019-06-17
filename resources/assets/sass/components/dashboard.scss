@@ -1019,8 +1019,12 @@
   background: white;
   padding: 0 15px;
   color: $l-blue;
-  height: 25px;
   margin: 40px 0 28px;
+  min-height: 48px;
+  min-width: 158px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hideOnTablet{

@@ -76631,7 +76631,20 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(2)
+        _c(
+          "div",
+          {
+            staticClass: "account-edit-section-edit-btn no-decoration",
+            class: { "disabled-btn": !_vm.canSubmit }
+          },
+          [
+            _c("a", { staticClass: "btn-primary", attrs: { href: "#" } }, [
+              _vm._v(
+                "\n                                          APPLY EDITS\n                                      "
+              )
+            ])
+          ]
+        )
       ])
     ])
   ])
@@ -76677,22 +76690,6 @@ var staticRenderFns = [
               "\n                      EDIT ACCOUNT INFORMATION\n                  "
             )
           ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "account-edit-section-edit-btn no-decoration" },
-      [
-        _c("a", { attrs: { href: "#" } }, [
-          _vm._v(
-            "\n                                          APPLY EDITS\n                                      "
-          )
         ])
       ]
     )
@@ -95110,7 +95107,11 @@ var render = function() {
       [
         _c(
           "a",
-          { attrs: { href: "javascript:;" }, on: { click: _vm.nextStep } },
+          {
+            staticClass: "btn-primary",
+            attrs: { href: "javascript:;" },
+            on: { click: _vm.nextStep }
+          },
           [_vm._v("\n          CONTINUE\n      ")]
         )
       ]
@@ -96006,7 +96007,11 @@ var render = function() {
       [
         _c(
           "a",
-          { attrs: { href: "javascript:;" }, on: { click: _vm.nextStep } },
+          {
+            staticClass: "btn-primary",
+            attrs: { href: "javascript:;" },
+            on: { click: _vm.nextStep }
+          },
           [_vm._v("\n          CONTINUE\n      ")]
         )
       ]
@@ -96493,7 +96498,11 @@ var render = function() {
       [
         _c(
           "a",
-          { attrs: { href: "javascript:;" }, on: { click: _vm.nextStep } },
+          {
+            staticClass: "btn-primary",
+            attrs: { href: "javascript:;" },
+            on: { click: _vm.nextStep }
+          },
           [_vm._v("\n          CONTINUE\n      ")]
         )
       ]
@@ -96811,7 +96820,11 @@ var render = function() {
       [
         _c(
           "a",
-          { attrs: { href: "javascript:;" }, on: { click: _vm.nextStep } },
+          {
+            staticClass: "btn-primary",
+            attrs: { href: "javascript:;" },
+            on: { click: _vm.nextStep }
+          },
           [_vm._v("\n          CONTINUE\n      ")]
         )
       ]
@@ -97238,7 +97251,11 @@ var render = function() {
       [
         _c(
           "a",
-          { attrs: { href: "javascript:;" }, on: { click: _vm.nextStep } },
+          {
+            staticClass: "btn-primary",
+            attrs: { href: "javascript:;" },
+            on: { click: _vm.nextStep }
+          },
           [_vm._v("\n          CONTINUE\n      ")]
         )
       ]
@@ -101086,7 +101103,7 @@ var staticRenderFns = [
       "div",
       { staticClass: "account-edit-section-edit-btn no-decoration" },
       [
-        _c("a", { attrs: { href: "#" } }, [
+        _c("a", { staticClass: "btn-primary", attrs: { href: "#" } }, [
           _vm._v("\n                    SAVE EDITS\n                ")
         ])
       ]

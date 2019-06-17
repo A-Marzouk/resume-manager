@@ -294,8 +294,8 @@
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="account-edit-section-edit-btn no-decoration">
-                                        <a href="#">
+                                    <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
+                                        <a class="btn-primary" href="#">
                                             APPLY EDITS
                                         </a>
                                     </div>

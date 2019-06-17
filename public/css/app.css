@@ -5010,8 +5010,18 @@ body {
   background: white;
   padding: 0 15px;
   color: #218dce;
-  height: 25px;
   margin: 40px 0 28px;
+  min-height: 48px;
+  min-width: 158px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 @media (max-width: 1240px) {
@@ -8321,7 +8331,7 @@ body {
 }
 
 .flags-dropdown .selected-country {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   height: 100%;
@@ -8383,7 +8393,6 @@ body {
 .account-edit-section .faq-question-input .faq-input .flags-dropdown input {
   padding: 0;
   padding-left: 120px;
-  position: absolute;
 }
 
 .select-icon {

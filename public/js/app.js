@@ -87207,18 +87207,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__status_selector_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__status_selector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__status_selector_vue__);
 //
 //
 //
@@ -87346,7 +87336,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    'status-selector': __WEBPACK_IMPORTED_MODULE_0__status_selector_vue___default.a
+  },
   data: function data() {
     return {
       openCampaignMenu: false,
@@ -87450,11 +87445,145 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(1),
+    _c("div", { staticClass: "agent-logs-block" }, [
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { staticClass: "log" }, [
+        _c("div", { staticClass: "log-time" }, [
+          _vm._v("\n        9.15 am\n      ")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "log-text" },
+          [
+            _c("status-selector", { attrs: { status: "call-back" } }),
+            _vm._v(" "),
+            _c("span", { staticClass: "log-text-content" }, [
+              _vm._v(
+                "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
+              )
+            ])
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "log" }, [
+        _c("div", { staticClass: "log-time" }, [
+          _vm._v("\n        9.15 am\n      ")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "log-text" },
+          [
+            _c("status-selector", { attrs: { status: "call-back" } }),
+            _vm._v(" "),
+            _c("span", { staticClass: "log-text-content" }, [
+              _vm._v(
+                "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
+              )
+            ])
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "log" }, [
+        _c("div", { staticClass: "log-time" }, [
+          _vm._v("\n        9.15 am\n      ")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "log-text" },
+          [
+            _c("status-selector", { attrs: { status: "call-back" } }),
+            _vm._v(" "),
+            _c("span", { staticClass: "log-text-content" }, [
+              _vm._v(
+                "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
+              )
+            ])
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(2)
+    ]),
     _vm._v(" "),
-    _vm._m(2),
+    _c("div", { staticClass: "agent-logs-block" }, [
+      _vm._m(3),
+      _vm._v(" "),
+      _c("div", { staticClass: "log" }, [
+        _c("div", { staticClass: "log-time" }, [
+          _vm._v("\n        9.15 am\n      ")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "log-text" },
+          [
+            _c("status-selector", { attrs: { status: "call-back" } }),
+            _vm._v(" "),
+            _c("span", { staticClass: "log-text-content" }, [
+              _vm._v(
+                "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
+              )
+            ])
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "log" }, [
+        _c("div", { staticClass: "log-time" }, [
+          _vm._v("\n        9.15 am\n      ")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "log-text" },
+          [
+            _c("status-selector", { attrs: { status: "call-back" } }),
+            _vm._v(" "),
+            _c("span", { staticClass: "log-text-content" }, [
+              _vm._v(
+                "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
+              )
+            ])
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "log" }, [
+        _c("div", { staticClass: "log-time" }, [
+          _vm._v("\n        9.15 am\n      ")
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "log-text" },
+          [
+            _c("status-selector", { attrs: { status: "call-back" } }),
+            _vm._v(" "),
+            _c("span", { staticClass: "log-text-content" }, [
+              _vm._v(
+                "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
+              )
+            ])
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(4)
+    ]),
     _vm._v(" "),
-    _vm._m(3)
+    _vm._m(5)
   ])
 }
 var staticRenderFns = [
@@ -87476,73 +87605,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "agent-logs-block" }, [
-      _c("div", { staticClass: "agentInfo" }, [
-        _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
-        _vm._v(" "),
-        _c("span", { staticClass: "userName" }, [
-          _vm._v(
-            "\n                          Mohamed Salah\n                      "
-          )
-        ])
-      ]),
+    return _c("div", { staticClass: "agentInfo" }, [
+      _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
       _vm._v(" "),
-      _c("div", { staticClass: "log" }, [
-        _c("div", { staticClass: "log-time" }, [
-          _vm._v("\n        9.15 am\n      ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log-text" }, [
-          _c("span", { staticClass: "agent-initials" }, [
-            _vm._v("\n                      CB\n                  ")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "log-text-content" }, [
-            _vm._v(
-              "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "log" }, [
-        _c("div", { staticClass: "log-time" }, [
-          _vm._v("\n        9.15 am\n      ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log-text" }, [
-          _c("span", { staticClass: "agent-initials" }, [
-            _vm._v("\n                      CB\n                  ")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "log-text-content" }, [
-            _vm._v(
-              "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "log" }, [
-        _c("div", { staticClass: "log-time" }, [
-          _vm._v("\n        9.15 am\n      ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log-text" }, [
-          _c("span", { staticClass: "agent-initials" }, [
-            _vm._v("\n                      CB\n                  ")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "log-text-content" }, [
-            _vm._v(
-              "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "showMoreBtn" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
+      _c("span", { staticClass: "userName" }, [
+        _vm._v(
+          "\n                          Mohamed Salah\n                      "
+        )
       ])
     ])
   },
@@ -87550,74 +87619,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "agent-logs-block" }, [
-      _c("div", { staticClass: "agentInfo" }, [
-        _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
-        _vm._v(" "),
-        _c("span", { staticClass: "userName" }, [
-          _vm._v(
-            "\n                          Lionel Messi\n                      "
-          )
-        ])
-      ]),
+    return _c("div", { staticClass: "showMoreBtn" }, [
+      _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "agentInfo" }, [
+      _c("img", { attrs: { src: "/images/client/dummy.png", alt: "" } }),
       _vm._v(" "),
-      _c("div", { staticClass: "log" }, [
-        _c("div", { staticClass: "log-time" }, [
-          _vm._v("\n        9.15 am\n      ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log-text" }, [
-          _c("span", { staticClass: "agent-initials" }, [
-            _vm._v("\n                      CB\n                  ")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "log-text-content" }, [
-            _vm._v(
-              "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "log" }, [
-        _c("div", { staticClass: "log-time" }, [
-          _vm._v("\n        9.15 am\n      ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log-text" }, [
-          _c("span", { staticClass: "agent-initials" }, [
-            _vm._v("\n                      CB\n                  ")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "log-text-content" }, [
-            _vm._v(
-              "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "log" }, [
-        _c("div", { staticClass: "log-time" }, [
-          _vm._v("\n        9.15 am\n      ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "log-text" }, [
-          _c("span", { staticClass: "agent-initials" }, [
-            _vm._v("\n                      CB\n                  ")
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "log-text-content" }, [
-            _vm._v(
-              "\n                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                  "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "showMoreBtn" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
+      _c("span", { staticClass: "userName" }, [
+        _vm._v(
+          "\n                          Lionel Messi\n                      "
+        )
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "showMoreBtn" }, [
+      _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
     ])
   },
   function() {

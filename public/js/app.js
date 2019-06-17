@@ -86222,6 +86222,7 @@ var dropZone = void 0;
         question: '',
         answer: ''
       },
+      flowIsEmpty: true,
       process_flow_em: false,
       is_text_editor_set: false,
       showErrors: false,
@@ -86316,6 +86317,7 @@ var dropZone = void 0;
       });
     },
     setTextEditor: function setTextEditor() {
+      var component = this;
       var quill = new Quill('#editor', {
         modules: {
           toolbar: [[{ 'header': [1, 2, 3, 4, 5, 6, false] }], ['bold', 'italic', 'underline', 'strike'], // toggled buttons
@@ -86324,7 +86326,12 @@ var dropZone = void 0;
         placeholder: 'Write your description here...',
         theme: 'snow' // or 'bubble'
       });
-      this.is_text_editor_set = true;
+
+      component.is_text_editor_set = true;
+
+      quill.on('text-change', function () {
+        if (quill.getLength() === 1) component.flowIsEmpty = true;else component.flowIsEmpty = false;
+      });
     },
     removeDoc: function removeDoc(index) {
       this.files.splice(index, 1);
@@ -86964,7 +86971,35 @@ var render = function() {
                 staticClass: "edit-state"
               },
               [
-                _vm._m(2),
+                _c("div", { staticClass: "edit-state-heading" }, [
+                  _c("div", { staticClass: "heading-text" }, [
+                    _vm._v(
+                      "\n                            Enter the description of the process flow:\n                          "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "edit-state-action" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn-link",
+                        class: { disabled: _vm.flowIsEmpty },
+                        attrs: { href: "javascript:void(0)" }
+                      },
+                      [_vm._v("CANCEL")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn-link",
+                        class: { disabled: _vm.flowIsEmpty },
+                        attrs: { href: "javascript:void(0)" }
+                      },
+                      [_vm._v("SAVE")]
+                    )
+                  ])
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "toolbar", attrs: { id: "toolbar" } }),
                 _vm._v(" "),
@@ -86989,10 +87024,10 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "faq-content" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c("div", { staticClass: "faq-question-input" }, [
-                _vm._m(4),
+                _vm._m(3),
                 _vm._v(" "),
                 _c("div", { staticClass: "faq-input" }, [
                   _vm.files.length === 0
@@ -87003,9 +87038,9 @@ var render = function() {
                             "account-edit-section-edit-btn no-decoration picture-box"
                         },
                         [
-                          _vm._m(5),
+                          _vm._m(4),
                           _vm._v(" "),
-                          _vm._m(6),
+                          _vm._m(5),
                           _vm._v(" "),
                           _c(
                             "div",
@@ -87177,7 +87212,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(7)
+            _vm._m(6)
           ]
         ),
         _vm._v(" "),
@@ -87201,7 +87236,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(8)
+            _vm._m(7)
           ]
         )
       ])
@@ -87253,24 +87288,6 @@ var staticRenderFns = [
           alt: "edit icon"
         }
       })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "edit-state-heading" }, [
-      _c("div", { staticClass: "heading-text" }, [
-        _vm._v(
-          "\n                            Enter the description of the process flow:\n                          "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "edit-state-action" }, [
-        _c("a", { attrs: { href: "javascript:void(0)" } }, [_vm._v("CANCEL")]),
-        _vm._v(" "),
-        _c("a", { attrs: { href: "javascript:void(0)" } }, [_vm._v("SAVE")])
-      ])
     ])
   },
   function() {

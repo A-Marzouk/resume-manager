@@ -4994,6 +4994,10 @@ body {
   text-decoration: none !important;
 }
 
+.btn-link.disabled {
+  color: #A1A7AF !important;
+}
+
 .btn-submit {
   margin-left: 50px;
   border: none;

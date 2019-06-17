@@ -165,8 +165,8 @@
                               Enter the description of the process flow:
                             </div>
                             <div class="edit-state-action">
-                              <a href="javascript:void(0)">CANCEL</a>
-                              <a href="javascript:void(0)">SAVE</a>
+                              <a href="javascript:void(0)" class="btn-link" :class="{disabled: flowIsEmpty}">CANCEL</a>
+                              <a href="javascript:void(0)" class="btn-link" :class="{disabled: flowIsEmpty}">SAVE</a>
                             </div>
                           </div>
                           <div id="toolbar"
@@ -356,6 +356,7 @@ export default {
         question: '',
         answer: ''
       },
+      flowIsEmpty: true,
       process_flow_em: false,
       is_text_editor_set: false,
       showErrors: false,
@@ -443,6 +444,7 @@ export default {
       });
     },
     setTextEditor() {
+      let component = this
       var quill = new Quill('#editor', {
         modules: {
           toolbar: [
@@ -457,7 +459,13 @@ export default {
         placeholder: 'Write your description here...',
         theme: 'snow' // or 'bubble'
       });
-      this.is_text_editor_set = true;
+
+      component.is_text_editor_set = true;
+
+      quill.on('text-change', () => {
+        if (quill.getLength() === 1) component.flowIsEmpty = true
+        else component.flowIsEmpty = false
+      })
     },
     removeDoc (index) {
       this.files.splice(index, 1)

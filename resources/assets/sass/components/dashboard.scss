@@ -999,6 +999,10 @@
   &:hover, &:active {
     text-decoration: none !important;
   }
+
+  &.disabled {
+    color: #A1A7AF !important;
+  }
 }
 
 .btn-submit {

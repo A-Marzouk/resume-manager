@@ -19,7 +19,7 @@
             <div class="form-inline my-2 my-lg-0 name">
                 <div class="logoutButton">
                     <a href="javascript:void(0)" @click="logoutClient">
-                        <img src="/images/client/log_out.png" alt="logout">
+                        <img src="/images/client/log_out.png" alt="logout" style="">
                     </a>
                 </div>
                 <div>
@@ -34,13 +34,15 @@
         <div class="js-side-nav-container side-nav-container">
             <div class="js-side-nav side-nav">
                 <a href="javascript:void(0)" class="js-menu-close menu-close" id="close-menu"></a>
-                <div class="info-bar">
-                    <div class="avatar">
-                        <img src="/images/client/dummy.png" alt="logout">
-                    </div>
-                    <div class="name">
-                        Welcome,<br/>
-                        Ahmed R. Marzouk
+                <div class="welcome-box d-flex justify-content-start align-items-center">
+                    <img src="/images/client/dummy.png" alt="profile">
+                    <div class="d-flex flex-column">
+                        <div>
+                            Welcome,
+                        </div>
+                        <div style="font-weight: 500">
+                            Ahmed R. Marzouk
+                        </div>
                     </div>
                 </div>
                 <div class="dashboard_content">
@@ -233,7 +235,7 @@
 
         <!-- modals -->
 
-        <div class="modal fade"
+        <div class="modal fade centered-modal"
              id="disapprove-agent"
              tabindex="-1"
              role="dialog"
@@ -241,21 +243,20 @@
              aria-hidden="true">
             <div class="modal-dialog"
                  role="document">
-                <div class="modal-content border-0"
-                     style="margin-top: 30%;">
+                <div class="modal-content border-0">
                     <div class="modal-body campaign-team-modal">
                         <div v-show="disapproveStatus === 'process'">
                             <div class="modal-question">
                                 Are you sure you want to disapprove this applicant ?
                             </div>
-                            <div class="modal-answer">
+                            <div class="modal-answer radio-options">
                                 <div class="col-12">
-                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveApplicant">
+                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveApplicant" id="defaultRadio_disapprove">
                                         <input class="form-check-input" type="radio" name="disapprove">
                                         <span class="checkmark make-circle"></span> disapprove
                                     </label>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12" style="margin-bottom: 26px;">
                                     <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveAndBlockApplicant">
                                         <input class="form-check-input" type="radio" name="disapprove">
                                         <span class="checkmark make-circle"></span> disapprove and block
@@ -310,7 +311,7 @@
             </div>
         </div>
 
-        <div class="modal fade"
+        <div class="modal fade centered-modal"
              id="add-agent"
              tabindex="-1"
              role="dialog"
@@ -318,35 +319,35 @@
              aria-hidden="true">
             <div class="modal-dialog"
                  role="document">
-                <div class="modal-content border-0"
-                     style="margin-top: 30%;">
+                <div class="modal-content border-0">
                     <div class="modal-body campaign-team-modal">
-                        <div v-show="disapproveStatus === 'process'">
+                        <div>
                             <div class="modal-question">
                                Which agent do you want to add ?
                             </div>
-                            <div class="modal-answer">
+                            <div class="modal-answer radio-options">
                                 <div class="col-12">
-                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveApplicant">
+                                    <label class="form-check-label checkBoxContainer disapprove-text" id="defaultRadio">
                                         <input class="form-check-input" type="radio" name="disapprove">
                                         <span class="checkmark make-circle"></span> business support
                                     </label>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveAndBlockApplicant">
+                                    <label class="form-check-label checkBoxContainer disapprove-text">
                                         <input class="form-check-input" type="radio" name="disapprove">
-                                        <span class="checkmark make-circle"></span> designer
+                                        <span class="checkmark make-circle">
+                                        </span> designer
                                     </label>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-check-label checkBoxContainer disapprove-text" @click="disapproveAndBlockApplicant">
+                                    <label class="form-check-label checkBoxContainer disapprove-text">
                                         <input class="form-check-input" type="radio" name="disapprove">
                                         <span class="checkmark make-circle"></span> developer
                                     </label>
                                 </div>
                             </div>
 
-                            <div class="modal-btn-wrapper">
+                            <div class="modal-btn-wrapper flex-row-mobile">
                                 <div class="button-base white-button-a">
                                     <a href="javascript:void(0)" data-dismiss="modal">CANCEL</a>
                                 </div>

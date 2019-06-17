@@ -27,7 +27,7 @@
                 <div class="d-flex align-items-center">
                     <div class="searchBox mt-3 mt-md-0 mb-3 mb-xl-0">
                         <img src="/images/admin/magnifier-tool.svg" alt="">
-                        <input type="text" placeholder="Search by name, e-mail">
+                        <input type="text" placeholder="Search by name, e-mail" style="width: 246px;">
                     </div>
                 </div>
                 <div class="d-flex align-items-center right no-decoration" style="padding-right: 24px;">
@@ -41,7 +41,7 @@
                                 <span v-if="filter=== 'show_in_process' ">In process</span>
                             </div>
                         </a>
-                        <div class="select-popup" v-show="showFilterSelection" style="margin-top:-45px;">
+                        <div class="select-popup" v-show="showFilterSelection">
                             <ul class="select-popup-list">
                                 <li @click="selectFilter('show_all')">
                                     Show all applications
@@ -121,7 +121,7 @@
                                 </td>
                                 <td>
                                     <div class="no-decoration">
-                                        <a href="#" class="base-text primary-text">
+                                        <a href="/client/campaign" class="base-text primary-text">
                                             MANAGE
                                         </a>
                                     </div>
@@ -156,14 +156,15 @@
                                                 Jessica Cipriano
                                             </div>
                                             <div class="base-text" style="font-size:14px;  margin-top:22px;">
-                                                <img src="/images/client/add_agent/search_result/ic/user/user123.png" alt="user image" style="width:26px; margin-right:10px; border-radius: 50%;">
+                                                <img src="/images/client/add_agent/search_result/ic/user/user123.png" alt="user image" style="margin-bottom:19px; width:26px; margin-right:10px; border-radius: 50%;">
                                                 Jessica Cipriano
                                             </div>
-                                            <div class="base-text  d-flex align-items-center" style="font-size:14px;  margin-top:39px;">
+                                            <hr>
+                                            <div class="base-text  d-flex align-items-center" style="font-size:14px;  margin-top:19px;">
                                                 <img src="/images/admin/affiliate.svg" alt="user image" style="margin-right:10px;">
                                                 Affiliate: Jordan MacGregor
                                             </div>
-                                            <div class="base-text d-flex align-items-center" style="font-size:14px;  margin-top:20px;">
+                                            <div class="base-text d-flex align-items-center" style="font-size:14px;  margin-top:19px;">
                                                 <img src="/images/admin/date.svg" alt="user image" style="margin-right:10px;">
                                                 22.04.19 - 24.12.19
                                             </div>

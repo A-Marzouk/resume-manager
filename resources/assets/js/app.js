@@ -40,6 +40,7 @@ Vue.component('applicant-profile', require('./components/admin/ApplicantProfile.
 Vue.component('approved-agent-profile', require('./components/admin/ApprovedAgentProfile.vue'));
 Vue.component('advanced-search-component', require('./components/admin/AdvancedSearch.vue'));
 Vue.component('admin-register-agent', require('./components/admin/RegisterAgent.vue'));
+Vue.component('add-behance-designer', require('./components/admin/AddBehanceDesigner.vue'));
 
 
 import AdminAgents from './components/admin/dashboard/Agents.vue';
@@ -51,6 +52,13 @@ import AdminCampaigns from './components/admin/dashboard/Campaigns.vue';
 if ($("#approvedAgentProfile").length !== 0){
     let approvedAgentProfile = new Vue({
         el:'#approvedAgentProfile'
+    });
+
+}
+
+if ($("#addBehanceDesigner").length !== 0){
+    let addBehanceDesigner = new Vue({
+        el:'#addBehanceDesigner'
     });
 
 }
@@ -75,6 +83,7 @@ if ($("#adminDashboardComponent").length !== 0){
             { path: '/admin-front/agents/', component: AdminAgents },
             { path: '/admin-front/clients/', component: AdminClients },
             { path: '/admin-front/campaign-manager/', component: AdminCampaigns },
+            { path: '/admin-front/', component: AdminCampaigns },
         ];
 
         const router = new VueRouter({

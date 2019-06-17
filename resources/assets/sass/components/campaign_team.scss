@@ -194,7 +194,7 @@
 
 .campaign-team-modal{
   border-radius: 4px;
-  padding:32px 33px 22px 33px !important;
+  padding:32px 32px 22px 33px !important;
 }
 
 .modal-question{
@@ -206,6 +206,9 @@
   color: #4A5464;
   mix-blend-mode: normal;
   opacity: 0.9;
+  @media only screen and (max-width: 600px) {
+    font-size: 18px;
+  }
 }
 
 .modal-answer{
@@ -223,7 +226,7 @@
 .modal-btn-wrapper{
   margin-top:30px;
   display:flex;
-  justify-content:center;
+  justify-content:flex-end;
   @media (max-width:400px) {
     flex-direction: column;
     align-items: flex-end;

@@ -6,7 +6,7 @@
                              class="campaign-info-tab firstTab"
                              :class="{active : activeTab === 'business-support'}"
                              @click="activeTab = 'business-support'">
-                    BUSINESS SUPPORT
+                    <span class="">BUSINESS</span> SUPPORT
                 </div>
                 <div
                              class="campaign-info-tab"
@@ -18,13 +18,13 @@
                              class="campaign-info-tab"
                              :class="{active : activeTab === 'developers'}"
                              @click="activeTab = 'developers'">
-                    DEVELOPERS
+                    DEVEL<span class="">OPERS</span>
                 </div>
                 <div>
                     <div class="white-button-a button-base">
-                        <a href="javascript:void(0)" style="width:175px; height:30px; border-radius:40px;" data-toggle="modal" data-target="#add-agent">
+                        <a href="javascript:void(0)" style="width:175px; height:30px; border-radius:40px;" data-toggle="modal" data-target="#add-agent" @click="checkDefaultRadio">
                             <img src="/images/client/payments/add.png" alt="add icon">
-                            ADD NEW AGENT
+                            <span class=""> ADD NEW AGENT</span>
                         </a>
                     </div>
                 </div>
@@ -46,12 +46,12 @@
 
             <div class="optionsBar">
                 <div class="d-flex align-items-center left">
-                    <div class="searchBox mt-3">
+                    <div class="searchBox agents">
                         <img src="/images/admin/magnifier-tool.svg" alt="">
                         <input type="text" placeholder="Search by name, e-mail">
                     </div>
                     <div class="blue-text no-decoration">
-                        <a href="/admin-front/advanced-search" >
+                        <a href="/admin-front/advanced-search" style="color: #05A4F4;" >
                             ADVANCED SEARCH
                         </a>
                     </div>
@@ -112,7 +112,7 @@
                             <th scope="col">FULL NAME</th>
                             <th scope="col">HOURLY RATE</th>
                             <th scope="col">STATUS</th>
-                            <th scope="col" class="d-flex align-items-center stage-column" v-if="secondaryActiveTab === 'applicants'" style="padding-left: 30px;padding-right: 30px;">
+                            <th scope="col" class="d-flex align-items-center stage-column" v-if="secondaryActiveTab === 'applicants'" style="padding-right: 30px;">
                                 STAGE
                                 <img src="/images/admin/arrows.svg" alt="arrow down">
                             </th>
@@ -121,24 +121,29 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <div class="invoice-number base-text name-text">
+                                    <div class="invoice-number base-text name-text" style="font-weight: 500;">
                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
+                                        <img src="/images/admin/down_arrow.png" alt="down arrow" style="transform: rotate(180deg);">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text available-text">
-                                        AVAILABLE (+15 h/week)
+                                         <span v-if="secondaryActiveTab === 'applicants'" class="base-text new-text">
+                                            APPLICATION PROCESS
+                                        </span>
+                                        <span v-else class="available-text">
+                                            AVAILABLE (+15 h/week)
+                                        </span>
                                     </div>
                                 </td>
 
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
                                     <a href="javascript:void(0)">
                                         v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                     </a>
@@ -148,7 +153,7 @@
                                 <td colspan="4" style="border-top:0; padding-top:0">
                                     <div v-show="secondaryActiveTab === 'applicants'" class="action-buttons-bar">
                                         <div class="disapprove-btn no-decoration">
-                                            <a href="javascript:void(0)" data-toggle="modal" data-target="#disapprove-agent">
+                                            <a href="javascript:void(0)" data-toggle="modal" data-target="#disapprove-agent" @click="checkDefaultRadioDisapprove">
                                                 DISAPPROVE APPLICANT
                                             </a>
                                         </div>
@@ -174,11 +179,11 @@
                                                             Dublin, Ireland
                                                         </div>
                                                         <div class="visiblty">
-                                                            <div class="no-decoration white-on-hover">
+                                                            <div class="no-decoration white-on-hover mt-4">
                                                                 <a href="/admin-front/agent-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab !== 'applicants'">VISIT AGENT’S PROFILE</a>
                                                                 <a href="/admin-front/applicant-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab === 'applicants'">VISIT AGENT’S PROFILE</a>
                                                             </div>
-                                                            <div>
+                                                            <div class="mt-4">
                                                                 <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">
                                                                     <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png" style="margin-right: 15px;"/>
                                                                     LISTEN TO THE RECORD
@@ -230,13 +235,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                        Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $12
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -247,7 +252,7 @@
                                         AVAILABLE (+10 h/week)
                                     </div>
                                 </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
                                     <a href="javascript:void(0)">
                                         v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                     </a>
@@ -255,14 +260,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                        Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
 
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -273,7 +278,7 @@
                                         NOT AVAILABLE
                                     </div>
                                 </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
                                     <a href="javascript:void(0)">
                                         v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                     </a>
@@ -281,13 +286,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $12
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -298,7 +303,7 @@
                                         AVAILABLE (+10 h/week)
                                     </div>
                                 </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
                                     <a href="javascript:void(0)">
                                         v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                     </a>
@@ -306,14 +311,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
 
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -324,7 +329,7 @@
                                         NOT AVAILABLE
                                     </div>
                                 </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
                                     <a href="javascript:void(0)">
                                         v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                     </a>
@@ -332,23 +337,28 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number base-text name-text">
+                                    <div class="invoice-number base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-amount base-text available-text">
-                                        AVAILABLE (+15 h/week)
+                                    <div class="invoice-amount">
+                                        <span v-if="secondaryActiveTab === 'applicants'" class="base-text new-text">
+                                            APPLICATION PROCESS
+                                        </span>
+                                        <span v-else class="available-text">
+                                            AVAILABLE (+15 h/week)
+                                        </span>
                                     </div>
                                 </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
                                     <a href="javascript:void(0)">
                                         v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                     </a>
@@ -356,13 +366,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $12
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -373,7 +383,7 @@
                                         AVAILABLE (+10 h/week)
                                     </div>
                                 </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
                                     <a href="javascript:void(0)">
                                         v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                     </a>
@@ -381,14 +391,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
 
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -399,7 +409,7 @@
                                         NOT AVAILABLE
                                     </div>
                                 </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
                                     <a href="javascript:void(0)">
                                         v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                     </a>
@@ -407,13 +417,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $12
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -424,7 +434,7 @@
                                         AVAILABLE (+10 h/week)
                                     </div>
                                 </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
                                     <a href="javascript:void(0)">
                                         v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                     </a>
@@ -432,14 +442,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
 
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -450,7 +460,7 @@
                                         NOT AVAILABLE
                                     </div>
                                 </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
                                     <a href="javascript:void(0)">
                                         v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                     </a>
@@ -458,23 +468,28 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number base-text name-text">
+                                    <div class="invoice-number base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text available-text">
-                                        AVAILABLE (+15 h/week)
+                                         <span v-if="secondaryActiveTab === 'applicants'" class="base-text new-text">
+                                            APPLICATION PROCESS
+                                        </span>
+                                        <span v-else class="available-text">
+                                            AVAILABLE (+15 h/week)
+                                        </span>
                                     </div>
                                 </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
                                     <a href="javascript:void(0)">
                                         v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                     </a>
@@ -482,13 +497,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $12
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -499,7 +514,7 @@
                                         AVAILABLE (+10 h/week)
                                     </div>
                                 </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
                                     <a href="javascript:void(0)">
                                         v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                     </a>
@@ -507,14 +522,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
 
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -525,7 +540,7 @@
                                         NOT AVAILABLE
                                     </div>
                                 </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
                                     <a href="javascript:void(0)">
                                         v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                     </a>
@@ -533,13 +548,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $12
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -550,7 +565,7 @@
                                         AVAILABLE (+10 h/week)
                                     </div>
                                 </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
                                     <a href="javascript:void(0)">
                                         v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                     </a>
@@ -558,14 +573,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="invoice-number  base-text name-text">
+                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
                                         Edward Smith-Lorence
                                         <img src="/images/admin/down_arrow.png" alt="down arrow">
 
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="invoice-service  base-text hour-text">
+                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
                                         $10
                                         <img src="/images/admin/edit_24px.svg" alt="edit arrow">
 
@@ -576,7 +591,7 @@
                                         NOT AVAILABLE
                                     </div>
                                 </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select text-center">
+                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
                                     <a href="javascript:void(0)">
                                         v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                     </a>
@@ -596,7 +611,7 @@
                                  <b v-if="i === 5">
                                      {{i}}
                                  </b>
-                                 <span v-else>
+                                 <span v-else style="font-size: 13px;">
                                      {{i}}
                                  </span>
                              </span>
@@ -604,7 +619,7 @@
                     </div>
                     <div class="no-decoration">
                         <a href="javascript:void(0)" class="paginationBox d-flex align-items-center justify-content-center" @click="showUsersNumSelection = true">
-                            Users per page :
+                            Users per page:&nbsp;
                             <span v-if="usersNumber === 15 ">15</span>
                             <span v-if="usersNumber === 25 ">25</span>
                             <span v-if="usersNumber === 50 ">50</span>
@@ -700,6 +715,12 @@
             selectUsersNum(number){
                 this.usersNumber = number ;
                 this.showUsersNumSelection = false;
+            },
+            checkDefaultRadio(){
+                $('#defaultRadio').click();
+            },
+            checkDefaultRadioDisapprove(){
+                $('#defaultRadio_disapprove').click();
             }
         },
         mounted() {

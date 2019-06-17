@@ -6,7 +6,7 @@
                     CLIENTS
                 </div>
                 <div class="white-button-a button-base">
-                    <a href="javascript:void(0)" style="width:175px; height:30px; border-radius:40px;" data-toggle="modal" data-target="#add-agent">
+                    <a href="javascript:void(0)" style="width:175px; height:30px; border-radius:40px; margin-right: 20px;">
                         <img src="/images/client/payments/add.png" alt="add icon">
                         ADD NEW CLIENT
                     </a>
@@ -15,7 +15,7 @@
             <div class="search-box-container d-flex align-items-center">
                 <div class="searchBox">
                     <img src="/images/admin/magnifier-tool.svg" alt="">
-                    <input type="text" placeholder="Search by name, e-mail">
+                    <input type="text" placeholder="Search by name, e-mail" class="client-search-box">
                 </div>
             </div>
             <div class="optionsBar">
@@ -24,7 +24,8 @@
                         <a href="javascript:void(0)" class="filter-box-clients filterBox d-flex align-items-center" >
                             <img src="/images/admin/filter.svg" alt="">
                             <div>
-                                Status :
+                                <span style="font-weight: 500;">Status :</span>
+
                                 <span v-if="filter=== 'show_all' ">show all</span>
                                 <span v-if="filter=== 'show_new' ">New applications</span>
                                 <span v-if="filter=== 'show_in_process' ">In process</span>
@@ -48,7 +49,7 @@
                         <a href="javascript:void(0)" class="filter-box-clients filterBox d-flex align-items-center" >
                             <img src="/images/admin/filter.svg" alt="">
                             <div>
-                                Subscr :
+                                <span style="font-weight: 500;">Subscr :</span>
                                 <span v-if="filter=== 'show_all' ">show all</span>
                                 <span v-if="filter=== 'show_new' ">New applications</span>
                                 <span v-if="filter=== 'show_in_process' ">In process</span>
@@ -72,7 +73,8 @@
                         <a href="javascript:void(0)" class="filter-box-clients filterBox d-flex align-items-center" >
                             <img src="/images/admin/filter.svg" alt="">
                             <div>
-                                Invoices :
+                                <span style="font-weight: 500;">Invoices :</span>
+
                                 <span v-if="filter=== 'show_all' ">show all</span>
                                 <span v-if="filter=== 'show_new' ">New applications</span>
                                 <span v-if="filter=== 'show_in_process' ">In process</span>
@@ -96,7 +98,8 @@
                         <a href="javascript:void(0)" class="filterBox filter-box-clients d-flex align-items-center"  @click="showSortSelection = true">
                             <img src="/images/admin/sorting.svg" alt="">
                             <div>
-                                Sorting :
+                                <span style="font-weight: 500;">Sorting :</span>
+
                                 <span v-if="sort=== 'all_income' ">all income</span>
                                 <span v-if="sort=== 'old_first' ">oldest first</span>
                             </div>
@@ -125,7 +128,7 @@
                 <div>
                     <img src="/images/admin/clients/orange.svg" alt="info color">
                     <div>
-                        sign up: 1 week ago
+                        sign up: 1 week ago &nbsp;&nbsp;
                     </div>
                 </div>
                 <div>
@@ -198,17 +201,17 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        $ 500
+                                        <span style="font-weight: normal;">$ 500 </span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text primary-text">
-                                        george Newtone
+                                        George <br/> Newtone
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                       GMT - 8
+                                       <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -250,17 +253,17 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        $ 500
+                                        <span style="font-weight: normal;">$ 500 </span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text primary-text">
-                                        george Newtone
+                                        George <br/> Newtone
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                       GMT - 8
+                                       <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -302,17 +305,17 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        $ 500
+                                        <span style="font-weight: normal;">$ 500 </span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text primary-text">
-                                        george Newtone
+                                        George <br/> Newtone
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        GMT - 8
+                                        <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -354,17 +357,17 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        $ 500
+                                        <span style="font-weight: normal;">$ 500 </span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text primary-text">
-                                        george Newtone
+                                        George <br/> Newtone
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        GMT - 8
+                                        <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -406,17 +409,17 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        $ 500
+                                        <span style="font-weight: normal;">$ 500 </span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text primary-text">
-                                        george Newtone
+                                        George <br/> Newtone
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        GMT - 8
+                                        <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -458,17 +461,17 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        $ 500
+                                        <span style="font-weight: normal;">$ 500 </span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text primary-text">
-                                        george Newtone
+                                        George <br/> Newtone
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        GMT - 8
+                                        <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -510,17 +513,17 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        $ 500
+                                        <span style="font-weight: normal;">$ 500 </span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text primary-text">
-                                        george Newtone
+                                        George <br/> Newtone
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        GMT - 8
+                                        <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -562,17 +565,17 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        $ 500
+                                        <span style="font-weight: normal;">$ 500 </span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text primary-text">
-                                        george Newtone
+                                        George <br/> Newtone
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        GMT - 8
+                                        <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -614,17 +617,17 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        $ 500
+                                        <span style="font-weight: normal;">$ 500 </span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text primary-text">
-                                        george Newtone
+                                        George <br/> Newtone
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        GMT - 8
+                                        <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -666,17 +669,17 @@
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        $ 500
+                                        <span style="font-weight: normal;">$ 500 </span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text primary-text">
-                                        george Newtone
+                                        George <br/> Newtone
                                     </div>
                                 </td>
                                 <td>
                                     <div class="invoice-amount base-text">
-                                        GMT - 8
+                                        <span style="font-weight: normal; color:#7A828D;">GMT - 8 </span>
                                     </div>
                                 </td>
                             </tr>
@@ -695,7 +698,7 @@
                                  <b v-if="i === 5">
                                      {{i}}
                                  </b>
-                                 <span v-else>
+                                 <span v-else style="font-size: 13px;">
                                      {{i}}
                                  </span>
                              </span>

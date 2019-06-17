@@ -52,9 +52,15 @@
       }
 
       .logoutButton{
-        width: 20px;
-        height: 20px;
-        margin-right: 31px;
+        margin-right: 27px;
+        a{
+          width: 20px;
+          height: 20px;
+          margin-top: 5px;
+        }
+        img{
+          width: 20px;
+        }
         :hover{
           background-color: aliceblue;
         }

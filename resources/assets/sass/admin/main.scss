@@ -6,6 +6,24 @@
   }
 }
 
+.welcome-box{
+  margin-top: 20px;
+  padding-bottom: 26px;
+  padding-left: 30px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  color: #4A5464;
+  border-bottom: 0.5px solid #E0E1E3;
+  img{
+    margin-right: 10px;
+    width: 39px;
+    height: 39px;
+  }
+}
 
 .flex-small-wrap{
   @media only screen and (max-width: 1024px){
@@ -41,12 +59,18 @@
     font-size:12px;
     padding-left:20px;
     @media only screen and (max-width: 1024px){
-      padding-left: 4px;
+      padding-left: 20px;
     }
 
   }
 }
 
+.searchBox.agents{
+  width: 246px;
+  @media only screen and (max-width: 600px){
+    margin-top: 28px;
+  }
+}
 .searchBox{
   display: flex;
   align-items: center;
@@ -55,13 +79,10 @@
     border: 1px solid #DADADA;
     height: 30px;
     border-radius: 20px;
-    width: 246px;
     padding-left: 40px;
     margin-left: -25px;
+    width: 426px;
     background: none;
-    @media only screen and (max-width: 1024px){
-      width: 426px;
-    }
     @media only screen and (max-width: 600px){
       width: 270px;
     }
@@ -83,6 +104,11 @@
   @media only screen and (max-width: 600px){
     margin-bottom: 20px;
   }
+
+  img{
+    width: 12px;
+    height: 12px;
+  }
 }
 
 .search-box-container{
@@ -91,20 +117,8 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  .searchBox{
-    input{
-      @media only screen and (max-width: 1024px){
-        width: 426px;
-      }
-      @media only screen and (max-width: 600px){
-        width: 270px;
-      }
-      @media only screen and (max-width: 400px){
-        width: 250px;
-      }
-    }
-  }
 }
+
 
 
 
@@ -197,10 +211,11 @@
   .primary-text{
     font-weight: 500;
     font-size: 14px;
-    line-height: 13px;
     letter-spacing: -0.1px;
     color: #05A4F4;
     white-space: nowrap;
+    line-height: 19px;
+    margin-top: -10px;
   }
 
 
@@ -365,5 +380,33 @@
     color: #7A828D;
     mix-blend-mode: normal;
     opacity: 0.9;
+  }
+}
+
+.modal.fade.centered-modal.show {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  padding-right: 0 !important;
+}
+
+.add-agent-modal-content{
+  height: 302px;
+  width: 439px !important;
+}
+
+.modal-answer.radio-options{
+  padding-left:29px;
+  @media only screen and (max-width: 600px) {
+    padding-left:0;
+  }
+  div{
+    margin-bottom: 20px;
+  }
+  div:first-child{
+    margin-top: 32px;
+  }
+  div:last-child{
+    margin-bottom: 46px;
   }
 }

@@ -30,4 +30,8 @@ class AdminFrontEndController extends Controller
     public function showRegisterAgentPage(){
         return view('admin.register_agent_view');
     }
+
+    public function addBehanceDesigner(){
+        return view('admin.add_behance_designer');
+    }
 }

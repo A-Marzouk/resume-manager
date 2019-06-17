@@ -86181,6 +86181,20 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var dropZone = void 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -86212,6 +86226,8 @@ var dropZone = void 0;
         question: '',
         answer: ''
       },
+      newLink: '',
+      editingLink: -1,
       links: [],
       errors: {
         question: false,
@@ -86239,9 +86255,12 @@ var dropZone = void 0;
     },
     addLink: function addLink(link) {
       this.links.push(link);
+      this.newLink = '';
     },
-    editLink: function editLink(link, index) {
+    editLink: function editLink(index) {
+      var link = document.getElementsByClassName('saved-link')[index].value;
       this.links[index] = link;
+      this.editingLink = -1;
     },
     editFAQ: function editFAQ(faq_id) {
       var _this = this;
@@ -87024,7 +87043,140 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "faq-content" }, [
-              _vm._m(2),
+              _c("div", { staticClass: "faq-question-input" }, [
+                _vm._m(2),
+                _vm._v(" "),
+                _c("div", { staticClass: "faq-input" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.newLink,
+                        expression: "newLink"
+                      }
+                    ],
+                    staticClass: "bg-gray-input",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Add a link you want to share"
+                    },
+                    domProps: { value: _vm.newLink },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.newLink = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("img", {
+                    staticClass: "dropdown-circle-icon",
+                    attrs: {
+                      src: "/images/icons/arrow_drop_down_circle_gray.svg",
+                      alt: ""
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.newLink.length > 0,
+                        expression: "newLink.length > 0"
+                      }
+                    ],
+                    attrs: {
+                      src: "/images/client/campaign_activity/close_black.png",
+                      alt: "delete icon"
+                    },
+                    on: {
+                      click: function($event) {
+                        _vm.newLink = ""
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-link",
+                    class: { disabled: _vm.newLink === "" },
+                    attrs: { href: "javascript:;" },
+                    on: {
+                      click: function($event) {
+                        _vm.addLink(_vm.newLink)
+                      }
+                    }
+                  },
+                  [_vm._v("ADD LINK")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "links-saved" },
+                  _vm._l(_vm.links, function(link, index) {
+                    return _c(
+                      "div",
+                      { key: link + index, staticClass: "faq-question-input" },
+                      [
+                        _c("div", { staticClass: "faq-input" }, [
+                          _c("input", {
+                            staticClass: "saved-link bg-gray-input",
+                            attrs: {
+                              disabled: index !== _vm.editingLink,
+                              type: "text"
+                            },
+                            domProps: { value: link }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            staticClass: "dropdown-circle-icon",
+                            attrs: {
+                              src:
+                                "/images/icons/arrow_drop_down_circle_gray.svg",
+                              alt: ""
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("img", {
+                            attrs: {
+                              src: "/images/icons/edit_icon.svg",
+                              alt: "edit icon"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.editingLink = index
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _vm.editingLink === index
+                          ? _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-link",
+                                class: { disabled: _vm.links[index] === "" },
+                                attrs: { href: "javascript:;" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.editLink(index)
+                                  }
+                                }
+                              },
+                              [_vm._v("SAVE LINK")]
+                            )
+                          : _vm._e()
+                      ]
+                    )
+                  })
+                )
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "faq-question-input" }, [
                 _vm._m(3),
@@ -87294,38 +87446,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "faq-question-input" }, [
-      _c("label", { staticClass: "faq-input-label" }, [
-        _c("i", { staticClass: "icon icon-point" }),
-        _vm._v(
-          "\n                            List of the links\n                          "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "faq-input" }, [
-        _c("input", {
-          staticClass: "bg-gray-input",
-          attrs: { type: "text", placeholder: "Add a link you want to share" }
-        }),
-        _vm._v(" "),
-        _c("img", {
-          staticClass: "dropdown-circle-icon",
-          attrs: {
-            src: "/images/icons/arrow_drop_down_circle_gray.svg",
-            alt: ""
-          }
-        }),
-        _vm._v(" "),
-        _c("img", {
-          staticClass: "edit-icon",
-          attrs: { src: "/images/icons/edit_icon.svg", alt: "edit icon" }
-        })
-      ]),
-      _vm._v(" "),
-      _c(
-        "a",
-        { staticClass: "btn btn-link", attrs: { href: "javascript:;" } },
-        [_vm._v("ADD LINK")]
+    return _c("label", { staticClass: "faq-input-label" }, [
+      _c("i", { staticClass: "icon icon-point" }),
+      _vm._v(
+        "\n                            List of the links\n                          "
       )
     ])
   },

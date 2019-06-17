@@ -188,11 +188,25 @@
                               List of the links
                             </label>
                             <div class="faq-input">
-                              <input class="bg-gray-input" type="text" placeholder="Add a link you want to share">
+                              <input class="bg-gray-input" type="text" placeholder="Add a link you want to share" v-model="newLink">
                               <img src="/images/icons/arrow_drop_down_circle_gray.svg" alt="" class="dropdown-circle-icon">
-                              <img class="edit-icon" src="/images/icons/edit_icon.svg" alt="edit icon">
+                              <img src="/images/client/campaign_activity/close_black.png"
+                                v-on:click="newLink = ''" alt="delete icon" v-show="newLink.length > 0"
+                              >
                             </div>
-                            <a class="btn btn-link" href="javascript:;">ADD LINK</a>
+                            <a v-on:click="addLink(newLink)" class="btn btn-link" :class="{disabled: newLink === ''}" href="javascript:;">ADD LINK</a>
+                            <div class="links-saved">
+                              <div class="faq-question-input" :key="link + index" v-for="(link, index) in links">
+                                <div class="faq-input">
+                                  <input :disabled="index !== editingLink" class="saved-link bg-gray-input" type="text" :value="link">
+                                  <img src="/images/icons/arrow_drop_down_circle_gray.svg" alt="" class="dropdown-circle-icon">
+                                  <img src="/images/icons/edit_icon.svg"
+                                    v-on:click="editingLink = index" alt="edit icon"
+                                  >
+                                </div>
+                                <a v-if="editingLink === index" v-on:click="editLink(index)" class="btn btn-link" :class="{disabled: links[index] === ''}" href="javascript:;">SAVE LINK</a>
+                              </div>
+                            </div>
                           </div>
                           <div class="faq-question-input">
                             <label class="faq-input-label">
@@ -344,6 +358,8 @@ export default {
         question: '',
         answer: ''
       },
+      newLink: '',
+      editingLink: -1,
       links: [
 
       ],
@@ -372,9 +388,12 @@ export default {
     },
     addLink(link) {
       this.links.push(link)
+      this.newLink = ''
     },
-    editLink(link, index) {
+    editLink(index) {
+      let link = document.getElementsByClassName('saved-link')[index].value
       this.links[index] = link
+      this.editingLink = -1
     },
     editFAQ(faq_id) {
       let faqs = this.faqs;

@@ -6881,18 +6881,12 @@ body {
   margin-right: 50px;
 }
 
-.campaign_brief_content .campaign-info-content .files-tab-content .faq-question-input .edit-icon,
-.campaign_brief_content .campaign-info-content .voice-scripts-content .faq-question-input .edit-icon,
-.campaign_brief_content .campaign-info-content .email-templates-tab-content .faq-question-input .edit-icon {
-  margin-left: -30px;
-}
-
 .campaign_brief_content .campaign-info-content .files-tab-content .faq-question-input .dropdown-circle-icon,
 .campaign_brief_content .campaign-info-content .voice-scripts-content .faq-question-input .dropdown-circle-icon,
 .campaign_brief_content .campaign-info-content .email-templates-tab-content .faq-question-input .dropdown-circle-icon {
   margin-left: 0;
   position: absolute;
-  right: -46px;
+  right: -70px;
 }
 
 .ql-toolbar.ql-snow {

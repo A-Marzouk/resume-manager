@@ -136,11 +136,24 @@ class FreelancersController extends Controller
     }
 
     public function registerDesignerFromBehance(Request $request){
-        $userData        = new UserDataController;
-        $behanceLink     = $request->behanceDesignerLink;
-        $behanceLinkArr  = explode('/',$behanceLink);
-        $behanceUsername = end($behanceLinkArr);
-        $dataFromBehance =  $userData->ArrDataFromBehance($behanceUsername);
+        $input     = $request->behanceDesignerLink;
+        $multipleLinks = false;
+
+        // check if we have more than one link in the input :
+        if (strpos($input, ',') !== false) {
+            $multipleLinks = true;
+        }
+
+        if($multipleLinks){
+            $links = explode(',',$input);
+            $mainBehanceLink  = $links[0];
+        }else{
+            $mainBehanceLink  = $input ;
+        }
+
+        $userDataController        = new UserDataController;
+        $behanceUsername = $this->getBehanceUsername($mainBehanceLink);
+        $dataFromBehance =  $userDataController->ArrDataFromBehance($behanceUsername);
 
         try{
             User::create([
@@ -163,7 +176,7 @@ class FreelancersController extends Controller
         $userData->photo = end($dataFromBehance->images);
         $userData->city =$dataFromBehance->location;
         $userData->jobTitle =$dataFromBehance->occupation;
-        $userData->behanceLink =$behanceLink;
+        $userData->behanceLink =$mainBehanceLink;
 
         if($dataFromBehance->has_social_links){
             foreach ($dataFromBehance->social_links as $link){
@@ -177,12 +190,23 @@ class FreelancersController extends Controller
         }
         $userData->save();
 
-//         bring user projects from behance and save them : :
 
-        $projects = $dataFromBehance->projects;
-        if(count($projects > 0)){
+//         bring user projects from behance and save them :
+        if($multipleLinks){
+            $projects = [];
+            foreach ($links as $link){
+                $behanceUsername = $this->getBehanceUsername($link);
+                $dataFromBehance =  $userDataController->ArrDataFromBehance($behanceUsername);
+                if(count($dataFromBehance->projects ) > 0){
+                    array_push($projects,...$dataFromBehance->projects);
+                }
+            }
+        }else{
+            $projects = $dataFromBehance->projects;
+        }
+
+        if(count($projects ) > 0){
             foreach ($projects as $project){
-
                 $dist = "resumeApp/uploads/project".$project->id."Behance".$user->id.".png";
                 if (!file_exists($dist)){
                     copy($project->covers->original, $dist);
@@ -267,6 +291,14 @@ class FreelancersController extends Controller
             $currUser->save();
         }
         return 'agreed saved';
+    }
+
+    protected function getBehanceUsername($link){
+        $behanceLink     = $link;
+        $behanceLinkArr  = explode('/',$behanceLink);
+        $behanceUsername = end($behanceLinkArr);
+
+        return $behanceUsername ;
     }
 
 }

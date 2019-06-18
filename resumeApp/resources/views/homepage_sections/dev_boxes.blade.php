@@ -7,10 +7,9 @@
                         <div class="col-lg-6 col-sm-12 borderRight">
                             <div class="designerLeftSide text-left">
                                 <img src="/resumeApp/public/images/13.png"
-                                     alt="design image">
+                                     alt="design image"  style="width: 40px;">
                                 <h2>
-                                    Access to highly effective, top performing sales agents.
-                                   Our agents are excellent communicators, highly driven and passionate about selling.
+                                    Access to a highly effective , top performing network of developers. We source experts in Python  / Blockchain / PHP / Javascript & Mobile Technologies.
                                 </h2>
                             </div>
                         </div>
@@ -18,17 +17,17 @@
                             <div class="designerRightSide">
                                 <h2>
                                     <img src="/resumeApp/public/images/new_theme/rec_developers@2x.png"
-                                         alt="rec"> Outbound
+                                         alt="rec"> Developers
                                 </h2>
                                 <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><img
                                             src="/resumeApp/public/images/new_theme/arrow@2x.png"
-                                            alt="arrow"> Telemarketing / Telesales</a><br/>
+                                            alt="arrow"> Full Stack</a><br/>
                                 <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><img
                                             src="/resumeApp/public/images/new_theme/arrow@2x.png"
-                                            alt="arrow"> Lead Generation </a><br>
+                                            alt="arrow"> Front End  </a><br>
                                 <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><img
                                             src="/resumeApp/public/images/new_theme/arrow@2x.png"
-                                            alt="arrow"> Appointment Setting</a><br/>
+                                            alt="arrow"> Back End</a><br/>
 
                                 <div class="getStartBtn col-md-8 col-7">
                                     <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
@@ -51,10 +50,9 @@
                         <div class="col-lg-6 borderRight">
                             <div class="designerLeftSide text-left">
                                 <img src="/resumeApp/public/images/12.png"
-                                     alt="design image">
+                                     alt="design image" style="width: 40px;">
                                 <h2>
-                                    Access Highly motivated professional teams of customer service agents. Fluent in
-                                    English & Spanish. Available 24/7
+                                    Access to highly skilled , product designers and ui / ux experts . We source experts in design, illustration and animation.
                                 </h2>
                             </div>
                         </div>
@@ -62,17 +60,17 @@
                             <div class="designerRightSide">
                                 <h2>
                                     <img src="/resumeApp/public/images/new_theme/reg_developers@2x.png"
-                                         alt="rec"> Inbound
+                                         alt="rec"> Designers
                                 </h2>
                                 <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><img
                                             src="/resumeApp/public/images/new_theme/arrow@2x.png"
-                                            alt="arrow"> Customer Service</a><br/>
+                                            alt="arrow">  UI </a><br/>
                                 <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><img
                                             src="/resumeApp/public/images/new_theme/arrow@2x.png"
-                                            alt="arrow"> Call Answering</a><br>
+                                            alt="arrow"> UX </a><br>
                                 <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><img
                                             src="/resumeApp/public/images/new_theme/arrow@2x.png"
-                                            alt="arrow"> Account Sales</a><br/>
+                                            alt="arrow"> Illustration </a><br/>
                                 <div class="getStartBtn col-md-8 col-7">
                                     <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
                                         Get Started &nbsp&nbsp&nbsp <img

@@ -2,7 +2,7 @@
     <div class="row customContainer">
         <div class="col-md-8 offset-md-1 offset-lg-0">
             <div class="secondSectionHeading">
-                Build<br/><span>Great Teams.</span>
+                Hire<br/><span>Great Developers.</span>
                 <div class="lineDivider"></div>
             </div>
         </div>
@@ -21,7 +21,7 @@
                                         Erika Duldulao
                                     </div>
                                     <div class="freelancerJob">
-                                        Sales Agent
+                                        Front End Developer
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                         Conor
                                     </div>
                                     <div class="freelancerJob">
-                                        Sales Agent
+                                        iOS Developers
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                                         Jaime
                                     </div>
                                     <div class="freelancerJob">
-                                        Telesales
+                                        Android Developer
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                         Kristine Charisse Exaure
                                     </div>
                                     <div class="freelancerJob">
-                                        Sales Agent
+                                        Angular.Js Developer
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                                         Mhargot Abuan
                                     </div>
                                     <div class="freelancerJob">
-                                        Sales Agent
+                                        UI/UX Designer
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@
                                         Yvonie Wenceslao
                                     </div>
                                     <div class="freelancerJob">
-                                        Sales Agent
+                                        Vue.js Developer
                                     </div>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
                                         Ryan Icasas
                                     </div>
                                     <div class="freelancerJob">
-                                        Sales Agent
+                                        Python Developer
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
                                         Jon
                                     </div>
                                     <div class="freelancerJob">
-                                        Customer Success
+                                        Front End Developer
                                     </div>
                                 </div>
                             </div>
@@ -146,7 +146,7 @@
                                         Lars
                                     </div>
                                     <div class="freelancerJob">
-                                        Customer Service
+                                        Vue.js Developer
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +162,7 @@
                                         Michelle
                                     </div>
                                     <div class="freelancerJob">
-                                        Global Sales
+                                        Android Developer
                                     </div>
                                 </div>
                             </div>
@@ -177,7 +177,7 @@
                                         Shen
                                     </div>
                                     <div class="freelancerJob">
-                                        Sales manager
+                                        UI/UX Designer
                                     </div>
                                 </div>
                             </div>
@@ -193,7 +193,7 @@
                                         Vitaly
                                     </div>
                                     <div class="freelancerJob">
-                                        Lead Generation
+                                        Python Developer
                                     </div>
                                 </div>
                             </div>

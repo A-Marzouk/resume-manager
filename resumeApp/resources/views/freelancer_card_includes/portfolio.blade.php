@@ -133,7 +133,7 @@
             </div>
             <? endforeach; ?>
         @endif
-        <div class="showOnlyOnmd">
+        <div class="">
             {{-- works section carousel --}}
             <div id="portfolioCarousel{{$freelancer->id}}{{$value['id']}}" class="carousel slide d-md-block" data-ride="carousel"
                  data-interval="false">
@@ -211,61 +211,7 @@
             </div>
 
         </div>
-        <div id="portfolioContent{{$freelancer->id}}{{$value['id']}}_mob">
-    <div class="showOnlyOnsm">
-        {{-- works section carousel --}}
-        <div id="portfolioCarousel{{$freelancer->id}}{{$value['id']}}_mob" class="carousel slide" data-ride="carousel"
-             data-interval="false">
-            <div class="slickSlide_portfolio" style="background: #fdfdfd;">
-                @if(!empty($workExamples))
-                    <? $i=1;?>
-                    @foreach($workExamples as $workExample)
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="workCard" style="margin-left: 0">
-                                    <div class="workImg">
-                                        <a href="javascript:void(0)"
-                                           @if(!isset($portfolioModal))
-                                           data-toggle="modal" style="outline: none;"
-                                           data-target="#works{{$workExample->id}}Modal"
-                                                @endif
-                                        >
-                                            <?
-                                            $photoSrc = $workExample->mainImage ;
-                                            if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
-                                                $photoSrc = '/' . $photoSrc;
-                                            }
-                                            ?>
-                                            <img src="{{$photoSrc}}" alt="work img"
-                                                 width="260" >
-                                        </a>
-                                    </div>
-                                    <div class="workTitle">
-                                        <div class="row">
-                                            <div class="col-md-10 col-9">
-                                                {{$workExample->projectName}}
-                                            </div>
-                                            <a class="col-md-1 col-1" href="javascript:void(0)"
-                                               data-toggle="modal"
-                                               data-target="#works{{$workExample->id}}Modal"
-                                               style="outline: none; margin-left: 16px;">
-                                                <img src="/resumeApp/public/images/newResume/link.png"
-                                                     alt="view work">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <? $i++ ;?>
-                    @endforeach
-                @endif
-            </div>
-        </div>
-        {{-- end of works section carousel --}}
 
-    </div>
-</div>
     @endif
 </div>
 

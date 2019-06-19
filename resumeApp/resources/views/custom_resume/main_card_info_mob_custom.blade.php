@@ -65,39 +65,3 @@
         @endif
     </div>
 </div>
-
-{{-- interviews --}}
-<div class="row interviewIcons" style="padding:10px 0 0 0;">
-    <div class="col-12 jobTitle text-center" style="color:#4E75E8; padding-top: 0; padding-bottom: 15px; padding-left: 0;">
-        View interviews
-    </div>
-</div>
-
-<div class="row" style="padding-bottom: 15px;">
-    <div class="col-6">
-        <div class="audioTransArea text-center NoDecor">
-            <a href="javascript:void(0)" id="{{$freelancer->id}}{{$value['id']}}_open_audio" style="outline: none;" class="openAudio">
-                <div class="cardIconsCon ">
-                    <span>
-                        <img src="/resumeApp/public/images/audio_blue.png"
-                             alt="" style="padding-right: 5px; width: 23px;">
-                        <span class="audioText"  style="color: #4E75E8;">Audio & Text</span>
-                    </span>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-6">
-        <div class="videoArea NoDecor">
-            <a href="javascript:void(0)" id="{{$freelancer->id}}{{$value['id']}}_open_video" style="outline: none;" class="openVideo">
-                <div class="cardIconsCon2  text-center">
-            <span>
-                <img src="/resumeApp/public/images/video_blue.png"
-                     alt="" style="padding-right: 5px; width: 23px;">
-                <span class="audioText"  style="color: #4E75E8;">Video</span>
-            </span>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>

@@ -102,7 +102,7 @@ class StripePayments
 
             $telegram = new Telegram('-228260999');
             $msg      = "Stripe custom payment has been made.\n" ;
-            $msg     .= "With amount of ".$request->amountToPay ." USD";
+            $msg     .= "With amount of ".$request->amountToPay ." ". $request->currency;
             $msg     .= "\nFrom : " . $request->stripeEmail;
             $msg     .= "\nDescription : " . $request->description;
             if(isset($request->weeks) && $request->weeks > 1){

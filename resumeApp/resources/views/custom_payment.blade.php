@@ -10,11 +10,23 @@
             {{ csrf_field() }}
 
             <div class="form-group col-md-6 offset-md-3">
-                <label for="amountToPay" class="panelFormLabel">Amount to pay * <small> (USD) </small>
+                <label for="amountToPay" class="panelFormLabel">Amount to pay *
                 </span>
                 </label>
                 <input type="text" class="form-control panelFormInput" id="amountToPay" name="amountToPay" required>
             </div> <!-- amount to pay -->
+
+            <div class="form-group col-md-6 offset-md-3">
+                <label for="currency" class="panelFormLabel">Currency :</label>
+                <select  id="currency" class="form-control" name="currency">
+                    <option disabled>Please select</option>
+                    <option value="usd" selected> USD </option>
+                    <option value="eur" > EUR </option>
+                    <option value="gbp" > GBP </option>
+                    <option value="cad" > CAD </option>
+                    <option value="aud" > AUD </option>
+                </select>
+            </div>
 
             <div class="form-group col-md-6 offset-md-3">
                 <label for="description" class="panelFormLabel">Description of payment * </label>

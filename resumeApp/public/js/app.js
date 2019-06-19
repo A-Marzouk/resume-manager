@@ -75421,6 +75421,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'mainImage': '',
                 'order': 1
             };
+        },
+        getSource: function getSource(src) {
+            if (src[0] === '/') {
+                return src;
+            }
+            return '/' + src;
         }
     },
 
@@ -75471,7 +75477,7 @@ var render = function() {
                       _c("img", {
                         staticStyle: { "border-radius": "5px" },
                         attrs: {
-                          src: "/" + project.mainImage,
+                          src: _vm.getSource(project.mainImage),
                           alt: "",
                           width: "100%",
                           id: "projectImg"
@@ -75943,6 +75949,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 // delete from files if exist :
                 if (this.toBeEditedProject.imagesFiles.length > 0) {}
             }
+        },
+        getSource: function getSource(src) {
+            if (src[0] === '/') {
+                return src;
+            }
+            return '/' + src;
         }
     },
     mounted: function mounted() {}
@@ -76026,7 +76038,9 @@ var render = function() {
                           [
                             _c("img", {
                               attrs: {
-                                src: "/" + _vm.toBeEditedProject.mainImage,
+                                src: _vm.getSource(
+                                  _vm.toBeEditedProject.mainImage
+                                ),
                                 alt: "",
                                 width: "100%",
                                 height: "auto"
@@ -76039,7 +76053,7 @@ var render = function() {
                               return _c("div", [
                                 _c("img", {
                                   attrs: {
-                                    src: "/" + image,
+                                    src: _vm.getSource(image),
                                     alt: "",
                                     width: "100%"
                                   }
@@ -76499,7 +76513,7 @@ var render = function() {
                                         "border-radius": "5px"
                                       },
                                       attrs: {
-                                        src: "/" + image,
+                                        src: _vm.getSource(image),
                                         alt: "",
                                         width: "100%"
                                       }
@@ -84595,7 +84609,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             mailsList: [],
             template: '',
             currEmailSubject: '',
-            templatesList: ['company_info', 'test_mail_content','increase_sales']
+            templatesList: ['company_info', 'test_mail_content']
         };
     },
 
@@ -85842,7 +85856,7 @@ if (navigator.mediaDevices.getUserMedia) {
 /* 289 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: ModuleBuildError: Module build failed: Error: Missing binding C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\node-sass\\vendor\\win32-x64-64\\binding.node\nNode Sass could not find a binding for your current environment: Windows 64-bit with Node.js 10.x\n\nFound bindings for the following environments:\n  - Windows 64-bit with Node.js 8.x\n\nThis usually happens because your environment has changed since running `npm install`.\nRun `npm rebuild node-sass --force` to build the binding for your current environment.\n    at module.exports (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\node-sass\\lib\\binding.js:15:13)\n    at Object.<anonymous> (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\node-sass\\lib\\index.js:14:35)\n    at Module._compile (internal/modules/cjs/loader.js:701:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:712:10)\n    at Module.load (internal/modules/cjs/loader.js:600:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:539:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:531:3)\n    at Module.require (internal/modules/cjs/loader.js:637:17)\n    at require (internal/modules/cjs/helpers.js:22:18)\n    at Object.<anonymous> (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\sass-loader\\lib\\loader.js:3:14)\n    at Module._compile (internal/modules/cjs/loader.js:701:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:712:10)\n    at Module.load (internal/modules/cjs/loader.js:600:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:539:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:531:3)\n    at Module.require (internal/modules/cjs/loader.js:637:17)\n    at require (internal/modules/cjs/helpers.js:22:18)\n    at loadLoader (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\loadLoader.js:13:17)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at runLoaders (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\webpack\\lib\\NormalModule.js:195:19)\n    at C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:364:11\n    at C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:170:18\n    at loadLoader (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\loadLoader.js:27:11)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:165:10)\n    at C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:173:18\n    at loadLoader (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\loadLoader.js:36:3)\n    at iteratePitchingLoaders (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:169:2)\n    at runLoaders (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\loader-runner\\lib\\LoaderRunner.js:362:2)\n    at NormalModule.doBuild (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\webpack\\lib\\NormalModule.js:182:3)\n    at NormalModule.build (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\webpack\\lib\\NormalModule.js:275:15)\n    at Compilation.buildModule (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\webpack\\lib\\Compilation.js:151:10)\n    at moduleFactory.create (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\webpack\\lib\\Compilation.js:454:10)\n    at factory (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\webpack\\lib\\NormalModuleFactory.js:243:5)\n    at applyPluginsAsyncWaterfall (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\webpack\\lib\\NormalModuleFactory.js:94:13)\n    at C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\tapable\\lib\\Tapable.js:268:11\n    at NormalModuleFactory.params.normalModuleFactory.plugin (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\webpack\\lib\\CompatibilityPlugin.js:52:5)\n    at NormalModuleFactory.applyPluginsAsyncWaterfall (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\tapable\\lib\\Tapable.js:272:13)\n    at resolver (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\webpack\\lib\\NormalModuleFactory.js:69:10)\n    at process.nextTick (C:\\OSPanel\\domains\\123workforce\\live.123workforce.com\\resumeApp\\node_modules\\webpack\\lib\\NormalModuleFactory.js:196:7)\n    at process._tickCallback (internal/process/next_tick.js:61:11)");
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

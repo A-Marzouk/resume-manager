@@ -4,7 +4,7 @@
             <project-detail v-for="(project,index) in projects" v-bind:key="index" class="list-item projectBox">
                 <div style="height: 200px; overflow: hidden;">
                     <a href="javascript:void(0)" @click="editProject(project.id)"  data-toggle="modal" data-target="#addProjectModal" style="outline: none;">
-                        <img :src="'/'+project.mainImage" alt="" width="100%" id="projectImg" style="border-radius:5px;">
+                        <img :src="getSource(project.mainImage)" alt="" width="100%" id="projectImg" style="border-radius:5px;">
                     </a>
                 </div>
                 <hr>
@@ -131,6 +131,12 @@
                     'mainImage':'',
                     'order':1,
                 };
+            },
+            getSource(src){
+                if(src[0] === '/'){
+                    return src ;
+                }
+                return '/'+ src ;
             }
         },
 

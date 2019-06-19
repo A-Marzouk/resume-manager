@@ -1,7 +1,7 @@
 @extends('layouts.client-app')
 
 @section('content')
-        <? // check developer or designer :
+        <?
             $freelancer = $user1;
             if(!isset($value['id'])){
                 $value['id'] = '';

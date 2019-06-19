@@ -11,6 +11,7 @@
             <th scope="col">Occupation</th>
             <th scope="col">Homepage freelancer</th>
             <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -59,7 +60,7 @@
                 @endif
             </td>
             <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Open form</a></td>
-
+            <td><a class="btn btn-default btn-sm" href="/{{$user->username}}">Open Resume</a></td>
         </tr>
 
 

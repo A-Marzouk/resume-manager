@@ -15,9 +15,9 @@
                             </div>
                             <div class="col-md-8" v-show="toBeEditedProject.mainImage">
                                 <div style="border-radius:10px; border: 1px solid lightgray;">
-                                        <img :src="'/'+toBeEditedProject.mainImage" alt="" width="100%" height="auto">
+                                        <img :src="getSource(toBeEditedProject.mainImage)" alt="" width="100%" height="auto">
                                         <div v-for="image in toBeEditedProject.images">
-                                            <img :src="'/'+image" alt="" width="100%">
+                                            <img :src="getSource(image)" alt="" width="100%">
                                         </div>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
                                         <div class="row text-right">
                                             <div class="col-md-6" v-for="(image,index) in toBeEditedProject.images" v-show="image !== '' " style="padding-top: 10px;">
                                                 <a href="javascript:void(0)" style="color: lightgrey;" @click="deleteImage(index,toBeEditedProject.id,image)">x</a>
-                                                <img :src="'/'+image" alt="" width="100%" style="border: 1px solid lightgray; border-radius: 5px;">
+                                                <img :src="getSource(image)" alt="" width="100%" style="border: 1px solid lightgray; border-radius: 5px;">
                                             </div>
                                         </div>
 
@@ -197,6 +197,12 @@
                     }
                 }
             },
+            getSource(src){
+                if(src[0] === '/'){
+                    return src ;
+                }
+                return '/'+ src ;
+            }
 
     },
         mounted(){

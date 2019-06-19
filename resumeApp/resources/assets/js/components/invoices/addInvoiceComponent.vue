@@ -30,13 +30,17 @@
                               <div class="form-group col-6">
                                   <label for="currency" class="panelFormLabel">Currency :</label>
                                   <select  id="currency" class="form-control" v-model="toBeEditedInvoice.currency">
-                                      <option disabled selected>Please select</option>
-                                      <option value="USD" > USD </option>
+                                      <option disabled>Please select</option>
+                                      <option value="usd" selected> USD </option>
+                                      <option value="eur" > EUR </option>
+                                      <option value="gbp" > GBP </option>
+                                      <option value="cad" > CAD </option>
+                                      <option value="aud" > AUD </option>
                                   </select>
                               </div>
 
                               <div class="form-group col-md-6">
-                                  <label for="total_amount" class="panelFormLabel">Total amount <small>(USD)</small> :</label>
+                                  <label for="total_amount" class="panelFormLabel">Total amount :</label>
                                   <input type="number" class="form-control" id="total_amount" name="total_amount" :placeholder="'Hours * Rate : '+toBeEditedInvoice.rate * toBeEditedInvoice.hours" v-model="toBeEditedInvoice.total_amount" required>
                               </div>
                               <div class="form-group col-md-12">

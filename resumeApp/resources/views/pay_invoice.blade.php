@@ -170,6 +170,7 @@
                                 <input type="hidden" value="{{$invoice->id}}" name="invoice_id">
                                 <input type="hidden" value="{{$invoice->client->id}}" name="client_id">
                                 <input type="hidden" value="{{$invoice->hours}}" name="hours">
+                                <input type="hidden" value="{{$invoice->currency}}" name="currency">
                                 @if(in_array('recurring',explode(',',$invoice->payment_options)))
                                     <div class="form-group col-md-12">
                                         <label for="weeks" class="panelFormLabel">Recurring payments <small><br/>(Leave empty for one time payment)</small></label>

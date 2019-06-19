@@ -44,7 +44,7 @@
 
                         <div class="NoDecor">
                             Public link :<b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
-                            <a :href="'https://123workforce.com/workforce/invoices/'+invoice.unique_number" target="_blank"> View invoice</a>
+                            <a :href="'/workforce/invoices/'+invoice.unique_number" target="_blank"> View invoice</a>
                         </b><br/>
                         </div>
                         <div v-show="invoice.services.length < 1" class="font-weight-bold row">

@@ -43,6 +43,7 @@ class StripePayments
         Stripe::setApiKey($this->apiKey);
 
         // 3 payments : custom , hire freelancer , invoice.
+
         if(!isset($request->paymentInfo)){
             return redirect('/')->with('errorMessage','Payment info is not enough!');
         }
@@ -65,7 +66,7 @@ class StripePayments
             $subscription_id = $this->makeStripeRecurringCustomPayment($request);
             $this->createBooking($request , null,$subscription_id);
         }else{
-            $this->chargeCustomerOnce($amountToPay,$request->description,$customerID);
+            $this->chargeCustomerOnce($amountToPay,$request->description,$customerID,$request->currency);
         }
 
         $invoice = '';
@@ -75,7 +76,7 @@ class StripePayments
                 $invoice->status = 'Paid';
                 $invoice->save();
                 if($invoice->status === 'Paid' && isset($invoice->booking_id)){
-                    // change booking to status to be paid.
+                    // change booking status to be paid.
                     $booking = Booking::where('id',$invoice->booking_id)->first();
                     $booking->is_paid = true;
                     $booking->save();
@@ -114,7 +115,7 @@ class StripePayments
             // telegram:
             $telegram = new Telegram('-228260999');
             $msg      = "Stripe Invoice payment has been made.\n" ;
-            $msg     .= "With amount of ".$request->amountToPay ." USD";
+            $msg     .= "With amount of ".$request->amountToPay ." " .$request->currency;
             $msg     .= "\nFrom : " . $request->stripeEmail;
             $msg     .= "\nDescription : " . $request->description;
             $msg     .= "\nInvoice number : " . $invoice->unique_number;
@@ -135,6 +136,7 @@ class StripePayments
             $telegram->sendMessage($msg);
         }
     }
+
     protected function makeStripeRecurringCustomPayment(Request $request){
         $amountToPay = intval($request->amountToPay) * 100;
         if($request->paymentInfo == 'hireFreelancer'){
@@ -216,10 +218,10 @@ class StripePayments
         return $customerID;
     }
 
-    protected function chargeCustomerOnce($amountToPay,$description,$currCustomerID){
+    protected function chargeCustomerOnce($amountToPay,$description,$currCustomerID,$currency = 'usd'){
         $charge = Charge::create([
             'amount' => $amountToPay,
-            'currency' => 'usd',
+            'currency' => $currency,
             'description' => $description,
             "customer" => $currCustomerID,
             'receipt_email' => 'AhmedMarzouk266@gmail.com',

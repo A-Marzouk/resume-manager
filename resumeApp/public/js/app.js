@@ -58510,8 +58510,7 @@ var render = function() {
                           {
                             attrs: {
                               href:
-                                "https://123workforce.com/workforce/invoices/" +
-                                invoice.unique_number,
+                                "/workforce/invoices/" + invoice.unique_number,
                               target: "_blank"
                             }
                           },
@@ -59098,6 +59097,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedInvoice'],
@@ -59440,21 +59443,44 @@ var render = function() {
                             }
                           },
                           [
+                            _c("option", { attrs: { disabled: "" } }, [
+                              _vm._v("Please select")
+                            ]),
+                            _vm._v(" "),
                             _c(
                               "option",
-                              { attrs: { disabled: "", selected: "" } },
-                              [_vm._v("Please select")]
+                              { attrs: { value: "usd", selected: "" } },
+                              [_vm._v(" USD ")]
                             ),
                             _vm._v(" "),
-                            _c("option", { attrs: { value: "USD" } }, [
-                              _vm._v(" USD ")
+                            _c("option", { attrs: { value: "eur" } }, [
+                              _vm._v(" EUR ")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "gbp" } }, [
+                              _vm._v(" GBP ")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "cad" } }, [
+                              _vm._v(" CAD ")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "aud" } }, [
+                              _vm._v(" AUD ")
                             ])
                           ]
                         )
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group col-md-6" }, [
-                        _vm._m(0),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "total_amount" }
+                          },
+                          [_vm._v("Total amount :")]
+                        ),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -59539,7 +59565,7 @@ var render = function() {
                       _c("div", { staticClass: "form-group col-md-12" }, [
                         _c("hr"),
                         _vm._v(" "),
-                        _vm._m(1),
+                        _vm._m(0),
                         _vm._v(" "),
                         _c("textarea", {
                           directives: [
@@ -59829,7 +59855,7 @@ var render = function() {
                           : _vm._e()
                       ]),
                       _vm._v(" "),
-                      _vm._m(2),
+                      _vm._m(1),
                       _vm._v(" "),
                       _c("div", { staticClass: "form-group col-md-6" }, [
                         _c(
@@ -59916,7 +59942,7 @@ var render = function() {
                       _c("div", { staticClass: "form-group col-md-12" }, [
                         _c("hr"),
                         _vm._v(" "),
-                        _vm._m(3),
+                        _vm._m(2),
                         _vm._v(" "),
                         _c("textarea", {
                           directives: [
@@ -60388,7 +60414,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(4)
+                    _vm._m(3)
                   ]
                 )
               ])
@@ -60400,16 +60426,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticClass: "panelFormLabel", attrs: { for: "total_amount" } },
-      [_vm._v("Total amount "), _c("small", [_vm._v("(USD)")]), _vm._v(" :")]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

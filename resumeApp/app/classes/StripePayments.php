@@ -155,7 +155,7 @@ class StripePayments
             'product' => $product->id,
             'nickname' => $request->description,
             'interval' => 'week',
-            'currency' => 'usd',
+            'currency' => $request->currency,
             'amount' => $amountToPay,
         ]);
 
@@ -345,7 +345,7 @@ class StripePayments
         ]);
 
         $plan = Plan::create([
-            'currency' => 'usd',
+            'currency' => $request->currency,
             'interval' => 'month',
             'product' => $product->id,
             'nickname' => 'Pay as you go plan',

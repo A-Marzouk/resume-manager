@@ -12154,7 +12154,7 @@ select:focus {
 }
 
 .newFooter .contactInfo__item {
-  margin-right: 20px;
+  margin-right: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12164,7 +12164,7 @@ select:focus {
 }
 
 .newFooter .contactInfo__item img {
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .newFooter .navigation {

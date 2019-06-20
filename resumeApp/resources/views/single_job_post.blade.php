@@ -22,6 +22,12 @@
                 <div>
                     Client name : {{\App\Client::find($job->client_id)->name}}
                 </div>
+                <div>
+                    @if(!empty($job->job_attachment))
+                        Attachment :
+                        <a href="/{{$job->job_attachment}}" >Open file </a>
+                    @endif
+                </div>
             </div>
         </div>
         <div class="row">

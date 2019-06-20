@@ -79,6 +79,9 @@
                             {{Auth::guard('client')->user()->unreadMessages()}}
                         </span>
                     </a>
+                    <a class="nav-item nav-link customNavLink" href="/client/jobs" style="color:#0290D8;">
+                        Jobs
+                    </a>
                     <a class="nav-item nav-link customNavLink" href="/client">
                         {{ Auth::guard('client')->user()->name }}
                     </a>

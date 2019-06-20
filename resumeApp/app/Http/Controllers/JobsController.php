@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 
+use App\classes\Upload;
 use App\Job;
 use Illuminate\Http\Request;
 
@@ -67,10 +68,17 @@ class JobsController extends Controller
         $jobPost->posted = $request->posted;
         $jobPost->status = $request->status;
 
+        if(isset($request->job_attachment)){
+            $fileInfo = Upload::jobFile('','job_attachment',date(time()));
+            $jobPost->job_attachment = $fileInfo['path'];
+        }
+
         $jobPost->save();
 
-        return ['id'=>$jobPost->id];
-
+        return [
+            'id'=>$jobPost->id,
+            'filePath'=>$jobPost->job_attachment
+        ];
     }
 
     public function deleteJobPost(Request $request){

@@ -41,6 +41,11 @@
                                 </div>
 
                                 <div class="form-group col-md-6">
+                                    <label for="level" class="panelFormLabel">attach file : </label>
+                                    <input type="file" ref="file" class="form-control" id="job_attachment" name="job_attachment">
+                                </div>
+
+                                <div class="form-group col-md-6">
                                     <input type="hidden" class="form-control" id="status" name="status" v-model="toBeEditedJob.status">
                                 </div>
 
@@ -65,14 +70,17 @@
         },
         methods:{
             submitForm(){
-                // post data :
-                axios.post('/client/jobs/add',this.toBeEditedJob).then( (response) => {
+
+                let postData = this.getPostData();
+
+                axios.post('/client/jobs/add',postData).then( (response) => {
                     //
                     if(this.toBeEditedJob.id === ""){
                         this.$emit('jobAdded',this.toBeEditedJob);
                     }
                     // save the job id :
                     this.toBeEditedJob.id = response.data.id;
+                    this.toBeEditedJob.job_attachment = response.data.filePath;
                     // changes saved :
                     $('#changesSaved').fadeIn('slow');
                     setTimeout(function () {
@@ -81,6 +89,28 @@
                 });
                 $('#closeJobModal').click();
             },
+            getPostData(){
+                this.form_data = new FormData;
+
+                this.form_data.append('id',this.toBeEditedJob.id ||'');
+                this.form_data.append('title',this.toBeEditedJob.title ||'');
+                this.form_data.append('description',this.toBeEditedJob.description||'');
+                this.form_data.append('budget',this.toBeEditedJob.budget||'');
+                this.form_data.append('time',this.toBeEditedJob.time||'');
+                this.form_data.append('skills',this.toBeEditedJob.skills||'');
+                this.form_data.append('level',this.toBeEditedJob.level||'');
+                this.form_data.append('status',this.toBeEditedJob.status||'');
+
+                // attach file :
+
+                if ($('#job_attachment').get(0).files.length !== 0) {
+                    const job_attachment = this.$refs.file.files[0];
+                    this.form_data.append('job_attachment',job_attachment || '');
+                }
+
+
+                return this.form_data;
+            }
         },
         mounted(){
         }

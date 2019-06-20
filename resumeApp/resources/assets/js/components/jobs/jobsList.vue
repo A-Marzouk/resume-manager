@@ -25,6 +25,7 @@
                 <div  style="color: #30323D;font-family: Roboto;"> Time : {{job.time}}</div>
                 <div  style="color: #30323D;font-family: Roboto;">Level : {{job.level}}</div>
                 <div  style="color: #30323D;font-family: Roboto;">Skills : {{job.skills}}</div>
+                <div  style="color: #30323D;font-family: Roboto;" v-show="job.job_attachment !== null">File : <a :href="'/'+ job.job_attachment" target="_blank"> Open file </a></div>
                 <button :id="'seeApplied'+job.id" class="btn btn-sm btn-outline-primary" @click="getAppliedFreelancers(job.id)">See who applied</button>
                 <br/>
                 <div v-for="(data,index) in appliedFreelancers" v-bind:key="index">
@@ -61,7 +62,8 @@
                     'skills':'',
                     'status':'',
                     'level':'',
-                    'posted':''
+                    'posted':'',
+                    'job_attachment':''
                 },
                 appliedFreelancers:[]
             }

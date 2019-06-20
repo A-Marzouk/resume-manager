@@ -71393,6 +71393,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -71408,7 +71409,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'skills': '',
                 'status': '',
                 'level': '',
-                'posted': ''
+                'posted': '',
+                'job_attachment': ''
             },
             appliedFreelancers: []
         };
@@ -71640,6 +71642,34 @@ var render = function() {
                 "div",
                 { staticStyle: { color: "#30323D", "font-family": "Roboto" } },
                 [_vm._v("Skills : " + _vm._s(job.skills))]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: job.job_attachment !== null,
+                      expression: "job.job_attachment !== null"
+                    }
+                  ],
+                  staticStyle: { color: "#30323D", "font-family": "Roboto" }
+                },
+                [
+                  _vm._v("File : "),
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "/" + job.job_attachment,
+                        target: "_blank"
+                      }
+                    },
+                    [_vm._v(" Open file ")]
+                  )
+                ]
               ),
               _vm._v(" "),
               _c(
@@ -71942,6 +71972,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedJob'],
@@ -71953,14 +71988,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         submitForm: function submitForm() {
             var _this = this;
 
-            // post data :
-            axios.post('/client/jobs/add', this.toBeEditedJob).then(function (response) {
+            var postData = this.getPostData();
+
+            axios.post('/client/jobs/add', postData).then(function (response) {
                 //
                 if (_this.toBeEditedJob.id === "") {
                     _this.$emit('jobAdded', _this.toBeEditedJob);
                 }
                 // save the job id :
                 _this.toBeEditedJob.id = response.data.id;
+                _this.toBeEditedJob.job_attachment = response.data.filePath;
                 // changes saved :
                 $('#changesSaved').fadeIn('slow');
                 setTimeout(function () {
@@ -71968,6 +72005,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }, 2000);
             });
             $('#closeJobModal').click();
+        },
+        getPostData: function getPostData() {
+            this.form_data = new FormData();
+
+            this.form_data.append('id', this.toBeEditedJob.id || '');
+            this.form_data.append('title', this.toBeEditedJob.title || '');
+            this.form_data.append('description', this.toBeEditedJob.description || '');
+            this.form_data.append('budget', this.toBeEditedJob.budget || '');
+            this.form_data.append('time', this.toBeEditedJob.time || '');
+            this.form_data.append('skills', this.toBeEditedJob.skills || '');
+            this.form_data.append('level', this.toBeEditedJob.level || '');
+            this.form_data.append('status', this.toBeEditedJob.status || '');
+
+            // attach file :
+
+            if ($('#job_attachment').get(0).files.length !== 0) {
+                var job_attachment = this.$refs.file.files[0];
+                this.form_data.append('job_attachment', job_attachment || '');
+            }
+
+            return this.form_data;
         }
     },
     mounted: function mounted() {}
@@ -72252,6 +72310,27 @@ var render = function() {
                                 $event.target.value
                               )
                             }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "panelFormLabel",
+                            attrs: { for: "level" }
+                          },
+                          [_vm._v("attach file : ")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          ref: "file",
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "file",
+                            id: "job_attachment",
+                            name: "job_attachment"
                           }
                         })
                       ]),

@@ -12052,7 +12052,7 @@ select:focus {
 .questionsSection__container__question.opened {
   background: -webkit-gradient(linear, left top, right top, from(#3aadf6), to(#7bc2ef));
   background: linear-gradient(to right, #3aadf6, #7bc2ef);
-  height: 300px;
+  height: 220px;
   color: white;
   font-weight: normal;
 }
@@ -12064,10 +12064,11 @@ select:focus {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
+  line-height: 20px;
 }
 
 .questionsSection__container__question__answer.opened {
-  height: 200px;
+  height: 120px;
   color: white;
 }
 

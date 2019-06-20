@@ -11358,11 +11358,6 @@ select:focus {
   border-radius: 50% !important;
 }
 
-@font-face {
-  font-family: "Monserrat";
-  src: url(/Monserrat-Regular.ttf);
-}
-
 .home {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -11371,10 +11366,7 @@ select:focus {
   margin: 0;
   margin-top: 0 !important;
   background: white !important;
-}
-
-.home * {
-  font-family: "Monserrat", Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 .topBg {
@@ -11478,6 +11470,7 @@ select:focus {
 .mainSection__content__title {
   font-size: 46px;
   color: #3358b6;
+  font-weight: 500;
 }
 
 .mainSection__content__subtitle {
@@ -12052,7 +12045,7 @@ select:focus {
 .questionsSection__container__question.opened {
   background: -webkit-gradient(linear, left top, right top, from(#3aadf6), to(#7bc2ef));
   background: linear-gradient(to right, #3aadf6, #7bc2ef);
-  height: 220px;
+  height: 250px;
   color: white;
   font-weight: normal;
 }
@@ -12064,11 +12057,11 @@ select:focus {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
-  line-height: 20px;
+  line-height: 24px;
 }
 
 .questionsSection__container__question__answer.opened {
-  height: 120px;
+  height: 150px;
   color: white;
 }
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-light fixed-top client_navbar">
+    <nav class="navbar navbar-light fixed-top dashboard_navbar">
       <div class="backBtn">
         <a href="/client/dashboard/payments">
                     <img src="/images/client/arrow_back.png" alt="back-icon">
@@ -50,8 +50,8 @@
         <!-- date -->
         <div class="payment-pay-text">
           <div style=" font-weight: 500;">Client info:</div>
-          <div>Name: Kim Coe</div>
-          <div>Company: Urban HQ LTD</div>
+          <div style="margin:20px 0 16px;">Name: Kim Coe</div>
+          <div style="margin:16px 0;">Company: Urban HQ LTD</div>
           <div class="d-flex">
             <div>
               Contact:

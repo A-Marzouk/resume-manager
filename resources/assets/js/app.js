@@ -24,6 +24,7 @@ require('./freelancer_card.js');
 require('./affiliates.js');
 require('./freelancer.js');
 require('./main.js');
+require('./select.js');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,8 +34,100 @@ require('./main.js');
 
 Vue.config.devtools = true;
 
+// admin front-end components :
+Vue.component('admin-dashboard', require('./components/admin/dashboard/Main.vue'));
+Vue.component('applicant-profile', require('./components/admin/ApplicantProfile.vue'));
+Vue.component('approved-agent-profile', require('./components/admin/ApprovedAgentProfile.vue'));
+Vue.component('advanced-search-component', require('./components/admin/AdvancedSearch.vue'));
+Vue.component('admin-register-agent', require('./components/admin/RegisterAgent.vue'));
+Vue.component('add-behance-designer', require('./components/admin/AddBehanceDesigner.vue'));
+
+
+import AdminAgents from './components/admin/dashboard/Agents.vue';
+import AdminClients from './components/admin/dashboard/Clients.vue';
+import AdminCampaigns from './components/admin/dashboard/Campaigns.vue';
+
+
+
+if ($("#approvedAgentProfile").length !== 0){
+    let approvedAgentProfile = new Vue({
+        el:'#approvedAgentProfile'
+    });
+
+}
+
+if ($("#addBehanceDesigner").length !== 0){
+    let addBehanceDesigner = new Vue({
+        el:'#addBehanceDesigner'
+    });
+
+}
+
+if ($("#applicantProfile").length !== 0){
+    let applicantProfile = new Vue({
+        el:'#applicantProfile'
+    });
+
+}
+
+if ($("#advancedSearch").length !== 0){
+    let advancedSearch = new Vue({
+        el:'#advancedSearch'
+    });
+
+}
+
+if ($("#adminDashboardComponent").length !== 0){
+
+        const routes = [
+            { path: '/admin-front/agents/', component: AdminAgents },
+            { path: '/admin-front/clients/', component: AdminClients },
+            { path: '/admin-front/campaign-manager/', component: AdminCampaigns },
+            { path: '/admin-front/', component: AdminCampaigns },
+        ];
+
+        const router = new VueRouter({
+            mode:'history',
+            routes,
+        });
+
+
+        let clientDashboardComponent = new Vue({
+            router,
+            el:'#adminDashboardComponent'
+        });
+}
+
+if ($('#adminRegisterAgent').length !== 0){
+
+    const routes = [
+        { path: '/admin-front/register-agent', component: FreelancerRegisterPage1 },
+        { path: '/admin-front/register-agent/page2', component: FreelancerRegisterPage2 },
+        { path: '/admin-front/register-agent/page3', component: FreelancerRegisterPage3 },
+        { path: '/admin-front/register-agent/page4', component: FreelancerRegisterPage4 },
+        { path: '/admin-front/register-agent/page5', component: FreelancerRegisterPage5 },
+        { path: '/admin-front/register-agent/completed', component: FreelancerRegisterCompleted }
+    ];
+
+    const router = new VueRouter({
+        mode: 'history',
+        routes,
+    });
+
+
+    let adminRegisterAgent = new Vue({
+        router,
+        el:'#adminRegisterAgent'
+    });
+}
+
+
+
+// end of admin front-end components
+
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('add-agent-component', require('./components/client/AddAgentComponent.vue'));
+
 
 // client components
 Vue.component('client-dashboard', require('./components/client/Dashboard.vue'));
@@ -245,6 +338,8 @@ if ($('#freelancerRegisterComponent').length !== 0){
         el:'#freelancerRegisterComponent'
     });
 }
+
+
 
 if ($('#freelancerDashboardComponent').length !== 0) {
   const routes = [

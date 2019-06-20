@@ -18,7 +18,7 @@ class FreelancersController extends Controller
 
     public function __construct()
     {
-//         $this->middleware('auth');
+        //  $this->middleware('auth');
     }
 
     public function index(){
@@ -123,24 +123,6 @@ class FreelancersController extends Controller
             'instagramLink'=> $currFreelancer->userData->instagramLink ?? '' ,
             'dribbleLink'=> $currFreelancer->userData->dribbleLink ?? '' ,
             'freeDate'=> $currFreelancer->userData->freeDate ?? '' ,
-            'eduTitle1'=> $currFreelancer->userData->eduTitle1 ?? '' ,
-            'eduYear1'=> $currFreelancer->userData->eduYear1?? '' ,
-            'eduDesc1'=> $currFreelancer->userData->eduDesc1?? '' ,
-            'eduTitle2'=> $currFreelancer->userData->eduTitle2 ?? '' ,
-            'eduYear2'=> $currFreelancer->userData->eduYear2?? '' ,
-            'eduDesc2'=> $currFreelancer->userData->eduDesc2?? '' ,
-            'eduTitle3'=> $currFreelancer->userData->eduTitle3 ?? '' ,
-            'eduYear3'=> $currFreelancer->userData->eduYear3?? '' ,
-            'eduDesc3'=> $currFreelancer->userData->eduDesc3?? '' ,
-            'trnTitle1'=> $currFreelancer->userData->trnTitle1 ?? '' ,
-            'trnYear1'=> $currFreelancer->userData->trnYear1?? '' ,
-            'trnDesc1'=> $currFreelancer->userData->trnDesc1?? '' ,
-            'trnTitle2'=> $currFreelancer->userData->trnTitle2 ?? '' ,
-            'trnYear2'=> $currFreelancer->userData->trnYear2?? '' ,
-            'trnDesc2'=> $currFreelancer->userData->trnDesc2?? '' ,
-            'trnTitle3'=> $currFreelancer->userData->trnTitle3 ?? '' ,
-            'trnYear3'=> $currFreelancer->userData->trnYear3?? '' ,
-            'trnDesc3'=> $currFreelancer->userData->trnDesc3?? '' ,
             'audioFile'=> $currFreelancer->userData->audioFile?? '' ,
             'telephone'=> $currFreelancer->userData->telephone?? '' ,
             'skype_id'=> $currFreelancer->userData->skype_id?? '' ,
@@ -149,16 +131,6 @@ class FreelancersController extends Controller
             'audio_transcript'=> $currFreelancer->userData->audio_transcript?? '' ,
             'video'=> $currFreelancer->userData->video?? '' ,
             'video_file'=> $currFreelancer->userData->video_file?? '' ,
-            'workDesc'=> [
-                $currFreelancer->userData->workDesc0 ?? '',
-                $currFreelancer->userData->workDesc1 ?? '',
-                $currFreelancer->userData->workDesc2 ?? '',
-                $currFreelancer->userData->workDesc3 ?? '',
-                $currFreelancer->userData->workDesc4 ?? '',
-                $currFreelancer->userData->workDesc5 ?? '',
-                $currFreelancer->userData->workDesc6 ?? '',
-                $currFreelancer->userData->workDesc7 ?? '',
-            ]
         ];
 
         return $data;

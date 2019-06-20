@@ -40,25 +40,21 @@
       display:none;
     }
     display: flex;
-    width: 100%;
-    margin-top: 30px;
-    padding-bottom: 25px;
-    padding-left: 25px;
+    align-items: center;
+    justify-content: flex-start;
     border-bottom: 0.5px solid #E0E1E3;
-
     .name{
       font-family: Roboto;
       font-style: normal;
-      font-weight: 500;
-      font-size: 18px;
+      font-weight: normal;
+      font-size: 12px;
       line-height: 20px;
       letter-spacing: 0.2px;
       color: #4A5464;
       opacity: 1;
     }
     .avatar{
-      margin-right: 12px;
-      margin-top: 6px;
+      margin-right: 10px;
     }
   }
 

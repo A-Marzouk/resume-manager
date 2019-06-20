@@ -29,11 +29,12 @@
           </div>
           <div class="acc-info-content-item">
             <img src="/images/client/my_account/agency.png" alt="agency icon">
-            <div>
+            <div style="color: #4A5464;">
               Black and White - agency
             </div>
           </div>
-          <div class="acc-info-content-item">
+          <hr style="width: 100%; margin: 21px 0;"/>
+          <div style="margin-top: 0;" class="acc-info-content-item">
             <img src="/images/client/my_account/phone_number.png" alt="phone icon">
             <div>
               00442037000685
@@ -68,7 +69,7 @@
               </div>
             </div>
             <div class="left no-decoration">
-              <a href="/client/account/service-agreement">
+              <a href="/client/account/privacy-agreement">
                                 COMPLETE AGREEMENT
                             </a>
             </div>
@@ -98,7 +99,7 @@
                     </span>
         </div>
       </div>
-      <div class="faqs-wrapper">
+      <div style="padding-top: 12px;" class="faqs-wrapper">
         <div class="faq-questions-list">
           <div v-for="(faq,index) in faqs"
                v-bind:key="index"

@@ -8,10 +8,6 @@
       </div>
       <div class="document-input-block">
         <input type="text" class="document-input" placeholder="Add a document link">
-        <hr>
-        <div class="btn-container">
-          <button class="btn disabled">SAVE LINK</button>
-        </div>
       </div>
     </div>
   </div>

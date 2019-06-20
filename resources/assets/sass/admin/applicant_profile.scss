@@ -1,0 +1,101 @@
+.stages-list-container{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  color: #4A5464;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+}
+.stages-list{
+  letter-spacing: -0.1px;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.stage-item{
+  border: 1px solid #DADADA;
+  box-sizing: border-box;
+  border-radius: 2px;
+  height: 47px;
+  width:644px;
+  display: flex;
+  align-items: center;
+  padding-left:12px;
+  padding-right:97px;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    padding-right:12px;
+    justify-content: space-evenly!important;
+    font-size: 12px;
+  }
+
+}
+
+.open-resume-text{
+  font-family: Roboto;
+  font-style: normal;
+  line-height: 24px;/* or 150% */
+  letter-spacing: -0.1px;
+  color: #3EA0D7 !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+}
+
+.recorder-bar{
+  border: 1px solid #05A4F4;
+  box-sizing: border-box;
+  border-radius: 90px;
+  width: 580px;
+  height: 32px;
+  display: flex;
+  margin-top:26px;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+
+  .time{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 24px;
+    /* or 200% */
+
+    text-align: right;
+    letter-spacing: -0.1px;
+
+    color: #7A828D;
+
+    opacity: 0.6;
+  }
+}
+
+.account-info-content-wrapper .account-info-content{
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+}
+
+.flex-small-column{
+  @media only screen and (max-width: 600px) {
+   flex-direction: column;
+  }
+}
+
+.account-info-content-wrapper{
+  @media only screen and (max-width: 600px) {
+    padding: 40px 0 0 0;
+  }
+}
+
+
+.action-buttons-bar{
+  @media only screen and (max-width: 600px) {
+    justify-content: center;
+  }
+}

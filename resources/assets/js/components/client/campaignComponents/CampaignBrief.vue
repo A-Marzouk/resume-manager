@@ -45,28 +45,39 @@
             In this section you can add frequently asked questions and answers to them.
           </div>
           <div class="faq-question-input">
-            <img src="/images/client/campaign_activity/faq.png" alt="faq icon">
-            <div class="faq-input">
-              <input type="text"
-                     name="faq"
-                     placeholder="Write a frequently asked question"
-                     v-model="newFAQ.question">
-              <img src="/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="newFAQ.question.length > 0" @click="newFAQ.question = ''">
-                        </div>
-            </div>
-            <div class="faq-answer-input">
-              <img src="/images/client/campaign_activity/answer.png" alt="faq icon">
+            <div class="faq-container">
+              <img src="/images/client/campaign_activity/faq.png" alt="faq icon">
               <div class="faq-input">
-                <textarea rows="1"
-                          name="faq-answer"
-                          placeholder="Add an answer to the question"
-                          v-model="newFAQ.answer"></textarea>
-                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="newFAQ.answer.length > 0" @click="newFAQ.answer = ''">
-                        </div>
+                <input type="text"
+                      name="faq"
+                      placeholder="Write a frequently asked question"
+                      v-model="newFAQ.question">
+                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="newFAQ.question.length > 0" @click="newFAQ.question = ''">
+              </div>
+            </div>
+            <div v-if="showErrors && errors.question" class="error">
+              This field must contain at least 7 characters.
+            </div>
+          </div>
+            <div class="faq-answer-input">
+              <div class="faq-container">
+                
+                <img src="/images/client/campaign_activity/answer.png" alt="faq icon">
+                <div class="faq-input">
+                  <textarea rows="1"
+                            name="faq-answer"
+                            placeholder="Add an answer to the question"
+                            v-model="newFAQ.answer"></textarea>
+                  <img src="/images/client/campaign_activity/close_black.png" alt="delete icon" v-show="newFAQ.answer.length > 0" @click="newFAQ.answer = ''">
+                          </div>
+              </div>
+              <div v-if="showErrors && errors.answer" class="error">
+                This field must contain at least 7 characters.
+              </div>
               </div>
               <div class="faq-add-btn"
                    :class="{ active : newFAQ.question.length > 7 && newFAQ.answer.length > 7 }">
-                <a href="#">
+                <a v-on:click="addFAQ" href="javascript:;">
                             ADD FAQ
                         </a>
               </div>
@@ -154,9 +165,8 @@
                               Enter the description of the process flow:
                             </div>
                             <div class="edit-state-action">
-                              <a href="javascript:void(0)">DELETE</a>
-                              <a href="javascript:void(0)">CANCEL</a>
-                              <a href="javascript:void(0)">SAVE</a>
+                              <a href="javascript:void(0)" class="btn-link" :class="{disabled: flowIsEmpty}">CANCEL</a>
+                              <a href="javascript:void(0)" class="btn-link" :class="{disabled: flowIsEmpty}">SAVE</a>
                             </div>
                           </div>
                           <div id="toolbar"
@@ -170,19 +180,86 @@
                       </div>
                       <div class="files-tab-content"
                            v-show="activeBriefTab === 'FILES'">
-                        <div class="files-tab-heading">
-                          In this section you can add documents important to your agents and campaign
-                        </div>
-                        <div class="files-tab-upload-area">
-                          <div class="upload-box">
-                            <div class="upload-box-heading">
-                              Drag or Drop documents you want to upload <br />or
+
+                        <div class="faq-content">
+                          <div class="faq-question-input">
+                            <label class="faq-input-label">
+                              <i class="icon icon-point"></i>
+                              List of the links
+                            </label>
+                            <div class="faq-input">
+                              <input class="bg-gray-input" type="text" placeholder="Add a link you want to share" v-model="newLink">
+                              <img src="/images/icons/arrow_drop_down_circle_gray.svg" alt="" class="dropdown-circle-icon">
+                              <img src="/images/client/campaign_activity/close_black.png"
+                                v-on:click="newLink = ''" alt="delete icon" v-show="newLink.length > 0"
+                              >
                             </div>
-                            <a href="#" class="upload-btn">
-                                CHOOSE A FILE
-                            </a>
-                            <div class="upload-notes">
-                              Maximum allowed size is 45 MB
+                            <a v-on:click="addLink(newLink)" class="btn btn-link" :class="{disabled: newLink === ''}" href="javascript:;">ADD LINK</a>
+                            <div class="links-saved">
+                              <div class="faq-question-input" :key="link + index" v-for="(link, index) in links">
+                                <div class="faq-input">
+                                  <input :disabled="index !== editingLink" class="saved-link bg-gray-input" type="text" :value="link">
+                                  <img src="/images/icons/arrow_drop_down_circle_gray.svg" alt="" class="dropdown-circle-icon">
+                                  <img src="/images/icons/edit_icon.svg"
+                                    v-on:click="editingLink = index" alt="edit icon"
+                                  >
+                                </div>
+                                <a v-if="editingLink === index" v-on:click="editLink(index)" class="btn btn-link" :class="{disabled: links[index] === ''}" href="javascript:;">SAVE LINK</a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="faq-question-input">
+                            <label class="faq-input-label">
+                              <i class="icon icon-point"></i>
+                              List of the documents
+                            </label>
+                            <div class="faq-input">
+                              <div v-if="files.length === 0" class="account-edit-section-edit-btn no-decoration picture-box">
+                                <div class="fallback">
+                                    <input multiple type="file" id="files" name="files" />
+                                </div>
+                                <p class="dz-message">Drag and drop a photo you want to upload <br/> or</p>
+                        
+                                <div class="fake-file-input btn btn-orange dz-input" >
+                                    CHOOSE A FILE
+                                </div>
+                                <p class="dz-message little">Maximum allowed size is 45 MB</p>
+                                <div id="dropfiles-team-brief" class="dropzone"></div>
+                              </div>
+                              <div class="preview-files-container" v-else>
+                                <div class="add-document-container">
+                                  <div class="dz-details">
+                                        <div
+                                        class="thumbnail-container">
+                                            <img class="icon-download" src="/images/icons/document.svg" />
+                                            <input multiple type="file" id="files" name="files"
+                                            v-on:change="addFiles" />
+                                        </div>
+                                        <a href="javascript:;">UPLOAD NEW FILE</a>
+                                    </div>
+                                </div>
+                                <div :key="index + file.name" v-for="(file, index) in files" class="preview-container">
+                                  <div class="dz-preview dz-file-preview">
+                                    <div class="dz-details">
+                                        <div class="thumbnail-container">
+                                            <img class="icon-download" src="/images/icons/download_icon.svg" />
+                                            <a href="javascript:;"
+                                            v-on:click="showMenu(index)"
+                                            class="menu-handler">
+                                                <img class="icon-menu"
+                                                src="/images/icons/more_vert.svg" />
+                                            </a>
+                                        </div>
+                                        <div class="filename">{{file.name}}</div>
+                                    </div>
+                                    <div class="menu-preview">
+                                        <a href="javascript:;" v-on:click="removeDoc(index)">Delete the document</a>
+                                        <a href="javascript:;">Send in private message</a>
+                                        <a href="javascript:;">Send to email</a>
+                                    </div>
+                                  </div>   
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -230,6 +307,7 @@
                 </div>
 </template>
 <script>
+let dropZone
 export default {
   data() {
     return {
@@ -280,13 +358,25 @@ export default {
         question: '',
         answer: ''
       },
+      newLink: '',
+      editingLink: -1,
+      links: [
+
+      ],
+      errors: {
+        question: false,
+        answer: false
+      },
       currentlyEditedQuestion: {
         beingEdited: false,
         question: '',
         answer: ''
       },
+      flowIsEmpty: true,
       process_flow_em: false,
-      is_text_editor_set: false
+      is_text_editor_set: false,
+      showErrors: false,
+      files: []
     }
   },
   methods: {
@@ -295,6 +385,15 @@ export default {
       if (tab_name === 'PROCESS_FLOW' && !this.is_text_editor_set) {
         this.setTextEditor();
       }
+    },
+    addLink(link) {
+      this.links.push(link)
+      this.newLink = ''
+    },
+    editLink(index) {
+      let link = document.getElementsByClassName('saved-link')[index].value
+      this.links[index] = link
+      this.editingLink = -1
     },
     editFAQ(faq_id) {
       let faqs = this.faqs;
@@ -319,6 +418,30 @@ export default {
         }
       });
     },
+    addFAQ () {
+      if (this.newFAQ.answer.length < 7) {
+        this.showErrors = true
+        this.errors.answer = true
+      }
+
+      if (this.newFAQ.question.length < 7) {
+        this.showErrors = true
+        this.errors.question = true
+      }
+
+      if (this.showErrors) return
+
+      // add FAQ
+      this.faqs.push({
+        id: this.faqs.length,
+        answer: this.newFAQ.answer,
+        question: this.newFAQ.question
+      })
+
+      this.newFAQ.question = ''
+      this.newFAQ.answer = ''
+      this.showErrors = false
+    },
     saveFAQ(faq_id) {
       let faqs = this.faqs;
       $.each(faqs, (i) => {
@@ -340,6 +463,7 @@ export default {
       });
     },
     setTextEditor() {
+      let component = this
       var quill = new Quill('#editor', {
         modules: {
           toolbar: [
@@ -354,9 +478,48 @@ export default {
         placeholder: 'Write your description here...',
         theme: 'snow' // or 'bubble'
       });
-      this.is_text_editor_set = true;
+
+      component.is_text_editor_set = true;
+
+      quill.on('text-change', () => {
+        if (quill.getLength() === 1) component.flowIsEmpty = true
+        else component.flowIsEmpty = false
+      })
+    },
+    removeDoc (index) {
+      this.files.splice(index, 1)
+      if (this.files.length === 0) dropZone.removeAllFiles()
+    },
+    showMenu (index) {
+      let fileContainers = document.getElementsByClassName('preview-container')
+
+      let container = fileContainers[index].getElementsByClassName('menu-preview')[0].classList.toggle('show')
+    },
+    addFiles (e) {
+      this.files = [...this.files, ...e.target.files]
     }
   },
-  mounted() {},
+  mounted() {
+    let component = this
+
+    dropZone = new Dropzone("#dropfiles-team-brief", {
+        maxFilesize: 45,
+        dictDefaultMessage: '',
+        dictRemoveFile: '',
+        dictCancelUpload: '',
+        url: '/',
+        paramName: 'files',
+        addRemoveLinks: true,
+        uploadMultiple: true,
+        init: function () {
+            this.on('addedfile', (file) => {
+                let filesInput = document.getElementById('files')
+                component.files.push(file)
+            })
+
+            this.on('error', (error) => console.log(error))
+        }
+    })
+  },
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-light fixed-top client_navbar">
+    <nav class="navbar navbar-light fixed-top dashboard_navbar">
       <div class="backBtn">
         <a href="/client/dashboard/payments">
                     <img src="/images/client/arrow_back.png" alt="back-icon">
@@ -11,7 +11,7 @@
     <!--navbar  -->
     <div class="d-flex justify-content-center">
       <div class="main-grid search-main-grid">
-        <div class="invoice-body">
+        <div>
           <div class="d-flex justify-content-between align-items-center">
             <div class="invoice-style"> INVOICE </div>
             <div class="modal-logo"></div>
@@ -27,7 +27,7 @@
           <br />
           info@123workforce.com
         </div>
-        <div class="row justify-content-between align-items-baseline invioce-title payment-pay-text ">
+        <div class="row justify-content-between align-items-baseline invoice-title">
           <div class="col-6">
             <div class="row justify-content-between responsive-title">
               <div class=""
@@ -40,11 +40,11 @@
           <div class="col-6">
             <div class="row justify-content-between align-content-between align-items-center responsive-title">
               <div class="invoice-outstand"
-                   style="padding: 4px 16px!important; display: inline; margin-left:0; line-height: 24px;">outstand</div>
+                   style="padding: 0px 16px!important; display: inline; margin-left:0; line-height: 24px;">OUTSTANDING</div>
               <div class="justify-content-end mobile-display">
                 <div class="export-invoice"
                      style="margin-right: 43px;"><img src="/images/client/payments/export_invoice.png"/></div>
-                  <div class="invoice-download export-invoice payment-pay-text">copy invioce link</div>
+                  <div class="invoice-download export-invoice payment-pay-text">COPY INVOICE LINK</div>
                 </div>
               </div>
             </div>
@@ -56,8 +56,8 @@
           <!-- date -->
           <div class="payment-pay-text">
             <div style=" font-weight: 500;">Client info:</div>
-            <div style="margin:22px 0 18px;">Name: Kim Coe</div>
-            <div style="margin:18px 0;">Company: Urban HQ LTD</div>
+            <div style="margin:20px 0 16px;">Name: Kim Coe</div>
+            <div style="margin:16px 0;">Company: Urban HQ LTD</div>
             <div class="d-flex">
               <div>
                 Contact:
@@ -80,7 +80,7 @@
           </div>
           <!--  agent name-->
           <div class="payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center"
-               style="margin-top : 30px;">
+               style="margin-top: 24px;">
             <img src="/images/client/payments/assignment_turned_in_24px.png" class="pay-icons"/>
             <div>
               <div class="display-content-block payment-pay-title">
@@ -93,7 +93,7 @@
           </div>
           <!-- srevice provided -->
           <div class="payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center"
-               style="margin-top : 30px;">
+               style="margin-top: 24px;">
             <img src="/images/client/payments/watch_later_24px.png" class="pay-icons"/>
             <div>
               <div class="display-content-block payment-pay-title">
@@ -106,7 +106,7 @@
           </div>
           <!--  hours-->
           <div class="payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center"
-               style="margin-top : 30px;">
+               style="margin-top: 24px;">
             <img src="/images/client/payments/date_range_24px.png" class="pay-icons"/>
             <div>
               <div class="display-content-block payment-pay-title">
@@ -119,7 +119,7 @@
           </div>
           <!-- date -->
           <div class="payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center"
-               style="margin-top : 30px;">
+               style="margin-top: 24px;">
             <img src="/images/client/payments/Subtract.png" class="pay-icons"/>
             <div>
               <div class="display-content-block payment-pay-title">
@@ -132,7 +132,7 @@
           </div>
           <!-- rate -->
           <div class="payment-pay-text d-flex align-items-start align-items-sm-start align-items-md-center align-items-lg-center"
-               style="margin-top : 30px;">
+               style="margin-top: 24px;">
             <img src="/images/client/payments/account_balance_wallet_24px.png" class="pay-icons"/>
             <div>
               <div class="display-content-block payment-pay-title">
@@ -144,7 +144,7 @@
             </div>
           </div>
           <!-- total due -->
-          <hr />
+          <hr style="margin: 30px 0;" />
           <div class="d-flex justify-content-end">
             <button class="agreement-button payment-button">GO TO PAYMENT</button>
           </div>

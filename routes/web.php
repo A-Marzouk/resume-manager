@@ -429,4 +429,6 @@ Route::get('/resume_sample/{username}','HomeController@ResumeSample');
 Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 Route::get('/{username}','HomeController@ResumePage');
 
-
+Route::get('/home_test/test', function () {
+    return view('new_home');
+});

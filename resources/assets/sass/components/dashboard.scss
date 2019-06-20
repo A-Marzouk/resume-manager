@@ -718,11 +718,14 @@
 }
 
 .no-decoration{
-  a:hover{
+  a {
     text-decoration: none !important;
+
+    &:hover {
+      text-decoration: none !important;
+    }
   }
 }
-
 .status-selector-component {
   height: 100%;
   position: absolute;

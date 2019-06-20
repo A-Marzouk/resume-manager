@@ -114,7 +114,7 @@ export default {
       mailsList: [],
       template: '',
       currEmailSubject: '',
-      templatesList: ['company_info', 'test_mail_content'],
+      templatesList: ['company_info', 'test_mail_content','increase_sales'],
     }
   },
   methods: {

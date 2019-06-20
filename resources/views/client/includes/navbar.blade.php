@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light fixed-top client_navbar">
+<nav class="navbar navbar-light fixed-top dashboard_navbar">
 
     <a href="#0" class="js-menu-open menu-open" id="menu-open-icon">
         <img src="/images/client/Group.png" alt="menu">

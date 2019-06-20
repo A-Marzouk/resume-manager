@@ -38,11 +38,13 @@
   background: #FFFFFF;
   border: 2px solid #F56F6F;
   box-sizing: border-box;
+  letter-spacing: -0.1px;
   border-radius: 40px;
   color: #F56F6F;
   font-size : 12px;
   padding: 7px 16px;
   margin-left: 15px;
+  font-weight: bold;
 }
 
 .invoice-download {
@@ -58,7 +60,7 @@
 }
 
 .invoice-body {
-  padding: 0 62px 64px 0;
+  padding: 0 62px 64px;
 }
 
 .invioce-top-text {
@@ -70,7 +72,7 @@
   margin-top: 55px;
 }
 
-.invioce-title {
+.invoice-title {
   border-top: 1px solid rgba(188, 191, 198, 0.44);
   border-bottom: 1px solid rgba(188, 191, 198, 0.44);
   padding-top: 27px;

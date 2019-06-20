@@ -34,15 +34,18 @@
         <div class="js-side-nav-container side-nav-container">
             <div class="js-side-nav side-nav">
                 <a href="javascript:void(0)" class="js-menu-close menu-close" id="close-menu"></a>
-                <div class="info-bar">
-                    <div class="avatar">
-                        <img src="/images/client/dummy.png" alt="logout">
-                    </div>
-                    <div class="name">
-                        Welcome,<br/>
-                        Ahmed R. Marzouk
+                <div class="welcome-box d-flex justify-content-start align-items-center">
+                    <img src="/images/client/dummy.png" alt="profile">
+                    <div class="d-flex flex-column">
+                        <div>
+                            Welcome,
+                        </div>
+                        <div style="font-weight: 500">
+                            Ahmed R. Marzouk
+                        </div>
                     </div>
                 </div>
+
                 <div class="dashboard_content">
                     <div class="dashboard-side-menu">
                         <router-link :to="'/' + rootURL" class="menu-block row" :class="{'active' : activeTab === 'campaign-manager'}" @click.native="selectTab('campaign-manager')">
@@ -53,7 +56,7 @@
                                 Campaign manager
                             </div>
                         </router-link>
-                        <div v-if="rootURL !== '/freelancer'" class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
+                        <!-- <div v-if="rootURL !== '/freelancer'" class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('chats')" alt="icon">
                             </div>
@@ -76,7 +79,7 @@
                             <div class="menu-block-name">
                                 Agents database
                             </div>
-                        </div>
+                        </div> -->
                         <router-link :to="rootLinkTo('my-account')" class="menu-block row" :class="{'active' : activeTab === 'my-account'}" @click.native="selectTab('my-account')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('my-account')" alt="icon">

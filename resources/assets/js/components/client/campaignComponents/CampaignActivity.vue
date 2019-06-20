@@ -110,7 +110,7 @@
           </div>
           <div class="data-logs">
             <datepicker>
-              <a href="javascript:void(0)" data-toggle="modal" data-target="#pick-date-modal" @click.once="setDatePicker" >
+              <a href="javascript:void(0)" class="date-picker-btn" data-toggle="modal" data-target="#pick-date-modal" @click.once="setDatePicker" >
                   <img src="/images/icons/pick_date.svg" alt="pick date"> <span class="hideDate">PICK A DATE</span>
               </a>
             </datepicker>
@@ -131,9 +131,7 @@
                     9.15 am
                   </div>
                   <div class="log-text">
-                                        <span class="agent-initials">
-                                            CB
-                                        </span>
+                                        <status-selector status="call-back"></status-selector>
                     <span class="log-text-content">
                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -149,9 +147,7 @@
                     9.15 am
                   </div>
                   <div class="log-text">
-                                        <span class="agent-initials">
-                                            CB
-                                        </span>
+                                        <status-selector status="call-back"></status-selector>
                     <span class="log-text-content">
                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -167,9 +163,7 @@
                     9.15 am
                   </div>
                   <div class="log-text">
-                                        <span class="agent-initials">
-                                            CB
-                                        </span>
+                                        <status-selector status="call-back"></status-selector>
                     <span class="log-text-content">
                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -185,9 +179,7 @@
                     9.15 am
                   </div>
                   <div class="log-text">
-                                        <span class="agent-initials">
-                                            CB
-                                        </span>
+                                        <status-selector status="call-back"></status-selector>
                     <span class="log-text-content">
                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -203,9 +195,7 @@
                     9.15 am
                   </div>
                   <div class="log-text">
-                                        <span class="agent-initials">
-                                            CB
-                                        </span>
+                                        <status-selector status="call-back"></status-selector>
                     <span class="log-text-content">
                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -331,14 +321,16 @@
 
 <script>
   import datepicker from '../../datepicker'
+  import statusSelector from '../../status-selector'
 
   export default {
     components: {
-      datepicker 
+      datepicker,
+      "status-selector": statusSelector
     },
     data(){
       return{
-        hasLogs:false,
+        hasLogs: true,
         selectedDate:'',
         appliedDate:'',
       }

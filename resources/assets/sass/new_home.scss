@@ -513,7 +513,7 @@
       
       &.opened {
         background: linear-gradient(to right, #3aadf6, #7bc2ef);
-        height: 300px;
+        height: 220px;
         color: white;
         font-weight: normal;
       }
@@ -524,9 +524,10 @@
         padding: 40px;
         box-sizing: border-box;
         position: relative;
+        line-height: 20px;
 
         &.opened {
-          height: 200px;
+          height: 120px;
           color: white;
 
           &::before {

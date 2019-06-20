@@ -432,3 +432,7 @@ Route::get('/{username}','HomeController@ResumePage');
 Route::get('/home_test/test', function () {
     return view('new_home');
 });
+
+Route::get('/home_test/sales', function () {
+    return view('new_home_sales');
+});

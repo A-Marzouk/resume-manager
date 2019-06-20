@@ -6,6 +6,11 @@
   margin-top: 0 !important;
   background: white !important;
   font-family: 'Montserrat', sans-serif !important;
+
+  main {
+    margin: 0 auto;
+    width: 100%;
+  }
 }
 
 
@@ -23,11 +28,18 @@
   z-index: -1;
 }
 
+.container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .newNav {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
 
   &__homeLink {
     display: flex;
@@ -518,7 +530,7 @@
         padding: 40px;
         box-sizing: border-box;
         position: relative;
-        line-height: 24px;
+        line-height: 24 px;
 
         &.opened {
           height: 150px;
@@ -611,4 +623,24 @@
       }
     }
   }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) {
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+
 }

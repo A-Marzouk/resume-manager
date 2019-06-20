@@ -11369,6 +11369,11 @@ select:focus {
   font-family: 'Montserrat', sans-serif !important;
 }
 
+.home main {
+  margin: 0 auto;
+  width: 100%;
+}
+
 .topBg {
   position: absolute;
   top: 0;
@@ -11383,6 +11388,12 @@ select:focus {
   z-index: -1;
 }
 
+.container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .newNav {
   width: 100%;
   display: -webkit-box;
@@ -11394,6 +11405,7 @@ select:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 0 auto;
 }
 
 .newNav__homeLink {
@@ -12057,7 +12069,7 @@ select:focus {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   position: relative;
-  line-height: 24px;
+  line-height: 24 px;
 }
 
 .questionsSection__container__question__answer.opened {

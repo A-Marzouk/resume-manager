@@ -10,10 +10,9 @@
   <link rel="stylesheet" href="/css/app.css">
 </head>
 <body class="home">
-
   <main>
     <img src="/images/home/topBg.png" alt="" class="topBg">
-    <nav class="newNav no-decoration">
+    <nav class="newNav no-decoration container">
       <a class="newNav__homeLink" href="/" class="logo">
         <img src="/images/home/123logo.png" alt="123workforce logo">
       </a>
@@ -23,7 +22,7 @@
         <a class="newNav__links__link--loginBtn" href="#">Login</a>
       </div>
     </nav>
-    <section class="mainSection">
+    <section class="mainSection container">
       <div class="mainSection__content">
         <h1 class="mainSection__content__title">Grow your digital agency with On-Demand Sales Agents</h1>
         <h3 class="mainSection__content__subtitle">Get new customers and boost your revenue</h3>
@@ -35,7 +34,7 @@
       </div>
       <img class="mainSection__asset" src="/images/home/mainAssetSales.png" alt="asset">
     </section>
-    <section class="registerBizSection">
+    <section class="registerBizSection container">
       <form class="registerBizSection__container" action="">
         <div class="registerBizSection__container__inputs">
             <input type="text" placeholder="Full name*" class="registerBizSection__container__inputs__input">
@@ -126,120 +125,123 @@
     </section>
     <section class="agentsSection">
       <img class="agentsSection__bg-2" src="/images/home/agentsBg.png" alt="">
-      <h2 class="subtitle">Our Agents</h2>
-      <h4 class="min-subtitle">Our agents are professional,<br />highly driven and passionate about selling.</h4>
-      <div class="agentsContainer">
-        <img class="agentsSection__bg" src="/images/home/agentsAssetSales.png" alt="">
-        <div class="agentsSection__agents">
-          <div class="agentsSection__agents__agent">
-            <div class="agentsSection__agents__agent__data">
-              <div class="agentsSection__agents__agent__data__profile">
-                <img src="/images/home/profile2.png" alt="">
-                <div class="agentsSection__agents__agent__data__profile__info">
-                  <h3 class="agentName">Samantha William</h3>
-                  <div class="agentProfession">
-                    <img src="/images/home/professionIcon.png" />Telemarketing
+      <div class="container">
+
+        <h2 class="subtitle">Our Agents</h2>
+        <h4 class="min-subtitle">Our agents are professional,<br />highly driven and passionate about selling.</h4>
+        <div class="agentsContainer">
+          <img class="agentsSection__bg" src="/images/home/agentsAssetSales.png" alt="">
+          <div class="agentsSection__agents">
+            <div class="agentsSection__agents__agent">
+              <div class="agentsSection__agents__agent__data">
+                <div class="agentsSection__agents__agent__data__profile">
+                  <img src="/images/home/profile2.png" alt="">
+                  <div class="agentsSection__agents__agent__data__profile__info">
+                    <h3 class="agentName">Samantha William</h3>
+                    <div class="agentProfession">
+                      <img src="/images/home/professionIcon.png" />Telemarketing
+                    </div>
                   </div>
                 </div>
+                <ul class="agentsSection__agents__agent__data__professionalInfo">
+                  <li>Sector Experience: <span class="highLightText">Real State, Insurance</span></li>
+                  <li>Languages: <span class="highLightText">English, Indonesia</span></li>
+                </ul>
               </div>
-              <ul class="agentsSection__agents__agent__data__professionalInfo">
-                <li>Sector Experience: <span class="highLightText">Real State, Insurance</span></li>
-                <li>Languages: <span class="highLightText">English, Indonesia</span></li>
-              </ul>
-            </div>
-            <div class="agentsSection__agents__agent__actions">
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                Intro Recording
-              </div>
-              <div class="action selected">
-                <img src="/images/home/recording-blue.png" alt="">
-                Listen to Record Icon
-              </div>
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                Listen to Record Icon
-              </div>
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                ABC Recording
-              </div>
-            </div>
-          </div>
-          <div class="agentsSection__agents__agent">
-            <div class="agentsSection__agents__agent__data">
-              <div class="agentsSection__agents__agent__data__profile">
-                <img src="/images/home/profile1.png" alt="">
-                <div class="agentsSection__agents__agent__data__profile__info">
-                  <h3 class="agentName">Saepul Rohman</h3>
-                  <div class="agentProfession">
-                    <img src="/images/home/professionIcon.png" />UI Designer
-                  </div>
+              <div class="agentsSection__agents__agent__actions">
+                <div class="action">
+                  <img src="/images/home/recording-default.png" alt="">
+                  Intro Recording
+                </div>
+                <div class="action selected">
+                  <img src="/images/home/recording-blue.png" alt="">
+                  Listen to Record Icon
+                </div>
+                <div class="action">
+                  <img src="/images/home/recording-default.png" alt="">
+                  Listen to Record Icon
+                </div>
+                <div class="action">
+                  <img src="/images/home/recording-default.png" alt="">
+                  ABC Recording
                 </div>
               </div>
-              <ul class="agentsSection__agents__agent__data__professionalInfo">
-                <li>Sector Experience: <span class="highLightText">UI/UX, Illustrations</span></li>
-                <li>Languages: <span class="highLightText">English, Indonesia</span></li>
-              </ul>
             </div>
-            <div class="agentsSection__agents__agent__actions">
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                Intro Recording
-              </div>
-              <div class="action selected">
-                <img src="/images/home/recording-blue.png" alt="">
-                Listen to Record Icon
-              </div>
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                Listen to Record Icon
-              </div>
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                ABC Recording
-              </div>
-            </div>
-          </div>
-          <div class="agentsSection__agents__agent">
-            <div class="agentsSection__agents__agent__data">
-              <div class="agentsSection__agents__agent__data__profile">
-                <img src="/images/home/profile3.png" alt="">
-                <div class="agentsSection__agents__agent__data__profile__info">
-                  <h3 class="agentName">Ghani Pradita</h3>
-                  <div class="agentProfession">
-                    <img src="/images/home/professionIcon.png" />Visual Director
+            <div class="agentsSection__agents__agent">
+              <div class="agentsSection__agents__agent__data">
+                <div class="agentsSection__agents__agent__data__profile">
+                  <img src="/images/home/profile1.png" alt="">
+                  <div class="agentsSection__agents__agent__data__profile__info">
+                    <h3 class="agentName">Saepul Rohman</h3>
+                    <div class="agentProfession">
+                      <img src="/images/home/professionIcon.png" />UI Designer
+                    </div>
                   </div>
                 </div>
+                <ul class="agentsSection__agents__agent__data__professionalInfo">
+                  <li>Sector Experience: <span class="highLightText">UI/UX, Illustrations</span></li>
+                  <li>Languages: <span class="highLightText">English, Indonesia</span></li>
+                </ul>
               </div>
-              <ul class="agentsSection__agents__agent__data__professionalInfo">
-                <li>Sector Experience: <span class="highLightText">Real State, Insurance</span></li>
-                <li>Languages: <span class="highLightText">English, Spanish</span></li>
-              </ul>
+              <div class="agentsSection__agents__agent__actions">
+                <div class="action">
+                  <img src="/images/home/recording-default.png" alt="">
+                  Intro Recording
+                </div>
+                <div class="action selected">
+                  <img src="/images/home/recording-blue.png" alt="">
+                  Listen to Record Icon
+                </div>
+                <div class="action">
+                  <img src="/images/home/recording-default.png" alt="">
+                  Listen to Record Icon
+                </div>
+                <div class="action">
+                  <img src="/images/home/recording-default.png" alt="">
+                  ABC Recording
+                </div>
+              </div>
             </div>
-            <div class="agentsSection__agents__agent__actions">
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                Intro Recording
+            <div class="agentsSection__agents__agent">
+              <div class="agentsSection__agents__agent__data">
+                <div class="agentsSection__agents__agent__data__profile">
+                  <img src="/images/home/profile3.png" alt="">
+                  <div class="agentsSection__agents__agent__data__profile__info">
+                    <h3 class="agentName">Ghani Pradita</h3>
+                    <div class="agentProfession">
+                      <img src="/images/home/professionIcon.png" />Visual Director
+                    </div>
+                  </div>
+                </div>
+                <ul class="agentsSection__agents__agent__data__professionalInfo">
+                  <li>Sector Experience: <span class="highLightText">Real State, Insurance</span></li>
+                  <li>Languages: <span class="highLightText">English, Spanish</span></li>
+                </ul>
               </div>
-              <div class="action selected">
-                <img src="/images/home/recording-blue.png" alt="">
-                Listen to Record Icon
-              </div>
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                Listen to Record Icon
-              </div>
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                ABC Recording
+              <div class="agentsSection__agents__agent__actions">
+                <div class="action">
+                  <img src="/images/home/recording-default.png" alt="">
+                  Intro Recording
+                </div>
+                <div class="action selected">
+                  <img src="/images/home/recording-blue.png" alt="">
+                  Listen to Record Icon
+                </div>
+                <div class="action">
+                  <img src="/images/home/recording-default.png" alt="">
+                  Listen to Record Icon
+                </div>
+                <div class="action">
+                  <img src="/images/home/recording-default.png" alt="">
+                  ABC Recording
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section class="questionsSection">
+    <section class="questionsSection container">
       <img class="questionsSection__bg-1" src="/images/home/question1.png" alt="">
       <img class="questionsSection__bg-2" src="/images/home/question2.png" alt="">
 
@@ -301,7 +303,7 @@
       </div>
     </section>
 
-    <footer class="newFooter">
+    <footer class="newFooter container">
       <div class="contact">
         <img class="logo" src="/images/home/123logo.png" alt="">
         <div class="copyright">

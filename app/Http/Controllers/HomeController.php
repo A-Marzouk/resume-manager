@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ClientSearch;
+use App\PromotedUser;
 use App\User;
 use App\UserData;
 
@@ -57,11 +58,10 @@ class HomeController extends Controller
     public function welcomePage()
     {
         // homepage freelancers
-        $homeFreelancersData = UserData::where('home_page_freelancer', true)->get();
-        $homeFreelancers = [];
-        foreach ($homeFreelancersData as $data) {
-            $homeFreelancers[] = $data->user;
-        }
+        $promotedUsers = PromotedUser::with('user')->get();
+        $homeFreelancers = $promotedUsers->transform(function ($promotedUser) {
+            return $promotedUser->user;
+        });
 
         return view('welcome', compact('homeFreelancers'));
     }

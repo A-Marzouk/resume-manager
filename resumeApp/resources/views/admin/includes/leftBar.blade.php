@@ -58,13 +58,12 @@
                 </a>
             </li>
         @endif
-        @if(in_array('Affiliates',$permissions))
-            <li class="col-md-12">
-                <a class="btn btn-block btn-outline-primary" href="#affiliates"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
-                    Affiliates
-                </a>
-            </li>
-        @endif
+
+        <li class="col-md-12">
+            <a class="btn btn-block btn-outline-primary" href="#affiliates"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
+                Affiliates
+            </a>
+        </li>
         @if(in_array('Jobs',$permissions))
             <li class="col-md-12">
                 <a class="btn btn-block btn-outline-primary" href="#jobs"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">

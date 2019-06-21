@@ -9,16 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>123 Workforce</title>
-
-    <link rel="shortcut icon" href="/resumeApp/public/images/logo123.png">
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="/resumeApp/public/css/app.css" rel="stylesheet">
-    <link href="/resumeApp/public/css/main.css" rel="stylesheet" media="screen">
+    @include('layouts.includes.styles')
 
 
 </head>
@@ -102,9 +93,8 @@ if($user){
         </span>
 </div>
 
+@include('layouts.includes.scripts')
 
-<script type="text/javascript" src="/resumeApp/public/js/app.js"></script>
-<script src="/resumeApp/public/js/main.js"></script>
 <script>
     $(document).ready(function(){
         $('#navBarToggle').on('click',function () {

@@ -373,9 +373,9 @@ Route::get('/admin/client/subscriptions_view/{client_id}','AdminsController@view
 
 
 // send payments to our users.
-//Route::get('payment/paypal/send','PaypalController@showSendForm')->name('show.paypal.form');
-//Route:: post('payment/paypal_send/submit','PaypalController@sendPaymentByPayPal')->name('submit.paypal.send.form');
-//Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('paypal.status');
+Route::get('payment/paypal/send','PaypalController@showSendForm')->name('show.paypal.form');
+Route:: post('payment/paypal_send/submit','PaypalController@sendPaymentByPayPal')->name('submit.paypal.send.form');
+Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('paypal.status');
 
 // public routes :
 Route::get('/apply','BusinessSupportController@showRegistrationForm')->name('freelancer.register');

@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="/css/app.css">
 </head>
 <body class="home">
+  <img src="/images/home/topBg.png" alt="" class="topBg">
   <main>
-    <img src="/images/home/topBg.png" alt="" class="topBg">
     <nav class="newNav no-decoration maxContainer">
       <a class="newNav__homeLink" href="/" class="logo">
         <img class="hideOnMobile" src="/images/home/123logo.png" alt="123workforce logo">
@@ -341,10 +341,10 @@
           <li>Contact Us</li>
         </ul>
       </div>
-      <img src="/images/home/bottomBg.png" alt="" class="bottomBg">
     </footer>
     
   </main>
+  <img src="/images/home/bottomBg.png" alt="" class="bottomBg">
   
 </body>
 </html>

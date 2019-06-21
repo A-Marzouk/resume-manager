@@ -13,13 +13,18 @@ html {
   padding: 30px 70px !important;
   margin: 0;
   margin-top: 0 !important;
-  background: white !important;
+  background-color: white;
   font-family: 'Montserrat', sans-serif !important;
   overflow-x: hidden;
+  position: relative;
+  // background-image: url(/images/home/topBg.png), url(/images/home/bottomBg.png) !important;
+  // background-position: right top, left bottom;
+  // background-repeat: no-repeat, no-repeat;
 
   main {
     margin: 0 auto;
     width: 100%;
+    position: relative;
   }
 }
 
@@ -28,14 +33,14 @@ html {
   position: absolute;
   top: 0;
   right: 0;
-  z-index: -1;
+  z-index: -2;
   max-width: 100%;
 }
 
 .bottomBg {
   position: absolute;
   max-width: 100%;
-  bottom: -30px;
+  bottom: 0;
   left: -70px;
   z-index: -2;
 }
@@ -97,8 +102,7 @@ html {
 }
 
 .mainSection {
-  display: flex;
-  
+  display: flex;  
   align-items: space-between;
   margin-top: 20px;
 
@@ -130,7 +134,7 @@ html {
   }
 
   &__asset {
-    width: 60%;
+    // height: 100%;
     position: absolute;
     right: 0;
     z-index: -1;
@@ -396,9 +400,28 @@ html {
     justify-content: flex-end;
     align-items: center;
   }
-
-  &__agents {
+  
+  &__filters {
     display: flex;
+    // margin: 0 auto;
+    // max-width: 600px;
+    justify-content: center;
+    align-items: center;
+
+    &__filter {
+      margin: 0 40px;
+      color: #5b73e4;
+      text-align: center;
+    }
+  }
+
+  &__cards {
+
+  }
+  
+  &__agents {
+    // display: none;
+    // display: flex;
     flex-direction: column;
     width: 61%;
     z-index: 5;
@@ -586,10 +609,10 @@ html {
 }
 
 .newFooter {
-  display: flex;  
-  height: 250px;
+  display: flex;
   padding: 90px;
   position: relative;
+  overflow: hidden;
 
   .contact {
     max-width: 500px;

@@ -11374,28 +11374,30 @@ html {
   padding: 30px 70px !important;
   margin: 0;
   margin-top: 0 !important;
-  background: white !important;
+  background-color: white;
   font-family: 'Montserrat', sans-serif !important;
   overflow-x: hidden;
+  position: relative;
 }
 
 .home main {
   margin: 0 auto;
   width: 100%;
+  position: relative;
 }
 
 .topBg {
   position: absolute;
   top: 0;
   right: 0;
-  z-index: -1;
+  z-index: -2;
   max-width: 100%;
 }
 
 .bottomBg {
   position: absolute;
   max-width: 100%;
-  bottom: -30px;
+  bottom: 0;
   left: -70px;
   z-index: -2;
 }
@@ -11520,7 +11522,6 @@ html {
 }
 
 .mainSection__asset {
-  width: 60%;
   position: absolute;
   right: 0;
   z-index: -1;
@@ -11893,10 +11894,25 @@ html {
           align-items: center;
 }
 
-.agentsSection__agents {
+.agentsSection__filters {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.agentsSection__filters__filter {
+  margin: 0 40px;
+  color: #5b73e4;
+  text-align: center;
+}
+
+.agentsSection__agents {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -12128,9 +12144,9 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 250px;
   padding: 90px;
   position: relative;
+  overflow: hidden;
 }
 
 .newFooter .contact {

@@ -16,7 +16,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('privacyView', 'getSearch', 'termsView', 'welcomePage', 'ResumePage', 'ResumeSample');
+        $this->middleware('auth')->except('privacyView', 'getSearch', 'termsView', 'welcomePage', 'ResumePage', 'ResumeSample',
+        'homeDesigners');
     }
 
     /**
@@ -91,6 +92,12 @@ class HomeController extends Controller
         }
 
         return view('public_search', compact('freelancers', 'search_name'));
+    }
+
+    public function homeDesigners () {
+        $agents = User::limit(3)->get();
+
+        return view('new_home', ['agents' => $agents]);
     }
 
 }

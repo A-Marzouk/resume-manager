@@ -36,10 +36,12 @@ class HomeController extends Controller
         }
         $primarySkills = explode(',',$user->primarySkills);
         $charSkills = explode(',',$user->charSkills);
-        if($user1->username === 'cmarjorama343BeUser'){
-            return view('custom_resume.resume_custom_conor', compact('user','profession','primarySkills','charSkills','user1'));
-        }else{
 
+        $BehanceUserTah = 'BeUser';
+
+        if (strpos($user1->username, $BehanceUserTah) !== false) {
+            return view('custom_resume.resume_custom_conor', compact('user','profession','primarySkills','charSkills','user1'));
+        } else{
             return view('resume', compact('user','profession','primarySkills','charSkills','user1'));
         }
     }

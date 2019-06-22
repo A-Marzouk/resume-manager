@@ -233,6 +233,23 @@ class AdminsController extends Controller
         return 'wrong data';
     }
 
+    public function controlResumeFreelancers(Request $request){
+        $userID = $request->userID ;
+        if($request->action == 'ENABLE'){
+                $userData = UserData::where('user_id', $userID)->first();
+                $userData->short_resume = true;
+                $userData->save();
+                return 'enabled';
+        }
+        elseif($request->action == 'DISABLE'){
+            $userData = UserData::where('user_id', $userID)->first();
+            $userData->short_resume = false;
+            $userData->save();
+            return 'disabled';
+        }
+        return 'wrong data';
+    }
+
     public function getAllClients(){
         return Client::all();
     }

@@ -12,6 +12,7 @@
             <th scope="col">Approval</th>
             <th scope="col">Bookings</th>
             <th scope="col">HomePage freelancer</th>
+            <th scope="col" class="text-center">Short resume</th>
             <th scope="col">Owner's name</th>
         </tr>
         </thead>
@@ -97,6 +98,13 @@
                     <a href="javascript:void(0)" id="removeFreelancerFromHomePage{{$user->id}}" class="btn btn-default removeFreelancerFromHomePage">Remove</a>
                 @else
                     <a href="javascript:void(0)" id="addFreelancerToHomePage{{$user->id}}" class="btn btn-default addFreelancerToHomePage">Add</a>
+                @endif
+            </td>
+            <td>
+                @if($user->userData->short_resume === 0)
+                    <a href="javascript:void(0)" id="enableFreelancerShortResume{{$user->id}}" class="btn btn-default enableFreelancerShortResume">Enable short resume</a>
+                @else
+                    <a href="javascript:void(0)" id="disableFreelancerShortResume{{$user->id}}" class="btn btn-default disableFreelancerShortResume">Disable short resume</a>
                 @endif
             </td>
             <td class="panelFormLabel text-center">

@@ -326,6 +326,7 @@ function copyToClipboard(element) { // pass the element by id, example : copyToC
 }
 
 // add/remove freelancer to homepage
+
 $('.addFreelancerToHomePage').on('click',function () {
     let userID = this.id.replace('addFreelancerToHomePage','');
 
@@ -355,6 +356,44 @@ $('.removeFreelancerFromHomePage').on('click',function () {
     axios.post('admin/control_homepage_freelancers',removeData).then( (response)=> {
             $('#removeFreelancerFromHomePage'+userID).html('<p>Removed</p>');
             $('#removeFreelancerFromHomePage'+userID).removeAttr('href');
+        }
+    );
+
+});
+
+
+// enable / disable short resume :
+
+
+$('.enableFreelancerShortResume').on('click',function () {
+    let userID = this.id.replace('enableFreelancerShortResume','');
+
+    let addData = {
+        userID:userID,
+        action:'ENABLE'
+    };
+
+    // send to the DB to approve :
+    axios.post('admin/control_resume_freelancers',addData).then( (response)=> {
+            $('#enableFreelancerShortResume'+userID).html('<p>Enabled</p>');
+            $('#enableFreelancerShortResume'+userID).removeAttr('href');
+        }
+    );
+
+});
+
+$('.disableFreelancerShortResume').on('click',function () {
+    let userID = this.id.replace('disableFreelancerShortResume','');
+
+    let removeData = {
+        userID:userID,
+        action:'DISABLE'
+    };
+
+    // send to the DB to approve :
+    axios.post('admin/control_resume_freelancers',removeData).then( (response)=> {
+            $('#disableFreelancerShortResume'+userID).html('<p>Disabled</p>');
+            $('#disableFreelancerShortResume'+userID).removeAttr('href');
         }
     );
 

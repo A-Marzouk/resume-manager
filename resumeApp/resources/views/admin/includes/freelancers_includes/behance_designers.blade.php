@@ -10,6 +10,7 @@
             <th scope="col">Location</th>
             <th scope="col">Occupation</th>
             <th scope="col">Homepage freelancer</th>
+            <th scope="col" class="text-center">Short resume</th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
@@ -57,6 +58,13 @@
                     <a href="javascript:void(0)" id="removeFreelancerFromHomePage{{$user->id}}" class="btn btn-default removeFreelancerFromHomePage">Remove</a>
                 @else
                     <a href="javascript:void(0)" id="addFreelancerToHomePage{{$user->id}}" class="btn btn-default addFreelancerToHomePage">Add</a>
+                @endif
+            </td>
+            <td>
+                @if($user->userData->short_resume === 0)
+                    <a href="javascript:void(0)" id="enableFreelancerShortResume{{$user->id}}" class="btn btn-default enableFreelancerShortResume">Enable short resume</a>
+                @else
+                    <a href="javascript:void(0)" id="disableFreelancerShortResume{{$user->id}}" class="btn btn-default disableFreelancerShortResume">Disable short resume</a>
                 @endif
             </td>
             <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Open form</a></td>

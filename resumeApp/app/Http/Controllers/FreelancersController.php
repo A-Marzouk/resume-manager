@@ -178,6 +178,7 @@ class FreelancersController extends Controller
         $userData->jobTitle =$dataFromBehance->occupation;
         $userData->behanceLink =$mainBehanceLink;
         $userData->salary =5;
+        $userData->short_resumea = 1;
 
         if($dataFromBehance->has_social_links){
             foreach ($dataFromBehance->social_links as $link){

@@ -38,7 +38,7 @@ class HomeController extends Controller
         $charSkills = explode(',',$user->charSkills);
 
 
-        if ($user->short_resume === 1) {
+        if ($user->short_resume == 1) {
             return view('custom_resume.resume_custom_conor', compact('user','profession','primarySkills','charSkills','user1'));
         } else{
             return view('resume', compact('user','profession','primarySkills','charSkills','user1'));

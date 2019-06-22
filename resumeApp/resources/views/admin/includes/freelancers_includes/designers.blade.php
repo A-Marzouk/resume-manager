@@ -112,7 +112,7 @@
                 @endif
             </td>
             <td>
-                @if($user->userData->short_resume === 0)
+                @if($user->userData->short_resume == 0)
                     <a href="javascript:void(0)" id="enableFreelancerShortResume{{$user->id}}" class="btn btn-default enableFreelancerShortResume">Enable short resume</a>
                 @else
                     <a href="javascript:void(0)" id="disableFreelancerShortResume{{$user->id}}" class="btn btn-default disableFreelancerShortResume">Disable short resume</a>

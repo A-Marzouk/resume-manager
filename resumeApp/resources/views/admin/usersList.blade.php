@@ -14,7 +14,6 @@
 
         <div class="col-md-10">
 
-            @include('admin.includes.messages')
 
             <div class="tab-content" style="min-height: 400px;">
                 @include('admin.includes.home')

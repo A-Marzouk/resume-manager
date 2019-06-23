@@ -135,11 +135,22 @@
           <div class="agentsSection__filters__filter">Price per Hour</div>
           <div class="agentsSection__filters__filter">Availability</div>
         </div>
-        <div class="agentsContainer">
+        <div class="agentsContainer center">
           <img class="agentsSection__bg" src="/images/home/agentsAssetSales.png" alt="">
           <div class="agentsSection__cards">
+            <? $showVideo = true;
+              if(!isset($value['id'])){
+                  $value['id'] = '';
+              }
+          
+              // $smallCard = false ;
+              // if(!isset($freelancer->id)){
+              //   dd("Fail here");
+              //     return;
+              // }
+            ?>
             @foreach ($agents as $freelancer)
-              @include('freelancer_card')
+              @include('freelancer_home_card')
             @endforeach
           </div>
         </div>

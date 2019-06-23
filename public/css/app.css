@@ -11894,6 +11894,12 @@ html {
           align-items: center;
 }
 
+.agentsSection .agentsContainer.center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .agentsSection__filters {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11912,6 +11918,18 @@ html {
   text-align: center;
 }
 
+.agentsSection__cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.agentsSection__cards .freelancerCard {
+  width: 365px;
+}
+
 .agentsSection__agents {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -11919,7 +11937,6 @@ html {
           flex-direction: column;
   width: 61%;
   z-index: 5;
-  float: right;
 }
 
 .agentsSection__agents__agent {

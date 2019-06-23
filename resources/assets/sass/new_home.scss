@@ -399,6 +399,10 @@ html {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
+    &.center {
+      justify-content: center;
+    }
   }
   
   &__filters {
@@ -416,7 +420,12 @@ html {
   }
 
   &__cards {
+    display: flex;
+    justify-content: space-around;
 
+    .freelancerCard {
+      width: 365px;
+    }
   }
   
   &__agents {
@@ -425,7 +434,6 @@ html {
     flex-direction: column;
     width: 61%;
     z-index: 5;
-    float: right;
 
     &__agent {
       width: 100%;
@@ -833,6 +841,7 @@ html {
     &__bg{
       display: none;
     }
+
     &__agents {
       &__agent{
         flex-wrap: wrap;

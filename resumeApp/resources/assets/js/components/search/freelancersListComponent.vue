@@ -9,7 +9,7 @@
                                 <div class="col-lg-5 col-md-12 freelancerCardLeft">
                                     <div class="row">
                                         <div class="col-lg-6 col-6 imageContainer">
-                                            <img :src="freelancer.photo" alt="freelancer" class="freelancerImg" width="100" height="100">
+                                            <img :src="getImageSrc(freelancer.photo)" alt="freelancer" class="freelancerImg" width="100" height="100">
 
                                         </div>
                                         <div class="col-lg-6 col-6">
@@ -59,6 +59,17 @@
                         this.freelancers.splice(i,1);
                     }
                 }
+            },
+            getImageSrc(userImage){
+                if(!userImage || userImage === null){
+                    return '/resumeApp/public/images/user.png';
+                }
+
+                if(userImage.charAt(0) !== 'h'){
+                    return '/'+userImage;
+                }
+
+                return userImage;
             }
         }
     }

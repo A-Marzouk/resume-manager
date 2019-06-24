@@ -13,17 +13,21 @@
 
     <div class="container">
         @if(count($freelancers) >= 1)
-        <div style="text-align: left; padding-bottom: 25px;">
-            <div class="pageHeading">
-                List of freelancers
+            <div style="text-align: left; padding-bottom: 25px;">
+                <div class="pageHeading">
+                    List of freelancers
+                </div>
+                <div class="pageSubHeading">
+                    {{$search_name}}
+                </div>
             </div>
-            <div class="pageSubHeading">
-                {{$search_name}}
-            </div>
-        </div>
-        @foreach($freelancers as $freelancer)
-          @include('freelancer_card')
-        @endforeach
+            @foreach($freelancers as $freelancer)
+                @if($freelancer->userData->short_resume == 0)
+                    @include('freelancer_card')
+                @else
+                    @include('custom_resume.freelancer_card_custom')
+                @endif
+            @endforeach
         @else
             <div style="text-align: left; padding-bottom: 25px;">
                 <div class="pageHeading">

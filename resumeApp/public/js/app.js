@@ -81280,6 +81280,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.freelancers.splice(i, 1);
                 }
             }
+        },
+        getImageSrc: function getImageSrc(userImage) {
+            if (!userImage || userImage === null) {
+                return '/resumeApp/public/images/user.png';
+            }
+
+            if (userImage.charAt(0) !== 'h') {
+                return '/' + userImage;
+            }
+
+            return userImage;
         }
     }
 });
@@ -81333,7 +81344,7 @@ var render = function() {
                                     _c("img", {
                                       staticClass: "freelancerImg",
                                       attrs: {
-                                        src: freelancer.photo,
+                                        src: _vm.getImageSrc(freelancer.photo),
                                         alt: "freelancer",
                                         width: "100",
                                         height: "100"

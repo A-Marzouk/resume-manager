@@ -425,10 +425,12 @@ Route::get('/resume_sample/{username}', 'HomeController@ResumeSample');
 Route::get('/admin/{user_id}', 'AdminsController@logInAsUser')->name('logInAsUser');
 Route::get('/{username}', 'HomeController@ResumePage');
 
-Route::get('/home_test/test', function () {
-    return view('new_home');
-});
+Route::get('/home_test/designers', 'HomeController@homeDesigners')->name('home-desginers');
 
 Route::get('/home_test/sales', function () {
     return view('new_home_sales');
+});
+
+Route::get('/info', function () {
+    return phpinfo();
 });

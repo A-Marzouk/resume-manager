@@ -1,11 +1,31 @@
-.home {
+* {
   box-sizing: border-box;
-  width: 100vw !important;
+}
+
+body,
+html {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.home {
+  width: 100% !important;
   padding: 30px 70px !important;
   margin: 0;
   margin-top: 0 !important;
-  background: white !important;
+  background-color: white;
   font-family: 'Montserrat', sans-serif !important;
+  overflow-x: hidden;
+  position: relative;
+  // background-image: url(/images/home/topBg.png), url(/images/home/bottomBg.png) !important;
+  // background-position: right top, left bottom;
+  // background-repeat: no-repeat, no-repeat;
+
+  main {
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+  }
 }
 
 
@@ -13,14 +33,22 @@
   position: absolute;
   top: 0;
   right: 0;
-  z-index: -1;
+  z-index: -2;
+  max-width: 100%;
 }
 
 .bottomBg {
   position: absolute;
-  bottom: -30px;
+  max-width: 100%;
+  bottom: 0;
   left: -70px;
-  z-index: -1;
+  z-index: -2;
+}
+
+.maxContainer {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .newNav {
@@ -28,6 +56,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
+
+  .responsiveIcon {
+    display: none;
+  }
 
   &__homeLink {
     display: flex;
@@ -69,8 +102,7 @@
 }
 
 .mainSection {
-  display: flex;
-  // justify-content: center;
+  display: flex;  
   align-items: space-between;
   margin-top: 20px;
 
@@ -95,17 +127,14 @@
 
     &__registerBiz {
       margin-top: 240px;
-      
-      &__link {
-        color: #4566bc;
-        font-size: 24px;
-        letter-spacing: 2px;
-      }
+      color: #4566bc;
+      font-size: 24px;
+      letter-spacing: 2px;
     }
   }
 
   &__asset {
-    width: 60%;
+    // height: 100%;
     position: absolute;
     right: 0;
     z-index: -1;
@@ -175,10 +204,15 @@
   align-items: center;
   flex-direction: column;
   margin-top: 60px;
-  background: url('/images/home/bgPlan.png');
-  background-position: bottom center;
   padding-bottom: 80px;
   padding-top: 40px;
+  position: relative;
+
+  &__bg {
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+  }
 
   &__currencies {
     display: flex;
@@ -357,6 +391,7 @@
 .agentsSection {  
   position: relative;
   padding-bottom: 250px;
+  
 
   .agentsContainer {
     position: relative;
@@ -364,14 +399,41 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
+    &.center {
+      justify-content: center;
+    }
+  }
+  
+  &__filters {
+    display: flex;
+    // margin: 0 auto;
+    // max-width: 600px;
+    justify-content: center;
+    align-items: center;
+
+    &__filter {
+      margin: 0 40px;
+      color: #5b73e4;
+      text-align: center;
+    }
   }
 
-  &__agents {
+  &__cards {
     display: flex;
+    justify-content: space-around;
+
+    .freelancerCard {
+      width: 365px;
+    }
+  }
+  
+  &__agents {
+    // display: none;
+    // display: flex;
     flex-direction: column;
     width: 61%;
     z-index: 5;
-    float: right;
 
     &__agent {
       width: 100%;
@@ -470,6 +532,7 @@
 
 .questionsSection {
   position: relative;
+  
 
   &__bg-1,
   &__bg-2 {
@@ -489,15 +552,15 @@
     margin-top: 80px;
     padding: 70px 90px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
 
     &__question {
       background: white;
       box-sizing: border-box;
-      width: 30%;
-      min-width: 570px;
-      margin: 20px 0;
+      width: 40%;
+      min-width: 400px;
+      margin: 20px;
       border-radius: 20px;
       color: #0b2a7d;
       font-weight: bold;
@@ -507,7 +570,7 @@
       
       &.opened {
         background: linear-gradient(to right, #3aadf6, #7bc2ef);
-        height: 250px;
+        height: auto;
         color: white;
         font-weight: normal;
       }
@@ -518,10 +581,10 @@
         padding: 40px;
         box-sizing: border-box;
         position: relative;
-        line-height: 24px;
+        line-height: 24 px;
 
         &.opened {
-          height: 150px;
+          height: auto;
           color: white;
 
           &::before {
@@ -554,13 +617,13 @@
 }
 
 .newFooter {
-  display: flex;  
-  height: 250px;
+  display: flex;
   padding: 90px;
   position: relative;
+  overflow: hidden;
 
   .contact {
-    width: 500px;
+    max-width: 500px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -571,6 +634,12 @@
     }
   }
 
+  .copyright,
+  .socialNetworks,
+  .contactInfo {
+    margin-top: 15px;
+  }
+
   .copyright {
     color: #5f7088; font-size: 14px;
   }
@@ -579,6 +648,7 @@
     display: flex;
     justify-content: space-between;
     color: #212839;
+    max-width: 200px;
   }
 
   .contactInfo {
@@ -609,6 +679,259 @@
       li {
         margin: 20px 0;
       }
+    }
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) {
+  .home {
+    font-size: 1rem;
+  }
+
+  .newNav {
+    &__links {
+      &__link {
+        font-size: 1rem;
+        &--loginBtn {
+          font-size: 1rem;
+          width: 150px;
+          height: 36px;
+        }
+      }
+    }
+  }
+
+  .mainSection {
+    &__content {
+      &__title {
+        font-size: 36px;
+      }
+
+      &__subtitle {
+        font-size: 20px;
+      }
+
+      &__description {
+        font-size: 18px;
+      }
+
+      &__registerBiz {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .registerBizSection {
+    &__container {
+      &__submitBtn {
+        width: 250px;
+        height: 50px;
+        font-size: 16px;
+      }
+
+      &__inputs {
+        &__input {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .newFooter {
+    padding: 0;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+  .agentsSection {
+    .agentsContainer {
+      justify-content: center;
+    }
+
+    &__agents {
+      width: 100%;
+    }
+  }
+
+  .questionsSection {
+    width: 100%;
+    &__container {
+      width: 100%;
+      padding: 0;
+      &__question {
+        width: 100%;
+        min-width: 100%;
+      }
+    }
+
+    &__bg-1 {
+      bottom: 50px;
+    }
+  }
+
+  .newFooter {
+    .contactInfo {
+      flex-wrap: wrap;
+
+      &__item {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+  .hideOnMobile {
+    display: none;
+  }
+
+  .subtitle {
+    font-size: 28px;
+  }
+
+  .min-subtitle {
+    font-size: 18px;
+  }
+
+  .newNav {
+    .responsiveIcon {
+      display: block;
+      height: 50px;
+    }
+  }
+
+
+  .mainSection {
+    &__asset {
+      display: none;
+    }
+
+    &__content {
+      width: 100%;
+
+      &__title,
+      &__subtitle,
+      &__description {
+        text-align: center;
+      }
+
+      &__registerBiz {
+
+        text-align: center;
+        margin-top: 40px;
+      }
+    }
+  }
+
+  .registerBizSection {
+    &__container {
+      flex-wrap: wrap;
+      justify-content: center;
+
+      &__submitBtn {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .agentsSection {
+    &__bg{
+      display: none;
+    }
+
+    &__agents {
+      &__agent{
+        flex-wrap: wrap;
+        justify-content: center;
+
+        &__data{
+          height: auto;
+          width: 100%;
+
+          &__professionalInfo{ 
+            font-size: 14px;
+          }
+        }
+
+        &__actions {
+          flex-direction: row;
+          height: auto;
+          padding-top: 10px;
+          border-top: 1px solid #f7f7f8;
+
+          .action {
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            font-size: 12px;
+            margin: 0 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .newFooter {
+    .navigation {
+      .navigation__group {
+        margin-right: 10px;
+      }
+    }
+  }
+  .home {
+    padding: 10px 20px !important;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+
+  .newNav {
+    &__links {
+      &__link {
+        font-size: 14px;
+        &--loginBtn {
+          font-size: 14px;
+          width: 120px;
+        }
+      }
+    }
+  }
+
+  .registerBizSection {
+    &__container {
+      &__inputs {
+        flex-wrap: wrap;
+        
+        &__input {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+
+  .newFooter {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+
+    .contact {
+      align-items: center;
+    }
+
+    .socialNetworks {
+      img {
+        margin: 0 5px;
+      }
+    }
+
+    .contactInfo {
+      justify-content: center;
     }
   }
 }

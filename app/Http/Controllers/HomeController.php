@@ -95,9 +95,12 @@ class HomeController extends Controller
     }
 
     public function homeDesigners () {
-        $agents = User::limit(3)->get();
-
-        return view('new_home', ['agents' => $agents]);
+        // homepage freelancers
+        $promotedUsers = PromotedUser::with('user')->get();
+        $homeFreelancers = $promotedUsers->transform(function ($promotedUser) {
+            return $promotedUser->user;
+        });
+        return view('new_home', ['agents' => $promotedUsers]);
     }
 
 }

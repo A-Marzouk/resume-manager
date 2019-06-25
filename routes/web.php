@@ -418,6 +418,7 @@ Route::get('/admin/client/subscriptions_view/{client_id}','AdminsController@view
 //Route:: post('payment/paypal_send/submit','PaypalController@sendPaymentByPayPal')->name('submit.paypal.send.form');
 //Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('paypal.status');
 
+
 // public routes :
 Route::get('/apply','BusinessSupportController@showRegistrationForm')->name('freelancer.register');
 Route::get('/','HomeController@welcomePage')->name('welcome');
@@ -433,8 +434,4 @@ Route::get('/home_test/designers', 'HomeController@homeDesigners')->name('home-d
 
 Route::get('/home_test/sales', function () {
     return view('new_home_sales');
-});
-
-Route::get('/info', function () {
-    return phpinfo();
 });

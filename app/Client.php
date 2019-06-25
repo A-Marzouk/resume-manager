@@ -4,8 +4,9 @@ namespace App;
 
 use App\Models\Concerns\HasUser;
 use App\Notifications\ClientResetPasswordNotification;
+use Illuminate\Database\Eloquent\Model;
 
-class Client
+class Client extends Model
 {
     use HasUser;
 

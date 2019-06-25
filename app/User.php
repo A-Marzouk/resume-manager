@@ -170,6 +170,16 @@ class User extends Authenticatable
         return $this->hasRole('admin');
     }
 
+    public function getIsClientAttribute()
+    {
+        return $this->hasRole('client');
+    }
+
+    public function getIsAgentAttribute()
+    {
+        return $this->hasRole('agent');
+    }
+
     public function jobs()
     {
         return $this->belongsToMany(Job::class);

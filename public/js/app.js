@@ -82516,7 +82516,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.error[data-v-d7363ba0]{\n  font-family: Roboto;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 30px;/* identical to box height, or 187% */\n  color: #F56F6F;\n}\n", ""]);
+exports.push([module.i, "\n.error[data-v-d7363ba0] {\r\n  font-family: Roboto;\r\n  font-style: normal;\r\n  font-weight: normal;\r\n  font-size: 16px;\r\n  line-height: 30px;\r\n  /* identical to box height, or 187% */\r\n  color: #F56F6F;\n}\r\n", ""]);
 
 // exports
 
@@ -82527,6 +82527,17 @@ exports.push([module.i, "\n.error[data-v-d7363ba0]{\n  font-family: Roboto;\n  f
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -82621,13 +82632,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return;
       }
       this.canSubmit = false;
-      axios.post('/client/login/submit', this.formData).then(function (response) {
-        if (response.data.status === 'success') {
-          // redirect to dashboard
-          window.location.href = response.data.redirect;
+      axios.post('/login', this.formData).then(function (response) {
+        window.location.href = '/dashboard';
+      }).catch(function (error) {
+        if (_typeof(error.response.data) === 'object') {
+          _this.errors = _.flatten(_.toArray(error.response.data.errors));
+        } else {
+          _this.errors = ['Something went wrong. Please try again.'];
         }
-        _this.errors = response.data.errors;
-      });
+      });;
     },
     clearInput: function clearInput(inputName) {
       this.formData[inputName] = '';
@@ -82683,259 +82696,286 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "flex-column" }, [
-    _c("div", { staticClass: "account-info-edit" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "account-edit-section",
-          staticStyle: { "padding-bottom": "0", margin: "0 24px" }
-        },
-        [
-          _c("div", { staticClass: "account-edit-section-inputs" }, [
-            _c(
-              "div",
-              {
-                staticClass: "faq-question-input account-edit-input full-width"
-              },
-              [
-                _c("label", { staticClass: "faq-input-label" }, [
-                  _vm._v("\n            Enter your e-mail address\n          ")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "faq-input",
-                    class: { "error-input": _vm.errors.email }
-                  },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.formData.email,
-                          expression: "formData.email"
-                        }
-                      ],
-                      attrs: {
-                        type: "text",
-                        name: "email",
-                        placeholder: "Enter your email"
-                      },
-                      domProps: { value: _vm.formData.email },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.formData, "email", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.formData.email.length > 0,
-                          expression: "formData.email.length > 0"
-                        }
-                      ],
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.clearInput("email")
-                        }
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.errors.email
-                  ? _c("div", { staticClass: "error" }, [
-                      _vm._v(
-                        "\n            " +
-                          _vm._s(_vm.errors.email[0]) +
-                          "\n          "
-                      )
-                    ])
-                  : _vm._e()
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "account-edit-section-inputs" }, [
-            _c(
-              "div",
-              {
-                staticClass: "faq-question-input account-edit-input full-width"
-              },
-              [
-                _c("label", { staticClass: "faq-input-label" }, [
-                  _vm._v("\n            Enter your password\n          ")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "faq-input",
-                    class: { "error-input": _vm.errors.password }
-                  },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.formData.password,
-                          expression: "formData.password"
-                        }
-                      ],
-                      attrs: {
-                        type: "password",
-                        name: "password",
-                        placeholder: "Enter your password"
-                      },
-                      domProps: { value: _vm.formData.password },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.formData,
-                            "password",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.formData.password.length > 0,
-                          expression: "formData.password.length > 0"
-                        }
-                      ],
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.clearInput("password")
-                        }
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.errors.password
-                  ? _c("div", { staticClass: "error" }, [
-                      _vm._v(
-                        "\n            " +
-                          _vm._s(_vm.errors.password[0]) +
-                          "\n          "
-                      )
-                    ])
-                  : _vm._e()
-              ]
-            )
-          ]),
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.submitForm($event)
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "account-info-edit" }, [
+          _vm._m(0),
           _vm._v(" "),
           _c(
             "div",
             {
-              staticClass: "form-group d-flex justify-content-start",
-              staticStyle: { "margin-top": "36px" }
+              staticClass: "account-edit-section",
+              staticStyle: { "padding-bottom": "0", margin: "0 24px" }
             },
             [
-              _c("div", { staticClass: "checkbox" }, [
-                _c("label", { staticClass: "checkBoxText checkBoxContainer" }, [
-                  _c("input", {
-                    directives: [
+              _c("div", { staticClass: "account-edit-section-inputs" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "faq-question-input account-edit-input full-width"
+                  },
+                  [
+                    _c("label", { staticClass: "faq-input-label" }, [
+                      _vm._v(
+                        "\n              Enter your e-mail address\n            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
                       {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.formData.remember,
-                        expression: "formData.remember"
-                      }
-                    ],
-                    attrs: { type: "checkbox", name: "remember" },
-                    domProps: {
-                      checked: Array.isArray(_vm.formData.remember)
-                        ? _vm._i(_vm.formData.remember, null) > -1
-                        : _vm.formData.remember
-                    },
-                    on: {
-                      change: function($event) {
-                        var $$a = _vm.formData.remember,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = null,
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
+                        staticClass: "faq-input",
+                        class: { "error-input": _vm.errors.length }
+                      },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formData.email,
+                              expression: "formData.email"
+                            }
+                          ],
+                          attrs: {
+                            type: "text",
+                            name: "email",
+                            placeholder: "Enter your email"
+                          },
+                          domProps: { value: _vm.formData.email },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
                               _vm.$set(
                                 _vm.formData,
-                                "remember",
-                                $$a.concat([$$v])
+                                "email",
+                                $event.target.value
                               )
-                          } else {
-                            $$i > -1 &&
-                              _vm.$set(
-                                _vm.formData,
-                                "remember",
-                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                              )
+                            }
                           }
-                        } else {
-                          _vm.$set(_vm.formData, "remember", $$c)
-                        }
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "rememberText" }, [
-                    _vm._v("Remember Me")
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "checkmark" })
-                ])
-              ])
+                        }),
+                        _vm._v(" "),
+                        _c("img", {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.formData.email.length > 0,
+                              expression: "formData.email.length > 0"
+                            }
+                          ],
+                          attrs: {
+                            src:
+                              "/images/client/campaign_activity/close_black.png",
+                            alt: "delete icon"
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.clearInput("email")
+                            }
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm.errors.length
+                      ? _c("div", { staticClass: "error" }, [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(_vm.errors[0]) +
+                              "\n              "
+                          )
+                        ])
+                      : _vm._e()
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "account-edit-section-inputs" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "faq-question-input account-edit-input full-width"
+                  },
+                  [
+                    _c("label", { staticClass: "faq-input-label" }, [
+                      _vm._v(
+                        "\n                Enter your password\n              "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "faq-input",
+                        class: { "error-input": _vm.errors.password }
+                      },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formData.password,
+                              expression: "formData.password"
+                            }
+                          ],
+                          attrs: {
+                            type: "password",
+                            name: "password",
+                            placeholder: "Enter your password"
+                          },
+                          domProps: { value: _vm.formData.password },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.formData,
+                                "password",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("img", {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.formData.password.length > 0,
+                              expression: "formData.password.length > 0"
+                            }
+                          ],
+                          attrs: {
+                            src:
+                              "/images/client/campaign_activity/close_black.png",
+                            alt: "delete icon"
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.clearInput("password")
+                            }
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm.errors.password
+                      ? _c("div", { staticClass: "error" }, [
+                          _vm._v(
+                            "\n                  " +
+                              _vm._s(_vm.errors.password[0]) +
+                              "\n                "
+                          )
+                        ])
+                      : _vm._e()
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "form-group d-flex justify-content-start",
+                  staticStyle: { "margin-top": "36px" }
+                },
+                [
+                  _c("div", { staticClass: "checkbox" }, [
+                    _c(
+                      "label",
+                      { staticClass: "checkBoxText checkBoxContainer" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formData.remember,
+                              expression: "formData.remember"
+                            }
+                          ],
+                          attrs: { type: "checkbox", name: "remember" },
+                          domProps: {
+                            checked: Array.isArray(_vm.formData.remember)
+                              ? _vm._i(_vm.formData.remember, null) > -1
+                              : _vm.formData.remember
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$a = _vm.formData.remember,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = null,
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    _vm.$set(
+                                      _vm.formData,
+                                      "remember",
+                                      $$a.concat([$$v])
+                                    )
+                                } else {
+                                  $$i > -1 &&
+                                    _vm.$set(
+                                      _vm.formData,
+                                      "remember",
+                                      $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1))
+                                    )
+                                }
+                              } else {
+                                _vm.$set(_vm.formData, "remember", $$c)
+                              }
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "rememberText" }, [
+                          _vm._v("Remember Me")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "checkmark" })
+                      ]
+                    )
+                  ])
+                ]
+              )
             ]
           )
-        ]
-      )
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "account-edit-section-edit-btn no-decoration mt-0",
-        class: { "disabled-btn": !_vm.canSubmit },
-        attrs: { id: "submitBtnWrapper" }
-      },
-      [
+        ]),
+        _vm._v(" "),
         _c(
-          "a",
+          "div",
           {
-            staticClass: "btn btn-primar",
-            attrs: { href: "javascript:void(0)" },
-            on: { click: _vm.submitForm }
+            staticClass: "account-edit-section-edit-btn no-decoration mt-0",
+            class: { "disabled-btn": !_vm.canSubmit },
+            attrs: { id: "submitBtnWrapper" }
           },
-          [_vm._v("\n      LOG IN\n    ")]
+          [
+            _c(
+              "button",
+              { staticClass: "btn btn-primar", attrs: { type: "submit" } },
+              [_vm._v("\n            LOG IN\n          ")]
+            )
+          ]
         )
       ]
     ),
@@ -82960,7 +83000,7 @@ var staticRenderFns = [
             }
           }),
           _vm._v(" "),
-          _c("span", [_vm._v("\n            LOG IN\n        ")])
+          _c("span", [_vm._v("LOG IN")])
         ])
       ]
     )

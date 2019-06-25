@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 
 use App\Campaign;
@@ -417,6 +417,18 @@ Route::get('/admin/client/subscriptions_view/{client_id}','AdminsController@view
 //Route::get('payment/paypal/send','PaypalController@showSendForm')->name('show.paypal.form');
 //Route:: post('payment/paypal_send/submit','PaypalController@sendPaymentByPayPal')->name('submit.paypal.send.form');
 //Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('paypal.status');
+
+Route::get('dashboard', 'DashboardController@showDashboard')
+    ->middleware('auth')
+    ->name('dashboard.index');
+
+// Authentication Routes...
+// Route::get('login', 'Auth\LoginController@showLoginForm')
+//     ->name('login');
+Route::post('login', 'Auth\LoginController@login')
+    ->name('login');
+Route::get('logout', 'Auth\LoginController@logout')
+    ->name('logout');
 
 
 // public routes :

@@ -3,7 +3,7 @@
         <div class="account-info-edit-wrapper">
             <nav class="navbar navbar-light fixed-top dashboard_navbar">
                 <div class="backBtn">
-                    <a href="/admin-front/agents">
+                    <a href="/admin/agents">
                         <img src="/images/client/arrow_back.png" alt="back-icon">
                     </a>
                     <span v-if="step !== 6">NEW AGENT</span>

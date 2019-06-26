@@ -34,4 +34,5 @@ class AdminFrontEndController extends Controller
     public function addBehanceDesigner(){
         return view('admin-new.add_behance_designer');
     }
+
 }

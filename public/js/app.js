@@ -60035,7 +60035,7 @@ var staticRenderFns = [
       { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
       [
         _c("div", { staticClass: "backBtn" }, [
-          _c("a", { attrs: { href: "/admin-front" } }, [
+          _c("a", { attrs: { href: "/admin" } }, [
             _c("img", {
               attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
             })
@@ -60841,7 +60841,7 @@ var staticRenderFns = [
         { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
         [
           _c("div", { staticClass: "backBtn" }, [
-            _c("a", { attrs: { href: "/admin-front/agents" } }, [
+            _c("a", { attrs: { href: "/admin/agents" } }, [
               _c("img", {
                 attrs: {
                   src: "/images/client/arrow_back.png",
@@ -61787,7 +61787,7 @@ var staticRenderFns = [
         { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
         [
           _c("div", { staticClass: "backBtn" }, [
-            _c("a", { attrs: { href: "/admin-front" } }, [
+            _c("a", { attrs: { href: "/admin" } }, [
               _c("img", {
                 attrs: {
                   src: "/images/client/arrow_back.png",
@@ -63035,7 +63035,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "/admin-front/agents" } }, [
+    return _c("a", { attrs: { href: "/admin/agents" } }, [
       _c("img", {
         attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
       })
@@ -63268,7 +63268,7 @@ var staticRenderFns = [
       { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
       [
         _c("div", { staticClass: "backBtn" }, [
-          _c("a", { attrs: { href: "/admin-front" } }, [
+          _c("a", { attrs: { href: "/admin" } }, [
             _c("img", {
               attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
             })
@@ -64652,7 +64652,7 @@ var render = function() {
                                           staticClass:
                                             "btn btn-primar btn-radius btn-responsive",
                                           attrs: {
-                                            href: "/admin-front/agent-profile"
+                                            href: "/admin/agent-profile"
                                           }
                                         },
                                         [_vm._v("VISIT AGENT’S PROFILE")]
@@ -64675,8 +64675,7 @@ var render = function() {
                                           staticClass:
                                             "btn btn-primar btn-radius btn-responsive",
                                           attrs: {
-                                            href:
-                                              "/admin-front/applicant-profile"
+                                            href: "/admin/applicant-profile"
                                           }
                                         },
                                         [_vm._v("VISIT AGENT’S PROFILE")]
@@ -65337,7 +65336,7 @@ var staticRenderFns = [
           "a",
           {
             staticStyle: { color: "#05A4F4" },
-            attrs: { href: "/admin-front/advanced-search" }
+            attrs: { href: "/admin/advanced-search" }
           },
           [
             _vm._v(
@@ -65567,7 +65566,7 @@ var staticRenderFns = [
               {
                 staticClass: "btn btn-primar btn-radius btn-responsive",
                 staticStyle: { margin: "0 0 0 20px" },
-                attrs: { href: "/admin-front/applicant-profile" }
+                attrs: { href: "/admin/applicant-profile" }
               },
               [_c("b", [_vm._v("VISIT PROFILE")])]
             )

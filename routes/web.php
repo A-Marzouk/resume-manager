@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-// admin front end routs :
+// admin routs :
 Route::prefix('admin')->group(function (){
     Route::get('/applicant-profile','AdminFrontEndController@showApplicantProfile')->name('admin.front.applicant_profile');
     Route::get('/agent-profile','AdminFrontEndController@showApprovedAgentProfile')->name('admin.front.agent_profile');
@@ -28,6 +28,10 @@ Route::prefix('admin')->group(function (){
     Route::get('/register-agent','AdminFrontEndController@showRegisterAgentPage')->name('admin.register.agent');
     Route::get('/register-agent/{any?}','AdminFrontEndController@showRegisterAgentPage')->name('admin.register.agent');
     Route::get('/{any?}','AdminsController@welcomePage');
+
+    // fetching data routs
+    Route::get('/api/get-business-agents','AdminsController@getBusinessSupportAgents')->name('get.business.agents');
+
 });
 
 

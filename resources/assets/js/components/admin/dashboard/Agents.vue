@@ -54,7 +54,7 @@
                         <input type="text" placeholder="Search by name, e-mail">
                     </div>
                     <div class="blue-text no-decoration">
-                        <a href="/admin-front/advanced-search" style="color: #05A4F4;" >
+                        <a href="/admin/advanced-search" style="color: #05A4F4;" >
                             ADVANCED SEARCH
                         </a>
                     </div>
@@ -183,8 +183,8 @@
                                                         </div>
                                                         <div class="visiblty">
                                                             <div class="no-decoration white-on-hover mt-4">
-                                                                <a href="/admin-front/agent-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab !== 'applicants'">VISIT AGENT’S PROFILE</a>
-                                                                <a href="/admin-front/applicant-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab === 'applicants'">VISIT AGENT’S PROFILE</a>
+                                                                <a href="/admin/agent-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab !== 'applicants'">VISIT AGENT’S PROFILE</a>
+                                                                <a href="/admin/applicant-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab === 'applicants'">VISIT AGENT’S PROFILE</a>
                                                             </div>
                                                             <div class="mt-4">
                                                                 <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">
@@ -222,7 +222,7 @@
                                                             <div class="blue-text" style="font-size:12px;">LISTEN TO THE RECORD</div>
                                                         </div>
                                                         <div>
-                                                            <a href="/admin-front/applicant-profile" class="btn btn-primar btn-radius btn-responsive" style="margin:0 0 0 20px; ">
+                                                            <a href="/admin/applicant-profile" class="btn btn-primar btn-radius btn-responsive" style="margin:0 0 0 20px; ">
                                                                 <b>VISIT PROFILE</b>
                                                             </a>
                                                         </div>

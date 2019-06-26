@@ -20,15 +20,14 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 // admin front end routs :
-Route::prefix('admin-front')->group(function (){
+Route::prefix('admin')->group(function (){
     Route::get('/applicant-profile','AdminFrontEndController@showApplicantProfile')->name('admin.front.applicant_profile');
     Route::get('/agent-profile','AdminFrontEndController@showApprovedAgentProfile')->name('admin.front.agent_profile');
     Route::get('/advanced-search','AdminFrontEndController@showAdvancedSearchPage')->name('admin.search');
     Route::get('/add-behance-designer','AdminFrontEndController@addBehanceDesigner')->name('add.behance.designer');
     Route::get('/register-agent','AdminFrontEndController@showRegisterAgentPage')->name('admin.register.agent');
     Route::get('/register-agent/{any?}','AdminFrontEndController@showRegisterAgentPage')->name('admin.register.agent');
-    Route::get('/{any?}','AdminFrontEndController@showDashboard')->name('admin.front.dashboard');
-
+    Route::get('/{any?}','AdminsController@welcomePage');
 });
 
 
@@ -439,7 +438,7 @@ Route::get('/search/{search_id}','HomeController@getSearch')->name('public.searc
 Route::get('/workforce/terms_and_conditions','HomeController@termsView')->name('terms');
 Route::get('/workforce/privacy_policy','HomeController@privacyView')->name('privacy');
 Route::get('/resume_sample/{username}','HomeController@ResumeSample');
-Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
+//Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 Route::get('/{username}','HomeController@ResumePage');
 
 Route::get('/home_test/designers', 'HomeController@homeDesigners')->name('home-desginers');

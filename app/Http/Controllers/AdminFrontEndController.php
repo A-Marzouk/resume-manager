@@ -12,26 +12,26 @@ namespace App\Http\Controllers;
 class AdminFrontEndController extends Controller
 {
     public function showDashboard(){
-        return view('admin.dashboard.dashboard');
+        return view('admin-new.dashboard.dashboard');
     }
 
     public function showApplicantProfile(){
-        return view('admin.dashboard.applicant_profile');
+        return view('admin-new.dashboard.applicant_profile');
     }
 
     public function showApprovedAgentProfile(){
-        return view('admin.dashboard.approved_agent_profile');
+        return view('admin-new.dashboard.approved_agent_profile');
     }
 
     public function showAdvancedSearchPage(){
-        return view('admin.advanced_search_view');
+        return view('admin-new.advanced_search_view');
     }
 
     public function showRegisterAgentPage(){
-        return view('admin.register_agent_view');
+        return view('admin-new.register_agent_view');
     }
 
     public function addBehanceDesigner(){
-        return view('admin.add_behance_designer');
+        return view('admin-new.add_behance_designer');
     }
 }

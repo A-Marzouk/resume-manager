@@ -24,16 +24,7 @@ class AdminsController extends Controller
     }
 
     public function welcomePage(){
-        // get list of freelancers :
-        session()->put('admin', 'AdminWasHere');
-        $data['users'] = User::all();
-        $data['clients'] = Client::all();
-        $data['searches'] = ClientSearch::all();
-        $data['bookings'] = Booking::all();
-        $data['owners']   = Affiliate::all();
-        $data['jobs']     = Job::all();
-        $data['permissions'] = explode(',',auth()->user()->permissions);
-        return view('admin.usersList', compact('data'));
+        return view('admin-new.dashboard.dashboard');
     }
 
     public function viewBusinessSupportUsers(){

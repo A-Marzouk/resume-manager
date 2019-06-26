@@ -5,8 +5,11 @@
                 <div
                              class="campaign-info-tab firstTab"
                              :class="{active : activeTab === 'business-support'}"
-                             @click="activeTab = 'business-support'">
-                    <span class="">BUSINESS</span> SUPPORT
+                             @click="activeTab = 'business-support'"
+                             style="white-space: nowrap;"
+                >
+
+                    BUSINESS SUPPORT
                 </div>
                 <div
                              class="campaign-info-tab"

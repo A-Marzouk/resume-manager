@@ -80,10 +80,10 @@ if ($("#advancedSearch").length !== 0){
 if ($("#adminDashboardComponent").length !== 0){
 
         const routes = [
-            { path: '/admin-front/agents/', component: AdminAgents },
-            { path: '/admin-front/clients/', component: AdminClients },
-            { path: '/admin-front/campaign-manager/', component: AdminCampaigns },
-            { path: '/admin-front/', component: AdminCampaigns },
+            { path: '/admin/agents/', component: AdminAgents },
+            { path: '/admin/clients/', component: AdminClients },
+            { path: '/admin/campaign-manager/', component: AdminCampaigns },
+            { path: '/admin/', component: AdminCampaigns },
         ];
 
         const router = new VueRouter({
@@ -101,12 +101,12 @@ if ($("#adminDashboardComponent").length !== 0){
 if ($('#adminRegisterAgent').length !== 0){
 
     const routes = [
-        { path: '/admin-front/register-agent', component: FreelancerRegisterPage1 },
-        { path: '/admin-front/register-agent/page2', component: FreelancerRegisterPage2 },
-        { path: '/admin-front/register-agent/page3', component: FreelancerRegisterPage3 },
-        { path: '/admin-front/register-agent/page4', component: FreelancerRegisterPage4 },
-        { path: '/admin-front/register-agent/page5', component: FreelancerRegisterPage5 },
-        { path: '/admin-front/register-agent/completed', component: FreelancerRegisterCompleted }
+        { path: '/admin/register-agent', component: FreelancerRegisterPage1 },
+        { path: '/admin/register-agent/page2', component: FreelancerRegisterPage2 },
+        { path: '/admin/register-agent/page3', component: FreelancerRegisterPage3 },
+        { path: '/admin/register-agent/page4', component: FreelancerRegisterPage4 },
+        { path: '/admin/register-agent/page5', component: FreelancerRegisterPage5 },
+        { path: '/admin/register-agent/completed', component: FreelancerRegisterCompleted }
     ];
 
     const router = new VueRouter({

@@ -14500,7 +14500,7 @@ if ($("#advancedSearch").length !== 0) {
 
 if ($("#adminDashboardComponent").length !== 0) {
 
-    var routes = [{ path: '/admin-front/agents/', component: __WEBPACK_IMPORTED_MODULE_1__components_admin_dashboard_Agents_vue___default.a }, { path: '/admin-front/clients/', component: __WEBPACK_IMPORTED_MODULE_2__components_admin_dashboard_Clients_vue___default.a }, { path: '/admin-front/campaign-manager/', component: __WEBPACK_IMPORTED_MODULE_3__components_admin_dashboard_Campaigns_vue___default.a }, { path: '/admin-front/', component: __WEBPACK_IMPORTED_MODULE_3__components_admin_dashboard_Campaigns_vue___default.a }];
+    var routes = [{ path: '/admin/agents/', component: __WEBPACK_IMPORTED_MODULE_1__components_admin_dashboard_Agents_vue___default.a }, { path: '/admin/clients/', component: __WEBPACK_IMPORTED_MODULE_2__components_admin_dashboard_Clients_vue___default.a }, { path: '/admin/campaign-manager/', component: __WEBPACK_IMPORTED_MODULE_3__components_admin_dashboard_Campaigns_vue___default.a }, { path: '/admin/', component: __WEBPACK_IMPORTED_MODULE_3__components_admin_dashboard_Campaigns_vue___default.a }];
 
     var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
         mode: 'history',
@@ -14515,7 +14515,7 @@ if ($("#adminDashboardComponent").length !== 0) {
 
 if ($('#adminRegisterAgent').length !== 0) {
 
-    var _routes = [{ path: '/admin-front/register-agent', component: __WEBPACK_IMPORTED_MODULE_13__components_freelancer_registerForms_page1_vue___default.a }, { path: '/admin-front/register-agent/page2', component: __WEBPACK_IMPORTED_MODULE_14__components_freelancer_registerForms_page2_vue___default.a }, { path: '/admin-front/register-agent/page3', component: __WEBPACK_IMPORTED_MODULE_15__components_freelancer_registerForms_page3_vue___default.a }, { path: '/admin-front/register-agent/page4', component: __WEBPACK_IMPORTED_MODULE_16__components_freelancer_registerForms_page4_vue___default.a }, { path: '/admin-front/register-agent/page5', component: __WEBPACK_IMPORTED_MODULE_17__components_freelancer_registerForms_page5_vue___default.a }, { path: '/admin-front/register-agent/completed', component: __WEBPACK_IMPORTED_MODULE_18__components_freelancer_registerForms_finish_vue___default.a }];
+    var _routes = [{ path: '/admin/register-agent', component: __WEBPACK_IMPORTED_MODULE_13__components_freelancer_registerForms_page1_vue___default.a }, { path: '/admin/register-agent/page2', component: __WEBPACK_IMPORTED_MODULE_14__components_freelancer_registerForms_page2_vue___default.a }, { path: '/admin/register-agent/page3', component: __WEBPACK_IMPORTED_MODULE_15__components_freelancer_registerForms_page3_vue___default.a }, { path: '/admin/register-agent/page4', component: __WEBPACK_IMPORTED_MODULE_16__components_freelancer_registerForms_page4_vue___default.a }, { path: '/admin/register-agent/page5', component: __WEBPACK_IMPORTED_MODULE_17__components_freelancer_registerForms_page5_vue___default.a }, { path: '/admin/register-agent/completed', component: __WEBPACK_IMPORTED_MODULE_18__components_freelancer_registerForms_finish_vue___default.a }];
 
     var _router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
         mode: 'history',
@@ -58268,7 +58268,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         setActiveTab: function setActiveTab() {
             var tabs = ['campaign-manager', 'payments', 'agents', 'clients'];
 
-            this.activeTab = this.$route.path.replace('/admin-front/', '');
+            this.activeTab = this.$route.path.replace('/admin/', '');
             if (!tabs.includes(this.activeTab)) {
                 this.activeTab = 'campaign-manager';
             }
@@ -58361,7 +58361,7 @@ var render = function() {
                 {
                   staticClass: "menu-block row",
                   class: { active: _vm.activeTab === "campaign-manager" },
-                  attrs: { to: "/admin-front/campaign-manager" },
+                  attrs: { to: "/admin/campaign-manager" },
                   nativeOn: {
                     click: function($event) {
                       _vm.selectTab("campaign-manager")
@@ -58391,7 +58391,7 @@ var render = function() {
                 {
                   staticClass: "menu-block row",
                   class: { active: _vm.activeTab === "agents" },
-                  attrs: { to: "/admin-front/agents" },
+                  attrs: { to: "/admin/agents" },
                   nativeOn: {
                     click: function($event) {
                       _vm.selectTab("agents")
@@ -58421,7 +58421,7 @@ var render = function() {
                 {
                   staticClass: "menu-block row",
                   class: { active: _vm.activeTab === "clients" },
-                  attrs: { to: "/admin-front/clients" },
+                  attrs: { to: "/admin/clients" },
                   nativeOn: {
                     click: function($event) {
                       _vm.selectTab("clients")
@@ -58451,7 +58451,7 @@ var render = function() {
                 {
                   staticClass: "menu-block row",
                   class: { active: _vm.activeTab === "payments" },
-                  attrs: { to: "/admin-front/payments" },
+                  attrs: { to: "/admin/payments" },
                   nativeOn: {
                     click: function($event) {
                       _vm.selectTab("payments")
@@ -58494,7 +58494,7 @@ var render = function() {
             {
               staticClass: "menu-block row",
               class: { active: _vm.activeTab === "campaign-manager" },
-              attrs: { to: "/admin-front/campaign-manager" },
+              attrs: { to: "/admin/campaign-manager" },
               nativeOn: {
                 click: function($event) {
                   _vm.selectTab("campaign-manager")
@@ -58522,7 +58522,7 @@ var render = function() {
             {
               staticClass: "menu-block row",
               class: { active: _vm.activeTab === "agents" },
-              attrs: { to: "/admin-front/agents" },
+              attrs: { to: "/admin/agents" },
               nativeOn: {
                 click: function($event) {
                   _vm.selectTab("agents")
@@ -58547,7 +58547,7 @@ var render = function() {
             {
               staticClass: "menu-block row",
               class: { active: _vm.activeTab === "clients" },
-              attrs: { to: "/admin-front/clients" },
+              attrs: { to: "/admin/clients" },
               nativeOn: {
                 click: function($event) {
                   _vm.selectTab("clients")
@@ -58572,7 +58572,7 @@ var render = function() {
             {
               staticClass: "menu-block row",
               class: { active: _vm.activeTab === "payments" },
-              attrs: { to: "/admin-front/payments" },
+              attrs: { to: "/admin/payments" },
               nativeOn: {
                 click: function($event) {
                   _vm.selectTab("payments")
@@ -59324,7 +59324,7 @@ var staticRenderFns = [
                           "a",
                           {
                             staticStyle: { width: "106px" },
-                            attrs: { href: "/admin-front/register-agent" }
+                            attrs: { href: "/admin/register-agent" }
                           },
                           [_vm._v("Continue")]
                         )
@@ -63422,7 +63422,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -63433,6 +63433,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -64177,16 +64180,14 @@ var render = function() {
           {
             staticClass: "campaign-info-tab firstTab",
             class: { active: _vm.activeTab === "business-support" },
+            staticStyle: { "white-space": "nowrap" },
             on: {
               click: function($event) {
                 _vm.activeTab = "business-support"
               }
             }
           },
-          [
-            _c("span", {}, [_vm._v("BUSINESS")]),
-            _vm._v(" SUPPORT\n            ")
-          ]
+          [_vm._v("\n\n                BUSINESS SUPPORT\n            ")]
         ),
         _vm._v(" "),
         _c(

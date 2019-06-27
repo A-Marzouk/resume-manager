@@ -121,7 +121,7 @@ class SearchesController extends Controller
 
         // form the where array :
 
-        $userDatas[]    = UserData::where($searchArray)->get();
+        $userDatas[] = UserData::where($searchArray)->get();
 
         $freelancers = $this->getFilteredFreelancers($userDatas);
 

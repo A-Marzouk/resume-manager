@@ -71,6 +71,9 @@ body {
 
 .customNavLink {
   outline: none;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
   opacity: 0.75;
   color: #637280 !important;
   font-family: Roboto !important;
@@ -125,6 +128,25 @@ body {
   text-decoration: none !important; }
 .loginBtn a {
   outline: none; }
+
+.text-blue {
+  color: $btn-blue !important;
+}
+
+.registerBtn {
+  padding: 18px 35px !important;
+  background-color: $btn-blue;
+  font-size: 14px;
+  margin-left: 54px;
+  
+  a {
+    color: white;
+    &:hover,
+    &:visited {
+      text-decoration: none;
+    }
+  }
+}
 @media only screen and (max-width: 600px) {
   .loginBtn {
     margin-right: 0px;

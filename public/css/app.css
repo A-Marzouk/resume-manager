@@ -11516,9 +11516,9 @@ html {
 
 .bottomBg {
   position: absolute;
-  max-width: 100%;
+  width: 200px;
   bottom: 0;
-  left: -70px;
+  left: 0;
   z-index: -2;
 }
 
@@ -12064,6 +12064,8 @@ html {
   padding: 15px;
   width: 286px;
   margin-bottom: 45px;
+  position: relative;
+  left: -15px;
 }
 
 .agentsSection .agentsContainer__selectContainer select {
@@ -12081,11 +12083,36 @@ html {
 .agentsSection .agentsContainer__card {
   width: 100%;
   margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
 }
 
 .agentsSection .agentsContainer__card .freelancerCard {
   margin: 0 !important;
   width: 352px;
+}
+
+.agentsSection .agentsContainer__card__portfolio {
+  margin-left: 10px;
+  height: 100%;
+  width: calc(100% - 342px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.agentsSection .agentsContainer__card__portfolio .work {
+  height: 100%;
+  position: relative;
+}
+
+.agentsSection .agentsContainer__card__portfolio .work img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .agentsSection__filters {

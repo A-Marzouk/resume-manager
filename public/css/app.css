@@ -3788,6 +3788,97 @@ body {
   padding-bottom: 9px;
 }
 
+.freelancerCard.smallCard .freelancerImg {
+  width: 70px;
+  height: 70px;
+}
+
+.freelancerCard.smallCard .nameRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: relative;
+  border-radius: 5px;
+  padding: 14px;
+  height: 100%;
+}
+
+.freelancerCard.smallCard .contact {
+  position: absolute;
+  top: 20px;
+  right: 14px;
+}
+
+.freelancerCard.smallCard .jobTitle {
+  color: white;
+  font-size: 14px;
+}
+
+.freelancerCard.smallCard .payment-details {
+  font-size: 12px;
+}
+
+.freelancerCard.smallCard .payment-details div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.freelancerCard.smallCard .payment-details img,
+.freelancerCard.smallCard .payment-details span {
+  margin-right: 5px;
+}
+
+.freelancerCard.smallCard .payment-details img {
+  height: 14px;
+}
+
+.freelancerCard.smallCard .payment-highLight {
+  font-size: 14px;
+}
+
+.freelancerCard.smallCard .resumeCardRight {
+  height: 100%;
+}
+
+.freelancerCard.smallCard .resumeCardRight .hireCardBtn {
+  width: 87px;
+}
+
+.freelancerCard.smallCard .resumeCardRight .nameRow .imageCol {
+  padding-left: 0;
+}
+
+.freelancerCard.smallCard .hireRow {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 14px;
+  margin: 0;
+  margin-top: 15px;
+}
+
+.freelancerCard.smallCard .nameCard {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  padding-top: 0;
+  margin-bottom: 10px;
+}
+
 @media (max-width: 1240px) {
   .dashboard .hideOnTablet {
     display: none;
@@ -11573,10 +11664,9 @@ html {
 
 .mainSection__content__description {
   font-size: 18px;
-  line-height: 28px;
   color: #0b2a7d;
   font-weight: 500;
-  line-height: 30px;
+  line-height: 50px;
 }
 
 .mainSection__content__registerBiz {
@@ -12001,7 +12091,7 @@ html {
 
 .agentsSection .agentsContainer__card .freelancerCard {
   margin: 0 !important;
-  width: 320px;
+  width: 385px;
 }
 
 .agentsSection__filters {

@@ -109,7 +109,7 @@ class HomeController extends Controller
         $user1->lastName = 'Quintero';
         $user1->id = 1;
         $user1->userData = new UserData();
-        $user1->userData->photoSrc = '/images/home/user.png';
+        $user1->userData->photo = '/images/home/profile1.png';
         $user1->userData->jobTitle = 'Web developer';
         $user1->userData->salary = 20;
         $user1->userData->availableHours = 40;
@@ -119,7 +119,7 @@ class HomeController extends Controller
         $user2->lastName = 'Marzouk';
         $user2->id = 2;
         $user2->userData = new UserData();
-        $user2->userData->photoSrc = '/images/home/user.png';
+        $user2->userData->photo = '/images/home/profile1.png';
         $user2->userData->jobTitle = 'Fullstack Developer';
         $user2->userData->salary = 40;
         $user2->userData->availableHours = 40;

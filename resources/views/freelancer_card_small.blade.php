@@ -80,19 +80,35 @@ $smallCard = true;
                         </div>
                     </div>
                 @endif
-                <div class="row hireRow showOnlyOnmd" style="margin-top: 35px; margin-bottom: 10px;">
-                    <div  class="col-md-5 offset-md-1 col-6 text-center" style="font-size: 15px; color: white;" >
-                        <span style="font-weight: bold;">
-                            ${{intval($freelancer->userData->salary) +5}}
-                        </span>
-                        <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Hourly rate</div>
+            </div>
+            <div class="row hireRow showOnlyOnmd" style="margin-top: 35px; margin-bottom: 10px;">
+                <div class="col-8 row">
+                    <div class="row col-12">
+                        <div  class="text-center" style="font-size: 15px; color: white;" >
+                            <span style="font-weight: bold;">
+                                ${{intval($freelancer->userData->salary) +5}}
+                            </span>Hourly rate
+                        </div>
                     </div>
-                    <div class="col-md-5 col-6 text-center"  style="font-size: 15px; color: white;">
-                        <span id="maxHours{{$freelancer->id}}{{$value['id']}}" style="font-weight: bold;">{{intval($freelancer->userData->availableHours)}} hours</span>
-                        <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly Availability</div>
+                    <div class="row col-12">
+                        <div class="text-center"  style="font-size: 15px; color: white;">
+                            <span id="maxHours{{$freelancer->id}}{{$value['id']}}" style="font-weight: bold;">{{intval($freelancer->userData->availableHours)}} hours</span>Weekly Availability
+                        </div>
                     </div>
                 </div>
-
+                @if($freelancer->userData->availableHours !=0)
+                    <div class="col-4 text-center cardRow NoDecor">
+                        @if(isset($portfolioModal) && !$isClient)
+                            <a class="hireCardBtn btn-block showHireSection" href="{{route('client.login')}}">
+                                HIRE ME
+                            </a>
+                        @else
+                            <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" id="showHireSection{{$freelancer->id}}{{$value['id']}}">
+                                HIRE ME
+                            </a>
+                        @endif
+                    </div>
+                @endif
             </div>
         </div>
     </div>

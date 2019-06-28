@@ -10,10 +10,10 @@ html {
 
 .home {
   width: 100% !important;
-  padding: 30px 70px !important;
+  padding: 33px 0;
   margin: 0;
   margin-top: 0 !important;
-  background-color: white;
+  background-color: white !important;
   font-family: 'Montserrat', sans-serif !important;
   overflow-x: hidden;
   position: relative;
@@ -31,8 +31,8 @@ html {
 
 .topBg {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -44px;
+  right: -20px;
   z-index: -2;
   max-width: 100%;
 }
@@ -49,6 +49,11 @@ html {
   max-width: 1400px;
   width: 100%;
   margin: 0 auto;
+}
+
+.logo {
+  height: 35px;
+  width: 201px !important;
 }
 
 .newNav {
@@ -101,13 +106,38 @@ html {
   }
 }
 
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 .mainSection {
   display: flex;  
   align-items: space-between;
-  margin-top: 20px;
+  padding: 120px 78px;
+
+  &__title {
+    font-family: Nunito, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 77px;
+    color: #2660AE;
+    width: 70%;
+    max-width: 945px;
+    margin-bottom: 37px;
+  }
 
   &__content {
     width: 40%;
+
+    .gold-divider {
+      background: #FECA5F;
+      border-radius: 50%;
+      height: 8px;
+      width: 8px;
+      display: inline-block;
+    }
+
     &__title {
       font-size: 46px;
       color: #3358b6;
@@ -123,6 +153,8 @@ html {
       font-size: 18px;
       line-height: 28px;
       color: #0b2a7d;
+      font-weight: 500;
+      line-height: 30px;
     }
 
     &__registerBiz {
@@ -390,19 +422,52 @@ html {
 
 .agentsSection {  
   position: relative;
-  padding-bottom: 250px;
+  display: flex;
+  justify-content: center;
+  padding: 100px 78px;
+  overflow: hidden;
+  width: 100%;
+
+  .pencilsBg {
+    position: absolute;
+    top: 0;
+    right: 20px;
+  }
   
+  .agentsBg-1,
+  .agentsBg-2,
+  .agentsBg-3 {
+    position: absolute;
+    width: 110vw;
+  }
+
+  .agentsBg-1 {
+    top: 0;
+  }
+  .agentsBg-2 {
+    top: 20px;
+  }
+  .agentsBg-3 {
+    top: 40px;
+  }
 
   .agentsContainer {
     position: relative;
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 
-    &.center {
-      justify-content: center;
+    &__card {
+      width: 100%;
+      margin: 20px 0;
+      .freelancerCard {
+        margin: 0 !important;
+        width: 320px;
+      }
     }
+
   }
   
   &__filters {
@@ -416,15 +481,6 @@ html {
       margin: 0 40px;
       color: #5b73e4;
       text-align: center;
-    }
-  }
-
-  &__cards {
-    display: flex;
-    justify-content: space-around;
-
-    .freelancerCard {
-      width: 365px;
     }
   }
   

@@ -97,6 +97,15 @@ body {
 
 .customNavLink {
   outline: none;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   opacity: 0.75;
   color: #637280 !important;
   font-family: Roboto !important;
@@ -180,6 +189,26 @@ body {
 
 .loginBtn a {
   outline: none;
+}
+
+.text-blue {
+  color: #05A4F4 !important;
+}
+
+.registerBtn {
+  padding: 18px 35px !important;
+  background-color: #05A4F4;
+  font-size: 14px;
+  margin-left: 54px;
+}
+
+.registerBtn a {
+  color: white;
+}
+
+.registerBtn a:hover,
+.registerBtn a:visited {
+  text-decoration: none;
 }
 
 @media only screen and (max-width: 600px) {
@@ -11371,10 +11400,10 @@ html {
 
 .home {
   width: 100% !important;
-  padding: 30px 70px !important;
+  padding: 33px 0;
   margin: 0;
   margin-top: 0 !important;
-  background-color: white;
+  background-color: white !important;
   font-family: 'Montserrat', sans-serif !important;
   overflow-x: hidden;
   position: relative;
@@ -11388,8 +11417,8 @@ html {
 
 .topBg {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -44px;
+  right: -20px;
   z-index: -2;
   max-width: 100%;
 }
@@ -11406,6 +11435,11 @@ html {
   max-width: 1400px;
   width: 100%;
   margin: 0 auto;
+}
+
+.logo {
+  height: 35px;
+  width: 201px !important;
 }
 
 .newNav {
@@ -11483,6 +11517,16 @@ html {
           box-shadow: 0px 3px 6px rgba(68, 68, 68, 0.2);
 }
 
+.flex-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .mainSection {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11490,11 +11534,30 @@ html {
   -webkit-box-align: space-between;
       -ms-flex-align: space-between;
           align-items: space-between;
-  margin-top: 20px;
+  padding: 120px 78px;
+}
+
+.mainSection__title {
+  font-family: Nunito, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 77px;
+  color: #2660AE;
+  width: 70%;
+  max-width: 945px;
+  margin-bottom: 37px;
 }
 
 .mainSection__content {
   width: 40%;
+}
+
+.mainSection__content .gold-divider {
+  background: #FECA5F;
+  border-radius: 50%;
+  height: 8px;
+  width: 8px;
+  display: inline-block;
 }
 
 .mainSection__content__title {
@@ -11512,6 +11575,8 @@ html {
   font-size: 18px;
   line-height: 28px;
   color: #0b2a7d;
+  font-weight: 500;
+  line-height: 30px;
 }
 
 .mainSection__content__registerBiz {
@@ -11877,7 +11942,40 @@ html {
 
 .agentsSection {
   position: relative;
-  padding-bottom: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 100px 78px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.agentsSection .pencilsBg {
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+
+.agentsSection .agentsBg-1,
+.agentsSection .agentsBg-2,
+.agentsSection .agentsBg-3 {
+  position: absolute;
+  width: 110vw;
+}
+
+.agentsSection .agentsBg-1 {
+  top: 0;
+}
+
+.agentsSection .agentsBg-2 {
+  top: 20px;
+}
+
+.agentsSection .agentsBg-3 {
+  top: 40px;
 }
 
 .agentsSection .agentsContainer {
@@ -11886,18 +11984,24 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.agentsSection .agentsContainer.center {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.agentsSection .agentsContainer__card {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.agentsSection .agentsContainer__card .freelancerCard {
+  margin: 0 !important;
+  width: 320px;
 }
 
 .agentsSection__filters {
@@ -11916,18 +12020,6 @@ html {
   margin: 0 40px;
   color: #5b73e4;
   text-align: center;
-}
-
-.agentsSection__cards {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
-.agentsSection__cards .freelancerCard {
-  width: 365px;
 }
 
 .agentsSection__agents {

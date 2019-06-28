@@ -52,12 +52,20 @@ class AdminsController extends Controller
 
     // api ( fetching data from the DB )
 
-    public function getBusinessSupportAgents(){
+    public function getAgentsByProfessionName($professionName){
+        // user -> data -> profession -> name === business-support
+        $businessSupportAgents = [] ;
         $users = User::whereHas('roles', function ($query) {
             $query->where('name', '=', 'agent');
         })->get();
 
-        return $users;
+        foreach ($users as $user){
+            if($user->data->profession->name === $professionName){
+                $businessSupportAgents [] = $user ;
+            }
+        }
+
+        return $businessSupportAgents ;
     }
 
 

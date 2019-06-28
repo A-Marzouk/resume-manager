@@ -12,11 +12,8 @@ class UserData extends Model
         'careerObjective', 'education', 'workExperience', 'primarySkills', 'charSkills', 'availableHours', 'salary', 'salary_month',
         'currency', 'preferredTime', 'surname', 'jobTitle', 'intro', 'githubLink', 'stackoverflowLink', 'googleCalendar', 'personalSite'
         , 'terms', 'MondayHours', 'TuesdayHours', 'WednesdayHours', 'ThursdayHours', 'FridayHours', 'SaturdayHours', 'SundayHours', 'behanceLink',
-        'instagramLink', 'dribbleLink', 'freeDate', 'workDesc1', 'workDesc2', 'workDesc3',
-        'workDesc4', 'workDesc5', 'workDesc6', 'video', 'timeZone', 'video_file', 'home_page_freelancer',
-        'workDesc7', 'workDesc0', 'eduTitle1', 'eduTitle2', 'eduTitle3', 'eduYear1', 'eduYear2', 'eduYear3',
-        'eduDesc1', 'eduDesc2', 'eduDesc3', 'trnTitle1', 'trnTitle2', 'trnTitle3', 'trnYear1', 'trnYear2', 'trnYear3',
-        'trnDesc1', 'trnDesc2', 'trnDesc3', 'audioFile', 'future_plan', 'skype_id', 'telephone', 'social_apps', 'country', 'audio_transcript', 'profession_id',
+        'instagramLink', 'dribbleLink', 'freeDate', 'video', 'timeZone', 'video_file', 'home_page_freelancer',
+        'audioFile', 'future_plan', 'skype_id', 'telephone', 'social_apps', 'country', 'audio_transcript', 'profession_id',
     ];
 
     public function user()

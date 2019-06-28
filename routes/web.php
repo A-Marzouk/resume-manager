@@ -30,7 +30,7 @@ Route::prefix('admin')->group(function (){
     Route::get('/{any?}','AdminsController@welcomePage');
 
     // fetching data routs
-    Route::get('/api/get-business-agents','AdminsController@getBusinessSupportAgents')->name('get.business.agents');
+    Route::get('/api/agents/{professionName}','AdminsController@getAgentsByProfessionName')->name('get.agents');
 
 });
 

@@ -56,54 +56,9 @@ html {
   width: 201px !important;
 }
 
-.newNav {
+.nav-home-designers {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-
-  .responsiveIcon {
-    display: none;
-  }
-
-  &__homeLink {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 19px;
-    color: #0391eb;
-
-    img {
-      margin-right: 10px;
-    }
-  }
-
-  &__links {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 580px;
-    font-size: 18px;
-
-    &__link {
-      color: #5f7088;
-      display: block;
-
-      &--loginBtn {
-        color: white;
-        display: block;
-        width: 167px;
-        height: 44px;
-        border-radius: 22px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(to right, #3aadf6, #7bc2ef);
-        box-shadow: 0px 3px 6px rgba($color: #444, $alpha: 0.2);
-      }
-    }
-  }
+  padding: 0 78px !important;
 }
 
 .flex-column {
@@ -421,8 +376,6 @@ html {
 
 .agentsSection {  
   position: relative;
-  display: flex;
-  justify-content: center;
   padding: 100px 78px;
   overflow: hidden;
   width: 100%;
@@ -430,14 +383,17 @@ html {
   .pencilsBg {
     position: absolute;
     top: 0;
-    right: 20px;
+    right: 50px;
+    height: 150px;
   }
   
   .agentsBg-1,
   .agentsBg-2,
   .agentsBg-3 {
     position: absolute;
-    width: 110vw;
+    left: 0;
+    z-index: -1;
+    width: 102vw;
   }
 
   .agentsBg-1 {
@@ -457,13 +413,71 @@ html {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    background: white;
+    padding: 49px 59px;
+    box-shadow: 0px 4px 22px rgba(178, 189, 200, 0.26);
+    border-radius: 4px;
+
+    &__searchTools {
+      font-family: Nunito;
+      display: flex;
+      justify-content: center;
+      z-index: 5;
+      margin-bottom: 52px;
+
+      button {
+        padding: 23px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        border: none;
+        font-weight: bold;
+        font-size: 36px;
+        background: white;
+        width: 500px;
+        color: #2A3749;
+
+        &.active {
+          color: white;
+          background: #FECA5F;
+        }
+      }
+
+      .btn-first {
+        border-radius: 60px 0 0 60px;
+      }
+      
+      .btn-second {
+        border-radius: 0 60px 60px 0;
+      }
+    }
+
+    &__selectContainer {
+      background: rgba($color:#BBD9FF, $alpha: 0.3);
+      border-radius: 4px;
+      padding: 15px;
+      width: 286px;
+      margin-bottom: 45px;
+
+      select {
+        background: #FFFFFF;
+        width: 100%;
+        font-size: 22px;
+        border: 0;
+        border-radius: 4px;
+        padding: 12px 20px;
+        font-weight: bold;
+        color: #4A5464;
+        font-family: Nunito, Arial, Helvetica, sans-serif;
+      }
+    }
 
     &__card {
       width: 100%;
-      margin: 20px 0;
+      margin: 10px 0;
       .freelancerCard {
         margin: 0 !important;
-        width: 385px;
+        width: 352px;
       }
     }
 

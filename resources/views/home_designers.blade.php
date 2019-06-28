@@ -38,8 +38,8 @@
   ?>
   <img src="/images/home/mainBg-designers.svg" alt="" class="topBg">
   <div id="app">
-    <nav class="navbar navbar-expand-md">
-        <a class="navbar-brand col-md-2 col-9" href="{{ url('/') }}">
+    <nav class="navbar navbar-expand-md nav-home-designers">
+        <a href="{{ url('/') }}">
           <img class="logo" src="/images/home/123workforce.png" alt="logo">
         </a>
         <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" style="border: none;" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -139,6 +139,16 @@
       <img class="agentsBg-3" src="/images/home/agentsBg-3.svg" alt="">
       <img src="/images/home/pencilsBg.png" alt="" class="pencilsBg">
       {{-- Search agents component --}}
+      <div class="agentsContainer__searchTools">
+        <button class="btn-first active">Featured designers</button>
+        <button class="btn-second">Search designers</button>
+      </div>
+
+      <div class="agentsContainer__selectContainer">
+        <select name="" id="">
+          <option value="UX/UI">UX/UI designers</option>
+        </select>
+      </div>
       {{-- {{ dd($agents) }} --}}
       <div class="agentsContainer">
         @foreach ($agents as $freelancer)

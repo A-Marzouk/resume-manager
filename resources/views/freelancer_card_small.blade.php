@@ -50,11 +50,11 @@ $smallCard = true;
                 <div class="payment-details">
                     <div style="color: white;" >
                         <img src="/images/home/monetization.svg" alt=""><span class="payment-highLight" style="font-weight: bold;"> $ {{intval($freelancer->userData->salary) +5}}
-                        </span>Hourly rate
+                        </span>hourly rate
                     </div>
                     <div style="color: white;">
                         <img src="/images/home/watch_later.svg" alt="">
-                        <span class="payment-highLight" id="maxHours{{$freelancer->id}}{{$value['id']}}" style="font-weight: bold;">{{intval($freelancer->userData->availableHours)}} hours</span> Weekly Availability
+                        <span class="payment-highLight" id="maxHours{{$freelancer->id}}{{$value['id']}}" style="font-weight: bold;">{{intval($freelancer->userData->availableHours)}} hours</span> availability
                     </div>
                 </div>
                 @if($freelancer->userData->availableHours !=0)

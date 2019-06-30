@@ -19,6 +19,23 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
+// UserPhoto Routes...
+Route::get('users/photos', 'UserPhotoController@index')
+    ->name('me.photos.index');
+Route::get('users/{user}/photos', 'UserPhotoController@show')
+    ->name('users.photos.show');
+
+// UserPhoto Routes (may be protected)...
+Route::patch('users/photos', 'UserPhotoController@updateCurrentUserPhoto')
+    ->name('me.photos.update');
+Route::delete('users/photos', 'UserPhotoController@destroyCurrentUserPhoto')
+    ->name('me.photos.destroy');
+Route::patch('users/{user}/photos', 'UserPhotoController@update')
+    ->name('users.photos.update');
+Route::delete('users/{user}/photos', 'UserPhotoController@destroy')
+    ->name('users.photos.destroy');
+
+
 // admin routs :
 Route::prefix('admin')->group(function (){
     Route::get('/applicant-profile','AdminFrontEndController@showApplicantProfile')->name('admin.front.applicant_profile');
@@ -31,7 +48,6 @@ Route::prefix('admin')->group(function (){
 
     // fetching data routs
     Route::get('/api/agents/{professionName}','AdminsController@getAgentsByProfessionName')->name('get.agents');
-
 });
 
 

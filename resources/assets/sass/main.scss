@@ -138,6 +138,11 @@ body {
   background-color: $btn-blue;
   font-size: 14px;
   margin-left: 54px;
+
+  // tablets
+  @media (max-width: 992px) {
+    font-size: 14px;
+  }
   
   a {
     color: white;
@@ -1833,7 +1838,7 @@ body {
   box-shadow: 0 11px 16px -7px #E5ECED;
   padding: 0;
   border-radius: 5px;
-  margin-left: 9.07%; }
+  margin-left: 9.07%;}
 @media only screen and (max-width: 1200px) {
   .freelancerCard {
     width: auto;
@@ -2390,6 +2395,13 @@ body {
   
   .hideOnSm {
     display: none;
+  }
+}
+
+.showOnSm {
+  display: none;
+  @media only screen and (max-width: 576px) {
+    display: flex;
   }
 }
 

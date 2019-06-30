@@ -58,19 +58,32 @@ $smallCard = true;
                     </div>
                 </div>
                 @if($freelancer->userData->availableHours !=0)
-                    <div class="text-center cardRow NoDecor">
+                    <div class="text-center cardRow NoDecor hideOnSm">
                         @if(isset($portfolioModal) && !$isClient)
                             <a class="hireCardBtn btn-block showHireSection" href="{{route('client.login')}}">
                                 HIRE ME
                             </a>
                         @else
-                            <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" id="showHireSection{{$freelancer->id}}{{$value['id']}}">
+                            <a class="hireCardBtn btn-block showHireSection hideOnSm" href="javascript:void(0)" id="showHireSection{{$freelancer->id}}{{$value['id']}}">
                                 HIRE ME
                             </a>
                         @endif
                     </div>
                 @endif
             </div>
+            @if($freelancer->userData->availableHours !=0)
+                <div class="text-center cardRow NoDecor showOnSm">
+                    @if(isset($portfolioModal) && !$isClient)
+                        <a class="hireCardBtn btn-block showHireSection" href="{{route('client.login')}}">
+                            HIRE ME
+                        </a>
+                    @else
+                        <a class="hireCardBtn btn-block showHireSection showOnSm" href="javascript:void(0)" id="showHireSection{{$freelancer->id}}{{$value['id']}}">
+                            HIRE ME
+                        </a>
+                    @endif
+                </div>
+            @endif
         </div>
     </div>
 </div>

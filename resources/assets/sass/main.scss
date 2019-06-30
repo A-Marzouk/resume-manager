@@ -138,6 +138,11 @@ body {
   background-color: $btn-blue;
   font-size: 14px;
   margin-left: 54px;
+
+  // tablets
+  @media (max-width: 992px) {
+    font-size: 14px;
+  }
   
   a {
     color: white;
@@ -2390,6 +2395,13 @@ body {
   
   .hideOnSm {
     display: none;
+  }
+}
+
+.showOnSm {
+  display: none;
+  @media only screen and (max-width: 576px) {
+    display: flex;
   }
 }
 

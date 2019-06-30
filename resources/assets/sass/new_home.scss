@@ -35,6 +35,10 @@ html {
   right: -20px;
   z-index: -2;
   max-width: 100%;
+
+  @media (max-width: 992px) {
+    width: 50%;
+  }
 }
 
 .bottomBg {
@@ -59,6 +63,10 @@ html {
 .nav-home-designers {
   width: 100%;
   padding: 0 78px !important;
+
+  @media (max-width: 992px) {
+    padding: 0 14px !important;
+  }
 }
 
 .flex-column {
@@ -71,6 +79,10 @@ html {
   align-items: space-between;
   padding: 120px 78px;
 
+  @media (max-width: 992px) {
+    padding: 64px 14px !important;
+  }
+
   &__title {
     font-family: Nunito, Arial, Helvetica, sans-serif;
     font-style: normal;
@@ -80,10 +92,21 @@ html {
     width: 70%;
     max-width: 945px;
     margin-bottom: 37px;
+
+    @media (max-width: 992px) {
+      font-size: 50px;
+      // line-height: 68px;
+      width: 80%;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 24px;
+      width: 100%;
+    }
   }
 
   &__content {
-    width: 40%;
+    width: 60%;
 
     .gold-divider {
       background: #FECA5F;
@@ -109,6 +132,10 @@ html {
       color: #0b2a7d;
       font-weight: 500;
       line-height: 50px;
+
+      @media (max-width: 576px) {
+        font-size: 10px;
+      }
     }
 
     &__registerBiz {
@@ -380,11 +407,16 @@ html {
   overflow: hidden;
   width: 100%;
 
+  @media (max-width: 992px) {
+    padding: 49px 14px;
+  }
+
   .pencilsBg {
     position: absolute;
     top: 0;
     right: 50px;
     height: 150px;
+    z-index: -2;
   }
   
   .agentsBg-1,
@@ -418,12 +450,21 @@ html {
     box-shadow: 0px 4px 22px rgba(178, 189, 200, 0.26);
     border-radius: 4px;
 
+    @media (max-width: 576px) {
+      padding: 0;
+      background: transparent;
+    }
+
     &__searchTools {
       font-family: Nunito;
       display: flex;
       justify-content: center;
       z-index: 5;
       margin-bottom: 52px;
+
+      @media (max-width: 992px) {
+        width: 100%;
+      }
 
       button {
         padding: 23px;
@@ -434,8 +475,18 @@ html {
         font-weight: bold;
         font-size: 36px;
         background: white;
-        width: 500px;
+        width: 550px;
         color: #2A3749;
+
+        @media (max-width: 992px) {
+          font-size: 22px;
+          width: 50%;
+          padding: 13px;
+        }
+
+        @media (max-width: 576px) {
+          font-size: 12px;
+        }
 
         &.active {
           color: white;
@@ -461,6 +512,15 @@ html {
       position: relative;
       left: -15px;
 
+      @media (max-width: 992px) {
+        left: 0;
+        width: 266px;
+      }
+
+      @media (max-width: 576px) {
+        width: 100%;
+      }
+
       select {
         background: #FFFFFF;
         width: 100%;
@@ -471,6 +531,14 @@ html {
         font-weight: bold;
         color: #4A5464;
         font-family: Nunito, Arial, Helvetica, sans-serif;
+
+        @media (max-width: 992px) {
+          font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+          font-size: 14px;
+        }
       }
     }
 
@@ -480,9 +548,23 @@ html {
       display: flex;
       overflow: hidden;
 
+      @media (max-width: 768px) {
+        
+        flex-wrap: wrap;
+      }
+
       .freelancerCard {
         margin: 0 !important;
         width: 352px;
+
+        @media (max-width: 992px) {
+          width: 318px;
+        }
+
+        @media (max-width: 768px) {
+          width: 100%;
+        }
+
       }
       
       &__portfolio {
@@ -490,18 +572,42 @@ html {
         height: 100%;
         width: calc(100% - 342px);
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: 100%;
+        grid-auto-rows: 0;
         grid-gap: 10px;
+
+        @media (max-width: 768px) {
+          width: 100%;
+          margin-left: 0;
+        }
         
         .work {
-          height: 100%;
+          height: 175px;
+          grid-row: span 1;
+          min-width: 100%;
           position: relative;
+          grid-column: span 2;
+          
+          @media (max-width: 992px) {
+            grid-column: span 3;
+            // height: 
+          }
+
+          @media (max-width: 768px) {
+            grid-column: span 6;
+          }
 
           img {
-            width: 100%;
+            height: 100%;
             position: absolute;
             top: 0;
             left: 0;
+
+            @media (max-width: 768px) {
+              width: 100%;
+              height: auto;
+            }
           }
         }
       }
@@ -907,10 +1013,19 @@ html {
     &__content {
       width: 100%;
 
+      .gold-divider {
+        width: 6px;
+        height: 6px;
+      }
+
       &__title,
-      &__subtitle,
-      &__description {
+      &__subtitle {
         text-align: center;
+      }
+
+      &__description {
+        font-size: 10px;
+        line-height: 20px;
       }
 
       &__registerBiz {

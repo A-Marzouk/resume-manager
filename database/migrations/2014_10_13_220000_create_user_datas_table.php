@@ -58,6 +58,12 @@ class CreateUserDatasTable extends Migration
             $table->boolean('is_homepage_visible')->default(false);
             $table->timestamp('agreed_with_terms_at')->nullable();
 
+            $table->text('experience')->nullable();
+            $table->text('technologies')->nullable();
+            $table->text('avatar')->nullable();
+            $table->decimal('hourly_rate', 16, 4)->nullable();
+
+
             // $table->string('address_line_1')->nullable();
             // $table->string('address_line_2')->nullable();
             // $table->string('municipality')->nullable();

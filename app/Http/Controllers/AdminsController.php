@@ -58,7 +58,7 @@ class AdminsController extends Controller
         $Agents = [] ;
         $users = User::whereHas('roles', function ($query) {
             $query->where('name', '=', 'agent');
-        })->with('agent','data')->get();
+        })->with('data','languages')->get();
 
         foreach ($users as $user){
             if($user->data->profession->name === $professionName){

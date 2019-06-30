@@ -202,6 +202,12 @@ body {
   margin-left: 54px;
 }
 
+@media (max-width: 992px) {
+  .registerBtn {
+    font-size: 14px;
+  }
+}
+
 .registerBtn a {
   color: white;
 }
@@ -3367,6 +3373,18 @@ body {
   }
 }
 
+.showOnSm {
+  display: none;
+}
+
+@media only screen and (max-width: 576px) {
+  .showOnSm {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
 
 
 #invoice .agentName {
@@ -3789,8 +3807,8 @@ body {
 }
 
 .freelancerCard.smallCard .freelancerImg {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
 }
 
 .freelancerCard.smallCard .nameRow {
@@ -3820,6 +3838,14 @@ body {
   font-size: 12px;
 }
 
+@media (max-width: 768px) {
+  .freelancerCard.smallCard .payment-details {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
 .freelancerCard.smallCard .payment-details div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3827,6 +3853,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  text-align: center;
 }
 
 .freelancerCard.smallCard .payment-details img,
@@ -3850,8 +3879,27 @@ body {
   width: 87px;
 }
 
+@media (max-width: 768px) {
+  .freelancerCard.smallCard .resumeCardRight .hireCardBtn {
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
 .freelancerCard.smallCard .resumeCardRight .nameRow .imageCol {
   padding-left: 0;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .freelancerCard.smallCard .cardRow {
+    width: 100%;
+  }
 }
 
 .freelancerCard.smallCard .hireRow {
@@ -3877,6 +3925,7 @@ body {
   font-size: 18px;
   padding-top: 0;
   margin-bottom: 5px;
+  padding-left: 10px;
 }
 
 @media (max-width: 1240px) {
@@ -11514,6 +11563,12 @@ html {
   max-width: 100%;
 }
 
+@media (max-width: 992px) {
+  .topBg {
+    width: 50%;
+  }
+}
+
 .bottomBg {
   position: absolute;
   width: 200px;
@@ -11538,6 +11593,12 @@ html {
   padding: 0 78px !important;
 }
 
+@media (max-width: 992px) {
+  .nav-home-designers {
+    padding: 0 14px !important;
+  }
+}
+
 .flex-column {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11558,6 +11619,12 @@ html {
   padding: 120px 78px;
 }
 
+@media (max-width: 992px) {
+  .mainSection {
+    padding: 64px 14px !important;
+  }
+}
+
 .mainSection__title {
   font-family: Nunito, Arial, Helvetica, sans-serif;
   font-style: normal;
@@ -11569,8 +11636,22 @@ html {
   margin-bottom: 37px;
 }
 
+@media (max-width: 992px) {
+  .mainSection__title {
+    font-size: 50px;
+    width: 80%;
+  }
+}
+
+@media (max-width: 576px) {
+  .mainSection__title {
+    font-size: 24px;
+    width: 100%;
+  }
+}
+
 .mainSection__content {
-  width: 40%;
+  width: 60%;
 }
 
 .mainSection__content .gold-divider {
@@ -11597,6 +11678,12 @@ html {
   color: #0b2a7d;
   font-weight: 500;
   line-height: 50px;
+}
+
+@media (max-width: 576px) {
+  .mainSection__content__description {
+    font-size: 10px;
+  }
 }
 
 .mainSection__content__registerBiz {
@@ -11967,11 +12054,18 @@ html {
   width: 100%;
 }
 
+@media (max-width: 992px) {
+  .agentsSection {
+    padding: 49px 14px;
+  }
+}
+
 .agentsSection .pencilsBg {
   position: absolute;
   top: 0;
   right: 50px;
   height: 150px;
+  z-index: -2;
 }
 
 .agentsSection .agentsBg-1,
@@ -12016,6 +12110,13 @@ html {
   border-radius: 4px;
 }
 
+@media (max-width: 576px) {
+  .agentsSection .agentsContainer {
+    padding: 0;
+    background: transparent;
+  }
+}
+
 .agentsSection .agentsContainer__searchTools {
   font-family: Nunito;
   display: -webkit-box;
@@ -12026,6 +12127,12 @@ html {
           justify-content: center;
   z-index: 5;
   margin-bottom: 52px;
+}
+
+@media (max-width: 992px) {
+  .agentsSection .agentsContainer__searchTools {
+    width: 100%;
+  }
 }
 
 .agentsSection .agentsContainer__searchTools button {
@@ -12041,8 +12148,22 @@ html {
   font-weight: bold;
   font-size: 36px;
   background: white;
-  width: 500px;
+  width: 550px;
   color: #2A3749;
+}
+
+@media (max-width: 992px) {
+  .agentsSection .agentsContainer__searchTools button {
+    font-size: 22px;
+    width: 50%;
+    padding: 13px;
+  }
+}
+
+@media (max-width: 576px) {
+  .agentsSection .agentsContainer__searchTools button {
+    font-size: 12px;
+  }
 }
 
 .agentsSection .agentsContainer__searchTools button.active {
@@ -12068,6 +12189,19 @@ html {
   left: -15px;
 }
 
+@media (max-width: 992px) {
+  .agentsSection .agentsContainer__selectContainer {
+    left: 0;
+    width: 266px;
+  }
+}
+
+@media (max-width: 576px) {
+  .agentsSection .agentsContainer__selectContainer {
+    width: 100%;
+  }
+}
+
 .agentsSection .agentsContainer__selectContainer select {
   background: #FFFFFF;
   width: 100%;
@@ -12080,6 +12214,18 @@ html {
   font-family: Nunito, Arial, Helvetica, sans-serif;
 }
 
+@media (max-width: 992px) {
+  .agentsSection .agentsContainer__selectContainer select {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .agentsSection .agentsContainer__selectContainer select {
+    font-size: 14px;
+  }
+}
+
 .agentsSection .agentsContainer__card {
   width: 100%;
   margin: 10px 0;
@@ -12089,9 +12235,28 @@ html {
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .agentsSection .agentsContainer__card {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
 .agentsSection .agentsContainer__card .freelancerCard {
   margin: 0 !important;
   width: 352px;
+}
+
+@media (max-width: 992px) {
+  .agentsSection .agentsContainer__card .freelancerCard {
+    width: 318px;
+  }
+}
+
+@media (max-width: 768px) {
+  .agentsSection .agentsContainer__card .freelancerCard {
+    width: 100%;
+  }
 }
 
 .agentsSection .agentsContainer__card__portfolio {
@@ -12099,20 +12264,51 @@ html {
   height: 100%;
   width: calc(100% - 342px);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 100%;
+  grid-auto-rows: 0;
   grid-gap: 10px;
 }
 
+@media (max-width: 768px) {
+  .agentsSection .agentsContainer__card__portfolio {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
 .agentsSection .agentsContainer__card__portfolio .work {
-  height: 100%;
+  height: 175px;
+  grid-row: span 1;
+  min-width: 100%;
   position: relative;
+  grid-column: span 2;
+}
+
+@media (max-width: 992px) {
+  .agentsSection .agentsContainer__card__portfolio .work {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .agentsSection .agentsContainer__card__portfolio .work {
+    grid-column: span 6;
+  }
 }
 
 .agentsSection .agentsContainer__card__portfolio .work img {
-  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
+}
+
+@media (max-width: 768px) {
+  .agentsSection .agentsContainer__card__portfolio .work img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .agentsSection__filters {
@@ -12562,10 +12758,19 @@ html {
     width: 100%;
   }
 
+  .mainSection__content .gold-divider {
+    width: 6px;
+    height: 6px;
+  }
+
   .mainSection__content__title,
-  .mainSection__content__subtitle,
-  .mainSection__content__description {
+  .mainSection__content__subtitle {
     text-align: center;
+  }
+
+  .mainSection__content__description {
+    font-size: 10px;
+    line-height: 20px;
   }
 
   .mainSection__content__registerBiz {

@@ -8,6 +8,7 @@ use App\Client;
 use App\ClientSearch;
 use App\Conversation;
 use App\Job;
+use App\Models\Enums\UserStage;
 use App\Owner;
 use App\PayPalInvoice;
 use App\StripeInvoice;
@@ -54,18 +55,18 @@ class AdminsController extends Controller
 
     public function getAgentsByProfessionName($professionName){
         // user -> data -> profession -> name === business-support
-        $businessSupportAgents = [] ;
+        $Agents = [] ;
         $users = User::whereHas('roles', function ($query) {
             $query->where('name', '=', 'agent');
-        })->get();
+        })->with('agent','data')->get();
 
         foreach ($users as $user){
             if($user->data->profession->name === $professionName){
-                $businessSupportAgents [] = $user ;
+                $Agents [] = $user ;
             }
         }
 
-        return $businessSupportAgents ;
+        return $Agents ;
     }
 
 

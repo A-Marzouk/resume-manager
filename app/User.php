@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Media;
+use App\Models\Concerns\HasPhoto;
 use App\Models\Enums\UserStage;
 use App\Models\Enums\UserStatus;
 use EndyJasmi\Cuid;
@@ -9,13 +11,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use ReflectionClass;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media as BaseMedia;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
     public $emptyFields;
 
-    use HasRoles, Notifiable;
+    use HasRoles, Notifiable, HasMediaTrait, HasPhoto;
 
     /**
      * The attributes that are mass assignable.
@@ -68,6 +74,26 @@ class User extends Authenticatable
         static::creating(function ($user) {
             $user->referral_code = Cuid::make();
         });
+    }
+
+    public function registerMediaConversions(BaseMedia $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->fit(Manipulations::FIT_CROP, 300, 300)
+            ->optimize()
+            ->nonQueued()
+            ->performOnCollections('photo');
+    }
+
+    /**
+     * Get the resource's photo.
+     *
+     * @param  string  $value
+     * @return \Illuminate\Http\Response
+     */
+    public function defaultResourcePhoto()
+    {
+        return app(Media::class)->defaultUserPhoto();
     }
 
     /**

@@ -14581,7 +14581,7 @@ if ($("#adminDashboardComponent").length !== 0) {
 
 if ($('#adminRegisterAgent').length !== 0) {
 
-    var _routes = [{ path: '/admin/register-agent', component: __WEBPACK_IMPORTED_MODULE_1__components_admin_registerAgent_page1_vue___default.a }, { path: '/admin/register-agent/page2', component: __WEBPACK_IMPORTED_MODULE_2__components_admin_registerAgent_page2_vue___default.a }, { path: '/admin/register-agent/page3', component: __WEBPACK_IMPORTED_MODULE_3__components_admin_registerAgent_page3_vue___default.a }, { path: '/admin/register-agent/page4', component: __WEBPACK_IMPORTED_MODULE_4__components_admin_registerAgent_page4_vue___default.a }, { path: '/admin/register-agent/page5', component: __WEBPACK_IMPORTED_MODULE_5__components_admin_registerAgent_page5_vue___default.a }, { path: '/admin/register-agent/completed', component: __WEBPACK_IMPORTED_MODULE_6__components_admin_registerAgent_finish_vue___default.a }];
+    var _routes = [{ path: '/admin/register-agent', component: __WEBPACK_IMPORTED_MODULE_1__components_admin_registerAgent_page1_vue___default.a }, { path: '/admin/register-agent/page1', component: __WEBPACK_IMPORTED_MODULE_1__components_admin_registerAgent_page1_vue___default.a }, { path: '/admin/register-agent/page2', component: __WEBPACK_IMPORTED_MODULE_2__components_admin_registerAgent_page2_vue___default.a }, { path: '/admin/register-agent/page3', component: __WEBPACK_IMPORTED_MODULE_3__components_admin_registerAgent_page3_vue___default.a }, { path: '/admin/register-agent/page4', component: __WEBPACK_IMPORTED_MODULE_4__components_admin_registerAgent_page4_vue___default.a }, { path: '/admin/register-agent/page5', component: __WEBPACK_IMPORTED_MODULE_5__components_admin_registerAgent_page5_vue___default.a }, { path: '/admin/register-agent/completed', component: __WEBPACK_IMPORTED_MODULE_6__components_admin_registerAgent_finish_vue___default.a }];
 
     var _router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
         mode: 'history',
@@ -14774,7 +14774,7 @@ Vue.component('privacy-agreement', __webpack_require__(278));
 
 if ($('#freelancerRegisterComponent').length !== 0) {
 
-    var _routes4 = [{ path: '/freelancer/register', component: __WEBPACK_IMPORTED_MODULE_19__components_freelancer_registerForms_page1_vue___default.a }, { path: '/freelancer/register/page2', component: __WEBPACK_IMPORTED_MODULE_20__components_freelancer_registerForms_page2_vue___default.a }, { path: '/freelancer/register/page3', component: __WEBPACK_IMPORTED_MODULE_21__components_freelancer_registerForms_page3_vue___default.a }, { path: '/freelancer/register/page4', component: __WEBPACK_IMPORTED_MODULE_22__components_freelancer_registerForms_page4_vue___default.a }, { path: '/freelancer/register/page5', component: __WEBPACK_IMPORTED_MODULE_23__components_freelancer_registerForms_page5_vue___default.a }, { path: '/freelancer/register/completed', component: __WEBPACK_IMPORTED_MODULE_24__components_freelancer_registerForms_finish_vue___default.a }];
+    var _routes4 = [{ path: '/freelancer/register', component: __WEBPACK_IMPORTED_MODULE_19__components_freelancer_registerForms_page1_vue___default.a }, { path: '/freelancer/register/page1', component: __WEBPACK_IMPORTED_MODULE_19__components_freelancer_registerForms_page1_vue___default.a }, { path: '/freelancer/register/page2', component: __WEBPACK_IMPORTED_MODULE_20__components_freelancer_registerForms_page2_vue___default.a }, { path: '/freelancer/register/page3', component: __WEBPACK_IMPORTED_MODULE_21__components_freelancer_registerForms_page3_vue___default.a }, { path: '/freelancer/register/page4', component: __WEBPACK_IMPORTED_MODULE_22__components_freelancer_registerForms_page4_vue___default.a }, { path: '/freelancer/register/page5', component: __WEBPACK_IMPORTED_MODULE_23__components_freelancer_registerForms_page5_vue___default.a }, { path: '/freelancer/register/completed', component: __WEBPACK_IMPORTED_MODULE_24__components_freelancer_registerForms_finish_vue___default.a }];
 
     var _router4 = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
         mode: 'history',
@@ -62971,10 +62971,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 return;
             }
             this.canSubmit = false;
-            axios.post('/freelancer/register/submit', this.formData).then(function (response) {
+            axios.post('/admin/agent/create', this.formData).then(function (response) {
+                console.log(response.data);
                 if (response.data.status === 'success') {
                     // redirect to client dashboard
-                    window.location.href = '/freelancer';
+                    window.location.href = '/admin/agents';
                 }
                 _this.errors = response.data.errors;
             });
@@ -66153,7 +66154,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             if (this.noErrors()) {
                 this.getData({ professionalData: _extends({}, this.professionalData) });
                 this.changeStep(3);
-                this.$router.push('/freelancer/register/page3');
+                this.$router.push('/admin/register-agent/page3');
             } else {
                 this.showErrors = true;
             }
@@ -66762,7 +66763,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)\n      "
+              "\n          FILL IN THE INFORMATION TO REGISTER AN AGENT (BUSSINESS SUPPORT)\n      "
             )
           ])
         ])
@@ -66950,7 +66951,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             if (this.canSubmit) {
                 this.getData({ resumeData: _extends({}, this.resumeData) });
                 this.changeStep(4);
-                this.$router.push('/freelancer/register/page4');
+                this.$router.push('/admin/register-agent/page4');
             } else {
                 this.showErrors = true;
             }
@@ -67253,7 +67254,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)\n      "
+              "\n          FILL IN THE INFORMATION TO REGISTER AN AGENT (BUSSINESS SUPPORT)\n      "
             )
           ])
         ])
@@ -67434,7 +67435,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             if (this.canSubmit) {
                 this.getData({ resumeData: _extends({}, this.resumeData) });
                 this.changeStep(5);
-                this.$router.push('/freelancer/register/page5');
+                this.$router.push('/admin/register-agent/page5');
             } else {
                 // Send errors
             }
@@ -67575,7 +67576,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)\n      "
+              "\n          FILL IN THE INFORMATION TO REGISTER AN AGENT (BUSSINESS SUPPORT)\n      "
             )
           ])
         ])
@@ -67763,9 +67764,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             e.preventDefault();
             if (this.noErrors()) {
                 this.getData({ password: this.passwords.password, password2: this.passwords.passwordConf });
-                // this.changeStep(5)
-                // window.location.href = '/freelancer/register/completed'
-                window.location.replace('/freelancer/register/completed');
+                window.location.replace('/admin/register-agent/completed');
             } else {
                 this.showErrors = true;
             }
@@ -68003,7 +68002,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n          FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)\n      "
+              "\n          FILL IN THE INFORMATION TO REGISTER AN AGENT (BUSSINESS SUPPORT)\n      "
             )
           ])
         ])
@@ -68094,7 +68093,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -68128,16 +68126,12 @@ var staticRenderFns = [
     return _c("div", { staticClass: "account-info-edit dashboard-box" }, [
       _c("div", { staticClass: "account-edit-section" }, [
         _c("div", { staticClass: "account-edit-section-heading" }, [
-          _vm._v("\n          THANK YOU FOR THE REGISTRATION!\n      ")
+          _vm._v("\n         NEW AGENT REGISTERED !\n      ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "account-edit-section-inputs" }, [
           _c("div", { staticClass: "faq-question-input account-edit-input" }, [
-            _c("label", { staticClass: "faq-input-label" }, [
-              _vm._v(
-                "\n                  Your registration is completed. Soon our recruitment coordinator will contact you.\n              "
-              )
-            ])
+            _c("label", { staticClass: "faq-input-label" })
           ])
         ])
       ]),
@@ -68149,8 +68143,8 @@ var staticRenderFns = [
           attrs: { id: "submitBtnWrapper" }
         },
         [
-          _c("a", { attrs: { href: "/freelancer/dashboard" } }, [
-            _vm._v("\n          GO TO MAIN PAGE\n      ")
+          _c("a", { attrs: { href: "/admin/agents" } }, [
+            _vm._v("\n          GO TO ADMIN PANEL\n      ")
           ])
         ]
       )

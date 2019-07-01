@@ -4,7 +4,7 @@
         <div class="left">
             <img src="/images/client/my_account/info_40px.png" alt="info icon">
             <span>
-            FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)
+            FILL IN THE INFORMATION TO REGISTER AN AGENT (BUSSINESS SUPPORT)
         </span>
         </div>
     </div>
@@ -113,7 +113,7 @@ export default {
         if (this.canSubmit) {
             this.getData({ resumeData: { ...this.resumeData }})
             this.changeStep(4)
-            this.$router.push('/freelancer/register/page4')
+            this.$router.push('/admin/register-agent/page4')
         } else {
             this.showErrors = true
         }

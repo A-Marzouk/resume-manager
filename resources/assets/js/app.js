@@ -109,6 +109,7 @@ if ($('#adminRegisterAgent').length !== 0){
 
     const routes = [
         { path: '/admin/register-agent', component: AdminAgentRegisterPage1 },
+        { path: '/admin/register-agent/page1', component: AdminAgentRegisterPage1 },
         { path: '/admin/register-agent/page2', component: AdminAgentRegisterPage2 },
         { path: '/admin/register-agent/page3', component: AdminAgentRegisterPage3 },
         { path: '/admin/register-agent/page4', component: AdminAgentRegisterPage4 },
@@ -328,6 +329,7 @@ if ($('#freelancerRegisterComponent').length !== 0){
 
     const routes = [
         { path: '/freelancer/register', component: FreelancerRegisterPage1 },
+        { path: '/freelancer/register/page1', component: FreelancerRegisterPage1 },
         { path: '/freelancer/register/page2', component: FreelancerRegisterPage2 },
         { path: '/freelancer/register/page3', component: FreelancerRegisterPage3 },
         { path: '/freelancer/register/page4', component: FreelancerRegisterPage4 },

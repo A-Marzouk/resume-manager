@@ -38,10 +38,11 @@
                     return ;
                 }
                 this.canSubmit = false;
-                axios.post('/freelancer/register/submit',this.formData).then( (response) => {
+                axios.post('/admin/agent/create',this.formData).then( (response) => {
+                    console.log(response.data) ;
                     if(response.data.status === 'success'){
                         // redirect to client dashboard
-                        window.location.href = '/freelancer';
+                        window.location.href = '/admin/agents';
                     }
                     this.errors = response.data.errors;
                 });

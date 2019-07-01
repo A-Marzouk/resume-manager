@@ -4,7 +4,7 @@
         <div class="left">
             <img src="/images/dashboard/info.svg" alt="info icon">
             <span>
-            FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)
+            FILL IN THE INFORMATION TO REGISTER AN AGENT (BUSSINESS SUPPORT)
         </span>
         </div>
     </div>
@@ -94,9 +94,7 @@ export default {
         e.preventDefault()
         if (this.noErrors()) {
             this.getData({ password: this.passwords.password, password2: this.passwords.passwordConf})
-            // this.changeStep(5)
-            // window.location.href = '/freelancer/register/completed'
-            window.location.replace('/freelancer/register/completed')
+            window.location.replace('/admin/register-agent/completed')
         } else {
             this.showErrors = true
         }

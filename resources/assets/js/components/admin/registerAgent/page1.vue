@@ -204,17 +204,17 @@ export default {
             paypal:''
         },
         canSubmit: false,
-				errors: {
-					name:'',
-					surname:'',
-					gender:'',
-					phone:'',
-					email:'',
-					timeZone:'',
-					cityName:'',
-					paypal:''
-				},
-				showErrors: false
+        errors: {
+            name:'',
+            surname:'',
+            gender:'',
+            phone:'',
+            email:'',
+            timeZone:'',
+            cityName:'',
+            paypal:''
+        },
+        showErrors: false
     }
   },
   methods: {

@@ -43,6 +43,13 @@ Vue.component('admin-register-agent', require('./components/admin/RegisterAgent.
 Vue.component('add-behance-designer', require('./components/admin/AddBehanceDesigner.vue'));
 
 
+import AdminAgentRegisterPage1 from './components/admin/registerAgent/page1.vue'
+import AdminAgentRegisterPage2 from './components/admin/registerAgent/page2.vue'
+import AdminAgentRegisterPage3 from './components/admin/registerAgent/page3.vue'
+import AdminAgentRegisterPage4 from './components/admin/registerAgent/page4.vue'
+import AdminAgentRegisterPage5 from './components/admin/registerAgent/page5.vue'
+import AdminAgentRegisterCompleted from './components/admin/registerAgent/finish.vue'
+
 import AdminAgents from './components/admin/dashboard/Agents.vue';
 import AdminClients from './components/admin/dashboard/Clients.vue';
 import AdminCampaigns from './components/admin/dashboard/Campaigns.vue';
@@ -101,12 +108,12 @@ if ($("#adminDashboardComponent").length !== 0){
 if ($('#adminRegisterAgent').length !== 0){
 
     const routes = [
-        { path: '/admin/register-agent', component: FreelancerRegisterPage1 },
-        { path: '/admin/register-agent/page2', component: FreelancerRegisterPage2 },
-        { path: '/admin/register-agent/page3', component: FreelancerRegisterPage3 },
-        { path: '/admin/register-agent/page4', component: FreelancerRegisterPage4 },
-        { path: '/admin/register-agent/page5', component: FreelancerRegisterPage5 },
-        { path: '/admin/register-agent/completed', component: FreelancerRegisterCompleted }
+        { path: '/admin/register-agent', component: AdminAgentRegisterPage1 },
+        { path: '/admin/register-agent/page2', component: AdminAgentRegisterPage2 },
+        { path: '/admin/register-agent/page3', component: AdminAgentRegisterPage3 },
+        { path: '/admin/register-agent/page4', component: AdminAgentRegisterPage4 },
+        { path: '/admin/register-agent/page5', component: AdminAgentRegisterPage5 },
+        { path: '/admin/register-agent/completed', component:  AdminAgentRegisterCompleted }
     ];
 
     const router = new VueRouter({
@@ -305,6 +312,7 @@ import FreelancerRegisterPage3 from './components/freelancer/registerForms/page3
 import FreelancerRegisterPage4 from './components/freelancer/registerForms/page4.vue'
 import FreelancerRegisterPage5 from './components/freelancer/registerForms/page5.vue'
 import FreelancerRegisterCompleted from './components/freelancer/registerForms/finish.vue'
+
 
 Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'))
 Vue.component('freelancer-register', require('./components/freelancer/FreelancerRegister.vue'))

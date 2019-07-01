@@ -38,16 +38,19 @@ Route::delete('users/{user}/photos', 'UserPhotoController@destroy')
 
 // admin routs :
 Route::prefix('admin')->group(function (){
-    Route::get('/applicant-profile','AdminFrontEndController@showApplicantProfile')->name('admin.front.applicant_profile');
-    Route::get('/agent-profile','AdminFrontEndController@showApprovedAgentProfile')->name('admin.front.agent_profile');
-    Route::get('/advanced-search','AdminFrontEndController@showAdvancedSearchPage')->name('admin.search');
-    Route::get('/add-behance-designer','AdminFrontEndController@addBehanceDesigner')->name('add.behance.designer');
-    Route::get('/register-agent','AdminFrontEndController@showRegisterAgentPage')->name('admin.register.agent');
-    Route::get('/register-agent/{any?}','AdminFrontEndController@showRegisterAgentPage')->name('admin.register.agent');
+    Route::get('/applicant-profile','AdminsController@showApplicantProfile')->name('admin.front.applicant_profile');
+    Route::get('/agent-profile','AdminsController@showApprovedAgentProfile')->name('admin.front.agent_profile');
+    Route::get('/advanced-search','AdminsController@showAdvancedSearchPage')->name('admin.search');
+    Route::get('/add-behance-designer','AdminsController@addBehanceDesigner')->name('add.behance.designer');
+    Route::get('/register-agent','AdminsController@showRegisterAgentPage')->name('admin.register.agent');
+    Route::get('/register-agent/{any?}','AdminsController@showRegisterAgentPage')->name('admin.register.agent');
     Route::get('/{any?}','AdminsController@welcomePage');
 
     // fetching data routs
     Route::get('/api/agents/{professionName}','AdminsController@getAgentsByProfessionName')->name('get.agents');
+
+    // create agent :
+    Route::post('/admin/agent/create')->name('create.agent.from.admin');
 });
 
 

@@ -71,6 +71,17 @@ class AdminsController extends Controller
         return $Agents ;
     }
 
+    public function createAgent(Request $request){
+        app(User::class)->createAgent([
+            'user' => [
+                'email' => $request->email,
+                'password' => $request->password,
+                'username' => $request->username,
+            ],
+            'agent' => [],
+        ]);
+    }
+
 
 
 

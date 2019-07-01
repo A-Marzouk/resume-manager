@@ -50,7 +50,7 @@ Route::prefix('admin')->group(function (){
     Route::get('/api/agents/{professionName}','AdminsController@getAgentsByProfessionName')->name('get.agents');
 
     // create agent :
-    Route::post('/admin/agent/create')->name('create.agent.from.admin');
+    Route::post('/agent/create','AdminsController@createAgent')->name('create.agent.from.admin');
 });
 
 

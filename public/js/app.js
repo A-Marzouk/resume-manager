@@ -62973,8 +62973,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             this.canSubmit = false;
             axios.post('/admin/agent/create', this.formData).then(function (response) {
                 console.log(response.data);
+                return;
                 if (response.data.status === 'success') {
-                    // redirect to client dashboard
+                    // redirect to admin
                     window.location.href = '/admin/agents';
                 }
                 _this.errors = response.data.errors;
@@ -63078,7 +63079,8 @@ var render = function() {
             "keep-alive",
             [
               _c("router-view", {
-                attrs: { changeStep: _vm.changeStep, getData: _vm.getData }
+                attrs: { changeStep: _vm.changeStep, getData: _vm.getData },
+                on: { formReady: _vm.submitForm }
               })
             ],
             1
@@ -67764,6 +67766,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             e.preventDefault();
             if (this.noErrors()) {
                 this.getData({ password: this.passwords.password, password2: this.passwords.passwordConf });
+                this.$emit('formReady');
+                return;
                 window.location.replace('/admin/register-agent/completed');
             } else {
                 this.showErrors = true;

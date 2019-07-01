@@ -93,7 +93,9 @@ export default {
       nextStep (e) {
         e.preventDefault()
         if (this.noErrors()) {
-            this.getData({ password: this.passwords.password, password2: this.passwords.passwordConf})
+            this.getData({ password: this.passwords.password, password2: this.passwords.passwordConf});
+            this.$emit('formReady');
+            return;
             window.location.replace('/admin/register-agent/completed')
         } else {
             this.showErrors = true

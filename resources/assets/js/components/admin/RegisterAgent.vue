@@ -11,7 +11,7 @@
                 </div>
             </nav>
             <keep-alive>
-                <router-view :changeStep="changeStep" :getData="getData" ></router-view>
+                <router-view :changeStep="changeStep" :getData="getData" @formReady="submitForm"></router-view>
             </keep-alive>
             <span v-if="step !== 6" class="step-footer">Step {{ step }} / 5</span>
         </div>
@@ -40,8 +40,9 @@
                 this.canSubmit = false;
                 axios.post('/admin/agent/create',this.formData).then( (response) => {
                     console.log(response.data) ;
+                    return;
                     if(response.data.status === 'success'){
-                        // redirect to client dashboard
+                        // redirect to admin
                         window.location.href = '/admin/agents';
                     }
                     this.errors = response.data.errors;

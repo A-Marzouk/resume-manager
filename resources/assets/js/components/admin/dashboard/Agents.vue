@@ -51,7 +51,7 @@
                 <div class="d-flex align-items-center left">
                     <div class="searchBox agents">
                         <img src="/images/admin/magnifier-tool.svg" alt="">
-                        <input type="text" placeholder="Search by name, e-mail">
+                        <input type="text" placeholder="Search by name, e-mail" v-model="searchValue">
                     </div>
                     <div class="blue-text no-decoration">
                         <a href="/admin/advanced-search" style="color: #05A4F4;" >
@@ -123,7 +123,7 @@
                         </thead>
 
                         <tbody>
-                            <template v-for="(user, index) in selectedAgents">
+                            <template v-for="(user, index) in filteredSelectedAgents">
                                 <tr>
                                     <td>
                                         <div class="invoice-number base-text name-text" style="font-weight: 500;">
@@ -247,7 +247,7 @@
 
                 <div class="pagination-bar justify-content-between showFrom-600">
                     <div class="base-text">
-                        Total : {{selectedAgents.length}}
+                        Total : {{filteredSelectedAgents.length}}
                     </div>
                     <div>
                         <img src="/images/new_theme/arrow@2x.png" alt="" style="transform: rotate(180deg); margin-right:10px; width:7.5px; height:12px;">
@@ -359,7 +359,24 @@
                     7:'Approved (unavailable)',
                     8:'Unapproved',
                     9:'Unapproved'
+                },
+
+                searchValue:''
+            }
+        },
+        computed: {
+            filteredSelectedAgents() {
+                const search = this.searchValue.toLowerCase().trim();
+                if (!search){
+                    return this.selectedAgents;
                 }
+
+                let filteredAgents =  this.selectedAgents.filter( function (agent) {
+                    let fullName = agent.data.first_name + ' ' +  agent.data.last_name ;
+                    return  ( agent.email.toLowerCase().trim().indexOf(search) > -1  || fullName.toLowerCase().trim().indexOf(search) > -1 );
+                });
+
+                return filteredAgents ;
             }
         },
         methods: {

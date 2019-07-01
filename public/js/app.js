@@ -63422,7 +63422,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -63794,10 +63794,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 7: 'Approved (unavailable)',
                 8: 'Unapproved',
                 9: 'Unapproved'
-            }
+            },
+
+            searchValue: ''
         };
     },
 
+    computed: {
+        filteredSelectedAgents: function filteredSelectedAgents() {
+            var search = this.searchValue.toLowerCase().trim();
+            if (!search) {
+                return this.selectedAgents;
+            }
+
+            var filteredAgents = this.selectedAgents.filter(function (agent) {
+                var fullName = agent.data.first_name + ' ' + agent.data.last_name;
+                return agent.email.toLowerCase().trim().indexOf(search) > -1 || fullName.toLowerCase().trim().indexOf(search) > -1;
+            });
+
+            return filteredAgents;
+        }
+    },
     methods: {
         getAgentsByProfession: function getAgentsByProfession() {
             var _this = this;
@@ -64004,7 +64021,36 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "optionsBar" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "d-flex align-items-center left" }, [
+          _c("div", { staticClass: "searchBox agents" }, [
+            _c("img", {
+              attrs: { src: "/images/admin/magnifier-tool.svg", alt: "" }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.searchValue,
+                  expression: "searchValue"
+                }
+              ],
+              attrs: { type: "text", placeholder: "Search by name, e-mail" },
+              domProps: { value: _vm.searchValue },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.searchValue = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ]),
         _vm._v(" "),
         _c(
           "div",
@@ -64246,7 +64292,7 @@ var render = function() {
               _c(
                 "tbody",
                 [
-                  _vm._l(_vm.selectedAgents, function(user, index) {
+                  _vm._l(_vm.filteredSelectedAgents, function(user, index) {
                     return [
                       _c("tr", [
                         _c("td", [
@@ -64701,7 +64747,7 @@ var render = function() {
               _c("div", { staticClass: "base-text" }, [
                 _vm._v(
                   "\n                    Total : " +
-                    _vm._s(_vm.selectedAgents.length) +
+                    _vm._s(_vm.filteredSelectedAgents.length) +
                     "\n                "
                 )
               ]),
@@ -65058,31 +65104,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex align-items-center left" }, [
-      _c("div", { staticClass: "searchBox agents" }, [
-        _c("img", {
-          attrs: { src: "/images/admin/magnifier-tool.svg", alt: "" }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { type: "text", placeholder: "Search by name, e-mail" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "blue-text no-decoration" }, [
-        _c(
-          "a",
-          {
-            staticStyle: { color: "#05A4F4" },
-            attrs: { href: "/admin/advanced-search" }
-          },
-          [
-            _vm._v(
-              "\n                        ADVANCED SEARCH\n                    "
-            )
-          ]
-        )
-      ])
+    return _c("div", { staticClass: "blue-text no-decoration" }, [
+      _c(
+        "a",
+        {
+          staticStyle: { color: "#05A4F4" },
+          attrs: { href: "/admin/advanced-search" }
+        },
+        [
+          _vm._v(
+            "\n                        ADVANCED SEARCH\n                    "
+          )
+        ]
+      )
     ])
   },
   function() {

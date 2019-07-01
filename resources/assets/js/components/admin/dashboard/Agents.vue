@@ -399,9 +399,8 @@
 
             },
             OrderedSelectedAgents: function () {
-                const sort = this.sort;
-                let sorting = 'asc' ;
-                if(sort === 'old_first'){
+                let sorting = 'asc';
+                if(this.sort === 'old_first'){
                     sorting = 'desc';
                 }
                 return _.orderBy(this.filteredSelectedAgents, 'created_at' , sorting)

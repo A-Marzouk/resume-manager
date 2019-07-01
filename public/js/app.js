@@ -63833,9 +63833,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         OrderedSelectedAgents: function OrderedSelectedAgents() {
-            var sort = this.sort;
             var sorting = 'asc';
-            if (sort === 'old_first') {
+            if (this.sort === 'old_first') {
                 sorting = 'desc';
             }
             return _.orderBy(this.filteredSelectedAgents, 'created_at', sorting);

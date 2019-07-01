@@ -143,7 +143,7 @@
                                         APPLICATION PROCESS
                                     </span>
                                             <span v-else class="available-text">
-                                        AVAILABLE (+15 h/week)
+                                        {{userStatus[user.status]}} (+{{Math.ceil(user.data.available_hours_per_week)}} h/week)
                                     </span>
                                         </div>
                                     </td>
@@ -348,7 +348,18 @@
                 showSortSelection : false,
                 showFilterSelection : false,
                 showUsersNumSelection : false,
-                profession:'business-support'
+                profession:'business-support',
+                userStatus:{
+                    1:'New applicant',
+                    2:'In process (Voice)',
+                    3:'In process (Data)',
+                    4:'Available',
+                    5:'Available',
+                    6:'Approved (unavailable)',
+                    7:'Approved (unavailable)',
+                    8:'Unapproved',
+                    9:'Unapproved'
+                }
             }
         },
         methods: {

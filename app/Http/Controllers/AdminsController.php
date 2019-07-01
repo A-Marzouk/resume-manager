@@ -9,6 +9,7 @@ use App\ClientSearch;
 use App\Conversation;
 use App\Job;
 use App\Models\Enums\UserStage;
+use App\Models\Enums\UserStatus;
 use App\Owner;
 use App\PayPalInvoice;
 use App\StripeInvoice;
@@ -54,7 +55,7 @@ class AdminsController extends Controller
     // api ( fetching data from the DB )
 
     public function getAgentsByProfessionName($professionName){
-        // user -> data -> profession -> name === business-support
+        // user -> data -> profession -> name === $professionName
         $Agents = [] ;
         $users = User::whereHas('roles', function ($query) {
             $query->where('name', '=', 'agent');

@@ -48,7 +48,7 @@ class User extends Authenticatable implements HasMedia
      * @var array
      */
     protected $attributes = [
-        'status' => UserStatus::PENDING,
+        'status' => UserStatus::NEW_APPLICANT,
         'stage' => UserStage::PENDING,
     ];
 

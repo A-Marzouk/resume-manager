@@ -63,6 +63,7 @@ class AdminsController extends Controller
 
         foreach ($users as $user){
             if($user->data->profession->name === $professionName){
+                $user->is_details_opened = false;
                 $Agents [] = $user ;
             }
         }

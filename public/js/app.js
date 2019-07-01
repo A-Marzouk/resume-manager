@@ -63422,7 +63422,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.userEmailText[data-v-ff8d100c]{\n    font-size:13px;\n    color:gray;\n    padding-top:8px;\n}\n", ""]);
 
 // exports
 
@@ -63433,6 +63433,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -63803,16 +63806,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         filteredSelectedAgents: function filteredSelectedAgents() {
             var search = this.searchValue.toLowerCase().trim();
-            if (!search) {
+            var filter = this.filter;
+
+            if (!search && filter === 'show_all') {
                 return this.selectedAgents;
             }
 
-            var filteredAgents = this.selectedAgents.filter(function (agent) {
-                var fullName = agent.data.first_name + ' ' + agent.data.last_name;
-                return agent.email.toLowerCase().trim().indexOf(search) > -1 || fullName.toLowerCase().trim().indexOf(search) > -1;
-            });
+            return this.selectedAgents.filter(function (agent) {
 
-            return filteredAgents;
+                var fullName = agent.data.first_name + ' ' + agent.data.last_name;
+                var jobTitle = agent.data.job_title;
+                var email = agent.email;
+
+                var SearchFilter = email.toLowerCase().trim().indexOf(search) > -1 || jobTitle.toLowerCase().trim().indexOf(search) > -1 || fullName.toLowerCase().trim().indexOf(search) > -1;
+                var applicationFilter = true;
+
+                if (filter === 'show_new') {
+                    applicationFilter = agent.status === 1;
+                }
+                if (filter === 'show_in_process') {
+                    applicationFilter = agent.status === 2 || agent.status === 3;
+                }
+
+                return SearchFilter && applicationFilter;
+            });
+        },
+
+        OrderedSelectedAgents: function OrderedSelectedAgents() {
+            var sort = this.sort;
+            var sorting = 'asc';
+            if (sort === 'old_first') {
+                sorting = 'desc';
+            }
+            return _.orderBy(this.filteredSelectedAgents, 'created_at', sorting);
         }
     },
     methods: {
@@ -63897,6 +63923,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.profession = 'developer';
                     break;
             }
+        },
+        toggleDetails: function toggleDetails(user_id) {
+            var agents = this.selectedAgents;
+            $.each(agents, function (i) {
+                if (agents[i].id === user_id) {
+                    agents[i].is_details_opened = !agents[i].is_details_opened;
+                    if (agents[i].is_details_opened) {
+                        $('#detailsArrow' + user_id).css('transform', 'rotate(180deg)');
+                    } else {
+                        $('#detailsArrow' + user_id).css('transform', 'rotate(0deg)');
+                    }
+                }
+            });
         }
     },
     mounted: function mounted() {
@@ -64292,7 +64331,7 @@ var render = function() {
               _c(
                 "tbody",
                 [
-                  _vm._l(_vm.filteredSelectedAgents, function(user, index) {
+                  _vm._l(_vm.OrderedSelectedAgents, function(user, index) {
                     return [
                       _c("tr", [
                         _c("td", [
@@ -64311,12 +64350,39 @@ var render = function() {
                                   "\n                                        "
                               ),
                               _c("img", {
-                                staticStyle: { transform: "rotate(180deg)" },
                                 attrs: {
                                   src: "/images/admin/down_arrow.png",
-                                  alt: "down arrow"
+                                  alt: "down arrow",
+                                  id: "detailsArrow" + user.id
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.toggleDetails(user.id)
+                                  }
                                 }
                               })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.searchValue.length > 0,
+                                  expression: "searchValue.length > 0"
+                                }
+                              ],
+                              staticClass: "userEmailText"
+                            },
+                            [
+                              _vm._v(
+                                "\n                                        " +
+                                  _vm._s(user.email) +
+                                  "\n                                    "
+                              )
                             ]
                           )
                         ]),
@@ -64393,343 +64459,372 @@ var render = function() {
                           : _vm._e()
                       ]),
                       _vm._v(" "),
-                      _c("tr", [
-                        _c(
-                          "td",
-                          {
-                            staticStyle: {
-                              "border-top": "0",
-                              "padding-top": "0"
-                            },
-                            attrs: { colspan: "4" }
-                          },
-                          [
-                            _c(
-                              "div",
-                              {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value:
-                                      _vm.secondaryActiveTab === "applicants",
-                                    expression:
-                                      "secondaryActiveTab === 'applicants'"
-                                  }
-                                ],
-                                staticClass: "action-buttons-bar"
+                      _c(
+                        "tr",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: user.is_details_opened,
+                              expression: "user.is_details_opened"
+                            }
+                          ]
+                        },
+                        [
+                          _c(
+                            "td",
+                            {
+                              staticStyle: {
+                                "border-top": "0",
+                                "padding-top": "0"
                               },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "disapprove-btn no-decoration"
-                                  },
-                                  [
-                                    _c(
-                                      "a",
-                                      {
-                                        attrs: {
-                                          href: "javascript:void(0)",
-                                          "data-toggle": "modal",
-                                          "data-target": "#disapprove-agent"
-                                        },
-                                        on: {
-                                          click: _vm.checkDefaultRadioDisapprove
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                                DISAPPROVE APPLICANT\n                                            "
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _vm._m(2, true)
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "d-flex" }, [
+                              attrs: { colspan: "4" }
+                            },
+                            [
                               _c(
                                 "div",
                                 {
-                                  staticClass: "responsive-grid mb-3",
-                                  staticStyle: { "margin-top": "20px" }
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value:
+                                        _vm.secondaryActiveTab === "applicants",
+                                      expression:
+                                        "secondaryActiveTab === 'applicants'"
+                                    }
+                                  ],
+                                  staticClass: "action-buttons-bar"
                                 },
                                 [
-                                  _c("div", { staticClass: "d-flex" }, [
-                                    _c("div", {}, [
-                                      _c("img", {
-                                        staticClass: "avator",
-                                        staticStyle: { width: "50px" },
-                                        attrs: { src: user.data.avatar }
-                                      })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "p-2" }, [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "disapprove-btn no-decoration"
+                                    },
+                                    [
                                       _c(
-                                        "div",
+                                        "a",
                                         {
-                                          staticClass: "big-font",
-                                          staticStyle: {
-                                            "margin-bottom": "6px"
+                                          attrs: {
+                                            href: "javascript:void(0)",
+                                            "data-toggle": "modal",
+                                            "data-target": "#disapprove-agent"
+                                          },
+                                          on: {
+                                            click:
+                                              _vm.checkDefaultRadioDisapprove
                                           }
                                         },
                                         [
                                           _vm._v(
-                                            _vm._s(user.data.first_name) +
-                                              " " +
-                                              _vm._s(user.data.last_name)
+                                            "\n                                                DISAPPROVE APPLICANT\n                                            "
                                           )
                                         ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "location" }, [
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _vm._m(2, true)
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "d-flex" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "responsive-grid mb-3",
+                                    staticStyle: { "margin-top": "20px" }
+                                  },
+                                  [
+                                    _c("div", { staticClass: "d-flex" }, [
+                                      _c("div", {}, [
                                         _c("img", {
-                                          attrs: {
-                                            src:
-                                              "/images/client/add_agent/search_result/icon/maps/place_24px.png"
-                                          }
-                                        }),
-                                        _vm._v(
-                                          "\n                                                        " +
-                                            _vm._s(user.data.city) +
-                                            ", " +
-                                            _vm._s(user.data.country) +
-                                            "\n                                                    "
-                                        )
+                                          staticClass: "avator",
+                                          staticStyle: { width: "50px" },
+                                          attrs: { src: user.data.avatar }
+                                        })
                                       ]),
                                       _vm._v(" "),
-                                      _c("div", { staticClass: "visiblty" }, [
+                                      _c("div", { staticClass: "p-2" }, [
                                         _c(
                                           "div",
                                           {
-                                            staticClass:
-                                              "no-decoration white-on-hover mt-4"
+                                            staticClass: "big-font",
+                                            staticStyle: {
+                                              "margin-bottom": "6px"
+                                            }
                                           },
                                           [
-                                            _c(
-                                              "a",
-                                              {
-                                                directives: [
-                                                  {
-                                                    name: "show",
-                                                    rawName: "v-show",
-                                                    value:
-                                                      _vm.secondaryActiveTab !==
-                                                      "applicants",
-                                                    expression:
-                                                      "secondaryActiveTab !== 'applicants'"
-                                                  }
-                                                ],
-                                                staticClass:
-                                                  "btn btn-primar btn-radius btn-responsive",
-                                                attrs: {
-                                                  href: "/admin/agent-profile"
-                                                }
-                                              },
-                                              [_vm._v("VISIT AGENT’S PROFILE")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "a",
-                                              {
-                                                directives: [
-                                                  {
-                                                    name: "show",
-                                                    rawName: "v-show",
-                                                    value:
-                                                      _vm.secondaryActiveTab ===
-                                                      "applicants",
-                                                    expression:
-                                                      "secondaryActiveTab === 'applicants'"
-                                                  }
-                                                ],
-                                                staticClass:
-                                                  "btn btn-primar btn-radius btn-responsive",
-                                                attrs: {
-                                                  href:
-                                                    "/admin/applicant-profile"
-                                                }
-                                              },
-                                              [_vm._v("VISIT AGENT’S PROFILE")]
+                                            _vm._v(
+                                              _vm._s(user.data.first_name) +
+                                                " " +
+                                                _vm._s(user.data.last_name)
                                             )
                                           ]
                                         ),
                                         _vm._v(" "),
-                                        _vm._m(3, true)
-                                      ])
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticStyle: { "margin-top": "15px" } },
-                                    [
-                                      _c("div", { staticClass: "big-font" }, [
-                                        _c("img", {
-                                          staticClass: "primaryjob-icon",
-                                          attrs: {
-                                            src:
-                                              "/images/client/add_agent/search_result/ic/primary_job_name.png"
-                                          }
-                                        }),
-                                        _vm._v(
-                                          "\n                                                    " +
-                                            _vm._s(user.data.job_title) +
-                                            "\n                                                "
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          staticStyle: {
-                                            "font-size": "16px",
-                                            color: "#4a5464",
-                                            margin: "20px 0 20px"
-                                          }
-                                        },
-                                        [
-                                          _c(
-                                            "span",
-                                            {
-                                              staticStyle: {
-                                                "font-weight": "500"
-                                              }
-                                            },
-                                            [_vm._v("Sector experience: ")]
-                                          ),
-                                          _vm._v(
-                                            " " +
-                                              _vm._s(user.data.experience) +
-                                              "\n                                                "
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("div", [
-                                        _c(
-                                          "span",
-                                          {
-                                            staticStyle: {
-                                              "font-weight": "500"
+                                        _c("div", { staticClass: "location" }, [
+                                          _c("img", {
+                                            attrs: {
+                                              src:
+                                                "/images/client/add_agent/search_result/icon/maps/place_24px.png"
                                             }
-                                          },
-                                          [_vm._v("Technologies, software: ")]
-                                        ),
-                                        _vm._v(
-                                          " " +
-                                            _vm._s(user.data.technologies) +
-                                            "\n                                                "
-                                        )
-                                      ]),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticStyle: { margin: "20px 0" } },
-                                        [
+                                          }),
+                                          _vm._v(
+                                            "\n                                                        " +
+                                              _vm._s(user.data.city) +
+                                              ", " +
+                                              _vm._s(user.data.country) +
+                                              "\n                                                    "
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("div", { staticClass: "visiblty" }, [
                                           _c(
-                                            "span",
+                                            "div",
                                             {
-                                              staticStyle: {
-                                                "font-weight": "500"
-                                              }
+                                              staticClass:
+                                                "no-decoration white-on-hover mt-4"
                                             },
-                                            [_vm._v("Languages: ")]
-                                          ),
-                                          _vm._v(" "),
-                                          _vm._l(user.languages, function(
-                                            language,
-                                            index
-                                          ) {
-                                            return _c("span", { key: index }, [
-                                              _vm._v(
-                                                "\n                                                        " +
-                                                  _vm._s(language.label)
-                                              ),
+                                            [
                                               _c(
-                                                "span",
+                                                "a",
                                                 {
                                                   directives: [
                                                     {
                                                       name: "show",
                                                       rawName: "v-show",
                                                       value:
-                                                        index <
-                                                        user.languages.length -
-                                                          1,
+                                                        _vm.secondaryActiveTab !==
+                                                        "applicants",
                                                       expression:
-                                                        "index < user.languages.length -1 "
+                                                        "secondaryActiveTab !== 'applicants'"
                                                     }
-                                                  ]
+                                                  ],
+                                                  staticClass:
+                                                    "btn btn-primar btn-radius btn-responsive",
+                                                  attrs: {
+                                                    href: "/admin/agent-profile"
+                                                  }
                                                 },
-                                                [_vm._v(", ")]
+                                                [
+                                                  _vm._v(
+                                                    "VISIT AGENT’S PROFILE"
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "a",
+                                                {
+                                                  directives: [
+                                                    {
+                                                      name: "show",
+                                                      rawName: "v-show",
+                                                      value:
+                                                        _vm.secondaryActiveTab ===
+                                                        "applicants",
+                                                      expression:
+                                                        "secondaryActiveTab === 'applicants'"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "btn btn-primar btn-radius btn-responsive",
+                                                  attrs: {
+                                                    href:
+                                                      "/admin/applicant-profile"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "VISIT AGENT’S PROFILE"
+                                                  )
+                                                ]
                                               )
-                                            ])
-                                          })
-                                        ],
-                                        2
-                                      ),
-                                      _vm._v(" "),
-                                      _c("div", [
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _vm._m(3, true)
+                                        ])
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticStyle: { "margin-top": "15px" } },
+                                      [
+                                        _c("div", { staticClass: "big-font" }, [
+                                          _c("img", {
+                                            staticClass: "primaryjob-icon",
+                                            attrs: {
+                                              src:
+                                                "/images/client/add_agent/search_result/ic/primary_job_name.png"
+                                            }
+                                          }),
+                                          _vm._v(
+                                            "\n                                                    " +
+                                              _vm._s(user.data.job_title) +
+                                              "\n                                                "
+                                          )
+                                        ]),
+                                        _vm._v(" "),
                                         _c(
-                                          "span",
+                                          "div",
                                           {
                                             staticStyle: {
-                                              "font-weight": "500"
+                                              "font-size": "16px",
+                                              color: "#4a5464",
+                                              margin: "20px 0 20px"
                                             }
                                           },
-                                          [_vm._v("No. hours per week: ")]
-                                        ),
-                                        _vm._v(
-                                          _vm._s(
-                                            Math.ceil(
-                                              user.data.available_hours_per_week
+                                          [
+                                            _c(
+                                              "span",
+                                              {
+                                                staticStyle: {
+                                                  "font-weight": "500"
+                                                }
+                                              },
+                                              [_vm._v("Sector experience: ")]
+                                            ),
+                                            _vm._v(
+                                              " " +
+                                                _vm._s(user.data.experience) +
+                                                "\n                                                "
                                             )
-                                          ) +
-                                            " hours\n                                                "
-                                        )
-                                      ])
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _vm._m(4, true),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      directives: [
-                                        {
-                                          name: "show",
-                                          rawName: "v-show",
-                                          value:
-                                            _vm.secondaryActiveTab ===
-                                            "approved-agents",
-                                          expression:
-                                            "secondaryActiveTab === 'approved-agents'"
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("div", [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticStyle: {
+                                                "font-weight": "500"
+                                              }
+                                            },
+                                            [_vm._v("Technologies, software: ")]
+                                          ),
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(user.data.technologies) +
+                                              "\n                                                "
+                                          )
+                                        ]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticStyle: { margin: "20px 0" } },
+                                          [
+                                            _c(
+                                              "span",
+                                              {
+                                                staticStyle: {
+                                                  "font-weight": "500"
+                                                }
+                                              },
+                                              [_vm._v("Languages: ")]
+                                            ),
+                                            _vm._v(" "),
+                                            _vm._l(user.languages, function(
+                                              language,
+                                              index
+                                            ) {
+                                              return _c(
+                                                "span",
+                                                { key: index },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                        " +
+                                                      _vm._s(language.label)
+                                                  ),
+                                                  _c(
+                                                    "span",
+                                                    {
+                                                      directives: [
+                                                        {
+                                                          name: "show",
+                                                          rawName: "v-show",
+                                                          value:
+                                                            index <
+                                                            user.languages
+                                                              .length -
+                                                              1,
+                                                          expression:
+                                                            "index < user.languages.length -1 "
+                                                        }
+                                                      ]
+                                                    },
+                                                    [_vm._v(", ")]
+                                                  )
+                                                ]
+                                              )
+                                            })
+                                          ],
+                                          2
+                                        ),
+                                        _vm._v(" "),
+                                        _c("div", [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticStyle: {
+                                                "font-weight": "500"
+                                              }
+                                            },
+                                            [_vm._v("No. hours per week: ")]
+                                          ),
+                                          _vm._v(
+                                            _vm._s(
+                                              Math.ceil(
+                                                user.data
+                                                  .available_hours_per_week
+                                              )
+                                            ) +
+                                              " hours\n                                                "
+                                          )
+                                        ])
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._m(4, true),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "show",
+                                            rawName: "v-show",
+                                            value:
+                                              _vm.secondaryActiveTab ===
+                                              "approved-agents",
+                                            expression:
+                                              "secondaryActiveTab === 'approved-agents'"
+                                          }
+                                        ],
+                                        staticClass: "blue-text showFrom-600",
+                                        staticStyle: {
+                                          "white-space": "nowrap",
+                                          "margin-top": "7px"
                                         }
-                                      ],
-                                      staticClass: "blue-text showFrom-600",
-                                      staticStyle: {
-                                        "white-space": "nowrap",
-                                        "margin-top": "7px"
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                                EDIT PROFILE\n                                            "
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]
-                        )
-                      ])
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                EDIT PROFILE\n                                            "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ])
+                            ]
+                          )
+                        ]
+                      )
                     ]
                   })
                 ],

@@ -123,12 +123,15 @@
                         </thead>
 
                         <tbody>
-                            <template v-for="(user, index) in filteredSelectedAgents">
+                            <template v-for="(user, index) in OrderedSelectedAgents">
                                 <tr>
                                     <td>
                                         <div class="invoice-number base-text name-text" style="font-weight: 500;">
                                             {{user.data.first_name}} {{user.data.last_name}}
-                                            <img src="/images/admin/down_arrow.png" alt="down arrow" style="transform: rotate(180deg);">
+                                            <img src="/images/admin/down_arrow.png" alt="down arrow" :id="'detailsArrow'+user.id" @click="toggleDetails(user.id)">
+                                        </div>
+                                        <div v-show="searchValue.length > 0" class="userEmailText">
+                                            {{user.email}}
                                         </div>
                                     </td>
                                     <td>
@@ -153,7 +156,7 @@
                                         </a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr v-show="user.is_details_opened">
                                     <td colspan="4" style="border-top:0; padding-top:0">
                                         <div v-show="secondaryActiveTab === 'applicants'" class="action-buttons-bar">
                                             <div class="disapprove-btn no-decoration">
@@ -367,16 +370,41 @@
         computed: {
             filteredSelectedAgents() {
                 const search = this.searchValue.toLowerCase().trim();
-                if (!search){
+                const filter = this.filter ;
+
+                if (!search && filter === 'show_all'){
                     return this.selectedAgents;
                 }
 
-                let filteredAgents =  this.selectedAgents.filter( function (agent) {
+
+                return  this.selectedAgents.filter( function (agent) {
+
                     let fullName = agent.data.first_name + ' ' +  agent.data.last_name ;
-                    return  ( agent.email.toLowerCase().trim().indexOf(search) > -1  || fullName.toLowerCase().trim().indexOf(search) > -1 );
+                    let jobTitle = agent.data.job_title ;
+                    let email    = agent.email ;
+
+                    let SearchFilter = email.toLowerCase().trim().indexOf(search) > -1  || jobTitle.toLowerCase().trim().indexOf(search) > -1  || fullName.toLowerCase().trim().indexOf(search) > -1 ;
+                    let applicationFilter = true ;
+
+                    if(filter === 'show_new'){
+                        applicationFilter = agent.status === 1 ;
+                    }
+                    if(filter === 'show_in_process'){
+                        applicationFilter = agent.status === 2 || agent.status === 3 ;
+                    }
+
+
+                    return  ( SearchFilter && applicationFilter );
                 });
 
-                return filteredAgents ;
+            },
+            OrderedSelectedAgents: function () {
+                const sort = this.sort;
+                let sorting = 'asc' ;
+                if(sort === 'old_first'){
+                    sorting = 'desc';
+                }
+                return _.orderBy(this.filteredSelectedAgents, 'created_at' , sorting)
             }
         },
         methods: {
@@ -460,6 +488,19 @@
                         this.profession = 'developer' ;
                         break;
                 }
+            },
+            toggleDetails(user_id){
+                let agents = this.selectedAgents;
+                $.each(agents, function(i) {
+                    if (agents[i].id === user_id) {
+                        agents[i].is_details_opened = !agents[i].is_details_opened;
+                        if (agents[i].is_details_opened) {
+                            $('#detailsArrow' + user_id).css('transform', 'rotate(180deg)');
+                        } else {
+                            $('#detailsArrow' + user_id).css('transform', 'rotate(0deg)');
+                        }
+                    }
+                });
             }
         },
         mounted() {
@@ -469,5 +510,9 @@
 </script>
 
 <style scoped>
-
+    .userEmailText{
+        font-size:13px;
+        color:gray;
+        padding-top:8px;
+    }
 </style>

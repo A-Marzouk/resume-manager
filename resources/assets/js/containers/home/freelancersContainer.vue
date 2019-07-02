@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <!-- <freelancer-card-small></freelancer-card-small> -->
+  <div class="agentsContainer">
+    <freelancer-card-small></freelancer-card-small>
     Hello
   </div>
 </template>
@@ -12,6 +12,7 @@ export default {
   components: {
     freelancerCardSmall
   },
+  props: ['freelancers'],
   data: () => ({
 
   })

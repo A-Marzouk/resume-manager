@@ -150,8 +150,8 @@
         </select>
       </div>
       {{-- {{ dd($agents) }} --}}
-      <div id="freelancers_container" class="agentsContainer">
-        <freelancers-container></freelancers-container>
+      <div id="freelancers_container">
+        <freelancers-container :freelancers="{{ json_encode($agents) }}"></freelancers-container>
         
       </div>
       <img src="/images/home/computer.png" alt="computer" class="bottomBg">

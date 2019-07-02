@@ -133323,6 +133323,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   components: {
     freelancerCardSmall: __WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard___default.a
   },
+  props: ['freelancers'],
   data: function data() {
     return {};
   }
@@ -133488,7 +133489,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [_vm._v("\n  Hello\n")])
+  return _c(
+    "div",
+    { staticClass: "agentsContainer" },
+    [_c("freelancer-card-small"), _vm._v("\n  Hello\n")],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

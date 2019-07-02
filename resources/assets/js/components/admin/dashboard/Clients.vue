@@ -6,7 +6,7 @@
                     CLIENTS
                 </div>
                 <div class="white-button-a button-base">
-                    <a href="javascript:void(0)" style="width:175px; height:30px; border-radius:40px; margin-right: 20px;">
+                    <a href="/admin/register-client" style="width:175px; height:30px; border-radius:40px; margin-right: 20px;">
                         <img src="/images/client/payments/add.png" alt="add icon">
                         ADD NEW CLIENT
                     </a>

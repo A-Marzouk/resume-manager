@@ -42,15 +42,20 @@ Route::prefix('admin')->group(function (){
     Route::get('/agent-profile','AdminsController@showApprovedAgentProfile')->name('admin.front.agent_profile');
     Route::get('/advanced-search','AdminsController@showAdvancedSearchPage')->name('admin.search');
     Route::get('/add-behance-designer','AdminsController@addBehanceDesigner')->name('add.behance.designer');
-    Route::get('/register-agent','AdminsController@showRegisterAgentPage')->name('admin.register.agent');
-    Route::get('/register-agent/{any?}','AdminsController@showRegisterAgentPage')->name('admin.register.agent');
-    Route::get('/{any?}','AdminsController@welcomePage');
 
     // fetching data routs
     Route::get('/api/agents/{professionName}','AdminsController@getAgentsByProfessionName')->name('get.agents');
 
     // create agent :
+    Route::get('/register-agent','AdminsController@showRegisterAgentPage')->name('admin.register.agent');
+    Route::get('/register-agent/{any?}','AdminsController@showRegisterAgentPage')->name('admin.register.agent');
     Route::post('/agent/create','AdminsController@createAgent')->name('create.agent.from.admin');
+
+    // create client :
+    Route::get('/register-client','AdminsController@showRegisterClientPage')->name('admin.register.client');
+    Route::post('/client/create','AdminsController@createClient')->name('create.client.from.admin');
+
+    Route::get('/{any?}','AdminsController@welcomePage');
 });
 
 

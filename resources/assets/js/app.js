@@ -41,6 +41,7 @@ Vue.component('approved-agent-profile', require('./components/admin/ApprovedAgen
 Vue.component('advanced-search-component', require('./components/admin/AdvancedSearch.vue'));
 Vue.component('admin-register-agent', require('./components/admin/RegisterAgent.vue'));
 Vue.component('add-behance-designer', require('./components/admin/AddBehanceDesigner.vue'));
+Vue.component('admin-client-register', require('./components/admin/registerClient/ClientRegisterAdmin.vue'));
 
 
 import AdminAgentRegisterPage1 from './components/admin/registerAgent/page1.vue'
@@ -63,6 +64,12 @@ if ($("#approvedAgentProfile").length !== 0){
 
 }
 
+if ($("#adminClientRegister").length !== 0){
+    let adminClientRegister = new Vue({
+        el:'#adminClientRegister'
+    });
+}
+
 if ($("#addBehanceDesigner").length !== 0){
     let addBehanceDesigner = new Vue({
         el:'#addBehanceDesigner'
@@ -81,7 +88,6 @@ if ($("#advancedSearch").length !== 0){
     let advancedSearch = new Vue({
         el:'#advancedSearch'
     });
-
 }
 
 if ($("#adminDashboardComponent").length !== 0){

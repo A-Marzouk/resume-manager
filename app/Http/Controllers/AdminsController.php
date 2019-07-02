@@ -49,6 +49,10 @@ class AdminsController extends Controller
         return view('admin-new.register_agent_view');
     }
 
+    public function showRegisterClientPage(){
+        return view('admin-new.register_client_view');
+    }
+
     public function addBehanceDesigner(){
         return view('admin-new.add_behance_designer');
     }

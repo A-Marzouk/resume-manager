@@ -68605,7 +68605,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             businessSupportAgents: [],
             designers: [],
             developers: [],
-            sort: 'new_first',
+            sort: 'old_first',
             filter: 'show_all',
             usersNumber: 15,
             showSortSelection: false,
@@ -68862,6 +68862,7 @@ var render = function() {
             on: {
               click: function($event) {
                 _vm.secondaryActiveTab = "approved-agents"
+                _vm.filter = "show_all"
               }
             }
           },
@@ -68876,6 +68877,7 @@ var render = function() {
             on: {
               click: function($event) {
                 _vm.secondaryActiveTab = "applicants"
+                _vm.filter = "show_new"
               }
             }
           },
@@ -69118,39 +69120,7 @@ var render = function() {
         [
           _c("div", { staticClass: "table invoices-table applicants-table" }, [
             _c("table", [
-              _c("thead", [
-                _c("tr", [
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("FULL NAME")]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [
-                    _vm._v("HOURLY RATE")
-                  ]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("STATUS")]),
-                  _vm._v(" "),
-                  _vm.secondaryActiveTab === "applicants"
-                    ? _c(
-                        "th",
-                        {
-                          staticClass: "d-flex align-items-center stage-column",
-                          staticStyle: { "padding-right": "30px" },
-                          attrs: { scope: "col" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                            STAGE\n                            "
-                          ),
-                          _c("img", {
-                            attrs: {
-                              src: "/images/admin/arrows.svg",
-                              alt: "arrow down"
-                            }
-                          })
-                        ]
-                      )
-                    : _vm._e()
-                ])
-              ]),
+              _vm._m(1),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -69171,20 +69141,8 @@ var render = function() {
                                   _vm._s(user.data.first_name) +
                                   " " +
                                   _vm._s(user.data.last_name) +
-                                  "\n                                        "
-                              ),
-                              _c("img", {
-                                attrs: {
-                                  src: "/images/admin/down_arrow.png",
-                                  alt: "down arrow",
-                                  id: "detailsArrow" + user.id
-                                },
-                                on: {
-                                  click: function($event) {
-                                    _vm.toggleDetails(user.id)
-                                  }
-                                }
-                              })
+                                  "\n                                    "
+                              )
                             ]
                           ),
                           _vm._v(" "),
@@ -69209,6 +69167,21 @@ var render = function() {
                               )
                             ]
                           )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("img", {
+                            attrs: {
+                              src: "/images/admin/down_arrow.png",
+                              alt: "down arrow",
+                              id: "detailsArrow" + user.id
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.toggleDetails(user.id)
+                              }
+                            }
+                          })
                         ]),
                         _vm._v(" "),
                         _c("td", [
@@ -69238,49 +69211,35 @@ var render = function() {
                         _c("td", [
                           _c(
                             "div",
-                            {
-                              staticClass:
-                                "invoice-amount base-text available-text"
-                            },
+                            { staticClass: "invoice-amount base-text" },
                             [
-                              _vm.secondaryActiveTab === "applicants"
-                                ? _c(
-                                    "span",
-                                    { staticClass: "base-text new-text" },
-                                    [
-                                      _vm._v(
-                                        "\n                                    APPLICATION PROCESS\n                                "
-                                      )
-                                    ]
+                              _c(
+                                "span",
+                                {
+                                  class: {
+                                    "available-text": user.status === 4,
+                                    "new-text": user.status < 4
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                            " +
+                                      _vm._s(_vm.userStatus[user.status]) +
+                                      " (+" +
+                                      _vm._s(
+                                        Math.ceil(
+                                          user.data.available_hours_per_week
+                                        )
+                                      ) +
+                                      " h/week)\n                                        "
                                   )
-                                : _c(
-                                    "span",
-                                    { staticClass: "available-text" },
-                                    [
-                                      _vm._v(
-                                        "\n                                    " +
-                                          _vm._s(_vm.userStatus[user.status]) +
-                                          " (+" +
-                                          _vm._s(
-                                            Math.ceil(
-                                              user.data.available_hours_per_week
-                                            )
-                                          ) +
-                                          " h/week)\n                                "
-                                      )
-                                    ]
-                                  )
+                                ]
+                              )
                             ]
                           )
                         ]),
                         _vm._v(" "),
-                        _vm.secondaryActiveTab === "applicants"
-                          ? _c(
-                              "td",
-                              { staticClass: "no-decoration stage-select " },
-                              [_vm._m(1, true)]
-                            )
-                          : _vm._e()
+                        _vm._m(2, true)
                       ]),
                       _vm._v(" "),
                       _c(
@@ -69313,10 +69272,8 @@ var render = function() {
                                     {
                                       name: "show",
                                       rawName: "v-show",
-                                      value:
-                                        _vm.secondaryActiveTab === "applicants",
-                                      expression:
-                                        "secondaryActiveTab === 'applicants'"
+                                      value: user.status < 4,
+                                      expression: "user.status < 4 "
                                     }
                                   ],
                                   staticClass: "action-buttons-bar"
@@ -69351,7 +69308,7 @@ var render = function() {
                                     ]
                                   ),
                                   _vm._v(" "),
-                                  _vm._m(2, true)
+                                  _vm._m(3, true)
                                 ]
                               ),
                               _vm._v(" "),
@@ -69421,11 +69378,9 @@ var render = function() {
                                                     {
                                                       name: "show",
                                                       rawName: "v-show",
-                                                      value:
-                                                        _vm.secondaryActiveTab !==
-                                                        "applicants",
+                                                      value: user.status > 4,
                                                       expression:
-                                                        "secondaryActiveTab !== 'applicants'"
+                                                        "user.status > 4 "
                                                     }
                                                   ],
                                                   staticClass:
@@ -69448,11 +69403,9 @@ var render = function() {
                                                     {
                                                       name: "show",
                                                       rawName: "v-show",
-                                                      value:
-                                                        _vm.secondaryActiveTab ===
-                                                        "applicants",
+                                                      value: user.status <= 4,
                                                       expression:
-                                                        "secondaryActiveTab === 'applicants'"
+                                                        "user.status <= 4 "
                                                     }
                                                   ],
                                                   staticClass:
@@ -69471,7 +69424,7 @@ var render = function() {
                                             ]
                                           ),
                                           _vm._v(" "),
-                                          _vm._m(3, true)
+                                          _vm._m(4, true)
                                         ])
                                       ])
                                     ]),
@@ -69614,7 +69567,7 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _vm._m(4, true),
+                                    _vm._m(5, true),
                                     _vm._v(" "),
                                     _c(
                                       "div",
@@ -70042,11 +69995,46 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
-      _vm._v("\n                                        v1   "),
-      _c("img", {
-        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
-      })
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("FULL NAME")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("HOURLY RATE")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("STATUS")]),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "d-flex align-items-center stage-column",
+            staticStyle: { "padding-right": "30px" },
+            attrs: { scope: "col" }
+          },
+          [
+            _vm._v(
+              "\n                            STAGE\n                            "
+            ),
+            _c("img", {
+              attrs: { src: "/images/admin/arrows.svg", alt: "arrow down" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "no-decoration stage-select " }, [
+      _c("a", { attrs: { href: "javascript:void(0)" } }, [
+        _vm._v("\n                                        v1   "),
+        _c("img", {
+          attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+        })
+      ])
     ])
   },
   function() {

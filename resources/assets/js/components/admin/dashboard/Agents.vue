@@ -36,13 +36,13 @@
                 <div
                              class="campaign-info-tab firstTab"
                              :class="{active : secondaryActiveTab === 'approved-agents'}"
-                             @click="secondaryActiveTab = 'approved-agents'">
+                             @click="secondaryActiveTab = 'approved-agents';filter = 'show_all'">
                     APPROVED AGENTS
                 </div>
                 <div
                              class="campaign-info-tab"
                              :class="{active : secondaryActiveTab === 'applicants'}"
-                             @click="secondaryActiveTab = 'applicants'">
+                             @click="secondaryActiveTab = 'applicants'; filter = 'show_new'">
                     APPLICANTS
                 </div>
             </div>
@@ -113,9 +113,10 @@
                         <thead>
                         <tr>
                             <th scope="col">FULL NAME</th>
+                            <th scope="col"></th>
                             <th scope="col">HOURLY RATE</th>
                             <th scope="col">STATUS</th>
-                            <th scope="col" class="d-flex align-items-center stage-column" v-if="secondaryActiveTab === 'applicants'" style="padding-right: 30px;">
+                            <th scope="col" class="d-flex align-items-center stage-column" style="padding-right: 30px;">
                                 STAGE
                                 <img src="/images/admin/arrows.svg" alt="arrow down">
                             </th>
@@ -128,11 +129,13 @@
                                     <td>
                                         <div class="invoice-number base-text name-text" style="font-weight: 500;">
                                             {{user.data.first_name}} {{user.data.last_name}}
-                                            <img src="/images/admin/down_arrow.png" alt="down arrow" :id="'detailsArrow'+user.id" @click="toggleDetails(user.id)">
                                         </div>
                                         <div v-show="searchValue.length > 0" class="userEmailText">
                                             {{user.email}}
                                         </div>
+                                    </td>
+                                    <td>
+                                        <img src="/images/admin/down_arrow.png" alt="down arrow" :id="'detailsArrow'+user.id" @click="toggleDetails(user.id)">
                                     </td>
                                     <td>
                                         <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
@@ -141,16 +144,13 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="invoice-amount base-text available-text">
-                                     <span v-if="secondaryActiveTab === 'applicants'" class="base-text new-text">
-                                        APPLICATION PROCESS
-                                    </span>
-                                            <span v-else class="available-text">
-                                        {{userStatus[user.status]}} (+{{Math.ceil(user.data.available_hours_per_week)}} h/week)
-                                    </span>
+                                        <div class="invoice-amount base-text">
+                                            <span :class="{ 'available-text' : user.status === 4 , 'new-text' : user.status < 4}">
+                                                {{userStatus[user.status]}} (+{{Math.ceil(user.data.available_hours_per_week)}} h/week)
+                                            </span>
                                         </div>
                                     </td>
-                                    <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
+                                    <td class="no-decoration stage-select ">
                                         <a href="javascript:void(0)">
                                             v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                         </a>
@@ -158,7 +158,7 @@
                                 </tr>
                                 <tr v-show="user.is_details_opened">
                                     <td colspan="4" style="border-top:0; padding-top:0">
-                                        <div v-show="secondaryActiveTab === 'applicants'" class="action-buttons-bar">
+                                        <div v-show="user.status < 4 " class="action-buttons-bar">
                                             <div class="disapprove-btn no-decoration">
                                                 <a href="javascript:void(0)" data-toggle="modal" data-target="#disapprove-agent" @click="checkDefaultRadioDisapprove">
                                                     DISAPPROVE APPLICANT
@@ -187,8 +187,8 @@
                                                         </div>
                                                         <div class="visiblty">
                                                             <div class="no-decoration white-on-hover mt-4">
-                                                                <a href="/admin/agent-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab !== 'applicants'">VISIT AGENT’S PROFILE</a>
-                                                                <a href="/admin/applicant-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab === 'applicants'">VISIT AGENT’S PROFILE</a>
+                                                                <a href="/admin/agent-profile" class="btn btn-primar btn-radius btn-responsive" v-show="user.status > 4 " >VISIT AGENT’S PROFILE</a>
+                                                                <a href="/admin/applicant-profile" class="btn btn-primar btn-radius btn-responsive" v-show="user.status <= 4 ">VISIT AGENT’S PROFILE</a>
                                                             </div>
                                                             <div class="mt-4">
                                                                 <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">
@@ -345,7 +345,7 @@
                 businessSupportAgents:[],
                 designers:[],
                 developers:[],
-                sort:'new_first',
+                sort:'old_first',
                 filter:'show_all',
                 usersNumber:15,
                 showSortSelection : false,

@@ -133315,7 +133315,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -133336,19 +133335,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(509)
+  __webpack_require__(514)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(511)
 /* template */
-var __vue_template__ = __webpack_require__(512)
+var __vue_template__ = __webpack_require__(516)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-e70ddbcc"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -133381,46 +133380,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 509 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(510);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("15cacf42", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e70ddbcc\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./freelancerSmallCard.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e70ddbcc\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./freelancerSmallCard.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 510 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.freelancerCard.smallCard .freelancerImg {\n  width: 70px;\n  height: 70px;\n}\n.freelancerCard.smallCard .nameRow {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  position: relative;\n  border-radius: 5px;\n  padding: 14px;\n  height: 100%;\n}\n.freelancerCard.smallCard .contact {\n  position: absolute;\n  top: 20px;\n  right: 14px;\n}\n.freelancerCard.smallCard .jobTitle {\n  color: white;\n  font-size: 14px;\n}\n.freelancerCard.smallCard .payment-details {\n  font-size: 12px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .payment-details {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n}\n}\n.freelancerCard.smallCard .payment-details div {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    text-align: center;\n}\n.freelancerCard.smallCard .payment-details img,\n  .freelancerCard.smallCard .payment-details span {\n    margin-right: 5px;\n}\n.freelancerCard.smallCard .payment-details img {\n    height: 14px;\n}\n.freelancerCard.smallCard .payment-highLight {\n  font-size: 14px;\n}\n.freelancerCard.smallCard .resumeCardRight {\n  height: 100%;\n}\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn {\n    width: 87px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn {\n        width: 100%;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n}\n}\n.freelancerCard.smallCard .resumeCardRight .nameRow .imageCol {\n    padding-left: 0;\n    margin: 0;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .cardRow {\n    width: 100%;\n}\n}\n.freelancerCard.smallCard .hireRow {\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 14px;\n  margin: 0;\n  margin-top: 15px;\n}\n.freelancerCard.smallCard .nameCard {\n  font-family: Roboto;\n  font-style: normal;\n  font-weight: bold;\n  font-size: 18px;\n  padding-top: 0;\n  margin-bottom: 5px;\n  padding-left: 10px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 509 */,
+/* 510 */,
 /* 511 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -133439,49 +133400,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 // Receives the users from laravel using props
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: []
+  props: ['freelancer'],
+
+  data: function data() {
+    return {};
+  }
 });
 
 /***/ }),
-/* 512 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "freelancerCard smallCard" }, [
-      _c("div", { staticClass: "smallCard__personalInfo" }, [
-        _c("div", { staticClass: "smallCard__personaleInfo__imgContainer" }, [
-          _c("img", { attrs: { src: "/images/home/profile1.png", alt: "" } })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "smallCard__personal__info__userData" })
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-e70ddbcc", module.exports)
-  }
-}
-
-/***/ }),
+/* 512 */,
 /* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -133492,8 +133457,12 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "agentsContainer" },
-    [_c("freelancer-card-small"), _vm._v("\n  Hello\n")],
-    1
+    _vm._l(_vm.freelancers, function(freelancer) {
+      return _c("freelancer-card-small", {
+        key: freelancer.id + freelancer.firstName,
+        attrs: { freelancer: freelancer }
+      })
+    })
   )
 }
 var staticRenderFns = []
@@ -133503,6 +133472,196 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-c444e0ba", module.exports)
+  }
+}
+
+/***/ }),
+/* 514 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(515);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("091c1548", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e70ddbcc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./freelancerSmallCard.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e70ddbcc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./freelancerSmallCard.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 515 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.freelancerCard.smallCard .freelancerImg[data-v-e70ddbcc] {\n  width: 70px;\n  height: 70px;\n}\n.freelancerCard.smallCard .nameRow[data-v-e70ddbcc] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  position: relative;\n  border-radius: 5px;\n  padding: 14px;\n  height: 100%;\n}\n.freelancerCard.smallCard .contact[data-v-e70ddbcc] {\n  position: absolute;\n  top: 20px;\n  right: 14px;\n}\n.freelancerCard.smallCard .jobTitle[data-v-e70ddbcc] {\n  color: white;\n  font-size: 14px;\n}\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n  font-size: 12px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n}\n}\n.freelancerCard.smallCard .payment-details div[data-v-e70ddbcc] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    text-align: center;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc],\n  .freelancerCard.smallCard .payment-details span[data-v-e70ddbcc] {\n    margin-right: 5px;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc] {\n    height: 14px;\n}\n.freelancerCard.smallCard .payment-highLight[data-v-e70ddbcc] {\n  font-size: 14px;\n}\n.freelancerCard.smallCard .resumeCardRight[data-v-e70ddbcc] {\n  height: 100%;\n}\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n    width: 87px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n        width: 100%;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n}\n}\n.freelancerCard.smallCard .resumeCardRight .nameRow .imageCol[data-v-e70ddbcc] {\n    padding-left: 0;\n    margin: 0;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .cardRow[data-v-e70ddbcc] {\n    width: 100%;\n}\n}\n.freelancerCard.smallCard .hireRow[data-v-e70ddbcc] {\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 14px;\n  margin: 0;\n  margin-top: 15px;\n}\n.freelancerCard.smallCard .nameCard[data-v-e70ddbcc] {\n  font-family: Roboto;\n  font-style: normal;\n  font-weight: bold;\n  font-size: 18px;\n  padding-top: 0;\n  margin-bottom: 5px;\n  padding-left: 10px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 516 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "freelancerCard smallCard" }, [
+    _c("div", { staticClass: "col-lg-12 col-md-12 col-12 resumeCardRight" }, [
+      _c("div", { staticClass: "nameRow" }, [
+        _c("img", {
+          staticClass: "contact",
+          attrs: { src: "/images/home/forum.svg", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "imageCol" }, [
+          _c("div", { staticClass: "imageContainer" }, [
+            _c("img", {
+              staticClass: "freelancerImg",
+              attrs: { src: _vm.freelancer.photoSrc, alt: "freelancer" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "freelancerCardRight" }, [
+          _c("div", { staticClass: "nameArea" }, [
+            _c("div", { staticClass: "nameCard" }, [
+              _vm._v(
+                "\r\n                        " +
+                  _vm._s(_vm.freelancer.firstName) +
+                  "\r\n                    "
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "jobTitle", attrs: { id: "animatedText" } },
+              [
+                _vm._v(
+                  "\r\n                        " +
+                    _vm._s(_vm.freelancer.userData.jobTitle) +
+                    "\r\n                    "
+                )
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "hireRow showOnlyOnmd" }, [
+          _c("div", { staticClass: "payment-details" }, [
+            _c("div", { staticStyle: { color: "white" } }, [
+              _c("img", {
+                attrs: { src: "/images/home/monetization.svg", alt: "" }
+              }),
+              _c(
+                "span",
+                {
+                  staticClass: "payment-highLight",
+                  staticStyle: { "font-weight": "bold" }
+                },
+                [
+                  _vm._v(
+                    " $ " +
+                      _vm._s(parseInt(_vm.freelancer.userData.salary) + 5) +
+                      "\r\n                        "
+                  )
+                ]
+              ),
+              _vm._v("hourly rate\r\n                    ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticStyle: { color: "white" } }, [
+              _c("img", {
+                attrs: { src: "/images/home/watch_later.svg", alt: "" }
+              }),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass: "payment-highLight",
+                  staticStyle: { "font-weight": "bold" },
+                  attrs: { id: "maxHours" + _vm.freelancer.id }
+                },
+                [
+                  _vm._v(
+                    _vm._s(parseInt(_vm.freelancer.userData.availableHours)) +
+                      " hours"
+                  )
+                ]
+              ),
+              _vm._v(" availability\r\n                    ")
+            ])
+          ]),
+          _vm._v(" "),
+          _vm.freelancer.userData.availableHours !== 0
+            ? _c(
+                "div",
+                { staticClass: "text-center cardRow NoDecor hideOnSm" },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "hireCardBtn btn-block showHireSection showOnSm",
+                      attrs: {
+                        href: "javascript:void(0)",
+                        id: "showHireSection" + _vm.freelancer.id
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\r\n                    HIRE ME\r\n                  "
+                      )
+                    ]
+                  )
+                ]
+              )
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _vm.freelancer.userData.availableHours !== 0
+          ? _c("div", { staticClass: "text-center cardRow NoDecor showOnSm" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "hireCardBtn btn-block showHireSection showOnSm",
+                  attrs: {
+                    href: "javascript:void(0)",
+                    id: "showHireSection" + _vm.freelancer.id
+                  }
+                },
+                [_vm._v("\r\n                  HIRE ME\r\n              ")]
+              )
+            ])
+          : _vm._e()
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e70ddbcc", module.exports)
   }
 }
 

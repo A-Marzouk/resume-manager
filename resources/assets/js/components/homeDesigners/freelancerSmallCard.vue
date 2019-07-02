@@ -1,27 +1,65 @@
 <template>
-  <div class="freelancerCard smallCard">
-    <div class="smallCard__personalInfo">
-      <div class="smallCard__personaleInfo__imgContainer">
-        <img src="/images/home/profile1.png" alt="">
-      </div>
-      <div class="smallCard__personal__info__userData">
-
-      </div>
+<div class="freelancerCard smallCard">
+    <div class="col-lg-12 col-md-12 col-12 resumeCardRight">
+        <div class="nameRow">
+            <img src="/images/home/forum.svg" alt="" class="contact">
+            <div class="imageCol">
+                <div class="imageContainer">
+                    <img :src="freelancer.photoSrc" alt="freelancer" class="freelancerImg">
+                </div>
+            </div>
+            <div class="freelancerCardRight">
+                <div class="nameArea">
+                    <div class="nameCard">
+                        {{freelancer.firstName}}
+                    </div>
+                    <div class="jobTitle" id="animatedText">
+                        {{freelancer.userData.jobTitle}}
+                    </div>
+                </div>
+            </div>
+            <div class="hireRow showOnlyOnmd">
+                <div class="payment-details">
+                    <div style="color: white;" >
+                        <img src="/images/home/monetization.svg" alt=""><span class="payment-highLight" style="font-weight: bold;"> $ {{parseInt(freelancer.userData.salary) +5}}
+                        </span>hourly rate
+                    </div>
+                    <div style="color: white;">
+                        <img src="/images/home/watch_later.svg" alt="">
+                        <span class="payment-highLight" :id="'maxHours' + freelancer.id" style="font-weight: bold;">{{parseInt(freelancer.userData.availableHours)}} hours</span> availability
+                    </div>
+                </div>
+                <div v-if="freelancer.userData.availableHours !== 0" class="text-center cardRow NoDecor hideOnSm">
+                  <a class="hireCardBtn btn-block showHireSection showOnSm" href="javascript:void(0)" :id="'showHireSection'+freelancer.id">
+                    HIRE ME
+                  </a>
+                </div>
+            </div>
+            <div v-if="freelancer.userData.availableHours !== 0" class="text-center cardRow NoDecor showOnSm">
+              <a class="hireCardBtn btn-block showHireSection showOnSm" href="javascript:void(0)" :id="'showHireSection'+freelancer.id">
+                  HIRE ME
+              </a>
+            </div>
+        </div>
     </div>
+</div>
 
-  </div>
 </template>
 <script>
 
 // Receives the users from laravel using props
 export default {
   props: [
-    
-  ]
+    'freelancer'
+  ],
+
+  data: () =>({
+
+  })
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .freelancerCard {
   &.smallCard {
 

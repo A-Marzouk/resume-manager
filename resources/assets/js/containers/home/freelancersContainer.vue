@@ -1,7 +1,6 @@
 <template>
   <div class="agentsContainer">
-    <freelancer-card-small></freelancer-card-small>
-    Hello
+    <freelancer-card-small v-for="freelancer in freelancers" :key="freelancer.id + freelancer.firstName" :freelancer="freelancer"></freelancer-card-small>
   </div>
 </template>
 

@@ -14783,6 +14783,14 @@ if ($("#privacyAgreementFreelancer").length !== 0) {
     });
 }
 
+Vue.component('freelancers-container', __webpack_require__(506));
+
+if ($("#freelancers_container").length !== 0) {
+    var freelancers_container = new Vue({
+        el: "#freelancers_container"
+    });
+}
+
 Vue.component('chat-message', __webpack_require__(265));
 Vue.component('chat-log', __webpack_require__(270));
 Vue.component('chat-composer', __webpack_require__(275));
@@ -133242,6 +133250,255 @@ new SideNav();
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 503 */,
+/* 504 */,
+/* 505 */,
+/* 506 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(507)
+/* template */
+var __vue_template__ = __webpack_require__(513)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\containers\\home\\freelancersContainer.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c444e0ba", Component.options)
+  } else {
+    hotAPI.reload("data-v-c444e0ba", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 507 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard__ = __webpack_require__(508);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard__);
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    freelancerCardSmall: __WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard___default.a
+  },
+  data: function data() {
+    return {};
+  }
+});
+
+/***/ }),
+/* 508 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(509)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(511)
+/* template */
+var __vue_template__ = __webpack_require__(512)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\homeDesigners\\freelancerSmallCard.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e70ddbcc", Component.options)
+  } else {
+    hotAPI.reload("data-v-e70ddbcc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 509 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(510);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("15cacf42", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e70ddbcc\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./freelancerSmallCard.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e70ddbcc\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./freelancerSmallCard.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 510 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.freelancerCard.smallCard .freelancerImg {\n  width: 70px;\n  height: 70px;\n}\n.freelancerCard.smallCard .nameRow {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  position: relative;\n  border-radius: 5px;\n  padding: 14px;\n  height: 100%;\n}\n.freelancerCard.smallCard .contact {\n  position: absolute;\n  top: 20px;\n  right: 14px;\n}\n.freelancerCard.smallCard .jobTitle {\n  color: white;\n  font-size: 14px;\n}\n.freelancerCard.smallCard .payment-details {\n  font-size: 12px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .payment-details {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n}\n}\n.freelancerCard.smallCard .payment-details div {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    text-align: center;\n}\n.freelancerCard.smallCard .payment-details img,\n  .freelancerCard.smallCard .payment-details span {\n    margin-right: 5px;\n}\n.freelancerCard.smallCard .payment-details img {\n    height: 14px;\n}\n.freelancerCard.smallCard .payment-highLight {\n  font-size: 14px;\n}\n.freelancerCard.smallCard .resumeCardRight {\n  height: 100%;\n}\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn {\n    width: 87px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn {\n        width: 100%;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n}\n}\n.freelancerCard.smallCard .resumeCardRight .nameRow .imageCol {\n    padding-left: 0;\n    margin: 0;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .cardRow {\n    width: 100%;\n}\n}\n.freelancerCard.smallCard .hireRow {\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 14px;\n  margin: 0;\n  margin-top: 15px;\n}\n.freelancerCard.smallCard .nameCard {\n  font-family: Roboto;\n  font-style: normal;\n  font-weight: bold;\n  font-size: 18px;\n  padding-top: 0;\n  margin-bottom: 5px;\n  padding-left: 10px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 511 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+// Receives the users from laravel using props
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: []
+});
+
+/***/ }),
+/* 512 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "freelancerCard smallCard" }, [
+      _c("div", { staticClass: "smallCard__personalInfo" }, [
+        _c("div", { staticClass: "smallCard__personaleInfo__imgContainer" }, [
+          _c("img", { attrs: { src: "/images/home/profile1.png", alt: "" } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "smallCard__personal__info__userData" })
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e70ddbcc", module.exports)
+  }
+}
+
+/***/ }),
+/* 513 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [_vm._v("\n  Hello\n")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c444e0ba", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

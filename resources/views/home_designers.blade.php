@@ -150,18 +150,9 @@
         </select>
       </div>
       {{-- {{ dd($agents) }} --}}
-      <div class="agentsContainer">
-        @foreach ($agents as $freelancer)
-        <div class="agentsContainer__card">
-          @include('freelancer_card_small')
-          {{-- @include('portfolio_small') --}}
-          <div class="agentsContainer__card__portfolio">
-            <div class="work"><img src="/images/home/work1.png" alt=""></div>
-            <div class="work"><img src="/images/home/work2.png" alt=""></div>
-            <div class="work"><img src="/images/home/work3.png" alt=""></div>
-          </div>
-        </div>
-        @endforeach
+      <div id="freelancers_container" class="agentsContainer">
+        <freelancers-container></freelancers-container>
+        
       </div>
       <img src="/images/home/computer.png" alt="computer" class="bottomBg">
     </div>

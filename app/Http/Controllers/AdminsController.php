@@ -61,7 +61,7 @@ class AdminsController extends Controller
         $Agents = [] ;
         $users = User::whereHas('roles', function ($query) {
             $query->where('name', '=', 'agent');
-        })->with('data','languages')->get();
+        })->with('data','agent','languages')->get();
 
         foreach ($users as $user){
             if($user->data->profession->name === $professionName){
@@ -74,7 +74,6 @@ class AdminsController extends Controller
     }
 
     public function createAgent(Request $request){
-
         $agent =  app(User::class)->createAgent([
             'user' => [
                 'email' => $request->personalData['email'],
@@ -84,7 +83,8 @@ class AdminsController extends Controller
             'agent' => [
                 'available_hours_per_week' => $request->professionalData['hoursPerWeek'],
                 'experience'               => $request->professionalData['sector'],
-//                'technologies'             => implode(',',$request->professionalData['tech']),
+                'technologies'             => implode(',',$request->professionalData['techs']),
+                'hourly_rate'              => 5,
                 'voice_character'          => $request->professionalData['voice'],
             ]
         ]);

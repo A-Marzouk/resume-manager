@@ -62972,8 +62972,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             }
             this.canSubmit = false;
             axios.post('/admin/agent/create', this.formData).then(function (response) {
-                console.log(response.data);
-                return;
                 if (response.data.status === 'success') {
                     // redirect to admin
                     window.location.href = '/admin/agents';
@@ -67767,7 +67765,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.noErrors()) {
                 this.getData({ password: this.passwords.password, password2: this.passwords.passwordConf });
                 this.$emit('formReady');
-                return;
                 window.location.replace('/admin/register-agent/completed');
             } else {
                 this.showErrors = true;
@@ -68661,9 +68658,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         OrderedSelectedAgents: function OrderedSelectedAgents() {
-            var sorting = 'asc';
+            var sorting = 'desc';
             if (this.sort === 'old_first') {
-                sorting = 'desc';
+                sorting = 'asc';
             }
             return _.orderBy(this.filteredSelectedAgents, 'created_at', sorting);
         }
@@ -69225,7 +69222,7 @@ var render = function() {
                             [
                               _vm._v(
                                 "\n                                        $" +
-                                  _vm._s(Math.ceil(user.data.hourly_rate)) +
+                                  _vm._s(Math.ceil(user.agent.hourly_rate)) +
                                   "\n                                        "
                               ),
                               _c("img", {
@@ -69519,7 +69516,7 @@ var render = function() {
                                             ),
                                             _vm._v(
                                               " " +
-                                                _vm._s(user.data.experience) +
+                                                _vm._s(user.agent.experience) +
                                                 "\n                                                "
                                             )
                                           ]
@@ -69537,7 +69534,7 @@ var render = function() {
                                           ),
                                           _vm._v(
                                             " " +
-                                              _vm._s(user.data.technologies) +
+                                              _vm._s(user.agent.technologies) +
                                               "\n                                                "
                                           )
                                         ]),

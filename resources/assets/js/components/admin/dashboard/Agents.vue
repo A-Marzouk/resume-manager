@@ -136,7 +136,7 @@
                                     </td>
                                     <td>
                                         <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                            ${{Math.ceil(user.data.hourly_rate)}}
+                                            ${{Math.ceil(user.agent.hourly_rate)}}
                                             <img src="/images/admin/edit_24px.svg" alt="edit arrow">
                                         </div>
                                     </td>
@@ -207,10 +207,10 @@
                                                         {{user.data.job_title}}
                                                     </div>
                                                     <div style="font-size: 16px; color : #4a5464; margin: 20px 0 20px;">
-                                                        <span style="font-weight: 500;">Sector experience: </span> {{user.data.experience}}
+                                                        <span style="font-weight: 500;">Sector experience: </span> {{user.agent.experience}}
                                                     </div>
                                                     <div>
-                                                        <span style="font-weight: 500;">Technologies, software: </span> {{user.data.technologies}}
+                                                        <span style="font-weight: 500;">Technologies, software: </span> {{user.agent.technologies}}
                                                     </div>
                                                     <div style="margin: 20px 0 ;">
                                                         <span style="font-weight: 500;">Languages: </span>
@@ -399,9 +399,9 @@
 
             },
             OrderedSelectedAgents: function () {
-                let sorting = 'asc';
+                let sorting = 'desc';
                 if(this.sort === 'old_first'){
-                    sorting = 'desc';
+                    sorting = 'asc';
                 }
                 return _.orderBy(this.filteredSelectedAgents, 'created_at' , sorting)
             }

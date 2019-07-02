@@ -39,8 +39,6 @@
                 }
                 this.canSubmit = false;
                 axios.post('/admin/agent/create',this.formData).then( (response) => {
-                    console.log(response.data) ;
-                    return;
                     if(response.data.status === 'success'){
                         // redirect to admin
                         window.location.href = '/admin/agents';

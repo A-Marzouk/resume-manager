@@ -57,11 +57,8 @@ class CreateUserDatasTable extends Migration
             $table->longText('audio_transcription')->nullable();
             $table->boolean('is_homepage_visible')->default(false);
             $table->timestamp('agreed_with_terms_at')->nullable();
-
-            $table->text('experience')->nullable();
-            $table->text('technologies')->nullable();
             $table->text('avatar')->nullable();
-            $table->decimal('hourly_rate', 16, 4)->nullable();
+            $table->integer('paypal_acc_number')->nullable();
 
 
             // $table->string('address_line_1')->nullable();

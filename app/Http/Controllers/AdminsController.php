@@ -8,6 +8,7 @@ use App\Client;
 use App\ClientSearch;
 use App\Conversation;
 use App\Job;
+use App\Language;
 use App\Models\Enums\UserStage;
 use App\Models\Enums\UserStatus;
 use App\Owner;
@@ -17,6 +18,7 @@ use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class AdminsController extends Controller
 {
@@ -72,16 +74,57 @@ class AdminsController extends Controller
     }
 
     public function createAgent(Request $request){
-        return $request;
-        app(User::class)->createAgent([
+
+        $agent =  app(User::class)->createAgent([
             'user' => [
-                'email' => $request->email,
+                'email' => $request->personalData['email'],
                 'password' => $request->password,
-                'username' => $request->username,
+                'username' => $request->personalData['email'],
             ],
-            'agent' => [],
+            'agent' => [
+                'available_hours_per_week' => $request->professionalData['hoursPerWeek'],
+                'experience'               => $request->professionalData['sector'],
+//                'technologies'             => implode(',',$request->professionalData['tech']),
+                'voice_character'          => $request->professionalData['voice'],
+            ]
         ]);
+
+
+
+        $agentData =  app(UserData::class)->createUserData([
+            'userData' => [
+                'user_id'               => $agent->user_id,
+                'profession_id'         => 1, // business-support
+                'currency_id'           => 1, // usd
+                'timezone'              => 1,
+                // personal data
+                'first_name'            => $request->personalData['name'],
+                'last_name'             => $request->personalData['surname'],
+                'city'                  => $request->personalData['cityName'],
+                'gender'                => $request->personalData['gender'],
+                'paypal_acc_number'     => $request->personalData['paypal'],
+//                // professional data
+                'job_title'             => $request->professionalData['primaryJob'],
+            ]
+        ]);
+
+        // add languages to agent
+
+        $languageSymbol = $request->professionalData['lang'];
+
+        $language = Language::where('name','english')->first();
+        if($languageSymbol == 'es'){
+            $language = Language::where('name','spanish')->first();
+        }
+
+        // attach user to language
+        $language->users()->attach($agent->user_id);
+
+
+        return $agent->user;
+
     }
+
 
 
 

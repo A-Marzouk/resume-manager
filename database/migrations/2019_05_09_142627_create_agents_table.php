@@ -22,8 +22,11 @@ class CreateAgentsTable extends Migration
             $table->decimal('hourly_rate', 16, 4)->nullable();
             $table->decimal('available_hours_per_week', 3, 2)->unsigned()->nullable();
             $table->text('experience')->nullable();
-            $table->integer('user_id')->unsigned()->index();
+            $table->text('technologies')->nullable();
+            $table->string('voice_character')->nullable();
 
+
+            $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();

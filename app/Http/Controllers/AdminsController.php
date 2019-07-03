@@ -77,6 +77,16 @@ class AdminsController extends Controller
         return $Agents ;
     }
 
+    public function getClients(){
+
+        return User::whereHas('roles', function ($query) {
+            $query->where('name', '=', 'client');
+        })->with('data')->get();
+
+    }
+
+    // create agent :
+
     public function createAgent(Request $request){
         $agent =  app(User::class)->createAgent([
             'user' => [
@@ -92,8 +102,6 @@ class AdminsController extends Controller
                 'voice_character'          => $request->professionalData['voice'],
             ]
         ]);
-
-
 
         $agentData =  app(UserData::class)->createUserData([
             'userData' => [
@@ -130,7 +138,36 @@ class AdminsController extends Controller
     }
 
 
+    // create client :
 
+    public function createClient(Request $request){
+        $client = app(User::class)->createClient([
+            'user' => [
+                'email' => $request->email,
+                'password' => $request->password,
+                'username' => $request->email,
+            ],
+            'client' => [
+                'agency' => $request->agency,
+                'department_email' => $request->department_email,
+                'agency_phone' => $request->phone,
+                'contact' => $request->name,
+            ],
+        ]);
+
+        $clientData =  app(UserData::class)->createUserData([
+            'userData' => [
+                'user_id'               => $client->user_id,
+                'profession_id'         => 1, // business-support
+                'currency_id'           => 1, // usd
+                'timezone'              => 1,
+                // personal data
+                'first_name'            => $request->name,
+            ]
+        ]);
+
+        return $client;
+    }
 
 
     public function viewBusinessSupportUsers(){

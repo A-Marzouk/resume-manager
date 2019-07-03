@@ -45,6 +45,7 @@ Route::prefix('admin')->group(function (){
 
     // fetching data routs
     Route::get('/api/agents/{professionName}','AdminsController@getAgentsByProfessionName')->name('get.agents');
+    Route::get('/api/clients','AdminsController@getClients')->name('get.clients');
 
     // create agent :
     Route::get('/register-agent','AdminsController@showRegisterAgentPage')->name('admin.register.agent');

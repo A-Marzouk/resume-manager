@@ -63761,7 +63761,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         name: '',
         email: '',
         agency: '',
-        emailDept: '',
+        department_email: '',
         phone: '',
         timeZone: '',
         password: '',
@@ -63780,10 +63780,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return;
       }
       this.canSubmit = false;
-      axios.post('/client/register/submit', this.formData).then(function (response) {
-        if (response.data.status === 'success') {
+      axios.post('/admin/client/create', this.formData).then(function (response) {
+        if (response.status === 201) {
           // redirect to client dashboard
-          window.location.href = '/client';
+          window.location.href = '/admin/clients';
         }
         _this.errors = response.data.errors;
       });
@@ -64743,7 +64743,7 @@ var render = function() {
                     "div",
                     {
                       staticClass: "faq-input",
-                      class: { "error-input": _vm.errors.emailDept }
+                      class: { "error-input": _vm.errors.department_email }
                     },
                     [
                       _c("input", {
@@ -64751,16 +64751,16 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.formData.emailDept,
-                            expression: "formData.emailDept"
+                            value: _vm.formData.department_email,
+                            expression: "formData.department_email"
                           }
                         ],
                         attrs: {
                           type: "text",
-                          name: "emailDept",
+                          name: "department_email",
                           placeholder: "Enter your email dept"
                         },
-                        domProps: { value: _vm.formData.emailDept },
+                        domProps: { value: _vm.formData.department_email },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
@@ -64768,7 +64768,7 @@ var render = function() {
                             }
                             _vm.$set(
                               _vm.formData,
-                              "emailDept",
+                              "department_email",
                               $event.target.value
                             )
                           }
@@ -64780,8 +64780,8 @@ var render = function() {
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: _vm.formData.emailDept.length > 0,
-                            expression: "formData.emailDept.length > 0"
+                            value: _vm.formData.department_email.length > 0,
+                            expression: "formData.department_email.length > 0"
                           }
                         ],
                         attrs: {
@@ -64791,18 +64791,18 @@ var render = function() {
                         },
                         on: {
                           click: function($event) {
-                            _vm.clearInput("emailDept")
+                            _vm.clearInput("department_email")
                           }
                         }
                       })
                     ]
                   ),
                   _vm._v(" "),
-                  _vm.errors.emailDept
+                  _vm.errors.department_email
                     ? _c("div", { staticClass: "error" }, [
                         _vm._v(
                           "\n                        " +
-                            _vm._s(_vm.errors.emailDept[0]) +
+                            _vm._s(_vm.errors.department_email[0]) +
                             "\n                      "
                         )
                       ])

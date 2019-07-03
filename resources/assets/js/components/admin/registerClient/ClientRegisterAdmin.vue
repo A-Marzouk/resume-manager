@@ -166,20 +166,20 @@
                         Email address of accounts dept
                       </label>
                       <div class="faq-input"
-                           :class="{ 'error-input' : errors.emailDept}">
+                           :class="{ 'error-input' : errors.department_email}">
                         <input type="text"
-                               name="emailDept"
+                               name="department_email"
                                placeholder="Enter your email dept"
-                               v-model="formData.emailDept">
+                               v-model="formData.department_email">
                         <img src="/images/client/campaign_activity/close_black.png"
                                      alt="delete icon"
-                                     v-show="formData.emailDept.length > 0"
-                                     @click="clearInput('emailDept')"
+                                     v-show="formData.department_email.length > 0"
+                                     @click="clearInput('department_email')"
                                 >
                             </div>
                         <div class="error"
-                             v-if="errors.emailDept">
-                          {{errors.emailDept[0]}}
+                             v-if="errors.department_email">
+                          {{errors.department_email[0]}}
                         </div>
                       </div>
                     </div>
@@ -252,7 +252,7 @@ export default {
         name: '',
         email: '',
         agency: '',
-        emailDept: '',
+        department_email: '',
         phone: '',
         timeZone: '',
         password: '',
@@ -268,10 +268,10 @@ export default {
         return;
       }
       this.canSubmit = false;
-      axios.post('/client/register/submit', this.formData).then((response) => {
-        if (response.data.status === 'success') {
+      axios.post('/admin/client/create', this.formData).then((response) => {
+        if (response.status === 201 ) {
           // redirect to client dashboard
-          window.location.href = '/client';
+          window.location.href = '/admin/clients';
         }
         this.errors = response.data.errors;
       });

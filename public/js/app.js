@@ -70317,10 +70317,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var applicationFilter = true;
 
                 if (filter === 'show_new') {
-                    applicationFilter = agent.status === 1;
+                    applicationFilter = agent.status == 1;
                 }
                 if (filter === 'show_in_process') {
-                    applicationFilter = agent.status === 2 || agent.status === 3;
+                    applicationFilter = agent.status == 2 || agent.status == 3;
                 }
 
                 return SearchFilter && applicationFilter;
@@ -72302,10 +72302,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var activeFilter = true;
 
                 if (status === 'active') {
-                    activeFilter = user.is_active === 1;
+                    activeFilter = user.is_active == 1;
                 }
                 if (status === 'not_active') {
-                    activeFilter = user.is_active !== 1;
+                    activeFilter = user.is_active != 1;
                 }
 
                 return SearchFilter && activeFilter;

@@ -190,7 +190,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div  v-if="user.is_active === 1" class="payment-btn active">
+                                        <div  v-if="user.is_active == 1" class="payment-btn active">
                                             <a href="javascript:void(0)">
                                                 ACTIVE
                                             </a>

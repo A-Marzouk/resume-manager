@@ -132,29 +132,8 @@
         </div>
       </div>
     </div>
-
-    <div class="agentsSection">
-      <img class="agentsBg-1" src="/images/home/agentsBg-1.svg" alt="">
-      <img class="agentsBg-2" src="/images/home/agentsBg-2.svg" alt="">
-      <img class="agentsBg-3" src="/images/home/agentsBg-3.svg" alt="">
-      <img src="/images/home/pencilsBg.png" alt="" class="pencilsBg">
-      {{-- Search agents component --}}
-      <div class="agentsContainer__searchTools">
-        <button class="btn-first active">Featured designers</button>
-        <button class="btn-second">Search designers</button>
-      </div>
-
-      <div class="agentsContainer__selectContainer">
-        <select name="" id="">
-          <option value="UX/UI">UX/UI designers</option>
-        </select>
-      </div>
-      {{-- {{ dd($agents) }} --}}
-      <div id="freelancers_container">
-        <freelancers-container :freelancers="{{ json_encode($agents) }}"></freelancers-container>
-        
-      </div>
-      <img src="/images/home/computer.png" alt="computer" class="bottomBg">
+    <div id="freelancers_container">
+      <freelancers-container :freelancers="{{ json_encode($agents) }}"></freelancers-container>
     </div>
   </div>
   @include('layouts.includes.modals')

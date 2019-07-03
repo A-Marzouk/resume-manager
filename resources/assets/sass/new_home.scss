@@ -504,13 +504,17 @@ html {
     }
 
     &__selectContainer {
-      background: rgba($color:#BBD9FF, $alpha: 0.3);
+
+      &.active {
+        background: rgba($color:#BBD9FF, $alpha: 0.3);
+      }
+      
+      left: -15px;
       border-radius: 4px;
       padding: 15px;
       width: 286px;
       margin-bottom: 45px;
       position: relative;
-      left: -15px;
 
       @media (max-width: 992px) {
         left: 0;
@@ -552,62 +556,49 @@ html {
         
         flex-wrap: wrap;
       }
+    }
 
-      .freelancerCard {
-        margin: 0 !important;
-        width: 352px;
-
-        @media (max-width: 992px) {
-          width: 318px;
-        }
-
-        @media (max-width: 768px) {
-          width: 100%;
-        }
-
+    &__portfolio {
+      margin-left: 10px;
+      height: 100%;
+      width: calc(100% - 342px);
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: 100%;
+      grid-auto-rows: 0;
+      grid-gap: 10px;
+  
+      @media (max-width: 768px) {
+        width: 100%;
+        margin-left: 0;
+        height: 170px;
       }
       
-      &__portfolio {
-        margin-left: 10px;
-        height: 100%;
-        width: calc(100% - 342px);
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: 100%;
-        grid-auto-rows: 0;
-        grid-gap: 10px;
-
-        @media (max-width: 768px) {
-          width: 100%;
-          margin-left: 0;
-        }
+      .work {
+        height: 175px;
+        grid-row: span 1;
+        min-width: 100%;
+        position: relative;
+        grid-column: span 2;
         
-        .work {
-          height: 175px;
-          grid-row: span 1;
-          min-width: 100%;
-          position: relative;
-          grid-column: span 2;
-          
-          @media (max-width: 992px) {
-            grid-column: span 3;
-            // height: 
-          }
-
+        @media (max-width: 992px) {
+          grid-column: span 3;
+          // height: 
+        }
+  
+        @media (max-width: 768px) {
+          display: none;
+        }
+  
+        img {
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+  
           @media (max-width: 768px) {
-            grid-column: span 6;
-          }
-
-          img {
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-
-            @media (max-width: 768px) {
-              width: 100%;
-              height: auto;
-            }
+            width: 100%;
+            height: auto;
           }
         }
       }

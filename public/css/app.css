@@ -12058,13 +12058,16 @@ html {
 }
 
 .agentsSection .agentsContainer__selectContainer {
-  background: rgba(187, 217, 255, 0.3);
+  left: -15px;
   border-radius: 4px;
   padding: 15px;
   width: 286px;
   margin-bottom: 45px;
   position: relative;
-  left: -15px;
+}
+
+.agentsSection .agentsContainer__selectContainer.active {
+  background: rgba(187, 217, 255, 0.3);
 }
 
 @media (max-width: 992px) {
@@ -12120,24 +12123,7 @@ html {
   }
 }
 
-.agentsSection .agentsContainer__card .freelancerCard {
-  margin: 0 !important;
-  width: 352px;
-}
-
-@media (max-width: 992px) {
-  .agentsSection .agentsContainer__card .freelancerCard {
-    width: 318px;
-  }
-}
-
-@media (max-width: 768px) {
-  .agentsSection .agentsContainer__card .freelancerCard {
-    width: 100%;
-  }
-}
-
-.agentsSection .agentsContainer__card__portfolio {
+.agentsSection .agentsContainer__portfolio {
   margin-left: 10px;
   height: 100%;
   width: calc(100% - 342px);
@@ -12149,13 +12135,14 @@ html {
 }
 
 @media (max-width: 768px) {
-  .agentsSection .agentsContainer__card__portfolio {
+  .agentsSection .agentsContainer__portfolio {
     width: 100%;
     margin-left: 0;
+    height: 170px;
   }
 }
 
-.agentsSection .agentsContainer__card__portfolio .work {
+.agentsSection .agentsContainer__portfolio .work {
   height: 175px;
   grid-row: span 1;
   min-width: 100%;
@@ -12164,18 +12151,18 @@ html {
 }
 
 @media (max-width: 992px) {
-  .agentsSection .agentsContainer__card__portfolio .work {
+  .agentsSection .agentsContainer__portfolio .work {
     grid-column: span 3;
   }
 }
 
 @media (max-width: 768px) {
-  .agentsSection .agentsContainer__card__portfolio .work {
-    grid-column: span 6;
+  .agentsSection .agentsContainer__portfolio .work {
+    display: none;
   }
 }
 
-.agentsSection .agentsContainer__card__portfolio .work img {
+.agentsSection .agentsContainer__portfolio .work img {
   height: 100%;
   position: absolute;
   top: 0;
@@ -12183,7 +12170,7 @@ html {
 }
 
 @media (max-width: 768px) {
-  .agentsSection .agentsContainer__card__portfolio .work img {
+  .agentsSection .agentsContainer__portfolio .work img {
     width: 100%;
     height: auto;
   }

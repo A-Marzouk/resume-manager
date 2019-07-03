@@ -81,7 +81,7 @@ class AdminsController extends Controller
 
         return User::whereHas('roles', function ($query) {
             $query->where('name', '=', 'client');
-        })->with('data')->get();
+        })->with('data','client')->get();
 
     }
 
@@ -146,6 +146,7 @@ class AdminsController extends Controller
                 'email' => $request->email,
                 'password' => $request->password,
                 'username' => $request->email,
+                'is_active' => 1,
             ],
             'client' => [
                 'agency' => $request->agency,

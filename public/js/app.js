@@ -70887,7 +70887,7 @@ var render = function() {
                                 "span",
                                 {
                                   class: {
-                                    "available-text": user.status === 4,
+                                    "available-text": user.status == 4,
                                     "new-text": user.status < 4
                                   }
                                 },
@@ -72869,7 +72869,7 @@ var render = function() {
                         _vm._m(4, true),
                         _vm._v(" "),
                         _c("td", [
-                          user.is_active === 1
+                          user.is_active == 1
                             ? _c("div", { staticClass: "payment-btn active" }, [
                                 _c(
                                   "a",

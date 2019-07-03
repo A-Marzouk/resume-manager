@@ -145,7 +145,7 @@
                                     </td>
                                     <td>
                                         <div class="invoice-amount base-text">
-                                            <span :class="{ 'available-text' : user.status === 4 , 'new-text' : user.status < 4}">
+                                            <span :class="{ 'available-text' : user.status == 4 , 'new-text' : user.status < 4}">
                                                 {{userStatus[user.status]}} (+{{Math.ceil(user.data.available_hours_per_week)}} h/week)
                                             </span>
                                         </div>

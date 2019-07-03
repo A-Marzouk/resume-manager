@@ -102022,6 +102022,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -102136,7 +102139,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n  margin: 0 !important;\n  width: 352px;\n}\n@media (max-width: 992px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 318px;\n}\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .freelancerImg[data-v-e70ddbcc] {\n    width: 70px;\n    height: 70px;\n}\n.freelancerCard.smallCard .nameRow[data-v-e70ddbcc] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    position: relative;\n    border-radius: 5px;\n    padding: 14px;\n    height: 100%;\n}\n.freelancerCard.smallCard .contact[data-v-e70ddbcc] {\n    position: absolute;\n    top: 20px;\n    right: 14px;\n}\n.freelancerCard.smallCard .jobTitle[data-v-e70ddbcc] {\n    color: white;\n    font-size: 14px;\n}\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n    font-size: 12px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n}\n}\n.freelancerCard.smallCard .payment-details div[data-v-e70ddbcc] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n      text-align: center;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc],\n    .freelancerCard.smallCard .payment-details span[data-v-e70ddbcc] {\n      margin-right: 5px;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc] {\n      height: 14px;\n}\n.freelancerCard.smallCard .payment-highLight[data-v-e70ddbcc] {\n    font-size: 14px;\n}\n.freelancerCard.smallCard .resumeCardRight[data-v-e70ddbcc] {\n    height: 100%;\n}\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n      width: 87px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n          width: 100%;\n          -webkit-box-pack: center;\n              -ms-flex-pack: center;\n                  justify-content: center;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n}\n}\n.freelancerCard.smallCard .resumeCardRight .nameRow .imageCol[data-v-e70ddbcc] {\n      padding-left: 0;\n      margin: 0;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .cardRow[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .hireRow[data-v-e70ddbcc] {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    padding: 14px;\n    margin: 0;\n    margin-top: 15px;\n}\n.freelancerCard.smallCard .nameCard[data-v-e70ddbcc] {\n    font-family: Roboto;\n    font-style: normal;\n    font-weight: bold;\n    font-size: 18px;\n    padding-top: 0;\n    margin-bottom: 5px;\n    padding-left: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n  margin: 0 !important;\n  width: 352px;\n}\n@media (max-width: 992px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 318px;\n}\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .freelancerImg[data-v-e70ddbcc] {\n    width: 70px;\n    height: 70px;\n}\n.freelancerCard.smallCard .nameRow[data-v-e70ddbcc] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    position: relative;\n    border-radius: 5px;\n    padding: 14px;\n    height: 100%;\n}\n.freelancerCard.smallCard .contact[data-v-e70ddbcc] {\n    position: absolute;\n    top: 20px;\n    right: 14px;\n}\n.freelancerCard.smallCard .jobTitle[data-v-e70ddbcc] {\n    color: white;\n    font-size: 14px;\n}\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n    font-size: 12px;\n}\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc]:first-child {\n      margin-right: 5px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n}\n}\n.freelancerCard.smallCard .payment-details div[data-v-e70ddbcc] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n      text-align: center;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc],\n    .freelancerCard.smallCard .payment-details span[data-v-e70ddbcc] {\n      margin-right: 5px;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc] {\n      height: 14px;\n}\n.freelancerCard.smallCard .payment-highLight[data-v-e70ddbcc] {\n    font-size: 14px;\n}\n.freelancerCard.smallCard .resumeCardRight[data-v-e70ddbcc] {\n    height: 100%;\n}\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n      width: 87px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n          width: 100%;\n          -webkit-box-pack: center;\n              -ms-flex-pack: center;\n                  justify-content: center;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n}\n}\n.freelancerCard.smallCard .resumeCardRight .nameRow .imageCol[data-v-e70ddbcc] {\n      padding-left: 0;\n      margin: 0;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .cardRow[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .hireRow[data-v-e70ddbcc] {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    padding: 14px;\n    margin: 0;\n    margin-top: 15px;\n}\n.freelancerCard.smallCard .nameCard[data-v-e70ddbcc] {\n    font-family: Roboto;\n    font-style: normal;\n    font-weight: bold;\n    font-size: 18px;\n    padding-top: 0;\n    margin-bottom: 5px;\n    padding-left: 10px;\n}\n", ""]);
 
 // exports
 
@@ -102478,160 +102481,171 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "agentsContainer__selectContainer",
-        class: { active: _vm.activeBox === "designerType" }
-      },
-      [
-        _c(
-          "select",
-          {
-            attrs: { name: "", id: "" },
-            on: {
-              focus: function($event) {
-                _vm.activeBox = "designerType"
+    _c("div", { staticClass: "agentsContainer__searchSelects" }, [
+      _c(
+        "div",
+        {
+          staticClass: "agentsContainer__selectContainer",
+          class: { active: _vm.activeBox === "designerType" }
+        },
+        [
+          _c(
+            "select",
+            {
+              attrs: { name: "", id: "" },
+              on: {
+                focus: function($event) {
+                  _vm.activeBox = "designerType"
+                }
               }
-            }
-          },
-          _vm._l(_vm.customValues.designerTypes, function(designerType, index) {
-            return _c(
-              "option",
-              { key: designerType + index, domProps: { value: designerType } },
-              [_vm._v(_vm._s(designerType))]
-            )
-          })
-        )
-      ]
-    ),
-    _vm._v(" "),
-    _vm.customSearch
-      ? _c("div", { staticClass: "agentsContainer__customSelect" }, [
-          _c(
-            "div",
-            {
-              staticClass: "agentsContainer__selectContainer",
-              class: { active: _vm.activeBox === "rate" }
             },
-            [
-              _c(
-                "select",
-                _vm._b(
-                  {
-                    on: {
-                      focus: function($event) {
-                        _vm.activeBox = "rate"
-                      }
-                    }
-                  },
-                  "select",
-                  _vm.customSearch.rate,
-                  false
-                ),
-                [
-                  _c("option", { attrs: { value: "" } }, [
-                    _vm._v("Choose a rate")
-                  ]),
-                  _vm._v(" "),
-                  _vm._l(_vm.customValues.rates, function(rate, index) {
-                    return _c(
-                      "option",
-                      { key: rate + index, domProps: { value: rate } },
-                      [_vm._v("$ " + _vm._s(rate) + " hourly")]
-                    )
-                  })
-                ],
-                2
+            _vm._l(_vm.customValues.designerTypes, function(
+              designerType,
+              index
+            ) {
+              return _c(
+                "option",
+                {
+                  key: designerType + index,
+                  domProps: { value: designerType }
+                },
+                [_vm._v(_vm._s(designerType))]
               )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "agentsContainer__selectContainer",
-              class: { active: _vm.activeBox === "availability" }
-            },
-            [
-              _c(
-                "select",
-                _vm._b(
-                  {
-                    on: {
-                      focus: function($event) {
-                        _vm.activeBox = "availability"
-                      }
-                    }
-                  },
-                  "select",
-                  _vm.customSearch.availability,
-                  false
-                ),
-                [
-                  _c("option", { attrs: { value: "" } }, [
-                    _vm._v("Choose an availability")
-                  ]),
-                  _vm._v(" "),
-                  _vm._l(_vm.customValues.availability, function(
-                    availability,
-                    index
-                  ) {
-                    return _c(
-                      "option",
-                      {
-                        key: availability + index,
-                        domProps: { value: availability }
-                      },
-                      [_vm._v(_vm._s(availability) + " hours daily")]
-                    )
-                  })
-                ],
-                2
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "agentsContainer__selectContainer",
-              class: { active: _vm.activeBox === "country" }
-            },
-            [
-              _c(
-                "select",
-                _vm._b(
-                  {
-                    on: {
-                      focus: function($event) {
-                        _vm.activeBox = "country"
-                      }
-                    }
-                  },
-                  "select",
-                  _vm.customSearch.country,
-                  false
-                ),
-                [
-                  _c("option", { attrs: { value: "" } }, [
-                    _vm._v("Choose a country")
-                  ]),
-                  _vm._v(" "),
-                  _vm._l(_vm.customValues.countries, function(country, index) {
-                    return _c(
-                      "option",
-                      { key: country + index, domProps: { value: country } },
-                      [_vm._v(_vm._s(country))]
-                    )
-                  })
-                ],
-                2
-              )
-            ]
+            })
           )
-        ])
-      : _vm._e(),
+        ]
+      ),
+      _vm._v(" "),
+      _vm.customSearch
+        ? _c("div", { staticClass: "agentsContainer__customSelect" }, [
+            _c(
+              "div",
+              {
+                staticClass: "agentsContainer__selectContainer",
+                class: { active: _vm.activeBox === "rate" }
+              },
+              [
+                _c(
+                  "select",
+                  _vm._b(
+                    {
+                      on: {
+                        focus: function($event) {
+                          _vm.activeBox = "rate"
+                        }
+                      }
+                    },
+                    "select",
+                    _vm.customSearch.rate,
+                    false
+                  ),
+                  [
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("Choose a rate")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.customValues.rates, function(rate, index) {
+                      return _c(
+                        "option",
+                        { key: rate + index, domProps: { value: rate } },
+                        [_vm._v("$ " + _vm._s(rate) + " hourly")]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "agentsContainer__selectContainer",
+                class: { active: _vm.activeBox === "availability" }
+              },
+              [
+                _c(
+                  "select",
+                  _vm._b(
+                    {
+                      on: {
+                        focus: function($event) {
+                          _vm.activeBox = "availability"
+                        }
+                      }
+                    },
+                    "select",
+                    _vm.customSearch.availability,
+                    false
+                  ),
+                  [
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("Choose an availability")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.customValues.availability, function(
+                      availability,
+                      index
+                    ) {
+                      return _c(
+                        "option",
+                        {
+                          key: availability + index,
+                          domProps: { value: availability }
+                        },
+                        [_vm._v(_vm._s(availability) + " hours daily")]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "agentsContainer__selectContainer",
+                class: { active: _vm.activeBox === "country" }
+              },
+              [
+                _c(
+                  "select",
+                  _vm._b(
+                    {
+                      on: {
+                        focus: function($event) {
+                          _vm.activeBox = "country"
+                        }
+                      }
+                    },
+                    "select",
+                    _vm.customSearch.country,
+                    false
+                  ),
+                  [
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("Choose a country")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.customValues.countries, function(
+                      country,
+                      index
+                    ) {
+                      return _c(
+                        "option",
+                        { key: country + index, domProps: { value: country } },
+                        [_vm._v(_vm._s(country))]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]
+            )
+          ])
+        : _vm._e()
+    ]),
     _vm._v(" "),
     _c("img", {
       staticClass: "bottomBg",

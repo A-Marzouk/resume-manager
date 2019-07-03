@@ -122,6 +122,10 @@ export default {
 
     .payment-details {
       font-size: 12px;
+
+      &:first-child {
+        margin-right: 5px;
+      }
       
       @media (max-width: 768px) {
         display: flex;

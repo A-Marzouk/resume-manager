@@ -38,15 +38,16 @@
   ?>
   <img src="/images/home/mainBg-designers.svg" alt="" class="topBg">
   <div id="app">
-    <nav class="navbar navbar-expand-md nav-home-designers">
+    <nav class="navbar nav-home-designers">
         <a href="{{ url('/') }}">
-          <img class="logo" src="/images/home/123workforce.png" alt="logo">
+          <img class="logo hideOnSm" src="/images/home/123workforce.png" alt="logo">
+          <img class="logo showOnSm" src="/images/home/icon123.png" alt="" />
         </a>
-        <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" style="border: none;" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        {{-- <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" style="border: none;" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon" style="background-image: url('/images/newResume/menu.png');"></span>
-        </button>
+        </button> --}}
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav">
                 
@@ -68,7 +69,7 @@
                 {{-- if guest : --}}
                 <?php if(!$isClient): ?>
                     
-                    <a class="nav-item customNavLink nav-link text-blue" href="{{ route('client.login') }}" data-toggle="modal" data-target="#loginModal" style="padding-left: 30px; padding-right: 30px;"><b style="font-weight: 500;">{{ __('LOG IN') }}</b></a>
+                    <a class="nav-item customNavLink nav-link text-blue" href="{{ route('client.login') }}" data-toggle="modal" data-target="#loginModal" ><b style="font-weight: 500;">{{ __('LOG IN') }}</b></a>
                 <? else: ?>
                     <a class="nav-item nav-link customNavLink" href="/chat-room" style="color:#0290D8;">
                         Messaging
@@ -89,12 +90,12 @@
                         @csrf
                     </form>
                 <? endif;?>
-                <a class="nav-item nav-link customNavLink text-blue" href="#" data-toggle="modal" data-target="#talkToSales"><b style="font-weight: 500;">TALK TO SALES</b></a>
+                <a class="nav-item nav-link customNavLink text-blue hideOnSm" href="#" data-toggle="modal" data-target="#talkToSales"><b style="font-weight: 500;">TALK TO SALES</b></a>
             <? if(!$isClient): ?>
                     <li class="nav-link registerBtn">
                         <a href="/client/register/"
                           data-toggle="modal" 
-                          data-target="#exampleModalCenter"style="padding-left: 30px; padding-right: 30px;">{{ __('BECOME A CLIENT') }}</a>
+                          data-target="#exampleModalCenter">{{ __('BECOME A CLIENT') }}</a>
                     </li>
                 <? else: ?>
                     <a class="nav-item nav-link customNavLink" href="/chat-room" style="color:#0290D8;">

@@ -72302,10 +72302,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var activeFilter = true;
 
                 if (status === 'active') {
-                    activeFilter = user.is_active === 1;
+                    activeFilter = user.is_active == 1;
                 }
                 if (status === 'not_active') {
-                    activeFilter = user.is_active !== 1;
+                    activeFilter = user.is_active != 1;
                 }
 
                 return SearchFilter && activeFilter;

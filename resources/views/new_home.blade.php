@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>123Workforce</title>
 
@@ -10,12 +10,12 @@
   <link rel="stylesheet" href="/css/app.css">
 </head>
 <body class="home">
-
+  <img src="/images/home/topBg.png" alt="" class="topBg">
   <main>
-    <img src="/images/home/topBg.png" alt="" class="topBg">
-    <nav class="newNav no-decoration">
+    <nav class="newNav no-decoration maxContainer">
       <a class="newNav__homeLink" href="/" class="logo">
-        <img src="/images/home/123logo.png" alt="123workforce logo">
+        <img class="hideOnMobile" src="/images/home/123logo.png" alt="123workforce logo">
+        <img class="responsiveIcon" src="/images/home/logoIconBig.png" alt="">
       </a>
       <div class="newNav__links">
         <a class="newNav__links__link" href="#">Become a Client</a>
@@ -23,21 +23,17 @@
         <a class="newNav__links__link--loginBtn" href="#">Login</a>
       </div>
     </nav>
-    <section class="mainSection">
+    <section class="mainSection maxContainer">
       <div class="mainSection__content">
-        <h1 class="mainSection__content__title">Boost your Brand with Unlimited Graphic Design</h1>
-        <h3 class="mainSection__content__subtitle">Awesome Design - Only $123 Weekly</h3>
-        <p class="mainSection__content__description">Fast Turnaround - High Quality Graphic Design<br />
-        UI/UX Design - Illustrations - Banners<br />
-        Web Design - Logos - Brochures - Adverts</p>
+        <h1 class="mainSection__content__title">Top Remote Design talent for Agencies</h1>
+        <h3 class="mainSection__content__subtitle">Get new customers and boost your revenue</h3>
+        <p class="mainSection__content__description">Ui Designers - Ux Designers - Illustrators<br />Motion Animators - Product Designers <br />Digital Artists</p>
 
-        <div class="mainSection__content__registerBiz no-decoration">
-          <a href="#" class="mainSection__content__registerBiz__link">Register your business</a>
-        </div>
+        <h4 class="mainSection__content__registerBiz">Register your business</h4>
       </div>
       <img class="mainSection__asset" src="/images/home/mainAsset.png" alt="asset">
     </section>
-    <section class="registerBizSection">
+    <section class="registerBizSection maxContainer">
       <form class="registerBizSection__container" action="">
         <div class="registerBizSection__container__inputs">
             <input type="text" placeholder="Full name*" class="registerBizSection__container__inputs__input">
@@ -49,12 +45,14 @@
       </form>
     </section>
     <section class="planSection">
-      <h2 class="subtitle">Every great business starts with a plan</h2>
+      <img class="planSection__bg" src="/images/home/bgPlan.png" alt="">
 
-      <h4 class="min-subtitle">Weekly payment, cancel anytime, guaranteed results</h4>
+      <h2 class="subtitle">Featured Designers</h2>
 
-      <div class="planSection__currencies">
-        {{-- Make this with vue --}}
+      <h4 class="min-subtitle">Awesome Freelance Designers, Ready to join your Agency</h4>
+
+      {{-- <div class="planSection__currencies">
+        Make this with vue
         <div class="planSection__currencies__currency">
           <img src="/images/home/currency_usd.png" alt="" class="planSection__currencies__currency__img selected">
           <img src="/images/home/check_icon.png" alt="" class="planSection__currencies__currency__img--checkIcon">
@@ -80,19 +78,19 @@
           <img src="/images/home/check_icon.png" alt="" class="planSection__currencies__currency__img--checkIcon">
           <span class="planSection__currencies__currency__name">AUD</span>
         </div>
-      </div>
+      </div> --}}
       <div class="planSection__plans no-decoration">
-        <a href="#" class="planSection__plans__plan--selected">Unlimited Weekly</a>
-        <a href="#" class="planSection__plans__plan">Unlimited Monthly</a>
+        <a href="#" class="planSection__plans__plan--selected">UI</a>
+        <a href="#" class="planSection__plans__plan">UX</a>
       </div>
       <div class="planSection__planDescription no-decoration">
         <div class="planSection__planDescription__header">
           <img src="/images/home/logoIconBig.png" alt="" class="planSection__planDescription__header__icon">
 
           <div class="planSection__planDescription__header__content">
-            <h3 class="planSection__planDescription__header__content__name">Unlimited Weekly</h3>
+            <h3 class="planSection__planDescription__header__content__name">Full-time</h3>
             <div class="planSection__planDescription__header__content__payment">
-              <span class="planSection__planDescription__header__content__payment__cost">$123</span>
+              <span class="planSection__planDescription__header__content__payment__cost">$350</span>
               <span class="planSection__planDescription__header__content__payment__hours">/ Week</span>
             </div>
             <div class="planSection__planDescription__header__content__frequency">Per week, billed weekly</div>
@@ -101,27 +99,23 @@
         <div class="planSection__planDescription__benefits">
           <div class="planSection__planDescription__benefits__item">
             <img src="/images/home/check_icon.png" alt="check icon">
-            Dedicated Account Manager
+            Dedicated Full-Time Agent
           </div>
           <div class="planSection__planDescription__benefits__item">
               <img src="/images/home/check_icon.png" alt="check icon">
-              Local Hours
+              Telemarketing
           </div>
           <div class="planSection__planDescription__benefits__item">
             <img src="/images/home/check_icon.png" alt="check icon">
-            Dedicated Design Team
+            Email marketing
           </div>
           <div class="planSection__planDescription__benefits__item">
             <img src="/images/home/check_icon.png" alt="check icon">
-            24 Hour Task Delivery
+            Professional Network Outrech- Linkedin
           </div>
           <div class="planSection__planDescription__benefits__item">
             <img src="/images/home/check_icon.png" alt="check icon">
-            Guaranteed Results
-          </div>
-          <div class="planSection__planDescription__benefits__item">
-            <img src="/images/home/check_icon.png" alt="check icon">
-            24 / 7 Design Request
+            Social media outreach - Instagram / Facebook
           </div>
         </div>
         <a href="#" class="planSection__planDescription__more">
@@ -132,120 +126,37 @@
     </section>
     <section class="agentsSection">
       <img class="agentsSection__bg-2" src="/images/home/agentsBg.png" alt="">
-      <h2 class="subtitle">Our Design Team is now <br />your design Team</h2>
-      <h4 class="min-subtitle">Our Designers are talented,<br />fast and ready to help you</h4>
-      <div class="agentsContainer">
-        <img class="agentsSection__bg" src="/images/home/asset_agents.png" alt="">
-        <div class="agentsSection__agents">
-          <div class="agentsSection__agents__agent">
-            <div class="agentsSection__agents__agent__data">
-              <div class="agentsSection__agents__agent__data__profile">
-                <img src="/images/home/profile2.png" alt="">
-                <div class="agentsSection__agents__agent__data__profile__info">
-                  <h3 class="agentName">Samantha William</h3>
-                  <div class="agentProfession">
-                    <img src="/images/home/professionIcon.png" />Telemarketing
-                  </div>
-                </div>
-              </div>
-              <ul class="agentsSection__agents__agent__data__professionalInfo">
-                <li>Sector Experience: <span class="highLightText">Real State, Insurance</span></li>
-                <li>Languages: <span class="highLightText">English, Indonesia</span></li>
-              </ul>
-            </div>
-            <div class="agentsSection__agents__agent__actions">
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                Intro Recording
-              </div>
-              <div class="action selected">
-                <img src="/images/home/recording-blue.png" alt="">
-                Listen to Record Icon
-              </div>
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                Listen to Record Icon
-              </div>
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                ABC Recording
-              </div>
-            </div>
-          </div>
-          <div class="agentsSection__agents__agent">
-            <div class="agentsSection__agents__agent__data">
-              <div class="agentsSection__agents__agent__data__profile">
-                <img src="/images/home/profile1.png" alt="">
-                <div class="agentsSection__agents__agent__data__profile__info">
-                  <h3 class="agentName">Saepul Rohman</h3>
-                  <div class="agentProfession">
-                    <img src="/images/home/professionIcon.png" />UI Designer
-                  </div>
-                </div>
-              </div>
-              <ul class="agentsSection__agents__agent__data__professionalInfo">
-                <li>Sector Experience: <span class="highLightText">UI/UX, Illustrations</span></li>
-                <li>Languages: <span class="highLightText">English, Indonesia</span></li>
-              </ul>
-            </div>
-            <div class="agentsSection__agents__agent__actions">
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                Intro Recording
-              </div>
-              <div class="action selected">
-                <img src="/images/home/recording-blue.png" alt="">
-                Listen to Record Icon
-              </div>
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                Listen to Record Icon
-              </div>
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                ABC Recording
-              </div>
-            </div>
-          </div>
-          <div class="agentsSection__agents__agent">
-            <div class="agentsSection__agents__agent__data">
-              <div class="agentsSection__agents__agent__data__profile">
-                <img src="/images/home/profile3.png" alt="">
-                <div class="agentsSection__agents__agent__data__profile__info">
-                  <h3 class="agentName">Ghani Pradita</h3>
-                  <div class="agentProfession">
-                    <img src="/images/home/professionIcon.png" />Visual Director
-                  </div>
-                </div>
-              </div>
-              <ul class="agentsSection__agents__agent__data__professionalInfo">
-                <li>Sector Experience: <span class="highLightText">Real State, Insurance</span></li>
-                <li>Languages: <span class="highLightText">English, Spanish</span></li>
-              </ul>
-            </div>
-            <div class="agentsSection__agents__agent__actions">
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                Intro Recording
-              </div>
-              <div class="action selected">
-                <img src="/images/home/recording-blue.png" alt="">
-                Listen to Record Icon
-              </div>
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                Listen to Record Icon
-              </div>
-              <div class="action">
-                <img src="/images/home/recording-default.png" alt="">
-                ABC Recording
-              </div>
-            </div>
+      <div class="maxContainer">
+
+        <h2 class="subtitle">View top Freelance Designers<br />Portfolios and Hire talent<br />for your agency today</h2>
+        <h4 class="min-subtitle">Begin Search</h4>
+        <div class="agentsSection__filters">
+          <div class="agentsSection__filters__filter">Type of designer</div>
+          <div class="agentsSection__filters__filter">Price per Hour</div>
+          <div class="agentsSection__filters__filter">Availability</div>
+        </div>
+        <div class="agentsContainer center">
+          <img class="agentsSection__bg" src="/images/home/agentsAssetSales.png" alt="">
+          <div class="agentsSection__cards">
+            <? $showVideo = true;
+              if(!isset($value['id'])){
+                  $value['id'] = '';
+              }
+          
+              // $smallCard = false ;
+              // if(!isset($freelancer->id)){
+              //   dd("Fail here");
+              //     return;
+              // }
+            ?>
+            @foreach ($agents as $freelancer)
+              @include('freelancer_home_card')
+            @endforeach
           </div>
         </div>
       </div>
     </section>
-    <section class="questionsSection">
+    <section class="questionsSection maxContainer">
       <img class="questionsSection__bg-1" src="/images/home/question1.png" alt="">
       <img class="questionsSection__bg-2" src="/images/home/question2.png" alt="">
 
@@ -307,14 +218,14 @@
       </div>
     </section>
 
-    <footer class="newFooter">
+    <footer class="newFooter maxContainer">
       <div class="contact">
         <img class="logo" src="/images/home/123logo.png" alt="">
         <div class="copyright">
           Copyright 2018 123Workforce. <br />
           All rights reserved.
         </div>
-        <div class="socialNetWorks">
+        <div class="socialNetworks">
           <img src="/images/home/fb-icon.png" alt="">
           <img src="/images/home/tw-icon.png" alt="">
           <img src="/images/home/in-icon.png" alt="">
@@ -344,10 +255,9 @@
           <li>Contact Us</li>
         </ul>
       </div>
-      <img src="/images/home/bottomBg.png" alt="" class="bottomBg">
     </footer>
-    
   </main>
+  <img src="/images/home/bottomBg.png" alt="" class="bottomBg">
   
 </body>
 </html>

@@ -4,11 +4,19 @@ namespace App\Models\Enums;
 
 class UserStatus
 {
-    const PENDING = 1; // blue
-    const READY_TO_SEND = 2; // lightgreen
-    const SENT = 3; // red
-    const INCOMPLETE_SURVEY = 4; // grey
-    const PARTIALLY_CREATED = 5; // orange
+
+    const NEW_APPLICANT = 1 ;               //        Grey( new applicant , default status, shaded box )
+    const VOICE_PROCESS = 2 ;               //        orange. ( in voice application process)
+    const DATA_PROCESS = 3 ;                //        yellow  ( in data application process )
+    const VOICE_APPROVED_AVAILABLE = 4 ;    //        light green ( voice approved, available for work  )
+    const DATA_APPROVED_AVAILABLE = 5 ;     //        light blue( data approved , available for work )
+    const VOICE_APPROVED_NOT_AVAILABLE = 6; //        dark green ( voice approved and fully booked/ unavailable  )
+    const DATA_APPROVED_NOT_AVAILABLE = 7 ; //        dark blue( data approved , full booked / unavailable )
+    const DATA_NOT_APPROVED = 8 ;           //        light red ( unapproved for data)
+    const VOICE_NOT_APPROVED = 9 ;          //        red (unapproved for Voice)
+
+
+
 
     const CSS_CLASS_NAMES = [
         CalendarEventStatus::PENDING => 'm-fc-event--light m-fc-event--solid-pending',

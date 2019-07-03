@@ -16,7 +16,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('privacyView', 'getSearch', 'termsView', 'welcomePage', 'ResumePage', 'ResumeSample');
+        $this->middleware('auth')->except('privacyView', 'getSearch', 'termsView', 'welcomePage', 'ResumePage', 'ResumeSample',
+        'homeDesigners');
     }
 
     /**
@@ -91,6 +92,41 @@ class HomeController extends Controller
         }
 
         return view('public_search', compact('freelancers', 'search_name'));
+    }
+
+    public function homeDesigners () {
+        // homepage freelancers
+        // $promotedUsers = array();
+        // $promotedUsers = PromotedUser::with('user')->get();
+        // $homeFreelancers = $promotedUsers->transform(function ($promotedUser) {
+        //     return $promotedUser->user;
+        // });
+
+        $agents = array();
+
+        $user1 = new User();
+        $user1->firstName = 'Jose';
+        $user1->lastName = 'Quintero';
+        $user1->id = 1;
+        $user1->userData = new UserData();
+        $user1->userData->photo = '/images/home/profile1.png';
+        $user1->userData->jobTitle = 'Web developer';
+        $user1->userData->salary = 20;
+        $user1->userData->availableHours = 40;
+
+        $user2 = new User();
+        $user2->firstName = 'Ahmed';
+        $user2->lastName = 'Marzouk';
+        $user2->id = 2;
+        $user2->userData = new UserData();
+        $user2->userData->photo = '/images/home/profile1.png';
+        $user2->userData->jobTitle = 'Fullstack Developer';
+        $user2->userData->salary = 40;
+        $user2->userData->availableHours = 40;
+
+        array_push($agents, $user1, $user2, $user1, $user2);
+
+        return view('home_designers', ['agents' => $agents]);
     }
 
 }

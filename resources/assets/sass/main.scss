@@ -71,6 +71,9 @@ body {
 
 .customNavLink {
   outline: none;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
   opacity: 0.75;
   color: #637280 !important;
   font-family: Roboto !important;
@@ -125,6 +128,30 @@ body {
   text-decoration: none !important; }
 .loginBtn a {
   outline: none; }
+
+.text-blue {
+  color: $btn-blue !important;
+}
+
+.registerBtn {
+  padding: 18px 35px !important;
+  background-color: $btn-blue;
+  font-size: 14px;
+  margin-left: 54px;
+
+  // tablets
+  @media (max-width: 992px) {
+    font-size: 14px;
+  }
+  
+  a {
+    color: white;
+    &:hover,
+    &:visited {
+      text-decoration: none;
+    }
+  }
+}
 @media only screen and (max-width: 600px) {
   .loginBtn {
     margin-right: 0px;
@@ -1811,7 +1838,7 @@ body {
   box-shadow: 0 11px 16px -7px #E5ECED;
   padding: 0;
   border-radius: 5px;
-  margin-left: 9.07%; }
+  margin-left: 9.07%;}
 @media only screen and (max-width: 1200px) {
   .freelancerCard {
     width: auto;
@@ -2368,6 +2395,13 @@ body {
   
   .hideOnSm {
     display: none;
+  }
+}
+
+.showOnSm {
+  display: none;
+  @media only screen and (max-width: 576px) {
+    display: flex;
   }
 }
 

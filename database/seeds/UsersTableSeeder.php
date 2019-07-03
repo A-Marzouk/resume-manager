@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
     {
         collect([
             [
-                'email' => 'admin@workforce.com',
+                'email' => 'admin@123workforce.com',
                 'password' => 'administrator',
                 'is_active' => true,
                 'username' => 'admin',
@@ -27,6 +27,32 @@ class UsersTableSeeder extends Seeder
             ],
         ])->each(function ($item) {
             User::create($item)->assignRole('admin');
+        });
+
+        collect([
+            [
+                'user' => [
+                    'email' => 'agent@123workforce.com',
+                    'password' => '123456789',
+                    'username' => 'agent',
+                ],
+                'agent' => [],
+            ],
+        ])->each(function ($item) {
+            app(User::class)->createAgent($item);
+        });
+
+        collect([
+            [
+                'user' => [
+                    'email' => 'client@123workforce.com',
+                    'password' => '123456789',
+                    'username' => 'client',
+                ],
+                'client' => [],
+            ],
+        ])->each(function ($item) {
+            app(User::class)->createClient($item);
         });
     }
 }

@@ -41,7 +41,15 @@ Vue.component('approved-agent-profile', require('./components/admin/ApprovedAgen
 Vue.component('advanced-search-component', require('./components/admin/AdvancedSearch.vue'));
 Vue.component('admin-register-agent', require('./components/admin/RegisterAgent.vue'));
 Vue.component('add-behance-designer', require('./components/admin/AddBehanceDesigner.vue'));
+Vue.component('admin-client-register', require('./components/admin/registerClient/ClientRegisterAdmin.vue'));
 
+
+import AdminAgentRegisterPage1 from './components/admin/registerAgent/page1.vue'
+import AdminAgentRegisterPage2 from './components/admin/registerAgent/page2.vue'
+import AdminAgentRegisterPage3 from './components/admin/registerAgent/page3.vue'
+import AdminAgentRegisterPage4 from './components/admin/registerAgent/page4.vue'
+import AdminAgentRegisterPage5 from './components/admin/registerAgent/page5.vue'
+import AdminAgentRegisterCompleted from './components/admin/registerAgent/finish.vue'
 
 import AdminAgents from './components/admin/dashboard/Agents.vue';
 import AdminClients from './components/admin/dashboard/Clients.vue';
@@ -54,6 +62,12 @@ if ($("#approvedAgentProfile").length !== 0){
         el:'#approvedAgentProfile'
     });
 
+}
+
+if ($("#adminClientRegister").length !== 0){
+    let adminClientRegister = new Vue({
+        el:'#adminClientRegister'
+    });
 }
 
 if ($("#addBehanceDesigner").length !== 0){
@@ -74,16 +88,15 @@ if ($("#advancedSearch").length !== 0){
     let advancedSearch = new Vue({
         el:'#advancedSearch'
     });
-
 }
 
 if ($("#adminDashboardComponent").length !== 0){
 
         const routes = [
-            { path: '/admin-front/agents/', component: AdminAgents },
-            { path: '/admin-front/clients/', component: AdminClients },
-            { path: '/admin-front/campaign-manager/', component: AdminCampaigns },
-            { path: '/admin-front/', component: AdminCampaigns },
+            { path: '/admin/agents/', component: AdminAgents },
+            { path: '/admin/clients/', component: AdminClients },
+            { path: '/admin/campaign-manager/', component: AdminCampaigns },
+            { path: '/admin/', component: AdminCampaigns },
         ];
 
         const router = new VueRouter({
@@ -101,12 +114,13 @@ if ($("#adminDashboardComponent").length !== 0){
 if ($('#adminRegisterAgent').length !== 0){
 
     const routes = [
-        { path: '/admin-front/register-agent', component: FreelancerRegisterPage1 },
-        { path: '/admin-front/register-agent/page2', component: FreelancerRegisterPage2 },
-        { path: '/admin-front/register-agent/page3', component: FreelancerRegisterPage3 },
-        { path: '/admin-front/register-agent/page4', component: FreelancerRegisterPage4 },
-        { path: '/admin-front/register-agent/page5', component: FreelancerRegisterPage5 },
-        { path: '/admin-front/register-agent/completed', component: FreelancerRegisterCompleted }
+        { path: '/admin/register-agent', component: AdminAgentRegisterPage1 },
+        { path: '/admin/register-agent/page1', component: AdminAgentRegisterPage1 },
+        { path: '/admin/register-agent/page2', component: AdminAgentRegisterPage2 },
+        { path: '/admin/register-agent/page3', component: AdminAgentRegisterPage3 },
+        { path: '/admin/register-agent/page4', component: AdminAgentRegisterPage4 },
+        { path: '/admin/register-agent/page5', component: AdminAgentRegisterPage5 },
+        { path: '/admin/register-agent/completed', component:  AdminAgentRegisterCompleted }
     ];
 
     const router = new VueRouter({
@@ -306,6 +320,7 @@ import FreelancerRegisterPage4 from './components/freelancer/registerForms/page4
 import FreelancerRegisterPage5 from './components/freelancer/registerForms/page5.vue'
 import FreelancerRegisterCompleted from './components/freelancer/registerForms/finish.vue'
 
+
 Vue.component('freelancer-dashboard', require('./components/freelancer/Dashboard.vue'))
 Vue.component('freelancer-register', require('./components/freelancer/FreelancerRegister.vue'))
 Vue.component('freelancer-campaign-archives', require('./components/freelancer/CampaignArchives.vue'))
@@ -320,6 +335,7 @@ if ($('#freelancerRegisterComponent').length !== 0){
 
     const routes = [
         { path: '/freelancer/register', component: FreelancerRegisterPage1 },
+        { path: '/freelancer/register/page1', component: FreelancerRegisterPage1 },
         { path: '/freelancer/register/page2', component: FreelancerRegisterPage2 },
         { path: '/freelancer/register/page3', component: FreelancerRegisterPage3 },
         { path: '/freelancer/register/page4', component: FreelancerRegisterPage4 },

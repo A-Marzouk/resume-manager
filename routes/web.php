@@ -19,16 +19,44 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-// admin front end routs :
-Route::prefix('admin-front')->group(function (){
-    Route::get('/applicant-profile','AdminFrontEndController@showApplicantProfile')->name('admin.front.applicant_profile');
-    Route::get('/agent-profile','AdminFrontEndController@showApprovedAgentProfile')->name('admin.front.agent_profile');
-    Route::get('/advanced-search','AdminFrontEndController@showAdvancedSearchPage')->name('admin.search');
-    Route::get('/add-behance-designer','AdminFrontEndController@addBehanceDesigner')->name('add.behance.designer');
-    Route::get('/register-agent','AdminFrontEndController@showRegisterAgentPage')->name('admin.register.agent');
-    Route::get('/register-agent/{any?}','AdminFrontEndController@showRegisterAgentPage')->name('admin.register.agent');
-    Route::get('/{any?}','AdminFrontEndController@showDashboard')->name('admin.front.dashboard');
+// UserPhoto Routes...
+Route::get('users/photos', 'UserPhotoController@index')
+    ->name('me.photos.index');
+Route::get('users/{user}/photos', 'UserPhotoController@show')
+    ->name('users.photos.show');
 
+// UserPhoto Routes (may be protected)...
+Route::patch('users/photos', 'UserPhotoController@updateCurrentUserPhoto')
+    ->name('me.photos.update');
+Route::delete('users/photos', 'UserPhotoController@destroyCurrentUserPhoto')
+    ->name('me.photos.destroy');
+Route::patch('users/{user}/photos', 'UserPhotoController@update')
+    ->name('users.photos.update');
+Route::delete('users/{user}/photos', 'UserPhotoController@destroy')
+    ->name('users.photos.destroy');
+
+
+// admin routs :
+Route::prefix('admin')->group(function (){
+    Route::get('/applicant-profile','AdminsController@showApplicantProfile')->name('admin.front.applicant_profile');
+    Route::get('/agent-profile','AdminsController@showApprovedAgentProfile')->name('admin.front.agent_profile');
+    Route::get('/advanced-search','AdminsController@showAdvancedSearchPage')->name('admin.search');
+    Route::get('/add-behance-designer','AdminsController@addBehanceDesigner')->name('add.behance.designer');
+
+    // fetching data routs
+    Route::get('/api/agents/{professionName}','AdminsController@getAgentsByProfessionName')->name('get.agents');
+    Route::get('/api/clients','AdminsController@getClients')->name('get.clients');
+
+    // create agent :
+    Route::get('/register-agent','AdminsController@showRegisterAgentPage')->name('admin.register.agent');
+    Route::get('/register-agent/{any?}','AdminsController@showRegisterAgentPage')->name('admin.register.agent');
+    Route::post('/agent/create','AdminsController@createAgent')->name('create.agent.from.admin');
+
+    // create client :
+    Route::get('/register-client','AdminsController@showRegisterClientPage')->name('admin.register.client');
+    Route::post('/client/create','AdminsController@createClient')->name('create.client.from.admin');
+
+    Route::get('/{any?}','AdminsController@welcomePage');
 });
 
 
@@ -440,7 +468,7 @@ Route::get('/search/{search_id}','HomeController@getSearch')->name('public.searc
 Route::get('/workforce/terms_and_conditions','HomeController@termsView')->name('terms');
 Route::get('/workforce/privacy_policy','HomeController@privacyView')->name('privacy');
 Route::get('/resume_sample/{username}','HomeController@ResumeSample');
-Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
+//Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 Route::get('/{username}','HomeController@ResumePage');
 
 Route::get('/home_test/designers', 'HomeController@homeDesigners')->name('home-desginers');

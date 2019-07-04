@@ -5,19 +5,22 @@
                 <div
                              class="campaign-info-tab firstTab"
                              :class="{active : activeTab === 'business-support'}"
-                             @click="activeTab = 'business-support'">
-                    <span class="">BUSINESS</span> SUPPORT
+                             @click="setActiveTab('business-support')"
+                             style="white-space: nowrap;"
+                >
+
+                    BUSINESS SUPPORT
                 </div>
                 <div
                              class="campaign-info-tab"
                              :class="{active : activeTab === 'designers'}"
-                             @click="activeTab = 'designers'">
+                             @click="setActiveTab('designers')">
                     DESIGNERS
                 </div>
                 <div
                              class="campaign-info-tab"
                              :class="{active : activeTab === 'developers'}"
-                             @click="activeTab = 'developers'">
+                             @click="setActiveTab('developers')">
                     DEVEL<span class="">OPERS</span>
                 </div>
                 <div>
@@ -33,13 +36,13 @@
                 <div
                              class="campaign-info-tab firstTab"
                              :class="{active : secondaryActiveTab === 'approved-agents'}"
-                             @click="secondaryActiveTab = 'approved-agents'">
+                             @click="secondaryActiveTab = 'approved-agents';filter = 'show_all'">
                     APPROVED AGENTS
                 </div>
                 <div
                              class="campaign-info-tab"
                              :class="{active : secondaryActiveTab === 'applicants'}"
-                             @click="secondaryActiveTab = 'applicants'">
+                             @click="secondaryActiveTab = 'applicants'; filter = 'show_new'">
                     APPLICANTS
                 </div>
             </div>
@@ -48,10 +51,10 @@
                 <div class="d-flex align-items-center left">
                     <div class="searchBox agents">
                         <img src="/images/admin/magnifier-tool.svg" alt="">
-                        <input type="text" placeholder="Search by name, e-mail">
+                        <input type="text" placeholder="Search by name, e-mail" v-model="searchValue">
                     </div>
                     <div class="blue-text no-decoration">
-                        <a href="/admin-front/advanced-search" style="color: #05A4F4;" >
+                        <a href="/admin/advanced-search" style="color: #05A4F4;" >
                             ADVANCED SEARCH
                         </a>
                     </div>
@@ -110,78 +113,82 @@
                         <thead>
                         <tr>
                             <th scope="col">FULL NAME</th>
+                            <th scope="col"></th>
                             <th scope="col">HOURLY RATE</th>
                             <th scope="col">STATUS</th>
-                            <th scope="col" class="d-flex align-items-center stage-column" v-if="secondaryActiveTab === 'applicants'" style="padding-right: 30px;">
+                            <th scope="col" class="d-flex align-items-center stage-column" style="padding-right: 30px;">
                                 STAGE
                                 <img src="/images/admin/arrows.svg" alt="arrow down">
                             </th>
                         </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="invoice-number base-text name-text" style="font-weight: 500;">
-                                       Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow" style="transform: rotate(180deg);">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                        $10
-                                        <img src="/images/admin/edit_24px.svg" alt="edit arrow">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-amount base-text available-text">
-                                         <span v-if="secondaryActiveTab === 'applicants'" class="base-text new-text">
-                                            APPLICATION PROCESS
-                                        </span>
-                                        <span v-else class="available-text">
-                                            AVAILABLE (+15 h/week)
-                                        </span>
-                                    </div>
-                                </td>
 
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
-                                    <a href="javascript:void(0)">
-                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" style="border-top:0; padding-top:0">
-                                    <div v-show="secondaryActiveTab === 'applicants'" class="action-buttons-bar">
-                                        <div class="disapprove-btn no-decoration">
-                                            <a href="javascript:void(0)" data-toggle="modal" data-target="#disapprove-agent" @click="checkDefaultRadioDisapprove">
-                                                DISAPPROVE APPLICANT
-                                            </a>
+                        <tbody>
+                            <template v-for="(user, index) in OrderedSelectedAgents">
+                                <tr>
+                                    <td>
+                                        <div class="invoice-number base-text name-text" style="font-weight: 500;">
+                                            {{user.data.first_name}} {{user.data.last_name}}
                                         </div>
-                                        <div class="approve-btn no-decoration">
-                                            <a href="javascript:void(0)">
-                                                APPROVE APPLICANT
-                                            </a>
+                                        <div v-show="searchValue.length > 0" class="userEmailText">
+                                            {{user.email}}
                                         </div>
-                                    </div>
-                                    <div class="d-flex">
-                                        <div class="responsive-grid mb-3"
+                                    </td>
+                                    <td>
+                                        <img src="/images/admin/down_arrow.png" alt="down arrow" :id="'detailsArrow'+user.id" @click="toggleDetails(user.id)">
+                                    </td>
+                                    <td>
+                                        <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
+                                            ${{Math.ceil(user.agent.hourly_rate)}}
+                                            <img src="/images/admin/edit_24px.svg" alt="edit arrow">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="invoice-amount base-text">
+                                            <span :class="{ 'available-text' : user.status == 4 , 'new-text' : user.status < 4}">
+                                                {{userStatus[user.status]}} (+{{Math.ceil(user.data.available_hours_per_week)}} h/week)
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="no-decoration stage-select ">
+                                        <a href="javascript:void(0)">
+                                            v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr v-show="user.is_details_opened">
+                                    <td colspan="4" style="border-top:0; padding-top:0">
+                                        <div v-show="user.status < 4 " class="action-buttons-bar">
+                                            <div class="disapprove-btn no-decoration">
+                                                <a href="javascript:void(0)" data-toggle="modal" data-target="#disapprove-agent" @click="checkDefaultRadioDisapprove">
+                                                    DISAPPROVE APPLICANT
+                                                </a>
+                                            </div>
+                                            <div class="approve-btn no-decoration">
+                                                <a href="javascript:void(0)">
+                                                    APPROVE APPLICANT
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <div class="responsive-grid mb-3"
                                                  style="margin-top: 20px;">
                                                 <!--image-->
                                                 <div class="d-flex">
                                                     <div class="">
-                                                        <img src="/images/client/add_agent/search_result/ic/user/user123.png" class="avator"/>
+                                                        <img :src="user.data.avatar" class="avator" style="width: 50px;"/>
                                                     </div>
                                                     <!--location-->
                                                     <div class="p-2">
-                                                        <div class="big-font" style="margin-bottom:6px;">Jason Morgenstern</div>
+                                                        <div class="big-font" style="margin-bottom:6px;">{{user.data.first_name}} {{user.data.last_name}}</div>
                                                         <div class="location">
                                                             <img src="/images/client/add_agent/search_result/icon/maps/place_24px.png"/>
-                                                            Dublin, Ireland
+                                                            {{user.data.city}}, {{user.data.country}}
                                                         </div>
                                                         <div class="visiblty">
                                                             <div class="no-decoration white-on-hover mt-4">
-                                                                <a href="/admin-front/agent-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab !== 'applicants'">VISIT AGENT’S PROFILE</a>
-                                                                <a href="/admin-front/applicant-profile" class="btn btn-primar btn-radius btn-responsive" v-show="secondaryActiveTab === 'applicants'">VISIT AGENT’S PROFILE</a>
+                                                                <a href="/admin/agent-profile" class="btn btn-primar btn-radius btn-responsive" v-show="user.status > 4 " >VISIT AGENT’S PROFILE</a>
+                                                                <a href="/admin/applicant-profile" class="btn btn-primar btn-radius btn-responsive" v-show="user.status <= 4 ">VISIT AGENT’S PROFILE</a>
                                                             </div>
                                                             <div class="mt-4">
                                                                 <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">
@@ -197,19 +204,22 @@
                                                      style="margin-top:15px;">
                                                     <div class="big-font">
                                                         <img src="/images/client/add_agent/search_result/ic/primary_job_name.png" class="primaryjob-icon"/>
-                                                        Telemarketing
+                                                        {{user.data.job_title}}
                                                     </div>
                                                     <div style="font-size: 16px; color : #4a5464; margin: 20px 0 20px;">
-                                                        <span style="font-weight: 500;">Sector experience: </span> Real estate, Investement, Insurance
+                                                        <span style="font-weight: 500;">Sector experience: </span> {{user.agent.experience}}
                                                     </div>
                                                     <div>
-                                                        <span style="font-weight: 500;">Technologies, software: </span> Microsoft Excel
+                                                        <span style="font-weight: 500;">Technologies, software: </span> {{user.agent.technologies}}
                                                     </div>
                                                     <div style="margin: 20px 0 ;">
-                                                        <span style="font-weight: 500;">Languages: </span>English, Spanish
+                                                        <span style="font-weight: 500;">Languages: </span>
+                                                        <span v-for="(language,index) in user.languages" v-bind:key="index">
+                                                            {{language.label}}<span v-show="index < user.languages.length -1 ">, </span>
+                                                        </span>
                                                     </div>
                                                     <div>
-                                                        <span style="font-weight: 500;">No. hours per week: </span>30-40 hours
+                                                        <span style="font-weight: 500;">No. hours per week: </span>{{Math.ceil(user.data.available_hours_per_week)}} hours
                                                     </div>
                                                 </div>
                                                 <div class="invisiblty" style="padding-top: 40px;">
@@ -219,7 +229,7 @@
                                                             <div class="blue-text" style="font-size:12px;">LISTEN TO THE RECORD</div>
                                                         </div>
                                                         <div>
-                                                            <a href="/admin-front/applicant-profile" class="btn btn-primar btn-radius btn-responsive" style="margin:0 0 0 20px; ">
+                                                            <a href="/admin/applicant-profile" class="btn btn-primar btn-radius btn-responsive" style="margin:0 0 0 20px; ">
                                                                 <b>VISIT PROFILE</b>
                                                             </a>
                                                         </div>
@@ -230,380 +240,17 @@
                                                     EDIT PROFILE
                                                 </div>
                                             </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
-                                       Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                        $12
-                                        <img src="/images/admin/edit_24px.svg" alt="edit arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-amount base-text available-text">
-                                        AVAILABLE (+10 h/week)
-                                    </div>
-                                </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
-                                    <a href="javascript:void(0)">
-                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
-                                       Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                        $10
-                                        <img src="/images/admin/edit_24px.svg" alt="edit arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-amount base-text not-available-text">
-                                        NOT AVAILABLE
-                                    </div>
-                                </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
-                                    <a href="javascript:void(0)">
-                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
-                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                        $12
-                                        <img src="/images/admin/edit_24px.svg" alt="edit arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-amount base-text available-text">
-                                        AVAILABLE (+10 h/week)
-                                    </div>
-                                </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
-                                    <a href="javascript:void(0)">
-                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
-                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                        $10
-                                        <img src="/images/admin/edit_24px.svg" alt="edit arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-amount base-text not-available-text">
-                                        NOT AVAILABLE
-                                    </div>
-                                </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
-                                    <a href="javascript:void(0)">
-                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="invoice-number base-text name-text" style="font-weight: 500;">
-                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                        $10
-                                        <img src="/images/admin/edit_24px.svg" alt="edit arrow">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-amount">
-                                        <span v-if="secondaryActiveTab === 'applicants'" class="base-text new-text">
-                                            APPLICATION PROCESS
-                                        </span>
-                                        <span v-else class="available-text">
-                                            AVAILABLE (+15 h/week)
-                                        </span>
-                                    </div>
-                                </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
-                                    <a href="javascript:void(0)">
-                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
-                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                        $12
-                                        <img src="/images/admin/edit_24px.svg" alt="edit arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-amount base-text available-text">
-                                        AVAILABLE (+10 h/week)
-                                    </div>
-                                </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
-                                    <a href="javascript:void(0)">
-                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
-                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                        $10
-                                        <img src="/images/admin/edit_24px.svg" alt="edit arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-amount base-text not-available-text">
-                                        NOT AVAILABLE
-                                    </div>
-                                </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
-                                    <a href="javascript:void(0)">
-                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
-                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                        $12
-                                        <img src="/images/admin/edit_24px.svg" alt="edit arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-amount base-text available-text">
-                                        AVAILABLE (+10 h/week)
-                                    </div>
-                                </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
-                                    <a href="javascript:void(0)">
-                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
-                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                        $10
-                                        <img src="/images/admin/edit_24px.svg" alt="edit arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-amount base-text not-available-text">
-                                        NOT AVAILABLE
-                                    </div>
-                                </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
-                                    <a href="javascript:void(0)">
-                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="invoice-number base-text name-text" style="font-weight: 500;">
-                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                        $10
-                                        <img src="/images/admin/edit_24px.svg" alt="edit arrow">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-amount base-text available-text">
-                                         <span v-if="secondaryActiveTab === 'applicants'" class="base-text new-text">
-                                            APPLICATION PROCESS
-                                        </span>
-                                        <span v-else class="available-text">
-                                            AVAILABLE (+15 h/week)
-                                        </span>
-                                    </div>
-                                </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
-                                    <a href="javascript:void(0)">
-                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
-                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                        $12
-                                        <img src="/images/admin/edit_24px.svg" alt="edit arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-amount base-text available-text">
-                                        AVAILABLE (+10 h/week)
-                                    </div>
-                                </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
-                                    <a href="javascript:void(0)">
-                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
-                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                        $10
-                                        <img src="/images/admin/edit_24px.svg" alt="edit arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-amount base-text not-available-text">
-                                        NOT AVAILABLE
-                                    </div>
-                                </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
-                                    <a href="javascript:void(0)">
-                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
-                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                        $12
-                                        <img src="/images/admin/edit_24px.svg" alt="edit arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-amount base-text available-text">
-                                        AVAILABLE (+10 h/week)
-                                    </div>
-                                </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
-                                    <a href="javascript:void(0)">
-                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="invoice-number  base-text name-text" style="font-weight: 500;">
-                                        Edward Smith-Lorence
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                        $10
-                                        <img src="/images/admin/edit_24px.svg" alt="edit arrow">
-
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="invoice-amount base-text not-available-text">
-                                        NOT AVAILABLE
-                                    </div>
-                                </td>
-                                <td v-if="secondaryActiveTab === 'applicants'" class="no-decoration stage-select ">
-                                    <a href="javascript:void(0)">
-                                        v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
-                                    </a>
-                                </td>
-                            </tr>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </template>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="pagination-bar justify-content-between showFrom-600">
                     <div class="base-text">
-                        Total : 124
+                        Total : {{filteredSelectedAgents.length}}
                     </div>
                     <div>
                         <img src="/images/new_theme/arrow@2x.png" alt="" style="transform: rotate(180deg); margin-right:10px; width:7.5px; height:12px;">
@@ -694,15 +341,116 @@
             return {
                 activeTab: 'business-support',
                 secondaryActiveTab: 'approved-agents',
-                sort:'new_first',
+                selectedAgents:[],
+                businessSupportAgents:[],
+                designers:[],
+                developers:[],
+                sort:'old_first',
                 filter:'show_all',
                 usersNumber:15,
                 showSortSelection : false,
                 showFilterSelection : false,
                 showUsersNumSelection : false,
+                profession:'business-support',
+                userStatus:{
+                    1:'New applicant',
+                    2:'In process (Voice)',
+                    3:'In process (Data)',
+                    4:'Available',
+                    5:'Available',
+                    6:'Approved (unavailable)',
+                    7:'Approved (unavailable)',
+                    8:'Unapproved',
+                    9:'Unapproved'
+                },
+
+                searchValue:''
+            }
+        },
+        computed: {
+            filteredSelectedAgents() {
+                const search = this.searchValue.toLowerCase().trim();
+                const filter = this.filter ;
+
+                if (!search && filter === 'show_all'){
+                    return this.selectedAgents;
+                }
+
+
+                return  this.selectedAgents.filter( function (agent) {
+
+                    let fullName = agent.data.first_name + ' ' +  agent.data.last_name ;
+                    let jobTitle = agent.data.job_title ;
+                    let email    = agent.email ;
+
+                    let SearchFilter = email.toLowerCase().trim().indexOf(search) > -1  || jobTitle.toLowerCase().trim().indexOf(search) > -1  || fullName.toLowerCase().trim().indexOf(search) > -1 ;
+                    let applicationFilter = true ;
+
+                    if(filter === 'show_new'){
+                        applicationFilter = agent.status == 1 ;
+                    }
+                    if(filter === 'show_in_process'){
+                        applicationFilter = agent.status == 2 || agent.status == 3 ;
+                    }
+
+
+                    return  ( SearchFilter && applicationFilter );
+                });
+
+            },
+            OrderedSelectedAgents: function () {
+                let sorting = 'desc';
+                if(this.sort === 'old_first'){
+                    sorting = 'asc';
+                }
+                return _.orderBy(this.filteredSelectedAgents, 'created_at' , sorting)
             }
         },
         methods: {
+            getAgentsByProfession(){
+                if(this.agentsExist(this.profession)){
+                    return;
+                }
+                axios.get('/admin/api/agents/' + this.profession).then( (response) => {
+                    this.selectedAgents =  response.data ;
+                    switch (this.profession) {
+                        case 'business-support':
+                            this.businessSupportAgents = response.data ;
+                            break;
+                        case 'designer':
+                            this.designers = response.data ;
+                            break;
+                        case 'developer':
+                            this.developers = response.data ;
+                            break;
+                    }
+                });
+            },
+            agentsExist(profession){
+                let agentsExist = false;
+                switch (profession) {
+                    case 'business-support':
+                        if(this.businessSupportAgents.length > 0){
+                            this.selectedAgents = this.businessSupportAgents ;
+                            agentsExist = true;
+                        }
+                        break;
+                    case 'designer':
+                        if(this.designers.length > 0){
+                            this.selectedAgents = this.designers ;
+                            agentsExist = true;
+                        }
+                        break;
+                    case 'developer':
+                        if(this.developers.length > 0){
+                            this.selectedAgents = this.developers ;
+                            agentsExist = true;
+                        }
+                        break;
+                }
+
+                return agentsExist;
+            },
             selectSort(sort){
                 this.sort = sort ;
                 this.showSortSelection = false;
@@ -721,14 +469,49 @@
             },
             checkDefaultRadioDisapprove(){
                 $('#defaultRadio_disapprove').click();
+            },
+            setActiveTab(tabName){
+                this.activeTab = tabName ;
+                this.setCurrentSelectedProfession(tabName);
+                this.getAgentsByProfession();
+            },
+            setCurrentSelectedProfession(tabName){
+                switch (tabName) {
+                    case 'business-support':
+                        this.profession = 'business-support' ;
+                        break;
+                    case 'designers':
+                        this.profession = 'designer' ;
+                        break;
+                    case 'developers':
+                        this.profession = 'developer' ;
+                        break;
+                }
+            },
+            toggleDetails(user_id){
+                let agents = this.selectedAgents;
+                $.each(agents, function(i) {
+                    if (agents[i].id === user_id) {
+                        agents[i].is_details_opened = !agents[i].is_details_opened;
+                        if (agents[i].is_details_opened) {
+                            $('#detailsArrow' + user_id).css('transform', 'rotate(180deg)');
+                        } else {
+                            $('#detailsArrow' + user_id).css('transform', 'rotate(0deg)');
+                        }
+                    }
+                });
             }
         },
         mounted() {
-
+            this.getAgentsByProfession();
         }
     }
 </script>
 
 <style scoped>
-
+    .userEmailText{
+        font-size:13px;
+        color:gray;
+        padding-top:8px;
+    }
 </style>

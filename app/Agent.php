@@ -18,7 +18,7 @@ class Agent extends Model
     protected $table = 'agents';
     protected $fillable = [
         'number', 'name', 'language', 'hourly_rate'
-        , 'available_hours', 'location', 'experience', 'user_id',
+        , 'available_hours_per_week', 'location', 'experience', 'user_id','voice_character','technologies','available_hours'
     ];
 
     public function records()
@@ -27,6 +27,11 @@ class Agent extends Model
     }
 
     public function businessUser()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

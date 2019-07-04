@@ -5,11 +5,10 @@ use App\Models\Enums\UserStatus;
 
 return [
     'user_status' => [
-        UserStatus::PENDING => 'Pending',
-        UserStatus::READY_TO_SEND => 'Ready to send',
-        UserStatus::SENT => 'Sent',
-        UserStatus::INCOMPLETE_SURVEY => 'Incomplete survey',
-        UserStatus::PARTIALLY_CREATED => 'Partially created',
+        UserStatus::NEW_APPLICANT => 'New applicant',
+        UserStatus::VOICE_PROCESS => 'In voice application process',
+        UserStatus::DATA_PROCESS => 'in data application process',
+        UserStatus::VOICE_APPROVED_AVAILABLE => 'Voice approved, Available for work',
     ],
     'user_stage' => [
         UserStage::PENDING => 'Pending',

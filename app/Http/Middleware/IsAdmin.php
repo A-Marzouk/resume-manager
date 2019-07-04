@@ -16,11 +16,13 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->admin == 1) {
-            return $next($request);
-        }elseif(session()->get('admin') && session()->get('admin') == 'AdminWasHere'){
-            return $next($request);
+        if (Auth::user()) {
+            if(currentUser()->is_admin){
+                return $next($request);
+            }
+
         }
-        return redirect(route('freelancer.login'));
+
+        return redirect('/login');
     }
 }

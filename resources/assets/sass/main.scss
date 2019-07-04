@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: #f4f4f4 !important;
   overflow-x: hidden;
@@ -83,7 +87,12 @@ body {
   font-weight: 300;
   text-align: center;
   padding-bottom: 13px;
-  padding-top: 18px; }
+  padding-top: 18px;
+
+  @media (max-width: 512px) {
+    font-size: 10px;
+  }
+}
 .customNavLink :hover {
   color: #18A6DF !important; }
 .customNavLink.active {
@@ -142,6 +151,16 @@ body {
   // tablets
   @media (max-width: 992px) {
     font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 14px 20px !important;
+  }
+ 
+  @media (max-width: 512px) {
+    font-size: 10px;
+    padding: 9px !important;
+    margin-left: 16px;
   }
   
   a {
@@ -2394,13 +2413,13 @@ body {
     max-width: 100% !important; }
   
   .hideOnSm {
-    display: none;
+    display: none !important;
   }
 }
 
 .showOnSm {
   display: none;
-  @media only screen and (max-width: 576px) {
+  @media only screen and (max-width: 760px) {
     display: flex;
   }
 }

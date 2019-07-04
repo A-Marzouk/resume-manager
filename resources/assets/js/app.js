@@ -426,6 +426,14 @@ if ($("#privacyAgreementFreelancer").length !== 0){
     });
 }
 
+Vue.component('freelancers-container', require('./containers/home/freelancersContainer.vue'));
+
+if ($("#freelancers_container").length !== 0) {
+    let freelancers_container = new Vue({
+        el: "#freelancers_container"
+    })
+}
+
 Vue.component('chat-message', require('./components/chat/chatMessage.vue'));
 Vue.component('chat-log', require('./components/chat/chatLog.vue'));
 Vue.component('chat-composer', require('./components/chat/chatComposer.vue'));

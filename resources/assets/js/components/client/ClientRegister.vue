@@ -83,12 +83,12 @@
                       Select your time zone
                     </label>
                     <div class="faq-input"
-                         :class="{ 'error-input' : errors.timeZone}">
+                         :class="{ 'error-input' : errors.timezone}">
                       <select class="form-control"
-                              id="timeZone"
-                              name="timeZone"
+                              id="timezone"
+                              name="timezone"
                               style="height: 50px;"
-                              v-model="formData.timeZone">
+                              v-model="formData.timezone">
                         <option value=""
                                 selected="selected">Select your timezone</option>
                         <option value="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima">(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima</option>
@@ -140,8 +140,8 @@
                       </select>
                     </div>
                     <div class="error"
-                         v-if="errors.timeZone">
-                      {{errors.timeZone[0]}}
+                         v-if="errors.timezone">
+                      {{errors.timezone[0]}}
                     </div>
                   </div>
                   <div class="faq-question-input account-edit-input">
@@ -166,20 +166,20 @@
                         Email address of accounts dept
                       </label>
                       <div class="faq-input"
-                           :class="{ 'error-input' : errors.emailDept}">
+                           :class="{ 'error-input' : errors.department_email}">
                         <input type="text"
-                               name="emailDept"
+                               name="department_email"
                                placeholder="Enter your email dept"
-                               v-model="formData.emailDept">
+                               v-model="formData.department_email">
                         <img src="/images/client/campaign_activity/close_black.png"
                                      alt="delete icon"
-                                     v-show="formData.emailDept.length > 0"
-                                     @click="clearInput('emailDept')"
+                                     v-show="formData.department_email.length > 0"
+                                     @click="clearInput('department_email')"
                                 >
                             </div>
                         <div class="error"
-                             v-if="errors.emailDept">
-                          {{errors.emailDept[0]}}
+                             v-if="errors.department_email">
+                          {{errors.department_email[0]}}
                         </div>
                       </div>
                     </div>
@@ -252,9 +252,9 @@ export default {
         name: '',
         email: '',
         agency: '',
-        emailDept: '',
+        department_email: '',
         phone: '',
-        timeZone: '',
+        timezone: '',
         password: '',
         password_confirmation: ''
       },
@@ -268,13 +268,17 @@ export default {
         return;
       }
       this.canSubmit = false;
-      axios.post('/client/register/submit', this.formData).then((response) => {
-        if (response.data.status === 'success') {
-          // redirect to client dashboard
-          window.location.href = '/client';
-        }
-        this.errors = response.data.errors;
-      });
+      axios.post('/ajax/clients/register', this.formData)
+        .then(response => {
+          window.location.href = '/dashboard';
+        })
+        .catch(error => {
+          if (typeof error.response.data === 'object') {
+            this.errors = error.response.data.errors;
+          } else {
+            this.errors = ['Something went wrong. Please try again.'];
+          }
+        });;
     },
     clearInput(inputName) {
       this.formData[inputName] = '';

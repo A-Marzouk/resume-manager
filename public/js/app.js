@@ -105157,7 +105157,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       results: [],
       customSearch: false,
       searchParams: {
-        jobTitle: 'UI/UX designer',
+        jobTitle: '',
         rate: '',
         availability: '',
         country: ''
@@ -105165,17 +105165,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       activeBox: 'jobTitle',
       customValues: {
         jobTitles: ['UI/UX designer', 'Illustrator', 'Motion designer', 'Digital artist'],
-        rates: ['10 - 15', '15 - 20', '20 - 30', '30 - 40', '+40'],
+        rates: ['5 - 10', '10 - 15', '15 - 20', '20 - 30', '30 - 40', '+40'],
         availabilities: ['10 - 20', '20 - 30', '30 - 40', '+40'],
         countries: ['Venezuela', 'Ukraine', 'EEUU']
       }
     };
   },
   methods: {
-    handleChangeSelect: function handleChangeSelect() {
-      var _this = this;
-
+    handleChangeSelect: function handleChangeSelect(e) {
       // Get data from api
+
+      this.searchParams[e.target.name] = e.target.value;
+      this.searchAgents();
+    },
+    searchAgents: function searchAgents() {
+      var _this = this;
 
       var _searchParams = this.searchParams,
           jobTitle = _searchParams.jobTitle,
@@ -105190,7 +105194,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         salary_hour: rate,
         country: country
       }).then(function (response) {
-        return _this.agents = response.data;
+        return _this.results = response.data;
       });
     }
   }
@@ -105282,7 +105286,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n  margin: 0 !important;\n  width: 352px;\n}\n@media (max-width: 992px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 318px;\n}\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .freelancerImg[data-v-e70ddbcc] {\n    width: 70px;\n    height: 70px;\n}\n.freelancerCard.smallCard .nameRow[data-v-e70ddbcc] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    position: relative;\n    border-radius: 5px;\n    padding: 14px;\n    height: 100%;\n}\n.freelancerCard.smallCard .contact[data-v-e70ddbcc] {\n    position: absolute;\n    top: 20px;\n    right: 14px;\n}\n.freelancerCard.smallCard .jobTitle[data-v-e70ddbcc] {\n    color: white;\n    font-size: 14px;\n}\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n    font-size: 12px;\n}\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc]:first-child {\n      margin-right: 5px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n}\n}\n.freelancerCard.smallCard .payment-details div[data-v-e70ddbcc] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n      text-align: center;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc],\n    .freelancerCard.smallCard .payment-details span[data-v-e70ddbcc] {\n      margin-right: 5px;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc] {\n      height: 14px;\n}\n.freelancerCard.smallCard .payment-highLight[data-v-e70ddbcc] {\n    font-size: 14px;\n}\n.freelancerCard.smallCard .resumeCardRight[data-v-e70ddbcc] {\n    height: 100%;\n}\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n      width: 87px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n          width: 100%;\n          -webkit-box-pack: center;\n              -ms-flex-pack: center;\n                  justify-content: center;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n}\n}\n.freelancerCard.smallCard .resumeCardRight .nameRow .imageCol[data-v-e70ddbcc] {\n      padding-left: 0;\n      margin: 0;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .cardRow[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .hireRow[data-v-e70ddbcc] {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    padding: 14px;\n    margin: 0;\n    margin-top: 15px;\n}\n.freelancerCard.smallCard .nameCard[data-v-e70ddbcc] {\n    font-family: Roboto;\n    font-style: normal;\n    font-weight: bold;\n    font-size: 18px;\n    padding-top: 0;\n    margin-bottom: 5px;\n    padding-left: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n  margin: 0 !important;\n  width: 352px;\n}\n@media (max-width: 992px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 318px;\n}\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .freelancerImg[data-v-e70ddbcc] {\n    width: 70px;\n    height: 70px;\n}\n.freelancerCard.smallCard .nameRow[data-v-e70ddbcc] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    position: relative;\n    border-radius: 5px;\n    padding: 14px;\n    height: 100%;\n}\n.freelancerCard.smallCard .contact[data-v-e70ddbcc] {\n    position: absolute;\n    top: 20px;\n    right: 14px;\n}\n.freelancerCard.smallCard .jobTitle[data-v-e70ddbcc] {\n    color: white;\n    font-size: 14px;\n}\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n    font-size: 12px;\n}\n.freelancerCard.smallCard .payment-details div[data-v-e70ddbcc]:first-child {\n      margin-right: 15px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n}\n}\n.freelancerCard.smallCard .payment-details div[data-v-e70ddbcc] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n      text-align: center;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc],\n    .freelancerCard.smallCard .payment-details span[data-v-e70ddbcc] {\n      margin-right: 5px;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc] {\n      height: 14px;\n}\n.freelancerCard.smallCard .payment-highLight[data-v-e70ddbcc] {\n    font-size: 14px;\n}\n.freelancerCard.smallCard .resumeCardRight[data-v-e70ddbcc] {\n    height: 100%;\n}\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n      width: 87px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n          width: 100%;\n          -webkit-box-pack: center;\n              -ms-flex-pack: center;\n                  justify-content: center;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n}\n}\n.freelancerCard.smallCard .resumeCardRight .nameRow .imageCol[data-v-e70ddbcc] {\n      padding-left: 0;\n      margin: 0;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .cardRow[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .hireRow[data-v-e70ddbcc] {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    padding: 14px;\n    margin: 0;\n    margin-top: 15px;\n}\n.freelancerCard.smallCard .nameCard[data-v-e70ddbcc] {\n    font-family: Roboto;\n    font-style: normal;\n    font-weight: bold;\n    font-size: 18px;\n    padding-top: 0;\n    margin-bottom: 5px;\n    padding-left: 10px;\n}\n", ""]);
 
 // exports
 
@@ -105394,7 +105398,7 @@ var render = function() {
             _c("div", { staticClass: "imageContainer" }, [
               _c("img", {
                 staticClass: "freelancerImg",
-                attrs: { src: _vm.freelancer.userData.photo, alt: "freelancer" }
+                attrs: { src: _vm.freelancer.photo, alt: "freelancer" }
               })
             ])
           ]),
@@ -105415,7 +105419,7 @@ var render = function() {
                 [
                   _vm._v(
                     "\n                          " +
-                      _vm._s(_vm.freelancer.userData.jobTitle) +
+                      _vm._s(_vm.freelancer.jobTitle) +
                       "\n                      "
                   )
                 ]
@@ -105438,7 +105442,7 @@ var render = function() {
                   [
                     _vm._v(
                       " $ " +
-                        _vm._s(parseInt(_vm.freelancer.userData.salary) + 5) +
+                        _vm._s(parseInt(_vm.freelancer.salary) + 5) +
                         "\n                          "
                     )
                   ]
@@ -105460,8 +105464,7 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      _vm._s(parseInt(_vm.freelancer.userData.availableHours)) +
-                        " hours"
+                      _vm._s(parseInt(_vm.freelancer.availableHours)) + " hours"
                     )
                   ]
                 ),
@@ -105469,7 +105472,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm.freelancer.userData.availableHours !== 0
+            _vm.freelancer.availableHours !== 0
               ? _c(
                   "div",
                   { staticClass: "text-center cardRow NoDecor hideOnSm" },
@@ -105495,7 +105498,7 @@ var render = function() {
               : _vm._e()
           ]),
           _vm._v(" "),
-          _vm.freelancer.userData.availableHours !== 0
+          _vm.freelancer.availableHours !== 0
             ? _c(
                 "div",
                 { staticClass: "text-center cardRow NoDecor showOnSm" },
@@ -105634,19 +105637,15 @@ var render = function() {
         [
           _c(
             "select",
-            _vm._b(
-              {
-                on: {
-                  change: _vm.handleChangeSelect,
-                  focus: function($event) {
-                    _vm.activeBox = "jobTitle"
-                  }
+            {
+              attrs: { name: "jobTitle" },
+              on: {
+                change: _vm.handleChangeSelect,
+                focus: function($event) {
+                  _vm.activeBox = "jobTitle"
                 }
-              },
-              "select",
-              _vm.searchParams.jobTitle,
-              false
-            ),
+              }
+            },
             _vm._l(_vm.customValues.jobTitles, function(jobTitle, index) {
               return _c(
                 "option",
@@ -105669,19 +105668,15 @@ var render = function() {
               [
                 _c(
                   "select",
-                  _vm._b(
-                    {
-                      on: {
-                        change: _vm.handleChangeSelect,
-                        focus: function($event) {
-                          _vm.activeBox = "rate"
-                        }
+                  {
+                    attrs: { name: "rate" },
+                    on: {
+                      change: _vm.handleChangeSelect,
+                      focus: function($event) {
+                        _vm.activeBox = "rate"
                       }
-                    },
-                    "select",
-                    _vm.searchParams.rate,
-                    false
-                  ),
+                    }
+                  },
                   [
                     _c("option", { attrs: { value: "" } }, [
                       _vm._v("Choose a rate")
@@ -105709,19 +105704,15 @@ var render = function() {
               [
                 _c(
                   "select",
-                  _vm._b(
-                    {
-                      on: {
-                        change: _vm.handleChangeSelect,
-                        focus: function($event) {
-                          _vm.activeBox = "availability"
-                        }
+                  {
+                    attrs: { name: "availability" },
+                    on: {
+                      change: _vm.handleChangeSelect,
+                      focus: function($event) {
+                        _vm.activeBox = "availability"
                       }
-                    },
-                    "select",
-                    _vm.searchParams.availability,
-                    false
-                  ),
+                    }
+                  },
                   [
                     _c("option", { attrs: { value: "" } }, [
                       _vm._v("Choose an availability")
@@ -105737,7 +105728,7 @@ var render = function() {
                           key: availability + index,
                           domProps: { value: availability }
                         },
-                        [_vm._v(_vm._s(availability) + " hours daily")]
+                        [_vm._v(_vm._s(availability) + " hours weekly")]
                       )
                     })
                   ],
@@ -105755,19 +105746,15 @@ var render = function() {
               [
                 _c(
                   "select",
-                  _vm._b(
-                    {
-                      on: {
-                        change: _vm.handleChangeSelect,
-                        focus: function($event) {
-                          _vm.activeBox = "country"
-                        }
+                  {
+                    attrs: { name: "country" },
+                    on: {
+                      change: _vm.handleChangeSelect,
+                      focus: function($event) {
+                        _vm.activeBox = "country"
                       }
-                    },
-                    "select",
-                    _vm.searchParams.country,
-                    false
-                  ),
+                    }
+                  },
                   [
                     _c("option", { attrs: { value: "" } }, [
                       _vm._v("Choose a country")

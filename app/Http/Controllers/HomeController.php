@@ -104,27 +104,76 @@ class HomeController extends Controller
 
         $agents = array();
 
-        $user1 = new User();
-        $user1->firstName = 'Jose';
-        $user1->lastName = 'Quintero';
-        $user1->id = 1;
-        $user1->userData = new UserData();
-        $user1->userData->photo = '/images/home/profile1.png';
-        $user1->userData->jobTitle = 'Web developer';
-        $user1->userData->salary = 20;
-        $user1->userData->availableHours = 40;
+        $user1 = [
+            "firstName" => 'Jose',
+            "lastName" => 'Quintero',
+            "id" => 1,
+            "photo" => '/images/home/profile1.png',
+            "jobTitle" => 'Fullstack Developer',
+            "salary" => 15,
+            "availableHours" => 40,
+        ];
+        
+        $user2 = [
+            "firstName" => 'Ahmed',
+            "lastName" => 'Marzouk',
+            "id" => 1,
+            "photo" => '/images/home/profile1.png',
+            "jobTitle" => 'Web developer',
+            "salary" => 30,
+            "availableHours" => 40,
+        ];
+        
+        $user3 = [
+            "firstName" => 'Francisco',
+            "lastName" => 'Daniel',
+            "id" => 3,
+            "photo" => '/images/home/profile1.png',
+            "jobTitle" => 'Web developer',
+            "salary" => 25,
+            "availableHours" => 40,
+        ];
+        
+        $user4 = [
+            "firstName" => 'John',
+            "lastName" => 'Doe',
+            "id" => 4,
+            "photo" => '/images/home/profile1.png',
+            "jobTitle" => 'Team manager',
+            "salary" => 50,
+            "availableHours" => 40,
+        ];
 
-        $user2 = new User();
-        $user2->firstName = 'Ahmed';
-        $user2->lastName = 'Marzouk';
-        $user2->id = 2;
-        $user2->userData = new UserData();
-        $user2->userData->photo = '/images/home/profile1.png';
-        $user2->userData->jobTitle = 'Fullstack Developer';
-        $user2->userData->salary = 40;
-        $user2->userData->availableHours = 40;
+        // $userDatas = UserData::where($searchArray)->get();
 
-        array_push($agents, $user1, $user2, $user1, $user2);
+        // // $freelancers = $this->getFilteredFreelancers($userDatas);
+
+        // $dataForFreelancerCard = [] ;
+        // // make a freelancer array with only the needed data for vue js :
+        // $i=0;
+        // foreach ($userDatas as $freelancer){
+        //     $dataForFreelancerCard[$i] =[
+        //         'id'=>$freelancer->user_id,
+        //         'photo'=>$freelancer->avatar,
+        //         'firstName'=>$freelancer->first_name,
+        //         'lastName'=>$freelancer->last_name,
+        //         'jobTitle'=>$freelancer->job_title,
+        //         'salary'=>$freelancer->hourly_rate,
+        //         'availableHours'=>$freelancer->available_hours_per_week,
+        //     ];
+        //     $i++;
+        // }
+
+        // // I need get this data of the users
+
+        // // jobTitle: '',
+        // // rate: '',
+        // // availability: '',
+        // // country: ''<
+
+        // return $dataForFreelancerCard;
+
+        array_push($agents, $user1, $user2, $user3, $user4);
 
         return view('home_designers', ['agents' => $agents]);
     }

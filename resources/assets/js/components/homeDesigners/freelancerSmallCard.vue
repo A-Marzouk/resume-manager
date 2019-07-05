@@ -8,7 +8,7 @@
                 <img src="/images/home/forum.svg" alt="" class="contact">
                 <div class="imageCol">
                     <div class="imageContainer">
-                        <img :src="freelancer.userData.photo" alt="freelancer" class="freelancerImg">
+                        <img :src="freelancer.photo" alt="freelancer" class="freelancerImg">
                     </div>
                 </div>
                 <div class="freelancerCardRight">
@@ -17,28 +17,28 @@
                             {{freelancer.firstName}}
                         </div>
                         <div class="jobTitle" id="animatedText">
-                            {{freelancer.userData.jobTitle}}
+                            {{freelancer.jobTitle}}
                         </div>
                     </div>
                 </div>
                 <div class="hireRow showOnlyOnmd">
                     <div class="payment-details">
                         <div style="color: white;" >
-                            <img src="/images/home/monetization.svg" alt=""><span class="payment-highLight" style="font-weight: bold;"> $ {{parseInt(freelancer.userData.salary) +5}}
+                            <img src="/images/home/monetization.svg" alt=""><span class="payment-highLight" style="font-weight: bold;"> $ {{parseInt(freelancer.salary) +5}}
                             </span>hourly rate
                         </div>
                         <div style="color: white;">
                             <img src="/images/home/watch_later.svg" alt="">
-                            <span class="payment-highLight" :id="'maxHours' + freelancer.id" style="font-weight: bold;">{{parseInt(freelancer.userData.availableHours)}} hours</span> availability
+                            <span class="payment-highLight" :id="'maxHours' + freelancer.id" style="font-weight: bold;">{{parseInt(freelancer.availableHours)}} hours</span> availability
                         </div>
                     </div>
-                    <div v-if="freelancer.userData.availableHours !== 0" class="text-center cardRow NoDecor hideOnSm">
+                    <div v-if="freelancer.availableHours !== 0" class="text-center cardRow NoDecor hideOnSm">
                       <a class="hireCardBtn btn-block showHireSection showOnSm" href="javascript:void(0)" :id="'showHireSection'+freelancer.id">
                         HIRE ME
                       </a>
                     </div>
                 </div>
-                <div v-if="freelancer.userData.availableHours !== 0" class="text-center cardRow NoDecor showOnSm">
+                <div v-if="freelancer.availableHours !== 0" class="text-center cardRow NoDecor showOnSm">
                   <a class="hireCardBtn btn-block showHireSection showOnSm" href="javascript:void(0)" :id="'showHireSection'+freelancer.id">
                       HIRE ME
                   </a>
@@ -123,8 +123,8 @@ export default {
     .payment-details {
       font-size: 12px;
 
-      &:first-child {
-        margin-right: 5px;
+      & div:first-child {
+        margin-right: 15px;
       }
       
       @media (max-width: 768px) {

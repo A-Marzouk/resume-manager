@@ -201,13 +201,13 @@ class SearchesController extends Controller
             // save filter in session :
             session()->put('available_hours',$request->available_hours);
             
-            $availableHours = str_replace("+", $request->available_hours);
+            $availableHours = str_replace("+", "", $request->available_hours);
             $availableHours = explode(' - ', $availableHours);
 
             $searchArray[] = ['available_hours_per_week','>=',intval($availableHours[0])];
 
             if (sizeof($availableHours) == 2) {
-                $searchArray[] = ['available_hours_per_week','>=',intval($availableHours[1])];
+                $searchArray[] = ['available_hours_per_week','<=',intval($availableHours[1])];
             }
         }
 
@@ -215,17 +215,17 @@ class SearchesController extends Controller
         if(isset($request->salary_hour) && $request->salary_hour != ''){
             // save filter in session :
             session()->put('salary_hour',$request->salary_hour);
-            $salaryRates = str_replace("+", $request->salary_hour);
+            $salaryRates = str_replace("+", "", $request->salary_hour);
 
             $salaryRates = explode(' - ', $salaryRates);
 
-            $searchArray[] = ['hourly_rate','<=',intval($salaryRates[0])];
+            $searchArray[] = ['hourly_rate','>=',intval($salaryRates[0])];
 
             if (sizeof($salaryRates) == 2) {
-                $searchArray[] = ['hourly_rate','>=',intval($salaryRates[1])];
+                $searchArray[] = ['hourly_rate','<=',intval($salaryRates[1])];
             }
 
-            $searchArray[] = ['hourly_rate','!=',0];
+            // $searchArray[] = ['hourly_rate','!=',0];
         }
 
         // skills :
@@ -262,24 +262,22 @@ class SearchesController extends Controller
 
         // form the where array :
 
-        $userDatas[] = UserData::where($searchArray)->get();
+        $userDatas = UserData::where($searchArray)->get();
 
-        $freelancers = $this->getFilteredFreelancers($userDatas);
+        // $freelancers = $this->getFilteredFreelancers($userDatas);
 
         $dataForFreelancerCard = [] ;
         // make a freelancer array with only the needed data for vue js :
         $i=0;
-        foreach ($freelancers as $freelancer){
+        foreach ($userDatas as $freelancer){
             $dataForFreelancerCard[$i] =[
-                'id'=>$freelancer->id,
-                'photo'=>$freelancer->userData->photo,
-                'firstName'=>$freelancer->firstName,
-                'lastName'=>$freelancer->lastName,
-                'username'=>$freelancer->username,
+                'id'=>$freelancer->user_id,
+                'photo'=>$freelancer->avatar,
+                'firstName'=>$freelancer->first_name,
+                'lastName'=>$freelancer->last_name,
                 'jobTitle'=>$freelancer->job_title,
-                'design_skills_checkbox'=>$freelancer->userData->design_skills_checkbox,
-                'salary'=>$freelancer->userData->salary,
-                'availableHours'=>$freelancer->userData->available_hours,
+                'salary'=>$freelancer->hourly_rate,
+                'availableHours'=>$freelancer->available_hours_per_week,
             ];
             $i++;
         }

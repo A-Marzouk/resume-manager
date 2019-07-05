@@ -11,26 +11,26 @@
 
       <div class="agentsContainer__searchSelects">
         <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'jobTitle'}">
-          <select v-on:change="handleChangeSelect" @focus="activeBox = 'jobTitle'" v-bind="searchParams.jobTitle">
+          <select name="jobTitle" v-on:change="handleChangeSelect" @focus="activeBox = 'jobTitle'">
             <option v-for="(jobTitle, index) in customValues.jobTitles" :value="jobTitle" :key="jobTitle + index">{{jobTitle}}</option>
           </select>
         </div>
 
         <div v-if="customSearch" class="agentsContainer__customSelect" >
           <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'rate'}">
-            <select v-on:change="handleChangeSelect" @focus="activeBox = 'rate'" v-bind="searchParams.rate">
+            <select name="rate" v-on:change="handleChangeSelect" @focus="activeBox = 'rate'">
               <option value="">Choose a rate</option>
               <option v-for="(rate, index) in customValues.rates" :value="rate" :key="rate + index">$ {{rate}} hourly</option>
             </select>
           </div>
           <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'availability'}">
-            <select v-on:change="handleChangeSelect" @focus="activeBox = 'availability'" v-bind="searchParams.availability">
+            <select name="availability" v-on:change="handleChangeSelect" @focus="activeBox = 'availability'">
               <option value="">Choose an availability</option>
-              <option v-for="(availability, index) in customValues.availabilities" :value="availability" :key="availability + index">{{availability}} hours daily</option>
+              <option v-for="(availability, index) in customValues.availabilities" :value="availability" :key="availability + index">{{availability}} hours weekly</option>
             </select>
           </div>
           <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'country'}">
-            <select v-on:change="handleChangeSelect" @focus="activeBox = 'country'" v-bind="searchParams.country">
+            <select name="country" v-on:change="handleChangeSelect" @focus="activeBox = 'country'">
               <option value="">Choose a country</option>
               <option v-for="(country, index) in customValues.countries" :value="country" :key="country + index">{{country}}</option>
             </select>
@@ -61,7 +61,7 @@ export default {
     results: [],
     customSearch: false,
     searchParams: {
-      jobTitle: 'UI/UX designer',
+      jobTitle: '',
       rate: '',
       availability: '',
       country: ''
@@ -75,6 +75,7 @@ export default {
         'Digital artist'
       ],
       rates: [
+        '5 - 10',
         '10 - 15',
         '15 - 20',
         '20 - 30',
@@ -95,9 +96,13 @@ export default {
     }
   }),
   methods: {
-    handleChangeSelect () {
+    handleChangeSelect (e) {
       // Get data from api
 
+      this.searchParams[e.target.name] = e.target.value
+      this.searchAgents()
+    },
+    searchAgents () {
       let {
         jobTitle,
         availability,
@@ -112,7 +117,7 @@ export default {
           salary_hour: rate,
           country
         })
-        .then(response => this.agents = response.data)
+        .then(response => this.results = response.data)
     }
   }
 }

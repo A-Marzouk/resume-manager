@@ -24,7 +24,7 @@
                 <div class="hireRow showOnlyOnmd">
                     <div class="payment-details">
                         <div style="color: white;" >
-                            <img src="/images/home/monetization.svg" alt=""><span class="payment-highLight" style="font-weight: bold;"> $ {{parseInt(freelancer.salary) +5}}
+                            <img src="/images/home/monetization.svg" alt=""><span class="payment-highLight" style="font-weight: bold;"> $ {{parseInt(freelancer.salary)}}
                             </span>hourly rate
                         </div>
                         <div style="color: white;">

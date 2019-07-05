@@ -111,7 +111,7 @@ export default {
       } = this.searchParams
 
       axios
-        .post(`http://localhost:8000/searchAgents`, {
+        .post(`searchAgents`, {
           jobTitle,
           available_hours: availability,
           salary_hour: rate,

@@ -58705,7 +58705,11 @@ var render = function() {
             "div",
             {
               staticClass: "notificationBar",
-              staticStyle: { display: "none" },
+              staticStyle: {
+                display: "none",
+                position: "fixed",
+                width: "inherit"
+              },
               attrs: { id: "notificationBar" }
             },
             [
@@ -60747,7 +60751,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -60942,22 +60946,86 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['user_id'],
     data: function data() {
         return {
             selection: 'disapprove',
-            disapproveStatus: 'process'
+            disapproveStatus: 'process',
+            currentUser: {},
+            timezones: {
+                0: "(GMT - 8) ",
+                1: "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima ",
+                2: "(GMT -6:00) Central Time (US & Canada), Mexico City",
+                3: "(GMT -7:00) Mountain Time (US & Canada)",
+                4: "(GMT -8:00) Pacific Time (US & Canada)",
+                5: "(GMT -9:00) Alaska",
+                6: "(GMT -12:00) Eniwetok, Kwajalein",
+                7: "(GMT -11:00) Midway Island, Samoa",
+                8: "(GMT -10:00) Hawaii",
+                9: "(GMT -9:30) Taiohae",
+                10: "(GMT -9:00) Alaska",
+                11: "(GMT -8:00) Pacific Time (US & Canada)",
+                12: "(GMT -7:00) Mountain Time (US & Canada)",
+                13: "(GMT -6:00) Central Time (US & Canada), Mexico City",
+                14: "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima",
+                15: "(GMT -4:30) Caracas",
+                16: "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz",
+                17: "(GMT -3:30) Newfoundland",
+                18: "(GMT -3:00) Brazil, Buenos Aires, Georgetown",
+                19: "(GMT -2:00) Mid-Atlantic",
+                20: "(GMT -1:00) Azores, Cape Verde Islands",
+                21: "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca",
+                22: "(GMT +1:00) Brussels, Copenhagen, Madrid, Paris",
+                23: "(GMT +2:00) Kaliningrad, South Africa",
+                24: "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg",
+                25: "(GMT +3:30) Tehran",
+                26: "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi",
+                27: "(GMT +4:30) Kabul",
+                28: "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent",
+                29: "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi",
+                30: "(GMT +5:45) Kathmandu, Pokhara",
+                31: "(GMT +6:00) Almaty, Dhaka, Colombo",
+                32: "(GMT +6:30) Yangon, Mandalay",
+                33: "(GMT +7:00) Bangkok, Hanoi, Jakarta",
+                34: "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong",
+                35: "(GMT +8:45) Eucla",
+                36: "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk",
+                37: "(GMT +9:30) Adelaide, Darwin",
+                38: "(GMT +10:00) Eastern Australia, Guam, Vladivostok",
+                39: "(GMT +10:30) Lord Howe Island",
+                40: "(GMT +11:00) Magadan, Solomon Islands, New Caledonia",
+                41: "(GMT +11:30) Norfolk Island",
+                42: "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka",
+                43: "(GMT +12:45) Chatham Islands",
+                44: "(GMT +13:00) Apia, Nukualofa",
+                45: "(GMT +14:00) Line Islands, Tokelau"
+            }
         };
     },
 
     methods: {
+        getCurrentUser: function getCurrentUser() {
+            var _this = this;
+
+            axios.get('/admin/api/agent/' + this.user_id).then(function (response) {
+                _this.currentUser = response.data;
+            });
+        },
         disapproveApplicant: function disapproveApplicant() {
             this.selection = 'disapprove';
         },
         disapproveAndBlockApplicant: function disapproveAndBlockApplicant() {
             this.selection = 'disapprove_and_block';
         }
+    },
+    mounted: function mounted() {
+        this.getCurrentUser();
     }
 });
 
@@ -60969,334 +61037,463 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "d-flex align-items-center flex-column" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "account-info-edit dashboard-box mt-2" }, [
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-info-content-wrapper pb-2" }, [
+        _c("div", { staticClass: "account-info-content " }, [
+          _c("div", { staticClass: "acc-info-content-heading" }, [
+            _c("div", { staticClass: "acc-info-item" }, [
+              _c("img", {
+                staticStyle: { width: "58px", height: "56px" },
+                attrs: { src: "/images/client/dummy.png", alt: "name icon" }
+              }),
+              _vm._v(" "),
+              _c("span", [
+                _vm._v(
+                  "\n                            " +
+                    _vm._s(_vm.currentUser.data.first_name) +
+                    " " +
+                    _vm._s(_vm.currentUser.data.last_name) +
+                    "\n                        "
+                )
+              ]),
+              _vm._v(" "),
+              _vm.currentUser.data.gender.toLowerCase() === "m"
+                ? _c("img", {
+                    staticClass: "ml-2",
+                    attrs: { src: "/images/admin/male.png", alt: "" }
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.currentUser.data.gender.toLowerCase() === "f"
+                ? _c("img", {
+                    staticClass: "ml-2",
+                    attrs: { src: "/images/admin/female.svg", alt: "" }
+                  })
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "acc-info-timezone" }, [
+              _vm._v(
+                "\n                        " +
+                  _vm._s(_vm.timezones[_vm.currentUser.data.timezone]) +
+                  "\n                    "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/client/my_account/phone_number.png",
+                alt: "phone icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _vm._v(
+                "\n                        " +
+                  _vm._s(_vm.currentUser.data.phone) +
+                  "\n                    "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/client/my_account/email.png",
+                alt: "email icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _vm._v(
+                "\n                        " +
+                  _vm._s(_vm.currentUser.email) +
+                  "\n                    "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/admin/applicant-profile/place_24px.svg",
+                alt: "email icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _vm._v(
+                "\n                        " +
+                  _vm._s(_vm.currentUser.data.city) +
+                  "  " +
+                  _vm._s(_vm.currentUser.data.country) +
+                  "\n                    "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/admin/applicant-profile/paypal.svg",
+                alt: "email icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _vm._v(
+                "\n                        PayPal account:  " +
+                  _vm._s(_vm.currentUser.data.paypal_acc_number) +
+                  "\n                    "
+              )
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "account-info-edit dashboard-box mt-2" }, [
+      _vm._m(2),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-info-content-wrapper  pb-2" }, [
+        _c("div", { staticClass: "account-info-content " }, [
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/admin/applicant-profile/job_title.svg",
+                alt: "phone icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c("b", [_vm._v("Primary job title:")]),
+              _vm._v(
+                " " +
+                  _vm._s(_vm.currentUser.data.job_title) +
+                  "\n                    "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/admin/applicant-profile/experience.svg",
+                alt: "phone icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c("b", [_vm._v("Sector experience:")]),
+              _vm._v(
+                "  " +
+                  _vm._s(_vm.currentUser.agent.experience) +
+                  "\n                    "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/admin/applicant-profile/software.svg",
+                alt: "phone icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c("b", [_vm._v("Technologies, software:")]),
+              _vm._v(
+                " " +
+                  _vm._s(_vm.currentUser.agent.technologies) +
+                  "\n                    "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/admin/applicant-profile/hours.svg",
+                alt: "phone icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c("b", [_vm._v("No. hours per week:")]),
+              _vm._v(
+                "  " +
+                  _vm._s(
+                    Math.ceil(_vm.currentUser.agent.available_hours_per_week)
+                  ) +
+                  " hours\n                    "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/admin/applicant-profile/voice.svg",
+                alt: "phone icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c("b", [_vm._v("Voice character:")]),
+              _vm._v(
+                " " +
+                  _vm._s(_vm.currentUser.agent.voice_character) +
+                  "\n                    "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/admin/applicant-profile/languages.svg",
+                alt: "phone icon"
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              [
+                _c("b", [_vm._v("Languages")]),
+                _vm._v(" "),
+                _vm._l(_vm.currentUser.languages, function(language, index) {
+                  return _c("span", { key: index }, [
+                    _vm._v(
+                      "\n                            " + _vm._s(language.label)
+                    ),
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: index < _vm.currentUser.languages.length - 1,
+                            expression:
+                              "index < currentUser.languages.length -1 "
+                          }
+                        ]
+                      },
+                      [_vm._v(", ")]
+                    )
+                  ])
+                })
+              ],
+              2
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(3)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex align-items-center flex-column" }, [
+    return _c(
+      "nav",
+      { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
+      [
+        _c("div", { staticClass: "backBtn" }, [
+          _c("a", { attrs: { href: "/admin/agents" } }, [
+            _c("img", {
+              attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
+            })
+          ]),
+          _vm._v("\n            JASON MORGENSTERN PROFILE\n        ")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "account-info-edit-heading dashboard-box-heading mr-0 ml-0 align-items-center"
+      },
+      [
+        _c("div", { staticClass: "left" }, [
+          _c("img", {
+            staticClass: "icon-margin small-image",
+            attrs: {
+              src: "/images/admin/applicant-profile/main_40px.svg",
+              alt: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("span", [
+            _vm._v(
+              "\n                    PERSONAL INFORMATION\n                "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "blue-text no-decoration right" }, [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("EDIT")])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "account-info-edit-heading dashboard-box-heading mr-0 ml-0"
+      },
+      [
+        _c("div", { staticClass: "left" }, [
+          _c("img", {
+            staticClass: "icon-margin small-image",
+            attrs: {
+              src: "/images/admin/applicant-profile/prof_info_40px.svg",
+              alt: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("span", [
+            _vm._v(
+              "\n                    PROFESSIONAL INFORMATION\n                "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "blue-text no-decoration right" }, [
+          _c("a", { attrs: { href: "#" } }, [_vm._v("EDIT")])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "account-info-edit dashboard-box mt-2" }, [
       _c(
-        "nav",
-        { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
+        "div",
+        {
+          staticClass:
+            "account-info-edit-heading dashboard-box-heading mr-0 ml-0"
+        },
         [
-          _c("div", { staticClass: "backBtn" }, [
-            _c("a", { attrs: { href: "/admin/agents" } }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/client/arrow_back.png",
-                  alt: "back-icon"
-                }
-              })
-            ]),
-            _vm._v("\n            JASON MORGENSTERN PROFILE\n        ")
+          _c("div", { staticClass: "left" }, [
+            _c("img", {
+              staticClass: "icon-margin small-image",
+              attrs: {
+                src:
+                  "/images/admin/applicant-profile/recording_resume_40px.svg",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("span", [
+              _vm._v(
+                "\n                    RECORDING AND RESUME\n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "blue-text no-decoration right" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("EDIT")])
           ])
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "account-info-edit dashboard-box mt-2" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "account-info-edit-heading dashboard-box-heading mr-0 ml-0 align-items-center"
-          },
-          [
-            _c("div", { staticClass: "left" }, [
+      _c("div", { staticClass: "account-info-content-wrapper  pb-2" }, [
+        _c("div", { staticClass: "account-info-content pt-0 " }, [
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("div", [_c("b", [_vm._v("Recording of the applicant’s voice")])])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "recorder-bar justify-content-between" }, [
+            _c("div", { staticClass: "d-flex align-items-center ml-2" }, [
               _c("img", {
-                staticClass: "icon-margin small-image",
+                staticStyle: { "margin-top": "-3px", "margin-right": "8px" },
                 attrs: {
-                  src: "/images/admin/applicant-profile/main_40px.svg",
+                  src: "/images/admin/applicant-profile/pause.svg",
                   alt: ""
                 }
               }),
               _vm._v(" "),
-              _c("span", [
+              _c("div", { staticStyle: { "font-size": "12px" } }, [
                 _vm._v(
-                  "\n                    PERSONAL INFORMATION\n                "
+                  "\n                            Title_o...\n                        "
                 )
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "blue-text no-decoration right" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("EDIT")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "account-info-content-wrapper pb-2" }, [
-          _c("div", { staticClass: "account-info-content " }, [
-            _c("div", { staticClass: "acc-info-content-heading" }, [
-              _c("div", { staticClass: "acc-info-item" }, [
-                _c("img", {
-                  staticStyle: { width: "58px", height: "56px" },
-                  attrs: { src: "/images/client/dummy.png", alt: "name icon" }
-                }),
-                _vm._v(" "),
-                _c("span", [
-                  _vm._v(
-                    "\n                            Edward Norton\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("img", {
-                  staticClass: "ml-2",
-                  attrs: { src: "/images/admin/male.png", alt: "" }
-                })
+            _c("div", { staticClass: "d-flex align-items-center mr-2" }, [
+              _c("div", { staticClass: "time mr-4" }, [
+                _vm._v(
+                  "\n                            25:15\n                        "
+                )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "acc-info-timezone" }, [
-                _vm._v(
-                  "\n                        GMT - 8\n                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "acc-info-content-item" }, [
               _c("img", {
-                attrs: {
-                  src: "/images/client/my_account/phone_number.png",
-                  alt: "phone icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _vm._v(
-                  "\n                        00442037000685\n                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "acc-info-content-item" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/client/my_account/email.png",
-                  alt: "email icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _vm._v(
-                  "\n                        email@gmail.com\n                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "acc-info-content-item" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/admin/applicant-profile/place_24px.svg",
-                  alt: "email icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _vm._v(
-                  "\n                        Dublin, Ireland\n                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "acc-info-content-item" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/admin/applicant-profile/paypal.svg",
-                  alt: "email icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _vm._v(
-                  "\n                        PayPal account: 2018150859\n                    "
-                )
-              ])
+                staticStyle: { "margin-top": "-3px", "margin-right": "8px" },
+                attrs: { src: "/images/admin/applicant-profile/download.svg" }
+              })
             ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "account-info-edit dashboard-box mt-2" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "account-info-edit-heading dashboard-box-heading mr-0 ml-0"
-          },
-          [
-            _c("div", { staticClass: "left" }, [
-              _c("img", {
-                staticClass: "icon-margin small-image",
-                attrs: {
-                  src: "/images/admin/applicant-profile/prof_info_40px.svg",
-                  alt: ""
-                }
-              }),
-              _vm._v(" "),
-              _c("span", [
-                _vm._v(
-                  "\n                    PROFESSIONAL INFORMATION\n                "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "blue-text no-decoration right" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("EDIT")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "account-info-content-wrapper  pb-2" }, [
-          _c("div", { staticClass: "account-info-content " }, [
-            _c("div", { staticClass: "acc-info-content-item" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/admin/applicant-profile/job_title.svg",
-                  alt: "phone icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c("b", [_vm._v("Primary job title:")]),
-                _vm._v(" Telemarketing\n                    ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "acc-info-content-item" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/admin/applicant-profile/experience.svg",
-                  alt: "phone icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c("b", [_vm._v("Sector experience:")]),
-                _vm._v(
-                  " Real estate, Investement, Insurance\n                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "acc-info-content-item" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/admin/applicant-profile/software.svg",
-                  alt: "phone icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c("b", [_vm._v("Technologies, software:")]),
-                _vm._v(" Microsoft Excel\n                    ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "acc-info-content-item" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/admin/applicant-profile/hours.svg",
-                  alt: "phone icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c("b", [_vm._v("No. hours per week:")]),
-                _vm._v(" 30-40 hours\n                    ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "acc-info-content-item" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/admin/applicant-profile/voice.svg",
-                  alt: "phone icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c("b", [_vm._v("Voice character:")]),
-                _vm._v(" Friendly\n                    ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "acc-info-content-item" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/admin/applicant-profile/languages.svg",
-                  alt: "phone icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _c("b", [_vm._v("Languages")]),
-                _vm._v(" English\n                    ")
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "account-info-edit dashboard-box mt-2" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "account-info-edit-heading dashboard-box-heading mr-0 ml-0"
-          },
-          [
-            _c("div", { staticClass: "left" }, [
-              _c("img", {
-                staticClass: "icon-margin small-image",
-                attrs: {
-                  src:
-                    "/images/admin/applicant-profile/recording_resume_40px.svg",
-                  alt: ""
-                }
-              }),
-              _vm._v(" "),
-              _c("span", [
-                _vm._v(
-                  "\n                    RECORDING AND RESUME\n                "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "blue-text no-decoration right" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("EDIT")])
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "account-info-content-wrapper  pb-2" }, [
-          _c("div", { staticClass: "account-info-content pt-0 " }, [
-            _c("div", { staticClass: "acc-info-content-item" }, [
-              _c("div", [
-                _c("b", [_vm._v("Recording of the applicant’s voice")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "recorder-bar justify-content-between" }, [
-              _c("div", { staticClass: "d-flex align-items-center ml-2" }, [
+      _c("div", { staticClass: "account-info-content-wrapper pt-0 pb-2" }, [
+        _c("div", { staticClass: "account-info-content pt-0 " }, [
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("div", [_c("b", [_vm._v("Applicant’s resume")])])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "acc-info-content-item d-flex justify-content-between flex-small-column"
+            },
+            [
+              _c("div", { staticClass: "d-flex align-items-center" }, [
                 _c("img", {
                   staticStyle: { "margin-top": "-3px", "margin-right": "8px" },
                   attrs: {
-                    src: "/images/admin/applicant-profile/pause.svg",
-                    alt: ""
+                    src: "/images/admin/applicant-profile/resume.svg",
+                    alt: "phone icon"
                   }
                 }),
                 _vm._v(" "),
                 _c("div", { staticStyle: { "font-size": "12px" } }, [
                   _vm._v(
-                    "\n                            Title_o...\n                        "
+                    "\n                            Title_of_...df.pdf\n                        "
                   )
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "d-flex align-items-center mr-2" }, [
-                _c("div", { staticClass: "time mr-4" }, [
+              _c("div", { staticClass: "d-flex align-items-center" }, [
+                _c("div", { staticClass: "open-resume-text mr-4" }, [
                   _vm._v(
-                    "\n                            25:15\n                        "
+                    "\n                            OPEN RESUME\n                        "
                   )
                 ]),
                 _vm._v(" "),
@@ -61305,62 +61502,8 @@ var staticRenderFns = [
                   attrs: { src: "/images/admin/applicant-profile/download.svg" }
                 })
               ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "account-info-content-wrapper pt-0 pb-2" }, [
-          _c("div", { staticClass: "account-info-content pt-0 " }, [
-            _c("div", { staticClass: "acc-info-content-item" }, [
-              _c("div", [_c("b", [_vm._v("Applicant’s resume")])])
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "acc-info-content-item d-flex justify-content-between flex-small-column"
-              },
-              [
-                _c("div", { staticClass: "d-flex align-items-center" }, [
-                  _c("img", {
-                    staticStyle: {
-                      "margin-top": "-3px",
-                      "margin-right": "8px"
-                    },
-                    attrs: {
-                      src: "/images/admin/applicant-profile/resume.svg",
-                      alt: "phone icon"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticStyle: { "font-size": "12px" } }, [
-                    _vm._v(
-                      "\n                            Title_of_...df.pdf\n                        "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "d-flex align-items-center" }, [
-                  _c("div", { staticClass: "open-resume-text mr-4" }, [
-                    _vm._v(
-                      "\n                            OPEN RESUME\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("img", {
-                    staticStyle: {
-                      "margin-top": "-3px",
-                      "margin-right": "8px"
-                    },
-                    attrs: {
-                      src: "/images/admin/applicant-profile/download.svg"
-                    }
-                  })
-                ])
-              ]
-            )
-          ])
+            ]
+          )
         ])
       ])
     ])
@@ -70331,10 +70474,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -71223,7 +71362,9 @@ var render = function() {
                                                   staticClass:
                                                     "btn btn-primar btn-radius btn-responsive",
                                                   attrs: {
-                                                    href: "/admin/agent-profile"
+                                                    href:
+                                                      "/admin/agent-profile/" +
+                                                      user.id
                                                   }
                                                 },
                                                 [
@@ -71404,34 +71545,7 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _vm._m(5, true),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        directives: [
-                                          {
-                                            name: "show",
-                                            rawName: "v-show",
-                                            value:
-                                              _vm.secondaryActiveTab ===
-                                              "approved-agents",
-                                            expression:
-                                              "secondaryActiveTab === 'approved-agents'"
-                                          }
-                                        ],
-                                        staticClass: "blue-text showFrom-600",
-                                        staticStyle: {
-                                          "white-space": "nowrap",
-                                          "margin-top": "7px"
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                                EDIT PROFILE\n                                            "
-                                        )
-                                      ]
-                                    )
+                                    _vm._m(5, true)
                                   ]
                                 )
                               ])

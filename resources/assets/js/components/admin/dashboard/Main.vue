@@ -129,7 +129,7 @@
 
             </div>
             <div class="content-block">
-                <div class="notificationBar" id="notificationBar" style="display:none;">
+                <div class="notificationBar" id="notificationBar" style="display:none;position: fixed;width: inherit;">
                     <div>
                         {{notificationMessage}}
                     </div>

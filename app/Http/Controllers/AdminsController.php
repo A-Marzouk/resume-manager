@@ -37,8 +37,8 @@ class AdminsController extends Controller
         return view('admin-new.dashboard.applicant_profile');
     }
 
-    public function showApprovedAgentProfile(){
-        return view('admin-new.dashboard.approved_agent_profile');
+    public function showApprovedAgentProfile($user_id){
+        return view('admin-new.dashboard.approved_agent_profile',compact('user_id'));
     }
 
     public function showAdvancedSearchPage(){
@@ -78,6 +78,11 @@ class AdminsController extends Controller
         return $Agents ;
     }
 
+    public function getAgentByID($user_id){
+        $user = User::where('id',$user_id)->with('data','agent','languages')->first();
+        return $user ;
+    }
+
     public function getClients(){
 
         return User::whereHas('roles', function ($query) {
@@ -114,6 +119,7 @@ class AdminsController extends Controller
                 'first_name'            => $request->personalData['name'],
                 'last_name'             => $request->personalData['surname'],
                 'city'                  => $request->personalData['cityName'],
+                'phone'                 => $request->personalData['phone'],
                 'gender'                => $request->personalData['gender'],
                 'paypal_acc_number'     => $request->personalData['paypal'],
 //                // professional data

@@ -189,7 +189,7 @@
                                                         </div>
                                                         <div class="visiblty">
                                                             <div class="no-decoration white-on-hover mt-4">
-                                                                <a href="/admin/agent-profile" class="btn btn-primar btn-radius btn-responsive" v-show="user.status >= 4 " >VISIT AGENT’S PROFILE</a>
+                                                                <a :href="'/admin/agent-profile/' + user.id" class="btn btn-primar btn-radius btn-responsive" v-show="user.status >= 4 " >VISIT AGENT’S PROFILE</a>
                                                                 <a href="/admin/applicant-profile" class="btn btn-primar btn-radius btn-responsive" v-show="user.status < 4 ">VISIT AGENT’S PROFILE</a>
                                                             </div>
                                                             <div class="mt-4">
@@ -236,10 +236,6 @@
                                                             </a>
                                                         </div>
                                                     </div>
-                                                </div>
-
-                                                <div class="blue-text showFrom-600" style="white-space: nowrap;margin-top: 7px;" v-show="secondaryActiveTab === 'approved-agents'">
-                                                    EDIT PROFILE
                                                 </div>
                                             </div>
                                         </div>

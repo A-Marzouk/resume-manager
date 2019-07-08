@@ -118,6 +118,7 @@ export default {
           country
         })
         .then(response => this.results = response.data)
+        .catch(error => console.log(error))
     }
   }
 }

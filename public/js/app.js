@@ -105199,6 +105199,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         country: country
       }).then(function (response) {
         return _this.results = response.data;
+      }).catch(function (error) {
+        return console.log(error);
       });
     }
   }

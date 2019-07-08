@@ -33,8 +33,8 @@ class AdminsController extends Controller
         return view('admin-new.dashboard.dashboard');
     }
 
-    public function showApplicantProfile(){
-        return view('admin-new.dashboard.applicant_profile');
+    public function showApplicantProfile($user_id){
+        return view('admin-new.dashboard.applicant_profile',compact('user_id'));
     }
 
     public function showApprovedAgentProfile($user_id){

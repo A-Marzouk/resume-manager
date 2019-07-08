@@ -191,8 +191,6 @@
         props:['user_id'],
         data(){
             return{
-                selection: 'disapprove',
-                disapproveStatus: 'process',
                 currentUser:{},
                 timezones:{
                     0 : "(GMT - 8) ",
@@ -249,13 +247,6 @@
               axios.get('/admin/api/agent/' + this.user_id).then( (response) =>{
                   this.currentUser = response.data;
               });
-            },
-            disapproveApplicant(){
-                this.selection = 'disapprove';
-            },
-
-            disapproveAndBlockApplicant(){
-                this.selection = 'disapprove_and_block';
             }
         },
         mounted() {

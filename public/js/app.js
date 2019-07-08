@@ -59580,7 +59580,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59908,20 +59908,80 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['user_id'],
     data: function data() {
         return {
             selection: 'disapprove',
-            disapproveStatus: 'process'
+            disapproveStatus: 'process',
+            currentUser: {},
+            timezones: {
+                0: "(GMT - 8) ",
+                1: "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima ",
+                2: "(GMT -6:00) Central Time (US & Canada), Mexico City",
+                3: "(GMT -7:00) Mountain Time (US & Canada)",
+                4: "(GMT -8:00) Pacific Time (US & Canada)",
+                5: "(GMT -9:00) Alaska",
+                6: "(GMT -12:00) Eniwetok, Kwajalein",
+                7: "(GMT -11:00) Midway Island, Samoa",
+                8: "(GMT -10:00) Hawaii",
+                9: "(GMT -9:30) Taiohae",
+                10: "(GMT -9:00) Alaska",
+                11: "(GMT -8:00) Pacific Time (US & Canada)",
+                12: "(GMT -7:00) Mountain Time (US & Canada)",
+                13: "(GMT -6:00) Central Time (US & Canada), Mexico City",
+                14: "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima",
+                15: "(GMT -4:30) Caracas",
+                16: "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz",
+                17: "(GMT -3:30) Newfoundland",
+                18: "(GMT -3:00) Brazil, Buenos Aires, Georgetown",
+                19: "(GMT -2:00) Mid-Atlantic",
+                20: "(GMT -1:00) Azores, Cape Verde Islands",
+                21: "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca",
+                22: "(GMT +1:00) Brussels, Copenhagen, Madrid, Paris",
+                23: "(GMT +2:00) Kaliningrad, South Africa",
+                24: "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg",
+                25: "(GMT +3:30) Tehran",
+                26: "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi",
+                27: "(GMT +4:30) Kabul",
+                28: "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent",
+                29: "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi",
+                30: "(GMT +5:45) Kathmandu, Pokhara",
+                31: "(GMT +6:00) Almaty, Dhaka, Colombo",
+                32: "(GMT +6:30) Yangon, Mandalay",
+                33: "(GMT +7:00) Bangkok, Hanoi, Jakarta",
+                34: "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong",
+                35: "(GMT +8:45) Eucla",
+                36: "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk",
+                37: "(GMT +9:30) Adelaide, Darwin",
+                38: "(GMT +10:00) Eastern Australia, Guam, Vladivostok",
+                39: "(GMT +10:30) Lord Howe Island",
+                40: "(GMT +11:00) Magadan, Solomon Islands, New Caledonia",
+                41: "(GMT +11:30) Norfolk Island",
+                42: "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka",
+                43: "(GMT +12:45) Chatham Islands",
+                44: "(GMT +13:00) Apia, Nukualofa",
+                45: "(GMT +14:00) Line Islands, Tokelau"
+            }
         };
     },
 
     methods: {
+        getCurrentUser: function getCurrentUser() {
+            var _this = this;
+
+            axios.get('/admin/api/agent/' + this.user_id).then(function (response) {
+                _this.currentUser = response.data;
+            });
+        },
         disapproveApplicant: function disapproveApplicant() {
             this.selection = 'disapprove';
         },
         disapproveAndBlockApplicant: function disapproveAndBlockApplicant() {
             this.selection = 'disapprove_and_block';
         }
+    },
+    mounted: function mounted() {
+        this.getCurrentUser();
     }
 });
 
@@ -60751,7 +60811,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -60955,8 +61015,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['user_id'],
     data: function data() {
         return {
-            selection: 'disapprove',
-            disapproveStatus: 'process',
             currentUser: {},
             timezones: {
                 0: "(GMT - 8) ",
@@ -61016,12 +61074,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/admin/api/agent/' + this.user_id).then(function (response) {
                 _this.currentUser = response.data;
             });
-        },
-        disapproveApplicant: function disapproveApplicant() {
-            this.selection = 'disapprove';
-        },
-        disapproveAndBlockApplicant: function disapproveAndBlockApplicant() {
-            this.selection = 'disapprove_and_block';
         }
     },
     mounted: function mounted() {

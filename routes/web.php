@@ -38,7 +38,7 @@ Route::delete('users/{user}/photos', 'UserPhotoController@destroy')
 
 // admin routs :
 Route::prefix('admin')->group(function (){
-    Route::get('/applicant-profile','AdminsController@showApplicantProfile')->name('admin.front.applicant_profile');
+    Route::get('/applicant-profile/{user_id}','AdminsController@showApplicantProfile')->name('admin.front.applicant_profile');
     Route::get('/agent-profile/{user_id}','AdminsController@showApprovedAgentProfile')->name('admin.front.agent_profile');
     Route::get('/advanced-search','AdminsController@showAdvancedSearchPage')->name('admin.search');
     Route::get('/add-behance-designer','AdminsController@addBehanceDesigner')->name('add.behance.designer');

@@ -3752,7 +3752,6 @@ body {
 }
 
 .notificationBar {
-  margin-top: -38px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3764,7 +3763,7 @@ body {
           justify-content: space-between;
   height: 38px;
   padding-left: 50px;
-  padding-right: 50px;
+  padding-right: 57px;
   background: #FFBA69;
   border-radius: 4px;
   margin-top: -32px;
@@ -5326,6 +5325,7 @@ body {
   height: 56px;
   width: 100%;
   padding-left: 35px;
+  padding-right: 35px;
   background: #05A4F4;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5362,7 +5362,7 @@ body {
 .campaign-info-bar .campaign-info-tab {
   font-family: Roboto;
   font-style: normal;
-  margin-right: 80px !important;
+  margin-right: 64px !important;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
@@ -6747,7 +6747,7 @@ body {
 .campaign_brief_content .campaign_brief_tabs .campaign-info-bar .campaign-info-tab {
   font-family: Roboto;
   font-style: normal;
-  margin-right: 80px !important;
+  margin-right: 64px !important;
   font-weight: normal;
   font-size: 18px;
   line-height: 24px;

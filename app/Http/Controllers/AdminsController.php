@@ -106,12 +106,8 @@ class AdminsController extends Controller
                 'technologies'             => implode(',',$request->professionalData['techs']),
                 'hourly_rate'              => 5,
                 'voice_character'          => $request->professionalData['voice'],
-            ]
-        ]);
-
-        $agentData =  app(UserData::class)->createUserData([
-            'userData' => [
-                'user_id'               => $agent->user_id,
+            ],
+            'user_data' => [
                 'profession_id'         => 1, // business-support
                 'currency_id'           => 1, // usd
                 'timezone'              => 1,
@@ -126,6 +122,7 @@ class AdminsController extends Controller
                 'job_title'             => $request->professionalData['primaryJob'],
             ]
         ]);
+
 
         // add languages to agent
 

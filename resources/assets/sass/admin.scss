@@ -47,3 +47,26 @@
     color: white;
   }
 }
+
+.notificationBar{
+  margin-top:-38px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  height:38px;
+  padding-left:50px;
+  padding-right:50px;
+  background:#FFBA69;
+  border-radius:4px;
+
+  margin-top: -32px;
+  margin-bottom: -6px;
+  z-index: inherit;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+}

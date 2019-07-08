@@ -58326,13 +58326,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             activeTab: 'campaign-manager',
             selection: 'disapprove',
-            disapproveStatus: 'process'
+            disapproveStatus: 'process',
+            notificationMessage: ''
         };
     },
 
@@ -58367,6 +58378,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         disapproveAndBlockApplicant: function disapproveAndBlockApplicant() {
             this.selection = 'disapprove_and_block';
+        },
+        showNotification: function showNotification(notificationMessage) {
+            this.notificationMessage = notificationMessage;
+            $('#notificationBar').fadeIn(600);
+            setTimeout(function () {
+                $('#notificationBar').fadeOut(1500);
+            }, 4000);
+        },
+        hideNotification: function hideNotification() {
+            $('#notificationBar').css('display', 'none');
         }
     },
     mounted: function mounted() {
@@ -58679,7 +58700,46 @@ var render = function() {
       _c(
         "div",
         { staticClass: "content-block" },
-        [_c("keep-alive", [_c("router-view")], 1)],
+        [
+          _c(
+            "div",
+            {
+              staticClass: "notificationBar",
+              staticStyle: { display: "none" },
+              attrs: { id: "notificationBar" }
+            },
+            [
+              _c("div", [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.notificationMessage) +
+                    "\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "no-decoration",
+                  staticStyle: { color: "white" },
+                  attrs: { href: "javascript:void(0)" },
+                  on: { click: _vm.hideNotification }
+                },
+                [_vm._v("\n                    x\n                ")]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "keep-alive",
+            [
+              _c("router-view", {
+                on: { showPositiveNotification: _vm.showNotification }
+              })
+            ],
+            1
+          )
+        ],
         1
       )
     ]),
@@ -58949,7 +59009,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "a",
-      { staticClass: "navbar-brand pb-large", attrs: { href: "/client" } },
+      { staticClass: "navbar-brand pb-0", attrs: { href: "/client" } },
       [
         _c("img", {
           staticStyle: { width: "177px" },
@@ -70448,17 +70508,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             $.each(agents, function (i) {
                 if (agents[i].id === user_id) {
                     agents[i].is_edited = value;
-                    var rate = agents[i].agent.hourly_rate;
-                    _this2.updateUserHourlyRate(user_id, rate);
+                    if (value === false) {
+                        var rate = agents[i].agent.hourly_rate;
+                        _this2.updateUserHourlyRate(user_id, rate);
+                    }
                 }
             });
         },
         updateUserHourlyRate: function updateUserHourlyRate(user_id, rate) {
+            var _this3 = this;
+
             var data = {
                 'user_id': user_id,
                 'hourly_rate': rate
             };
-            axios.post('/admin/agent/rate/update', data).then(function (response) {});
+            axios.post('/admin/agent/rate/update', data).then(function (response) {
+                var notificationMessage = 'Successfully updated agent';
+                _this3.$emit('showPositiveNotification', notificationMessage);
+                console.log(response);
+            });
         }
     },
     mounted: function mounted() {

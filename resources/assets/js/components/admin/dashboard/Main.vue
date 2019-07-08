@@ -10,7 +10,7 @@
                 <img src="/images/client/close.png" alt="menu">
             </a>
 
-            <a class="navbar-brand pb-large" href="/client">
+            <a class="navbar-brand pb-0" href="/client">
                 <img src="/images/client/logo_123.png" alt="logout" style="width: 177px;">
             </a>
             <div class="form-inline my-2 my-lg-0">
@@ -129,13 +129,23 @@
 
             </div>
             <div class="content-block">
+                <div class="notificationBar" id="notificationBar" style="display:none;">
+                    <div>
+                        {{notificationMessage}}
+                    </div>
+                    <a href="javascript:void(0)" @click="hideNotification" class="no-decoration" style="color: white;">
+                        x
+                    </a>
+                </div>
                 <keep-alive>
-                    <router-view></router-view>
+                    <router-view @showPositiveNotification="showNotification"></router-view>
                 </keep-alive>
             </div>
         </div>
 
-        <!-- Modal -->
+
+        <!-- modals -->
+
         <div id="view-invoice" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg modal-width">
 
@@ -232,8 +242,6 @@
 
             </div>
         </div>
-
-        <!-- modals -->
 
         <div class="modal fade centered-modal"
              id="disapprove-agent"
@@ -360,6 +368,8 @@
                 </div>
             </div>
         </div>
+
+
     </div>
 </template>
 <script>
@@ -369,6 +379,7 @@
                 activeTab: 'campaign-manager',
                 selection: 'disapprove',
                 disapproveStatus: 'process',
+                notificationMessage: '',
             }
         },
         methods:{
@@ -404,6 +415,16 @@
 
             disapproveAndBlockApplicant(){
                 this.selection = 'disapprove_and_block';
+            },
+            showNotification(notificationMessage){
+                this.notificationMessage = notificationMessage ;
+                $('#notificationBar').fadeIn(600);
+                setTimeout(()=>{
+                    $('#notificationBar').fadeOut(1500);
+                },4000);
+            },
+            hideNotification(){
+                $('#notificationBar').css('display','none');
             }
 
         },

@@ -508,8 +508,10 @@
                 $.each(agents, (i) => {
                     if (agents[i].id === user_id) {
                         agents[i].is_edited = value;
-                        let rate =  agents[i].agent.hourly_rate ;
-                        this.updateUserHourlyRate(user_id, rate) ;
+                        if(value === false){
+                            let rate =  agents[i].agent.hourly_rate ;
+                            this.updateUserHourlyRate(user_id, rate) ;
+                        }
                     }
                 });
 
@@ -520,7 +522,9 @@
                     'hourly_rate': rate
                 };
                 axios.post('/admin/agent/rate/update',data).then( (response) => {
-
+                    let notificationMessage = 'Successfully updated agent' ;
+                    this.$emit('showPositiveNotification',notificationMessage);
+                    console.log(response) ;
                 });
             }
         },

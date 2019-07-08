@@ -70273,6 +70273,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -70438,6 +70440,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 }
             });
+        },
+        setEditField: function setEditField(user_id, value) {
+            var _this2 = this;
+
+            var agents = this.selectedAgents;
+            $.each(agents, function (i) {
+                if (agents[i].id === user_id) {
+                    agents[i].is_edited = value;
+                    var rate = agents[i].agent.hourly_rate;
+                    _this2.updateUserHourlyRate(user_id, rate);
+                }
+            });
+        },
+        updateUserHourlyRate: function updateUserHourlyRate(user_id, rate) {
+            var data = {
+                'user_id': user_id,
+                'hourly_rate': rate
+            };
+            axios.post('/admin/agent/rate/update', data).then(function (response) {});
         }
     },
     mounted: function mounted() {
@@ -70871,15 +70892,85 @@ var render = function() {
                               staticStyle: { "font-weight": "normal" }
                             },
                             [
-                              _vm._v(
-                                "\n                                        $" +
-                                  _vm._s(Math.ceil(user.agent.hourly_rate)) +
-                                  "\n                                        "
+                              _c(
+                                "span",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: !user.is_edited,
+                                      expression: "!user.is_edited"
+                                    }
+                                  ]
+                                },
+                                [
+                                  _vm._v(
+                                    "$" +
+                                      _vm._s(Math.ceil(user.agent.hourly_rate))
+                                  )
+                                ]
                               ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: user.agent.hourly_rate,
+                                    expression: "user.agent.hourly_rate"
+                                  },
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: user.is_edited,
+                                    expression: "user.is_edited"
+                                  }
+                                ],
+                                staticStyle: { width: "40px" },
+                                attrs: { type: "number" },
+                                domProps: { value: user.agent.hourly_rate },
+                                on: {
+                                  blur: function($event) {
+                                    _vm.setEditField(user.id, false)
+                                  },
+                                  keyup: function($event) {
+                                    if (
+                                      !("button" in $event) &&
+                                      _vm._k(
+                                        $event.keyCode,
+                                        "enter",
+                                        13,
+                                        $event.key,
+                                        "Enter"
+                                      )
+                                    ) {
+                                      return null
+                                    }
+                                    _vm.setEditField(user.id, false)
+                                  },
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      user.agent,
+                                      "hourly_rate",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
                               _c("img", {
                                 attrs: {
                                   src: "/images/admin/edit_24px.svg",
                                   alt: "edit arrow"
+                                },
+                                on: {
+                                  click: function($event) {
+                                    _vm.setEditField(user.id, true)
+                                  }
                                 }
                               })
                             ]
@@ -71056,9 +71147,9 @@ var render = function() {
                                                     {
                                                       name: "show",
                                                       rawName: "v-show",
-                                                      value: user.status > 4,
+                                                      value: user.status >= 4,
                                                       expression:
-                                                        "user.status > 4 "
+                                                        "user.status >= 4 "
                                                     }
                                                   ],
                                                   staticClass:
@@ -71081,9 +71172,9 @@ var render = function() {
                                                     {
                                                       name: "show",
                                                       rawName: "v-show",
-                                                      value: user.status <= 4,
+                                                      value: user.status < 4,
                                                       expression:
-                                                        "user.status <= 4 "
+                                                        "user.status < 4 "
                                                     }
                                                   ],
                                                   staticClass:

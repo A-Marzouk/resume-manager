@@ -139,8 +139,10 @@
                                     </td>
                                     <td>
                                         <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
-                                            ${{Math.ceil(user.agent.hourly_rate)}}
-                                            <img src="/images/admin/edit_24px.svg" alt="edit arrow">
+                                            <span v-show="!user.is_edited">${{Math.ceil(user.agent.hourly_rate)}}</span>
+                                            <input type="number" style="width: 40px;"  v-model="user.agent.hourly_rate" v-show="user.is_edited" @blur="setEditField(user.id, false)" @keyup.enter="setEditField(user.id, false)" >
+
+                                            <img src="/images/admin/edit_24px.svg" alt="edit arrow" @click="setEditField(user.id, true)">
                                         </div>
                                     </td>
                                     <td>
@@ -187,8 +189,8 @@
                                                         </div>
                                                         <div class="visiblty">
                                                             <div class="no-decoration white-on-hover mt-4">
-                                                                <a href="/admin/agent-profile" class="btn btn-primar btn-radius btn-responsive" v-show="user.status > 4 " >VISIT AGENT’S PROFILE</a>
-                                                                <a href="/admin/applicant-profile" class="btn btn-primar btn-radius btn-responsive" v-show="user.status <= 4 ">VISIT AGENT’S PROFILE</a>
+                                                                <a href="/admin/agent-profile" class="btn btn-primar btn-radius btn-responsive" v-show="user.status >= 4 " >VISIT AGENT’S PROFILE</a>
+                                                                <a href="/admin/applicant-profile" class="btn btn-primar btn-radius btn-responsive" v-show="user.status < 4 ">VISIT AGENT’S PROFILE</a>
                                                             </div>
                                                             <div class="mt-4">
                                                                 <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">
@@ -499,6 +501,26 @@
                             $('#detailsArrow' + user_id).css('transform', 'rotate(0deg)');
                         }
                     }
+                });
+            },
+            setEditField(user_id,value){
+                let agents = this.selectedAgents;
+                $.each(agents, (i) => {
+                    if (agents[i].id === user_id) {
+                        agents[i].is_edited = value;
+                        let rate =  agents[i].agent.hourly_rate ;
+                        this.updateUserHourlyRate(user_id, rate) ;
+                    }
+                });
+
+            },
+            updateUserHourlyRate(user_id,rate){
+                let data = {
+                    'user_id' : user_id,
+                    'hourly_rate': rate
+                };
+                axios.post('/admin/agent/rate/update',data).then( (response) => {
+
                 });
             }
         },

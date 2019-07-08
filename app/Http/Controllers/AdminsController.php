@@ -70,6 +70,7 @@ class AdminsController extends Controller
         foreach ($users as $user){
             if($user->data->profession->name === $professionName){
                 $user->is_details_opened = false;
+                $user->is_edited = false;
                 $Agents [] = $user ;
             }
         }
@@ -137,9 +138,16 @@ class AdminsController extends Controller
 
     }
 
+    // update agent's hourly rate
+
+    public function updateAgentsHourlyRate(Request $request){
+        $user = User::find($request->user_id);
+        return $user->agent()->update([
+            'hourly_rate' => $request->hourly_rate
+        ]);
+    }
 
     // create client :
-
     public function createClient(Request $request){
         $client = app(User::class)->createClient([
             'user' => [

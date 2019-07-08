@@ -52,6 +52,10 @@ Route::prefix('admin')->group(function (){
     Route::get('/register-agent/{any?}','AdminsController@showRegisterAgentPage')->name('admin.register.agent');
     Route::post('/agent/create','AdminsController@createAgent')->name('create.agent.from.admin');
 
+    // update agent :
+    Route::post('/agent/rate/update','AdminsController@updateAgentsHourlyRate')->name('update.agent.rate.from.admin');
+
+
     // create client :
     Route::get('/register-client','AdminsController@showRegisterClientPage')->name('admin.register.client');
     Route::post('/client/create','AdminsController@createClient')->name('create.client.from.admin');

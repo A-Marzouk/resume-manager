@@ -57,6 +57,21 @@ class AdminsController extends Controller
         return view('admin-new.add_behance_designer');
     }
 
+    // edit agent views :
+
+    public function showEditPersonalInfo($user_id){
+        return view('admin-new.editAgent.editPersonalInfo',compact('user_id'));
+    }
+
+    public function showEditProfessionalInfo(){
+        return view('admin-new.editAgent.editProfessionalInfo');
+    }
+
+    public function showEditResumeInfo(){
+        return view('admin-new.editAgent.editRecordResumeInfo');
+    }
+
+
 
     // api ( fetching data from the DB )
 
@@ -148,6 +163,10 @@ class AdminsController extends Controller
         return $user->agent()->update([
             'hourly_rate' => $request->hourly_rate
         ]);
+    }
+
+    public function editAgent(Request $request){
+
     }
 
     // create client :

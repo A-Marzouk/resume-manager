@@ -43,6 +43,11 @@ Vue.component('admin-register-agent', require('./components/admin/RegisterAgent.
 Vue.component('add-behance-designer', require('./components/admin/AddBehanceDesigner.vue'));
 Vue.component('admin-client-register', require('./components/admin/registerClient/ClientRegisterAdmin.vue'));
 
+// edit agent :
+Vue.component('admin-agent-edit-personal-info', require('./components/admin/editAgent/EditPersonalInfo.vue'));
+Vue.component('admin-agent-edit-professional-info', require('./components/admin/editAgent/EditProfessionalInfo.vue'));
+Vue.component('admin-agent-edit-record-resume', require('./components/admin/editAgent/EditRecordResumeInfo.vue'));
+
 
 import AdminAgentRegisterPage1 from './components/admin/registerAgent/page1.vue'
 import AdminAgentRegisterPage2 from './components/admin/registerAgent/page2.vue'
@@ -55,6 +60,25 @@ import AdminAgents from './components/admin/dashboard/Agents.vue';
 import AdminClients from './components/admin/dashboard/Clients.vue';
 import AdminCampaigns from './components/admin/dashboard/Campaigns.vue';
 
+
+if ($("#adminEditAgentPersonalInfo").length !== 0){
+    let adminEditAgentPersonalInfo = new Vue({
+        el:'#adminEditAgentPersonalInfo'
+    });
+
+}
+if ($("#adminEditAgentProfessionalInfo").length !== 0){
+    let adminEditAgentProfessionalInfo = new Vue({
+        el:'#adminEditAgentProfessionalInfo'
+    });
+
+}
+if ($("#adminEditAgentRecordResumeInfo").length !== 0){
+    let adminEditAgentRecordResumeInfo = new Vue({
+        el:'#adminEditAgentRecordResumeInfo'
+    });
+
+}
 
 
 if ($("#approvedAgentProfile").length !== 0){

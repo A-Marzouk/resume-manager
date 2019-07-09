@@ -19,7 +19,7 @@
                     </span>
                 </div>
                 <div class="blue-text no-decoration right">
-                    <a href="#">EDIT</a>
+                    <a :href="'/admin/agent/update/'+ user_id + '/personal'">EDIT</a>
                 </div>
             </div>
             <div class="account-info-content-wrapper pb-2">
@@ -247,6 +247,7 @@
               axios.get('/admin/api/agent/' + this.user_id).then( (response) =>{
                   this.currentUser = response.data;
               });
+              console.log(this.currentUser);
             }
         },
         mounted() {

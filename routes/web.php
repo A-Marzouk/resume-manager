@@ -56,6 +56,13 @@ Route::prefix('admin')->group(function (){
     // update agent :
     Route::post('/agent/rate/update','AdminsController@updateAgentsHourlyRate')->name('update.agent.rate.from.admin');
 
+    Route::get('/agent/update/{user_id}/personal','AdminsController@showEditPersonalInfo')->name('view.agent.update.personal');
+    Route::get('/agent/update/professional','AdminsController@showEditProfessionalInfo')->name('view.agent.update.professional');
+    Route::get('/agent/update/resume','AdminsController@showEditResumeInfo')->name('view.agent.update.resume');
+
+    Route::post('/agent/update','AdminsController@editAgent')->name('view.agent.update.personal');
+
+
 
     // create client :
     Route::get('/register-client','AdminsController@showRegisterClientPage')->name('admin.register.client');

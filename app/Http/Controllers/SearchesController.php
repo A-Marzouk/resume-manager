@@ -186,7 +186,7 @@ class SearchesController extends Controller
         }
 
         // country :
-        if(isset($request->country) && $request->jobTitle != ''){
+        if(isset($request->country) && $request->country != ''){
             // save filter in session :
             session()->put('country',$request->country);
             $searchArray[] = ['user_datas.country','like','%'.$request->country.'%'];
@@ -254,8 +254,6 @@ class SearchesController extends Controller
             $salaryRates = str_replace("+", "", $request->salary_hour);
 
             $salaryRates = explode(' - ', $salaryRates);
-
-            $searchArray = [];
 
             $searchArray[] = ['agents.hourly_rate', '>=', $salaryRates[0]];
             

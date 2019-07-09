@@ -7,8 +7,11 @@ use App\Client;
 use App\ClientSearch;
 use App\User;
 use App\UserData;
+use App\Agent;
 use Illuminate\Http\Request;
 
+
+use Illuminate\Support\Facades\DB;
 
 class SearchesController extends Controller
 {
@@ -163,7 +166,7 @@ class SearchesController extends Controller
             $jobTitleInput = $request->jobTitle ;
             $jobTitleArr   = explode(' ',$jobTitleInput);
             foreach ($jobTitleArr as $jobTitleWord){
-                $searchArray [] = ['job_title','like','%'.$jobTitleWord.'%'] ;
+                $searchArray [] = ['user_datas.job_title','like','%'.$jobTitleWord.'%'] ;
             }
         }
 
@@ -178,22 +181,22 @@ class SearchesController extends Controller
                 if($language == 'and' || $language == 'or'){
                     continue;
                 }
-                $searchArray[] = ['languages','like','%'.$language.'%'];
+                $searchArray[] = ['user_datas.languages','like','%'.$language.'%'];
             }
         }
 
         // country :
-        if(isset($request->country) && $request->jobTitle != ''){
+        if(isset($request->country) && $request->country != ''){
             // save filter in session :
             session()->put('country',$request->country);
-            $searchArray[] = ['country','like','%'.$request->country.'%'];
+            $searchArray[] = ['user_datas.country','like','%'.$request->country.'%'];
         }
 
         // city :
         if(isset($request->city)){
             // save filter in session :
             session()->put('city',$request->city);
-            $searchArray[] = ['city','like','%'.$request->city.'%'];
+            $searchArray[] = ['user_datas.city','like','%'.$request->city.'%'];
         }
 
         // available_hours :
@@ -204,28 +207,11 @@ class SearchesController extends Controller
             $availableHours = str_replace("+", "", $request->available_hours);
             $availableHours = explode(' - ', $availableHours);
 
-            $searchArray[] = ['available_hours_per_week','>=',intval($availableHours[0])];
+            $searchArray[] = ['user_datas.available_hours_per_week','>=',intval($availableHours[0])];
 
             if (sizeof($availableHours) == 2) {
-                $searchArray[] = ['available_hours_per_week','<=',intval($availableHours[1])];
+                $searchArray[] = ['user_datas.available_hours_per_week','<=',intval($availableHours[1])];
             }
-        }
-
-        // salary_hour :
-        if(isset($request->salary_hour) && $request->salary_hour != ''){
-            // save filter in session :
-            session()->put('salary_hour',$request->salary_hour);
-            $salaryRates = str_replace("+", "", $request->salary_hour);
-
-            $salaryRates = explode(' - ', $salaryRates);
-
-            $searchArray[] = ['hourly_rate','>=',intval($salaryRates[0])];
-
-            if (sizeof($salaryRates) == 2) {
-                $searchArray[] = ['hourly_rate','<=',intval($salaryRates[1])];
-            }
-
-            // $searchArray[] = ['hourly_rate','!=',0];
         }
 
         // skills :
@@ -240,7 +226,7 @@ class SearchesController extends Controller
                 if($skill == 'and' || $skill == 'or'){
                     continue;
                 }
-                $searchArray[] = ['design_skills_checkbox','like','%'.$skill.'%'];
+                $searchArray[] = ['user_datas.design_skills_checkbox','like','%'.$skill.'%'];
             }
         }
 
@@ -256,21 +242,38 @@ class SearchesController extends Controller
                 if($skill == 'and' || $skill == 'or'){
                     continue;
                 }
-                $searchArray[] = ['primary_skills','like','%'.$skill.'%'];
+                $searchArray[] = ['user_datas.primary_skills','like','%'.$skill.'%'];
             }
         }
 
         // form the where array :
 
-        $userDatas = UserData::where($searchArray)->get();
+        if(isset($request->salary_hour) && $request->salary_hour != ''){
+            // save filter in session :
+            session()->put('salary_hour',$request->salary_hour);
+            $salaryRates = str_replace("+", "", $request->salary_hour);
 
-        // $freelancers = $this->getFilteredFreelancers($userDatas);
+            $salaryRates = explode(' - ', $salaryRates);
+
+            $searchArray[] = ['agents.hourly_rate', '>=', $salaryRates[0]];
+            
+            if (count($salaryRates) == 2) {
+                $searchArray[] = ['agents.hourly_rate', '<=', $salaryRates[1]];                
+            }
+        }
+
+        $result = DB::table('user_datas')
+                    ->join('agents', 'user_datas.user_id', '=', 'agents.user_id')
+                    ->select('user_datas.first_name', 'user_datas.last_name', 'user_datas.job_title',
+                    'user_datas.available_hours_per_week', 'agents.hourly_rate', 'user_datas.user_id', 'user_datas.avatar')
+                    ->where($searchArray)->get();
 
         $dataForFreelancerCard = [] ;
         // make a freelancer array with only the needed data for vue js :
-        $i=0;
-        foreach ($userDatas as $freelancer){
-            $dataForFreelancerCard[$i] =[
+
+        
+        foreach ($result as $freelancer) {
+            array_push($dataForFreelancerCard, [
                 'id'=>$freelancer->user_id,
                 'photo'=>$freelancer->avatar,
                 'firstName'=>$freelancer->first_name,
@@ -278,16 +281,8 @@ class SearchesController extends Controller
                 'jobTitle'=>$freelancer->job_title,
                 'salary'=>$freelancer->hourly_rate,
                 'availableHours'=>$freelancer->available_hours_per_week,
-            ];
-            $i++;
+            ]);
         }
-
-        // I need get this data of the users
-
-        // jobTitle: '',
-        // rate: '',
-        // availability: '',
-        // country: ''<
 
         return $dataForFreelancerCard;
     }

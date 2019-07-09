@@ -105552,13 +105552,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           country = _searchParams.country;
 
 
-      axios.post('searchAgents', {
+      axios.post('/searchAgents', {
         jobTitle: jobTitle,
         available_hours: availability,
         salary_hour: rate,
         country: country
       }).then(function (response) {
         return _this.results = response.data;
+      }).catch(function (error) {
+        return console.log(error);
       });
     }
   }

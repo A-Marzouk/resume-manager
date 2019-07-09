@@ -488,3 +488,5 @@ Route::get('/home_test/designers', 'HomeController@homeDesigners')->name('home-d
 Route::get('/home_test/sales', function () {
     return view('new_home_sales');
 });
+
+Route::get('/create/new_agents', 'TestController@createAgents');

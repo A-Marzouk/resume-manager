@@ -6,6 +6,7 @@ use App\ClientSearch;
 use App\PromotedUser;
 use App\User;
 use App\UserData;
+use App\Agent;
 
 class HomeController extends Controller
 {
@@ -102,78 +103,26 @@ class HomeController extends Controller
         //     return $promotedUser->user;
         // });
 
-        $agents = array();
+        $agents = [];
+        $result = UserData::whereIn('job_title', [
+            'UX/UI designer',
+            'Illustrator',
+            'Motion designer',
+            'Digital artist'
+        ])->get();
 
-        $user1 = [
-            "firstName" => 'Jose',
-            "lastName" => 'Quintero',
-            "id" => 1,
-            "photo" => '/images/home/profile1.png',
-            "jobTitle" => 'Fullstack Developer',
-            "salary" => 15,
-            "availableHours" => 40,
-        ];
+        foreach ($result as $user_data) {
+            array_push($agents, [
+                'firstName' => $user_data->first_name,
+                'lastName' => $user_data->last_name,
+                'job_title' => $user_data->job_title,
+                'country' => $user_data->country,
+                'availableHours' => $user_data->available_hours_per_week,
+                'salary' => $user_data->user->agent->hourly_rate
+            ]);
+        }
         
-        $user2 = [
-            "firstName" => 'Ahmed',
-            "lastName" => 'Marzouk',
-            "id" => 1,
-            "photo" => '/images/home/profile1.png',
-            "jobTitle" => 'Web developer',
-            "salary" => 30,
-            "availableHours" => 40,
-        ];
-        
-        $user3 = [
-            "firstName" => 'Francisco',
-            "lastName" => 'Daniel',
-            "id" => 3,
-            "photo" => '/images/home/profile1.png',
-            "jobTitle" => 'Web developer',
-            "salary" => 25,
-            "availableHours" => 40,
-        ];
-        
-        $user4 = [
-            "firstName" => 'John',
-            "lastName" => 'Doe',
-            "id" => 4,
-            "photo" => '/images/home/profile1.png',
-            "jobTitle" => 'Team manager',
-            "salary" => 50,
-            "availableHours" => 40,
-        ];
-
-        // $userDatas = UserData::where($searchArray)->get();
-
-        // // $freelancers = $this->getFilteredFreelancers($userDatas);
-
-        // $dataForFreelancerCard = [] ;
-        // // make a freelancer array with only the needed data for vue js :
-        // $i=0;
-        // foreach ($userDatas as $freelancer){
-        //     $dataForFreelancerCard[$i] =[
-        //         'id'=>$freelancer->user_id,
-        //         'photo'=>$freelancer->avatar,
-        //         'firstName'=>$freelancer->first_name,
-        //         'lastName'=>$freelancer->last_name,
-        //         'jobTitle'=>$freelancer->job_title,
-        //         'salary'=>$freelancer->hourly_rate,
-        //         'availableHours'=>$freelancer->available_hours_per_week,
-        //     ];
-        //     $i++;
-        // }
-
-        // // I need get this data of the users
-
-        // // jobTitle: '',
-        // // rate: '',
-        // // availability: '',
-        // // country: ''<
-
-        // return $dataForFreelancerCard;
-
-        array_push($agents, $user1, $user2, $user3, $user4);
+        // dd($agents);
 
         return view('home_designers', ['agents' => $agents]);
     }

@@ -111,13 +111,14 @@ export default {
       } = this.searchParams
 
       axios
-        .post(`searchAgents`, {
+        .post(`/searchAgents`, {
           jobTitle,
           available_hours: availability,
           salary_hour: rate,
           country
         })
         .then(response => this.results = response.data)
+        .catch(error => console.log(error))
     }
   }
 }

@@ -95,7 +95,7 @@ if(auth()->guard('client')->guest()){
                 <li class="nav-link registerBtn NoDecor">
                     <a href="/client/register/"
                        data-toggle="modal"
-                       data-target="#exampleModalCenter">{{ __('BECOME A CLIENT') }}</a>
+                       data-target="#exampleModalCenter">{{ __('BECOME OUR CLIENT') }}</a>
                 </li>
                 <? else: ?>
                 <a class="nav-item nav-link customNavLink" href="/chat-room" style="color:#0290D8;">

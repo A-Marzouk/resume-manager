@@ -4628,7 +4628,7 @@ html {
   top: 0;
   right: 50px;
   height: 150px;
-  z-index: -2;
+  z-index: 0;
 }
 
 .agentsSection .agentsBg-1,
@@ -4713,6 +4713,7 @@ html {
   background: white;
   width: 550px;
   color: #2A3749;
+  z-index: 5;
 }
 
 @media (max-width: 992px) {

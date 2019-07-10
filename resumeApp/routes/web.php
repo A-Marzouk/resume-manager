@@ -380,6 +380,7 @@ Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('pa
 
 // public routes :
 Route::get('/apply','BusinessSupportController@showRegistrationForm')->name('freelancer.register');
+Route::get('/new-home','HomeController@newHome')->name('welcome.new');
 Route::get('/','HomeController@welcomePage')->name('welcome');
 Route::get('/jobs/view_post/{job_id}','JobsController@viewSingleJobPost')->name('jobs.view_single');
 Route::get('/search/{search_id}','HomeController@getSearch')->name('public.search');

@@ -140,6 +140,17 @@ Vue.component('business-support-users', require('./components/businessSupportCom
 Vue.component('send-emails', require('./components/mails/sendEmailsComponent.vue'));
 Vue.component('send-invitations', require('./components/mails/sendInvitationMail.vue'));
 
+// new home vue component
+Vue.component('new-home-component', require('./components/home/NewHome.vue'));
+
+
+if ($("#newHomeComponent").length !== 0){
+    let newHomeComponent = new Vue({
+        el:'#newHomeComponent'
+    });
+}
+
+
 
 if ($("#searchFreelancers").length !== 0){
     let searchFreelancers = new Vue({

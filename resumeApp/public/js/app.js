@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(289);
+module.exports = __webpack_require__(297);
 
 
 /***/ }),
@@ -14427,6 +14427,15 @@ Vue.component('business-support-users', __webpack_require__(273));
 //
 Vue.component('send-emails', __webpack_require__(278));
 Vue.component('send-invitations', __webpack_require__(283));
+
+// new home vue component
+Vue.component('new-home-component', __webpack_require__(288));
+
+if ($("#newHomeComponent").length !== 0) {
+    var newHomeComponent = new Vue({
+        el: '#newHomeComponent'
+    });
+}
 
 if ($("#searchFreelancers").length !== 0) {
     var searchFreelancers = new Vue({
@@ -14706,7 +14715,7 @@ window.Echo.channel('conversations').listen('UpdateMessageCount', function (e) {
     }
 });
 
-__webpack_require__(288);
+__webpack_require__(296);
 
 /***/ }),
 /* 16 */
@@ -85715,6 +85724,543 @@ if (false) {
 
 /***/ }),
 /* 288 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(301)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(289)
+/* template */
+var __vue_template__ = __webpack_require__(303)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-92252b4e"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\home\\NewHome.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-92252b4e", Component.options)
+  } else {
+    hotAPI.reload("data-v-92252b4e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 289 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    freelancerCardSmall: __WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard___default.a
+  },
+  props: ['freelancers'],
+  data: function data() {
+    return {
+      results: [],
+      customSearch: false,
+      searchParams: {
+        jobTitle: '',
+        rate: '',
+        availability: '',
+        country: ''
+      },
+      activeBox: 'jobTitle',
+      customValues: {
+        jobTitles: ['UI/UX designer', 'Illustrator', 'Motion designer', 'Digital artist'],
+        rates: ['5 - 10', '10 - 15', '15 - 20', '20 - 30', '30 - 40', '+40'],
+        availabilities: ['10 - 20', '20 - 30', '30 - 40', '+40'],
+        countries: ['Venezuela', 'Ukraine', 'EEUU']
+      }
+    };
+  },
+  methods: {
+    handleChangeSelect: function handleChangeSelect(e) {
+      // Get data from api
+
+      this.searchParams[e.target.name] = e.target.value;
+      this.searchAgents();
+    },
+    searchAgents: function searchAgents() {
+      var _this = this;
+
+      var _searchParams = this.searchParams,
+          jobTitle = _searchParams.jobTitle,
+          availability = _searchParams.availability,
+          rate = _searchParams.rate,
+          country = _searchParams.country;
+
+
+      axios.post('/searchAgents', {
+        jobTitle: jobTitle,
+        available_hours: availability,
+        salary_hour: rate,
+        country: country
+      }).then(function (response) {
+        return _this.results = response.data;
+      }).catch(function (error) {
+        return console.log(error);
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 290 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(291)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(293)
+/* template */
+var __vue_template__ = __webpack_require__(294)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-e70ddbcc"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\homeDesigners\\freelancerSmallCard.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e70ddbcc", Component.options)
+  } else {
+    hotAPI.reload("data-v-e70ddbcc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 291 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(292);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("091c1548", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e70ddbcc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./freelancerSmallCard.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e70ddbcc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./freelancerSmallCard.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 292 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n  margin: 0 !important;\n  width: 352px;\n}\n@media (max-width: 992px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 318px;\n}\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .freelancerImg[data-v-e70ddbcc] {\n    width: 70px;\n    height: 70px;\n}\n.freelancerCard.smallCard .nameRow[data-v-e70ddbcc] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    position: relative;\n    border-radius: 5px;\n    padding: 14px;\n    height: 100%;\n}\n.freelancerCard.smallCard .contact[data-v-e70ddbcc] {\n    position: absolute;\n    top: 20px;\n    right: 14px;\n}\n.freelancerCard.smallCard .jobTitle[data-v-e70ddbcc] {\n    color: white;\n    font-size: 14px;\n}\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n    font-size: 12px;\n}\n.freelancerCard.smallCard .payment-details div[data-v-e70ddbcc]:first-child {\n      margin-right: 15px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n}\n}\n.freelancerCard.smallCard .payment-details div[data-v-e70ddbcc] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n      text-align: center;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc],\n    .freelancerCard.smallCard .payment-details span[data-v-e70ddbcc] {\n      margin-right: 5px;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc] {\n      height: 14px;\n}\n.freelancerCard.smallCard .payment-highLight[data-v-e70ddbcc] {\n    font-size: 14px;\n}\n.freelancerCard.smallCard .resumeCardRight[data-v-e70ddbcc] {\n    height: 100%;\n}\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n      width: 87px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n          width: 100%;\n          -webkit-box-pack: center;\n              -ms-flex-pack: center;\n                  justify-content: center;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n}\n}\n.freelancerCard.smallCard .resumeCardRight .nameRow .imageCol[data-v-e70ddbcc] {\n      padding-left: 0;\n      margin: 0;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .cardRow[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .hireRow[data-v-e70ddbcc] {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    padding: 14px;\n    margin: 0;\n    margin-top: 15px;\n}\n.freelancerCard.smallCard .nameCard[data-v-e70ddbcc] {\n    font-family: Roboto;\n    font-style: normal;\n    font-weight: bold;\n    font-size: 18px;\n    padding-top: 0;\n    margin-bottom: 5px;\n    padding-left: 10px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 293 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+// Receives the users from laravel using props
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['freelancer'],
+
+  data: function data() {
+    return {};
+  }
+});
+
+/***/ }),
+/* 294 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "agentsContainer__card" }, [
+    _c("div", { staticClass: "freelancerCard smallCard" }, [
+      _c("div", { staticClass: "col-lg-12 col-md-12 col-12 resumeCardRight" }, [
+        _c("div", { staticClass: "nameRow" }, [
+          _c("img", {
+            staticClass: "contact",
+            attrs: { src: "/images/home/forum.svg", alt: "" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "imageCol" }, [
+            _c("div", { staticClass: "imageContainer" }, [
+              _c("img", {
+                staticClass: "freelancerImg",
+                attrs: { src: _vm.freelancer.photo, alt: "freelancer" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "freelancerCardRight" }, [
+            _c("div", { staticClass: "nameArea" }, [
+              _c("div", { staticClass: "nameCard" }, [
+                _vm._v(
+                  "\n                          " +
+                    _vm._s(_vm.freelancer.firstName) +
+                    "\n                      "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "jobTitle", attrs: { id: "animatedText" } },
+                [
+                  _vm._v(
+                    "\n                          " +
+                      _vm._s(_vm.freelancer.jobTitle) +
+                      "\n                      "
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "hireRow showOnlyOnmd" }, [
+            _c("div", { staticClass: "payment-details" }, [
+              _c("div", { staticStyle: { color: "white" } }, [
+                _c("img", {
+                  attrs: { src: "/images/home/monetization.svg", alt: "" }
+                }),
+                _c(
+                  "span",
+                  {
+                    staticClass: "payment-highLight",
+                    staticStyle: { "font-weight": "bold" }
+                  },
+                  [
+                    _vm._v(
+                      " $ " +
+                        _vm._s(parseInt(_vm.freelancer.salary)) +
+                        "\n                          "
+                    )
+                  ]
+                ),
+                _vm._v("hourly rate\n                      ")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticStyle: { color: "white" } }, [
+                _c("img", {
+                  attrs: { src: "/images/home/watch_later.svg", alt: "" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass: "payment-highLight",
+                    staticStyle: { "font-weight": "bold" },
+                    attrs: { id: "maxHours" + _vm.freelancer.id }
+                  },
+                  [
+                    _vm._v(
+                      _vm._s(parseInt(_vm.freelancer.availableHours)) + " hours"
+                    )
+                  ]
+                ),
+                _vm._v(" availability\n                      ")
+              ])
+            ]),
+            _vm._v(" "),
+            _vm.freelancer.availableHours !== 0
+              ? _c(
+                  "div",
+                  { staticClass: "text-center cardRow NoDecor hideOnSm" },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass:
+                          "hireCardBtn btn-block showHireSection showOnSm",
+                        attrs: {
+                          href: "javascript:void(0)",
+                          id: "showHireSection" + _vm.freelancer.id
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                      HIRE ME\n                    "
+                        )
+                      ]
+                    )
+                  ]
+                )
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _vm.freelancer.availableHours !== 0
+            ? _c(
+                "div",
+                { staticClass: "text-center cardRow NoDecor showOnSm" },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "hireCardBtn btn-block showHireSection showOnSm",
+                      attrs: {
+                        href: "javascript:void(0)",
+                        id: "showHireSection" + _vm.freelancer.id
+                      }
+                    },
+                    [_vm._v("\n                    HIRE ME\n                ")]
+                  )
+                ]
+              )
+            : _vm._e()
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "agentsContainer__portfolio" }, [
+      _c("div", { staticClass: "work" }, [
+        _c("img", { attrs: { src: "/images/home/work1.png", alt: "" } })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "work" }, [
+        _c("img", { attrs: { src: "/images/home/work2.png", alt: "" } })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "work" }, [
+        _c("img", { attrs: { src: "/images/home/work3.png", alt: "" } })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "slickSlide_portfolio" }, [
+        _c("div", { staticClass: "slide" }, [
+          _c("img", { attrs: { src: "/images/home/work1.png", alt: "" } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "slide" }, [
+          _c("img", { attrs: { src: "/images/home/work2.png", alt: "" } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "slide" }, [
+          _c("img", { attrs: { src: "/images/home/work3.png", alt: "" } })
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e70ddbcc", module.exports)
+  }
+}
+
+/***/ }),
+/* 295 */,
+/* 296 */
 /***/ (function(module, exports) {
 
 var status = $('#record_status'),
@@ -85993,10 +86539,305 @@ if (navigator.mediaDevices.getUserMedia) {
 }
 
 /***/ }),
-/* 289 */
+/* 297 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(302);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("19364e03", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-92252b4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewHome.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-92252b4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewHome.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 302 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n*[data-v-92252b4e]:focus{\n    outline: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 303 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "agentsSection" }, [
+    _c("img", {
+      staticClass: "agentsBg-1",
+      attrs: { src: "/resumeApp/public/images/home/agentsBg-1.svg", alt: "" }
+    }),
+    _vm._v(" "),
+    _c("img", {
+      staticClass: "agentsBg-2",
+      attrs: { src: "/resumeApp/public/images/home/agentsBg-2.svg", alt: "" }
+    }),
+    _vm._v(" "),
+    _c("img", {
+      staticClass: "agentsBg-3",
+      attrs: { src: "/resumeApp/public/images/home/agentsBg-3.svg", alt: "" }
+    }),
+    _vm._v(" "),
+    _c("img", {
+      staticClass: "pencilsBg",
+      attrs: { src: "/resumeApp/public/images/home/pencilsBg.png", alt: "" }
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "agentsContainer__searchTools" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn-first",
+          class: { active: !_vm.customSearch },
+          on: {
+            click: function($event) {
+              _vm.customSearch = false
+            }
+          }
+        },
+        [_vm._v("Featured designers")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn-second",
+          class: { active: _vm.customSearch },
+          on: {
+            click: function($event) {
+              _vm.customSearch = true
+            }
+          }
+        },
+        [_vm._v("Search designers")]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "agentsContainer__searchSelects" }, [
+      _c(
+        "div",
+        {
+          staticClass: "agentsContainer__selectContainer",
+          class: { active: _vm.activeBox === "jobTitle" }
+        },
+        [
+          _c(
+            "select",
+            {
+              attrs: { name: "jobTitle" },
+              on: {
+                change: _vm.handleChangeSelect,
+                focus: function($event) {
+                  _vm.activeBox = "jobTitle"
+                }
+              }
+            },
+            _vm._l(_vm.customValues.jobTitles, function(jobTitle, index) {
+              return _c(
+                "option",
+                { key: jobTitle + index, domProps: { value: jobTitle } },
+                [_vm._v(_vm._s(jobTitle))]
+              )
+            })
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _vm.customSearch
+        ? _c("div", { staticClass: "agentsContainer__customSelect" }, [
+            _c(
+              "div",
+              {
+                staticClass: "agentsContainer__selectContainer",
+                class: { active: _vm.activeBox === "rate" }
+              },
+              [
+                _c(
+                  "select",
+                  {
+                    attrs: { name: "rate" },
+                    on: {
+                      change: _vm.handleChangeSelect,
+                      focus: function($event) {
+                        _vm.activeBox = "rate"
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("Choose a rate")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.customValues.rates, function(rate, index) {
+                      return _c(
+                        "option",
+                        { key: rate + index, domProps: { value: rate } },
+                        [_vm._v("$ " + _vm._s(rate) + " hourly")]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "agentsContainer__selectContainer",
+                class: { active: _vm.activeBox === "availability" }
+              },
+              [
+                _c(
+                  "select",
+                  {
+                    attrs: { name: "availability" },
+                    on: {
+                      change: _vm.handleChangeSelect,
+                      focus: function($event) {
+                        _vm.activeBox = "availability"
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("Choose an availability")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.customValues.availabilities, function(
+                      availability,
+                      index
+                    ) {
+                      return _c(
+                        "option",
+                        {
+                          key: availability + index,
+                          domProps: { value: availability }
+                        },
+                        [_vm._v(_vm._s(availability) + " hours weekly")]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "agentsContainer__selectContainer",
+                class: { active: _vm.activeBox === "country" }
+              },
+              [
+                _c(
+                  "select",
+                  {
+                    attrs: { name: "country" },
+                    on: {
+                      change: _vm.handleChangeSelect,
+                      focus: function($event) {
+                        _vm.activeBox = "country"
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("Choose a country")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.customValues.countries, function(
+                      country,
+                      index
+                    ) {
+                      return _c(
+                        "option",
+                        { key: country + index, domProps: { value: country } },
+                        [_vm._v(_vm._s(country))]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]
+            )
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("img", {
+      staticClass: "bottomBg",
+      attrs: {
+        src: "/resumeApp/public/images/home/computer.png",
+        alt: "computer"
+      }
+    }),
+    _vm._v(" "),
+    !_vm.customSearch
+      ? _c(
+          "div",
+          { staticClass: "agentsContainer" },
+          _vm._l(_vm.freelancers, function(freelancer) {
+            return _c("freelancer-card-small", {
+              key: freelancer.id + freelancer.firstName,
+              attrs: { freelancer: freelancer }
+            })
+          })
+        )
+      : _c(
+          "div",
+          { staticClass: "agentsContainer" },
+          _vm._l(_vm.results, function(agent) {
+            return _c("freelancer-card-small", {
+              key: agent.id + agent.firstName,
+              attrs: { freelancer: agent }
+            })
+          })
+        )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-92252b4e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

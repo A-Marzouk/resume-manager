@@ -5,7 +5,7 @@
     <div class="freelancerCard smallCard">
         <div class="col-lg-12 col-md-12 col-12 resumeCardRight">
             <div class="nameRow">
-                <img src="/images/home/forum.svg" alt="" class="contact">
+                <img src="resumeApp/public/images/home/forum.svg" alt="" class="contact">
                 <div class="imageCol">
                     <div class="imageContainer">
                         <img :src="freelancer.photo" alt="freelancer" class="freelancerImg">
@@ -24,11 +24,11 @@
                 <div class="hireRow showOnlyOnmd">
                     <div class="payment-details">
                         <div style="color: white;" >
-                            <img src="/images/home/monetization.svg" alt=""><span class="payment-highLight" style="font-weight: bold;"> $ {{parseInt(freelancer.salary)}}
+                            <img src="resumeApp/public/images/home/monetization.svg" alt=""><span class="payment-highLight" style="font-weight: bold;"> $ {{parseInt(freelancer.salary)}}
                             </span>hourly rate
                         </div>
                         <div style="color: white;">
-                            <img src="/images/home/watch_later.svg" alt="">
+                            <img src="resumeApp/public/images/home/watch_later.svg" alt="">
                             <span class="payment-highLight" :id="'maxHours' + freelancer.id" style="font-weight: bold;">{{parseInt(freelancer.availableHours)}} hours</span> availability
                         </div>
                     </div>

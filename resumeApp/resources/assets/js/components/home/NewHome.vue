@@ -11,26 +11,27 @@
 
       <div class="agentsContainer__searchSelects">
         <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'jobTitle'}">
-          <select name="jobTitle" v-on:change="handleChangeSelect" @focus="activeBox = 'jobTitle'">
-            <option v-for="(jobTitle, index) in customValues.jobTitles" :value="jobTitle" :key="jobTitle + index">{{jobTitle}}</option>
+          <select name="jobTitle" v-model="searchParams.jobTitle" @focus="activeBox = 'jobTitle'" @change="updateSearch">
+              <option value="">Choose job title</option>
+              <option v-for="(jobTitle, index) in customValues.jobTitles" :value="jobTitle" :key="jobTitle + index">{{jobTitle}}</option>
           </select>
         </div>
 
         <div v-if="customSearch" class="agentsContainer__customSelect" >
           <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'rate'}">
-            <select name="rate" v-on:change="handleChangeSelect" @focus="activeBox = 'rate'">
+            <select name="rate" v-model="searchParams.salary_hour" @focus="activeBox = 'rate'" @change="updateSearch">
               <option value="">Choose a rate</option>
-              <option v-for="(rate, index) in customValues.rates" :value="rate" :key="rate + index">$ {{rate}} hourly</option>
+              <option v-for="(rate, index) in customValues.rates" :value="rate.value" :key="rate.value + index"> {{rate.name}} hourly</option>
             </select>
           </div>
           <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'availability'}">
-            <select name="availability" v-on:change="handleChangeSelect" @focus="activeBox = 'availability'">
+            <select name="availability" v-model="searchParams.available_hours" @focus="activeBox = 'availability'" @change="updateSearch">
               <option value="">Choose an availability</option>
-              <option v-for="(availability, index) in customValues.availabilities" :value="availability" :key="availability + index">{{availability}} hours weekly</option>
+              <option v-for="(availability, index) in customValues.availabilities" :value="availability.value" :key="availability.value + index">{{availability.name}} hours weekly</option>
             </select>
           </div>
           <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'country'}">
-            <select name="country" v-on:change="handleChangeSelect" @focus="activeBox = 'country'">
+            <select name="country" v-model="searchParams.country" @focus="activeBox = 'country'" @change="updateSearch">
               <option value="">Choose a country</option>
               <option v-for="(country, index) in customValues.countries" :value="country" :key="country + index">{{country}}</option>
             </select>
@@ -53,79 +54,114 @@
 import freelancerCardSmall from '../../components/homeDesigners/freelancerSmallCard'
 
 export default {
-  components: {
+    components: {
     freelancerCardSmall
-  },
-  props: ['freelancers'],
-  data: () => ({
-    results: [],
-    customSearch: false,
-    searchParams: {
-      jobTitle: '',
-      rate: '',
-      availability: '',
-      country: ''
     },
-    activeBox: 'jobTitle',
-    customValues: {
-      jobTitles: [
-        'UI/UX designer',
-        'Illustrator',
-        'Motion designer',
-        'Digital artist'
-      ],
-      rates: [
-        '5 - 10',
-        '10 - 15',
-        '15 - 20',
-        '20 - 30',
-        '30 - 40',
-        '+40'
-      ],
-      availabilities: [
-        '10 - 20',
-        '20 - 30',
-        '30 - 40',
-        '+40'
-      ],
-      countries: [
-        'Venezuela',
-        'Ukraine',
-        'EEUU'
-      ]
-    }
-  }),
-  methods: {
-    handleChangeSelect (e) {
-      // Get data from api
 
-      this.searchParams[e.target.name] = e.target.value
-      this.searchAgents()
+    props: ['freelancers'],
+
+    data() {
+      return{
+          results: [],
+          customSearch: false,
+
+          searchParams: {
+              jobTitle: 'design',
+              salary_hour: '1000',
+              available_hours: '1',
+              country: '',
+          },
+
+          activeBox: 'jobTitle',
+
+          customValues: {
+              jobTitles: [
+                  'UI/UX designer',
+                  'Illustrator',
+                  'Motion designer',
+                  'Digital artist'
+              ],
+              rates: [
+                  {
+                      value:'10',
+                      name:'Max of 10$'
+                  },
+                  {
+                      value:'20',
+                      name:'Max of 20$'
+                  },
+                  {
+                      value:'30',
+                      name:'Max of 30$'
+                  },
+                  {
+                      value:'40',
+                      name:'Max of 40$'
+                  },
+                  {
+                      value:'1000',
+                      name:'$$$'
+                  },
+              ],
+              availabilities: [
+                  {
+                      value:'10',
+                      name:'10+'
+                  },
+                  {
+                      value:'20',
+                      name:'20+'
+                  },
+                  {
+                      value:'30',
+                      name:'30+'
+                  },
+                  {
+                      value:'40',
+                      name:'40+'
+                  },
+
+              ],
+              countries: ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas"
+                  ,"Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands"
+                  ,"Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica"
+                  ,"Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea"
+                  ,"Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana"
+                  ,"Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India"
+                  ,"Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia"
+                  ,"Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania"
+                  ,"Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia"
+                  ,"New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal"
+                  ,"Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles"
+                  ,"Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan"
+                  ,"Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia"
+                  ,"Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","United States Minor Outlying Islands","Uruguay"
+                  ,"Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"],
+          }
+      }
     },
-    searchAgents () {
-      let {
-        jobTitle,
-        availability,
-        rate,
-        country
-      } = this.searchParams
 
-      axios
-        .post(`/searchAgents`, {
-          jobTitle,
-          available_hours: availability,
-          salary_hour: rate,
-          country
-        })
-        .then(response => this.results = response.data)
-        .catch(error => console.log(error))
-    }
-  },
+    methods: {
+      updateSearch(){
+          axios.post('/search-designers',this.searchParams).then((response)=>{
+              this.results = response.data;
+          });
+      },
+    },
+
+
     mounted() {
-
+        this.updateSearch();
+        this.searchParams = {
+                jobTitle: '',
+                salary_hour: '',
+                available_hours: '',
+                country: ''
+        };
     }
 }
 </script>
+
 <style scoped>
     *:focus{
         outline: 0;

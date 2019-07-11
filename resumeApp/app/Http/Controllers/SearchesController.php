@@ -23,6 +23,69 @@ class SearchesController extends Controller
     }
 
 
+    public function searchDesigners(Request $request){
+        $searchArray = [] ;
+        $userDatas   = [] ;
+
+        // jobTitle :
+        if(isset($request->jobTitle)){
+            // save filter in session :
+
+            $jobTitleInput = $request->jobTitle ;
+            $jobTitleArr   = explode(' ',$jobTitleInput);
+            foreach ($jobTitleArr as $jobTitleWord){
+                $searchArray [] = ['jobTitle','like','%'.$jobTitleWord.'%'] ;
+            }
+        }
+
+        // country :
+        if(isset($request->country)){
+            // save filter in session :
+            $searchArray[] = ['country','like','%'.$request->country.'%'];
+        }
+
+
+        // available_hours :
+        if(isset($request->available_hours)){
+            // save filter in session :
+            $searchArray[] = ['availableHours','>=',intval($request->available_hours)];
+        }
+
+        // salary_hour :
+        if(isset($request->salary_hour)){
+            // save filter in session :
+            $searchArray[] = ['salary','<=',intval($request->salary_hour)];
+            $searchArray[] = ['salary','!=',0];
+        }
+
+        // form the where array :
+
+        $userDatas[]    = UserData::where($searchArray)->get();
+        $freelancers = $this->getFilteredDesigners($userDatas);
+
+        $dataForFreelancerCard = [] ;
+        // make a freelancer array with only the needed data for vue js :
+        $i=0;
+        foreach ($freelancers as $freelancer){
+            $dataForFreelancerCard[$i] =[
+                'id'=>$freelancer->id,
+                'photo'=>$freelancer->userData->photo,
+                'firstName'=>$freelancer->firstName,
+                'lastName'=>$freelancer->lastName,
+                'username'=>$freelancer->username,
+                'profession'=>$freelancer->profession,
+                'jobTitle'=>$freelancer->userData->jobTitle,
+                'name'=>$freelancer->firstName . ' ' . $freelancer->lastName,
+                'design_skills_checkbox'=>$freelancer->userData->design_skills_checkbox,
+                'salary'=>$freelancer->userData->salary,
+                'availableHours'=>$freelancer->userData->availableHours,
+            ];
+            $i++;
+        }
+
+        return $dataForFreelancerCard;
+    }
+
     public function searchFreelancers(Request $request){
 
         $searchArray = [] ;
@@ -122,7 +185,6 @@ class SearchesController extends Controller
         // form the where array :
 
         $userDatas[]    = UserData::where($searchArray)->get();
-
         $freelancers = $this->getFilteredFreelancers($userDatas);
 
         $dataForFreelancerCard = [] ;
@@ -136,6 +198,8 @@ class SearchesController extends Controller
                 'lastName'=>$freelancer->lastName,
                 'username'=>$freelancer->username,
                 'profession'=>$freelancer->profession,
+                'jobTitle'=>$freelancer->userData->jobTitle,
+                'name'=>$freelancer->firstName . ' ' . $freelancer->lastName,
                 'design_skills_checkbox'=>$freelancer->userData->design_skills_checkbox,
                 'salary'=>$freelancer->userData->salary,
                 'availableHours'=>$freelancer->userData->availableHours,
@@ -153,6 +217,27 @@ class SearchesController extends Controller
         foreach ($userDatas as $userData){
             foreach ($userData as $data){
                 $freelancer = User::where('id',$data->user_id)->first();
+                if(empty($freelancer)){
+                    // delete user data if there is no user related to it !
+                    $noUserData = UserData::where('user_id',$data->user_id)->first();
+                    $noUserData->delete();
+                }else{
+                    $freelancers[] = $freelancer ;
+                }
+            }
+        }
+
+        return array_unique($freelancers);
+    }
+
+    public function getFilteredDesigners($userDatas){
+        $freelancers = [] ;
+        foreach ($userDatas as $userData){
+            foreach ($userData as $data){
+                $freelancer = User::where([
+                    ['id','=',$data->user_id],
+                    ['profession','=','designer']
+                ])->first();
                 if(empty($freelancer)){
                     // delete user data if there is no user related to it !
                     $noUserData = UserData::where('user_id',$data->user_id)->first();
